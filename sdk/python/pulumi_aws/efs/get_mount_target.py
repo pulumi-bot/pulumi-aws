@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetMountTargetResult',
+    'AwaitableGetMountTargetResult',
+    'get_mount_target',
+]
+
 
 class GetMountTargetResult:
     """
     A collection of values returned by getMountTarget.
     """
-    def __init__(__self__, availability_zone_id=None, availability_zone_name=None, dns_name=None, file_system_arn=None, file_system_id=None, id=None, ip_address=None, mount_target_dns_name=None, mount_target_id=None, network_interface_id=None, owner_id=None, security_groups=None, subnet_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, availability_zone_id=None, availability_zone_name=None, dns_name=None, file_system_arn=None, file_system_id=None, id=None, ip_address=None, mount_target_dns_name=None, mount_target_id=None, network_interface_id=None, owner_id=None, security_groups=None, subnet_id=None) -> None:
         if availability_zone_id and not isinstance(availability_zone_id, str):
             raise TypeError("Expected argument 'availability_zone_id' to be a str")
         __self__.availability_zone_id = availability_zone_id
@@ -88,6 +96,8 @@ class GetMountTargetResult:
         """
         ID of the mount target's subnet.
         """
+
+
 class AwaitableGetMountTargetResult(GetMountTargetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -108,7 +118,8 @@ class AwaitableGetMountTargetResult(GetMountTargetResult):
             security_groups=self.security_groups,
             subnet_id=self.subnet_id)
 
-def get_mount_target(mount_target_id=None,opts=None):
+
+def get_mount_target(mount_target_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMountTargetResult:
     """
     Provides information about an Elastic File System Mount Target (EFS).
 
@@ -129,13 +140,11 @@ def get_mount_target(mount_target_id=None,opts=None):
     :param str mount_target_id: ID of the mount target that you want to have described
     """
     __args__ = dict()
-
-
     __args__['mountTargetId'] = mount_target_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:efs/getMountTarget:getMountTarget', __args__, opts=opts).value
 
     return AwaitableGetMountTargetResult(

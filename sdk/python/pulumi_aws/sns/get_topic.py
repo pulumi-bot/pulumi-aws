@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetTopicResult',
+    'AwaitableGetTopicResult',
+    'get_topic',
+]
+
 
 class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, arn=None, id=None, name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None, name=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -28,6 +36,8 @@ class GetTopicResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +48,8 @@ class AwaitableGetTopicResult(GetTopicResult):
             id=self.id,
             name=self.name)
 
-def get_topic(name=None,opts=None):
+
+def get_topic(name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicResult:
     """
     Use this data source to get the ARN of a topic in AWS Simple Notification
     Service (SNS). By using this data source, you can reference SNS topics
@@ -57,13 +68,11 @@ def get_topic(name=None,opts=None):
     :param str name: The friendly name of the topic to match.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:sns/getTopic:getTopic', __args__, opts=opts).value
 
     return AwaitableGetTopicResult(

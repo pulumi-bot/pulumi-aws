@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSnapshotResult',
+    'AwaitableGetSnapshotResult',
+    'get_snapshot',
+]
+
 
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, allocated_storage=None, availability_zone=None, db_instance_identifier=None, db_snapshot_arn=None, db_snapshot_identifier=None, encrypted=None, engine=None, engine_version=None, id=None, include_public=None, include_shared=None, iops=None, kms_key_id=None, license_model=None, most_recent=None, option_group_name=None, port=None, snapshot_create_time=None, snapshot_type=None, source_db_snapshot_identifier=None, source_region=None, status=None, storage_type=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, allocated_storage=None, availability_zone=None, db_instance_identifier=None, db_snapshot_arn=None, db_snapshot_identifier=None, encrypted=None, engine=None, engine_version=None, id=None, include_public=None, include_shared=None, iops=None, kms_key_id=None, license_model=None, most_recent=None, option_group_name=None, port=None, snapshot_create_time=None, snapshot_type=None, source_db_snapshot_identifier=None, source_region=None, status=None, storage_type=None, vpc_id=None) -> None:
         if allocated_storage and not isinstance(allocated_storage, float):
             raise TypeError("Expected argument 'allocated_storage' to be a float")
         __self__.allocated_storage = allocated_storage
@@ -136,6 +144,8 @@ class GetSnapshotResult:
         """
         Specifies the ID of the VPC associated with the DB snapshot.
         """
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -167,7 +177,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             storage_type=self.storage_type,
             vpc_id=self.vpc_id)
 
-def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include_public=None,include_shared=None,most_recent=None,snapshot_type=None,opts=None):
+
+def get_snapshot(db_instance_identifier: Optional[str] = None, db_snapshot_identifier: Optional[str] = None, include_public: Optional[bool] = None, include_shared: Optional[bool] = None, most_recent: Optional[bool] = None, snapshot_type: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
     Use this data source to get information about a DB Snapshot for use when provisioning DB instances
 
@@ -217,8 +228,6 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
            included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
     """
     __args__ = dict()
-
-
     __args__['dbInstanceIdentifier'] = db_instance_identifier
     __args__['dbSnapshotIdentifier'] = db_snapshot_identifier
     __args__['includePublic'] = include_public
@@ -228,7 +237,7 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(

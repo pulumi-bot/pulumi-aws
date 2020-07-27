@@ -5,38 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SecurityGroup']
 
 
 class SecurityGroup(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The arn of the DB security group.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[str] = pulumi.output_property("description")
     """
     The description of the DB security group. Defaults to "Managed by Pulumi".
     """
-    ingress: pulumi.Output[list]
+    ingress: pulumi.Output[List['outputs.SecurityGroupIngress']] = pulumi.output_property("ingress")
     """
     A list of ingress rules.
-
-      * `cidr` (`str`) - The CIDR block to accept
-      * `security_group_id` (`str`) - The ID of the security group to authorize
-      * `securityGroupName` (`str`) - The name of the security group to authorize
-      * `securityGroupOwnerId` (`str`) - The owner Id of the security group provided
-        by `security_group_name`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the DB security group.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, ingress=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description: Optional[pulumi.Input[str]] = None, ingress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]]] = None, name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an RDS security group resource. This is only for DB instances in the
         EC2-Classic Platform. For instances inside a VPC, use the
@@ -57,17 +56,9 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the DB security group. Defaults to "Managed by Pulumi".
-        :param pulumi.Input[list] ingress: A list of ingress rules.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]] ingress: A list of ingress rules.
         :param pulumi.Input[str] name: The name of the DB security group.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **ingress** object supports the following:
-
-          * `cidr` (`pulumi.Input[str]`) - The CIDR block to accept
-          * `security_group_id` (`pulumi.Input[str]`) - The ID of the security group to authorize
-          * `securityGroupName` (`pulumi.Input[str]`) - The name of the security group to authorize
-          * `securityGroupOwnerId` (`pulumi.Input[str]`) - The owner Id of the security group provided
-            by `security_group_name`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,7 +71,7 @@ class SecurityGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -102,7 +93,7 @@ class SecurityGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, description=None, ingress=None, name=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, arn: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, ingress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]]] = None, name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'SecurityGroup':
         """
         Get an existing SecurityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -112,17 +103,9 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The arn of the DB security group.
         :param pulumi.Input[str] description: The description of the DB security group. Defaults to "Managed by Pulumi".
-        :param pulumi.Input[list] ingress: A list of ingress rules.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]] ingress: A list of ingress rules.
         :param pulumi.Input[str] name: The name of the DB security group.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **ingress** object supports the following:
-
-          * `cidr` (`pulumi.Input[str]`) - The CIDR block to accept
-          * `security_group_id` (`pulumi.Input[str]`) - The ID of the security group to authorize
-          * `securityGroupName` (`pulumi.Input[str]`) - The name of the security group to authorize
-          * `securityGroupOwnerId` (`pulumi.Input[str]`) - The owner Id of the security group provided
-            by `security_group_name`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,7 +119,8 @@ class SecurityGroup(pulumi.CustomResource):
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

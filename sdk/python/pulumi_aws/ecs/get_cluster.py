@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
 
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, arn=None, cluster_name=None, id=None, pending_tasks_count=None, registered_container_instances_count=None, running_tasks_count=None, settings=None, status=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, cluster_name=None, id=None, pending_tasks_count=None, registered_container_instances_count=None, running_tasks_count=None, settings=None, status=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -58,6 +67,8 @@ class GetClusterResult:
         """
         The status of the ECS Cluster
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +84,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             settings=self.settings,
             status=self.status)
 
-def get_cluster(cluster_name=None,opts=None):
+
+def get_cluster(cluster_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     The ECS Cluster data source allows access to details of a specific
     cluster within an AWS ECS service.
@@ -91,13 +103,11 @@ def get_cluster(cluster_name=None,opts=None):
     :param str cluster_name: The name of the ECS Cluster
     """
     __args__ = dict()
-
-
     __args__['clusterName'] = cluster_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecs/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

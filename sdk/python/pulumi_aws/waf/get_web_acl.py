@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetWebAclResult',
+    'AwaitableGetWebAclResult',
+    'get_web_acl',
+]
+
 
 class GetWebAclResult:
     """
     A collection of values returned by getWebAcl.
     """
-    def __init__(__self__, id=None, name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, name=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -22,6 +30,8 @@ class GetWebAclResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetWebAclResult(GetWebAclResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,7 +41,8 @@ class AwaitableGetWebAclResult(GetWebAclResult):
             id=self.id,
             name=self.name)
 
-def get_web_acl(name=None,opts=None):
+
+def get_web_acl(name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebAclResult:
     """
     `waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
 
@@ -48,13 +59,11 @@ def get_web_acl(name=None,opts=None):
     :param str name: The name of the WAF Web ACL.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:waf/getWebAcl:getWebAcl', __args__, opts=opts).value
 
     return AwaitableGetWebAclResult(

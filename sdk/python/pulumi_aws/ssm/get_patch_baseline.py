@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetPatchBaselineResult',
+    'AwaitableGetPatchBaselineResult',
+    'get_patch_baseline',
+]
+
 
 class GetPatchBaselineResult:
     """
     A collection of values returned by getPatchBaseline.
     """
-    def __init__(__self__, default_baseline=None, description=None, id=None, name=None, name_prefix=None, operating_system=None, owner=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, default_baseline=None, description=None, id=None, name=None, name_prefix=None, operating_system=None, owner=None) -> None:
         if default_baseline and not isinstance(default_baseline, bool):
             raise TypeError("Expected argument 'default_baseline' to be a bool")
         __self__.default_baseline = default_baseline
@@ -43,6 +51,8 @@ class GetPatchBaselineResult:
         if owner and not isinstance(owner, str):
             raise TypeError("Expected argument 'owner' to be a str")
         __self__.owner = owner
+
+
 class AwaitableGetPatchBaselineResult(GetPatchBaselineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +67,8 @@ class AwaitableGetPatchBaselineResult(GetPatchBaselineResult):
             operating_system=self.operating_system,
             owner=self.owner)
 
-def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=None,owner=None,opts=None):
+
+def get_patch_baseline(default_baseline: Optional[bool] = None, name_prefix: Optional[str] = None, operating_system: Optional[str] = None, owner: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPatchBaselineResult:
     """
     Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
 
@@ -93,8 +104,6 @@ def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=N
     :param str owner: The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
     """
     __args__ = dict()
-
-
     __args__['defaultBaseline'] = default_baseline
     __args__['namePrefix'] = name_prefix
     __args__['operatingSystem'] = operating_system
@@ -102,7 +111,7 @@ def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ssm/getPatchBaseline:getPatchBaseline', __args__, opts=opts).value
 
     return AwaitableGetPatchBaselineResult(

@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetVaultResult',
+    'AwaitableGetVaultResult',
+    'get_vault',
+]
+
 
 class GetVaultResult:
     """
     A collection of values returned by getVault.
     """
-    def __init__(__self__, arn=None, id=None, kms_key_arn=None, name=None, recovery_points=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None, kms_key_arn=None, name=None, recovery_points=None, tags=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -46,6 +54,8 @@ class GetVaultResult:
         """
         Metadata that you can assign to help organize the resources that you create.
         """
+
+
 class AwaitableGetVaultResult(GetVaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +69,8 @@ class AwaitableGetVaultResult(GetVaultResult):
             recovery_points=self.recovery_points,
             tags=self.tags)
 
-def get_vault(name=None,tags=None,opts=None):
+
+def get_vault(name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVaultResult:
     """
     Use this data source to get information on an existing backup vault.
 
@@ -74,17 +85,15 @@ def get_vault(name=None,tags=None,opts=None):
 
 
     :param str name: The name of the backup vault.
-    :param dict tags: Metadata that you can assign to help organize the resources that you create.
+    :param Dict[str, str] tags: Metadata that you can assign to help organize the resources that you create.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:backup/getVault:getVault', __args__, opts=opts).value
 
     return AwaitableGetVaultResult(

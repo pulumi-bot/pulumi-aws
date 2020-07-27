@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['UserPolicyAttachment']
 
 
 class UserPolicyAttachment(pulumi.CustomResource):
-    policy_arn: pulumi.Output[str]
+    policy_arn: pulumi.Output[str] = pulumi.output_property("policyArn")
     """
     The ARN of the policy you want to apply
     """
-    user: pulumi.Output[str]
+    user: pulumi.Output[str] = pulumi.output_property("user")
     """
     The user the policy should be applied to
     """
-    def __init__(__self__, resource_name, opts=None, policy_arn=None, user=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, policy_arn: Optional[pulumi.Input[str]] = None, user: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Attaches a Managed IAM Policy to an IAM user
 
@@ -43,7 +46,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_arn: The ARN of the policy you want to apply
-        :param pulumi.Input[dict] user: The user the policy should be applied to
+        :param pulumi.Input[str] user: The user the policy should be applied to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -56,7 +59,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -75,7 +78,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, policy_arn=None, user=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, policy_arn: Optional[pulumi.Input[str]] = None, user: Optional[pulumi.Input[str]] = None) -> 'UserPolicyAttachment':
         """
         Get an existing UserPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -84,7 +87,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_arn: The ARN of the policy you want to apply
-        :param pulumi.Input[dict] user: The user the policy should be applied to
+        :param pulumi.Input[str] user: The user the policy should be applied to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -95,7 +98,8 @@ class UserPolicyAttachment(pulumi.CustomResource):
         return UserPolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

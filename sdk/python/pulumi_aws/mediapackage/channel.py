@@ -5,37 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Channel']
 
 
 class Channel(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the channel
     """
-    channel_id: pulumi.Output[str]
+    channel_id: pulumi.Output[str] = pulumi.output_property("channelId")
     """
     A unique identifier describing the channel
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[str] = pulumi.output_property("description")
     """
     A description of the channel
     """
-    hls_ingests: pulumi.Output[list]
+    hls_ingests: pulumi.Output[List['outputs.ChannelHlsIngest']] = pulumi.output_property("hlsIngests")
     """
     A single item list of HLS ingest information
-
-      * `ingestEndpoints` (`list`) - A list of the ingest endpoints
-        * `password` (`str`) - The password
-        * `url` (`str`) - The URL
-        * `username` (`str`) - The username
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, channel_id=None, description=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, channel_id: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an AWS Elemental MediaPackage Channel.
 
@@ -54,7 +54,7 @@ class Channel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel_id: A unique identifier describing the channel
         :param pulumi.Input[str] description: A description of the channel
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,7 +67,7 @@ class Channel(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -89,7 +89,7 @@ class Channel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, channel_id=None, description=None, hls_ingests=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, arn: Optional[pulumi.Input[str]] = None, channel_id: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, hls_ingests: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ChannelHlsIngestArgs']]]]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'Channel':
         """
         Get an existing Channel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,15 +100,8 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the channel
         :param pulumi.Input[str] channel_id: A unique identifier describing the channel
         :param pulumi.Input[str] description: A description of the channel
-        :param pulumi.Input[list] hls_ingests: A single item list of HLS ingest information
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **hls_ingests** object supports the following:
-
-          * `ingestEndpoints` (`pulumi.Input[list]`) - A list of the ingest endpoints
-            * `password` (`pulumi.Input[str]`) - The password
-            * `url` (`pulumi.Input[str]`) - The URL
-            * `username` (`pulumi.Input[str]`) - The username
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ChannelHlsIngestArgs']]]] hls_ingests: A single item list of HLS ingest information
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -122,7 +115,8 @@ class Channel(pulumi.CustomResource):
         return Channel(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

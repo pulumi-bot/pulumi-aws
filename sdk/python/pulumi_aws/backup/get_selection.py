@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSelectionResult',
+    'AwaitableGetSelectionResult',
+    'get_selection',
+]
+
 
 class GetSelectionResult:
     """
     A collection of values returned by getSelection.
     """
-    def __init__(__self__, iam_role_arn=None, id=None, name=None, plan_id=None, resources=None, selection_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, iam_role_arn=None, id=None, name=None, plan_id=None, resources=None, selection_id=None) -> None:
         if iam_role_arn and not isinstance(iam_role_arn, str):
             raise TypeError("Expected argument 'iam_role_arn' to be a str")
         __self__.iam_role_arn = iam_role_arn
@@ -43,6 +51,8 @@ class GetSelectionResult:
         if selection_id and not isinstance(selection_id, str):
             raise TypeError("Expected argument 'selection_id' to be a str")
         __self__.selection_id = selection_id
+
+
 class AwaitableGetSelectionResult(GetSelectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +66,8 @@ class AwaitableGetSelectionResult(GetSelectionResult):
             resources=self.resources,
             selection_id=self.selection_id)
 
-def get_selection(plan_id=None,selection_id=None,opts=None):
+
+def get_selection(plan_id: Optional[str] = None, selection_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSelectionResult:
     """
     Use this data source to get information on an existing backup selection.
 
@@ -75,14 +86,12 @@ def get_selection(plan_id=None,selection_id=None,opts=None):
     :param str selection_id: The backup selection ID.
     """
     __args__ = dict()
-
-
     __args__['planId'] = plan_id
     __args__['selectionId'] = selection_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:backup/getSelection:getSelection', __args__, opts=opts).value
 
     return AwaitableGetSelectionResult(

@@ -5,131 +5,124 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Environment']
 
 
 class Environment(pulumi.CustomResource):
-    all_settings: pulumi.Output[list]
+    all_settings: pulumi.Output[List['outputs.EnvironmentAllSetting']] = pulumi.output_property("allSettings")
     """
     List of all option settings configured in this Environment. These
     are a combination of default settings and their overrides from `setting` in
     the configuration.
-
-      * `name` (`str`) - A unique name for this Environment. This name is used
-        in the application URL
-      * `namespace` (`str`)
-      * `resource` (`str`)
-      * `value` (`str`)
     """
-    application: pulumi.Output[str]
+    application: pulumi.Output[str] = pulumi.output_property("application")
     """
     Name of the application that contains the version
     to be deployed
     """
-    arn: pulumi.Output[str]
-    autoscaling_groups: pulumi.Output[list]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
+    autoscaling_groups: pulumi.Output[List[str]] = pulumi.output_property("autoscalingGroups")
     """
     The autoscaling groups used by this Environment.
     """
-    cname: pulumi.Output[str]
+    cname: pulumi.Output[str] = pulumi.output_property("cname")
     """
     Fully qualified DNS name for this Environment.
     """
-    cname_prefix: pulumi.Output[str]
+    cname_prefix: pulumi.Output[str] = pulumi.output_property("cnamePrefix")
     """
     Prefix to use for the fully qualified DNS name of
     the Environment.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     Short description of the Environment
     """
-    endpoint_url: pulumi.Output[str]
+    endpoint_url: pulumi.Output[str] = pulumi.output_property("endpointUrl")
     """
     The URL to the Load Balancer for this Environment
     """
-    instances: pulumi.Output[list]
+    instances: pulumi.Output[List[str]] = pulumi.output_property("instances")
     """
     Instances used by this Environment.
     """
-    launch_configurations: pulumi.Output[list]
+    launch_configurations: pulumi.Output[List[str]] = pulumi.output_property("launchConfigurations")
     """
     Launch configurations in use by this Environment.
     """
-    load_balancers: pulumi.Output[list]
+    load_balancers: pulumi.Output[List[str]] = pulumi.output_property("loadBalancers")
     """
     Elastic load balancers in use by this Environment.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     A unique name for this Environment. This name is used
     in the application URL
     """
-    platform_arn: pulumi.Output[str]
+    platform_arn: pulumi.Output[str] = pulumi.output_property("platformArn")
     """
     The [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the Elastic Beanstalk [Platform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk-environment.html#cfn-beanstalk-environment-platformarn)
     to use in deployment
     """
-    poll_interval: pulumi.Output[str]
+    poll_interval: pulumi.Output[Optional[str]] = pulumi.output_property("pollInterval")
     """
     The time between polling the AWS API to
     check if changes have been applied. Use this to adjust the rate of API calls
     for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
     use the default behavior, which is an exponential backoff
     """
-    queues: pulumi.Output[list]
+    queues: pulumi.Output[List[str]] = pulumi.output_property("queues")
     """
     SQS queues in use by this Environment.
     """
-    settings: pulumi.Output[list]
+    settings: pulumi.Output[Optional[List['outputs.EnvironmentSetting']]] = pulumi.output_property("settings")
     """
     Option settings to configure the new Environment. These
     override specific values that are set as defaults. The format is detailed
     below in Option Settings
-
-      * `name` (`str`) - A unique name for this Environment. This name is used
-        in the application URL
-      * `namespace` (`str`)
-      * `resource` (`str`)
-      * `value` (`str`)
     """
-    solution_stack_name: pulumi.Output[str]
+    solution_stack_name: pulumi.Output[str] = pulumi.output_property("solutionStackName")
     """
     A solution stack to base your environment
     off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A set of tags to apply to the Environment.
     """
-    template_name: pulumi.Output[str]
+    template_name: pulumi.Output[Optional[str]] = pulumi.output_property("templateName")
     """
     The name of the Elastic Beanstalk Configuration
     template to use in deployment
     """
-    tier: pulumi.Output[str]
+    tier: pulumi.Output[Optional[str]] = pulumi.output_property("tier")
     """
     Elastic Beanstalk Environment tier. Valid values are `Worker`
     or `WebServer`. If tier is left blank `WebServer` will be used.
     """
-    triggers: pulumi.Output[list]
+    triggers: pulumi.Output[List[str]] = pulumi.output_property("triggers")
     """
     Autoscaling triggers in use by this Environment.
     """
-    version: pulumi.Output[str]
+    version: pulumi.Output[str] = pulumi.output_property("version")
     """
     The name of the Elastic Beanstalk Application Version
     to use in deployment.
     """
-    wait_for_ready_timeout: pulumi.Output[str]
+    wait_for_ready_timeout: pulumi.Output[Optional[str]] = pulumi.output_property("waitForReadyTimeout")
     """
     The maximum
     [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
     wait for an Elastic Beanstalk Environment to be in a ready state before timing
     out.
     """
-    def __init__(__self__, resource_name, opts=None, application=None, cname_prefix=None, description=None, name=None, platform_arn=None, poll_interval=None, settings=None, solution_stack_name=None, tags=None, template_name=None, tier=None, version=None, wait_for_ready_timeout=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application: Optional[pulumi.Input[str]] = None, cname_prefix: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, platform_arn: Optional[pulumi.Input[str]] = None, poll_interval: Optional[pulumi.Input[str]] = None, settings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EnvironmentSettingArgs']]]]] = None, solution_stack_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, template_name: Optional[pulumi.Input[str]] = None, tier: Optional[pulumi.Input[str]] = None, version: Optional[pulumi.Input[str]] = None, wait_for_ready_timeout: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an Elastic Beanstalk Environment Resource. Elastic Beanstalk allows
         you to deploy and manage applications in the AWS cloud without worrying about
@@ -187,7 +180,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] application: Name of the application that contains the version
+        :param pulumi.Input[str] application: Name of the application that contains the version
                to be deployed
         :param pulumi.Input[str] cname_prefix: Prefix to use for the fully qualified DNS name of
                the Environment.
@@ -200,12 +193,12 @@ class Environment(pulumi.CustomResource):
                check if changes have been applied. Use this to adjust the rate of API calls
                for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
                use the default behavior, which is an exponential backoff
-        :param pulumi.Input[list] settings: Option settings to configure the new Environment. These
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EnvironmentSettingArgs']]]] settings: Option settings to configure the new Environment. These
                override specific values that are set as defaults. The format is detailed
                below in Option Settings
         :param pulumi.Input[str] solution_stack_name: A solution stack to base your environment
                off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
-        :param pulumi.Input[dict] tags: A set of tags to apply to the Environment.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A set of tags to apply to the Environment.
         :param pulumi.Input[str] template_name: The name of the Elastic Beanstalk Configuration
                template to use in deployment
         :param pulumi.Input[str] tier: Elastic Beanstalk Environment tier. Valid values are `Worker`
@@ -216,14 +209,6 @@ class Environment(pulumi.CustomResource):
                [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
                wait for an Elastic Beanstalk Environment to be in a ready state before timing
                out.
-
-        The **settings** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - A unique name for this Environment. This name is used
-            in the application URL
-          * `namespace` (`pulumi.Input[str]`)
-          * `resource` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -236,7 +221,7 @@ class Environment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -274,7 +259,7 @@ class Environment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, all_settings=None, application=None, arn=None, autoscaling_groups=None, cname=None, cname_prefix=None, description=None, endpoint_url=None, instances=None, launch_configurations=None, load_balancers=None, name=None, platform_arn=None, poll_interval=None, queues=None, settings=None, solution_stack_name=None, tags=None, template_name=None, tier=None, triggers=None, version=None, wait_for_ready_timeout=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, all_settings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EnvironmentAllSettingArgs']]]]] = None, application: Optional[pulumi.Input[str]] = None, arn: Optional[pulumi.Input[str]] = None, autoscaling_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, cname: Optional[pulumi.Input[str]] = None, cname_prefix: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, endpoint_url: Optional[pulumi.Input[str]] = None, instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, launch_configurations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, name: Optional[pulumi.Input[str]] = None, platform_arn: Optional[pulumi.Input[str]] = None, poll_interval: Optional[pulumi.Input[str]] = None, queues: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, settings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EnvironmentSettingArgs']]]]] = None, solution_stack_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, template_name: Optional[pulumi.Input[str]] = None, tier: Optional[pulumi.Input[str]] = None, triggers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, version: Optional[pulumi.Input[str]] = None, wait_for_ready_timeout: Optional[pulumi.Input[str]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -282,20 +267,20 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] all_settings: List of all option settings configured in this Environment. These
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EnvironmentAllSettingArgs']]]] all_settings: List of all option settings configured in this Environment. These
                are a combination of default settings and their overrides from `setting` in
                the configuration.
-        :param pulumi.Input[dict] application: Name of the application that contains the version
+        :param pulumi.Input[str] application: Name of the application that contains the version
                to be deployed
-        :param pulumi.Input[list] autoscaling_groups: The autoscaling groups used by this Environment.
+        :param pulumi.Input[List[pulumi.Input[str]]] autoscaling_groups: The autoscaling groups used by this Environment.
         :param pulumi.Input[str] cname: Fully qualified DNS name for this Environment.
         :param pulumi.Input[str] cname_prefix: Prefix to use for the fully qualified DNS name of
                the Environment.
         :param pulumi.Input[str] description: Short description of the Environment
         :param pulumi.Input[str] endpoint_url: The URL to the Load Balancer for this Environment
-        :param pulumi.Input[list] instances: Instances used by this Environment.
-        :param pulumi.Input[list] launch_configurations: Launch configurations in use by this Environment.
-        :param pulumi.Input[list] load_balancers: Elastic load balancers in use by this Environment.
+        :param pulumi.Input[List[pulumi.Input[str]]] instances: Instances used by this Environment.
+        :param pulumi.Input[List[pulumi.Input[str]]] launch_configurations: Launch configurations in use by this Environment.
+        :param pulumi.Input[List[pulumi.Input[str]]] load_balancers: Elastic load balancers in use by this Environment.
         :param pulumi.Input[str] name: A unique name for this Environment. This name is used
                in the application URL
         :param pulumi.Input[str] platform_arn: The [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the Elastic Beanstalk [Platform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk-environment.html#cfn-beanstalk-environment-platformarn)
@@ -304,40 +289,24 @@ class Environment(pulumi.CustomResource):
                check if changes have been applied. Use this to adjust the rate of API calls
                for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
                use the default behavior, which is an exponential backoff
-        :param pulumi.Input[list] queues: SQS queues in use by this Environment.
-        :param pulumi.Input[list] settings: Option settings to configure the new Environment. These
+        :param pulumi.Input[List[pulumi.Input[str]]] queues: SQS queues in use by this Environment.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EnvironmentSettingArgs']]]] settings: Option settings to configure the new Environment. These
                override specific values that are set as defaults. The format is detailed
                below in Option Settings
         :param pulumi.Input[str] solution_stack_name: A solution stack to base your environment
                off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
-        :param pulumi.Input[dict] tags: A set of tags to apply to the Environment.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A set of tags to apply to the Environment.
         :param pulumi.Input[str] template_name: The name of the Elastic Beanstalk Configuration
                template to use in deployment
         :param pulumi.Input[str] tier: Elastic Beanstalk Environment tier. Valid values are `Worker`
                or `WebServer`. If tier is left blank `WebServer` will be used.
-        :param pulumi.Input[list] triggers: Autoscaling triggers in use by this Environment.
+        :param pulumi.Input[List[pulumi.Input[str]]] triggers: Autoscaling triggers in use by this Environment.
         :param pulumi.Input[str] version: The name of the Elastic Beanstalk Application Version
                to use in deployment.
         :param pulumi.Input[str] wait_for_ready_timeout: The maximum
                [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
                wait for an Elastic Beanstalk Environment to be in a ready state before timing
                out.
-
-        The **all_settings** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - A unique name for this Environment. This name is used
-            in the application URL
-          * `namespace` (`pulumi.Input[str]`)
-          * `resource` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **settings** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - A unique name for this Environment. This name is used
-            in the application URL
-          * `namespace` (`pulumi.Input[str]`)
-          * `resource` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,7 +338,8 @@ class Environment(pulumi.CustomResource):
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

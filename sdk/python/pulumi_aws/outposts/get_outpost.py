@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetOutpostResult',
+    'AwaitableGetOutpostResult',
+    'get_outpost',
+]
+
 
 class GetOutpostResult:
     """
     A collection of values returned by getOutpost.
     """
-    def __init__(__self__, arn=None, availability_zone=None, availability_zone_id=None, description=None, id=None, name=None, owner_id=None, site_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, availability_zone=None, availability_zone_id=None, description=None, id=None, name=None, owner_id=None, site_id=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -55,6 +63,8 @@ class GetOutpostResult:
         """
         Site identifier.
         """
+
+
 class AwaitableGetOutpostResult(GetOutpostResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +80,8 @@ class AwaitableGetOutpostResult(GetOutpostResult):
             owner_id=self.owner_id,
             site_id=self.site_id)
 
-def get_outpost(id=None,name=None,opts=None):
+
+def get_outpost(id: Optional[str] = None, name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOutpostResult:
     """
     Provides details about an Outposts Outpost.
 
@@ -88,14 +99,12 @@ def get_outpost(id=None,name=None,opts=None):
     :param str name: Name of the Outpost.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:outposts/getOutpost:getOutpost', __args__, opts=opts).value
 
     return AwaitableGetOutpostResult(

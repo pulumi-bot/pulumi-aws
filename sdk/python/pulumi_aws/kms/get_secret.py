@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetSecretResult',
+    'AwaitableGetSecretResult',
+    'get_secret',
+]
+
 
 class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, id=None, secrets=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, secrets=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -22,6 +32,8 @@ class GetSecretResult:
         if secrets and not isinstance(secrets, list):
             raise TypeError("Expected argument 'secrets' to be a list")
         __self__.secrets = secrets
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,26 +43,17 @@ class AwaitableGetSecretResult(GetSecretResult):
             id=self.id,
             secrets=self.secrets)
 
-def get_secret(secrets=None,opts=None):
+
+def get_secret(secrets: Optional[List[pulumi.InputType['GetSecretSecretArgs']]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **secrets** object supports the following:
-
-      * `context` (`dict`)
-      * `grantTokens` (`list`)
-      * `name` (`str`)
-      * `payload` (`str`)
     """
     __args__ = dict()
-
-
     __args__['secrets'] = secrets
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kms/getSecret:getSecret', __args__, opts=opts).value
 
     return AwaitableGetSecretResult(

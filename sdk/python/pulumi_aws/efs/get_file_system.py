@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetFileSystemResult',
+    'AwaitableGetFileSystemResult',
+    'get_file_system',
+]
+
 
 class GetFileSystemResult:
     """
     A collection of values returned by getFileSystem.
     """
-    def __init__(__self__, arn=None, creation_token=None, dns_name=None, encrypted=None, file_system_id=None, id=None, kms_key_id=None, lifecycle_policy=None, performance_mode=None, provisioned_throughput_in_mibps=None, size_in_bytes=None, tags=None, throughput_mode=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, creation_token=None, dns_name=None, encrypted=None, file_system_id=None, id=None, kms_key_id=None, lifecycle_policy=None, performance_mode=None, provisioned_throughput_in_mibps=None, size_in_bytes=None, tags=None, throughput_mode=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -83,6 +92,8 @@ class GetFileSystemResult:
         """
         Throughput mode for the file system.
         """
+
+
 class AwaitableGetFileSystemResult(GetFileSystemResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -103,7 +114,8 @@ class AwaitableGetFileSystemResult(GetFileSystemResult):
             tags=self.tags,
             throughput_mode=self.throughput_mode)
 
-def get_file_system(creation_token=None,file_system_id=None,tags=None,opts=None):
+
+def get_file_system(creation_token: Optional[str] = None, file_system_id: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFileSystemResult:
     """
     Provides information about an Elastic File System (EFS) File System.
 
@@ -125,15 +137,13 @@ def get_file_system(creation_token=None,file_system_id=None,tags=None,opts=None)
     :param str file_system_id: The ID that identifies the file system (e.g. fs-ccfc0d65).
     """
     __args__ = dict()
-
-
     __args__['creationToken'] = creation_token
     __args__['fileSystemId'] = file_system_id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:efs/getFileSystem:getFileSystem', __args__, opts=opts).value
 
     return AwaitableGetFileSystemResult(

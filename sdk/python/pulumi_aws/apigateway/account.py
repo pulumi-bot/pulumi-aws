@@ -5,25 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Account']
 
 
 class Account(pulumi.CustomResource):
-    cloudwatch_role_arn: pulumi.Output[str]
+    cloudwatch_role_arn: pulumi.Output[Optional[str]] = pulumi.output_property("cloudwatchRoleArn")
     """
     The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
     See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
     Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
     """
-    throttle_settings: pulumi.Output[dict]
+    throttle_settings: pulumi.Output['outputs.AccountThrottleSettings'] = pulumi.output_property("throttleSettings")
     """
     Account-Level throttle settings. See exported fields below.
-
-      * `burstLimit` (`float`) - The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-      * `rate_limit` (`float`) - The number of times API Gateway allows the API to be called per second on average (RPS).
     """
-    def __init__(__self__, resource_name, opts=None, cloudwatch_role_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, cloudwatch_role_arn: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
 
@@ -92,7 +94,7 @@ class Account(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -107,7 +109,7 @@ class Account(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cloudwatch_role_arn=None, throttle_settings=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, cloudwatch_role_arn: Optional[pulumi.Input[str]] = None, throttle_settings: Optional[pulumi.Input[pulumi.InputType['AccountThrottleSettingsArgs']]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -118,12 +120,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] cloudwatch_role_arn: The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
                See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
                Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-        :param pulumi.Input[dict] throttle_settings: Account-Level throttle settings. See exported fields below.
-
-        The **throttle_settings** object supports the following:
-
-          * `burstLimit` (`pulumi.Input[float]`) - The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-          * `rate_limit` (`pulumi.Input[float]`) - The number of times API Gateway allows the API to be called per second on average (RPS).
+        :param pulumi.Input[pulumi.InputType['AccountThrottleSettingsArgs']] throttle_settings: Account-Level throttle settings. See exported fields below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -134,7 +131,8 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

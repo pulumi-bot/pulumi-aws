@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDetectorResult',
+    'AwaitableGetDetectorResult',
+    'get_detector',
+]
+
 
 class GetDetectorResult:
     """
     A collection of values returned by getDetector.
     """
-    def __init__(__self__, finding_publishing_frequency=None, id=None, service_role_arn=None, status=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, finding_publishing_frequency=None, id=None, service_role_arn=None, status=None) -> None:
         if finding_publishing_frequency and not isinstance(finding_publishing_frequency, str):
             raise TypeError("Expected argument 'finding_publishing_frequency' to be a str")
         __self__.finding_publishing_frequency = finding_publishing_frequency
@@ -34,6 +42,8 @@ class GetDetectorResult:
         """
         The current status of the detector.
         """
+
+
 class AwaitableGetDetectorResult(GetDetectorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +55,8 @@ class AwaitableGetDetectorResult(GetDetectorResult):
             service_role_arn=self.service_role_arn,
             status=self.status)
 
-def get_detector(id=None,opts=None):
+
+def get_detector(id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDetectorResult:
     """
     Retrieve information about a GuardDuty detector.
 
@@ -62,13 +73,11 @@ def get_detector(id=None,opts=None):
     :param str id: The ID of the detector.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:guardduty/getDetector:getDetector', __args__, opts=opts).value
 
     return AwaitableGetDetectorResult(

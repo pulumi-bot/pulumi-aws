@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServerResult',
+    'AwaitableGetServerResult',
+    'get_server',
+]
+
 
 class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, arn=None, endpoint=None, id=None, identity_provider_type=None, invocation_role=None, logging_role=None, server_id=None, url=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, endpoint=None, id=None, identity_provider_type=None, invocation_role=None, logging_role=None, server_id=None, url=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -58,6 +66,8 @@ class GetServerResult:
         """
         URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
         """
+
+
 class AwaitableGetServerResult(GetServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +83,8 @@ class AwaitableGetServerResult(GetServerResult):
             server_id=self.server_id,
             url=self.url)
 
-def get_server(server_id=None,opts=None):
+
+def get_server(server_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerResult:
     """
     Use this data source to get the ARN of an AWS Transfer Server for use in other
     resources.
@@ -91,13 +102,11 @@ def get_server(server_id=None,opts=None):
     :param str server_id: ID for an SFTP server.
     """
     __args__ = dict()
-
-
     __args__['serverId'] = server_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:transfer/getServer:getServer', __args__, opts=opts).value
 
     return AwaitableGetServerResult(

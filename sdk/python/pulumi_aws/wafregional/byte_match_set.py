@@ -5,28 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ByteMatchSet']
 
 
 class ByteMatchSet(pulumi.CustomResource):
-    byte_match_tuples: pulumi.Output[list]
+    byte_match_tuples: pulumi.Output[Optional[List['outputs.ByteMatchSetByteMatchTuple']]] = pulumi.output_property("byteMatchTuples")
     """
     Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-
-      * `fieldToMatch` (`dict`) - Settings for the ByteMatchTuple. FieldToMatch documented below.
-        * `data` (`str`) - When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
-        * `type` (`str`) - The part of the web request that you want AWS WAF to search for a specified string.
-
-      * `positionalConstraint` (`str`) - Within the portion of a web request that you want to search.
-      * `targetString` (`str`) - The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
-      * `textTransformation` (`str`) - The formatting way for web request.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name or description of the ByteMatchSet.
     """
-    def __init__(__self__, resource_name, opts=None, byte_match_tuples=None, name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, byte_match_tuples: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ByteMatchSetByteMatchTupleArgs']]]]] = None, name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
 
@@ -49,18 +46,8 @@ class ByteMatchSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] byte_match_tuples: Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ByteMatchSetByteMatchTupleArgs']]]] byte_match_tuples: Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
         :param pulumi.Input[str] name: The name or description of the ByteMatchSet.
-
-        The **byte_match_tuples** object supports the following:
-
-          * `fieldToMatch` (`pulumi.Input[dict]`) - Settings for the ByteMatchTuple. FieldToMatch documented below.
-            * `data` (`pulumi.Input[str]`) - When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
-            * `type` (`pulumi.Input[str]`) - The part of the web request that you want AWS WAF to search for a specified string.
-
-          * `positionalConstraint` (`pulumi.Input[str]`) - Within the portion of a web request that you want to search.
-          * `targetString` (`pulumi.Input[str]`) - The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
-          * `textTransformation` (`pulumi.Input[str]`) - The formatting way for web request.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +60,7 @@ class ByteMatchSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -88,7 +75,7 @@ class ByteMatchSet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, byte_match_tuples=None, name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, byte_match_tuples: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ByteMatchSetByteMatchTupleArgs']]]]] = None, name: Optional[pulumi.Input[str]] = None) -> 'ByteMatchSet':
         """
         Get an existing ByteMatchSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -96,18 +83,8 @@ class ByteMatchSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] byte_match_tuples: Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ByteMatchSetByteMatchTupleArgs']]]] byte_match_tuples: Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
         :param pulumi.Input[str] name: The name or description of the ByteMatchSet.
-
-        The **byte_match_tuples** object supports the following:
-
-          * `fieldToMatch` (`pulumi.Input[dict]`) - Settings for the ByteMatchTuple. FieldToMatch documented below.
-            * `data` (`pulumi.Input[str]`) - When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
-            * `type` (`pulumi.Input[str]`) - The part of the web request that you want AWS WAF to search for a specified string.
-
-          * `positionalConstraint` (`pulumi.Input[str]`) - Within the portion of a web request that you want to search.
-          * `targetString` (`pulumi.Input[str]`) - The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
-          * `textTransformation` (`pulumi.Input[str]`) - The formatting way for web request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -118,7 +95,8 @@ class ByteMatchSet(pulumi.CustomResource):
         return ByteMatchSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

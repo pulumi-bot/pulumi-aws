@@ -5,51 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ApnsVoipSandboxChannel']
 
 
 class ApnsVoipSandboxChannel(pulumi.CustomResource):
-    application_id: pulumi.Output[str]
+    application_id: pulumi.Output[str] = pulumi.output_property("applicationId")
     """
     The application ID.
     """
-    bundle_id: pulumi.Output[str]
+    bundle_id: pulumi.Output[Optional[str]] = pulumi.output_property("bundleId")
     """
     The ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app.
     """
-    certificate: pulumi.Output[str]
+    certificate: pulumi.Output[Optional[str]] = pulumi.output_property("certificate")
     """
     The pem encoded TLS Certificate from Apple.
     """
-    default_authentication_method: pulumi.Output[str]
+    default_authentication_method: pulumi.Output[Optional[str]] = pulumi.output_property("defaultAuthenticationMethod")
     """
     The default authentication method used for APNs. 
     __NOTE__: Amazon Pinpoint uses this default for every APNs push notification that you send using the console.
     You can override the default when you send a message programmatically using the Amazon Pinpoint API, the AWS CLI, or an AWS SDK.
     If your default authentication type fails, Amazon Pinpoint doesn't attempt to use the other authentication type.
     """
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("enabled")
     """
     Whether the channel is enabled or disabled. Defaults to `true`.
     """
-    private_key: pulumi.Output[str]
+    private_key: pulumi.Output[Optional[str]] = pulumi.output_property("privateKey")
     """
     The Certificate Private Key file (ie. `.key` file).
     """
-    team_id: pulumi.Output[str]
+    team_id: pulumi.Output[Optional[str]] = pulumi.output_property("teamId")
     """
     The ID assigned to your Apple developer account team. This value is provided on the Membership page.
     """
-    token_key: pulumi.Output[str]
+    token_key: pulumi.Output[Optional[str]] = pulumi.output_property("tokenKey")
     """
     The `.p8` file that you download from your Apple developer account when you create an authentication key.
     """
-    token_key_id: pulumi.Output[str]
+    token_key_id: pulumi.Output[Optional[str]] = pulumi.output_property("tokenKeyId")
     """
     The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, bundle_id=None, certificate=None, default_authentication_method=None, enabled=None, private_key=None, team_id=None, token_key=None, token_key_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_id: Optional[pulumi.Input[str]] = None, bundle_id: Optional[pulumi.Input[str]] = None, certificate: Optional[pulumi.Input[str]] = None, default_authentication_method: Optional[pulumi.Input[str]] = None, enabled: Optional[pulumi.Input[bool]] = None, private_key: Optional[pulumi.Input[str]] = None, team_id: Optional[pulumi.Input[str]] = None, token_key: Optional[pulumi.Input[str]] = None, token_key_id: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Pinpoint APNs VoIP Sandbox Channel resource.
 
@@ -94,7 +97,7 @@ class ApnsVoipSandboxChannel(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -118,7 +121,7 @@ class ApnsVoipSandboxChannel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, application_id=None, bundle_id=None, certificate=None, default_authentication_method=None, enabled=None, private_key=None, team_id=None, token_key=None, token_key_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, application_id: Optional[pulumi.Input[str]] = None, bundle_id: Optional[pulumi.Input[str]] = None, certificate: Optional[pulumi.Input[str]] = None, default_authentication_method: Optional[pulumi.Input[str]] = None, enabled: Optional[pulumi.Input[bool]] = None, private_key: Optional[pulumi.Input[str]] = None, team_id: Optional[pulumi.Input[str]] = None, token_key: Optional[pulumi.Input[str]] = None, token_key_id: Optional[pulumi.Input[str]] = None) -> 'ApnsVoipSandboxChannel':
         """
         Get an existing ApnsVoipSandboxChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -155,7 +158,8 @@ class ApnsVoipSandboxChannel(pulumi.CustomResource):
         return ApnsVoipSandboxChannel(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

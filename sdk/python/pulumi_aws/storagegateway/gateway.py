@@ -5,69 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Gateway']
 
 
 class Gateway(pulumi.CustomResource):
-    activation_key: pulumi.Output[str]
+    activation_key: pulumi.Output[str] = pulumi.output_property("activationKey")
     """
     Gateway activation key during resource creation. Conflicts with `gateway_ip_address`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
     """
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     Amazon Resource Name (ARN) of the gateway.
     """
-    cloudwatch_log_group_arn: pulumi.Output[str]
+    cloudwatch_log_group_arn: pulumi.Output[Optional[str]] = pulumi.output_property("cloudwatchLogGroupArn")
     """
     The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
     """
-    gateway_id: pulumi.Output[str]
+    gateway_id: pulumi.Output[str] = pulumi.output_property("gatewayId")
     """
     Identifier of the gateway.
     """
-    gateway_ip_address: pulumi.Output[str]
+    gateway_ip_address: pulumi.Output[str] = pulumi.output_property("gatewayIpAddress")
     """
     Gateway IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
     """
-    gateway_name: pulumi.Output[str]
+    gateway_name: pulumi.Output[str] = pulumi.output_property("gatewayName")
     """
     Name of the gateway.
     """
-    gateway_timezone: pulumi.Output[str]
+    gateway_timezone: pulumi.Output[str] = pulumi.output_property("gatewayTimezone")
     """
     Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
     """
-    gateway_type: pulumi.Output[str]
+    gateway_type: pulumi.Output[Optional[str]] = pulumi.output_property("gatewayType")
     """
     Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
     """
-    gateway_vpc_endpoint: pulumi.Output[str]
+    gateway_vpc_endpoint: pulumi.Output[Optional[str]] = pulumi.output_property("gatewayVpcEndpoint")
     """
     VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
     """
-    medium_changer_type: pulumi.Output[str]
-    smb_active_directory_settings: pulumi.Output[dict]
+    medium_changer_type: pulumi.Output[Optional[str]] = pulumi.output_property("mediumChangerType")
+    smb_active_directory_settings: pulumi.Output[Optional['outputs.GatewaySmbActiveDirectorySettings']] = pulumi.output_property("smbActiveDirectorySettings")
     """
     Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
-
-      * `domain_name` (`str`) - The name of the domain that you want the gateway to join.
-      * `password` (`str`) - The password of the user who has permission to add the gateway to the Active Directory domain.
-      * `username` (`str`) - The user name of user who has permission to add the gateway to the Active Directory domain.
     """
-    smb_guest_password: pulumi.Output[str]
+    smb_guest_password: pulumi.Output[Optional[str]] = pulumi.output_property("smbGuestPassword")
     """
     Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     Key-value mapping of resource tags
     """
-    tape_drive_type: pulumi.Output[str]
+    tape_drive_type: pulumi.Output[Optional[str]] = pulumi.output_property("tapeDriveType")
     """
     Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
     """
-    def __init__(__self__, resource_name, opts=None, activation_key=None, cloudwatch_log_group_arn=None, gateway_ip_address=None, gateway_name=None, gateway_timezone=None, gateway_type=None, gateway_vpc_endpoint=None, medium_changer_type=None, smb_active_directory_settings=None, smb_guest_password=None, tags=None, tape_drive_type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, activation_key: Optional[pulumi.Input[str]] = None, cloudwatch_log_group_arn: Optional[pulumi.Input[str]] = None, gateway_ip_address: Optional[pulumi.Input[str]] = None, gateway_name: Optional[pulumi.Input[str]] = None, gateway_timezone: Optional[pulumi.Input[str]] = None, gateway_type: Optional[pulumi.Input[str]] = None, gateway_vpc_endpoint: Optional[pulumi.Input[str]] = None, medium_changer_type: Optional[pulumi.Input[str]] = None, smb_active_directory_settings: Optional[pulumi.Input[pulumi.InputType['GatewaySmbActiveDirectorySettingsArgs']]] = None, smb_guest_password: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, tape_drive_type: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an AWS Storage Gateway file, tape, or volume gateway in the provider region.
 
@@ -134,16 +135,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] gateway_timezone: Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
         :param pulumi.Input[str] gateway_type: Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
         :param pulumi.Input[str] gateway_vpc_endpoint: VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-        :param pulumi.Input[dict] smb_active_directory_settings: Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+        :param pulumi.Input[pulumi.InputType['GatewaySmbActiveDirectorySettingsArgs']] smb_active_directory_settings: Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
         :param pulumi.Input[str] smb_guest_password: Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-        :param pulumi.Input[dict] tags: Key-value mapping of resource tags
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value mapping of resource tags
         :param pulumi.Input[str] tape_drive_type: Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-
-        The **smb_active_directory_settings** object supports the following:
-
-          * `domain_name` (`pulumi.Input[str]`) - The name of the domain that you want the gateway to join.
-          * `password` (`pulumi.Input[str]`) - The password of the user who has permission to add the gateway to the Active Directory domain.
-          * `username` (`pulumi.Input[str]`) - The user name of user who has permission to add the gateway to the Active Directory domain.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -156,7 +151,7 @@ class Gateway(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -187,7 +182,7 @@ class Gateway(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, activation_key=None, arn=None, cloudwatch_log_group_arn=None, gateway_id=None, gateway_ip_address=None, gateway_name=None, gateway_timezone=None, gateway_type=None, gateway_vpc_endpoint=None, medium_changer_type=None, smb_active_directory_settings=None, smb_guest_password=None, tags=None, tape_drive_type=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, activation_key: Optional[pulumi.Input[str]] = None, arn: Optional[pulumi.Input[str]] = None, cloudwatch_log_group_arn: Optional[pulumi.Input[str]] = None, gateway_id: Optional[pulumi.Input[str]] = None, gateway_ip_address: Optional[pulumi.Input[str]] = None, gateway_name: Optional[pulumi.Input[str]] = None, gateway_timezone: Optional[pulumi.Input[str]] = None, gateway_type: Optional[pulumi.Input[str]] = None, gateway_vpc_endpoint: Optional[pulumi.Input[str]] = None, medium_changer_type: Optional[pulumi.Input[str]] = None, smb_active_directory_settings: Optional[pulumi.Input[pulumi.InputType['GatewaySmbActiveDirectorySettingsArgs']]] = None, smb_guest_password: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, tape_drive_type: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -204,16 +199,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] gateway_timezone: Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
         :param pulumi.Input[str] gateway_type: Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
         :param pulumi.Input[str] gateway_vpc_endpoint: VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-        :param pulumi.Input[dict] smb_active_directory_settings: Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+        :param pulumi.Input[pulumi.InputType['GatewaySmbActiveDirectorySettingsArgs']] smb_active_directory_settings: Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
         :param pulumi.Input[str] smb_guest_password: Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-        :param pulumi.Input[dict] tags: Key-value mapping of resource tags
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value mapping of resource tags
         :param pulumi.Input[str] tape_drive_type: Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-
-        The **smb_active_directory_settings** object supports the following:
-
-          * `domain_name` (`pulumi.Input[str]`) - The name of the domain that you want the gateway to join.
-          * `password` (`pulumi.Input[str]`) - The password of the user who has permission to add the gateway to the Active Directory domain.
-          * `username` (`pulumi.Input[str]`) - The user name of user who has permission to add the gateway to the Active Directory domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -236,7 +225,8 @@ class Gateway(pulumi.CustomResource):
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

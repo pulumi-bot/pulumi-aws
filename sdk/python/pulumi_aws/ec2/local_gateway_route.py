@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['LocalGatewayRoute']
 
 
 class LocalGatewayRoute(pulumi.CustomResource):
-    destination_cidr_block: pulumi.Output[str]
+    destination_cidr_block: pulumi.Output[str] = pulumi.output_property("destinationCidrBlock")
     """
     IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
     """
-    local_gateway_route_table_id: pulumi.Output[str]
+    local_gateway_route_table_id: pulumi.Output[str] = pulumi.output_property("localGatewayRouteTableId")
     """
     Identifier of EC2 Local Gateway Route Table.
     """
-    local_gateway_virtual_interface_group_id: pulumi.Output[str]
+    local_gateway_virtual_interface_group_id: pulumi.Output[str] = pulumi.output_property("localGatewayVirtualInterfaceGroupId")
     """
     Identifier of EC2 Local Gateway Virtual Interface Group.
     """
-    def __init__(__self__, resource_name, opts=None, destination_cidr_block=None, local_gateway_route_table_id=None, local_gateway_virtual_interface_group_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, destination_cidr_block: Optional[pulumi.Input[str]] = None, local_gateway_route_table_id: Optional[pulumi.Input[str]] = None, local_gateway_virtual_interface_group_id: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an EC2 Local Gateway Route. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
 
@@ -55,7 +58,7 @@ class LocalGatewayRoute(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,7 +80,7 @@ class LocalGatewayRoute(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, destination_cidr_block=None, local_gateway_route_table_id=None, local_gateway_virtual_interface_group_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, destination_cidr_block: Optional[pulumi.Input[str]] = None, local_gateway_route_table_id: Optional[pulumi.Input[str]] = None, local_gateway_virtual_interface_group_id: Optional[pulumi.Input[str]] = None) -> 'LocalGatewayRoute':
         """
         Get an existing LocalGatewayRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -99,7 +102,8 @@ class LocalGatewayRoute(pulumi.CustomResource):
         return LocalGatewayRoute(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

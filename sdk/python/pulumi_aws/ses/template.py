@@ -5,28 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Template']
 
 
 class Template(pulumi.CustomResource):
-    html: pulumi.Output[str]
+    html: pulumi.Output[Optional[str]] = pulumi.output_property("html")
     """
     The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
     """
-    subject: pulumi.Output[str]
+    subject: pulumi.Output[Optional[str]] = pulumi.output_property("subject")
     """
     The subject line of the email.
     """
-    text: pulumi.Output[str]
+    text: pulumi.Output[Optional[str]] = pulumi.output_property("text")
     """
     The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
     """
-    def __init__(__self__, resource_name, opts=None, html=None, name=None, subject=None, text=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, html: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, subject: Optional[pulumi.Input[str]] = None, text: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to create a SES template.
 
@@ -62,7 +65,7 @@ class Template(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -79,7 +82,7 @@ class Template(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, html=None, name=None, subject=None, text=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, html: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, subject: Optional[pulumi.Input[str]] = None, text: Optional[pulumi.Input[str]] = None) -> 'Template':
         """
         Get an existing Template resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,7 +106,8 @@ class Template(pulumi.CustomResource):
         return Template(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

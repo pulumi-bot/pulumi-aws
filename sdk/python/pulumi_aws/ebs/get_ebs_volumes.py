@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetEbsVolumesResult',
+    'AwaitableGetEbsVolumesResult',
+    'get_ebs_volumes',
+]
+
 
 class GetEbsVolumesResult:
     """
     A collection of values returned by getEbsVolumes.
     """
-    def __init__(__self__, filters=None, id=None, ids=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, filters=None, id=None, ids=None, tags=None) -> None:
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         __self__.filters = filters
@@ -32,6 +42,8 @@ class GetEbsVolumesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetEbsVolumesResult(GetEbsVolumesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +55,8 @@ class AwaitableGetEbsVolumesResult(GetEbsVolumesResult):
             ids=self.ids,
             tags=self.tags)
 
-def get_ebs_volumes(filters=None,tags=None,opts=None):
+
+def get_ebs_volumes(filters: Optional[List[pulumi.InputType['GetEbsVolumesFilterArgs']]] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEbsVolumesResult:
     """
     `ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
 
@@ -68,27 +81,17 @@ def get_ebs_volumes(filters=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: Custom filter block as described below.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param List[pulumi.InputType['GetEbsVolumesFilterArgs']] filters: Custom filter block as described below.
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the desired volumes.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumes.html).
-        For example, if matching against the `size` filter, use:
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        EBS Volume IDs will be selected if any one of the given values match.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getEbsVolumes:getEbsVolumes', __args__, opts=opts).value
 
     return AwaitableGetEbsVolumesResult(
