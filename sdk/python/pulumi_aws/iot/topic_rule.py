@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class TopicRule(pulumi.CustomResource):
@@ -170,18 +170,18 @@ class TopicRule(pulumi.CustomResource):
         rule = aws.iot.TopicRule("rule",
             description="Example rule",
             enabled=True,
-            error_action={
-                "sns": {
-                    "messageFormat": "RAW",
-                    "role_arn": role.arn,
-                    "target_arn": myerrortopic.arn,
-                },
-            },
-            sns={
-                "messageFormat": "RAW",
-                "role_arn": role.arn,
-                "target_arn": mytopic.arn,
-            },
+            error_action=aws.iot.TopicRuleErrorActionArgs(
+                sns=aws.iot.TopicRuleErrorActionSnsArgs(
+                    message_format="RAW",
+                    role_arn=role.arn,
+                    target_arn=myerrortopic.arn,
+                ),
+            ),
+            sns=aws.iot.TopicRuleSnsArgs(
+                message_format="RAW",
+                role_arn=role.arn,
+                target_arn=mytopic.arn,
+            ),
             sql="SELECT * FROM 'topic/test'",
             sql_version="2016-03-23")
         iam_policy_for_lambda = aws.iam.RolePolicy("iamPolicyForLambda",
@@ -412,7 +412,7 @@ class TopicRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -690,7 +690,7 @@ class TopicRule(pulumi.CustomResource):
         return TopicRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

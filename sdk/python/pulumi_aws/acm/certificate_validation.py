@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class CertificateValidation(pulumi.CustomResource):
@@ -39,13 +39,15 @@ class CertificateValidation(pulumi.CustomResource):
         cert_certificate = aws.acm.Certificate("certCertificate",
             domain_name="example.com",
             validation_method="DNS")
-        zone = aws.route53.get_zone(name="example.com.",
-            private_zone=False)
+        zone = aws.route53.get_zone(aws.route53.GetZoneArgsArgs(
+            name="example.com.",
+            private_zone=False,
+        ))
         cert_validation = aws.route53.Record("certValidation",
-            name=cert_certificate.domain_validation_options[0]["resourceRecordName"],
-            records=[cert_certificate.domain_validation_options[0]["resourceRecordValue"]],
+            name=cert_certificate.domain_validation_options[0].resource_record_name,
+            records=[cert_certificate.domain_validation_options[0].resource_record_value],
             ttl=60,
-            type=cert_certificate.domain_validation_options[0]["resourceRecordType"],
+            type=cert_certificate.domain_validation_options[0].resource_record_type,
             zone_id=zone.zone_id)
         cert_certificate_validation = aws.acm.CertificateValidation("certCertificateValidation",
             certificate_arn=cert_certificate.arn,
@@ -65,27 +67,31 @@ class CertificateValidation(pulumi.CustomResource):
                 "example.org",
             ],
             validation_method="DNS")
-        zone = aws.route53.get_zone(name="example.com.",
-            private_zone=False)
-        zone_alt = aws.route53.get_zone(name="example.org.",
-            private_zone=False)
+        zone = aws.route53.get_zone(aws.route53.GetZoneArgsArgs(
+            name="example.com.",
+            private_zone=False,
+        ))
+        zone_alt = aws.route53.get_zone(aws.route53.GetZoneArgsArgs(
+            name="example.org.",
+            private_zone=False,
+        ))
         cert_validation = aws.route53.Record("certValidation",
-            name=cert_certificate.domain_validation_options[0]["resourceRecordName"],
-            records=[cert_certificate.domain_validation_options[0]["resourceRecordValue"]],
+            name=cert_certificate.domain_validation_options[0].resource_record_name,
+            records=[cert_certificate.domain_validation_options[0].resource_record_value],
             ttl=60,
-            type=cert_certificate.domain_validation_options[0]["resourceRecordType"],
+            type=cert_certificate.domain_validation_options[0].resource_record_type,
             zone_id=zone.zone_id)
         cert_validation_alt1 = aws.route53.Record("certValidationAlt1",
-            name=cert_certificate.domain_validation_options[1]["resourceRecordName"],
-            records=[cert_certificate.domain_validation_options[1]["resourceRecordValue"]],
+            name=cert_certificate.domain_validation_options[1].resource_record_name,
+            records=[cert_certificate.domain_validation_options[1].resource_record_value],
             ttl=60,
-            type=cert_certificate.domain_validation_options[1]["resourceRecordType"],
+            type=cert_certificate.domain_validation_options[1].resource_record_type,
             zone_id=zone.zone_id)
         cert_validation_alt2 = aws.route53.Record("certValidationAlt2",
-            name=cert_certificate.domain_validation_options[2]["resourceRecordName"],
-            records=[cert_certificate.domain_validation_options[2]["resourceRecordValue"]],
+            name=cert_certificate.domain_validation_options[2].resource_record_name,
+            records=[cert_certificate.domain_validation_options[2].resource_record_value],
             ttl=60,
-            type=cert_certificate.domain_validation_options[2]["resourceRecordType"],
+            type=cert_certificate.domain_validation_options[2].resource_record_type,
             zone_id=zone_alt.zone_id)
         cert_certificate_validation = aws.acm.CertificateValidation("certCertificateValidation",
             certificate_arn=cert_certificate.arn,
@@ -126,7 +132,7 @@ class CertificateValidation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -163,7 +169,7 @@ class CertificateValidation(pulumi.CustomResource):
         return CertificateValidation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

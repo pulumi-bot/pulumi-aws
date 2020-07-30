@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetIpRangesResult:
     """
@@ -53,6 +54,8 @@ class GetIpRangesResult:
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         __self__.url = url
+
+
 class AwaitableGetIpRangesResult(GetIpRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,7 +71,8 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
             sync_token=self.sync_token,
             url=self.url)
 
-def get_ip_ranges(regions=None,services=None,url=None,opts=None):
+
+def get_ip_ranges(regions=None, services=None, url=None, opts=None):
     """
     Use this data source to get the IP ranges of various AWS products and services. For more information about the contents of this data source and required JSON syntax if referencing a custom URL, see the [AWS IP Address Ranges documention](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
@@ -78,19 +82,21 @@ def get_ip_ranges(regions=None,services=None,url=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    european_ec2 = aws.get_ip_ranges(regions=[
+    european_ec2 = aws.get_ip_ranges(aws.GetIpRangesArgsArgs(
+        regions=[
             "eu-west-1",
             "eu-central-1",
         ],
-        services=["ec2"])
+        services=["ec2"],
+    ))
     from_europe = aws.ec2.SecurityGroup("fromEurope",
-        ingress=[{
-            "from_port": "443",
-            "to_port": "443",
-            "protocol": "tcp",
-            "cidr_blocks": european_ec2.cidr_blocks,
-            "ipv6_cidr_blocks": european_ec2.ipv6_cidr_blocks,
-        }],
+        ingress=[aws.ec2.SecurityGroupIngressArgs(
+            from_port="443",
+            to_port="443",
+            protocol="tcp",
+            cidr_blocks=european_ec2.cidr_blocks,
+            ipv6_cidr_blocks=european_ec2.ipv6_cidr_blocks,
+        )],
         tags={
             "CreateDate": european_ec2.create_date,
             "SyncToken": european_ec2.sync_token,
@@ -109,15 +115,13 @@ def get_ip_ranges(regions=None,services=None,url=None,opts=None):
     :param str url: Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documention](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
     """
     __args__ = dict()
-
-
     __args__['regions'] = regions
     __args__['services'] = services
     __args__['url'] = url
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getIpRanges:getIpRanges', __args__, opts=opts).value
 
     return AwaitableGetIpRangesResult(

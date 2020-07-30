@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetVpcEndpointServiceResult:
     """
@@ -94,6 +95,8 @@ class GetVpcEndpointServiceResult:
         """
         Whether or not the service supports endpoint policies - `true` or `false`.
         """
+
+
 class AwaitableGetVpcEndpointServiceResult(GetVpcEndpointServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -116,7 +119,8 @@ class AwaitableGetVpcEndpointServiceResult(GetVpcEndpointServiceResult):
             tags=self.tags,
             vpc_endpoint_policy_supported=self.vpc_endpoint_policy_supported)
 
-def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=None,opts=None):
+
+def get_vpc_endpoint_service(filters=None, service=None, service_name=None, tags=None, opts=None):
     """
     The VPC Endpoint Service data source details about a specific service that
     can be specified when creating a VPC endpoint within the region configured in the provider.
@@ -128,7 +132,9 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     import pulumi
     import pulumi_aws as aws
 
-    s3 = aws.ec2.get_vpc_endpoint_service(service="s3")
+    s3 = aws.ec2.get_vpc_endpoint_service(aws.ec2.GetVpcEndpointServiceArgsArgs(
+        service="s3",
+    ))
     # Create a VPC
     foo = aws.ec2.Vpc("foo", cidr_block="10.0.0.0/16")
     # Create a VPC endpoint
@@ -142,7 +148,9 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     import pulumi
     import pulumi_aws as aws
 
-    custome = aws.ec2.get_vpc_endpoint_service(service_name="com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8")
+    custome = aws.ec2.get_vpc_endpoint_service(aws.ec2.GetVpcEndpointServiceArgsArgs(
+        service_name="com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
+    ))
     ```
     ### Filter
 
@@ -150,10 +158,12 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.ec2.get_vpc_endpoint_service(filters=[{
-        "name": "service-name",
-        "values": ["some-service"],
-    }])
+    test = aws.ec2.get_vpc_endpoint_service(aws.ec2.GetVpcEndpointServiceArgsArgs(
+        filters=[aws.ec2.GetVpcEndpointServiceFilterArgs(
+            name="service-name",
+            values=["some-service"],
+        )],
+    ))
     ```
 
 
@@ -168,8 +178,6 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['service'] = service
     __args__['serviceName'] = service_name
@@ -177,7 +185,7 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpcEndpointService:getVpcEndpointService', __args__, opts=opts).value
 
     return AwaitableGetVpcEndpointServiceResult(

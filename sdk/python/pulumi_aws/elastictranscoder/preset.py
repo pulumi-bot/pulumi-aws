@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Preset(pulumi.CustomResource):
@@ -104,58 +104,58 @@ class Preset(pulumi.CustomResource):
         import pulumi_aws as aws
 
         bar = aws.elastictranscoder.Preset("bar",
-            audio={
-                "audioPackingMode": "SingleTrack",
-                "bitRate": 96,
-                "channels": 2,
-                "codec": "AAC",
-                "sampleRate": 44100,
-            },
-            audio_codec_options={
-                "profile": "AAC-LC",
-            },
+            audio=aws.elastictranscoder.PresetAudioArgs(
+                audio_packing_mode="SingleTrack",
+                bit_rate="96",
+                channels="2",
+                codec="AAC",
+                sample_rate="44100",
+            ),
+            audio_codec_options=aws.elastictranscoder.PresetAudioCodecOptionsArgs(
+                profile="AAC-LC",
+            ),
             container="mp4",
             description="Sample Preset",
-            thumbnails={
-                "format": "png",
-                "interval": 120,
-                "maxHeight": "auto",
-                "maxWidth": "auto",
-                "paddingPolicy": "Pad",
-                "sizingPolicy": "Fit",
-            },
-            video={
-                "bitRate": "1600",
-                "codec": "H.264",
-                "displayAspectRatio": "16:9",
-                "fixedGop": "false",
-                "frameRate": "auto",
-                "keyframesMaxDist": 240,
-                "maxFrameRate": "60",
-                "maxHeight": "auto",
-                "maxWidth": "auto",
-                "paddingPolicy": "Pad",
-                "sizingPolicy": "Fit",
-            },
+            thumbnails=aws.elastictranscoder.PresetThumbnailsArgs(
+                format="png",
+                interval="120",
+                max_height="auto",
+                max_width="auto",
+                padding_policy="Pad",
+                sizing_policy="Fit",
+            ),
+            video=aws.elastictranscoder.PresetVideoArgs(
+                bit_rate="1600",
+                codec="H.264",
+                display_aspect_ratio="16:9",
+                fixed_gop="false",
+                frame_rate="auto",
+                keyframes_max_dist="240",
+                max_frame_rate="60",
+                max_height="auto",
+                max_width="auto",
+                padding_policy="Pad",
+                sizing_policy="Fit",
+            ),
             video_codec_options={
                 "ColorSpaceConversionMode": "None",
                 "InterlacedMode": "Progressive",
                 "Level": "2.2",
-                "MaxReferenceFrames": 3,
+                "MaxReferenceFrames": "3",
                 "Profile": "main",
             },
-            video_watermarks=[{
-                "horizontalAlign": "Right",
-                "horizontalOffset": "10px",
-                "id": "Test",
-                "maxHeight": "20%",
-                "maxWidth": "20%",
-                "opacity": "55.5",
-                "sizingPolicy": "ShrinkToFit",
-                "target": "Content",
-                "verticalAlign": "Bottom",
-                "verticalOffset": "10px",
-            }])
+            video_watermarks=[aws.elastictranscoder.PresetVideoWatermarkArgs(
+                horizontal_align="Right",
+                horizontal_offset="10px",
+                id="Test",
+                max_height="20%",
+                max_width="20%",
+                opacity="55.5",
+                sizing_policy="ShrinkToFit",
+                target="Content",
+                vertical_align="Bottom",
+                vertical_offset="10px",
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +236,7 @@ class Preset(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -353,7 +353,7 @@ class Preset(pulumi.CustomResource):
         return Preset(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

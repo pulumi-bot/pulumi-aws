@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class PatchBaseline(pulumi.CustomResource):
@@ -83,39 +83,39 @@ class PatchBaseline(pulumi.CustomResource):
 
         production = aws.ssm.PatchBaseline("production",
             approval_rules=[
-                {
-                    "approveAfterDays": 7,
-                    "complianceLevel": "HIGH",
-                    "patchFilters": [
-                        {
-                            "key": "PRODUCT",
-                            "values": ["WindowsServer2016"],
-                        },
-                        {
-                            "key": "CLASSIFICATION",
-                            "values": [
+                aws.ssm.PatchBaselineApprovalRuleArgs(
+                    approve_after_days=7,
+                    compliance_level="HIGH",
+                    patch_filters=[
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="PRODUCT",
+                            values=["WindowsServer2016"],
+                        ),
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="CLASSIFICATION",
+                            values=[
                                 "CriticalUpdates",
                                 "SecurityUpdates",
                                 "Updates",
                             ],
-                        },
-                        {
-                            "key": "MSRC_SEVERITY",
-                            "values": [
+                        ),
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="MSRC_SEVERITY",
+                            values=[
                                 "Critical",
                                 "Important",
                                 "Moderate",
                             ],
-                        },
+                        ),
                     ],
-                },
-                {
-                    "approveAfterDays": 7,
-                    "patchFilters": [{
-                        "key": "PRODUCT",
-                        "values": ["WindowsServer2012"],
-                    }],
-                },
+                ),
+                aws.ssm.PatchBaselineApprovalRuleArgs(
+                    approve_after_days=7,
+                    patch_filters=[aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                        key="PRODUCT",
+                        values=["WindowsServer2012"],
+                    )],
+                ),
             ],
             approved_patches=[
                 "KB123456",
@@ -123,18 +123,18 @@ class PatchBaseline(pulumi.CustomResource):
             ],
             description="Patch Baseline Description",
             global_filters=[
-                {
-                    "key": "PRODUCT",
-                    "values": ["WindowsServer2008"],
-                },
-                {
-                    "key": "CLASSIFICATION",
-                    "values": ["ServicePacks"],
-                },
-                {
-                    "key": "MSRC_SEVERITY",
-                    "values": ["Low"],
-                },
+                aws.ssm.PatchBaselineGlobalFilterArgs(
+                    key="PRODUCT",
+                    values=["WindowsServer2008"],
+                ),
+                aws.ssm.PatchBaselineGlobalFilterArgs(
+                    key="CLASSIFICATION",
+                    values=["ServicePacks"],
+                ),
+                aws.ssm.PatchBaselineGlobalFilterArgs(
+                    key="MSRC_SEVERITY",
+                    values=["Low"],
+                ),
             ],
             rejected_patches=["KB987654"])
         ```
@@ -147,41 +147,41 @@ class PatchBaseline(pulumi.CustomResource):
 
         windows_os_apps = aws.ssm.PatchBaseline("windowsOsApps",
             approval_rules=[
-                {
-                    "approveAfterDays": 7,
-                    "patchFilters": [
-                        {
-                            "key": "CLASSIFICATION",
-                            "values": [
+                aws.ssm.PatchBaselineApprovalRuleArgs(
+                    approve_after_days=7,
+                    patch_filters=[
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="CLASSIFICATION",
+                            values=[
                                 "CriticalUpdates",
                                 "SecurityUpdates",
                             ],
-                        },
-                        {
-                            "key": "MSRC_SEVERITY",
-                            "values": [
+                        ),
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="MSRC_SEVERITY",
+                            values=[
                                 "Critical",
                                 "Important",
                             ],
-                        },
+                        ),
                     ],
-                },
-                {
-                    "approveAfterDays": 7,
-                    "patchFilters": [
-                        {
-                            "key": "PATCH_SET",
-                            "values": ["APPLICATION"],
-                        },
-                        {
-                            "key": "PRODUCT",
-                            "values": [
+                ),
+                aws.ssm.PatchBaselineApprovalRuleArgs(
+                    approve_after_days=7,
+                    patch_filters=[
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="PATCH_SET",
+                            values=["APPLICATION"],
+                        ),
+                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
+                            key="PRODUCT",
+                            values=[
                                 "Office 2013",
                                 "Office 2016",
                             ],
-                        },
+                        ),
                     ],
-                },
+                ),
             ],
             description="Patch both Windows and Microsoft apps",
             operating_system="WINDOWS")
@@ -224,7 +224,7 @@ class PatchBaseline(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -294,7 +294,7 @@ class PatchBaseline(pulumi.CustomResource):
         return PatchBaseline(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

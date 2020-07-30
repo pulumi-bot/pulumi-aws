@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cluster(pulumi.CustomResource):
@@ -124,7 +124,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_aws as aws
 
         vpc = aws.ec2.Vpc("vpc", cidr_block="192.168.0.0/22")
-        azs = aws.get_availability_zones(state="available")
+        azs = aws.get_availability_zones(aws.GetAvailabilityZonesArgsArgs(
+            state="available",
+        ))
         subnet_az1 = aws.ec2.Subnet("subnetAz1",
             availability_zone=azs.names[0],
             cidr_block="192.168.0.0/24",
@@ -157,10 +159,10 @@ class Cluster(pulumi.CustomResource):
         \"\"\")
         test_stream = aws.kinesis.FirehoseDeliveryStream("testStream",
             destination="s3",
-            s3_configuration={
-                "role_arn": firehose_role.arn,
-                "bucketArn": bucket.arn,
-            },
+            s3_configuration=aws.kinesis.FirehoseDeliveryStreamS3ConfigurationArgs(
+                role_arn=firehose_role.arn,
+                bucket_arn=bucket.arn,
+            ),
             tags={
                 "LogDeliveryEnabled": "placeholder",
             })
@@ -168,46 +170,46 @@ class Cluster(pulumi.CustomResource):
             cluster_name="example",
             kafka_version="2.1.0",
             number_of_broker_nodes=3,
-            broker_node_group_info={
-                "instance_type": "kafka.m5.large",
-                "ebsVolumeSize": 1000,
-                "clientSubnets": [
+            broker_node_group_info=aws.msk.ClusterBrokerNodeGroupInfoArgs(
+                instance_type="kafka.m5.large",
+                ebs_volume_size=1000,
+                client_subnets=[
                     subnet_az1.id,
                     subnet_az2.id,
                     subnet_az3.id,
                 ],
-                "security_groups": [sg.id],
-            },
-            encryption_info={
-                "encryptionAtRestKmsKeyArn": kms.arn,
-            },
-            open_monitoring={
-                "prometheus": {
-                    "jmxExporter": {
-                        "enabledInBroker": True,
-                    },
-                    "nodeExporter": {
-                        "enabledInBroker": True,
-                    },
-                },
-            },
-            logging_info={
-                "brokerLogs": {
-                    "cloudwatchLogs": {
-                        "enabled": True,
-                        "log_group": test.name,
-                    },
-                    "firehose": {
-                        "enabled": True,
-                        "deliveryStream": test_stream.name,
-                    },
-                    "s3": {
-                        "enabled": True,
-                        "bucket": bucket.id,
-                        "prefix": "logs/msk-",
-                    },
-                },
-            },
+                security_groups=[sg.id],
+            ),
+            encryption_info=aws.msk.ClusterEncryptionInfoArgs(
+                encryption_at_rest_kms_key_arn=kms.arn,
+            ),
+            open_monitoring=aws.msk.ClusterOpenMonitoringArgs(
+                prometheus=aws.msk.ClusterOpenMonitoringPrometheusArgs(
+                    jmx_exporter=aws.msk.ClusterOpenMonitoringPrometheusJmxExporterArgs(
+                        enabled_in_broker=True,
+                    ),
+                    node_exporter=aws.msk.ClusterOpenMonitoringPrometheusNodeExporterArgs(
+                        enabled_in_broker=True,
+                    ),
+                ),
+            ),
+            logging_info=aws.msk.ClusterLoggingInfoArgs(
+                broker_logs=aws.msk.ClusterLoggingInfoBrokerLogsArgs(
+                    cloudwatch_logs=aws.msk.ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs(
+                        enabled=True,
+                        log_group=test.name,
+                    ),
+                    firehose=aws.msk.ClusterLoggingInfoBrokerLogsFirehoseArgs(
+                        enabled=True,
+                        delivery_stream=test_stream.name,
+                    ),
+                    s3=aws.msk.ClusterLoggingInfoBrokerLogsS3Args(
+                        enabled=True,
+                        bucket=bucket.id,
+                        prefix="logs/msk-",
+                    ),
+                ),
+            ),
             tags={
                 "foo": "bar",
             })
@@ -291,7 +293,7 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -427,7 +429,7 @@ class Cluster(pulumi.CustomResource):
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

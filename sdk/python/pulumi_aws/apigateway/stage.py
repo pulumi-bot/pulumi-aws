@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Stage(pulumi.CustomResource):
@@ -109,35 +109,16 @@ class Stage(pulumi.CustomResource):
         method_settings = aws.apigateway.MethodSettings("methodSettings",
             method_path=pulumi.Output.all(test_resource.path_part, test_method.http_method).apply(lambda path_part, http_method: f"{path_part}/{http_method}"),
             rest_api=test_rest_api.id,
-            settings={
-                "loggingLevel": "INFO",
-                "metricsEnabled": True,
-            },
+            settings=aws.apigateway.MethodSettingsSettingsArgs(
+                logging_level="INFO",
+                metrics_enabled=True,
+            ),
             stage_name=test_stage.stage_name)
         test_integration = aws.apigateway.Integration("testIntegration",
             http_method=test_method.http_method,
             resource_id=test_resource.id,
             rest_api=test_rest_api.id,
             type="MOCK")
-        ```
-        ### Managing the API Logging CloudWatch Log Group
-
-        API Gateway provides the ability to [enable CloudWatch API logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html). To manage the CloudWatch Log Group when this feature is enabled, the `cloudwatch.LogGroup` resource can be used where the name matches the API Gateway naming convention. If the CloudWatch Log Group previously exists, the `cloudwatch.LogGroup` resource can be imported as a one time operation and recreation of the environment can occur without import.
-
-        > The below configuration uses [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) to prevent ordering issues with API Gateway automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        config = pulumi.Config()
-        stage_name = config.get("stageName")
-        if stage_name is None:
-            stage_name = "example"
-        example_rest_api = aws.apigateway.RestApi("exampleRestApi")
-        example_stage = aws.apigateway.Stage("exampleStage", name=stage_name,
-        opts=ResourceOptions(depends_on=["aws_cloudwatch_log_group.example"]))
-        example_log_group = aws.cloudwatch.LogGroup("exampleLogGroup", retention_in_days=7)
         ```
 
         :param str resource_name: The name of the resource.
@@ -173,7 +154,7 @@ class Stage(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -263,7 +244,7 @@ class Stage(pulumi.CustomResource):
         return Stage(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

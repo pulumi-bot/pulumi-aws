@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
@@ -46,12 +46,14 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ami = aws.get_ami(filters=[{
-                "name": "name",
-                "values": ["amzn-ami-hvm-*"],
-            }],
+        ami = aws.get_ami(aws.GetAmiArgsArgs(
+            filters=[aws.GetAmiFilterArgs(
+                name="name",
+                values=["amzn-ami-hvm-*"],
+            )],
             most_recent=True,
-            owners=["amazon"])
+            owners=["amazon"],
+        ))
         instance = aws.ec2.Instance("instance",
             ami=ami.id,
             instance_type="t2.micro",
@@ -74,7 +76,9 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        instance = aws.ec2.get_instance(instance_id="i-1234567890abcdef0")
+        instance = aws.ec2.get_instance(aws.ec2.GetInstanceArgsArgs(
+            instance_id="i-1234567890abcdef0",
+        ))
         sg = aws.ec2.SecurityGroup("sg", tags={
             "type": "test-security-group",
         })
@@ -102,7 +106,7 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -141,7 +145,7 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         return NetworkInterfaceSecurityGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

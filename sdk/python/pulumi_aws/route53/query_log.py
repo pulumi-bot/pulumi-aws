@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class QueryLog(pulumi.CustomResource):
@@ -38,17 +38,19 @@ class QueryLog(pulumi.CustomResource):
         us_east_1 = pulumi.providers.Aws("us-east-1", region="us-east-1")
         aws_route53_example_com = aws.cloudwatch.LogGroup("awsRoute53ExampleCom", retention_in_days=30,
         opts=ResourceOptions(provider="aws.us-east-1"))
-        route53_query_logging_policy_policy_document = aws.iam.get_policy_document(statements=[{
-            "actions": [
-                "logs:CreateLogStream",
-                "logs:PutLogEvents",
-            ],
-            "principals": [{
-                "identifiers": ["route53.amazonaws.com"],
-                "type": "Service",
-            }],
-            "resources": ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
-        }])
+        route53_query_logging_policy_policy_document = aws.iam.get_policy_document(aws.iam.GetPolicyDocumentArgsArgs(
+            statements=[aws.iam.GetPolicyDocumentStatementArgs(
+                actions=[
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents",
+                ],
+                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                    identifiers=["route53.amazonaws.com"],
+                    type="Service",
+                )],
+                resources=["arn:aws:logs:*:*:log-group:/aws/route53/*"],
+            )],
+        ))
         route53_query_logging_policy_log_resource_policy = aws.cloudwatch.LogResourcePolicy("route53-query-logging-policyLogResourcePolicy",
             policy_document=route53_query_logging_policy_policy_document.json,
             policy_name="route53-query-logging-policy",
@@ -76,7 +78,7 @@ class QueryLog(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -115,7 +117,7 @@ class QueryLog(pulumi.CustomResource):
         return QueryLog(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

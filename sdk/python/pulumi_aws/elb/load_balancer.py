@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class LoadBalancer(pulumi.CustomResource):
@@ -140,11 +140,11 @@ class LoadBalancer(pulumi.CustomResource):
 
         # Create a new load balancer
         bar = aws.elb.LoadBalancer("bar",
-            access_logs={
-                "bucket": "foo",
-                "bucket_prefix": "bar",
-                "interval": 60,
-            },
+            access_logs=aws.elb.LoadBalancerAccessLogsArgs(
+                bucket="foo",
+                bucket_prefix="bar",
+                interval=60,
+            ),
             availability_zones=[
                 "us-west-2a",
                 "us-west-2b",
@@ -153,29 +153,29 @@ class LoadBalancer(pulumi.CustomResource):
             connection_draining=True,
             connection_draining_timeout=400,
             cross_zone_load_balancing=True,
-            health_check={
-                "healthyThreshold": 2,
-                "interval": 30,
-                "target": "HTTP:8000/",
-                "timeout": 3,
-                "unhealthyThreshold": 2,
-            },
+            health_check=aws.elb.LoadBalancerHealthCheckArgs(
+                healthy_threshold=2,
+                interval=30,
+                target="HTTP:8000/",
+                timeout=3,
+                unhealthy_threshold=2,
+            ),
             idle_timeout=400,
             instances=[aws_instance["foo"]["id"]],
             listeners=[
-                {
-                    "instance_port": 8000,
-                    "instanceProtocol": "http",
-                    "lb_port": 80,
-                    "lbProtocol": "http",
-                },
-                {
-                    "instance_port": 8000,
-                    "instanceProtocol": "http",
-                    "lb_port": 443,
-                    "lbProtocol": "https",
-                    "sslCertificateId": "arn:aws:iam::123456789012:server-certificate/certName",
-                },
+                aws.elb.LoadBalancerListenerArgs(
+                    instance_port=8000,
+                    instance_protocol="http",
+                    lb_port=80,
+                    lb_protocol="http",
+                ),
+                aws.elb.LoadBalancerListenerArgs(
+                    instance_port=8000,
+                    instance_protocol="http",
+                    lb_port=443,
+                    lb_protocol="https",
+                    ssl_certificate_id="arn:aws:iam::123456789012:server-certificate/certName",
+                ),
             ],
             tags={
                 "Name": "foobar-elb",
@@ -252,7 +252,7 @@ class LoadBalancer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -380,7 +380,7 @@ class LoadBalancer(pulumi.CustomResource):
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

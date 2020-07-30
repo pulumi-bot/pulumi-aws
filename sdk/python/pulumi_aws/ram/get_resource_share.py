@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetResourceShareResult:
     """
@@ -52,6 +53,8 @@ class GetResourceShareResult:
         """
         The Tags attached to the RAM share
         """
+
+
 class AwaitableGetResourceShareResult(GetResourceShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetResourceShareResult(GetResourceShareResult):
             status=self.status,
             tags=self.tags)
 
-def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts=None):
+
+def get_resource_share(filters=None, name=None, resource_owner=None, tags=None, opts=None):
     """
     `ram.ResourceShare` Retrieve information about a RAM Resource Share.
 
@@ -77,8 +81,10 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.ram.get_resource_share(name="example",
-        resource_owner="SELF")
+    example = aws.ram.get_resource_share(aws.ram.GetResourceShareArgsArgs(
+        name="example",
+        resource_owner="SELF",
+    ))
     ```
     ## Search by filters
 
@@ -86,12 +92,14 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
     import pulumi
     import pulumi_aws as aws
 
-    tag_filter = aws.ram.get_resource_share(filters=[{
-            "name": "NameOfTag",
-            "values": ["exampleNameTagValue"],
-        }],
+    tag_filter = aws.ram.get_resource_share(aws.ram.GetResourceShareArgsArgs(
+        filters=[aws.ram.GetResourceShareFilterArgs(
+            name="NameOfTag",
+            values=["exampleNameTagValue"],
+        )],
         name="MyResourceName",
-        resource_owner="SELF")
+        resource_owner="SELF",
+    ))
     ```
 
 
@@ -106,8 +114,6 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
       * `values` (`list`) - The value of the tag key.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['resourceOwner'] = resource_owner
@@ -115,7 +121,7 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ram/getResourceShare:getResourceShare', __args__, opts=opts).value
 
     return AwaitableGetResourceShareResult(

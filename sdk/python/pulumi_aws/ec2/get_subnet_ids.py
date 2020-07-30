@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSubnetIdsResult:
     """
@@ -34,6 +35,8 @@ class GetSubnetIdsResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetSubnetIdsResult(GetSubnetIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetSubnetIdsResult(GetSubnetIdsResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_subnet_ids(filters=None,tags=None,vpc_id=None,opts=None):
+
+def get_subnet_ids(filters=None, tags=None, vpc_id=None, opts=None):
     """
     `ec2.getSubnetIds` provides a set of ids for a vpc_id
 
@@ -60,8 +64,12 @@ def get_subnet_ids(filters=None,tags=None,vpc_id=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    example_subnet_ids = aws.ec2.get_subnet_ids(vpc_id=var["vpc_id"])
-    example_subnet = [aws.ec2.get_subnet(id=__value) for __key, __value in example_subnet_ids.ids]
+    example_subnet_ids = aws.ec2.get_subnet_ids(aws.ec2.GetSubnetIdsArgsArgs(
+        vpc_id=var["vpc_id"],
+    ))
+    example_subnet = [aws.ec2.get_subnet(aws.ec2.GetSubnetArgsArgs(
+        id=__value,
+    )) for __key, __value in example_subnet_ids.ids]
     pulumi.export("subnetCidrBlocks", [s.cidr_block for s in example_subnet])
     ```
 
@@ -73,10 +81,12 @@ def get_subnet_ids(filters=None,tags=None,vpc_id=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    private = aws.ec2.get_subnet_ids(vpc_id=var["vpc_id"],
+    private = aws.ec2.get_subnet_ids(aws.ec2.GetSubnetIdsArgsArgs(
+        vpc_id=var["vpc_id"],
         tags={
             "Tier": "Private",
-        })
+        },
+    ))
     app = []
     for range in [{"value": i} for i in range(0, data.aws_subnet_ids.example.ids)]:
         app.append(aws.ec2.Instance(f"app-{range['value']}",
@@ -100,15 +110,13 @@ def get_subnet_ids(filters=None,tags=None,vpc_id=None,opts=None):
         Subnet IDs will be selected if any one of the given values match.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getSubnetIds:getSubnetIds', __args__, opts=opts).value
 
     return AwaitableGetSubnetIdsResult(

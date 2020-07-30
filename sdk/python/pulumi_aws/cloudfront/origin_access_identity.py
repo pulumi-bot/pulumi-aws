@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class OriginAccessIdentity(pulumi.CustomResource):
@@ -83,24 +83,26 @@ class OriginAccessIdentity(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        s3_policy = aws.iam.get_policy_document(statements=[
-            {
-                "actions": ["s3:GetObject"],
-                "principals": [{
-                    "identifiers": [aws_cloudfront_origin_access_identity["origin_access_identity"]["iam_arn"]],
-                    "type": "AWS",
-                }],
-                "resources": [f"{aws_s3_bucket['example']['arn']}/*"],
-            },
-            {
-                "actions": ["s3:ListBucket"],
-                "principals": [{
-                    "identifiers": [aws_cloudfront_origin_access_identity["origin_access_identity"]["iam_arn"]],
-                    "type": "AWS",
-                }],
-                "resources": [aws_s3_bucket["example"]["arn"]],
-            },
-        ])
+        s3_policy = aws.iam.get_policy_document(aws.iam.GetPolicyDocumentArgsArgs(
+            statements=[
+                aws.iam.GetPolicyDocumentStatementArgs(
+                    actions=["s3:GetObject"],
+                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                        identifiers=[aws_cloudfront_origin_access_identity["origin_access_identity"]["iam_arn"]],
+                        type="AWS",
+                    )],
+                    resources=[f"{aws_s3_bucket['example']['arn']}/*"],
+                ),
+                aws.iam.GetPolicyDocumentStatementArgs(
+                    actions=["s3:ListBucket"],
+                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                        identifiers=[aws_cloudfront_origin_access_identity["origin_access_identity"]["iam_arn"]],
+                        type="AWS",
+                    )],
+                    resources=[aws_s3_bucket["example"]["arn"]],
+                ),
+            ],
+        ))
         example = aws.s3.BucketPolicy("example",
             bucket=aws_s3_bucket["example"]["id"],
             policy=s3_policy.json)
@@ -126,7 +128,7 @@ class OriginAccessIdentity(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -180,7 +182,7 @@ class OriginAccessIdentity(pulumi.CustomResource):
         return OriginAccessIdentity(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

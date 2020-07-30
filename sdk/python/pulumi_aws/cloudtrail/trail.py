@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Trail(pulumi.CustomResource):
@@ -154,14 +154,14 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.cloudtrail.Trail("example", event_selectors=[{
-            "dataResources": [{
-                "type": "AWS::Lambda::Function",
-                "values": ["arn:aws:lambda"],
-            }],
-            "includeManagementEvents": True,
-            "readWriteType": "All",
-        }])
+        example = aws.cloudtrail.Trail("example", event_selectors=[aws.cloudtrail.TrailEventSelectorArgs(
+            data_resources=[aws.cloudtrail.TrailEventSelectorDataResourceArgs(
+                type="AWS::Lambda::Function",
+                values=["arn:aws:lambda"],
+            )],
+            include_management_events=True,
+            read_write_type="All",
+        )])
         ```
         ### Logging All S3 Bucket Object Events
 
@@ -169,14 +169,14 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.cloudtrail.Trail("example", event_selectors=[{
-            "dataResources": [{
-                "type": "AWS::S3::Object",
-                "values": ["arn:aws:s3:::"],
-            }],
-            "includeManagementEvents": True,
-            "readWriteType": "All",
-        }])
+        example = aws.cloudtrail.Trail("example", event_selectors=[aws.cloudtrail.TrailEventSelectorArgs(
+            data_resources=[aws.cloudtrail.TrailEventSelectorDataResourceArgs(
+                type="AWS::S3::Object",
+                values=["arn:aws:s3:::"],
+            )],
+            include_management_events=True,
+            read_write_type="All",
+        )])
         ```
         ### Logging Individual S3 Bucket Events
 
@@ -184,15 +184,17 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        important_bucket = aws.s3.get_bucket(bucket="important-bucket")
-        example = aws.cloudtrail.Trail("example", event_selectors=[{
-            "dataResources": [{
-                "type": "AWS::S3::Object",
-                "values": [f"{important_bucket.arn}/"],
-            }],
-            "includeManagementEvents": True,
-            "readWriteType": "All",
-        }])
+        important_bucket = aws.s3.get_bucket(aws.s3.GetBucketArgsArgs(
+            bucket="important-bucket",
+        ))
+        example = aws.cloudtrail.Trail("example", event_selectors=[aws.cloudtrail.TrailEventSelectorArgs(
+            data_resources=[aws.cloudtrail.TrailEventSelectorDataResourceArgs(
+                type="AWS::S3::Object",
+                values=[f"{important_bucket.arn}/"],
+            )],
+            include_management_events=True,
+            read_write_type="All",
+        )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -240,7 +242,7 @@ class Trail(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -336,7 +338,7 @@ class Trail(pulumi.CustomResource):
         return Trail(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

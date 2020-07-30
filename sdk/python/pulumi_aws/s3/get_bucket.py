@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetBucketResult:
     """
@@ -64,6 +65,8 @@ class GetBucketResult:
         """
         The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         """
+
+
 class AwaitableGetBucketResult(GetBucketResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,7 +83,8 @@ class AwaitableGetBucketResult(GetBucketResult):
             website_domain=self.website_domain,
             website_endpoint=self.website_endpoint)
 
-def get_bucket(bucket=None,opts=None):
+
+def get_bucket(bucket=None, opts=None):
     """
     Provides details about a specific S3 bucket.
 
@@ -94,13 +98,17 @@ def get_bucket(bucket=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    selected = aws.s3.get_bucket(bucket="bucket.test.com")
-    test_zone = aws.route53.get_zone(name="test.com.")
+    selected = aws.s3.get_bucket(aws.s3.GetBucketArgsArgs(
+        bucket="bucket.test.com",
+    ))
+    test_zone = aws.route53.get_zone(aws.route53.GetZoneArgsArgs(
+        name="test.com.",
+    ))
     example = aws.route53.Record("example",
-        aliases=[{
-            "name": selected.website_domain,
-            "zone_id": selected.hosted_zone_id,
-        }],
+        aliases=[aws.route53.RecordAliasArgs(
+            name=selected.website_domain,
+            zone_id=selected.hosted_zone_id,
+        )],
         name="bucket",
         type="A",
         zone_id=test_zone.id)
@@ -111,24 +119,24 @@ def get_bucket(bucket=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    selected = aws.s3.get_bucket(bucket="a-test-bucket")
-    test = aws.cloudfront.Distribution("test", origins=[{
-        "domain_name": selected.bucket_domain_name,
-        "originId": "s3-selected-bucket",
-    }])
+    selected = aws.s3.get_bucket(aws.s3.GetBucketArgsArgs(
+        bucket="a-test-bucket",
+    ))
+    test = aws.cloudfront.Distribution("test", origins=[aws.cloudfront.DistributionOriginArgs(
+        domain_name=selected.bucket_domain_name,
+        origin_id="s3-selected-bucket",
+    )])
     ```
 
 
     :param str bucket: The name of the bucket
     """
     __args__ = dict()
-
-
     __args__['bucket'] = bucket
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:s3/getBucket:getBucket', __args__, opts=opts).value
 
     return AwaitableGetBucketResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
@@ -33,7 +33,9 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example_local_gateway_route_table = aws.ec2.get_local_gateway_route_table(outpost_arn="arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef")
+        example_local_gateway_route_table = aws.ec2.get_local_gateway_route_table(aws.ec2.GetLocalGatewayRouteTableArgsArgs(
+            outpost_arn="arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef",
+        ))
         example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.0.0.0/16")
         example_local_gateway_route_table_vpc_association = aws.ec2.LocalGatewayRouteTableVpcAssociation("exampleLocalGatewayRouteTableVpcAssociation",
             local_gateway_route_table_id=example_local_gateway_route_table.id,
@@ -57,7 +59,7 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -101,7 +103,7 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
         return LocalGatewayRouteTableVpcAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

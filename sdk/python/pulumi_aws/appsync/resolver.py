@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Resolver(pulumi.CustomResource):
@@ -88,20 +88,20 @@ class Resolver(pulumi.CustomResource):
         \"\"\")
         test_data_source = aws.appsync.DataSource("testDataSource",
             api_id=test_graph_ql_api.id,
-            http_config={
-                "endpoint": "http://example.com",
-            },
+            http_config=aws.appsync.DataSourceHttpConfigArgs(
+                endpoint="http://example.com",
+            ),
             type="HTTP")
         # UNIT type resolver (default)
         test_resolver = aws.appsync.Resolver("testResolver",
             api_id=test_graph_ql_api.id,
-            caching_config={
-                "cachingKeys": [
+            caching_config=aws.appsync.ResolverCachingConfigArgs(
+                caching_keys=[
                     "$context.identity.sub",
                     "$context.arguments.id",
                 ],
-                "ttl": 60,
-            },
+                ttl=60,
+            ),
             data_source=test_data_source.name,
             field="singlePost",
             request_template=\"\"\"{
@@ -127,13 +127,13 @@ class Resolver(pulumi.CustomResource):
             api_id=test_graph_ql_api.id,
             field="pipelineTest",
             kind="PIPELINE",
-            pipeline_config={
-                "functions": [
+            pipeline_config=aws.appsync.ResolverPipelineConfigArgs(
+                functions=[
                     aws_appsync_function["test1"]["function_id"],
                     aws_appsync_function["test2"]["function_id"],
                     aws_appsync_function["test3"]["function_id"],
                 ],
-            },
+            ),
             request_template="{}",
             response_template="$util.toJson($ctx.result)",
             type="Mutation")
@@ -171,7 +171,7 @@ class Resolver(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -249,7 +249,7 @@ class Resolver(pulumi.CustomResource):
         return Resolver(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

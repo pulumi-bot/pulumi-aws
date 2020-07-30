@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetInstancesResult:
     """
@@ -46,6 +47,8 @@ class GetInstancesResult:
         """
         Public IP addresses of instances found through the filter
         """
+
+
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +63,8 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             private_ips=self.private_ips,
             public_ips=self.public_ips)
 
-def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts=None):
+
+def get_instances(filters=None, instance_state_names=None, instance_tags=None, opts=None):
     """
     Use this data source to get IDs or IPs of Amazon EC2 instances to be referenced elsewhere,
     e.g. to allow easier migration from another management solution
@@ -76,17 +80,19 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
     import pulumi
     import pulumi_aws as aws
 
-    test_instances = aws.ec2.get_instances(filters=[{
-            "name": "instance.group-id",
-            "values": ["sg-12345678"],
-        }],
+    test_instances = aws.ec2.get_instances(aws.ec2.GetInstancesArgsArgs(
+        filters=[aws.ec2.GetInstancesFilterArgs(
+            name="instance.group-id",
+            values=["sg-12345678"],
+        )],
         instance_state_names=[
             "running",
             "stopped",
         ],
         instance_tags={
             "Role": "HardWorker",
-        })
+        },
+    ))
     test_eip = []
     for range in [{"value": i} for i in range(0, len(test_instances.ids))]:
         test_eip.append(aws.ec2.Eip(f"testEip-{range['value']}", instance=test_instances.ids[range["value"]]))
@@ -106,15 +112,13 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
       * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['instanceStateNames'] = instance_state_names
     __args__['instanceTags'] = instance_tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getInstances:getInstances', __args__, opts=opts).value
 
     return AwaitableGetInstancesResult(

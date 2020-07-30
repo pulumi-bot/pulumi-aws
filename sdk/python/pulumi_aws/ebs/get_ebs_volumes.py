@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetEbsVolumesResult:
     """
@@ -32,6 +33,8 @@ class GetEbsVolumesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetEbsVolumesResult(GetEbsVolumesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetEbsVolumesResult(GetEbsVolumesResult):
             ids=self.ids,
             tags=self.tags)
 
-def get_ebs_volumes(filters=None,tags=None,opts=None):
+
+def get_ebs_volumes(filters=None, tags=None, opts=None):
     """
     `ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
 
@@ -57,13 +61,17 @@ def get_ebs_volumes(filters=None,tags=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    example_ebs_volumes = aws.ebs.get_ebs_volumes(tags={
-        "VolumeSet": "TestVolumeSet",
-    })
-    example_volume = [aws.ebs.get_volume(filters=[{
-        "name": "volume-id",
-        "values": [each["value"]],
-    }]) for __key, __value in example_ebs_volumes.ids]
+    example_ebs_volumes = aws.ebs.get_ebs_volumes(aws.ebs.GetEbsVolumesArgsArgs(
+        tags={
+            "VolumeSet": "TestVolumeSet",
+        },
+    ))
+    example_volume = [aws.ebs.get_volume(aws.ebs.GetVolumeArgsArgs(
+        filters=[aws.ebs.GetVolumeFilterArgs(
+            name="volume-id",
+            values=[each["value"]],
+        )],
+    )) for __key, __value in example_ebs_volumes.ids]
     pulumi.export("availabilityZoneToVolumeId", {s.id: s.availability_zone for s in example_volume})
     ```
 
@@ -81,14 +89,12 @@ def get_ebs_volumes(filters=None,tags=None,opts=None):
         EBS Volume IDs will be selected if any one of the given values match.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getEbsVolumes:getEbsVolumes', __args__, opts=opts).value
 
     return AwaitableGetEbsVolumesResult(

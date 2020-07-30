@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDirectConnectGatewayAttachmentResult:
     """
@@ -34,6 +35,8 @@ class GetDirectConnectGatewayAttachmentResult:
         if transit_gateway_id and not isinstance(transit_gateway_id, str):
             raise TypeError("Expected argument 'transit_gateway_id' to be a str")
         __self__.transit_gateway_id = transit_gateway_id
+
+
 class AwaitableGetDirectConnectGatewayAttachmentResult(GetDirectConnectGatewayAttachmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetDirectConnectGatewayAttachmentResult(GetDirectConnectGatewayAt
             tags=self.tags,
             transit_gateway_id=self.transit_gateway_id)
 
-def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=None,transit_gateway_id=None,opts=None):
+
+def get_direct_connect_gateway_attachment(dx_gateway_id=None, filters=None, tags=None, transit_gateway_id=None, opts=None):
     """
     Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
 
@@ -57,8 +61,10 @@ def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=N
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.ec2transitgateway.get_direct_connect_gateway_attachment(dx_gateway_id=aws_dx_gateway["example"]["id"],
-        transit_gateway_id=aws_ec2_transit_gateway["example"]["id"])
+    example = aws.ec2transitgateway.get_direct_connect_gateway_attachment(aws.ec2transitgateway.GetDirectConnectGatewayAttachmentArgsArgs(
+        dx_gateway_id=aws_dx_gateway["example"]["id"],
+        transit_gateway_id=aws_ec2_transit_gateway["example"]["id"],
+    ))
     ```
 
 
@@ -73,8 +79,6 @@ def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=N
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
-
     __args__['dxGatewayId'] = dx_gateway_id
     __args__['filters'] = filters
     __args__['tags'] = tags
@@ -82,7 +86,7 @@ def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2transitgateway/getDirectConnectGatewayAttachment:getDirectConnectGatewayAttachment', __args__, opts=opts).value
 
     return AwaitableGetDirectConnectGatewayAttachmentResult(

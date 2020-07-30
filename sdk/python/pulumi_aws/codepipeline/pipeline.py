@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Pipeline(pulumi.CustomResource):
@@ -115,67 +115,69 @@ class Pipeline(pulumi.CustomResource):
 
         \"\"\"),
             role=codepipeline_role.id)
-        s3kmskey = aws.kms.get_alias(name="alias/myKmsKey")
+        s3kmskey = aws.kms.get_alias(aws.kms.GetAliasArgsArgs(
+            name="alias/myKmsKey",
+        ))
         codepipeline = aws.codepipeline.Pipeline("codepipeline",
-            artifact_store={
-                "encryption_key": {
+            artifact_store=aws.codepipeline.PipelineArtifactStoreArgs(
+                encryption_key={
                     "id": s3kmskey.arn,
                     "type": "KMS",
                 },
-                "location": codepipeline_bucket.bucket,
-                "type": "S3",
-            },
+                location=codepipeline_bucket.bucket,
+                type="S3",
+            ),
             role_arn=codepipeline_role.arn,
             stages=[
-                {
-                    "actions": [{
-                        "category": "Source",
-                        "configuration": {
+                aws.codepipeline.PipelineStageArgs(
+                    actions=[aws.codepipeline.PipelineStageActionArgs(
+                        category="Source",
+                        configuration={
                             "Branch": "master",
                             "Owner": "my-organization",
                             "Repo": "test",
                         },
-                        "name": "Source",
-                        "outputArtifacts": ["source_output"],
-                        "owner": "ThirdParty",
-                        "provider": "GitHub",
-                        "version": "1",
-                    }],
-                    "name": "Source",
-                },
-                {
-                    "actions": [{
-                        "category": "Build",
-                        "configuration": {
+                        name="Source",
+                        output_artifacts=["source_output"],
+                        owner="ThirdParty",
+                        provider="GitHub",
+                        version="1",
+                    )],
+                    name="Source",
+                ),
+                aws.codepipeline.PipelineStageArgs(
+                    actions=[aws.codepipeline.PipelineStageActionArgs(
+                        category="Build",
+                        configuration={
                             "ProjectName": "test",
                         },
-                        "inputArtifacts": ["source_output"],
-                        "name": "Build",
-                        "outputArtifacts": ["build_output"],
-                        "owner": "AWS",
-                        "provider": "CodeBuild",
-                        "version": "1",
-                    }],
-                    "name": "Build",
-                },
-                {
-                    "actions": [{
-                        "category": "Deploy",
-                        "configuration": {
+                        input_artifacts=["source_output"],
+                        name="Build",
+                        output_artifacts=["build_output"],
+                        owner="AWS",
+                        provider="CodeBuild",
+                        version="1",
+                    )],
+                    name="Build",
+                ),
+                aws.codepipeline.PipelineStageArgs(
+                    actions=[aws.codepipeline.PipelineStageActionArgs(
+                        category="Deploy",
+                        configuration={
                             "ActionMode": "REPLACE_ON_FAILURE",
                             "Capabilities": "CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM",
                             "OutputFileName": "CreateStackOutput.json",
                             "StackName": "MyStack",
                             "TemplatePath": "build_output::sam-templated.yaml",
                         },
-                        "inputArtifacts": ["build_output"],
-                        "name": "Deploy",
-                        "owner": "AWS",
-                        "provider": "CloudFormation",
-                        "version": "1",
-                    }],
-                    "name": "Deploy",
-                },
+                        input_artifacts=["build_output"],
+                        name="Deploy",
+                        owner="AWS",
+                        provider="CloudFormation",
+                        version="1",
+                    )],
+                    name="Deploy",
+                ),
             ])
         ```
 
@@ -226,7 +228,7 @@ class Pipeline(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -307,7 +309,7 @@ class Pipeline(pulumi.CustomResource):
         return Pipeline(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

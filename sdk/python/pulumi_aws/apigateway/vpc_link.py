@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VpcLink(pulumi.CustomResource):
@@ -43,9 +43,9 @@ class VpcLink(pulumi.CustomResource):
         example_load_balancer = aws.lb.LoadBalancer("exampleLoadBalancer",
             internal=True,
             load_balancer_type="network",
-            subnet_mappings=[{
-                "subnet_id": "12345",
-            }])
+            subnet_mappings=[aws.lb.LoadBalancerSubnetMappingArgs(
+                subnet_id="12345",
+            )])
         example_vpc_link = aws.apigateway.VpcLink("exampleVpcLink",
             description="example description",
             target_arn=example_load_balancer.arn)
@@ -69,7 +69,7 @@ class VpcLink(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -114,7 +114,7 @@ class VpcLink(pulumi.CustomResource):
         return VpcLink(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetJobQueueResult:
     """
@@ -63,6 +64,8 @@ class GetJobQueueResult:
         A short, human-readable string to provide additional details about the current status
         of the job queue.
         """
+
+
 class AwaitableGetJobQueueResult(GetJobQueueResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +81,8 @@ class AwaitableGetJobQueueResult(GetJobQueueResult):
             status=self.status,
             status_reason=self.status_reason)
 
-def get_job_queue(name=None,opts=None):
+
+def get_job_queue(name=None, opts=None):
     """
     The Batch Job Queue data source allows access to details of a specific
     job queue within AWS Batch.
@@ -89,20 +93,20 @@ def get_job_queue(name=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    test_queue = aws.batch.get_job_queue(name="tf-test-batch-job-queue")
+    test_queue = aws.batch.get_job_queue(aws.batch.GetJobQueueArgsArgs(
+        name="tf-test-batch-job-queue",
+    ))
     ```
 
 
     :param str name: The name of the job queue.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:batch/getJobQueue:getJobQueue', __args__, opts=opts).value
 
     return AwaitableGetJobQueueResult(

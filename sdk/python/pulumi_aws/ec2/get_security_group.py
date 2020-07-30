@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSecurityGroupResult:
     """
@@ -40,6 +41,8 @@ class GetSecurityGroupResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetSecurityGroupResult(GetSecurityGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,7 +57,8 @@ class AwaitableGetSecurityGroupResult(GetSecurityGroupResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts=None):
+
+def get_security_group(filters=None, id=None, name=None, tags=None, vpc_id=None, opts=None):
     """
     `ec2.SecurityGroup` provides details about a specific Security Group.
 
@@ -73,7 +77,9 @@ def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts
 
     config = pulumi.Config()
     security_group_id = config.require_object("securityGroupId")
-    selected = aws.ec2.get_security_group(id=security_group_id)
+    selected = aws.ec2.get_security_group(aws.ec2.GetSecurityGroupArgsArgs(
+        id=security_group_id,
+    ))
     subnet = aws.ec2.Subnet("subnet",
         cidr_block="10.0.1.0/24",
         vpc_id=selected.vpc_id)
@@ -96,8 +102,6 @@ def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts
         A Security Group will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['name'] = name
@@ -106,7 +110,7 @@ def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getSecurityGroup:getSecurityGroup', __args__, opts=opts).value
 
     return AwaitableGetSecurityGroupResult(

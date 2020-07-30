@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class MetricAlarm(pulumi.CustomResource):
@@ -139,13 +139,13 @@ class MetricAlarm(pulumi.CustomResource):
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             alarm_description="This metric monitors ec2 cpu utilization",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80")
+            threshold=80)
         ```
         ## Example in Conjunction with Scaling Policies
 
@@ -165,12 +165,12 @@ class MetricAlarm(pulumi.CustomResource):
             dimensions={
                 "AutoScalingGroupName": aws_autoscaling_group["bar"]["name"],
             },
-            evaluation_periods="2",
+            evaluation_periods=2,
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80")
+            threshold=80)
         ```
 
         ## Example with an Expression
@@ -182,43 +182,43 @@ class MetricAlarm(pulumi.CustomResource):
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             alarm_description="Request error rate has exceeded 10%",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
-                {
-                    "expression": "m2/m1*100",
-                    "id": "e1",
-                    "label": "Error Rate",
-                    "returnData": "true",
-                },
-                {
-                    "id": "m1",
-                    "metric": {
-                        "dimensions": {
+                aws.cloudwatch.MetricAlarmMetricQueryArgs(
+                    expression="m2/m1*100",
+                    id="e1",
+                    label="Error Rate",
+                    return_data=True,
+                ),
+                aws.cloudwatch.MetricAlarmMetricQueryArgs(
+                    id="m1",
+                    metric=aws.cloudwatch.MetricAlarmMetricQueryMetricArgs(
+                        dimensions={
                             "LoadBalancer": "app/web",
                         },
-                        "metric_name": "RequestCount",
-                        "namespace": "AWS/ApplicationELB",
-                        "period": "120",
-                        "stat": "Sum",
-                        "unit": "Count",
-                    },
-                },
-                {
-                    "id": "m2",
-                    "metric": {
-                        "dimensions": {
+                        metric_name="RequestCount",
+                        namespace="AWS/ApplicationELB",
+                        period=120,
+                        stat="Sum",
+                        unit="Count",
+                    ),
+                ),
+                aws.cloudwatch.MetricAlarmMetricQueryArgs(
+                    id="m2",
+                    metric=aws.cloudwatch.MetricAlarmMetricQueryMetricArgs(
+                        dimensions={
                             "LoadBalancer": "app/web",
                         },
-                        "metric_name": "HTTPCode_ELB_5XX_Count",
-                        "namespace": "AWS/ApplicationELB",
-                        "period": "120",
-                        "stat": "Sum",
-                        "unit": "Count",
-                    },
-                },
+                        metric_name="HTTPCode_ELB_5XX_Count",
+                        namespace="AWS/ApplicationELB",
+                        period=120,
+                        stat="Sum",
+                        unit="Count",
+                    ),
+                ),
             ],
-            threshold="10")
+            threshold=10)
         ```
 
         ```python
@@ -228,29 +228,29 @@ class MetricAlarm(pulumi.CustomResource):
         xx_anomaly_detection = aws.cloudwatch.MetricAlarm("xxAnomalyDetection",
             alarm_description="This metric monitors ec2 cpu utilization",
             comparison_operator="GreaterThanUpperThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
-                {
-                    "expression": "ANOMALY_DETECTION_BAND(m1)",
-                    "id": "e1",
-                    "label": "CPUUtilization (Expected)",
-                    "returnData": "true",
-                },
-                {
-                    "id": "m1",
-                    "metric": {
-                        "dimensions": {
+                aws.cloudwatch.MetricAlarmMetricQueryArgs(
+                    expression="ANOMALY_DETECTION_BAND(m1)",
+                    id="e1",
+                    label="CPUUtilization (Expected)",
+                    return_data=True,
+                ),
+                aws.cloudwatch.MetricAlarmMetricQueryArgs(
+                    id="m1",
+                    metric=aws.cloudwatch.MetricAlarmMetricQueryMetricArgs(
+                        dimensions={
                             "InstanceId": "i-abc123",
                         },
-                        "metric_name": "CPUUtilization",
-                        "namespace": "AWS/EC2",
-                        "period": "120",
-                        "stat": "Average",
-                        "unit": "Count",
-                    },
-                    "returnData": "true",
-                },
+                        metric_name="CPUUtilization",
+                        namespace="AWS/EC2",
+                        period=120,
+                        stat="Average",
+                        unit="Count",
+                    ),
+                    return_data=True,
+                ),
             ],
             threshold_metric_id="e1")
         ```
@@ -263,14 +263,14 @@ class MetricAlarm(pulumi.CustomResource):
 
         xxx_nlb_healthyhosts = aws.cloudwatch.MetricAlarm("xxxNlbHealthyhosts",
             comparison_operator="LessThanThreshold",
-            evaluation_periods="1",
+            evaluation_periods=1,
             metric_name="HealthyHostCount",
             namespace="AWS/NetworkELB",
-            period="60",
+            period=60,
             statistic="Average",
             threshold=var["logstash_servers_count"],
             alarm_description="Number of XXXX nodes healthy in Target Group",
-            actions_enabled="true",
+            actions_enabled=True,
             alarm_actions=[aws_sns_topic["sns"]["arn"]],
             ok_actions=[aws_sns_topic["sns"]["arn"]],
             dimensions={
@@ -344,7 +344,7 @@ class MetricAlarm(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -472,7 +472,7 @@ class MetricAlarm(pulumi.CustomResource):
         return MetricAlarm(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

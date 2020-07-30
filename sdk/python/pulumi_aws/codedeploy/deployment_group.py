@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DeploymentGroup(pulumi.CustomResource):
@@ -168,18 +168,18 @@ class DeploymentGroup(pulumi.CustomResource):
         example_application = aws.codedeploy.Application("exampleApplication")
         example_topic = aws.sns.Topic("exampleTopic")
         example_deployment_group = aws.codedeploy.DeploymentGroup("exampleDeploymentGroup",
-            alarm_configuration={
-                "alarms": ["my-alarm-name"],
-                "enabled": True,
-            },
+            alarm_configuration=aws.codedeploy.DeploymentGroupAlarmConfigurationArgs(
+                alarms=["my-alarm-name"],
+                enabled=True,
+            ),
             app_name=example_application.name,
-            auto_rollback_configuration={
-                "enabled": True,
-                "events": ["DEPLOYMENT_FAILURE"],
-            },
+            auto_rollback_configuration=aws.codedeploy.DeploymentGroupAutoRollbackConfigurationArgs(
+                enabled=True,
+                events=["DEPLOYMENT_FAILURE"],
+            ),
             deployment_group_name="example-group",
-            ec2_tag_sets=[{
-                "ec2_tag_filters": [
+            ec2_tag_sets=[aws.codedeploy.DeploymentGroupEc2TagSetArgs(
+                ec2_tag_filters=[
                     {
                         "key": "filterkey1",
                         "type": "KEY_AND_VALUE",
@@ -191,13 +191,13 @@ class DeploymentGroup(pulumi.CustomResource):
                         "value": "filtervalue",
                     },
                 ],
-            }],
+            )],
             service_role_arn=example_role.arn,
-            trigger_configurations=[{
-                "triggerEvents": ["DeploymentFailure"],
-                "triggerName": "example-trigger",
-                "triggerTargetArn": example_topic.arn,
-            }])
+            trigger_configurations=[aws.codedeploy.DeploymentGroupTriggerConfigurationArgs(
+                trigger_events=["DeploymentFailure"],
+                trigger_name="example-trigger",
+                trigger_target_arn=example_topic.arn,
+            )])
         ```
         ### Blue Green Deployments with ECS
 
@@ -208,35 +208,35 @@ class DeploymentGroup(pulumi.CustomResource):
         example_application = aws.codedeploy.Application("exampleApplication", compute_platform="ECS")
         example_deployment_group = aws.codedeploy.DeploymentGroup("exampleDeploymentGroup",
             app_name=example_application.name,
-            auto_rollback_configuration={
-                "enabled": True,
-                "events": ["DEPLOYMENT_FAILURE"],
-            },
-            blue_green_deployment_config={
-                "deploymentReadyOption": {
-                    "actionOnTimeout": "CONTINUE_DEPLOYMENT",
-                },
-                "terminateBlueInstancesOnDeploymentSuccess": {
-                    "action": "TERMINATE",
-                    "terminationWaitTimeInMinutes": 5,
-                },
-            },
+            auto_rollback_configuration=aws.codedeploy.DeploymentGroupAutoRollbackConfigurationArgs(
+                enabled=True,
+                events=["DEPLOYMENT_FAILURE"],
+            ),
+            blue_green_deployment_config=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigArgs(
+                deployment_ready_option=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs(
+                    action_on_timeout="CONTINUE_DEPLOYMENT",
+                ),
+                terminate_blue_instances_on_deployment_success=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessArgs(
+                    action="TERMINATE",
+                    termination_wait_time_in_minutes=5,
+                ),
+            ),
             deployment_config_name="CodeDeployDefault.ECSAllAtOnce",
             deployment_group_name="example",
-            deployment_style={
-                "deploymentOption": "WITH_TRAFFIC_CONTROL",
-                "deploymentType": "BLUE_GREEN",
-            },
-            ecs_service={
-                "cluster_name": aws_ecs_cluster["example"]["name"],
-                "service_name": aws_ecs_service["example"]["name"],
-            },
-            load_balancer_info={
-                "targetGroupPairInfo": {
-                    "prodTrafficRoute": {
-                        "listenerArns": [aws_lb_listener["example"]["arn"]],
-                    },
-                    "targetGroup": [
+            deployment_style=aws.codedeploy.DeploymentGroupDeploymentStyleArgs(
+                deployment_option="WITH_TRAFFIC_CONTROL",
+                deployment_type="BLUE_GREEN",
+            ),
+            ecs_service=aws.codedeploy.DeploymentGroupEcsServiceArgs(
+                cluster_name=aws_ecs_cluster["example"]["name"],
+                service_name=aws_ecs_service["example"]["name"],
+            ),
+            load_balancer_info=aws.codedeploy.DeploymentGroupLoadBalancerInfoArgs(
+                target_group_pair_info=aws.codedeploy.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs(
+                    prod_traffic_route=aws.codedeploy.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs(
+                        listener_arns=[aws_lb_listener["example"]["arn"]],
+                    ),
+                    target_group=[
                         {
                             "name": aws_lb_target_group["blue"]["name"],
                         },
@@ -244,8 +244,8 @@ class DeploymentGroup(pulumi.CustomResource):
                             "name": aws_lb_target_group["green"]["name"],
                         },
                     ],
-                },
-            },
+                ),
+            ),
             service_role_arn=aws_iam_role["example"]["arn"])
         ```
         ### Blue Green Deployments with Servers and Classic ELB
@@ -257,28 +257,28 @@ class DeploymentGroup(pulumi.CustomResource):
         example_application = aws.codedeploy.Application("exampleApplication")
         example_deployment_group = aws.codedeploy.DeploymentGroup("exampleDeploymentGroup",
             app_name=example_application.name,
-            blue_green_deployment_config={
-                "deploymentReadyOption": {
-                    "actionOnTimeout": "STOP_DEPLOYMENT",
-                    "waitTimeInMinutes": 60,
-                },
-                "greenFleetProvisioningOption": {
-                    "action": "DISCOVER_EXISTING",
-                },
-                "terminateBlueInstancesOnDeploymentSuccess": {
-                    "action": "KEEP_ALIVE",
-                },
-            },
+            blue_green_deployment_config=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigArgs(
+                deployment_ready_option=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs(
+                    action_on_timeout="STOP_DEPLOYMENT",
+                    wait_time_in_minutes=60,
+                ),
+                green_fleet_provisioning_option=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionArgs(
+                    action="DISCOVER_EXISTING",
+                ),
+                terminate_blue_instances_on_deployment_success=aws.codedeploy.DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessArgs(
+                    action="KEEP_ALIVE",
+                ),
+            ),
             deployment_group_name="example-group",
-            deployment_style={
-                "deploymentOption": "WITH_TRAFFIC_CONTROL",
-                "deploymentType": "BLUE_GREEN",
-            },
-            load_balancer_info={
-                "elbInfos": [{
-                    "name": aws_elb["example"]["name"],
-                }],
-            },
+            deployment_style=aws.codedeploy.DeploymentGroupDeploymentStyleArgs(
+                deployment_option="WITH_TRAFFIC_CONTROL",
+                deployment_type="BLUE_GREEN",
+            ),
+            load_balancer_info=aws.codedeploy.DeploymentGroupLoadBalancerInfoArgs(
+                elb_infos=[aws.codedeploy.DeploymentGroupLoadBalancerInfoElbInfoArgs(
+                    name=aws_elb["example"]["name"],
+                )],
+            ),
             service_role_arn=aws_iam_role["example"]["arn"])
         ```
 
@@ -396,7 +396,7 @@ class DeploymentGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -561,7 +561,7 @@ class DeploymentGroup(pulumi.CustomResource):
         return DeploymentGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

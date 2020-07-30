@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetAutoscalingGroupsResult:
     """
@@ -34,6 +35,8 @@ class GetAutoscalingGroupsResult:
         """
         A list of the Autoscaling Groups in the current region.
         """
+
+
 class AwaitableGetAutoscalingGroupsResult(GetAutoscalingGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +48,8 @@ class AwaitableGetAutoscalingGroupsResult(GetAutoscalingGroupsResult):
             id=self.id,
             names=self.names)
 
-def get_autoscaling_groups(filters=None,opts=None):
+
+def get_autoscaling_groups(filters=None, opts=None):
     """
     The Autoscaling Groups data source allows access to the list of AWS
     ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
@@ -56,16 +60,18 @@ def get_autoscaling_groups(filters=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    groups = aws.get_autoscaling_groups(filters=[
-        {
-            "name": "key",
-            "values": ["Team"],
-        },
-        {
-            "name": "value",
-            "values": ["Pets"],
-        },
-    ])
+    groups = aws.get_autoscaling_groups(aws.GetAutoscalingGroupsArgsArgs(
+        filters=[
+            aws.GetAutoscalingGroupsFilterArgs(
+                name="key",
+                values=["Team"],
+            ),
+            aws.GetAutoscalingGroupsFilterArgs(
+                name="value",
+                values=["Pets"],
+            ),
+        ],
+    ))
     slack_notifications = aws.autoscaling.Notification("slackNotifications",
         group_names=groups.names,
         notifications=[
@@ -86,13 +92,11 @@ def get_autoscaling_groups(filters=None,opts=None):
       * `values` (`list`) - The value of the filter.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAutoscalingGroups:getAutoscalingGroups', __args__, opts=opts).value
 
     return AwaitableGetAutoscalingGroupsResult(

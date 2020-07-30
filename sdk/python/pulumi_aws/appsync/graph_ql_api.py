@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class GraphQLApi(pulumi.CustomResource):
@@ -101,11 +101,11 @@ class GraphQLApi(pulumi.CustomResource):
 
         example = aws.appsync.GraphQLApi("example",
             authentication_type="AMAZON_COGNITO_USER_POOLS",
-            user_pool_config={
-                "awsRegion": data["aws_region"]["current"]["name"],
-                "default_action": "DENY",
-                "user_pool_id": aws_cognito_user_pool["example"]["id"],
-            })
+            user_pool_config=aws.appsync.GraphQLApiUserPoolConfigArgs(
+                aws_region=data["aws_region"]["current"]["name"],
+                default_action="DENY",
+                user_pool_id=aws_cognito_user_pool["example"]["id"],
+            ))
         ```
         ### AWS IAM Authentication
 
@@ -140,9 +140,9 @@ class GraphQLApi(pulumi.CustomResource):
 
         example = aws.appsync.GraphQLApi("example",
             authentication_type="OPENID_CONNECT",
-            openid_connect_config={
-                "issuer": "https://example.com",
-            })
+            openid_connect_config=aws.appsync.GraphQLApiOpenidConnectConfigArgs(
+                issuer="https://example.com",
+            ))
         ```
         ### With Multiple Authentication Providers
 
@@ -151,9 +151,9 @@ class GraphQLApi(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.appsync.GraphQLApi("example",
-            additional_authentication_providers=[{
-                "authentication_type": "AWS_IAM",
-            }],
+            additional_authentication_providers=[aws.appsync.GraphQLApiAdditionalAuthenticationProviderArgs(
+                authentication_type="AWS_IAM",
+            )],
             authentication_type="API_KEY")
         ```
         ### Enabling Logging
@@ -179,10 +179,10 @@ class GraphQLApi(pulumi.CustomResource):
         example_role_policy_attachment = aws.iam.RolePolicyAttachment("exampleRolePolicyAttachment",
             policy_arn="arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs",
             role=example_role.name)
-        example_graph_ql_api = aws.appsync.GraphQLApi("exampleGraphQLApi", log_config={
-            "cloudwatchLogsRoleArn": example_role.arn,
-            "fieldLogLevel": "ERROR",
-        })
+        example_graph_ql_api = aws.appsync.GraphQLApi("exampleGraphQLApi", log_config=aws.appsync.GraphQLApiLogConfigArgs(
+            cloudwatch_logs_role_arn=example_role.arn,
+            field_log_level="ERROR",
+        ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -242,7 +242,7 @@ class GraphQLApi(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -340,7 +340,7 @@ class GraphQLApi(pulumi.CustomResource):
         return GraphQLApi(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

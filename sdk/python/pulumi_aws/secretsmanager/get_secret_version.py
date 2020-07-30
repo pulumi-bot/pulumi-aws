@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSecretVersionResult:
     """
@@ -52,6 +53,8 @@ class GetSecretVersionResult:
         if version_stages and not isinstance(version_stages, list):
             raise TypeError("Expected argument 'version_stages' to be a list")
         __self__.version_stages = version_stages
+
+
 class AwaitableGetSecretVersionResult(GetSecretVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             version_stage=self.version_stage,
             version_stages=self.version_stages)
 
-def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=None):
+
+def get_secret_version(secret_id=None, version_id=None, version_stage=None, opts=None):
     """
     Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the `secretsmanager.Secret` data source.
 
@@ -80,7 +84,9 @@ def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=No
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.secretsmanager.get_secret_version(secret_id=data["aws_secretsmanager_secret"]["example"]["id"])
+    example = aws.secretsmanager.get_secret_version(aws.secretsmanager.GetSecretVersionArgsArgs(
+        secret_id=data["aws_secretsmanager_secret"]["example"]["id"],
+    ))
     ```
     ### Retrieve Specific Secret Version
 
@@ -88,8 +94,10 @@ def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=No
     import pulumi
     import pulumi_aws as aws
 
-    by_version_stage = aws.secretsmanager.get_secret_version(secret_id=data["aws_secretsmanager_secret"]["example"]["id"],
-        version_stage="example")
+    by_version_stage = aws.secretsmanager.get_secret_version(aws.secretsmanager.GetSecretVersionArgsArgs(
+        secret_id=data["aws_secretsmanager_secret"]["example"]["id"],
+        version_stage="example",
+    ))
     ```
 
 
@@ -98,15 +106,13 @@ def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=No
     :param str version_stage: Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
     """
     __args__ = dict()
-
-
     __args__['secretId'] = secret_id
     __args__['versionId'] = version_id
     __args__['versionStage'] = version_stage
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:secretsmanager/getSecretVersion:getSecretVersion', __args__, opts=opts).value
 
     return AwaitableGetSecretVersionResult(

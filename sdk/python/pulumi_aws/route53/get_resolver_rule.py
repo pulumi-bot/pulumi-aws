@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetResolverRuleResult:
     """
@@ -59,6 +60,8 @@ class GetResolverRuleResult:
         """
         A map of tags assigned to the resolver rule.
         """
+
+
 class AwaitableGetResolverRuleResult(GetResolverRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +79,8 @@ class AwaitableGetResolverRuleResult(GetResolverRuleResult):
             share_status=self.share_status,
             tags=self.tags)
 
-def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resolver_rule_id=None,rule_type=None,tags=None,opts=None):
+
+def get_resolver_rule(domain_name=None, name=None, resolver_endpoint_id=None, resolver_rule_id=None, rule_type=None, tags=None, opts=None):
     """
     `route53.ResolverRule` provides details about a specific Route53 Resolver rule.
 
@@ -88,8 +92,10 @@ def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resol
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.route53.get_resolver_rule(domain_name="subdomain.example.com",
-        rule_type="SYSTEM")
+    example = aws.route53.get_resolver_rule(aws.route53.GetResolverRuleArgsArgs(
+        domain_name="subdomain.example.com",
+        rule_type="SYSTEM",
+    ))
     ```
 
 
@@ -101,8 +107,6 @@ def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resol
     :param dict tags: A map of tags assigned to the resolver rule.
     """
     __args__ = dict()
-
-
     __args__['domainName'] = domain_name
     __args__['name'] = name
     __args__['resolverEndpointId'] = resolver_endpoint_id
@@ -112,7 +116,7 @@ def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resol
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:route53/getResolverRule:getResolverRule', __args__, opts=opts).value
 
     return AwaitableGetResolverRuleResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ReplicationInstance(pulumi.CustomResource):
@@ -88,13 +88,15 @@ class ReplicationInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        dms_assume_role = aws.iam.get_policy_document(statements=[{
-            "actions": ["sts:AssumeRole"],
-            "principals": [{
-                "identifiers": ["dms.amazonaws.com"],
-                "type": "Service",
-            }],
-        }])
+        dms_assume_role = aws.iam.get_policy_document(aws.iam.GetPolicyDocumentArgsArgs(
+            statements=[aws.iam.GetPolicyDocumentStatementArgs(
+                actions=["sts:AssumeRole"],
+                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                    identifiers=["dms.amazonaws.com"],
+                    type="Service",
+                )],
+            )],
+        ))
         dms_access_for_endpoint = aws.iam.Role("dms-access-for-endpoint", assume_role_policy=dms_assume_role.json)
         dms_access_for_endpoint__amazon_dms_redshift_s3_role = aws.iam.RolePolicyAttachment("dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
             policy_arn="arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",
@@ -155,7 +157,7 @@ class ReplicationInstance(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -239,7 +241,7 @@ class ReplicationInstance(pulumi.CustomResource):
         return ReplicationInstance(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

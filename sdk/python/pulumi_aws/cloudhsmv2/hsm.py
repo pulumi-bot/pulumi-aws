@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Hsm(pulumi.CustomResource):
@@ -50,7 +50,9 @@ class Hsm(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        cluster = aws.cloudhsmv2.get_cluster(cluster_id=var["cloudhsm_cluster_id"])
+        cluster = aws.cloudhsmv2.get_cluster(aws.cloudhsmv2.GetClusterArgsArgs(
+            cluster_id=var["cloudhsm_cluster_id"],
+        ))
         cloudhsm_v2_hsm = aws.cloudhsmv2.Hsm("cloudhsmV2Hsm",
             cluster_id=cluster.cluster_id,
             subnet_id=cluster.subnet_ids[0])
@@ -74,7 +76,7 @@ class Hsm(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -126,7 +128,7 @@ class Hsm(pulumi.CustomResource):
         return Hsm(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

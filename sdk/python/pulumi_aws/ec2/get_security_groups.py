@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSecurityGroupsResult:
     """
@@ -38,6 +39,8 @@ class GetSecurityGroupsResult:
         The VPC IDs of the matched security groups. The data source's tag or filter *will span VPCs*
         unless the `vpc-id` filter is also used.
         """
+
+
 class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +53,8 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
             tags=self.tags,
             vpc_ids=self.vpc_ids)
 
-def get_security_groups(filters=None,tags=None,opts=None):
+
+def get_security_groups(filters=None, tags=None, opts=None):
     """
     Use this data source to get IDs and VPC membership of Security Groups that are created
     outside of this provider.
@@ -61,26 +65,30 @@ def get_security_groups(filters=None,tags=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.ec2.get_security_groups(tags={
-        "Application": "k8s",
-        "Environment": "dev",
-    })
+    test = aws.ec2.get_security_groups(aws.ec2.GetSecurityGroupsArgsArgs(
+        tags={
+            "Application": "k8s",
+            "Environment": "dev",
+        },
+    ))
     ```
 
     ```python
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.ec2.get_security_groups(filters=[
-        {
-            "name": "group-name",
-            "values": ["*nodes*"],
-        },
-        {
-            "name": "vpc-id",
-            "values": [var["vpc_id"]],
-        },
-    ])
+    test = aws.ec2.get_security_groups(aws.ec2.GetSecurityGroupsArgsArgs(
+        filters=[
+            aws.ec2.GetSecurityGroupsFilterArgs(
+                name="group-name",
+                values=["*nodes*"],
+            ),
+            aws.ec2.GetSecurityGroupsFilterArgs(
+                name="vpc-id",
+                values=[var["vpc_id"]],
+            ),
+        ],
+    ))
     ```
 
 
@@ -96,14 +104,12 @@ def get_security_groups(filters=None,tags=None,opts=None):
       * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getSecurityGroups:getSecurityGroups', __args__, opts=opts).value
 
     return AwaitableGetSecurityGroupsResult(

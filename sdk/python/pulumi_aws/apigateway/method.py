@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Method(pulumi.CustomResource):
@@ -82,7 +82,9 @@ class Method(pulumi.CustomResource):
 
         config = pulumi.Config()
         cognito_user_pool_name = config.require_object("cognitoUserPoolName")
-        this_user_pools = aws.cognito.get_user_pools(name=cognito_user_pool_name)
+        this_user_pools = aws.cognito.get_user_pools(aws.cognito.GetUserPoolsArgsArgs(
+            name=cognito_user_pool_name,
+        ))
         this_rest_api = aws.apigateway.RestApi("thisRestApi")
         this_resource = aws.apigateway.Resource("thisResource",
             parent_id=this_rest_api.root_resource_id,
@@ -130,7 +132,7 @@ class Method(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -200,7 +202,7 @@ class Method(pulumi.CustomResource):
         return Method(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

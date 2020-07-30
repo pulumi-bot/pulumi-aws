@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetPrefixListResult:
     """
@@ -37,6 +38,8 @@ class GetPrefixListResult:
         if prefix_list_id and not isinstance(prefix_list_id, str):
             raise TypeError("Expected argument 'prefix_list_id' to be a str")
         __self__.prefix_list_id = prefix_list_id
+
+
 class AwaitableGetPrefixListResult(GetPrefixListResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +52,8 @@ class AwaitableGetPrefixListResult(GetPrefixListResult):
             name=self.name,
             prefix_list_id=self.prefix_list_id)
 
-def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
+
+def get_prefix_list(filters=None, name=None, prefix_list_id=None, opts=None):
     """
     `getPrefixList` provides details about a specific prefix list (PL)
     in the current region.
@@ -68,7 +72,9 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
     private_s3_vpc_endpoint = aws.ec2.VpcEndpoint("privateS3VpcEndpoint",
         service_name="com.amazonaws.us-west-2.s3",
         vpc_id=aws_vpc["foo"]["id"])
-    private_s3_prefix_list = private_s3_vpc_endpoint.prefix_list_id.apply(lambda prefix_list_id: aws.get_prefix_list(prefix_list_id=prefix_list_id))
+    private_s3_prefix_list = private_s3_vpc_endpoint.prefix_list_id.apply(lambda prefix_list_id: aws.get_prefix_list(aws.GetPrefixListArgsArgs(
+        prefix_list_id=prefix_list_id,
+    )))
     bar = aws.ec2.NetworkAcl("bar", vpc_id=aws_vpc["foo"]["id"])
     private_s3_network_acl_rule = aws.ec2.NetworkAclRule("privateS3NetworkAclRule",
         cidr_block=private_s3_prefix_list.cidr_blocks[0],
@@ -86,10 +92,12 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.get_prefix_list(filters=[{
-        "name": "prefix-list-id",
-        "values": ["pl-68a54001"],
-    }])
+    test = aws.get_prefix_list(aws.GetPrefixListArgsArgs(
+        filters=[aws.GetPrefixListFilterArgs(
+            name="prefix-list-id",
+            values=["pl-68a54001"],
+        )],
+    ))
     ```
 
 
@@ -103,15 +111,13 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['prefixListId'] = prefix_list_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getPrefixList:getPrefixList', __args__, opts=opts).value
 
     return AwaitableGetPrefixListResult(
