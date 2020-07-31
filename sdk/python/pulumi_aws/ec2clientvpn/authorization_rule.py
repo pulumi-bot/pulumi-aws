@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['AuthorizationRule']
 
 
 class AuthorizationRule(pulumi.CustomResource):
-    access_group_id: pulumi.Output[str]
+    access_group_id: pulumi.Output[Optional[str]] = pulumi.output_property("accessGroupId")
     """
     The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
     """
-    authorize_all_groups: pulumi.Output[bool]
+    authorize_all_groups: pulumi.Output[Optional[bool]] = pulumi.output_property("authorizeAllGroups")
     """
     Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
     """
-    client_vpn_endpoint_id: pulumi.Output[str]
+    client_vpn_endpoint_id: pulumi.Output[str] = pulumi.output_property("clientVpnEndpointId")
     """
     The ID of the Client VPN endpoint.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A brief description of the authorization rule.
     """
-    target_network_cidr: pulumi.Output[str]
+    target_network_cidr: pulumi.Output[str] = pulumi.output_property("targetNetworkCidr")
     """
     The IPv4 address range, in CIDR notation, of the network to which the authorization rule applies.
     """
-    def __init__(__self__, resource_name, opts=None, access_group_id=None, authorize_all_groups=None, client_vpn_endpoint_id=None, description=None, target_network_cidr=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, access_group_id: Optional[pulumi.Input[str]] = None, authorize_all_groups: Optional[pulumi.Input[bool]] = None, client_vpn_endpoint_id: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, target_network_cidr: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides authorization rules for AWS Client VPN endpoints. For more information on usage, please see the
         [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
@@ -66,7 +69,7 @@ class AuthorizationRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -88,7 +91,7 @@ class AuthorizationRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_group_id=None, authorize_all_groups=None, client_vpn_endpoint_id=None, description=None, target_network_cidr=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, access_group_id: Optional[pulumi.Input[str]] = None, authorize_all_groups: Optional[pulumi.Input[bool]] = None, client_vpn_endpoint_id: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, target_network_cidr: Optional[pulumi.Input[str]] = None) -> 'AuthorizationRule':
         """
         Get an existing AuthorizationRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -114,7 +117,8 @@ class AuthorizationRule(pulumi.CustomResource):
         return AuthorizationRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

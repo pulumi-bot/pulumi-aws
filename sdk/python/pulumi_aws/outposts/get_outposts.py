@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetOutpostsResult',
+    'AwaitableGetOutpostsResult',
+    'get_outposts',
+]
+
 
 class GetOutpostsResult:
     """
     A collection of values returned by getOutposts.
     """
-    def __init__(__self__, arns=None, availability_zone=None, availability_zone_id=None, id=None, ids=None, site_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arns=None, availability_zone=None, availability_zone_id=None, id=None, ids=None, site_id=None) -> None:
         if arns and not isinstance(arns, list):
             raise TypeError("Expected argument 'arns' to be a list")
         __self__.arns = arns
@@ -40,6 +48,8 @@ class GetOutpostsResult:
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         __self__.site_id = site_id
+
+
 class AwaitableGetOutpostsResult(GetOutpostsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +63,8 @@ class AwaitableGetOutpostsResult(GetOutpostsResult):
             ids=self.ids,
             site_id=self.site_id)
 
-def get_outposts(availability_zone=None,availability_zone_id=None,site_id=None,opts=None):
+
+def get_outposts(availability_zone: Optional[str] = None, availability_zone_id: Optional[str] = None, site_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOutpostsResult:
     """
     Provides details about multiple Outposts.
 
@@ -72,15 +83,13 @@ def get_outposts(availability_zone=None,availability_zone_id=None,site_id=None,o
     :param str site_id: Site identifier.
     """
     __args__ = dict()
-
-
     __args__['availabilityZone'] = availability_zone
     __args__['availabilityZoneId'] = availability_zone_id
     __args__['siteId'] = site_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:outposts/getOutposts:getOutposts', __args__, opts=opts).value
 
     return AwaitableGetOutpostsResult(

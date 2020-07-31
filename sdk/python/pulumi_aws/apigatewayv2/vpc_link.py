@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['VpcLink']
 
 
 class VpcLink(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The VPC Link ARN.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the VPC Link.
     """
-    security_group_ids: pulumi.Output[list]
+    security_group_ids: pulumi.Output[List[str]] = pulumi.output_property("securityGroupIds")
     """
     Security group IDs for the VPC Link.
     """
-    subnet_ids: pulumi.Output[list]
+    subnet_ids: pulumi.Output[List[str]] = pulumi.output_property("subnetIds")
     """
     Subnet IDs for the VPC Link.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the VPC Link.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, security_group_ids=None, subnet_ids=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, name: Optional[pulumi.Input[str]] = None, security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Amazon API Gateway Version 2 VPC Link.
 
@@ -54,9 +57,9 @@ class VpcLink(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the VPC Link.
-        :param pulumi.Input[list] security_group_ids: Security group IDs for the VPC Link.
-        :param pulumi.Input[list] subnet_ids: Subnet IDs for the VPC Link.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the VPC Link.
+        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: Security group IDs for the VPC Link.
+        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: Subnet IDs for the VPC Link.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the VPC Link.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,7 +72,7 @@ class VpcLink(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -91,7 +94,7 @@ class VpcLink(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, name=None, security_group_ids=None, subnet_ids=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, arn: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'VpcLink':
         """
         Get an existing VpcLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -101,9 +104,9 @@ class VpcLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The VPC Link ARN.
         :param pulumi.Input[str] name: The name of the VPC Link.
-        :param pulumi.Input[list] security_group_ids: Security group IDs for the VPC Link.
-        :param pulumi.Input[list] subnet_ids: Subnet IDs for the VPC Link.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the VPC Link.
+        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: Security group IDs for the VPC Link.
+        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: Subnet IDs for the VPC Link.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the VPC Link.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -117,7 +120,8 @@ class VpcLink(pulumi.CustomResource):
         return VpcLink(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

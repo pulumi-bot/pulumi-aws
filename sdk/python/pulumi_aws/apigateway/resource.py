@@ -5,28 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Resource']
 
 
 class Resource(pulumi.CustomResource):
-    parent_id: pulumi.Output[str]
+    parent_id: pulumi.Output[str] = pulumi.output_property("parentId")
     """
     The ID of the parent API resource
     """
-    path: pulumi.Output[str]
+    path: pulumi.Output[str] = pulumi.output_property("path")
     """
     The complete path for this API resource, including all parent paths.
     """
-    path_part: pulumi.Output[str]
+    path_part: pulumi.Output[str] = pulumi.output_property("pathPart")
     """
     The last path segment of this API resource.
     """
-    rest_api: pulumi.Output[str]
+    rest_api: pulumi.Output[str] = pulumi.output_property("restApi")
     """
     The ID of the associated REST API
     """
-    def __init__(__self__, resource_name, opts=None, parent_id=None, path_part=None, rest_api=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, parent_id: Optional[pulumi.Input[str]] = None, path_part: Optional[pulumi.Input[str]] = None, rest_api: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an API Gateway Resource.
 
@@ -47,7 +50,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent_id: The ID of the parent API resource
         :param pulumi.Input[str] path_part: The last path segment of this API resource.
-        :param pulumi.Input[dict] rest_api: The ID of the associated REST API
+        :param pulumi.Input[str] rest_api: The ID of the associated REST API
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,7 +63,7 @@ class Resource(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -83,7 +86,7 @@ class Resource(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, parent_id=None, path=None, path_part=None, rest_api=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, parent_id: Optional[pulumi.Input[str]] = None, path: Optional[pulumi.Input[str]] = None, path_part: Optional[pulumi.Input[str]] = None, rest_api: Optional[pulumi.Input[str]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -94,7 +97,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] parent_id: The ID of the parent API resource
         :param pulumi.Input[str] path: The complete path for this API resource, including all parent paths.
         :param pulumi.Input[str] path_part: The last path segment of this API resource.
-        :param pulumi.Input[dict] rest_api: The ID of the associated REST API
+        :param pulumi.Input[str] rest_api: The ID of the associated REST API
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -107,7 +110,8 @@ class Resource(pulumi.CustomResource):
         return Resource(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

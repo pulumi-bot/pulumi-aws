@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetNetworkAclsResult',
+    'AwaitableGetNetworkAclsResult',
+    'get_network_acls',
+]
+
 
 class GetNetworkAclsResult:
     """
     A collection of values returned by getNetworkAcls.
     """
-    def __init__(__self__, filters=None, id=None, ids=None, tags=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, filters=None, id=None, ids=None, tags=None, vpc_id=None) -> None:
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         __self__.filters = filters
@@ -34,6 +44,8 @@ class GetNetworkAclsResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetNetworkAclsResult(GetNetworkAclsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +58,8 @@ class AwaitableGetNetworkAclsResult(GetNetworkAclsResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_network_acls(filters=None,tags=None,vpc_id=None,opts=None):
+
+def get_network_acls(filters: Optional[List[pulumi.InputType['GetNetworkAclsFilterArgs']]] = None, tags: Optional[Dict[str, str]] = None, vpc_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkAclsResult:
     """
     ## Example Usage
 
@@ -88,28 +101,19 @@ def get_network_acls(filters=None,tags=None,vpc_id=None,opts=None):
     ```
 
 
-    :param list filters: Custom filter block as described below.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param List[pulumi.InputType['GetNetworkAclsFilterArgs']] filters: Custom filter block as described below.
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the desired network ACLs.
     :param str vpc_id: The VPC ID that you want to filter from.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html).
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        A VPC will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getNetworkAcls:getNetworkAcls', __args__, opts=opts).value
 
     return AwaitableGetNetworkAclsResult(

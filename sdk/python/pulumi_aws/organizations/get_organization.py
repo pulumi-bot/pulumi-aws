@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetOrganizationResult',
+    'AwaitableGetOrganizationResult',
+    'get_organization',
+]
+
 
 class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, accounts=None, arn=None, aws_service_access_principals=None, enabled_policy_types=None, feature_set=None, id=None, master_account_arn=None, master_account_email=None, master_account_id=None, non_master_accounts=None, roots=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, accounts=None, arn=None, aws_service_access_principals=None, enabled_policy_types=None, feature_set=None, id=None, master_account_arn=None, master_account_email=None, master_account_id=None, non_master_accounts=None, roots=None) -> None:
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         __self__.accounts = accounts
@@ -79,6 +88,8 @@ class GetOrganizationResult:
         """
         List of organization roots. All elements have these attributes:
         """
+
+
 class AwaitableGetOrganizationResult(GetOrganizationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,7 +108,8 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             non_master_accounts=self.non_master_accounts,
             roots=self.roots)
 
-def get_organization(opts=None):
+
+def get_organization(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
     Get information about the organization that the user's account belongs to
 
@@ -142,12 +154,10 @@ def get_organization(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:organizations/getOrganization:getOrganization', __args__, opts=opts).value
 
     return AwaitableGetOrganizationResult(

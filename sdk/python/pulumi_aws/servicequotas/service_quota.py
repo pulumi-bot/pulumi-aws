@@ -5,46 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ServiceQuota']
 
 
 class ServiceQuota(pulumi.CustomResource):
-    adjustable: pulumi.Output[bool]
+    adjustable: pulumi.Output[bool] = pulumi.output_property("adjustable")
     """
     Whether the service quota can be increased.
     """
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     Amazon Resource Name (ARN) of the service quota.
     """
-    default_value: pulumi.Output[float]
+    default_value: pulumi.Output[float] = pulumi.output_property("defaultValue")
     """
     Default value of the service quota.
     """
-    quota_code: pulumi.Output[str]
+    quota_code: pulumi.Output[str] = pulumi.output_property("quotaCode")
     """
     Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
     """
-    quota_name: pulumi.Output[str]
+    quota_name: pulumi.Output[str] = pulumi.output_property("quotaName")
     """
     Name of the quota.
     """
-    request_id: pulumi.Output[str]
-    request_status: pulumi.Output[str]
-    service_code: pulumi.Output[str]
+    request_id: pulumi.Output[str] = pulumi.output_property("requestId")
+    request_status: pulumi.Output[str] = pulumi.output_property("requestStatus")
+    service_code: pulumi.Output[str] = pulumi.output_property("serviceCode")
     """
     Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
     """
-    service_name: pulumi.Output[str]
+    service_name: pulumi.Output[str] = pulumi.output_property("serviceName")
     """
     Name of the service.
     """
-    value: pulumi.Output[float]
+    value: pulumi.Output[float] = pulumi.output_property("value")
     """
     Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
     """
-    def __init__(__self__, resource_name, opts=None, quota_code=None, service_code=None, value=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, quota_code: Optional[pulumi.Input[str]] = None, service_code: Optional[pulumi.Input[str]] = None, value: Optional[pulumi.Input[float]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an individual Service Quota.
 
@@ -77,7 +80,7 @@ class ServiceQuota(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -106,7 +109,7 @@ class ServiceQuota(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, adjustable=None, arn=None, default_value=None, quota_code=None, quota_name=None, request_id=None, request_status=None, service_code=None, service_name=None, value=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, adjustable: Optional[pulumi.Input[bool]] = None, arn: Optional[pulumi.Input[str]] = None, default_value: Optional[pulumi.Input[float]] = None, quota_code: Optional[pulumi.Input[str]] = None, quota_name: Optional[pulumi.Input[str]] = None, request_id: Optional[pulumi.Input[str]] = None, request_status: Optional[pulumi.Input[str]] = None, service_code: Optional[pulumi.Input[str]] = None, service_name: Optional[pulumi.Input[str]] = None, value: Optional[pulumi.Input[float]] = None) -> 'ServiceQuota':
         """
         Get an existing ServiceQuota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -140,7 +143,8 @@ class ServiceQuota(pulumi.CustomResource):
         return ServiceQuota(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

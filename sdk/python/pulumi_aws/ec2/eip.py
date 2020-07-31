@@ -5,65 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Eip']
 
 
 class Eip(pulumi.CustomResource):
-    allocation_id: pulumi.Output[str]
-    associate_with_private_ip: pulumi.Output[str]
+    allocation_id: pulumi.Output[str] = pulumi.output_property("allocationId")
+    associate_with_private_ip: pulumi.Output[Optional[str]] = pulumi.output_property("associateWithPrivateIp")
     """
     A user specified primary or secondary private IP address to
     associate with the Elastic IP address. If no private IP address is specified,
     the Elastic IP address is associated with the primary private IP address.
     """
-    association_id: pulumi.Output[str]
-    customer_owned_ip: pulumi.Output[str]
+    association_id: pulumi.Output[str] = pulumi.output_property("associationId")
+    customer_owned_ip: pulumi.Output[str] = pulumi.output_property("customerOwnedIp")
     """
     Customer owned IP.
     """
-    customer_owned_ipv4_pool: pulumi.Output[str]
+    customer_owned_ipv4_pool: pulumi.Output[Optional[str]] = pulumi.output_property("customerOwnedIpv4Pool")
     """
     The  ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
     """
-    domain: pulumi.Output[str]
-    instance: pulumi.Output[str]
+    domain: pulumi.Output[str] = pulumi.output_property("domain")
+    instance: pulumi.Output[str] = pulumi.output_property("instance")
     """
     EC2 instance ID.
     """
-    network_interface: pulumi.Output[str]
+    network_interface: pulumi.Output[str] = pulumi.output_property("networkInterface")
     """
     Network interface ID to associate with.
     """
-    private_dns: pulumi.Output[str]
+    private_dns: pulumi.Output[str] = pulumi.output_property("privateDns")
     """
     The Private DNS associated with the Elastic IP address (if in VPC).
     """
-    private_ip: pulumi.Output[str]
+    private_ip: pulumi.Output[str] = pulumi.output_property("privateIp")
     """
     Contains the private IP address (if in VPC).
     """
-    public_dns: pulumi.Output[str]
+    public_dns: pulumi.Output[str] = pulumi.output_property("publicDns")
     """
     Public DNS associated with the Elastic IP address.
     """
-    public_ip: pulumi.Output[str]
+    public_ip: pulumi.Output[str] = pulumi.output_property("publicIp")
     """
     Contains the public IP address.
     """
-    public_ipv4_pool: pulumi.Output[str]
+    public_ipv4_pool: pulumi.Output[str] = pulumi.output_property("publicIpv4Pool")
     """
     EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    vpc: pulumi.Output[bool]
+    vpc: pulumi.Output[bool] = pulumi.output_property("vpc")
     """
     Boolean if the EIP is in a VPC or not.
     """
-    def __init__(__self__, resource_name, opts=None, associate_with_private_ip=None, customer_owned_ipv4_pool=None, instance=None, network_interface=None, public_ipv4_pool=None, tags=None, vpc=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, associate_with_private_ip: Optional[pulumi.Input[str]] = None, customer_owned_ipv4_pool: Optional[pulumi.Input[str]] = None, instance: Optional[pulumi.Input[str]] = None, network_interface: Optional[pulumi.Input[str]] = None, public_ipv4_pool: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, vpc: Optional[pulumi.Input[bool]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an Elastic IP resource.
 
@@ -153,7 +156,7 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] instance: EC2 instance ID.
         :param pulumi.Input[str] network_interface: Network interface ID to associate with.
         :param pulumi.Input[str] public_ipv4_pool: EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[bool] vpc: Boolean if the EIP is in a VPC or not.
         """
         if __name__ is not None:
@@ -167,7 +170,7 @@ class Eip(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -195,7 +198,7 @@ class Eip(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allocation_id=None, associate_with_private_ip=None, association_id=None, customer_owned_ip=None, customer_owned_ipv4_pool=None, domain=None, instance=None, network_interface=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, public_ipv4_pool=None, tags=None, vpc=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, allocation_id: Optional[pulumi.Input[str]] = None, associate_with_private_ip: Optional[pulumi.Input[str]] = None, association_id: Optional[pulumi.Input[str]] = None, customer_owned_ip: Optional[pulumi.Input[str]] = None, customer_owned_ipv4_pool: Optional[pulumi.Input[str]] = None, domain: Optional[pulumi.Input[str]] = None, instance: Optional[pulumi.Input[str]] = None, network_interface: Optional[pulumi.Input[str]] = None, private_dns: Optional[pulumi.Input[str]] = None, private_ip: Optional[pulumi.Input[str]] = None, public_dns: Optional[pulumi.Input[str]] = None, public_ip: Optional[pulumi.Input[str]] = None, public_ipv4_pool: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, vpc: Optional[pulumi.Input[bool]] = None) -> 'Eip':
         """
         Get an existing Eip resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -215,7 +218,7 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] public_dns: Public DNS associated with the Elastic IP address.
         :param pulumi.Input[str] public_ip: Contains the public IP address.
         :param pulumi.Input[str] public_ipv4_pool: EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[bool] vpc: Boolean if the EIP is in a VPC or not.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -240,7 +243,8 @@ class Eip(pulumi.CustomResource):
         return Eip(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

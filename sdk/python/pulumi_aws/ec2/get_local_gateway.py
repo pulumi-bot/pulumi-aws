@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetLocalGatewayResult',
+    'AwaitableGetLocalGatewayResult',
+    'get_local_gateway',
+]
+
 
 class GetLocalGatewayResult:
     """
     A collection of values returned by getLocalGateway.
     """
-    def __init__(__self__, filters=None, id=None, outpost_arn=None, owner_id=None, state=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, filters=None, id=None, outpost_arn=None, owner_id=None, state=None, tags=None) -> None:
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         __self__.filters = filters
@@ -40,6 +50,8 @@ class GetLocalGatewayResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetLocalGatewayResult(GetLocalGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +65,8 @@ class AwaitableGetLocalGatewayResult(GetLocalGatewayResult):
             state=self.state,
             tags=self.tags)
 
-def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
+
+def get_local_gateway(filters: Optional[List[pulumi.InputType['GetLocalGatewayFilterArgs']]] = None, id: Optional[str] = None, state: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLocalGatewayResult:
     """
     Provides details about an EC2 Local Gateway.
 
@@ -71,23 +84,14 @@ def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: Custom filter block as described below.
+    :param List[pulumi.InputType['GetLocalGatewayFilterArgs']] filters: Custom filter block as described below.
     :param str id: The id of the specific Local Gateway to retrieve.
     :param str state: The current state of the desired Local Gateway.
            Can be either `"pending"` or `"available"`.
-    :param dict tags: A mapping of tags, each pair of which must exactly match
+    :param Dict[str, str] tags: A mapping of tags, each pair of which must exactly match
            a pair on the desired Local Gateway.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        A Local Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['state'] = state
@@ -95,7 +99,7 @@ def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getLocalGateway:getLocalGateway', __args__, opts=opts).value
 
     return AwaitableGetLocalGatewayResult(

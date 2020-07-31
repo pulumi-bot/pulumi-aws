@@ -5,15 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetTargetGroupResult',
+    'AwaitableGetTargetGroupResult',
+    'get_target_group',
+]
 
 warnings.warn("aws.applicationloadbalancing.getTargetGroup has been deprecated in favor of aws.alb.getTargetGroup", DeprecationWarning)
+
 class GetTargetGroupResult:
     """
     A collection of values returned by getTargetGroup.
     """
-    def __init__(__self__, arn=None, arn_suffix=None, deregistration_delay=None, health_check=None, id=None, lambda_multi_value_headers_enabled=None, load_balancing_algorithm_type=None, name=None, port=None, protocol=None, proxy_protocol_v2=None, slow_start=None, stickiness=None, tags=None, target_type=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, arn_suffix=None, deregistration_delay=None, health_check=None, id=None, lambda_multi_value_headers_enabled=None, load_balancing_algorithm_type=None, name=None, port=None, protocol=None, proxy_protocol_v2=None, slow_start=None, stickiness=None, tags=None, target_type=None, vpc_id=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -65,6 +74,8 @@ class GetTargetGroupResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetTargetGroupResult(GetTargetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +99,8 @@ class AwaitableGetTargetGroupResult(GetTargetGroupResult):
             target_type=self.target_type,
             vpc_id=self.vpc_id)
 
-def get_target_group(arn=None,name=None,tags=None,opts=None):
+
+def get_target_group(arn: Optional[str] = None, name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetGroupResult:
     """
     > **Note:** `alb.TargetGroup` is known as `lb.TargetGroup`. The functionality is identical.
 
@@ -121,15 +133,13 @@ def get_target_group(arn=None,name=None,tags=None,opts=None):
     """
     pulumi.log.warn("get_target_group is deprecated: aws.applicationloadbalancing.getTargetGroup has been deprecated in favor of aws.alb.getTargetGroup")
     __args__ = dict()
-
-
     __args__['arn'] = arn
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:applicationloadbalancing/getTargetGroup:getTargetGroup', __args__, opts=opts).value
 
     return AwaitableGetTargetGroupResult(

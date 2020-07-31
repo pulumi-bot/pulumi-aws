@@ -5,46 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['VirtualRouter']
 
 
 class VirtualRouter(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the virtual router.
     """
-    created_date: pulumi.Output[str]
+    created_date: pulumi.Output[str] = pulumi.output_property("createdDate")
     """
     The creation date of the virtual router.
     """
-    last_updated_date: pulumi.Output[str]
+    last_updated_date: pulumi.Output[str] = pulumi.output_property("lastUpdatedDate")
     """
     The last update date of the virtual router.
     """
-    mesh_name: pulumi.Output[str]
+    mesh_name: pulumi.Output[str] = pulumi.output_property("meshName")
     """
     The name of the service mesh in which to create the virtual router.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name to use for the virtual router.
     """
-    spec: pulumi.Output[dict]
+    spec: pulumi.Output['outputs.VirtualRouterSpec'] = pulumi.output_property("spec")
     """
     The virtual router specification to apply.
-
-      * `listener` (`dict`) - The listeners that the virtual router is expected to receive inbound traffic from.
-        Currently only one listener is supported per virtual router.
-        * `portMapping` (`dict`) - The port mapping information for the listener.
-          * `port` (`float`) - The port used for the port mapping.
-          * `protocol` (`str`) - The protocol used for the port mapping. Valid values are `http` and `tcp`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, mesh_name=None, name=None, spec=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, mesh_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, spec: Optional[pulumi.Input[pulumi.InputType['VirtualRouterSpecArgs']]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an AWS App Mesh virtual router resource.
 
@@ -82,16 +81,8 @@ class VirtualRouter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual router.
         :param pulumi.Input[str] name: The name to use for the virtual router.
-        :param pulumi.Input[dict] spec: The virtual router specification to apply.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **spec** object supports the following:
-
-          * `listener` (`pulumi.Input[dict]`) - The listeners that the virtual router is expected to receive inbound traffic from.
-            Currently only one listener is supported per virtual router.
-            * `portMapping` (`pulumi.Input[dict]`) - The port mapping information for the listener.
-              * `port` (`pulumi.Input[float]`) - The port used for the port mapping.
-              * `protocol` (`pulumi.Input[str]`) - The protocol used for the port mapping. Valid values are `http` and `tcp`.
+        :param pulumi.Input[pulumi.InputType['VirtualRouterSpecArgs']] spec: The virtual router specification to apply.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -104,7 +95,7 @@ class VirtualRouter(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,7 +119,7 @@ class VirtualRouter(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, created_date=None, last_updated_date=None, mesh_name=None, name=None, spec=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, arn: Optional[pulumi.Input[str]] = None, created_date: Optional[pulumi.Input[str]] = None, last_updated_date: Optional[pulumi.Input[str]] = None, mesh_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, spec: Optional[pulumi.Input[pulumi.InputType['VirtualRouterSpecArgs']]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'VirtualRouter':
         """
         Get an existing VirtualRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -141,16 +132,8 @@ class VirtualRouter(pulumi.CustomResource):
         :param pulumi.Input[str] last_updated_date: The last update date of the virtual router.
         :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual router.
         :param pulumi.Input[str] name: The name to use for the virtual router.
-        :param pulumi.Input[dict] spec: The virtual router specification to apply.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **spec** object supports the following:
-
-          * `listener` (`pulumi.Input[dict]`) - The listeners that the virtual router is expected to receive inbound traffic from.
-            Currently only one listener is supported per virtual router.
-            * `portMapping` (`pulumi.Input[dict]`) - The port mapping information for the listener.
-              * `port` (`pulumi.Input[float]`) - The port used for the port mapping.
-              * `protocol` (`pulumi.Input[str]`) - The protocol used for the port mapping. Valid values are `http` and `tcp`.
+        :param pulumi.Input[pulumi.InputType['VirtualRouterSpecArgs']] spec: The virtual router specification to apply.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -166,7 +149,8 @@ class VirtualRouter(pulumi.CustomResource):
         return VirtualRouter(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,28 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ApiMapping']
 
 
 class ApiMapping(pulumi.CustomResource):
-    api_id: pulumi.Output[str]
+    api_id: pulumi.Output[str] = pulumi.output_property("apiId")
     """
     The API identifier.
     """
-    api_mapping_key: pulumi.Output[str]
+    api_mapping_key: pulumi.Output[Optional[str]] = pulumi.output_property("apiMappingKey")
     """
     The [API mapping key](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-mapping-template-reference.html).
     """
-    domain_name: pulumi.Output[str]
+    domain_name: pulumi.Output[str] = pulumi.output_property("domainName")
     """
     The domain name. Use the `apigatewayv2.DomainName` resource to configure a domain name.
     """
-    stage: pulumi.Output[str]
+    stage: pulumi.Output[str] = pulumi.output_property("stage")
     """
     The API stage. Use the `apigatewayv2.Stage` resource to configure an API stage.
     """
-    def __init__(__self__, resource_name, opts=None, api_id=None, api_mapping_key=None, domain_name=None, stage=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, api_id: Optional[pulumi.Input[str]] = None, api_mapping_key: Optional[pulumi.Input[str]] = None, domain_name: Optional[pulumi.Input[str]] = None, stage: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Amazon API Gateway Version 2 API mapping.
         More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
@@ -62,7 +65,7 @@ class ApiMapping(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -85,7 +88,7 @@ class ApiMapping(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_id=None, api_mapping_key=None, domain_name=None, stage=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, api_id: Optional[pulumi.Input[str]] = None, api_mapping_key: Optional[pulumi.Input[str]] = None, domain_name: Optional[pulumi.Input[str]] = None, stage: Optional[pulumi.Input[str]] = None) -> 'ApiMapping':
         """
         Get an existing ApiMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -109,7 +112,8 @@ class ApiMapping(pulumi.CustomResource):
         return ApiMapping(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

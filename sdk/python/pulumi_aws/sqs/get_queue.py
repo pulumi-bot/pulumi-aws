@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetQueueResult',
+    'AwaitableGetQueueResult',
+    'get_queue',
+]
+
 
 class GetQueueResult:
     """
     A collection of values returned by getQueue.
     """
-    def __init__(__self__, arn=None, id=None, name=None, tags=None, url=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None, name=None, tags=None, url=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -40,6 +48,8 @@ class GetQueueResult:
         """
         The URL of the queue.
         """
+
+
 class AwaitableGetQueueResult(GetQueueResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +62,8 @@ class AwaitableGetQueueResult(GetQueueResult):
             tags=self.tags,
             url=self.url)
 
-def get_queue(name=None,tags=None,opts=None):
+
+def get_queue(name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQueueResult:
     """
     Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
     By using this data source, you can reference SQS queues without having to hardcode
@@ -69,17 +80,15 @@ def get_queue(name=None,tags=None,opts=None):
 
 
     :param str name: The name of the queue to match.
-    :param dict tags: A map of tags for the resource.
+    :param Dict[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:sqs/getQueue:getQueue', __args__, opts=opts).value
 
     return AwaitableGetQueueResult(

@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetNatGatewayResult',
+    'AwaitableGetNatGatewayResult',
+    'get_nat_gateway',
+]
+
 
 class GetNatGatewayResult:
     """
     A collection of values returned by getNatGateway.
     """
-    def __init__(__self__, allocation_id=None, filters=None, id=None, network_interface_id=None, private_ip=None, public_ip=None, state=None, subnet_id=None, tags=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, allocation_id=None, filters=None, id=None, network_interface_id=None, private_ip=None, public_ip=None, state=None, subnet_id=None, tags=None, vpc_id=None) -> None:
         if allocation_id and not isinstance(allocation_id, str):
             raise TypeError("Expected argument 'allocation_id' to be a str")
         __self__.allocation_id = allocation_id
@@ -55,6 +65,8 @@ class GetNatGatewayResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetNatGatewayResult(GetNatGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,7 +84,8 @@ class AwaitableGetNatGatewayResult(GetNatGatewayResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc_id=None,opts=None):
+
+def get_nat_gateway(filters: Optional[List[pulumi.InputType['GetNatGatewayFilterArgs']]] = None, id: Optional[str] = None, state: Optional[str] = None, subnet_id: Optional[str] = None, tags: Optional[Dict[str, str]] = None, vpc_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatGatewayResult:
     """
     Provides details about a specific Nat Gateway.
 
@@ -100,24 +113,15 @@ def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc
     ```
 
 
-    :param list filters: Custom filter block as described below.
+    :param List[pulumi.InputType['GetNatGatewayFilterArgs']] filters: Custom filter block as described below.
     :param str id: The id of the specific Nat Gateway to retrieve.
     :param str state: The state of the NAT gateway (pending | failed | available | deleting | deleted ).
     :param str subnet_id: The id of subnet that the Nat Gateway resides in.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the desired Nat Gateway.
     :param str vpc_id: The id of the VPC that the Nat Gateway resides in.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html).
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        An Nat Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['state'] = state
@@ -127,7 +131,7 @@ def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getNatGateway:getNatGateway', __args__, opts=opts).value
 
     return AwaitableGetNatGatewayResult(

@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetDirectoryResult',
+    'AwaitableGetDirectoryResult',
+    'get_directory',
+]
+
 
 class GetDirectoryResult:
     """
     A collection of values returned by getDirectory.
     """
-    def __init__(__self__, access_url=None, alias=None, connect_settings=None, description=None, directory_id=None, dns_ip_addresses=None, edition=None, enable_sso=None, id=None, name=None, security_group_id=None, short_name=None, size=None, tags=None, type=None, vpc_settings=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, access_url=None, alias=None, connect_settings=None, description=None, directory_id=None, dns_ip_addresses=None, edition=None, enable_sso=None, id=None, name=None, security_group_id=None, short_name=None, size=None, tags=None, type=None, vpc_settings=None) -> None:
         if access_url and not isinstance(access_url, str):
             raise TypeError("Expected argument 'access_url' to be a str")
         __self__.access_url = access_url
@@ -100,6 +109,8 @@ class GetDirectoryResult:
         if vpc_settings and not isinstance(vpc_settings, list):
             raise TypeError("Expected argument 'vpc_settings' to be a list")
         __self__.vpc_settings = vpc_settings
+
+
 class AwaitableGetDirectoryResult(GetDirectoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +134,8 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             type=self.type,
             vpc_settings=self.vpc_settings)
 
-def get_directory(directory_id=None,tags=None,opts=None):
+
+def get_directory(directory_id: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
     Get attributes of AWS Directory Service directory (SimpleAD, Managed AD, AD Connector). It's especially useful to refer AWS Managed AD or on-premise AD in AD Connector configuration.
 
@@ -138,17 +150,15 @@ def get_directory(directory_id=None,tags=None,opts=None):
 
 
     :param str directory_id: The ID of the directory.
-    :param dict tags: A map of tags assigned to the directory/connector.
+    :param Dict[str, str] tags: A map of tags assigned to the directory/connector.
     """
     __args__ = dict()
-
-
     __args__['directoryId'] = directory_id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:directoryservice/getDirectory:getDirectory', __args__, opts=opts).value
 
     return AwaitableGetDirectoryResult(

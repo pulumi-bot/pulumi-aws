@@ -5,33 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ReplicationSubnetGroup']
 
 
 class ReplicationSubnetGroup(pulumi.CustomResource):
-    replication_subnet_group_arn: pulumi.Output[str]
-    replication_subnet_group_description: pulumi.Output[str]
+    replication_subnet_group_arn: pulumi.Output[str] = pulumi.output_property("replicationSubnetGroupArn")
+    replication_subnet_group_description: pulumi.Output[str] = pulumi.output_property("replicationSubnetGroupDescription")
     """
     The description for the subnet group.
     """
-    replication_subnet_group_id: pulumi.Output[str]
+    replication_subnet_group_id: pulumi.Output[str] = pulumi.output_property("replicationSubnetGroupId")
     """
     The name for the replication subnet group. This value is stored as a lowercase string.
     """
-    subnet_ids: pulumi.Output[list]
+    subnet_ids: pulumi.Output[List[str]] = pulumi.output_property("subnetIds")
     """
     A list of the EC2 subnet IDs for the subnet group.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    vpc_id: pulumi.Output[str]
+    vpc_id: pulumi.Output[str] = pulumi.output_property("vpcId")
     """
     The ID of the VPC the subnet group is in.
     """
-    def __init__(__self__, resource_name, opts=None, replication_subnet_group_description=None, replication_subnet_group_id=None, subnet_ids=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, replication_subnet_group_description: Optional[pulumi.Input[str]] = None, replication_subnet_group_id: Optional[pulumi.Input[str]] = None, subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a DMS (Data Migration Service) replication subnet group resource. DMS replication subnet groups can be created, updated, deleted, and imported.
 
@@ -55,8 +58,8 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] replication_subnet_group_description: The description for the subnet group.
         :param pulumi.Input[str] replication_subnet_group_id: The name for the replication subnet group. This value is stored as a lowercase string.
-        :param pulumi.Input[list] subnet_ids: A list of the EC2 subnet IDs for the subnet group.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: A list of the EC2 subnet IDs for the subnet group.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,7 +72,7 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,7 +97,7 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, replication_subnet_group_arn=None, replication_subnet_group_description=None, replication_subnet_group_id=None, subnet_ids=None, tags=None, vpc_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, replication_subnet_group_arn: Optional[pulumi.Input[str]] = None, replication_subnet_group_description: Optional[pulumi.Input[str]] = None, replication_subnet_group_id: Optional[pulumi.Input[str]] = None, subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, vpc_id: Optional[pulumi.Input[str]] = None) -> 'ReplicationSubnetGroup':
         """
         Get an existing ReplicationSubnetGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -104,8 +107,8 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] replication_subnet_group_description: The description for the subnet group.
         :param pulumi.Input[str] replication_subnet_group_id: The name for the replication subnet group. This value is stored as a lowercase string.
-        :param pulumi.Input[list] subnet_ids: A list of the EC2 subnet IDs for the subnet group.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: A list of the EC2 subnet IDs for the subnet group.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC the subnet group is in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -121,7 +124,8 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
         return ReplicationSubnetGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,42 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['User']
 
 
 class User(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN assigned by AWS for this user.
     """
-    force_destroy: pulumi.Output[bool]
+    force_destroy: pulumi.Output[Optional[bool]] = pulumi.output_property("forceDestroy")
     """
     When destroying this user, destroy even if it
     has non-provider-managed IAM access keys, login profile or MFA devices. Without `force_destroy`
     a user with non-provider-managed access keys and login profile will fail to be destroyed.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
     """
-    path: pulumi.Output[str]
+    path: pulumi.Output[Optional[str]] = pulumi.output_property("path")
     """
     Path in which to create the user.
     """
-    permissions_boundary: pulumi.Output[str]
+    permissions_boundary: pulumi.Output[Optional[str]] = pulumi.output_property("permissionsBoundary")
     """
     The ARN of the policy that is used to set the permissions boundary for the user.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     Key-value mapping of tags for the IAM user
     """
-    unique_id: pulumi.Output[str]
+    unique_id: pulumi.Output[str] = pulumi.output_property("uniqueId")
     """
     The [unique ID][1] assigned by AWS.
     """
-    def __init__(__self__, resource_name, opts=None, force_destroy=None, name=None, path=None, permissions_boundary=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, force_destroy: Optional[pulumi.Input[bool]] = None, name: Optional[pulumi.Input[str]] = None, path: Optional[pulumi.Input[str]] = None, permissions_boundary: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an IAM user.
 
@@ -84,7 +87,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
         :param pulumi.Input[str] path: Path in which to create the user.
         :param pulumi.Input[str] permissions_boundary: The ARN of the policy that is used to set the permissions boundary for the user.
-        :param pulumi.Input[dict] tags: Key-value mapping of tags for the IAM user
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value mapping of tags for the IAM user
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +100,7 @@ class User(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -117,7 +120,7 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, force_destroy=None, name=None, path=None, permissions_boundary=None, tags=None, unique_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, arn: Optional[pulumi.Input[str]] = None, force_destroy: Optional[pulumi.Input[bool]] = None, name: Optional[pulumi.Input[str]] = None, path: Optional[pulumi.Input[str]] = None, permissions_boundary: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, unique_id: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -132,7 +135,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
         :param pulumi.Input[str] path: Path in which to create the user.
         :param pulumi.Input[str] permissions_boundary: The ARN of the policy that is used to set the permissions boundary for the user.
-        :param pulumi.Input[dict] tags: Key-value mapping of tags for the IAM user
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value mapping of tags for the IAM user
         :param pulumi.Input[str] unique_id: The [unique ID][1] assigned by AWS.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -149,7 +152,8 @@ class User(pulumi.CustomResource):
         return User(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

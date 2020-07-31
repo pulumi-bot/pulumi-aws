@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = [
+    'GetBillingServiceAccountResult',
+    'AwaitableGetBillingServiceAccountResult',
+    'get_billing_service_account',
+]
+
 
 class GetBillingServiceAccountResult:
     """
     A collection of values returned by getBillingServiceAccount.
     """
-    def __init__(__self__, arn=None, id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -25,6 +33,8 @@ class GetBillingServiceAccountResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetBillingServiceAccountResult(GetBillingServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,7 +44,8 @@ class AwaitableGetBillingServiceAccountResult(GetBillingServiceAccountResult):
             arn=self.arn,
             id=self.id)
 
-def get_billing_service_account(opts=None):
+
+def get_billing_service_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingServiceAccountResult:
     """
     Use this data source to get the Account ID of the [AWS Billing and Cost Management Service Account](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-getting-started.html#step-2) for the purpose of permitting in S3 bucket policy.
 
@@ -82,12 +93,10 @@ def get_billing_service_account(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getBillingServiceAccount:getBillingServiceAccount', __args__, opts=opts).value
 
     return AwaitableGetBillingServiceAccountResult(

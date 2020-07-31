@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetVpcEndpointServiceResult',
+    'AwaitableGetVpcEndpointServiceResult',
+    'get_vpc_endpoint_service',
+]
+
 
 class GetVpcEndpointServiceResult:
     """
     A collection of values returned by getVpcEndpointService.
     """
-    def __init__(__self__, acceptance_required=None, arn=None, availability_zones=None, base_endpoint_dns_names=None, filters=None, id=None, manages_vpc_endpoints=None, owner=None, private_dns_name=None, service=None, service_id=None, service_name=None, service_type=None, tags=None, vpc_endpoint_policy_supported=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, acceptance_required=None, arn=None, availability_zones=None, base_endpoint_dns_names=None, filters=None, id=None, manages_vpc_endpoints=None, owner=None, private_dns_name=None, service=None, service_id=None, service_name=None, service_type=None, tags=None, vpc_endpoint_policy_supported=None) -> None:
         if acceptance_required and not isinstance(acceptance_required, bool):
             raise TypeError("Expected argument 'acceptance_required' to be a bool")
         __self__.acceptance_required = acceptance_required
@@ -94,6 +104,8 @@ class GetVpcEndpointServiceResult:
         """
         Whether or not the service supports endpoint policies - `true` or `false`.
         """
+
+
 class AwaitableGetVpcEndpointServiceResult(GetVpcEndpointServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -116,7 +128,8 @@ class AwaitableGetVpcEndpointServiceResult(GetVpcEndpointServiceResult):
             tags=self.tags,
             vpc_endpoint_policy_supported=self.vpc_endpoint_policy_supported)
 
-def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=None,opts=None):
+
+def get_vpc_endpoint_service(filters: Optional[List[pulumi.InputType['GetVpcEndpointServiceFilterArgs']]] = None, service: Optional[str] = None, service_name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcEndpointServiceResult:
     """
     The VPC Endpoint Service data source details about a specific service that
     can be specified when creating a VPC endpoint within the region configured in the provider.
@@ -157,19 +170,12 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     ```
 
 
-    :param list filters: Configuration block(s) for filtering. Detailed below.
+    :param List[pulumi.InputType['GetVpcEndpointServiceFilterArgs']] filters: Configuration block(s) for filtering. Detailed below.
     :param str service: The common name of an AWS service (e.g. `s3`).
     :param str service_name: The service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
-    :param dict tags: A map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
-      * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['service'] = service
     __args__['serviceName'] = service_name
@@ -177,7 +183,7 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpcEndpointService:getVpcEndpointService', __args__, opts=opts).value
 
     return AwaitableGetVpcEndpointServiceResult(
