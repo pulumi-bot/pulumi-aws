@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Inventory(pulumi.CustomResource):
@@ -74,16 +74,16 @@ class Inventory(pulumi.CustomResource):
         inventory = aws.s3.Bucket("inventory")
         test_inventory = aws.s3.Inventory("testInventory",
             bucket=test_bucket.id,
-            destination={
-                "bucket": {
-                    "bucketArn": inventory.arn,
-                    "format": "ORC",
-                },
-            },
+            destination=aws.s3.InventoryDestinationArgs(
+                bucket=aws.s3.InventoryDestinationBucketArgs(
+                    bucket_arn=inventory.arn,
+                    format="ORC",
+                ),
+            ),
             included_object_versions="All",
-            schedule={
-                "frequency": "Daily",
-            })
+            schedule=aws.s3.InventoryScheduleArgs(
+                frequency="Daily",
+            ))
         ```
         ### Add inventory configuration with S3 bucket object prefix
 
@@ -95,20 +95,20 @@ class Inventory(pulumi.CustomResource):
         inventory = aws.s3.Bucket("inventory")
         test_prefix = aws.s3.Inventory("test-prefix",
             bucket=test.id,
-            destination={
-                "bucket": {
-                    "bucketArn": inventory.arn,
-                    "format": "ORC",
-                    "prefix": "inventory",
-                },
-            },
-            filter={
-                "prefix": "documents/",
-            },
+            destination=aws.s3.InventoryDestinationArgs(
+                bucket=aws.s3.InventoryDestinationBucketArgs(
+                    bucket_arn=inventory.arn,
+                    format="ORC",
+                    prefix="inventory",
+                ),
+            ),
+            filter=aws.s3.InventoryFilterArgs(
+                prefix="documents/",
+            ),
             included_object_versions="All",
-            schedule={
-                "frequency": "Daily",
-            })
+            schedule=aws.s3.InventoryScheduleArgs(
+                frequency="Daily",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -156,7 +156,7 @@ class Inventory(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -240,7 +240,7 @@ class Inventory(pulumi.CustomResource):
         return Inventory(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

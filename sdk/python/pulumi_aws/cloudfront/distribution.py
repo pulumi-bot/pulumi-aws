@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Distribution(pulumi.CustomResource):
@@ -405,8 +405,8 @@ class Distribution(pulumi.CustomResource):
                 "yoursite.example.com",
             ],
             comment="Some comment",
-            default_cache_behavior={
-                "allowedMethods": [
+            default_cache_behavior=aws.cloudfront.DistributionDefaultCacheBehaviorArgs(
+                allowed_methods=[
                     "DELETE",
                     "GET",
                     "HEAD",
@@ -415,107 +415,107 @@ class Distribution(pulumi.CustomResource):
                     "POST",
                     "PUT",
                 ],
-                "cachedMethods": [
+                cached_methods=[
                     "GET",
                     "HEAD",
                 ],
-                "defaultTtl": 3600,
-                "forwardedValues": {
-                    "cookies": {
-                        "forward": "none",
-                    },
-                    "queryString": False,
-                },
-                "maxTtl": 86400,
-                "minTtl": 0,
-                "targetOriginId": s3_origin_id,
-                "viewerProtocolPolicy": "allow-all",
-            },
+                default_ttl=3600,
+                forwarded_values=aws.cloudfront.DistributionDefaultCacheBehaviorForwardedValuesArgs(
+                    cookies=aws.cloudfront.DistributionDefaultCacheBehaviorForwardedValuesCookiesArgs(
+                        forward="none",
+                    ),
+                    query_string=False,
+                ),
+                max_ttl=86400,
+                min_ttl=0,
+                target_origin_id=s3_origin_id,
+                viewer_protocol_policy="allow-all",
+            ),
             default_root_object="index.html",
             enabled=True,
             is_ipv6_enabled=True,
-            logging_config={
-                "bucket": "mylogs.s3.amazonaws.com",
-                "includeCookies": False,
-                "prefix": "myprefix",
-            },
+            logging_config=aws.cloudfront.DistributionLoggingConfigArgs(
+                bucket="mylogs.s3.amazonaws.com",
+                include_cookies=False,
+                prefix="myprefix",
+            ),
             ordered_cache_behaviors=[
-                {
-                    "allowedMethods": [
+                aws.cloudfront.DistributionOrderedCacheBehaviorArgs(
+                    allowed_methods=[
                         "GET",
                         "HEAD",
                         "OPTIONS",
                     ],
-                    "cachedMethods": [
+                    cached_methods=[
                         "GET",
                         "HEAD",
                         "OPTIONS",
                     ],
-                    "compress": True,
-                    "defaultTtl": 86400,
-                    "forwardedValues": {
-                        "cookies": {
-                            "forward": "none",
-                        },
-                        "headers": ["Origin"],
-                        "queryString": False,
-                    },
-                    "maxTtl": 31536000,
-                    "minTtl": 0,
-                    "pathPattern": "/content/immutable/*",
-                    "targetOriginId": s3_origin_id,
-                    "viewerProtocolPolicy": "redirect-to-https",
-                },
-                {
-                    "allowedMethods": [
+                    compress=True,
+                    default_ttl=86400,
+                    forwarded_values=aws.cloudfront.DistributionOrderedCacheBehaviorForwardedValuesArgs(
+                        cookies=aws.cloudfront.DistributionOrderedCacheBehaviorForwardedValuesCookiesArgs(
+                            forward="none",
+                        ),
+                        headers=["Origin"],
+                        query_string=False,
+                    ),
+                    max_ttl=31536000,
+                    min_ttl=0,
+                    path_pattern="/content/immutable/*",
+                    target_origin_id=s3_origin_id,
+                    viewer_protocol_policy="redirect-to-https",
+                ),
+                aws.cloudfront.DistributionOrderedCacheBehaviorArgs(
+                    allowed_methods=[
                         "GET",
                         "HEAD",
                         "OPTIONS",
                     ],
-                    "cachedMethods": [
+                    cached_methods=[
                         "GET",
                         "HEAD",
                     ],
-                    "compress": True,
-                    "defaultTtl": 3600,
-                    "forwardedValues": {
-                        "cookies": {
-                            "forward": "none",
-                        },
-                        "queryString": False,
-                    },
-                    "maxTtl": 86400,
-                    "minTtl": 0,
-                    "pathPattern": "/content/*",
-                    "targetOriginId": s3_origin_id,
-                    "viewerProtocolPolicy": "redirect-to-https",
-                },
+                    compress=True,
+                    default_ttl=3600,
+                    forwarded_values=aws.cloudfront.DistributionOrderedCacheBehaviorForwardedValuesArgs(
+                        cookies=aws.cloudfront.DistributionOrderedCacheBehaviorForwardedValuesCookiesArgs(
+                            forward="none",
+                        ),
+                        query_string=False,
+                    ),
+                    max_ttl=86400,
+                    min_ttl=0,
+                    path_pattern="/content/*",
+                    target_origin_id=s3_origin_id,
+                    viewer_protocol_policy="redirect-to-https",
+                ),
             ],
-            origins=[{
-                "domain_name": bucket.bucket_regional_domain_name,
-                "originId": s3_origin_id,
-                "s3OriginConfig": {
-                    "originAccessIdentity": "origin-access-identity/cloudfront/ABCDEFG1234567",
-                },
-            }],
+            origins=[aws.cloudfront.DistributionOriginArgs(
+                domain_name=bucket.bucket_regional_domain_name,
+                origin_id=s3_origin_id,
+                s3_origin_config=aws.cloudfront.DistributionOriginS3OriginConfigArgs(
+                    origin_access_identity="origin-access-identity/cloudfront/ABCDEFG1234567",
+                ),
+            )],
             price_class="PriceClass_200",
-            restrictions={
-                "geoRestriction": {
-                    "locations": [
+            restrictions=aws.cloudfront.DistributionRestrictionsArgs(
+                geo_restriction=aws.cloudfront.DistributionRestrictionsGeoRestrictionArgs(
+                    locations=[
                         "US",
                         "CA",
                         "GB",
                         "DE",
                     ],
-                    "restrictionType": "whitelist",
-                },
-            },
+                    restriction_type="whitelist",
+                ),
+            ),
             tags={
                 "Environment": "production",
             },
-            viewer_certificate={
-                "cloudfrontDefaultCertificate": True,
-            })
+            viewer_certificate=aws.cloudfront.DistributionViewerCertificateArgs(
+                cloudfront_default_certificate=True,
+            ))
         ```
 
         The following example below creates a Cloudfront distribution with an origin group for failover routing:
@@ -525,44 +525,44 @@ class Distribution(pulumi.CustomResource):
         import pulumi_aws as aws
 
         s3_distribution = aws.cloudfront.Distribution("s3Distribution",
-            default_cache_behavior={
-                "targetOriginId": "groupS3",
-            },
+            default_cache_behavior=aws.cloudfront.DistributionDefaultCacheBehaviorArgs(
+                target_origin_id="groupS3",
+            ),
             origins=[
-                {
-                    "domain_name": aws_s3_bucket["primary"]["bucket_regional_domain_name"],
-                    "originId": "primaryS3",
-                    "s3OriginConfig": {
-                        "originAccessIdentity": aws_cloudfront_origin_access_identity["default"]["cloudfront_access_identity_path"],
-                    },
-                },
-                {
-                    "domain_name": aws_s3_bucket["failover"]["bucket_regional_domain_name"],
-                    "originId": "failoverS3",
-                    "s3OriginConfig": {
-                        "originAccessIdentity": aws_cloudfront_origin_access_identity["default"]["cloudfront_access_identity_path"],
-                    },
-                },
+                aws.cloudfront.DistributionOriginArgs(
+                    domain_name=aws_s3_bucket["primary"]["bucket_regional_domain_name"],
+                    origin_id="primaryS3",
+                    s3_origin_config=aws.cloudfront.DistributionOriginS3OriginConfigArgs(
+                        origin_access_identity=aws_cloudfront_origin_access_identity["default"]["cloudfront_access_identity_path"],
+                    ),
+                ),
+                aws.cloudfront.DistributionOriginArgs(
+                    domain_name=aws_s3_bucket["failover"]["bucket_regional_domain_name"],
+                    origin_id="failoverS3",
+                    s3_origin_config=aws.cloudfront.DistributionOriginS3OriginConfigArgs(
+                        origin_access_identity=aws_cloudfront_origin_access_identity["default"]["cloudfront_access_identity_path"],
+                    ),
+                ),
             ],
-            origin_groups=[{
-                "failoverCriteria": {
-                    "statusCodes": [
+            origin_groups=[aws.cloudfront.DistributionOriginGroupArgs(
+                failover_criteria=aws.cloudfront.DistributionOriginGroupFailoverCriteriaArgs(
+                    status_codes=[
                         403,
                         404,
                         500,
                         502,
                     ],
-                },
-                "members": [
-                    {
-                        "originId": "primaryS3",
-                    },
-                    {
-                        "originId": "failoverS3",
-                    },
+                ),
+                members=[
+                    aws.cloudfront.DistributionOriginGroupMemberArgs(
+                        origin_id="primaryS3",
+                    ),
+                    aws.cloudfront.DistributionOriginGroupMemberArgs(
+                        origin_id="failoverS3",
+                    ),
                 ],
-                "originId": "groupS3",
-            }])
+                origin_id="groupS3",
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -853,7 +853,7 @@ class Distribution(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -1241,7 +1241,7 @@ class Distribution(pulumi.CustomResource):
         return Distribution(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

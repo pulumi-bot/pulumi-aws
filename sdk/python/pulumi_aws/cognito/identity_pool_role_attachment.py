@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class IdentityPoolRoleAttachment(pulumi.CustomResource):
@@ -92,17 +92,17 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
             role=authenticated_role.id)
         main_identity_pool_role_attachment = aws.cognito.IdentityPoolRoleAttachment("mainIdentityPoolRoleAttachment",
             identity_pool_id=main_identity_pool.id,
-            role_mappings=[{
-                "ambiguousRoleResolution": "AuthenticatedRole",
-                "identity_provider": "graph.facebook.com",
-                "mappingRules": [{
-                    "claim": "isAdmin",
-                    "matchType": "Equals",
-                    "role_arn": authenticated_role.arn,
-                    "value": "paid",
-                }],
-                "type": "Rules",
-            }],
+            role_mappings=[aws.cognito.IdentityPoolRoleAttachmentRoleMappingArgs(
+                ambiguous_role_resolution="AuthenticatedRole",
+                identity_provider="graph.facebook.com",
+                mapping_rules=[aws.cognito.IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs(
+                    claim="isAdmin",
+                    match_type="Equals",
+                    role_arn=authenticated_role.arn,
+                    value="paid",
+                )],
+                type="Rules",
+            )],
             roles={
                 "authenticated": authenticated_role.arn,
             })
@@ -137,7 +137,7 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -191,7 +191,7 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
         return IdentityPoolRoleAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

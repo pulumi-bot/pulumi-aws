@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cluster(pulumi.CustomResource):
@@ -222,14 +222,14 @@ class Cluster(pulumi.CustomResource):
 
         \"\"\",
             applications=["Spark"],
-            bootstrap_actions=[{
-                "args": [
+            bootstrap_actions=[aws.emr.ClusterBootstrapActionArgs(
+                args=[
                     "instance.isMaster=true",
                     "echo running on master node",
                 ],
-                "name": "runif",
-                "path": "s3://elasticmapreduce/bootstrap-actions/run-if",
-            }],
+                name="runif",
+                path="s3://elasticmapreduce/bootstrap-actions/run-if",
+            )],
             configurations_json=\"\"\"  [
             {
               "Classification": "hadoop-env",
@@ -258,8 +258,8 @@ class Cluster(pulumi.CustomResource):
           ]
 
         \"\"\",
-            core_instance_group={
-                "autoscaling_policy": \"\"\"{
+            core_instance_group=aws.emr.ClusterCoreInstanceGroupArgs(
+                autoscaling_policy=\"\"\"{
         "Constraints": {
           "MinCapacity": 1,
           "MaxCapacity": 2
@@ -292,26 +292,26 @@ class Cluster(pulumi.CustomResource):
         }
 
         \"\"\",
-                "bid_price": "0.30",
-                "ebs_configs": [{
+                bid_price="0.30",
+                ebs_configs=[{
                     "size": "40",
                     "type": "gp2",
                     "volumesPerInstance": 1,
                 }],
-                "instance_count": 1,
-                "instance_type": "c4.large",
-            },
+                instance_count=1,
+                instance_type="c4.large",
+            ),
             ebs_root_volume_size=100,
-            ec2_attributes={
-                "emrManagedMasterSecurityGroup": aws_security_group["sg"]["id"],
-                "emrManagedSlaveSecurityGroup": aws_security_group["sg"]["id"],
-                "instanceProfile": aws_iam_instance_profile["emr_profile"]["arn"],
-                "subnet_id": aws_subnet["main"]["id"],
-            },
+            ec2_attributes=aws.emr.ClusterEc2AttributesArgs(
+                emr_managed_master_security_group=aws_security_group["sg"]["id"],
+                emr_managed_slave_security_group=aws_security_group["sg"]["id"],
+                instance_profile=aws_iam_instance_profile["emr_profile"]["arn"],
+                subnet_id=aws_subnet["main"]["id"],
+            ),
             keep_job_flow_alive_when_no_steps=True,
-            master_instance_group={
-                "instance_type": "m4.large",
-            },
+            master_instance_group=aws.emr.ClusterMasterInstanceGroupArgs(
+                instance_type="m4.large",
+            ),
             release_label="emr-4.6.0",
             service_role=aws_iam_role["iam_emr_service_role"]["arn"],
             tags={
@@ -328,32 +328,6 @@ class Cluster(pulumi.CustomResource):
         Started](https://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-gs-launch-sample-cluster.html)
         guide for more information on these IAM roles. There is also a fully-bootable
         example this provider configuration at the bottom of this page.
-        ### Enable Debug Logging
-
-        [Debug logging in EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-debugging.html)
-        is implemented as a step. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other
-        steps are being managed outside of this provider.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.emr.Cluster("example",
-            lifecycle={
-                "ignoreChanges": [
-                    "stepConcurrencyLevel",
-                    "steps",
-                ],
-            },
-            steps=[{
-                "actionOnFailure": "TERMINATE_CLUSTER",
-                "hadoopJarStep": {
-                    "args": ["state-pusher-script"],
-                    "jar": "command-runner.jar",
-                },
-                "name": "Setup Hadoop Debugging",
-            }])
-        ```
         ### Multiple Node Master Instance Group
 
         Available in EMR version 5.23.0 and later, an EMR Cluster can be launched with three master nodes for high availability. Additional information about this functionality and its requirements can be found in the [EMR Management Guide](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-ha.html).
@@ -365,13 +339,13 @@ class Cluster(pulumi.CustomResource):
         # Map public IP on launch must be enabled for public (Internet accessible) subnets
         example_subnet = aws.ec2.Subnet("exampleSubnet", map_public_ip_on_launch=True)
         example_cluster = aws.emr.Cluster("exampleCluster",
-            core_instance_group={},
-            ec2_attributes={
-                "subnet_id": example_subnet.id,
-            },
-            master_instance_group={
-                "instance_count": 3,
-            },
+            core_instance_group=,
+            ec2_attributes=aws.emr.ClusterEc2AttributesArgs(
+                subnet_id=example_subnet.id,
+            ),
+            master_instance_group=aws.emr.ClusterMasterInstanceGroupArgs(
+                instance_count=3,
+            ),
             release_label="emr-5.24.1",
             termination_protection=True)
         ```
@@ -431,12 +405,12 @@ class Cluster(pulumi.CustomResource):
         cluster = aws.emr.Cluster("cluster",
             release_label="emr-4.6.0",
             applications=["Spark"],
-            ec2_attributes={
-                "subnet_id": main_subnet.id,
-                "emrManagedMasterSecurityGroup": aws_security_group["allow_all"]["id"],
-                "emrManagedSlaveSecurityGroup": aws_security_group["allow_all"]["id"],
-                "instanceProfile": emr_profile.arn,
-            },
+            ec2_attributes=aws.emr.ClusterEc2AttributesArgs(
+                subnet_id=main_subnet.id,
+                emr_managed_master_security_group=aws_security_group["allow_all"]["id"],
+                emr_managed_slave_security_group=aws_security_group["allow_all"]["id"],
+                instance_profile=emr_profile.arn,
+            ),
             master_instance_type="m5.xlarge",
             core_instance_type="m5.xlarge",
             core_instance_count=1,
@@ -446,14 +420,14 @@ class Cluster(pulumi.CustomResource):
                 "env": "env",
                 "name": "name-env",
             },
-            bootstrap_actions=[{
-                "path": "s3://elasticmapreduce/bootstrap-actions/run-if",
-                "name": "runif",
-                "args": [
+            bootstrap_actions=[aws.emr.ClusterBootstrapActionArgs(
+                path="s3://elasticmapreduce/bootstrap-actions/run-if",
+                name="runif",
+                args=[
                     "instance.isMaster=true",
                     "echo running on master node",
                 ],
-            }],
+            )],
             configurations_json=\"\"\"  [
             {
               "Classification": "hadoop-env",
@@ -485,18 +459,18 @@ class Cluster(pulumi.CustomResource):
         allow_access = aws.ec2.SecurityGroup("allowAccess",
             description="Allow inbound traffic",
             vpc_id=main_vpc.id,
-            ingress=[{
-                "from_port": 0,
-                "to_port": 0,
-                "protocol": "-1",
-                "cidr_blocks": main_vpc.cidr_block,
-            }],
-            egress=[{
-                "from_port": 0,
-                "to_port": 0,
-                "protocol": "-1",
-                "cidr_blocks": ["0.0.0.0/0"],
-            }],
+            ingress=[aws.ec2.SecurityGroupIngressArgs(
+                from_port=0,
+                to_port=0,
+                protocol="-1",
+                cidr_blocks=main_vpc.cidr_block,
+            )],
+            egress=[aws.ec2.SecurityGroupEgressArgs(
+                from_port=0,
+                to_port=0,
+                protocol="-1",
+                cidr_blocks=["0.0.0.0/0"],
+            )],
             tags={
                 "name": "emr_test",
             },
@@ -504,10 +478,10 @@ class Cluster(pulumi.CustomResource):
         gw = aws.ec2.InternetGateway("gw", vpc_id=main_vpc.id)
         route_table = aws.ec2.RouteTable("routeTable",
             vpc_id=main_vpc.id,
-            routes=[{
-                "cidr_block": "0.0.0.0/0",
-                "gateway_id": gw.id,
-            }])
+            routes=[aws.ec2.RouteTableRouteArgs(
+                cidr_block="0.0.0.0/0",
+                gateway_id=gw.id,
+            )])
         main_route_table_association = aws.ec2.MainRouteTableAssociation("mainRouteTableAssociation",
             vpc_id=main_vpc.id,
             route_table_id=route_table.id)
@@ -736,7 +710,7 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -954,7 +928,7 @@ class Cluster(pulumi.CustomResource):
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
