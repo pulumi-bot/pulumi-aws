@@ -51,7 +51,7 @@ import (
 // 			},
 // 			Ttl:    pulumi.Int(600),
 // 			Type:   pulumi.String("MX"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Example.Id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -63,7 +63,7 @@ import (
 // 			},
 // 			Ttl:    pulumi.Int(600),
 // 			Type:   pulumi.String("TXT"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Example.Id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
