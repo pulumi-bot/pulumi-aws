@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Domain(pulumi.CustomResource):
@@ -147,13 +147,13 @@ class Domain(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.elasticsearch.Domain("example",
-            cluster_config={
-                "instance_type": "r4.large.elasticsearch",
-            },
+            cluster_config=aws.elasticsearch.DomainClusterConfigArgs(
+                instance_type="r4.large.elasticsearch",
+            ),
             elasticsearch_version="1.5",
-            snapshot_options={
-                "automatedSnapshotStartHour": 23,
-            },
+            snapshot_options=aws.elasticsearch.DomainSnapshotOptionsArgs(
+                automated_snapshot_start_hour=23,
+            ),
             tags={
                 "Domain": "TestDomain",
             })
@@ -217,10 +217,10 @@ class Domain(pulumi.CustomResource):
 
         \"\"\",
             policy_name="example")
-        example_domain = aws.elasticsearch.Domain("exampleDomain", log_publishing_options=[{
-            "cloudwatch_log_group_arn": example_log_group.arn,
-            "logType": "INDEX_SLOW_LOGS",
-        }])
+        example_domain = aws.elasticsearch.Domain("exampleDomain", log_publishing_options=[aws.elasticsearch.DomainLogPublishingOptionArgs(
+            cloudwatch_log_group_arn=example_log_group.arn,
+            log_type="INDEX_SLOW_LOGS",
+        )])
         ```
         ### VPC based ES
 
@@ -244,12 +244,12 @@ class Domain(pulumi.CustomResource):
         current_caller_identity = aws.get_caller_identity()
         es_security_group = aws.ec2.SecurityGroup("esSecurityGroup",
             description="Managed by Pulumi",
-            ingress=[{
-                "cidr_blocks": [selected_vpc.cidr_block],
-                "from_port": 443,
-                "protocol": "tcp",
-                "to_port": 443,
-            }],
+            ingress=[aws.ec2.SecurityGroupIngressArgs(
+                cidr_blocks=[selected_vpc.cidr_block],
+                from_port=443,
+                protocol="tcp",
+                to_port=443,
+            )],
             vpc_id=selected_vpc.id)
         es_service_linked_role = aws.iam.ServiceLinkedRole("esServiceLinkedRole", aws_service_name="es.amazonaws.com")
         es_domain = aws.elasticsearch.Domain("esDomain",
@@ -269,23 +269,23 @@ class Domain(pulumi.CustomResource):
             advanced_options={
                 "rest.action.multi.allow_explicit_index": "true",
             },
-            cluster_config={
-                "instance_type": "m4.large.elasticsearch",
-            },
+            cluster_config=aws.elasticsearch.DomainClusterConfigArgs(
+                instance_type="m4.large.elasticsearch",
+            ),
             elasticsearch_version="6.3",
-            snapshot_options={
-                "automatedSnapshotStartHour": 23,
-            },
+            snapshot_options=aws.elasticsearch.DomainSnapshotOptionsArgs(
+                automated_snapshot_start_hour=23,
+            ),
             tags={
                 "Domain": "TestDomain",
             },
-            vpc_options={
-                "security_group_ids": [es_security_group.id],
-                "subnet_ids": [
+            vpc_options=aws.elasticsearch.DomainVpcOptionsArgs(
+                security_group_ids=[es_security_group.id],
+                subnet_ids=[
                     selected_subnet_ids.ids[0],
                     selected_subnet_ids.ids[1],
                 ],
-            },
+            ),
             opts=ResourceOptions(depends_on=["aws_iam_service_linked_role.es"]))
         ```
 
@@ -392,7 +392,7 @@ class Domain(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -554,7 +554,7 @@ class Domain(pulumi.CustomResource):
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

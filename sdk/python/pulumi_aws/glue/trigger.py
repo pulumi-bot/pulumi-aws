@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Trigger(pulumi.CustomResource):
@@ -76,15 +76,15 @@ class Trigger(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Trigger("example",
-            actions=[{
-                "jobName": aws_glue_job["example1"]["name"],
-            }],
-            predicate={
-                "conditions": [{
-                    "jobName": aws_glue_job["example2"]["name"],
-                    "state": "SUCCEEDED",
-                }],
-            },
+            actions=[aws.glue.TriggerActionArgs(
+                job_name=aws_glue_job["example1"]["name"],
+            )],
+            predicate=aws.glue.TriggerPredicateArgs(
+                conditions=[aws.glue.TriggerPredicateConditionArgs(
+                    job_name=aws_glue_job["example2"]["name"],
+                    state="SUCCEEDED",
+                )],
+            ),
             type="CONDITIONAL")
         ```
         ### On-Demand Trigger
@@ -94,9 +94,9 @@ class Trigger(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Trigger("example",
-            actions=[{
-                "jobName": aws_glue_job["example"]["name"],
-            }],
+            actions=[aws.glue.TriggerActionArgs(
+                job_name=aws_glue_job["example"]["name"],
+            )],
             type="ON_DEMAND")
         ```
         ### Scheduled Trigger
@@ -106,9 +106,9 @@ class Trigger(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Trigger("example",
-            actions=[{
-                "jobName": aws_glue_job["example"]["name"],
-            }],
+            actions=[aws.glue.TriggerActionArgs(
+                job_name=aws_glue_job["example"]["name"],
+            )],
             schedule="cron(15 12 * * ? *)",
             type="SCHEDULED")
         ```
@@ -121,15 +121,15 @@ class Trigger(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Trigger("example",
-            actions=[{
-                "crawlerName": aws_glue_crawler["example1"]["name"],
-            }],
-            predicate={
-                "conditions": [{
-                    "jobName": aws_glue_job["example2"]["name"],
-                    "state": "SUCCEEDED",
-                }],
-            },
+            actions=[aws.glue.TriggerActionArgs(
+                crawler_name=aws_glue_crawler["example1"]["name"],
+            )],
+            predicate=aws.glue.TriggerPredicateArgs(
+                conditions=[aws.glue.TriggerPredicateConditionArgs(
+                    job_name=aws_glue_job["example2"]["name"],
+                    state="SUCCEEDED",
+                )],
+            ),
             type="CONDITIONAL")
         ```
         ### Conditional Trigger with Crawler Condition
@@ -141,15 +141,15 @@ class Trigger(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Trigger("example",
-            actions=[{
-                "jobName": aws_glue_job["example1"]["name"],
-            }],
-            predicate={
-                "conditions": [{
-                    "crawlState": "SUCCEEDED",
-                    "crawlerName": aws_glue_crawler["example2"]["name"],
-                }],
-            },
+            actions=[aws.glue.TriggerActionArgs(
+                job_name=aws_glue_job["example1"]["name"],
+            )],
+            predicate=aws.glue.TriggerPredicateArgs(
+                conditions=[aws.glue.TriggerPredicateConditionArgs(
+                    crawl_state="SUCCEEDED",
+                    crawler_name=aws_glue_crawler["example2"]["name"],
+                )],
+            ),
             type="CONDITIONAL")
         ```
 
@@ -194,7 +194,7 @@ class Trigger(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -275,7 +275,7 @@ class Trigger(pulumi.CustomResource):
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ResolverEndpoint(pulumi.CustomResource):
@@ -58,13 +58,13 @@ class ResolverEndpoint(pulumi.CustomResource):
         foo = aws.route53.ResolverEndpoint("foo",
             direction="INBOUND",
             ip_addresses=[
-                {
-                    "subnet_id": aws_subnet["sn1"]["id"],
-                },
-                {
-                    "ip": "10.0.64.4",
-                    "subnet_id": aws_subnet["sn2"]["id"],
-                },
+                aws.route53.ResolverEndpointIpAddressArgs(
+                    subnet_id=aws_subnet["sn1"]["id"],
+                ),
+                aws.route53.ResolverEndpointIpAddressArgs(
+                    ip="10.0.64.4",
+                    subnet_id=aws_subnet["sn2"]["id"],
+                ),
             ],
             security_group_ids=[
                 aws_security_group["sg1"]["id"],
@@ -103,7 +103,7 @@ class ResolverEndpoint(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -168,7 +168,7 @@ class ResolverEndpoint(pulumi.CustomResource):
         return ResolverEndpoint(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

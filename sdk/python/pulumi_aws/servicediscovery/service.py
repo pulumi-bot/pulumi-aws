@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Service(pulumi.CustomResource):
@@ -73,17 +73,17 @@ class Service(pulumi.CustomResource):
             description="example",
             vpc=example_vpc.id)
         example_service = aws.servicediscovery.Service("exampleService",
-            dns_config={
-                "dnsRecords": [{
-                    "ttl": 10,
-                    "type": "A",
-                }],
-                "namespace_id": example_private_dns_namespace.id,
-                "routingPolicy": "MULTIVALUE",
-            },
-            health_check_custom_config={
-                "failure_threshold": 1,
-            })
+            dns_config=aws.servicediscovery.ServiceDnsConfigArgs(
+                dns_records=[aws.servicediscovery.ServiceDnsConfigDnsRecordArgs(
+                    ttl=10,
+                    type="A",
+                )],
+                namespace_id=example_private_dns_namespace.id,
+                routing_policy="MULTIVALUE",
+            ),
+            health_check_custom_config=aws.servicediscovery.ServiceHealthCheckCustomConfigArgs(
+                failure_threshold=1,
+            ))
         ```
 
         ```python
@@ -92,18 +92,18 @@ class Service(pulumi.CustomResource):
 
         example_public_dns_namespace = aws.servicediscovery.PublicDnsNamespace("examplePublicDnsNamespace", description="example")
         example_service = aws.servicediscovery.Service("exampleService",
-            dns_config={
-                "dnsRecords": [{
-                    "ttl": 10,
-                    "type": "A",
-                }],
-                "namespace_id": example_public_dns_namespace.id,
-            },
-            health_check_config={
-                "failure_threshold": 10,
-                "resource_path": "path",
-                "type": "HTTP",
-            })
+            dns_config=aws.servicediscovery.ServiceDnsConfigArgs(
+                dns_records=[aws.servicediscovery.ServiceDnsConfigDnsRecordArgs(
+                    ttl=10,
+                    type="A",
+                )],
+                namespace_id=example_public_dns_namespace.id,
+            ),
+            health_check_config=aws.servicediscovery.ServiceHealthCheckConfigArgs(
+                failure_threshold=10,
+                resource_path="path",
+                type="HTTP",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -146,7 +146,7 @@ class Service(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -218,7 +218,7 @@ class Service(pulumi.CustomResource):
         return Service(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

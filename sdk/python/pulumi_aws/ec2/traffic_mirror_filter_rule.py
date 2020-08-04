@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class TrafficMirrorFilterRule(pulumi.CustomResource):
@@ -83,18 +83,18 @@ class TrafficMirrorFilterRule(pulumi.CustomResource):
         rulein = aws.ec2.TrafficMirrorFilterRule("rulein",
             description="test rule",
             destination_cidr_block="10.0.0.0/8",
-            destination_port_range={
-                "from_port": 22,
-                "to_port": 53,
-            },
+            destination_port_range=aws.ec2.TrafficMirrorFilterRuleDestinationPortRangeArgs(
+                from_port=22,
+                to_port=53,
+            ),
             protocol=6,
             rule_action="accept",
             rule_number=1,
             source_cidr_block="10.0.0.0/8",
-            source_port_range={
-                "from_port": 0,
-                "to_port": 10,
-            },
+            source_port_range=aws.ec2.TrafficMirrorFilterRuleSourcePortRangeArgs(
+                from_port=0,
+                to_port=10,
+            ),
             traffic_direction="ingress",
             traffic_mirror_filter_id=filter.id)
         ```
@@ -133,7 +133,7 @@ class TrafficMirrorFilterRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -214,7 +214,7 @@ class TrafficMirrorFilterRule(pulumi.CustomResource):
         return TrafficMirrorFilterRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

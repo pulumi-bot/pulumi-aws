@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Job(pulumi.CustomResource):
@@ -104,9 +104,9 @@ class Job(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Job("example",
-            command={
-                "scriptLocation": f"s3://{aws_s3_bucket['example']['bucket']}/example.py",
-            },
+            command=aws.glue.JobCommandArgs(
+                script_location=f"s3://{aws_s3_bucket['example']['bucket']}/example.py",
+            ),
             role_arn=aws_iam_role["example"]["arn"])
         ```
         ### Scala Job
@@ -116,9 +116,9 @@ class Job(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Job("example",
-            command={
-                "scriptLocation": f"s3://{aws_s3_bucket['example']['bucket']}/example.scala",
-            },
+            command=aws.glue.JobCommandArgs(
+                script_location=f"s3://{aws_s3_bucket['example']['bucket']}/example.scala",
+            ),
             default_arguments={
                 "--job-language": "scala",
             },
@@ -184,7 +184,7 @@ class Job(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -288,7 +288,7 @@ class Job(pulumi.CustomResource):
         return Job(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

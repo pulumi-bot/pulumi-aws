@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Function(pulumi.CustomResource):
@@ -172,29 +172,29 @@ class Function(pulumi.CustomResource):
         # EFS access point used by lambda file system
         access_point_for_lambda = aws.efs.AccessPoint("accessPointForLambda",
             file_system_id=efs_for_lambda.id,
-            root_directory={
-                "path": "/lambda",
-                "creationInfo": {
-                    "ownerGid": 1000,
-                    "ownerUid": 1000,
-                    "permissions": "777",
-                },
-            },
-            posix_user={
-                "gid": 1000,
-                "uid": 1000,
-            })
+            root_directory=aws.efs.AccessPointRootDirectoryArgs(
+                path="/lambda",
+                creation_info=aws.efs.AccessPointRootDirectoryCreationInfoArgs(
+                    owner_gid=1000,
+                    owner_uid=1000,
+                    permissions="777",
+                ),
+            ),
+            posix_user=aws.efs.AccessPointPosixUserArgs(
+                gid=1000,
+                uid=1000,
+            ))
         # A lambda function connected to an EFS file system
         # ... other configuration ...
         example = aws.lambda_.Function("example",
-            file_system_config={
-                "arn": access_point_for_lambda.arn,
-                "localMountPath": "/mnt/efs",
-            },
-            vpc_config={
-                "subnet_ids": [aws_subnet["subnet_for_lambda"]["id"]],
-                "security_group_ids": [aws_security_group["sg_for_lambda"]["id"]],
-            },
+            file_system_config=aws.lambda_.FunctionFileSystemConfigArgs(
+                arn=access_point_for_lambda.arn,
+                local_mount_path="/mnt/efs",
+            ),
+            vpc_config=aws.lambda_.FunctionVpcConfigArgs(
+                subnet_ids=[aws_subnet["subnet_for_lambda"]["id"]],
+                security_group_ids=[aws_security_group["sg_for_lambda"]["id"]],
+            ),
             opts=ResourceOptions(depends_on=[alpha]))
         ```
         ### CloudWatch Logging and Permissions
@@ -314,7 +314,7 @@ class Function(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -463,7 +463,7 @@ class Function(pulumi.CustomResource):
         return Function(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DomainName(pulumi.CustomResource):
@@ -135,11 +135,11 @@ class DomainName(pulumi.CustomResource):
         # Example DNS record using Route53.
         # Route53 is not specifically required; any DNS host can be used.
         example_record = aws.route53.Record("exampleRecord",
-            aliases=[{
-                "evaluateTargetHealth": True,
-                "name": example_domain_name.cloudfront_domain_name,
-                "zone_id": example_domain_name.cloudfront_zone_id,
-            }],
+            aliases=[aws.route53.RecordAliasArgs(
+                evaluate_target_health=True,
+                name=example_domain_name.cloudfront_domain_name,
+                zone_id=example_domain_name.cloudfront_zone_id,
+            )],
             name=example_domain_name.domain_name,
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
@@ -159,11 +159,11 @@ class DomainName(pulumi.CustomResource):
         # Example DNS record using Route53.
         # Route53 is not specifically required; any DNS host can be used.
         example_record = aws.route53.Record("exampleRecord",
-            aliases=[{
-                "evaluateTargetHealth": True,
-                "name": example_domain_name.cloudfront_domain_name,
-                "zone_id": example_domain_name.cloudfront_zone_id,
-            }],
+            aliases=[aws.route53.RecordAliasArgs(
+                evaluate_target_health=True,
+                name=example_domain_name.cloudfront_domain_name,
+                zone_id=example_domain_name.cloudfront_zone_id,
+            )],
             name=example_domain_name.domain_name,
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
@@ -177,18 +177,18 @@ class DomainName(pulumi.CustomResource):
 
         example_domain_name = aws.apigateway.DomainName("exampleDomainName",
             domain_name="api.example.com",
-            endpoint_configuration={
-                "types": "REGIONAL",
-            },
+            endpoint_configuration=aws.apigateway.DomainNameEndpointConfigurationArgs(
+                types="REGIONAL",
+            ),
             regional_certificate_arn=aws_acm_certificate_validation["example"]["certificate_arn"])
         # Example DNS record using Route53.
         # Route53 is not specifically required; any DNS host can be used.
         example_record = aws.route53.Record("exampleRecord",
-            aliases=[{
-                "evaluateTargetHealth": True,
-                "name": example_domain_name.regional_domain_name,
-                "zone_id": example_domain_name.regional_zone_id,
-            }],
+            aliases=[aws.route53.RecordAliasArgs(
+                evaluate_target_health=True,
+                name=example_domain_name.regional_domain_name,
+                zone_id=example_domain_name.regional_zone_id,
+            )],
             name=example_domain_name.domain_name,
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
@@ -204,18 +204,18 @@ class DomainName(pulumi.CustomResource):
             certificate_chain=(lambda path: open(path).read())(f"{path['module']}/example.com/ca.crt"),
             certificate_private_key=(lambda path: open(path).read())(f"{path['module']}/example.com/example.key"),
             domain_name="api.example.com",
-            endpoint_configuration={
-                "types": "REGIONAL",
-            },
+            endpoint_configuration=aws.apigateway.DomainNameEndpointConfigurationArgs(
+                types="REGIONAL",
+            ),
             regional_certificate_name="example-api")
         # Example DNS record using Route53.
         # Route53 is not specifically required; any DNS host can be used.
         example_record = aws.route53.Record("exampleRecord",
-            aliases=[{
-                "evaluateTargetHealth": True,
-                "name": example_domain_name.regional_domain_name,
-                "zone_id": example_domain_name.regional_zone_id,
-            }],
+            aliases=[aws.route53.RecordAliasArgs(
+                evaluate_target_health=True,
+                name=example_domain_name.regional_domain_name,
+                zone_id=example_domain_name.regional_zone_id,
+            )],
             name=example_domain_name.domain_name,
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
@@ -259,7 +259,7 @@ class DomainName(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -356,7 +356,7 @@ class DomainName(pulumi.CustomResource):
         return DomainName(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
