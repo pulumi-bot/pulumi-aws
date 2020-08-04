@@ -37,9 +37,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
-// 			PeerOwnerId: pulumi.String(_var.Peer_owner_id),
-// 			PeerVpcId:   pulumi.String(aws_vpc.Bar.Id),
-// 			VpcId:       pulumi.String(aws_vpc.Foo.Id),
+// 			PeerOwnerId: pulumi.Any(_var.Peer_owner_id),
+// 			PeerVpcId:   pulumi.Any(aws_vpc.Bar.Id),
+// 			VpcId:       pulumi.Any(aws_vpc.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -65,12 +65,12 @@ import (
 // 			Accepter: &ec2.VpcPeeringConnectionAccepterArgs{
 // 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 // 			},
-// 			PeerOwnerId: pulumi.String(_var.Peer_owner_id),
-// 			PeerVpcId:   pulumi.String(aws_vpc.Bar.Id),
+// 			PeerOwnerId: pulumi.Any(_var.Peer_owner_id),
+// 			PeerVpcId:   pulumi.Any(aws_vpc.Bar.Id),
 // 			Requester: &ec2.VpcPeeringConnectionRequesterArgs{
 // 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 // 			},
-// 			VpcId: pulumi.String(aws_vpc.Foo.Id),
+// 			VpcId: pulumi.Any(aws_vpc.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -106,7 +106,7 @@ import (
 // 		}
 // 		_, err = ec2.NewVpcPeeringConnection(ctx, "fooVpcPeeringConnection", &ec2.VpcPeeringConnectionArgs{
 // 			AutoAccept:  pulumi.Bool(true),
-// 			PeerOwnerId: pulumi.String(_var.Peer_owner_id),
+// 			PeerOwnerId: pulumi.Any(_var.Peer_owner_id),
 // 			PeerVpcId:   bar.ID(),
 // 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("VPC Peering between foo and bar"),
@@ -146,7 +146,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = ec2.NewVpcPeeringConnection(ctx, "fooVpcPeeringConnection", &ec2.VpcPeeringConnectionArgs{
-// 			PeerOwnerId: pulumi.String(_var.Peer_owner_id),
+// 			PeerOwnerId: pulumi.Any(_var.Peer_owner_id),
 // 			PeerVpcId:   bar.ID(),
 // 			VpcId:       fooVpc.ID(),
 // 			PeerRegion:  pulumi.String("us-east-1"),
