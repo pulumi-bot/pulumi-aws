@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ScheduledAction(pulumi.CustomResource):
@@ -69,10 +69,10 @@ class ScheduledAction(pulumi.CustomResource):
         dynamodb_scheduled_action = aws.appautoscaling.ScheduledAction("dynamodbScheduledAction",
             resource_id=dynamodb_target.resource_id,
             scalable_dimension=dynamodb_target.scalable_dimension,
-            scalable_target_action={
-                "max_capacity": 200,
-                "min_capacity": 1,
-            },
+            scalable_target_action=aws.appautoscaling.ScheduledActionScalableTargetActionArgs(
+                max_capacity=200,
+                min_capacity=1,
+            ),
             schedule="at(2006-01-02T15:04:05)",
             service_namespace=dynamodb_target.service_namespace)
         ```
@@ -91,10 +91,10 @@ class ScheduledAction(pulumi.CustomResource):
         ecs_scheduled_action = aws.appautoscaling.ScheduledAction("ecsScheduledAction",
             resource_id=ecs_target.resource_id,
             scalable_dimension=ecs_target.scalable_dimension,
-            scalable_target_action={
-                "max_capacity": 10,
-                "min_capacity": 1,
-            },
+            scalable_target_action=aws.appautoscaling.ScheduledActionScalableTargetActionArgs(
+                max_capacity=10,
+                min_capacity=1,
+            ),
             schedule="at(2006-01-02T15:04:05)",
             service_namespace=ecs_target.service_namespace)
         ```
@@ -126,7 +126,7 @@ class ScheduledAction(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -191,7 +191,7 @@ class ScheduledAction(pulumi.CustomResource):
         return ScheduledAction(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

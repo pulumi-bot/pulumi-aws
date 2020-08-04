@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Group(pulumi.CustomResource):
@@ -216,34 +216,34 @@ class Group(pulumi.CustomResource):
             force_delete=True,
             health_check_grace_period=300,
             health_check_type="ELB",
-            initial_lifecycle_hooks=[{
-                "default_result": "CONTINUE",
-                "heartbeat_timeout": 2000,
-                "lifecycle_transition": "autoscaling:EC2_INSTANCE_LAUNCHING",
-                "name": "foobar",
-                "notification_metadata": \"\"\"{
+            initial_lifecycle_hooks=[aws.autoscaling.GroupInitialLifecycleHookArgs(
+                default_result="CONTINUE",
+                heartbeat_timeout=2000,
+                lifecycle_transition="autoscaling:EC2_INSTANCE_LAUNCHING",
+                name="foobar",
+                notification_metadata=\"\"\"{
           "foo": "bar"
         }
 
         \"\"\",
-                "notification_target_arn": "arn:aws:sqs:us-east-1:444455556666:queue1*",
-                "role_arn": "arn:aws:iam::123456789012:role/S3Access",
-            }],
+                notification_target_arn="arn:aws:sqs:us-east-1:444455556666:queue1*",
+                role_arn="arn:aws:iam::123456789012:role/S3Access",
+            )],
             launch_configuration=aws_launch_configuration["foobar"]["name"],
             max_size=5,
             min_size=2,
             placement_group=test.id,
             tags=[
-                {
-                    "key": "foo",
-                    "propagateAtLaunch": True,
-                    "value": "bar",
-                },
-                {
-                    "key": "lorem",
-                    "propagateAtLaunch": False,
-                    "value": "ipsum",
-                },
+                aws.autoscaling.GroupTagArgs(
+                    key="foo",
+                    propagate_at_launch=True,
+                    value="bar",
+                ),
+                aws.autoscaling.GroupTagArgs(
+                    key="lorem",
+                    propagate_at_launch=False,
+                    value="ipsum",
+                ),
             ],
             vpc_zone_identifiers=[
                 aws_subnet["example1"]["id"],
@@ -263,10 +263,10 @@ class Group(pulumi.CustomResource):
         bar = aws.autoscaling.Group("bar",
             availability_zones=["us-east-1a"],
             desired_capacity=1,
-            launch_template={
-                "id": foobar.id,
-                "version": "$Latest",
-            },
+            launch_template=aws.autoscaling.GroupLaunchTemplateArgs(
+                id=foobar.id,
+                version="$Latest",
+            ),
             max_size=1,
             min_size=1)
         ```
@@ -285,8 +285,8 @@ class Group(pulumi.CustomResource):
             desired_capacity=1,
             max_size=1,
             min_size=1,
-            mixed_instances_policy={
-                "launch_template": {
+            mixed_instances_policy=aws.autoscaling.GroupMixedInstancesPolicyArgs(
+                launch_template={
                     "launchTemplateSpecification": {
                         "launchTemplateId": example_launch_template.id,
                     },
@@ -301,7 +301,7 @@ class Group(pulumi.CustomResource):
                         },
                     ],
                 },
-            })
+            ))
         ```
         ## Waiting for Capacity
 
@@ -481,7 +481,7 @@ class Group(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -679,7 +679,7 @@ class Group(pulumi.CustomResource):
         return Group(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

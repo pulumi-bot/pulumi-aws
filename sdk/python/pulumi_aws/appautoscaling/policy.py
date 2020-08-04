@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Policy(pulumi.CustomResource):
@@ -92,12 +92,12 @@ class Policy(pulumi.CustomResource):
             resource_id=dynamodb_table_read_target.resource_id,
             scalable_dimension=dynamodb_table_read_target.scalable_dimension,
             service_namespace=dynamodb_table_read_target.service_namespace,
-            target_tracking_scaling_policy_configuration={
-                "predefinedMetricSpecification": {
-                    "predefinedMetricType": "DynamoDBReadCapacityUtilization",
-                },
-                "targetValue": 70,
-            })
+            target_tracking_scaling_policy_configuration=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationArgs(
+                predefined_metric_specification=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs(
+                    predefined_metric_type="DynamoDBReadCapacityUtilization",
+                ),
+                target_value=70,
+            ))
         ```
         ### ECS Service Autoscaling
 
@@ -116,29 +116,15 @@ class Policy(pulumi.CustomResource):
             resource_id=ecs_target.resource_id,
             scalable_dimension=ecs_target.scalable_dimension,
             service_namespace=ecs_target.service_namespace,
-            step_scaling_policy_configuration={
-                "adjustment_type": "ChangeInCapacity",
-                "cooldown": 60,
-                "metric_aggregation_type": "Maximum",
-                "step_adjustments": [{
+            step_scaling_policy_configuration=aws.appautoscaling.PolicyStepScalingPolicyConfigurationArgs(
+                adjustment_type="ChangeInCapacity",
+                cooldown=60,
+                metric_aggregation_type="Maximum",
+                step_adjustments=[{
                     "metricIntervalUpperBound": 0,
                     "scaling_adjustment": -1,
                 }],
-            })
-        ```
-        ### Preserve desired count when updating an autoscaled ECS Service
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ecs_service = aws.ecs.Service("ecsService",
-            cluster="clusterName",
-            desired_count=2,
-            lifecycle={
-                "ignoreChanges": ["desiredCount"],
-            },
-            task_definition="taskDefinitionFamily:1")
+            ))
         ```
         ### Aurora Read Replica Autoscaling
 
@@ -157,14 +143,14 @@ class Policy(pulumi.CustomResource):
             resource_id=replicas_target.resource_id,
             scalable_dimension=replicas_target.scalable_dimension,
             service_namespace=replicas_target.service_namespace,
-            target_tracking_scaling_policy_configuration={
-                "predefinedMetricSpecification": {
-                    "predefinedMetricType": "RDSReaderAverageCPUUtilization",
-                },
-                "scaleInCooldown": 300,
-                "scaleOutCooldown": 300,
-                "targetValue": 75,
-            })
+            target_tracking_scaling_policy_configuration=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationArgs(
+                predefined_metric_specification=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs(
+                    predefined_metric_type="RDSReaderAverageCPUUtilization",
+                ),
+                scale_in_cooldown=300,
+                scale_out_cooldown=300,
+                target_value=75,
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -220,7 +206,7 @@ class Policy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -311,7 +297,7 @@ class Policy(pulumi.CustomResource):
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

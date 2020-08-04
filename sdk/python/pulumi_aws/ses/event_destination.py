@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class EventDestination(pulumi.CustomResource):
@@ -59,11 +59,11 @@ class EventDestination(pulumi.CustomResource):
         import pulumi_aws as aws
 
         cloudwatch = aws.ses.EventDestination("cloudwatch",
-            cloudwatch_destinations=[{
-                "default_value": "default",
-                "dimensionName": "dimension",
-                "valueSource": "emailHeader",
-            }],
+            cloudwatch_destinations=[aws.ses.EventDestinationCloudwatchDestinationArgs(
+                default_value="default",
+                dimension_name="dimension",
+                value_source="emailHeader",
+            )],
             configuration_set_name=aws_ses_configuration_set["example"]["name"],
             enabled=True,
             matching_types=[
@@ -80,10 +80,10 @@ class EventDestination(pulumi.CustomResource):
         kinesis = aws.ses.EventDestination("kinesis",
             configuration_set_name=aws_ses_configuration_set["example"]["name"],
             enabled=True,
-            kinesis_destination={
-                "role_arn": aws_iam_role["example"]["arn"],
-                "stream_arn": aws_kinesis_firehose_delivery_stream["example"]["arn"],
-            },
+            kinesis_destination=aws.ses.EventDestinationKinesisDestinationArgs(
+                role_arn=aws_iam_role["example"]["arn"],
+                stream_arn=aws_kinesis_firehose_delivery_stream["example"]["arn"],
+            ),
             matching_types=[
                 "bounce",
                 "send",
@@ -102,9 +102,9 @@ class EventDestination(pulumi.CustomResource):
                 "bounce",
                 "send",
             ],
-            sns_destination={
-                "topic_arn": aws_sns_topic["example"]["arn"],
-            })
+            sns_destination=aws.ses.EventDestinationSnsDestinationArgs(
+                topic_arn=aws_sns_topic["example"]["arn"],
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -143,7 +143,7 @@ class EventDestination(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -212,7 +212,7 @@ class EventDestination(pulumi.CustomResource):
         return EventDestination(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

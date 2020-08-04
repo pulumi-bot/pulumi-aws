@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VpcPeeringConnection(pulumi.CustomResource):
@@ -109,14 +109,14 @@ class VpcPeeringConnection(pulumi.CustomResource):
         import pulumi_aws as aws
 
         foo = aws.ec2.VpcPeeringConnection("foo",
-            accepter={
-                "allowRemoteVpcDnsResolution": True,
-            },
+            accepter=aws.ec2.VpcPeeringConnectionAccepterArgs(
+                allow_remote_vpc_dns_resolution=True,
+            ),
             peer_owner_id=var["peer_owner_id"],
             peer_vpc_id=aws_vpc["bar"]["id"],
-            requester={
-                "allowRemoteVpcDnsResolution": True,
-            },
+            requester=aws.ec2.VpcPeeringConnectionRequesterArgs(
+                allow_remote_vpc_dns_resolution=True,
+            ),
             vpc_id=aws_vpc["foo"]["id"])
         ```
 
@@ -214,7 +214,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -306,7 +306,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
         return VpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Budget(pulumi.CustomResource):
@@ -94,13 +94,13 @@ class Budget(pulumi.CustomResource):
             },
             limit_amount="1200",
             limit_unit="USD",
-            notifications=[{
-                "comparison_operator": "GREATER_THAN",
-                "notification_type": "FORECASTED",
-                "subscriberEmailAddresses": ["test@example.com"],
-                "threshold": 100,
-                "thresholdType": "PERCENTAGE",
-            }],
+            notifications=[aws.budgets.BudgetNotificationArgs(
+                comparison_operator="GREATER_THAN",
+                notification_type="FORECASTED",
+                subscriber_email_addresses=["test@example.com"],
+                threshold=100,
+                threshold_type="PERCENTAGE",
+            )],
             time_period_end="2087-06-15_00:00",
             time_period_start="2017-07-01_00:00",
             time_unit="MONTHLY")
@@ -138,18 +138,18 @@ class Budget(pulumi.CustomResource):
 
         savings_plan_utilization = aws.budgets.Budget("savingsPlanUtilization",
             budget_type="SAVINGS_PLANS_UTILIZATION",
-            cost_types={
-                "includeCredit": False,
-                "includeDiscount": False,
-                "includeOtherSubscription": False,
-                "includeRecurring": False,
-                "includeRefund": False,
-                "includeSubscription": True,
-                "includeSupport": False,
-                "includeTax": False,
-                "includeUpfront": False,
-                "useBlended": False,
-            },
+            cost_types=aws.budgets.BudgetCostTypesArgs(
+                include_credit=False,
+                include_discount=False,
+                include_other_subscription=False,
+                include_recurring=False,
+                include_refund=False,
+                include_subscription=True,
+                include_support=False,
+                include_tax=False,
+                include_upfront=False,
+                use_blended=False,
+            ),
             limit_amount="100.0",
             limit_unit="PERCENTAGE")
         ```
@@ -165,18 +165,18 @@ class Budget(pulumi.CustomResource):
             cost_filters={
                 "Service": "Amazon Relational Database Service",
             },
-            cost_types={
-                "includeCredit": False,
-                "includeDiscount": False,
-                "includeOtherSubscription": False,
-                "includeRecurring": False,
-                "includeRefund": False,
-                "includeSubscription": True,
-                "includeSupport": False,
-                "includeTax": False,
-                "includeUpfront": False,
-                "useBlended": False,
-            },
+            cost_types=aws.budgets.BudgetCostTypesArgs(
+                include_credit=False,
+                include_discount=False,
+                include_other_subscription=False,
+                include_recurring=False,
+                include_refund=False,
+                include_subscription=True,
+                include_support=False,
+                include_tax=False,
+                include_upfront=False,
+                use_blended=False,
+            ),
             limit_amount="100.0",
             limit_unit="PERCENTAGE")
         ```
@@ -230,7 +230,7 @@ class Budget(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -328,7 +328,7 @@ class Budget(pulumi.CustomResource):
         return Budget(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class MaintenanceWindowTask(pulumi.CustomResource):
@@ -117,24 +117,24 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.ssm.MaintenanceWindowTask("example",
-            max_concurrency=2,
-            max_errors=1,
+            max_concurrency="2",
+            max_errors="1",
             priority=1,
             service_role_arn=aws_iam_role["example"]["arn"],
-            targets=[{
-                "key": "InstanceIds",
-                "values": [aws_instance["example"]["id"]],
-            }],
+            targets=[aws.ssm.MaintenanceWindowTaskTargetArgs(
+                key="InstanceIds",
+                values=[aws_instance["example"]["id"]],
+            )],
             task_arn="AWS-RestartEC2Instance",
-            task_invocation_parameters={
-                "automationParameters": {
-                    "document_version": "$LATEST",
-                    "parameter": [{
+            task_invocation_parameters=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersArgs(
+                automation_parameters=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs(
+                    document_version="$LATEST",
+                    parameter=[{
                         "name": "InstanceId",
                         "values": [aws_instance["example"]["id"]],
                     }],
-                },
-            },
+                ),
+            ),
             task_type="AUTOMATION",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
@@ -145,32 +145,32 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.ssm.MaintenanceWindowTask("example",
-            max_concurrency=2,
-            max_errors=1,
+            max_concurrency="2",
+            max_errors="1",
             priority=1,
             service_role_arn=aws_iam_role["example"]["arn"],
-            targets=[{
-                "key": "InstanceIds",
-                "values": [aws_instance["example"]["id"]],
-            }],
+            targets=[aws.ssm.MaintenanceWindowTaskTargetArgs(
+                key="InstanceIds",
+                values=[aws_instance["example"]["id"]],
+            )],
             task_arn="AWS-RunShellScript",
-            task_invocation_parameters={
-                "runCommandParameters": {
-                    "notificationConfig": {
-                        "notificationArn": aws_sns_topic["example"]["arn"],
-                        "notificationEvents": ["All"],
-                        "notification_type": "Command",
-                    },
-                    "outputS3Bucket": aws_s3_bucket["example"]["bucket"],
-                    "outputS3KeyPrefix": "output",
-                    "parameter": [{
+            task_invocation_parameters=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersArgs(
+                run_command_parameters=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs(
+                    notification_config=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs(
+                        notification_arn=aws_sns_topic["example"]["arn"],
+                        notification_events=["All"],
+                        notification_type="Command",
+                    ),
+                    output_s3_bucket=aws_s3_bucket["example"]["bucket"],
+                    output_s3_key_prefix="output",
+                    parameter=[{
                         "name": "commands",
                         "values": ["date"],
                     }],
-                    "service_role_arn": aws_iam_role["example"]["arn"],
-                    "timeoutSeconds": 600,
-                },
-            },
+                    service_role_arn=aws_iam_role["example"]["arn"],
+                    timeout_seconds=600,
+                ),
+            ),
             task_type="RUN_COMMAND",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
@@ -181,21 +181,21 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.ssm.MaintenanceWindowTask("example",
-            max_concurrency=2,
-            max_errors=1,
+            max_concurrency="2",
+            max_errors="1",
             priority=1,
             service_role_arn=aws_iam_role["example"]["arn"],
-            targets=[{
-                "key": "InstanceIds",
-                "values": [aws_instance["example"]["id"]],
-            }],
+            targets=[aws.ssm.MaintenanceWindowTaskTargetArgs(
+                key="InstanceIds",
+                values=[aws_instance["example"]["id"]],
+            )],
             task_arn=aws_sfn_activity["example"]["id"],
-            task_invocation_parameters={
-                "stepFunctionsParameters": {
-                    "input": "{\"key1\":\"value1\"}",
-                    "name": "example",
-                },
-            },
+            task_invocation_parameters=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersArgs(
+                step_functions_parameters=aws.ssm.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs(
+                    input="{\"key1\":\"value1\"}",
+                    name="example",
+                ),
+            ),
             task_type="STEP_FUNCTIONS",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
@@ -278,7 +278,7 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -417,7 +417,7 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         return MaintenanceWindowTask(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

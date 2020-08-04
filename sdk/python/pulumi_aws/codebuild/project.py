@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Project(pulumi.CustomResource):
@@ -256,96 +256,96 @@ class Project(pulumi.CustomResource):
         \"\"\"),
             role=example_role.name)
         example_project = aws.codebuild.Project("exampleProject",
-            artifacts={
-                "type": "NO_ARTIFACTS",
-            },
-            build_timeout="5",
-            cache={
-                "location": example_bucket.bucket,
-                "type": "S3",
-            },
+            artifacts=aws.codebuild.ProjectArtifactsArgs(
+                type="NO_ARTIFACTS",
+            ),
+            build_timeout=5,
+            cache=aws.codebuild.ProjectCacheArgs(
+                location=example_bucket.bucket,
+                type="S3",
+            ),
             description="test_codebuild_project",
-            environment={
-                "computeType": "BUILD_GENERAL1_SMALL",
-                "environmentVariables": [
-                    {
-                        "name": "SOME_KEY1",
-                        "value": "SOME_VALUE1",
-                    },
-                    {
-                        "name": "SOME_KEY2",
-                        "type": "PARAMETER_STORE",
-                        "value": "SOME_VALUE2",
-                    },
+            environment=aws.codebuild.ProjectEnvironmentArgs(
+                compute_type="BUILD_GENERAL1_SMALL",
+                environment_variables=[
+                    aws.codebuild.ProjectEnvironmentEnvironmentVariableArgs(
+                        name="SOME_KEY1",
+                        value="SOME_VALUE1",
+                    ),
+                    aws.codebuild.ProjectEnvironmentEnvironmentVariableArgs(
+                        name="SOME_KEY2",
+                        type="PARAMETER_STORE",
+                        value="SOME_VALUE2",
+                    ),
                 ],
-                "image": "aws/codebuild/standard:1.0",
-                "imagePullCredentialsType": "CODEBUILD",
-                "type": "LINUX_CONTAINER",
-            },
-            logs_config={
-                "cloudwatchLogs": {
-                    "group_name": "log-group",
-                    "streamName": "log-stream",
-                },
-                "s3Logs": {
-                    "location": example_bucket.id.apply(lambda id: f"{id}/build-log"),
-                    "status": "ENABLED",
-                },
-            },
+                image="aws/codebuild/standard:1.0",
+                image_pull_credentials_type="CODEBUILD",
+                type="LINUX_CONTAINER",
+            ),
+            logs_config=aws.codebuild.ProjectLogsConfigArgs(
+                cloudwatch_logs=aws.codebuild.ProjectLogsConfigCloudwatchLogsArgs(
+                    group_name="log-group",
+                    stream_name="log-stream",
+                ),
+                s3_logs=aws.codebuild.ProjectLogsConfigS3LogsArgs(
+                    location=example_bucket.id.apply(lambda id: f"{id}/build-log"),
+                    status="ENABLED",
+                ),
+            ),
             service_role=example_role.arn,
-            source={
-                "gitCloneDepth": 1,
-                "gitSubmodulesConfig": {
-                    "fetchSubmodules": True,
-                },
-                "location": "https://github.com/mitchellh/packer.git",
-                "type": "GITHUB",
-            },
+            source=aws.codebuild.ProjectSourceArgs(
+                git_clone_depth=1,
+                git_submodules_config=aws.codebuild.ProjectSourceGitSubmodulesConfigArgs(
+                    fetch_submodules=True,
+                ),
+                location="https://github.com/mitchellh/packer.git",
+                type="GITHUB",
+            ),
             source_version="master",
             tags={
                 "Environment": "Test",
             },
-            vpc_config={
-                "security_group_ids": [
+            vpc_config=aws.codebuild.ProjectVpcConfigArgs(
+                security_group_ids=[
                     aws_security_group["example1"]["id"],
                     aws_security_group["example2"]["id"],
                 ],
-                "subnets": [
+                subnets=[
                     aws_subnet["example1"]["id"],
                     aws_subnet["example2"]["id"],
                 ],
-                "vpc_id": aws_vpc["example"]["id"],
-            })
+                vpc_id=aws_vpc["example"]["id"],
+            ))
         project_with_cache = aws.codebuild.Project("project-with-cache",
-            artifacts={
-                "type": "NO_ARTIFACTS",
-            },
-            build_timeout="5",
-            cache={
-                "modes": [
+            artifacts=aws.codebuild.ProjectArtifactsArgs(
+                type="NO_ARTIFACTS",
+            ),
+            build_timeout=5,
+            cache=aws.codebuild.ProjectCacheArgs(
+                modes=[
                     "LOCAL_DOCKER_LAYER_CACHE",
                     "LOCAL_SOURCE_CACHE",
                 ],
-                "type": "LOCAL",
-            },
+                type="LOCAL",
+            ),
             description="test_codebuild_project_cache",
-            environment={
-                "computeType": "BUILD_GENERAL1_SMALL",
-                "environmentVariables": [{
-                    "name": "SOME_KEY1",
-                    "value": "SOME_VALUE1",
-                }],
-                "image": "aws/codebuild/standard:1.0",
-                "imagePullCredentialsType": "CODEBUILD",
-                "type": "LINUX_CONTAINER",
-            },
-            queued_timeout="5",
+            environment=aws.codebuild.ProjectEnvironmentArgs(
+                compute_type="BUILD_GENERAL1_SMALL",
+                environment_variables=[aws.codebuild.ProjectEnvironmentEnvironmentVariableArgs(
+                    name="SOME_KEY1",
+                    value="SOME_VALUE1",
+                )],
+                image="aws/codebuild/standard:1.0",
+                image_pull_credentials_type="CODEBUILD",
+                type="LINUX_CONTAINER",
+            ),
+            queued_timeout=5,
             service_role=example_role.arn,
-            source={
-                "gitCloneDepth": 1,
-                "location": "https://github.com/mitchellh/packer.git",
-                "type": "GITHUB",
-            },
+            source=aws.codebuild.ProjectSourceArgs(
+                git_clone_depth=1,
+                location="https://github.com/mitchellh/packer.git",
+                type="GITHUB",
+            ),
             tags={
                 "Environment": "Test",
             })
@@ -481,7 +481,7 @@ class Project(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -674,7 +674,7 @@ class Project(pulumi.CustomResource):
         return Project(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class UsagePlan(pulumi.CustomResource):
@@ -71,26 +71,26 @@ class UsagePlan(pulumi.CustomResource):
             stage_name="prod")
         my_usage_plan = aws.apigateway.UsagePlan("myUsagePlan",
             api_stages=[
-                {
-                    "api_id": myapi.id,
-                    "stage": dev.stage_name,
-                },
-                {
-                    "api_id": myapi.id,
-                    "stage": prod.stage_name,
-                },
+                aws.apigateway.UsagePlanApiStageArgs(
+                    api_id=myapi.id,
+                    stage=dev.stage_name,
+                ),
+                aws.apigateway.UsagePlanApiStageArgs(
+                    api_id=myapi.id,
+                    stage=prod.stage_name,
+                ),
             ],
             description="my description",
             product_code="MYCODE",
-            quota_settings={
-                "limit": 20,
-                "offset": 2,
-                "period": "WEEK",
-            },
-            throttle_settings={
-                "burstLimit": 5,
-                "rate_limit": 10,
-            })
+            quota_settings=aws.apigateway.UsagePlanQuotaSettingsArgs(
+                limit=20,
+                offset=2,
+                period="WEEK",
+            ),
+            throttle_settings=aws.apigateway.UsagePlanThrottleSettingsArgs(
+                burst_limit=5,
+                rate_limit=10,
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -130,7 +130,7 @@ class UsagePlan(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -199,7 +199,7 @@ class UsagePlan(pulumi.CustomResource):
         return UsagePlan(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

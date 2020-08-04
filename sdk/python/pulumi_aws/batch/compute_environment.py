@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ComputeEnvironment(pulumi.CustomResource):
@@ -121,27 +121,27 @@ class ComputeEnvironment(pulumi.CustomResource):
         aws_batch_service_role_role_policy_attachment = aws.iam.RolePolicyAttachment("awsBatchServiceRoleRolePolicyAttachment",
             policy_arn="arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole",
             role=aws_batch_service_role_role.name)
-        sample_security_group = aws.ec2.SecurityGroup("sampleSecurityGroup", egress=[{
-            "cidr_blocks": ["0.0.0.0/0"],
-            "from_port": 0,
-            "protocol": "-1",
-            "to_port": 0,
-        }])
+        sample_security_group = aws.ec2.SecurityGroup("sampleSecurityGroup", egress=[aws.ec2.SecurityGroupEgressArgs(
+            cidr_blocks=["0.0.0.0/0"],
+            from_port=0,
+            protocol="-1",
+            to_port=0,
+        )])
         sample_vpc = aws.ec2.Vpc("sampleVpc", cidr_block="10.1.0.0/16")
         sample_subnet = aws.ec2.Subnet("sampleSubnet",
             cidr_block="10.1.1.0/24",
             vpc_id=sample_vpc.id)
         sample_compute_environment = aws.batch.ComputeEnvironment("sampleComputeEnvironment",
             compute_environment_name="sample",
-            compute_resources={
-                "instanceRole": ecs_instance_role_instance_profile.arn,
-                "instance_types": ["c4.large"],
-                "maxVcpus": 16,
-                "minVcpus": 0,
-                "security_group_ids": [sample_security_group.id],
-                "subnets": [sample_subnet.id],
-                "type": "EC2",
-            },
+            compute_resources=aws.batch.ComputeEnvironmentComputeResourcesArgs(
+                instance_role=ecs_instance_role_instance_profile.arn,
+                instance_types=["c4.large"],
+                max_vcpus=16,
+                min_vcpus=0,
+                security_group_ids=[sample_security_group.id],
+                subnets=[sample_subnet.id],
+                type="EC2",
+            ),
             service_role=aws_batch_service_role_role.arn,
             type="MANAGED",
             opts=ResourceOptions(depends_on=["aws_iam_role_policy_attachment.aws_batch_service_role"]))
@@ -189,7 +189,7 @@ class ComputeEnvironment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -274,7 +274,7 @@ class ComputeEnvironment(pulumi.CustomResource):
         return ComputeEnvironment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

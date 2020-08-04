@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetOrganizationResult:
     """
@@ -79,6 +80,8 @@ class GetOrganizationResult:
         """
         List of organization roots. All elements have these attributes:
         """
+
+
 class AwaitableGetOrganizationResult(GetOrganizationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,6 +100,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             non_master_accounts=self.non_master_accounts,
             roots=self.roots)
 
+
 def get_organization(opts=None):
     """
     Get information about the organization that the user's account belongs to
@@ -109,7 +113,7 @@ def get_organization(opts=None):
     import pulumi_aws as aws
 
     example = aws.organizations.get_organization()
-    pulumi.export("accountIds", [__item["id"] for __item in example.accounts])
+    pulumi.export("accountIds", [__item.id for __item in example.accounts])
     ```
     ### SNS topic that can be interacted by the organization only
 
@@ -119,35 +123,33 @@ def get_organization(opts=None):
 
     example = aws.organizations.get_organization()
     sns_topic = aws.sns.Topic("snsTopic")
-    sns_topic_policy_policy_document = sns_topic.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
-        "actions": [
+    sns_topic_policy_policy_document = sns_topic.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+        actions=[
             "SNS:Subscribe",
             "SNS:Publish",
         ],
-        "conditions": [{
-            "test": "StringEquals",
-            "values": [example.id],
-            "variable": "aws:PrincipalOrgID",
-        }],
-        "effect": "Allow",
-        "principals": [{
-            "identifiers": ["*"],
-            "type": "AWS",
-        }],
-        "resources": [arn],
-    }]))
+        conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
+            test="StringEquals",
+            values=[example.id],
+            variable="aws:PrincipalOrgID",
+        )],
+        effect="Allow",
+        principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+            identifiers=["*"],
+            type="AWS",
+        )],
+        resources=[arn],
+    )]))
     sns_topic_policy_topic_policy = aws.sns.TopicPolicy("snsTopicPolicyTopicPolicy",
         arn=sns_topic.arn,
         policy=sns_topic_policy_policy_document.json)
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:organizations/getOrganization:getOrganization', __args__, opts=opts).value
 
     return AwaitableGetOrganizationResult(

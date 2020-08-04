@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("aws.elasticloadbalancing.SslNegotiationPolicy has been deprecated in favor of aws.elb.SslNegotiationPolicy", DeprecationWarning)
 
@@ -48,43 +48,43 @@ class SslNegotiationPolicy(pulumi.CustomResource):
 
         lb = aws.elb.LoadBalancer("lb",
             availability_zones=["us-east-1a"],
-            listeners=[{
-                "instance_port": 8000,
-                "instanceProtocol": "https",
-                "lb_port": 443,
-                "lbProtocol": "https",
-                "sslCertificateId": "arn:aws:iam::123456789012:server-certificate/certName",
-            }])
+            listeners=[aws.elb.LoadBalancerListenerArgs(
+                instance_port=8000,
+                instance_protocol="https",
+                lb_port=443,
+                lb_protocol="https",
+                ssl_certificate_id="arn:aws:iam::123456789012:server-certificate/certName",
+            )])
         foo = aws.elb.SslNegotiationPolicy("foo",
             attributes=[
-                {
-                    "name": "Protocol-TLSv1",
-                    "value": "false",
-                },
-                {
-                    "name": "Protocol-TLSv1.1",
-                    "value": "false",
-                },
-                {
-                    "name": "Protocol-TLSv1.2",
-                    "value": "true",
-                },
-                {
-                    "name": "Server-Defined-Cipher-Order",
-                    "value": "true",
-                },
-                {
-                    "name": "ECDHE-RSA-AES128-GCM-SHA256",
-                    "value": "true",
-                },
-                {
-                    "name": "AES128-GCM-SHA256",
-                    "value": "true",
-                },
-                {
-                    "name": "EDH-RSA-DES-CBC3-SHA",
-                    "value": "false",
-                },
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="Protocol-TLSv1",
+                    value="false",
+                ),
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="Protocol-TLSv1.1",
+                    value="false",
+                ),
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="Protocol-TLSv1.2",
+                    value="true",
+                ),
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="Server-Defined-Cipher-Order",
+                    value="true",
+                ),
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="ECDHE-RSA-AES128-GCM-SHA256",
+                    value="true",
+                ),
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="AES128-GCM-SHA256",
+                    value="true",
+                ),
+                aws.elb.SslNegotiationPolicyAttributeArgs(
+                    name="EDH-RSA-DES-CBC3-SHA",
+                    value="false",
+                ),
             ],
             lb_port=443,
             load_balancer=lb.id)
@@ -117,7 +117,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -170,7 +170,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
         return SslNegotiationPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

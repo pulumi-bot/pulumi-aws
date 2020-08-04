@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DeploymentConfig(pulumi.CustomResource):
@@ -59,33 +59,33 @@ class DeploymentConfig(pulumi.CustomResource):
 
         foo_deployment_config = aws.codedeploy.DeploymentConfig("fooDeploymentConfig",
             deployment_config_name="test-deployment-config",
-            minimum_healthy_hosts={
-                "type": "HOST_COUNT",
-                "value": 2,
-            })
+            minimum_healthy_hosts=aws.codedeploy.DeploymentConfigMinimumHealthyHostsArgs(
+                type="HOST_COUNT",
+                value=2,
+            ))
         foo_deployment_group = aws.codedeploy.DeploymentGroup("fooDeploymentGroup",
-            alarm_configuration={
-                "alarms": ["my-alarm-name"],
-                "enabled": True,
-            },
+            alarm_configuration=aws.codedeploy.DeploymentGroupAlarmConfigurationArgs(
+                alarms=["my-alarm-name"],
+                enabled=True,
+            ),
             app_name=aws_codedeploy_app["foo_app"]["name"],
-            auto_rollback_configuration={
-                "enabled": True,
-                "events": ["DEPLOYMENT_FAILURE"],
-            },
+            auto_rollback_configuration=aws.codedeploy.DeploymentGroupAutoRollbackConfigurationArgs(
+                enabled=True,
+                events=["DEPLOYMENT_FAILURE"],
+            ),
             deployment_config_name=foo_deployment_config.id,
             deployment_group_name="bar",
-            ec2_tag_filters=[{
-                "key": "filterkey",
-                "type": "KEY_AND_VALUE",
-                "value": "filtervalue",
-            }],
+            ec2_tag_filters=[aws.codedeploy.DeploymentGroupEc2TagFilterArgs(
+                key="filterkey",
+                type="KEY_AND_VALUE",
+                value="filtervalue",
+            )],
             service_role_arn=aws_iam_role["foo_role"]["arn"],
-            trigger_configurations=[{
-                "triggerEvents": ["DeploymentFailure"],
-                "triggerName": "foo-trigger",
-                "triggerTargetArn": "foo-topic-arn",
-            }])
+            trigger_configurations=[aws.codedeploy.DeploymentGroupTriggerConfigurationArgs(
+                trigger_events=["DeploymentFailure"],
+                trigger_name="foo-trigger",
+                trigger_target_arn="foo-topic-arn",
+            )])
         ```
         ### Lambda Usage
 
@@ -96,23 +96,23 @@ class DeploymentConfig(pulumi.CustomResource):
         foo_deployment_config = aws.codedeploy.DeploymentConfig("fooDeploymentConfig",
             compute_platform="Lambda",
             deployment_config_name="test-deployment-config",
-            traffic_routing_config={
-                "timeBasedLinear": {
-                    "interval": 10,
-                    "percentage": 10,
-                },
-                "type": "TimeBasedLinear",
-            })
+            traffic_routing_config=aws.codedeploy.DeploymentConfigTrafficRoutingConfigArgs(
+                time_based_linear=aws.codedeploy.DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs(
+                    interval=10,
+                    percentage=10,
+                ),
+                type="TimeBasedLinear",
+            ))
         foo_deployment_group = aws.codedeploy.DeploymentGroup("fooDeploymentGroup",
-            alarm_configuration={
-                "alarms": ["my-alarm-name"],
-                "enabled": True,
-            },
+            alarm_configuration=aws.codedeploy.DeploymentGroupAlarmConfigurationArgs(
+                alarms=["my-alarm-name"],
+                enabled=True,
+            ),
             app_name=aws_codedeploy_app["foo_app"]["name"],
-            auto_rollback_configuration={
-                "enabled": True,
-                "events": ["DEPLOYMENT_STOP_ON_ALARM"],
-            },
+            auto_rollback_configuration=aws.codedeploy.DeploymentGroupAutoRollbackConfigurationArgs(
+                enabled=True,
+                events=["DEPLOYMENT_STOP_ON_ALARM"],
+            ),
             deployment_config_name=foo_deployment_config.id,
             deployment_group_name="bar",
             service_role_arn=aws_iam_role["foo_role"]["arn"])
@@ -156,7 +156,7 @@ class DeploymentConfig(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -222,7 +222,7 @@ class DeploymentConfig(pulumi.CustomResource):
         return DeploymentConfig(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

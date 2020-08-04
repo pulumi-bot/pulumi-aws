@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class IpSet(pulumi.CustomResource):
@@ -36,14 +36,14 @@ class IpSet(pulumi.CustomResource):
         import pulumi_aws as aws
 
         ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[
-            {
-                "type": "IPV4",
-                "value": "192.0.7.0/24",
-            },
-            {
-                "type": "IPV4",
-                "value": "10.16.16.0/16",
-            },
+            aws.wafregional.IpSetIpSetDescriptorArgs(
+                type="IPV4",
+                value="192.0.7.0/24",
+            ),
+            aws.wafregional.IpSetIpSetDescriptorArgs(
+                type="IPV4",
+                value="10.16.16.0/16",
+            ),
         ])
         ```
 
@@ -68,7 +68,7 @@ class IpSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -111,7 +111,7 @@ class IpSet(pulumi.CustomResource):
         return IpSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

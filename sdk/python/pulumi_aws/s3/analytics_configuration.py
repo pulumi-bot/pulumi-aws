@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AnalyticsConfiguration(pulumi.CustomResource):
@@ -54,15 +54,15 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         analytics = aws.s3.Bucket("analytics")
         example_entire_bucket = aws.s3.AnalyticsConfiguration("example-entire-bucket",
             bucket=example.bucket,
-            storage_class_analysis={
-                "dataExport": {
-                    "destination": {
-                        "s3BucketDestination": {
-                            "bucketArn": analytics.arn,
-                        },
-                    },
-                },
-            })
+            storage_class_analysis=aws.s3.AnalyticsConfigurationStorageClassAnalysisArgs(
+                data_export=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportArgs(
+                    destination=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs(
+                        s3_bucket_destination=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs(
+                            bucket_arn=analytics.arn,
+                        ),
+                    ),
+                ),
+            ))
         ```
         ### Add analytics configuration with S3 bucket object filter
 
@@ -73,13 +73,13 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         example = aws.s3.Bucket("example")
         example_filtered = aws.s3.AnalyticsConfiguration("example-filtered",
             bucket=example.bucket,
-            filter={
-                "prefix": "documents/",
-                "tags": {
+            filter=aws.s3.AnalyticsConfigurationFilterArgs(
+                prefix="documents/",
+                tags={
                     "priority": "high",
                     "class": "blue",
                 },
-            })
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -117,7 +117,7 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -177,7 +177,7 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         return AnalyticsConfiguration(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
