@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class TopicPolicy(pulumi.CustomResource):
@@ -32,8 +32,8 @@ class TopicPolicy(pulumi.CustomResource):
 
         test = aws.sns.Topic("test")
         sns_topic_policy = test.arn.apply(lambda arn: aws.iam.get_policy_document(policy_id="__default_policy_ID",
-            statements=[{
-                "actions": [
+            statements=[aws.iam.GetPolicyDocumentStatementArgs(
+                actions=[
                     "SNS:Subscribe",
                     "SNS:SetTopicAttributes",
                     "SNS:RemovePermission",
@@ -44,19 +44,19 @@ class TopicPolicy(pulumi.CustomResource):
                     "SNS:DeleteTopic",
                     "SNS:AddPermission",
                 ],
-                "conditions": [{
-                    "test": "StringEquals",
-                    "values": [var["account-id"]],
-                    "variable": "AWS:SourceOwner",
-                }],
-                "effect": "Allow",
-                "principals": [{
-                    "identifiers": ["*"],
-                    "type": "AWS",
-                }],
-                "resources": [arn],
-                "sid": "__default_statement_ID",
-            }]))
+                conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
+                    test="StringEquals",
+                    values=[var["account-id"]],
+                    variable="AWS:SourceOwner",
+                )],
+                effect="Allow",
+                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                    identifiers=["*"],
+                    type="AWS",
+                )],
+                resources=[arn],
+                sid="__default_statement_ID",
+            )]))
         default = aws.sns.TopicPolicy("default",
             arn=test.arn,
             policy=sns_topic_policy.json)
@@ -78,7 +78,7 @@ class TopicPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -117,7 +117,7 @@ class TopicPolicy(pulumi.CustomResource):
         return TopicPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

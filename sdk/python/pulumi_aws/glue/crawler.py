@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Crawler(pulumi.CustomResource):
@@ -96,9 +96,9 @@ class Crawler(pulumi.CustomResource):
 
         example = aws.glue.Crawler("example",
             database_name=aws_glue_catalog_database["example"]["name"],
-            dynamodb_targets=[{
-                "path": "table-name",
-            }],
+            dynamodb_targets=[aws.glue.CrawlerDynamodbTargetArgs(
+                path="table-name",
+            )],
             role=aws_iam_role["example"]["arn"])
         ```
         ### JDBC Target
@@ -109,10 +109,10 @@ class Crawler(pulumi.CustomResource):
 
         example = aws.glue.Crawler("example",
             database_name=aws_glue_catalog_database["example"]["name"],
-            jdbc_targets=[{
-                "connectionName": aws_glue_connection["example"]["name"],
-                "path": "database-name/%",
-            }],
+            jdbc_targets=[aws.glue.CrawlerJdbcTargetArgs(
+                connection_name=aws_glue_connection["example"]["name"],
+                path="database-name/%",
+            )],
             role=aws_iam_role["example"]["arn"])
         ```
         ### S3 Target
@@ -124,9 +124,9 @@ class Crawler(pulumi.CustomResource):
         example = aws.glue.Crawler("example",
             database_name=aws_glue_catalog_database["example"]["name"],
             role=aws_iam_role["example"]["arn"],
-            s3_targets=[{
-                "path": f"s3://{aws_s3_bucket['example']['bucket']}",
-            }])
+            s3_targets=[aws.glue.CrawlerS3TargetArgs(
+                path=f"s3://{aws_s3_bucket['example']['bucket']}",
+            )])
         ```
         ### Catalog Target
 
@@ -135,10 +135,10 @@ class Crawler(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.glue.Crawler("example",
-            catalog_targets=[{
-                "database_name": aws_glue_catalog_database["example"]["name"],
-                "tables": [aws_glue_catalog_table["example"]["name"]],
-            }],
+            catalog_targets=[aws.glue.CrawlerCatalogTargetArgs(
+                database_name=aws_glue_catalog_database["example"]["name"],
+                tables=[aws_glue_catalog_table["example"]["name"]],
+            )],
             configuration=\"\"\"{
           "Version":1.0,
           "Grouping": {
@@ -149,9 +149,9 @@ class Crawler(pulumi.CustomResource):
         \"\"\",
             database_name=aws_glue_catalog_database["example"]["name"],
             role=aws_iam_role["example"]["arn"],
-            schema_change_policy={
-                "deleteBehavior": "LOG",
-            })
+            schema_change_policy=aws.glue.CrawlerSchemaChangePolicyArgs(
+                delete_behavior="LOG",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -207,7 +207,7 @@ class Crawler(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -312,7 +312,7 @@ class Crawler(pulumi.CustomResource):
         return Crawler(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

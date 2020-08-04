@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class CertificateAuthority(pulumi.CustomResource):
@@ -103,13 +103,13 @@ class CertificateAuthority(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.acmpca.CertificateAuthority("example",
-            certificate_authority_configuration={
-                "keyAlgorithm": "RSA_4096",
-                "signingAlgorithm": "SHA512WITHRSA",
-                "subject": {
-                    "commonName": "example.com",
-                },
-            },
+            certificate_authority_configuration=aws.acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs(
+                key_algorithm="RSA_4096",
+                signing_algorithm="SHA512WITHRSA",
+                subject=aws.acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs(
+                    common_name="example.com",
+                ),
+            ),
             permanent_deletion_time_in_days=7)
         ```
         ### Enable Certificate Revocation List
@@ -119,41 +119,41 @@ class CertificateAuthority(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example_bucket = aws.s3.Bucket("exampleBucket")
-        acmpca_bucket_access = pulumi.Output.all(example_bucket.arn, example_bucket.arn).apply(lambda exampleBucketArn, exampleBucketArn1: aws.iam.get_policy_document(statements=[{
-            "actions": [
+        acmpca_bucket_access = pulumi.Output.all(example_bucket.arn, example_bucket.arn).apply(lambda exampleBucketArn, exampleBucketArn1: aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+            actions=[
                 "s3:GetBucketAcl",
                 "s3:GetBucketLocation",
                 "s3:PutObject",
                 "s3:PutObjectAcl",
             ],
-            "principals": [{
-                "identifiers": ["acm-pca.amazonaws.com"],
-                "type": "Service",
-            }],
-            "resources": [
+            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                identifiers=["acm-pca.amazonaws.com"],
+                type="Service",
+            )],
+            resources=[
                 example_bucket_arn,
                 f"{example_bucket_arn1}/*",
             ],
-        }]))
+        )]))
         example_bucket_policy = aws.s3.BucketPolicy("exampleBucketPolicy",
             bucket=example_bucket.id,
             policy=acmpca_bucket_access.json)
         example_certificate_authority = aws.acmpca.CertificateAuthority("exampleCertificateAuthority",
-            certificate_authority_configuration={
-                "keyAlgorithm": "RSA_4096",
-                "signingAlgorithm": "SHA512WITHRSA",
-                "subject": {
-                    "commonName": "example.com",
-                },
-            },
-            revocation_configuration={
-                "crlConfiguration": {
-                    "customCname": "crl.example.com",
-                    "enabled": True,
-                    "expirationInDays": 7,
-                    "s3_bucket_name": example_bucket.id,
-                },
-            },
+            certificate_authority_configuration=aws.acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs(
+                key_algorithm="RSA_4096",
+                signing_algorithm="SHA512WITHRSA",
+                subject=aws.acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs(
+                    common_name="example.com",
+                ),
+            ),
+            revocation_configuration=aws.acmpca.CertificateAuthorityRevocationConfigurationArgs(
+                crl_configuration=aws.acmpca.CertificateAuthorityRevocationConfigurationCrlConfigurationArgs(
+                    custom_cname="crl.example.com",
+                    enabled=True,
+                    expiration_in_days=7,
+                    s3_bucket_name=example_bucket.id,
+                ),
+            ),
             opts=ResourceOptions(depends_on=["aws_s3_bucket_policy.example"]))
         ```
 
@@ -204,7 +204,7 @@ class CertificateAuthority(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -304,7 +304,7 @@ class CertificateAuthority(pulumi.CustomResource):
         return CertificateAuthority(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

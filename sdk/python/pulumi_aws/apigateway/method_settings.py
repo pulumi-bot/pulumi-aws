@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class MethodSettings(pulumi.CustomResource):
@@ -68,10 +68,10 @@ class MethodSettings(pulumi.CustomResource):
         method_settings = aws.apigateway.MethodSettings("methodSettings",
             method_path=pulumi.Output.all(test_resource.path_part, test_method.http_method).apply(lambda path_part, http_method: f"{path_part}/{http_method}"),
             rest_api=test_rest_api.id,
-            settings={
-                "loggingLevel": "INFO",
-                "metricsEnabled": True,
-            },
+            settings=aws.apigateway.MethodSettingsSettingsArgs(
+                logging_level="INFO",
+                metrics_enabled=True,
+            ),
             stage_name=test_stage.stage_name)
         test_integration = aws.apigateway.Integration("testIntegration",
             http_method=test_method.http_method,
@@ -118,7 +118,7 @@ class MethodSettings(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -180,7 +180,7 @@ class MethodSettings(pulumi.CustomResource):
         return MethodSettings(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

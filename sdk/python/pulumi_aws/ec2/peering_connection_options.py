@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class PeeringConnectionOptions(pulumi.CustomResource):
@@ -70,13 +70,13 @@ class PeeringConnectionOptions(pulumi.CustomResource):
             peer_vpc_id=bar.id,
             vpc_id=foo_vpc.id)
         foo_peering_connection_options = aws.ec2.PeeringConnectionOptions("fooPeeringConnectionOptions",
-            accepter={
-                "allowRemoteVpcDnsResolution": True,
-            },
-            requester={
-                "allowClassicLinkToRemoteVpc": True,
-                "allowVpcToRemoteClassicLink": True,
-            },
+            accepter=aws.ec2.PeeringConnectionOptionsAccepterArgs(
+                allow_remote_vpc_dns_resolution=True,
+            ),
+            requester=aws.ec2.PeeringConnectionOptionsRequesterArgs(
+                allow_classic_link_to_remote_vpc=True,
+                allow_vpc_to_remote_classic_link=True,
+            ),
             vpc_peering_connection_id=foo_vpc_peering_connection.id)
         ```
 
@@ -117,15 +117,15 @@ class PeeringConnectionOptions(pulumi.CustomResource):
             vpc_peering_connection_id=peer_vpc_peering_connection.id,
             opts=ResourceOptions(provider="aws.accepter"))
         requester_peering_connection_options = aws.ec2.PeeringConnectionOptions("requesterPeeringConnectionOptions",
-            requester={
-                "allowRemoteVpcDnsResolution": True,
-            },
+            requester=aws.ec2.PeeringConnectionOptionsRequesterArgs(
+                allow_remote_vpc_dns_resolution=True,
+            ),
             vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
             opts=ResourceOptions(provider="aws.requester"))
         accepter_peering_connection_options = aws.ec2.PeeringConnectionOptions("accepterPeeringConnectionOptions",
-            accepter={
-                "allowRemoteVpcDnsResolution": True,
-            },
+            accepter=aws.ec2.PeeringConnectionOptionsAccepterArgs(
+                allow_remote_vpc_dns_resolution=True,
+            ),
             vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
             opts=ResourceOptions(provider="aws.accepter"))
         ```
@@ -173,7 +173,7 @@ class PeeringConnectionOptions(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -239,7 +239,7 @@ class PeeringConnectionOptions(pulumi.CustomResource):
         return PeeringConnectionOptions(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

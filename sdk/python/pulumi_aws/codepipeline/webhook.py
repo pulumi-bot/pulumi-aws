@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Webhook(pulumi.CustomResource):
@@ -60,67 +60,67 @@ class Webhook(pulumi.CustomResource):
         import pulumi_github as github
 
         bar_pipeline = aws.codepipeline.Pipeline("barPipeline",
-            artifact_store={
-                "encryption_key": {
+            artifact_store=aws.codepipeline.PipelineArtifactStoreArgs(
+                encryption_key={
                     "id": data["aws_kms_alias"]["s3kmskey"]["arn"],
                     "type": "KMS",
                 },
-                "location": aws_s3_bucket["bar"]["bucket"],
-                "type": "S3",
-            },
+                location=aws_s3_bucket["bar"]["bucket"],
+                type="S3",
+            ),
             role_arn=aws_iam_role["bar"]["arn"],
             stages=[
-                {
-                    "actions": [{
-                        "category": "Source",
-                        "configuration": {
+                aws.codepipeline.PipelineStageArgs(
+                    actions=[aws.codepipeline.PipelineStageActionArgs(
+                        category="Source",
+                        configuration={
                             "Branch": "master",
                             "Owner": "my-organization",
                             "Repo": "test",
                         },
-                        "name": "Source",
-                        "outputArtifacts": ["test"],
-                        "owner": "ThirdParty",
-                        "provider": "GitHub",
-                        "version": "1",
-                    }],
-                    "name": "Source",
-                },
-                {
-                    "actions": [{
-                        "category": "Build",
-                        "configuration": {
+                        name="Source",
+                        output_artifacts=["test"],
+                        owner="ThirdParty",
+                        provider="GitHub",
+                        version="1",
+                    )],
+                    name="Source",
+                ),
+                aws.codepipeline.PipelineStageArgs(
+                    actions=[aws.codepipeline.PipelineStageActionArgs(
+                        category="Build",
+                        configuration={
                             "ProjectName": "test",
                         },
-                        "inputArtifacts": ["test"],
-                        "name": "Build",
-                        "owner": "AWS",
-                        "provider": "CodeBuild",
-                        "version": "1",
-                    }],
-                    "name": "Build",
-                },
+                        input_artifacts=["test"],
+                        name="Build",
+                        owner="AWS",
+                        provider="CodeBuild",
+                        version="1",
+                    )],
+                    name="Build",
+                ),
             ])
         webhook_secret = "super-secret"
         bar_webhook = aws.codepipeline.Webhook("barWebhook",
             authentication="GITHUB_HMAC",
-            authentication_configuration={
-                "secretToken": webhook_secret,
-            },
-            filters=[{
-                "jsonPath": "$.ref",
-                "matchEquals": "refs/heads/{Branch}",
-            }],
+            authentication_configuration=aws.codepipeline.WebhookAuthenticationConfigurationArgs(
+                secret_token=webhook_secret,
+            ),
+            filters=[aws.codepipeline.WebhookFilterArgs(
+                json_path="$.ref",
+                match_equals="refs/heads/{Branch}",
+            )],
             target_action="Source",
             target_pipeline=bar_pipeline.name)
         # Wire the CodePipeline webhook into a GitHub repository.
         bar_repository_webhook = github.RepositoryWebhook("barRepositoryWebhook",
-            configuration={
-                "contentType": "json",
-                "insecureSsl": True,
-                "secret": webhook_secret,
-                "url": bar_webhook.url,
-            },
+            configuration=github.RepositoryWebhookConfigurationArgs(
+                content_type="json",
+                insecure_ssl=True,
+                secret=webhook_secret,
+                url=bar_webhook.url,
+            ),
             events=["push"],
             repository=github_repository["repo"]["name"])
         ```
@@ -156,7 +156,7 @@ class Webhook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -227,7 +227,7 @@ class Webhook(pulumi.CustomResource):
         return Webhook(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

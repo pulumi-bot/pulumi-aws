@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class CatalogTable(pulumi.CustomResource):
@@ -122,43 +122,43 @@ class CatalogTable(pulumi.CustomResource):
                 "EXTERNAL": "TRUE",
                 "parquet.compression": "SNAPPY",
             },
-            storage_descriptor={
-                "columns": [
-                    {
-                        "name": "my_string",
-                        "type": "string",
-                    },
-                    {
-                        "name": "my_double",
-                        "type": "double",
-                    },
-                    {
-                        "comment": "",
-                        "name": "my_date",
-                        "type": "date",
-                    },
-                    {
-                        "comment": "",
-                        "name": "my_bigint",
-                        "type": "bigint",
-                    },
-                    {
-                        "comment": "",
-                        "name": "my_struct",
-                        "type": "struct<my_nested_string:string>",
-                    },
+            storage_descriptor=aws.glue.CatalogTableStorageDescriptorArgs(
+                columns=[
+                    aws.glue.CatalogTableStorageDescriptorColumnArgs(
+                        name="my_string",
+                        type="string",
+                    ),
+                    aws.glue.CatalogTableStorageDescriptorColumnArgs(
+                        name="my_double",
+                        type="double",
+                    ),
+                    aws.glue.CatalogTableStorageDescriptorColumnArgs(
+                        comment="",
+                        name="my_date",
+                        type="date",
+                    ),
+                    aws.glue.CatalogTableStorageDescriptorColumnArgs(
+                        comment="",
+                        name="my_bigint",
+                        type="bigint",
+                    ),
+                    aws.glue.CatalogTableStorageDescriptorColumnArgs(
+                        comment="",
+                        name="my_struct",
+                        type="struct<my_nested_string:string>",
+                    ),
                 ],
-                "inputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
-                "location": "s3://my-bucket/event-streams/my-stream",
-                "outputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
-                "serDeInfo": {
-                    "name": "my-stream",
-                    "parameters": {
-                        "serialization.format": 1,
+                input_format="org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+                location="s3://my-bucket/event-streams/my-stream",
+                output_format="org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+                ser_de_info=aws.glue.CatalogTableStorageDescriptorSerDeInfoArgs(
+                    name="my-stream",
+                    parameters={
+                        "serialization.format": "1",
                     },
-                    "serializationLibrary": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
-                },
-            },
+                    serialization_library="org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+                ),
+            ),
             table_type="EXTERNAL_TABLE")
         ```
 
@@ -224,7 +224,7 @@ class CatalogTable(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -330,7 +330,7 @@ class CatalogTable(pulumi.CustomResource):
         return CatalogTable(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Selection(pulumi.CustomResource):
@@ -77,11 +77,11 @@ class Selection(pulumi.CustomResource):
         example = aws.backup.Selection("example",
             iam_role_arn=aws_iam_role["example"]["arn"],
             plan_id=aws_backup_plan["example"]["id"],
-            selection_tags=[{
-                "key": "foo",
-                "type": "STRINGEQUALS",
-                "value": "bar",
-            }])
+            selection_tags=[aws.backup.SelectionSelectionTagArgs(
+                key="foo",
+                type="STRINGEQUALS",
+                value="bar",
+            )])
         ```
         ### Selecting Backups By Resource
 
@@ -124,7 +124,7 @@ class Selection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -178,7 +178,7 @@ class Selection(pulumi.CustomResource):
         return Selection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

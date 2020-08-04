@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class EndpointConfiguration(pulumi.CustomResource):
@@ -50,12 +50,12 @@ class EndpointConfiguration(pulumi.CustomResource):
         import pulumi_aws as aws
 
         ec = aws.sagemaker.EndpointConfiguration("ec",
-            production_variants=[{
-                "initialInstanceCount": 1,
-                "instance_type": "ml.t2.medium",
-                "modelName": aws_sagemaker_model["m"]["name"],
-                "variantName": "variant-1",
-            }],
+            production_variants=[aws.sagemaker.EndpointConfigurationProductionVariantArgs(
+                initial_instance_count=1,
+                instance_type="ml.t2.medium",
+                model_name=aws_sagemaker_model["m"]["name"],
+                variant_name="variant-1",
+            )],
             tags={
                 "Name": "foo",
             })
@@ -88,7 +88,7 @@ class EndpointConfiguration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -143,7 +143,7 @@ class EndpointConfiguration(pulumi.CustomResource):
         return EndpointConfiguration(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

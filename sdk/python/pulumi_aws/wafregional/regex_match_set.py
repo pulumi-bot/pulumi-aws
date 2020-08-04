@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class RegexMatchSet(pulumi.CustomResource):
@@ -47,14 +47,14 @@ class RegexMatchSet(pulumi.CustomResource):
             "one",
             "two",
         ])
-        example_regex_match_set = aws.wafregional.RegexMatchSet("exampleRegexMatchSet", regex_match_tuples=[{
-            "fieldToMatch": {
-                "data": "User-Agent",
-                "type": "HEADER",
-            },
-            "regexPatternSetId": example_regex_pattern_set.id,
-            "textTransformation": "NONE",
-        }])
+        example_regex_match_set = aws.wafregional.RegexMatchSet("exampleRegexMatchSet", regex_match_tuples=[aws.wafregional.RegexMatchSetRegexMatchTupleArgs(
+            field_to_match=aws.wafregional.RegexMatchSetRegexMatchTupleFieldToMatchArgs(
+                data="User-Agent",
+                type="HEADER",
+            ),
+            regex_pattern_set_id=example_regex_pattern_set.id,
+            text_transformation="NONE",
+        )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -90,7 +90,7 @@ class RegexMatchSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -142,7 +142,7 @@ class RegexMatchSet(pulumi.CustomResource):
         return RegexMatchSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
