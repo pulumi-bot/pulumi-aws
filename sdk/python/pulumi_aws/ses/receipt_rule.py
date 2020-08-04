@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ReceiptRule(pulumi.CustomResource):
@@ -111,18 +111,18 @@ class ReceiptRule(pulumi.CustomResource):
 
         # Add a header to the email and store it in S3
         store = aws.ses.ReceiptRule("store",
-            add_header_actions=[{
-                "headerName": "Custom-Header",
-                "headerValue": "Added by SES",
-                "position": 1,
-            }],
+            add_header_actions=[aws.ses.ReceiptRuleAddHeaderActionArgs(
+                header_name="Custom-Header",
+                header_value="Added by SES",
+                position=1,
+            )],
             enabled=True,
             recipients=["karen@example.com"],
             rule_set_name="default-rule-set",
-            s3_actions=[{
-                "bucket_name": "emails",
-                "position": 2,
-            }],
+            s3_actions=[aws.ses.ReceiptRuleS3ActionArgs(
+                bucket_name="emails",
+                position=2,
+            )],
             scan_enabled=True)
         ```
 
@@ -201,7 +201,7 @@ class ReceiptRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -321,7 +321,7 @@ class ReceiptRule(pulumi.CustomResource):
         return ReceiptRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

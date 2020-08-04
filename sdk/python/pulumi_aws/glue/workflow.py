@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Workflow(pulumi.CustomResource):
@@ -36,21 +36,21 @@ class Workflow(pulumi.CustomResource):
 
         example = aws.glue.Workflow("example")
         example_start = aws.glue.Trigger("example-start",
-            actions=[{
-                "jobName": "example-job",
-            }],
+            actions=[aws.glue.TriggerActionArgs(
+                job_name="example-job",
+            )],
             type="ON_DEMAND",
             workflow_name=example.name)
         example_inner = aws.glue.Trigger("example-inner",
-            actions=[{
-                "jobName": "another-example-job",
-            }],
-            predicate={
-                "conditions": [{
-                    "jobName": "example-job",
-                    "state": "SUCCEEDED",
-                }],
-            },
+            actions=[aws.glue.TriggerActionArgs(
+                job_name="another-example-job",
+            )],
+            predicate=aws.glue.TriggerPredicateArgs(
+                conditions=[aws.glue.TriggerPredicateConditionArgs(
+                    job_name="example-job",
+                    state="SUCCEEDED",
+                )],
+            ),
             type="CONDITIONAL",
             workflow_name=example.name)
         ```
@@ -72,7 +72,7 @@ class Workflow(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -110,7 +110,7 @@ class Workflow(pulumi.CustomResource):
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

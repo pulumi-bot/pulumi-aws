@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ConfigurationAggregator(pulumi.CustomResource):
@@ -49,10 +49,10 @@ class ConfigurationAggregator(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        account = aws.cfg.ConfigurationAggregator("account", account_aggregation_source={
-            "accountIds": ["123456789012"],
-            "regions": ["us-west-2"],
-        })
+        account = aws.cfg.ConfigurationAggregator("account", account_aggregation_source=aws.cfg.ConfigurationAggregatorAccountAggregationSourceArgs(
+            account_ids=["123456789012"],
+            regions=["us-west-2"],
+        ))
         ```
         ### Organization Based Aggregation
 
@@ -75,10 +75,10 @@ class ConfigurationAggregator(pulumi.CustomResource):
         }
 
         \"\"\")
-        organization_configuration_aggregator = aws.cfg.ConfigurationAggregator("organizationConfigurationAggregator", organization_aggregation_source={
-            "allRegions": True,
-            "role_arn": organization_role.arn,
-        },
+        organization_configuration_aggregator = aws.cfg.ConfigurationAggregator("organizationConfigurationAggregator", organization_aggregation_source=aws.cfg.ConfigurationAggregatorOrganizationAggregationSourceArgs(
+            all_regions=True,
+            role_arn=organization_role.arn,
+        ),
         opts=ResourceOptions(depends_on=["aws_iam_role_policy_attachment.organization"]))
         organization_role_policy_attachment = aws.iam.RolePolicyAttachment("organizationRolePolicyAttachment",
             policy_arn="arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations",
@@ -115,7 +115,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -171,7 +171,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
         return ConfigurationAggregator(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

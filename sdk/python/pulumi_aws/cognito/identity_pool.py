@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class IdentityPool(pulumi.CustomResource):
@@ -65,16 +65,16 @@ class IdentityPool(pulumi.CustomResource):
         main = aws.cognito.IdentityPool("main",
             allow_unauthenticated_identities=False,
             cognito_identity_providers=[
-                {
-                    "client_id": "6lhlkkfbfb4q5kpp90urffae",
-                    "provider_name": "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ",
-                    "serverSideTokenCheck": False,
-                },
-                {
-                    "client_id": "7kodkvfqfb4qfkp39eurffae",
-                    "provider_name": "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu",
-                    "serverSideTokenCheck": False,
-                },
+                aws.cognito.IdentityPoolCognitoIdentityProviderArgs(
+                    client_id="6lhlkkfbfb4q5kpp90urffae",
+                    provider_name="cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ",
+                    server_side_token_check=False,
+                ),
+                aws.cognito.IdentityPoolCognitoIdentityProviderArgs(
+                    client_id="7kodkvfqfb4qfkp39eurffae",
+                    provider_name="cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu",
+                    server_side_token_check=False,
+                ),
             ],
             identity_pool_name="identity pool",
             openid_connect_provider_arns=["arn:aws:iam::123456789012:oidc-provider/foo.example.com"],
@@ -114,7 +114,7 @@ class IdentityPool(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -179,7 +179,7 @@ class IdentityPool(pulumi.CustomResource):
         return IdentityPool(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

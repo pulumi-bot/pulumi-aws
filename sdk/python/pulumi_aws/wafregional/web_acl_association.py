@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class WebAclAssociation(pulumi.CustomResource):
@@ -30,29 +30,29 @@ class WebAclAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[{
-            "type": "IPV4",
-            "value": "192.0.7.0/24",
-        }])
+        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
+            type="IPV4",
+            value="192.0.7.0/24",
+        )])
         foo_rule = aws.wafregional.Rule("fooRule",
             metric_name="tfWAFRule",
-            predicates=[{
-                "dataId": ipset.id,
-                "negated": False,
-                "type": "IPMatch",
-            }])
+            predicates=[aws.wafregional.RulePredicateArgs(
+                data_id=ipset.id,
+                negated=False,
+                type="IPMatch",
+            )])
         foo_web_acl = aws.wafregional.WebAcl("fooWebAcl",
-            default_action={
-                "type": "ALLOW",
-            },
+            default_action=aws.wafregional.WebAclDefaultActionArgs(
+                type="ALLOW",
+            ),
             metric_name="foo",
-            rules=[{
-                "action": {
-                    "type": "BLOCK",
-                },
-                "priority": 1,
-                "rule_id": foo_rule.id,
-            }])
+            rules=[aws.wafregional.WebAclRuleArgs(
+                action=aws.wafregional.WebAclRuleActionArgs(
+                    type="BLOCK",
+                ),
+                priority=1,
+                rule_id=foo_rule.id,
+            )])
         foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.1.0.0/16")
         available = aws.get_availability_zones()
         foo_subnet = aws.ec2.Subnet("fooSubnet",
@@ -80,29 +80,29 @@ class WebAclAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[{
-            "type": "IPV4",
-            "value": "192.0.7.0/24",
-        }])
+        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
+            type="IPV4",
+            value="192.0.7.0/24",
+        )])
         foo_rule = aws.wafregional.Rule("fooRule",
             metric_name="tfWAFRule",
-            predicates=[{
-                "dataId": ipset.id,
-                "negated": False,
-                "type": "IPMatch",
-            }])
+            predicates=[aws.wafregional.RulePredicateArgs(
+                data_id=ipset.id,
+                negated=False,
+                type="IPMatch",
+            )])
         foo_web_acl = aws.wafregional.WebAcl("fooWebAcl",
-            default_action={
-                "type": "ALLOW",
-            },
+            default_action=aws.wafregional.WebAclDefaultActionArgs(
+                type="ALLOW",
+            ),
             metric_name="foo",
-            rules=[{
-                "action": {
-                    "type": "BLOCK",
-                },
-                "priority": 1,
-                "rule_id": foo_rule.id,
-            }])
+            rules=[aws.wafregional.WebAclRuleArgs(
+                action=aws.wafregional.WebAclRuleActionArgs(
+                    type="BLOCK",
+                ),
+                priority=1,
+                rule_id=foo_rule.id,
+            )])
         test_rest_api = aws.apigateway.RestApi("testRestApi")
         test_resource = aws.apigateway.Resource("testResource",
             parent_id=test_rest_api.root_resource_id,
@@ -157,7 +157,7 @@ class WebAclAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -196,7 +196,7 @@ class WebAclAssociation(pulumi.CustomResource):
         return WebAclAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

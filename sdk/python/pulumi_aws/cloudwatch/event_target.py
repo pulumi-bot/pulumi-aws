@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class EventTarget(pulumi.CustomResource):
@@ -115,14 +115,14 @@ class EventTarget(pulumi.CustomResource):
             arn=test_stream.arn,
             rule=console.name,
             run_command_targets=[
-                {
-                    "key": "tag:Name",
-                    "values": ["FooBar"],
-                },
-                {
-                    "key": "InstanceIds",
-                    "values": ["i-162058cd308bffec2"],
-                },
+                aws.cloudwatch.EventTargetRunCommandTargetArgs(
+                    key="tag:Name",
+                    values=["FooBar"],
+                ),
+                aws.cloudwatch.EventTargetRunCommandTargetArgs(
+                    key="InstanceIds",
+                    values=["i-162058cd308bffec2"],
+                ),
             ])
         ```
         ## Example SSM Document Usage
@@ -131,13 +131,13 @@ class EventTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ssm_lifecycle_trust = aws.iam.get_policy_document(statements=[{
-            "actions": ["sts:AssumeRole"],
-            "principals": [{
-                "identifiers": ["events.amazonaws.com"],
-                "type": "Service",
-            }],
-        }])
+        ssm_lifecycle_trust = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+            actions=["sts:AssumeRole"],
+            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                identifiers=["events.amazonaws.com"],
+                type="Service",
+            )],
+        )])
         stop_instance = aws.ssm.Document("stopInstance",
             content=\"\"\"  {
             "schemaVersion": "1.2",
@@ -160,21 +160,21 @@ class EventTarget(pulumi.CustomResource):
         \"\"\",
             document_type="Command")
         ssm_lifecycle_policy_document = stop_instance.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[
-            {
-                "actions": ["ssm:SendCommand"],
-                "conditions": [{
-                    "test": "StringEquals",
-                    "values": ["*"],
-                    "variable": "ec2:ResourceTag/Terminate",
-                }],
-                "effect": "Allow",
-                "resources": ["arn:aws:ec2:eu-west-1:1234567890:instance/*"],
-            },
-            {
-                "actions": ["ssm:SendCommand"],
-                "effect": "Allow",
-                "resources": [arn],
-            },
+            aws.iam.GetPolicyDocumentStatementArgs(
+                actions=["ssm:SendCommand"],
+                conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
+                    test="StringEquals",
+                    values=["*"],
+                    variable="ec2:ResourceTag/Terminate",
+                )],
+                effect="Allow",
+                resources=["arn:aws:ec2:eu-west-1:1234567890:instance/*"],
+            ),
+            aws.iam.GetPolicyDocumentStatementArgs(
+                actions=["ssm:SendCommand"],
+                effect="Allow",
+                resources=[arn],
+            ),
         ]))
         ssm_lifecycle_role = aws.iam.Role("ssmLifecycleRole", assume_role_policy=ssm_lifecycle_trust.json)
         ssm_lifecycle_policy = aws.iam.Policy("ssmLifecyclePolicy", policy=ssm_lifecycle_policy_document.json)
@@ -185,10 +185,10 @@ class EventTarget(pulumi.CustomResource):
             arn=stop_instance.arn,
             role_arn=ssm_lifecycle_role.arn,
             rule=stop_instances_event_rule.name,
-            run_command_targets=[{
-                "key": "tag:Terminate",
-                "values": ["midnight"],
-            }])
+            run_command_targets=[aws.cloudwatch.EventTargetRunCommandTargetArgs(
+                key="tag:Terminate",
+                values=["midnight"],
+            )])
         ```
 
         ## Example RunCommand Usage
@@ -205,10 +205,10 @@ class EventTarget(pulumi.CustomResource):
             input="{\"commands\":[\"halt\"]}",
             role_arn=aws_iam_role["ssm_lifecycle"]["arn"],
             rule=stop_instances_event_rule.name,
-            run_command_targets=[{
-                "key": "tag:Terminate",
-                "values": ["midnight"],
-            }])
+            run_command_targets=[aws.cloudwatch.EventTargetRunCommandTargetArgs(
+                key="tag:Terminate",
+                values=["midnight"],
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,7 +276,7 @@ class EventTarget(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -384,7 +384,7 @@ class EventTarget(pulumi.CustomResource):
         return EventTarget(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

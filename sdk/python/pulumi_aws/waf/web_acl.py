@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class WebAcl(pulumi.CustomResource):
@@ -67,31 +67,31 @@ class WebAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[{
-            "type": "IPV4",
-            "value": "192.0.7.0/24",
-        }])
+        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[aws.waf.IpSetIpSetDescriptorArgs(
+            type="IPV4",
+            value="192.0.7.0/24",
+        )])
         wafrule = aws.waf.Rule("wafrule",
             metric_name="tfWAFRule",
-            predicates=[{
-                "dataId": ipset.id,
-                "negated": False,
-                "type": "IPMatch",
-            }],
+            predicates=[aws.waf.RulePredicateArgs(
+                data_id=ipset.id,
+                negated=False,
+                type="IPMatch",
+            )],
             opts=ResourceOptions(depends_on=["aws_waf_ipset.ipset"]))
         waf_acl = aws.waf.WebAcl("wafAcl",
-            default_action={
-                "type": "ALLOW",
-            },
+            default_action=aws.waf.WebAclDefaultActionArgs(
+                type="ALLOW",
+            ),
             metric_name="tfWebACL",
-            rules=[{
-                "action": {
-                    "type": "BLOCK",
-                },
-                "priority": 1,
-                "rule_id": wafrule.id,
-                "type": "REGULAR",
-            }],
+            rules=[aws.waf.WebAclRuleArgs(
+                action=aws.waf.WebAclRuleActionArgs(
+                    type="BLOCK",
+                ),
+                priority=1,
+                rule_id=wafrule.id,
+                type="REGULAR",
+            )],
             opts=ResourceOptions(depends_on=[
                     "aws_waf_ipset.ipset",
                     "aws_waf_rule.wafrule",
@@ -105,10 +105,10 @@ class WebAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.waf.WebAcl("example", logging_configuration={
-            "log_destination": aws_kinesis_firehose_delivery_stream["example"]["arn"],
-            "redactedFields": {
-                "fieldToMatch": [
+        example = aws.waf.WebAcl("example", logging_configuration=aws.waf.WebAclLoggingConfigurationArgs(
+            log_destination=aws_kinesis_firehose_delivery_stream["example"]["arn"],
+            redacted_fields=aws.waf.WebAclLoggingConfigurationRedactedFieldsArgs(
+                field_to_match=[
                     {
                         "type": "URI",
                     },
@@ -117,8 +117,8 @@ class WebAcl(pulumi.CustomResource):
                         "type": "HEADER",
                     },
                 ],
-            },
-        })
+            ),
+        ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -166,7 +166,7 @@ class WebAcl(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -245,7 +245,7 @@ class WebAcl(pulumi.CustomResource):
         return WebAcl(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

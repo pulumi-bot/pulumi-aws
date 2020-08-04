@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Directory(pulumi.CustomResource):
@@ -109,13 +109,13 @@ class Directory(pulumi.CustomResource):
             tags={
                 "Project": "foo",
             },
-            vpc_settings={
-                "subnet_ids": [
+            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
+                subnet_ids=[
                     foo.id,
                     bar_subnet.id,
                 ],
-                "vpc_id": main.id,
-            })
+                vpc_id=main.id,
+            ))
         ```
         ### Microsoft Active Directory (MicrosoftAD)
 
@@ -139,13 +139,13 @@ class Directory(pulumi.CustomResource):
                 "Project": "foo",
             },
             type="MicrosoftAD",
-            vpc_settings={
-                "subnet_ids": [
+            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
+                subnet_ids=[
                     foo.id,
                     bar_subnet.id,
                 ],
-                "vpc_id": main.id,
-            })
+                vpc_id=main.id,
+            ))
         ```
         ### Microsoft Active Directory Connector (ADConnector)
 
@@ -163,15 +163,15 @@ class Directory(pulumi.CustomResource):
             cidr_block="10.0.2.0/24",
             vpc_id=main.id)
         connector = aws.directoryservice.Directory("connector",
-            connect_settings={
-                "customerDnsIps": ["A.B.C.D"],
-                "customerUsername": "Admin",
-                "subnet_ids": [
+            connect_settings=aws.directoryservice.DirectoryConnectSettingsArgs(
+                customer_dns_ips=["A.B.C.D"],
+                customer_username="Admin",
+                subnet_ids=[
                     foo.id,
                     bar.id,
                 ],
-                "vpc_id": main.id,
-            },
+                vpc_id=main.id,
+            ),
             password="SuperSecretPassw0rd",
             size="Small",
             type="ADConnector")
@@ -218,7 +218,7 @@ class Directory(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -309,7 +309,7 @@ class Directory(pulumi.CustomResource):
         return Directory(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

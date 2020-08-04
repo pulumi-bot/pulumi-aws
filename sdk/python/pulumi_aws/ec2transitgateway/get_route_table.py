@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetRouteTableResult:
     """
@@ -46,6 +47,8 @@ class GetRouteTableResult:
         """
         EC2 Transit Gateway identifier
         """
+
+
 class AwaitableGetRouteTableResult(GetRouteTableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetRouteTableResult(GetRouteTableResult):
             tags=self.tags,
             transit_gateway_id=self.transit_gateway_id)
 
-def get_route_table(filters=None,id=None,tags=None,opts=None):
+
+def get_route_table(filters=None, id=None, tags=None, opts=None):
     """
     Get information on an EC2 Transit Gateway Route Table.
 
@@ -71,14 +75,14 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
     import pulumi_aws as aws
 
     example = aws.ec2transitgateway.get_route_table(filters=[
-        {
-            "name": "default-association-route-table",
-            "values": ["true"],
-        },
-        {
-            "name": "transit-gateway-id",
-            "values": ["tgw-12345678"],
-        },
+        aws.ec2transitgateway.GetRouteTableFilterArgs(
+            name="default-association-route-table",
+            values=["true"],
+        ),
+        aws.ec2transitgateway.GetRouteTableFilterArgs(
+            name="transit-gateway-id",
+            values=["tgw-12345678"],
+        ),
     ])
     ```
     ### By Identifier
@@ -101,15 +105,13 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2transitgateway/getRouteTable:getRouteTable', __args__, opts=opts).value
 
     return AwaitableGetRouteTableResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class FunctionEventInvokeConfig(pulumi.CustomResource):
@@ -51,14 +51,14 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
 
         example = aws.lambda_.FunctionEventInvokeConfig("example",
             function_name=aws_lambda_alias["example"]["function_name"],
-            destination_config={
-                "on_failure": {
+            destination_config=aws.lambda_.FunctionEventInvokeConfigDestinationConfigArgs(
+                on_failure={
                     "destination": aws_sqs_queue["example"]["arn"],
                 },
-                "onSuccess": {
-                    "destination": aws_sns_topic["example"]["arn"],
-                },
-            })
+                on_success=aws.lambda_.FunctionEventInvokeConfigDestinationConfigOnSuccessArgs(
+                    destination=aws_sns_topic["example"]["arn"],
+                ),
+            ))
         ```
         ### Error Handling Configuration
 
@@ -132,7 +132,7 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -186,7 +186,7 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         return FunctionEventInvokeConfig(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
