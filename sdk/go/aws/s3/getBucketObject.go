@@ -74,7 +74,7 @@ import (
 // 		}
 // 		_, err = lambda.NewFunction(ctx, "testLambda", &lambda.FunctionArgs{
 // 			Handler:         pulumi.String("exports.test"),
-// 			Role:            pulumi.String(aws_iam_role.Iam_for_lambda.Arn),
+// 			Role:            pulumi.Any(aws_iam_role.Iam_for_lambda.Arn),
 // 			S3Bucket:        pulumi.String(lambda.Bucket),
 // 			S3Key:           pulumi.String(lambda.Key),
 // 			S3ObjectVersion: pulumi.String(lambda.VersionId),
