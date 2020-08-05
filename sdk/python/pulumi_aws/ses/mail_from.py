@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class MailFrom(pulumi.CustomResource):
@@ -43,14 +43,14 @@ class MailFrom(pulumi.CustomResource):
         example_ses_domain_mail_from_mx = aws.route53.Record("exampleSesDomainMailFromMx",
             name=example_mail_from.mail_from_domain,
             records=["10 feedback-smtp.us-east-1.amazonses.com"],
-            ttl="600",
+            ttl=600,
             type="MX",
             zone_id=aws_route53_zone["example"]["id"])
         # Example Route53 TXT record for SPF
         example_ses_domain_mail_from_txt = aws.route53.Record("exampleSesDomainMailFromTxt",
             name=example_mail_from.mail_from_domain,
             records=["v=spf1 include:amazonses.com -all"],
-            ttl="600",
+            ttl=600,
             type="TXT",
             zone_id=aws_route53_zone["example"]["id"])
         ```
@@ -72,7 +72,7 @@ class MailFrom(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -114,7 +114,7 @@ class MailFrom(pulumi.CustomResource):
         return MailFrom(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
