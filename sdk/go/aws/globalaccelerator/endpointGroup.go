@@ -27,11 +27,11 @@ import (
 // 		_, err := globalaccelerator.NewEndpointGroup(ctx, "example", &globalaccelerator.EndpointGroupArgs{
 // 			EndpointConfigurations: globalaccelerator.EndpointGroupEndpointConfigurationArray{
 // 				&globalaccelerator.EndpointGroupEndpointConfigurationArgs{
-// 					EndpointId: pulumi.String(aws_lb.Example.Arn),
+// 					EndpointId: pulumi.Any(aws_lb.Example.Arn),
 // 					Weight:     pulumi.Int(100),
 // 				},
 // 			},
-// 			ListenerArn: pulumi.String(aws_globalaccelerator_listener.Example.Id),
+// 			ListenerArn: pulumi.Any(aws_globalaccelerator_listener.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
