@@ -95,23 +95,23 @@ import (
 // 				DataTableColumns: pulumi.String("test-col"),
 // 				DataTableName:    pulumi.String("test-table"),
 // 				Password:         pulumi.String("T3stPass"),
-// 				RoleArn:          pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 				RoleArn:          pulumi.Any(aws_iam_role.Firehose_role.Arn),
 // 				S3BackupConfiguration: &kinesis.FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs{
-// 					BucketArn:         pulumi.String(aws_s3_bucket.Bucket.Arn),
+// 					BucketArn:         pulumi.Any(aws_s3_bucket.Bucket.Arn),
 // 					BufferInterval:    pulumi.Int(300),
 // 					BufferSize:        pulumi.Int(15),
 // 					CompressionFormat: pulumi.String("GZIP"),
-// 					RoleArn:           pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 					RoleArn:           pulumi.Any(aws_iam_role.Firehose_role.Arn),
 // 				},
 // 				S3BackupMode: pulumi.String("Enabled"),
 // 				Username:     pulumi.String("testuser"),
 // 			},
 // 			S3Configuration: &kinesis.FirehoseDeliveryStreamS3ConfigurationArgs{
-// 				BucketArn:         pulumi.String(aws_s3_bucket.Bucket.Arn),
+// 				BucketArn:         pulumi.Any(aws_s3_bucket.Bucket.Arn),
 // 				BufferInterval:    pulumi.Int(400),
 // 				BufferSize:        pulumi.Int(10),
 // 				CompressionFormat: pulumi.String("GZIP"),
-// 				RoleArn:           pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 				RoleArn:           pulumi.Any(aws_iam_role.Firehose_role.Arn),
 // 			},
 // 		})
 // 		if err != nil {
@@ -159,15 +159,15 @@ import (
 // 						},
 // 					},
 // 				},
-// 				RoleArn:  pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 				RoleArn:  pulumi.Any(aws_iam_role.Firehose_role.Arn),
 // 				TypeName: pulumi.String("test"),
 // 			},
 // 			S3Configuration: &kinesis.FirehoseDeliveryStreamS3ConfigurationArgs{
-// 				BucketArn:         pulumi.String(aws_s3_bucket.Bucket.Arn),
+// 				BucketArn:         pulumi.Any(aws_s3_bucket.Bucket.Arn),
 // 				BufferInterval:    pulumi.Int(400),
 // 				BufferSize:        pulumi.Int(10),
 // 				CompressionFormat: pulumi.String("GZIP"),
-// 				RoleArn:           pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 				RoleArn:           pulumi.Any(aws_iam_role.Firehose_role.Arn),
 // 			},
 // 		})
 // 		if err != nil {
@@ -192,11 +192,11 @@ import (
 // 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "testStream", &kinesis.FirehoseDeliveryStreamArgs{
 // 			Destination: pulumi.String("splunk"),
 // 			S3Configuration: &kinesis.FirehoseDeliveryStreamS3ConfigurationArgs{
-// 				BucketArn:         pulumi.String(aws_s3_bucket.Bucket.Arn),
+// 				BucketArn:         pulumi.Any(aws_s3_bucket.Bucket.Arn),
 // 				BufferInterval:    pulumi.Int(400),
 // 				BufferSize:        pulumi.Int(10),
 // 				CompressionFormat: pulumi.String("GZIP"),
-// 				RoleArn:           pulumi.String(aws_iam_role.Firehose.Arn),
+// 				RoleArn:           pulumi.Any(aws_iam_role.Firehose.Arn),
 // 			},
 // 			SplunkConfiguration: &kinesis.FirehoseDeliveryStreamSplunkConfigurationArgs{
 // 				HecAcknowledgmentTimeout: pulumi.Int(600),
