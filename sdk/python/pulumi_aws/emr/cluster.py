@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cluster(pulumi.CustomResource):
@@ -328,32 +328,6 @@ class Cluster(pulumi.CustomResource):
         Started](https://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-gs-launch-sample-cluster.html)
         guide for more information on these IAM roles. There is also a fully-bootable
         example this provider configuration at the bottom of this page.
-        ### Enable Debug Logging
-
-        [Debug logging in EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-debugging.html)
-        is implemented as a step. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other
-        steps are being managed outside of this provider.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.emr.Cluster("example",
-            lifecycle={
-                "ignoreChanges": [
-                    "stepConcurrencyLevel",
-                    "steps",
-                ],
-            },
-            steps=[{
-                "actionOnFailure": "TERMINATE_CLUSTER",
-                "hadoopJarStep": {
-                    "args": ["state-pusher-script"],
-                    "jar": "command-runner.jar",
-                },
-                "name": "Setup Hadoop Debugging",
-            }])
-        ```
         ### Multiple Node Master Instance Group
 
         Available in EMR version 5.23.0 and later, an EMR Cluster can be launched with three master nodes for high availability. Additional information about this functionality and its requirements can be found in the [EMR Management Guide](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-ha.html).
@@ -736,7 +710,7 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -954,7 +928,7 @@ class Cluster(pulumi.CustomResource):
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
