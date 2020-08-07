@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Service(pulumi.CustomResource):
@@ -166,20 +166,6 @@ class Service(pulumi.CustomResource):
             }],
             opts=ResourceOptions(depends_on=["aws_iam_role_policy.foo"]))
         ```
-        ### Ignoring Changes to Desired Count
-
-        You can use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ecs.Service("example",
-            desired_count=2,
-            lifecycle={
-                "ignoreChanges": ["desiredCount"],
-            })
-        ```
         ### Daemon Scheduling Strategy
 
         ```python
@@ -287,7 +273,7 @@ class Service(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -431,7 +417,7 @@ class Service(pulumi.CustomResource):
         return Service(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

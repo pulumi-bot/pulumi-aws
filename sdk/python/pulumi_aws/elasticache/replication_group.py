@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ReplicationGroup(pulumi.CustomResource):
@@ -159,52 +159,6 @@ class ReplicationGroup(pulumi.CustomResource):
         servers reboots.
 
         ## Example Usage
-        ### Redis Cluster Mode Disabled
-
-        To create a single shard primary with single read replica:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.elasticache.ReplicationGroup("example",
-            automatic_failover_enabled=True,
-            availability_zones=[
-                "us-west-2a",
-                "us-west-2b",
-            ],
-            node_type="cache.m4.large",
-            number_cache_clusters=2,
-            parameter_group_name="default.redis3.2",
-            port=6379,
-            replication_group_description="test description")
-        ```
-
-        You have two options for adjusting the number of replicas:
-
-        * Adjusting `number_cache_clusters` directly. This will attempt to automatically add or remove replicas, but provides no granular control (e.g. preferred availability zone, cache cluster ID) for the added or removed replicas. This also currently expects cache cluster IDs in the form of `replication_group_id-00#`.
-        * Otherwise for fine grained control of the underlying cache clusters, they can be added or removed with the `elasticache.Cluster` resource and its `replication_group_id` attribute. In this situation, you will need to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to prevent perpetual differences with the `number_cache_cluster` attribute.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.elasticache.ReplicationGroup("example",
-            automatic_failover_enabled=True,
-            availability_zones=[
-                "us-west-2a",
-                "us-west-2b",
-            ],
-            lifecycle={
-                "ignoreChanges": ["numberCacheClusters"],
-            },
-            node_type="cache.m4.large",
-            number_cache_clusters=2,
-            parameter_group_name="default.redis3.2",
-            port=6379,
-            replication_group_description="test description")
-        replica = aws.elasticache.Cluster("replica", replication_group_id=example.id)
-        ```
         ### Redis Cluster Mode Enabled
 
         To create two shards with a primary and a single read replica each:
@@ -288,7 +242,7 @@ class ReplicationGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -425,7 +379,7 @@ class ReplicationGroup(pulumi.CustomResource):
         return ReplicationGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Preset(pulumi.CustomResource):
@@ -106,10 +106,10 @@ class Preset(pulumi.CustomResource):
         bar = aws.elastictranscoder.Preset("bar",
             audio={
                 "audioPackingMode": "SingleTrack",
-                "bitRate": 96,
-                "channels": 2,
+                "bitRate": "96",
+                "channels": "2",
                 "codec": "AAC",
-                "sampleRate": 44100,
+                "sampleRate": "44100",
             },
             audio_codec_options={
                 "profile": "AAC-LC",
@@ -118,7 +118,7 @@ class Preset(pulumi.CustomResource):
             description="Sample Preset",
             thumbnails={
                 "format": "png",
-                "interval": 120,
+                "interval": "120",
                 "maxHeight": "auto",
                 "maxWidth": "auto",
                 "paddingPolicy": "Pad",
@@ -130,7 +130,7 @@ class Preset(pulumi.CustomResource):
                 "displayAspectRatio": "16:9",
                 "fixedGop": "false",
                 "frameRate": "auto",
-                "keyframesMaxDist": 240,
+                "keyframesMaxDist": "240",
                 "maxFrameRate": "60",
                 "maxHeight": "auto",
                 "maxWidth": "auto",
@@ -141,7 +141,7 @@ class Preset(pulumi.CustomResource):
                 "ColorSpaceConversionMode": "None",
                 "InterlacedMode": "Progressive",
                 "Level": "2.2",
-                "MaxReferenceFrames": 3,
+                "MaxReferenceFrames": "3",
                 "Profile": "main",
             },
             video_watermarks=[{
@@ -236,7 +236,7 @@ class Preset(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -353,7 +353,7 @@ class Preset(pulumi.CustomResource):
         return Preset(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
