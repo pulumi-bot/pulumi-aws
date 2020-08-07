@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VpnConnection(pulumi.CustomResource):
@@ -122,7 +122,7 @@ class VpnConnection(pulumi.CustomResource):
 
         example_transit_gateway = aws.ec2transitgateway.TransitGateway("exampleTransitGateway")
         example_customer_gateway = aws.ec2.CustomerGateway("exampleCustomerGateway",
-            bgp_asn=65000,
+            bgp_asn="65000",
             ip_address="172.0.0.1",
             type="ipsec.1")
         example_vpn_connection = aws.ec2.VpnConnection("exampleVpnConnection",
@@ -139,7 +139,7 @@ class VpnConnection(pulumi.CustomResource):
         vpc = aws.ec2.Vpc("vpc", cidr_block="10.0.0.0/16")
         vpn_gateway = aws.ec2.VpnGateway("vpnGateway", vpc_id=vpc.id)
         customer_gateway = aws.ec2.CustomerGateway("customerGateway",
-            bgp_asn=65000,
+            bgp_asn="65000",
             ip_address="172.0.0.1",
             type="ipsec.1")
         main = aws.ec2.VpnConnection("main",
@@ -173,7 +173,7 @@ class VpnConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -293,7 +293,7 @@ class VpnConnection(pulumi.CustomResource):
         return VpnConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

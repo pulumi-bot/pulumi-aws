@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetClusterSnapshotResult:
     """
@@ -121,6 +122,8 @@ class GetClusterSnapshotResult:
         """
         The VPC ID associated with the DB cluster snapshot.
         """
+
+
 class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -149,35 +152,13 @@ class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifier=None,include_public=None,include_shared=None,most_recent=None,snapshot_type=None,tags=None,opts=None):
+
+def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identifier=None, include_public=None, include_shared=None, most_recent=None, snapshot_type=None, tags=None, opts=None):
     """
     Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
 
     > **NOTE:** This data source does not apply to snapshots created on DB Instances.
     See the `rds.Snapshot` data source for DB Instance snapshots.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    development_final_snapshot = aws.rds.get_cluster_snapshot(db_cluster_identifier="development_cluster",
-        most_recent=True)
-    # Use the last snapshot of the dev database before it was destroyed to create
-    # a new dev database.
-    aurora_cluster = aws.rds.Cluster("auroraCluster",
-        cluster_identifier="development_cluster",
-        db_subnet_group_name="my_db_subnet_group",
-        lifecycle={
-            "ignoreChanges": ["snapshotIdentifier"],
-        },
-        snapshot_identifier=development_final_snapshot.id)
-    aurora_cluster_instance = aws.rds.ClusterInstance("auroraClusterInstance",
-        cluster_identifier=aurora_cluster.id,
-        db_subnet_group_name="my_db_subnet_group",
-        instance_class="db.t2.small")
-    ```
 
 
     :param str db_cluster_identifier: Returns the list of snapshots created by the specific db_cluster
@@ -194,8 +175,6 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     :param dict tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['dbClusterIdentifier'] = db_cluster_identifier
     __args__['dbClusterSnapshotIdentifier'] = db_cluster_snapshot_identifier
     __args__['includePublic'] = include_public
@@ -206,7 +185,7 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getClusterSnapshot:getClusterSnapshot', __args__, opts=opts).value
 
     return AwaitableGetClusterSnapshotResult(
