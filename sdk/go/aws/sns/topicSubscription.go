@@ -92,6 +92,7 @@ import (
 // import (
 // 	"fmt"
 //
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/config"
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/iam"
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/providers"
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/sns"

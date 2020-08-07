@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSnapshotResult:
     """
@@ -136,6 +137,8 @@ class GetSnapshotResult:
         """
         Specifies the ID of the VPC associated with the DB snapshot.
         """
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -167,40 +170,13 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             storage_type=self.storage_type,
             vpc_id=self.vpc_id)
 
-def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include_public=None,include_shared=None,most_recent=None,snapshot_type=None,opts=None):
+
+def get_snapshot(db_instance_identifier=None, db_snapshot_identifier=None, include_public=None, include_shared=None, most_recent=None, snapshot_type=None, opts=None):
     """
     Use this data source to get information about a DB Snapshot for use when provisioning DB instances
 
     > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
     See the `rds.ClusterSnapshot` data source for DB Cluster snapshots.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    prod = aws.rds.Instance("prod",
-        allocated_storage=10,
-        db_subnet_group_name="my_database_subnet_group",
-        engine="mysql",
-        engine_version="5.6.17",
-        instance_class="db.t2.micro",
-        name="mydb",
-        parameter_group_name="default.mysql5.6",
-        password="bar",
-        username="foo")
-    latest_prod_snapshot = prod.id.apply(lambda id: aws.rds.get_snapshot(db_instance_identifier=id,
-        most_recent=True))
-    # Use the latest production snapshot to create a dev instance.
-    dev = aws.rds.Instance("dev",
-        instance_class="db.t2.micro",
-        lifecycle={
-            "ignoreChanges": ["snapshotIdentifier"],
-        },
-        name="mydbdev",
-        snapshot_identifier=latest_prod_snapshot.id)
-    ```
 
 
     :param str db_instance_identifier: Returns the list of snapshots created by the specific db_instance
@@ -217,8 +193,6 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
            included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
     """
     __args__ = dict()
-
-
     __args__['dbInstanceIdentifier'] = db_instance_identifier
     __args__['dbSnapshotIdentifier'] = db_snapshot_identifier
     __args__['includePublic'] = include_public
@@ -228,7 +202,7 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(
