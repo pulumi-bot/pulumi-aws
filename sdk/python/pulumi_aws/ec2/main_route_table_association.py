@@ -5,25 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['MainRouteTableAssociation']
 
 
 class MainRouteTableAssociation(pulumi.CustomResource):
-    original_route_table_id: pulumi.Output[str]
+    original_route_table_id: pulumi.Output[str] = pulumi.property("originalRouteTableId")
     """
     Used internally, see __Notes__ below
     """
-    route_table_id: pulumi.Output[str]
+
+    route_table_id: pulumi.Output[str] = pulumi.property("routeTableId")
     """
     The ID of the Route Table to set as the new
     main route table for the target VPC
     """
-    vpc_id: pulumi.Output[str]
+
+    vpc_id: pulumi.Output[str] = pulumi.property("vpcId")
     """
     The ID of the VPC whose main route table should be set
     """
-    def __init__(__self__, resource_name, opts=None, route_table_id=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 route_table_id: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource for managing the main routing table of a VPC.
 
@@ -63,7 +75,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -83,7 +95,12 @@ class MainRouteTableAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, original_route_table_id=None, route_table_id=None, vpc_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            original_route_table_id: Optional[pulumi.Input[str]] = None,
+            route_table_id: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None) -> 'MainRouteTableAssociation':
         """
         Get an existing MainRouteTableAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,7 +123,8 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         return MainRouteTableAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

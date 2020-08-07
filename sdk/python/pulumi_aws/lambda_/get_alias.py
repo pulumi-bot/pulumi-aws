@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAliasResult',
+    'AwaitableGetAliasResult',
+    'get_alias',
+]
+
 
 class GetAliasResult:
     """
@@ -49,6 +56,8 @@ class GetAliasResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetAliasResult(GetAliasResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +72,10 @@ class AwaitableGetAliasResult(GetAliasResult):
             invoke_arn=self.invoke_arn,
             name=self.name)
 
-def get_alias(function_name=None,name=None,opts=None):
+
+def get_alias(function_name: Optional[str] = None,
+              name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAliasResult:
     """
     Provides information about a Lambda Alias.
 
@@ -82,14 +94,12 @@ def get_alias(function_name=None,name=None,opts=None):
     :param str name: Name of the Lambda alias.
     """
     __args__ = dict()
-
-
     __args__['functionName'] = function_name
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:lambda/getAlias:getAlias', __args__, opts=opts).value
 
     return AwaitableGetAliasResult(

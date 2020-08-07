@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetDomainResult',
+    'AwaitableGetDomainResult',
+    'get_domain',
+]
+
 
 class GetDomainResult:
     """
@@ -140,6 +148,8 @@ class GetDomainResult:
         """
         VPC Options for private Elasticsearch domains.
         """
+
+
 class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -169,7 +179,10 @@ class AwaitableGetDomainResult(GetDomainResult):
             tags=self.tags,
             vpc_options=self.vpc_options)
 
-def get_domain(domain_name=None,tags=None,opts=None):
+
+def get_domain(domain_name: Optional[str] = None,
+               tags: Optional[Mapping[str, str]] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
     Use this data source to get information about an Elasticsearch Domain
 
@@ -184,17 +197,15 @@ def get_domain(domain_name=None,tags=None,opts=None):
 
 
     :param str domain_name: Name of the domain.
-    :param dict tags: The tags assigned to the domain.
+    :param Mapping[str, str] tags: The tags assigned to the domain.
     """
     __args__ = dict()
-
-
     __args__['domainName'] = domain_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticsearch/getDomain:getDomain', __args__, opts=opts).value
 
     return AwaitableGetDomainResult(

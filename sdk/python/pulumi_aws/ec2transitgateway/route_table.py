@@ -5,28 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['RouteTable']
 
 
 class RouteTable(pulumi.CustomResource):
-    default_association_route_table: pulumi.Output[bool]
+    default_association_route_table: pulumi.Output[bool] = pulumi.property("defaultAssociationRouteTable")
     """
     Boolean whether this is the default association route table for the EC2 Transit Gateway.
     """
-    default_propagation_route_table: pulumi.Output[bool]
+
+    default_propagation_route_table: pulumi.Output[bool] = pulumi.property("defaultPropagationRouteTable")
     """
     Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     Key-value tags for the EC2 Transit Gateway Route Table.
     """
-    transit_gateway_id: pulumi.Output[str]
+
+    transit_gateway_id: pulumi.Output[str] = pulumi.property("transitGatewayId")
     """
     Identifier of EC2 Transit Gateway.
     """
-    def __init__(__self__, resource_name, opts=None, tags=None, transit_gateway_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 transit_gateway_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an EC2 Transit Gateway Route Table.
 
@@ -41,7 +54,7 @@ class RouteTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] tags: Key-value tags for the EC2 Transit Gateway Route Table.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value tags for the EC2 Transit Gateway Route Table.
         :param pulumi.Input[str] transit_gateway_id: Identifier of EC2 Transit Gateway.
         """
         if __name__ is not None:
@@ -55,7 +68,7 @@ class RouteTable(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -74,7 +87,13 @@ class RouteTable(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, default_association_route_table=None, default_propagation_route_table=None, tags=None, transit_gateway_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_association_route_table: Optional[pulumi.Input[bool]] = None,
+            default_propagation_route_table: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            transit_gateway_id: Optional[pulumi.Input[str]] = None) -> 'RouteTable':
         """
         Get an existing RouteTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -84,7 +103,7 @@ class RouteTable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] default_association_route_table: Boolean whether this is the default association route table for the EC2 Transit Gateway.
         :param pulumi.Input[bool] default_propagation_route_table: Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
-        :param pulumi.Input[dict] tags: Key-value tags for the EC2 Transit Gateway Route Table.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value tags for the EC2 Transit Gateway Route Table.
         :param pulumi.Input[str] transit_gateway_id: Identifier of EC2 Transit Gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -98,7 +117,8 @@ class RouteTable(pulumi.CustomResource):
         return RouteTable(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

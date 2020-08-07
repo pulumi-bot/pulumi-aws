@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetKeyResult',
+    'AwaitableGetKeyResult',
+    'get_key',
+]
+
 
 class GetKeyResult:
     """
@@ -64,6 +71,8 @@ class GetKeyResult:
         if valid_to and not isinstance(valid_to, str):
             raise TypeError("Expected argument 'valid_to' to be a str")
         __self__.valid_to = valid_to
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,7 +96,10 @@ class AwaitableGetKeyResult(GetKeyResult):
             origin=self.origin,
             valid_to=self.valid_to)
 
-def get_key(grant_tokens=None,key_id=None,opts=None):
+
+def get_key(grant_tokens: Optional[List[str]] = None,
+            key_id: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyResult:
     """
     Use this data source to get detailed information about
     the specified KMS Key with flexible key id input.
@@ -104,7 +116,7 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
     ```
 
 
-    :param list grant_tokens: List of grant tokens
+    :param List[str] grant_tokens: List of grant tokens
     :param str key_id: Key identifier which can be one of the following format:
            * Key ID. E.g: `1234abcd-12ab-34cd-56ef-1234567890ab`
            * Key ARN. E.g.: `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
@@ -112,14 +124,12 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
            * Alias ARN: E.g.: `arn:aws:kms:us-east-1:111122223333:alias/my-key`
     """
     __args__ = dict()
-
-
     __args__['grantTokens'] = grant_tokens
     __args__['keyId'] = key_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kms/getKey:getKey', __args__, opts=opts).value
 
     return AwaitableGetKeyResult(

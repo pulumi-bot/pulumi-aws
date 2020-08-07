@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetHostedZoneIdResult',
+    'AwaitableGetHostedZoneIdResult',
+    'get_hosted_zone_id',
+]
+
 
 class GetHostedZoneIdResult:
     """
@@ -22,6 +29,8 @@ class GetHostedZoneIdResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
+
+
 class AwaitableGetHostedZoneIdResult(GetHostedZoneIdResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,7 +40,9 @@ class AwaitableGetHostedZoneIdResult(GetHostedZoneIdResult):
             id=self.id,
             region=self.region)
 
-def get_hosted_zone_id(region=None,opts=None):
+
+def get_hosted_zone_id(region: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostedZoneIdResult:
     """
     Use this data source to get the HostedZoneId of the AWS Elastic Load Balancing HostedZoneId
     in a given region for the purpose of using in an AWS Route53 Alias.
@@ -59,13 +70,11 @@ def get_hosted_zone_id(region=None,opts=None):
            Defaults to the region from the AWS provider configuration.
     """
     __args__ = dict()
-
-
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elb/getHostedZoneId:getHostedZoneId', __args__, opts=opts).value
 
     return AwaitableGetHostedZoneIdResult(

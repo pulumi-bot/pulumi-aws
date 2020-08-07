@@ -5,20 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['DomainIdentityVerification']
 
 
 class DomainIdentityVerification(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.property("arn")
     """
     The ARN of the domain identity.
     """
-    domain: pulumi.Output[str]
+
+    domain: pulumi.Output[str] = pulumi.property("domain")
     """
     The domain name of the SES domain identity to verify.
     """
-    def __init__(__self__, resource_name, opts=None, domain=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a successful verification of an SES domain identity.
 
@@ -38,7 +48,7 @@ class DomainIdentityVerification(pulumi.CustomResource):
         example_amazonses_verification_record = aws.route53.Record("exampleAmazonsesVerificationRecord",
             name=example.id.apply(lambda id: f"_amazonses.{id}"),
             records=[example.verification_token],
-            ttl="600",
+            ttl=600,
             type="TXT",
             zone_id=aws_route53_zone["example"]["zone_id"])
         example_verification = aws.ses.DomainIdentityVerification("exampleVerification", domain=example.id,
@@ -60,7 +70,7 @@ class DomainIdentityVerification(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,7 +87,11 @@ class DomainIdentityVerification(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, domain=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None) -> 'DomainIdentityVerification':
         """
         Get an existing DomainIdentityVerification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,7 +111,8 @@ class DomainIdentityVerification(pulumi.CustomResource):
         return DomainIdentityVerification(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

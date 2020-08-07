@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetStackResult',
+    'AwaitableGetStackResult',
+    'get_stack',
+]
+
 
 class GetStackResult:
     """
@@ -82,6 +89,8 @@ class GetStackResult:
         """
         The amount of time that can pass before the stack status becomes `CREATE_FAILED`
         """
+
+
 class AwaitableGetStackResult(GetStackResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,7 +110,10 @@ class AwaitableGetStackResult(GetStackResult):
             template_body=self.template_body,
             timeout_in_minutes=self.timeout_in_minutes)
 
-def get_stack(name=None,tags=None,opts=None):
+
+def get_stack(name: Optional[str] = None,
+              tags: Optional[Mapping[str, str]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStackResult:
     """
     The CloudFormation Stack data source allows access to stack
     outputs and other useful data including the template body.
@@ -124,17 +136,15 @@ def get_stack(name=None,tags=None,opts=None):
 
 
     :param str name: The name of the stack
-    :param dict tags: A map of tags associated with this stack.
+    :param Mapping[str, str] tags: A map of tags associated with this stack.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:cloudformation/getStack:getStack', __args__, opts=opts).value
 
     return AwaitableGetStackResult(

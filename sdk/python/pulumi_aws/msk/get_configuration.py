@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetConfigurationResult',
+    'AwaitableGetConfigurationResult',
+    'get_configuration',
+]
+
 
 class GetConfigurationResult:
     """
@@ -52,6 +59,8 @@ class GetConfigurationResult:
         """
         Contents of the server.properties file.
         """
+
+
 class AwaitableGetConfigurationResult(GetConfigurationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +75,9 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
             name=self.name,
             server_properties=self.server_properties)
 
-def get_configuration(name=None,opts=None):
+
+def get_configuration(name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConfigurationResult:
     """
     Get information on an Amazon MSK Configuration.
 
@@ -83,13 +94,11 @@ def get_configuration(name=None,opts=None):
     :param str name: Name of the configuration.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:msk/getConfiguration:getConfiguration', __args__, opts=opts).value
 
     return AwaitableGetConfigurationResult(

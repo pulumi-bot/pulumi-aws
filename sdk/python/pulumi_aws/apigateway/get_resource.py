@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetResourceResult',
+    'AwaitableGetResourceResult',
+    'get_resource',
+]
+
 
 class GetResourceResult:
     """
@@ -37,6 +44,8 @@ class GetResourceResult:
         if rest_api_id and not isinstance(rest_api_id, str):
             raise TypeError("Expected argument 'rest_api_id' to be a str")
         __self__.rest_api_id = rest_api_id
+
+
 class AwaitableGetResourceResult(GetResourceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +58,10 @@ class AwaitableGetResourceResult(GetResourceResult):
             path_part=self.path_part,
             rest_api_id=self.rest_api_id)
 
-def get_resource(path=None,rest_api_id=None,opts=None):
+
+def get_resource(path: Optional[str] = None,
+                 rest_api_id: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceResult:
     """
     Use this data source to get the id of a Resource in API Gateway.
     To fetch the Resource, you must provide the REST API id as well as the full path.
@@ -70,14 +82,12 @@ def get_resource(path=None,rest_api_id=None,opts=None):
     :param str rest_api_id: The REST API id that owns the resource. If no REST API is found, an error will be returned.
     """
     __args__ = dict()
-
-
     __args__['path'] = path
     __args__['restApiId'] = rest_api_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:apigateway/getResource:getResource', __args__, opts=opts).value
 
     return AwaitableGetResourceResult(

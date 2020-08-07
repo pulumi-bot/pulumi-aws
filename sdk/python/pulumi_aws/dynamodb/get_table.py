@@ -5,8 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetTableResult',
+    'AwaitableGetTableResult',
+    'get_table',
+]
+
 
 class GetTableResult:
     """
@@ -76,6 +85,8 @@ class GetTableResult:
         if write_capacity and not isinstance(write_capacity, float):
             raise TypeError("Expected argument 'write_capacity' to be a float")
         __self__.write_capacity = write_capacity
+
+
 class AwaitableGetTableResult(GetTableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -103,7 +114,11 @@ class AwaitableGetTableResult(GetTableResult):
             ttl=self.ttl,
             write_capacity=self.write_capacity)
 
-def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
+
+def get_table(name: Optional[str] = None,
+              server_side_encryption: Optional[pulumi.InputType['GetTableServerSideEncryptionArgs']] = None,
+              tags: Optional[Mapping[str, str]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
     Provides information about a DynamoDB table.
 
@@ -118,22 +133,15 @@ def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
 
 
     :param str name: The name of the DynamoDB table.
-
-    The **server_side_encryption** object supports the following:
-
-      * `enabled` (`bool`)
-      * `kms_key_arn` (`str`)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['serverSideEncryption'] = server_side_encryption
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:dynamodb/getTable:getTable', __args__, opts=opts).value
 
     return AwaitableGetTableResult(

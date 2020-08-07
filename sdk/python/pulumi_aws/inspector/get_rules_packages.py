@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetRulesPackagesResult',
+    'AwaitableGetRulesPackagesResult',
+    'get_rules_packages',
+]
+
 
 class GetRulesPackagesResult:
     """
@@ -25,6 +32,8 @@ class GetRulesPackagesResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetRulesPackagesResult(GetRulesPackagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,7 +43,8 @@ class AwaitableGetRulesPackagesResult(GetRulesPackagesResult):
             arns=self.arns,
             id=self.id)
 
-def get_rules_packages(opts=None):
+
+def get_rules_packages(                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRulesPackagesResult:
     """
     The AWS Inspector Rules Packages data source allows access to the list of AWS
     Inspector Rules Packages which can be used by AWS Inspector within the region
@@ -53,18 +63,16 @@ def get_rules_packages(opts=None):
     })
     assessment_assessment_target = aws.inspector.AssessmentTarget("assessmentAssessmentTarget", resource_group_arn=group.arn)
     assessment_assessment_template = aws.inspector.AssessmentTemplate("assessmentAssessmentTemplate",
-        duration="60",
+        duration=60,
         rules_package_arns=rules.arns,
         target_arn=assessment_assessment_target.arn)
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:inspector/getRulesPackages:getRulesPackages', __args__, opts=opts).value
 
     return AwaitableGetRulesPackagesResult(

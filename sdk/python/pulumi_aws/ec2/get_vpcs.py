@@ -5,8 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetVpcsResult',
+    'AwaitableGetVpcsResult',
+    'get_vpcs',
+]
+
 
 class GetVpcsResult:
     """
@@ -31,6 +40,8 @@ class GetVpcsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetVpcsResult(GetVpcsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +53,10 @@ class AwaitableGetVpcsResult(GetVpcsResult):
             ids=self.ids,
             tags=self.tags)
 
-def get_vpcs(filters=None,tags=None,opts=None):
+
+def get_vpcs(filters: Optional[List[pulumi.InputType['GetVpcsFilterArgs']]] = None,
+             tags: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcsResult:
     """
     This resource can be useful for getting back a list of VPC Ids for a region.
 
@@ -76,26 +90,17 @@ def get_vpcs(filters=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: Custom filter block as described below.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param List[pulumi.InputType['GetVpcsFilterArgs']] filters: Custom filter block as described below.
+    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the desired vpcs.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        A VPC will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpcs:getVpcs', __args__, opts=opts).value
 
     return AwaitableGetVpcsResult(

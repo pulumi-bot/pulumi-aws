@@ -5,8 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetDirectConnectGatewayAttachmentResult',
+    'AwaitableGetDirectConnectGatewayAttachmentResult',
+    'get_direct_connect_gateway_attachment',
+]
+
 
 class GetDirectConnectGatewayAttachmentResult:
     """
@@ -34,6 +43,8 @@ class GetDirectConnectGatewayAttachmentResult:
         if transit_gateway_id and not isinstance(transit_gateway_id, str):
             raise TypeError("Expected argument 'transit_gateway_id' to be a str")
         __self__.transit_gateway_id = transit_gateway_id
+
+
 class AwaitableGetDirectConnectGatewayAttachmentResult(GetDirectConnectGatewayAttachmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +57,12 @@ class AwaitableGetDirectConnectGatewayAttachmentResult(GetDirectConnectGatewayAt
             tags=self.tags,
             transit_gateway_id=self.transit_gateway_id)
 
-def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=None,transit_gateway_id=None,opts=None):
+
+def get_direct_connect_gateway_attachment(dx_gateway_id: Optional[str] = None,
+                                          filters: Optional[List[pulumi.InputType['GetDirectConnectGatewayAttachmentFilterArgs']]] = None,
+                                          tags: Optional[Mapping[str, str]] = None,
+                                          transit_gateway_id: Optional[str] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectConnectGatewayAttachmentResult:
     """
     Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
 
@@ -63,18 +79,11 @@ def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=N
 
 
     :param str dx_gateway_id: Identifier of the Direct Connect Gateway.
-    :param list filters: Configuration block(s) for filtering. Detailed below.
-    :param dict tags: A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway Direct Connect Gateway Attachment.
+    :param List[pulumi.InputType['GetDirectConnectGatewayAttachmentFilterArgs']] filters: Configuration block(s) for filtering. Detailed below.
+    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway Direct Connect Gateway Attachment.
     :param str transit_gateway_id: Identifier of the EC2 Transit Gateway.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
-      * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
-
     __args__['dxGatewayId'] = dx_gateway_id
     __args__['filters'] = filters
     __args__['tags'] = tags
@@ -82,7 +91,7 @@ def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2transitgateway/getDirectConnectGatewayAttachment:getDirectConnectGatewayAttachment', __args__, opts=opts).value
 
     return AwaitableGetDirectConnectGatewayAttachmentResult(

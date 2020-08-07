@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
 
 class GetClusterResult:
     """
@@ -55,6 +63,8 @@ class GetClusterResult:
         """
         The id of the VPC that the CloudHSM cluster resides in.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,7 +79,10 @@ class AwaitableGetClusterResult(GetClusterResult):
             subnet_ids=self.subnet_ids,
             vpc_id=self.vpc_id)
 
-def get_cluster(cluster_id=None,cluster_state=None,opts=None):
+
+def get_cluster(cluster_id: Optional[str] = None,
+                cluster_state: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to get information about a CloudHSM v2 cluster
 
@@ -87,14 +100,12 @@ def get_cluster(cluster_id=None,cluster_state=None,opts=None):
     :param str cluster_state: The state of the cluster to be found.
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['clusterState'] = cluster_state
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:cloudhsmv2/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

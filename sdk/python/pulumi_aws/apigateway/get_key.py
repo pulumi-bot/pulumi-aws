@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetKeyResult',
+    'AwaitableGetKeyResult',
+    'get_key',
+]
+
 
 class GetKeyResult:
     """
@@ -61,6 +68,8 @@ class GetKeyResult:
         """
         Set to the value of the API Key.
         """
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +85,10 @@ class AwaitableGetKeyResult(GetKeyResult):
             tags=self.tags,
             value=self.value)
 
-def get_key(id=None,tags=None,opts=None):
+
+def get_key(id: Optional[str] = None,
+            tags: Optional[Mapping[str, str]] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyResult:
     """
     Use this data source to get the name and value of a pre-existing API Key, for
     example to supply credentials for a dependency microservice.
@@ -92,17 +104,15 @@ def get_key(id=None,tags=None,opts=None):
 
 
     :param str id: The ID of the API Key to look up.
-    :param dict tags: A map of tags for the resource.
+    :param Mapping[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:apigateway/getKey:getKey', __args__, opts=opts).value
 
     return AwaitableGetKeyResult(

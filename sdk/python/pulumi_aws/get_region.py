@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = [
+    'GetRegionResult',
+    'AwaitableGetRegionResult',
+    'get_region',
+]
+
 
 class GetRegionResult:
     """
@@ -37,6 +44,8 @@ class GetRegionResult:
         """
         The name of the selected region.
         """
+
+
 class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,7 +57,10 @@ class AwaitableGetRegionResult(GetRegionResult):
             id=self.id,
             name=self.name)
 
-def get_region(endpoint=None,name=None,opts=None):
+
+def get_region(endpoint: Optional[str] = None,
+               name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
     `getRegion` provides details about a specific AWS region.
 
@@ -74,14 +86,12 @@ def get_region(endpoint=None,name=None,opts=None):
     :param str name: The full name of the region to select.
     """
     __args__ = dict()
-
-
     __args__['endpoint'] = endpoint
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getRegion:getRegion', __args__, opts=opts).value
 
     return AwaitableGetRegionResult(

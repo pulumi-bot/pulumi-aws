@@ -5,8 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetBrokerResult',
+    'AwaitableGetBrokerResult',
+    'get_broker',
+]
+
 
 class GetBrokerResult:
     """
@@ -73,6 +82,8 @@ class GetBrokerResult:
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         __self__.users = users
+
+
 class AwaitableGetBrokerResult(GetBrokerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -99,7 +110,12 @@ class AwaitableGetBrokerResult(GetBrokerResult):
             tags=self.tags,
             users=self.users)
 
-def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
+
+def get_broker(broker_id: Optional[str] = None,
+               broker_name: Optional[str] = None,
+               logs: Optional[pulumi.InputType['GetBrokerLogsArgs']] = None,
+               tags: Optional[Mapping[str, str]] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBrokerResult:
     """
     Provides information about a MQ Broker.
 
@@ -123,15 +139,8 @@ def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
 
     :param str broker_id: The unique id of the mq broker.
     :param str broker_name: The unique name of the mq broker.
-
-    The **logs** object supports the following:
-
-      * `audit` (`bool`)
-      * `general` (`bool`)
     """
     __args__ = dict()
-
-
     __args__['brokerId'] = broker_id
     __args__['brokerName'] = broker_name
     __args__['logs'] = logs
@@ -139,7 +148,7 @@ def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:mq/getBroker:getBroker', __args__, opts=opts).value
 
     return AwaitableGetBrokerResult(

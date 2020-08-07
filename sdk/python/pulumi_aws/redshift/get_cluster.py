@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
 
 class GetClusterResult:
     """
@@ -196,6 +203,8 @@ class GetClusterResult:
         """
         The VPC security group Ids associated with the cluster
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -234,7 +243,10 @@ class AwaitableGetClusterResult(GetClusterResult):
             vpc_id=self.vpc_id,
             vpc_security_group_ids=self.vpc_security_group_ids)
 
-def get_cluster(cluster_identifier=None,tags=None,opts=None):
+
+def get_cluster(cluster_identifier: Optional[str] = None,
+                tags: Optional[Mapping[str, str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Provides details about a specific redshift cluster.
 
@@ -267,17 +279,15 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
 
 
     :param str cluster_identifier: The cluster identifier
-    :param dict tags: The tags associated to the cluster
+    :param Mapping[str, str] tags: The tags associated to the cluster
     """
     __args__ = dict()
-
-
     __args__['clusterIdentifier'] = cluster_identifier
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:redshift/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

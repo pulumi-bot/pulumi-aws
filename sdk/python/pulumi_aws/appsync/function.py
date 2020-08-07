@@ -5,48 +5,71 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Function']
 
 
 class Function(pulumi.CustomResource):
-    api_id: pulumi.Output[str]
+    api_id: pulumi.Output[str] = pulumi.property("apiId")
     """
     The ID of the associated AppSync API.
     """
-    arn: pulumi.Output[str]
+
+    arn: pulumi.Output[str] = pulumi.property("arn")
     """
     The ARN of the Function object.
     """
-    data_source: pulumi.Output[str]
+
+    data_source: pulumi.Output[str] = pulumi.property("dataSource")
     """
     The Function DataSource name.
     """
-    description: pulumi.Output[str]
+
+    description: pulumi.Output[Optional[str]] = pulumi.property("description")
     """
     The Function description.
     """
-    function_id: pulumi.Output[str]
+
+    function_id: pulumi.Output[str] = pulumi.property("functionId")
     """
     A unique ID representing the Function object.
     """
-    function_version: pulumi.Output[str]
+
+    function_version: pulumi.Output[Optional[str]] = pulumi.property("functionVersion")
     """
     The version of the request mapping template. Currently the supported value is `2018-05-29`.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The Function name. The function name does not have to be unique.
     """
-    request_mapping_template: pulumi.Output[str]
+
+    request_mapping_template: pulumi.Output[str] = pulumi.property("requestMappingTemplate")
     """
     The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
     """
-    response_mapping_template: pulumi.Output[str]
+
+    response_mapping_template: pulumi.Output[str] = pulumi.property("responseMappingTemplate")
     """
     The Function response mapping template.
     """
-    def __init__(__self__, resource_name, opts=None, api_id=None, data_source=None, description=None, function_version=None, name=None, request_mapping_template=None, response_mapping_template=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
+                 data_source: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 function_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 request_mapping_template: Optional[pulumi.Input[str]] = None,
+                 response_mapping_template: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides an AppSync Function.
 
@@ -127,7 +150,7 @@ class Function(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -157,7 +180,18 @@ class Function(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_id=None, arn=None, data_source=None, description=None, function_id=None, function_version=None, name=None, request_mapping_template=None, response_mapping_template=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_id: Optional[pulumi.Input[str]] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            data_source: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            function_id: Optional[pulumi.Input[str]] = None,
+            function_version: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            request_mapping_template: Optional[pulumi.Input[str]] = None,
+            response_mapping_template: Optional[pulumi.Input[str]] = None) -> 'Function':
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -191,7 +225,8 @@ class Function(pulumi.CustomResource):
         return Function(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

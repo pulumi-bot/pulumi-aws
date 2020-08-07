@@ -5,10 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetListenerResult',
+    'AwaitableGetListenerResult',
+    'get_listener',
+]
 
 warnings.warn("aws.applicationloadbalancing.getListener has been deprecated in favor of aws.alb.getListener", DeprecationWarning)
+
 class GetListenerResult:
     """
     A collection of values returned by getListener.
@@ -41,6 +49,8 @@ class GetListenerResult:
         if ssl_policy and not isinstance(ssl_policy, str):
             raise TypeError("Expected argument 'ssl_policy' to be a str")
         __self__.ssl_policy = ssl_policy
+
+
 class AwaitableGetListenerResult(GetListenerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +66,11 @@ class AwaitableGetListenerResult(GetListenerResult):
             protocol=self.protocol,
             ssl_policy=self.ssl_policy)
 
-def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
+
+def get_listener(arn: Optional[str] = None,
+                 load_balancer_arn: Optional[str] = None,
+                 port: Optional[float] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListenerResult:
     """
     > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
 
@@ -87,15 +101,13 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     """
     pulumi.log.warn("get_listener is deprecated: aws.applicationloadbalancing.getListener has been deprecated in favor of aws.alb.getListener")
     __args__ = dict()
-
-
     __args__['arn'] = arn
     __args__['loadBalancerArn'] = load_balancer_arn
     __args__['port'] = port
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:applicationloadbalancing/getListener:getListener', __args__, opts=opts).value
 
     return AwaitableGetListenerResult(

@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDistributionResult',
+    'AwaitableGetDistributionResult',
+    'get_distribution',
+]
+
 
 class GetDistributionResult:
     """
@@ -74,6 +81,8 @@ class GetDistributionResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetDistributionResult(GetDistributionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +100,10 @@ class AwaitableGetDistributionResult(GetDistributionResult):
             status=self.status,
             tags=self.tags)
 
-def get_distribution(id=None,tags=None,opts=None):
+
+def get_distribution(id: Optional[str] = None,
+                     tags: Optional[Mapping[str, str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDistributionResult:
     """
     Use this data source to retrieve information about a CloudFront distribution.
 
@@ -108,14 +120,12 @@ def get_distribution(id=None,tags=None,opts=None):
     :param str id: The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:cloudfront/getDistribution:getDistribution', __args__, opts=opts).value
 
     return AwaitableGetDistributionResult(

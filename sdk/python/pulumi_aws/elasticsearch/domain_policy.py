@@ -5,20 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['DomainPolicy']
 
 
 class DomainPolicy(pulumi.CustomResource):
-    access_policies: pulumi.Output[str]
+    access_policies: pulumi.Output[str] = pulumi.property("accessPolicies")
     """
     IAM policy document specifying the access policies for the domain
     """
-    domain_name: pulumi.Output[str]
+
+    domain_name: pulumi.Output[str] = pulumi.property("domainName")
     """
     Name of the domain.
     """
-    def __init__(__self__, resource_name, opts=None, access_policies=None, domain_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_policies: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
 
@@ -51,7 +62,7 @@ class DomainPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] access_policies: IAM policy document specifying the access policies for the domain
+        :param pulumi.Input[str] access_policies: IAM policy document specifying the access policies for the domain
         :param pulumi.Input[str] domain_name: Name of the domain.
         """
         if __name__ is not None:
@@ -65,7 +76,7 @@ class DomainPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -84,7 +95,11 @@ class DomainPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_policies=None, domain_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_policies: Optional[pulumi.Input[str]] = None,
+            domain_name: Optional[pulumi.Input[str]] = None) -> 'DomainPolicy':
         """
         Get an existing DomainPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -92,7 +107,7 @@ class DomainPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] access_policies: IAM policy document specifying the access policies for the domain
+        :param pulumi.Input[str] access_policies: IAM policy document specifying the access policies for the domain
         :param pulumi.Input[str] domain_name: Name of the domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -104,7 +119,8 @@ class DomainPolicy(pulumi.CustomResource):
         return DomainPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

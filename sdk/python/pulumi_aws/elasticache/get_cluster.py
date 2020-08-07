@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
 
 class GetClusterResult:
     """
@@ -145,6 +153,8 @@ class GetClusterResult:
         """
         The tags assigned to the resource
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -174,7 +184,10 @@ class AwaitableGetClusterResult(GetClusterResult):
             subnet_group_name=self.subnet_group_name,
             tags=self.tags)
 
-def get_cluster(cluster_id=None,tags=None,opts=None):
+
+def get_cluster(cluster_id: Optional[str] = None,
+                tags: Optional[Mapping[str, str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to get information about an Elasticache Cluster
 
@@ -189,17 +202,15 @@ def get_cluster(cluster_id=None,tags=None,opts=None):
 
 
     :param str cluster_id: Group identifier.
-    :param dict tags: The tags assigned to the resource
+    :param Mapping[str, str] tags: The tags assigned to the resource
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticache/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

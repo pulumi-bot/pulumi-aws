@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = [
+    'GetCallerIdentityResult',
+    'AwaitableGetCallerIdentityResult',
+    'get_caller_identity',
+]
+
 
 class GetCallerIdentityResult:
     """
@@ -37,6 +44,8 @@ class GetCallerIdentityResult:
         """
         The unique identifier of the calling entity.
         """
+
+
 class AwaitableGetCallerIdentityResult(GetCallerIdentityResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,7 +57,8 @@ class AwaitableGetCallerIdentityResult(GetCallerIdentityResult):
             id=self.id,
             user_id=self.user_id)
 
-def get_caller_identity(opts=None):
+
+def get_caller_identity(                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCallerIdentityResult:
     """
     Use this data source to get the access to the effective Account ID, User ID, and ARN in
     which this provider is authorized.
@@ -66,12 +76,10 @@ def get_caller_identity(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getCallerIdentity:getCallerIdentity', __args__, opts=opts).value
 
     return AwaitableGetCallerIdentityResult(

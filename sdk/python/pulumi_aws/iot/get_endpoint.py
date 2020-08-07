@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetEndpointResult',
+    'AwaitableGetEndpointResult',
+    'get_endpoint',
+]
+
 
 class GetEndpointResult:
     """
@@ -33,6 +40,8 @@ class GetEndpointResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetEndpointResult(GetEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +52,9 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             endpoint_type=self.endpoint_type,
             id=self.id)
 
-def get_endpoint(endpoint_type=None,opts=None):
+
+def get_endpoint(endpoint_type: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointResult:
     """
     Returns a unique endpoint specific to the AWS account making the call.
 
@@ -51,13 +62,11 @@ def get_endpoint(endpoint_type=None,opts=None):
     :param str endpoint_type: Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Job`.
     """
     __args__ = dict()
-
-
     __args__['endpointType'] = endpoint_type
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:iot/getEndpoint:getEndpoint', __args__, opts=opts).value
 
     return AwaitableGetEndpointResult(
