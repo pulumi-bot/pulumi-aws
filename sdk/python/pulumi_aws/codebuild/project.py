@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Project(pulumi.CustomResource):
@@ -259,7 +259,7 @@ class Project(pulumi.CustomResource):
             artifacts={
                 "type": "NO_ARTIFACTS",
             },
-            build_timeout="5",
+            build_timeout=5,
             cache={
                 "location": example_bucket.bucket,
                 "type": "S3",
@@ -320,7 +320,7 @@ class Project(pulumi.CustomResource):
             artifacts={
                 "type": "NO_ARTIFACTS",
             },
-            build_timeout="5",
+            build_timeout=5,
             cache={
                 "modes": [
                     "LOCAL_DOCKER_LAYER_CACHE",
@@ -339,7 +339,7 @@ class Project(pulumi.CustomResource):
                 "imagePullCredentialsType": "CODEBUILD",
                 "type": "LINUX_CONTAINER",
             },
-            queued_timeout="5",
+            queued_timeout=5,
             service_role=example_role.arn,
             source={
                 "gitCloneDepth": 1,
@@ -481,7 +481,7 @@ class Project(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -674,7 +674,7 @@ class Project(pulumi.CustomResource):
         return Project(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
