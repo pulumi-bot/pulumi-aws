@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetEventCategoriesResult',
+    'AwaitableGetEventCategoriesResult',
+    'get_event_categories',
+]
+
 
 class GetEventCategoriesResult:
     """
@@ -28,6 +35,8 @@ class GetEventCategoriesResult:
         if source_type and not isinstance(source_type, str):
             raise TypeError("Expected argument 'source_type' to be a str")
         __self__.source_type = source_type
+
+
 class AwaitableGetEventCategoriesResult(GetEventCategoriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +47,9 @@ class AwaitableGetEventCategoriesResult(GetEventCategoriesResult):
             id=self.id,
             source_type=self.source_type)
 
-def get_event_categories(source_type=None,opts=None):
+
+def get_event_categories(source_type: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEventCategoriesResult:
     """
     ## Example Usage
 
@@ -66,13 +77,11 @@ def get_event_categories(source_type=None,opts=None):
     :param str source_type: The type of source that will be generating the events. Valid options are db-instance, db-security-group, db-parameter-group, db-snapshot, db-cluster or db-cluster-snapshot.
     """
     __args__ = dict()
-
-
     __args__['sourceType'] = source_type
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getEventCategories:getEventCategories', __args__, opts=opts).value
 
     return AwaitableGetEventCategoriesResult(

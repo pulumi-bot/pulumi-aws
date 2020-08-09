@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetZoneResult',
+    'AwaitableGetZoneResult',
+    'get_zone',
+]
+
 
 class GetZoneResult:
     """
@@ -70,6 +77,8 @@ class GetZoneResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetZoneResult(GetZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,7 +98,14 @@ class AwaitableGetZoneResult(GetZoneResult):
             vpc_id=self.vpc_id,
             zone_id=self.zone_id)
 
-def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=None,vpc_id=None,zone_id=None,opts=None):
+
+def get_zone(name: Optional[str] = None,
+             private_zone: Optional[bool] = None,
+             resource_record_set_count: Optional[float] = None,
+             tags: Optional[Mapping[str, str]] = None,
+             vpc_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
     `route53.Zone` provides details about a specific Route 53 Hosted Zone.
 
@@ -108,7 +124,7 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     www = aws.route53.Record("www",
         name=f"www.{selected.name}",
         records=["10.0.0.1"],
-        ttl="300",
+        ttl=300,
         type="A",
         zone_id=selected.zone_id)
     ```
@@ -117,13 +133,11 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     :param str name: The Hosted Zone name of the desired Hosted Zone.
     :param bool private_zone: Used with `name` field to get a private Hosted Zone.
     :param float resource_record_set_count: The number of Record Set in the Hosted Zone.
-    :param dict tags: Used with `name` field. A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
+    :param Mapping[str, str] tags: Used with `name` field. A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
     :param str vpc_id: Used with `name` field to get a private Hosted Zone associated with the vpc_id (in this case, private_zone is not mandatory).
     :param str zone_id: The Hosted Zone id of the desired Hosted Zone.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['privateZone'] = private_zone
     __args__['resourceRecordSetCount'] = resource_record_set_count
@@ -133,7 +147,7 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:route53/getZone:getZone', __args__, opts=opts).value
 
     return AwaitableGetZoneResult(

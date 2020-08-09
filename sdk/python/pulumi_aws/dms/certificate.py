@@ -5,28 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Certificate']
 
 
 class Certificate(pulumi.CustomResource):
-    certificate_arn: pulumi.Output[str]
+    certificate_arn: pulumi.Output[str] = pulumi.property("certificateArn")
     """
     The Amazon Resource Name (ARN) for the certificate.
     """
-    certificate_id: pulumi.Output[str]
+
+    certificate_id: pulumi.Output[str] = pulumi.property("certificateId")
     """
     The certificate identifier.
     """
-    certificate_pem: pulumi.Output[str]
+
+    certificate_pem: pulumi.Output[Optional[str]] = pulumi.property("certificatePem")
     """
     The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
     """
-    certificate_wallet: pulumi.Output[str]
+
+    certificate_wallet: pulumi.Output[Optional[str]] = pulumi.property("certificateWallet")
     """
     The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
     """
-    def __init__(__self__, resource_name, opts=None, certificate_id=None, certificate_pem=None, certificate_wallet=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
+                 certificate_pem: Optional[pulumi.Input[str]] = None,
+                 certificate_wallet: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DMS (Data Migration Service) certificate resource. DMS certificates can be created, deleted, and imported.
 
@@ -61,7 +75,7 @@ class Certificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -80,7 +94,13 @@ class Certificate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, certificate_arn=None, certificate_id=None, certificate_pem=None, certificate_wallet=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_arn: Optional[pulumi.Input[str]] = None,
+            certificate_id: Optional[pulumi.Input[str]] = None,
+            certificate_pem: Optional[pulumi.Input[str]] = None,
+            certificate_wallet: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -104,7 +124,8 @@ class Certificate(pulumi.CustomResource):
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

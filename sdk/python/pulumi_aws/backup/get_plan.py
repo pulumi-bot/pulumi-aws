@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetPlanResult',
+    'AwaitableGetPlanResult',
+    'get_plan',
+]
+
 
 class GetPlanResult:
     """
@@ -46,6 +53,8 @@ class GetPlanResult:
         """
         Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
         """
+
+
 class AwaitableGetPlanResult(GetPlanResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +68,10 @@ class AwaitableGetPlanResult(GetPlanResult):
             tags=self.tags,
             version=self.version)
 
-def get_plan(plan_id=None,tags=None,opts=None):
+
+def get_plan(plan_id: Optional[str] = None,
+             tags: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlanResult:
     """
     Use this data source to get information on an existing backup plan.
 
@@ -74,17 +86,15 @@ def get_plan(plan_id=None,tags=None,opts=None):
 
 
     :param str plan_id: The backup plan ID.
-    :param dict tags: Metadata that you can assign to help organize the plans you create.
+    :param Mapping[str, str] tags: Metadata that you can assign to help organize the plans you create.
     """
     __args__ = dict()
-
-
     __args__['planId'] = plan_id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:backup/getPlan:getPlan', __args__, opts=opts).value
 
     return AwaitableGetPlanResult(

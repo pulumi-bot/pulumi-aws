@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceQuotaResult',
+    'AwaitableGetServiceQuotaResult',
+    'get_service_quota',
+]
+
 
 class GetServiceQuotaResult:
     """
@@ -64,6 +71,8 @@ class GetServiceQuotaResult:
         """
         Current value of the service quota.
         """
+
+
 class AwaitableGetServiceQuotaResult(GetServiceQuotaResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +90,11 @@ class AwaitableGetServiceQuotaResult(GetServiceQuotaResult):
             service_name=self.service_name,
             value=self.value)
 
-def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=None):
+
+def get_service_quota(quota_code: Optional[str] = None,
+                      quota_name: Optional[str] = None,
+                      service_code: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceQuotaResult:
     """
     Retrieve information about a Service Quota.
 
@@ -103,15 +116,13 @@ def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=Non
     :param str service_code: Service code for the quota. Available values can be found with the `servicequotas.getService` data source or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
     """
     __args__ = dict()
-
-
     __args__['quotaCode'] = quota_code
     __args__['quotaName'] = quota_name
     __args__['serviceCode'] = service_code
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:servicequotas/getServiceQuota:getServiceQuota', __args__, opts=opts).value
 
     return AwaitableGetServiceQuotaResult(

@@ -5,20 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['LogResourcePolicy']
 
 
 class LogResourcePolicy(pulumi.CustomResource):
-    policy_document: pulumi.Output[str]
+    policy_document: pulumi.Output[str] = pulumi.property("policyDocument")
     """
     Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
     """
-    policy_name: pulumi.Output[str]
+
+    policy_name: pulumi.Output[str] = pulumi.property("policyName")
     """
     Name of the resource policy.
     """
-    def __init__(__self__, resource_name, opts=None, policy_document=None, policy_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource to manage a CloudWatch log resource policy.
 
@@ -83,7 +94,7 @@ class LogResourcePolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -102,7 +113,11 @@ class LogResourcePolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, policy_document=None, policy_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            policy_document: Optional[pulumi.Input[str]] = None,
+            policy_name: Optional[pulumi.Input[str]] = None) -> 'LogResourcePolicy':
         """
         Get an existing LogResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -122,7 +137,8 @@ class LogResourcePolicy(pulumi.CustomResource):
         return LogResourcePolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

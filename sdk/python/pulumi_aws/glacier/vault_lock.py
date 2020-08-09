@@ -5,28 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['VaultLock']
 
 
 class VaultLock(pulumi.CustomResource):
-    complete_lock: pulumi.Output[bool]
+    complete_lock: pulumi.Output[bool] = pulumi.property("completeLock")
     """
     Boolean whether to permanently apply this Glacier Lock Policy. Once completed, this cannot be undone. If set to `false`, the Glacier Lock Policy remains in a testing mode for 24 hours. After that time, the Glacier Lock Policy is automatically removed by Glacier and the this provider resource will show as needing recreation. Changing this from `false` to `true` will show as resource recreation, which is expected. Changing this from `true` to `false` is not possible unless the Glacier Vault is recreated at the same time.
     """
-    ignore_deletion_error: pulumi.Output[bool]
+
+    ignore_deletion_error: pulumi.Output[Optional[bool]] = pulumi.property("ignoreDeletionError")
     """
     Allow this provider to ignore the error returned when attempting to delete the Glacier Lock Policy. This can be used to delete or recreate the Glacier Vault via this provider, for example, if the Glacier Vault Lock policy permits that action. This should only be used in conjunction with `complete_lock` being set to `true`.
     """
-    policy: pulumi.Output[str]
+
+    policy: pulumi.Output[str] = pulumi.property("policy")
     """
     JSON string containing the IAM policy to apply as the Glacier Vault Lock policy.
     """
-    vault_name: pulumi.Output[str]
+
+    vault_name: pulumi.Output[str] = pulumi.property("vaultName")
     """
     The name of the Glacier Vault.
     """
-    def __init__(__self__, resource_name, opts=None, complete_lock=None, ignore_deletion_error=None, policy=None, vault_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 complete_lock: Optional[pulumi.Input[bool]] = None,
+                 ignore_deletion_error: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 vault_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Glacier Vault Lock. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html) for a full explanation of the Glacier Vault Lock functionality.
 
@@ -87,7 +102,7 @@ class VaultLock(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -110,7 +125,13 @@ class VaultLock(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, complete_lock=None, ignore_deletion_error=None, policy=None, vault_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            complete_lock: Optional[pulumi.Input[bool]] = None,
+            ignore_deletion_error: Optional[pulumi.Input[bool]] = None,
+            policy: Optional[pulumi.Input[str]] = None,
+            vault_name: Optional[pulumi.Input[str]] = None) -> 'VaultLock':
         """
         Get an existing VaultLock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,7 +155,8 @@ class VaultLock(pulumi.CustomResource):
         return VaultLock(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

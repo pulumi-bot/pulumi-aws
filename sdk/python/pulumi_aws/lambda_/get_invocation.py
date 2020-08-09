@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetInvocationResult',
+    'AwaitableGetInvocationResult',
+    'get_invocation',
+]
+
 
 class GetInvocationResult:
     """
@@ -44,6 +51,8 @@ class GetInvocationResult:
         """
         (**DEPRECATED**) This field is set only if result is a map of primitive types, where the map is string keys and string values.
         """
+
+
 class AwaitableGetInvocationResult(GetInvocationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +66,11 @@ class AwaitableGetInvocationResult(GetInvocationResult):
             result=self.result,
             result_map=self.result_map)
 
-def get_invocation(function_name=None,input=None,qualifier=None,opts=None):
+
+def get_invocation(function_name: Optional[str] = None,
+                   input: Optional[str] = None,
+                   qualifier: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInvocationResult:
     """
     Use this data source to invoke custom lambda functions as data source.
     The lambda function is invoked with [RequestResponse](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax)
@@ -70,15 +83,13 @@ def get_invocation(function_name=None,input=None,qualifier=None,opts=None):
            to `$LATEST`.
     """
     __args__ = dict()
-
-
     __args__['functionName'] = function_name
     __args__['input'] = input
     __args__['qualifier'] = qualifier
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:lambda/getInvocation:getInvocation', __args__, opts=opts).value
 
     return AwaitableGetInvocationResult(

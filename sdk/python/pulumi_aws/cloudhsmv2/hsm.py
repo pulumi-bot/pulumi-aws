@@ -5,40 +5,58 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Hsm']
 
 
 class Hsm(pulumi.CustomResource):
-    availability_zone: pulumi.Output[str]
+    availability_zone: pulumi.Output[str] = pulumi.property("availabilityZone")
     """
     The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
     """
-    cluster_id: pulumi.Output[str]
+
+    cluster_id: pulumi.Output[str] = pulumi.property("clusterId")
     """
     The ID of Cloud HSM v2 cluster to which HSM will be added.
     """
-    hsm_eni_id: pulumi.Output[str]
+
+    hsm_eni_id: pulumi.Output[str] = pulumi.property("hsmEniId")
     """
     The id of the ENI interface allocated for HSM module.
     """
-    hsm_id: pulumi.Output[str]
+
+    hsm_id: pulumi.Output[str] = pulumi.property("hsmId")
     """
     The id of the HSM module.
     """
-    hsm_state: pulumi.Output[str]
+
+    hsm_state: pulumi.Output[str] = pulumi.property("hsmState")
     """
     The state of the HSM module.
     """
-    ip_address: pulumi.Output[str]
+
+    ip_address: pulumi.Output[str] = pulumi.property("ipAddress")
     """
     The IP address of HSM module. Must be within the CIDR of selected subnet.
     """
-    subnet_id: pulumi.Output[str]
+
+    subnet_id: pulumi.Output[str] = pulumi.property("subnetId")
     """
     The ID of subnet in which HSM module will be located.
     """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, cluster_id=None, ip_address=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Creates an HSM module in Amazon CloudHSM v2 cluster.
 
@@ -74,7 +92,7 @@ class Hsm(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -96,7 +114,16 @@ class Hsm(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, availability_zone=None, cluster_id=None, hsm_eni_id=None, hsm_id=None, hsm_state=None, ip_address=None, subnet_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            availability_zone: Optional[pulumi.Input[str]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            hsm_eni_id: Optional[pulumi.Input[str]] = None,
+            hsm_id: Optional[pulumi.Input[str]] = None,
+            hsm_state: Optional[pulumi.Input[str]] = None,
+            ip_address: Optional[pulumi.Input[str]] = None,
+            subnet_id: Optional[pulumi.Input[str]] = None) -> 'Hsm':
         """
         Get an existing Hsm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -126,7 +153,8 @@ class Hsm(pulumi.CustomResource):
         return Hsm(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = [
+    'GetArnResult',
+    'AwaitableGetArnResult',
+    'get_arn',
+]
+
 
 class GetArnResult:
     """
@@ -54,6 +61,8 @@ class GetArnResult:
         """
         The [service namespace](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) that identifies the AWS product.
         """
+
+
 class AwaitableGetArnResult(GetArnResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,7 +77,9 @@ class AwaitableGetArnResult(GetArnResult):
             resource=self.resource,
             service=self.service)
 
-def get_arn(arn=None,opts=None):
+
+def get_arn(arn: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetArnResult:
     """
     Parses an Amazon Resource Name (ARN) into its constituent parts.
 
@@ -85,13 +96,11 @@ def get_arn(arn=None,opts=None):
     :param str arn: The ARN to parse.
     """
     __args__ = dict()
-
-
     __args__['arn'] = arn
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getArn:getArn', __args__, opts=opts).value
 
     return AwaitableGetArnResult(
