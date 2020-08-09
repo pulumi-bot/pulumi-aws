@@ -5,20 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['DomainIdentity']
 
 
 class DomainIdentity(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.property("arn")
     """
     The ARN of the domain identity.
     """
-    domain: pulumi.Output[str]
+
+    domain: pulumi.Output[str] = pulumi.property("domain")
     """
     The domain name to assign to SES
     """
-    verification_token: pulumi.Output[str]
+
+    verification_token: pulumi.Output[str] = pulumi.property("verificationToken")
     """
     A code which when added to the domain as a TXT record
     will signal to SES that the owner of the domain has authorised SES to act on
@@ -28,7 +32,14 @@ class DomainIdentity(pulumi.CustomResource):
     more about verifying domains in Amazon SES in the [AWS SES
     docs](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html).
     """
-    def __init__(__self__, resource_name, opts=None, domain=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides an SES domain identity resource
 
@@ -42,7 +53,7 @@ class DomainIdentity(pulumi.CustomResource):
         example_amazonses_verification_record = aws.route53.Record("exampleAmazonsesVerificationRecord",
             name="_amazonses.example.com",
             records=[example.verification_token],
-            ttl="600",
+            ttl=600,
             type="TXT",
             zone_id="ABCDEFGHIJ123")
         ```
@@ -62,7 +73,7 @@ class DomainIdentity(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -80,7 +91,12 @@ class DomainIdentity(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, domain=None, verification_token=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            verification_token: Optional[pulumi.Input[str]] = None) -> 'DomainIdentity':
         """
         Get an existing DomainIdentity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -108,7 +124,8 @@ class DomainIdentity(pulumi.CustomResource):
         return DomainIdentity(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

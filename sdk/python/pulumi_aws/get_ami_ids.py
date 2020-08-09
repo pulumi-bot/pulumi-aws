@@ -5,8 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetAmiIdsResult',
+    'AwaitableGetAmiIdsResult',
+    'get_ami_ids',
+]
+
 
 class GetAmiIdsResult:
     """
@@ -37,6 +46,8 @@ class GetAmiIdsResult:
         if sort_ascending and not isinstance(sort_ascending, bool):
             raise TypeError("Expected argument 'sort_ascending' to be a bool")
         __self__.sort_ascending = sort_ascending
+
+
 class AwaitableGetAmiIdsResult(GetAmiIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +62,13 @@ class AwaitableGetAmiIdsResult(GetAmiIdsResult):
             owners=self.owners,
             sort_ascending=self.sort_ascending)
 
-def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,sort_ascending=None,opts=None):
+
+def get_ami_ids(executable_users: Optional[List[str]] = None,
+                filters: Optional[List[pulumi.InputType['GetAmiIdsFilterArgs']]] = None,
+                name_regex: Optional[str] = None,
+                owners: Optional[List[str]] = None,
+                sort_ascending: Optional[bool] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAmiIdsResult:
     """
     Use this data source to get a list of AMI IDs matching the specified criteria.
 
@@ -69,9 +86,9 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
     ```
 
 
-    :param list executable_users: Limit search to users with *explicit* launch
+    :param List[str] executable_users: Limit search to users with *explicit* launch
            permission on  the image. Valid items are the numeric account ID or `self`.
-    :param list filters: One or more name/value pairs to filter off of. There
+    :param List[pulumi.InputType['GetAmiIdsFilterArgs']] filters: One or more name/value pairs to filter off of. There
            are several valid keys, for a full reference, check out
            [describe-images in the AWS CLI reference][1].
     :param str name_regex: A regex string to apply to the AMI list returned
@@ -79,17 +96,10 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
            This filtering is done locally on what AWS returns, and could have a performance
            impact if the result is large. It is recommended to combine this with other
            options to narrow down the list AWS returns.
-    :param list owners: List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g. `amazon`, `aws-marketplace`, `microsoft`).
+    :param List[str] owners: List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g. `amazon`, `aws-marketplace`, `microsoft`).
     :param bool sort_ascending: Used to sort AMIs by creation time.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['executableUsers'] = executable_users
     __args__['filters'] = filters
     __args__['nameRegex'] = name_regex
@@ -98,7 +108,7 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAmiIds:getAmiIds', __args__, opts=opts).value
 
     return AwaitableGetAmiIdsResult(

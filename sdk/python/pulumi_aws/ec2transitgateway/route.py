@@ -5,28 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Route']
 
 
 class Route(pulumi.CustomResource):
-    blackhole: pulumi.Output[bool]
+    blackhole: pulumi.Output[Optional[bool]] = pulumi.property("blackhole")
     """
     Indicates whether to drop traffic that matches this route (default to `false`).
     """
-    destination_cidr_block: pulumi.Output[str]
+
+    destination_cidr_block: pulumi.Output[str] = pulumi.property("destinationCidrBlock")
     """
     IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
     """
-    transit_gateway_attachment_id: pulumi.Output[str]
+
+    transit_gateway_attachment_id: pulumi.Output[Optional[str]] = pulumi.property("transitGatewayAttachmentId")
     """
     Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
     """
-    transit_gateway_route_table_id: pulumi.Output[str]
+
+    transit_gateway_route_table_id: pulumi.Output[str] = pulumi.property("transitGatewayRouteTableId")
     """
     Identifier of EC2 Transit Gateway Route Table.
     """
-    def __init__(__self__, resource_name, opts=None, blackhole=None, destination_cidr_block=None, transit_gateway_attachment_id=None, transit_gateway_route_table_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 blackhole: Optional[pulumi.Input[bool]] = None,
+                 destination_cidr_block: Optional[pulumi.Input[str]] = None,
+                 transit_gateway_attachment_id: Optional[pulumi.Input[str]] = None,
+                 transit_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an EC2 Transit Gateway Route.
 
@@ -72,7 +87,7 @@ class Route(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -93,7 +108,13 @@ class Route(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, blackhole=None, destination_cidr_block=None, transit_gateway_attachment_id=None, transit_gateway_route_table_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            blackhole: Optional[pulumi.Input[bool]] = None,
+            destination_cidr_block: Optional[pulumi.Input[str]] = None,
+            transit_gateway_attachment_id: Optional[pulumi.Input[str]] = None,
+            transit_gateway_route_table_id: Optional[pulumi.Input[str]] = None) -> 'Route':
         """
         Get an existing Route resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -117,7 +138,8 @@ class Route(pulumi.CustomResource):
         return Route(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

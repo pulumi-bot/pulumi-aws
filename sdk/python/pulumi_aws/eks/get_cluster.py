@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
 
 class GetClusterResult:
     """
@@ -94,6 +102,8 @@ class GetClusterResult:
         """
         Nested list containing VPC configuration for the cluster.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,23 +125,24 @@ class AwaitableGetClusterResult(GetClusterResult):
             version=self.version,
             vpc_config=self.vpc_config)
 
-def get_cluster(name=None,tags=None,opts=None):
+
+def get_cluster(name: Optional[str] = None,
+                tags: Optional[Mapping[str, str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Retrieve information about an EKS Cluster.
 
 
     :param str name: The name of the cluster
-    :param dict tags: Key-value map of resource tags.
+    :param Mapping[str, str] tags: Key-value map of resource tags.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:eks/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

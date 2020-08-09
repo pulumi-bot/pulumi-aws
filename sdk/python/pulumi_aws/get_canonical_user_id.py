@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = [
+    'GetCanonicalUserIdResult',
+    'AwaitableGetCanonicalUserIdResult',
+    'get_canonical_user_id',
+]
+
 
 class GetCanonicalUserIdResult:
     """
@@ -25,6 +32,8 @@ class GetCanonicalUserIdResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetCanonicalUserIdResult(GetCanonicalUserIdResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,7 +43,8 @@ class AwaitableGetCanonicalUserIdResult(GetCanonicalUserIdResult):
             display_name=self.display_name,
             id=self.id)
 
-def get_canonical_user_id(opts=None):
+
+def get_canonical_user_id(                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCanonicalUserIdResult:
     """
     The Canonical User ID data source allows access to the [canonical user ID](http://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)
     for the effective account in which this provider is working.
@@ -50,12 +60,10 @@ def get_canonical_user_id(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getCanonicalUserId:getCanonicalUserId', __args__, opts=opts).value
 
     return AwaitableGetCanonicalUserIdResult(

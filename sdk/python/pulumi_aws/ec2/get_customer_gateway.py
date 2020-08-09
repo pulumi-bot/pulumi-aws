@@ -5,8 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetCustomerGatewayResult',
+    'AwaitableGetCustomerGatewayResult',
+    'get_customer_gateway',
+]
+
 
 class GetCustomerGatewayResult:
     """
@@ -49,6 +58,8 @@ class GetCustomerGatewayResult:
         """
         (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
         """
+
+
 class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +74,11 @@ class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
             tags=self.tags,
             type=self.type)
 
-def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
+
+def get_customer_gateway(filters: Optional[List[pulumi.InputType['GetCustomerGatewayFilterArgs']]] = None,
+                         id: Optional[str] = None,
+                         tags: Optional[Mapping[str, str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomerGatewayResult:
     """
     Get an existing AWS Customer Gateway.
 
@@ -78,7 +93,7 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
         "values": ["foo-prod"],
     }])
     main = aws.ec2.VpnGateway("main",
-        amazon_side_asn=7224,
+        amazon_side_asn="7224",
         vpc_id=aws_vpc["main"]["id"])
     transit = aws.ec2.VpnConnection("transit",
         customer_gateway_id=foo.id,
@@ -88,25 +103,18 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more [name-value pairs][dcg-filters] to filter by.
+    :param List[pulumi.InputType['GetCustomerGatewayFilterArgs']] filters: One or more [name-value pairs][dcg-filters] to filter by.
     :param str id: The ID of the gateway.
-    :param dict tags: Map of key-value pairs assigned to the gateway.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param Mapping[str, str] tags: Map of key-value pairs assigned to the gateway.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getCustomerGateway:getCustomerGateway', __args__, opts=opts).value
 
     return AwaitableGetCustomerGatewayResult(

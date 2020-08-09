@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetEncryptionByDefaultResult',
+    'AwaitableGetEncryptionByDefaultResult',
+    'get_encryption_by_default',
+]
+
 
 class GetEncryptionByDefaultResult:
     """
@@ -25,6 +32,8 @@ class GetEncryptionByDefaultResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetEncryptionByDefaultResult(GetEncryptionByDefaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,7 +43,8 @@ class AwaitableGetEncryptionByDefaultResult(GetEncryptionByDefaultResult):
             enabled=self.enabled,
             id=self.id)
 
-def get_encryption_by_default(opts=None):
+
+def get_encryption_by_default(                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEncryptionByDefaultResult:
     """
     Provides a way to check whether default EBS encryption is enabled for your AWS account in the current AWS region.
 
@@ -48,12 +58,10 @@ def get_encryption_by_default(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getEncryptionByDefault:getEncryptionByDefault', __args__, opts=opts).value
 
     return AwaitableGetEncryptionByDefaultResult(

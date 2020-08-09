@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceResult',
+    'AwaitableGetServiceResult',
+    'get_service',
+]
+
 
 class GetServiceResult:
     """
@@ -55,6 +62,8 @@ class GetServiceResult:
         """
         The family for the latest ACTIVE revision
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +79,10 @@ class AwaitableGetServiceResult(GetServiceResult):
             service_name=self.service_name,
             task_definition=self.task_definition)
 
-def get_service(cluster_arn=None,service_name=None,opts=None):
+
+def get_service(cluster_arn: Optional[str] = None,
+                service_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     The ECS Service data source allows access to details of a specific
     Service within a AWS ECS Cluster.
@@ -90,14 +102,12 @@ def get_service(cluster_arn=None,service_name=None,opts=None):
     :param str service_name: The name of the ECS Service
     """
     __args__ = dict()
-
-
     __args__['clusterArn'] = cluster_arn
     __args__['serviceName'] = service_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecs/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

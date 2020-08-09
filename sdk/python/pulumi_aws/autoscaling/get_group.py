@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetGroupResult',
+    'AwaitableGetGroupResult',
+    'get_group',
+]
+
 
 class GetGroupResult:
     """
@@ -121,6 +128,8 @@ class GetGroupResult:
         """
         VPC ID for the group.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -147,7 +156,9 @@ class AwaitableGetGroupResult(GetGroupResult):
             termination_policies=self.termination_policies,
             vpc_zone_identifier=self.vpc_zone_identifier)
 
-def get_group(name=None,opts=None):
+
+def get_group(name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Use this data source to get information on an existing autoscaling group.
 
@@ -164,13 +175,11 @@ def get_group(name=None,opts=None):
     :param str name: Specify the exact name of the desired autoscaling group.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:autoscaling/getGroup:getGroup', __args__, opts=opts).value
 
     return AwaitableGetGroupResult(

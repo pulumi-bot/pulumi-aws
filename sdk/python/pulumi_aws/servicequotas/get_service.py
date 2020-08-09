@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceResult',
+    'AwaitableGetServiceResult',
+    'get_service',
+]
+
 
 class GetServiceResult:
     """
@@ -28,6 +35,8 @@ class GetServiceResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         __self__.service_name = service_name
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +47,9 @@ class AwaitableGetServiceResult(GetServiceResult):
             service_code=self.service_code,
             service_name=self.service_name)
 
-def get_service(service_name=None,opts=None):
+
+def get_service(service_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     Retrieve information about a Service Quotas Service.
 
@@ -55,13 +66,11 @@ def get_service(service_name=None,opts=None):
     :param str service_name: Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
     """
     __args__ = dict()
-
-
     __args__['serviceName'] = service_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:servicequotas/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

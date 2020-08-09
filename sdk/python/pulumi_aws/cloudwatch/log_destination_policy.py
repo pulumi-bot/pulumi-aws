@@ -5,20 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['LogDestinationPolicy']
 
 
 class LogDestinationPolicy(pulumi.CustomResource):
-    access_policy: pulumi.Output[str]
+    access_policy: pulumi.Output[str] = pulumi.property("accessPolicy")
     """
     The policy document. This is a JSON formatted string.
     """
-    destination_name: pulumi.Output[str]
+
+    destination_name: pulumi.Output[str] = pulumi.property("destinationName")
     """
     A name for the subscription filter
     """
-    def __init__(__self__, resource_name, opts=None, access_policy=None, destination_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_policy: Optional[pulumi.Input[str]] = None,
+                 destination_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a CloudWatch Logs destination policy resource.
 
@@ -61,7 +72,7 @@ class LogDestinationPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -80,7 +91,11 @@ class LogDestinationPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_policy=None, destination_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy: Optional[pulumi.Input[str]] = None,
+            destination_name: Optional[pulumi.Input[str]] = None) -> 'LogDestinationPolicy':
         """
         Get an existing LogDestinationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,7 +115,8 @@ class LogDestinationPolicy(pulumi.CustomResource):
         return LogDestinationPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

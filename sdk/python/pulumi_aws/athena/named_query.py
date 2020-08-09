@@ -5,32 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['NamedQuery']
 
 
 class NamedQuery(pulumi.CustomResource):
-    database: pulumi.Output[str]
+    database: pulumi.Output[str] = pulumi.property("database")
     """
     The database to which the query belongs.
     """
-    description: pulumi.Output[str]
+
+    description: pulumi.Output[Optional[str]] = pulumi.property("description")
     """
     A brief explanation of the query. Maximum length of 1024.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The plain language name for the query. Maximum length of 128.
     """
-    query: pulumi.Output[str]
+
+    query: pulumi.Output[str] = pulumi.property("query")
     """
     The text of the query itself. In other words, all query statements. Maximum length of 262144.
     """
-    workgroup: pulumi.Output[str]
+
+    workgroup: pulumi.Output[Optional[str]] = pulumi.property("workgroup")
     """
     The workgroup to which the query belongs. Defaults to `primary`
     """
-    def __init__(__self__, resource_name, opts=None, database=None, description=None, name=None, query=None, workgroup=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 query: Optional[pulumi.Input[str]] = None,
+                 workgroup: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides an Athena Named Query resource.
 
@@ -80,7 +97,7 @@ class NamedQuery(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -102,7 +119,14 @@ class NamedQuery(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, description=None, name=None, query=None, workgroup=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            query: Optional[pulumi.Input[str]] = None,
+            workgroup: Optional[pulumi.Input[str]] = None) -> 'NamedQuery':
         """
         Get an existing NamedQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -128,7 +152,8 @@ class NamedQuery(pulumi.CustomResource):
         return NamedQuery(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,20 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ResourceAssociation']
 
 
 class ResourceAssociation(pulumi.CustomResource):
-    resource_arn: pulumi.Output[str]
+    resource_arn: pulumi.Output[str] = pulumi.property("resourceArn")
     """
     Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
     """
-    resource_share_arn: pulumi.Output[str]
+
+    resource_share_arn: pulumi.Output[str] = pulumi.property("resourceShareArn")
     """
     Amazon Resource Name (ARN) of the RAM Resource Share.
     """
-    def __init__(__self__, resource_name, opts=None, resource_arn=None, resource_share_arn=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 resource_arn: Optional[pulumi.Input[str]] = None,
+                 resource_share_arn: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Resource Access Manager (RAM) Resource Association.
 
@@ -51,7 +62,7 @@ class ResourceAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -70,7 +81,11 @@ class ResourceAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, resource_arn=None, resource_share_arn=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            resource_arn: Optional[pulumi.Input[str]] = None,
+            resource_share_arn: Optional[pulumi.Input[str]] = None) -> 'ResourceAssociation':
         """
         Get an existing ResourceAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -90,7 +105,8 @@ class ResourceAssociation(pulumi.CustomResource):
         return ResourceAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

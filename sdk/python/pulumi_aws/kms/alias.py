@@ -5,33 +5,48 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Alias']
 
 
 class Alias(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.property("arn")
     """
     The Amazon Resource Name (ARN) of the key alias.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
     """
-    name_prefix: pulumi.Output[str]
+
+    name_prefix: pulumi.Output[Optional[str]] = pulumi.property("namePrefix")
     """
     Creates an unique alias beginning with the specified prefix.
     The name must start with the word "alias" followed by a forward slash (alias/).  Conflicts with `name`.
     """
-    target_key_arn: pulumi.Output[str]
+
+    target_key_arn: pulumi.Output[str] = pulumi.property("targetKeyArn")
     """
     The Amazon Resource Name (ARN) of the target key identifier.
     """
-    target_key_id: pulumi.Output[str]
+
+    target_key_id: pulumi.Output[str] = pulumi.property("targetKeyId")
     """
     Identifier for the key for which the alias is for, can be either an ARN or key_id.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, name_prefix=None, target_key_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 target_key_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides an alias for a KMS customer master key. AWS Console enforces 1-to-1 mapping between aliases & keys,
         but API (hence this provider too) allows you to create as many aliases as
@@ -65,7 +80,7 @@ class Alias(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -85,7 +100,14 @@ class Alias(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, name=None, name_prefix=None, target_key_arn=None, target_key_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            name_prefix: Optional[pulumi.Input[str]] = None,
+            target_key_arn: Optional[pulumi.Input[str]] = None,
+            target_key_id: Optional[pulumi.Input[str]] = None) -> 'Alias':
         """
         Get an existing Alias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -112,7 +134,8 @@ class Alias(pulumi.CustomResource):
         return Alias(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

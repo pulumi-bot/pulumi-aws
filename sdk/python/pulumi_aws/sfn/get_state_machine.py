@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetStateMachineResult',
+    'AwaitableGetStateMachineResult',
+    'get_state_machine',
+]
+
 
 class GetStateMachineResult:
     """
@@ -52,6 +59,8 @@ class GetStateMachineResult:
         """
         Set to the current status of the state machine.
         """
+
+
 class AwaitableGetStateMachineResult(GetStateMachineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +75,9 @@ class AwaitableGetStateMachineResult(GetStateMachineResult):
             role_arn=self.role_arn,
             status=self.status)
 
-def get_state_machine(name=None,opts=None):
+
+def get_state_machine(name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStateMachineResult:
     """
     Use this data source to get the ARN of a State Machine in AWS Step
     Function (SFN). By using this data source, you can reference a
@@ -85,13 +96,11 @@ def get_state_machine(name=None,opts=None):
     :param str name: The friendly name of the state machine to match.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:sfn/getStateMachine:getStateMachine', __args__, opts=opts).value
 
     return AwaitableGetStateMachineResult(
