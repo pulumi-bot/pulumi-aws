@@ -29,7 +29,7 @@ import (
 // 		_, err := datasync.NewNfsLocation(ctx, "example", &datasync.NfsLocationArgs{
 // 			OnPremConfig: &datasync.NfsLocationOnPremConfigArgs{
 // 				AgentArns: pulumi.StringArray{
-// 					pulumi.String(aws_datasync_agent.Example.Arn),
+// 					pulumi.Any(aws_datasync_agent.Example.Arn),
 // 				},
 // 			},
 // 			ServerHostname: pulumi.String("nfs.example.com"),

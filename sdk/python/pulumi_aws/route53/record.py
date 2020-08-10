@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Record(pulumi.CustomResource):
@@ -99,7 +99,7 @@ class Record(pulumi.CustomResource):
         www = aws.route53.Record("www",
             name="www.example.com",
             records=[aws_eip["lb"]["public_ip"]],
-            ttl="300",
+            ttl=300,
             type="A",
             zone_id=aws_route53_zone["primary"]["zone_id"])
         ```
@@ -114,7 +114,7 @@ class Record(pulumi.CustomResource):
             name="www",
             records=["dev.example.com"],
             set_identifier="dev",
-            ttl="5",
+            ttl=5,
             type="CNAME",
             weighted_routing_policies=[{
                 "weight": 10,
@@ -124,7 +124,7 @@ class Record(pulumi.CustomResource):
             name="www",
             records=["live.example.com"],
             set_identifier="live",
-            ttl="5",
+            ttl=5,
             type="CNAME",
             weighted_routing_policies=[{
                 "weight": 90,
@@ -236,7 +236,7 @@ class Record(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -341,7 +341,7 @@ class Record(pulumi.CustomResource):
         return Record(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
