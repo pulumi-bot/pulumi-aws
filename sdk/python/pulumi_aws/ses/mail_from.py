@@ -44,7 +44,7 @@ class MailFrom(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"],
             name=example_mail_from.mail_from_domain,
             type="MX",
-            ttl="600",
+            ttl=600,
             records=["10 feedback-smtp.us-east-1.amazonses.com"])
         # Change to the region in which `aws_ses_domain_identity.example` is created
         # Example Route53 TXT record for SPF
@@ -52,7 +52,7 @@ class MailFrom(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"],
             name=example_mail_from.mail_from_domain,
             type="TXT",
-            ttl="600",
+            ttl=600,
             records=["v=spf1 include:amazonses.com -all"])
         ```
 

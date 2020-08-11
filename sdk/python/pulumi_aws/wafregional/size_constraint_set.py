@@ -54,7 +54,7 @@ class SizeConstraintSet(pulumi.CustomResource):
             "fieldToMatch": {
                 "type": "BODY",
             },
-            "size": "4096",
+            "size": 4096,
             "textTransformation": "NONE",
         }])
         ```

@@ -43,7 +43,7 @@ class DomainIdentity(pulumi.CustomResource):
             zone_id="ABCDEFGHIJ123",
             name="_amazonses.example.com",
             type="TXT",
-            ttl="600",
+            ttl=600,
             records=[example.verification_token])
         ```
 
