@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DomainIdentityVerification(pulumi.CustomResource):
@@ -39,7 +39,7 @@ class DomainIdentityVerification(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["zone_id"],
             name=example.id.apply(lambda id: f"_amazonses.{id}"),
             type="TXT",
-            ttl="600",
+            ttl=600,
             records=[example.verification_token])
         example_verification = aws.ses.DomainIdentityVerification("exampleVerification", domain=example.id,
         opts=ResourceOptions(depends_on=[example_amazonses_verification_record]))
@@ -60,7 +60,7 @@ class DomainIdentityVerification(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -97,7 +97,7 @@ class DomainIdentityVerification(pulumi.CustomResource):
         return DomainIdentityVerification(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

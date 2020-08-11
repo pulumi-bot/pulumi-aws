@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class HealthCheck(pulumi.CustomResource):
@@ -99,10 +99,10 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.route53.HealthCheck("example",
-            failure_threshold="5",
+            failure_threshold=5,
             fqdn="example.com",
             port=80,
-            request_interval="30",
+            request_interval=30,
             resource_path="/",
             tags={
                 "Name": "tf-test-health-check",
@@ -116,10 +116,10 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.route53.HealthCheck("example",
-            failure_threshold="5",
+            failure_threshold=5,
             fqdn="example.com",
             port=443,
-            request_interval="30",
+            request_interval=30,
             resource_path="/",
             search_string="example",
             type="HTTPS_STR_MATCH")
@@ -146,12 +146,12 @@ class HealthCheck(pulumi.CustomResource):
 
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80",
+            threshold=80,
             alarm_description="This metric monitors ec2 cpu utilization")
         foo = aws.route53.HealthCheck("foo",
             type="CLOUDWATCH_METRIC",
@@ -194,7 +194,7 @@ class HealthCheck(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -283,7 +283,7 @@ class HealthCheck(pulumi.CustomResource):
         return HealthCheck(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
