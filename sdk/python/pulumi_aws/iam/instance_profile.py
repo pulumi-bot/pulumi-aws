@@ -5,40 +5,58 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['InstanceProfile']
 
 
 class InstanceProfile(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.property("arn")
     """
     The ARN assigned by AWS to the instance profile.
     """
-    create_date: pulumi.Output[str]
+
+    create_date: pulumi.Output[str] = pulumi.property("createDate")
     """
     The creation timestamp of the instance profile.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The profile's name. If omitted, this provider will assign a random, unique name.
     """
-    name_prefix: pulumi.Output[str]
+
+    name_prefix: pulumi.Output[Optional[str]] = pulumi.property("namePrefix")
     """
     Creates a unique name beginning with the specified prefix. Conflicts with `name`.
     """
-    path: pulumi.Output[str]
+
+    path: pulumi.Output[Optional[str]] = pulumi.property("path")
     """
     Path in which to create the profile.
     """
-    role: pulumi.Output[str]
+
+    role: pulumi.Output[Optional[str]] = pulumi.property("role")
     """
     The role name to include in the profile.
     """
-    unique_id: pulumi.Output[str]
+
+    unique_id: pulumi.Output[str] = pulumi.property("uniqueId")
     """
     The [unique ID][1] assigned by AWS.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, name_prefix=None, path=None, role=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides an IAM instance profile.
 
@@ -72,7 +90,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] name: The profile's name. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] path: Path in which to create the profile.
-        :param pulumi.Input[dict] role: The role name to include in the profile.
+        :param pulumi.Input[str] role: The role name to include in the profile.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +123,16 @@ class InstanceProfile(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, create_date=None, name=None, name_prefix=None, path=None, role=None, unique_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            create_date: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            name_prefix: Optional[pulumi.Input[str]] = None,
+            path: Optional[pulumi.Input[str]] = None,
+            role: Optional[pulumi.Input[str]] = None,
+            unique_id: Optional[pulumi.Input[str]] = None) -> 'InstanceProfile':
         """
         Get an existing InstanceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -118,7 +145,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] name: The profile's name. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] path: Path in which to create the profile.
-        :param pulumi.Input[dict] role: The role name to include in the profile.
+        :param pulumi.Input[str] role: The role name to include in the profile.
         :param pulumi.Input[str] unique_id: The [unique ID][1] assigned by AWS.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -139,3 +166,4 @@ class InstanceProfile(pulumi.CustomResource):
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetDirectoryResult',
+    'AwaitableGetDirectoryResult',
+    'get_directory',
+]
 
 
 class GetDirectoryResult:
@@ -119,7 +126,9 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             workspace_security_group_id=self.workspace_security_group_id)
 
 
-def get_directory(directory_id=None, tags=None, opts=None):
+def get_directory(directory_id: Optional[str] = None,
+                  tags: Optional[Mapping[str, str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
     Retrieve information about an AWS WorkSpaces directory.
 
@@ -134,7 +143,7 @@ def get_directory(directory_id=None, tags=None, opts=None):
 
 
     :param str directory_id: The directory identifier for registration in WorkSpaces service.
-    :param dict tags: A map of tags assigned to the WorkSpaces directory.
+    :param Mapping[str, str] tags: A map of tags assigned to the WorkSpaces directory.
     """
     __args__ = dict()
     __args__['directoryId'] = directory_id
