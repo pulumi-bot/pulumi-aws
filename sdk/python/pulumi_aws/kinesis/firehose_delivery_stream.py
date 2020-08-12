@@ -282,7 +282,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": firehose_role.arn,
                 "bucketArn": bucket.arn,
                 "processingConfiguration": {
-                    "enabled": "true",
+                    "enabled": True,
                     "processors": [{
                         "type": "Lambda",
                         "parameters": [{
@@ -383,7 +383,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "indexName": "test",
                 "typeName": "test",
                 "processingConfiguration": {
-                    "enabled": "true",
+                    "enabled": True,
                     "processors": [{
                         "type": "Lambda",
                         "parameters": [{
