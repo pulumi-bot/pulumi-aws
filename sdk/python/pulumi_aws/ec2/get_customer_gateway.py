@@ -83,7 +83,7 @@ def get_customer_gateway(filters=None, id=None, tags=None, opts=None):
     }])
     main = aws.ec2.VpnGateway("main",
         vpc_id=aws_vpc["main"]["id"],
-        amazon_side_asn=7224)
+        amazon_side_asn="7224")
     transit = aws.ec2.VpnConnection("transit",
         vpn_gateway_id=main.id,
         customer_gateway_id=foo.id,

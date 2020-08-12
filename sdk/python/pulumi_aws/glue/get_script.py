@@ -90,7 +90,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
         dag_nodes=[
             {
                 "id": "datasource0",
-                "node_type": "DataSource",
+                "nodeType": "DataSource",
                 "args": [
                     {
                         "name": "database",
@@ -104,7 +104,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "applymapping1",
-                "node_type": "ApplyMapping",
+                "nodeType": "ApplyMapping",
                 "args": [{
                     "name": "mapping",
                     "value": "[(\"column1\", \"string\", \"column1\", \"string\")]",
@@ -112,7 +112,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "selectfields2",
-                "node_type": "SelectFields",
+                "nodeType": "SelectFields",
                 "args": [{
                     "name": "paths",
                     "value": "[\"column1\"]",
@@ -120,7 +120,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "resolvechoice3",
-                "node_type": "ResolveChoice",
+                "nodeType": "ResolveChoice",
                 "args": [
                     {
                         "name": "choice",
@@ -138,7 +138,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "datasink4",
-                "node_type": "DataSink",
+                "nodeType": "DataSink",
                 "args": [
                     {
                         "name": "database",
@@ -181,7 +181,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
         dag_nodes=[
             {
                 "id": "datasource0",
-                "node_type": "DataSource",
+                "nodeType": "DataSource",
                 "args": [
                     {
                         "name": "database",
@@ -195,7 +195,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "applymapping1",
-                "node_type": "ApplyMapping",
+                "nodeType": "ApplyMapping",
                 "args": [{
                     "name": "mappings",
                     "value": "[(\"column1\", \"string\", \"column1\", \"string\")]",
@@ -203,7 +203,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "selectfields2",
-                "node_type": "SelectFields",
+                "nodeType": "SelectFields",
                 "args": [{
                     "name": "paths",
                     "value": "[\"column1\"]",
@@ -211,7 +211,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "resolvechoice3",
-                "node_type": "ResolveChoice",
+                "nodeType": "ResolveChoice",
                 "args": [
                     {
                         "name": "choice",
@@ -229,7 +229,7 @@ def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
             },
             {
                 "id": "datasink4",
-                "node_type": "DataSink",
+                "nodeType": "DataSink",
                 "args": [
                     {
                         "name": "database",
