@@ -102,8 +102,8 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.ssm.MaintenanceWindowTask("example",
-            max_concurrency=2,
-            max_errors=1,
+            max_concurrency="2",
+            max_errors="1",
             priority=1,
             service_role_arn=aws_iam_role["example"]["arn"],
             task_arn="AWS-RestartEC2Instance",
@@ -130,8 +130,8 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.ssm.MaintenanceWindowTask("example",
-            max_concurrency=2,
-            max_errors=1,
+            max_concurrency="2",
+            max_errors="1",
             priority=1,
             service_role_arn=aws_iam_role["example"]["arn"],
             task_arn="AWS-RunShellScript",
@@ -166,8 +166,8 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.ssm.MaintenanceWindowTask("example",
-            max_concurrency=2,
-            max_errors=1,
+            max_concurrency="2",
+            max_errors="1",
             priority=1,
             service_role_arn=aws_iam_role["example"]["arn"],
             task_arn=aws_sfn_activity["example"]["id"],

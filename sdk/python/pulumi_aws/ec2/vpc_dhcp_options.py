@@ -73,7 +73,7 @@ class VpcDhcpOptions(pulumi.CustomResource):
                 "10.0.0.2",
             ],
             netbios_name_servers=["127.0.0.1"],
-            netbios_node_type=2,
+            netbios_node_type="2",
             ntp_servers=["127.0.0.1"],
             tags={
                 "Name": "foo-name",

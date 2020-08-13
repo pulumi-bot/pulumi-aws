@@ -139,13 +139,13 @@ class MetricAlarm(pulumi.CustomResource):
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             alarm_description="This metric monitors ec2 cpu utilization",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80")
+            threshold=80)
         ```
         ## Example in Conjunction with Scaling Policies
 
@@ -160,12 +160,12 @@ class MetricAlarm(pulumi.CustomResource):
             autoscaling_group_name=aws_autoscaling_group["bar"]["name"])
         bat_metric_alarm = aws.cloudwatch.MetricAlarm("batMetricAlarm",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80",
+            threshold=80,
             dimensions={
                 "AutoScalingGroupName": aws_autoscaling_group["bar"]["name"],
             },
@@ -182,14 +182,14 @@ class MetricAlarm(pulumi.CustomResource):
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             alarm_description="Request error rate has exceeded 10%",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
                 {
                     "expression": "m2/m1*100",
                     "id": "e1",
                     "label": "Error Rate",
-                    "returnData": "true",
+                    "returnData": True,
                 },
                 {
                     "id": "m1",
@@ -199,7 +199,7 @@ class MetricAlarm(pulumi.CustomResource):
                         },
                         "metric_name": "RequestCount",
                         "namespace": "AWS/ApplicationELB",
-                        "period": "120",
+                        "period": 120,
                         "stat": "Sum",
                         "unit": "Count",
                     },
@@ -212,13 +212,13 @@ class MetricAlarm(pulumi.CustomResource):
                         },
                         "metric_name": "HTTPCode_ELB_5XX_Count",
                         "namespace": "AWS/ApplicationELB",
-                        "period": "120",
+                        "period": 120,
                         "stat": "Sum",
                         "unit": "Count",
                     },
                 },
             ],
-            threshold="10")
+            threshold=10)
         ```
 
         ```python
@@ -228,14 +228,14 @@ class MetricAlarm(pulumi.CustomResource):
         xx_anomaly_detection = aws.cloudwatch.MetricAlarm("xxAnomalyDetection",
             alarm_description="This metric monitors ec2 cpu utilization",
             comparison_operator="GreaterThanUpperThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
                 {
                     "expression": "ANOMALY_DETECTION_BAND(m1)",
                     "id": "e1",
                     "label": "CPUUtilization (Expected)",
-                    "returnData": "true",
+                    "returnData": True,
                 },
                 {
                     "id": "m1",
@@ -245,11 +245,11 @@ class MetricAlarm(pulumi.CustomResource):
                         },
                         "metric_name": "CPUUtilization",
                         "namespace": "AWS/EC2",
-                        "period": "120",
+                        "period": 120,
                         "stat": "Average",
                         "unit": "Count",
                     },
-                    "returnData": "true",
+                    "returnData": True,
                 },
             ],
             threshold_metric_id="e1")
@@ -263,14 +263,14 @@ class MetricAlarm(pulumi.CustomResource):
 
         nlb_healthyhosts = aws.cloudwatch.MetricAlarm("nlbHealthyhosts",
             comparison_operator="LessThanThreshold",
-            evaluation_periods="1",
+            evaluation_periods=1,
             metric_name="HealthyHostCount",
             namespace="AWS/NetworkELB",
-            period="60",
+            period=60,
             statistic="Average",
             threshold=var["logstash_servers_count"],
             alarm_description="Number of healthy nodes in Target Group",
-            actions_enabled="true",
+            actions_enabled=True,
             alarm_actions=[aws_sns_topic["sns"]["arn"]],
             ok_actions=[aws_sns_topic["sns"]["arn"]],
             dimensions={
