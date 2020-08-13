@@ -5,10 +5,40 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetLoadBalancerResult',
+    'AwaitableGetLoadBalancerResult',
+    'get_load_balancer',
+]
 
 warnings.warn("aws.elasticloadbalancingv2.getLoadBalancer has been deprecated in favor of aws.lb.getLoadBalancer", DeprecationWarning)
+
+@pulumi.output_type
+class _GetLoadBalancerResult(dict):
+    access_logs: 'outputs.GetLoadBalancerAccessLogsResult' = pulumi.property("accessLogs")
+    arn: str = pulumi.property("arn")
+    arn_suffix: str = pulumi.property("arnSuffix")
+    dns_name: str = pulumi.property("dnsName")
+    drop_invalid_header_fields: bool = pulumi.property("dropInvalidHeaderFields")
+    enable_deletion_protection: bool = pulumi.property("enableDeletionProtection")
+    enable_http2: bool = pulumi.property("enableHttp2")
+    id: str = pulumi.property("id")
+    idle_timeout: float = pulumi.property("idleTimeout")
+    internal: bool = pulumi.property("internal")
+    ip_address_type: str = pulumi.property("ipAddressType")
+    load_balancer_type: str = pulumi.property("loadBalancerType")
+    name: str = pulumi.property("name")
+    security_groups: List[str] = pulumi.property("securityGroups")
+    subnet_mappings: List['outputs.GetLoadBalancerSubnetMappingResult'] = pulumi.property("subnetMappings")
+    subnets: List[str] = pulumi.property("subnets")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    vpc_id: str = pulumi.property("vpcId")
+    zone_id: str = pulumi.property("zoneId")
+
 
 class GetLoadBalancerResult:
     """
@@ -104,7 +134,10 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             zone_id=self.zone_id)
 
 
-def get_load_balancer(arn=None, name=None, tags=None, opts=None):
+def get_load_balancer(arn: Optional[str] = None,
+                      name: Optional[str] = None,
+                      tags: Optional[Mapping[str, str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
     > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
 
@@ -144,25 +177,25 @@ def get_load_balancer(arn=None, name=None, tags=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:elasticloadbalancingv2/getLoadBalancer:getLoadBalancer', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:elasticloadbalancingv2/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=_GetLoadBalancerResult).value
 
     return AwaitableGetLoadBalancerResult(
-        access_logs=__ret__.get('accessLogs'),
-        arn=__ret__.get('arn'),
-        arn_suffix=__ret__.get('arnSuffix'),
-        dns_name=__ret__.get('dnsName'),
-        drop_invalid_header_fields=__ret__.get('dropInvalidHeaderFields'),
-        enable_deletion_protection=__ret__.get('enableDeletionProtection'),
-        enable_http2=__ret__.get('enableHttp2'),
-        id=__ret__.get('id'),
-        idle_timeout=__ret__.get('idleTimeout'),
-        internal=__ret__.get('internal'),
-        ip_address_type=__ret__.get('ipAddressType'),
-        load_balancer_type=__ret__.get('loadBalancerType'),
-        name=__ret__.get('name'),
-        security_groups=__ret__.get('securityGroups'),
-        subnet_mappings=__ret__.get('subnetMappings'),
-        subnets=__ret__.get('subnets'),
-        tags=__ret__.get('tags'),
-        vpc_id=__ret__.get('vpcId'),
-        zone_id=__ret__.get('zoneId'))
+        access_logs=_utilities.get_dict_value(__ret__, 'accessLogs'),
+        arn=_utilities.get_dict_value(__ret__, 'arn'),
+        arn_suffix=_utilities.get_dict_value(__ret__, 'arnSuffix'),
+        dns_name=_utilities.get_dict_value(__ret__, 'dnsName'),
+        drop_invalid_header_fields=_utilities.get_dict_value(__ret__, 'dropInvalidHeaderFields'),
+        enable_deletion_protection=_utilities.get_dict_value(__ret__, 'enableDeletionProtection'),
+        enable_http2=_utilities.get_dict_value(__ret__, 'enableHttp2'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        idle_timeout=_utilities.get_dict_value(__ret__, 'idleTimeout'),
+        internal=_utilities.get_dict_value(__ret__, 'internal'),
+        ip_address_type=_utilities.get_dict_value(__ret__, 'ipAddressType'),
+        load_balancer_type=_utilities.get_dict_value(__ret__, 'loadBalancerType'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        security_groups=_utilities.get_dict_value(__ret__, 'securityGroups'),
+        subnet_mappings=_utilities.get_dict_value(__ret__, 'subnetMappings'),
+        subnets=_utilities.get_dict_value(__ret__, 'subnets'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        vpc_id=_utilities.get_dict_value(__ret__, 'vpcId'),
+        zone_id=_utilities.get_dict_value(__ret__, 'zoneId'))

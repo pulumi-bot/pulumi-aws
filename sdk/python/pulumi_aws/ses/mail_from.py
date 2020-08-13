@@ -5,24 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['MailFrom']
 
 
 class MailFrom(pulumi.CustomResource):
-    behavior_on_mx_failure: pulumi.Output[str]
+    behavior_on_mx_failure: pulumi.Output[Optional[str]] = pulumi.property("behaviorOnMxFailure")
     """
     The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
     """
-    domain: pulumi.Output[str]
+
+    domain: pulumi.Output[str] = pulumi.property("domain")
     """
     Verified domain name to generate DKIM tokens for.
     """
-    mail_from_domain: pulumi.Output[str]
+
+    mail_from_domain: pulumi.Output[str] = pulumi.property("mailFromDomain")
     """
     Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
     """
-    def __init__(__self__, resource_name, opts=None, behavior_on_mx_failure=None, domain=None, mail_from_domain=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 behavior_on_mx_failure: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 mail_from_domain: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides an SES domain MAIL FROM resource.
 
@@ -44,7 +57,7 @@ class MailFrom(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"],
             name=example_mail_from.mail_from_domain,
             type="MX",
-            ttl="600",
+            ttl=600,
             records=["10 feedback-smtp.us-east-1.amazonses.com"])
         # Change to the region in which `aws_ses_domain_identity.example` is created
         # Example Route53 TXT record for SPF
@@ -52,7 +65,7 @@ class MailFrom(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"],
             name=example_mail_from.mail_from_domain,
             type="TXT",
-            ttl="600",
+            ttl=600,
             records=["v=spf1 include:amazonses.com -all"])
         ```
 
@@ -93,7 +106,12 @@ class MailFrom(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, behavior_on_mx_failure=None, domain=None, mail_from_domain=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            behavior_on_mx_failure: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            mail_from_domain: Optional[pulumi.Input[str]] = None) -> 'MailFrom':
         """
         Get an existing MailFrom resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,3 +137,4 @@ class MailFrom(pulumi.CustomResource):
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

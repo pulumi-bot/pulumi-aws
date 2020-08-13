@@ -5,8 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetClusterSnapshotResult',
+    'AwaitableGetClusterSnapshotResult',
+    'get_cluster_snapshot',
+]
+
+
+@pulumi.output_type
+class _GetClusterSnapshotResult(dict):
+    allocated_storage: float = pulumi.property("allocatedStorage")
+    availability_zones: List[str] = pulumi.property("availabilityZones")
+    db_cluster_identifier: Optional[str] = pulumi.property("dbClusterIdentifier")
+    db_cluster_snapshot_arn: str = pulumi.property("dbClusterSnapshotArn")
+    db_cluster_snapshot_identifier: Optional[str] = pulumi.property("dbClusterSnapshotIdentifier")
+    engine: str = pulumi.property("engine")
+    engine_version: str = pulumi.property("engineVersion")
+    id: str = pulumi.property("id")
+    include_public: Optional[bool] = pulumi.property("includePublic")
+    include_shared: Optional[bool] = pulumi.property("includeShared")
+    kms_key_id: str = pulumi.property("kmsKeyId")
+    license_model: str = pulumi.property("licenseModel")
+    most_recent: Optional[bool] = pulumi.property("mostRecent")
+    port: float = pulumi.property("port")
+    snapshot_create_time: str = pulumi.property("snapshotCreateTime")
+    snapshot_type: Optional[str] = pulumi.property("snapshotType")
+    source_db_cluster_snapshot_arn: str = pulumi.property("sourceDbClusterSnapshotArn")
+    status: str = pulumi.property("status")
+    storage_encrypted: bool = pulumi.property("storageEncrypted")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    vpc_id: str = pulumi.property("vpcId")
 
 
 class GetClusterSnapshotResult:
@@ -153,7 +184,14 @@ class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
             vpc_id=self.vpc_id)
 
 
-def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identifier=None, include_public=None, include_shared=None, most_recent=None, snapshot_type=None, tags=None, opts=None):
+def get_cluster_snapshot(db_cluster_identifier: Optional[str] = None,
+                         db_cluster_snapshot_identifier: Optional[str] = None,
+                         include_public: Optional[bool] = None,
+                         include_shared: Optional[bool] = None,
+                         most_recent: Optional[bool] = None,
+                         snapshot_type: Optional[str] = None,
+                         tags: Optional[Mapping[str, str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterSnapshotResult:
     """
     Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
 
@@ -192,7 +230,7 @@ def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identif
     :param str snapshot_type: The type of snapshots to be returned. If you don't specify a SnapshotType
            value, then both automated and manual DB cluster snapshots are returned. Shared and public DB Cluster Snapshots are not
            included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
-    :param dict tags: A map of tags for the resource.
+    :param Mapping[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
     __args__['dbClusterIdentifier'] = db_cluster_identifier
@@ -206,27 +244,27 @@ def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identif
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:rds/getClusterSnapshot:getClusterSnapshot', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:rds/getClusterSnapshot:getClusterSnapshot', __args__, opts=opts, typ=_GetClusterSnapshotResult).value
 
     return AwaitableGetClusterSnapshotResult(
-        allocated_storage=__ret__.get('allocatedStorage'),
-        availability_zones=__ret__.get('availabilityZones'),
-        db_cluster_identifier=__ret__.get('dbClusterIdentifier'),
-        db_cluster_snapshot_arn=__ret__.get('dbClusterSnapshotArn'),
-        db_cluster_snapshot_identifier=__ret__.get('dbClusterSnapshotIdentifier'),
-        engine=__ret__.get('engine'),
-        engine_version=__ret__.get('engineVersion'),
-        id=__ret__.get('id'),
-        include_public=__ret__.get('includePublic'),
-        include_shared=__ret__.get('includeShared'),
-        kms_key_id=__ret__.get('kmsKeyId'),
-        license_model=__ret__.get('licenseModel'),
-        most_recent=__ret__.get('mostRecent'),
-        port=__ret__.get('port'),
-        snapshot_create_time=__ret__.get('snapshotCreateTime'),
-        snapshot_type=__ret__.get('snapshotType'),
-        source_db_cluster_snapshot_arn=__ret__.get('sourceDbClusterSnapshotArn'),
-        status=__ret__.get('status'),
-        storage_encrypted=__ret__.get('storageEncrypted'),
-        tags=__ret__.get('tags'),
-        vpc_id=__ret__.get('vpcId'))
+        allocated_storage=_utilities.get_dict_value(__ret__, 'allocatedStorage'),
+        availability_zones=_utilities.get_dict_value(__ret__, 'availabilityZones'),
+        db_cluster_identifier=_utilities.get_dict_value(__ret__, 'dbClusterIdentifier'),
+        db_cluster_snapshot_arn=_utilities.get_dict_value(__ret__, 'dbClusterSnapshotArn'),
+        db_cluster_snapshot_identifier=_utilities.get_dict_value(__ret__, 'dbClusterSnapshotIdentifier'),
+        engine=_utilities.get_dict_value(__ret__, 'engine'),
+        engine_version=_utilities.get_dict_value(__ret__, 'engineVersion'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        include_public=_utilities.get_dict_value(__ret__, 'includePublic'),
+        include_shared=_utilities.get_dict_value(__ret__, 'includeShared'),
+        kms_key_id=_utilities.get_dict_value(__ret__, 'kmsKeyId'),
+        license_model=_utilities.get_dict_value(__ret__, 'licenseModel'),
+        most_recent=_utilities.get_dict_value(__ret__, 'mostRecent'),
+        port=_utilities.get_dict_value(__ret__, 'port'),
+        snapshot_create_time=_utilities.get_dict_value(__ret__, 'snapshotCreateTime'),
+        snapshot_type=_utilities.get_dict_value(__ret__, 'snapshotType'),
+        source_db_cluster_snapshot_arn=_utilities.get_dict_value(__ret__, 'sourceDbClusterSnapshotArn'),
+        status=_utilities.get_dict_value(__ret__, 'status'),
+        storage_encrypted=_utilities.get_dict_value(__ret__, 'storageEncrypted'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        vpc_id=_utilities.get_dict_value(__ret__, 'vpcId'))

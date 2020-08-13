@@ -81,3 +81,7 @@ def get_version():
     # their own semver string.
     semver_version = SemverVersion(major=major, minor=minor, patch=patch, prerelease=prerelease)
     return str(semver_version)
+
+
+def get_dict_value(values: dict, key: str):
+    return getattr(dict, 'get')(values, key)

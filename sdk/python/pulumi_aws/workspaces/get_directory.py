@@ -5,8 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetDirectoryResult',
+    'AwaitableGetDirectoryResult',
+    'get_directory',
+]
+
+
+@pulumi.output_type
+class _GetDirectoryResult(dict):
+    alias: str = pulumi.property("alias")
+    customer_user_name: str = pulumi.property("customerUserName")
+    directory_id: str = pulumi.property("directoryId")
+    directory_name: str = pulumi.property("directoryName")
+    directory_type: str = pulumi.property("directoryType")
+    dns_ip_addresses: List[str] = pulumi.property("dnsIpAddresses")
+    iam_role_id: str = pulumi.property("iamRoleId")
+    id: str = pulumi.property("id")
+    ip_group_ids: List[str] = pulumi.property("ipGroupIds")
+    registration_code: str = pulumi.property("registrationCode")
+    self_service_permissions: List['outputs.GetDirectorySelfServicePermissionResult'] = pulumi.property("selfServicePermissions")
+    subnet_ids: List[str] = pulumi.property("subnetIds")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+    workspace_security_group_id: str = pulumi.property("workspaceSecurityGroupId")
 
 
 class GetDirectoryResult:
@@ -119,7 +144,9 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             workspace_security_group_id=self.workspace_security_group_id)
 
 
-def get_directory(directory_id=None, tags=None, opts=None):
+def get_directory(directory_id: Optional[str] = None,
+                  tags: Optional[Mapping[str, str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
     Retrieve information about an AWS WorkSpaces directory.
 
@@ -134,7 +161,7 @@ def get_directory(directory_id=None, tags=None, opts=None):
 
 
     :param str directory_id: The directory identifier for registration in WorkSpaces service.
-    :param dict tags: A map of tags assigned to the WorkSpaces directory.
+    :param Mapping[str, str] tags: A map of tags assigned to the WorkSpaces directory.
     """
     __args__ = dict()
     __args__['directoryId'] = directory_id
@@ -143,20 +170,20 @@ def get_directory(directory_id=None, tags=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:workspaces/getDirectory:getDirectory', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:workspaces/getDirectory:getDirectory', __args__, opts=opts, typ=_GetDirectoryResult).value
 
     return AwaitableGetDirectoryResult(
-        alias=__ret__.get('alias'),
-        customer_user_name=__ret__.get('customerUserName'),
-        directory_id=__ret__.get('directoryId'),
-        directory_name=__ret__.get('directoryName'),
-        directory_type=__ret__.get('directoryType'),
-        dns_ip_addresses=__ret__.get('dnsIpAddresses'),
-        iam_role_id=__ret__.get('iamRoleId'),
-        id=__ret__.get('id'),
-        ip_group_ids=__ret__.get('ipGroupIds'),
-        registration_code=__ret__.get('registrationCode'),
-        self_service_permissions=__ret__.get('selfServicePermissions'),
-        subnet_ids=__ret__.get('subnetIds'),
-        tags=__ret__.get('tags'),
-        workspace_security_group_id=__ret__.get('workspaceSecurityGroupId'))
+        alias=_utilities.get_dict_value(__ret__, 'alias'),
+        customer_user_name=_utilities.get_dict_value(__ret__, 'customerUserName'),
+        directory_id=_utilities.get_dict_value(__ret__, 'directoryId'),
+        directory_name=_utilities.get_dict_value(__ret__, 'directoryName'),
+        directory_type=_utilities.get_dict_value(__ret__, 'directoryType'),
+        dns_ip_addresses=_utilities.get_dict_value(__ret__, 'dnsIpAddresses'),
+        iam_role_id=_utilities.get_dict_value(__ret__, 'iamRoleId'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        ip_group_ids=_utilities.get_dict_value(__ret__, 'ipGroupIds'),
+        registration_code=_utilities.get_dict_value(__ret__, 'registrationCode'),
+        self_service_permissions=_utilities.get_dict_value(__ret__, 'selfServicePermissions'),
+        subnet_ids=_utilities.get_dict_value(__ret__, 'subnetIds'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        workspace_security_group_id=_utilities.get_dict_value(__ret__, 'workspaceSecurityGroupId'))

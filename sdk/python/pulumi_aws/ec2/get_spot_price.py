@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetSpotPriceResult',
+    'AwaitableGetSpotPriceResult',
+    'get_spot_price',
+]
+
+
+@pulumi.output_type
+class _GetSpotPriceResult(dict):
+    availability_zone: Optional[str] = pulumi.property("availabilityZone")
+    filters: Optional[List['outputs.GetSpotPriceFilterResult']] = pulumi.property("filters")
+    id: str = pulumi.property("id")
+    instance_type: Optional[str] = pulumi.property("instanceType")
+    spot_price: str = pulumi.property("spotPrice")
+    spot_price_timestamp: str = pulumi.property("spotPriceTimestamp")
 
 
 class GetSpotPriceResult:
@@ -57,19 +75,17 @@ class AwaitableGetSpotPriceResult(GetSpotPriceResult):
             spot_price_timestamp=self.spot_price_timestamp)
 
 
-def get_spot_price(availability_zone=None, filters=None, instance_type=None, opts=None):
+def get_spot_price(availability_zone: Optional[str] = None,
+                   filters: Optional[List[pulumi.InputType['GetSpotPriceFilterArgs']]] = None,
+                   instance_type: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpotPriceResult:
     """
     Information about most recent Spot Price for a given EC2 instance.
 
 
     :param str availability_zone: The availability zone in which to query Spot price information.
-    :param list filters: One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
+    :param List[pulumi.InputType['GetSpotPriceFilterArgs']] filters: One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
     :param str instance_type: The type of instance for which to query Spot Price information.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - Name of the filter.
-      * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -79,12 +95,12 @@ def get_spot_price(availability_zone=None, filters=None, instance_type=None, opt
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:ec2/getSpotPrice:getSpotPrice', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:ec2/getSpotPrice:getSpotPrice', __args__, opts=opts, typ=_GetSpotPriceResult).value
 
     return AwaitableGetSpotPriceResult(
-        availability_zone=__ret__.get('availabilityZone'),
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        instance_type=__ret__.get('instanceType'),
-        spot_price=__ret__.get('spotPrice'),
-        spot_price_timestamp=__ret__.get('spotPriceTimestamp'))
+        availability_zone=_utilities.get_dict_value(__ret__, 'availabilityZone'),
+        filters=_utilities.get_dict_value(__ret__, 'filters'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        instance_type=_utilities.get_dict_value(__ret__, 'instanceType'),
+        spot_price=_utilities.get_dict_value(__ret__, 'spotPrice'),
+        spot_price_timestamp=_utilities.get_dict_value(__ret__, 'spotPriceTimestamp'))

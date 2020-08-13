@@ -5,8 +5,38 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetLaunchConfigurationResult',
+    'AwaitableGetLaunchConfigurationResult',
+    'get_launch_configuration',
+]
+
+
+@pulumi.output_type
+class _GetLaunchConfigurationResult(dict):
+    arn: str = pulumi.property("arn")
+    associate_public_ip_address: bool = pulumi.property("associatePublicIpAddress")
+    ebs_block_devices: List['outputs.GetLaunchConfigurationEbsBlockDeviceResult'] = pulumi.property("ebsBlockDevices")
+    ebs_optimized: bool = pulumi.property("ebsOptimized")
+    enable_monitoring: bool = pulumi.property("enableMonitoring")
+    ephemeral_block_devices: List['outputs.GetLaunchConfigurationEphemeralBlockDeviceResult'] = pulumi.property("ephemeralBlockDevices")
+    iam_instance_profile: str = pulumi.property("iamInstanceProfile")
+    id: str = pulumi.property("id")
+    image_id: str = pulumi.property("imageId")
+    instance_type: str = pulumi.property("instanceType")
+    key_name: str = pulumi.property("keyName")
+    name: str = pulumi.property("name")
+    placement_tenancy: str = pulumi.property("placementTenancy")
+    root_block_devices: List['outputs.GetLaunchConfigurationRootBlockDeviceResult'] = pulumi.property("rootBlockDevices")
+    security_groups: List[str] = pulumi.property("securityGroups")
+    spot_price: str = pulumi.property("spotPrice")
+    user_data: str = pulumi.property("userData")
+    vpc_classic_link_id: str = pulumi.property("vpcClassicLinkId")
+    vpc_classic_link_security_groups: List[str] = pulumi.property("vpcClassicLinkSecurityGroups")
 
 
 class GetLaunchConfigurationResult:
@@ -157,7 +187,8 @@ class AwaitableGetLaunchConfigurationResult(GetLaunchConfigurationResult):
             vpc_classic_link_security_groups=self.vpc_classic_link_security_groups)
 
 
-def get_launch_configuration(name=None, opts=None):
+def get_launch_configuration(name: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLaunchConfigurationResult:
     """
     Provides information about a Launch Configuration.
 
@@ -179,25 +210,25 @@ def get_launch_configuration(name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:ec2/getLaunchConfiguration:getLaunchConfiguration', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:ec2/getLaunchConfiguration:getLaunchConfiguration', __args__, opts=opts, typ=_GetLaunchConfigurationResult).value
 
     return AwaitableGetLaunchConfigurationResult(
-        arn=__ret__.get('arn'),
-        associate_public_ip_address=__ret__.get('associatePublicIpAddress'),
-        ebs_block_devices=__ret__.get('ebsBlockDevices'),
-        ebs_optimized=__ret__.get('ebsOptimized'),
-        enable_monitoring=__ret__.get('enableMonitoring'),
-        ephemeral_block_devices=__ret__.get('ephemeralBlockDevices'),
-        iam_instance_profile=__ret__.get('iamInstanceProfile'),
-        id=__ret__.get('id'),
-        image_id=__ret__.get('imageId'),
-        instance_type=__ret__.get('instanceType'),
-        key_name=__ret__.get('keyName'),
-        name=__ret__.get('name'),
-        placement_tenancy=__ret__.get('placementTenancy'),
-        root_block_devices=__ret__.get('rootBlockDevices'),
-        security_groups=__ret__.get('securityGroups'),
-        spot_price=__ret__.get('spotPrice'),
-        user_data=__ret__.get('userData'),
-        vpc_classic_link_id=__ret__.get('vpcClassicLinkId'),
-        vpc_classic_link_security_groups=__ret__.get('vpcClassicLinkSecurityGroups'))
+        arn=_utilities.get_dict_value(__ret__, 'arn'),
+        associate_public_ip_address=_utilities.get_dict_value(__ret__, 'associatePublicIpAddress'),
+        ebs_block_devices=_utilities.get_dict_value(__ret__, 'ebsBlockDevices'),
+        ebs_optimized=_utilities.get_dict_value(__ret__, 'ebsOptimized'),
+        enable_monitoring=_utilities.get_dict_value(__ret__, 'enableMonitoring'),
+        ephemeral_block_devices=_utilities.get_dict_value(__ret__, 'ephemeralBlockDevices'),
+        iam_instance_profile=_utilities.get_dict_value(__ret__, 'iamInstanceProfile'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        image_id=_utilities.get_dict_value(__ret__, 'imageId'),
+        instance_type=_utilities.get_dict_value(__ret__, 'instanceType'),
+        key_name=_utilities.get_dict_value(__ret__, 'keyName'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        placement_tenancy=_utilities.get_dict_value(__ret__, 'placementTenancy'),
+        root_block_devices=_utilities.get_dict_value(__ret__, 'rootBlockDevices'),
+        security_groups=_utilities.get_dict_value(__ret__, 'securityGroups'),
+        spot_price=_utilities.get_dict_value(__ret__, 'spotPrice'),
+        user_data=_utilities.get_dict_value(__ret__, 'userData'),
+        vpc_classic_link_id=_utilities.get_dict_value(__ret__, 'vpcClassicLinkId'),
+        vpc_classic_link_security_groups=_utilities.get_dict_value(__ret__, 'vpcClassicLinkSecurityGroups'))

@@ -5,8 +5,60 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetInstanceResult',
+    'AwaitableGetInstanceResult',
+    'get_instance',
+]
+
+
+@pulumi.output_type
+class _GetInstanceResult(dict):
+    ami: str = pulumi.property("ami")
+    arn: str = pulumi.property("arn")
+    associate_public_ip_address: bool = pulumi.property("associatePublicIpAddress")
+    availability_zone: str = pulumi.property("availabilityZone")
+    credit_specifications: List['outputs.GetInstanceCreditSpecificationResult'] = pulumi.property("creditSpecifications")
+    disable_api_termination: bool = pulumi.property("disableApiTermination")
+    ebs_block_devices: List['outputs.GetInstanceEbsBlockDeviceResult'] = pulumi.property("ebsBlockDevices")
+    ebs_optimized: bool = pulumi.property("ebsOptimized")
+    ephemeral_block_devices: List['outputs.GetInstanceEphemeralBlockDeviceResult'] = pulumi.property("ephemeralBlockDevices")
+    filters: Optional[List['outputs.GetInstanceFilterResult']] = pulumi.property("filters")
+    get_password_data: Optional[bool] = pulumi.property("getPasswordData")
+    get_user_data: Optional[bool] = pulumi.property("getUserData")
+    host_id: str = pulumi.property("hostId")
+    iam_instance_profile: str = pulumi.property("iamInstanceProfile")
+    id: str = pulumi.property("id")
+    instance_id: Optional[str] = pulumi.property("instanceId")
+    instance_state: str = pulumi.property("instanceState")
+    instance_tags: Mapping[str, str] = pulumi.property("instanceTags")
+    instance_type: str = pulumi.property("instanceType")
+    key_name: str = pulumi.property("keyName")
+    metadata_options: List['outputs.GetInstanceMetadataOptionResult'] = pulumi.property("metadataOptions")
+    monitoring: bool = pulumi.property("monitoring")
+    network_interface_id: str = pulumi.property("networkInterfaceId")
+    outpost_arn: str = pulumi.property("outpostArn")
+    password_data: str = pulumi.property("passwordData")
+    placement_group: str = pulumi.property("placementGroup")
+    private_dns: str = pulumi.property("privateDns")
+    private_ip: str = pulumi.property("privateIp")
+    public_dns: str = pulumi.property("publicDns")
+    public_ip: str = pulumi.property("publicIp")
+    root_block_devices: List['outputs.GetInstanceRootBlockDeviceResult'] = pulumi.property("rootBlockDevices")
+    secondary_private_ips: List[str] = pulumi.property("secondaryPrivateIps")
+    security_groups: List[str] = pulumi.property("securityGroups")
+    source_dest_check: bool = pulumi.property("sourceDestCheck")
+    subnet_id: str = pulumi.property("subnetId")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    tenancy: str = pulumi.property("tenancy")
+    user_data: str = pulumi.property("userData")
+    user_data_base64: str = pulumi.property("userDataBase64")
+    vpc_security_group_ids: List[str] = pulumi.property("vpcSecurityGroupIds")
 
 
 class GetInstanceResult:
@@ -292,7 +344,13 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             vpc_security_group_ids=self.vpc_security_group_ids)
 
 
-def get_instance(filters=None, get_password_data=None, get_user_data=None, instance_id=None, instance_tags=None, tags=None, opts=None):
+def get_instance(filters: Optional[List[pulumi.InputType['GetInstanceFilterArgs']]] = None,
+                 get_password_data: Optional[bool] = None,
+                 get_user_data: Optional[bool] = None,
+                 instance_id: Optional[str] = None,
+                 instance_tags: Optional[Mapping[str, str]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
     Use this data source to get the ID of an Amazon EC2 Instance for use in other
     resources.
@@ -317,20 +375,15 @@ def get_instance(filters=None, get_password_data=None, get_user_data=None, insta
     ```
 
 
-    :param list filters: One or more name/value pairs to use as filters. There are
+    :param List[pulumi.InputType['GetInstanceFilterArgs']] filters: One or more name/value pairs to use as filters. There are
            several valid keys, for a full reference, check out
            [describe-instances in the AWS CLI reference][1].
     :param bool get_password_data: If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
     :param bool get_user_data: Retrieve Base64 encoded User Data contents into the `user_data_base64` attribute. A SHA-1 hash of the User Data contents will always be present in the `user_data` attribute. Defaults to `false`.
     :param str instance_id: Specify the exact Instance ID with which to populate the data source.
-    :param dict instance_tags: A map of tags, each pair of which must
+    :param Mapping[str, str] instance_tags: A map of tags, each pair of which must
            exactly match a pair on the desired Instance.
-    :param dict tags: A mapping of tags assigned to the Instance.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param Mapping[str, str] tags: A mapping of tags assigned to the Instance.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -343,46 +396,46 @@ def get_instance(filters=None, get_password_data=None, get_user_data=None, insta
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:ec2/getInstance:getInstance', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:ec2/getInstance:getInstance', __args__, opts=opts, typ=_GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        ami=__ret__.get('ami'),
-        arn=__ret__.get('arn'),
-        associate_public_ip_address=__ret__.get('associatePublicIpAddress'),
-        availability_zone=__ret__.get('availabilityZone'),
-        credit_specifications=__ret__.get('creditSpecifications'),
-        disable_api_termination=__ret__.get('disableApiTermination'),
-        ebs_block_devices=__ret__.get('ebsBlockDevices'),
-        ebs_optimized=__ret__.get('ebsOptimized'),
-        ephemeral_block_devices=__ret__.get('ephemeralBlockDevices'),
-        filters=__ret__.get('filters'),
-        get_password_data=__ret__.get('getPasswordData'),
-        get_user_data=__ret__.get('getUserData'),
-        host_id=__ret__.get('hostId'),
-        iam_instance_profile=__ret__.get('iamInstanceProfile'),
-        id=__ret__.get('id'),
-        instance_id=__ret__.get('instanceId'),
-        instance_state=__ret__.get('instanceState'),
-        instance_tags=__ret__.get('instanceTags'),
-        instance_type=__ret__.get('instanceType'),
-        key_name=__ret__.get('keyName'),
-        metadata_options=__ret__.get('metadataOptions'),
-        monitoring=__ret__.get('monitoring'),
-        network_interface_id=__ret__.get('networkInterfaceId'),
-        outpost_arn=__ret__.get('outpostArn'),
-        password_data=__ret__.get('passwordData'),
-        placement_group=__ret__.get('placementGroup'),
-        private_dns=__ret__.get('privateDns'),
-        private_ip=__ret__.get('privateIp'),
-        public_dns=__ret__.get('publicDns'),
-        public_ip=__ret__.get('publicIp'),
-        root_block_devices=__ret__.get('rootBlockDevices'),
-        secondary_private_ips=__ret__.get('secondaryPrivateIps'),
-        security_groups=__ret__.get('securityGroups'),
-        source_dest_check=__ret__.get('sourceDestCheck'),
-        subnet_id=__ret__.get('subnetId'),
-        tags=__ret__.get('tags'),
-        tenancy=__ret__.get('tenancy'),
-        user_data=__ret__.get('userData'),
-        user_data_base64=__ret__.get('userDataBase64'),
-        vpc_security_group_ids=__ret__.get('vpcSecurityGroupIds'))
+        ami=_utilities.get_dict_value(__ret__, 'ami'),
+        arn=_utilities.get_dict_value(__ret__, 'arn'),
+        associate_public_ip_address=_utilities.get_dict_value(__ret__, 'associatePublicIpAddress'),
+        availability_zone=_utilities.get_dict_value(__ret__, 'availabilityZone'),
+        credit_specifications=_utilities.get_dict_value(__ret__, 'creditSpecifications'),
+        disable_api_termination=_utilities.get_dict_value(__ret__, 'disableApiTermination'),
+        ebs_block_devices=_utilities.get_dict_value(__ret__, 'ebsBlockDevices'),
+        ebs_optimized=_utilities.get_dict_value(__ret__, 'ebsOptimized'),
+        ephemeral_block_devices=_utilities.get_dict_value(__ret__, 'ephemeralBlockDevices'),
+        filters=_utilities.get_dict_value(__ret__, 'filters'),
+        get_password_data=_utilities.get_dict_value(__ret__, 'getPasswordData'),
+        get_user_data=_utilities.get_dict_value(__ret__, 'getUserData'),
+        host_id=_utilities.get_dict_value(__ret__, 'hostId'),
+        iam_instance_profile=_utilities.get_dict_value(__ret__, 'iamInstanceProfile'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        instance_id=_utilities.get_dict_value(__ret__, 'instanceId'),
+        instance_state=_utilities.get_dict_value(__ret__, 'instanceState'),
+        instance_tags=_utilities.get_dict_value(__ret__, 'instanceTags'),
+        instance_type=_utilities.get_dict_value(__ret__, 'instanceType'),
+        key_name=_utilities.get_dict_value(__ret__, 'keyName'),
+        metadata_options=_utilities.get_dict_value(__ret__, 'metadataOptions'),
+        monitoring=_utilities.get_dict_value(__ret__, 'monitoring'),
+        network_interface_id=_utilities.get_dict_value(__ret__, 'networkInterfaceId'),
+        outpost_arn=_utilities.get_dict_value(__ret__, 'outpostArn'),
+        password_data=_utilities.get_dict_value(__ret__, 'passwordData'),
+        placement_group=_utilities.get_dict_value(__ret__, 'placementGroup'),
+        private_dns=_utilities.get_dict_value(__ret__, 'privateDns'),
+        private_ip=_utilities.get_dict_value(__ret__, 'privateIp'),
+        public_dns=_utilities.get_dict_value(__ret__, 'publicDns'),
+        public_ip=_utilities.get_dict_value(__ret__, 'publicIp'),
+        root_block_devices=_utilities.get_dict_value(__ret__, 'rootBlockDevices'),
+        secondary_private_ips=_utilities.get_dict_value(__ret__, 'secondaryPrivateIps'),
+        security_groups=_utilities.get_dict_value(__ret__, 'securityGroups'),
+        source_dest_check=_utilities.get_dict_value(__ret__, 'sourceDestCheck'),
+        subnet_id=_utilities.get_dict_value(__ret__, 'subnetId'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        tenancy=_utilities.get_dict_value(__ret__, 'tenancy'),
+        user_data=_utilities.get_dict_value(__ret__, 'userData'),
+        user_data_base64=_utilities.get_dict_value(__ret__, 'userDataBase64'),
+        vpc_security_group_ids=_utilities.get_dict_value(__ret__, 'vpcSecurityGroupIds'))

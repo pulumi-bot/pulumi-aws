@@ -5,8 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
+
+@pulumi.output_type
+class _GetClusterResult(dict):
+    allow_version_upgrade: bool = pulumi.property("allowVersionUpgrade")
+    automated_snapshot_retention_period: float = pulumi.property("automatedSnapshotRetentionPeriod")
+    availability_zone: str = pulumi.property("availabilityZone")
+    bucket_name: str = pulumi.property("bucketName")
+    cluster_identifier: str = pulumi.property("clusterIdentifier")
+    cluster_parameter_group_name: str = pulumi.property("clusterParameterGroupName")
+    cluster_public_key: str = pulumi.property("clusterPublicKey")
+    cluster_revision_number: str = pulumi.property("clusterRevisionNumber")
+    cluster_security_groups: List[str] = pulumi.property("clusterSecurityGroups")
+    cluster_subnet_group_name: str = pulumi.property("clusterSubnetGroupName")
+    cluster_type: str = pulumi.property("clusterType")
+    cluster_version: str = pulumi.property("clusterVersion")
+    database_name: str = pulumi.property("databaseName")
+    elastic_ip: str = pulumi.property("elasticIp")
+    enable_logging: bool = pulumi.property("enableLogging")
+    encrypted: bool = pulumi.property("encrypted")
+    endpoint: str = pulumi.property("endpoint")
+    enhanced_vpc_routing: bool = pulumi.property("enhancedVpcRouting")
+    iam_roles: List[str] = pulumi.property("iamRoles")
+    id: str = pulumi.property("id")
+    kms_key_id: str = pulumi.property("kmsKeyId")
+    master_username: str = pulumi.property("masterUsername")
+    node_type: str = pulumi.property("nodeType")
+    number_of_nodes: float = pulumi.property("numberOfNodes")
+    port: float = pulumi.property("port")
+    preferred_maintenance_window: str = pulumi.property("preferredMaintenanceWindow")
+    publicly_accessible: bool = pulumi.property("publiclyAccessible")
+    s3_key_prefix: str = pulumi.property("s3KeyPrefix")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+    vpc_id: str = pulumi.property("vpcId")
+    vpc_security_group_ids: List[str] = pulumi.property("vpcSecurityGroupIds")
 
 
 class GetClusterResult:
@@ -238,7 +279,9 @@ class AwaitableGetClusterResult(GetClusterResult):
             vpc_security_group_ids=self.vpc_security_group_ids)
 
 
-def get_cluster(cluster_identifier=None, tags=None, opts=None):
+def get_cluster(cluster_identifier: Optional[str] = None,
+                tags: Optional[Mapping[str, str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Provides details about a specific redshift cluster.
 
@@ -271,7 +314,7 @@ def get_cluster(cluster_identifier=None, tags=None, opts=None):
 
 
     :param str cluster_identifier: The cluster identifier
-    :param dict tags: The tags associated to the cluster
+    :param Mapping[str, str] tags: The tags associated to the cluster
     """
     __args__ = dict()
     __args__['clusterIdentifier'] = cluster_identifier
@@ -280,37 +323,37 @@ def get_cluster(cluster_identifier=None, tags=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:redshift/getCluster:getCluster', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:redshift/getCluster:getCluster', __args__, opts=opts, typ=_GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        allow_version_upgrade=__ret__.get('allowVersionUpgrade'),
-        automated_snapshot_retention_period=__ret__.get('automatedSnapshotRetentionPeriod'),
-        availability_zone=__ret__.get('availabilityZone'),
-        bucket_name=__ret__.get('bucketName'),
-        cluster_identifier=__ret__.get('clusterIdentifier'),
-        cluster_parameter_group_name=__ret__.get('clusterParameterGroupName'),
-        cluster_public_key=__ret__.get('clusterPublicKey'),
-        cluster_revision_number=__ret__.get('clusterRevisionNumber'),
-        cluster_security_groups=__ret__.get('clusterSecurityGroups'),
-        cluster_subnet_group_name=__ret__.get('clusterSubnetGroupName'),
-        cluster_type=__ret__.get('clusterType'),
-        cluster_version=__ret__.get('clusterVersion'),
-        database_name=__ret__.get('databaseName'),
-        elastic_ip=__ret__.get('elasticIp'),
-        enable_logging=__ret__.get('enableLogging'),
-        encrypted=__ret__.get('encrypted'),
-        endpoint=__ret__.get('endpoint'),
-        enhanced_vpc_routing=__ret__.get('enhancedVpcRouting'),
-        iam_roles=__ret__.get('iamRoles'),
-        id=__ret__.get('id'),
-        kms_key_id=__ret__.get('kmsKeyId'),
-        master_username=__ret__.get('masterUsername'),
-        node_type=__ret__.get('nodeType'),
-        number_of_nodes=__ret__.get('numberOfNodes'),
-        port=__ret__.get('port'),
-        preferred_maintenance_window=__ret__.get('preferredMaintenanceWindow'),
-        publicly_accessible=__ret__.get('publiclyAccessible'),
-        s3_key_prefix=__ret__.get('s3KeyPrefix'),
-        tags=__ret__.get('tags'),
-        vpc_id=__ret__.get('vpcId'),
-        vpc_security_group_ids=__ret__.get('vpcSecurityGroupIds'))
+        allow_version_upgrade=_utilities.get_dict_value(__ret__, 'allowVersionUpgrade'),
+        automated_snapshot_retention_period=_utilities.get_dict_value(__ret__, 'automatedSnapshotRetentionPeriod'),
+        availability_zone=_utilities.get_dict_value(__ret__, 'availabilityZone'),
+        bucket_name=_utilities.get_dict_value(__ret__, 'bucketName'),
+        cluster_identifier=_utilities.get_dict_value(__ret__, 'clusterIdentifier'),
+        cluster_parameter_group_name=_utilities.get_dict_value(__ret__, 'clusterParameterGroupName'),
+        cluster_public_key=_utilities.get_dict_value(__ret__, 'clusterPublicKey'),
+        cluster_revision_number=_utilities.get_dict_value(__ret__, 'clusterRevisionNumber'),
+        cluster_security_groups=_utilities.get_dict_value(__ret__, 'clusterSecurityGroups'),
+        cluster_subnet_group_name=_utilities.get_dict_value(__ret__, 'clusterSubnetGroupName'),
+        cluster_type=_utilities.get_dict_value(__ret__, 'clusterType'),
+        cluster_version=_utilities.get_dict_value(__ret__, 'clusterVersion'),
+        database_name=_utilities.get_dict_value(__ret__, 'databaseName'),
+        elastic_ip=_utilities.get_dict_value(__ret__, 'elasticIp'),
+        enable_logging=_utilities.get_dict_value(__ret__, 'enableLogging'),
+        encrypted=_utilities.get_dict_value(__ret__, 'encrypted'),
+        endpoint=_utilities.get_dict_value(__ret__, 'endpoint'),
+        enhanced_vpc_routing=_utilities.get_dict_value(__ret__, 'enhancedVpcRouting'),
+        iam_roles=_utilities.get_dict_value(__ret__, 'iamRoles'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        kms_key_id=_utilities.get_dict_value(__ret__, 'kmsKeyId'),
+        master_username=_utilities.get_dict_value(__ret__, 'masterUsername'),
+        node_type=_utilities.get_dict_value(__ret__, 'nodeType'),
+        number_of_nodes=_utilities.get_dict_value(__ret__, 'numberOfNodes'),
+        port=_utilities.get_dict_value(__ret__, 'port'),
+        preferred_maintenance_window=_utilities.get_dict_value(__ret__, 'preferredMaintenanceWindow'),
+        publicly_accessible=_utilities.get_dict_value(__ret__, 'publiclyAccessible'),
+        s3_key_prefix=_utilities.get_dict_value(__ret__, 's3KeyPrefix'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        vpc_id=_utilities.get_dict_value(__ret__, 'vpcId'),
+        vpc_security_group_ids=_utilities.get_dict_value(__ret__, 'vpcSecurityGroupIds'))

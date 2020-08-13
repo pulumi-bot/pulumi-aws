@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetStateMachineResult',
+    'AwaitableGetStateMachineResult',
+    'get_state_machine',
+]
+
+
+@pulumi.output_type
+class _GetStateMachineResult(dict):
+    arn: str = pulumi.property("arn")
+    creation_date: str = pulumi.property("creationDate")
+    definition: str = pulumi.property("definition")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    role_arn: str = pulumi.property("roleArn")
+    status: str = pulumi.property("status")
 
 
 class GetStateMachineResult:
@@ -70,7 +87,8 @@ class AwaitableGetStateMachineResult(GetStateMachineResult):
             status=self.status)
 
 
-def get_state_machine(name=None, opts=None):
+def get_state_machine(name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStateMachineResult:
     """
     Use this data source to get the ARN of a State Machine in AWS Step
     Function (SFN). By using this data source, you can reference a
@@ -94,13 +112,13 @@ def get_state_machine(name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:sfn/getStateMachine:getStateMachine', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:sfn/getStateMachine:getStateMachine', __args__, opts=opts, typ=_GetStateMachineResult).value
 
     return AwaitableGetStateMachineResult(
-        arn=__ret__.get('arn'),
-        creation_date=__ret__.get('creationDate'),
-        definition=__ret__.get('definition'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        role_arn=__ret__.get('roleArn'),
-        status=__ret__.get('status'))
+        arn=_utilities.get_dict_value(__ret__, 'arn'),
+        creation_date=_utilities.get_dict_value(__ret__, 'creationDate'),
+        definition=_utilities.get_dict_value(__ret__, 'definition'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        role_arn=_utilities.get_dict_value(__ret__, 'roleArn'),
+        status=_utilities.get_dict_value(__ret__, 'status'))

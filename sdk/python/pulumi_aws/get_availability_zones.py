@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetAvailabilityZonesResult',
+    'AwaitableGetAvailabilityZonesResult',
+    'get_availability_zones',
+]
+
+
+@pulumi.output_type
+class _GetAvailabilityZonesResult(dict):
+    all_availability_zones: Optional[bool] = pulumi.property("allAvailabilityZones")
+    exclude_names: Optional[List[str]] = pulumi.property("excludeNames")
+    exclude_zone_ids: Optional[List[str]] = pulumi.property("excludeZoneIds")
+    filters: Optional[List['outputs.GetAvailabilityZonesFilterResult']] = pulumi.property("filters")
+    group_names: List[str] = pulumi.property("groupNames")
+    id: str = pulumi.property("id")
+    names: List[str] = pulumi.property("names")
+    state: Optional[str] = pulumi.property("state")
+    zone_ids: List[str] = pulumi.property("zoneIds")
 
 
 class GetAvailabilityZonesResult:
@@ -69,7 +90,12 @@ class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
             zone_ids=self.zone_ids)
 
 
-def get_availability_zones(all_availability_zones=None, exclude_names=None, exclude_zone_ids=None, filters=None, state=None, opts=None):
+def get_availability_zones(all_availability_zones: Optional[bool] = None,
+                           exclude_names: Optional[List[str]] = None,
+                           exclude_zone_ids: Optional[List[str]] = None,
+                           filters: Optional[List[pulumi.InputType['GetAvailabilityZonesFilterArgs']]] = None,
+                           state: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilityZonesResult:
     """
     The Availability Zones data source allows access to the list of AWS
     Availability Zones which can be accessed by an AWS account within the region
@@ -125,18 +151,13 @@ def get_availability_zones(all_availability_zones=None, exclude_names=None, excl
 
 
     :param bool all_availability_zones: Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
-    :param list exclude_names: List of Availability Zone names to exclude.
-    :param list exclude_zone_ids: List of Availability Zone IDs to exclude.
-    :param list filters: Configuration block(s) for filtering. Detailed below.
+    :param List[str] exclude_names: List of Availability Zone names to exclude.
+    :param List[str] exclude_zone_ids: List of Availability Zone IDs to exclude.
+    :param List[pulumi.InputType['GetAvailabilityZonesFilterArgs']] filters: Configuration block(s) for filtering. Detailed below.
     :param str state: Allows to filter list of Availability Zones based on their
            current state. Can be either `"available"`, `"information"`, `"impaired"` or
            `"unavailable"`. By default the list includes a complete set of Availability Zones
            to which the underlying AWS account has access, regardless of their state.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
-      * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
     __args__['allAvailabilityZones'] = all_availability_zones
@@ -148,15 +169,15 @@ def get_availability_zones(all_availability_zones=None, exclude_names=None, excl
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:index/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:index/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts, typ=_GetAvailabilityZonesResult).value
 
     return AwaitableGetAvailabilityZonesResult(
-        all_availability_zones=__ret__.get('allAvailabilityZones'),
-        exclude_names=__ret__.get('excludeNames'),
-        exclude_zone_ids=__ret__.get('excludeZoneIds'),
-        filters=__ret__.get('filters'),
-        group_names=__ret__.get('groupNames'),
-        id=__ret__.get('id'),
-        names=__ret__.get('names'),
-        state=__ret__.get('state'),
-        zone_ids=__ret__.get('zoneIds'))
+        all_availability_zones=_utilities.get_dict_value(__ret__, 'allAvailabilityZones'),
+        exclude_names=_utilities.get_dict_value(__ret__, 'excludeNames'),
+        exclude_zone_ids=_utilities.get_dict_value(__ret__, 'excludeZoneIds'),
+        filters=_utilities.get_dict_value(__ret__, 'filters'),
+        group_names=_utilities.get_dict_value(__ret__, 'groupNames'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        names=_utilities.get_dict_value(__ret__, 'names'),
+        state=_utilities.get_dict_value(__ret__, 'state'),
+        zone_ids=_utilities.get_dict_value(__ret__, 'zoneIds'))

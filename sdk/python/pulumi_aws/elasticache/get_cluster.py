@@ -5,8 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
+
+@pulumi.output_type
+class _GetClusterResult(dict):
+    arn: str = pulumi.property("arn")
+    availability_zone: str = pulumi.property("availabilityZone")
+    cache_nodes: List['outputs.GetClusterCacheNodeResult'] = pulumi.property("cacheNodes")
+    cluster_address: str = pulumi.property("clusterAddress")
+    cluster_id: str = pulumi.property("clusterId")
+    configuration_endpoint: str = pulumi.property("configurationEndpoint")
+    engine: str = pulumi.property("engine")
+    engine_version: str = pulumi.property("engineVersion")
+    id: str = pulumi.property("id")
+    maintenance_window: str = pulumi.property("maintenanceWindow")
+    node_type: str = pulumi.property("nodeType")
+    notification_topic_arn: str = pulumi.property("notificationTopicArn")
+    num_cache_nodes: float = pulumi.property("numCacheNodes")
+    parameter_group_name: str = pulumi.property("parameterGroupName")
+    port: float = pulumi.property("port")
+    replication_group_id: str = pulumi.property("replicationGroupId")
+    security_group_ids: List[str] = pulumi.property("securityGroupIds")
+    security_group_names: List[str] = pulumi.property("securityGroupNames")
+    snapshot_retention_limit: float = pulumi.property("snapshotRetentionLimit")
+    snapshot_window: str = pulumi.property("snapshotWindow")
+    subnet_group_name: str = pulumi.property("subnetGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
 
 
 class GetClusterResult:
@@ -178,7 +211,9 @@ class AwaitableGetClusterResult(GetClusterResult):
             tags=self.tags)
 
 
-def get_cluster(cluster_id=None, tags=None, opts=None):
+def get_cluster(cluster_id: Optional[str] = None,
+                tags: Optional[Mapping[str, str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to get information about an Elasticache Cluster
 
@@ -193,7 +228,7 @@ def get_cluster(cluster_id=None, tags=None, opts=None):
 
 
     :param str cluster_id: Group identifier.
-    :param dict tags: The tags assigned to the resource
+    :param Mapping[str, str] tags: The tags assigned to the resource
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -202,28 +237,28 @@ def get_cluster(cluster_id=None, tags=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:elasticache/getCluster:getCluster', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:elasticache/getCluster:getCluster', __args__, opts=opts, typ=_GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        arn=__ret__.get('arn'),
-        availability_zone=__ret__.get('availabilityZone'),
-        cache_nodes=__ret__.get('cacheNodes'),
-        cluster_address=__ret__.get('clusterAddress'),
-        cluster_id=__ret__.get('clusterId'),
-        configuration_endpoint=__ret__.get('configurationEndpoint'),
-        engine=__ret__.get('engine'),
-        engine_version=__ret__.get('engineVersion'),
-        id=__ret__.get('id'),
-        maintenance_window=__ret__.get('maintenanceWindow'),
-        node_type=__ret__.get('nodeType'),
-        notification_topic_arn=__ret__.get('notificationTopicArn'),
-        num_cache_nodes=__ret__.get('numCacheNodes'),
-        parameter_group_name=__ret__.get('parameterGroupName'),
-        port=__ret__.get('port'),
-        replication_group_id=__ret__.get('replicationGroupId'),
-        security_group_ids=__ret__.get('securityGroupIds'),
-        security_group_names=__ret__.get('securityGroupNames'),
-        snapshot_retention_limit=__ret__.get('snapshotRetentionLimit'),
-        snapshot_window=__ret__.get('snapshotWindow'),
-        subnet_group_name=__ret__.get('subnetGroupName'),
-        tags=__ret__.get('tags'))
+        arn=_utilities.get_dict_value(__ret__, 'arn'),
+        availability_zone=_utilities.get_dict_value(__ret__, 'availabilityZone'),
+        cache_nodes=_utilities.get_dict_value(__ret__, 'cacheNodes'),
+        cluster_address=_utilities.get_dict_value(__ret__, 'clusterAddress'),
+        cluster_id=_utilities.get_dict_value(__ret__, 'clusterId'),
+        configuration_endpoint=_utilities.get_dict_value(__ret__, 'configurationEndpoint'),
+        engine=_utilities.get_dict_value(__ret__, 'engine'),
+        engine_version=_utilities.get_dict_value(__ret__, 'engineVersion'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        maintenance_window=_utilities.get_dict_value(__ret__, 'maintenanceWindow'),
+        node_type=_utilities.get_dict_value(__ret__, 'nodeType'),
+        notification_topic_arn=_utilities.get_dict_value(__ret__, 'notificationTopicArn'),
+        num_cache_nodes=_utilities.get_dict_value(__ret__, 'numCacheNodes'),
+        parameter_group_name=_utilities.get_dict_value(__ret__, 'parameterGroupName'),
+        port=_utilities.get_dict_value(__ret__, 'port'),
+        replication_group_id=_utilities.get_dict_value(__ret__, 'replicationGroupId'),
+        security_group_ids=_utilities.get_dict_value(__ret__, 'securityGroupIds'),
+        security_group_names=_utilities.get_dict_value(__ret__, 'securityGroupNames'),
+        snapshot_retention_limit=_utilities.get_dict_value(__ret__, 'snapshotRetentionLimit'),
+        snapshot_window=_utilities.get_dict_value(__ret__, 'snapshotWindow'),
+        subnet_group_name=_utilities.get_dict_value(__ret__, 'subnetGroupName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

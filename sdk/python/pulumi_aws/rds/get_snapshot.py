@@ -5,8 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetSnapshotResult',
+    'AwaitableGetSnapshotResult',
+    'get_snapshot',
+]
+
+
+@pulumi.output_type
+class _GetSnapshotResult(dict):
+    allocated_storage: float = pulumi.property("allocatedStorage")
+    availability_zone: str = pulumi.property("availabilityZone")
+    db_instance_identifier: Optional[str] = pulumi.property("dbInstanceIdentifier")
+    db_snapshot_arn: str = pulumi.property("dbSnapshotArn")
+    db_snapshot_identifier: Optional[str] = pulumi.property("dbSnapshotIdentifier")
+    encrypted: bool = pulumi.property("encrypted")
+    engine: str = pulumi.property("engine")
+    engine_version: str = pulumi.property("engineVersion")
+    id: str = pulumi.property("id")
+    include_public: Optional[bool] = pulumi.property("includePublic")
+    include_shared: Optional[bool] = pulumi.property("includeShared")
+    iops: float = pulumi.property("iops")
+    kms_key_id: str = pulumi.property("kmsKeyId")
+    license_model: str = pulumi.property("licenseModel")
+    most_recent: Optional[bool] = pulumi.property("mostRecent")
+    option_group_name: str = pulumi.property("optionGroupName")
+    port: float = pulumi.property("port")
+    snapshot_create_time: str = pulumi.property("snapshotCreateTime")
+    snapshot_type: Optional[str] = pulumi.property("snapshotType")
+    source_db_snapshot_identifier: str = pulumi.property("sourceDbSnapshotIdentifier")
+    source_region: str = pulumi.property("sourceRegion")
+    status: str = pulumi.property("status")
+    storage_type: str = pulumi.property("storageType")
+    vpc_id: str = pulumi.property("vpcId")
 
 
 class GetSnapshotResult:
@@ -171,7 +205,13 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             vpc_id=self.vpc_id)
 
 
-def get_snapshot(db_instance_identifier=None, db_snapshot_identifier=None, include_public=None, include_shared=None, most_recent=None, snapshot_type=None, opts=None):
+def get_snapshot(db_instance_identifier: Optional[str] = None,
+                 db_snapshot_identifier: Optional[str] = None,
+                 include_public: Optional[bool] = None,
+                 include_shared: Optional[bool] = None,
+                 most_recent: Optional[bool] = None,
+                 snapshot_type: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
     Use this data source to get information about a DB Snapshot for use when provisioning DB instances
 
@@ -228,30 +268,30 @@ def get_snapshot(db_instance_identifier=None, db_snapshot_identifier=None, inclu
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:rds/getSnapshot:getSnapshot', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:rds/getSnapshot:getSnapshot', __args__, opts=opts, typ=_GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        allocated_storage=__ret__.get('allocatedStorage'),
-        availability_zone=__ret__.get('availabilityZone'),
-        db_instance_identifier=__ret__.get('dbInstanceIdentifier'),
-        db_snapshot_arn=__ret__.get('dbSnapshotArn'),
-        db_snapshot_identifier=__ret__.get('dbSnapshotIdentifier'),
-        encrypted=__ret__.get('encrypted'),
-        engine=__ret__.get('engine'),
-        engine_version=__ret__.get('engineVersion'),
-        id=__ret__.get('id'),
-        include_public=__ret__.get('includePublic'),
-        include_shared=__ret__.get('includeShared'),
-        iops=__ret__.get('iops'),
-        kms_key_id=__ret__.get('kmsKeyId'),
-        license_model=__ret__.get('licenseModel'),
-        most_recent=__ret__.get('mostRecent'),
-        option_group_name=__ret__.get('optionGroupName'),
-        port=__ret__.get('port'),
-        snapshot_create_time=__ret__.get('snapshotCreateTime'),
-        snapshot_type=__ret__.get('snapshotType'),
-        source_db_snapshot_identifier=__ret__.get('sourceDbSnapshotIdentifier'),
-        source_region=__ret__.get('sourceRegion'),
-        status=__ret__.get('status'),
-        storage_type=__ret__.get('storageType'),
-        vpc_id=__ret__.get('vpcId'))
+        allocated_storage=_utilities.get_dict_value(__ret__, 'allocatedStorage'),
+        availability_zone=_utilities.get_dict_value(__ret__, 'availabilityZone'),
+        db_instance_identifier=_utilities.get_dict_value(__ret__, 'dbInstanceIdentifier'),
+        db_snapshot_arn=_utilities.get_dict_value(__ret__, 'dbSnapshotArn'),
+        db_snapshot_identifier=_utilities.get_dict_value(__ret__, 'dbSnapshotIdentifier'),
+        encrypted=_utilities.get_dict_value(__ret__, 'encrypted'),
+        engine=_utilities.get_dict_value(__ret__, 'engine'),
+        engine_version=_utilities.get_dict_value(__ret__, 'engineVersion'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        include_public=_utilities.get_dict_value(__ret__, 'includePublic'),
+        include_shared=_utilities.get_dict_value(__ret__, 'includeShared'),
+        iops=_utilities.get_dict_value(__ret__, 'iops'),
+        kms_key_id=_utilities.get_dict_value(__ret__, 'kmsKeyId'),
+        license_model=_utilities.get_dict_value(__ret__, 'licenseModel'),
+        most_recent=_utilities.get_dict_value(__ret__, 'mostRecent'),
+        option_group_name=_utilities.get_dict_value(__ret__, 'optionGroupName'),
+        port=_utilities.get_dict_value(__ret__, 'port'),
+        snapshot_create_time=_utilities.get_dict_value(__ret__, 'snapshotCreateTime'),
+        snapshot_type=_utilities.get_dict_value(__ret__, 'snapshotType'),
+        source_db_snapshot_identifier=_utilities.get_dict_value(__ret__, 'sourceDbSnapshotIdentifier'),
+        source_region=_utilities.get_dict_value(__ret__, 'sourceRegion'),
+        status=_utilities.get_dict_value(__ret__, 'status'),
+        storage_type=_utilities.get_dict_value(__ret__, 'storageType'),
+        vpc_id=_utilities.get_dict_value(__ret__, 'vpcId'))

@@ -5,8 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetGroupResult',
+    'AwaitableGetGroupResult',
+    'get_group',
+]
+
+
+@pulumi.output_type
+class _GetGroupResult(dict):
+    arn: str = pulumi.property("arn")
+    availability_zones: List[str] = pulumi.property("availabilityZones")
+    default_cooldown: float = pulumi.property("defaultCooldown")
+    desired_capacity: float = pulumi.property("desiredCapacity")
+    health_check_grace_period: float = pulumi.property("healthCheckGracePeriod")
+    health_check_type: str = pulumi.property("healthCheckType")
+    id: str = pulumi.property("id")
+    launch_configuration: str = pulumi.property("launchConfiguration")
+    load_balancers: List[str] = pulumi.property("loadBalancers")
+    max_size: float = pulumi.property("maxSize")
+    min_size: float = pulumi.property("minSize")
+    name: str = pulumi.property("name")
+    new_instances_protected_from_scale_in: bool = pulumi.property("newInstancesProtectedFromScaleIn")
+    placement_group: str = pulumi.property("placementGroup")
+    service_linked_role_arn: str = pulumi.property("serviceLinkedRoleArn")
+    status: str = pulumi.property("status")
+    target_group_arns: List[str] = pulumi.property("targetGroupArns")
+    termination_policies: List[str] = pulumi.property("terminationPolicies")
+    vpc_zone_identifier: str = pulumi.property("vpcZoneIdentifier")
 
 
 class GetGroupResult:
@@ -151,7 +180,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             vpc_zone_identifier=self.vpc_zone_identifier)
 
 
-def get_group(name=None, opts=None):
+def get_group(name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Use this data source to get information on an existing autoscaling group.
 
@@ -173,25 +203,25 @@ def get_group(name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:autoscaling/getGroup:getGroup', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:autoscaling/getGroup:getGroup', __args__, opts=opts, typ=_GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        arn=__ret__.get('arn'),
-        availability_zones=__ret__.get('availabilityZones'),
-        default_cooldown=__ret__.get('defaultCooldown'),
-        desired_capacity=__ret__.get('desiredCapacity'),
-        health_check_grace_period=__ret__.get('healthCheckGracePeriod'),
-        health_check_type=__ret__.get('healthCheckType'),
-        id=__ret__.get('id'),
-        launch_configuration=__ret__.get('launchConfiguration'),
-        load_balancers=__ret__.get('loadBalancers'),
-        max_size=__ret__.get('maxSize'),
-        min_size=__ret__.get('minSize'),
-        name=__ret__.get('name'),
-        new_instances_protected_from_scale_in=__ret__.get('newInstancesProtectedFromScaleIn'),
-        placement_group=__ret__.get('placementGroup'),
-        service_linked_role_arn=__ret__.get('serviceLinkedRoleArn'),
-        status=__ret__.get('status'),
-        target_group_arns=__ret__.get('targetGroupArns'),
-        termination_policies=__ret__.get('terminationPolicies'),
-        vpc_zone_identifier=__ret__.get('vpcZoneIdentifier'))
+        arn=_utilities.get_dict_value(__ret__, 'arn'),
+        availability_zones=_utilities.get_dict_value(__ret__, 'availabilityZones'),
+        default_cooldown=_utilities.get_dict_value(__ret__, 'defaultCooldown'),
+        desired_capacity=_utilities.get_dict_value(__ret__, 'desiredCapacity'),
+        health_check_grace_period=_utilities.get_dict_value(__ret__, 'healthCheckGracePeriod'),
+        health_check_type=_utilities.get_dict_value(__ret__, 'healthCheckType'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        launch_configuration=_utilities.get_dict_value(__ret__, 'launchConfiguration'),
+        load_balancers=_utilities.get_dict_value(__ret__, 'loadBalancers'),
+        max_size=_utilities.get_dict_value(__ret__, 'maxSize'),
+        min_size=_utilities.get_dict_value(__ret__, 'minSize'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        new_instances_protected_from_scale_in=_utilities.get_dict_value(__ret__, 'newInstancesProtectedFromScaleIn'),
+        placement_group=_utilities.get_dict_value(__ret__, 'placementGroup'),
+        service_linked_role_arn=_utilities.get_dict_value(__ret__, 'serviceLinkedRoleArn'),
+        status=_utilities.get_dict_value(__ret__, 'status'),
+        target_group_arns=_utilities.get_dict_value(__ret__, 'targetGroupArns'),
+        termination_policies=_utilities.get_dict_value(__ret__, 'terminationPolicies'),
+        vpc_zone_identifier=_utilities.get_dict_value(__ret__, 'vpcZoneIdentifier'))

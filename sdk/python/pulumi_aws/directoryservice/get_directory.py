@@ -5,8 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetDirectoryResult',
+    'AwaitableGetDirectoryResult',
+    'get_directory',
+]
+
+
+@pulumi.output_type
+class _GetDirectoryResult(dict):
+    access_url: str = pulumi.property("accessUrl")
+    alias: str = pulumi.property("alias")
+    connect_settings: List['outputs.GetDirectoryConnectSettingResult'] = pulumi.property("connectSettings")
+    description: str = pulumi.property("description")
+    directory_id: str = pulumi.property("directoryId")
+    dns_ip_addresses: List[str] = pulumi.property("dnsIpAddresses")
+    edition: str = pulumi.property("edition")
+    enable_sso: bool = pulumi.property("enableSso")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    security_group_id: str = pulumi.property("securityGroupId")
+    short_name: str = pulumi.property("shortName")
+    size: str = pulumi.property("size")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+    type: str = pulumi.property("type")
+    vpc_settings: List['outputs.GetDirectoryVpcSettingResult'] = pulumi.property("vpcSettings")
 
 
 class GetDirectoryResult:
@@ -127,7 +154,9 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             vpc_settings=self.vpc_settings)
 
 
-def get_directory(directory_id=None, tags=None, opts=None):
+def get_directory(directory_id: Optional[str] = None,
+                  tags: Optional[Mapping[str, str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
     Get attributes of AWS Directory Service directory (SimpleAD, Managed AD, AD Connector). It's especially useful to refer AWS Managed AD or on-premise AD in AD Connector configuration.
 
@@ -142,7 +171,7 @@ def get_directory(directory_id=None, tags=None, opts=None):
 
 
     :param str directory_id: The ID of the directory.
-    :param dict tags: A map of tags assigned to the directory/connector.
+    :param Mapping[str, str] tags: A map of tags assigned to the directory/connector.
     """
     __args__ = dict()
     __args__['directoryId'] = directory_id
@@ -151,22 +180,22 @@ def get_directory(directory_id=None, tags=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:directoryservice/getDirectory:getDirectory', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:directoryservice/getDirectory:getDirectory', __args__, opts=opts, typ=_GetDirectoryResult).value
 
     return AwaitableGetDirectoryResult(
-        access_url=__ret__.get('accessUrl'),
-        alias=__ret__.get('alias'),
-        connect_settings=__ret__.get('connectSettings'),
-        description=__ret__.get('description'),
-        directory_id=__ret__.get('directoryId'),
-        dns_ip_addresses=__ret__.get('dnsIpAddresses'),
-        edition=__ret__.get('edition'),
-        enable_sso=__ret__.get('enableSso'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        security_group_id=__ret__.get('securityGroupId'),
-        short_name=__ret__.get('shortName'),
-        size=__ret__.get('size'),
-        tags=__ret__.get('tags'),
-        type=__ret__.get('type'),
-        vpc_settings=__ret__.get('vpcSettings'))
+        access_url=_utilities.get_dict_value(__ret__, 'accessUrl'),
+        alias=_utilities.get_dict_value(__ret__, 'alias'),
+        connect_settings=_utilities.get_dict_value(__ret__, 'connectSettings'),
+        description=_utilities.get_dict_value(__ret__, 'description'),
+        directory_id=_utilities.get_dict_value(__ret__, 'directoryId'),
+        dns_ip_addresses=_utilities.get_dict_value(__ret__, 'dnsIpAddresses'),
+        edition=_utilities.get_dict_value(__ret__, 'edition'),
+        enable_sso=_utilities.get_dict_value(__ret__, 'enableSso'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        security_group_id=_utilities.get_dict_value(__ret__, 'securityGroupId'),
+        short_name=_utilities.get_dict_value(__ret__, 'shortName'),
+        size=_utilities.get_dict_value(__ret__, 'size'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        type=_utilities.get_dict_value(__ret__, 'type'),
+        vpc_settings=_utilities.get_dict_value(__ret__, 'vpcSettings'))
