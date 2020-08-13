@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetRepositoryResult',
+    'AwaitableGetRepositoryResult',
+    'get_repository',
+]
+
+
+@pulumi.output_type
+class _GetRepositoryResult:
+    arn: str = pulumi.property("arn")
+    encryption_configurations: List['outputs.GetRepositoryEncryptionConfigurationResult'] = pulumi.property("encryptionConfigurations")
+    id: str = pulumi.property("id")
+    image_scanning_configurations: List['outputs.GetRepositoryImageScanningConfigurationResult'] = pulumi.property("imageScanningConfigurations")
+    image_tag_mutability: str = pulumi.property("imageTagMutability")
+    name: str = pulumi.property("name")
+    registry_id: str = pulumi.property("registryId")
+    repository_url: str = pulumi.property("repositoryUrl")
+    tags: Mapping[str, str] = pulumi.property("tags")
 
 
 class GetRepositoryResult:
@@ -81,7 +101,10 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             tags=self.tags)
 
 
-def get_repository(name=None, registry_id=None, tags=None, opts=None):
+def get_repository(name: Optional[str] = None,
+                   registry_id: Optional[str] = None,
+                   tags: Optional[Mapping[str, str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepositoryResult:
     """
     The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
 
@@ -97,7 +120,7 @@ def get_repository(name=None, registry_id=None, tags=None, opts=None):
 
     :param str name: The name of the ECR Repository.
     :param str registry_id: The registry ID where the repository was created.
-    :param dict tags: A map of tags assigned to the resource.
+    :param Mapping[str, str] tags: A map of tags assigned to the resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -107,15 +130,15 @@ def get_repository(name=None, registry_id=None, tags=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('aws:ecr/getRepository:getRepository', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('aws:ecr/getRepository:getRepository', __args__, opts=opts, typ=_GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
-        arn=__ret__.get('arn'),
-        encryption_configurations=__ret__.get('encryptionConfigurations'),
-        id=__ret__.get('id'),
-        image_scanning_configurations=__ret__.get('imageScanningConfigurations'),
-        image_tag_mutability=__ret__.get('imageTagMutability'),
-        name=__ret__.get('name'),
-        registry_id=__ret__.get('registryId'),
-        repository_url=__ret__.get('repositoryUrl'),
-        tags=__ret__.get('tags'))
+        arn=__ret__.arn,
+        encryption_configurations=__ret__.encryption_configurations,
+        id=__ret__.id,
+        image_scanning_configurations=__ret__.image_scanning_configurations,
+        image_tag_mutability=__ret__.image_tag_mutability,
+        name=__ret__.name,
+        registry_id=__ret__.registry_id,
+        repository_url=__ret__.repository_url,
+        tags=__ret__.tags)
