@@ -90,7 +90,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
             if policy_arn is None:
                 raise TypeError("Missing required property 'policy_arn'")
-            __props__['policy_arn'] = policy_arn
+            __props__['policyArn'] = policy_arn
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role

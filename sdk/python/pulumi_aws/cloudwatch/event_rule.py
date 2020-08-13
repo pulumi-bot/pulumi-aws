@@ -117,12 +117,12 @@ class EventRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['event_pattern'] = event_pattern
-            __props__['is_enabled'] = is_enabled
+            __props__['eventPattern'] = event_pattern
+            __props__['isEnabled'] = is_enabled
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['role_arn'] = role_arn
-            __props__['schedule_expression'] = schedule_expression
+            __props__['namePrefix'] = name_prefix
+            __props__['roleArn'] = role_arn
+            __props__['scheduleExpression'] = schedule_expression
             __props__['tags'] = tags
             __props__['arn'] = None
         super(EventRule, __self__).__init__(

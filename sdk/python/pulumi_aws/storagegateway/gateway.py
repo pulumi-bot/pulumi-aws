@@ -166,22 +166,22 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['activation_key'] = activation_key
-            __props__['cloudwatch_log_group_arn'] = cloudwatch_log_group_arn
-            __props__['gateway_ip_address'] = gateway_ip_address
+            __props__['activationKey'] = activation_key
+            __props__['cloudwatchLogGroupArn'] = cloudwatch_log_group_arn
+            __props__['gatewayIpAddress'] = gateway_ip_address
             if gateway_name is None:
                 raise TypeError("Missing required property 'gateway_name'")
-            __props__['gateway_name'] = gateway_name
+            __props__['gatewayName'] = gateway_name
             if gateway_timezone is None:
                 raise TypeError("Missing required property 'gateway_timezone'")
-            __props__['gateway_timezone'] = gateway_timezone
-            __props__['gateway_type'] = gateway_type
-            __props__['gateway_vpc_endpoint'] = gateway_vpc_endpoint
-            __props__['medium_changer_type'] = medium_changer_type
-            __props__['smb_active_directory_settings'] = smb_active_directory_settings
-            __props__['smb_guest_password'] = smb_guest_password
+            __props__['gatewayTimezone'] = gateway_timezone
+            __props__['gatewayType'] = gateway_type
+            __props__['gatewayVpcEndpoint'] = gateway_vpc_endpoint
+            __props__['mediumChangerType'] = medium_changer_type
+            __props__['smbActiveDirectorySettings'] = smb_active_directory_settings
+            __props__['smbGuestPassword'] = smb_guest_password
             __props__['tags'] = tags
-            __props__['tape_drive_type'] = tape_drive_type
+            __props__['tapeDriveType'] = tape_drive_type
             __props__['arn'] = None
             __props__['gateway_id'] = None
         super(Gateway, __self__).__init__(

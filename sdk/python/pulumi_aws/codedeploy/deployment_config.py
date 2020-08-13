@@ -162,12 +162,12 @@ class DeploymentConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['compute_platform'] = compute_platform
+            __props__['computePlatform'] = compute_platform
             if deployment_config_name is None:
                 raise TypeError("Missing required property 'deployment_config_name'")
-            __props__['deployment_config_name'] = deployment_config_name
-            __props__['minimum_healthy_hosts'] = minimum_healthy_hosts
-            __props__['traffic_routing_config'] = traffic_routing_config
+            __props__['deploymentConfigName'] = deployment_config_name
+            __props__['minimumHealthyHosts'] = minimum_healthy_hosts
+            __props__['trafficRoutingConfig'] = traffic_routing_config
             __props__['deployment_config_id'] = None
         super(DeploymentConfig, __self__).__init__(
             'aws:codedeploy/deploymentConfig:DeploymentConfig',

@@ -95,12 +95,12 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
 
             if connection_events is None:
                 raise TypeError("Missing required property 'connection_events'")
-            __props__['connection_events'] = connection_events
+            __props__['connectionEvents'] = connection_events
             if connection_notification_arn is None:
                 raise TypeError("Missing required property 'connection_notification_arn'")
-            __props__['connection_notification_arn'] = connection_notification_arn
-            __props__['vpc_endpoint_id'] = vpc_endpoint_id
-            __props__['vpc_endpoint_service_id'] = vpc_endpoint_service_id
+            __props__['connectionNotificationArn'] = connection_notification_arn
+            __props__['vpcEndpointId'] = vpc_endpoint_id
+            __props__['vpcEndpointServiceId'] = vpc_endpoint_service_id
             __props__['notification_type'] = None
             __props__['state'] = None
         super(VpcEndpointConnectionNotification, __self__).__init__(

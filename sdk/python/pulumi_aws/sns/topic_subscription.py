@@ -238,17 +238,17 @@ class TopicSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['confirmation_timeout_in_minutes'] = confirmation_timeout_in_minutes
-            __props__['delivery_policy'] = delivery_policy
+            __props__['confirmationTimeoutInMinutes'] = confirmation_timeout_in_minutes
+            __props__['deliveryPolicy'] = delivery_policy
             if endpoint is None:
                 raise TypeError("Missing required property 'endpoint'")
             __props__['endpoint'] = endpoint
-            __props__['endpoint_auto_confirms'] = endpoint_auto_confirms
-            __props__['filter_policy'] = filter_policy
+            __props__['endpointAutoConfirms'] = endpoint_auto_confirms
+            __props__['filterPolicy'] = filter_policy
             if protocol is None:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
-            __props__['raw_message_delivery'] = raw_message_delivery
+            __props__['rawMessageDelivery'] = raw_message_delivery
             if topic is None:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic

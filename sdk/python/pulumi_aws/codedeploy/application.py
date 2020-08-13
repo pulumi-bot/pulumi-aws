@@ -71,9 +71,9 @@ class Application(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['compute_platform'] = compute_platform
+            __props__['computePlatform'] = compute_platform
             __props__['name'] = name
-            __props__['unique_id'] = unique_id
+            __props__['uniqueId'] = unique_id
         super(Application, __self__).__init__(
             'aws:codedeploy/application:Application',
             resource_name,

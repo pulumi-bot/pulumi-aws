@@ -88,10 +88,10 @@ class QueryLog(pulumi.CustomResource):
 
             if cloudwatch_log_group_arn is None:
                 raise TypeError("Missing required property 'cloudwatch_log_group_arn'")
-            __props__['cloudwatch_log_group_arn'] = cloudwatch_log_group_arn
+            __props__['cloudwatchLogGroupArn'] = cloudwatch_log_group_arn
             if zone_id is None:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__['zoneId'] = zone_id
         super(QueryLog, __self__).__init__(
             'aws:route53/queryLog:QueryLog',
             resource_name,

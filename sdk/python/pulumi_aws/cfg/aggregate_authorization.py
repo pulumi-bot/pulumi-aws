@@ -66,7 +66,7 @@ class AggregateAuthorization(pulumi.CustomResource):
 
             if account_id is None:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region

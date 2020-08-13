@@ -91,10 +91,10 @@ class Attachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['alb_target_group_arn'] = alb_target_group_arn
+            __props__['albTargetGroupArn'] = alb_target_group_arn
             if autoscaling_group_name is None:
                 raise TypeError("Missing required property 'autoscaling_group_name'")
-            __props__['autoscaling_group_name'] = autoscaling_group_name
+            __props__['autoscalingGroupName'] = autoscaling_group_name
             __props__['elb'] = elb
         super(Attachment, __self__).__init__(
             'aws:autoscaling/attachment:Attachment',

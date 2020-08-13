@@ -73,7 +73,7 @@ class Member(pulumi.CustomResource):
 
             if account_id is None:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             if email is None:
                 raise TypeError("Missing required property 'email'")
             __props__['email'] = email

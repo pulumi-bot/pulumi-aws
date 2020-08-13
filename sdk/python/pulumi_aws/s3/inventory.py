@@ -172,9 +172,9 @@ class Inventory(pulumi.CustomResource):
             __props__['filter'] = filter
             if included_object_versions is None:
                 raise TypeError("Missing required property 'included_object_versions'")
-            __props__['included_object_versions'] = included_object_versions
+            __props__['includedObjectVersions'] = included_object_versions
             __props__['name'] = name
-            __props__['optional_fields'] = optional_fields
+            __props__['optionalFields'] = optional_fields
             if schedule is None:
                 raise TypeError("Missing required property 'schedule'")
             __props__['schedule'] = schedule

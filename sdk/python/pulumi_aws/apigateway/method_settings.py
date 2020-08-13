@@ -125,16 +125,16 @@ class MethodSettings(pulumi.CustomResource):
 
             if method_path is None:
                 raise TypeError("Missing required property 'method_path'")
-            __props__['method_path'] = method_path
+            __props__['methodPath'] = method_path
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
+            __props__['restApi'] = rest_api
             if settings is None:
                 raise TypeError("Missing required property 'settings'")
             __props__['settings'] = settings
             if stage_name is None:
                 raise TypeError("Missing required property 'stage_name'")
-            __props__['stage_name'] = stage_name
+            __props__['stageName'] = stage_name
         super(MethodSettings, __self__).__init__(
             'aws:apigateway/methodSettings:MethodSettings',
             resource_name,

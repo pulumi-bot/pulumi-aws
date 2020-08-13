@@ -321,33 +321,33 @@ class Function(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['code'] = code
-            __props__['dead_letter_config'] = dead_letter_config
+            __props__['deadLetterConfig'] = dead_letter_config
             __props__['description'] = description
             __props__['environment'] = environment
-            __props__['file_system_config'] = file_system_config
+            __props__['fileSystemConfig'] = file_system_config
             if handler is None:
                 raise TypeError("Missing required property 'handler'")
             __props__['handler'] = handler
-            __props__['kms_key_arn'] = kms_key_arn
+            __props__['kmsKeyArn'] = kms_key_arn
             __props__['layers'] = layers
-            __props__['memory_size'] = memory_size
+            __props__['memorySize'] = memory_size
             __props__['name'] = name
             __props__['publish'] = publish
-            __props__['reserved_concurrent_executions'] = reserved_concurrent_executions
+            __props__['reservedConcurrentExecutions'] = reserved_concurrent_executions
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             if runtime is None:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
-            __props__['s3_bucket'] = s3_bucket
-            __props__['s3_key'] = s3_key
-            __props__['s3_object_version'] = s3_object_version
-            __props__['source_code_hash'] = source_code_hash
+            __props__['s3Bucket'] = s3_bucket
+            __props__['s3Key'] = s3_key
+            __props__['s3ObjectVersion'] = s3_object_version
+            __props__['sourceCodeHash'] = source_code_hash
             __props__['tags'] = tags
             __props__['timeout'] = timeout
-            __props__['tracing_config'] = tracing_config
-            __props__['vpc_config'] = vpc_config
+            __props__['tracingConfig'] = tracing_config
+            __props__['vpcConfig'] = vpc_config
             __props__['arn'] = None
             __props__['invoke_arn'] = None
             __props__['last_modified'] = None

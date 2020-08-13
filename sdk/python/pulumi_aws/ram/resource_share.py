@@ -66,7 +66,7 @@ class ResourceShare(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_external_principals'] = allow_external_principals
+            __props__['allowExternalPrincipals'] = allow_external_principals
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['arn'] = None

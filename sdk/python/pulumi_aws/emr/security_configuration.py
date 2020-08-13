@@ -84,7 +84,7 @@ class SecurityConfiguration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'configuration'")
             __props__['configuration'] = configuration
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['creation_date'] = None
         super(SecurityConfiguration, __self__).__init__(
             'aws:emr/securityConfiguration:SecurityConfiguration',

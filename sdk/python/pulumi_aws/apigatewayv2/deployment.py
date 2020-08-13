@@ -70,7 +70,7 @@ class Deployment(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
+            __props__['apiId'] = api_id
             __props__['description'] = description
             __props__['triggers'] = triggers
             __props__['auto_deployed'] = None

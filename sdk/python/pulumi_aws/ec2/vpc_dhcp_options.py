@@ -73,7 +73,7 @@ class VpcDhcpOptions(pulumi.CustomResource):
                 "10.0.0.2",
             ],
             netbios_name_servers=["127.0.0.1"],
-            netbios_node_type=2,
+            netbios_node_type="2",
             ntp_servers=["127.0.0.1"],
             tags={
                 "Name": "foo-name",
@@ -113,11 +113,11 @@ class VpcDhcpOptions(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['domain_name'] = domain_name
-            __props__['domain_name_servers'] = domain_name_servers
-            __props__['netbios_name_servers'] = netbios_name_servers
-            __props__['netbios_node_type'] = netbios_node_type
-            __props__['ntp_servers'] = ntp_servers
+            __props__['domainName'] = domain_name
+            __props__['domainNameServers'] = domain_name_servers
+            __props__['netbiosNameServers'] = netbios_name_servers
+            __props__['netbiosNodeType'] = netbios_node_type
+            __props__['ntpServers'] = ntp_servers
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['owner_id'] = None

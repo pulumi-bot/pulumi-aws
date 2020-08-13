@@ -96,12 +96,12 @@ class Alias(pulumi.CustomResource):
             __props__['description'] = description
             if function_name is None:
                 raise TypeError("Missing required property 'function_name'")
-            __props__['function_name'] = function_name
+            __props__['functionName'] = function_name
             if function_version is None:
                 raise TypeError("Missing required property 'function_version'")
-            __props__['function_version'] = function_version
+            __props__['functionVersion'] = function_version
             __props__['name'] = name
-            __props__['routing_config'] = routing_config
+            __props__['routingConfig'] = routing_config
             __props__['arn'] = None
             __props__['invoke_arn'] = None
         super(Alias, __self__).__init__(

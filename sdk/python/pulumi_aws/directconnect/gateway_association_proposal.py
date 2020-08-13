@@ -76,16 +76,16 @@ class GatewayAssociationProposal(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allowed_prefixes'] = allowed_prefixes
+            __props__['allowedPrefixes'] = allowed_prefixes
             if associated_gateway_id is None:
                 raise TypeError("Missing required property 'associated_gateway_id'")
-            __props__['associated_gateway_id'] = associated_gateway_id
+            __props__['associatedGatewayId'] = associated_gateway_id
             if dx_gateway_id is None:
                 raise TypeError("Missing required property 'dx_gateway_id'")
-            __props__['dx_gateway_id'] = dx_gateway_id
+            __props__['dxGatewayId'] = dx_gateway_id
             if dx_gateway_owner_account_id is None:
                 raise TypeError("Missing required property 'dx_gateway_owner_account_id'")
-            __props__['dx_gateway_owner_account_id'] = dx_gateway_owner_account_id
+            __props__['dxGatewayOwnerAccountId'] = dx_gateway_owner_account_id
             __props__['associated_gateway_owner_account_id'] = None
             __props__['associated_gateway_type'] = None
         super(GatewayAssociationProposal, __self__).__init__(

@@ -65,14 +65,14 @@ class UserProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_self_management'] = allow_self_management
-            __props__['ssh_public_key'] = ssh_public_key
+            __props__['allowSelfManagement'] = allow_self_management
+            __props__['sshPublicKey'] = ssh_public_key
             if ssh_username is None:
                 raise TypeError("Missing required property 'ssh_username'")
-            __props__['ssh_username'] = ssh_username
+            __props__['sshUsername'] = ssh_username
             if user_arn is None:
                 raise TypeError("Missing required property 'user_arn'")
-            __props__['user_arn'] = user_arn
+            __props__['userArn'] = user_arn
         super(UserProfile, __self__).__init__(
             'aws:opsworks/userProfile:UserProfile',
             resource_name,

@@ -351,13 +351,13 @@ class AnalyticsApplication(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cloudwatch_logging_options'] = cloudwatch_logging_options
+            __props__['cloudwatchLoggingOptions'] = cloudwatch_logging_options
             __props__['code'] = code
             __props__['description'] = description
             __props__['inputs'] = inputs
             __props__['name'] = name
             __props__['outputs'] = outputs
-            __props__['reference_data_sources'] = reference_data_sources
+            __props__['referenceDataSources'] = reference_data_sources
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['create_timestamp'] = None

@@ -54,7 +54,7 @@ class StandardsSubscription(pulumi.CustomResource):
 
             if standards_arn is None:
                 raise TypeError("Missing required property 'standards_arn'")
-            __props__['standards_arn'] = standards_arn
+            __props__['standardsArn'] = standards_arn
         super(StandardsSubscription, __self__).__init__(
             'aws:securityhub/standardsSubscription:StandardsSubscription',
             resource_name,

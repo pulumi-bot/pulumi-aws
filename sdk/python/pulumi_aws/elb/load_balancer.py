@@ -258,22 +258,22 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_logs'] = access_logs
-            __props__['availability_zones'] = availability_zones
-            __props__['connection_draining'] = connection_draining
-            __props__['connection_draining_timeout'] = connection_draining_timeout
-            __props__['cross_zone_load_balancing'] = cross_zone_load_balancing
-            __props__['health_check'] = health_check
-            __props__['idle_timeout'] = idle_timeout
+            __props__['accessLogs'] = access_logs
+            __props__['availabilityZones'] = availability_zones
+            __props__['connectionDraining'] = connection_draining
+            __props__['connectionDrainingTimeout'] = connection_draining_timeout
+            __props__['crossZoneLoadBalancing'] = cross_zone_load_balancing
+            __props__['healthCheck'] = health_check
+            __props__['idleTimeout'] = idle_timeout
             __props__['instances'] = instances
             __props__['internal'] = internal
             if listeners is None:
                 raise TypeError("Missing required property 'listeners'")
             __props__['listeners'] = listeners
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['security_groups'] = security_groups
-            __props__['source_security_group'] = source_security_group
+            __props__['namePrefix'] = name_prefix
+            __props__['securityGroups'] = security_groups
+            __props__['sourceSecurityGroup'] = source_security_group
             __props__['subnets'] = subnets
             __props__['tags'] = tags
             __props__['arn'] = None

@@ -193,12 +193,12 @@ class ComputeEnvironment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['compute_environment_name'] = compute_environment_name
-            __props__['compute_environment_name_prefix'] = compute_environment_name_prefix
-            __props__['compute_resources'] = compute_resources
+            __props__['computeEnvironmentName'] = compute_environment_name
+            __props__['computeEnvironmentNamePrefix'] = compute_environment_name_prefix
+            __props__['computeResources'] = compute_resources
             if service_role is None:
                 raise TypeError("Missing required property 'service_role'")
-            __props__['service_role'] = service_role
+            __props__['serviceRole'] = service_role
             __props__['state'] = state
             if type is None:
                 raise TypeError("Missing required property 'type'")

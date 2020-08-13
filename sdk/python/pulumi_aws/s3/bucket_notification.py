@@ -300,7 +300,7 @@ class BucketNotification(pulumi.CustomResource):
             if bucket is None:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
-            __props__['lambda_functions'] = lambda_functions
+            __props__['lambdaFunctions'] = lambda_functions
             __props__['queues'] = queues
             __props__['topics'] = topics
         super(BucketNotification, __self__).__init__(

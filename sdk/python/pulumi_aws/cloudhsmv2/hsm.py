@@ -80,12 +80,12 @@ class Hsm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['availability_zone'] = availability_zone
+            __props__['availabilityZone'] = availability_zone
             if cluster_id is None:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['ip_address'] = ip_address
-            __props__['subnet_id'] = subnet_id
+            __props__['clusterId'] = cluster_id
+            __props__['ipAddress'] = ip_address
+            __props__['subnetId'] = subnet_id
             __props__['hsm_eni_id'] = None
             __props__['hsm_id'] = None
             __props__['hsm_state'] = None

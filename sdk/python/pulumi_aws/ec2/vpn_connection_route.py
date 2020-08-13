@@ -31,7 +31,7 @@ class VpnConnectionRoute(pulumi.CustomResource):
         vpc = aws.ec2.Vpc("vpc", cidr_block="10.0.0.0/16")
         vpn_gateway = aws.ec2.VpnGateway("vpnGateway", vpc_id=vpc.id)
         customer_gateway = aws.ec2.CustomerGateway("customerGateway",
-            bgp_asn=65000,
+            bgp_asn="65000",
             ip_address="172.0.0.1",
             type="ipsec.1")
         main = aws.ec2.VpnConnection("main",
@@ -68,10 +68,10 @@ class VpnConnectionRoute(pulumi.CustomResource):
 
             if destination_cidr_block is None:
                 raise TypeError("Missing required property 'destination_cidr_block'")
-            __props__['destination_cidr_block'] = destination_cidr_block
+            __props__['destinationCidrBlock'] = destination_cidr_block
             if vpn_connection_id is None:
                 raise TypeError("Missing required property 'vpn_connection_id'")
-            __props__['vpn_connection_id'] = vpn_connection_id
+            __props__['vpnConnectionId'] = vpn_connection_id
         super(VpnConnectionRoute, __self__).__init__(
             'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
             resource_name,

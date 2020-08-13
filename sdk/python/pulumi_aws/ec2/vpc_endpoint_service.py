@@ -120,11 +120,11 @@ class VpcEndpointService(pulumi.CustomResource):
 
             if acceptance_required is None:
                 raise TypeError("Missing required property 'acceptance_required'")
-            __props__['acceptance_required'] = acceptance_required
-            __props__['allowed_principals'] = allowed_principals
+            __props__['acceptanceRequired'] = acceptance_required
+            __props__['allowedPrincipals'] = allowed_principals
             if network_load_balancer_arns is None:
                 raise TypeError("Missing required property 'network_load_balancer_arns'")
-            __props__['network_load_balancer_arns'] = network_load_balancer_arns
+            __props__['networkLoadBalancerArns'] = network_load_balancer_arns
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['availability_zones'] = None

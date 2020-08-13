@@ -203,17 +203,17 @@ class AmiCopy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['ebs_block_devices'] = ebs_block_devices
+            __props__['ebsBlockDevices'] = ebs_block_devices
             __props__['encrypted'] = encrypted
-            __props__['ephemeral_block_devices'] = ephemeral_block_devices
-            __props__['kms_key_id'] = kms_key_id
+            __props__['ephemeralBlockDevices'] = ephemeral_block_devices
+            __props__['kmsKeyId'] = kms_key_id
             __props__['name'] = name
             if source_ami_id is None:
                 raise TypeError("Missing required property 'source_ami_id'")
-            __props__['source_ami_id'] = source_ami_id
+            __props__['sourceAmiId'] = source_ami_id
             if source_ami_region is None:
                 raise TypeError("Missing required property 'source_ami_region'")
-            __props__['source_ami_region'] = source_ami_region
+            __props__['sourceAmiRegion'] = source_ami_region
             __props__['tags'] = tags
             __props__['architecture'] = None
             __props__['arn'] = None

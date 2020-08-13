@@ -166,18 +166,18 @@ class Stage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_log_settings'] = access_log_settings
+            __props__['accessLogSettings'] = access_log_settings
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['auto_deploy'] = auto_deploy
-            __props__['client_certificate_id'] = client_certificate_id
-            __props__['default_route_settings'] = default_route_settings
-            __props__['deployment_id'] = deployment_id
+            __props__['apiId'] = api_id
+            __props__['autoDeploy'] = auto_deploy
+            __props__['clientCertificateId'] = client_certificate_id
+            __props__['defaultRouteSettings'] = default_route_settings
+            __props__['deploymentId'] = deployment_id
             __props__['description'] = description
             __props__['name'] = name
-            __props__['route_settings'] = route_settings
-            __props__['stage_variables'] = stage_variables
+            __props__['routeSettings'] = route_settings
+            __props__['stageVariables'] = stage_variables
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['execution_arn'] = None

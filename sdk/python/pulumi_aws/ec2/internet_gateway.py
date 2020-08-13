@@ -66,7 +66,7 @@ class InternetGateway(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['tags'] = tags
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['owner_id'] = None
         super(InternetGateway, __self__).__init__(

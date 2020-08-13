@@ -72,10 +72,10 @@ class Alias(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             if target_key_id is None:
                 raise TypeError("Missing required property 'target_key_id'")
-            __props__['target_key_id'] = target_key_id
+            __props__['targetKeyId'] = target_key_id
             __props__['arn'] = None
             __props__['target_key_arn'] = None
         super(Alias, __self__).__init__(

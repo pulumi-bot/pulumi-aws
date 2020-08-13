@@ -138,12 +138,12 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['destination_config'] = destination_config
+            __props__['destinationConfig'] = destination_config
             if function_name is None:
                 raise TypeError("Missing required property 'function_name'")
-            __props__['function_name'] = function_name
-            __props__['maximum_event_age_in_seconds'] = maximum_event_age_in_seconds
-            __props__['maximum_retry_attempts'] = maximum_retry_attempts
+            __props__['functionName'] = function_name
+            __props__['maximumEventAgeInSeconds'] = maximum_event_age_in_seconds
+            __props__['maximumRetryAttempts'] = maximum_retry_attempts
             __props__['qualifier'] = qualifier
         super(FunctionEventInvokeConfig, __self__).__init__(
             'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',

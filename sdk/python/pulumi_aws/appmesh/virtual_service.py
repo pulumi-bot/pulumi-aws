@@ -118,7 +118,7 @@ class VirtualService(pulumi.CustomResource):
 
             if mesh_name is None:
                 raise TypeError("Missing required property 'mesh_name'")
-            __props__['mesh_name'] = mesh_name
+            __props__['meshName'] = mesh_name
             __props__['name'] = name
             if spec is None:
                 raise TypeError("Missing required property 'spec'")

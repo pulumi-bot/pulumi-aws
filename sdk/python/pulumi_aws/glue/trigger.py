@@ -212,7 +212,7 @@ class Trigger(pulumi.CustomResource):
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            __props__['workflow_name'] = workflow_name
+            __props__['workflowName'] = workflow_name
             __props__['arn'] = None
         super(Trigger, __self__).__init__(
             'aws:glue/trigger:Trigger',

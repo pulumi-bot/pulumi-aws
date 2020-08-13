@@ -166,20 +166,20 @@ class VpcEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_accept'] = auto_accept
+            __props__['autoAccept'] = auto_accept
             __props__['policy'] = policy
-            __props__['private_dns_enabled'] = private_dns_enabled
-            __props__['route_table_ids'] = route_table_ids
-            __props__['security_group_ids'] = security_group_ids
+            __props__['privateDnsEnabled'] = private_dns_enabled
+            __props__['routeTableIds'] = route_table_ids
+            __props__['securityGroupIds'] = security_group_ids
             if service_name is None:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
-            __props__['subnet_ids'] = subnet_ids
+            __props__['serviceName'] = service_name
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
-            __props__['vpc_endpoint_type'] = vpc_endpoint_type
+            __props__['vpcEndpointType'] = vpc_endpoint_type
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['cidr_blocks'] = None
             __props__['dns_entries'] = None

@@ -68,13 +68,13 @@ class Resource(pulumi.CustomResource):
 
             if parent_id is None:
                 raise TypeError("Missing required property 'parent_id'")
-            __props__['parent_id'] = parent_id
+            __props__['parentId'] = parent_id
             if path_part is None:
                 raise TypeError("Missing required property 'path_part'")
-            __props__['path_part'] = path_part
+            __props__['pathPart'] = path_part
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
+            __props__['restApi'] = rest_api
             __props__['path'] = None
         super(Resource, __self__).__init__(
             'aws:apigateway/resource:Resource',

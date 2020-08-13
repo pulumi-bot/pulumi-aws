@@ -61,7 +61,7 @@ class RegexPatternSet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['regex_pattern_strings'] = regex_pattern_strings
+            __props__['regexPatternStrings'] = regex_pattern_strings
             __props__['arn'] = None
         super(RegexPatternSet, __self__).__init__(
             'aws:waf/regexPatternSet:RegexPatternSet',

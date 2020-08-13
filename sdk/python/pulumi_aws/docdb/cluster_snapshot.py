@@ -95,10 +95,10 @@ class ClusterSnapshot(pulumi.CustomResource):
 
             if db_cluster_identifier is None:
                 raise TypeError("Missing required property 'db_cluster_identifier'")
-            __props__['db_cluster_identifier'] = db_cluster_identifier
+            __props__['dbClusterIdentifier'] = db_cluster_identifier
             if db_cluster_snapshot_identifier is None:
                 raise TypeError("Missing required property 'db_cluster_snapshot_identifier'")
-            __props__['db_cluster_snapshot_identifier'] = db_cluster_snapshot_identifier
+            __props__['dbClusterSnapshotIdentifier'] = db_cluster_snapshot_identifier
             __props__['availability_zones'] = None
             __props__['db_cluster_snapshot_arn'] = None
             __props__['engine'] = None

@@ -65,10 +65,10 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
 
             if cluster_identifier is None:
                 raise TypeError("Missing required property 'cluster_identifier'")
-            __props__['cluster_identifier'] = cluster_identifier
+            __props__['clusterIdentifier'] = cluster_identifier
             if schedule_identifier is None:
                 raise TypeError("Missing required property 'schedule_identifier'")
-            __props__['schedule_identifier'] = schedule_identifier
+            __props__['scheduleIdentifier'] = schedule_identifier
         super(SnapshotScheduleAssociation, __self__).__init__(
             'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
             resource_name,

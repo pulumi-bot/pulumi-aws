@@ -48,7 +48,7 @@ class AdminAccount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
         super(AdminAccount, __self__).__init__(
             'aws:fms/adminAccount:AdminAccount',
             resource_name,

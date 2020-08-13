@@ -102,15 +102,15 @@ class ApnsSandboxChannel(pulumi.CustomResource):
 
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
-            __props__['bundle_id'] = bundle_id
+            __props__['applicationId'] = application_id
+            __props__['bundleId'] = bundle_id
             __props__['certificate'] = certificate
-            __props__['default_authentication_method'] = default_authentication_method
+            __props__['defaultAuthenticationMethod'] = default_authentication_method
             __props__['enabled'] = enabled
-            __props__['private_key'] = private_key
-            __props__['team_id'] = team_id
-            __props__['token_key'] = token_key
-            __props__['token_key_id'] = token_key_id
+            __props__['privateKey'] = private_key
+            __props__['teamId'] = team_id
+            __props__['tokenKey'] = token_key
+            __props__['tokenKeyId'] = token_key_id
         super(ApnsSandboxChannel, __self__).__init__(
             'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
             resource_name,

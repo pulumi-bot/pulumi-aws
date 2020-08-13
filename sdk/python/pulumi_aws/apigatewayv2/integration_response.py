@@ -80,16 +80,16 @@ class IntegrationResponse(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['content_handling_strategy'] = content_handling_strategy
+            __props__['apiId'] = api_id
+            __props__['contentHandlingStrategy'] = content_handling_strategy
             if integration_id is None:
                 raise TypeError("Missing required property 'integration_id'")
-            __props__['integration_id'] = integration_id
+            __props__['integrationId'] = integration_id
             if integration_response_key is None:
                 raise TypeError("Missing required property 'integration_response_key'")
-            __props__['integration_response_key'] = integration_response_key
-            __props__['response_templates'] = response_templates
-            __props__['template_selection_expression'] = template_selection_expression
+            __props__['integrationResponseKey'] = integration_response_key
+            __props__['responseTemplates'] = response_templates
+            __props__['templateSelectionExpression'] = template_selection_expression
         super(IntegrationResponse, __self__).__init__(
             'aws:apigatewayv2/integrationResponse:IntegrationResponse',
             resource_name,

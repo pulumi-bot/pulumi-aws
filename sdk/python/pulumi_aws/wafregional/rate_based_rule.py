@@ -108,15 +108,15 @@ class RateBasedRule(pulumi.CustomResource):
 
             if metric_name is None:
                 raise TypeError("Missing required property 'metric_name'")
-            __props__['metric_name'] = metric_name
+            __props__['metricName'] = metric_name
             __props__['name'] = name
             __props__['predicates'] = predicates
             if rate_key is None:
                 raise TypeError("Missing required property 'rate_key'")
-            __props__['rate_key'] = rate_key
+            __props__['rateKey'] = rate_key
             if rate_limit is None:
                 raise TypeError("Missing required property 'rate_limit'")
-            __props__['rate_limit'] = rate_limit
+            __props__['rateLimit'] = rate_limit
             __props__['tags'] = tags
             __props__['arn'] = None
         super(RateBasedRule, __self__).__init__(

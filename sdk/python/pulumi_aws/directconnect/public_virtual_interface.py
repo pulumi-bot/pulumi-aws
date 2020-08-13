@@ -114,20 +114,20 @@ class PublicVirtualInterface(pulumi.CustomResource):
 
             if address_family is None:
                 raise TypeError("Missing required property 'address_family'")
-            __props__['address_family'] = address_family
-            __props__['amazon_address'] = amazon_address
+            __props__['addressFamily'] = address_family
+            __props__['amazonAddress'] = amazon_address
             if bgp_asn is None:
                 raise TypeError("Missing required property 'bgp_asn'")
-            __props__['bgp_asn'] = bgp_asn
-            __props__['bgp_auth_key'] = bgp_auth_key
+            __props__['bgpAsn'] = bgp_asn
+            __props__['bgpAuthKey'] = bgp_auth_key
             if connection_id is None:
                 raise TypeError("Missing required property 'connection_id'")
-            __props__['connection_id'] = connection_id
-            __props__['customer_address'] = customer_address
+            __props__['connectionId'] = connection_id
+            __props__['customerAddress'] = customer_address
             __props__['name'] = name
             if route_filter_prefixes is None:
                 raise TypeError("Missing required property 'route_filter_prefixes'")
-            __props__['route_filter_prefixes'] = route_filter_prefixes
+            __props__['routeFilterPrefixes'] = route_filter_prefixes
             __props__['tags'] = tags
             if vlan is None:
                 raise TypeError("Missing required property 'vlan'")

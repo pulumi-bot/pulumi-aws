@@ -84,13 +84,13 @@ class SecretRotation(pulumi.CustomResource):
 
             if rotation_lambda_arn is None:
                 raise TypeError("Missing required property 'rotation_lambda_arn'")
-            __props__['rotation_lambda_arn'] = rotation_lambda_arn
+            __props__['rotationLambdaArn'] = rotation_lambda_arn
             if rotation_rules is None:
                 raise TypeError("Missing required property 'rotation_rules'")
-            __props__['rotation_rules'] = rotation_rules
+            __props__['rotationRules'] = rotation_rules
             if secret_id is None:
                 raise TypeError("Missing required property 'secret_id'")
-            __props__['secret_id'] = secret_id
+            __props__['secretId'] = secret_id
             __props__['tags'] = tags
             __props__['rotation_enabled'] = None
         super(SecretRotation, __self__).__init__(

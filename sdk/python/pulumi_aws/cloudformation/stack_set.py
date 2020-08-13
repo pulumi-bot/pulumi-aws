@@ -144,15 +144,15 @@ class StackSet(pulumi.CustomResource):
 
             if administration_role_arn is None:
                 raise TypeError("Missing required property 'administration_role_arn'")
-            __props__['administration_role_arn'] = administration_role_arn
+            __props__['administrationRoleArn'] = administration_role_arn
             __props__['capabilities'] = capabilities
             __props__['description'] = description
-            __props__['execution_role_name'] = execution_role_name
+            __props__['executionRoleName'] = execution_role_name
             __props__['name'] = name
             __props__['parameters'] = parameters
             __props__['tags'] = tags
-            __props__['template_body'] = template_body
-            __props__['template_url'] = template_url
+            __props__['templateBody'] = template_body
+            __props__['templateUrl'] = template_url
             __props__['arn'] = None
             __props__['stack_set_id'] = None
         super(StackSet, __self__).__init__(

@@ -92,9 +92,9 @@ class DefaultSubnet(pulumi.CustomResource):
 
             if availability_zone is None:
                 raise TypeError("Missing required property 'availability_zone'")
-            __props__['availability_zone'] = availability_zone
-            __props__['map_public_ip_on_launch'] = map_public_ip_on_launch
-            __props__['outpost_arn'] = outpost_arn
+            __props__['availabilityZone'] = availability_zone
+            __props__['mapPublicIpOnLaunch'] = map_public_ip_on_launch
+            __props__['outpostArn'] = outpost_arn
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['assign_ipv6_address_on_creation'] = None

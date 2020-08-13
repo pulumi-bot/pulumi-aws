@@ -69,7 +69,7 @@ class Portfolio(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            __props__['provider_name'] = provider_name
+            __props__['providerName'] = provider_name
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['created_time'] = None

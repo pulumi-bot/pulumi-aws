@@ -102,9 +102,9 @@ class VpcAttachmentAccepter(pulumi.CustomResource):
             __props__['tags'] = tags
             if transit_gateway_attachment_id is None:
                 raise TypeError("Missing required property 'transit_gateway_attachment_id'")
-            __props__['transit_gateway_attachment_id'] = transit_gateway_attachment_id
-            __props__['transit_gateway_default_route_table_association'] = transit_gateway_default_route_table_association
-            __props__['transit_gateway_default_route_table_propagation'] = transit_gateway_default_route_table_propagation
+            __props__['transitGatewayAttachmentId'] = transit_gateway_attachment_id
+            __props__['transitGatewayDefaultRouteTableAssociation'] = transit_gateway_default_route_table_association
+            __props__['transitGatewayDefaultRouteTablePropagation'] = transit_gateway_default_route_table_propagation
             __props__['dns_support'] = None
             __props__['ipv6_support'] = None
             __props__['subnet_ids'] = None

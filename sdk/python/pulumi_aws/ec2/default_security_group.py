@@ -106,7 +106,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         default = aws.ec2.DefaultSecurityGroup("default",
             vpc_id=mainvpc.id,
             ingress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "self": True,
                 "from_port": 0,
                 "to_port": 0,
@@ -132,7 +132,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         default = aws.ec2.DefaultSecurityGroup("default",
             vpc_id=mainvpc.id,
             ingress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "self": True,
                 "from_port": 0,
                 "to_port": 0,
@@ -208,9 +208,9 @@ class DefaultSecurityGroup(pulumi.CustomResource):
 
             __props__['egress'] = egress
             __props__['ingress'] = ingress
-            __props__['revoke_rules_on_delete'] = revoke_rules_on_delete
+            __props__['revokeRulesOnDelete'] = revoke_rules_on_delete
             __props__['tags'] = tags
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['description'] = None
             __props__['name'] = None

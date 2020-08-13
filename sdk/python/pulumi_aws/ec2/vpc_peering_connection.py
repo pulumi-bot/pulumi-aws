@@ -221,17 +221,17 @@ class VpcPeeringConnection(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['accepter'] = accepter
-            __props__['auto_accept'] = auto_accept
-            __props__['peer_owner_id'] = peer_owner_id
-            __props__['peer_region'] = peer_region
+            __props__['autoAccept'] = auto_accept
+            __props__['peerOwnerId'] = peer_owner_id
+            __props__['peerRegion'] = peer_region
             if peer_vpc_id is None:
                 raise TypeError("Missing required property 'peer_vpc_id'")
-            __props__['peer_vpc_id'] = peer_vpc_id
+            __props__['peerVpcId'] = peer_vpc_id
             __props__['requester'] = requester
             __props__['tags'] = tags
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['accept_status'] = None
         super(VpcPeeringConnection, __self__).__init__(
             'aws:ec2/vpcPeeringConnection:VpcPeeringConnection',

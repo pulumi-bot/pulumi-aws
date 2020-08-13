@@ -153,11 +153,11 @@ class Service(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['dns_config'] = dns_config
-            __props__['health_check_config'] = health_check_config
-            __props__['health_check_custom_config'] = health_check_custom_config
+            __props__['dnsConfig'] = dns_config
+            __props__['healthCheckConfig'] = health_check_config
+            __props__['healthCheckCustomConfig'] = health_check_custom_config
             __props__['name'] = name
-            __props__['namespace_id'] = namespace_id
+            __props__['namespaceId'] = namespace_id
             __props__['tags'] = tags
             __props__['arn'] = None
         super(Service, __self__).__init__(

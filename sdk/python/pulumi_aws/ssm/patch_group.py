@@ -58,10 +58,10 @@ class PatchGroup(pulumi.CustomResource):
 
             if baseline_id is None:
                 raise TypeError("Missing required property 'baseline_id'")
-            __props__['baseline_id'] = baseline_id
+            __props__['baselineId'] = baseline_id
             if patch_group is None:
                 raise TypeError("Missing required property 'patch_group'")
-            __props__['patch_group'] = patch_group
+            __props__['patchGroup'] = patch_group
         super(PatchGroup, __self__).__init__(
             'aws:ssm/patchGroup:PatchGroup',
             resource_name,

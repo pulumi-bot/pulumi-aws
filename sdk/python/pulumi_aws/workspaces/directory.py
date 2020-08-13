@@ -139,9 +139,9 @@ class Directory(pulumi.CustomResource):
 
             if directory_id is None:
                 raise TypeError("Missing required property 'directory_id'")
-            __props__['directory_id'] = directory_id
-            __props__['self_service_permissions'] = self_service_permissions
-            __props__['subnet_ids'] = subnet_ids
+            __props__['directoryId'] = directory_id
+            __props__['selfServicePermissions'] = self_service_permissions
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
             __props__['alias'] = None
             __props__['customer_user_name'] = None

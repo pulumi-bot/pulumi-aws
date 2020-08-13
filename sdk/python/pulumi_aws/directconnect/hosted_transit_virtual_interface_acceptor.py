@@ -44,7 +44,7 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
         # Accepter's credentials.
         accepter_caller_identity = aws.get_caller_identity()
         # Accepter's side of the VIF.
-        example = aws.directconnect.Gateway("example", amazon_side_asn=64512,
+        example = aws.directconnect.Gateway("example", amazon_side_asn="64512",
         opts=ResourceOptions(provider=aws["accepter"]))
         # Creator's side of the VIF
         creator = aws.directconnect.HostedTransitVirtualInterface("creator",
@@ -88,11 +88,11 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
 
             if dx_gateway_id is None:
                 raise TypeError("Missing required property 'dx_gateway_id'")
-            __props__['dx_gateway_id'] = dx_gateway_id
+            __props__['dxGatewayId'] = dx_gateway_id
             __props__['tags'] = tags
             if virtual_interface_id is None:
                 raise TypeError("Missing required property 'virtual_interface_id'")
-            __props__['virtual_interface_id'] = virtual_interface_id
+            __props__['virtualInterfaceId'] = virtual_interface_id
             __props__['arn'] = None
         super(HostedTransitVirtualInterfaceAcceptor, __self__).__init__(
             'aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor',

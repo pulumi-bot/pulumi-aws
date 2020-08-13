@@ -127,12 +127,12 @@ class RestApi(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['api_key_source'] = api_key_source
-            __props__['binary_media_types'] = binary_media_types
+            __props__['apiKeySource'] = api_key_source
+            __props__['binaryMediaTypes'] = binary_media_types
             __props__['body'] = body
             __props__['description'] = description
-            __props__['endpoint_configuration'] = endpoint_configuration
-            __props__['minimum_compression_size'] = minimum_compression_size
+            __props__['endpointConfiguration'] = endpoint_configuration
+            __props__['minimumCompressionSize'] = minimum_compression_size
             __props__['name'] = name
             __props__['policy'] = policy
             __props__['tags'] = tags

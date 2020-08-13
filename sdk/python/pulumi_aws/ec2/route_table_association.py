@@ -70,11 +70,11 @@ class RouteTableAssociation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['gateway_id'] = gateway_id
+            __props__['gatewayId'] = gateway_id
             if route_table_id is None:
                 raise TypeError("Missing required property 'route_table_id'")
-            __props__['route_table_id'] = route_table_id
-            __props__['subnet_id'] = subnet_id
+            __props__['routeTableId'] = route_table_id
+            __props__['subnetId'] = subnet_id
         super(RouteTableAssociation, __self__).__init__(
             'aws:ec2/routeTableAssociation:RouteTableAssociation',
             resource_name,

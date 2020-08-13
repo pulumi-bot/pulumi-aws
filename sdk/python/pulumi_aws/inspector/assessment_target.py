@@ -62,7 +62,7 @@ class AssessmentTarget(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['resource_group_arn'] = resource_group_arn
+            __props__['resourceGroupArn'] = resource_group_arn
             __props__['arn'] = None
         super(AssessmentTarget, __self__).__init__(
             'aws:inspector/assessmentTarget:AssessmentTarget',

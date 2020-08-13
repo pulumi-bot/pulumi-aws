@@ -98,18 +98,18 @@ class MethodResponse(pulumi.CustomResource):
 
             if http_method is None:
                 raise TypeError("Missing required property 'http_method'")
-            __props__['http_method'] = http_method
+            __props__['httpMethod'] = http_method
             if resource_id is None:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
-            __props__['response_models'] = response_models
-            __props__['response_parameters'] = response_parameters
+            __props__['resourceId'] = resource_id
+            __props__['responseModels'] = response_models
+            __props__['responseParameters'] = response_parameters
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
+            __props__['restApi'] = rest_api
             if status_code is None:
                 raise TypeError("Missing required property 'status_code'")
-            __props__['status_code'] = status_code
+            __props__['statusCode'] = status_code
         super(MethodResponse, __self__).__init__(
             'aws:apigateway/methodResponse:MethodResponse',
             resource_name,

@@ -92,7 +92,7 @@ class Policy(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['path'] = path
             if policy is None:
                 raise TypeError("Missing required property 'policy'")

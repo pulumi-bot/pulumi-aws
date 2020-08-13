@@ -233,31 +233,31 @@ class ClusterInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['apply_immediately'] = apply_immediately
-            __props__['auto_minor_version_upgrade'] = auto_minor_version_upgrade
-            __props__['availability_zone'] = availability_zone
-            __props__['ca_cert_identifier'] = ca_cert_identifier
+            __props__['applyImmediately'] = apply_immediately
+            __props__['autoMinorVersionUpgrade'] = auto_minor_version_upgrade
+            __props__['availabilityZone'] = availability_zone
+            __props__['caCertIdentifier'] = ca_cert_identifier
             if cluster_identifier is None:
                 raise TypeError("Missing required property 'cluster_identifier'")
-            __props__['cluster_identifier'] = cluster_identifier
-            __props__['copy_tags_to_snapshot'] = copy_tags_to_snapshot
-            __props__['db_parameter_group_name'] = db_parameter_group_name
-            __props__['db_subnet_group_name'] = db_subnet_group_name
+            __props__['clusterIdentifier'] = cluster_identifier
+            __props__['copyTagsToSnapshot'] = copy_tags_to_snapshot
+            __props__['dbParameterGroupName'] = db_parameter_group_name
+            __props__['dbSubnetGroupName'] = db_subnet_group_name
             __props__['engine'] = engine
-            __props__['engine_version'] = engine_version
+            __props__['engineVersion'] = engine_version
             __props__['identifier'] = identifier
-            __props__['identifier_prefix'] = identifier_prefix
+            __props__['identifierPrefix'] = identifier_prefix
             if instance_class is None:
                 raise TypeError("Missing required property 'instance_class'")
-            __props__['instance_class'] = instance_class
-            __props__['monitoring_interval'] = monitoring_interval
-            __props__['monitoring_role_arn'] = monitoring_role_arn
-            __props__['performance_insights_enabled'] = performance_insights_enabled
-            __props__['performance_insights_kms_key_id'] = performance_insights_kms_key_id
-            __props__['preferred_backup_window'] = preferred_backup_window
-            __props__['preferred_maintenance_window'] = preferred_maintenance_window
-            __props__['promotion_tier'] = promotion_tier
-            __props__['publicly_accessible'] = publicly_accessible
+            __props__['instanceClass'] = instance_class
+            __props__['monitoringInterval'] = monitoring_interval
+            __props__['monitoringRoleArn'] = monitoring_role_arn
+            __props__['performanceInsightsEnabled'] = performance_insights_enabled
+            __props__['performanceInsightsKmsKeyId'] = performance_insights_kms_key_id
+            __props__['preferredBackupWindow'] = preferred_backup_window
+            __props__['preferredMaintenanceWindow'] = preferred_maintenance_window
+            __props__['promotionTier'] = promotion_tier
+            __props__['publiclyAccessible'] = publicly_accessible
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['dbi_resource_id'] = None

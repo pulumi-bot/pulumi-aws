@@ -77,14 +77,14 @@ class BasePathMapping(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['base_path'] = base_path
+            __props__['basePath'] = base_path
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
+            __props__['domainName'] = domain_name
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
-            __props__['stage_name'] = stage_name
+            __props__['restApi'] = rest_api
+            __props__['stageName'] = stage_name
         super(BasePathMapping, __self__).__init__(
             'aws:apigateway/basePathMapping:BasePathMapping',
             resource_name,

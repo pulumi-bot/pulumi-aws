@@ -77,8 +77,8 @@ class Database(pulumi.CustomResource):
             if bucket is None:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
-            __props__['encryption_configuration'] = encryption_configuration
-            __props__['force_destroy'] = force_destroy
+            __props__['encryptionConfiguration'] = encryption_configuration
+            __props__['forceDestroy'] = force_destroy
             __props__['name'] = name
         super(Database, __self__).__init__(
             'aws:athena/database:Database',

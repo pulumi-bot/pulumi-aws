@@ -283,19 +283,19 @@ class EventTarget(pulumi.CustomResource):
             if arn is None:
                 raise TypeError("Missing required property 'arn'")
             __props__['arn'] = arn
-            __props__['batch_target'] = batch_target
-            __props__['ecs_target'] = ecs_target
+            __props__['batchTarget'] = batch_target
+            __props__['ecsTarget'] = ecs_target
             __props__['input'] = input
-            __props__['input_path'] = input_path
-            __props__['input_transformer'] = input_transformer
-            __props__['kinesis_target'] = kinesis_target
-            __props__['role_arn'] = role_arn
+            __props__['inputPath'] = input_path
+            __props__['inputTransformer'] = input_transformer
+            __props__['kinesisTarget'] = kinesis_target
+            __props__['roleArn'] = role_arn
             if rule is None:
                 raise TypeError("Missing required property 'rule'")
             __props__['rule'] = rule
-            __props__['run_command_targets'] = run_command_targets
-            __props__['sqs_target'] = sqs_target
-            __props__['target_id'] = target_id
+            __props__['runCommandTargets'] = run_command_targets
+            __props__['sqsTarget'] = sqs_target
+            __props__['targetId'] = target_id
         super(EventTarget, __self__).__init__(
             'aws:cloudwatch/eventTarget:EventTarget',
             resource_name,

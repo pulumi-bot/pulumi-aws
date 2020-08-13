@@ -54,8 +54,8 @@ class NotebookInstanceLifecycleConfiguration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['on_create'] = on_create
-            __props__['on_start'] = on_start
+            __props__['onCreate'] = on_create
+            __props__['onStart'] = on_start
             __props__['arn'] = None
         super(NotebookInstanceLifecycleConfiguration, __self__).__init__(
             'aws:sagemaker/notebookInstanceLifecycleConfiguration:NotebookInstanceLifecycleConfiguration',

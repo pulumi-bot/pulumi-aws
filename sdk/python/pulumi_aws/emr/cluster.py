@@ -691,34 +691,34 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_info'] = additional_info
+            __props__['additionalInfo'] = additional_info
             __props__['applications'] = applications
-            __props__['autoscaling_role'] = autoscaling_role
-            __props__['bootstrap_actions'] = bootstrap_actions
+            __props__['autoscalingRole'] = autoscaling_role
+            __props__['bootstrapActions'] = bootstrap_actions
             __props__['configurations'] = configurations
-            __props__['configurations_json'] = configurations_json
-            __props__['core_instance_group'] = core_instance_group
-            __props__['custom_ami_id'] = custom_ami_id
-            __props__['ebs_root_volume_size'] = ebs_root_volume_size
-            __props__['ec2_attributes'] = ec2_attributes
-            __props__['keep_job_flow_alive_when_no_steps'] = keep_job_flow_alive_when_no_steps
-            __props__['kerberos_attributes'] = kerberos_attributes
-            __props__['log_uri'] = log_uri
-            __props__['master_instance_group'] = master_instance_group
+            __props__['configurationsJson'] = configurations_json
+            __props__['coreInstanceGroup'] = core_instance_group
+            __props__['customAmiId'] = custom_ami_id
+            __props__['ebsRootVolumeSize'] = ebs_root_volume_size
+            __props__['ec2Attributes'] = ec2_attributes
+            __props__['keepJobFlowAliveWhenNoSteps'] = keep_job_flow_alive_when_no_steps
+            __props__['kerberosAttributes'] = kerberos_attributes
+            __props__['logUri'] = log_uri
+            __props__['masterInstanceGroup'] = master_instance_group
             __props__['name'] = name
             if release_label is None:
                 raise TypeError("Missing required property 'release_label'")
-            __props__['release_label'] = release_label
-            __props__['scale_down_behavior'] = scale_down_behavior
-            __props__['security_configuration'] = security_configuration
+            __props__['releaseLabel'] = release_label
+            __props__['scaleDownBehavior'] = scale_down_behavior
+            __props__['securityConfiguration'] = security_configuration
             if service_role is None:
                 raise TypeError("Missing required property 'service_role'")
-            __props__['service_role'] = service_role
-            __props__['step_concurrency_level'] = step_concurrency_level
+            __props__['serviceRole'] = service_role
+            __props__['stepConcurrencyLevel'] = step_concurrency_level
             __props__['steps'] = steps
             __props__['tags'] = tags
-            __props__['termination_protection'] = termination_protection
-            __props__['visible_to_all_users'] = visible_to_all_users
+            __props__['terminationProtection'] = termination_protection
+            __props__['visibleToAllUsers'] = visible_to_all_users
             __props__['arn'] = None
             __props__['cluster_state'] = None
             __props__['master_public_dns'] = None

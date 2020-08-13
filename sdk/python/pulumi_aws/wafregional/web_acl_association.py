@@ -165,10 +165,10 @@ class WebAclAssociation(pulumi.CustomResource):
 
             if resource_arn is None:
                 raise TypeError("Missing required property 'resource_arn'")
-            __props__['resource_arn'] = resource_arn
+            __props__['resourceArn'] = resource_arn
             if web_acl_id is None:
                 raise TypeError("Missing required property 'web_acl_id'")
-            __props__['web_acl_id'] = web_acl_id
+            __props__['webAclId'] = web_acl_id
         super(WebAclAssociation, __self__).__init__(
             'aws:wafregional/webAclAssociation:WebAclAssociation',
             resource_name,

@@ -78,13 +78,13 @@ class UsagePlanKey(pulumi.CustomResource):
 
             if key_id is None:
                 raise TypeError("Missing required property 'key_id'")
-            __props__['key_id'] = key_id
+            __props__['keyId'] = key_id
             if key_type is None:
                 raise TypeError("Missing required property 'key_type'")
-            __props__['key_type'] = key_type
+            __props__['keyType'] = key_type
             if usage_plan_id is None:
                 raise TypeError("Missing required property 'usage_plan_id'")
-            __props__['usage_plan_id'] = usage_plan_id
+            __props__['usagePlanId'] = usage_plan_id
             __props__['name'] = None
             __props__['value'] = None
         super(UsagePlanKey, __self__).__init__(

@@ -95,7 +95,7 @@ class ThreatIntelSet(pulumi.CustomResource):
             __props__['activate'] = activate
             if detector_id is None:
                 raise TypeError("Missing required property 'detector_id'")
-            __props__['detector_id'] = detector_id
+            __props__['detectorId'] = detector_id
             if format is None:
                 raise TypeError("Missing required property 'format'")
             __props__['format'] = format

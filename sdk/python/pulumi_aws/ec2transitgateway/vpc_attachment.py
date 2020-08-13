@@ -92,20 +92,20 @@ class VpcAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['dns_support'] = dns_support
-            __props__['ipv6_support'] = ipv6_support
+            __props__['dnsSupport'] = dns_support
+            __props__['ipv6Support'] = ipv6_support
             if subnet_ids is None:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
-            __props__['transit_gateway_default_route_table_association'] = transit_gateway_default_route_table_association
-            __props__['transit_gateway_default_route_table_propagation'] = transit_gateway_default_route_table_propagation
+            __props__['transitGatewayDefaultRouteTableAssociation'] = transit_gateway_default_route_table_association
+            __props__['transitGatewayDefaultRouteTablePropagation'] = transit_gateway_default_route_table_propagation
             if transit_gateway_id is None:
                 raise TypeError("Missing required property 'transit_gateway_id'")
-            __props__['transit_gateway_id'] = transit_gateway_id
+            __props__['transitGatewayId'] = transit_gateway_id
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['vpc_owner_id'] = None
         super(VpcAttachment, __self__).__init__(
             'aws:ec2transitgateway/vpcAttachment:VpcAttachment',

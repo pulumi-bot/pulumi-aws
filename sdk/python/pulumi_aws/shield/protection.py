@@ -62,7 +62,7 @@ class Protection(pulumi.CustomResource):
             __props__['name'] = name
             if resource_arn is None:
                 raise TypeError("Missing required property 'resource_arn'")
-            __props__['resource_arn'] = resource_arn
+            __props__['resourceArn'] = resource_arn
         super(Protection, __self__).__init__(
             'aws:shield/protection:Protection',
             resource_name,

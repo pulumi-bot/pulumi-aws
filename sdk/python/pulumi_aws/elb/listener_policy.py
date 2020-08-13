@@ -125,11 +125,11 @@ class ListenerPolicy(pulumi.CustomResource):
 
             if load_balancer_name is None:
                 raise TypeError("Missing required property 'load_balancer_name'")
-            __props__['load_balancer_name'] = load_balancer_name
+            __props__['loadBalancerName'] = load_balancer_name
             if load_balancer_port is None:
                 raise TypeError("Missing required property 'load_balancer_port'")
-            __props__['load_balancer_port'] = load_balancer_port
-            __props__['policy_names'] = policy_names
+            __props__['loadBalancerPort'] = load_balancer_port
+            __props__['policyNames'] = policy_names
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/listenerPolicy:ListenerPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ListenerPolicy, __self__).__init__(

@@ -201,26 +201,26 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['ami_type'] = ami_type
+            __props__['amiType'] = ami_type
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
-            __props__['disk_size'] = disk_size
-            __props__['force_update_version'] = force_update_version
-            __props__['instance_types'] = instance_types
+            __props__['clusterName'] = cluster_name
+            __props__['diskSize'] = disk_size
+            __props__['forceUpdateVersion'] = force_update_version
+            __props__['instanceTypes'] = instance_types
             __props__['labels'] = labels
-            __props__['node_group_name'] = node_group_name
+            __props__['nodeGroupName'] = node_group_name
             if node_role_arn is None:
                 raise TypeError("Missing required property 'node_role_arn'")
-            __props__['node_role_arn'] = node_role_arn
-            __props__['release_version'] = release_version
-            __props__['remote_access'] = remote_access
+            __props__['nodeRoleArn'] = node_role_arn
+            __props__['releaseVersion'] = release_version
+            __props__['remoteAccess'] = remote_access
             if scaling_config is None:
                 raise TypeError("Missing required property 'scaling_config'")
-            __props__['scaling_config'] = scaling_config
+            __props__['scalingConfig'] = scaling_config
             if subnet_ids is None:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
             __props__['version'] = version
             __props__['arn'] = None

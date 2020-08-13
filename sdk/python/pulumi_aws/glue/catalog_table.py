@@ -154,7 +154,7 @@ class CatalogTable(pulumi.CustomResource):
                 "serDeInfo": {
                     "name": "my-stream",
                     "parameters": {
-                        "serialization.format": 1,
+                        "serialization.format": "1",
                     },
                     "serializationLibrary": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
                 },
@@ -230,20 +230,20 @@ class CatalogTable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['catalog_id'] = catalog_id
+            __props__['catalogId'] = catalog_id
             if database_name is None:
                 raise TypeError("Missing required property 'database_name'")
-            __props__['database_name'] = database_name
+            __props__['databaseName'] = database_name
             __props__['description'] = description
             __props__['name'] = name
             __props__['owner'] = owner
             __props__['parameters'] = parameters
-            __props__['partition_keys'] = partition_keys
+            __props__['partitionKeys'] = partition_keys
             __props__['retention'] = retention
-            __props__['storage_descriptor'] = storage_descriptor
-            __props__['table_type'] = table_type
-            __props__['view_expanded_text'] = view_expanded_text
-            __props__['view_original_text'] = view_original_text
+            __props__['storageDescriptor'] = storage_descriptor
+            __props__['tableType'] = table_type
+            __props__['viewExpandedText'] = view_expanded_text
+            __props__['viewOriginalText'] = view_original_text
             __props__['arn'] = None
         super(CatalogTable, __self__).__init__(
             'aws:glue/catalogTable:CatalogTable',

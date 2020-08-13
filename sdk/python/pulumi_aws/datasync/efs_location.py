@@ -85,10 +85,10 @@ class EfsLocation(pulumi.CustomResource):
 
             if ec2_config is None:
                 raise TypeError("Missing required property 'ec2_config'")
-            __props__['ec2_config'] = ec2_config
+            __props__['ec2Config'] = ec2_config
             if efs_file_system_arn is None:
                 raise TypeError("Missing required property 'efs_file_system_arn'")
-            __props__['efs_file_system_arn'] = efs_file_system_arn
+            __props__['efsFileSystemArn'] = efs_file_system_arn
             __props__['subdirectory'] = subdirectory
             __props__['tags'] = tags
             __props__['arn'] = None

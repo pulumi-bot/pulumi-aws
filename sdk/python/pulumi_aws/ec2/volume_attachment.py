@@ -102,15 +102,15 @@ class VolumeAttachment(pulumi.CustomResource):
 
             if device_name is None:
                 raise TypeError("Missing required property 'device_name'")
-            __props__['device_name'] = device_name
-            __props__['force_detach'] = force_detach
+            __props__['deviceName'] = device_name
+            __props__['forceDetach'] = force_detach
             if instance_id is None:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['skip_destroy'] = skip_destroy
+            __props__['instanceId'] = instance_id
+            __props__['skipDestroy'] = skip_destroy
             if volume_id is None:
                 raise TypeError("Missing required property 'volume_id'")
-            __props__['volume_id'] = volume_id
+            __props__['volumeId'] = volume_id
         super(VolumeAttachment, __self__).__init__(
             'aws:ec2/volumeAttachment:VolumeAttachment',
             resource_name,

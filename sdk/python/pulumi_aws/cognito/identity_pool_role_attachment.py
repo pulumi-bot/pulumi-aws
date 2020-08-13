@@ -145,8 +145,8 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
 
             if identity_pool_id is None:
                 raise TypeError("Missing required property 'identity_pool_id'")
-            __props__['identity_pool_id'] = identity_pool_id
-            __props__['role_mappings'] = role_mappings
+            __props__['identityPoolId'] = identity_pool_id
+            __props__['roleMappings'] = role_mappings
             if roles is None:
                 raise TypeError("Missing required property 'roles'")
             __props__['roles'] = roles

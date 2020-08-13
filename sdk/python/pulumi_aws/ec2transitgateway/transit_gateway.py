@@ -99,14 +99,14 @@ class TransitGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['amazon_side_asn'] = amazon_side_asn
-            __props__['auto_accept_shared_attachments'] = auto_accept_shared_attachments
-            __props__['default_route_table_association'] = default_route_table_association
-            __props__['default_route_table_propagation'] = default_route_table_propagation
+            __props__['amazonSideAsn'] = amazon_side_asn
+            __props__['autoAcceptSharedAttachments'] = auto_accept_shared_attachments
+            __props__['defaultRouteTableAssociation'] = default_route_table_association
+            __props__['defaultRouteTablePropagation'] = default_route_table_propagation
             __props__['description'] = description
-            __props__['dns_support'] = dns_support
+            __props__['dnsSupport'] = dns_support
             __props__['tags'] = tags
-            __props__['vpn_ecmp_support'] = vpn_ecmp_support
+            __props__['vpnEcmpSupport'] = vpn_ecmp_support
             __props__['arn'] = None
             __props__['association_default_route_table_id'] = None
             __props__['owner_id'] = None

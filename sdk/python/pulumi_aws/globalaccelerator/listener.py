@@ -88,11 +88,11 @@ class Listener(pulumi.CustomResource):
 
             if accelerator_arn is None:
                 raise TypeError("Missing required property 'accelerator_arn'")
-            __props__['accelerator_arn'] = accelerator_arn
-            __props__['client_affinity'] = client_affinity
+            __props__['acceleratorArn'] = accelerator_arn
+            __props__['clientAffinity'] = client_affinity
             if port_ranges is None:
                 raise TypeError("Missing required property 'port_ranges'")
-            __props__['port_ranges'] = port_ranges
+            __props__['portRanges'] = port_ranges
             if protocol is None:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol

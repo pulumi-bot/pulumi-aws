@@ -110,9 +110,9 @@ class Organization(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['aws_service_access_principals'] = aws_service_access_principals
-            __props__['enabled_policy_types'] = enabled_policy_types
-            __props__['feature_set'] = feature_set
+            __props__['awsServiceAccessPrincipals'] = aws_service_access_principals
+            __props__['enabledPolicyTypes'] = enabled_policy_types
+            __props__['featureSet'] = feature_set
             __props__['accounts'] = None
             __props__['arn'] = None
             __props__['master_account_arn'] = None

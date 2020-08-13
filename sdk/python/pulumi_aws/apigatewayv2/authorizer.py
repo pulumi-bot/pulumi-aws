@@ -125,16 +125,16 @@ class Authorizer(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['authorizer_credentials_arn'] = authorizer_credentials_arn
+            __props__['apiId'] = api_id
+            __props__['authorizerCredentialsArn'] = authorizer_credentials_arn
             if authorizer_type is None:
                 raise TypeError("Missing required property 'authorizer_type'")
-            __props__['authorizer_type'] = authorizer_type
-            __props__['authorizer_uri'] = authorizer_uri
+            __props__['authorizerType'] = authorizer_type
+            __props__['authorizerUri'] = authorizer_uri
             if identity_sources is None:
                 raise TypeError("Missing required property 'identity_sources'")
-            __props__['identity_sources'] = identity_sources
-            __props__['jwt_configuration'] = jwt_configuration
+            __props__['identitySources'] = identity_sources
+            __props__['jwtConfiguration'] = jwt_configuration
             __props__['name'] = name
         super(Authorizer, __self__).__init__(
             'aws:apigatewayv2/authorizer:Authorizer',

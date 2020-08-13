@@ -72,13 +72,13 @@ class AdmChannel(pulumi.CustomResource):
 
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
+            __props__['applicationId'] = application_id
             if client_id is None:
                 raise TypeError("Missing required property 'client_id'")
-            __props__['client_id'] = client_id
+            __props__['clientId'] = client_id
             if client_secret is None:
                 raise TypeError("Missing required property 'client_secret'")
-            __props__['client_secret'] = client_secret
+            __props__['clientSecret'] = client_secret
             __props__['enabled'] = enabled
         super(AdmChannel, __self__).__init__(
             'aws:pinpoint/admChannel:AdmChannel',

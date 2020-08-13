@@ -63,13 +63,13 @@ class LocalGatewayRoute(pulumi.CustomResource):
 
             if destination_cidr_block is None:
                 raise TypeError("Missing required property 'destination_cidr_block'")
-            __props__['destination_cidr_block'] = destination_cidr_block
+            __props__['destinationCidrBlock'] = destination_cidr_block
             if local_gateway_route_table_id is None:
                 raise TypeError("Missing required property 'local_gateway_route_table_id'")
-            __props__['local_gateway_route_table_id'] = local_gateway_route_table_id
+            __props__['localGatewayRouteTableId'] = local_gateway_route_table_id
             if local_gateway_virtual_interface_group_id is None:
                 raise TypeError("Missing required property 'local_gateway_virtual_interface_group_id'")
-            __props__['local_gateway_virtual_interface_group_id'] = local_gateway_virtual_interface_group_id
+            __props__['localGatewayVirtualInterfaceGroupId'] = local_gateway_virtual_interface_group_id
         super(LocalGatewayRoute, __self__).__init__(
             'aws:ec2/localGatewayRoute:LocalGatewayRoute',
             resource_name,

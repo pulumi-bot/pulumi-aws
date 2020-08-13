@@ -57,7 +57,7 @@ class ProductSubscription(pulumi.CustomResource):
 
             if product_arn is None:
                 raise TypeError("Missing required property 'product_arn'")
-            __props__['product_arn'] = product_arn
+            __props__['productArn'] = product_arn
             __props__['arn'] = None
         super(ProductSubscription, __self__).__init__(
             'aws:securityhub/productSubscription:ProductSubscription',

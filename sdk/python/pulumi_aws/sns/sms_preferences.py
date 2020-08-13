@@ -73,12 +73,12 @@ class SmsPreferences(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['default_sender_id'] = default_sender_id
-            __props__['default_sms_type'] = default_sms_type
-            __props__['delivery_status_iam_role_arn'] = delivery_status_iam_role_arn
-            __props__['delivery_status_success_sampling_rate'] = delivery_status_success_sampling_rate
-            __props__['monthly_spend_limit'] = monthly_spend_limit
-            __props__['usage_report_s3_bucket'] = usage_report_s3_bucket
+            __props__['defaultSenderId'] = default_sender_id
+            __props__['defaultSmsType'] = default_sms_type
+            __props__['deliveryStatusIamRoleArn'] = delivery_status_iam_role_arn
+            __props__['deliveryStatusSuccessSamplingRate'] = delivery_status_success_sampling_rate
+            __props__['monthlySpendLimit'] = monthly_spend_limit
+            __props__['usageReportS3Bucket'] = usage_report_s3_bucket
         super(SmsPreferences, __self__).__init__(
             'aws:sns/smsPreferences:SmsPreferences',
             resource_name,

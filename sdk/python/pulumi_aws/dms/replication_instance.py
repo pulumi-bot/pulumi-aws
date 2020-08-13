@@ -161,24 +161,24 @@ class ReplicationInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allocated_storage'] = allocated_storage
-            __props__['apply_immediately'] = apply_immediately
-            __props__['auto_minor_version_upgrade'] = auto_minor_version_upgrade
-            __props__['availability_zone'] = availability_zone
-            __props__['engine_version'] = engine_version
-            __props__['kms_key_arn'] = kms_key_arn
-            __props__['multi_az'] = multi_az
-            __props__['preferred_maintenance_window'] = preferred_maintenance_window
-            __props__['publicly_accessible'] = publicly_accessible
+            __props__['allocatedStorage'] = allocated_storage
+            __props__['applyImmediately'] = apply_immediately
+            __props__['autoMinorVersionUpgrade'] = auto_minor_version_upgrade
+            __props__['availabilityZone'] = availability_zone
+            __props__['engineVersion'] = engine_version
+            __props__['kmsKeyArn'] = kms_key_arn
+            __props__['multiAz'] = multi_az
+            __props__['preferredMaintenanceWindow'] = preferred_maintenance_window
+            __props__['publiclyAccessible'] = publicly_accessible
             if replication_instance_class is None:
                 raise TypeError("Missing required property 'replication_instance_class'")
-            __props__['replication_instance_class'] = replication_instance_class
+            __props__['replicationInstanceClass'] = replication_instance_class
             if replication_instance_id is None:
                 raise TypeError("Missing required property 'replication_instance_id'")
-            __props__['replication_instance_id'] = replication_instance_id
-            __props__['replication_subnet_group_id'] = replication_subnet_group_id
+            __props__['replicationInstanceId'] = replication_instance_id
+            __props__['replicationSubnetGroupId'] = replication_subnet_group_id
             __props__['tags'] = tags
-            __props__['vpc_security_group_ids'] = vpc_security_group_ids
+            __props__['vpcSecurityGroupIds'] = vpc_security_group_ids
             __props__['replication_instance_arn'] = None
             __props__['replication_instance_private_ips'] = None
             __props__['replication_instance_public_ips'] = None

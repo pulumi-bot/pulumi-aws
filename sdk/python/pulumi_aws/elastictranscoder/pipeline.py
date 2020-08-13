@@ -152,20 +152,20 @@ class Pipeline(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['aws_kms_key_arn'] = aws_kms_key_arn
-            __props__['content_config'] = content_config
-            __props__['content_config_permissions'] = content_config_permissions
+            __props__['awsKmsKeyArn'] = aws_kms_key_arn
+            __props__['contentConfig'] = content_config
+            __props__['contentConfigPermissions'] = content_config_permissions
             if input_bucket is None:
                 raise TypeError("Missing required property 'input_bucket'")
-            __props__['input_bucket'] = input_bucket
+            __props__['inputBucket'] = input_bucket
             __props__['name'] = name
             __props__['notifications'] = notifications
-            __props__['output_bucket'] = output_bucket
+            __props__['outputBucket'] = output_bucket
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            __props__['thumbnail_config'] = thumbnail_config
-            __props__['thumbnail_config_permissions'] = thumbnail_config_permissions
+            __props__['thumbnailConfig'] = thumbnail_config
+            __props__['thumbnailConfigPermissions'] = thumbnail_config_permissions
             __props__['arn'] = None
         super(Pipeline, __self__).__init__(
             'aws:elastictranscoder/pipeline:Pipeline',

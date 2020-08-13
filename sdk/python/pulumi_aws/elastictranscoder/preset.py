@@ -106,10 +106,10 @@ class Preset(pulumi.CustomResource):
         bar = aws.elastictranscoder.Preset("bar",
             audio={
                 "audioPackingMode": "SingleTrack",
-                "bitRate": 96,
-                "channels": 2,
+                "bitRate": "96",
+                "channels": "2",
                 "codec": "AAC",
-                "sampleRate": 44100,
+                "sampleRate": "44100",
             },
             audio_codec_options={
                 "profile": "AAC-LC",
@@ -118,7 +118,7 @@ class Preset(pulumi.CustomResource):
             description="Sample Preset",
             thumbnails={
                 "format": "png",
-                "interval": 120,
+                "interval": "120",
                 "maxHeight": "auto",
                 "maxWidth": "auto",
                 "paddingPolicy": "Pad",
@@ -130,7 +130,7 @@ class Preset(pulumi.CustomResource):
                 "displayAspectRatio": "16:9",
                 "fixedGop": "false",
                 "frameRate": "auto",
-                "keyframesMaxDist": 240,
+                "keyframesMaxDist": "240",
                 "maxFrameRate": "60",
                 "maxHeight": "auto",
                 "maxWidth": "auto",
@@ -141,7 +141,7 @@ class Preset(pulumi.CustomResource):
                 "ColorSpaceConversionMode": "None",
                 "InterlacedMode": "Progressive",
                 "Level": "2.2",
-                "MaxReferenceFrames": 3,
+                "MaxReferenceFrames": "3",
                 "Profile": "main",
             },
             video_watermarks=[{
@@ -243,7 +243,7 @@ class Preset(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['audio'] = audio
-            __props__['audio_codec_options'] = audio_codec_options
+            __props__['audioCodecOptions'] = audio_codec_options
             if container is None:
                 raise TypeError("Missing required property 'container'")
             __props__['container'] = container
@@ -252,8 +252,8 @@ class Preset(pulumi.CustomResource):
             __props__['thumbnails'] = thumbnails
             __props__['type'] = type
             __props__['video'] = video
-            __props__['video_codec_options'] = video_codec_options
-            __props__['video_watermarks'] = video_watermarks
+            __props__['videoCodecOptions'] = video_codec_options
+            __props__['videoWatermarks'] = video_watermarks
             __props__['arn'] = None
         super(Preset, __self__).__init__(
             'aws:elastictranscoder/preset:Preset',

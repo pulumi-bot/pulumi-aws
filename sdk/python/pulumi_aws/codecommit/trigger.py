@@ -67,7 +67,7 @@ class Trigger(pulumi.CustomResource):
 
             if repository_name is None:
                 raise TypeError("Missing required property 'repository_name'")
-            __props__['repository_name'] = repository_name
+            __props__['repositoryName'] = repository_name
             if triggers is None:
                 raise TypeError("Missing required property 'triggers'")
             __props__['triggers'] = triggers

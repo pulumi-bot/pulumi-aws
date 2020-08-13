@@ -264,18 +264,18 @@ class DomainName(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['certificate_arn'] = certificate_arn
-            __props__['certificate_body'] = certificate_body
-            __props__['certificate_chain'] = certificate_chain
-            __props__['certificate_name'] = certificate_name
-            __props__['certificate_private_key'] = certificate_private_key
+            __props__['certificateArn'] = certificate_arn
+            __props__['certificateBody'] = certificate_body
+            __props__['certificateChain'] = certificate_chain
+            __props__['certificateName'] = certificate_name
+            __props__['certificatePrivateKey'] = certificate_private_key
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
-            __props__['endpoint_configuration'] = endpoint_configuration
-            __props__['regional_certificate_arn'] = regional_certificate_arn
-            __props__['regional_certificate_name'] = regional_certificate_name
-            __props__['security_policy'] = security_policy
+            __props__['domainName'] = domain_name
+            __props__['endpointConfiguration'] = endpoint_configuration
+            __props__['regionalCertificateArn'] = regional_certificate_arn
+            __props__['regionalCertificateName'] = regional_certificate_name
+            __props__['securityPolicy'] = security_policy
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['certificate_upload_date'] = None

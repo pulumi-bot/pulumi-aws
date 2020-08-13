@@ -132,19 +132,19 @@ class Function(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
+            __props__['apiId'] = api_id
             if data_source is None:
                 raise TypeError("Missing required property 'data_source'")
-            __props__['data_source'] = data_source
+            __props__['dataSource'] = data_source
             __props__['description'] = description
-            __props__['function_version'] = function_version
+            __props__['functionVersion'] = function_version
             __props__['name'] = name
             if request_mapping_template is None:
                 raise TypeError("Missing required property 'request_mapping_template'")
-            __props__['request_mapping_template'] = request_mapping_template
+            __props__['requestMappingTemplate'] = request_mapping_template
             if response_mapping_template is None:
                 raise TypeError("Missing required property 'response_mapping_template'")
-            __props__['response_mapping_template'] = response_mapping_template
+            __props__['responseMappingTemplate'] = response_mapping_template
             __props__['arn'] = None
             __props__['function_id'] = None
         super(Function, __self__).__init__(

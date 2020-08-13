@@ -129,19 +129,19 @@ class Grant(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['constraints'] = constraints
-            __props__['grant_creation_tokens'] = grant_creation_tokens
+            __props__['grantCreationTokens'] = grant_creation_tokens
             if grantee_principal is None:
                 raise TypeError("Missing required property 'grantee_principal'")
-            __props__['grantee_principal'] = grantee_principal
+            __props__['granteePrincipal'] = grantee_principal
             if key_id is None:
                 raise TypeError("Missing required property 'key_id'")
-            __props__['key_id'] = key_id
+            __props__['keyId'] = key_id
             __props__['name'] = name
             if operations is None:
                 raise TypeError("Missing required property 'operations'")
             __props__['operations'] = operations
-            __props__['retire_on_delete'] = retire_on_delete
-            __props__['retiring_principal'] = retiring_principal
+            __props__['retireOnDelete'] = retire_on_delete
+            __props__['retiringPrincipal'] = retiring_principal
             __props__['grant_id'] = None
             __props__['grant_token'] = None
         super(Grant, __self__).__init__(

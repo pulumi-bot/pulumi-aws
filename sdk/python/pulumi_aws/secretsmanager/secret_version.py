@@ -96,12 +96,12 @@ class SecretVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['secret_binary'] = secret_binary
+            __props__['secretBinary'] = secret_binary
             if secret_id is None:
                 raise TypeError("Missing required property 'secret_id'")
-            __props__['secret_id'] = secret_id
-            __props__['secret_string'] = secret_string
-            __props__['version_stages'] = version_stages
+            __props__['secretId'] = secret_id
+            __props__['secretString'] = secret_string
+            __props__['versionStages'] = version_stages
             __props__['arn'] = None
             __props__['version_id'] = None
         super(SecretVersion, __self__).__init__(

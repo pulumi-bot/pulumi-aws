@@ -61,10 +61,10 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
 
             if dhcp_options_id is None:
                 raise TypeError("Missing required property 'dhcp_options_id'")
-            __props__['dhcp_options_id'] = dhcp_options_id
+            __props__['dhcpOptionsId'] = dhcp_options_id
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
         super(VpcDhcpOptionsAssociation, __self__).__init__(
             'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
             resource_name,

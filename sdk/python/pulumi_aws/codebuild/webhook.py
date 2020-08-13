@@ -125,11 +125,11 @@ class Webhook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['branch_filter'] = branch_filter
-            __props__['filter_groups'] = filter_groups
+            __props__['branchFilter'] = branch_filter
+            __props__['filterGroups'] = filter_groups
             if project_name is None:
                 raise TypeError("Missing required property 'project_name'")
-            __props__['project_name'] = project_name
+            __props__['projectName'] = project_name
             __props__['payload_url'] = None
             __props__['secret'] = None
             __props__['url'] = None

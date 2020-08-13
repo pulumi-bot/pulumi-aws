@@ -67,11 +67,11 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['aws_account_id'] = aws_account_id
+            __props__['awsAccountId'] = aws_account_id
             __props__['description'] = description
             if group_name is None:
                 raise TypeError("Missing required property 'group_name'")
-            __props__['group_name'] = group_name
+            __props__['groupName'] = group_name
             __props__['namespace'] = namespace
             __props__['arn'] = None
         super(Group, __self__).__init__(

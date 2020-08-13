@@ -70,7 +70,7 @@ class Endpoint(pulumi.CustomResource):
 
             if endpoint_config_name is None:
                 raise TypeError("Missing required property 'endpoint_config_name'")
-            __props__['endpoint_config_name'] = endpoint_config_name
+            __props__['endpointConfigName'] = endpoint_config_name
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['arn'] = None

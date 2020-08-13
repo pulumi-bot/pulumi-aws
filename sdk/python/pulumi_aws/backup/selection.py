@@ -132,13 +132,13 @@ class Selection(pulumi.CustomResource):
 
             if iam_role_arn is None:
                 raise TypeError("Missing required property 'iam_role_arn'")
-            __props__['iam_role_arn'] = iam_role_arn
+            __props__['iamRoleArn'] = iam_role_arn
             __props__['name'] = name
             if plan_id is None:
                 raise TypeError("Missing required property 'plan_id'")
-            __props__['plan_id'] = plan_id
+            __props__['planId'] = plan_id
             __props__['resources'] = resources
-            __props__['selection_tags'] = selection_tags
+            __props__['selectionTags'] = selection_tags
         super(Selection, __self__).__init__(
             'aws:backup/selection:Selection',
             resource_name,

@@ -75,7 +75,7 @@ class Channel(pulumi.CustomResource):
 
             if channel_id is None:
                 raise TypeError("Missing required property 'channel_id'")
-            __props__['channel_id'] = channel_id
+            __props__['channelId'] = channel_id
             if description is None:
                 description = 'Managed by Pulumi'
             __props__['description'] = description

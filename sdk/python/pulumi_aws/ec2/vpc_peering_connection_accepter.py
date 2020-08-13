@@ -156,12 +156,12 @@ class VpcPeeringConnectionAccepter(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['accepter'] = accepter
-            __props__['auto_accept'] = auto_accept
+            __props__['autoAccept'] = auto_accept
             __props__['requester'] = requester
             __props__['tags'] = tags
             if vpc_peering_connection_id is None:
                 raise TypeError("Missing required property 'vpc_peering_connection_id'")
-            __props__['vpc_peering_connection_id'] = vpc_peering_connection_id
+            __props__['vpcPeeringConnectionId'] = vpc_peering_connection_id
             __props__['accept_status'] = None
             __props__['peer_owner_id'] = None
             __props__['peer_region'] = None

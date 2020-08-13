@@ -129,10 +129,10 @@ class DefaultVpc(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['enable_classiclink'] = enable_classiclink
-            __props__['enable_classiclink_dns_support'] = enable_classiclink_dns_support
-            __props__['enable_dns_hostnames'] = enable_dns_hostnames
-            __props__['enable_dns_support'] = enable_dns_support
+            __props__['enableClassiclink'] = enable_classiclink
+            __props__['enableClassiclinkDnsSupport'] = enable_classiclink_dns_support
+            __props__['enableDnsHostnames'] = enable_dns_hostnames
+            __props__['enableDnsSupport'] = enable_dns_support
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['assign_generated_ipv6_cidr_block'] = None

@@ -416,8 +416,8 @@ class TopicRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cloudwatch_alarm'] = cloudwatch_alarm
-            __props__['cloudwatch_metric'] = cloudwatch_metric
+            __props__['cloudwatchAlarm'] = cloudwatch_alarm
+            __props__['cloudwatchMetric'] = cloudwatch_metric
             __props__['description'] = description
             __props__['dynamodb'] = dynamodb
             __props__['dynamodbv2s'] = dynamodbv2s
@@ -425,12 +425,12 @@ class TopicRule(pulumi.CustomResource):
             if enabled is None:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
-            __props__['error_action'] = error_action
+            __props__['errorAction'] = error_action
             __props__['firehose'] = firehose
-            __props__['iot_analytics'] = iot_analytics
-            __props__['iot_events'] = iot_events
+            __props__['iotAnalytics'] = iot_analytics
+            __props__['iotEvents'] = iot_events
             __props__['kinesis'] = kinesis
-            __props__['lambda_'] = lambda_
+            __props__['lambda'] = lambda_
             __props__['name'] = name
             __props__['republish'] = republish
             __props__['s3'] = s3
@@ -440,9 +440,9 @@ class TopicRule(pulumi.CustomResource):
             __props__['sql'] = sql
             if sql_version is None:
                 raise TypeError("Missing required property 'sql_version'")
-            __props__['sql_version'] = sql_version
+            __props__['sqlVersion'] = sql_version
             __props__['sqs'] = sqs
-            __props__['step_functions'] = step_functions
+            __props__['stepFunctions'] = step_functions
             __props__['tags'] = tags
             __props__['arn'] = None
         super(TopicRule, __self__).__init__(

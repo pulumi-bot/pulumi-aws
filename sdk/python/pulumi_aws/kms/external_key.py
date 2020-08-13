@@ -96,13 +96,13 @@ class ExternalKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['deletion_window_in_days'] = deletion_window_in_days
+            __props__['deletionWindowInDays'] = deletion_window_in_days
             __props__['description'] = description
             __props__['enabled'] = enabled
-            __props__['key_material_base64'] = key_material_base64
+            __props__['keyMaterialBase64'] = key_material_base64
             __props__['policy'] = policy
             __props__['tags'] = tags
-            __props__['valid_to'] = valid_to
+            __props__['validTo'] = valid_to
             __props__['arn'] = None
             __props__['expiration_model'] = None
             __props__['key_state'] = None

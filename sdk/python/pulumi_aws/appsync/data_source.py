@@ -169,14 +169,14 @@ class DataSource(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
+            __props__['apiId'] = api_id
             __props__['description'] = description
-            __props__['dynamodb_config'] = dynamodb_config
-            __props__['elasticsearch_config'] = elasticsearch_config
-            __props__['http_config'] = http_config
-            __props__['lambda_config'] = lambda_config
+            __props__['dynamodbConfig'] = dynamodb_config
+            __props__['elasticsearchConfig'] = elasticsearch_config
+            __props__['httpConfig'] = http_config
+            __props__['lambdaConfig'] = lambda_config
             __props__['name'] = name
-            __props__['service_role_arn'] = service_role_arn
+            __props__['serviceRoleArn'] = service_role_arn
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type

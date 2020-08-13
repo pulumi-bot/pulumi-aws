@@ -60,10 +60,10 @@ class OrganizationConfiguration(pulumi.CustomResource):
 
             if auto_enable is None:
                 raise TypeError("Missing required property 'auto_enable'")
-            __props__['auto_enable'] = auto_enable
+            __props__['autoEnable'] = auto_enable
             if detector_id is None:
                 raise TypeError("Missing required property 'detector_id'")
-            __props__['detector_id'] = detector_id
+            __props__['detectorId'] = detector_id
         super(OrganizationConfiguration, __self__).__init__(
             'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
             resource_name,

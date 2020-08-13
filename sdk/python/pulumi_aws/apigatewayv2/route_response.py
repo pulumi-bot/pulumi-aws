@@ -75,15 +75,15 @@ class RouteResponse(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['model_selection_expression'] = model_selection_expression
-            __props__['response_models'] = response_models
+            __props__['apiId'] = api_id
+            __props__['modelSelectionExpression'] = model_selection_expression
+            __props__['responseModels'] = response_models
             if route_id is None:
                 raise TypeError("Missing required property 'route_id'")
-            __props__['route_id'] = route_id
+            __props__['routeId'] = route_id
             if route_response_key is None:
                 raise TypeError("Missing required property 'route_response_key'")
-            __props__['route_response_key'] = route_response_key
+            __props__['routeResponseKey'] = route_response_key
         super(RouteResponse, __self__).__init__(
             'aws:apigatewayv2/routeResponse:RouteResponse',
             resource_name,

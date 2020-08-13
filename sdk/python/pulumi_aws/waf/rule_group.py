@@ -92,10 +92,10 @@ class RuleGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['activated_rules'] = activated_rules
+            __props__['activatedRules'] = activated_rules
             if metric_name is None:
                 raise TypeError("Missing required property 'metric_name'")
-            __props__['metric_name'] = metric_name
+            __props__['metricName'] = metric_name
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['arn'] = None

@@ -200,28 +200,28 @@ class WindowsFileSystem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['active_directory_id'] = active_directory_id
-            __props__['automatic_backup_retention_days'] = automatic_backup_retention_days
-            __props__['copy_tags_to_backups'] = copy_tags_to_backups
-            __props__['daily_automatic_backup_start_time'] = daily_automatic_backup_start_time
-            __props__['deployment_type'] = deployment_type
-            __props__['kms_key_id'] = kms_key_id
-            __props__['preferred_subnet_id'] = preferred_subnet_id
-            __props__['security_group_ids'] = security_group_ids
-            __props__['self_managed_active_directory'] = self_managed_active_directory
-            __props__['skip_final_backup'] = skip_final_backup
+            __props__['activeDirectoryId'] = active_directory_id
+            __props__['automaticBackupRetentionDays'] = automatic_backup_retention_days
+            __props__['copyTagsToBackups'] = copy_tags_to_backups
+            __props__['dailyAutomaticBackupStartTime'] = daily_automatic_backup_start_time
+            __props__['deploymentType'] = deployment_type
+            __props__['kmsKeyId'] = kms_key_id
+            __props__['preferredSubnetId'] = preferred_subnet_id
+            __props__['securityGroupIds'] = security_group_ids
+            __props__['selfManagedActiveDirectory'] = self_managed_active_directory
+            __props__['skipFinalBackup'] = skip_final_backup
             if storage_capacity is None:
                 raise TypeError("Missing required property 'storage_capacity'")
-            __props__['storage_capacity'] = storage_capacity
-            __props__['storage_type'] = storage_type
+            __props__['storageCapacity'] = storage_capacity
+            __props__['storageType'] = storage_type
             if subnet_ids is None:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
             if throughput_capacity is None:
                 raise TypeError("Missing required property 'throughput_capacity'")
-            __props__['throughput_capacity'] = throughput_capacity
-            __props__['weekly_maintenance_start_time'] = weekly_maintenance_start_time
+            __props__['throughputCapacity'] = throughput_capacity
+            __props__['weeklyMaintenanceStartTime'] = weekly_maintenance_start_time
             __props__['arn'] = None
             __props__['dns_name'] = None
             __props__['network_interface_ids'] = None

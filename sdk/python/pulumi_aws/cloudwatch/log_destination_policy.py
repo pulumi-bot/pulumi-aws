@@ -69,10 +69,10 @@ class LogDestinationPolicy(pulumi.CustomResource):
 
             if access_policy is None:
                 raise TypeError("Missing required property 'access_policy'")
-            __props__['access_policy'] = access_policy
+            __props__['accessPolicy'] = access_policy
             if destination_name is None:
                 raise TypeError("Missing required property 'destination_name'")
-            __props__['destination_name'] = destination_name
+            __props__['destinationName'] = destination_name
         super(LogDestinationPolicy, __self__).__init__(
             'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
             resource_name,

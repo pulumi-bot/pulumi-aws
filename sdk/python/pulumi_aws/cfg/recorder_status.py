@@ -96,7 +96,7 @@ class RecorderStatus(pulumi.CustomResource):
 
             if is_enabled is None:
                 raise TypeError("Missing required property 'is_enabled'")
-            __props__['is_enabled'] = is_enabled
+            __props__['isEnabled'] = is_enabled
             __props__['name'] = name
         super(RecorderStatus, __self__).__init__(
             'aws:cfg/recorderStatus:RecorderStatus',

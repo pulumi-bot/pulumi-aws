@@ -55,7 +55,7 @@ class OrganizationAdminAccount(pulumi.CustomResource):
 
             if admin_account_id is None:
                 raise TypeError("Missing required property 'admin_account_id'")
-            __props__['admin_account_id'] = admin_account_id
+            __props__['adminAccountId'] = admin_account_id
         super(OrganizationAdminAccount, __self__).__init__(
             'aws:guardduty/organizationAdminAccount:OrganizationAdminAccount',
             resource_name,

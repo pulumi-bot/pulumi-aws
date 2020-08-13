@@ -71,10 +71,10 @@ class VpnGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['amazon_side_asn'] = amazon_side_asn
-            __props__['availability_zone'] = availability_zone
+            __props__['amazonSideAsn'] = amazon_side_asn
+            __props__['availabilityZone'] = availability_zone
             __props__['tags'] = tags
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
         super(VpnGateway, __self__).__init__(
             'aws:ec2/vpnGateway:VpnGateway',

@@ -180,17 +180,17 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['enabled_cluster_log_types'] = enabled_cluster_log_types
-            __props__['encryption_config'] = encryption_config
+            __props__['enabledClusterLogTypes'] = enabled_cluster_log_types
+            __props__['encryptionConfig'] = encryption_config
             __props__['name'] = name
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             __props__['tags'] = tags
             __props__['version'] = version
             if vpc_config is None:
                 raise TypeError("Missing required property 'vpc_config'")
-            __props__['vpc_config'] = vpc_config
+            __props__['vpcConfig'] = vpc_config
             __props__['arn'] = None
             __props__['certificate_authority'] = None
             __props__['created_at'] = None

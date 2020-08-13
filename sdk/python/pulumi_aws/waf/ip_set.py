@@ -76,7 +76,7 @@ class IpSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['ip_set_descriptors'] = ip_set_descriptors
+            __props__['ipSetDescriptors'] = ip_set_descriptors
             __props__['name'] = name
             __props__['arn'] = None
         super(IpSet, __self__).__init__(

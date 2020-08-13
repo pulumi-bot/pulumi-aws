@@ -78,10 +78,10 @@ class PolicyAttachment(pulumi.CustomResource):
 
             if policy_id is None:
                 raise TypeError("Missing required property 'policy_id'")
-            __props__['policy_id'] = policy_id
+            __props__['policyId'] = policy_id
             if target_id is None:
                 raise TypeError("Missing required property 'target_id'")
-            __props__['target_id'] = target_id
+            __props__['targetId'] = target_id
         super(PolicyAttachment, __self__).__init__(
             'aws:organizations/policyAttachment:PolicyAttachment',
             resource_name,

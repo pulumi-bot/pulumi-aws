@@ -200,17 +200,17 @@ class Instance(pulumi.CustomResource):
 
             if availability_zone is None:
                 raise TypeError("Missing required property 'availability_zone'")
-            __props__['availability_zone'] = availability_zone
+            __props__['availabilityZone'] = availability_zone
             if blueprint_id is None:
                 raise TypeError("Missing required property 'blueprint_id'")
-            __props__['blueprint_id'] = blueprint_id
+            __props__['blueprintId'] = blueprint_id
             if bundle_id is None:
                 raise TypeError("Missing required property 'bundle_id'")
-            __props__['bundle_id'] = bundle_id
-            __props__['key_pair_name'] = key_pair_name
+            __props__['bundleId'] = bundle_id
+            __props__['keyPairName'] = key_pair_name
             __props__['name'] = name
             __props__['tags'] = tags
-            __props__['user_data'] = user_data
+            __props__['userData'] = user_data
             __props__['arn'] = None
             __props__['cpu_count'] = None
             __props__['created_at'] = None

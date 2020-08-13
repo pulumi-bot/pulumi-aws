@@ -125,16 +125,16 @@ class GlobalCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['database_name'] = database_name
-            __props__['deletion_protection'] = deletion_protection
+            __props__['databaseName'] = database_name
+            __props__['deletionProtection'] = deletion_protection
             __props__['engine'] = engine
-            __props__['engine_version'] = engine_version
-            __props__['force_destroy'] = force_destroy
+            __props__['engineVersion'] = engine_version
+            __props__['forceDestroy'] = force_destroy
             if global_cluster_identifier is None:
                 raise TypeError("Missing required property 'global_cluster_identifier'")
-            __props__['global_cluster_identifier'] = global_cluster_identifier
-            __props__['source_db_cluster_identifier'] = source_db_cluster_identifier
-            __props__['storage_encrypted'] = storage_encrypted
+            __props__['globalClusterIdentifier'] = global_cluster_identifier
+            __props__['sourceDbClusterIdentifier'] = source_db_cluster_identifier
+            __props__['storageEncrypted'] = storage_encrypted
             __props__['arn'] = None
             __props__['global_cluster_members'] = None
             __props__['global_cluster_resource_id'] = None

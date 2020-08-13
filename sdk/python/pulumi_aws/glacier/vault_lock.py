@@ -95,14 +95,14 @@ class VaultLock(pulumi.CustomResource):
 
             if complete_lock is None:
                 raise TypeError("Missing required property 'complete_lock'")
-            __props__['complete_lock'] = complete_lock
-            __props__['ignore_deletion_error'] = ignore_deletion_error
+            __props__['completeLock'] = complete_lock
+            __props__['ignoreDeletionError'] = ignore_deletion_error
             if policy is None:
                 raise TypeError("Missing required property 'policy'")
             __props__['policy'] = policy
             if vault_name is None:
                 raise TypeError("Missing required property 'vault_name'")
-            __props__['vault_name'] = vault_name
+            __props__['vaultName'] = vault_name
         super(VaultLock, __self__).__init__(
             'aws:glacier/vaultLock:VaultLock',
             resource_name,

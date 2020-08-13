@@ -248,17 +248,17 @@ class GraphQLApi(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_authentication_providers'] = additional_authentication_providers
+            __props__['additionalAuthenticationProviders'] = additional_authentication_providers
             if authentication_type is None:
                 raise TypeError("Missing required property 'authentication_type'")
-            __props__['authentication_type'] = authentication_type
-            __props__['log_config'] = log_config
+            __props__['authenticationType'] = authentication_type
+            __props__['logConfig'] = log_config
             __props__['name'] = name
-            __props__['openid_connect_config'] = openid_connect_config
+            __props__['openidConnectConfig'] = openid_connect_config
             __props__['schema'] = schema
             __props__['tags'] = tags
-            __props__['user_pool_config'] = user_pool_config
-            __props__['xray_enabled'] = xray_enabled
+            __props__['userPoolConfig'] = user_pool_config
+            __props__['xrayEnabled'] = xray_enabled
             __props__['arn'] = None
             __props__['uris'] = None
         super(GraphQLApi, __self__).__init__(

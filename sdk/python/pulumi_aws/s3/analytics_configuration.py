@@ -128,7 +128,7 @@ class AnalyticsConfiguration(pulumi.CustomResource):
             __props__['bucket'] = bucket
             __props__['filter'] = filter
             __props__['name'] = name
-            __props__['storage_class_analysis'] = storage_class_analysis
+            __props__['storageClassAnalysis'] = storage_class_analysis
         super(AnalyticsConfiguration, __self__).__init__(
             'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
             resource_name,

@@ -72,7 +72,7 @@ class SecurityGroup(pulumi.CustomResource):
             __props__['name'] = name
             if security_group_names is None:
                 raise TypeError("Missing required property 'security_group_names'")
-            __props__['security_group_names'] = security_group_names
+            __props__['securityGroupNames'] = security_group_names
         super(SecurityGroup, __self__).__init__(
             'aws:elasticache/securityGroup:SecurityGroup',
             resource_name,

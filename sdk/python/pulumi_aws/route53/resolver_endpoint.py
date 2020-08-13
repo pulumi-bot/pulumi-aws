@@ -114,11 +114,11 @@ class ResolverEndpoint(pulumi.CustomResource):
             __props__['direction'] = direction
             if ip_addresses is None:
                 raise TypeError("Missing required property 'ip_addresses'")
-            __props__['ip_addresses'] = ip_addresses
+            __props__['ipAddresses'] = ip_addresses
             __props__['name'] = name
             if security_group_ids is None:
                 raise TypeError("Missing required property 'security_group_ids'")
-            __props__['security_group_ids'] = security_group_ids
+            __props__['securityGroupIds'] = security_group_ids
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['host_vpc_id'] = None

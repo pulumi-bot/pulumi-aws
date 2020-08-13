@@ -81,7 +81,7 @@ class FileSystemPolicy(pulumi.CustomResource):
 
             if file_system_id is None:
                 raise TypeError("Missing required property 'file_system_id'")
-            __props__['file_system_id'] = file_system_id
+            __props__['fileSystemId'] = file_system_id
             if policy is None:
                 raise TypeError("Missing required property 'policy'")
             __props__['policy'] = policy

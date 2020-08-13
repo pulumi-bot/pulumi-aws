@@ -59,10 +59,10 @@ class AvailabilityZoneGroup(pulumi.CustomResource):
 
             if group_name is None:
                 raise TypeError("Missing required property 'group_name'")
-            __props__['group_name'] = group_name
+            __props__['groupName'] = group_name
             if opt_in_status is None:
                 raise TypeError("Missing required property 'opt_in_status'")
-            __props__['opt_in_status'] = opt_in_status
+            __props__['optInStatus'] = opt_in_status
         super(AvailabilityZoneGroup, __self__).__init__(
             'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
             resource_name,

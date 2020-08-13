@@ -110,18 +110,18 @@ class InstanceGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['autoscaling_policy'] = autoscaling_policy
-            __props__['bid_price'] = bid_price
+            __props__['autoscalingPolicy'] = autoscaling_policy
+            __props__['bidPrice'] = bid_price
             if cluster_id is None:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['configurations_json'] = configurations_json
-            __props__['ebs_configs'] = ebs_configs
-            __props__['ebs_optimized'] = ebs_optimized
-            __props__['instance_count'] = instance_count
+            __props__['clusterId'] = cluster_id
+            __props__['configurationsJson'] = configurations_json
+            __props__['ebsConfigs'] = ebs_configs
+            __props__['ebsOptimized'] = ebs_optimized
+            __props__['instanceCount'] = instance_count
             if instance_type is None:
                 raise TypeError("Missing required property 'instance_type'")
-            __props__['instance_type'] = instance_type
+            __props__['instanceType'] = instance_type
             __props__['name'] = name
             __props__['running_instance_count'] = None
             __props__['status'] = None

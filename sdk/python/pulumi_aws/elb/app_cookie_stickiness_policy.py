@@ -82,13 +82,13 @@ class AppCookieStickinessPolicy(pulumi.CustomResource):
 
             if cookie_name is None:
                 raise TypeError("Missing required property 'cookie_name'")
-            __props__['cookie_name'] = cookie_name
+            __props__['cookieName'] = cookie_name
             if lb_port is None:
                 raise TypeError("Missing required property 'lb_port'")
-            __props__['lb_port'] = lb_port
+            __props__['lbPort'] = lb_port
             if load_balancer is None:
                 raise TypeError("Missing required property 'load_balancer'")
-            __props__['load_balancer'] = load_balancer
+            __props__['loadBalancer'] = load_balancer
             __props__['name'] = name
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/appCookieStickinessPolicy:AppCookieStickinessPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)

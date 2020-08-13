@@ -89,7 +89,7 @@ class SqlInjectionMatchSet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['sql_injection_match_tuples'] = sql_injection_match_tuples
+            __props__['sqlInjectionMatchTuples'] = sql_injection_match_tuples
         super(SqlInjectionMatchSet, __self__).__init__(
             'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
             resource_name,

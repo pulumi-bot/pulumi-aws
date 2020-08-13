@@ -106,14 +106,14 @@ class Volume(pulumi.CustomResource):
 
             if availability_zone is None:
                 raise TypeError("Missing required property 'availability_zone'")
-            __props__['availability_zone'] = availability_zone
+            __props__['availabilityZone'] = availability_zone
             __props__['encrypted'] = encrypted
             __props__['iops'] = iops
-            __props__['kms_key_id'] = kms_key_id
-            __props__['multi_attach_enabled'] = multi_attach_enabled
-            __props__['outpost_arn'] = outpost_arn
+            __props__['kmsKeyId'] = kms_key_id
+            __props__['multiAttachEnabled'] = multi_attach_enabled
+            __props__['outpostArn'] = outpost_arn
             __props__['size'] = size
-            __props__['snapshot_id'] = snapshot_id
+            __props__['snapshotId'] = snapshot_id
             __props__['tags'] = tags
             __props__['type'] = type
             __props__['arn'] = None

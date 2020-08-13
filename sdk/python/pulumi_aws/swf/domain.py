@@ -48,7 +48,7 @@ class Domain(pulumi.CustomResource):
 
         foo = aws.swf.Domain("foo",
             description="SWF Domain",
-            workflow_execution_retention_period_in_days=30)
+            workflow_execution_retention_period_in_days="30")
         ```
 
         :param str resource_name: The name of the resource.
@@ -78,11 +78,11 @@ class Domain(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['tags'] = tags
             if workflow_execution_retention_period_in_days is None:
                 raise TypeError("Missing required property 'workflow_execution_retention_period_in_days'")
-            __props__['workflow_execution_retention_period_in_days'] = workflow_execution_retention_period_in_days
+            __props__['workflowExecutionRetentionPeriodInDays'] = workflow_execution_retention_period_in_days
             __props__['arn'] = None
         super(Domain, __self__).__init__(
             'aws:swf/domain:Domain',

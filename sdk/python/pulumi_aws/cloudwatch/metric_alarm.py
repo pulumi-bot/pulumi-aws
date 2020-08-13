@@ -139,13 +139,13 @@ class MetricAlarm(pulumi.CustomResource):
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             alarm_description="This metric monitors ec2 cpu utilization",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80")
+            threshold=80)
         ```
         ## Example in Conjunction with Scaling Policies
 
@@ -160,12 +160,12 @@ class MetricAlarm(pulumi.CustomResource):
             autoscaling_group_name=aws_autoscaling_group["bar"]["name"])
         bat_metric_alarm = aws.cloudwatch.MetricAlarm("batMetricAlarm",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80",
+            threshold=80,
             dimensions={
                 "AutoScalingGroupName": aws_autoscaling_group["bar"]["name"],
             },
@@ -182,14 +182,14 @@ class MetricAlarm(pulumi.CustomResource):
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             alarm_description="Request error rate has exceeded 10%",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
                 {
                     "expression": "m2/m1*100",
                     "id": "e1",
                     "label": "Error Rate",
-                    "returnData": "true",
+                    "returnData": True,
                 },
                 {
                     "id": "m1",
@@ -199,7 +199,7 @@ class MetricAlarm(pulumi.CustomResource):
                         },
                         "metric_name": "RequestCount",
                         "namespace": "AWS/ApplicationELB",
-                        "period": "120",
+                        "period": 120,
                         "stat": "Sum",
                         "unit": "Count",
                     },
@@ -212,13 +212,13 @@ class MetricAlarm(pulumi.CustomResource):
                         },
                         "metric_name": "HTTPCode_ELB_5XX_Count",
                         "namespace": "AWS/ApplicationELB",
-                        "period": "120",
+                        "period": 120,
                         "stat": "Sum",
                         "unit": "Count",
                     },
                 },
             ],
-            threshold="10")
+            threshold=10)
         ```
 
         ```python
@@ -228,14 +228,14 @@ class MetricAlarm(pulumi.CustomResource):
         xx_anomaly_detection = aws.cloudwatch.MetricAlarm("xxAnomalyDetection",
             alarm_description="This metric monitors ec2 cpu utilization",
             comparison_operator="GreaterThanUpperThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
                 {
                     "expression": "ANOMALY_DETECTION_BAND(m1)",
                     "id": "e1",
                     "label": "CPUUtilization (Expected)",
-                    "returnData": "true",
+                    "returnData": True,
                 },
                 {
                     "id": "m1",
@@ -245,11 +245,11 @@ class MetricAlarm(pulumi.CustomResource):
                         },
                         "metric_name": "CPUUtilization",
                         "namespace": "AWS/EC2",
-                        "period": "120",
+                        "period": 120,
                         "stat": "Average",
                         "unit": "Count",
                     },
-                    "returnData": "true",
+                    "returnData": True,
                 },
             ],
             threshold_metric_id="e1")
@@ -263,14 +263,14 @@ class MetricAlarm(pulumi.CustomResource):
 
         nlb_healthyhosts = aws.cloudwatch.MetricAlarm("nlbHealthyhosts",
             comparison_operator="LessThanThreshold",
-            evaluation_periods="1",
+            evaluation_periods=1,
             metric_name="HealthyHostCount",
             namespace="AWS/NetworkELB",
-            period="60",
+            period=60,
             statistic="Average",
             threshold=var["logstash_servers_count"],
             alarm_description="Number of healthy nodes in Target Group",
-            actions_enabled="true",
+            actions_enabled=True,
             alarm_actions=[aws_sns_topic["sns"]["arn"]],
             ok_actions=[aws_sns_topic["sns"]["arn"]],
             dimensions={
@@ -350,31 +350,31 @@ class MetricAlarm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['actions_enabled'] = actions_enabled
-            __props__['alarm_actions'] = alarm_actions
-            __props__['alarm_description'] = alarm_description
+            __props__['actionsEnabled'] = actions_enabled
+            __props__['alarmActions'] = alarm_actions
+            __props__['alarmDescription'] = alarm_description
             if comparison_operator is None:
                 raise TypeError("Missing required property 'comparison_operator'")
-            __props__['comparison_operator'] = comparison_operator
-            __props__['datapoints_to_alarm'] = datapoints_to_alarm
+            __props__['comparisonOperator'] = comparison_operator
+            __props__['datapointsToAlarm'] = datapoints_to_alarm
             __props__['dimensions'] = dimensions
-            __props__['evaluate_low_sample_count_percentiles'] = evaluate_low_sample_count_percentiles
+            __props__['evaluateLowSampleCountPercentiles'] = evaluate_low_sample_count_percentiles
             if evaluation_periods is None:
                 raise TypeError("Missing required property 'evaluation_periods'")
-            __props__['evaluation_periods'] = evaluation_periods
-            __props__['extended_statistic'] = extended_statistic
-            __props__['insufficient_data_actions'] = insufficient_data_actions
-            __props__['metric_name'] = metric_name
-            __props__['metric_queries'] = metric_queries
+            __props__['evaluationPeriods'] = evaluation_periods
+            __props__['extendedStatistic'] = extended_statistic
+            __props__['insufficientDataActions'] = insufficient_data_actions
+            __props__['metricName'] = metric_name
+            __props__['metricQueries'] = metric_queries
             __props__['name'] = name
             __props__['namespace'] = namespace
-            __props__['ok_actions'] = ok_actions
+            __props__['okActions'] = ok_actions
             __props__['period'] = period
             __props__['statistic'] = statistic
             __props__['tags'] = tags
             __props__['threshold'] = threshold
-            __props__['threshold_metric_id'] = threshold_metric_id
-            __props__['treat_missing_data'] = treat_missing_data
+            __props__['thresholdMetricId'] = threshold_metric_id
+            __props__['treatMissingData'] = treat_missing_data
             __props__['unit'] = unit
             __props__['arn'] = None
         super(MetricAlarm, __self__).__init__(

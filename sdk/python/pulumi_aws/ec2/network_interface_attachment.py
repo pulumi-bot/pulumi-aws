@@ -71,13 +71,13 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
             if device_index is None:
                 raise TypeError("Missing required property 'device_index'")
-            __props__['device_index'] = device_index
+            __props__['deviceIndex'] = device_index
             if instance_id is None:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__['instanceId'] = instance_id
             if network_interface_id is None:
                 raise TypeError("Missing required property 'network_interface_id'")
-            __props__['network_interface_id'] = network_interface_id
+            __props__['networkInterfaceId'] = network_interface_id
             __props__['attachment_id'] = None
             __props__['status'] = None
         super(NetworkInterfaceAttachment, __self__).__init__(

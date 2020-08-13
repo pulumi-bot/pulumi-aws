@@ -57,7 +57,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
             family="neptune1",
             parameters=[{
                 "name": "neptune_enable_audit_log",
-                "value": 1,
+                "value": "1",
             }])
         ```
 
@@ -98,7 +98,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'family'")
             __props__['family'] = family
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['parameters'] = parameters
             __props__['tags'] = tags
             __props__['arn'] = None

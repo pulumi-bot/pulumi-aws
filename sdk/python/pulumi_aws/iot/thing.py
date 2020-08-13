@@ -74,7 +74,7 @@ class Thing(pulumi.CustomResource):
 
             __props__['attributes'] = attributes
             __props__['name'] = name
-            __props__['thing_type_name'] = thing_type_name
+            __props__['thingTypeName'] = thing_type_name
             __props__['arn'] = None
             __props__['default_client_id'] = None
             __props__['version'] = None

@@ -89,10 +89,10 @@ class LogMetricFilter(pulumi.CustomResource):
 
             if log_group_name is None:
                 raise TypeError("Missing required property 'log_group_name'")
-            __props__['log_group_name'] = log_group_name
+            __props__['logGroupName'] = log_group_name
             if metric_transformation is None:
                 raise TypeError("Missing required property 'metric_transformation'")
-            __props__['metric_transformation'] = metric_transformation
+            __props__['metricTransformation'] = metric_transformation
             __props__['name'] = name
             if pattern is None:
                 raise TypeError("Missing required property 'pattern'")

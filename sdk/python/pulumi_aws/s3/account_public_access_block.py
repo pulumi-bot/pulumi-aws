@@ -84,11 +84,11 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['account_id'] = account_id
-            __props__['block_public_acls'] = block_public_acls
-            __props__['block_public_policy'] = block_public_policy
-            __props__['ignore_public_acls'] = ignore_public_acls
-            __props__['restrict_public_buckets'] = restrict_public_buckets
+            __props__['accountId'] = account_id
+            __props__['blockPublicAcls'] = block_public_acls
+            __props__['blockPublicPolicy'] = block_public_policy
+            __props__['ignorePublicAcls'] = ignore_public_acls
+            __props__['restrictPublicBuckets'] = restrict_public_buckets
         super(AccountPublicAccessBlock, __self__).__init__(
             'aws:s3/accountPublicAccessBlock:AccountPublicAccessBlock',
             resource_name,

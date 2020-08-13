@@ -98,9 +98,9 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['encryption_configurations'] = encryption_configurations
-            __props__['image_scanning_configuration'] = image_scanning_configuration
-            __props__['image_tag_mutability'] = image_tag_mutability
+            __props__['encryptionConfigurations'] = encryption_configurations
+            __props__['imageScanningConfiguration'] = image_scanning_configuration
+            __props__['imageTagMutability'] = image_tag_mutability
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['arn'] = None

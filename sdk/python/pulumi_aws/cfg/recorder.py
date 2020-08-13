@@ -99,10 +99,10 @@ class Recorder(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['recording_group'] = recording_group
+            __props__['recordingGroup'] = recording_group
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
         super(Recorder, __self__).__init__(
             'aws:cfg/recorder:Recorder',
             resource_name,

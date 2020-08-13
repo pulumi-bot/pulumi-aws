@@ -103,15 +103,15 @@ class LocationSmb(pulumi.CustomResource):
 
             if agent_arns is None:
                 raise TypeError("Missing required property 'agent_arns'")
-            __props__['agent_arns'] = agent_arns
+            __props__['agentArns'] = agent_arns
             __props__['domain'] = domain
-            __props__['mount_options'] = mount_options
+            __props__['mountOptions'] = mount_options
             if password is None:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             if server_hostname is None:
                 raise TypeError("Missing required property 'server_hostname'")
-            __props__['server_hostname'] = server_hostname
+            __props__['serverHostname'] = server_hostname
             if subdirectory is None:
                 raise TypeError("Missing required property 'subdirectory'")
             __props__['subdirectory'] = subdirectory

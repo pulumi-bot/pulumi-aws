@@ -85,10 +85,10 @@ class ServiceQuota(pulumi.CustomResource):
 
             if quota_code is None:
                 raise TypeError("Missing required property 'quota_code'")
-            __props__['quota_code'] = quota_code
+            __props__['quotaCode'] = quota_code
             if service_code is None:
                 raise TypeError("Missing required property 'service_code'")
-            __props__['service_code'] = service_code
+            __props__['serviceCode'] = service_code
             if value is None:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value

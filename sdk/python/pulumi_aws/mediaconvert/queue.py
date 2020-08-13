@@ -89,8 +89,8 @@ class Queue(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            __props__['pricing_plan'] = pricing_plan
-            __props__['reservation_plan_settings'] = reservation_plan_settings
+            __props__['pricingPlan'] = pricing_plan
+            __props__['reservationPlanSettings'] = reservation_plan_settings
             __props__['status'] = status
             __props__['tags'] = tags
             __props__['arn'] = None

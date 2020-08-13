@@ -96,11 +96,11 @@ class Cluster(pulumi.CustomResource):
 
             if hsm_type is None:
                 raise TypeError("Missing required property 'hsm_type'")
-            __props__['hsm_type'] = hsm_type
-            __props__['source_backup_identifier'] = source_backup_identifier
+            __props__['hsmType'] = hsm_type
+            __props__['sourceBackupIdentifier'] = source_backup_identifier
             if subnet_ids is None:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
             __props__['cluster_certificates'] = None
             __props__['cluster_id'] = None

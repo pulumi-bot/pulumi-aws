@@ -106,17 +106,17 @@ class OrganizationManagedRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['excluded_accounts'] = excluded_accounts
-            __props__['input_parameters'] = input_parameters
-            __props__['maximum_execution_frequency'] = maximum_execution_frequency
+            __props__['excludedAccounts'] = excluded_accounts
+            __props__['inputParameters'] = input_parameters
+            __props__['maximumExecutionFrequency'] = maximum_execution_frequency
             __props__['name'] = name
-            __props__['resource_id_scope'] = resource_id_scope
-            __props__['resource_types_scopes'] = resource_types_scopes
+            __props__['resourceIdScope'] = resource_id_scope
+            __props__['resourceTypesScopes'] = resource_types_scopes
             if rule_identifier is None:
                 raise TypeError("Missing required property 'rule_identifier'")
-            __props__['rule_identifier'] = rule_identifier
-            __props__['tag_key_scope'] = tag_key_scope
-            __props__['tag_value_scope'] = tag_value_scope
+            __props__['ruleIdentifier'] = rule_identifier
+            __props__['tagKeyScope'] = tag_key_scope
+            __props__['tagValueScope'] = tag_value_scope
             __props__['arn'] = None
         super(OrganizationManagedRule, __self__).__init__(
             'aws:cfg/organizationManagedRule:OrganizationManagedRule',

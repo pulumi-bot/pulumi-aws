@@ -96,7 +96,7 @@ class Rule(pulumi.CustomResource):
 
             if metric_name is None:
                 raise TypeError("Missing required property 'metric_name'")
-            __props__['metric_name'] = metric_name
+            __props__['metricName'] = metric_name
             __props__['name'] = name
             __props__['predicates'] = predicates
             __props__['tags'] = tags

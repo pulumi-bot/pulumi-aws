@@ -69,9 +69,9 @@ class Certificate(pulumi.CustomResource):
 
             if certificate_id is None:
                 raise TypeError("Missing required property 'certificate_id'")
-            __props__['certificate_id'] = certificate_id
-            __props__['certificate_pem'] = certificate_pem
-            __props__['certificate_wallet'] = certificate_wallet
+            __props__['certificateId'] = certificate_id
+            __props__['certificatePem'] = certificate_pem
+            __props__['certificateWallet'] = certificate_wallet
             __props__['certificate_arn'] = None
         super(Certificate, __self__).__init__(
             'aws:dms/certificate:Certificate',

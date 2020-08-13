@@ -134,19 +134,19 @@ class Subnet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['assign_ipv6_address_on_creation'] = assign_ipv6_address_on_creation
-            __props__['availability_zone'] = availability_zone
-            __props__['availability_zone_id'] = availability_zone_id
+            __props__['assignIpv6AddressOnCreation'] = assign_ipv6_address_on_creation
+            __props__['availabilityZone'] = availability_zone
+            __props__['availabilityZoneId'] = availability_zone_id
             if cidr_block is None:
                 raise TypeError("Missing required property 'cidr_block'")
-            __props__['cidr_block'] = cidr_block
-            __props__['ipv6_cidr_block'] = ipv6_cidr_block
-            __props__['map_public_ip_on_launch'] = map_public_ip_on_launch
-            __props__['outpost_arn'] = outpost_arn
+            __props__['cidrBlock'] = cidr_block
+            __props__['ipv6CidrBlock'] = ipv6_cidr_block
+            __props__['mapPublicIpOnLaunch'] = map_public_ip_on_launch
+            __props__['outpostArn'] = outpost_arn
             __props__['tags'] = tags
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['ipv6_cidr_block_association_id'] = None
             __props__['owner_id'] = None

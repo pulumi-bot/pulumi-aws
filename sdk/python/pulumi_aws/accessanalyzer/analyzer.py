@@ -61,7 +61,7 @@ class Analyzer(pulumi.CustomResource):
 
             if analyzer_name is None:
                 raise TypeError("Missing required property 'analyzer_name'")
-            __props__['analyzer_name'] = analyzer_name
+            __props__['analyzerName'] = analyzer_name
             __props__['tags'] = tags
             __props__['type'] = type
             __props__['arn'] = None

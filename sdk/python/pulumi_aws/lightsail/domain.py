@@ -61,7 +61,7 @@ class Domain(pulumi.CustomResource):
 
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
+            __props__['domainName'] = domain_name
             __props__['arn'] = None
         super(Domain, __self__).__init__(
             'aws:lightsail/domain:Domain',

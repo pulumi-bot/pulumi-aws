@@ -282,7 +282,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": firehose_role.arn,
                 "bucketArn": bucket.arn,
                 "processingConfiguration": {
-                    "enabled": "true",
+                    "enabled": True,
                     "processors": [{
                         "type": "Lambda",
                         "parameters": [{
@@ -383,7 +383,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "indexName": "test",
                 "typeName": "test",
                 "processingConfiguration": {
-                    "enabled": "true",
+                    "enabled": True,
                     "processors": [{
                         "type": "Lambda",
                         "parameters": [{
@@ -661,17 +661,17 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
-            __props__['destination_id'] = destination_id
-            __props__['elasticsearch_configuration'] = elasticsearch_configuration
-            __props__['extended_s3_configuration'] = extended_s3_configuration
-            __props__['kinesis_source_configuration'] = kinesis_source_configuration
+            __props__['destinationId'] = destination_id
+            __props__['elasticsearchConfiguration'] = elasticsearch_configuration
+            __props__['extendedS3Configuration'] = extended_s3_configuration
+            __props__['kinesisSourceConfiguration'] = kinesis_source_configuration
             __props__['name'] = name
-            __props__['redshift_configuration'] = redshift_configuration
-            __props__['s3_configuration'] = s3_configuration
-            __props__['server_side_encryption'] = server_side_encryption
-            __props__['splunk_configuration'] = splunk_configuration
+            __props__['redshiftConfiguration'] = redshift_configuration
+            __props__['s3Configuration'] = s3_configuration
+            __props__['serverSideEncryption'] = server_side_encryption
+            __props__['splunkConfiguration'] = splunk_configuration
             __props__['tags'] = tags
-            __props__['version_id'] = version_id
+            __props__['versionId'] = version_id
         super(FirehoseDeliveryStream, __self__).__init__(
             'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
             resource_name,

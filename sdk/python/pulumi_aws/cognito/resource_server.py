@@ -97,7 +97,7 @@ class ResourceServer(pulumi.CustomResource):
             __props__['scopes'] = scopes
             if user_pool_id is None:
                 raise TypeError("Missing required property 'user_pool_id'")
-            __props__['user_pool_id'] = user_pool_id
+            __props__['userPoolId'] = user_pool_id
             __props__['scope_identifiers'] = None
         super(ResourceServer, __self__).__init__(
             'aws:cognito/resourceServer:ResourceServer',

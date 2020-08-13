@@ -298,22 +298,22 @@ class Cluster(pulumi.CustomResource):
 
             if broker_node_group_info is None:
                 raise TypeError("Missing required property 'broker_node_group_info'")
-            __props__['broker_node_group_info'] = broker_node_group_info
-            __props__['client_authentication'] = client_authentication
+            __props__['brokerNodeGroupInfo'] = broker_node_group_info
+            __props__['clientAuthentication'] = client_authentication
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
-            __props__['configuration_info'] = configuration_info
-            __props__['encryption_info'] = encryption_info
-            __props__['enhanced_monitoring'] = enhanced_monitoring
+            __props__['clusterName'] = cluster_name
+            __props__['configurationInfo'] = configuration_info
+            __props__['encryptionInfo'] = encryption_info
+            __props__['enhancedMonitoring'] = enhanced_monitoring
             if kafka_version is None:
                 raise TypeError("Missing required property 'kafka_version'")
-            __props__['kafka_version'] = kafka_version
-            __props__['logging_info'] = logging_info
+            __props__['kafkaVersion'] = kafka_version
+            __props__['loggingInfo'] = logging_info
             if number_of_broker_nodes is None:
                 raise TypeError("Missing required property 'number_of_broker_nodes'")
-            __props__['number_of_broker_nodes'] = number_of_broker_nodes
-            __props__['open_monitoring'] = open_monitoring
+            __props__['numberOfBrokerNodes'] = number_of_broker_nodes
+            __props__['openMonitoring'] = open_monitoring
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['bootstrap_brokers'] = None

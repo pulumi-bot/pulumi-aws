@@ -207,22 +207,22 @@ class ReceiptRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['add_header_actions'] = add_header_actions
+            __props__['addHeaderActions'] = add_header_actions
             __props__['after'] = after
-            __props__['bounce_actions'] = bounce_actions
+            __props__['bounceActions'] = bounce_actions
             __props__['enabled'] = enabled
-            __props__['lambda_actions'] = lambda_actions
+            __props__['lambdaActions'] = lambda_actions
             __props__['name'] = name
             __props__['recipients'] = recipients
             if rule_set_name is None:
                 raise TypeError("Missing required property 'rule_set_name'")
-            __props__['rule_set_name'] = rule_set_name
-            __props__['s3_actions'] = s3_actions
-            __props__['scan_enabled'] = scan_enabled
-            __props__['sns_actions'] = sns_actions
-            __props__['stop_actions'] = stop_actions
-            __props__['tls_policy'] = tls_policy
-            __props__['workmail_actions'] = workmail_actions
+            __props__['ruleSetName'] = rule_set_name
+            __props__['s3Actions'] = s3_actions
+            __props__['scanEnabled'] = scan_enabled
+            __props__['snsActions'] = sns_actions
+            __props__['stopActions'] = stop_actions
+            __props__['tlsPolicy'] = tls_policy
+            __props__['workmailActions'] = workmail_actions
         super(ReceiptRule, __self__).__init__(
             'aws:ses/receiptRule:ReceiptRule',
             resource_name,

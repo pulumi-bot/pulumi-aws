@@ -80,11 +80,11 @@ class VpcAssociationAuthorization(pulumi.CustomResource):
 
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
-            __props__['vpc_region'] = vpc_region
+            __props__['vpcId'] = vpc_id
+            __props__['vpcRegion'] = vpc_region
             if zone_id is None:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__['zoneId'] = zone_id
         super(VpcAssociationAuthorization, __self__).__init__(
             'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
             resource_name,

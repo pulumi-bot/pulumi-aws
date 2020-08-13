@@ -136,11 +136,11 @@ class Parameter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allowed_pattern'] = allowed_pattern
+            __props__['allowedPattern'] = allowed_pattern
             __props__['arn'] = arn
-            __props__['data_type'] = data_type
+            __props__['dataType'] = data_type
             __props__['description'] = description
-            __props__['key_id'] = key_id
+            __props__['keyId'] = key_id
             __props__['name'] = name
             __props__['overwrite'] = overwrite
             __props__['tags'] = tags

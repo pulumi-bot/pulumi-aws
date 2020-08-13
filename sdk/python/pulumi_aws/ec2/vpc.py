@@ -146,15 +146,15 @@ class Vpc(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['assign_generated_ipv6_cidr_block'] = assign_generated_ipv6_cidr_block
+            __props__['assignGeneratedIpv6CidrBlock'] = assign_generated_ipv6_cidr_block
             if cidr_block is None:
                 raise TypeError("Missing required property 'cidr_block'")
-            __props__['cidr_block'] = cidr_block
-            __props__['enable_classiclink'] = enable_classiclink
-            __props__['enable_classiclink_dns_support'] = enable_classiclink_dns_support
-            __props__['enable_dns_hostnames'] = enable_dns_hostnames
-            __props__['enable_dns_support'] = enable_dns_support
-            __props__['instance_tenancy'] = instance_tenancy
+            __props__['cidrBlock'] = cidr_block
+            __props__['enableClassiclink'] = enable_classiclink
+            __props__['enableClassiclinkDnsSupport'] = enable_classiclink_dns_support
+            __props__['enableDnsHostnames'] = enable_dns_hostnames
+            __props__['enableDnsSupport'] = enable_dns_support
+            __props__['instanceTenancy'] = instance_tenancy
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['default_network_acl_id'] = None

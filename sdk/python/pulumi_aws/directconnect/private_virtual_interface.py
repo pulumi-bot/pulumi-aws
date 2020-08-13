@@ -124,24 +124,24 @@ class PrivateVirtualInterface(pulumi.CustomResource):
 
             if address_family is None:
                 raise TypeError("Missing required property 'address_family'")
-            __props__['address_family'] = address_family
-            __props__['amazon_address'] = amazon_address
+            __props__['addressFamily'] = address_family
+            __props__['amazonAddress'] = amazon_address
             if bgp_asn is None:
                 raise TypeError("Missing required property 'bgp_asn'")
-            __props__['bgp_asn'] = bgp_asn
-            __props__['bgp_auth_key'] = bgp_auth_key
+            __props__['bgpAsn'] = bgp_asn
+            __props__['bgpAuthKey'] = bgp_auth_key
             if connection_id is None:
                 raise TypeError("Missing required property 'connection_id'")
-            __props__['connection_id'] = connection_id
-            __props__['customer_address'] = customer_address
-            __props__['dx_gateway_id'] = dx_gateway_id
+            __props__['connectionId'] = connection_id
+            __props__['customerAddress'] = customer_address
+            __props__['dxGatewayId'] = dx_gateway_id
             __props__['mtu'] = mtu
             __props__['name'] = name
             __props__['tags'] = tags
             if vlan is None:
                 raise TypeError("Missing required property 'vlan'")
             __props__['vlan'] = vlan
-            __props__['vpn_gateway_id'] = vpn_gateway_id
+            __props__['vpnGatewayId'] = vpn_gateway_id
             __props__['amazon_side_asn'] = None
             __props__['arn'] = None
             __props__['aws_device'] = None

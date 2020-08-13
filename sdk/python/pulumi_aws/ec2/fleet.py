@@ -159,19 +159,19 @@ class Fleet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['excess_capacity_termination_policy'] = excess_capacity_termination_policy
+            __props__['excessCapacityTerminationPolicy'] = excess_capacity_termination_policy
             if launch_template_config is None:
                 raise TypeError("Missing required property 'launch_template_config'")
-            __props__['launch_template_config'] = launch_template_config
-            __props__['on_demand_options'] = on_demand_options
-            __props__['replace_unhealthy_instances'] = replace_unhealthy_instances
-            __props__['spot_options'] = spot_options
+            __props__['launchTemplateConfig'] = launch_template_config
+            __props__['onDemandOptions'] = on_demand_options
+            __props__['replaceUnhealthyInstances'] = replace_unhealthy_instances
+            __props__['spotOptions'] = spot_options
             __props__['tags'] = tags
             if target_capacity_specification is None:
                 raise TypeError("Missing required property 'target_capacity_specification'")
-            __props__['target_capacity_specification'] = target_capacity_specification
-            __props__['terminate_instances'] = terminate_instances
-            __props__['terminate_instances_with_expiration'] = terminate_instances_with_expiration
+            __props__['targetCapacitySpecification'] = target_capacity_specification
+            __props__['terminateInstances'] = terminate_instances
+            __props__['terminateInstancesWithExpiration'] = terminate_instances_with_expiration
             __props__['type'] = type
         super(Fleet, __self__).__init__(
             'aws:ec2/fleet:Fleet',

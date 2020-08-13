@@ -88,17 +88,17 @@ class PeeringAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['peer_account_id'] = peer_account_id
+            __props__['peerAccountId'] = peer_account_id
             if peer_region is None:
                 raise TypeError("Missing required property 'peer_region'")
-            __props__['peer_region'] = peer_region
+            __props__['peerRegion'] = peer_region
             if peer_transit_gateway_id is None:
                 raise TypeError("Missing required property 'peer_transit_gateway_id'")
-            __props__['peer_transit_gateway_id'] = peer_transit_gateway_id
+            __props__['peerTransitGatewayId'] = peer_transit_gateway_id
             __props__['tags'] = tags
             if transit_gateway_id is None:
                 raise TypeError("Missing required property 'transit_gateway_id'")
-            __props__['transit_gateway_id'] = transit_gateway_id
+            __props__['transitGatewayId'] = transit_gateway_id
         super(PeeringAttachment, __self__).__init__(
             'aws:ec2transitgateway/peeringAttachment:PeeringAttachment',
             resource_name,

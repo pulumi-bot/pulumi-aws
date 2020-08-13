@@ -66,10 +66,10 @@ class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
 
             if principal_arn is None:
                 raise TypeError("Missing required property 'principal_arn'")
-            __props__['principal_arn'] = principal_arn
+            __props__['principalArn'] = principal_arn
             if vpc_endpoint_service_id is None:
                 raise TypeError("Missing required property 'vpc_endpoint_service_id'")
-            __props__['vpc_endpoint_service_id'] = vpc_endpoint_service_id
+            __props__['vpcEndpointServiceId'] = vpc_endpoint_service_id
         super(VpcEndpointServiceAllowedPrinciple, __self__).__init__(
             'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
             resource_name,

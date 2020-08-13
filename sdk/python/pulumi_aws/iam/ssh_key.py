@@ -80,7 +80,7 @@ class SshKey(pulumi.CustomResource):
             __props__['encoding'] = encoding
             if public_key is None:
                 raise TypeError("Missing required property 'public_key'")
-            __props__['public_key'] = public_key
+            __props__['publicKey'] = public_key
             __props__['status'] = status
             if username is None:
                 raise TypeError("Missing required property 'username'")

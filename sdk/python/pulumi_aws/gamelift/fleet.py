@@ -159,19 +159,19 @@ class Fleet(pulumi.CustomResource):
 
             if build_id is None:
                 raise TypeError("Missing required property 'build_id'")
-            __props__['build_id'] = build_id
+            __props__['buildId'] = build_id
             __props__['description'] = description
-            __props__['ec2_inbound_permissions'] = ec2_inbound_permissions
+            __props__['ec2InboundPermissions'] = ec2_inbound_permissions
             if ec2_instance_type is None:
                 raise TypeError("Missing required property 'ec2_instance_type'")
-            __props__['ec2_instance_type'] = ec2_instance_type
-            __props__['fleet_type'] = fleet_type
-            __props__['instance_role_arn'] = instance_role_arn
-            __props__['metric_groups'] = metric_groups
+            __props__['ec2InstanceType'] = ec2_instance_type
+            __props__['fleetType'] = fleet_type
+            __props__['instanceRoleArn'] = instance_role_arn
+            __props__['metricGroups'] = metric_groups
             __props__['name'] = name
-            __props__['new_game_session_protection_policy'] = new_game_session_protection_policy
-            __props__['resource_creation_limit_policy'] = resource_creation_limit_policy
-            __props__['runtime_configuration'] = runtime_configuration
+            __props__['newGameSessionProtectionPolicy'] = new_game_session_protection_policy
+            __props__['resourceCreationLimitPolicy'] = resource_creation_limit_policy
+            __props__['runtimeConfiguration'] = runtime_configuration
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['log_paths'] = None

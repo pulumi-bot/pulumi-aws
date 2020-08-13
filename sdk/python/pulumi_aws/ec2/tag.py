@@ -53,7 +53,7 @@ class Tag(pulumi.CustomResource):
             __props__['key'] = key
             if resource_id is None:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
+            __props__['resourceId'] = resource_id
             if value is None:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value

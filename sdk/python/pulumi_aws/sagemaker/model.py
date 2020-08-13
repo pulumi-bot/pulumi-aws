@@ -133,14 +133,14 @@ class Model(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['containers'] = containers
-            __props__['enable_network_isolation'] = enable_network_isolation
+            __props__['enableNetworkIsolation'] = enable_network_isolation
             if execution_role_arn is None:
                 raise TypeError("Missing required property 'execution_role_arn'")
-            __props__['execution_role_arn'] = execution_role_arn
+            __props__['executionRoleArn'] = execution_role_arn
             __props__['name'] = name
-            __props__['primary_container'] = primary_container
+            __props__['primaryContainer'] = primary_container
             __props__['tags'] = tags
-            __props__['vpc_config'] = vpc_config
+            __props__['vpcConfig'] = vpc_config
             __props__['arn'] = None
         super(Model, __self__).__init__(
             'aws:sagemaker/model:Model',

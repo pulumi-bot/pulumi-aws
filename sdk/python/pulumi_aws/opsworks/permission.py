@@ -73,13 +73,13 @@ class Permission(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_ssh'] = allow_ssh
-            __props__['allow_sudo'] = allow_sudo
+            __props__['allowSsh'] = allow_ssh
+            __props__['allowSudo'] = allow_sudo
             __props__['level'] = level
-            __props__['stack_id'] = stack_id
+            __props__['stackId'] = stack_id
             if user_arn is None:
                 raise TypeError("Missing required property 'user_arn'")
-            __props__['user_arn'] = user_arn
+            __props__['userArn'] = user_arn
         super(Permission, __self__).__init__(
             'aws:opsworks/permission:Permission',
             resource_name,

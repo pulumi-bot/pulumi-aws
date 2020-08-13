@@ -118,11 +118,11 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['campaign_hook'] = campaign_hook
+            __props__['campaignHook'] = campaign_hook
             __props__['limits'] = limits
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['quiet_time'] = quiet_time
+            __props__['namePrefix'] = name_prefix
+            __props__['quietTime'] = quiet_time
             __props__['tags'] = tags
             __props__['application_id'] = None
             __props__['arn'] = None

@@ -101,7 +101,7 @@ class MaintenanceWindow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_unassociated_targets'] = allow_unassociated_targets
+            __props__['allowUnassociatedTargets'] = allow_unassociated_targets
             if cutoff is None:
                 raise TypeError("Missing required property 'cutoff'")
             __props__['cutoff'] = cutoff
@@ -110,13 +110,13 @@ class MaintenanceWindow(pulumi.CustomResource):
                 raise TypeError("Missing required property 'duration'")
             __props__['duration'] = duration
             __props__['enabled'] = enabled
-            __props__['end_date'] = end_date
+            __props__['endDate'] = end_date
             __props__['name'] = name
             if schedule is None:
                 raise TypeError("Missing required property 'schedule'")
             __props__['schedule'] = schedule
-            __props__['schedule_timezone'] = schedule_timezone
-            __props__['start_date'] = start_date
+            __props__['scheduleTimezone'] = schedule_timezone
+            __props__['startDate'] = start_date
             __props__['tags'] = tags
         super(MaintenanceWindow, __self__).__init__(
             'aws:ssm/maintenanceWindow:MaintenanceWindow',

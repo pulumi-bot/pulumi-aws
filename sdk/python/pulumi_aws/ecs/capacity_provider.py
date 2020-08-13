@@ -100,7 +100,7 @@ class CapacityProvider(pulumi.CustomResource):
 
             if auto_scaling_group_provider is None:
                 raise TypeError("Missing required property 'auto_scaling_group_provider'")
-            __props__['auto_scaling_group_provider'] = auto_scaling_group_provider
+            __props__['autoScalingGroupProvider'] = auto_scaling_group_provider
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['arn'] = None

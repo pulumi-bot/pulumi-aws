@@ -165,7 +165,7 @@ class Webhook(pulumi.CustomResource):
             if authentication is None:
                 raise TypeError("Missing required property 'authentication'")
             __props__['authentication'] = authentication
-            __props__['authentication_configuration'] = authentication_configuration
+            __props__['authenticationConfiguration'] = authentication_configuration
             if filters is None:
                 raise TypeError("Missing required property 'filters'")
             __props__['filters'] = filters
@@ -173,10 +173,10 @@ class Webhook(pulumi.CustomResource):
             __props__['tags'] = tags
             if target_action is None:
                 raise TypeError("Missing required property 'target_action'")
-            __props__['target_action'] = target_action
+            __props__['targetAction'] = target_action
             if target_pipeline is None:
                 raise TypeError("Missing required property 'target_pipeline'")
-            __props__['target_pipeline'] = target_pipeline
+            __props__['targetPipeline'] = target_pipeline
             __props__['url'] = None
         super(Webhook, __self__).__init__(
             'aws:codepipeline/webhook:Webhook',

@@ -442,40 +442,40 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['availability_zones'] = availability_zones
-            __props__['default_cooldown'] = default_cooldown
-            __props__['desired_capacity'] = desired_capacity
-            __props__['enabled_metrics'] = enabled_metrics
-            __props__['force_delete'] = force_delete
-            __props__['health_check_grace_period'] = health_check_grace_period
-            __props__['health_check_type'] = health_check_type
-            __props__['initial_lifecycle_hooks'] = initial_lifecycle_hooks
-            __props__['launch_configuration'] = launch_configuration
-            __props__['launch_template'] = launch_template
-            __props__['load_balancers'] = load_balancers
-            __props__['max_instance_lifetime'] = max_instance_lifetime
+            __props__['availabilityZones'] = availability_zones
+            __props__['defaultCooldown'] = default_cooldown
+            __props__['desiredCapacity'] = desired_capacity
+            __props__['enabledMetrics'] = enabled_metrics
+            __props__['forceDelete'] = force_delete
+            __props__['healthCheckGracePeriod'] = health_check_grace_period
+            __props__['healthCheckType'] = health_check_type
+            __props__['initialLifecycleHooks'] = initial_lifecycle_hooks
+            __props__['launchConfiguration'] = launch_configuration
+            __props__['launchTemplate'] = launch_template
+            __props__['loadBalancers'] = load_balancers
+            __props__['maxInstanceLifetime'] = max_instance_lifetime
             if max_size is None:
                 raise TypeError("Missing required property 'max_size'")
-            __props__['max_size'] = max_size
-            __props__['metrics_granularity'] = metrics_granularity
-            __props__['min_elb_capacity'] = min_elb_capacity
+            __props__['maxSize'] = max_size
+            __props__['metricsGranularity'] = metrics_granularity
+            __props__['minElbCapacity'] = min_elb_capacity
             if min_size is None:
                 raise TypeError("Missing required property 'min_size'")
-            __props__['min_size'] = min_size
-            __props__['mixed_instances_policy'] = mixed_instances_policy
+            __props__['minSize'] = min_size
+            __props__['mixedInstancesPolicy'] = mixed_instances_policy
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['placement_group'] = placement_group
-            __props__['protect_from_scale_in'] = protect_from_scale_in
-            __props__['service_linked_role_arn'] = service_linked_role_arn
-            __props__['suspended_processes'] = suspended_processes
+            __props__['namePrefix'] = name_prefix
+            __props__['placementGroup'] = placement_group
+            __props__['protectFromScaleIn'] = protect_from_scale_in
+            __props__['serviceLinkedRoleArn'] = service_linked_role_arn
+            __props__['suspendedProcesses'] = suspended_processes
             __props__['tags'] = tags
-            __props__['tags_collection'] = tags_collection
-            __props__['target_group_arns'] = target_group_arns
-            __props__['termination_policies'] = termination_policies
-            __props__['vpc_zone_identifiers'] = vpc_zone_identifiers
-            __props__['wait_for_capacity_timeout'] = wait_for_capacity_timeout
-            __props__['wait_for_elb_capacity'] = wait_for_elb_capacity
+            __props__['tagsCollection'] = tags_collection
+            __props__['targetGroupArns'] = target_group_arns
+            __props__['terminationPolicies'] = termination_policies
+            __props__['vpcZoneIdentifiers'] = vpc_zone_identifiers
+            __props__['waitForCapacityTimeout'] = wait_for_capacity_timeout
+            __props__['waitForElbCapacity'] = wait_for_elb_capacity
             __props__['arn'] = None
         super(Group, __self__).__init__(
             'aws:autoscaling/group:Group',

@@ -83,13 +83,13 @@ class Notification(pulumi.CustomResource):
 
             if group_names is None:
                 raise TypeError("Missing required property 'group_names'")
-            __props__['group_names'] = group_names
+            __props__['groupNames'] = group_names
             if notifications is None:
                 raise TypeError("Missing required property 'notifications'")
             __props__['notifications'] = notifications
             if topic_arn is None:
                 raise TypeError("Missing required property 'topic_arn'")
-            __props__['topic_arn'] = topic_arn
+            __props__['topicArn'] = topic_arn
         super(Notification, __self__).__init__(
             'aws:autoscaling/notification:Notification',
             resource_name,

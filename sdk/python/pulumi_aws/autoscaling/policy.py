@@ -182,19 +182,19 @@ class Policy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['adjustment_type'] = adjustment_type
+            __props__['adjustmentType'] = adjustment_type
             if autoscaling_group_name is None:
                 raise TypeError("Missing required property 'autoscaling_group_name'")
-            __props__['autoscaling_group_name'] = autoscaling_group_name
+            __props__['autoscalingGroupName'] = autoscaling_group_name
             __props__['cooldown'] = cooldown
-            __props__['estimated_instance_warmup'] = estimated_instance_warmup
-            __props__['metric_aggregation_type'] = metric_aggregation_type
-            __props__['min_adjustment_magnitude'] = min_adjustment_magnitude
+            __props__['estimatedInstanceWarmup'] = estimated_instance_warmup
+            __props__['metricAggregationType'] = metric_aggregation_type
+            __props__['minAdjustmentMagnitude'] = min_adjustment_magnitude
             __props__['name'] = name
-            __props__['policy_type'] = policy_type
-            __props__['scaling_adjustment'] = scaling_adjustment
-            __props__['step_adjustments'] = step_adjustments
-            __props__['target_tracking_configuration'] = target_tracking_configuration
+            __props__['policyType'] = policy_type
+            __props__['scalingAdjustment'] = scaling_adjustment
+            __props__['stepAdjustments'] = step_adjustments
+            __props__['targetTrackingConfiguration'] = target_tracking_configuration
             __props__['arn'] = None
         super(Policy, __self__).__init__(
             'aws:autoscaling/policy:Policy',

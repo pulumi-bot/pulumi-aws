@@ -100,9 +100,9 @@ class AccessPoint(pulumi.CustomResource):
 
             if file_system_id is None:
                 raise TypeError("Missing required property 'file_system_id'")
-            __props__['file_system_id'] = file_system_id
-            __props__['posix_user'] = posix_user
-            __props__['root_directory'] = root_directory
+            __props__['fileSystemId'] = file_system_id
+            __props__['posixUser'] = posix_user
+            __props__['rootDirectory'] = root_directory
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['file_system_arn'] = None

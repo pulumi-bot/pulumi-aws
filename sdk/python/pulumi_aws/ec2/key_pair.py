@@ -83,11 +83,11 @@ class KeyPair(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['key_name'] = key_name
-            __props__['key_name_prefix'] = key_name_prefix
+            __props__['keyName'] = key_name
+            __props__['keyNamePrefix'] = key_name_prefix
             if public_key is None:
                 raise TypeError("Missing required property 'public_key'")
-            __props__['public_key'] = public_key
+            __props__['publicKey'] = public_key
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['fingerprint'] = None

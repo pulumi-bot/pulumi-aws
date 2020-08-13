@@ -120,15 +120,15 @@ class IdentityPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_unauthenticated_identities'] = allow_unauthenticated_identities
-            __props__['cognito_identity_providers'] = cognito_identity_providers
-            __props__['developer_provider_name'] = developer_provider_name
+            __props__['allowUnauthenticatedIdentities'] = allow_unauthenticated_identities
+            __props__['cognitoIdentityProviders'] = cognito_identity_providers
+            __props__['developerProviderName'] = developer_provider_name
             if identity_pool_name is None:
                 raise TypeError("Missing required property 'identity_pool_name'")
-            __props__['identity_pool_name'] = identity_pool_name
-            __props__['openid_connect_provider_arns'] = openid_connect_provider_arns
-            __props__['saml_provider_arns'] = saml_provider_arns
-            __props__['supported_login_providers'] = supported_login_providers
+            __props__['identityPoolName'] = identity_pool_name
+            __props__['openidConnectProviderArns'] = openid_connect_provider_arns
+            __props__['samlProviderArns'] = saml_provider_arns
+            __props__['supportedLoginProviders'] = supported_login_providers
             __props__['tags'] = tags
             __props__['arn'] = None
         super(IdentityPool, __self__).__init__(

@@ -81,11 +81,11 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['default_branch'] = default_branch
+            __props__['defaultBranch'] = default_branch
             __props__['description'] = description
             if repository_name is None:
                 raise TypeError("Missing required property 'repository_name'")
-            __props__['repository_name'] = repository_name
+            __props__['repositoryName'] = repository_name
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['clone_url_http'] = None

@@ -80,10 +80,10 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
 
             if instance_ports is None:
                 raise TypeError("Missing required property 'instance_ports'")
-            __props__['instance_ports'] = instance_ports
+            __props__['instancePorts'] = instance_ports
             if load_balancer is None:
                 raise TypeError("Missing required property 'load_balancer'")
-            __props__['load_balancer'] = load_balancer
+            __props__['loadBalancer'] = load_balancer
         super(ProxyProtocolPolicy, __self__).__init__(
             'aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy',
             resource_name,

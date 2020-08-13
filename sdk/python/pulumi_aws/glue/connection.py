@@ -117,15 +117,15 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['catalog_id'] = catalog_id
+            __props__['catalogId'] = catalog_id
             if connection_properties is None:
                 raise TypeError("Missing required property 'connection_properties'")
-            __props__['connection_properties'] = connection_properties
-            __props__['connection_type'] = connection_type
+            __props__['connectionProperties'] = connection_properties
+            __props__['connectionType'] = connection_type
             __props__['description'] = description
-            __props__['match_criterias'] = match_criterias
+            __props__['matchCriterias'] = match_criterias
             __props__['name'] = name
-            __props__['physical_connection_requirements'] = physical_connection_requirements
+            __props__['physicalConnectionRequirements'] = physical_connection_requirements
             __props__['arn'] = None
         super(Connection, __self__).__init__(
             'aws:glue/connection:Connection',

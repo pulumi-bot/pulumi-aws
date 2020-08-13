@@ -137,13 +137,13 @@ class UsagePlan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['api_stages'] = api_stages
+            __props__['apiStages'] = api_stages
             __props__['description'] = description
             __props__['name'] = name
-            __props__['product_code'] = product_code
-            __props__['quota_settings'] = quota_settings
+            __props__['productCode'] = product_code
+            __props__['quotaSettings'] = quota_settings
             __props__['tags'] = tags
-            __props__['throttle_settings'] = throttle_settings
+            __props__['throttleSettings'] = throttle_settings
             __props__['arn'] = None
         super(UsagePlan, __self__).__init__(
             'aws:apigateway/usagePlan:UsagePlan',

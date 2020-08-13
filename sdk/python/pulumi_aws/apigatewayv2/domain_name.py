@@ -95,10 +95,10 @@ class DomainName(pulumi.CustomResource):
 
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
+            __props__['domainName'] = domain_name
             if domain_name_configuration is None:
                 raise TypeError("Missing required property 'domain_name_configuration'")
-            __props__['domain_name_configuration'] = domain_name_configuration
+            __props__['domainNameConfiguration'] = domain_name_configuration
             __props__['tags'] = tags
             __props__['api_mapping_selection_expression'] = None
             __props__['arn'] = None

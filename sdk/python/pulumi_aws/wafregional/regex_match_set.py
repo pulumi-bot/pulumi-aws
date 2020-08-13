@@ -97,7 +97,7 @@ class RegexMatchSet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['regex_match_tuples'] = regex_match_tuples
+            __props__['regexMatchTuples'] = regex_match_tuples
         super(RegexMatchSet, __self__).__init__(
             'aws:wafregional/regexMatchSet:RegexMatchSet',
             resource_name,

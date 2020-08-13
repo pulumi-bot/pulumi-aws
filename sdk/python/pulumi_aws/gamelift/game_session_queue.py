@@ -96,9 +96,9 @@ class GameSessionQueue(pulumi.CustomResource):
 
             __props__['destinations'] = destinations
             __props__['name'] = name
-            __props__['player_latency_policies'] = player_latency_policies
+            __props__['playerLatencyPolicies'] = player_latency_policies
             __props__['tags'] = tags
-            __props__['timeout_in_seconds'] = timeout_in_seconds
+            __props__['timeoutInSeconds'] = timeout_in_seconds
             __props__['arn'] = None
         super(GameSessionQueue, __self__).__init__(
             'aws:gamelift/gameSessionQueue:GameSessionQueue',

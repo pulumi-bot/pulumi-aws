@@ -81,11 +81,11 @@ class Configuration(pulumi.CustomResource):
             __props__['description'] = description
             if kafka_versions is None:
                 raise TypeError("Missing required property 'kafka_versions'")
-            __props__['kafka_versions'] = kafka_versions
+            __props__['kafkaVersions'] = kafka_versions
             __props__['name'] = name
             if server_properties is None:
                 raise TypeError("Missing required property 'server_properties'")
-            __props__['server_properties'] = server_properties
+            __props__['serverProperties'] = server_properties
             __props__['arn'] = None
             __props__['latest_revision'] = None
         super(Configuration, __self__).__init__(

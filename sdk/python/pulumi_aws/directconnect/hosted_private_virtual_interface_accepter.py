@@ -88,12 +88,12 @@ class HostedPrivateVirtualInterfaceAccepter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['dx_gateway_id'] = dx_gateway_id
+            __props__['dxGatewayId'] = dx_gateway_id
             __props__['tags'] = tags
             if virtual_interface_id is None:
                 raise TypeError("Missing required property 'virtual_interface_id'")
-            __props__['virtual_interface_id'] = virtual_interface_id
-            __props__['vpn_gateway_id'] = vpn_gateway_id
+            __props__['virtualInterfaceId'] = virtual_interface_id
+            __props__['vpnGatewayId'] = vpn_gateway_id
             __props__['arn'] = None
         super(HostedPrivateVirtualInterfaceAccepter, __self__).__init__(
             'aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter',

@@ -161,22 +161,22 @@ class FlowLog(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['eni_id'] = eni_id
-            __props__['iam_role_arn'] = iam_role_arn
-            __props__['log_destination'] = log_destination
-            __props__['log_destination_type'] = log_destination_type
-            __props__['log_format'] = log_format
+            __props__['eniId'] = eni_id
+            __props__['iamRoleArn'] = iam_role_arn
+            __props__['logDestination'] = log_destination
+            __props__['logDestinationType'] = log_destination_type
+            __props__['logFormat'] = log_format
             if log_group_name is not None:
                 warnings.warn("use 'log_destination' argument instead", DeprecationWarning)
                 pulumi.log.warn("log_group_name is deprecated: use 'log_destination' argument instead")
-            __props__['log_group_name'] = log_group_name
-            __props__['max_aggregation_interval'] = max_aggregation_interval
-            __props__['subnet_id'] = subnet_id
+            __props__['logGroupName'] = log_group_name
+            __props__['maxAggregationInterval'] = max_aggregation_interval
+            __props__['subnetId'] = subnet_id
             __props__['tags'] = tags
             if traffic_type is None:
                 raise TypeError("Missing required property 'traffic_type'")
-            __props__['traffic_type'] = traffic_type
-            __props__['vpc_id'] = vpc_id
+            __props__['trafficType'] = traffic_type
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
         super(FlowLog, __self__).__init__(
             'aws:ec2/flowLog:FlowLog',

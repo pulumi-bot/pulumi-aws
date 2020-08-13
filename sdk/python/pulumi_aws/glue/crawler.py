@@ -212,24 +212,24 @@ class Crawler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['catalog_targets'] = catalog_targets
+            __props__['catalogTargets'] = catalog_targets
             __props__['classifiers'] = classifiers
             __props__['configuration'] = configuration
             if database_name is None:
                 raise TypeError("Missing required property 'database_name'")
-            __props__['database_name'] = database_name
+            __props__['databaseName'] = database_name
             __props__['description'] = description
-            __props__['dynamodb_targets'] = dynamodb_targets
-            __props__['jdbc_targets'] = jdbc_targets
+            __props__['dynamodbTargets'] = dynamodb_targets
+            __props__['jdbcTargets'] = jdbc_targets
             __props__['name'] = name
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            __props__['s3_targets'] = s3_targets
+            __props__['s3Targets'] = s3_targets
             __props__['schedule'] = schedule
-            __props__['schema_change_policy'] = schema_change_policy
-            __props__['security_configuration'] = security_configuration
-            __props__['table_prefix'] = table_prefix
+            __props__['schemaChangePolicy'] = schema_change_policy
+            __props__['securityConfiguration'] = security_configuration
+            __props__['tablePrefix'] = table_prefix
             __props__['tags'] = tags
             __props__['arn'] = None
         super(Crawler, __self__).__init__(

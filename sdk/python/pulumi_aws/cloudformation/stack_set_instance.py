@@ -107,13 +107,13 @@ class StackSetInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['account_id'] = account_id
-            __props__['parameter_overrides'] = parameter_overrides
+            __props__['accountId'] = account_id
+            __props__['parameterOverrides'] = parameter_overrides
             __props__['region'] = region
-            __props__['retain_stack'] = retain_stack
+            __props__['retainStack'] = retain_stack
             if stack_set_name is None:
                 raise TypeError("Missing required property 'stack_set_name'")
-            __props__['stack_set_name'] = stack_set_name
+            __props__['stackSetName'] = stack_set_name
             __props__['stack_id'] = None
         super(StackSetInstance, __self__).__init__(
             'aws:cloudformation/stackSetInstance:StackSetInstance',

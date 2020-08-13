@@ -183,21 +183,21 @@ class ClusterInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['apply_immediately'] = apply_immediately
-            __props__['auto_minor_version_upgrade'] = auto_minor_version_upgrade
-            __props__['availability_zone'] = availability_zone
-            __props__['ca_cert_identifier'] = ca_cert_identifier
+            __props__['applyImmediately'] = apply_immediately
+            __props__['autoMinorVersionUpgrade'] = auto_minor_version_upgrade
+            __props__['availabilityZone'] = availability_zone
+            __props__['caCertIdentifier'] = ca_cert_identifier
             if cluster_identifier is None:
                 raise TypeError("Missing required property 'cluster_identifier'")
-            __props__['cluster_identifier'] = cluster_identifier
+            __props__['clusterIdentifier'] = cluster_identifier
             __props__['engine'] = engine
             __props__['identifier'] = identifier
-            __props__['identifier_prefix'] = identifier_prefix
+            __props__['identifierPrefix'] = identifier_prefix
             if instance_class is None:
                 raise TypeError("Missing required property 'instance_class'")
-            __props__['instance_class'] = instance_class
-            __props__['preferred_maintenance_window'] = preferred_maintenance_window
-            __props__['promotion_tier'] = promotion_tier
+            __props__['instanceClass'] = instance_class
+            __props__['preferredMaintenanceWindow'] = preferred_maintenance_window
+            __props__['promotionTier'] = promotion_tier
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['db_subnet_group_name'] = None

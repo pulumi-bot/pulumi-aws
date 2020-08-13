@@ -78,15 +78,15 @@ class Response(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['response_parameters'] = response_parameters
-            __props__['response_templates'] = response_templates
+            __props__['responseParameters'] = response_parameters
+            __props__['responseTemplates'] = response_templates
             if response_type is None:
                 raise TypeError("Missing required property 'response_type'")
-            __props__['response_type'] = response_type
+            __props__['responseType'] = response_type
             if rest_api_id is None:
                 raise TypeError("Missing required property 'rest_api_id'")
-            __props__['rest_api_id'] = rest_api_id
-            __props__['status_code'] = status_code
+            __props__['restApiId'] = rest_api_id
+            __props__['statusCode'] = status_code
         super(Response, __self__).__init__(
             'aws:apigateway/response:Response',
             resource_name,

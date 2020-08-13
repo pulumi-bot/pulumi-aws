@@ -149,17 +149,17 @@ class EventDestination(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cloudwatch_destinations'] = cloudwatch_destinations
+            __props__['cloudwatchDestinations'] = cloudwatch_destinations
             if configuration_set_name is None:
                 raise TypeError("Missing required property 'configuration_set_name'")
-            __props__['configuration_set_name'] = configuration_set_name
+            __props__['configurationSetName'] = configuration_set_name
             __props__['enabled'] = enabled
-            __props__['kinesis_destination'] = kinesis_destination
+            __props__['kinesisDestination'] = kinesis_destination
             if matching_types is None:
                 raise TypeError("Missing required property 'matching_types'")
-            __props__['matching_types'] = matching_types
+            __props__['matchingTypes'] = matching_types
             __props__['name'] = name
-            __props__['sns_destination'] = sns_destination
+            __props__['snsDestination'] = sns_destination
         super(EventDestination, __self__).__init__(
             'aws:ses/eventDestination:EventDestination',
             resource_name,

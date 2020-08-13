@@ -181,18 +181,18 @@ class Document(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['attachments_sources'] = attachments_sources
+            __props__['attachmentsSources'] = attachments_sources
             if content is None:
                 raise TypeError("Missing required property 'content'")
             __props__['content'] = content
-            __props__['document_format'] = document_format
+            __props__['documentFormat'] = document_format
             if document_type is None:
                 raise TypeError("Missing required property 'document_type'")
-            __props__['document_type'] = document_type
+            __props__['documentType'] = document_type
             __props__['name'] = name
             __props__['permissions'] = permissions
             __props__['tags'] = tags
-            __props__['target_type'] = target_type
+            __props__['targetType'] = target_type
             __props__['arn'] = None
             __props__['created_date'] = None
             __props__['default_version'] = None

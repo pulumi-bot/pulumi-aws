@@ -120,14 +120,14 @@ class ResolverRule(pulumi.CustomResource):
 
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
+            __props__['domainName'] = domain_name
             __props__['name'] = name
-            __props__['resolver_endpoint_id'] = resolver_endpoint_id
+            __props__['resolverEndpointId'] = resolver_endpoint_id
             if rule_type is None:
                 raise TypeError("Missing required property 'rule_type'")
-            __props__['rule_type'] = rule_type
+            __props__['ruleType'] = rule_type
             __props__['tags'] = tags
-            __props__['target_ips'] = target_ips
+            __props__['targetIps'] = target_ips
             __props__['arn'] = None
             __props__['owner_id'] = None
             __props__['share_status'] = None

@@ -73,10 +73,10 @@ class LogService(pulumi.CustomResource):
 
             if directory_id is None:
                 raise TypeError("Missing required property 'directory_id'")
-            __props__['directory_id'] = directory_id
+            __props__['directoryId'] = directory_id
             if log_group_name is None:
                 raise TypeError("Missing required property 'log_group_name'")
-            __props__['log_group_name'] = log_group_name
+            __props__['logGroupName'] = log_group_name
         super(LogService, __self__).__init__(
             'aws:directoryservice/logService:LogService',
             resource_name,

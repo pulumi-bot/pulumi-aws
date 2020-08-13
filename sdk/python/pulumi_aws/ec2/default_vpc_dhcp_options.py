@@ -82,8 +82,8 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['netbios_name_servers'] = netbios_name_servers
-            __props__['netbios_node_type'] = netbios_node_type
+            __props__['netbiosNameServers'] = netbios_name_servers
+            __props__['netbiosNodeType'] = netbios_node_type
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['domain_name'] = None

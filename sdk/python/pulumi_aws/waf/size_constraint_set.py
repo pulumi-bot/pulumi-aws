@@ -57,7 +57,7 @@ class SizeConstraintSet(pulumi.CustomResource):
             "fieldToMatch": {
                 "type": "BODY",
             },
-            "size": "4096",
+            "size": 4096,
             "textTransformation": "NONE",
         }])
         ```
@@ -107,7 +107,7 @@ class SizeConstraintSet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['size_constraints'] = size_constraints
+            __props__['sizeConstraints'] = size_constraints
             __props__['arn'] = None
         super(SizeConstraintSet, __self__).__init__(
             'aws:waf/sizeConstraintSet:SizeConstraintSet',

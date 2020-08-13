@@ -135,21 +135,21 @@ class Endpoint(pulumi.CustomResource):
 
             if authentication_options is None:
                 raise TypeError("Missing required property 'authentication_options'")
-            __props__['authentication_options'] = authentication_options
+            __props__['authenticationOptions'] = authentication_options
             if client_cidr_block is None:
                 raise TypeError("Missing required property 'client_cidr_block'")
-            __props__['client_cidr_block'] = client_cidr_block
+            __props__['clientCidrBlock'] = client_cidr_block
             if connection_log_options is None:
                 raise TypeError("Missing required property 'connection_log_options'")
-            __props__['connection_log_options'] = connection_log_options
+            __props__['connectionLogOptions'] = connection_log_options
             __props__['description'] = description
-            __props__['dns_servers'] = dns_servers
+            __props__['dnsServers'] = dns_servers
             if server_certificate_arn is None:
                 raise TypeError("Missing required property 'server_certificate_arn'")
-            __props__['server_certificate_arn'] = server_certificate_arn
-            __props__['split_tunnel'] = split_tunnel
+            __props__['serverCertificateArn'] = server_certificate_arn
+            __props__['splitTunnel'] = split_tunnel
             __props__['tags'] = tags
-            __props__['transport_protocol'] = transport_protocol
+            __props__['transportProtocol'] = transport_protocol
             __props__['arn'] = None
             __props__['dns_name'] = None
             __props__['status'] = None

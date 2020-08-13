@@ -76,9 +76,9 @@ class PublicKey(pulumi.CustomResource):
             __props__['comment'] = comment
             if encoded_key is None:
                 raise TypeError("Missing required property 'encoded_key'")
-            __props__['encoded_key'] = encoded_key
+            __props__['encodedKey'] = encoded_key
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['caller_reference'] = None
             __props__['etag'] = None
         super(PublicKey, __self__).__init__(

@@ -141,14 +141,14 @@ class Role(pulumi.CustomResource):
 
             if assume_role_policy is None:
                 raise TypeError("Missing required property 'assume_role_policy'")
-            __props__['assume_role_policy'] = assume_role_policy
+            __props__['assumeRolePolicy'] = assume_role_policy
             __props__['description'] = description
-            __props__['force_detach_policies'] = force_detach_policies
-            __props__['max_session_duration'] = max_session_duration
+            __props__['forceDetachPolicies'] = force_detach_policies
+            __props__['maxSessionDuration'] = max_session_duration
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['path'] = path
-            __props__['permissions_boundary'] = permissions_boundary
+            __props__['permissionsBoundary'] = permissions_boundary
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['create_date'] = None

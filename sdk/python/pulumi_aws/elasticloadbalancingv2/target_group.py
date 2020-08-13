@@ -196,20 +196,20 @@ class TargetGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['deregistration_delay'] = deregistration_delay
-            __props__['health_check'] = health_check
-            __props__['lambda_multi_value_headers_enabled'] = lambda_multi_value_headers_enabled
-            __props__['load_balancing_algorithm_type'] = load_balancing_algorithm_type
+            __props__['deregistrationDelay'] = deregistration_delay
+            __props__['healthCheck'] = health_check
+            __props__['lambdaMultiValueHeadersEnabled'] = lambda_multi_value_headers_enabled
+            __props__['loadBalancingAlgorithmType'] = load_balancing_algorithm_type
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['port'] = port
             __props__['protocol'] = protocol
-            __props__['proxy_protocol_v2'] = proxy_protocol_v2
-            __props__['slow_start'] = slow_start
+            __props__['proxyProtocolV2'] = proxy_protocol_v2
+            __props__['slowStart'] = slow_start
             __props__['stickiness'] = stickiness
             __props__['tags'] = tags
-            __props__['target_type'] = target_type
-            __props__['vpc_id'] = vpc_id
+            __props__['targetType'] = target_type
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['arn_suffix'] = None
         super(TargetGroup, __self__).__init__(

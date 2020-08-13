@@ -107,12 +107,12 @@ class EipAssociation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allocation_id'] = allocation_id
-            __props__['allow_reassociation'] = allow_reassociation
-            __props__['instance_id'] = instance_id
-            __props__['network_interface_id'] = network_interface_id
-            __props__['private_ip_address'] = private_ip_address
-            __props__['public_ip'] = public_ip
+            __props__['allocationId'] = allocation_id
+            __props__['allowReassociation'] = allow_reassociation
+            __props__['instanceId'] = instance_id
+            __props__['networkInterfaceId'] = network_interface_id
+            __props__['privateIpAddress'] = private_ip_address
+            __props__['publicIp'] = public_ip
         super(EipAssociation, __self__).__init__(
             'aws:ec2/eipAssociation:EipAssociation',
             resource_name,

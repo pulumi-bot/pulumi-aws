@@ -412,45 +412,45 @@ class Instance(pulumi.CustomResource):
             if ami is None:
                 raise TypeError("Missing required property 'ami'")
             __props__['ami'] = ami
-            __props__['associate_public_ip_address'] = associate_public_ip_address
-            __props__['availability_zone'] = availability_zone
-            __props__['cpu_core_count'] = cpu_core_count
-            __props__['cpu_threads_per_core'] = cpu_threads_per_core
-            __props__['credit_specification'] = credit_specification
-            __props__['disable_api_termination'] = disable_api_termination
-            __props__['ebs_block_devices'] = ebs_block_devices
-            __props__['ebs_optimized'] = ebs_optimized
-            __props__['ephemeral_block_devices'] = ephemeral_block_devices
-            __props__['get_password_data'] = get_password_data
+            __props__['associatePublicIpAddress'] = associate_public_ip_address
+            __props__['availabilityZone'] = availability_zone
+            __props__['cpuCoreCount'] = cpu_core_count
+            __props__['cpuThreadsPerCore'] = cpu_threads_per_core
+            __props__['creditSpecification'] = credit_specification
+            __props__['disableApiTermination'] = disable_api_termination
+            __props__['ebsBlockDevices'] = ebs_block_devices
+            __props__['ebsOptimized'] = ebs_optimized
+            __props__['ephemeralBlockDevices'] = ephemeral_block_devices
+            __props__['getPasswordData'] = get_password_data
             __props__['hibernation'] = hibernation
-            __props__['host_id'] = host_id
-            __props__['iam_instance_profile'] = iam_instance_profile
-            __props__['instance_initiated_shutdown_behavior'] = instance_initiated_shutdown_behavior
+            __props__['hostId'] = host_id
+            __props__['iamInstanceProfile'] = iam_instance_profile
+            __props__['instanceInitiatedShutdownBehavior'] = instance_initiated_shutdown_behavior
             if instance_type is None:
                 raise TypeError("Missing required property 'instance_type'")
-            __props__['instance_type'] = instance_type
-            __props__['ipv6_address_count'] = ipv6_address_count
-            __props__['ipv6_addresses'] = ipv6_addresses
-            __props__['key_name'] = key_name
-            __props__['metadata_options'] = metadata_options
+            __props__['instanceType'] = instance_type
+            __props__['ipv6AddressCount'] = ipv6_address_count
+            __props__['ipv6Addresses'] = ipv6_addresses
+            __props__['keyName'] = key_name
+            __props__['metadataOptions'] = metadata_options
             __props__['monitoring'] = monitoring
-            __props__['network_interfaces'] = network_interfaces
-            __props__['placement_group'] = placement_group
-            __props__['private_ip'] = private_ip
-            __props__['root_block_device'] = root_block_device
-            __props__['secondary_private_ips'] = secondary_private_ips
+            __props__['networkInterfaces'] = network_interfaces
+            __props__['placementGroup'] = placement_group
+            __props__['privateIp'] = private_ip
+            __props__['rootBlockDevice'] = root_block_device
+            __props__['secondaryPrivateIps'] = secondary_private_ips
             if security_groups is not None:
                 warnings.warn("Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.", DeprecationWarning)
                 pulumi.log.warn("security_groups is deprecated: Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.")
-            __props__['security_groups'] = security_groups
-            __props__['source_dest_check'] = source_dest_check
-            __props__['subnet_id'] = subnet_id
+            __props__['securityGroups'] = security_groups
+            __props__['sourceDestCheck'] = source_dest_check
+            __props__['subnetId'] = subnet_id
             __props__['tags'] = tags
             __props__['tenancy'] = tenancy
-            __props__['user_data'] = user_data
-            __props__['user_data_base64'] = user_data_base64
-            __props__['volume_tags'] = volume_tags
-            __props__['vpc_security_group_ids'] = vpc_security_group_ids
+            __props__['userData'] = user_data
+            __props__['userDataBase64'] = user_data_base64
+            __props__['volumeTags'] = volume_tags
+            __props__['vpcSecurityGroupIds'] = vpc_security_group_ids
             __props__['arn'] = None
             __props__['instance_state'] = None
             __props__['outpost_arn'] = None

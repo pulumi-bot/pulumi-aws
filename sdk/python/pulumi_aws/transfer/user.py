@@ -112,18 +112,18 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['home_directory'] = home_directory
+            __props__['homeDirectory'] = home_directory
             __props__['policy'] = policy
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             if server_id is None:
                 raise TypeError("Missing required property 'server_id'")
-            __props__['server_id'] = server_id
+            __props__['serverId'] = server_id
             __props__['tags'] = tags
             if user_name is None:
                 raise TypeError("Missing required property 'user_name'")
-            __props__['user_name'] = user_name
+            __props__['userName'] = user_name
             __props__['arn'] = None
         super(User, __self__).__init__(
             'aws:transfer/user:User',

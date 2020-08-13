@@ -83,7 +83,7 @@ class JobQueue(pulumi.CustomResource):
 
             if compute_environments is None:
                 raise TypeError("Missing required property 'compute_environments'")
-            __props__['compute_environments'] = compute_environments
+            __props__['computeEnvironments'] = compute_environments
             __props__['name'] = name
             if priority is None:
                 raise TypeError("Missing required property 'priority'")

@@ -65,11 +65,11 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
 
             if local_gateway_route_table_id is None:
                 raise TypeError("Missing required property 'local_gateway_route_table_id'")
-            __props__['local_gateway_route_table_id'] = local_gateway_route_table_id
+            __props__['localGatewayRouteTableId'] = local_gateway_route_table_id
             __props__['tags'] = tags
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['local_gateway_id'] = None
         super(LocalGatewayRouteTableVpcAssociation, __self__).__init__(
             'aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation',

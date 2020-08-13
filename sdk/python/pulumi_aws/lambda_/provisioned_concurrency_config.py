@@ -75,10 +75,10 @@ class ProvisionedConcurrencyConfig(pulumi.CustomResource):
 
             if function_name is None:
                 raise TypeError("Missing required property 'function_name'")
-            __props__['function_name'] = function_name
+            __props__['functionName'] = function_name
             if provisioned_concurrent_executions is None:
                 raise TypeError("Missing required property 'provisioned_concurrent_executions'")
-            __props__['provisioned_concurrent_executions'] = provisioned_concurrent_executions
+            __props__['provisionedConcurrentExecutions'] = provisioned_concurrent_executions
             if qualifier is None:
                 raise TypeError("Missing required property 'qualifier'")
             __props__['qualifier'] = qualifier

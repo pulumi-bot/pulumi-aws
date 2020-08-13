@@ -66,10 +66,10 @@ class WebsiteCertificateAuthorityAssociation(pulumi.CustomResource):
             if certificate is None:
                 raise TypeError("Missing required property 'certificate'")
             __props__['certificate'] = certificate
-            __props__['display_name'] = display_name
+            __props__['displayName'] = display_name
             if fleet_arn is None:
                 raise TypeError("Missing required property 'fleet_arn'")
-            __props__['fleet_arn'] = fleet_arn
+            __props__['fleetArn'] = fleet_arn
             __props__['website_ca_id'] = None
         super(WebsiteCertificateAuthorityAssociation, __self__).__init__(
             'aws:worklink/websiteCertificateAuthorityAssociation:WebsiteCertificateAuthorityAssociation',

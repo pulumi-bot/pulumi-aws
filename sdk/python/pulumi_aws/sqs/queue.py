@@ -148,20 +148,20 @@ class Queue(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['content_based_deduplication'] = content_based_deduplication
-            __props__['delay_seconds'] = delay_seconds
-            __props__['fifo_queue'] = fifo_queue
-            __props__['kms_data_key_reuse_period_seconds'] = kms_data_key_reuse_period_seconds
-            __props__['kms_master_key_id'] = kms_master_key_id
-            __props__['max_message_size'] = max_message_size
-            __props__['message_retention_seconds'] = message_retention_seconds
+            __props__['contentBasedDeduplication'] = content_based_deduplication
+            __props__['delaySeconds'] = delay_seconds
+            __props__['fifoQueue'] = fifo_queue
+            __props__['kmsDataKeyReusePeriodSeconds'] = kms_data_key_reuse_period_seconds
+            __props__['kmsMasterKeyId'] = kms_master_key_id
+            __props__['maxMessageSize'] = max_message_size
+            __props__['messageRetentionSeconds'] = message_retention_seconds
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['policy'] = policy
-            __props__['receive_wait_time_seconds'] = receive_wait_time_seconds
-            __props__['redrive_policy'] = redrive_policy
+            __props__['receiveWaitTimeSeconds'] = receive_wait_time_seconds
+            __props__['redrivePolicy'] = redrive_policy
             __props__['tags'] = tags
-            __props__['visibility_timeout_seconds'] = visibility_timeout_seconds
+            __props__['visibilityTimeoutSeconds'] = visibility_timeout_seconds
             __props__['arn'] = None
         super(Queue, __self__).__init__(
             'aws:sqs/queue:Queue',

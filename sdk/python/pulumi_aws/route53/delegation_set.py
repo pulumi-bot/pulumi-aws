@@ -57,7 +57,7 @@ class DelegationSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['reference_name'] = reference_name
+            __props__['referenceName'] = reference_name
             __props__['name_servers'] = None
         super(DelegationSet, __self__).__init__(
             'aws:route53/delegationSet:DelegationSet',

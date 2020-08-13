@@ -91,20 +91,20 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['aws_account_id'] = aws_account_id
+            __props__['awsAccountId'] = aws_account_id
             if email is None:
                 raise TypeError("Missing required property 'email'")
             __props__['email'] = email
-            __props__['iam_arn'] = iam_arn
+            __props__['iamArn'] = iam_arn
             if identity_type is None:
                 raise TypeError("Missing required property 'identity_type'")
-            __props__['identity_type'] = identity_type
+            __props__['identityType'] = identity_type
             __props__['namespace'] = namespace
-            __props__['session_name'] = session_name
-            __props__['user_name'] = user_name
+            __props__['sessionName'] = session_name
+            __props__['userName'] = user_name
             if user_role is None:
                 raise TypeError("Missing required property 'user_role'")
-            __props__['user_role'] = user_role
+            __props__['userRole'] = user_role
             __props__['arn'] = None
         super(User, __self__).__init__(
             'aws:quicksight/user:User',

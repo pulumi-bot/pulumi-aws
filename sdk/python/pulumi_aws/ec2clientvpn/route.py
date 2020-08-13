@@ -92,14 +92,14 @@ class Route(pulumi.CustomResource):
 
             if client_vpn_endpoint_id is None:
                 raise TypeError("Missing required property 'client_vpn_endpoint_id'")
-            __props__['client_vpn_endpoint_id'] = client_vpn_endpoint_id
+            __props__['clientVpnEndpointId'] = client_vpn_endpoint_id
             __props__['description'] = description
             if destination_cidr_block is None:
                 raise TypeError("Missing required property 'destination_cidr_block'")
-            __props__['destination_cidr_block'] = destination_cidr_block
+            __props__['destinationCidrBlock'] = destination_cidr_block
             if target_vpc_subnet_id is None:
                 raise TypeError("Missing required property 'target_vpc_subnet_id'")
-            __props__['target_vpc_subnet_id'] = target_vpc_subnet_id
+            __props__['targetVpcSubnetId'] = target_vpc_subnet_id
             __props__['origin'] = None
             __props__['type'] = None
         super(Route, __self__).__init__(

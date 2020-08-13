@@ -62,7 +62,7 @@ class ReplicationTask(pulumi.CustomResource):
 
         # Create a new replication task
         test = aws.dms.ReplicationTask("test",
-            cdc_start_time=1484346880,
+            cdc_start_time="1484346880",
             migration_type="full-load",
             replication_instance_arn=aws_dms_replication_instance["test-dms-replication-instance-tf"]["replication_instance_arn"],
             replication_task_id="test-dms-replication-task-tf",
@@ -104,27 +104,27 @@ class ReplicationTask(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cdc_start_time'] = cdc_start_time
+            __props__['cdcStartTime'] = cdc_start_time
             if migration_type is None:
                 raise TypeError("Missing required property 'migration_type'")
-            __props__['migration_type'] = migration_type
+            __props__['migrationType'] = migration_type
             if replication_instance_arn is None:
                 raise TypeError("Missing required property 'replication_instance_arn'")
-            __props__['replication_instance_arn'] = replication_instance_arn
+            __props__['replicationInstanceArn'] = replication_instance_arn
             if replication_task_id is None:
                 raise TypeError("Missing required property 'replication_task_id'")
-            __props__['replication_task_id'] = replication_task_id
-            __props__['replication_task_settings'] = replication_task_settings
+            __props__['replicationTaskId'] = replication_task_id
+            __props__['replicationTaskSettings'] = replication_task_settings
             if source_endpoint_arn is None:
                 raise TypeError("Missing required property 'source_endpoint_arn'")
-            __props__['source_endpoint_arn'] = source_endpoint_arn
+            __props__['sourceEndpointArn'] = source_endpoint_arn
             if table_mappings is None:
                 raise TypeError("Missing required property 'table_mappings'")
-            __props__['table_mappings'] = table_mappings
+            __props__['tableMappings'] = table_mappings
             __props__['tags'] = tags
             if target_endpoint_arn is None:
                 raise TypeError("Missing required property 'target_endpoint_arn'")
-            __props__['target_endpoint_arn'] = target_endpoint_arn
+            __props__['targetEndpointArn'] = target_endpoint_arn
             __props__['replication_task_arn'] = None
         super(ReplicationTask, __self__).__init__(
             'aws:dms/replicationTask:ReplicationTask',

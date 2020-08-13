@@ -125,16 +125,16 @@ class LayerVersion(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['code'] = code
-            __props__['compatible_runtimes'] = compatible_runtimes
+            __props__['compatibleRuntimes'] = compatible_runtimes
             __props__['description'] = description
             if layer_name is None:
                 raise TypeError("Missing required property 'layer_name'")
-            __props__['layer_name'] = layer_name
-            __props__['license_info'] = license_info
-            __props__['s3_bucket'] = s3_bucket
-            __props__['s3_key'] = s3_key
-            __props__['s3_object_version'] = s3_object_version
-            __props__['source_code_hash'] = source_code_hash
+            __props__['layerName'] = layer_name
+            __props__['licenseInfo'] = license_info
+            __props__['s3Bucket'] = s3_bucket
+            __props__['s3Key'] = s3_key
+            __props__['s3ObjectVersion'] = s3_object_version
+            __props__['sourceCodeHash'] = source_code_hash
             __props__['arn'] = None
             __props__['created_date'] = None
             __props__['layer_arn'] = None

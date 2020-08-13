@@ -151,16 +151,16 @@ class Api(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['api_key_selection_expression'] = api_key_selection_expression
-            __props__['cors_configuration'] = cors_configuration
-            __props__['credentials_arn'] = credentials_arn
+            __props__['apiKeySelectionExpression'] = api_key_selection_expression
+            __props__['corsConfiguration'] = cors_configuration
+            __props__['credentialsArn'] = credentials_arn
             __props__['description'] = description
             __props__['name'] = name
             if protocol_type is None:
                 raise TypeError("Missing required property 'protocol_type'")
-            __props__['protocol_type'] = protocol_type
-            __props__['route_key'] = route_key
-            __props__['route_selection_expression'] = route_selection_expression
+            __props__['protocolType'] = protocol_type
+            __props__['routeKey'] = route_key
+            __props__['routeSelectionExpression'] = route_selection_expression
             __props__['tags'] = tags
             __props__['target'] = target
             __props__['version'] = version

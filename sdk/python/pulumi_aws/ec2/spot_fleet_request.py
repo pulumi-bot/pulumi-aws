@@ -195,7 +195,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     "iamInstanceProfileArn": aws_iam_instance_profile["example"]["arn"],
                     "availability_zone": "us-west-1a",
                     "subnet_id": "subnet-1234",
-                    "weightedCapacity": 35,
+                    "weightedCapacity": "35",
                     "root_block_devices": [{
                         "volume_size": "300",
                         "volumeType": "gp2",
@@ -409,28 +409,28 @@ class SpotFleetRequest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allocation_strategy'] = allocation_strategy
-            __props__['excess_capacity_termination_policy'] = excess_capacity_termination_policy
-            __props__['fleet_type'] = fleet_type
+            __props__['allocationStrategy'] = allocation_strategy
+            __props__['excessCapacityTerminationPolicy'] = excess_capacity_termination_policy
+            __props__['fleetType'] = fleet_type
             if iam_fleet_role is None:
                 raise TypeError("Missing required property 'iam_fleet_role'")
-            __props__['iam_fleet_role'] = iam_fleet_role
-            __props__['instance_interruption_behaviour'] = instance_interruption_behaviour
-            __props__['instance_pools_to_use_count'] = instance_pools_to_use_count
-            __props__['launch_specifications'] = launch_specifications
-            __props__['launch_template_configs'] = launch_template_configs
-            __props__['load_balancers'] = load_balancers
-            __props__['replace_unhealthy_instances'] = replace_unhealthy_instances
-            __props__['spot_price'] = spot_price
+            __props__['iamFleetRole'] = iam_fleet_role
+            __props__['instanceInterruptionBehaviour'] = instance_interruption_behaviour
+            __props__['instancePoolsToUseCount'] = instance_pools_to_use_count
+            __props__['launchSpecifications'] = launch_specifications
+            __props__['launchTemplateConfigs'] = launch_template_configs
+            __props__['loadBalancers'] = load_balancers
+            __props__['replaceUnhealthyInstances'] = replace_unhealthy_instances
+            __props__['spotPrice'] = spot_price
             __props__['tags'] = tags
             if target_capacity is None:
                 raise TypeError("Missing required property 'target_capacity'")
-            __props__['target_capacity'] = target_capacity
-            __props__['target_group_arns'] = target_group_arns
-            __props__['terminate_instances_with_expiration'] = terminate_instances_with_expiration
-            __props__['valid_from'] = valid_from
-            __props__['valid_until'] = valid_until
-            __props__['wait_for_fulfillment'] = wait_for_fulfillment
+            __props__['targetCapacity'] = target_capacity
+            __props__['targetGroupArns'] = target_group_arns
+            __props__['terminateInstancesWithExpiration'] = terminate_instances_with_expiration
+            __props__['validFrom'] = valid_from
+            __props__['validUntil'] = valid_until
+            __props__['waitForFulfillment'] = wait_for_fulfillment
             __props__['client_token'] = None
             __props__['spot_request_state'] = None
         super(SpotFleetRequest, __self__).__init__(

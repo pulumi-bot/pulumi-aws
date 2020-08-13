@@ -93,7 +93,7 @@ class IpSet(pulumi.CustomResource):
             __props__['description'] = description
             if ip_address_version is None:
                 raise TypeError("Missing required property 'ip_address_version'")
-            __props__['ip_address_version'] = ip_address_version
+            __props__['ipAddressVersion'] = ip_address_version
             __props__['name'] = name
             if scope is None:
                 raise TypeError("Missing required property 'scope'")

@@ -70,11 +70,11 @@ class IdentityNotificationTopic(pulumi.CustomResource):
             if identity is None:
                 raise TypeError("Missing required property 'identity'")
             __props__['identity'] = identity
-            __props__['include_original_headers'] = include_original_headers
+            __props__['includeOriginalHeaders'] = include_original_headers
             if notification_type is None:
                 raise TypeError("Missing required property 'notification_type'")
-            __props__['notification_type'] = notification_type
-            __props__['topic_arn'] = topic_arn
+            __props__['notificationType'] = notification_type
+            __props__['topicArn'] = topic_arn
         super(IdentityNotificationTopic, __self__).__init__(
             'aws:ses/identityNotificationTopic:IdentityNotificationTopic',
             resource_name,

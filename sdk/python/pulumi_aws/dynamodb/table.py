@@ -312,23 +312,23 @@ class Table(pulumi.CustomResource):
             if attributes is None:
                 raise TypeError("Missing required property 'attributes'")
             __props__['attributes'] = attributes
-            __props__['billing_mode'] = billing_mode
-            __props__['global_secondary_indexes'] = global_secondary_indexes
+            __props__['billingMode'] = billing_mode
+            __props__['globalSecondaryIndexes'] = global_secondary_indexes
             if hash_key is None:
                 raise TypeError("Missing required property 'hash_key'")
-            __props__['hash_key'] = hash_key
-            __props__['local_secondary_indexes'] = local_secondary_indexes
+            __props__['hashKey'] = hash_key
+            __props__['localSecondaryIndexes'] = local_secondary_indexes
             __props__['name'] = name
-            __props__['point_in_time_recovery'] = point_in_time_recovery
-            __props__['range_key'] = range_key
-            __props__['read_capacity'] = read_capacity
+            __props__['pointInTimeRecovery'] = point_in_time_recovery
+            __props__['rangeKey'] = range_key
+            __props__['readCapacity'] = read_capacity
             __props__['replicas'] = replicas
-            __props__['server_side_encryption'] = server_side_encryption
-            __props__['stream_enabled'] = stream_enabled
-            __props__['stream_view_type'] = stream_view_type
+            __props__['serverSideEncryption'] = server_side_encryption
+            __props__['streamEnabled'] = stream_enabled
+            __props__['streamViewType'] = stream_view_type
             __props__['tags'] = tags
             __props__['ttl'] = ttl
-            __props__['write_capacity'] = write_capacity
+            __props__['writeCapacity'] = write_capacity
             __props__['arn'] = None
             __props__['stream_arn'] = None
             __props__['stream_label'] = None

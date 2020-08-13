@@ -70,10 +70,10 @@ class VpnGatewayAttachment(pulumi.CustomResource):
 
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             if vpn_gateway_id is None:
                 raise TypeError("Missing required property 'vpn_gateway_id'")
-            __props__['vpn_gateway_id'] = vpn_gateway_id
+            __props__['vpnGatewayId'] = vpn_gateway_id
         super(VpnGatewayAttachment, __self__).__init__(
             'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
             resource_name,

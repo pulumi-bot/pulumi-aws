@@ -99,16 +99,16 @@ class Authorizer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['authorizer_credentials'] = authorizer_credentials
-            __props__['authorizer_result_ttl_in_seconds'] = authorizer_result_ttl_in_seconds
-            __props__['authorizer_uri'] = authorizer_uri
-            __props__['identity_source'] = identity_source
-            __props__['identity_validation_expression'] = identity_validation_expression
+            __props__['authorizerCredentials'] = authorizer_credentials
+            __props__['authorizerResultTtlInSeconds'] = authorizer_result_ttl_in_seconds
+            __props__['authorizerUri'] = authorizer_uri
+            __props__['identitySource'] = identity_source
+            __props__['identityValidationExpression'] = identity_validation_expression
             __props__['name'] = name
-            __props__['provider_arns'] = provider_arns
+            __props__['providerArns'] = provider_arns
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
+            __props__['restApi'] = rest_api
             __props__['type'] = type
         super(Authorizer, __self__).__init__(
             'aws:apigateway/authorizer:Authorizer',

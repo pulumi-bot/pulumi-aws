@@ -116,20 +116,20 @@ class LustreFileSystem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['deployment_type'] = deployment_type
-            __props__['export_path'] = export_path
-            __props__['import_path'] = import_path
-            __props__['imported_file_chunk_size'] = imported_file_chunk_size
-            __props__['per_unit_storage_throughput'] = per_unit_storage_throughput
-            __props__['security_group_ids'] = security_group_ids
+            __props__['deploymentType'] = deployment_type
+            __props__['exportPath'] = export_path
+            __props__['importPath'] = import_path
+            __props__['importedFileChunkSize'] = imported_file_chunk_size
+            __props__['perUnitStorageThroughput'] = per_unit_storage_throughput
+            __props__['securityGroupIds'] = security_group_ids
             if storage_capacity is None:
                 raise TypeError("Missing required property 'storage_capacity'")
-            __props__['storage_capacity'] = storage_capacity
+            __props__['storageCapacity'] = storage_capacity
             if subnet_ids is None:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
-            __props__['weekly_maintenance_start_time'] = weekly_maintenance_start_time
+            __props__['weeklyMaintenanceStartTime'] = weekly_maintenance_start_time
             __props__['arn'] = None
             __props__['dns_name'] = None
             __props__['network_interface_ids'] = None

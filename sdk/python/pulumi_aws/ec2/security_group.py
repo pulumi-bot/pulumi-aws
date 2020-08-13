@@ -217,10 +217,10 @@ class SecurityGroup(pulumi.CustomResource):
             __props__['egress'] = egress
             __props__['ingress'] = ingress
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['revoke_rules_on_delete'] = revoke_rules_on_delete
+            __props__['namePrefix'] = name_prefix
+            __props__['revokeRulesOnDelete'] = revoke_rules_on_delete
             __props__['tags'] = tags
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['owner_id'] = None
         super(SecurityGroup, __self__).__init__(

@@ -61,10 +61,10 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
 
             if account_id is None:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             if snapshot_id is None:
                 raise TypeError("Missing required property 'snapshot_id'")
-            __props__['snapshot_id'] = snapshot_id
+            __props__['snapshotId'] = snapshot_id
         super(SnapshotCreateVolumePermission, __self__).__init__(
             'aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission',
             resource_name,

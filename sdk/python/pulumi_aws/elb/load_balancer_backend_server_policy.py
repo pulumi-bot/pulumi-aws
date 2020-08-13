@@ -99,11 +99,11 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
 
             if instance_port is None:
                 raise TypeError("Missing required property 'instance_port'")
-            __props__['instance_port'] = instance_port
+            __props__['instancePort'] = instance_port
             if load_balancer_name is None:
                 raise TypeError("Missing required property 'load_balancer_name'")
-            __props__['load_balancer_name'] = load_balancer_name
-            __props__['policy_names'] = policy_names
+            __props__['loadBalancerName'] = load_balancer_name
+            __props__['policyNames'] = policy_names
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/loadBalancerBackendServerPolicy:LoadBalancerBackendServerPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(LoadBalancerBackendServerPolicy, __self__).__init__(

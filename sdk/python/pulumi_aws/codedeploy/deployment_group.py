@@ -401,27 +401,27 @@ class DeploymentGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['alarm_configuration'] = alarm_configuration
+            __props__['alarmConfiguration'] = alarm_configuration
             if app_name is None:
                 raise TypeError("Missing required property 'app_name'")
-            __props__['app_name'] = app_name
-            __props__['auto_rollback_configuration'] = auto_rollback_configuration
-            __props__['autoscaling_groups'] = autoscaling_groups
-            __props__['blue_green_deployment_config'] = blue_green_deployment_config
-            __props__['deployment_config_name'] = deployment_config_name
+            __props__['appName'] = app_name
+            __props__['autoRollbackConfiguration'] = auto_rollback_configuration
+            __props__['autoscalingGroups'] = autoscaling_groups
+            __props__['blueGreenDeploymentConfig'] = blue_green_deployment_config
+            __props__['deploymentConfigName'] = deployment_config_name
             if deployment_group_name is None:
                 raise TypeError("Missing required property 'deployment_group_name'")
-            __props__['deployment_group_name'] = deployment_group_name
-            __props__['deployment_style'] = deployment_style
-            __props__['ec2_tag_filters'] = ec2_tag_filters
-            __props__['ec2_tag_sets'] = ec2_tag_sets
-            __props__['ecs_service'] = ecs_service
-            __props__['load_balancer_info'] = load_balancer_info
-            __props__['on_premises_instance_tag_filters'] = on_premises_instance_tag_filters
+            __props__['deploymentGroupName'] = deployment_group_name
+            __props__['deploymentStyle'] = deployment_style
+            __props__['ec2TagFilters'] = ec2_tag_filters
+            __props__['ec2TagSets'] = ec2_tag_sets
+            __props__['ecsService'] = ecs_service
+            __props__['loadBalancerInfo'] = load_balancer_info
+            __props__['onPremisesInstanceTagFilters'] = on_premises_instance_tag_filters
             if service_role_arn is None:
                 raise TypeError("Missing required property 'service_role_arn'")
-            __props__['service_role_arn'] = service_role_arn
-            __props__['trigger_configurations'] = trigger_configurations
+            __props__['serviceRoleArn'] = service_role_arn
+            __props__['triggerConfigurations'] = trigger_configurations
         super(DeploymentGroup, __self__).__init__(
             'aws:codedeploy/deploymentGroup:DeploymentGroup',
             resource_name,

@@ -61,10 +61,10 @@ class VpnGatewayRoutePropagation(pulumi.CustomResource):
 
             if route_table_id is None:
                 raise TypeError("Missing required property 'route_table_id'")
-            __props__['route_table_id'] = route_table_id
+            __props__['routeTableId'] = route_table_id
             if vpn_gateway_id is None:
                 raise TypeError("Missing required property 'vpn_gateway_id'")
-            __props__['vpn_gateway_id'] = vpn_gateway_id
+            __props__['vpnGatewayId'] = vpn_gateway_id
         super(VpnGatewayRoutePropagation, __self__).__init__(
             'aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation',
             resource_name,

@@ -82,10 +82,10 @@ class Model(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
+            __props__['apiId'] = api_id
             if content_type is None:
                 raise TypeError("Missing required property 'content_type'")
-            __props__['content_type'] = content_type
+            __props__['contentType'] = content_type
             __props__['description'] = description
             __props__['name'] = name
             if schema is None:

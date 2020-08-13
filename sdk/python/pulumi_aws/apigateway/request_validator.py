@@ -69,9 +69,9 @@ class RequestValidator(pulumi.CustomResource):
             __props__['name'] = name
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
-            __props__['validate_request_body'] = validate_request_body
-            __props__['validate_request_parameters'] = validate_request_parameters
+            __props__['restApi'] = rest_api
+            __props__['validateRequestBody'] = validate_request_body
+            __props__['validateRequestParameters'] = validate_request_parameters
         super(RequestValidator, __self__).__init__(
             'aws:apigateway/requestValidator:RequestValidator',
             resource_name,

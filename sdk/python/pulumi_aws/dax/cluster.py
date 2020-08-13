@@ -176,26 +176,26 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['availability_zones'] = availability_zones
+            __props__['availabilityZones'] = availability_zones
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
+            __props__['clusterName'] = cluster_name
             __props__['description'] = description
             if iam_role_arn is None:
                 raise TypeError("Missing required property 'iam_role_arn'")
-            __props__['iam_role_arn'] = iam_role_arn
-            __props__['maintenance_window'] = maintenance_window
+            __props__['iamRoleArn'] = iam_role_arn
+            __props__['maintenanceWindow'] = maintenance_window
             if node_type is None:
                 raise TypeError("Missing required property 'node_type'")
-            __props__['node_type'] = node_type
-            __props__['notification_topic_arn'] = notification_topic_arn
-            __props__['parameter_group_name'] = parameter_group_name
+            __props__['nodeType'] = node_type
+            __props__['notificationTopicArn'] = notification_topic_arn
+            __props__['parameterGroupName'] = parameter_group_name
             if replication_factor is None:
                 raise TypeError("Missing required property 'replication_factor'")
-            __props__['replication_factor'] = replication_factor
-            __props__['security_group_ids'] = security_group_ids
-            __props__['server_side_encryption'] = server_side_encryption
-            __props__['subnet_group_name'] = subnet_group_name
+            __props__['replicationFactor'] = replication_factor
+            __props__['securityGroupIds'] = security_group_ids
+            __props__['serverSideEncryption'] = server_side_encryption
+            __props__['subnetGroupName'] = subnet_group_name
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['cluster_address'] = None

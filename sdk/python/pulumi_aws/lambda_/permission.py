@@ -185,7 +185,7 @@ class Permission(pulumi.CustomResource):
             if action is None:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
-            __props__['event_source_token'] = event_source_token
+            __props__['eventSourceToken'] = event_source_token
             if function is None:
                 raise TypeError("Missing required property 'function'")
             __props__['function'] = function
@@ -193,10 +193,10 @@ class Permission(pulumi.CustomResource):
                 raise TypeError("Missing required property 'principal'")
             __props__['principal'] = principal
             __props__['qualifier'] = qualifier
-            __props__['source_account'] = source_account
-            __props__['source_arn'] = source_arn
-            __props__['statement_id'] = statement_id
-            __props__['statement_id_prefix'] = statement_id_prefix
+            __props__['sourceAccount'] = source_account
+            __props__['sourceArn'] = source_arn
+            __props__['statementId'] = statement_id
+            __props__['statementIdPrefix'] = statement_id_prefix
         super(Permission, __self__).__init__(
             'aws:lambda/permission:Permission',
             resource_name,

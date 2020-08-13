@@ -63,10 +63,10 @@ class ConnectionAssociation(pulumi.CustomResource):
 
             if connection_id is None:
                 raise TypeError("Missing required property 'connection_id'")
-            __props__['connection_id'] = connection_id
+            __props__['connectionId'] = connection_id
             if lag_id is None:
                 raise TypeError("Missing required property 'lag_id'")
-            __props__['lag_id'] = lag_id
+            __props__['lagId'] = lag_id
         super(ConnectionAssociation, __self__).__init__(
             'aws:directconnect/connectionAssociation:ConnectionAssociation',
             resource_name,

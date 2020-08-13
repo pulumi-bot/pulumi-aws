@@ -180,35 +180,35 @@ class RailsAppLayer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['app_server'] = app_server
-            __props__['auto_assign_elastic_ips'] = auto_assign_elastic_ips
-            __props__['auto_assign_public_ips'] = auto_assign_public_ips
-            __props__['auto_healing'] = auto_healing
-            __props__['bundler_version'] = bundler_version
-            __props__['custom_configure_recipes'] = custom_configure_recipes
-            __props__['custom_deploy_recipes'] = custom_deploy_recipes
-            __props__['custom_instance_profile_arn'] = custom_instance_profile_arn
-            __props__['custom_json'] = custom_json
-            __props__['custom_security_group_ids'] = custom_security_group_ids
-            __props__['custom_setup_recipes'] = custom_setup_recipes
-            __props__['custom_shutdown_recipes'] = custom_shutdown_recipes
-            __props__['custom_undeploy_recipes'] = custom_undeploy_recipes
-            __props__['drain_elb_on_shutdown'] = drain_elb_on_shutdown
-            __props__['ebs_volumes'] = ebs_volumes
-            __props__['elastic_load_balancer'] = elastic_load_balancer
-            __props__['install_updates_on_boot'] = install_updates_on_boot
-            __props__['instance_shutdown_timeout'] = instance_shutdown_timeout
-            __props__['manage_bundler'] = manage_bundler
+            __props__['appServer'] = app_server
+            __props__['autoAssignElasticIps'] = auto_assign_elastic_ips
+            __props__['autoAssignPublicIps'] = auto_assign_public_ips
+            __props__['autoHealing'] = auto_healing
+            __props__['bundlerVersion'] = bundler_version
+            __props__['customConfigureRecipes'] = custom_configure_recipes
+            __props__['customDeployRecipes'] = custom_deploy_recipes
+            __props__['customInstanceProfileArn'] = custom_instance_profile_arn
+            __props__['customJson'] = custom_json
+            __props__['customSecurityGroupIds'] = custom_security_group_ids
+            __props__['customSetupRecipes'] = custom_setup_recipes
+            __props__['customShutdownRecipes'] = custom_shutdown_recipes
+            __props__['customUndeployRecipes'] = custom_undeploy_recipes
+            __props__['drainElbOnShutdown'] = drain_elb_on_shutdown
+            __props__['ebsVolumes'] = ebs_volumes
+            __props__['elasticLoadBalancer'] = elastic_load_balancer
+            __props__['installUpdatesOnBoot'] = install_updates_on_boot
+            __props__['instanceShutdownTimeout'] = instance_shutdown_timeout
+            __props__['manageBundler'] = manage_bundler
             __props__['name'] = name
-            __props__['passenger_version'] = passenger_version
-            __props__['ruby_version'] = ruby_version
-            __props__['rubygems_version'] = rubygems_version
+            __props__['passengerVersion'] = passenger_version
+            __props__['rubyVersion'] = ruby_version
+            __props__['rubygemsVersion'] = rubygems_version
             if stack_id is None:
                 raise TypeError("Missing required property 'stack_id'")
-            __props__['stack_id'] = stack_id
-            __props__['system_packages'] = system_packages
+            __props__['stackId'] = stack_id
+            __props__['systemPackages'] = system_packages
             __props__['tags'] = tags
-            __props__['use_ebs_optimized_instances'] = use_ebs_optimized_instances
+            __props__['useEbsOptimizedInstances'] = use_ebs_optimized_instances
             __props__['arn'] = None
         super(RailsAppLayer, __self__).__init__(
             'aws:opsworks/railsAppLayer:RailsAppLayer',

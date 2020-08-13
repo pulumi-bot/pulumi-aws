@@ -70,10 +70,10 @@ class NetworkAssociation(pulumi.CustomResource):
 
             if client_vpn_endpoint_id is None:
                 raise TypeError("Missing required property 'client_vpn_endpoint_id'")
-            __props__['client_vpn_endpoint_id'] = client_vpn_endpoint_id
+            __props__['clientVpnEndpointId'] = client_vpn_endpoint_id
             if subnet_id is None:
                 raise TypeError("Missing required property 'subnet_id'")
-            __props__['subnet_id'] = subnet_id
+            __props__['subnetId'] = subnet_id
             __props__['security_groups'] = None
             __props__['status'] = None
             __props__['vpc_id'] = None

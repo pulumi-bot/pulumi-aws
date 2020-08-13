@@ -94,11 +94,11 @@ class EndpointConfiguration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['kms_key_arn'] = kms_key_arn
+            __props__['kmsKeyArn'] = kms_key_arn
             __props__['name'] = name
             if production_variants is None:
                 raise TypeError("Missing required property 'production_variants'")
-            __props__['production_variants'] = production_variants
+            __props__['productionVariants'] = production_variants
             __props__['tags'] = tags
             __props__['arn'] = None
         super(EndpointConfiguration, __self__).__init__(

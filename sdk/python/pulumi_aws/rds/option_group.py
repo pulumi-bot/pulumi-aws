@@ -135,15 +135,15 @@ class OptionGroup(pulumi.CustomResource):
 
             if engine_name is None:
                 raise TypeError("Missing required property 'engine_name'")
-            __props__['engine_name'] = engine_name
+            __props__['engineName'] = engine_name
             if major_engine_version is None:
                 raise TypeError("Missing required property 'major_engine_version'")
-            __props__['major_engine_version'] = major_engine_version
+            __props__['majorEngineVersion'] = major_engine_version
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             if option_group_description is None:
                 option_group_description = 'Managed by Pulumi'
-            __props__['option_group_description'] = option_group_description
+            __props__['optionGroupDescription'] = option_group_description
             __props__['options'] = options
             __props__['tags'] = tags
             __props__['arn'] = None

@@ -168,24 +168,24 @@ class Integration(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['connection_id'] = connection_id
-            __props__['connection_type'] = connection_type
-            __props__['content_handling_strategy'] = content_handling_strategy
-            __props__['credentials_arn'] = credentials_arn
+            __props__['apiId'] = api_id
+            __props__['connectionId'] = connection_id
+            __props__['connectionType'] = connection_type
+            __props__['contentHandlingStrategy'] = content_handling_strategy
+            __props__['credentialsArn'] = credentials_arn
             __props__['description'] = description
-            __props__['integration_method'] = integration_method
+            __props__['integrationMethod'] = integration_method
             if integration_type is None:
                 raise TypeError("Missing required property 'integration_type'")
-            __props__['integration_type'] = integration_type
-            __props__['integration_uri'] = integration_uri
-            __props__['passthrough_behavior'] = passthrough_behavior
-            __props__['payload_format_version'] = payload_format_version
-            __props__['request_parameters'] = request_parameters
-            __props__['request_templates'] = request_templates
-            __props__['template_selection_expression'] = template_selection_expression
-            __props__['timeout_milliseconds'] = timeout_milliseconds
-            __props__['tls_config'] = tls_config
+            __props__['integrationType'] = integration_type
+            __props__['integrationUri'] = integration_uri
+            __props__['passthroughBehavior'] = passthrough_behavior
+            __props__['payloadFormatVersion'] = payload_format_version
+            __props__['requestParameters'] = request_parameters
+            __props__['requestTemplates'] = request_templates
+            __props__['templateSelectionExpression'] = template_selection_expression
+            __props__['timeoutMilliseconds'] = timeout_milliseconds
+            __props__['tlsConfig'] = tls_config
             __props__['integration_response_selection_expression'] = None
         super(Integration, __self__).__init__(
             'aws:apigatewayv2/integration:Integration',

@@ -86,9 +86,9 @@ class S3BucketAssociation(pulumi.CustomResource):
 
             if bucket_name is None:
                 raise TypeError("Missing required property 'bucket_name'")
-            __props__['bucket_name'] = bucket_name
-            __props__['classification_type'] = classification_type
-            __props__['member_account_id'] = member_account_id
+            __props__['bucketName'] = bucket_name
+            __props__['classificationType'] = classification_type
+            __props__['memberAccountId'] = member_account_id
             __props__['prefix'] = prefix
         super(S3BucketAssociation, __self__).__init__(
             'aws:macie/s3BucketAssociation:S3BucketAssociation',

@@ -101,12 +101,12 @@ class Key(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['customer_master_key_spec'] = customer_master_key_spec
-            __props__['deletion_window_in_days'] = deletion_window_in_days
+            __props__['customerMasterKeySpec'] = customer_master_key_spec
+            __props__['deletionWindowInDays'] = deletion_window_in_days
             __props__['description'] = description
-            __props__['enable_key_rotation'] = enable_key_rotation
-            __props__['is_enabled'] = is_enabled
-            __props__['key_usage'] = key_usage
+            __props__['enableKeyRotation'] = enable_key_rotation
+            __props__['isEnabled'] = is_enabled
+            __props__['keyUsage'] = key_usage
             __props__['policy'] = policy
             __props__['tags'] = tags
             __props__['arn'] = None

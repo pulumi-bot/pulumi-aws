@@ -112,14 +112,14 @@ class NetworkInterface(pulumi.CustomResource):
 
             __props__['attachments'] = attachments
             __props__['description'] = description
-            __props__['private_ip'] = private_ip
-            __props__['private_ips'] = private_ips
-            __props__['private_ips_count'] = private_ips_count
-            __props__['security_groups'] = security_groups
-            __props__['source_dest_check'] = source_dest_check
+            __props__['privateIp'] = private_ip
+            __props__['privateIps'] = private_ips
+            __props__['privateIpsCount'] = private_ips_count
+            __props__['securityGroups'] = security_groups
+            __props__['sourceDestCheck'] = source_dest_check
             if subnet_id is None:
                 raise TypeError("Missing required property 'subnet_id'")
-            __props__['subnet_id'] = subnet_id
+            __props__['subnetId'] = subnet_id
             __props__['tags'] = tags
             __props__['mac_address'] = None
             __props__['outpost_arn'] = None

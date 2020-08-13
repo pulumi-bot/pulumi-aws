@@ -72,15 +72,15 @@ class AuthorizationRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_group_id'] = access_group_id
-            __props__['authorize_all_groups'] = authorize_all_groups
+            __props__['accessGroupId'] = access_group_id
+            __props__['authorizeAllGroups'] = authorize_all_groups
             if client_vpn_endpoint_id is None:
                 raise TypeError("Missing required property 'client_vpn_endpoint_id'")
-            __props__['client_vpn_endpoint_id'] = client_vpn_endpoint_id
+            __props__['clientVpnEndpointId'] = client_vpn_endpoint_id
             __props__['description'] = description
             if target_network_cidr is None:
                 raise TypeError("Missing required property 'target_network_cidr'")
-            __props__['target_network_cidr'] = target_network_cidr
+            __props__['targetNetworkCidr'] = target_network_cidr
         super(AuthorizationRule, __self__).__init__(
             'aws:ec2clientvpn/authorizationRule:AuthorizationRule',
             resource_name,

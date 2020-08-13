@@ -74,10 +74,10 @@ class SmsChannel(pulumi.CustomResource):
 
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
+            __props__['applicationId'] = application_id
             __props__['enabled'] = enabled
-            __props__['sender_id'] = sender_id
-            __props__['short_code'] = short_code
+            __props__['senderId'] = sender_id
+            __props__['shortCode'] = short_code
             __props__['promotional_messages_per_second'] = None
             __props__['transactional_messages_per_second'] = None
         super(SmsChannel, __self__).__init__(

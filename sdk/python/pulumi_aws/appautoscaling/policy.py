@@ -224,18 +224,18 @@ class Policy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['policy_type'] = policy_type
+            __props__['policyType'] = policy_type
             if resource_id is None:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
+            __props__['resourceId'] = resource_id
             if scalable_dimension is None:
                 raise TypeError("Missing required property 'scalable_dimension'")
-            __props__['scalable_dimension'] = scalable_dimension
+            __props__['scalableDimension'] = scalable_dimension
             if service_namespace is None:
                 raise TypeError("Missing required property 'service_namespace'")
-            __props__['service_namespace'] = service_namespace
-            __props__['step_scaling_policy_configuration'] = step_scaling_policy_configuration
-            __props__['target_tracking_scaling_policy_configuration'] = target_tracking_scaling_policy_configuration
+            __props__['serviceNamespace'] = service_namespace
+            __props__['stepScalingPolicyConfiguration'] = step_scaling_policy_configuration
+            __props__['targetTrackingScalingPolicyConfiguration'] = target_tracking_scaling_policy_configuration
             __props__['arn'] = None
         super(Policy, __self__).__init__(
             'aws:appautoscaling/policy:Policy',

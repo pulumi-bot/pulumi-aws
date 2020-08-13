@@ -73,7 +73,7 @@ class TransitGatewayPeeringAttachmentAccepter(pulumi.CustomResource):
             __props__['tags'] = tags
             if transit_gateway_attachment_id is None:
                 raise TypeError("Missing required property 'transit_gateway_attachment_id'")
-            __props__['transit_gateway_attachment_id'] = transit_gateway_attachment_id
+            __props__['transitGatewayAttachmentId'] = transit_gateway_attachment_id
             __props__['peer_account_id'] = None
             __props__['peer_region'] = None
             __props__['peer_transit_gateway_id'] = None

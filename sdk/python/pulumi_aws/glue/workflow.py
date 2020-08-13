@@ -78,7 +78,7 @@ class Workflow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['default_run_properties'] = default_run_properties
+            __props__['defaultRunProperties'] = default_run_properties
             __props__['description'] = description
             __props__['name'] = name
         super(Workflow, __self__).__init__(

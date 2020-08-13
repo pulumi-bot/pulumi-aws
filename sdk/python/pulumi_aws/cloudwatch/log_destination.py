@@ -67,10 +67,10 @@ class LogDestination(pulumi.CustomResource):
             __props__['name'] = name
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             if target_arn is None:
                 raise TypeError("Missing required property 'target_arn'")
-            __props__['target_arn'] = target_arn
+            __props__['targetArn'] = target_arn
             __props__['arn'] = None
         super(LogDestination, __self__).__init__(
             'aws:cloudwatch/logDestination:LogDestination',

@@ -139,13 +139,13 @@ class Server(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['endpoint_details'] = endpoint_details
-            __props__['endpoint_type'] = endpoint_type
-            __props__['force_destroy'] = force_destroy
-            __props__['host_key'] = host_key
-            __props__['identity_provider_type'] = identity_provider_type
-            __props__['invocation_role'] = invocation_role
-            __props__['logging_role'] = logging_role
+            __props__['endpointDetails'] = endpoint_details
+            __props__['endpointType'] = endpoint_type
+            __props__['forceDestroy'] = force_destroy
+            __props__['hostKey'] = host_key
+            __props__['identityProviderType'] = identity_provider_type
+            __props__['invocationRole'] = invocation_role
+            __props__['loggingRole'] = logging_role
             __props__['tags'] = tags
             __props__['url'] = url
             __props__['arn'] = None

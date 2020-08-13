@@ -57,10 +57,10 @@ class AmiLaunchPermission(pulumi.CustomResource):
 
             if account_id is None:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             if image_id is None:
                 raise TypeError("Missing required property 'image_id'")
-            __props__['image_id'] = image_id
+            __props__['imageId'] = image_id
         super(AmiLaunchPermission, __self__).__init__(
             'aws:ec2/amiLaunchPermission:AmiLaunchPermission',
             resource_name,

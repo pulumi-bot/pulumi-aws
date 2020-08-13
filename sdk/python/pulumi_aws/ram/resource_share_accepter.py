@@ -95,7 +95,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
 
             if share_arn is None:
                 raise TypeError("Missing required property 'share_arn'")
-            __props__['share_arn'] = share_arn
+            __props__['shareArn'] = share_arn
             __props__['invitation_arn'] = None
             __props__['receiver_account_id'] = None
             __props__['resources'] = None

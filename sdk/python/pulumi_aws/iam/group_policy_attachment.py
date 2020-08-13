@@ -67,7 +67,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
             __props__['group'] = group
             if policy_arn is None:
                 raise TypeError("Missing required property 'policy_arn'")
-            __props__['policy_arn'] = policy_arn
+            __props__['policyArn'] = policy_arn
         super(GroupPolicyAttachment, __self__).__init__(
             'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
             resource_name,

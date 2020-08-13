@@ -69,8 +69,8 @@ class Agent(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['activation_key'] = activation_key
-            __props__['ip_address'] = ip_address
+            __props__['activationKey'] = activation_key
+            __props__['ipAddress'] = ip_address
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['arn'] = None

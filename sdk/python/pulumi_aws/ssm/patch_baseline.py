@@ -230,14 +230,14 @@ class PatchBaseline(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['approval_rules'] = approval_rules
-            __props__['approved_patches'] = approved_patches
-            __props__['approved_patches_compliance_level'] = approved_patches_compliance_level
+            __props__['approvalRules'] = approval_rules
+            __props__['approvedPatches'] = approved_patches
+            __props__['approvedPatchesComplianceLevel'] = approved_patches_compliance_level
             __props__['description'] = description
-            __props__['global_filters'] = global_filters
+            __props__['globalFilters'] = global_filters
             __props__['name'] = name
-            __props__['operating_system'] = operating_system
-            __props__['rejected_patches'] = rejected_patches
+            __props__['operatingSystem'] = operating_system
+            __props__['rejectedPatches'] = rejected_patches
             __props__['tags'] = tags
         super(PatchBaseline, __self__).__init__(
             'aws:ssm/patchBaseline:PatchBaseline',

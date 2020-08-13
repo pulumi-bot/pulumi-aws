@@ -70,11 +70,11 @@ class ApiMapping(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['api_mapping_key'] = api_mapping_key
+            __props__['apiId'] = api_id
+            __props__['apiMappingKey'] = api_mapping_key
             if domain_name is None:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
+            __props__['domainName'] = domain_name
             if stage is None:
                 raise TypeError("Missing required property 'stage'")
             __props__['stage'] = stage

@@ -44,7 +44,7 @@ class MailFrom(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"],
             name=example_mail_from.mail_from_domain,
             type="MX",
-            ttl="600",
+            ttl=600,
             records=["10 feedback-smtp.us-east-1.amazonses.com"])
         # Change to the region in which `aws_ses_domain_identity.example` is created
         # Example Route53 TXT record for SPF
@@ -52,7 +52,7 @@ class MailFrom(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"],
             name=example_mail_from.mail_from_domain,
             type="TXT",
-            ttl="600",
+            ttl=600,
             records=["v=spf1 include:amazonses.com -all"])
         ```
 
@@ -79,13 +79,13 @@ class MailFrom(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['behavior_on_mx_failure'] = behavior_on_mx_failure
+            __props__['behaviorOnMxFailure'] = behavior_on_mx_failure
             if domain is None:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
             if mail_from_domain is None:
                 raise TypeError("Missing required property 'mail_from_domain'")
-            __props__['mail_from_domain'] = mail_from_domain
+            __props__['mailFromDomain'] = mail_from_domain
         super(MailFrom, __self__).__init__(
             'aws:ses/mailFrom:MailFrom',
             resource_name,

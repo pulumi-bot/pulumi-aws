@@ -102,10 +102,10 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['force_destroy'] = force_destroy
+            __props__['forceDestroy'] = force_destroy
             __props__['name'] = name
             __props__['path'] = path
-            __props__['permissions_boundary'] = permissions_boundary
+            __props__['permissionsBoundary'] = permissions_boundary
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['unique_id'] = None

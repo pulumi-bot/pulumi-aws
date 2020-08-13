@@ -95,7 +95,7 @@ class StateMachine(pulumi.CustomResource):
             __props__['name'] = name
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['creation_date'] = None

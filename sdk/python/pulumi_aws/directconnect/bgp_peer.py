@@ -94,16 +94,16 @@ class BgpPeer(pulumi.CustomResource):
 
             if address_family is None:
                 raise TypeError("Missing required property 'address_family'")
-            __props__['address_family'] = address_family
-            __props__['amazon_address'] = amazon_address
+            __props__['addressFamily'] = address_family
+            __props__['amazonAddress'] = amazon_address
             if bgp_asn is None:
                 raise TypeError("Missing required property 'bgp_asn'")
-            __props__['bgp_asn'] = bgp_asn
-            __props__['bgp_auth_key'] = bgp_auth_key
-            __props__['customer_address'] = customer_address
+            __props__['bgpAsn'] = bgp_asn
+            __props__['bgpAuthKey'] = bgp_auth_key
+            __props__['customerAddress'] = customer_address
             if virtual_interface_id is None:
                 raise TypeError("Missing required property 'virtual_interface_id'")
-            __props__['virtual_interface_id'] = virtual_interface_id
+            __props__['virtualInterfaceId'] = virtual_interface_id
             __props__['aws_device'] = None
             __props__['bgp_peer_id'] = None
             __props__['bgp_status'] = None

@@ -92,7 +92,7 @@ class SecurityConfiguration(pulumi.CustomResource):
 
             if encryption_configuration is None:
                 raise TypeError("Missing required property 'encryption_configuration'")
-            __props__['encryption_configuration'] = encryption_configuration
+            __props__['encryptionConfiguration'] = encryption_configuration
             __props__['name'] = name
         super(SecurityConfiguration, __self__).__init__(
             'aws:glue/securityConfiguration:SecurityConfiguration',

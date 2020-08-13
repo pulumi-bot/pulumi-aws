@@ -72,7 +72,7 @@ class DocumentationVersion(pulumi.CustomResource):
             __props__['description'] = description
             if rest_api_id is None:
                 raise TypeError("Missing required property 'rest_api_id'")
-            __props__['rest_api_id'] = rest_api_id
+            __props__['restApiId'] = rest_api_id
             if version is None:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version

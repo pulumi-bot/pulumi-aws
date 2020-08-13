@@ -102,7 +102,7 @@ class Accelerator(pulumi.CustomResource):
 
             __props__['attributes'] = attributes
             __props__['enabled'] = enabled
-            __props__['ip_address_type'] = ip_address_type
+            __props__['ipAddressType'] = ip_address_type
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['dns_name'] = None

@@ -122,7 +122,7 @@ class VpnConnection(pulumi.CustomResource):
 
         example_transit_gateway = aws.ec2transitgateway.TransitGateway("exampleTransitGateway")
         example_customer_gateway = aws.ec2.CustomerGateway("exampleCustomerGateway",
-            bgp_asn=65000,
+            bgp_asn="65000",
             ip_address="172.0.0.1",
             type="ipsec.1")
         example_vpn_connection = aws.ec2.VpnConnection("exampleVpnConnection",
@@ -139,7 +139,7 @@ class VpnConnection(pulumi.CustomResource):
         vpc = aws.ec2.Vpc("vpc", cidr_block="10.0.0.0/16")
         vpn_gateway = aws.ec2.VpnGateway("vpnGateway", vpc_id=vpc.id)
         customer_gateway = aws.ec2.CustomerGateway("customerGateway",
-            bgp_asn=65000,
+            bgp_asn="65000",
             ip_address="172.0.0.1",
             type="ipsec.1")
         main = aws.ec2.VpnConnection("main",
@@ -181,18 +181,18 @@ class VpnConnection(pulumi.CustomResource):
 
             if customer_gateway_id is None:
                 raise TypeError("Missing required property 'customer_gateway_id'")
-            __props__['customer_gateway_id'] = customer_gateway_id
-            __props__['static_routes_only'] = static_routes_only
+            __props__['customerGatewayId'] = customer_gateway_id
+            __props__['staticRoutesOnly'] = static_routes_only
             __props__['tags'] = tags
-            __props__['transit_gateway_id'] = transit_gateway_id
-            __props__['tunnel1_inside_cidr'] = tunnel1_inside_cidr
-            __props__['tunnel1_preshared_key'] = tunnel1_preshared_key
-            __props__['tunnel2_inside_cidr'] = tunnel2_inside_cidr
-            __props__['tunnel2_preshared_key'] = tunnel2_preshared_key
+            __props__['transitGatewayId'] = transit_gateway_id
+            __props__['tunnel1InsideCidr'] = tunnel1_inside_cidr
+            __props__['tunnel1PresharedKey'] = tunnel1_preshared_key
+            __props__['tunnel2InsideCidr'] = tunnel2_inside_cidr
+            __props__['tunnel2PresharedKey'] = tunnel2_preshared_key
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            __props__['vpn_gateway_id'] = vpn_gateway_id
+            __props__['vpnGatewayId'] = vpn_gateway_id
             __props__['arn'] = None
             __props__['customer_gateway_configuration'] = None
             __props__['routes'] = None

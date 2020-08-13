@@ -91,10 +91,10 @@ class LogResourcePolicy(pulumi.CustomResource):
 
             if policy_document is None:
                 raise TypeError("Missing required property 'policy_document'")
-            __props__['policy_document'] = policy_document
+            __props__['policyDocument'] = policy_document
             if policy_name is None:
                 raise TypeError("Missing required property 'policy_name'")
-            __props__['policy_name'] = policy_name
+            __props__['policyName'] = policy_name
         super(LogResourcePolicy, __self__).__init__(
             'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
             resource_name,

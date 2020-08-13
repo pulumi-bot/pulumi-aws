@@ -122,18 +122,18 @@ class Route(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['destination_cidr_block'] = destination_cidr_block
-            __props__['destination_ipv6_cidr_block'] = destination_ipv6_cidr_block
-            __props__['egress_only_gateway_id'] = egress_only_gateway_id
-            __props__['gateway_id'] = gateway_id
-            __props__['instance_id'] = instance_id
-            __props__['nat_gateway_id'] = nat_gateway_id
-            __props__['network_interface_id'] = network_interface_id
+            __props__['destinationCidrBlock'] = destination_cidr_block
+            __props__['destinationIpv6CidrBlock'] = destination_ipv6_cidr_block
+            __props__['egressOnlyGatewayId'] = egress_only_gateway_id
+            __props__['gatewayId'] = gateway_id
+            __props__['instanceId'] = instance_id
+            __props__['natGatewayId'] = nat_gateway_id
+            __props__['networkInterfaceId'] = network_interface_id
             if route_table_id is None:
                 raise TypeError("Missing required property 'route_table_id'")
-            __props__['route_table_id'] = route_table_id
-            __props__['transit_gateway_id'] = transit_gateway_id
-            __props__['vpc_peering_connection_id'] = vpc_peering_connection_id
+            __props__['routeTableId'] = route_table_id
+            __props__['transitGatewayId'] = transit_gateway_id
+            __props__['vpcPeeringConnectionId'] = vpc_peering_connection_id
             __props__['destination_prefix_list_id'] = None
             __props__['instance_owner_id'] = None
             __props__['origin'] = None

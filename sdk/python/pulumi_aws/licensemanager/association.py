@@ -48,10 +48,10 @@ class Association(pulumi.CustomResource):
 
             if license_configuration_arn is None:
                 raise TypeError("Missing required property 'license_configuration_arn'")
-            __props__['license_configuration_arn'] = license_configuration_arn
+            __props__['licenseConfigurationArn'] = license_configuration_arn
             if resource_arn is None:
                 raise TypeError("Missing required property 'resource_arn'")
-            __props__['resource_arn'] = resource_arn
+            __props__['resourceArn'] = resource_arn
         super(Association, __self__).__init__(
             'aws:licensemanager/association:Association',
             resource_name,

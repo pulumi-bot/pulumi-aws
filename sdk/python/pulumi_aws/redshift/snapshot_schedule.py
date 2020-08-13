@@ -80,9 +80,9 @@ class SnapshotSchedule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'definitions'")
             __props__['definitions'] = definitions
             __props__['description'] = description
-            __props__['force_destroy'] = force_destroy
+            __props__['forceDestroy'] = force_destroy
             __props__['identifier'] = identifier
-            __props__['identifier_prefix'] = identifier_prefix
+            __props__['identifierPrefix'] = identifier_prefix
             __props__['tags'] = tags
             __props__['arn'] = None
         super(SnapshotSchedule, __self__).__init__(

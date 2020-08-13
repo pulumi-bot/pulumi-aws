@@ -98,8 +98,8 @@ class CertificateValidation(pulumi.CustomResource):
 
             if certificate_arn is None:
                 raise TypeError("Missing required property 'certificate_arn'")
-            __props__['certificate_arn'] = certificate_arn
-            __props__['validation_record_fqdns'] = validation_record_fqdns
+            __props__['certificateArn'] = certificate_arn
+            __props__['validationRecordFqdns'] = validation_record_fqdns
         super(CertificateValidation, __self__).__init__(
             'aws:acm/certificateValidation:CertificateValidation',
             resource_name,

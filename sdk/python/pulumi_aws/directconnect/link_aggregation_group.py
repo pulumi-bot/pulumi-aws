@@ -85,8 +85,8 @@ class LinkAggregationGroup(pulumi.CustomResource):
 
             if connections_bandwidth is None:
                 raise TypeError("Missing required property 'connections_bandwidth'")
-            __props__['connections_bandwidth'] = connections_bandwidth
-            __props__['force_destroy'] = force_destroy
+            __props__['connectionsBandwidth'] = connections_bandwidth
+            __props__['forceDestroy'] = force_destroy
             if location is None:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location

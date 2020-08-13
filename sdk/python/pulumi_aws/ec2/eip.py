@@ -173,11 +173,11 @@ class Eip(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['associate_with_private_ip'] = associate_with_private_ip
-            __props__['customer_owned_ipv4_pool'] = customer_owned_ipv4_pool
+            __props__['associateWithPrivateIp'] = associate_with_private_ip
+            __props__['customerOwnedIpv4Pool'] = customer_owned_ipv4_pool
             __props__['instance'] = instance
-            __props__['network_interface'] = network_interface
-            __props__['public_ipv4_pool'] = public_ipv4_pool
+            __props__['networkInterface'] = network_interface
+            __props__['publicIpv4Pool'] = public_ipv4_pool
             __props__['tags'] = tags
             __props__['vpc'] = vpc
             __props__['allocation_id'] = None

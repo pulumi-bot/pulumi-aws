@@ -96,14 +96,14 @@ class TargetGroupAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['availability_zone'] = availability_zone
+            __props__['availabilityZone'] = availability_zone
             __props__['port'] = port
             if target_group_arn is None:
                 raise TypeError("Missing required property 'target_group_arn'")
-            __props__['target_group_arn'] = target_group_arn
+            __props__['targetGroupArn'] = target_group_arn
             if target_id is None:
                 raise TypeError("Missing required property 'target_id'")
-            __props__['target_id'] = target_id
+            __props__['targetId'] = target_id
         super(TargetGroupAttachment, __self__).__init__(
             'aws:applicationloadbalancing/targetGroupAttachment:TargetGroupAttachment',
             resource_name,

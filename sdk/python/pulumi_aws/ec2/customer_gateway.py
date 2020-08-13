@@ -42,7 +42,7 @@ class CustomerGateway(pulumi.CustomResource):
         import pulumi_aws as aws
 
         main = aws.ec2.CustomerGateway("main",
-            bgp_asn=65000,
+            bgp_asn="65000",
             ip_address="172.83.124.10",
             tags={
                 "Name": "main-customer-gateway",
@@ -77,10 +77,10 @@ class CustomerGateway(pulumi.CustomResource):
 
             if bgp_asn is None:
                 raise TypeError("Missing required property 'bgp_asn'")
-            __props__['bgp_asn'] = bgp_asn
+            __props__['bgpAsn'] = bgp_asn
             if ip_address is None:
                 raise TypeError("Missing required property 'ip_address'")
-            __props__['ip_address'] = ip_address
+            __props__['ipAddress'] = ip_address
             __props__['tags'] = tags
             if type is None:
                 raise TypeError("Missing required property 'type'")

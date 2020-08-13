@@ -68,13 +68,13 @@ class RoleAssociation(pulumi.CustomResource):
 
             if db_instance_identifier is None:
                 raise TypeError("Missing required property 'db_instance_identifier'")
-            __props__['db_instance_identifier'] = db_instance_identifier
+            __props__['dbInstanceIdentifier'] = db_instance_identifier
             if feature_name is None:
                 raise TypeError("Missing required property 'feature_name'")
-            __props__['feature_name'] = feature_name
+            __props__['featureName'] = feature_name
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
         super(RoleAssociation, __self__).__init__(
             'aws:rds/roleAssociation:RoleAssociation',
             resource_name,

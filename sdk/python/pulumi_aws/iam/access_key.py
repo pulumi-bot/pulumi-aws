@@ -113,7 +113,7 @@ class AccessKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['pgp_key'] = pgp_key
+            __props__['pgpKey'] = pgp_key
             __props__['status'] = status
             if user is None:
                 raise TypeError("Missing required property 'user'")

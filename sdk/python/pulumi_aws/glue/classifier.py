@@ -153,11 +153,11 @@ class Classifier(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['csv_classifier'] = csv_classifier
-            __props__['grok_classifier'] = grok_classifier
-            __props__['json_classifier'] = json_classifier
+            __props__['csvClassifier'] = csv_classifier
+            __props__['grokClassifier'] = grok_classifier
+            __props__['jsonClassifier'] = json_classifier
             __props__['name'] = name
-            __props__['xml_classifier'] = xml_classifier
+            __props__['xmlClassifier'] = xml_classifier
         super(Classifier, __self__).__init__(
             'aws:glue/classifier:Classifier',
             resource_name,

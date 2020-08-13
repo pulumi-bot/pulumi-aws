@@ -194,17 +194,17 @@ class Ami(pulumi.CustomResource):
 
             __props__['architecture'] = architecture
             __props__['description'] = description
-            __props__['ebs_block_devices'] = ebs_block_devices
-            __props__['ena_support'] = ena_support
-            __props__['ephemeral_block_devices'] = ephemeral_block_devices
-            __props__['image_location'] = image_location
-            __props__['kernel_id'] = kernel_id
+            __props__['ebsBlockDevices'] = ebs_block_devices
+            __props__['enaSupport'] = ena_support
+            __props__['ephemeralBlockDevices'] = ephemeral_block_devices
+            __props__['imageLocation'] = image_location
+            __props__['kernelId'] = kernel_id
             __props__['name'] = name
-            __props__['ramdisk_id'] = ramdisk_id
-            __props__['root_device_name'] = root_device_name
-            __props__['sriov_net_support'] = sriov_net_support
+            __props__['ramdiskId'] = ramdisk_id
+            __props__['rootDeviceName'] = root_device_name
+            __props__['sriovNetSupport'] = sriov_net_support
             __props__['tags'] = tags
-            __props__['virtualization_type'] = virtualization_type
+            __props__['virtualizationType'] = virtualization_type
             __props__['arn'] = None
             __props__['manage_ebs_snapshots'] = None
             __props__['root_snapshot_id'] = None

@@ -111,7 +111,7 @@ class ByteMatchSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['byte_match_tuples'] = byte_match_tuples
+            __props__['byteMatchTuples'] = byte_match_tuples
             __props__['name'] = name
         super(ByteMatchSet, __self__).__init__(
             'aws:waf/byteMatchSet:ByteMatchSet',

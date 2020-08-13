@@ -157,11 +157,11 @@ class NetworkAcl(pulumi.CustomResource):
 
             __props__['egress'] = egress
             __props__['ingress'] = ingress
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
             __props__['tags'] = tags
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['arn'] = None
             __props__['owner_id'] = None
         super(NetworkAcl, __self__).__init__(

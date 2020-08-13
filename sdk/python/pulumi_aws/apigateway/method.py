@@ -136,24 +136,24 @@ class Method(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['api_key_required'] = api_key_required
+            __props__['apiKeyRequired'] = api_key_required
             if authorization is None:
                 raise TypeError("Missing required property 'authorization'")
             __props__['authorization'] = authorization
-            __props__['authorization_scopes'] = authorization_scopes
-            __props__['authorizer_id'] = authorizer_id
+            __props__['authorizationScopes'] = authorization_scopes
+            __props__['authorizerId'] = authorizer_id
             if http_method is None:
                 raise TypeError("Missing required property 'http_method'")
-            __props__['http_method'] = http_method
-            __props__['request_models'] = request_models
-            __props__['request_parameters'] = request_parameters
-            __props__['request_validator_id'] = request_validator_id
+            __props__['httpMethod'] = http_method
+            __props__['requestModels'] = request_models
+            __props__['requestParameters'] = request_parameters
+            __props__['requestValidatorId'] = request_validator_id
             if resource_id is None:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
+            __props__['resourceId'] = resource_id
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
+            __props__['restApi'] = rest_api
         super(Method, __self__).__init__(
             'aws:apigateway/method:Method',
             resource_name,

@@ -106,7 +106,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="443",
+            port=443,
             protocol="HTTPS",
             ssl_policy="ELBSecurityPolicy-2016-08",
             certificate_arn="arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4",
@@ -125,7 +125,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[{
                 "type": "redirect",
@@ -146,7 +146,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[{
                 "type": "fixed-response",
@@ -175,7 +175,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[
                 {
@@ -204,7 +204,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[
                 {
@@ -302,18 +302,18 @@ class Listener(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['certificate_arn'] = certificate_arn
+            __props__['certificateArn'] = certificate_arn
             if default_actions is None:
                 raise TypeError("Missing required property 'default_actions'")
-            __props__['default_actions'] = default_actions
+            __props__['defaultActions'] = default_actions
             if load_balancer_arn is None:
                 raise TypeError("Missing required property 'load_balancer_arn'")
-            __props__['load_balancer_arn'] = load_balancer_arn
+            __props__['loadBalancerArn'] = load_balancer_arn
             if port is None:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
             __props__['protocol'] = protocol
-            __props__['ssl_policy'] = ssl_policy
+            __props__['sslPolicy'] = ssl_policy
             __props__['arn'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancingv2/listener:Listener")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)

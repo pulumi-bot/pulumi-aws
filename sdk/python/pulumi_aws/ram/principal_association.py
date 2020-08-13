@@ -82,7 +82,7 @@ class PrincipalAssociation(pulumi.CustomResource):
             __props__['principal'] = principal
             if resource_share_arn is None:
                 raise TypeError("Missing required property 'resource_share_arn'")
-            __props__['resource_share_arn'] = resource_share_arn
+            __props__['resourceShareArn'] = resource_share_arn
         super(PrincipalAssociation, __self__).__init__(
             'aws:ram/principalAssociation:PrincipalAssociation',
             resource_name,

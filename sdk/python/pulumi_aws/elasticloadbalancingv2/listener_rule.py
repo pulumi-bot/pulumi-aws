@@ -369,7 +369,7 @@ class ListenerRule(pulumi.CustomResource):
             __props__['conditions'] = conditions
             if listener_arn is None:
                 raise TypeError("Missing required property 'listener_arn'")
-            __props__['listener_arn'] = listener_arn
+            __props__['listenerArn'] = listener_arn
             __props__['priority'] = priority
             __props__['arn'] = None
         super(ListenerRule, __self__).__init__(

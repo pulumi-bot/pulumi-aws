@@ -54,7 +54,7 @@ class MemberAccountAssociation(pulumi.CustomResource):
 
             if member_account_id is None:
                 raise TypeError("Missing required property 'member_account_id'")
-            __props__['member_account_id'] = member_account_id
+            __props__['memberAccountId'] = member_account_id
         super(MemberAccountAssociation, __self__).__init__(
             'aws:macie/memberAccountAssociation:MemberAccountAssociation',
             resource_name,

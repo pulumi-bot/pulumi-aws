@@ -90,15 +90,15 @@ class Task(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cloudwatch_log_group_arn'] = cloudwatch_log_group_arn
+            __props__['cloudwatchLogGroupArn'] = cloudwatch_log_group_arn
             if destination_location_arn is None:
                 raise TypeError("Missing required property 'destination_location_arn'")
-            __props__['destination_location_arn'] = destination_location_arn
+            __props__['destinationLocationArn'] = destination_location_arn
             __props__['name'] = name
             __props__['options'] = options
             if source_location_arn is None:
                 raise TypeError("Missing required property 'source_location_arn'")
-            __props__['source_location_arn'] = source_location_arn
+            __props__['sourceLocationArn'] = source_location_arn
             __props__['tags'] = tags
             __props__['arn'] = None
         super(Task, __self__).__init__(

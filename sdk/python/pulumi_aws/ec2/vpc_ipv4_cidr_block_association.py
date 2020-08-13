@@ -61,10 +61,10 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
 
             if cidr_block is None:
                 raise TypeError("Missing required property 'cidr_block'")
-            __props__['cidr_block'] = cidr_block
+            __props__['cidrBlock'] = cidr_block
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
         super(VpcIpv4CidrBlockAssociation, __self__).__init__(
             'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
             resource_name,

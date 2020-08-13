@@ -231,11 +231,11 @@ class Pipeline(pulumi.CustomResource):
 
             if artifact_store is None:
                 raise TypeError("Missing required property 'artifact_store'")
-            __props__['artifact_store'] = artifact_store
+            __props__['artifactStore'] = artifact_store
             __props__['name'] = name
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             if stages is None:
                 raise TypeError("Missing required property 'stages'")
             __props__['stages'] = stages

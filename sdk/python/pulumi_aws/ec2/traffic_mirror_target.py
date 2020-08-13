@@ -76,8 +76,8 @@ class TrafficMirrorTarget(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['network_interface_id'] = network_interface_id
-            __props__['network_load_balancer_arn'] = network_load_balancer_arn
+            __props__['networkInterfaceId'] = network_interface_id
+            __props__['networkLoadBalancerArn'] = network_load_balancer_arn
             __props__['tags'] = tags
             __props__['arn'] = None
         super(TrafficMirrorTarget, __self__).__init__(

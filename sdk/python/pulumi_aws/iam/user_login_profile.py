@@ -79,11 +79,11 @@ class UserLoginProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['password_length'] = password_length
-            __props__['password_reset_required'] = password_reset_required
+            __props__['passwordLength'] = password_length
+            __props__['passwordResetRequired'] = password_reset_required
             if pgp_key is None:
                 raise TypeError("Missing required property 'pgp_key'")
-            __props__['pgp_key'] = pgp_key
+            __props__['pgpKey'] = pgp_key
             if user is None:
                 raise TypeError("Missing required property 'user'")
             __props__['user'] = user

@@ -225,19 +225,19 @@ class Directory(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['alias'] = alias
-            __props__['connect_settings'] = connect_settings
+            __props__['connectSettings'] = connect_settings
             __props__['description'] = description
             __props__['edition'] = edition
-            __props__['enable_sso'] = enable_sso
+            __props__['enableSso'] = enable_sso
             __props__['name'] = name
             if password is None:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
-            __props__['short_name'] = short_name
+            __props__['shortName'] = short_name
             __props__['size'] = size
             __props__['tags'] = tags
             __props__['type'] = type
-            __props__['vpc_settings'] = vpc_settings
+            __props__['vpcSettings'] = vpc_settings
             __props__['access_url'] = None
             __props__['dns_ip_addresses'] = None
             __props__['security_group_id'] = None

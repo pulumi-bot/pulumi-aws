@@ -80,7 +80,7 @@ class SubnetGroup(pulumi.CustomResource):
             __props__['name'] = name
             if subnet_ids is None:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
+            __props__['subnetIds'] = subnet_ids
         super(SubnetGroup, __self__).__init__(
             'aws:elasticache/subnetGroup:SubnetGroup',
             resource_name,

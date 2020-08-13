@@ -137,13 +137,13 @@ class Fleet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['audit_stream_arn'] = audit_stream_arn
-            __props__['device_ca_certificate'] = device_ca_certificate
-            __props__['display_name'] = display_name
-            __props__['identity_provider'] = identity_provider
+            __props__['auditStreamArn'] = audit_stream_arn
+            __props__['deviceCaCertificate'] = device_ca_certificate
+            __props__['displayName'] = display_name
+            __props__['identityProvider'] = identity_provider
             __props__['name'] = name
             __props__['network'] = network
-            __props__['optimize_for_end_user_location'] = optimize_for_end_user_location
+            __props__['optimizeForEndUserLocation'] = optimize_for_end_user_location
             __props__['arn'] = None
             __props__['company_code'] = None
             __props__['created_time'] = None

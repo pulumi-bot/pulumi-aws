@@ -176,10 +176,10 @@ class LifecyclePolicy(pulumi.CustomResource):
             __props__['description'] = description
             if execution_role_arn is None:
                 raise TypeError("Missing required property 'execution_role_arn'")
-            __props__['execution_role_arn'] = execution_role_arn
+            __props__['executionRoleArn'] = execution_role_arn
             if policy_details is None:
                 raise TypeError("Missing required property 'policy_details'")
-            __props__['policy_details'] = policy_details
+            __props__['policyDetails'] = policy_details
             __props__['state'] = state
             __props__['tags'] = tags
             __props__['arn'] = None

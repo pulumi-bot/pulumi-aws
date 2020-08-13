@@ -290,29 +290,29 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['capacity_provider_strategies'] = capacity_provider_strategies
+            __props__['capacityProviderStrategies'] = capacity_provider_strategies
             __props__['cluster'] = cluster
-            __props__['deployment_controller'] = deployment_controller
-            __props__['deployment_maximum_percent'] = deployment_maximum_percent
-            __props__['deployment_minimum_healthy_percent'] = deployment_minimum_healthy_percent
-            __props__['desired_count'] = desired_count
-            __props__['enable_ecs_managed_tags'] = enable_ecs_managed_tags
-            __props__['force_new_deployment'] = force_new_deployment
-            __props__['health_check_grace_period_seconds'] = health_check_grace_period_seconds
-            __props__['iam_role'] = iam_role
-            __props__['launch_type'] = launch_type
-            __props__['load_balancers'] = load_balancers
+            __props__['deploymentController'] = deployment_controller
+            __props__['deploymentMaximumPercent'] = deployment_maximum_percent
+            __props__['deploymentMinimumHealthyPercent'] = deployment_minimum_healthy_percent
+            __props__['desiredCount'] = desired_count
+            __props__['enableEcsManagedTags'] = enable_ecs_managed_tags
+            __props__['forceNewDeployment'] = force_new_deployment
+            __props__['healthCheckGracePeriodSeconds'] = health_check_grace_period_seconds
+            __props__['iamRole'] = iam_role
+            __props__['launchType'] = launch_type
+            __props__['loadBalancers'] = load_balancers
             __props__['name'] = name
-            __props__['network_configuration'] = network_configuration
-            __props__['ordered_placement_strategies'] = ordered_placement_strategies
-            __props__['placement_constraints'] = placement_constraints
-            __props__['platform_version'] = platform_version
-            __props__['propagate_tags'] = propagate_tags
-            __props__['scheduling_strategy'] = scheduling_strategy
-            __props__['service_registries'] = service_registries
+            __props__['networkConfiguration'] = network_configuration
+            __props__['orderedPlacementStrategies'] = ordered_placement_strategies
+            __props__['placementConstraints'] = placement_constraints
+            __props__['platformVersion'] = platform_version
+            __props__['propagateTags'] = propagate_tags
+            __props__['schedulingStrategy'] = scheduling_strategy
+            __props__['serviceRegistries'] = service_registries
             __props__['tags'] = tags
-            __props__['task_definition'] = task_definition
-            __props__['wait_for_steady_state'] = wait_for_steady_state
+            __props__['taskDefinition'] = task_definition
+            __props__['waitForSteadyState'] = wait_for_steady_state
         super(Service, __self__).__init__(
             'aws:ecs/service:Service',
             resource_name,

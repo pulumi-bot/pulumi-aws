@@ -126,17 +126,17 @@ class Association(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['association_name'] = association_name
-            __props__['automation_target_parameter_name'] = automation_target_parameter_name
-            __props__['compliance_severity'] = compliance_severity
-            __props__['document_version'] = document_version
-            __props__['instance_id'] = instance_id
-            __props__['max_concurrency'] = max_concurrency
-            __props__['max_errors'] = max_errors
+            __props__['associationName'] = association_name
+            __props__['automationTargetParameterName'] = automation_target_parameter_name
+            __props__['complianceSeverity'] = compliance_severity
+            __props__['documentVersion'] = document_version
+            __props__['instanceId'] = instance_id
+            __props__['maxConcurrency'] = max_concurrency
+            __props__['maxErrors'] = max_errors
             __props__['name'] = name
-            __props__['output_location'] = output_location
+            __props__['outputLocation'] = output_location
             __props__['parameters'] = parameters
-            __props__['schedule_expression'] = schedule_expression
+            __props__['scheduleExpression'] = schedule_expression
             __props__['targets'] = targets
             __props__['association_id'] = None
         super(Association, __self__).__init__(

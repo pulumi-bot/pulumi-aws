@@ -80,7 +80,7 @@ class QueuePolicy(pulumi.CustomResource):
             __props__['policy'] = policy
             if queue_url is None:
                 raise TypeError("Missing required property 'queue_url'")
-            __props__['queue_url'] = queue_url
+            __props__['queueUrl'] = queue_url
         super(QueuePolicy, __self__).__init__(
             'aws:sqs/queuePolicy:QueuePolicy',
             resource_name,

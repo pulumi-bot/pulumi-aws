@@ -101,17 +101,17 @@ class EndpointGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['endpoint_configurations'] = endpoint_configurations
-            __props__['endpoint_group_region'] = endpoint_group_region
-            __props__['health_check_interval_seconds'] = health_check_interval_seconds
-            __props__['health_check_path'] = health_check_path
-            __props__['health_check_port'] = health_check_port
-            __props__['health_check_protocol'] = health_check_protocol
+            __props__['endpointConfigurations'] = endpoint_configurations
+            __props__['endpointGroupRegion'] = endpoint_group_region
+            __props__['healthCheckIntervalSeconds'] = health_check_interval_seconds
+            __props__['healthCheckPath'] = health_check_path
+            __props__['healthCheckPort'] = health_check_port
+            __props__['healthCheckProtocol'] = health_check_protocol
             if listener_arn is None:
                 raise TypeError("Missing required property 'listener_arn'")
-            __props__['listener_arn'] = listener_arn
-            __props__['threshold_count'] = threshold_count
-            __props__['traffic_dial_percentage'] = traffic_dial_percentage
+            __props__['listenerArn'] = listener_arn
+            __props__['thresholdCount'] = threshold_count
+            __props__['trafficDialPercentage'] = traffic_dial_percentage
         super(EndpointGroup, __self__).__init__(
             'aws:globalaccelerator/endpointGroup:EndpointGroup',
             resource_name,

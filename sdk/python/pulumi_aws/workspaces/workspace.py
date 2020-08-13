@@ -131,18 +131,18 @@ class Workspace(pulumi.CustomResource):
 
             if bundle_id is None:
                 raise TypeError("Missing required property 'bundle_id'")
-            __props__['bundle_id'] = bundle_id
+            __props__['bundleId'] = bundle_id
             if directory_id is None:
                 raise TypeError("Missing required property 'directory_id'")
-            __props__['directory_id'] = directory_id
-            __props__['root_volume_encryption_enabled'] = root_volume_encryption_enabled
+            __props__['directoryId'] = directory_id
+            __props__['rootVolumeEncryptionEnabled'] = root_volume_encryption_enabled
             __props__['tags'] = tags
             if user_name is None:
                 raise TypeError("Missing required property 'user_name'")
-            __props__['user_name'] = user_name
-            __props__['user_volume_encryption_enabled'] = user_volume_encryption_enabled
-            __props__['volume_encryption_key'] = volume_encryption_key
-            __props__['workspace_properties'] = workspace_properties
+            __props__['userName'] = user_name
+            __props__['userVolumeEncryptionEnabled'] = user_volume_encryption_enabled
+            __props__['volumeEncryptionKey'] = volume_encryption_key
+            __props__['workspaceProperties'] = workspace_properties
             __props__['computer_name'] = None
             __props__['ip_address'] = None
             __props__['state'] = None

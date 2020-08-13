@@ -63,10 +63,10 @@ class ResolverRuleAssociation(pulumi.CustomResource):
             __props__['name'] = name
             if resolver_rule_id is None:
                 raise TypeError("Missing required property 'resolver_rule_id'")
-            __props__['resolver_rule_id'] = resolver_rule_id
+            __props__['resolverRuleId'] = resolver_rule_id
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
         super(ResolverRuleAssociation, __self__).__init__(
             'aws:route53/resolverRuleAssociation:ResolverRuleAssociation',
             resource_name,

@@ -116,16 +116,16 @@ class LifecycleHook(pulumi.CustomResource):
 
             if autoscaling_group_name is None:
                 raise TypeError("Missing required property 'autoscaling_group_name'")
-            __props__['autoscaling_group_name'] = autoscaling_group_name
-            __props__['default_result'] = default_result
-            __props__['heartbeat_timeout'] = heartbeat_timeout
+            __props__['autoscalingGroupName'] = autoscaling_group_name
+            __props__['defaultResult'] = default_result
+            __props__['heartbeatTimeout'] = heartbeat_timeout
             if lifecycle_transition is None:
                 raise TypeError("Missing required property 'lifecycle_transition'")
-            __props__['lifecycle_transition'] = lifecycle_transition
+            __props__['lifecycleTransition'] = lifecycle_transition
             __props__['name'] = name
-            __props__['notification_metadata'] = notification_metadata
-            __props__['notification_target_arn'] = notification_target_arn
-            __props__['role_arn'] = role_arn
+            __props__['notificationMetadata'] = notification_metadata
+            __props__['notificationTargetArn'] = notification_target_arn
+            __props__['roleArn'] = role_arn
         super(LifecycleHook, __self__).__init__(
             'aws:autoscaling/lifecycleHook:LifecycleHook',
             resource_name,

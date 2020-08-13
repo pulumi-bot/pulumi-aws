@@ -78,10 +78,10 @@ class RoleAlias(pulumi.CustomResource):
             if alias is None:
                 raise TypeError("Missing required property 'alias'")
             __props__['alias'] = alias
-            __props__['credential_duration'] = credential_duration
+            __props__['credentialDuration'] = credential_duration
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             __props__['arn'] = None
         super(RoleAlias, __self__).__init__(
             'aws:iot/roleAlias:RoleAlias',

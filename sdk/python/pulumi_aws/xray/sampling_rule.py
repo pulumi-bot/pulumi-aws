@@ -124,32 +124,32 @@ class SamplingRule(pulumi.CustomResource):
             __props__['attributes'] = attributes
             if fixed_rate is None:
                 raise TypeError("Missing required property 'fixed_rate'")
-            __props__['fixed_rate'] = fixed_rate
+            __props__['fixedRate'] = fixed_rate
             if host is None:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
             if http_method is None:
                 raise TypeError("Missing required property 'http_method'")
-            __props__['http_method'] = http_method
+            __props__['httpMethod'] = http_method
             if priority is None:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
             if reservoir_size is None:
                 raise TypeError("Missing required property 'reservoir_size'")
-            __props__['reservoir_size'] = reservoir_size
+            __props__['reservoirSize'] = reservoir_size
             if resource_arn is None:
                 raise TypeError("Missing required property 'resource_arn'")
-            __props__['resource_arn'] = resource_arn
-            __props__['rule_name'] = rule_name
+            __props__['resourceArn'] = resource_arn
+            __props__['ruleName'] = rule_name
             if service_name is None:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
+            __props__['serviceName'] = service_name
             if service_type is None:
                 raise TypeError("Missing required property 'service_type'")
-            __props__['service_type'] = service_type
+            __props__['serviceType'] = service_type
             if url_path is None:
                 raise TypeError("Missing required property 'url_path'")
-            __props__['url_path'] = url_path
+            __props__['urlPath'] = url_path
             if version is None:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version

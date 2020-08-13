@@ -146,19 +146,19 @@ class CachesIscsiVolume(pulumi.CustomResource):
 
             if gateway_arn is None:
                 raise TypeError("Missing required property 'gateway_arn'")
-            __props__['gateway_arn'] = gateway_arn
+            __props__['gatewayArn'] = gateway_arn
             if network_interface_id is None:
                 raise TypeError("Missing required property 'network_interface_id'")
-            __props__['network_interface_id'] = network_interface_id
-            __props__['snapshot_id'] = snapshot_id
-            __props__['source_volume_arn'] = source_volume_arn
+            __props__['networkInterfaceId'] = network_interface_id
+            __props__['snapshotId'] = snapshot_id
+            __props__['sourceVolumeArn'] = source_volume_arn
             __props__['tags'] = tags
             if target_name is None:
                 raise TypeError("Missing required property 'target_name'")
-            __props__['target_name'] = target_name
+            __props__['targetName'] = target_name
             if volume_size_in_bytes is None:
                 raise TypeError("Missing required property 'volume_size_in_bytes'")
-            __props__['volume_size_in_bytes'] = volume_size_in_bytes
+            __props__['volumeSizeInBytes'] = volume_size_in_bytes
             __props__['arn'] = None
             __props__['chap_enabled'] = None
             __props__['lun_number'] = None

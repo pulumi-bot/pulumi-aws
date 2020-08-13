@@ -112,16 +112,16 @@ class Schedule(pulumi.CustomResource):
 
             if autoscaling_group_name is None:
                 raise TypeError("Missing required property 'autoscaling_group_name'")
-            __props__['autoscaling_group_name'] = autoscaling_group_name
-            __props__['desired_capacity'] = desired_capacity
-            __props__['end_time'] = end_time
-            __props__['max_size'] = max_size
-            __props__['min_size'] = min_size
+            __props__['autoscalingGroupName'] = autoscaling_group_name
+            __props__['desiredCapacity'] = desired_capacity
+            __props__['endTime'] = end_time
+            __props__['maxSize'] = max_size
+            __props__['minSize'] = min_size
             __props__['recurrence'] = recurrence
             if scheduled_action_name is None:
                 raise TypeError("Missing required property 'scheduled_action_name'")
-            __props__['scheduled_action_name'] = scheduled_action_name
-            __props__['start_time'] = start_time
+            __props__['scheduledActionName'] = scheduled_action_name
+            __props__['startTime'] = start_time
             __props__['arn'] = None
         super(Schedule, __self__).__init__(
             'aws:autoscaling/schedule:Schedule',

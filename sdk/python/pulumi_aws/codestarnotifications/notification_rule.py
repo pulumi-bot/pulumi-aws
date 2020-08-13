@@ -115,10 +115,10 @@ class NotificationRule(pulumi.CustomResource):
 
             if detail_type is None:
                 raise TypeError("Missing required property 'detail_type'")
-            __props__['detail_type'] = detail_type
+            __props__['detailType'] = detail_type
             if event_type_ids is None:
                 raise TypeError("Missing required property 'event_type_ids'")
-            __props__['event_type_ids'] = event_type_ids
+            __props__['eventTypeIds'] = event_type_ids
             __props__['name'] = name
             if resource is None:
                 raise TypeError("Missing required property 'resource'")

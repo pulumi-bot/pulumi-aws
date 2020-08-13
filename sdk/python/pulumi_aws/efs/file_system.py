@@ -116,14 +116,14 @@ class FileSystem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['creation_token'] = creation_token
+            __props__['creationToken'] = creation_token
             __props__['encrypted'] = encrypted
-            __props__['kms_key_id'] = kms_key_id
-            __props__['lifecycle_policy'] = lifecycle_policy
-            __props__['performance_mode'] = performance_mode
-            __props__['provisioned_throughput_in_mibps'] = provisioned_throughput_in_mibps
+            __props__['kmsKeyId'] = kms_key_id
+            __props__['lifecyclePolicy'] = lifecycle_policy
+            __props__['performanceMode'] = performance_mode
+            __props__['provisionedThroughputInMibps'] = provisioned_throughput_in_mibps
             __props__['tags'] = tags
-            __props__['throughput_mode'] = throughput_mode
+            __props__['throughputMode'] = throughput_mode
             __props__['arn'] = None
             __props__['dns_name'] = None
         super(FileSystem, __self__).__init__(

@@ -224,29 +224,29 @@ class Endpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['certificate_arn'] = certificate_arn
-            __props__['database_name'] = database_name
-            __props__['elasticsearch_settings'] = elasticsearch_settings
+            __props__['certificateArn'] = certificate_arn
+            __props__['databaseName'] = database_name
+            __props__['elasticsearchSettings'] = elasticsearch_settings
             if endpoint_id is None:
                 raise TypeError("Missing required property 'endpoint_id'")
-            __props__['endpoint_id'] = endpoint_id
+            __props__['endpointId'] = endpoint_id
             if endpoint_type is None:
                 raise TypeError("Missing required property 'endpoint_type'")
-            __props__['endpoint_type'] = endpoint_type
+            __props__['endpointType'] = endpoint_type
             if engine_name is None:
                 raise TypeError("Missing required property 'engine_name'")
-            __props__['engine_name'] = engine_name
-            __props__['extra_connection_attributes'] = extra_connection_attributes
-            __props__['kafka_settings'] = kafka_settings
-            __props__['kinesis_settings'] = kinesis_settings
-            __props__['kms_key_arn'] = kms_key_arn
-            __props__['mongodb_settings'] = mongodb_settings
+            __props__['engineName'] = engine_name
+            __props__['extraConnectionAttributes'] = extra_connection_attributes
+            __props__['kafkaSettings'] = kafka_settings
+            __props__['kinesisSettings'] = kinesis_settings
+            __props__['kmsKeyArn'] = kms_key_arn
+            __props__['mongodbSettings'] = mongodb_settings
             __props__['password'] = password
             __props__['port'] = port
-            __props__['s3_settings'] = s3_settings
-            __props__['server_name'] = server_name
-            __props__['service_access_role'] = service_access_role
-            __props__['ssl_mode'] = ssl_mode
+            __props__['s3Settings'] = s3_settings
+            __props__['serverName'] = server_name
+            __props__['serviceAccessRole'] = service_access_role
+            __props__['sslMode'] = ssl_mode
             __props__['tags'] = tags
             __props__['username'] = username
             __props__['endpoint_arn'] = None

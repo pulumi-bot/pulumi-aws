@@ -111,7 +111,7 @@ class Workgroup(pulumi.CustomResource):
 
             __props__['configuration'] = configuration
             __props__['description'] = description
-            __props__['force_destroy'] = force_destroy
+            __props__['forceDestroy'] = force_destroy
             __props__['name'] = name
             __props__['state'] = state
             __props__['tags'] = tags

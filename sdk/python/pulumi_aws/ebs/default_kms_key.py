@@ -57,7 +57,7 @@ class DefaultKmsKey(pulumi.CustomResource):
 
             if key_arn is None:
                 raise TypeError("Missing required property 'key_arn'")
-            __props__['key_arn'] = key_arn
+            __props__['keyArn'] = key_arn
         super(DefaultKmsKey, __self__).__init__(
             'aws:ebs/defaultKmsKey:DefaultKmsKey',
             resource_name,

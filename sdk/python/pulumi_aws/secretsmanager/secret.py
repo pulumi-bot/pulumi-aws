@@ -122,19 +122,19 @@ class Secret(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['kms_key_id'] = kms_key_id
+            __props__['kmsKeyId'] = kms_key_id
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['policy'] = policy
-            __props__['recovery_window_in_days'] = recovery_window_in_days
+            __props__['recoveryWindowInDays'] = recovery_window_in_days
             if rotation_lambda_arn is not None:
                 warnings.warn("Use the aws_secretsmanager_secret_rotation resource instead", DeprecationWarning)
                 pulumi.log.warn("rotation_lambda_arn is deprecated: Use the aws_secretsmanager_secret_rotation resource instead")
-            __props__['rotation_lambda_arn'] = rotation_lambda_arn
+            __props__['rotationLambdaArn'] = rotation_lambda_arn
             if rotation_rules is not None:
                 warnings.warn("Use the aws_secretsmanager_secret_rotation resource instead", DeprecationWarning)
                 pulumi.log.warn("rotation_rules is deprecated: Use the aws_secretsmanager_secret_rotation resource instead")
-            __props__['rotation_rules'] = rotation_rules
+            __props__['rotationRules'] = rotation_rules
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['rotation_enabled'] = None

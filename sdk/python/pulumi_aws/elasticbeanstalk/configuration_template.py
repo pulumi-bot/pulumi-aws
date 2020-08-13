@@ -108,10 +108,10 @@ class ConfigurationTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'application'")
             __props__['application'] = application
             __props__['description'] = description
-            __props__['environment_id'] = environment_id
+            __props__['environmentId'] = environment_id
             __props__['name'] = name
             __props__['settings'] = settings
-            __props__['solution_stack_name'] = solution_stack_name
+            __props__['solutionStackName'] = solution_stack_name
         super(ConfigurationTemplate, __self__).__init__(
             'aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate',
             resource_name,

@@ -106,15 +106,15 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_users_to_change_password'] = allow_users_to_change_password
-            __props__['hard_expiry'] = hard_expiry
-            __props__['max_password_age'] = max_password_age
-            __props__['minimum_password_length'] = minimum_password_length
-            __props__['password_reuse_prevention'] = password_reuse_prevention
-            __props__['require_lowercase_characters'] = require_lowercase_characters
-            __props__['require_numbers'] = require_numbers
-            __props__['require_symbols'] = require_symbols
-            __props__['require_uppercase_characters'] = require_uppercase_characters
+            __props__['allowUsersToChangePassword'] = allow_users_to_change_password
+            __props__['hardExpiry'] = hard_expiry
+            __props__['maxPasswordAge'] = max_password_age
+            __props__['minimumPasswordLength'] = minimum_password_length
+            __props__['passwordReusePrevention'] = password_reuse_prevention
+            __props__['requireLowercaseCharacters'] = require_lowercase_characters
+            __props__['requireNumbers'] = require_numbers
+            __props__['requireSymbols'] = require_symbols
+            __props__['requireUppercaseCharacters'] = require_uppercase_characters
             __props__['expire_passwords'] = None
         super(AccountPasswordPolicy, __self__).__init__(
             'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',

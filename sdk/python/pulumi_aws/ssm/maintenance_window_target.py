@@ -119,16 +119,16 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            __props__['owner_information'] = owner_information
+            __props__['ownerInformation'] = owner_information
             if resource_type is None:
                 raise TypeError("Missing required property 'resource_type'")
-            __props__['resource_type'] = resource_type
+            __props__['resourceType'] = resource_type
             if targets is None:
                 raise TypeError("Missing required property 'targets'")
             __props__['targets'] = targets
             if window_id is None:
                 raise TypeError("Missing required property 'window_id'")
-            __props__['window_id'] = window_id
+            __props__['windowId'] = window_id
         super(MaintenanceWindowTarget, __self__).__init__(
             'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
             resource_name,

@@ -104,12 +104,12 @@ class MountTarget(pulumi.CustomResource):
 
             if file_system_id is None:
                 raise TypeError("Missing required property 'file_system_id'")
-            __props__['file_system_id'] = file_system_id
-            __props__['ip_address'] = ip_address
-            __props__['security_groups'] = security_groups
+            __props__['fileSystemId'] = file_system_id
+            __props__['ipAddress'] = ip_address
+            __props__['securityGroups'] = security_groups
             if subnet_id is None:
                 raise TypeError("Missing required property 'subnet_id'")
-            __props__['subnet_id'] = subnet_id
+            __props__['subnetId'] = subnet_id
             __props__['availability_zone_id'] = None
             __props__['availability_zone_name'] = None
             __props__['dns_name'] = None

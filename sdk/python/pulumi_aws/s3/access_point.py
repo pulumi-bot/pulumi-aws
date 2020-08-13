@@ -136,14 +136,14 @@ class AccessPoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             if bucket is None:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
             __props__['name'] = name
             __props__['policy'] = policy
-            __props__['public_access_block_configuration'] = public_access_block_configuration
-            __props__['vpc_configuration'] = vpc_configuration
+            __props__['publicAccessBlockConfiguration'] = public_access_block_configuration
+            __props__['vpcConfiguration'] = vpc_configuration
             __props__['arn'] = None
             __props__['domain_name'] = None
             __props__['has_public_access_policy'] = None

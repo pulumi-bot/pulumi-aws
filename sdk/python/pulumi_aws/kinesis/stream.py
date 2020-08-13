@@ -103,15 +103,15 @@ class Stream(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['arn'] = arn
-            __props__['encryption_type'] = encryption_type
-            __props__['enforce_consumer_deletion'] = enforce_consumer_deletion
-            __props__['kms_key_id'] = kms_key_id
+            __props__['encryptionType'] = encryption_type
+            __props__['enforceConsumerDeletion'] = enforce_consumer_deletion
+            __props__['kmsKeyId'] = kms_key_id
             __props__['name'] = name
-            __props__['retention_period'] = retention_period
+            __props__['retentionPeriod'] = retention_period
             if shard_count is None:
                 raise TypeError("Missing required property 'shard_count'")
-            __props__['shard_count'] = shard_count
-            __props__['shard_level_metrics'] = shard_level_metrics
+            __props__['shardCount'] = shard_count
+            __props__['shardLevelMetrics'] = shard_level_metrics
             __props__['tags'] = tags
         super(Stream, __self__).__init__(
             'aws:kinesis/stream:Stream',

@@ -110,18 +110,18 @@ class Route(pulumi.CustomResource):
 
             if api_id is None:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
-            __props__['api_key_required'] = api_key_required
-            __props__['authorization_scopes'] = authorization_scopes
-            __props__['authorization_type'] = authorization_type
-            __props__['authorizer_id'] = authorizer_id
-            __props__['model_selection_expression'] = model_selection_expression
-            __props__['operation_name'] = operation_name
-            __props__['request_models'] = request_models
+            __props__['apiId'] = api_id
+            __props__['apiKeyRequired'] = api_key_required
+            __props__['authorizationScopes'] = authorization_scopes
+            __props__['authorizationType'] = authorization_type
+            __props__['authorizerId'] = authorizer_id
+            __props__['modelSelectionExpression'] = model_selection_expression
+            __props__['operationName'] = operation_name
+            __props__['requestModels'] = request_models
             if route_key is None:
                 raise TypeError("Missing required property 'route_key'")
-            __props__['route_key'] = route_key
-            __props__['route_response_selection_expression'] = route_response_selection_expression
+            __props__['routeKey'] = route_key
+            __props__['routeResponseSelectionExpression'] = route_response_selection_expression
             __props__['target'] = target
         super(Route, __self__).__init__(
             'aws:apigatewayv2/route:Route',

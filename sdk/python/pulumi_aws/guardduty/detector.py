@@ -69,7 +69,7 @@ class Detector(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['enable'] = enable
-            __props__['finding_publishing_frequency'] = finding_publishing_frequency
+            __props__['findingPublishingFrequency'] = finding_publishing_frequency
             __props__['tags'] = tags
             __props__['account_id'] = None
             __props__['arn'] = None

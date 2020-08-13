@@ -83,10 +83,10 @@ class NfsLocation(pulumi.CustomResource):
 
             if on_prem_config is None:
                 raise TypeError("Missing required property 'on_prem_config'")
-            __props__['on_prem_config'] = on_prem_config
+            __props__['onPremConfig'] = on_prem_config
             if server_hostname is None:
                 raise TypeError("Missing required property 'server_hostname'")
-            __props__['server_hostname'] = server_hostname
+            __props__['serverHostname'] = server_hostname
             if subdirectory is None:
                 raise TypeError("Missing required property 'subdirectory'")
             __props__['subdirectory'] = subdirectory

@@ -86,7 +86,7 @@ class Alias(pulumi.CustomResource):
             __props__['name'] = name
             if routing_strategy is None:
                 raise TypeError("Missing required property 'routing_strategy'")
-            __props__['routing_strategy'] = routing_strategy
+            __props__['routingStrategy'] = routing_strategy
             __props__['tags'] = tags
             __props__['arn'] = None
         super(Alias, __self__).__init__(

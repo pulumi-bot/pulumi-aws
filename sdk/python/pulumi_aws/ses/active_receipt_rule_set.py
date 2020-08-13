@@ -50,7 +50,7 @@ class ActiveReceiptRuleSet(pulumi.CustomResource):
 
             if rule_set_name is None:
                 raise TypeError("Missing required property 'rule_set_name'")
-            __props__['rule_set_name'] = rule_set_name
+            __props__['ruleSetName'] = rule_set_name
         super(ActiveReceiptRuleSet, __self__).__init__(
             'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
             resource_name,

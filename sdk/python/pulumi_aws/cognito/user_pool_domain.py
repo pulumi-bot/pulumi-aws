@@ -100,13 +100,13 @@ class UserPoolDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['certificate_arn'] = certificate_arn
+            __props__['certificateArn'] = certificate_arn
             if domain is None:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
             if user_pool_id is None:
                 raise TypeError("Missing required property 'user_pool_id'")
-            __props__['user_pool_id'] = user_pool_id
+            __props__['userPoolId'] = user_pool_id
             __props__['aws_account_id'] = None
             __props__['cloudfront_distribution_arn'] = None
             __props__['s3_bucket'] = None

@@ -121,10 +121,10 @@ class SslNegotiationPolicy(pulumi.CustomResource):
             __props__['attributes'] = attributes
             if lb_port is None:
                 raise TypeError("Missing required property 'lb_port'")
-            __props__['lb_port'] = lb_port
+            __props__['lbPort'] = lb_port
             if load_balancer is None:
                 raise TypeError("Missing required property 'load_balancer'")
-            __props__['load_balancer'] = load_balancer
+            __props__['loadBalancer'] = load_balancer
             __props__['name'] = name
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/sslNegotiationPolicy:SslNegotiationPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)

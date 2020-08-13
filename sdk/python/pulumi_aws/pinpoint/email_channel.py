@@ -112,17 +112,17 @@ class EmailChannel(pulumi.CustomResource):
 
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
+            __props__['applicationId'] = application_id
             __props__['enabled'] = enabled
             if from_address is None:
                 raise TypeError("Missing required property 'from_address'")
-            __props__['from_address'] = from_address
+            __props__['fromAddress'] = from_address
             if identity is None:
                 raise TypeError("Missing required property 'identity'")
             __props__['identity'] = identity
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             __props__['messages_per_second'] = None
         super(EmailChannel, __self__).__init__(
             'aws:pinpoint/emailChannel:EmailChannel',

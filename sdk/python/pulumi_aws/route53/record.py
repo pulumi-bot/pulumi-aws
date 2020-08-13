@@ -100,7 +100,7 @@ class Record(pulumi.CustomResource):
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="www.example.com",
             type="A",
-            ttl="300",
+            ttl=300,
             records=[aws_eip["lb"]["public_ip"]])
         ```
         ### Weighted routing policy
@@ -114,7 +114,7 @@ class Record(pulumi.CustomResource):
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="www",
             type="CNAME",
-            ttl="5",
+            ttl=5,
             weighted_routing_policies=[{
                 "weight": 10,
             }],
@@ -124,7 +124,7 @@ class Record(pulumi.CustomResource):
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="www",
             type="CNAME",
-            ttl="5",
+            ttl=5,
             weighted_routing_policies=[{
                 "weight": 90,
             }],
@@ -243,25 +243,25 @@ class Record(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['aliases'] = aliases
-            __props__['allow_overwrite'] = allow_overwrite
-            __props__['failover_routing_policies'] = failover_routing_policies
-            __props__['geolocation_routing_policies'] = geolocation_routing_policies
-            __props__['health_check_id'] = health_check_id
-            __props__['latency_routing_policies'] = latency_routing_policies
-            __props__['multivalue_answer_routing_policy'] = multivalue_answer_routing_policy
+            __props__['allowOverwrite'] = allow_overwrite
+            __props__['failoverRoutingPolicies'] = failover_routing_policies
+            __props__['geolocationRoutingPolicies'] = geolocation_routing_policies
+            __props__['healthCheckId'] = health_check_id
+            __props__['latencyRoutingPolicies'] = latency_routing_policies
+            __props__['multivalueAnswerRoutingPolicy'] = multivalue_answer_routing_policy
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['records'] = records
-            __props__['set_identifier'] = set_identifier
+            __props__['setIdentifier'] = set_identifier
             __props__['ttl'] = ttl
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            __props__['weighted_routing_policies'] = weighted_routing_policies
+            __props__['weightedRoutingPolicies'] = weighted_routing_policies
             if zone_id is None:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__['zoneId'] = zone_id
             __props__['fqdn'] = None
         super(Record, __self__).__init__(
             'aws:route53/record:Record',

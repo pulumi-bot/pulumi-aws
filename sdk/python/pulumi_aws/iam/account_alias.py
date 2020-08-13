@@ -52,7 +52,7 @@ class AccountAlias(pulumi.CustomResource):
 
             if account_alias is None:
                 raise TypeError("Missing required property 'account_alias'")
-            __props__['account_alias'] = account_alias
+            __props__['accountAlias'] = account_alias
         super(AccountAlias, __self__).__init__(
             'aws:iam/accountAlias:AccountAlias',
             resource_name,

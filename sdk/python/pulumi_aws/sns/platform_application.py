@@ -116,21 +116,21 @@ class PlatformApplication(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['event_delivery_failure_topic_arn'] = event_delivery_failure_topic_arn
-            __props__['event_endpoint_created_topic_arn'] = event_endpoint_created_topic_arn
-            __props__['event_endpoint_deleted_topic_arn'] = event_endpoint_deleted_topic_arn
-            __props__['event_endpoint_updated_topic_arn'] = event_endpoint_updated_topic_arn
-            __props__['failure_feedback_role_arn'] = failure_feedback_role_arn
+            __props__['eventDeliveryFailureTopicArn'] = event_delivery_failure_topic_arn
+            __props__['eventEndpointCreatedTopicArn'] = event_endpoint_created_topic_arn
+            __props__['eventEndpointDeletedTopicArn'] = event_endpoint_deleted_topic_arn
+            __props__['eventEndpointUpdatedTopicArn'] = event_endpoint_updated_topic_arn
+            __props__['failureFeedbackRoleArn'] = failure_feedback_role_arn
             __props__['name'] = name
             if platform is None:
                 raise TypeError("Missing required property 'platform'")
             __props__['platform'] = platform
             if platform_credential is None:
                 raise TypeError("Missing required property 'platform_credential'")
-            __props__['platform_credential'] = platform_credential
-            __props__['platform_principal'] = platform_principal
-            __props__['success_feedback_role_arn'] = success_feedback_role_arn
-            __props__['success_feedback_sample_rate'] = success_feedback_sample_rate
+            __props__['platformCredential'] = platform_credential
+            __props__['platformPrincipal'] = platform_principal
+            __props__['successFeedbackRoleArn'] = success_feedback_role_arn
+            __props__['successFeedbackSampleRate'] = success_feedback_sample_rate
             __props__['arn'] = None
         super(PlatformApplication, __self__).__init__(
             'aws:sns/platformApplication:PlatformApplication',

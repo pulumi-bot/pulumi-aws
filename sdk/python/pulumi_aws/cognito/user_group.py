@@ -98,10 +98,10 @@ class UserGroup(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['precedence'] = precedence
-            __props__['role_arn'] = role_arn
+            __props__['roleArn'] = role_arn
             if user_pool_id is None:
                 raise TypeError("Missing required property 'user_pool_id'")
-            __props__['user_pool_id'] = user_pool_id
+            __props__['userPoolId'] = user_pool_id
         super(UserGroup, __self__).__init__(
             'aws:cognito/userGroup:UserGroup',
             resource_name,

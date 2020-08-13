@@ -80,7 +80,7 @@ class VpcLink(pulumi.CustomResource):
             __props__['tags'] = tags
             if target_arn is None:
                 raise TypeError("Missing required property 'target_arn'")
-            __props__['target_arn'] = target_arn
+            __props__['targetArn'] = target_arn
             __props__['arn'] = None
         super(VpcLink, __self__).__init__(
             'aws:apigateway/vpcLink:VpcLink',

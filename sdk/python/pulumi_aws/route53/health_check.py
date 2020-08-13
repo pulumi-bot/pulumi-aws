@@ -99,10 +99,10 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.route53.HealthCheck("example",
-            failure_threshold="5",
+            failure_threshold=5,
             fqdn="example.com",
             port=80,
-            request_interval="30",
+            request_interval=30,
             resource_path="/",
             tags={
                 "Name": "tf-test-health-check",
@@ -116,10 +116,10 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.route53.HealthCheck("example",
-            failure_threshold="5",
+            failure_threshold=5,
             fqdn="example.com",
             port=443,
-            request_interval="30",
+            request_interval=30,
             resource_path="/",
             search_string="example",
             type="HTTPS_STR_MATCH")
@@ -146,12 +146,12 @@ class HealthCheck(pulumi.CustomResource):
 
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80",
+            threshold=80,
             alarm_description="This metric monitors ec2 cpu utilization")
         foo = aws.route53.HealthCheck("foo",
             type="CLOUDWATCH_METRIC",
@@ -200,23 +200,23 @@ class HealthCheck(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['child_health_threshold'] = child_health_threshold
-            __props__['child_healthchecks'] = child_healthchecks
-            __props__['cloudwatch_alarm_name'] = cloudwatch_alarm_name
-            __props__['cloudwatch_alarm_region'] = cloudwatch_alarm_region
-            __props__['enable_sni'] = enable_sni
-            __props__['failure_threshold'] = failure_threshold
+            __props__['childHealthThreshold'] = child_health_threshold
+            __props__['childHealthchecks'] = child_healthchecks
+            __props__['cloudwatchAlarmName'] = cloudwatch_alarm_name
+            __props__['cloudwatchAlarmRegion'] = cloudwatch_alarm_region
+            __props__['enableSni'] = enable_sni
+            __props__['failureThreshold'] = failure_threshold
             __props__['fqdn'] = fqdn
-            __props__['insufficient_data_health_status'] = insufficient_data_health_status
-            __props__['invert_healthcheck'] = invert_healthcheck
-            __props__['ip_address'] = ip_address
-            __props__['measure_latency'] = measure_latency
+            __props__['insufficientDataHealthStatus'] = insufficient_data_health_status
+            __props__['invertHealthcheck'] = invert_healthcheck
+            __props__['ipAddress'] = ip_address
+            __props__['measureLatency'] = measure_latency
             __props__['port'] = port
-            __props__['reference_name'] = reference_name
+            __props__['referenceName'] = reference_name
             __props__['regions'] = regions
-            __props__['request_interval'] = request_interval
-            __props__['resource_path'] = resource_path
-            __props__['search_string'] = search_string
+            __props__['requestInterval'] = request_interval
+            __props__['resourcePath'] = resource_path
+            __props__['searchString'] = search_string
             __props__['tags'] = tags
             if type is None:
                 raise TypeError("Missing required property 'type'")

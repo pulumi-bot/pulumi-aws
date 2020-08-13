@@ -197,8 +197,8 @@ class Rule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['input_parameters'] = input_parameters
-            __props__['maximum_execution_frequency'] = maximum_execution_frequency
+            __props__['inputParameters'] = input_parameters
+            __props__['maximumExecutionFrequency'] = maximum_execution_frequency
             __props__['name'] = name
             __props__['scope'] = scope
             if source is None:

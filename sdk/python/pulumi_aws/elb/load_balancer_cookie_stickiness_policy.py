@@ -82,13 +82,13 @@ class LoadBalancerCookieStickinessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cookie_expiration_period'] = cookie_expiration_period
+            __props__['cookieExpirationPeriod'] = cookie_expiration_period
             if lb_port is None:
                 raise TypeError("Missing required property 'lb_port'")
-            __props__['lb_port'] = lb_port
+            __props__['lbPort'] = lb_port
             if load_balancer is None:
                 raise TypeError("Missing required property 'load_balancer'")
-            __props__['load_balancer'] = load_balancer
+            __props__['loadBalancer'] = load_balancer
             __props__['name'] = name
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)

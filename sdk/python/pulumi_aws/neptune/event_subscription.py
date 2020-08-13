@@ -58,13 +58,13 @@ class EventSubscription(pulumi.CustomResource):
             backup_retention_period=5,
             preferred_backup_window="07:00-09:00",
             skip_final_snapshot=True,
-            iam_database_authentication_enabled="true",
-            apply_immediately="true")
+            iam_database_authentication_enabled=True,
+            apply_immediately=True)
         example = aws.neptune.ClusterInstance("example",
             cluster_identifier=default_cluster.id,
             engine="neptune",
             instance_class="db.r4.large",
-            apply_immediately="true")
+            apply_immediately=True)
         default_topic = aws.sns.Topic("defaultTopic")
         default_event_subscription = aws.neptune.EventSubscription("defaultEventSubscription",
             sns_topic_arn=default_topic.arn,
@@ -125,14 +125,14 @@ class EventSubscription(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['enabled'] = enabled
-            __props__['event_categories'] = event_categories
+            __props__['eventCategories'] = event_categories
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             if sns_topic_arn is None:
                 raise TypeError("Missing required property 'sns_topic_arn'")
-            __props__['sns_topic_arn'] = sns_topic_arn
-            __props__['source_ids'] = source_ids
-            __props__['source_type'] = source_type
+            __props__['snsTopicArn'] = sns_topic_arn
+            __props__['sourceIds'] = source_ids
+            __props__['sourceType'] = source_type
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['customer_aws_id'] = None

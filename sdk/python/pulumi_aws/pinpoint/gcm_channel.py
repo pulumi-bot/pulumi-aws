@@ -65,10 +65,10 @@ class GcmChannel(pulumi.CustomResource):
 
             if api_key is None:
                 raise TypeError("Missing required property 'api_key'")
-            __props__['api_key'] = api_key
+            __props__['apiKey'] = api_key
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
+            __props__['applicationId'] = application_id
             __props__['enabled'] = enabled
         super(GcmChannel, __self__).__init__(
             'aws:pinpoint/gcmChannel:GcmChannel',

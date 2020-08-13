@@ -77,7 +77,7 @@ class Zone(pulumi.CustomResource):
             zone_id=main.zone_id,
             name="dev.example.com",
             type="NS",
-            ttl="30",
+            ttl=30,
             records=dev.name_servers)
         ```
         ### Private Zone
@@ -129,8 +129,8 @@ class Zone(pulumi.CustomResource):
             if comment is None:
                 comment = 'Managed by Pulumi'
             __props__['comment'] = comment
-            __props__['delegation_set_id'] = delegation_set_id
-            __props__['force_destroy'] = force_destroy
+            __props__['delegationSetId'] = delegation_set_id
+            __props__['forceDestroy'] = force_destroy
             __props__['name'] = name
             __props__['tags'] = tags
             __props__['vpcs'] = vpcs

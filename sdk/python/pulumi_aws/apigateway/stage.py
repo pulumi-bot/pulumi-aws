@@ -182,24 +182,24 @@ class Stage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_log_settings'] = access_log_settings
-            __props__['cache_cluster_enabled'] = cache_cluster_enabled
-            __props__['cache_cluster_size'] = cache_cluster_size
-            __props__['client_certificate_id'] = client_certificate_id
+            __props__['accessLogSettings'] = access_log_settings
+            __props__['cacheClusterEnabled'] = cache_cluster_enabled
+            __props__['cacheClusterSize'] = cache_cluster_size
+            __props__['clientCertificateId'] = client_certificate_id
             if deployment is None:
                 raise TypeError("Missing required property 'deployment'")
             __props__['deployment'] = deployment
             __props__['description'] = description
-            __props__['documentation_version'] = documentation_version
+            __props__['documentationVersion'] = documentation_version
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
+            __props__['restApi'] = rest_api
             if stage_name is None:
                 raise TypeError("Missing required property 'stage_name'")
-            __props__['stage_name'] = stage_name
+            __props__['stageName'] = stage_name
             __props__['tags'] = tags
             __props__['variables'] = variables
-            __props__['xray_tracing_enabled'] = xray_tracing_enabled
+            __props__['xrayTracingEnabled'] = xray_tracing_enabled
             __props__['arn'] = None
             __props__['execution_arn'] = None
             __props__['invoke_url'] = None

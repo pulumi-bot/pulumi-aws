@@ -143,14 +143,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
 
             if load_balancer_name is None:
                 raise TypeError("Missing required property 'load_balancer_name'")
-            __props__['load_balancer_name'] = load_balancer_name
-            __props__['policy_attributes'] = policy_attributes
+            __props__['loadBalancerName'] = load_balancer_name
+            __props__['policyAttributes'] = policy_attributes
             if policy_name is None:
                 raise TypeError("Missing required property 'policy_name'")
-            __props__['policy_name'] = policy_name
+            __props__['policyName'] = policy_name
             if policy_type_name is None:
                 raise TypeError("Missing required property 'policy_type_name'")
-            __props__['policy_type_name'] = policy_type_name
+            __props__['policyTypeName'] = policy_type_name
         super(LoadBalancerPolicy, __self__).__init__(
             'aws:elasticloadbalancing/loadBalancerPolicy:LoadBalancerPolicy',
             resource_name,

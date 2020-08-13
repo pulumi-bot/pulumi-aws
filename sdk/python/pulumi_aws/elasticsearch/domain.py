@@ -396,21 +396,21 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_policies'] = access_policies
-            __props__['advanced_options'] = advanced_options
-            __props__['advanced_security_options'] = advanced_security_options
-            __props__['cluster_config'] = cluster_config
-            __props__['cognito_options'] = cognito_options
-            __props__['domain_endpoint_options'] = domain_endpoint_options
-            __props__['domain_name'] = domain_name
-            __props__['ebs_options'] = ebs_options
-            __props__['elasticsearch_version'] = elasticsearch_version
-            __props__['encrypt_at_rest'] = encrypt_at_rest
-            __props__['log_publishing_options'] = log_publishing_options
-            __props__['node_to_node_encryption'] = node_to_node_encryption
-            __props__['snapshot_options'] = snapshot_options
+            __props__['accessPolicies'] = access_policies
+            __props__['advancedOptions'] = advanced_options
+            __props__['advancedSecurityOptions'] = advanced_security_options
+            __props__['clusterConfig'] = cluster_config
+            __props__['cognitoOptions'] = cognito_options
+            __props__['domainEndpointOptions'] = domain_endpoint_options
+            __props__['domainName'] = domain_name
+            __props__['ebsOptions'] = ebs_options
+            __props__['elasticsearchVersion'] = elasticsearch_version
+            __props__['encryptAtRest'] = encrypt_at_rest
+            __props__['logPublishingOptions'] = log_publishing_options
+            __props__['nodeToNodeEncryption'] = node_to_node_encryption
+            __props__['snapshotOptions'] = snapshot_options
             __props__['tags'] = tags
-            __props__['vpc_options'] = vpc_options
+            __props__['vpcOptions'] = vpc_options
             __props__['arn'] = None
             __props__['domain_id'] = None
             __props__['endpoint'] = None

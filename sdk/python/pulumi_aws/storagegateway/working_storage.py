@@ -59,10 +59,10 @@ class WorkingStorage(pulumi.CustomResource):
 
             if disk_id is None:
                 raise TypeError("Missing required property 'disk_id'")
-            __props__['disk_id'] = disk_id
+            __props__['diskId'] = disk_id
             if gateway_arn is None:
                 raise TypeError("Missing required property 'gateway_arn'")
-            __props__['gateway_arn'] = gateway_arn
+            __props__['gatewayArn'] = gateway_arn
         super(WorkingStorage, __self__).__init__(
             'aws:storagegateway/workingStorage:WorkingStorage',
             resource_name,

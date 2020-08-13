@@ -84,14 +84,14 @@ class SourceCredential(pulumi.CustomResource):
 
             if auth_type is None:
                 raise TypeError("Missing required property 'auth_type'")
-            __props__['auth_type'] = auth_type
+            __props__['authType'] = auth_type
             if server_type is None:
                 raise TypeError("Missing required property 'server_type'")
-            __props__['server_type'] = server_type
+            __props__['serverType'] = server_type
             if token is None:
                 raise TypeError("Missing required property 'token'")
             __props__['token'] = token
-            __props__['user_name'] = user_name
+            __props__['userName'] = user_name
             __props__['arn'] = None
         super(SourceCredential, __self__).__init__(
             'aws:codebuild/sourceCredential:SourceCredential',

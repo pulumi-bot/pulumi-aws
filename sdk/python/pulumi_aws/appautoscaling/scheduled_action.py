@@ -132,18 +132,18 @@ class ScheduledAction(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['end_time'] = end_time
+            __props__['endTime'] = end_time
             __props__['name'] = name
             if resource_id is None:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
-            __props__['scalable_dimension'] = scalable_dimension
-            __props__['scalable_target_action'] = scalable_target_action
+            __props__['resourceId'] = resource_id
+            __props__['scalableDimension'] = scalable_dimension
+            __props__['scalableTargetAction'] = scalable_target_action
             __props__['schedule'] = schedule
             if service_namespace is None:
                 raise TypeError("Missing required property 'service_namespace'")
-            __props__['service_namespace'] = service_namespace
-            __props__['start_time'] = start_time
+            __props__['serviceNamespace'] = service_namespace
+            __props__['startTime'] = start_time
             __props__['arn'] = None
         super(ScheduledAction, __self__).__init__(
             'aws:appautoscaling/scheduledAction:ScheduledAction',

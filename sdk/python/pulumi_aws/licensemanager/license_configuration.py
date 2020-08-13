@@ -100,12 +100,12 @@ class LicenseConfiguration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['license_count'] = license_count
-            __props__['license_count_hard_limit'] = license_count_hard_limit
+            __props__['licenseCount'] = license_count
+            __props__['licenseCountHardLimit'] = license_count_hard_limit
             if license_counting_type is None:
                 raise TypeError("Missing required property 'license_counting_type'")
-            __props__['license_counting_type'] = license_counting_type
-            __props__['license_rules'] = license_rules
+            __props__['licenseCountingType'] = license_counting_type
+            __props__['licenseRules'] = license_rules
             __props__['name'] = name
             __props__['tags'] = tags
         super(LicenseConfiguration, __self__).__init__(

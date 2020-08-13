@@ -174,11 +174,11 @@ class WebAcl(pulumi.CustomResource):
 
             if default_action is None:
                 raise TypeError("Missing required property 'default_action'")
-            __props__['default_action'] = default_action
-            __props__['logging_configuration'] = logging_configuration
+            __props__['defaultAction'] = default_action
+            __props__['loggingConfiguration'] = logging_configuration
             if metric_name is None:
                 raise TypeError("Missing required property 'metric_name'")
-            __props__['metric_name'] = metric_name
+            __props__['metricName'] = metric_name
             __props__['name'] = name
             __props__['rules'] = rules
             __props__['tags'] = tags

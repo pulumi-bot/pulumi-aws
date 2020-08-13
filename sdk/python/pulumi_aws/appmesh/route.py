@@ -231,7 +231,7 @@ class Route(pulumi.CustomResource):
 
             if mesh_name is None:
                 raise TypeError("Missing required property 'mesh_name'")
-            __props__['mesh_name'] = mesh_name
+            __props__['meshName'] = mesh_name
             __props__['name'] = name
             if spec is None:
                 raise TypeError("Missing required property 'spec'")
@@ -239,7 +239,7 @@ class Route(pulumi.CustomResource):
             __props__['tags'] = tags
             if virtual_router_name is None:
                 raise TypeError("Missing required property 'virtual_router_name'")
-            __props__['virtual_router_name'] = virtual_router_name
+            __props__['virtualRouterName'] = virtual_router_name
             __props__['arn'] = None
             __props__['created_date'] = None
             __props__['last_updated_date'] = None

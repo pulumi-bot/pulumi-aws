@@ -72,9 +72,9 @@ class CatalogDatabase(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['catalog_id'] = catalog_id
+            __props__['catalogId'] = catalog_id
             __props__['description'] = description
-            __props__['location_uri'] = location_uri
+            __props__['locationUri'] = location_uri
             __props__['name'] = name
             __props__['parameters'] = parameters
             __props__['arn'] = None

@@ -122,12 +122,12 @@ class RouteTable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['propagating_vgws'] = propagating_vgws
+            __props__['propagatingVgws'] = propagating_vgws
             __props__['routes'] = routes
             __props__['tags'] = tags
             if vpc_id is None:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__['vpcId'] = vpc_id
             __props__['owner_id'] = None
         super(RouteTable, __self__).__init__(
             'aws:ec2/routeTable:RouteTable',

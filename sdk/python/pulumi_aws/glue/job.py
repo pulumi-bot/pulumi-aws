@@ -190,22 +190,22 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'command'")
             __props__['command'] = command
             __props__['connections'] = connections
-            __props__['default_arguments'] = default_arguments
+            __props__['defaultArguments'] = default_arguments
             __props__['description'] = description
-            __props__['execution_property'] = execution_property
-            __props__['glue_version'] = glue_version
-            __props__['max_capacity'] = max_capacity
-            __props__['max_retries'] = max_retries
+            __props__['executionProperty'] = execution_property
+            __props__['glueVersion'] = glue_version
+            __props__['maxCapacity'] = max_capacity
+            __props__['maxRetries'] = max_retries
             __props__['name'] = name
-            __props__['notification_property'] = notification_property
-            __props__['number_of_workers'] = number_of_workers
+            __props__['notificationProperty'] = notification_property
+            __props__['numberOfWorkers'] = number_of_workers
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
-            __props__['security_configuration'] = security_configuration
+            __props__['roleArn'] = role_arn
+            __props__['securityConfiguration'] = security_configuration
             __props__['tags'] = tags
             __props__['timeout'] = timeout
-            __props__['worker_type'] = worker_type
+            __props__['workerType'] = worker_type
             __props__['arn'] = None
         super(Job, __self__).__init__(
             'aws:glue/job:Job',

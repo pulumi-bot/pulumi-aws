@@ -113,9 +113,9 @@ class KeyPair(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['pgp_key'] = pgp_key
-            __props__['public_key'] = public_key
+            __props__['namePrefix'] = name_prefix
+            __props__['pgpKey'] = pgp_key
+            __props__['publicKey'] = public_key
             __props__['arn'] = None
             __props__['encrypted_fingerprint'] = None
             __props__['encrypted_private_key'] = None

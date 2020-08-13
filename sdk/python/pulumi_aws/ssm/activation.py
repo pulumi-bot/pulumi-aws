@@ -71,7 +71,7 @@ class Activation(pulumi.CustomResource):
         foo = aws.ssm.Activation("foo",
             description="Test",
             iam_role=test_role.id,
-            registration_limit="5",
+            registration_limit=5,
             opts=ResourceOptions(depends_on=[test_attach]))
         ```
 
@@ -102,12 +102,12 @@ class Activation(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['expiration_date'] = expiration_date
+            __props__['expirationDate'] = expiration_date
             if iam_role is None:
                 raise TypeError("Missing required property 'iam_role'")
-            __props__['iam_role'] = iam_role
+            __props__['iamRole'] = iam_role
             __props__['name'] = name
-            __props__['registration_limit'] = registration_limit
+            __props__['registrationLimit'] = registration_limit
             __props__['tags'] = tags
             __props__['activation_code'] = None
             __props__['expired'] = None

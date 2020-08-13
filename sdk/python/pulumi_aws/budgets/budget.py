@@ -236,28 +236,28 @@ class Budget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             if budget_type is None:
                 raise TypeError("Missing required property 'budget_type'")
-            __props__['budget_type'] = budget_type
-            __props__['cost_filters'] = cost_filters
-            __props__['cost_types'] = cost_types
+            __props__['budgetType'] = budget_type
+            __props__['costFilters'] = cost_filters
+            __props__['costTypes'] = cost_types
             if limit_amount is None:
                 raise TypeError("Missing required property 'limit_amount'")
-            __props__['limit_amount'] = limit_amount
+            __props__['limitAmount'] = limit_amount
             if limit_unit is None:
                 raise TypeError("Missing required property 'limit_unit'")
-            __props__['limit_unit'] = limit_unit
+            __props__['limitUnit'] = limit_unit
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['notifications'] = notifications
-            __props__['time_period_end'] = time_period_end
+            __props__['timePeriodEnd'] = time_period_end
             if time_period_start is None:
                 raise TypeError("Missing required property 'time_period_start'")
-            __props__['time_period_start'] = time_period_start
+            __props__['timePeriodStart'] = time_period_start
             if time_unit is None:
                 raise TypeError("Missing required property 'time_unit'")
-            __props__['time_unit'] = time_unit
+            __props__['timeUnit'] = time_unit
         super(Budget, __self__).__init__(
             'aws:budgets/budget:Budget',
             resource_name,

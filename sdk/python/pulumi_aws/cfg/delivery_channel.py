@@ -118,10 +118,10 @@ class DeliveryChannel(pulumi.CustomResource):
             __props__['name'] = name
             if s3_bucket_name is None:
                 raise TypeError("Missing required property 's3_bucket_name'")
-            __props__['s3_bucket_name'] = s3_bucket_name
-            __props__['s3_key_prefix'] = s3_key_prefix
-            __props__['snapshot_delivery_properties'] = snapshot_delivery_properties
-            __props__['sns_topic_arn'] = sns_topic_arn
+            __props__['s3BucketName'] = s3_bucket_name
+            __props__['s3KeyPrefix'] = s3_key_prefix
+            __props__['snapshotDeliveryProperties'] = snapshot_delivery_properties
+            __props__['snsTopicArn'] = sns_topic_arn
         super(DeliveryChannel, __self__).__init__(
             'aws:cfg/deliveryChannel:DeliveryChannel',
             resource_name,

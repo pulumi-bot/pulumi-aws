@@ -90,8 +90,8 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['capacity_providers'] = capacity_providers
-            __props__['default_capacity_provider_strategies'] = default_capacity_provider_strategies
+            __props__['capacityProviders'] = capacity_providers
+            __props__['defaultCapacityProviderStrategies'] = default_capacity_provider_strategies
             __props__['name'] = name
             __props__['settings'] = settings
             __props__['tags'] = tags

@@ -99,18 +99,18 @@ class NotebookInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['direct_internet_access'] = direct_internet_access
+            __props__['directInternetAccess'] = direct_internet_access
             if instance_type is None:
                 raise TypeError("Missing required property 'instance_type'")
-            __props__['instance_type'] = instance_type
-            __props__['kms_key_id'] = kms_key_id
-            __props__['lifecycle_config_name'] = lifecycle_config_name
+            __props__['instanceType'] = instance_type
+            __props__['kmsKeyId'] = kms_key_id
+            __props__['lifecycleConfigName'] = lifecycle_config_name
             __props__['name'] = name
             if role_arn is None:
                 raise TypeError("Missing required property 'role_arn'")
-            __props__['role_arn'] = role_arn
-            __props__['security_groups'] = security_groups
-            __props__['subnet_id'] = subnet_id
+            __props__['roleArn'] = role_arn
+            __props__['securityGroups'] = security_groups
+            __props__['subnetId'] = subnet_id
             __props__['tags'] = tags
             __props__['arn'] = None
         super(NotebookInstance, __self__).__init__(

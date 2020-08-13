@@ -147,24 +147,24 @@ class SecurityGroupRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cidr_blocks'] = cidr_blocks
+            __props__['cidrBlocks'] = cidr_blocks
             __props__['description'] = description
             if from_port is None:
                 raise TypeError("Missing required property 'from_port'")
-            __props__['from_port'] = from_port
-            __props__['ipv6_cidr_blocks'] = ipv6_cidr_blocks
-            __props__['prefix_list_ids'] = prefix_list_ids
+            __props__['fromPort'] = from_port
+            __props__['ipv6CidrBlocks'] = ipv6_cidr_blocks
+            __props__['prefixListIds'] = prefix_list_ids
             if protocol is None:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             if security_group_id is None:
                 raise TypeError("Missing required property 'security_group_id'")
-            __props__['security_group_id'] = security_group_id
+            __props__['securityGroupId'] = security_group_id
             __props__['self'] = self
-            __props__['source_security_group_id'] = source_security_group_id
+            __props__['sourceSecurityGroupId'] = source_security_group_id
             if to_port is None:
                 raise TypeError("Missing required property 'to_port'")
-            __props__['to_port'] = to_port
+            __props__['toPort'] = to_port
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type

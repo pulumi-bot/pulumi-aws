@@ -212,10 +212,10 @@ class CertificateAuthority(pulumi.CustomResource):
 
             if certificate_authority_configuration is None:
                 raise TypeError("Missing required property 'certificate_authority_configuration'")
-            __props__['certificate_authority_configuration'] = certificate_authority_configuration
+            __props__['certificateAuthorityConfiguration'] = certificate_authority_configuration
             __props__['enabled'] = enabled
-            __props__['permanent_deletion_time_in_days'] = permanent_deletion_time_in_days
-            __props__['revocation_configuration'] = revocation_configuration
+            __props__['permanentDeletionTimeInDays'] = permanent_deletion_time_in_days
+            __props__['revocationConfiguration'] = revocation_configuration
             __props__['tags'] = tags
             __props__['type'] = type
             __props__['arn'] = None

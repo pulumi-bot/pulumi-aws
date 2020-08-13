@@ -181,24 +181,24 @@ class Topic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['application_failure_feedback_role_arn'] = application_failure_feedback_role_arn
-            __props__['application_success_feedback_role_arn'] = application_success_feedback_role_arn
-            __props__['application_success_feedback_sample_rate'] = application_success_feedback_sample_rate
-            __props__['delivery_policy'] = delivery_policy
-            __props__['display_name'] = display_name
-            __props__['http_failure_feedback_role_arn'] = http_failure_feedback_role_arn
-            __props__['http_success_feedback_role_arn'] = http_success_feedback_role_arn
-            __props__['http_success_feedback_sample_rate'] = http_success_feedback_sample_rate
-            __props__['kms_master_key_id'] = kms_master_key_id
-            __props__['lambda_failure_feedback_role_arn'] = lambda_failure_feedback_role_arn
-            __props__['lambda_success_feedback_role_arn'] = lambda_success_feedback_role_arn
-            __props__['lambda_success_feedback_sample_rate'] = lambda_success_feedback_sample_rate
+            __props__['applicationFailureFeedbackRoleArn'] = application_failure_feedback_role_arn
+            __props__['applicationSuccessFeedbackRoleArn'] = application_success_feedback_role_arn
+            __props__['applicationSuccessFeedbackSampleRate'] = application_success_feedback_sample_rate
+            __props__['deliveryPolicy'] = delivery_policy
+            __props__['displayName'] = display_name
+            __props__['httpFailureFeedbackRoleArn'] = http_failure_feedback_role_arn
+            __props__['httpSuccessFeedbackRoleArn'] = http_success_feedback_role_arn
+            __props__['httpSuccessFeedbackSampleRate'] = http_success_feedback_sample_rate
+            __props__['kmsMasterKeyId'] = kms_master_key_id
+            __props__['lambdaFailureFeedbackRoleArn'] = lambda_failure_feedback_role_arn
+            __props__['lambdaSuccessFeedbackRoleArn'] = lambda_success_feedback_role_arn
+            __props__['lambdaSuccessFeedbackSampleRate'] = lambda_success_feedback_sample_rate
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__['namePrefix'] = name_prefix
             __props__['policy'] = policy
-            __props__['sqs_failure_feedback_role_arn'] = sqs_failure_feedback_role_arn
-            __props__['sqs_success_feedback_role_arn'] = sqs_success_feedback_role_arn
-            __props__['sqs_success_feedback_sample_rate'] = sqs_success_feedback_sample_rate
+            __props__['sqsFailureFeedbackRoleArn'] = sqs_failure_feedback_role_arn
+            __props__['sqsSuccessFeedbackRoleArn'] = sqs_success_feedback_role_arn
+            __props__['sqsSuccessFeedbackSampleRate'] = sqs_success_feedback_sample_rate
             __props__['tags'] = tags
             __props__['arn'] = None
         super(Topic, __self__).__init__(

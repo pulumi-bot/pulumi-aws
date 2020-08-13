@@ -81,10 +81,10 @@ class LogGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['kms_key_id'] = kms_key_id
+            __props__['kmsKeyId'] = kms_key_id
             __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['retention_in_days'] = retention_in_days
+            __props__['namePrefix'] = name_prefix
+            __props__['retentionInDays'] = retention_in_days
             __props__['tags'] = tags
             __props__['arn'] = None
         super(LogGroup, __self__).__init__(

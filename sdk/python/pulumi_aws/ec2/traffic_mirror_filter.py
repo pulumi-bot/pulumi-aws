@@ -64,7 +64,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['network_services'] = network_services
+            __props__['networkServices'] = network_services
             __props__['tags'] = tags
         super(TrafficMirrorFilter, __self__).__init__(
             'aws:ec2/trafficMirrorFilter:TrafficMirrorFilter',

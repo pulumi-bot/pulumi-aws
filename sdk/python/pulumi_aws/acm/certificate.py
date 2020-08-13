@@ -188,15 +188,15 @@ class Certificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['certificate_authority_arn'] = certificate_authority_arn
-            __props__['certificate_body'] = certificate_body
-            __props__['certificate_chain'] = certificate_chain
-            __props__['domain_name'] = domain_name
+            __props__['certificateAuthorityArn'] = certificate_authority_arn
+            __props__['certificateBody'] = certificate_body
+            __props__['certificateChain'] = certificate_chain
+            __props__['domainName'] = domain_name
             __props__['options'] = options
-            __props__['private_key'] = private_key
-            __props__['subject_alternative_names'] = subject_alternative_names
+            __props__['privateKey'] = private_key
+            __props__['subjectAlternativeNames'] = subject_alternative_names
             __props__['tags'] = tags
-            __props__['validation_method'] = validation_method
+            __props__['validationMethod'] = validation_method
             __props__['arn'] = None
             __props__['domain_validation_options'] = None
             __props__['status'] = None

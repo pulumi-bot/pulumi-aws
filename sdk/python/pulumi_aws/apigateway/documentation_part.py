@@ -88,7 +88,7 @@ class DocumentationPart(pulumi.CustomResource):
             __props__['properties'] = properties
             if rest_api_id is None:
                 raise TypeError("Missing required property 'rest_api_id'")
-            __props__['rest_api_id'] = rest_api_id
+            __props__['restApiId'] = rest_api_id
         super(DocumentationPart, __self__).__init__(
             'aws:apigateway/documentationPart:DocumentationPart',
             resource_name,

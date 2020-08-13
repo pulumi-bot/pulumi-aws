@@ -191,13 +191,13 @@ class AmiFromInstance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['ebs_block_devices'] = ebs_block_devices
-            __props__['ephemeral_block_devices'] = ephemeral_block_devices
+            __props__['ebsBlockDevices'] = ebs_block_devices
+            __props__['ephemeralBlockDevices'] = ephemeral_block_devices
             __props__['name'] = name
-            __props__['snapshot_without_reboot'] = snapshot_without_reboot
+            __props__['snapshotWithoutReboot'] = snapshot_without_reboot
             if source_instance_id is None:
                 raise TypeError("Missing required property 'source_instance_id'")
-            __props__['source_instance_id'] = source_instance_id
+            __props__['sourceInstanceId'] = source_instance_id
             __props__['tags'] = tags
             __props__['architecture'] = None
             __props__['arn'] = None

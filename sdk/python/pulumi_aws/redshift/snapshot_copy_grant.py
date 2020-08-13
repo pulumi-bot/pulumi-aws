@@ -68,10 +68,10 @@ class SnapshotCopyGrant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['kms_key_id'] = kms_key_id
+            __props__['kmsKeyId'] = kms_key_id
             if snapshot_copy_grant_name is None:
                 raise TypeError("Missing required property 'snapshot_copy_grant_name'")
-            __props__['snapshot_copy_grant_name'] = snapshot_copy_grant_name
+            __props__['snapshotCopyGrantName'] = snapshot_copy_grant_name
             __props__['tags'] = tags
             __props__['arn'] = None
         super(SnapshotCopyGrant, __self__).__init__(

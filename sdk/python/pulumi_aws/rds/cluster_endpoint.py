@@ -132,15 +132,15 @@ class ClusterEndpoint(pulumi.CustomResource):
 
             if cluster_endpoint_identifier is None:
                 raise TypeError("Missing required property 'cluster_endpoint_identifier'")
-            __props__['cluster_endpoint_identifier'] = cluster_endpoint_identifier
+            __props__['clusterEndpointIdentifier'] = cluster_endpoint_identifier
             if cluster_identifier is None:
                 raise TypeError("Missing required property 'cluster_identifier'")
-            __props__['cluster_identifier'] = cluster_identifier
+            __props__['clusterIdentifier'] = cluster_identifier
             if custom_endpoint_type is None:
                 raise TypeError("Missing required property 'custom_endpoint_type'")
-            __props__['custom_endpoint_type'] = custom_endpoint_type
-            __props__['excluded_members'] = excluded_members
-            __props__['static_members'] = static_members
+            __props__['customEndpointType'] = custom_endpoint_type
+            __props__['excludedMembers'] = excluded_members
+            __props__['staticMembers'] = static_members
             __props__['tags'] = tags
             __props__['arn'] = None
             __props__['endpoint'] = None

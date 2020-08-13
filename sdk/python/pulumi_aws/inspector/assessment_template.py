@@ -86,11 +86,11 @@ class AssessmentTemplate(pulumi.CustomResource):
             __props__['name'] = name
             if rules_package_arns is None:
                 raise TypeError("Missing required property 'rules_package_arns'")
-            __props__['rules_package_arns'] = rules_package_arns
+            __props__['rulesPackageArns'] = rules_package_arns
             __props__['tags'] = tags
             if target_arn is None:
                 raise TypeError("Missing required property 'target_arn'")
-            __props__['target_arn'] = target_arn
+            __props__['targetArn'] = target_arn
             __props__['arn'] = None
         super(AssessmentTemplate, __self__).__init__(
             'aws:inspector/assessmentTemplate:AssessmentTemplate',

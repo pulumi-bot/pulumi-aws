@@ -213,26 +213,26 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cache_key_parameters'] = cache_key_parameters
-            __props__['cache_namespace'] = cache_namespace
-            __props__['connection_id'] = connection_id
-            __props__['connection_type'] = connection_type
-            __props__['content_handling'] = content_handling
+            __props__['cacheKeyParameters'] = cache_key_parameters
+            __props__['cacheNamespace'] = cache_namespace
+            __props__['connectionId'] = connection_id
+            __props__['connectionType'] = connection_type
+            __props__['contentHandling'] = content_handling
             __props__['credentials'] = credentials
             if http_method is None:
                 raise TypeError("Missing required property 'http_method'")
-            __props__['http_method'] = http_method
-            __props__['integration_http_method'] = integration_http_method
-            __props__['passthrough_behavior'] = passthrough_behavior
-            __props__['request_parameters'] = request_parameters
-            __props__['request_templates'] = request_templates
+            __props__['httpMethod'] = http_method
+            __props__['integrationHttpMethod'] = integration_http_method
+            __props__['passthroughBehavior'] = passthrough_behavior
+            __props__['requestParameters'] = request_parameters
+            __props__['requestTemplates'] = request_templates
             if resource_id is None:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
+            __props__['resourceId'] = resource_id
             if rest_api is None:
                 raise TypeError("Missing required property 'rest_api'")
-            __props__['rest_api'] = rest_api
-            __props__['timeout_milliseconds'] = timeout_milliseconds
+            __props__['restApi'] = rest_api
+            __props__['timeoutMilliseconds'] = timeout_milliseconds
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
