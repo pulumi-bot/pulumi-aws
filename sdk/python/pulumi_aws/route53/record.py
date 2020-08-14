@@ -100,7 +100,7 @@ class Record(pulumi.CustomResource):
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="www.example.com",
             type="A",
-            ttl="300",
+            ttl=300,
             records=[aws_eip["lb"]["public_ip"]])
         ```
         ### Weighted routing policy
@@ -114,7 +114,7 @@ class Record(pulumi.CustomResource):
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="www",
             type="CNAME",
-            ttl="5",
+            ttl=5,
             weighted_routing_policies=[{
                 "weight": 10,
             }],
@@ -124,7 +124,7 @@ class Record(pulumi.CustomResource):
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="www",
             type="CNAME",
-            ttl="5",
+            ttl=5,
             weighted_routing_policies=[{
                 "weight": 90,
             }],

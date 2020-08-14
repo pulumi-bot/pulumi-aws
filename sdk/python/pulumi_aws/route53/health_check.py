@@ -99,10 +99,10 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.route53.HealthCheck("example",
-            failure_threshold="5",
+            failure_threshold=5,
             fqdn="example.com",
             port=80,
-            request_interval="30",
+            request_interval=30,
             resource_path="/",
             tags={
                 "Name": "tf-test-health-check",
@@ -116,10 +116,10 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.route53.HealthCheck("example",
-            failure_threshold="5",
+            failure_threshold=5,
             fqdn="example.com",
             port=443,
-            request_interval="30",
+            request_interval=30,
             resource_path="/",
             search_string="example",
             type="HTTPS_STR_MATCH")
@@ -146,12 +146,12 @@ class HealthCheck(pulumi.CustomResource):
 
         foobar = aws.cloudwatch.MetricAlarm("foobar",
             comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
+            evaluation_periods=2,
             metric_name="CPUUtilization",
             namespace="AWS/EC2",
-            period="120",
+            period=120,
             statistic="Average",
-            threshold="80",
+            threshold=80,
             alarm_description="This metric monitors ec2 cpu utilization")
         foo = aws.route53.HealthCheck("foo",
             type="CLOUDWATCH_METRIC",

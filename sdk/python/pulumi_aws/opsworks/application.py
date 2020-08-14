@@ -128,7 +128,7 @@ class Application(pulumi.CustomResource):
                 "certificate": (lambda path: open(path).read())("./foobar.crt"),
             }],
             document_root="public",
-            auto_bundle_on_deploy=True,
+            auto_bundle_on_deploy="true",
             rails_env="staging")
         ```
 

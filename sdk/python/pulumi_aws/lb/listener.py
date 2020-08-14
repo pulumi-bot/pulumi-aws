@@ -106,7 +106,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="443",
+            port=443,
             protocol="HTTPS",
             ssl_policy="ELBSecurityPolicy-2016-08",
             certificate_arn="arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4",
@@ -125,7 +125,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[{
                 "type": "redirect",
@@ -146,7 +146,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[{
                 "type": "fixed-response",
@@ -175,7 +175,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[
                 {
@@ -204,7 +204,7 @@ class Listener(pulumi.CustomResource):
         # ...
         front_end_listener = aws.lb.Listener("frontEndListener",
             load_balancer_arn=front_end_load_balancer.arn,
-            port="80",
+            port=80,
             protocol="HTTP",
             default_actions=[
                 {
