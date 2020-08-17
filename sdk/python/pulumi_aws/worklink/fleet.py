@@ -5,63 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Fleet']
 
 
 class Fleet(pulumi.CustomResource):
-    arn: pulumi.Output[str]
-    """
-    The ARN of the created WorkLink Fleet.
-    """
-    audit_stream_arn: pulumi.Output[str]
-    """
-    The ARN of the Amazon Kinesis data stream that receives the audit events.
-    """
-    company_code: pulumi.Output[str]
-    """
-    The identifier used by users to sign in to the Amazon WorkLink app.
-    """
-    created_time: pulumi.Output[str]
-    """
-    The time that the fleet was created.
-    """
-    device_ca_certificate: pulumi.Output[str]
-    """
-    The certificate chain, including intermediate certificates and the root certificate authority certificate used to issue device certificates.
-    """
-    display_name: pulumi.Output[str]
-    """
-    The name of the fleet.
-    """
-    identity_provider: pulumi.Output[dict]
-    """
-    Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
-
-      * `samlMetadata` (`str`) - The SAML metadata document provided by the customer’s identity provider.
-      * `type` (`str`) - The type of identity provider.
-    """
-    last_updated_time: pulumi.Output[str]
-    """
-    The time that the fleet was last updated.
-    """
-    name: pulumi.Output[str]
-    """
-    A region-unique name for the AMI.
-    """
-    network: pulumi.Output[dict]
-    """
-    Provide this to allow manage the company network configuration for the fleet. Fields documented below.
-
-      * `security_group_ids` (`list`) - A list of security group IDs associated with access to the provided subnets.
-      * `subnet_ids` (`list`) - A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
-      * `vpc_id` (`str`) - The VPC ID with connectivity to associated websites.
-    """
-    optimize_for_end_user_location: pulumi.Output[bool]
-    """
-    The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
-    """
-    def __init__(__self__, resource_name, opts=None, audit_stream_arn=None, device_ca_certificate=None, display_name=None, identity_provider=None, name=None, network=None, optimize_for_end_user_location=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_stream_arn: Optional[pulumi.Input[str]] = None,
+                 device_ca_certificate: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 identity_provider: Optional[pulumi.Input[pulumi.InputType['FleetIdentityProviderArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[pulumi.InputType['FleetNetworkArgs']]] = None,
+                 optimize_for_end_user_location: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         ## Example Usage
 
@@ -104,21 +69,10 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] audit_stream_arn: The ARN of the Amazon Kinesis data stream that receives the audit events.
         :param pulumi.Input[str] device_ca_certificate: The certificate chain, including intermediate certificates and the root certificate authority certificate used to issue device certificates.
         :param pulumi.Input[str] display_name: The name of the fleet.
-        :param pulumi.Input[dict] identity_provider: Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        :param pulumi.Input[pulumi.InputType['FleetIdentityProviderArgs']] identity_provider: Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
         :param pulumi.Input[str] name: A region-unique name for the AMI.
-        :param pulumi.Input[dict] network: Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        :param pulumi.Input[pulumi.InputType['FleetNetworkArgs']] network: Provide this to allow manage the company network configuration for the fleet. Fields documented below.
         :param pulumi.Input[bool] optimize_for_end_user_location: The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
-
-        The **identity_provider** object supports the following:
-
-          * `samlMetadata` (`pulumi.Input[str]`) - The SAML metadata document provided by the customer’s identity provider.
-          * `type` (`pulumi.Input[str]`) - The type of identity provider.
-
-        The **network** object supports the following:
-
-          * `security_group_ids` (`pulumi.Input[list]`) - A list of security group IDs associated with access to the provided subnets.
-          * `subnet_ids` (`pulumi.Input[list]`) - A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
-          * `vpc_id` (`pulumi.Input[str]`) - The VPC ID with connectivity to associated websites.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -155,7 +109,20 @@ class Fleet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, audit_stream_arn=None, company_code=None, created_time=None, device_ca_certificate=None, display_name=None, identity_provider=None, last_updated_time=None, name=None, network=None, optimize_for_end_user_location=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            audit_stream_arn: Optional[pulumi.Input[str]] = None,
+            company_code: Optional[pulumi.Input[str]] = None,
+            created_time: Optional[pulumi.Input[str]] = None,
+            device_ca_certificate: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            identity_provider: Optional[pulumi.Input[pulumi.InputType['FleetIdentityProviderArgs']]] = None,
+            last_updated_time: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[pulumi.InputType['FleetNetworkArgs']]] = None,
+            optimize_for_end_user_location: Optional[pulumi.Input[bool]] = None) -> 'Fleet':
         """
         Get an existing Fleet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -169,22 +136,11 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] created_time: The time that the fleet was created.
         :param pulumi.Input[str] device_ca_certificate: The certificate chain, including intermediate certificates and the root certificate authority certificate used to issue device certificates.
         :param pulumi.Input[str] display_name: The name of the fleet.
-        :param pulumi.Input[dict] identity_provider: Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        :param pulumi.Input[pulumi.InputType['FleetIdentityProviderArgs']] identity_provider: Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
         :param pulumi.Input[str] last_updated_time: The time that the fleet was last updated.
         :param pulumi.Input[str] name: A region-unique name for the AMI.
-        :param pulumi.Input[dict] network: Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        :param pulumi.Input[pulumi.InputType['FleetNetworkArgs']] network: Provide this to allow manage the company network configuration for the fleet. Fields documented below.
         :param pulumi.Input[bool] optimize_for_end_user_location: The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
-
-        The **identity_provider** object supports the following:
-
-          * `samlMetadata` (`pulumi.Input[str]`) - The SAML metadata document provided by the customer’s identity provider.
-          * `type` (`pulumi.Input[str]`) - The type of identity provider.
-
-        The **network** object supports the following:
-
-          * `security_group_ids` (`pulumi.Input[list]`) - A list of security group IDs associated with access to the provided subnets.
-          * `subnet_ids` (`pulumi.Input[list]`) - A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
-          * `vpc_id` (`pulumi.Input[str]`) - The VPC ID with connectivity to associated websites.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -203,8 +159,97 @@ class Fleet(pulumi.CustomResource):
         __props__["optimize_for_end_user_location"] = optimize_for_end_user_location
         return Fleet(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        The ARN of the created WorkLink Fleet.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="auditStreamArn")
+    def audit_stream_arn(self) -> Optional[str]:
+        """
+        The ARN of the Amazon Kinesis data stream that receives the audit events.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="companyCode")
+    def company_code(self) -> str:
+        """
+        The identifier used by users to sign in to the Amazon WorkLink app.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        The time that the fleet was created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="deviceCaCertificate")
+    def device_ca_certificate(self) -> Optional[str]:
+        """
+        The certificate chain, including intermediate certificates and the root certificate authority certificate used to issue device certificates.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The name of the fleet.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> Optional['outputs.FleetIdentityProvider']:
+        """
+        Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="lastUpdatedTime")
+    def last_updated_time(self) -> str:
+        """
+        The time that the fleet was last updated.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A region-unique name for the AMI.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.FleetNetwork']:
+        """
+        Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="optimizeForEndUserLocation")
+    def optimize_for_end_user_location(self) -> Optional[bool]:
+        """
+        The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

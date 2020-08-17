@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['RecorderStatus']
 
 
 class RecorderStatus(pulumi.CustomResource):
-    is_enabled: pulumi.Output[bool]
-    """
-    Whether the configuration recorder should be enabled or disabled.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the recorder
-    """
-    def __init__(__self__, resource_name, opts=None, is_enabled=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages status (recording / stopped) of an AWS Config Configuration Recorder.
 
@@ -105,7 +106,11 @@ class RecorderStatus(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, is_enabled=None, name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            is_enabled: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None) -> 'RecorderStatus':
         """
         Get an existing RecorderStatus resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -124,8 +129,25 @@ class RecorderStatus(pulumi.CustomResource):
         __props__["name"] = name
         return RecorderStatus(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        """
+        Whether the configuration recorder should be enabled or disabled.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the recorder
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

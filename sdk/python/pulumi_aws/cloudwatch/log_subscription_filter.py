@@ -5,36 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['LogSubscriptionFilter']
 
 
 class LogSubscriptionFilter(pulumi.CustomResource):
-    destination_arn: pulumi.Output[str]
-    """
-    The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
-    """
-    distribution: pulumi.Output[str]
-    """
-    The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
-    """
-    filter_pattern: pulumi.Output[str]
-    """
-    A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
-    """
-    log_group: pulumi.Output[str]
-    """
-    The name of the log group to associate the subscription filter with
-    """
-    name: pulumi.Output[str]
-    """
-    A name for the subscription filter
-    """
-    role_arn: pulumi.Output[str]
-    """
-    The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to deliver ingested log events to the destination. If you use Lambda as a destination, you should skip this argument and use `lambda.Permission` resource for granting access from CloudWatch logs to the destination Lambda function.
-    """
-    def __init__(__self__, resource_name, opts=None, destination_arn=None, distribution=None, filter_pattern=None, log_group=None, name=None, role_arn=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_arn: Optional[pulumi.Input[str]] = None,
+                 distribution: Optional[pulumi.Input[str]] = None,
+                 filter_pattern: Optional[pulumi.Input[str]] = None,
+                 log_group: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a CloudWatch Logs subscription filter resource.
 
@@ -57,7 +46,7 @@ class LogSubscriptionFilter(pulumi.CustomResource):
         :param pulumi.Input[str] destination_arn: The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
         :param pulumi.Input[str] distribution: The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
         :param pulumi.Input[str] filter_pattern: A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
-        :param pulumi.Input[dict] log_group: The name of the log group to associate the subscription filter with
+        :param pulumi.Input[str] log_group: The name of the log group to associate the subscription filter with
         :param pulumi.Input[str] name: A name for the subscription filter
         :param pulumi.Input[str] role_arn: The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to deliver ingested log events to the destination. If you use Lambda as a destination, you should skip this argument and use `lambda.Permission` resource for granting access from CloudWatch logs to the destination Lambda function.
         """
@@ -97,7 +86,15 @@ class LogSubscriptionFilter(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, destination_arn=None, distribution=None, filter_pattern=None, log_group=None, name=None, role_arn=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination_arn: Optional[pulumi.Input[str]] = None,
+            distribution: Optional[pulumi.Input[str]] = None,
+            filter_pattern: Optional[pulumi.Input[str]] = None,
+            log_group: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            role_arn: Optional[pulumi.Input[str]] = None) -> 'LogSubscriptionFilter':
         """
         Get an existing LogSubscriptionFilter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -108,7 +105,7 @@ class LogSubscriptionFilter(pulumi.CustomResource):
         :param pulumi.Input[str] destination_arn: The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
         :param pulumi.Input[str] distribution: The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
         :param pulumi.Input[str] filter_pattern: A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
-        :param pulumi.Input[dict] log_group: The name of the log group to associate the subscription filter with
+        :param pulumi.Input[str] log_group: The name of the log group to associate the subscription filter with
         :param pulumi.Input[str] name: A name for the subscription filter
         :param pulumi.Input[str] role_arn: The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to deliver ingested log events to the destination. If you use Lambda as a destination, you should skip this argument and use `lambda.Permission` resource for granting access from CloudWatch logs to the destination Lambda function.
         """
@@ -124,8 +121,57 @@ class LogSubscriptionFilter(pulumi.CustomResource):
         __props__["role_arn"] = role_arn
         return LogSubscriptionFilter(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="destinationArn")
+    def destination_arn(self) -> str:
+        """
+        The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> Optional[str]:
+        """
+        The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are "Random" and "ByLogStream".
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="filterPattern")
+    def filter_pattern(self) -> str:
+        """
+        A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="logGroup")
+    def log_group(self) -> str:
+        """
+        The name of the log group to associate the subscription filter with
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the subscription filter
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        """
+        The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to deliver ingested log events to the destination. If you use Lambda as a destination, you should skip this argument and use `lambda.Permission` resource for granting access from CloudWatch logs to the destination Lambda function.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

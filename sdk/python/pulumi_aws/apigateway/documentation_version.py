@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['DocumentationVersion']
 
 
 class DocumentationVersion(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The description of the API documentation version.
-    """
-    rest_api_id: pulumi.Output[str]
-    """
-    The ID of the associated Rest API
-    """
-    version: pulumi.Output[str]
-    """
-    The version identifier of the API documentation snapshot.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, rest_api_id=None, version=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 rest_api_id: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource to manage an API Gateway Documentation Version.
 
@@ -83,7 +81,12 @@ class DocumentationVersion(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, rest_api_id=None, version=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            rest_api_id: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None) -> 'DocumentationVersion':
         """
         Get an existing DocumentationVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -104,8 +107,33 @@ class DocumentationVersion(pulumi.CustomResource):
         __props__["version"] = version
         return DocumentationVersion(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the API documentation version.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="restApiId")
+    def rest_api_id(self) -> str:
+        """
+        The ID of the associated Rest API
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version identifier of the API documentation snapshot.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

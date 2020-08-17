@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['LogDestinationPolicy']
 
 
 class LogDestinationPolicy(pulumi.CustomResource):
-    access_policy: pulumi.Output[str]
-    """
-    The policy document. This is a JSON formatted string.
-    """
-    destination_name: pulumi.Output[str]
-    """
-    A name for the subscription filter
-    """
-    def __init__(__self__, resource_name, opts=None, access_policy=None, destination_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_policy: Optional[pulumi.Input[str]] = None,
+                 destination_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a CloudWatch Logs destination policy resource.
 
@@ -80,7 +81,11 @@ class LogDestinationPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_policy=None, destination_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy: Optional[pulumi.Input[str]] = None,
+            destination_name: Optional[pulumi.Input[str]] = None) -> 'LogDestinationPolicy':
         """
         Get an existing LogDestinationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -99,8 +104,25 @@ class LogDestinationPolicy(pulumi.CustomResource):
         __props__["destination_name"] = destination_name
         return LogDestinationPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessPolicy")
+    def access_policy(self) -> str:
+        """
+        The policy document. This is a JSON formatted string.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="destinationName")
+    def destination_name(self) -> str:
+        """
+        A name for the subscription filter
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,40 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ParameterGroup']
 
 
 class ParameterGroup(pulumi.CustomResource):
-    arn: pulumi.Output[str]
-    """
-    The Neptune parameter group Amazon Resource Name (ARN).
-    """
-    description: pulumi.Output[str]
-    """
-    The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-    """
-    family: pulumi.Output[str]
-    """
-    The family of the Neptune parameter group.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the Neptune parameter.
-    """
-    parameters: pulumi.Output[list]
-    """
-    A list of Neptune parameters to apply.
-
-      * `applyMethod` (`str`) - The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-      * `name` (`str`) - The name of the Neptune parameter.
-      * `value` (`str`) - The value of the Neptune parameter.
-    """
-    tags: pulumi.Output[dict]
-    """
-    A map of tags to assign to the resource.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, family=None, name=None, parameters=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 family: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Neptune Parameter Group
 
@@ -61,14 +47,8 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the Neptune parameter group.
         :param pulumi.Input[str] name: The name of the Neptune parameter.
-        :param pulumi.Input[list] parameters: A list of Neptune parameters to apply.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **parameters** object supports the following:
-
-          * `applyMethod` (`pulumi.Input[str]`) - The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-          * `name` (`pulumi.Input[str]`) - The name of the Neptune parameter.
-          * `value` (`pulumi.Input[str]`) - The value of the Neptune parameter.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]] parameters: A list of Neptune parameters to apply.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,7 +82,15 @@ class ParameterGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, description=None, family=None, name=None, parameters=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            family: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parameters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ParameterGroup':
         """
         Get an existing ParameterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -114,14 +102,8 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the Neptune parameter group.
         :param pulumi.Input[str] name: The name of the Neptune parameter.
-        :param pulumi.Input[list] parameters: A list of Neptune parameters to apply.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **parameters** object supports the following:
-
-          * `applyMethod` (`pulumi.Input[str]`) - The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-          * `name` (`pulumi.Input[str]`) - The name of the Neptune parameter.
-          * `value` (`pulumi.Input[str]`) - The value of the Neptune parameter.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]] parameters: A list of Neptune parameters to apply.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -135,8 +117,57 @@ class ParameterGroup(pulumi.CustomResource):
         __props__["tags"] = tags
         return ParameterGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        The Neptune parameter group Amazon Resource Name (ARN).
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def family(self) -> str:
+        """
+        The family of the Neptune parameter group.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Neptune parameter.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[List['outputs.ParameterGroupParameter']]:
+        """
+        A list of Neptune parameters to apply.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of tags to assign to the resource.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

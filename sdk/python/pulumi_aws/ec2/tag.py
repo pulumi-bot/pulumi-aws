@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Tag']
 
 
 class Tag(pulumi.CustomResource):
-    key: pulumi.Output[str]
-    """
-    The tag name.
-    """
-    resource_id: pulumi.Output[str]
-    """
-    The ID of the EC2 resource to manage the tag for.
-    """
-    value: pulumi.Output[str]
-    """
-    The value of the tag.
-    """
-    def __init__(__self__, resource_name, opts=None, key=None, resource_id=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Tag resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -64,7 +62,12 @@ class Tag(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, key=None, resource_id=None, value=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            key: Optional[pulumi.Input[str]] = None,
+            resource_id: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'Tag':
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -85,8 +88,33 @@ class Tag(pulumi.CustomResource):
         __props__["value"] = value
         return Tag(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The tag name.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the EC2 resource to manage the tag for.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the tag.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

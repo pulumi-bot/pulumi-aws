@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['VpcDhcpOptionsAssociation']
 
 
 class VpcDhcpOptionsAssociation(pulumi.CustomResource):
-    dhcp_options_id: pulumi.Output[str]
-    """
-    The ID of the DHCP Options Set to associate to the VPC.
-    """
-    vpc_id: pulumi.Output[str]
-    """
-    The ID of the VPC to which we would like to associate a DHCP Options Set.
-    """
-    def __init__(__self__, resource_name, opts=None, dhcp_options_id=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dhcp_options_id: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a VPC DHCP Options Association resource.
 
@@ -72,7 +73,11 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dhcp_options_id=None, vpc_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp_options_id: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None) -> 'VpcDhcpOptionsAssociation':
         """
         Get an existing VpcDhcpOptionsAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -91,8 +96,25 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         return VpcDhcpOptionsAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="dhcpOptionsId")
+    def dhcp_options_id(self) -> str:
+        """
+        The ID of the DHCP Options Set to associate to the VPC.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC to which we would like to associate a DHCP Options Set.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,29 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['TableItem']
 
 
 class TableItem(pulumi.CustomResource):
-    hash_key: pulumi.Output[str]
-    """
-    Hash key to use for lookups and identification of the item
-    """
-    item: pulumi.Output[str]
-    """
-    JSON representation of a map of attribute name/value pairs, one for each attribute.
-    Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-    """
-    range_key: pulumi.Output[str]
-    """
-    Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-    """
-    table_name: pulumi.Output[str]
-    """
-    The name of the table to contain the item.
-    """
-    def __init__(__self__, resource_name, opts=None, hash_key=None, item=None, range_key=None, table_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 hash_key: Optional[pulumi.Input[str]] = None,
+                 item: Optional[pulumi.Input[str]] = None,
+                 range_key: Optional[pulumi.Input[str]] = None,
+                 table_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DynamoDB table item resource
 
@@ -103,7 +97,13 @@ class TableItem(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, hash_key=None, item=None, range_key=None, table_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            hash_key: Optional[pulumi.Input[str]] = None,
+            item: Optional[pulumi.Input[str]] = None,
+            range_key: Optional[pulumi.Input[str]] = None,
+            table_name: Optional[pulumi.Input[str]] = None) -> 'TableItem':
         """
         Get an existing TableItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -127,8 +127,42 @@ class TableItem(pulumi.CustomResource):
         __props__["table_name"] = table_name
         return TableItem(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="hashKey")
+    def hash_key(self) -> str:
+        """
+        Hash key to use for lookups and identification of the item
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def item(self) -> str:
+        """
+        JSON representation of a map of attribute name/value pairs, one for each attribute.
+        Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="rangeKey")
+    def range_key(self) -> Optional[str]:
+        """
+        Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> str:
+        """
+        The name of the table to contain the item.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

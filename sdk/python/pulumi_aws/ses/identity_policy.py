@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['IdentityPolicy']
 
 
 class IdentityPolicy(pulumi.CustomResource):
-    identity: pulumi.Output[str]
-    """
-    Name or Amazon Resource Name (ARN) of the SES Identity.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the policy.
-    """
-    policy: pulumi.Output[str]
-    """
-    JSON string of the policy.
-    """
-    def __init__(__self__, resource_name, opts=None, identity=None, name=None, policy=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 identity: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a SES Identity Policy. More information about SES Sending Authorization Policies can be found in the [SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 
@@ -86,7 +84,12 @@ class IdentityPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, identity=None, name=None, policy=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            identity: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            policy: Optional[pulumi.Input[str]] = None) -> 'IdentityPolicy':
         """
         Get an existing IdentityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -107,8 +110,33 @@ class IdentityPolicy(pulumi.CustomResource):
         __props__["policy"] = policy
         return IdentityPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def identity(self) -> str:
+        """
+        Name or Amazon Resource Name (ARN) of the SES Identity.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the policy.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        JSON string of the policy.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

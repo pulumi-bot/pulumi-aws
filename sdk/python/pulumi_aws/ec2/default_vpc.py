@@ -5,79 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['DefaultVpc']
 
 
 class DefaultVpc(pulumi.CustomResource):
-    arn: pulumi.Output[str]
-    """
-    Amazon Resource Name (ARN) of VPC
-    """
-    assign_generated_ipv6_cidr_block: pulumi.Output[bool]
-    """
-    Whether or not an Amazon-provided IPv6 CIDR
-    block with a /56 prefix length for the VPC was assigned
-    """
-    cidr_block: pulumi.Output[str]
-    """
-    The CIDR block of the VPC
-    """
-    default_network_acl_id: pulumi.Output[str]
-    """
-    The ID of the network ACL created by default on VPC creation
-    """
-    default_route_table_id: pulumi.Output[str]
-    """
-    The ID of the route table created by default on VPC creation
-    """
-    default_security_group_id: pulumi.Output[str]
-    """
-    The ID of the security group created by default on VPC creation
-    """
-    dhcp_options_id: pulumi.Output[str]
-    enable_classiclink: pulumi.Output[bool]
-    """
-    A boolean flag to enable/disable ClassicLink
-    for the VPC. Only valid in regions and accounts that support EC2 Classic.
-    See the [ClassicLink documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) for more information. Defaults false.
-    """
-    enable_classiclink_dns_support: pulumi.Output[bool]
-    enable_dns_hostnames: pulumi.Output[bool]
-    """
-    A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
-    """
-    enable_dns_support: pulumi.Output[bool]
-    """
-    A boolean flag to enable/disable DNS support in the VPC. Defaults true.
-    """
-    instance_tenancy: pulumi.Output[str]
-    """
-    Tenancy of instances spin up within VPC.
-    """
-    ipv6_association_id: pulumi.Output[str]
-    """
-    The association ID for the IPv6 CIDR block of the VPC
-    """
-    ipv6_cidr_block: pulumi.Output[str]
-    """
-    The IPv6 CIDR block of the VPC
-    """
-    main_route_table_id: pulumi.Output[str]
-    """
-    The ID of the main route table associated with
-    this VPC. Note that you can change a VPC's main route table by using an
-    `ec2.MainRouteTableAssociation`
-    """
-    owner_id: pulumi.Output[str]
-    """
-    The ID of the AWS account that owns the VPC.
-    """
-    tags: pulumi.Output[dict]
-    """
-    A map of tags to assign to the resource.
-    """
-    def __init__(__self__, resource_name, opts=None, enable_classiclink=None, enable_classiclink_dns_support=None, enable_dns_hostnames=None, enable_dns_support=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enable_classiclink: Optional[pulumi.Input[bool]] = None,
+                 enable_classiclink_dns_support: Optional[pulumi.Input[bool]] = None,
+                 enable_dns_hostnames: Optional[pulumi.Input[bool]] = None,
+                 enable_dns_support: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource to manage the [default AWS VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html)
         in the current region.
@@ -110,7 +55,7 @@ class DefaultVpc(pulumi.CustomResource):
                See the [ClassicLink documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) for more information. Defaults false.
         :param pulumi.Input[bool] enable_dns_hostnames: A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
         :param pulumi.Input[bool] enable_dns_support: A boolean flag to enable/disable DNS support in the VPC. Defaults true.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -153,7 +98,26 @@ class DefaultVpc(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, arn=None, assign_generated_ipv6_cidr_block=None, cidr_block=None, default_network_acl_id=None, default_route_table_id=None, default_security_group_id=None, dhcp_options_id=None, enable_classiclink=None, enable_classiclink_dns_support=None, enable_dns_hostnames=None, enable_dns_support=None, instance_tenancy=None, ipv6_association_id=None, ipv6_cidr_block=None, main_route_table_id=None, owner_id=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
+            assign_generated_ipv6_cidr_block: Optional[pulumi.Input[bool]] = None,
+            cidr_block: Optional[pulumi.Input[str]] = None,
+            default_network_acl_id: Optional[pulumi.Input[str]] = None,
+            default_route_table_id: Optional[pulumi.Input[str]] = None,
+            default_security_group_id: Optional[pulumi.Input[str]] = None,
+            dhcp_options_id: Optional[pulumi.Input[str]] = None,
+            enable_classiclink: Optional[pulumi.Input[bool]] = None,
+            enable_classiclink_dns_support: Optional[pulumi.Input[bool]] = None,
+            enable_dns_hostnames: Optional[pulumi.Input[bool]] = None,
+            enable_dns_support: Optional[pulumi.Input[bool]] = None,
+            instance_tenancy: Optional[pulumi.Input[str]] = None,
+            ipv6_association_id: Optional[pulumi.Input[str]] = None,
+            ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
+            main_route_table_id: Optional[pulumi.Input[str]] = None,
+            owner_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DefaultVpc':
         """
         Get an existing DefaultVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -180,7 +144,7 @@ class DefaultVpc(pulumi.CustomResource):
                this VPC. Note that you can change a VPC's main route table by using an
                `ec2.MainRouteTableAssociation`
         :param pulumi.Input[str] owner_id: The ID of the AWS account that owns the VPC.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -205,8 +169,144 @@ class DefaultVpc(pulumi.CustomResource):
         __props__["tags"] = tags
         return DefaultVpc(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        Amazon Resource Name (ARN) of VPC
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="assignGeneratedIpv6CidrBlock")
+    def assign_generated_ipv6_cidr_block(self) -> bool:
+        """
+        Whether or not an Amazon-provided IPv6 CIDR
+        block with a /56 prefix length for the VPC was assigned
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The CIDR block of the VPC
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="defaultNetworkAclId")
+    def default_network_acl_id(self) -> str:
+        """
+        The ID of the network ACL created by default on VPC creation
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="defaultRouteTableId")
+    def default_route_table_id(self) -> str:
+        """
+        The ID of the route table created by default on VPC creation
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="defaultSecurityGroupId")
+    def default_security_group_id(self) -> str:
+        """
+        The ID of the security group created by default on VPC creation
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="dhcpOptionsId")
+    def dhcp_options_id(self) -> str:
+        ...
+
+    @property
+    @pulumi.getter(name="enableClassiclink")
+    def enable_classiclink(self) -> bool:
+        """
+        A boolean flag to enable/disable ClassicLink
+        for the VPC. Only valid in regions and accounts that support EC2 Classic.
+        See the [ClassicLink documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) for more information. Defaults false.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="enableClassiclinkDnsSupport")
+    def enable_classiclink_dns_support(self) -> bool:
+        ...
+
+    @property
+    @pulumi.getter(name="enableDnsHostnames")
+    def enable_dns_hostnames(self) -> bool:
+        """
+        A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="enableDnsSupport")
+    def enable_dns_support(self) -> Optional[bool]:
+        """
+        A boolean flag to enable/disable DNS support in the VPC. Defaults true.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="instanceTenancy")
+    def instance_tenancy(self) -> str:
+        """
+        Tenancy of instances spin up within VPC.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="ipv6AssociationId")
+    def ipv6_association_id(self) -> str:
+        """
+        The association ID for the IPv6 CIDR block of the VPC
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> str:
+        """
+        The IPv6 CIDR block of the VPC
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="mainRouteTableId")
+    def main_route_table_id(self) -> str:
+        """
+        The ID of the main route table associated with
+        this VPC. Note that you can change a VPC's main route table by using an
+        `ec2.MainRouteTableAssociation`
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> str:
+        """
+        The ID of the AWS account that owns the VPC.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of tags to assign to the resource.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['InviteAccepter']
 
 
 class InviteAccepter(pulumi.CustomResource):
-    detector_id: pulumi.Output[str]
-    """
-    The detector ID of the member GuardDuty account.
-    """
-    master_account_id: pulumi.Output[str]
-    """
-    AWS account ID for primary account.
-    """
-    def __init__(__self__, resource_name, opts=None, detector_id=None, master_account_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 detector_id: Optional[pulumi.Input[str]] = None,
+                 master_account_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct primary account on read, and disassociate with the primary account upon removal.
 
@@ -81,7 +82,11 @@ class InviteAccepter(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, detector_id=None, master_account_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            detector_id: Optional[pulumi.Input[str]] = None,
+            master_account_id: Optional[pulumi.Input[str]] = None) -> 'InviteAccepter':
         """
         Get an existing InviteAccepter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,8 +105,25 @@ class InviteAccepter(pulumi.CustomResource):
         __props__["master_account_id"] = master_account_id
         return InviteAccepter(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="detectorId")
+    def detector_id(self) -> str:
+        """
+        The detector ID of the member GuardDuty account.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="masterAccountId")
+    def master_account_id(self) -> str:
+        """
+        AWS account ID for primary account.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

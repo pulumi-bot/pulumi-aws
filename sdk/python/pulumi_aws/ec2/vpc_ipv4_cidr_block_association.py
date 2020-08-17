@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['VpcIpv4CidrBlockAssociation']
 
 
 class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
-    cidr_block: pulumi.Output[str]
-    """
-    The additional IPv4 CIDR block to associate with the VPC.
-    """
-    vpc_id: pulumi.Output[str]
-    """
-    The ID of the VPC to make the association with.
-    """
-    def __init__(__self__, resource_name, opts=None, cidr_block=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource to associate additional IPv4 CIDR blocks with a VPC.
 
@@ -72,7 +73,11 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cidr_block=None, vpc_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_block: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None) -> 'VpcIpv4CidrBlockAssociation':
         """
         Get an existing VpcIpv4CidrBlockAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -91,8 +96,25 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         return VpcIpv4CidrBlockAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The additional IPv4 CIDR block to associate with the VPC.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC to make the association with.
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

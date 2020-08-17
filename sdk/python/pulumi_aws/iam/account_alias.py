@@ -5,16 +5,20 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['AccountAlias']
 
 
 class AccountAlias(pulumi.CustomResource):
-    account_alias: pulumi.Output[str]
-    """
-    The account alias
-    """
-    def __init__(__self__, resource_name, opts=None, account_alias=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_alias: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         > **Note:** There is only a single account alias per AWS account.
 
@@ -60,7 +64,10 @@ class AccountAlias(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_alias=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_alias: Optional[pulumi.Input[str]] = None) -> 'AccountAlias':
         """
         Get an existing AccountAlias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -77,8 +84,17 @@ class AccountAlias(pulumi.CustomResource):
         __props__["account_alias"] = account_alias
         return AccountAlias(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accountAlias")
+    def account_alias(self) -> str:
+        """
+        The account alias
+        """
+        ...
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
