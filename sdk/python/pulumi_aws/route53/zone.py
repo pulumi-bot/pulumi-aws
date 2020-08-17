@@ -77,7 +77,7 @@ class Zone(pulumi.CustomResource):
             zone_id=main.zone_id,
             name="dev.example.com",
             type="NS",
-            ttl="30",
+            ttl=30,
             records=dev.name_servers)
         ```
         ### Private Zone

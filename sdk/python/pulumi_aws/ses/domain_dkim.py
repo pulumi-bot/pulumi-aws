@@ -43,7 +43,7 @@ class DomainDkim(pulumi.CustomResource):
                 zone_id="ABCDEFGHIJ123",
                 name=example_domain_dkim.dkim_tokens[range["value"]].apply(lambda dkim_tokens: f"{dkim_tokens}._domainkey.example.com"),
                 type="CNAME",
-                ttl="600",
+                ttl=600,
                 records=[example_domain_dkim.dkim_tokens[range["value"]].apply(lambda dkim_tokens: f"{dkim_tokens}.dkim.amazonses.com")]))
         ```
 

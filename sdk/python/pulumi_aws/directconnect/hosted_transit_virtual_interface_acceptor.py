@@ -44,7 +44,7 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
         # Accepter's credentials.
         accepter_caller_identity = aws.get_caller_identity()
         # Accepter's side of the VIF.
-        example = aws.directconnect.Gateway("example", amazon_side_asn=64512,
+        example = aws.directconnect.Gateway("example", amazon_side_asn="64512",
         opts=ResourceOptions(provider=aws["accepter"]))
         # Creator's side of the VIF
         creator = aws.directconnect.HostedTransitVirtualInterface("creator",
