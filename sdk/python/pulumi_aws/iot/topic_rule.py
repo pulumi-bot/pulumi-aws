@@ -89,7 +89,7 @@ class TopicRule(pulumi.CustomResource):
         * `role_arn` (`str`) - The ARN of the IAM role that grants access to the Amazon Kinesis stream.
         * `streamName` (`str`) - The name of the Amazon Kinesis stream.
 
-      * `lambda` (`dict`)
+      * `lambda_` (`dict`)
         * `function_arn` (`str`) - The ARN of the Lambda function.
 
       * `republish` (`dict`)
@@ -314,7 +314,7 @@ class TopicRule(pulumi.CustomResource):
             * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM role that grants access to the Amazon Kinesis stream.
             * `streamName` (`pulumi.Input[str]`) - The name of the Amazon Kinesis stream.
 
-          * `lambda` (`pulumi.Input[dict]`)
+          * `lambda_` (`pulumi.Input[dict]`)
             * `function_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function.
 
           * `republish` (`pulumi.Input[dict]`)
@@ -573,7 +573,7 @@ class TopicRule(pulumi.CustomResource):
             * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM role that grants access to the Amazon Kinesis stream.
             * `streamName` (`pulumi.Input[str]`) - The name of the Amazon Kinesis stream.
 
-          * `lambda` (`pulumi.Input[dict]`)
+          * `lambda_` (`pulumi.Input[dict]`)
             * `function_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function.
 
           * `republish` (`pulumi.Input[dict]`)

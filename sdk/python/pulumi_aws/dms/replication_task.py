@@ -62,7 +62,7 @@ class ReplicationTask(pulumi.CustomResource):
 
         # Create a new replication task
         test = aws.dms.ReplicationTask("test",
-            cdc_start_time=1484346880,
+            cdc_start_time="1484346880",
             migration_type="full-load",
             replication_instance_arn=aws_dms_replication_instance["test-dms-replication-instance-tf"]["replication_instance_arn"],
             replication_task_id="test-dms-replication-task-tf",
