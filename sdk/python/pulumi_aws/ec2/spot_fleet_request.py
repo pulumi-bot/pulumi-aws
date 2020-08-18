@@ -195,7 +195,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     "iamInstanceProfileArn": aws_iam_instance_profile["example"]["arn"],
                     "availability_zone": "us-west-1a",
                     "subnet_id": "subnet-1234",
-                    "weightedCapacity": 35,
+                    "weightedCapacity": "35",
                     "root_block_devices": [{
                         "volume_size": "300",
                         "volumeType": "gp2",

@@ -109,7 +109,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         default = aws.ec2.DefaultNetworkAcl("default",
             default_network_acl_id=mainvpc.default_network_acl_id,
             ingress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "ruleNo": 100,
                 "action": "allow",
                 "cidr_block": mainvpc.cidr_block,
@@ -117,7 +117,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
                 "to_port": 0,
             }],
             egress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "ruleNo": 100,
                 "action": "allow",
                 "cidr_block": "0.0.0.0/0",
@@ -139,7 +139,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         default = aws.ec2.DefaultNetworkAcl("default",
             default_network_acl_id=mainvpc.default_network_acl_id,
             ingress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "ruleNo": 100,
                 "action": "allow",
                 "cidr_block": mainvpc.cidr_block,

@@ -131,7 +131,7 @@ class Provider(pulumi.ProviderResource):
           * `kinesisvideo` (`pulumi.Input[str]`)
           * `kms` (`pulumi.Input[str]`)
           * `lakeformation` (`pulumi.Input[str]`)
-          * `lambda` (`pulumi.Input[str]`)
+          * `lambda_` (`pulumi.Input[str]`)
           * `lexmodels` (`pulumi.Input[str]`)
           * `licensemanager` (`pulumi.Input[str]`)
           * `lightsail` (`pulumi.Input[str]`)
