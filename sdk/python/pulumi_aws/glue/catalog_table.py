@@ -154,7 +154,7 @@ class CatalogTable(pulumi.CustomResource):
                 "serDeInfo": {
                     "name": "my-stream",
                     "parameters": {
-                        "serialization.format": 1,
+                        "serialization.format": "1",
                     },
                     "serializationLibrary": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
                 },

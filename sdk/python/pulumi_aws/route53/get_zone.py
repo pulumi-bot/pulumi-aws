@@ -113,7 +113,7 @@ def get_zone(name=None, private_zone=None, resource_record_set_count=None, tags=
         zone_id=selected.zone_id,
         name=f"www.{selected.name}",
         type="A",
-        ttl="300",
+        ttl=300,
         records=["10.0.0.1"])
     ```
 
