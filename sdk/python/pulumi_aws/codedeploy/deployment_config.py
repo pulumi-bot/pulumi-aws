@@ -5,48 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['DeploymentConfig']
 
 
 class DeploymentConfig(pulumi.CustomResource):
-    compute_platform: pulumi.Output[str]
-    """
-    The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
-    """
-    deployment_config_id: pulumi.Output[str]
-    """
-    The AWS Assigned deployment config id
-    """
-    deployment_config_name: pulumi.Output[str]
-    """
-    The name of the deployment config.
-    """
-    minimum_healthy_hosts: pulumi.Output[dict]
-    """
-    A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-
-      * `type` (`str`) - The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
-      * `value` (`float`) - The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
-        a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
-        deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.
-        When the type is `HOST_COUNT`, the value represents the minimum number of healthy instances as an absolute value.
-    """
-    traffic_routing_config: pulumi.Output[dict]
-    """
-    A traffic_routing_config block. Traffic Routing Config is documented below.
-
-      * `timeBasedCanary` (`dict`) - The time based canary configuration information. If `type` is `TimeBasedLinear`, use `time_based_linear` instead.
-        * `interval` (`float`) - The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
-        * `percentage` (`float`) - The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
-
-      * `timeBasedLinear` (`dict`) - The time based linear configuration information. If `type` is `TimeBasedCanary`, use `time_based_canary` instead.
-        * `interval` (`float`) - The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
-        * `percentage` (`float`) - The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
-
-      * `type` (`str`) - Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.
-    """
-    def __init__(__self__, resource_name, opts=None, compute_platform=None, deployment_config_name=None, minimum_healthy_hosts=None, traffic_routing_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_platform: Optional[pulumi.Input[str]] = None,
+                 deployment_config_name: Optional[pulumi.Input[str]] = None,
+                 minimum_healthy_hosts: Optional[pulumi.Input[pulumi.InputType['DeploymentConfigMinimumHealthyHostsArgs']]] = None,
+                 traffic_routing_config: Optional[pulumi.Input[pulumi.InputType['DeploymentConfigTrafficRoutingConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a CodeDeploy deployment config for an application
 
@@ -122,28 +99,8 @@ class DeploymentConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_platform: The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
         :param pulumi.Input[str] deployment_config_name: The name of the deployment config.
-        :param pulumi.Input[dict] minimum_healthy_hosts: A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-        :param pulumi.Input[dict] traffic_routing_config: A traffic_routing_config block. Traffic Routing Config is documented below.
-
-        The **minimum_healthy_hosts** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
-          * `value` (`pulumi.Input[float]`) - The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
-            a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
-            deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.
-            When the type is `HOST_COUNT`, the value represents the minimum number of healthy instances as an absolute value.
-
-        The **traffic_routing_config** object supports the following:
-
-          * `timeBasedCanary` (`pulumi.Input[dict]`) - The time based canary configuration information. If `type` is `TimeBasedLinear`, use `time_based_linear` instead.
-            * `interval` (`pulumi.Input[float]`) - The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
-            * `percentage` (`pulumi.Input[float]`) - The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
-
-          * `timeBasedLinear` (`pulumi.Input[dict]`) - The time based linear configuration information. If `type` is `TimeBasedCanary`, use `time_based_canary` instead.
-            * `interval` (`pulumi.Input[float]`) - The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
-            * `percentage` (`pulumi.Input[float]`) - The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
-
-          * `type` (`pulumi.Input[str]`) - Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.
+        :param pulumi.Input[pulumi.InputType['DeploymentConfigMinimumHealthyHostsArgs']] minimum_healthy_hosts: A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+        :param pulumi.Input[pulumi.InputType['DeploymentConfigTrafficRoutingConfigArgs']] traffic_routing_config: A traffic_routing_config block. Traffic Routing Config is documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -176,7 +133,14 @@ class DeploymentConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, compute_platform=None, deployment_config_id=None, deployment_config_name=None, minimum_healthy_hosts=None, traffic_routing_config=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_platform: Optional[pulumi.Input[str]] = None,
+            deployment_config_id: Optional[pulumi.Input[str]] = None,
+            deployment_config_name: Optional[pulumi.Input[str]] = None,
+            minimum_healthy_hosts: Optional[pulumi.Input[pulumi.InputType['DeploymentConfigMinimumHealthyHostsArgs']]] = None,
+            traffic_routing_config: Optional[pulumi.Input[pulumi.InputType['DeploymentConfigTrafficRoutingConfigArgs']]] = None) -> 'DeploymentConfig':
         """
         Get an existing DeploymentConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -187,28 +151,8 @@ class DeploymentConfig(pulumi.CustomResource):
         :param pulumi.Input[str] compute_platform: The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
         :param pulumi.Input[str] deployment_config_id: The AWS Assigned deployment config id
         :param pulumi.Input[str] deployment_config_name: The name of the deployment config.
-        :param pulumi.Input[dict] minimum_healthy_hosts: A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-        :param pulumi.Input[dict] traffic_routing_config: A traffic_routing_config block. Traffic Routing Config is documented below.
-
-        The **minimum_healthy_hosts** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
-          * `value` (`pulumi.Input[float]`) - The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
-            a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
-            deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.
-            When the type is `HOST_COUNT`, the value represents the minimum number of healthy instances as an absolute value.
-
-        The **traffic_routing_config** object supports the following:
-
-          * `timeBasedCanary` (`pulumi.Input[dict]`) - The time based canary configuration information. If `type` is `TimeBasedLinear`, use `time_based_linear` instead.
-            * `interval` (`pulumi.Input[float]`) - The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
-            * `percentage` (`pulumi.Input[float]`) - The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
-
-          * `timeBasedLinear` (`pulumi.Input[dict]`) - The time based linear configuration information. If `type` is `TimeBasedCanary`, use `time_based_canary` instead.
-            * `interval` (`pulumi.Input[float]`) - The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
-            * `percentage` (`pulumi.Input[float]`) - The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
-
-          * `type` (`pulumi.Input[str]`) - Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.
+        :param pulumi.Input[pulumi.InputType['DeploymentConfigMinimumHealthyHostsArgs']] minimum_healthy_hosts: A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+        :param pulumi.Input[pulumi.InputType['DeploymentConfigTrafficRoutingConfigArgs']] traffic_routing_config: A traffic_routing_config block. Traffic Routing Config is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -221,8 +165,49 @@ class DeploymentConfig(pulumi.CustomResource):
         __props__["traffic_routing_config"] = traffic_routing_config
         return DeploymentConfig(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="computePlatform")
+    def compute_platform(self) -> Optional[str]:
+        """
+        The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
+        """
+        return pulumi.get(self, "compute_platform")
+
+    @property
+    @pulumi.getter(name="deploymentConfigId")
+    def deployment_config_id(self) -> str:
+        """
+        The AWS Assigned deployment config id
+        """
+        return pulumi.get(self, "deployment_config_id")
+
+    @property
+    @pulumi.getter(name="deploymentConfigName")
+    def deployment_config_name(self) -> str:
+        """
+        The name of the deployment config.
+        """
+        return pulumi.get(self, "deployment_config_name")
+
+    @property
+    @pulumi.getter(name="minimumHealthyHosts")
+    def minimum_healthy_hosts(self) -> Optional['outputs.DeploymentConfigMinimumHealthyHosts']:
+        """
+        A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+        """
+        return pulumi.get(self, "minimum_healthy_hosts")
+
+    @property
+    @pulumi.getter(name="trafficRoutingConfig")
+    def traffic_routing_config(self) -> Optional['outputs.DeploymentConfigTrafficRoutingConfig']:
+        """
+        A traffic_routing_config block. Traffic Routing Config is documented below.
+        """
+        return pulumi.get(self, "traffic_routing_config")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
