@@ -5,8 +5,14 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetClusterSnapshotResult',
+    'AwaitableGetClusterSnapshotResult',
+    'get_cluster_snapshot',
+]
 
 
 class GetClusterSnapshotResult:
@@ -153,7 +159,14 @@ class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
             vpc_id=self.vpc_id)
 
 
-def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identifier=None, include_public=None, include_shared=None, most_recent=None, snapshot_type=None, tags=None, opts=None):
+def get_cluster_snapshot(db_cluster_identifier: Optional[str] = None,
+                         db_cluster_snapshot_identifier: Optional[str] = None,
+                         include_public: Optional[bool] = None,
+                         include_shared: Optional[bool] = None,
+                         most_recent: Optional[bool] = None,
+                         snapshot_type: Optional[str] = None,
+                         tags: Optional[Mapping[str, str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterSnapshotResult:
     """
     Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
 
@@ -192,7 +205,7 @@ def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identif
     :param str snapshot_type: The type of snapshots to be returned. If you don't specify a SnapshotType
            value, then both automated and manual DB cluster snapshots are returned. Shared and public DB Cluster Snapshots are not
            included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
-    :param dict tags: A map of tags for the resource.
+    :param Mapping[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
     __args__['dbClusterIdentifier'] = db_cluster_identifier

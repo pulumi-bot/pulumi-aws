@@ -5,8 +5,14 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetRuleGroupResult',
+    'AwaitableGetRuleGroupResult',
+    'get_rule_group',
+]
 
 
 class GetRuleGroupResult:
@@ -53,7 +59,9 @@ class AwaitableGetRuleGroupResult(GetRuleGroupResult):
             scope=self.scope)
 
 
-def get_rule_group(name=None, scope=None, opts=None):
+def get_rule_group(name: Optional[str] = None,
+                   scope: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleGroupResult:
     """
     Retrieves the summary of a WAFv2 Rule Group.
 
