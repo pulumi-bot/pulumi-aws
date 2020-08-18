@@ -79,7 +79,7 @@ class TransitVirtualInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example_gateway = aws.directconnect.Gateway("exampleGateway", amazon_side_asn=64512)
+        example_gateway = aws.directconnect.Gateway("exampleGateway", amazon_side_asn="64512")
         example_transit_virtual_interface = aws.directconnect.TransitVirtualInterface("exampleTransitVirtualInterface",
             connection_id=aws_dx_connection["example"]["id"],
             dx_gateway_id=example_gateway.id,

@@ -58,7 +58,7 @@ def get_rules_packages(opts=None):
     assessment_assessment_target = aws.inspector.AssessmentTarget("assessmentAssessmentTarget", resource_group_arn=group.arn)
     assessment_assessment_template = aws.inspector.AssessmentTemplate("assessmentAssessmentTemplate",
         target_arn=assessment_assessment_target.arn,
-        duration="60",
+        duration=60,
         rules_package_arns=rules.arns)
     ```
     """

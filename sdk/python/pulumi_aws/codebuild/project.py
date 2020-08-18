@@ -255,7 +255,7 @@ class Project(pulumi.CustomResource):
         \"\"\"))
         example_project = aws.codebuild.Project("exampleProject",
             description="test_codebuild_project",
-            build_timeout="5",
+            build_timeout=5,
             service_role=example_role.arn,
             artifacts={
                 "type": "NO_ARTIFACTS",
@@ -316,8 +316,8 @@ class Project(pulumi.CustomResource):
             })
         project_with_cache = aws.codebuild.Project("project-with-cache",
             description="test_codebuild_project_cache",
-            build_timeout="5",
-            queued_timeout="5",
+            build_timeout=5,
+            queued_timeout=5,
             service_role=example_role.arn,
             artifacts={
                 "type": "NO_ARTIFACTS",

@@ -106,7 +106,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         default = aws.ec2.DefaultSecurityGroup("default",
             vpc_id=mainvpc.id,
             ingress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "self": True,
                 "from_port": 0,
                 "to_port": 0,
@@ -132,7 +132,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         default = aws.ec2.DefaultSecurityGroup("default",
             vpc_id=mainvpc.id,
             ingress=[{
-                "protocol": -1,
+                "protocol": "-1",
                 "self": True,
                 "from_port": 0,
                 "to_port": 0,
