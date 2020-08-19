@@ -8,59 +8,6 @@ import (
 )
 
 // Gets the contents of the specified Systems Manager document.
-//
-// ## Example Usage
-//
-// To get the contents of the document owned by AWS.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "YAML"
-// 		foo, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
-// 			Name:           "AWS-GatherSoftwareInventory",
-// 			DocumentFormat: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("content", foo.Content)
-// 		return nil
-// 	})
-// }
-// ```
-//
-// To get the contents of the custom document.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "JSON"
-// 		_, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
-// 			Name:           aws_ssm_document.Test.Name,
-// 			DocumentFormat: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupDocument(ctx *pulumi.Context, args *LookupDocumentArgs, opts ...pulumi.InvokeOption) (*LookupDocumentResult, error) {
 	var rv LookupDocumentResult
 	err := ctx.Invoke("aws:ssm/getDocument:getDocument", args, &rv, opts...)

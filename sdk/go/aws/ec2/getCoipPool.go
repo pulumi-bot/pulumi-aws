@@ -12,31 +12,6 @@ import (
 // This data source can prove useful when a module accepts a coip pool id as
 // an input variable and needs to, for example, determine the CIDR block of that
 // COIP Pool.
-//
-// ## Example Usage
-//
-// The following example returns a specific coip pool ID
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.GetCoipPool(ctx, &ec2.GetCoipPoolArgs{
-// 			Id: coipPoolId,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetCoipPool(ctx *pulumi.Context, args *GetCoipPoolArgs, opts ...pulumi.InvokeOption) (*GetCoipPoolResult, error) {
 	var rv GetCoipPoolResult
 	err := ctx.Invoke("aws:ec2/getCoipPool:getCoipPool", args, &rv, opts...)

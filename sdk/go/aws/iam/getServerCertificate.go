@@ -9,46 +9,6 @@ import (
 
 // Use this data source to lookup information about IAM Server Certificates.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elb"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-domain.org"
-// 		opt1 := true
-// 		my_domain, err := iam.LookupServerCertificate(ctx, &iam.LookupServerCertificateArgs{
-// 			NamePrefix: &opt0,
-// 			Latest:     &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = elb.NewLoadBalancer(ctx, "elb", &elb.LoadBalancerArgs{
-// 			Listeners: elb.LoadBalancerListenerArray{
-// 				&elb.LoadBalancerListenerArgs{
-// 					InstancePort:     pulumi.Int(8000),
-// 					InstanceProtocol: pulumi.String("https"),
-// 					LbPort:           pulumi.Int(443),
-// 					LbProtocol:       pulumi.String("https"),
-// 					SslCertificateId: pulumi.String(my_domain.Arn),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ## Import
 //
 // The import function will read in certificate body, certificate chain (if it exists), id, name, path, and arn.

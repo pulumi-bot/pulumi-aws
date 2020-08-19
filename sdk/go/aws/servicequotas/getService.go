@@ -8,29 +8,6 @@ import (
 )
 
 // Retrieve information about a Service Quotas Service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/servicequotas"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicequotas.GetService(ctx, &servicequotas.GetServiceArgs{
-// 			ServiceName: "Amazon Virtual Private Cloud (Amazon VPC)",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	var rv GetServiceResult
 	err := ctx.Invoke("aws:servicequotas/getService:getService", args, &rv, opts...)

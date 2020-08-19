@@ -41,49 +41,6 @@ import (
 // 	})
 // }
 // ```
-// ## Example of Using Data Source for Assume Role Policy
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance_assume_role_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			Statements: []iam.GetPolicyDocumentStatement{
-// 				iam.GetPolicyDocumentStatement{
-// 					Actions: []string{
-// 						"sts:AssumeRole",
-// 					},
-// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// 						iam.GetPolicyDocumentStatementPrincipal{
-// 							Type: "Service",
-// 							Identifiers: []string{
-// 								"ec2.amazonaws.com",
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRole(ctx, "instance", &iam.RoleArgs{
-// 			Path:             pulumi.String("/system/"),
-// 			AssumeRolePolicy: pulumi.String(instance_assume_role_policy.Json),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Role struct {
 	pulumi.CustomResourceState
 

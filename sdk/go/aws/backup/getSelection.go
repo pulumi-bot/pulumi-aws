@@ -8,30 +8,6 @@ import (
 )
 
 // Use this data source to get information on an existing backup selection.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/backup"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := backup.LookupSelection(ctx, &backup.LookupSelectionArgs{
-// 			PlanId:      data.Aws_backup_plan.Example.Id,
-// 			SelectionId: "selection-id-example",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupSelection(ctx *pulumi.Context, args *LookupSelectionArgs, opts ...pulumi.InvokeOption) (*LookupSelectionResult, error) {
 	var rv LookupSelectionResult
 	err := ctx.Invoke("aws:backup/getSelection:getSelection", args, &rv, opts...)

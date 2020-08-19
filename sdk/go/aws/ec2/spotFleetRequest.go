@@ -153,66 +153,6 @@ import (
 // 	})
 // }
 // ```
-// ### Using multiple launch configurations
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.GetSubnetIds(ctx, &ec2.GetSubnetIdsArgs{
-// 			VpcId: _var.Vpc_id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooLaunchTemplate, err := ec2.NewLaunchTemplate(ctx, "fooLaunchTemplate", &ec2.LaunchTemplateArgs{
-// 			ImageId:      pulumi.String("ami-516b9131"),
-// 			InstanceType: pulumi.String("m1.small"),
-// 			KeyName:      pulumi.String("some-key"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewSpotFleetRequest(ctx, "fooSpotFleetRequest", &ec2.SpotFleetRequestArgs{
-// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
-// 			SpotPrice:      pulumi.String("0.005"),
-// 			TargetCapacity: pulumi.Int(2),
-// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
-// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
-// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
-// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
-// 						Id:      fooLaunchTemplate.ID(),
-// 						Version: fooLaunchTemplate.LatestVersion,
-// 					},
-// 					Overrides: ec2.SpotFleetRequestLaunchTemplateConfigOverrideArray{
-// 						&ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
-// 							SubnetId: pulumi.Any(data.Aws_subnets.Example.Ids[0]),
-// 						},
-// 						&ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
-// 							SubnetId: pulumi.Any(data.Aws_subnets.Example.Ids[1]),
-// 						},
-// 						&ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
-// 							SubnetId: pulumi.Any(data.Aws_subnets.Example.Ids[2]),
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			aws_iam_policy_attachment.Test - attach,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SpotFleetRequest struct {
 	pulumi.CustomResourceState
 

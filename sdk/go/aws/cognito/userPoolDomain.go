@@ -40,57 +40,6 @@ import (
 // 	})
 // }
 // ```
-// ### Custom Cognito domain
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cognito"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleUserPool, err := cognito.NewUserPool(ctx, "exampleUserPool", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		main, err := cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
-// 			CertificateArn: pulumi.Any(aws_acm_certificate.Cert.Arn),
-// 			Domain:         pulumi.String("example-domain.example.com"),
-// 			UserPoolId:     exampleUserPool.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt0 := "example.com"
-// 		exampleZone, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
-// 			Name: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewRecord(ctx, "auth_cognito_A", &route53.RecordArgs{
-// 			Aliases: route53.RecordAliasArray{
-// 				&route53.RecordAliasArgs{
-// 					EvaluateTargetHealth: pulumi.Bool(false),
-// 					Name:                 main.CloudfrontDistributionArn,
-// 					ZoneId:               pulumi.String("Z2FDTNDATAQYW2"),
-// 				},
-// 			},
-// 			Name:   main.Domain,
-// 			Type:   pulumi.String("A"),
-// 			ZoneId: pulumi.String(exampleZone.ZoneId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type UserPoolDomain struct {
 	pulumi.CustomResourceState
 

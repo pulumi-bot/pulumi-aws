@@ -15,32 +15,6 @@ import (
 // input variable and needs to know its attributes. It can also be used to get the ARN of
 // an LB Target Group for use in other resources, given LB Target Group name.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := lbTgArn
-// 		opt1 := lbTgName
-// 		_, err := lb.LookupTargetGroup(ctx, &lb.LookupTargetGroupArgs{
-// 			Arn:  &opt0,
-// 			Name: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // Deprecated: aws.applicationloadbalancing.getTargetGroup has been deprecated in favor of aws.alb.getTargetGroup
 func LookupTargetGroup(ctx *pulumi.Context, args *LookupTargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupTargetGroupResult, error) {
 	var rv LookupTargetGroupResult

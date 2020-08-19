@@ -8,30 +8,6 @@ import (
 )
 
 // Provides information about a Lambda Alias.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lambda"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := lambda.LookupAlias(ctx, &lambda.LookupAliasArgs{
-// 			FunctionName: "my-lambda-func",
-// 			Name:         "production",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupAlias(ctx *pulumi.Context, args *LookupAliasArgs, opts ...pulumi.InvokeOption) (*LookupAliasResult, error) {
 	var rv LookupAliasResult
 	err := ctx.Invoke("aws:lambda/getAlias:getAlias", args, &rv, opts...)

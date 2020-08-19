@@ -51,69 +51,6 @@ import (
 // 	})
 // }
 // ```
-// ## Usage with Cognito User Pool Authorizer
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cognito"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisUserPools, err := cognito.GetUserPools(ctx, &cognito.GetUserPoolsArgs{
-// 			Name: cognitoUserPoolName,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisRestApi, err := apigateway.NewRestApi(ctx, "thisRestApi", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisResource, err := apigateway.NewResource(ctx, "thisResource", &apigateway.ResourceArgs{
-// 			RestApi:  thisRestApi.ID(),
-// 			ParentId: thisRestApi.RootResourceId,
-// 			PathPart: pulumi.String("{proxy+}"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisAuthorizer, err := apigateway.NewAuthorizer(ctx, "thisAuthorizer", &apigateway.AuthorizerArgs{
-// 			Type:         pulumi.String("COGNITO_USER_POOLS"),
-// 			RestApi:      thisRestApi.ID(),
-// 			ProviderArns: toPulumiStringArray(thisUserPools.Arns),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewMethod(ctx, "any", &apigateway.MethodArgs{
-// 			RestApi:       thisRestApi.ID(),
-// 			ResourceId:    thisResource.ID(),
-// 			HttpMethod:    pulumi.String("ANY"),
-// 			Authorization: pulumi.String("COGNITO_USER_POOLS"),
-// 			AuthorizerId:  thisAuthorizer.ID(),
-// 			RequestParameters: pulumi.BoolMap{
-// 				"method.request.path.proxy": pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
 type Method struct {
 	pulumi.CustomResourceState
 

@@ -17,48 +17,7 @@ import (
 // > *NOTE:* For an organization trail, this resource must be in the master account of the organization.
 //
 // ## Example Usage
-// ### Basic
 //
-// Enable CloudTrail to capture all compatible management events in region.
-// For capturing events from services like IAM, `includeGlobalServiceEvents` must be enabled.
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudtrail"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := aws.GetCallerIdentity(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foo, err := s3.NewBucket(ctx, "foo", &s3.BucketArgs{
-// 			ForceDestroy: pulumi.Bool(true),
-// 			Policy:       pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\": \"2012-10-17\",\n", "    \"Statement\": [\n", "        {\n", "            \"Sid\": \"AWSCloudTrailAclCheck\",\n", "            \"Effect\": \"Allow\",\n", "            \"Principal\": {\n", "              \"Service\": \"cloudtrail.amazonaws.com\"\n", "            },\n", "            \"Action\": \"s3:GetBucketAcl\",\n", "            \"Resource\": \"arn:aws:s3:::tf-test-trail\"\n", "        },\n", "        {\n", "            \"Sid\": \"AWSCloudTrailWrite\",\n", "            \"Effect\": \"Allow\",\n", "            \"Principal\": {\n", "              \"Service\": \"cloudtrail.amazonaws.com\"\n", "            },\n", "            \"Action\": \"s3:PutObject\",\n", "            \"Resource\": \"arn:aws:s3:::tf-test-trail/prefix/AWSLogs/", current.AccountId, "/*\",\n", "            \"Condition\": {\n", "                \"StringEquals\": {\n", "                    \"s3:x-amz-acl\": \"bucket-owner-full-control\"\n", "                }\n", "            }\n", "        }\n", "    ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudtrail.NewTrail(ctx, "foobar", &cloudtrail.TrailArgs{
-// 			S3BucketName:               foo.ID(),
-// 			S3KeyPrefix:                pulumi.String("prefix"),
-// 			IncludeGlobalServiceEvents: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Data Event Logging
 //
 // CloudTrail can log [Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) for certain services such as S3 bucket objects and Lambda function invocations. Additional information about data event configuration can be found in the [CloudTrail API DataResource documentation](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_DataResource.html).
@@ -117,50 +76,6 @@ import (
 // 							Type: pulumi.String("AWS::S3::Object"),
 // 							Values: pulumi.StringArray{
 // 								pulumi.String("arn:aws:s3:::"),
-// 							},
-// 						},
-// 					},
-// 					IncludeManagementEvents: pulumi.Bool(true),
-// 					ReadWriteType:           pulumi.String("All"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Logging Individual S3 Bucket Events
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudtrail"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		important_bucket, err := s3.LookupBucket(ctx, &s3.LookupBucketArgs{
-// 			Bucket: "important-bucket",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
-// 			EventSelectors: cloudtrail.TrailEventSelectorArray{
-// 				&cloudtrail.TrailEventSelectorArgs{
-// 					DataResources: cloudtrail.TrailEventSelectorDataResourceArray{
-// 						&cloudtrail.TrailEventSelectorDataResourceArgs{
-// 							Type: pulumi.String("AWS::S3::Object"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String(fmt.Sprintf("%v%v", important_bucket.Arn, "/")),
 // 							},
 // 						},
 // 					},
