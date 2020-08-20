@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['WebAclAssociation']
 
 
 class WebAclAssociation(pulumi.CustomResource):
-    resource_arn: pulumi.Output[str]
-    """
-    ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
-    """
-    web_acl_id: pulumi.Output[str]
-    """
-    The ID of the WAF Regional WebACL to create an association.
-    """
-    def __init__(__self__, resource_name, opts=None, resource_arn=None, web_acl_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 resource_arn: Optional[pulumi.Input[str]] = None,
+                 web_acl_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an association with WAF Regional Web ACL.
 
@@ -176,13 +177,17 @@ class WebAclAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, resource_arn=None, web_acl_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            resource_arn: Optional[pulumi.Input[str]] = None,
+            web_acl_id: Optional[pulumi.Input[str]] = None) -> 'WebAclAssociation':
         """
         Get an existing WebAclAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_arn: ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
         :param pulumi.Input[str] web_acl_id: The ID of the WAF Regional WebACL to create an association.
@@ -195,8 +200,25 @@ class WebAclAssociation(pulumi.CustomResource):
         __props__["web_acl_id"] = web_acl_id
         return WebAclAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="resourceArn")
+    def resource_arn(self) -> str:
+        """
+        ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
+        """
+        return pulumi.get(self, "resource_arn")
+
+    @property
+    @pulumi.getter(name="webAclId")
+    def web_acl_id(self) -> str:
+        """
+        The ID of the WAF Regional WebACL to create an association.
+        """
+        return pulumi.get(self, "web_acl_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
