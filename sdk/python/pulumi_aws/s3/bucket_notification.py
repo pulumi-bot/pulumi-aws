@@ -5,46 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['BucketNotification']
 
 
 class BucketNotification(pulumi.CustomResource):
-    bucket: pulumi.Output[str]
-    """
-    The name of the bucket to put notification configuration.
-    """
-    lambda_functions: pulumi.Output[list]
-    """
-    Used to configure notifications to a Lambda Function (documented below).
-
-      * `events` (`list`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-      * `filterPrefix` (`str`) - Specifies object key name prefix.
-      * `filterSuffix` (`str`) - Specifies object key name suffix.
-      * `id` (`str`) - Specifies unique identifier for each of the notification configurations.
-      * `lambda_function_arn` (`str`) - Specifies Amazon Lambda function ARN.
-    """
-    queues: pulumi.Output[list]
-    """
-    The notification configuration to SQS Queue (documented below).
-
-      * `events` (`list`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-      * `filterPrefix` (`str`) - Specifies object key name prefix.
-      * `filterSuffix` (`str`) - Specifies object key name suffix.
-      * `id` (`str`) - Specifies unique identifier for each of the notification configurations.
-      * `queueArn` (`str`) - Specifies Amazon SQS queue ARN.
-    """
-    topics: pulumi.Output[list]
-    """
-    The notification configuration to SNS Topic (documented below).
-
-      * `events` (`list`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-      * `filterPrefix` (`str`) - Specifies object key name prefix.
-      * `filterSuffix` (`str`) - Specifies object key name suffix.
-      * `id` (`str`) - Specifies unique identifier for each of the notification configurations.
-      * `topic_arn` (`str`) - Specifies Amazon SNS topic ARN.
-    """
-    def __init__(__self__, resource_name, opts=None, bucket=None, lambda_functions=None, queues=None, topics=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 lambda_functions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationLambdaFunctionArgs']]]]] = None,
+                 queues: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationQueueArgs']]]]] = None,
+                 topics: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationTopicArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a S3 Bucket Notification Configuration. For additional information, see the [Configuring S3 Event Notifications section in the Amazon S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
 
@@ -252,33 +231,9 @@ class BucketNotification(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket to put notification configuration.
-        :param pulumi.Input[list] lambda_functions: Used to configure notifications to a Lambda Function (documented below).
-        :param pulumi.Input[list] queues: The notification configuration to SQS Queue (documented below).
-        :param pulumi.Input[list] topics: The notification configuration to SNS Topic (documented below).
-
-        The **lambda_functions** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-          * `filterPrefix` (`pulumi.Input[str]`) - Specifies object key name prefix.
-          * `filterSuffix` (`pulumi.Input[str]`) - Specifies object key name suffix.
-          * `id` (`pulumi.Input[str]`) - Specifies unique identifier for each of the notification configurations.
-          * `lambda_function_arn` (`pulumi.Input[str]`) - Specifies Amazon Lambda function ARN.
-
-        The **queues** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-          * `filterPrefix` (`pulumi.Input[str]`) - Specifies object key name prefix.
-          * `filterSuffix` (`pulumi.Input[str]`) - Specifies object key name suffix.
-          * `id` (`pulumi.Input[str]`) - Specifies unique identifier for each of the notification configurations.
-          * `queueArn` (`pulumi.Input[str]`) - Specifies Amazon SQS queue ARN.
-
-        The **topics** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-          * `filterPrefix` (`pulumi.Input[str]`) - Specifies object key name prefix.
-          * `filterSuffix` (`pulumi.Input[str]`) - Specifies object key name suffix.
-          * `id` (`pulumi.Input[str]`) - Specifies unique identifier for each of the notification configurations.
-          * `topic_arn` (`pulumi.Input[str]`) - Specifies Amazon SNS topic ARN.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationLambdaFunctionArgs']]]] lambda_functions: Used to configure notifications to a Lambda Function (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationQueueArgs']]]] queues: The notification configuration to SQS Queue (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationTopicArgs']]]] topics: The notification configuration to SNS Topic (documented below).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -310,42 +265,24 @@ class BucketNotification(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket=None, lambda_functions=None, queues=None, topics=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: Optional[pulumi.Input[str]] = None,
+            lambda_functions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationLambdaFunctionArgs']]]]] = None,
+            queues: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationQueueArgs']]]]] = None,
+            topics: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationTopicArgs']]]]] = None) -> 'BucketNotification':
         """
         Get an existing BucketNotification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket to put notification configuration.
-        :param pulumi.Input[list] lambda_functions: Used to configure notifications to a Lambda Function (documented below).
-        :param pulumi.Input[list] queues: The notification configuration to SQS Queue (documented below).
-        :param pulumi.Input[list] topics: The notification configuration to SNS Topic (documented below).
-
-        The **lambda_functions** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-          * `filterPrefix` (`pulumi.Input[str]`) - Specifies object key name prefix.
-          * `filterSuffix` (`pulumi.Input[str]`) - Specifies object key name suffix.
-          * `id` (`pulumi.Input[str]`) - Specifies unique identifier for each of the notification configurations.
-          * `lambda_function_arn` (`pulumi.Input[str]`) - Specifies Amazon Lambda function ARN.
-
-        The **queues** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-          * `filterPrefix` (`pulumi.Input[str]`) - Specifies object key name prefix.
-          * `filterSuffix` (`pulumi.Input[str]`) - Specifies object key name suffix.
-          * `id` (`pulumi.Input[str]`) - Specifies unique identifier for each of the notification configurations.
-          * `queueArn` (`pulumi.Input[str]`) - Specifies Amazon SQS queue ARN.
-
-        The **topics** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-          * `filterPrefix` (`pulumi.Input[str]`) - Specifies object key name prefix.
-          * `filterSuffix` (`pulumi.Input[str]`) - Specifies object key name suffix.
-          * `id` (`pulumi.Input[str]`) - Specifies unique identifier for each of the notification configurations.
-          * `topic_arn` (`pulumi.Input[str]`) - Specifies Amazon SNS topic ARN.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationLambdaFunctionArgs']]]] lambda_functions: Used to configure notifications to a Lambda Function (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationQueueArgs']]]] queues: The notification configuration to SQS Queue (documented below).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketNotificationTopicArgs']]]] topics: The notification configuration to SNS Topic (documented below).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,8 +294,41 @@ class BucketNotification(pulumi.CustomResource):
         __props__["topics"] = topics
         return BucketNotification(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The name of the bucket to put notification configuration.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="lambdaFunctions")
+    def lambda_functions(self) -> Optional[List['outputs.BucketNotificationLambdaFunction']]:
+        """
+        Used to configure notifications to a Lambda Function (documented below).
+        """
+        return pulumi.get(self, "lambda_functions")
+
+    @property
+    @pulumi.getter
+    def queues(self) -> Optional[List['outputs.BucketNotificationQueue']]:
+        """
+        The notification configuration to SQS Queue (documented below).
+        """
+        return pulumi.get(self, "queues")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[List['outputs.BucketNotificationTopic']]:
+        """
+        The notification configuration to SNS Topic (documented below).
+        """
+        return pulumi.get(self, "topics")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
