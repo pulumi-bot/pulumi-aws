@@ -109,7 +109,7 @@ class ListenerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateArn")
-    def certificate_arn(self) -> str:
+    def certificate_arn(self) -> pulumi.Output[str]:
         """
         The ARN of the certificate to attach to the listener.
         """
@@ -117,7 +117,7 @@ class ListenerCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listenerArn")
-    def listener_arn(self) -> str:
+    def listener_arn(self) -> pulumi.Output[str]:
         """
         The ARN of the listener to which to attach the certificate.
         """

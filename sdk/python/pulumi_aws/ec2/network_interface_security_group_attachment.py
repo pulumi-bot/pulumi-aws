@@ -147,7 +147,7 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> str:
+    def network_interface_id(self) -> pulumi.Output[str]:
         """
         The ID of the network interface to attach to.
         """
@@ -155,7 +155,7 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the security group.
         """

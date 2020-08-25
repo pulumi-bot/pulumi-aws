@@ -107,7 +107,7 @@ class InviteAccepter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detectorId")
-    def detector_id(self) -> str:
+    def detector_id(self) -> pulumi.Output[str]:
         """
         The detector ID of the member GuardDuty account.
         """
@@ -115,7 +115,7 @@ class InviteAccepter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAccountId")
-    def master_account_id(self) -> str:
+    def master_account_id(self) -> pulumi.Output[str]:
         """
         AWS account ID for primary account.
         """

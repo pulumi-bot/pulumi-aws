@@ -100,7 +100,7 @@ class ConnectionAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> str:
+    def connection_id(self) -> pulumi.Output[str]:
         """
         The ID of the connection.
         """
@@ -108,7 +108,7 @@ class ConnectionAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lagId")
-    def lag_id(self) -> str:
+    def lag_id(self) -> pulumi.Output[str]:
         """
         The ID of the LAG with which to associate the connection.
         """

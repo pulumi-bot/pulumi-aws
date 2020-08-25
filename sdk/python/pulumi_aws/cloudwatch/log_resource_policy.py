@@ -128,7 +128,7 @@ class LogResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> str:
+    def policy_document(self) -> pulumi.Output[str]:
         """
         Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
         """
@@ -136,7 +136,7 @@ class LogResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
+    def policy_name(self) -> pulumi.Output[str]:
         """
         Name of the resource policy.
         """

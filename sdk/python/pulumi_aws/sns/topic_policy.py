@@ -123,7 +123,7 @@ class TopicPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The ARN of the SNS topic
         """
@@ -131,7 +131,7 @@ class TopicPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The fully-formed AWS policy as JSON.
         """

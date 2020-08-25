@@ -89,7 +89,7 @@ class OrganizationAdminAccount(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminAccountId")
-    def admin_account_id(self) -> str:
+    def admin_account_id(self) -> pulumi.Output[str]:
         """
         AWS account identifier to designate as a delegated administrator for GuardDuty.
         """

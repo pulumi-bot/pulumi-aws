@@ -110,7 +110,7 @@ class ContainerPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerName")
-    def container_name(self) -> str:
+    def container_name(self) -> pulumi.Output[str]:
         """
         The name of the container.
         """
@@ -118,7 +118,7 @@ class ContainerPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The contents of the policy.
         """

@@ -85,7 +85,7 @@ class Association(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="licenseConfigurationArn")
-    def license_configuration_arn(self) -> str:
+    def license_configuration_arn(self) -> pulumi.Output[str]:
         """
         ARN of the license configuration.
         """
@@ -93,7 +93,7 @@ class Association(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceArn")
-    def resource_arn(self) -> str:
+    def resource_arn(self) -> pulumi.Output[str]:
         """
         ARN of the resource associated with the license configuration.
         """

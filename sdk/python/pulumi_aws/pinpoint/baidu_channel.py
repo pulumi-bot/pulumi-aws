@@ -112,7 +112,7 @@ class BaiduChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> str:
+    def api_key(self) -> pulumi.Output[str]:
         """
         Platform credential API key from Baidu.
         """
@@ -120,7 +120,7 @@ class BaiduChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> str:
+    def application_id(self) -> pulumi.Output[str]:
         """
         The application ID.
         """
@@ -128,7 +128,7 @@ class BaiduChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to enable the channel. Defaults to `true`.
         """
@@ -136,7 +136,7 @@ class BaiduChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
+    def secret_key(self) -> pulumi.Output[str]:
         """
         Platform credential Secret key from Baidu.
         """

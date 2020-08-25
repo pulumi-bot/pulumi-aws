@@ -88,7 +88,7 @@ class StandardsSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standardsArn")
-    def standards_arn(self) -> str:
+    def standards_arn(self) -> pulumi.Output[str]:
         """
         The ARN of a standard - see below.
         """

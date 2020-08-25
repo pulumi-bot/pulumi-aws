@@ -106,7 +106,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         description for the cache security group. Defaults to "Managed by Pulumi".
         """
@@ -114,7 +114,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name for the cache security group. This value is stored as a lowercase string.
         """
@@ -122,7 +122,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupNames")
-    def security_group_names(self) -> List[str]:
+    def security_group_names(self) -> pulumi.Output[List[str]]:
         """
         List of EC2 security group names to be
         authorized for ingress to the cache security group

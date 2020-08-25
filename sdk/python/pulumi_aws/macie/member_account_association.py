@@ -88,7 +88,7 @@ class MemberAccountAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberAccountId")
-    def member_account_id(self) -> str:
+    def member_account_id(self) -> pulumi.Output[str]:
         """
         The ID of the AWS account that you want to associate with Amazon Macie as a member account.
         """

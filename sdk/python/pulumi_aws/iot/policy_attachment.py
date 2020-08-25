@@ -110,7 +110,7 @@ class PolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The name of the policy to attach.
         """
@@ -118,7 +118,7 @@ class PolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def target(self) -> str:
+    def target(self) -> pulumi.Output[str]:
         """
         The identity to which the policy is attached.
         """

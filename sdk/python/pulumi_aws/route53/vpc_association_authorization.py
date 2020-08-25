@@ -118,7 +118,7 @@ class VpcAssociationAuthorization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC to authorize for association with the private hosted zone.
         """
@@ -126,7 +126,7 @@ class VpcAssociationAuthorization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcRegion")
-    def vpc_region(self) -> str:
+    def vpc_region(self) -> pulumi.Output[str]:
         """
         The VPC's region. Defaults to the region of the AWS provider.
         """
@@ -134,7 +134,7 @@ class VpcAssociationAuthorization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The ID of the private hosted zone that you want to authorize associating a VPC with.
         """

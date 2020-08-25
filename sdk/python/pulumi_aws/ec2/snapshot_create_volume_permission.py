@@ -98,7 +98,7 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         An AWS Account ID to add create volume permissions
         """
@@ -106,7 +106,7 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> str:
+    def snapshot_id(self) -> pulumi.Output[str]:
         """
         A snapshot ID
         """

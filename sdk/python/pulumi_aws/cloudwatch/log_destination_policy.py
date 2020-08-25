@@ -106,7 +106,7 @@ class LogDestinationPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessPolicy")
-    def access_policy(self) -> str:
+    def access_policy(self) -> pulumi.Output[str]:
         """
         The policy document. This is a JSON formatted string.
         """
@@ -114,7 +114,7 @@ class LogDestinationPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationName")
-    def destination_name(self) -> str:
+    def destination_name(self) -> pulumi.Output[str]:
         """
         A name for the subscription filter
         """

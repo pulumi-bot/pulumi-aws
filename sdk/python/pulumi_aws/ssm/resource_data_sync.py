@@ -127,7 +127,7 @@ class ResourceDataSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name for the configuration.
         """
@@ -135,7 +135,7 @@ class ResourceDataSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="s3Destination")
-    def s3_destination(self) -> 'outputs.ResourceDataSyncS3Destination':
+    def s3_destination(self) -> pulumi.Output['outputs.ResourceDataSyncS3Destination']:
         """
         Amazon S3 configuration details for the sync.
         """

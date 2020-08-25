@@ -127,7 +127,7 @@ class RepositoryPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The policy document. This is a JSON formatted string.
         """
@@ -135,7 +135,7 @@ class RepositoryPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="registryId")
-    def registry_id(self) -> str:
+    def registry_id(self) -> pulumi.Output[str]:
         """
         The registry ID where the repository was created.
         """
@@ -143,7 +143,7 @@ class RepositoryPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def repository(self) -> str:
+    def repository(self) -> pulumi.Output[str]:
         """
         Name of the repository to apply the policy.
         """

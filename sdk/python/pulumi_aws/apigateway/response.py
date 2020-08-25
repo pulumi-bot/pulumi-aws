@@ -120,7 +120,7 @@ class Response(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="responseParameters")
-    def response_parameters(self) -> Optional[Mapping[str, str]]:
+    def response_parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map specifying the parameters (paths, query strings and headers) of the Gateway Response.
         """
@@ -128,7 +128,7 @@ class Response(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="responseTemplates")
-    def response_templates(self) -> Optional[Mapping[str, str]]:
+    def response_templates(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map specifying the templates used to transform the response body.
         """
@@ -136,7 +136,7 @@ class Response(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="responseType")
-    def response_type(self) -> str:
+    def response_type(self) -> pulumi.Output[str]:
         """
         The response type of the associated GatewayResponse.
         """
@@ -144,7 +144,7 @@ class Response(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restApiId")
-    def rest_api_id(self) -> str:
+    def rest_api_id(self) -> pulumi.Output[str]:
         """
         The string identifier of the associated REST API.
         """
@@ -152,7 +152,7 @@ class Response(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statusCode")
-    def status_code(self) -> Optional[str]:
+    def status_code(self) -> pulumi.Output[Optional[str]]:
         """
         The HTTP status code of the Gateway Response.
         """

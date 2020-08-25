@@ -108,7 +108,7 @@ class RouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[str]:
+    def gateway_id(self) -> pulumi.Output[Optional[str]]:
         """
         The gateway ID to create an association. Conflicts with `subnet_id`.
         """
@@ -116,7 +116,7 @@ class RouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The ID of the routing table to associate with.
         """
@@ -124,7 +124,7 @@ class RouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[str]:
+    def subnet_id(self) -> pulumi.Output[Optional[str]]:
         """
         The subnet ID to create an association. Conflicts with `gateway_id`.
         """

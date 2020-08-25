@@ -106,7 +106,7 @@ class SnapshotCopyGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         Amazon Resource Name (ARN) of snapshot copy grant
         """
@@ -114,7 +114,7 @@ class SnapshotCopyGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> str:
+    def kms_key_id(self) -> pulumi.Output[str]:
         """
         The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
         """
@@ -122,7 +122,7 @@ class SnapshotCopyGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotCopyGrantName")
-    def snapshot_copy_grant_name(self) -> str:
+    def snapshot_copy_grant_name(self) -> pulumi.Output[str]:
         """
         A friendly name for identifying the grant.
         """
@@ -130,7 +130,7 @@ class SnapshotCopyGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of tags to assign to the resource.
         """

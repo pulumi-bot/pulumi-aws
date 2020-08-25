@@ -84,7 +84,7 @@ class EncryptionByDefault(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
         """

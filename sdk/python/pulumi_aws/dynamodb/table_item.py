@@ -129,7 +129,7 @@ class TableItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hashKey")
-    def hash_key(self) -> str:
+    def hash_key(self) -> pulumi.Output[str]:
         """
         Hash key to use for lookups and identification of the item
         """
@@ -137,7 +137,7 @@ class TableItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def item(self) -> str:
+    def item(self) -> pulumi.Output[str]:
         """
         JSON representation of a map of attribute name/value pairs, one for each attribute.
         Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
@@ -146,7 +146,7 @@ class TableItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rangeKey")
-    def range_key(self) -> Optional[str]:
+    def range_key(self) -> pulumi.Output[Optional[str]]:
         """
         Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
         """
@@ -154,7 +154,7 @@ class TableItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> str:
+    def table_name(self) -> pulumi.Output[str]:
         """
         The name of the table to contain the item.
         """

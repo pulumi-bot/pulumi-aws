@@ -84,7 +84,7 @@ class ActiveReceiptRuleSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleSetName")
-    def rule_set_name(self) -> str:
+    def rule_set_name(self) -> pulumi.Output[str]:
         """
         The name of the rule set
         """

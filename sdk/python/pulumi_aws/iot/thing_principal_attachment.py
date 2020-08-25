@@ -98,7 +98,7 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def principal(self) -> str:
+    def principal(self) -> pulumi.Output[str]:
         """
         The AWS IoT Certificate ARN or Amazon Cognito Identity ID.
         """
@@ -106,7 +106,7 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def thing(self) -> str:
+    def thing(self) -> pulumi.Output[str]:
         """
         The name of the thing.
         """

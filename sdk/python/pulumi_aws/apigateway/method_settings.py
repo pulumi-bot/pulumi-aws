@@ -146,7 +146,7 @@ class MethodSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="methodPath")
-    def method_path(self) -> str:
+    def method_path(self) -> pulumi.Output[str]:
         """
         Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
         """
@@ -154,7 +154,7 @@ class MethodSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restApi")
-    def rest_api(self) -> str:
+    def rest_api(self) -> pulumi.Output[str]:
         """
         The ID of the REST API
         """
@@ -162,7 +162,7 @@ class MethodSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def settings(self) -> 'outputs.MethodSettingsSettings':
+    def settings(self) -> pulumi.Output['outputs.MethodSettingsSettings']:
         """
         The settings block, see below.
         """
@@ -170,7 +170,7 @@ class MethodSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stageName")
-    def stage_name(self) -> str:
+    def stage_name(self) -> pulumi.Output[str]:
         """
         The name of the stage
         """

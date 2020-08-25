@@ -118,7 +118,7 @@ class CapacityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The Amazon Resource Name (ARN) that identifies the capacity provider.
         """
@@ -126,7 +126,7 @@ class CapacityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoScalingGroupProvider")
-    def auto_scaling_group_provider(self) -> 'outputs.CapacityProviderAutoScalingGroupProvider':
+    def auto_scaling_group_provider(self) -> pulumi.Output['outputs.CapacityProviderAutoScalingGroupProvider']:
         """
         Nested argument defining the provider for the ECS auto scaling group. Defined below.
         """
@@ -134,7 +134,7 @@ class CapacityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the capacity provider.
         """
@@ -142,7 +142,7 @@ class CapacityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key-value map of resource tags.
         """

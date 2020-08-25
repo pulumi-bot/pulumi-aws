@@ -112,7 +112,7 @@ class BucketPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket to which to apply the policy.
         """
@@ -120,7 +120,7 @@ class BucketPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The text of the policy.
         """

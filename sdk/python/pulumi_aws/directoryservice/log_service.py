@@ -110,7 +110,7 @@ class LogService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> str:
+    def directory_id(self) -> pulumi.Output[str]:
         """
         The id of directory.
         """
@@ -118,7 +118,7 @@ class LogService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logGroupName")
-    def log_group_name(self) -> str:
+    def log_group_name(self) -> pulumi.Output[str]:
         """
         Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
         """

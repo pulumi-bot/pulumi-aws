@@ -109,7 +109,7 @@ class DocumentationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the API documentation version.
         """
@@ -117,7 +117,7 @@ class DocumentationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restApiId")
-    def rest_api_id(self) -> str:
+    def rest_api_id(self) -> pulumi.Output[str]:
         """
         The ID of the associated Rest API
         """
@@ -125,7 +125,7 @@ class DocumentationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         The version identifier of the API documentation snapshot.
         """

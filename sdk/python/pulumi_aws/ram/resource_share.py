@@ -102,7 +102,7 @@ class ResourceShare(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowExternalPrincipals")
-    def allow_external_principals(self) -> Optional[bool]:
+    def allow_external_principals(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether principals outside your organization can be associated with a resource share.
         """
@@ -110,7 +110,7 @@ class ResourceShare(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The Amazon Resource Name (ARN) of the resource share.
         """
@@ -118,7 +118,7 @@ class ResourceShare(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the resource share.
         """
@@ -126,7 +126,7 @@ class ResourceShare(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of tags to assign to the resource share.
         """

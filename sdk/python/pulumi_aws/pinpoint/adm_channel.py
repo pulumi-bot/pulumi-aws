@@ -113,7 +113,7 @@ class AdmChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> str:
+    def application_id(self) -> pulumi.Output[str]:
         """
         The application ID.
         """
@@ -121,7 +121,7 @@ class AdmChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
         """
@@ -129,7 +129,7 @@ class AdmChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> str:
+    def client_secret(self) -> pulumi.Output[str]:
         """
         Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
         """
@@ -137,7 +137,7 @@ class AdmChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to enable the channel. Defaults to `true`.
         """

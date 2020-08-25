@@ -118,7 +118,7 @@ class Model(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> str:
+    def content_type(self) -> pulumi.Output[str]:
         """
         The content type of the model
         """
@@ -126,7 +126,7 @@ class Model(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the model
         """
@@ -134,7 +134,7 @@ class Model(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the model
         """
@@ -142,7 +142,7 @@ class Model(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restApi")
-    def rest_api(self) -> str:
+    def rest_api(self) -> pulumi.Output[str]:
         """
         The ID of the associated REST API
         """
@@ -150,7 +150,7 @@ class Model(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> Optional[str]:
+    def schema(self) -> pulumi.Output[Optional[str]]:
         """
         The schema of the model in a JSON form
         """

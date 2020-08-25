@@ -96,7 +96,7 @@ class Protection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A friendly name for the Protection you are creating.
         """
@@ -104,7 +104,7 @@ class Protection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceArn")
-    def resource_arn(self) -> str:
+    def resource_arn(self) -> pulumi.Output[str]:
         """
         The ARN (Amazon Resource Name) of the resource to be protected.
         """

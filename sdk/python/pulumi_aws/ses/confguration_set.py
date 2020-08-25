@@ -75,7 +75,7 @@ class ConfgurationSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):

@@ -111,7 +111,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attachmentId")
-    def attachment_id(self) -> str:
+    def attachment_id(self) -> pulumi.Output[str]:
         """
         The ENI Attachment ID.
         """
@@ -119,7 +119,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviceIndex")
-    def device_index(self) -> float:
+    def device_index(self) -> pulumi.Output[float]:
         """
         Network interface index (int).
         """
@@ -127,7 +127,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         Instance ID to attach.
         """
@@ -135,7 +135,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> str:
+    def network_interface_id(self) -> pulumi.Output[str]:
         """
         ENI ID to attach.
         """
@@ -143,7 +143,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the Network Interface Attachment.
         """

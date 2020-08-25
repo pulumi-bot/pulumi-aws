@@ -102,7 +102,7 @@ class ByteMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="byteMatchTuples")
-    def byte_match_tuples(self) -> Optional[List['outputs.ByteMatchSetByteMatchTuple']]:
+    def byte_match_tuples(self) -> pulumi.Output[Optional[List['outputs.ByteMatchSetByteMatchTuple']]]:
         """
         Specifies the bytes (typically a string that corresponds
         with ASCII characters) that you want to search for in web requests,
@@ -112,7 +112,7 @@ class ByteMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name or description of the Byte Match Set.
         """

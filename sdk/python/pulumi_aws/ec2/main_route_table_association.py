@@ -108,7 +108,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="originalRouteTableId")
-    def original_route_table_id(self) -> str:
+    def original_route_table_id(self) -> pulumi.Output[str]:
         """
         Used internally, see __Notes__ below
         """
@@ -116,7 +116,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The ID of the Route Table to set as the new
         main route table for the target VPC
@@ -125,7 +125,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPC whose main route table should be set
         """

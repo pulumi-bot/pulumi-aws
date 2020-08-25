@@ -126,7 +126,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         Game Session Queue ARN.
         """
@@ -134,7 +134,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[List[str]]:
+    def destinations(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of fleet/alias ARNs used by session queue for placing game sessions.
         """
@@ -142,7 +142,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the session queue.
         """
@@ -150,7 +150,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="playerLatencyPolicies")
-    def player_latency_policies(self) -> Optional[List['outputs.GameSessionQueuePlayerLatencyPolicy']]:
+    def player_latency_policies(self) -> pulumi.Output[Optional[List['outputs.GameSessionQueuePlayerLatencyPolicy']]]:
         """
         One or more policies used to choose fleet based on player latency. See below.
         """
@@ -158,7 +158,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key-value map of resource tags
         """
@@ -166,7 +166,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutInSeconds")
-    def timeout_in_seconds(self) -> Optional[float]:
+    def timeout_in_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum time a game session request can remain in the queue.
         """

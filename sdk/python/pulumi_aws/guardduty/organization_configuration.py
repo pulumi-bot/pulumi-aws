@@ -97,7 +97,7 @@ class OrganizationConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoEnable")
-    def auto_enable(self) -> bool:
+    def auto_enable(self) -> pulumi.Output[bool]:
         """
         When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
         """
@@ -105,7 +105,7 @@ class OrganizationConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detectorId")
-    def detector_id(self) -> str:
+    def detector_id(self) -> pulumi.Output[str]:
         """
         The detector ID of the GuardDuty account.
         """

@@ -102,7 +102,7 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterIdentifier")
-    def cluster_identifier(self) -> str:
+    def cluster_identifier(self) -> pulumi.Output[str]:
         """
         The cluster identifier.
         """
@@ -110,7 +110,7 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduleIdentifier")
-    def schedule_identifier(self) -> str:
+    def schedule_identifier(self) -> pulumi.Output[str]:
         """
         The snapshot schedule identifier.
         """

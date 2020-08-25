@@ -139,7 +139,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountAggregationSource")
-    def account_aggregation_source(self) -> Optional['outputs.ConfigurationAggregatorAccountAggregationSource']:
+    def account_aggregation_source(self) -> pulumi.Output[Optional['outputs.ConfigurationAggregatorAccountAggregationSource']]:
         """
         The account(s) to aggregate config data from as documented below.
         """
@@ -147,7 +147,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The ARN of the aggregator
         """
@@ -155,7 +155,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the configuration aggregator.
         """
@@ -163,7 +163,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="organizationAggregationSource")
-    def organization_aggregation_source(self) -> Optional['outputs.ConfigurationAggregatorOrganizationAggregationSource']:
+    def organization_aggregation_source(self) -> pulumi.Output[Optional['outputs.ConfigurationAggregatorOrganizationAggregationSource']]:
         """
         The organization to aggregate config data from as documented below.
         """
@@ -171,7 +171,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of tags to assign to the resource.
         """

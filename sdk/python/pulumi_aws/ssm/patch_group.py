@@ -95,7 +95,7 @@ class PatchGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="baselineId")
-    def baseline_id(self) -> str:
+    def baseline_id(self) -> pulumi.Output[str]:
         """
         The ID of the patch baseline to register the patch group with.
         """
@@ -103,7 +103,7 @@ class PatchGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="patchGroup")
-    def patch_group(self) -> str:
+    def patch_group(self) -> pulumi.Output[str]:
         """
         The name of the patch group that should be registered with the patch baseline.
         """

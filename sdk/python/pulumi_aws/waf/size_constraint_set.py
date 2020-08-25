@@ -101,7 +101,7 @@ class SizeConstraintSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         Amazon Resource Name (ARN)
         """
@@ -109,7 +109,7 @@ class SizeConstraintSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name or description of the Size Constraint Set.
         """
@@ -117,7 +117,7 @@ class SizeConstraintSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sizeConstraints")
-    def size_constraints(self) -> Optional[List['outputs.SizeConstraintSetSizeConstraint']]:
+    def size_constraints(self) -> pulumi.Output[Optional[List['outputs.SizeConstraintSetSizeConstraint']]]:
         """
         Specifies the parts of web requests that you want to inspect the size of.
         """

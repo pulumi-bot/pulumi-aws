@@ -131,7 +131,7 @@ class RecorderStatus(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> bool:
+    def is_enabled(self) -> pulumi.Output[bool]:
         """
         Whether the configuration recorder should be enabled or disabled.
         """
@@ -139,7 +139,7 @@ class RecorderStatus(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the recorder
         """

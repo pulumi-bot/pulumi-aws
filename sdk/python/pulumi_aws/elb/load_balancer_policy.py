@@ -175,7 +175,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> str:
+    def load_balancer_name(self) -> pulumi.Output[str]:
         """
         The load balancer on which the policy is defined.
         """
@@ -183,7 +183,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyAttributes")
-    def policy_attributes(self) -> Optional[List['outputs.LoadBalancerPolicyPolicyAttribute']]:
+    def policy_attributes(self) -> pulumi.Output[Optional[List['outputs.LoadBalancerPolicyPolicyAttribute']]]:
         """
         Policy attribute to apply to the policy.
         """
@@ -191,7 +191,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
+    def policy_name(self) -> pulumi.Output[str]:
         """
         The name of the load balancer policy.
         """
@@ -199,7 +199,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyTypeName")
-    def policy_type_name(self) -> str:
+    def policy_type_name(self) -> pulumi.Output[str]:
         """
         The policy type.
         """

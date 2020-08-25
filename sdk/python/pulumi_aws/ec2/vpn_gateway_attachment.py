@@ -107,7 +107,7 @@ class VpnGatewayAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPC.
         """
@@ -115,7 +115,7 @@ class VpnGatewayAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> str:
+    def vpn_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the Virtual Private Gateway.
         """

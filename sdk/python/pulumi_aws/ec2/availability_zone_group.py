@@ -96,7 +96,7 @@ class AvailabilityZoneGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> str:
+    def group_name(self) -> pulumi.Output[str]:
         """
         Name of the Availability Zone Group.
         """
@@ -104,7 +104,7 @@ class AvailabilityZoneGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="optInStatus")
-    def opt_in_status(self) -> str:
+    def opt_in_status(self) -> pulumi.Output[str]:
         """
         Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
         """

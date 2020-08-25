@@ -114,7 +114,7 @@ class QueuePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The JSON policy for the SQS queue.
         """
@@ -122,7 +122,7 @@ class QueuePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="queueUrl")
-    def queue_url(self) -> str:
+    def queue_url(self) -> pulumi.Output[str]:
         """
         The URL of the SQS Queue to which to attach the policy
         """

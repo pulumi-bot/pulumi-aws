@@ -116,7 +116,7 @@ class PrincipalAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def principal(self) -> str:
+    def principal(self) -> pulumi.Output[str]:
         """
         The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
         """
@@ -124,7 +124,7 @@ class PrincipalAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceShareArn")
-    def resource_share_arn(self) -> str:
+    def resource_share_arn(self) -> pulumi.Output[str]:
         """
         The Amazon Resource Name (ARN) of the resource share.
         """

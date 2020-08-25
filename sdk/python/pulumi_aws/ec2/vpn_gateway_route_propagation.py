@@ -98,7 +98,7 @@ class VpnGatewayRoutePropagation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The id of the `ec2.RouteTable` to propagate routes into.
         """
@@ -106,7 +106,7 @@ class VpnGatewayRoutePropagation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> str:
+    def vpn_gateway_id(self) -> pulumi.Output[str]:
         """
         The id of the `ec2.VpnGateway` to propagate routes from.
         """

@@ -107,7 +107,7 @@ class RegexMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         Amazon Resource Name (ARN)
         """
@@ -115,7 +115,7 @@ class RegexMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name or description of the Regex Match Set.
         """
@@ -123,7 +123,7 @@ class RegexMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regexMatchTuples")
-    def regex_match_tuples(self) -> Optional[List['outputs.RegexMatchSetRegexMatchTuple']]:
+    def regex_match_tuples(self) -> pulumi.Output[Optional[List['outputs.RegexMatchSetRegexMatchTuple']]]:
         """
         The regular expression pattern that you want AWS WAF to search for in web requests,
         the location in requests that you want AWS WAF to search, and other settings. See below.

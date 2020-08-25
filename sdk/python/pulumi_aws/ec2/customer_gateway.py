@@ -118,7 +118,7 @@ class CustomerGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The ARN of the customer gateway.
         """
@@ -126,7 +126,7 @@ class CustomerGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bgpAsn")
-    def bgp_asn(self) -> str:
+    def bgp_asn(self) -> pulumi.Output[str]:
         """
         The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
         """
@@ -134,7 +134,7 @@ class CustomerGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         The IP address of the gateway's Internet-routable external interface.
         """
@@ -142,7 +142,7 @@ class CustomerGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Tags to apply to the gateway.
         """
@@ -150,7 +150,7 @@ class CustomerGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of customer gateway. The only type AWS
         supports at this time is "ipsec.1".

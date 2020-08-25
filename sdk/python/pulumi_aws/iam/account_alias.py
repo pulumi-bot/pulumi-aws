@@ -86,7 +86,7 @@ class AccountAlias(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountAlias")
-    def account_alias(self) -> str:
+    def account_alias(self) -> pulumi.Output[str]:
         """
         The account alias
         """

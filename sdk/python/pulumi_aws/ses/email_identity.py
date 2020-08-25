@@ -88,7 +88,7 @@ class EmailIdentity(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The ARN of the email identity.
         """
@@ -96,7 +96,7 @@ class EmailIdentity(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> str:
+    def email(self) -> pulumi.Output[str]:
         """
         The email address to assign to SES
         """

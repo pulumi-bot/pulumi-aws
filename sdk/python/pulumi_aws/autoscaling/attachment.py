@@ -129,7 +129,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="albTargetGroupArn")
-    def alb_target_group_arn(self) -> Optional[str]:
+    def alb_target_group_arn(self) -> pulumi.Output[Optional[str]]:
         """
         The ARN of an ALB Target Group.
         """
@@ -137,7 +137,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscalingGroupName")
-    def autoscaling_group_name(self) -> str:
+    def autoscaling_group_name(self) -> pulumi.Output[str]:
         """
         Name of ASG to associate with the ELB.
         """
@@ -145,7 +145,7 @@ class Attachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def elb(self) -> Optional[str]:
+    def elb(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the ELB.
         """

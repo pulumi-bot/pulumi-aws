@@ -141,7 +141,7 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> str:
+    def owner_id(self) -> pulumi.Output[str]:
         """
         The ID of the AWS account that owns the route table.
         """
@@ -149,7 +149,7 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="propagatingVgws")
-    def propagating_vgws(self) -> List[str]:
+    def propagating_vgws(self) -> pulumi.Output[List[str]]:
         """
         A list of virtual gateways for propagation.
         """
@@ -157,7 +157,7 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def routes(self) -> List['outputs.RouteTableRoute']:
+    def routes(self) -> pulumi.Output[List['outputs.RouteTableRoute']]:
         """
         A list of route objects. Their keys are documented below.
         """
@@ -165,7 +165,7 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -173,7 +173,7 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC ID.
         """

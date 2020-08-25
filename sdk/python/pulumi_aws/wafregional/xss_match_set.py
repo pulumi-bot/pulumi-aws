@@ -103,7 +103,7 @@ class XssMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the set
         """
@@ -111,7 +111,7 @@ class XssMatchSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="xssMatchTuples")
-    def xss_match_tuples(self) -> Optional[List['outputs.XssMatchSetXssMatchTuple']]:
+    def xss_match_tuples(self) -> pulumi.Output[Optional[List['outputs.XssMatchSetXssMatchTuple']]]:
         """
         The parts of web requests that you want to inspect for cross-site scripting attacks.
         """

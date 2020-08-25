@@ -107,7 +107,7 @@ class OpenIdConnectProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The ARN assigned by AWS for this provider.
         """
@@ -115,7 +115,7 @@ class OpenIdConnectProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientIdLists")
-    def client_id_lists(self) -> List[str]:
+    def client_id_lists(self) -> pulumi.Output[List[str]]:
         """
         A list of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the client_id parameter on OAuth requests.)
         """
@@ -123,7 +123,7 @@ class OpenIdConnectProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="thumbprintLists")
-    def thumbprint_lists(self) -> List[str]:
+    def thumbprint_lists(self) -> pulumi.Output[List[str]]:
         """
         A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s).
         """
@@ -131,7 +131,7 @@ class OpenIdConnectProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The URL of the identity provider. Corresponds to the _iss_ claim.
         """

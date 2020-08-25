@@ -99,7 +99,7 @@ class Analyzer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="analyzerName")
-    def analyzer_name(self) -> str:
+    def analyzer_name(self) -> pulumi.Output[str]:
         """
         Name of the Analyzer.
         """
@@ -107,12 +107,12 @@ class Analyzer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key-value map of resource tags.
         """
@@ -120,7 +120,7 @@ class Analyzer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
         """

@@ -104,7 +104,7 @@ class LogDestination(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Output[str]:
         """
         The Amazon Resource Name (ARN) specifying the log destination.
         """
@@ -112,7 +112,7 @@ class LogDestination(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the log destination
         """
@@ -120,7 +120,7 @@ class LogDestination(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> str:
+    def role_arn(self) -> pulumi.Output[str]:
         """
         The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
         """
@@ -128,7 +128,7 @@ class LogDestination(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetArn")
-    def target_arn(self) -> str:
+    def target_arn(self) -> pulumi.Output[str]:
         """
         The ARN of the target Amazon Kinesis stream resource for the destination
         """

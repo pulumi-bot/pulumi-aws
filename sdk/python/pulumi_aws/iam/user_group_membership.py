@@ -109,7 +109,7 @@ class UserGroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def groups(self) -> List[str]:
+    def groups(self) -> pulumi.Output[List[str]]:
         """
         A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
         """
@@ -117,7 +117,7 @@ class UserGroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
         """

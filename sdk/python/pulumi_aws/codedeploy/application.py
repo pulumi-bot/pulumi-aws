@@ -109,7 +109,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computePlatform")
-    def compute_platform(self) -> Optional[str]:
+    def compute_platform(self) -> pulumi.Output[Optional[str]]:
         """
         The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
         """
@@ -117,7 +117,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the application.
         """
@@ -125,7 +125,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uniqueId")
-    def unique_id(self) -> str:
+    def unique_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "unique_id")
 
     def translate_output_property(self, prop):

@@ -117,7 +117,7 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instancePorts")
-    def instance_ports(self) -> List[str]:
+    def instance_ports(self) -> pulumi.Output[List[str]]:
         """
         List of instance ports to which the policy
         should be applied. This can be specified if the protocol is SSL or TCP.
@@ -126,7 +126,7 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> str:
+    def load_balancer(self) -> pulumi.Output[str]:
         """
         The load balancer to which the policy
         should be attached.
