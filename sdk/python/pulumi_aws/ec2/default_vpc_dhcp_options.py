@@ -13,7 +13,7 @@ __all__ = ['DefaultVpcDhcpOptions']
 
 class DefaultVpcDhcpOptions(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  netbios_name_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  netbios_node_type: Optional[pulumi.Input[str]] = None,

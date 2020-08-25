@@ -13,7 +13,7 @@ __all__ = ['RoleAssociation']
 
 class RoleAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_identifier: Optional[pulumi.Input[str]] = None,
                  feature_name: Optional[pulumi.Input[str]] = None,

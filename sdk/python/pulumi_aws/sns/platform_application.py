@@ -13,7 +13,7 @@ __all__ = ['PlatformApplication']
 
 class PlatformApplication(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_delivery_failure_topic_arn: Optional[pulumi.Input[str]] = None,
                  event_endpoint_created_topic_arn: Optional[pulumi.Input[str]] = None,

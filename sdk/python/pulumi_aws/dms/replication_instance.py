@@ -13,7 +13,7 @@ __all__ = ['ReplicationInstance']
 
 class ReplicationInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_storage: Optional[pulumi.Input[float]] = None,
                  apply_immediately: Optional[pulumi.Input[bool]] = None,

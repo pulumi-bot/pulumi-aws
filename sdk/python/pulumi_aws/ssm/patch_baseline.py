@@ -15,7 +15,7 @@ __all__ = ['PatchBaseline']
 
 class PatchBaseline(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PatchBaselineApprovalRuleArgs']]]]] = None,
                  approved_patches: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

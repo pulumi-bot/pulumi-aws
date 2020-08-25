@@ -13,7 +13,7 @@ __all__ = ['DefaultSubnet']
 
 class DefaultSubnet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  map_public_ip_on_launch: Optional[pulumi.Input[bool]] = None,

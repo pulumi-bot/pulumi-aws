@@ -13,7 +13,7 @@ __all__ = ['RepositoryPolicy']
 
 class RepositoryPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  repository: Optional[pulumi.Input[str]] = None,

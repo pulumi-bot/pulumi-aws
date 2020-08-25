@@ -13,7 +13,7 @@ __all__ = ['VpcIpv4CidrBlockAssociation']
 
 class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,

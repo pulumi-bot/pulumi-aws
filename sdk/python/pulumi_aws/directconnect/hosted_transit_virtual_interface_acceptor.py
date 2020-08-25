@@ -13,7 +13,7 @@ __all__ = ['HostedTransitVirtualInterfaceAcceptor']
 
 class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dx_gateway_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

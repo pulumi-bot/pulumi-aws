@@ -19,7 +19,7 @@ class Listener(pulumi.CustomResource):
     warnings.warn("aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
                  default_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,

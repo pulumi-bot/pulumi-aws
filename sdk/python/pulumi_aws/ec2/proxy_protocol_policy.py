@@ -13,7 +13,7 @@ __all__ = ['ProxyProtocolPolicy']
 
 class ProxyProtocolPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  load_balancer: Optional[pulumi.Input[str]] = None,

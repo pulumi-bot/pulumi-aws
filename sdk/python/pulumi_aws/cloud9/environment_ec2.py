@@ -13,7 +13,7 @@ __all__ = ['EnvironmentEC2']
 
 class EnvironmentEC2(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_stop_time_minutes: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,

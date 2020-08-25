@@ -13,7 +13,7 @@ __all__ = ['SamplingRule']
 
 class SamplingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fixed_rate: Optional[pulumi.Input[float]] = None,

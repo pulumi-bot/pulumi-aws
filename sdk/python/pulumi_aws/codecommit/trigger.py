@@ -15,7 +15,7 @@ __all__ = ['Trigger']
 
 class Trigger(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  repository_name: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TriggerTriggerArgs']]]]] = None,

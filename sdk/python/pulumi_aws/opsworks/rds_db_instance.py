@@ -13,7 +13,7 @@ __all__ = ['RdsDbInstance']
 
 class RdsDbInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_password: Optional[pulumi.Input[str]] = None,
                  db_user: Optional[pulumi.Input[str]] = None,

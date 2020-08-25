@@ -15,7 +15,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ProjectArtifactsArgs']]] = None,
                  badge_enabled: Optional[pulumi.Input[bool]] = None,

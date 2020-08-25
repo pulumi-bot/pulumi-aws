@@ -15,7 +15,7 @@ __all__ = ['Webhook']
 
 class Webhook(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_filter: Optional[pulumi.Input[str]] = None,
                  filter_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookFilterGroupArgs']]]]] = None,

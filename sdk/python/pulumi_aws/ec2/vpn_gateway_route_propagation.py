@@ -13,7 +13,7 @@ __all__ = ['VpnGatewayRoutePropagation']
 
 class VpnGatewayRoutePropagation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,

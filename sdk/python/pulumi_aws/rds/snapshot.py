@@ -13,7 +13,7 @@ __all__ = ['Snapshot']
 
 class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_identifier: Optional[pulumi.Input[str]] = None,
                  db_snapshot_identifier: Optional[pulumi.Input[str]] = None,

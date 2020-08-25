@@ -13,7 +13,7 @@ __all__ = ['MaintenanceWindow']
 
 class MaintenanceWindow(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_unassociated_targets: Optional[pulumi.Input[bool]] = None,
                  cutoff: Optional[pulumi.Input[float]] = None,

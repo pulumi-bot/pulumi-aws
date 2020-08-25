@@ -15,7 +15,7 @@ __all__ = ['AmiCopy']
 
 class AmiCopy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AmiCopyEbsBlockDeviceArgs']]]]] = None,

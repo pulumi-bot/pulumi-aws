@@ -15,7 +15,7 @@ __all__ = ['VpnConnection']
 
 class VpnConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  static_routes_only: Optional[pulumi.Input[bool]] = None,

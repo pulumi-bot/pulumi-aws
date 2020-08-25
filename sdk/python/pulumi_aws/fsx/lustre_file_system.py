@@ -13,7 +13,7 @@ __all__ = ['LustreFileSystem']
 
 class LustreFileSystem(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  export_path: Optional[pulumi.Input[str]] = None,

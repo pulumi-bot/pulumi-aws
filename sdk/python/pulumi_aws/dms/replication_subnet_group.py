@@ -13,7 +13,7 @@ __all__ = ['ReplicationSubnetGroup']
 
 class ReplicationSubnetGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  replication_subnet_group_description: Optional[pulumi.Input[str]] = None,
                  replication_subnet_group_id: Optional[pulumi.Input[str]] = None,

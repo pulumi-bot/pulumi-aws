@@ -15,7 +15,7 @@ __all__ = ['Organization']
 
 class Organization(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_service_access_principals: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  enabled_policy_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Endpoint']
 
 class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointAuthenticationOptionArgs']]]]] = None,
                  client_cidr_block: Optional[pulumi.Input[str]] = None,

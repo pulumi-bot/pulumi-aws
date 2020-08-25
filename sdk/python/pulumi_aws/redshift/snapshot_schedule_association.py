@@ -13,7 +13,7 @@ __all__ = ['SnapshotScheduleAssociation']
 
 class SnapshotScheduleAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  schedule_identifier: Optional[pulumi.Input[str]] = None,

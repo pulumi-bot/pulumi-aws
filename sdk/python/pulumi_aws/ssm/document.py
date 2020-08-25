@@ -15,7 +15,7 @@ __all__ = ['Document']
 
 class Document(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachments_sources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DocumentAttachmentsSourceArgs']]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,

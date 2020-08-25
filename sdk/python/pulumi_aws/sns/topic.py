@@ -13,7 +13,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_failure_feedback_role_arn: Optional[pulumi.Input[str]] = None,
                  application_success_feedback_role_arn: Optional[pulumi.Input[str]] = None,

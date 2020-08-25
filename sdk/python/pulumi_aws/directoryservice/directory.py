@@ -15,7 +15,7 @@ __all__ = ['Directory']
 
 class Directory(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  connect_settings: Optional[pulumi.Input[pulumi.InputType['DirectoryConnectSettingsArgs']]] = None,

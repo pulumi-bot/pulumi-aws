@@ -15,7 +15,7 @@ __all__ = ['ListenerRule']
 
 class ListenerRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleActionArgs']]]]] = None,
                  conditions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]]] = None,

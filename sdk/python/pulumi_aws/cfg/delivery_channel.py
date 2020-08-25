@@ -15,7 +15,7 @@ __all__ = ['DeliveryChannel']
 
 class DeliveryChannel(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  s3_bucket_name: Optional[pulumi.Input[str]] = None,

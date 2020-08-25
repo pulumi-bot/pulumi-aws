@@ -13,7 +13,7 @@ __all__ = ['TransitGateway']
 
 class TransitGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amazon_side_asn: Optional[pulumi.Input[float]] = None,
                  auto_accept_shared_attachments: Optional[pulumi.Input[str]] = None,

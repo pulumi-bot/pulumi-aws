@@ -15,7 +15,7 @@ __all__ = ['TopicRule']
 
 class TopicRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloudwatch_alarm: Optional[pulumi.Input[pulumi.InputType['TopicRuleCloudwatchAlarmArgs']]] = None,
                  cloudwatch_metric: Optional[pulumi.Input[pulumi.InputType['TopicRuleCloudwatchMetricArgs']]] = None,

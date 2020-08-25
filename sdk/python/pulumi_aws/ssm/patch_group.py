@@ -13,7 +13,7 @@ __all__ = ['PatchGroup']
 
 class PatchGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  baseline_id: Optional[pulumi.Input[str]] = None,
                  patch_group: Optional[pulumi.Input[str]] = None,

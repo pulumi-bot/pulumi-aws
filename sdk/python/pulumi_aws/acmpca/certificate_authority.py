@@ -15,7 +15,7 @@ __all__ = ['CertificateAuthority']
 
 class CertificateAuthority(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_configuration: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityCertificateAuthorityConfigurationArgs']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,

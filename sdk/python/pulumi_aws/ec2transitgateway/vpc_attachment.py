@@ -13,7 +13,7 @@ __all__ = ['VpcAttachment']
 
 class VpcAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_support: Optional[pulumi.Input[str]] = None,
                  ipv6_support: Optional[pulumi.Input[str]] = None,

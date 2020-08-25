@@ -17,7 +17,7 @@ class ConfgurationSet(pulumi.CustomResource):
     warnings.warn("aws.ses.ConfgurationSet has been deprecated in favor of aws.ses.ConfigurationSet", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,

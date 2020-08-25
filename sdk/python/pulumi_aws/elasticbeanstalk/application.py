@@ -15,7 +15,7 @@ __all__ = ['Application']
 
 class Application(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  appversion_lifecycle: Optional[pulumi.Input[pulumi.InputType['ApplicationAppversionLifecycleArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,

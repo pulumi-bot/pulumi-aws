@@ -13,7 +13,7 @@ __all__ = ['VpcEndpointService']
 
 class VpcEndpointService(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acceptance_required: Optional[pulumi.Input[bool]] = None,
                  allowed_principals: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

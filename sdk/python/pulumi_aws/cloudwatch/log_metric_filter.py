@@ -15,7 +15,7 @@ __all__ = ['LogMetricFilter']
 
 class LogMetricFilter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  log_group_name: Optional[pulumi.Input[str]] = None,
                  metric_transformation: Optional[pulumi.Input[pulumi.InputType['LogMetricFilterMetricTransformationArgs']]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Trail']
 
 class Trail(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_watch_logs_group_arn: Optional[pulumi.Input[str]] = None,
                  cloud_watch_logs_role_arn: Optional[pulumi.Input[str]] = None,

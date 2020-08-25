@@ -15,7 +15,7 @@ __all__ = ['NotificationRule']
 
 class NotificationRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  detail_type: Optional[pulumi.Input[str]] = None,
                  event_type_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

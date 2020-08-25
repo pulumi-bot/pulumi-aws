@@ -13,7 +13,7 @@ __all__ = ['AvailabilityZoneGroup']
 
 class AvailabilityZoneGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  opt_in_status: Optional[pulumi.Input[str]] = None,

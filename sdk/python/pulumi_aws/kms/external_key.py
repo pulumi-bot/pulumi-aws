@@ -13,7 +13,7 @@ __all__ = ['ExternalKey']
 
 class ExternalKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_window_in_days: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,

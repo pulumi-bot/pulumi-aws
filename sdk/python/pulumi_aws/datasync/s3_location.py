@@ -15,7 +15,7 @@ __all__ = ['S3Location']
 
 class S3Location(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  s3_bucket_arn: Optional[pulumi.Input[str]] = None,
                  s3_config: Optional[pulumi.Input[pulumi.InputType['S3LocationS3ConfigArgs']]] = None,

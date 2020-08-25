@@ -15,7 +15,7 @@ __all__ = ['EventSourceMapping']
 
 class EventSourceMapping(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_size: Optional[pulumi.Input[float]] = None,
                  bisect_batch_on_function_error: Optional[pulumi.Input[bool]] = None,

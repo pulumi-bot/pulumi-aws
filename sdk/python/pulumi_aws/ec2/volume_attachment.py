@@ -13,7 +13,7 @@ __all__ = ['VolumeAttachment']
 
 class VolumeAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  force_detach: Optional[pulumi.Input[bool]] = None,

@@ -15,7 +15,7 @@ __all__ = ['LaunchConfiguration']
 
 class LaunchConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchConfigurationEbsBlockDeviceArgs']]]]] = None,

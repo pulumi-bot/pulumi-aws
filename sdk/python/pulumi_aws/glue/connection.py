@@ -15,7 +15,7 @@ __all__ = ['Connection']
 
 class Connection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  connection_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

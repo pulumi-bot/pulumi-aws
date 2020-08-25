@@ -15,7 +15,7 @@ __all__ = ['Grant']
 
 class Grant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  constraints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GrantConstraintArgs']]]]] = None,
                  grant_creation_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

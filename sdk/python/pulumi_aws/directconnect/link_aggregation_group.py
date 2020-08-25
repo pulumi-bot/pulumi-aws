@@ -13,7 +13,7 @@ __all__ = ['LinkAggregationGroup']
 
 class LinkAggregationGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connections_bandwidth: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,

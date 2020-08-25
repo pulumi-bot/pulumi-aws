@@ -13,7 +13,7 @@ __all__ = ['HealthCheck']
 
 class HealthCheck(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  child_health_threshold: Optional[pulumi.Input[float]] = None,
                  child_healthchecks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

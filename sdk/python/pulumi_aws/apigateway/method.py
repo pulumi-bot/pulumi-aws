@@ -13,7 +13,7 @@ __all__ = ['Method']
 
 class Method(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key_required: Optional[pulumi.Input[bool]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,

@@ -13,7 +13,7 @@ __all__ = ['ConnectionAssociation']
 
 class ConnectionAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  lag_id: Optional[pulumi.Input[str]] = None,

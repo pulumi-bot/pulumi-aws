@@ -13,7 +13,7 @@ __all__ = ['LoadBalancerCookieStickinessPolicy']
 
 class LoadBalancerCookieStickinessPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cookie_expiration_period: Optional[pulumi.Input[float]] = None,
                  lb_port: Optional[pulumi.Input[float]] = None,

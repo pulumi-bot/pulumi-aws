@@ -13,7 +13,7 @@ __all__ = ['IntegrationResponse']
 
 class IntegrationResponse(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  content_handling_strategy: Optional[pulumi.Input[str]] = None,

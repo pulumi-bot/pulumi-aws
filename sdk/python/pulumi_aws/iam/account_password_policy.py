@@ -13,7 +13,7 @@ __all__ = ['AccountPasswordPolicy']
 
 class AccountPasswordPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_users_to_change_password: Optional[pulumi.Input[bool]] = None,
                  hard_expiry: Optional[pulumi.Input[bool]] = None,

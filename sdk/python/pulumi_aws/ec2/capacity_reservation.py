@@ -13,7 +13,7 @@ __all__ = ['CapacityReservation']
 
 class CapacityReservation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,

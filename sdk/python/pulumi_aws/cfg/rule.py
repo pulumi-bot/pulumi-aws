@@ -15,7 +15,7 @@ __all__ = ['Rule']
 
 class Rule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  input_parameters: Optional[pulumi.Input[str]] = None,

@@ -13,7 +13,7 @@ __all__ = ['OpenIdConnectProvider']
 
 class OpenIdConnectProvider(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_id_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  thumbprint_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

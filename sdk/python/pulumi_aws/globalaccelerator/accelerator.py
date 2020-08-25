@@ -15,7 +15,7 @@ __all__ = ['Accelerator']
 
 class Accelerator(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[pulumi.InputType['AcceleratorAttributesArgs']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,

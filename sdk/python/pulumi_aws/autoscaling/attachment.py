@@ -13,7 +13,7 @@ __all__ = ['Attachment']
 
 class Attachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alb_target_group_arn: Optional[pulumi.Input[str]] = None,
                  autoscaling_group_name: Optional[pulumi.Input[str]] = None,

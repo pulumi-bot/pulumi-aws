@@ -13,7 +13,7 @@ __all__ = ['BucketPublicAccessBlock']
 
 class BucketPublicAccessBlock(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block_public_acls: Optional[pulumi.Input[bool]] = None,
                  block_public_policy: Optional[pulumi.Input[bool]] = None,

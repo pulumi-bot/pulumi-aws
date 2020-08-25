@@ -15,7 +15,7 @@ __all__ = ['Application']
 
 class Application(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_sources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationAppSourceArgs']]]]] = None,
                  auto_bundle_on_deploy: Optional[pulumi.Input[str]] = None,

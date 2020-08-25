@@ -15,7 +15,7 @@ __all__ = ['PeeringConnectionOptions']
 
 class PeeringConnectionOptions(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accepter: Optional[pulumi.Input[pulumi.InputType['PeeringConnectionOptionsAccepterArgs']]] = None,
                  requester: Optional[pulumi.Input[pulumi.InputType['PeeringConnectionOptionsRequesterArgs']]] = None,

@@ -15,7 +15,7 @@ __all__ = ['IdentityPool']
 
 class IdentityPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_unauthenticated_identities: Optional[pulumi.Input[bool]] = None,
                  cognito_identity_providers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IdentityPoolCognitoIdentityProviderArgs']]]]] = None,

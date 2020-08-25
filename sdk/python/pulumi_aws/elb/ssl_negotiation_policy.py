@@ -15,7 +15,7 @@ __all__ = ['SslNegotiationPolicy']
 
 class SslNegotiationPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SslNegotiationPolicyAttributeArgs']]]]] = None,
                  lb_port: Optional[pulumi.Input[float]] = None,

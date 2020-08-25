@@ -13,7 +13,7 @@ __all__ = ['FlowLog']
 
 class FlowLog(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  eni_id: Optional[pulumi.Input[str]] = None,
                  iam_role_arn: Optional[pulumi.Input[str]] = None,

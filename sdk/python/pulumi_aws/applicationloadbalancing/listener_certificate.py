@@ -17,7 +17,7 @@ class ListenerCertificate(pulumi.CustomResource):
     warnings.warn("aws.applicationloadbalancing.ListenerCertificate has been deprecated in favor of aws.alb.ListenerCertificate", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
                  listener_arn: Optional[pulumi.Input[str]] = None,

@@ -13,7 +13,7 @@ __all__ = ['Vpc']
 
 class Vpc(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assign_generated_ipv6_cidr_block: Optional[pulumi.Input[bool]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,

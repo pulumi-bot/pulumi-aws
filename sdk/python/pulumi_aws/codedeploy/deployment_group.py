@@ -15,7 +15,7 @@ __all__ = ['DeploymentGroup']
 
 class DeploymentGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alarm_configuration: Optional[pulumi.Input[pulumi.InputType['DeploymentGroupAlarmConfigurationArgs']]] = None,
                  app_name: Optional[pulumi.Input[str]] = None,

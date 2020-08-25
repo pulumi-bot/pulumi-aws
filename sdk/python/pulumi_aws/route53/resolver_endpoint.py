@@ -15,7 +15,7 @@ __all__ = ['ResolverEndpoint']
 
 class ResolverEndpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ResolverEndpointIpAddressArgs']]]]] = None,

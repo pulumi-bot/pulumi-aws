@@ -13,7 +13,7 @@ __all__ = ['ResourceShare']
 
 class ResourceShare(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_external_principals: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,

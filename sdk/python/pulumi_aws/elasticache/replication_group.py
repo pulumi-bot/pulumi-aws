@@ -15,7 +15,7 @@ __all__ = ['ReplicationGroup']
 
 class ReplicationGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_immediately: Optional[pulumi.Input[bool]] = None,
                  at_rest_encryption_enabled: Optional[pulumi.Input[bool]] = None,

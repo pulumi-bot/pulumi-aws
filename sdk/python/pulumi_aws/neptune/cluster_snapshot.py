@@ -13,7 +13,7 @@ __all__ = ['ClusterSnapshot']
 
 class ClusterSnapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_cluster_identifier: Optional[pulumi.Input[str]] = None,
                  db_cluster_snapshot_identifier: Optional[pulumi.Input[str]] = None,

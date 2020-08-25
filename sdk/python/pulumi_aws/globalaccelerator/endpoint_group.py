@@ -15,7 +15,7 @@ __all__ = ['EndpointGroup']
 
 class EndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,

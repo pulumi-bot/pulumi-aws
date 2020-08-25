@@ -15,7 +15,7 @@ __all__ = ['AccessPoint']
 
 class AccessPoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  posix_user: Optional[pulumi.Input[pulumi.InputType['AccessPointPosixUserArgs']]] = None,

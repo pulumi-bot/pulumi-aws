@@ -13,7 +13,7 @@ __all__ = ['ZoneAssociation']
 
 class ZoneAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_region: Optional[pulumi.Input[str]] = None,

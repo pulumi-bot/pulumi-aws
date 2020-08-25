@@ -13,7 +13,7 @@ __all__ = ['SecurityConfiguration']
 
 class SecurityConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

@@ -15,7 +15,7 @@ __all__ = ['MemcachedLayer']
 
 class MemcachedLayer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_memory: Optional[pulumi.Input[float]] = None,
                  auto_assign_elastic_ips: Optional[pulumi.Input[bool]] = None,

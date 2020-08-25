@@ -15,7 +15,7 @@ __all__ = ['LocationSmb']
 
 class LocationSmb(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,

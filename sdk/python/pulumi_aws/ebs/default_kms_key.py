@@ -13,7 +13,7 @@ __all__ = ['DefaultKmsKey']
 
 class DefaultKmsKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_arn: Optional[pulumi.Input[str]] = None,
                  __props__=None,

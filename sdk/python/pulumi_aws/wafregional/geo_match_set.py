@@ -15,7 +15,7 @@ __all__ = ['GeoMatchSet']
 
 class GeoMatchSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  geo_match_constraints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GeoMatchSetGeoMatchConstraintArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

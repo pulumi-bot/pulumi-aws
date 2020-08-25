@@ -15,7 +15,7 @@ __all__ = ['LaunchTemplate']
 
 class LaunchTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block_device_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateBlockDeviceMappingArgs']]]]] = None,
                  capacity_reservation_specification: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCapacityReservationSpecificationArgs']]] = None,

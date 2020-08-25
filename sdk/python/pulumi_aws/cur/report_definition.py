@@ -13,7 +13,7 @@ __all__ = ['ReportDefinition']
 
 class ReportDefinition(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_artifacts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  additional_schema_elements: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

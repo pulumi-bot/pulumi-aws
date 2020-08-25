@@ -15,7 +15,7 @@ __all__ = ['Preset']
 
 class Preset(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audio: Optional[pulumi.Input[pulumi.InputType['PresetAudioArgs']]] = None,
                  audio_codec_options: Optional[pulumi.Input[pulumi.InputType['PresetAudioCodecOptionsArgs']]] = None,

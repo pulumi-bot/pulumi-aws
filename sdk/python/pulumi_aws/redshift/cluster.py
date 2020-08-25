@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  automated_snapshot_retention_period: Optional[pulumi.Input[float]] = None,

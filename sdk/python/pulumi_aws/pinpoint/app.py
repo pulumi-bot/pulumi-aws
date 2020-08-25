@@ -15,7 +15,7 @@ __all__ = ['App']
 
 class App(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  campaign_hook: Optional[pulumi.Input[pulumi.InputType['AppCampaignHookArgs']]] = None,
                  limits: Optional[pulumi.Input[pulumi.InputType['AppLimitsArgs']]] = None,

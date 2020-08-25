@@ -13,7 +13,7 @@ __all__ = ['VaultLock']
 
 class VaultLock(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complete_lock: Optional[pulumi.Input[bool]] = None,
                  ignore_deletion_error: Optional[pulumi.Input[bool]] = None,

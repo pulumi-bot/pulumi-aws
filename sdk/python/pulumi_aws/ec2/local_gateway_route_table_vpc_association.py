@@ -13,7 +13,7 @@ __all__ = ['LocalGatewayRouteTableVpcAssociation']
 
 class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  local_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

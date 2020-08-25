@@ -13,7 +13,7 @@ __all__ = ['ApiMapping']
 
 class ApiMapping(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  api_mapping_key: Optional[pulumi.Input[str]] = None,

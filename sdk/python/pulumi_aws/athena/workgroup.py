@@ -15,7 +15,7 @@ __all__ = ['Workgroup']
 
 class Workgroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration: Optional[pulumi.Input[pulumi.InputType['WorkgroupConfigurationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,

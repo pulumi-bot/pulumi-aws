@@ -13,7 +13,7 @@ __all__ = ['Function']
 
 class Function(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  data_source: Optional[pulumi.Input[str]] = None,

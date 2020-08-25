@@ -15,7 +15,7 @@ __all__ = ['UserPool']
 
 class UserPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_create_user_config: Optional[pulumi.Input[pulumi.InputType['UserPoolAdminCreateUserConfigArgs']]] = None,
                  alias_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

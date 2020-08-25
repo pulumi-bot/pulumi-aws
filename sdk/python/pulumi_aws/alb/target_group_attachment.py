@@ -13,7 +13,7 @@ __all__ = ['TargetGroupAttachment']
 
 class TargetGroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[float]] = None,

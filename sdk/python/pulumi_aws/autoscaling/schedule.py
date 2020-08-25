@@ -13,7 +13,7 @@ __all__ = ['Schedule']
 
 class Schedule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_group_name: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[float]] = None,

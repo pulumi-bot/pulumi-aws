@@ -15,7 +15,7 @@ __all__ = ['NfsLocation']
 
 class NfsLocation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  on_prem_config: Optional[pulumi.Input[pulumi.InputType['NfsLocationOnPremConfigArgs']]] = None,
                  server_hostname: Optional[pulumi.Input[str]] = None,

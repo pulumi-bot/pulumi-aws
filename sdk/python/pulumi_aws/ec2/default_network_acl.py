@@ -15,7 +15,7 @@ __all__ = ['DefaultNetworkAcl']
 
 class DefaultNetworkAcl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_network_acl_id: Optional[pulumi.Input[str]] = None,
                  egress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DefaultNetworkAclEgressArgs']]]]] = None,

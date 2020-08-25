@@ -15,7 +15,7 @@ __all__ = ['WebAclLoggingConfiguration']
 
 class WebAclLoggingConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  log_destination_configs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  redacted_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebAclLoggingConfigurationRedactedFieldArgs']]]]] = None,

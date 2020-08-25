@@ -15,7 +15,7 @@ __all__ = ['UserPoolClient']
 
 class UserPoolClient(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_oauth_flows: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allowed_oauth_flows_user_pool_client: Optional[pulumi.Input[bool]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Crawler']
 
 class Crawler(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_targets: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CrawlerCatalogTargetArgs']]]]] = None,
                  classifiers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

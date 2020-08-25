@@ -13,7 +13,7 @@ __all__ = ['Permission']
 
 class Permission(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_ssh: Optional[pulumi.Input[bool]] = None,
                  allow_sudo: Optional[pulumi.Input[bool]] = None,

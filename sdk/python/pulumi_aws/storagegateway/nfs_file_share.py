@@ -15,7 +15,7 @@ __all__ = ['NfsFileShare']
 
 class NfsFileShare(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  default_storage_class: Optional[pulumi.Input[str]] = None,

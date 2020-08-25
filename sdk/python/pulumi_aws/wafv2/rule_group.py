@@ -15,7 +15,7 @@ __all__ = ['RuleGroup']
 
 class RuleGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,

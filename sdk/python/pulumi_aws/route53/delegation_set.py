@@ -13,7 +13,7 @@ __all__ = ['DelegationSet']
 
 class DelegationSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  reference_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,

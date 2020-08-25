@@ -13,7 +13,7 @@ __all__ = ['BgpPeer']
 
 class BgpPeer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_family: Optional[pulumi.Input[str]] = None,
                  amazon_address: Optional[pulumi.Input[str]] = None,

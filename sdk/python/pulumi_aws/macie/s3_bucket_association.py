@@ -15,7 +15,7 @@ __all__ = ['S3BucketAssociation']
 
 class S3BucketAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  classification_type: Optional[pulumi.Input[pulumi.InputType['S3BucketAssociationClassificationTypeArgs']]] = None,

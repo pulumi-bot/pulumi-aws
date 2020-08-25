@@ -13,7 +13,7 @@ __all__ = ['Permission']
 
 class Permission(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  event_source_token: Optional[pulumi.Input[str]] = None,

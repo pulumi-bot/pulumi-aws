@@ -13,7 +13,7 @@ __all__ = ['LoadBalancerBackendServerPolicy']
 
 class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_port: Optional[pulumi.Input[float]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,

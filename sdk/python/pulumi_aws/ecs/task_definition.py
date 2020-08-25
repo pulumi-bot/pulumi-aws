@@ -15,7 +15,7 @@ __all__ = ['TaskDefinition']
 
 class TaskDefinition(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_definitions: Optional[pulumi.Input[str]] = None,
                  cpu: Optional[pulumi.Input[str]] = None,

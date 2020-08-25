@@ -15,7 +15,7 @@ __all__ = ['DefaultSecurityGroup']
 
 class DefaultSecurityGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  egress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DefaultSecurityGroupEgressArgs']]]]] = None,
                  ingress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DefaultSecurityGroupIngressArgs']]]]] = None,

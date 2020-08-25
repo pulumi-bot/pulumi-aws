@@ -15,7 +15,7 @@ __all__ = ['SqlInjectionMatchSet']
 
 class SqlInjectionMatchSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sql_injection_match_tuples: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlInjectionMatchSetSqlInjectionMatchTupleArgs']]]]] = None,

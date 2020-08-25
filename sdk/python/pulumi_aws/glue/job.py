@@ -15,7 +15,7 @@ __all__ = ['Job']
 
 class Job(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  command: Optional[pulumi.Input[pulumi.InputType['JobCommandArgs']]] = None,
                  connections: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

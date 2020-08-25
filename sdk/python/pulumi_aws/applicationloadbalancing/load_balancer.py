@@ -19,7 +19,7 @@ class LoadBalancer(pulumi.CustomResource):
     warnings.warn("aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_logs: Optional[pulumi.Input[pulumi.InputType['LoadBalancerAccessLogsArgs']]] = None,
                  drop_invalid_header_fields: Optional[pulumi.Input[bool]] = None,

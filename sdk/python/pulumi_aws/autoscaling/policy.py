@@ -15,7 +15,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: Optional[pulumi.Input[str]] = None,
                  autoscaling_group_name: Optional[pulumi.Input[str]] = None,

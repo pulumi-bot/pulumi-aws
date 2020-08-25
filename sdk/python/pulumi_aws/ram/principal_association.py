@@ -13,7 +13,7 @@ __all__ = ['PrincipalAssociation']
 
 class PrincipalAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  principal: Optional[pulumi.Input[str]] = None,
                  resource_share_arn: Optional[pulumi.Input[str]] = None,

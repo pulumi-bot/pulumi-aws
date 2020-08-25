@@ -15,7 +15,7 @@ __all__ = ['EventTarget']
 
 class EventTarget(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn: Optional[pulumi.Input[str]] = None,
                  batch_target: Optional[pulumi.Input[pulumi.InputType['EventTargetBatchTargetArgs']]] = None,

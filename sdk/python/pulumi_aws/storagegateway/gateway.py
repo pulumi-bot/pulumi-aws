@@ -15,7 +15,7 @@ __all__ = ['Gateway']
 
 class Gateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activation_key: Optional[pulumi.Input[str]] = None,
                  cloudwatch_log_group_arn: Optional[pulumi.Input[str]] = None,

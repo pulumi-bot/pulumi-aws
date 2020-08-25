@@ -15,7 +15,7 @@ __all__ = ['NetworkInterface']
 
 class NetworkInterface(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkInterfaceAttachmentArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,

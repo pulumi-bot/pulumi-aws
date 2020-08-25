@@ -15,7 +15,7 @@ __all__ = ['SizeConstraintSet']
 
 class SizeConstraintSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  size_constraints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SizeConstraintSetSizeConstraintArgs']]]]] = None,

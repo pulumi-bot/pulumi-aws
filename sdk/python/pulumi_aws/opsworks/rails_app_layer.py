@@ -15,7 +15,7 @@ __all__ = ['RailsAppLayer']
 
 class RailsAppLayer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_server: Optional[pulumi.Input[str]] = None,
                  auto_assign_elastic_ips: Optional[pulumi.Input[bool]] = None,

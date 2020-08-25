@@ -13,7 +13,7 @@ __all__ = ['Stack']
 
 class Stack(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,

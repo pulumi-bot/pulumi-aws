@@ -15,7 +15,7 @@ __all__ = ['TargetGroup']
 
 class TargetGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deregistration_delay: Optional[pulumi.Input[float]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['TargetGroupHealthCheckArgs']]] = None,

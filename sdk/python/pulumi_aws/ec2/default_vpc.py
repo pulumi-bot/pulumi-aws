@@ -13,7 +13,7 @@ __all__ = ['DefaultVpc']
 
 class DefaultVpc(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable_classiclink: Optional[pulumi.Input[bool]] = None,
                  enable_classiclink_dns_support: Optional[pulumi.Input[bool]] = None,

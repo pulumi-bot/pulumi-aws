@@ -15,7 +15,7 @@ __all__ = ['Association']
 
 class Association(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  association_name: Optional[pulumi.Input[str]] = None,
                  automation_target_parameter_name: Optional[pulumi.Input[str]] = None,

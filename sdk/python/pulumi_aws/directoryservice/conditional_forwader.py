@@ -13,7 +13,7 @@ __all__ = ['ConditionalForwader']
 
 class ConditionalForwader(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  dns_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

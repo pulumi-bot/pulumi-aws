@@ -15,7 +15,7 @@ __all__ = ['WindowsFileSystem']
 
 class WindowsFileSystem(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory_id: Optional[pulumi.Input[str]] = None,
                  automatic_backup_retention_days: Optional[pulumi.Input[float]] = None,

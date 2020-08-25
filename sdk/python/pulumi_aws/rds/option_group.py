@@ -15,7 +15,7 @@ __all__ = ['OptionGroup']
 
 class OptionGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine_name: Optional[pulumi.Input[str]] = None,
                  major_engine_version: Optional[pulumi.Input[str]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Server']
 
 class Server(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_details: Optional[pulumi.Input[pulumi.InputType['ServerEndpointDetailsArgs']]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,

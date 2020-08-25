@@ -15,7 +15,7 @@ __all__ = ['Fleet']
 
 class Fleet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_stream_arn: Optional[pulumi.Input[str]] = None,
                  device_ca_certificate: Optional[pulumi.Input[str]] = None,

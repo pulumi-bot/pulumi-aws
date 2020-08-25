@@ -13,7 +13,7 @@ __all__ = ['UserLoginProfile']
 
 class UserLoginProfile(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  password_length: Optional[pulumi.Input[float]] = None,
                  password_reset_required: Optional[pulumi.Input[bool]] = None,

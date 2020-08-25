@@ -13,7 +13,7 @@ __all__ = ['EncryptionByDefault']
 
 class EncryptionByDefault(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None,

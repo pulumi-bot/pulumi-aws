@@ -13,7 +13,7 @@ __all__ = ['Queue']
 
 class Queue(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_based_deduplication: Optional[pulumi.Input[bool]] = None,
                  delay_seconds: Optional[pulumi.Input[float]] = None,

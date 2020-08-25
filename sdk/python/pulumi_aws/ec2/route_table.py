@@ -15,7 +15,7 @@ __all__ = ['RouteTable']
 
 class RouteTable(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  propagating_vgws: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  routes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]]] = None,

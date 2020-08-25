@@ -13,7 +13,7 @@ __all__ = ['UserProfile']
 
 class UserProfile(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_self_management: Optional[pulumi.Input[bool]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None,

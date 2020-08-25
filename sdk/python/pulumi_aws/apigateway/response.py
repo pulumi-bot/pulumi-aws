@@ -13,7 +13,7 @@ __all__ = ['Response']
 
 class Response(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  response_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  response_templates: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

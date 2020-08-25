@@ -15,7 +15,7 @@ __all__ = ['RuleGroup']
 
 class RuleGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activated_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RuleGroupActivatedRuleArgs']]]]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,

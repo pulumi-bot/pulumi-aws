@@ -13,7 +13,7 @@ __all__ = ['Eip']
 
 class Eip(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_with_private_ip: Optional[pulumi.Input[str]] = None,
                  customer_owned_ipv4_pool: Optional[pulumi.Input[str]] = None,

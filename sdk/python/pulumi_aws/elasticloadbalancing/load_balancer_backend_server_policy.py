@@ -17,7 +17,7 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
     warnings.warn("aws.elasticloadbalancing.LoadBalancerBackendServerPolicy has been deprecated in favor of aws.elb.LoadBalancerBackendServerPolicy", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_port: Optional[pulumi.Input[float]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,

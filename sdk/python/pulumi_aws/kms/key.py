@@ -13,7 +13,7 @@ __all__ = ['Key']
 
 class Key(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer_master_key_spec: Optional[pulumi.Input[str]] = None,
                  deletion_window_in_days: Optional[pulumi.Input[float]] = None,

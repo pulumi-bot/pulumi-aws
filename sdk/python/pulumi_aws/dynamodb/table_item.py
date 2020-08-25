@@ -13,7 +13,7 @@ __all__ = ['TableItem']
 
 class TableItem(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hash_key: Optional[pulumi.Input[str]] = None,
                  item: Optional[pulumi.Input[str]] = None,

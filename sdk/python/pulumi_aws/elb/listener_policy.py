@@ -13,7 +13,7 @@ __all__ = ['ListenerPolicy']
 
 class ListenerPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_port: Optional[pulumi.Input[float]] = None,

@@ -17,7 +17,7 @@ class LoadBalancerCookieStickinessPolicy(pulumi.CustomResource):
     warnings.warn("aws.elasticloadbalancing.LoadBalancerCookieStickinessPolicy has been deprecated in favor of aws.elb.LoadBalancerCookieStickinessPolicy", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cookie_expiration_period: Optional[pulumi.Input[float]] = None,
                  lb_port: Optional[pulumi.Input[float]] = None,

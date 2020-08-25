@@ -13,7 +13,7 @@ __all__ = ['RoleAlias']
 
 class RoleAlias(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  credential_duration: Optional[pulumi.Input[float]] = None,

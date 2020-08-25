@@ -13,7 +13,7 @@ __all__ = ['LocalGatewayRoute']
 
 class LocalGatewayRoute(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_cidr_block: Optional[pulumi.Input[str]] = None,
                  local_gateway_route_table_id: Optional[pulumi.Input[str]] = None,

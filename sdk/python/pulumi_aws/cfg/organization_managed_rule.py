@@ -13,7 +13,7 @@ __all__ = ['OrganizationManagedRule']
 
 class OrganizationManagedRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  excluded_accounts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

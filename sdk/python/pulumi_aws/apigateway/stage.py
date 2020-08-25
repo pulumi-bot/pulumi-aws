@@ -15,7 +15,7 @@ __all__ = ['Stage']
 
 class Stage(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_settings: Optional[pulumi.Input[pulumi.InputType['StageAccessLogSettingsArgs']]] = None,
                  cache_cluster_enabled: Optional[pulumi.Input[bool]] = None,

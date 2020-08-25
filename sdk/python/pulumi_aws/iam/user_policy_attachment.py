@@ -13,7 +13,7 @@ __all__ = ['UserPolicyAttachment']
 
 class UserPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_arn: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,

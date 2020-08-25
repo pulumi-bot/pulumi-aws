@@ -13,7 +13,7 @@ __all__ = ['EipAssociation']
 
 class EipAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_id: Optional[pulumi.Input[str]] = None,
                  allow_reassociation: Optional[pulumi.Input[bool]] = None,

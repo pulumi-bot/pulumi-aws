@@ -13,7 +13,7 @@ __all__ = ['SnapshotCopyGrant']
 
 class SnapshotCopyGrant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  snapshot_copy_grant_name: Optional[pulumi.Input[str]] = None,

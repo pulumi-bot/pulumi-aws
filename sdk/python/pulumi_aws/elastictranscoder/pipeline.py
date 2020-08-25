@@ -15,7 +15,7 @@ __all__ = ['Pipeline']
 
 class Pipeline(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_kms_key_arn: Optional[pulumi.Input[str]] = None,
                  content_config: Optional[pulumi.Input[pulumi.InputType['PipelineContentConfigArgs']]] = None,

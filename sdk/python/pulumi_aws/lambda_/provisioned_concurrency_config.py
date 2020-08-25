@@ -13,7 +13,7 @@ __all__ = ['ProvisionedConcurrencyConfig']
 
 class ProvisionedConcurrencyConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  provisioned_concurrent_executions: Optional[pulumi.Input[float]] = None,

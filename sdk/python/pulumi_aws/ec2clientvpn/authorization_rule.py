@@ -13,7 +13,7 @@ __all__ = ['AuthorizationRule']
 
 class AuthorizationRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_id: Optional[pulumi.Input[str]] = None,
                  authorize_all_groups: Optional[pulumi.Input[bool]] = None,

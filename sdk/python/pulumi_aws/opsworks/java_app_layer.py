@@ -15,7 +15,7 @@ __all__ = ['JavaAppLayer']
 
 class JavaAppLayer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_server: Optional[pulumi.Input[str]] = None,
                  app_server_version: Optional[pulumi.Input[str]] = None,

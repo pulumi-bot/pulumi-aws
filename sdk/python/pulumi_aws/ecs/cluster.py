@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_providers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  default_capacity_provider_strategies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterDefaultCapacityProviderStrategyArgs']]]]] = None,

@@ -13,7 +13,7 @@ __all__ = ['LogSubscriptionFilter']
 
 class LogSubscriptionFilter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_arn: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,

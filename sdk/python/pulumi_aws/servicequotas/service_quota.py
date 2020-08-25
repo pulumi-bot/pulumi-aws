@@ -13,7 +13,7 @@ __all__ = ['ServiceQuota']
 
 class ServiceQuota(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  quota_code: Optional[pulumi.Input[str]] = None,
                  service_code: Optional[pulumi.Input[str]] = None,

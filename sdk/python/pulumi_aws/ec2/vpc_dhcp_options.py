@@ -13,7 +13,7 @@ __all__ = ['VpcDhcpOptions']
 
 class VpcDhcpOptions(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_name_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

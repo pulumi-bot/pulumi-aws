@@ -13,7 +13,7 @@ __all__ = ['RouteTablePropagation']
 
 class RouteTablePropagation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  transit_gateway_attachment_id: Optional[pulumi.Input[str]] = None,
                  transit_gateway_route_table_id: Optional[pulumi.Input[str]] = None,

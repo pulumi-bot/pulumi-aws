@@ -13,7 +13,7 @@ __all__ = ['LayerVersion']
 
 class LayerVersion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: Optional[pulumi.Input[pulumi.Archive]] = None,
                  compatible_runtimes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

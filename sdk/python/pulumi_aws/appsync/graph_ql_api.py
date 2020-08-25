@@ -15,7 +15,7 @@ __all__ = ['GraphQLApi']
 
 class GraphQLApi(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_authentication_providers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GraphQLApiAdditionalAuthenticationProviderArgs']]]]] = None,
                  authentication_type: Optional[pulumi.Input[str]] = None,

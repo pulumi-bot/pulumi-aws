@@ -19,7 +19,7 @@ class TargetGroup(pulumi.CustomResource):
     warnings.warn("aws.applicationloadbalancing.TargetGroup has been deprecated in favor of aws.alb.TargetGroup", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deregistration_delay: Optional[pulumi.Input[float]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['TargetGroupHealthCheckArgs']]] = None,

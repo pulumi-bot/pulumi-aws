@@ -15,7 +15,7 @@ __all__ = ['Recorder']
 
 class Recorder(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  recording_group: Optional[pulumi.Input[pulumi.InputType['RecorderRecordingGroupArgs']]] = None,

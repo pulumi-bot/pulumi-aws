@@ -15,7 +15,7 @@ __all__ = ['Model']
 
 class Model(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  containers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ModelContainerArgs']]]]] = None,
                  enable_network_isolation: Optional[pulumi.Input[bool]] = None,

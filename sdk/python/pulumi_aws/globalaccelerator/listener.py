@@ -15,7 +15,7 @@ __all__ = ['Listener']
 
 class Listener(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_arn: Optional[pulumi.Input[str]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,

@@ -13,7 +13,7 @@ __all__ = ['IdentityProvider']
 
 class IdentityProvider(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  idp_identifiers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
