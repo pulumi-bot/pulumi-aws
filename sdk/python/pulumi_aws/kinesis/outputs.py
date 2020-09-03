@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -131,8 +131,8 @@ class AnalyticsApplicationInputs(dict):
                  kinesis_stream: Optional['outputs.AnalyticsApplicationInputsKinesisStream'] = None,
                  parallelism: Optional['outputs.AnalyticsApplicationInputsParallelism'] = None,
                  processing_configuration: Optional['outputs.AnalyticsApplicationInputsProcessingConfiguration'] = None,
-                 starting_position_configurations: Optional[List['outputs.AnalyticsApplicationInputsStartingPositionConfiguration']] = None,
-                 stream_names: Optional[List[str]] = None):
+                 starting_position_configurations: Optional[Sequence['outputs.AnalyticsApplicationInputsStartingPositionConfiguration']] = None,
+                 stream_names: Optional[Sequence[str]] = None):
         """
         :param str name_prefix: The Name Prefix to use when creating an in-application stream.
         :param 'AnalyticsApplicationInputsSchemaArgs' schema: The Schema format of the data in the streaming source. See Source Schema below for more details.
@@ -225,12 +225,12 @@ class AnalyticsApplicationInputs(dict):
 
     @property
     @pulumi.getter(name="startingPositionConfigurations")
-    def starting_position_configurations(self) -> Optional[List['outputs.AnalyticsApplicationInputsStartingPositionConfiguration']]:
+    def starting_position_configurations(self) -> Optional[Sequence['outputs.AnalyticsApplicationInputsStartingPositionConfiguration']]:
         return pulumi.get(self, "starting_position_configurations")
 
     @property
     @pulumi.getter(name="streamNames")
-    def stream_names(self) -> Optional[List[str]]:
+    def stream_names(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "stream_names")
 
     def _translate_property(self, prop):
@@ -378,11 +378,11 @@ class AnalyticsApplicationInputsProcessingConfigurationLambda(dict):
 @pulumi.output_type
 class AnalyticsApplicationInputsSchema(dict):
     def __init__(__self__, *,
-                 record_columns: List['outputs.AnalyticsApplicationInputsSchemaRecordColumn'],
+                 record_columns: Sequence['outputs.AnalyticsApplicationInputsSchemaRecordColumn'],
                  record_format: 'outputs.AnalyticsApplicationInputsSchemaRecordFormat',
                  record_encoding: Optional[str] = None):
         """
-        :param List['AnalyticsApplicationInputsSchemaRecordColumnArgs'] record_columns: The Record Column mapping for the streaming source data element.
+        :param Sequence['AnalyticsApplicationInputsSchemaRecordColumnArgs'] record_columns: The Record Column mapping for the streaming source data element.
                See Record Columns below for more details.
         :param 'AnalyticsApplicationInputsSchemaRecordFormatArgs' record_format: The Record Format and mapping information to schematize a record.
                See Record Format below for more details.
@@ -395,7 +395,7 @@ class AnalyticsApplicationInputsSchema(dict):
 
     @property
     @pulumi.getter(name="recordColumns")
-    def record_columns(self) -> List['outputs.AnalyticsApplicationInputsSchemaRecordColumn']:
+    def record_columns(self) -> Sequence['outputs.AnalyticsApplicationInputsSchemaRecordColumn']:
         """
         The Record Column mapping for the streaming source data element.
         See Record Columns below for more details.
@@ -913,11 +913,11 @@ class AnalyticsApplicationReferenceDataSourcesS3(dict):
 @pulumi.output_type
 class AnalyticsApplicationReferenceDataSourcesSchema(dict):
     def __init__(__self__, *,
-                 record_columns: List['outputs.AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn'],
+                 record_columns: Sequence['outputs.AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn'],
                  record_format: 'outputs.AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat',
                  record_encoding: Optional[str] = None):
         """
-        :param List['AnalyticsApplicationReferenceDataSourcesSchemaRecordColumnArgs'] record_columns: The Record Column mapping for the streaming source data element.
+        :param Sequence['AnalyticsApplicationReferenceDataSourcesSchemaRecordColumnArgs'] record_columns: The Record Column mapping for the streaming source data element.
                See Record Columns below for more details.
         :param 'AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatArgs' record_format: The Record Format and mapping information to schematize a record.
                See Record Format below for more details.
@@ -930,7 +930,7 @@ class AnalyticsApplicationReferenceDataSourcesSchema(dict):
 
     @property
     @pulumi.getter(name="recordColumns")
-    def record_columns(self) -> List['outputs.AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn']:
+    def record_columns(self) -> Sequence['outputs.AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn']:
         """
         The Record Column mapping for the streaming source data element.
         See Record Columns below for more details.
@@ -1318,10 +1318,10 @@ class FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions(d
 class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 processors: Optional[List['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor']] = None):
+                 processors: Optional[Sequence['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor']] = None):
         """
         :param bool enabled: Enables or disables data processing.
-        :param List['FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
+        :param Sequence['FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -1338,7 +1338,7 @@ class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration(di
 
     @property
     @pulumi.getter
-    def processors(self) -> Optional[List['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor']]:
+    def processors(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor']]:
         """
         Array of data processors. More details are given below
         """
@@ -1352,10 +1352,10 @@ class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration(di
 class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor(dict):
     def __init__(__self__, *,
                  type: str,
-                 parameters: Optional[List['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter']] = None):
+                 parameters: Optional[Sequence['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter']] = None):
         """
         :param str type: The type of processor. Valid Values: `Lambda`
-        :param List['FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
+        :param Sequence['FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
         """
         pulumi.set(__self__, "type", type)
         if parameters is not None:
@@ -1371,7 +1371,7 @@ class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPro
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[List['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter']]:
+    def parameters(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter']]:
         """
         Array of processor parameters. More details are given below
         """
@@ -1740,16 +1740,16 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 @pulumi.output_type
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe(dict):
     def __init__(__self__, *,
-                 timestamp_formats: Optional[List[str]] = None):
+                 timestamp_formats: Optional[Sequence[str]] = None):
         """
-        :param List[str] timestamp_formats: A list of how you want Kinesis Data Firehose to parse the date and time stamps that may be present in your input data JSON. To specify these format strings, follow the pattern syntax of JodaTime's DateTimeFormat format strings. For more information, see [Class DateTimeFormat](https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html). You can also use the special value millis to parse time stamps in epoch milliseconds. If you don't specify a format, Kinesis Data Firehose uses java.sql.Timestamp::valueOf by default.
+        :param Sequence[str] timestamp_formats: A list of how you want Kinesis Data Firehose to parse the date and time stamps that may be present in your input data JSON. To specify these format strings, follow the pattern syntax of JodaTime's DateTimeFormat format strings. For more information, see [Class DateTimeFormat](https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html). You can also use the special value millis to parse time stamps in epoch milliseconds. If you don't specify a format, Kinesis Data Firehose uses java.sql.Timestamp::valueOf by default.
         """
         if timestamp_formats is not None:
             pulumi.set(__self__, "timestamp_formats", timestamp_formats)
 
     @property
     @pulumi.getter(name="timestampFormats")
-    def timestamp_formats(self) -> Optional[List[str]]:
+    def timestamp_formats(self) -> Optional[Sequence[str]]:
         """
         A list of how you want Kinesis Data Firehose to parse the date and time stamps that may be present in your input data JSON. To specify these format strings, follow the pattern syntax of JodaTime's DateTimeFormat format strings. For more information, see [Class DateTimeFormat](https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html). You can also use the special value millis to parse time stamps in epoch milliseconds. If you don't specify a format, Kinesis Data Firehose uses java.sql.Timestamp::valueOf by default.
         """
@@ -1864,7 +1864,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe(dict):
     def __init__(__self__, *,
                  block_size_bytes: Optional[float] = None,
-                 bloom_filter_columns: Optional[List[str]] = None,
+                 bloom_filter_columns: Optional[Sequence[str]] = None,
                  bloom_filter_false_positive_probability: Optional[float] = None,
                  compression: Optional[str] = None,
                  dictionary_key_threshold: Optional[float] = None,
@@ -1875,7 +1875,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
                  stripe_size_bytes: Optional[float] = None):
         """
         :param float block_size_bytes: The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
-        :param List[str] bloom_filter_columns: A list of column names for which you want Kinesis Data Firehose to create bloom filters.
+        :param Sequence[str] bloom_filter_columns: A list of column names for which you want Kinesis Data Firehose to create bloom filters.
         :param float bloom_filter_false_positive_probability: The Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
         :param str compression: The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
         :param float dictionary_key_threshold: A float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
@@ -1916,7 +1916,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
     @property
     @pulumi.getter(name="bloomFilterColumns")
-    def bloom_filter_columns(self) -> Optional[List[str]]:
+    def bloom_filter_columns(self) -> Optional[Sequence[str]]:
         """
         A list of column names for which you want Kinesis Data Firehose to create bloom filters.
         """
@@ -2155,10 +2155,10 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 processors: Optional[List['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor']] = None):
+                 processors: Optional[Sequence['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor']] = None):
         """
         :param bool enabled: Enables or disables data processing.
-        :param List['FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
+        :param Sequence['FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -2175,7 +2175,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration(dict)
 
     @property
     @pulumi.getter
-    def processors(self) -> Optional[List['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor']]:
+    def processors(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor']]:
         """
         Array of data processors. More details are given below
         """
@@ -2189,10 +2189,10 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration(dict)
 class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor(dict):
     def __init__(__self__, *,
                  type: str,
-                 parameters: Optional[List['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameter']] = None):
+                 parameters: Optional[Sequence['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameter']] = None):
         """
         :param str type: The type of processor. Valid Values: `Lambda`
-        :param List['FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
+        :param Sequence['FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
         """
         pulumi.set(__self__, "type", type)
         if parameters is not None:
@@ -2208,7 +2208,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProces
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[List['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameter']]:
+    def parameters(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameter']]:
         """
         Array of processor parameters. More details are given below
         """
@@ -2635,10 +2635,10 @@ class FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions(dict):
 class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 processors: Optional[List['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor']] = None):
+                 processors: Optional[Sequence['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor']] = None):
         """
         :param bool enabled: Enables or disables data processing.
-        :param List['FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
+        :param Sequence['FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -2655,7 +2655,7 @@ class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration(dict):
 
     @property
     @pulumi.getter
-    def processors(self) -> Optional[List['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor']]:
+    def processors(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor']]:
         """
         Array of data processors. More details are given below
         """
@@ -2669,10 +2669,10 @@ class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration(dict):
 class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor(dict):
     def __init__(__self__, *,
                  type: str,
-                 parameters: Optional[List['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameter']] = None):
+                 parameters: Optional[Sequence['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameter']] = None):
         """
         :param str type: The type of processor. Valid Values: `Lambda`
-        :param List['FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
+        :param Sequence['FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
         """
         pulumi.set(__self__, "type", type)
         if parameters is not None:
@@ -2688,7 +2688,7 @@ class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcesso
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[List['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameter']]:
+    def parameters(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameter']]:
         """
         Array of processor parameters. More details are given below
         """
@@ -3214,10 +3214,10 @@ class FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions(dict):
 class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 processors: Optional[List['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor']] = None):
+                 processors: Optional[Sequence['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor']] = None):
         """
         :param bool enabled: Enables or disables data processing.
-        :param List['FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
+        :param Sequence['FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorArgs'] processors: Array of data processors. More details are given below
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -3234,7 +3234,7 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration(dict):
 
     @property
     @pulumi.getter
-    def processors(self) -> Optional[List['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor']]:
+    def processors(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor']]:
         """
         Array of data processors. More details are given below
         """
@@ -3248,10 +3248,10 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration(dict):
 class FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor(dict):
     def __init__(__self__, *,
                  type: str,
-                 parameters: Optional[List['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter']] = None):
+                 parameters: Optional[Sequence['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter']] = None):
         """
         :param str type: The type of processor. Valid Values: `Lambda`
-        :param List['FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
+        :param Sequence['FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameterArgs'] parameters: Array of processor parameters. More details are given below
         """
         pulumi.set(__self__, "type", type)
         if parameters is not None:
@@ -3267,7 +3267,7 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor(
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[List['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter']]:
+    def parameters(self) -> Optional[Sequence['outputs.FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorParameter']]:
         """
         Array of processor parameters. More details are given below
         """

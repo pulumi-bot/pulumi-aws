@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -88,7 +88,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> List[str]:
+    def availability_zones(self) -> Sequence[str]:
         """
         One or more Availability Zones for the group.
         """
@@ -141,7 +141,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> List[str]:
+    def load_balancers(self) -> Sequence[str]:
         """
         One or more load balancers associated with the group.
         """
@@ -202,7 +202,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter(name="targetGroupArns")
-    def target_group_arns(self) -> List[str]:
+    def target_group_arns(self) -> Sequence[str]:
         """
         The Amazon Resource Names (ARN) of the target groups for your load balancer.
         """
@@ -210,7 +210,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter(name="terminationPolicies")
-    def termination_policies(self) -> List[str]:
+    def termination_policies(self) -> Sequence[str]:
         """
         The termination policies for the group.
         """

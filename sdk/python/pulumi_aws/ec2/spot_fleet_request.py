@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,14 +23,14 @@ class SpotFleetRequest(pulumi.CustomResource):
                  iam_fleet_role: Optional[pulumi.Input[str]] = None,
                  instance_interruption_behaviour: Optional[pulumi.Input[str]] = None,
                  instance_pools_to_use_count: Optional[pulumi.Input[float]] = None,
-                 launch_specifications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]]] = None,
-                 launch_template_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]]] = None,
-                 load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]]] = None,
+                 launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  replace_unhealthy_instances: Optional[pulumi.Input[bool]] = None,
                  spot_price: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_capacity: Optional[pulumi.Input[float]] = None,
-                 target_group_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
                  valid_from: Optional[pulumi.Input[str]] = None,
                  valid_until: Optional[pulumi.Input[str]] = None,
@@ -192,18 +192,18 @@ class SpotFleetRequest(pulumi.CustomResource):
                Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
                the cheapest Spot pools and evenly allocates your target Spot capacity across
                the number of Spot pools that you specify.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]] launch_specifications: Used to define the launch configuration of the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]] launch_specifications: Used to define the launch configuration of the
                spot-fleet request. Can be specified multiple times to define different bids
                across different markets and instance types. Conflicts with `launch_template_config`. At least one of `launch_specification` or `launch_template_config` is required.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]] launch_template_configs: Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancers: A list of elastic load balancer names to add to the Spot fleet.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]] launch_template_configs: Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancers: A list of elastic load balancer names to add to the Spot fleet.
         :param pulumi.Input[bool] replace_unhealthy_instances: Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
         :param pulumi.Input[str] spot_price: The maximum spot bid for this override request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[bool] terminate_instances_with_expiration: Indicates whether running Spot
                instances should be terminated when the Spot fleet request expires.
         :param pulumi.Input[str] valid_from: The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
@@ -270,15 +270,15 @@ class SpotFleetRequest(pulumi.CustomResource):
             iam_fleet_role: Optional[pulumi.Input[str]] = None,
             instance_interruption_behaviour: Optional[pulumi.Input[str]] = None,
             instance_pools_to_use_count: Optional[pulumi.Input[float]] = None,
-            launch_specifications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]]] = None,
-            launch_template_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]]] = None,
-            load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]]] = None,
+            launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]]] = None,
+            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             replace_unhealthy_instances: Optional[pulumi.Input[bool]] = None,
             spot_price: Optional[pulumi.Input[str]] = None,
             spot_request_state: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             target_capacity: Optional[pulumi.Input[float]] = None,
-            target_group_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
             valid_from: Optional[pulumi.Input[str]] = None,
             valid_until: Optional[pulumi.Input[str]] = None,
@@ -309,11 +309,11 @@ class SpotFleetRequest(pulumi.CustomResource):
                Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
                the cheapest Spot pools and evenly allocates your target Spot capacity across
                the number of Spot pools that you specify.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]] launch_specifications: Used to define the launch configuration of the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]] launch_specifications: Used to define the launch configuration of the
                spot-fleet request. Can be specified multiple times to define different bids
                across different markets and instance types. Conflicts with `launch_template_config`. At least one of `launch_specification` or `launch_template_config` is required.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]] launch_template_configs: Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancers: A list of elastic load balancer names to add to the Spot fleet.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]] launch_template_configs: Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancers: A list of elastic load balancer names to add to the Spot fleet.
         :param pulumi.Input[bool] replace_unhealthy_instances: Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
         :param pulumi.Input[str] spot_price: The maximum spot bid for this override request.
         :param pulumi.Input[str] spot_request_state: The state of the Spot fleet request.
@@ -321,7 +321,7 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[bool] terminate_instances_with_expiration: Indicates whether running Spot
                instances should be terminated when the Spot fleet request expires.
         :param pulumi.Input[str] valid_from: The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
@@ -424,7 +424,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchSpecifications")
-    def launch_specifications(self) -> pulumi.Output[Optional[List['outputs.SpotFleetRequestLaunchSpecification']]]:
+    def launch_specifications(self) -> pulumi.Output[Optional[Sequence['outputs.SpotFleetRequestLaunchSpecification']]]:
         """
         Used to define the launch configuration of the
         spot-fleet request. Can be specified multiple times to define different bids
@@ -434,7 +434,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchTemplateConfigs")
-    def launch_template_configs(self) -> pulumi.Output[Optional[List['outputs.SpotFleetRequestLaunchTemplateConfig']]]:
+    def launch_template_configs(self) -> pulumi.Output[Optional[Sequence['outputs.SpotFleetRequestLaunchTemplateConfig']]]:
         """
         Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
         """
@@ -442,7 +442,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> pulumi.Output[List[str]]:
+    def load_balancers(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of elastic load balancer names to add to the Spot fleet.
         """
@@ -492,7 +492,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetGroupArns")
-    def target_group_arns(self) -> pulumi.Output[List[str]]:
+    def target_group_arns(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         """

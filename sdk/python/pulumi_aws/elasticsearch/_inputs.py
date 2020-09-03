@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -642,13 +642,13 @@ class DomainSnapshotOptionsArgs:
 @pulumi.input_type
 class DomainVpcOptionsArgs:
     def __init__(__self__, *,
-                 availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
         """
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
@@ -661,35 +661,35 @@ class DomainVpcOptionsArgs:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "availability_zones", value)
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
         """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @property

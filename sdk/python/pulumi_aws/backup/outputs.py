@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -23,7 +23,7 @@ class PlanRule(dict):
                  rule_name: str,
                  target_vault_name: str,
                  completion_window: Optional[float] = None,
-                 copy_actions: Optional[List['outputs.PlanRuleCopyAction']] = None,
+                 copy_actions: Optional[Sequence['outputs.PlanRuleCopyAction']] = None,
                  lifecycle: Optional['outputs.PlanRuleLifecycle'] = None,
                  recovery_point_tags: Optional[Mapping[str, str]] = None,
                  schedule: Optional[str] = None,
@@ -32,7 +32,7 @@ class PlanRule(dict):
         :param str rule_name: An display name for a backup rule.
         :param str target_vault_name: The name of a logical container where backups are stored.
         :param float completion_window: The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
-        :param List['PlanRuleCopyActionArgs'] copy_actions: Configuration block(s) with copy operation settings. Detailed below.
+        :param Sequence['PlanRuleCopyActionArgs'] copy_actions: Configuration block(s) with copy operation settings. Detailed below.
         :param 'PlanRuleLifecycleArgs' lifecycle: The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
         :param Mapping[str, str] recovery_point_tags: Metadata that you can assign to help organize the resources that you create.
         :param str schedule: A CRON expression specifying when AWS Backup initiates a backup job.
@@ -79,7 +79,7 @@ class PlanRule(dict):
 
     @property
     @pulumi.getter(name="copyActions")
-    def copy_actions(self) -> Optional[List['outputs.PlanRuleCopyAction']]:
+    def copy_actions(self) -> Optional[Sequence['outputs.PlanRuleCopyAction']]:
         """
         Configuration block(s) with copy operation settings. Detailed below.
         """

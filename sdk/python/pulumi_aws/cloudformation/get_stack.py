@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -59,7 +59,7 @@ class GetStackResult:
 
     @property
     @pulumi.getter
-    def capabilities(self) -> List[str]:
+    def capabilities(self) -> Sequence[str]:
         """
         A list of capabilities
         """
@@ -104,7 +104,7 @@ class GetStackResult:
 
     @property
     @pulumi.getter(name="notificationArns")
-    def notification_arns(self) -> List[str]:
+    def notification_arns(self) -> Sequence[str]:
         """
         A list of SNS topic ARNs to publish stack related events
         """

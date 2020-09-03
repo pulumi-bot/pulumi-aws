@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ClusterSnapshot']
@@ -83,7 +83,7 @@ class ClusterSnapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             db_cluster_identifier: Optional[pulumi.Input[str]] = None,
             db_cluster_snapshot_arn: Optional[pulumi.Input[str]] = None,
             db_cluster_snapshot_identifier: Optional[pulumi.Input[str]] = None,
@@ -103,7 +103,7 @@ class ClusterSnapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: List of EC2 Availability Zones that instances in the DocDB cluster snapshot can be restored in.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of EC2 Availability Zones that instances in the DocDB cluster snapshot can be restored in.
         :param pulumi.Input[str] db_cluster_identifier: The DocDB Cluster Identifier from which to take the snapshot.
         :param pulumi.Input[str] db_cluster_snapshot_arn: The Amazon Resource Name (ARN) for the DocDB Cluster Snapshot.
         :param pulumi.Input[str] db_cluster_snapshot_identifier: The Identifier for the snapshot.
@@ -136,7 +136,7 @@ class ClusterSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> pulumi.Output[List[str]]:
+    def availability_zones(self) -> pulumi.Output[Sequence[str]]:
         """
         List of EC2 Availability Zones that instances in the DocDB cluster snapshot can be restored in.
         """

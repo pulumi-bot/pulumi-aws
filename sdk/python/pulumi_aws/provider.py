@@ -6,7 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -18,10 +18,10 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
-                 allowed_account_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  assume_role: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleArgs']]] = None,
-                 endpoints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
-                 forbidden_account_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
+                 forbidden_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ignore_tags: Optional[pulumi.Input[pulumi.InputType['ProviderIgnoreTagsArgs']]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  max_retries: Optional[pulumi.Input[float]] = None,

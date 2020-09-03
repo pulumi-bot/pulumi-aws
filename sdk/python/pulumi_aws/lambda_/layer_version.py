@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['LayerVersion']
@@ -16,7 +16,7 @@ class LayerVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: Optional[pulumi.Input[pulumi.Archive]] = None,
-                 compatible_runtimes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  layer_name: Optional[pulumi.Input[str]] = None,
                  license_info: Optional[pulumi.Input[str]] = None,
@@ -58,7 +58,7 @@ class LayerVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.Archive] code: The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] compatible_runtimes: A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compatible_runtimes: A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
         :param pulumi.Input[str] description: Description of what your Lambda Layer does.
         :param pulumi.Input[str] layer_name: A unique name for your Lambda Layer
         :param pulumi.Input[str] license_info: License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
@@ -112,7 +112,7 @@ class LayerVersion(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             code: Optional[pulumi.Input[pulumi.Archive]] = None,
-            compatible_runtimes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             created_date: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             layer_arn: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class LayerVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the Lambda Layer with version.
         :param pulumi.Input[pulumi.Archive] code: The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] compatible_runtimes: A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compatible_runtimes: A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
         :param pulumi.Input[str] created_date: The date this resource was created.
         :param pulumi.Input[str] description: Description of what your Lambda Layer does.
         :param pulumi.Input[str] layer_arn: The Amazon Resource Name (ARN) of the Lambda Layer without version.
@@ -184,7 +184,7 @@ class LayerVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compatibleRuntimes")
-    def compatible_runtimes(self) -> pulumi.Output[Optional[List[str]]]:
+    def compatible_runtimes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
         """

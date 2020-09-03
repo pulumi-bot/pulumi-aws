@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -180,7 +180,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="clusterSecurityGroups")
-    def cluster_security_groups(self) -> List[str]:
+    def cluster_security_groups(self) -> Sequence[str]:
         """
         The security groups associated with the cluster
         """
@@ -257,7 +257,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="iamRoles")
-    def iam_roles(self) -> List[str]:
+    def iam_roles(self) -> Sequence[str]:
         """
         The IAM roles associated to the cluster
         """
@@ -353,7 +353,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
-    def vpc_security_group_ids(self) -> List[str]:
+    def vpc_security_group_ids(self) -> Sequence[str]:
         """
         The VPC security group Ids associated with the cluster
         """

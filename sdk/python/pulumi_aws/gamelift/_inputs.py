@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -235,11 +235,11 @@ class FleetRuntimeConfigurationArgs:
     def __init__(__self__, *,
                  game_session_activation_timeout_seconds: Optional[pulumi.Input[float]] = None,
                  max_concurrent_game_session_activations: Optional[pulumi.Input[float]] = None,
-                 server_processes: Optional[pulumi.Input[List[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]]] = None):
+                 server_processes: Optional[pulumi.Input[Sequence[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]]] = None):
         """
         :param pulumi.Input[float] game_session_activation_timeout_seconds: Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
         :param pulumi.Input[float] max_concurrent_game_session_activations: Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
-        :param pulumi.Input[List[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]] server_processes: Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+        :param pulumi.Input[Sequence[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]] server_processes: Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
         """
         if game_session_activation_timeout_seconds is not None:
             pulumi.set(__self__, "game_session_activation_timeout_seconds", game_session_activation_timeout_seconds)
@@ -274,14 +274,14 @@ class FleetRuntimeConfigurationArgs:
 
     @property
     @pulumi.getter(name="serverProcesses")
-    def server_processes(self) -> Optional[pulumi.Input[List[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]]]:
+    def server_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]]]:
         """
         Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
         """
         return pulumi.get(self, "server_processes")
 
     @server_processes.setter
-    def server_processes(self, value: Optional[pulumi.Input[List[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]]]):
+    def server_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FleetRuntimeConfigurationServerProcessArgs']]]]):
         pulumi.set(self, "server_processes", value)
 
 

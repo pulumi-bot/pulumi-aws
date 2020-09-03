@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -131,7 +131,7 @@ class GetTransitGatewayResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetTransitGatewayFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetTransitGatewayFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -197,7 +197,7 @@ class AwaitableGetTransitGatewayResult(GetTransitGatewayResult):
             vpn_ecmp_support=self.vpn_ecmp_support)
 
 
-def get_transit_gateway(filters: Optional[List[pulumi.InputType['GetTransitGatewayFilterArgs']]] = None,
+def get_transit_gateway(filters: Optional[Sequence[pulumi.InputType['GetTransitGatewayFilterArgs']]] = None,
                         id: Optional[str] = None,
                         tags: Optional[Mapping[str, str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitGatewayResult:
@@ -226,7 +226,7 @@ def get_transit_gateway(filters: Optional[List[pulumi.InputType['GetTransitGatew
     ```
 
 
-    :param List[pulumi.InputType['GetTransitGatewayFilterArgs']] filters: One or more configuration blocks containing name-values filters. Detailed below.
+    :param Sequence[pulumi.InputType['GetTransitGatewayFilterArgs']] filters: One or more configuration blocks containing name-values filters. Detailed below.
     :param str id: Identifier of the EC2 Transit Gateway.
     :param Mapping[str, str] tags: Key-value tags for the EC2 Transit Gateway
     """

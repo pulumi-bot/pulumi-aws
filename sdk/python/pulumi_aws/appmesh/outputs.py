@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -173,16 +173,16 @@ class RouteSpecHttpRoute(dict):
 @pulumi.output_type
 class RouteSpecHttpRouteAction(dict):
     def __init__(__self__, *,
-                 weighted_targets: List['outputs.RouteSpecHttpRouteActionWeightedTarget']):
+                 weighted_targets: Sequence['outputs.RouteSpecHttpRouteActionWeightedTarget']):
         """
-        :param List['RouteSpecHttpRouteActionWeightedTargetArgs'] weighted_targets: The targets that traffic is routed to when a request matches the route.
+        :param Sequence['RouteSpecHttpRouteActionWeightedTargetArgs'] weighted_targets: The targets that traffic is routed to when a request matches the route.
                You can specify one or more targets and their relative weights with which to distribute traffic.
         """
         pulumi.set(__self__, "weighted_targets", weighted_targets)
 
     @property
     @pulumi.getter(name="weightedTargets")
-    def weighted_targets(self) -> List['outputs.RouteSpecHttpRouteActionWeightedTarget']:
+    def weighted_targets(self) -> Sequence['outputs.RouteSpecHttpRouteActionWeightedTarget']:
         """
         The targets that traffic is routed to when a request matches the route.
         You can specify one or more targets and their relative weights with which to distribute traffic.
@@ -229,13 +229,13 @@ class RouteSpecHttpRouteActionWeightedTarget(dict):
 class RouteSpecHttpRouteMatch(dict):
     def __init__(__self__, *,
                  prefix: str,
-                 headers: Optional[List['outputs.RouteSpecHttpRouteMatchHeader']] = None,
+                 headers: Optional[Sequence['outputs.RouteSpecHttpRouteMatchHeader']] = None,
                  method: Optional[str] = None,
                  scheme: Optional[str] = None):
         """
         :param str prefix: Specifies the path with which to match requests.
                This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-        :param List['RouteSpecHttpRouteMatchHeaderArgs'] headers: The client request headers to match on.
+        :param Sequence['RouteSpecHttpRouteMatchHeaderArgs'] headers: The client request headers to match on.
         :param str method: The client request header method to match on. Valid values: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
         :param str scheme: The client request header scheme to match on. Valid values: `http`, `https`.
         """
@@ -258,7 +258,7 @@ class RouteSpecHttpRouteMatch(dict):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.RouteSpecHttpRouteMatchHeader']]:
+    def headers(self) -> Optional[Sequence['outputs.RouteSpecHttpRouteMatchHeader']]:
         """
         The client request headers to match on.
         """
@@ -457,16 +457,16 @@ class RouteSpecTcpRoute(dict):
 @pulumi.output_type
 class RouteSpecTcpRouteAction(dict):
     def __init__(__self__, *,
-                 weighted_targets: List['outputs.RouteSpecTcpRouteActionWeightedTarget']):
+                 weighted_targets: Sequence['outputs.RouteSpecTcpRouteActionWeightedTarget']):
         """
-        :param List['RouteSpecTcpRouteActionWeightedTargetArgs'] weighted_targets: The targets that traffic is routed to when a request matches the route.
+        :param Sequence['RouteSpecTcpRouteActionWeightedTargetArgs'] weighted_targets: The targets that traffic is routed to when a request matches the route.
                You can specify one or more targets and their relative weights with which to distribute traffic.
         """
         pulumi.set(__self__, "weighted_targets", weighted_targets)
 
     @property
     @pulumi.getter(name="weightedTargets")
-    def weighted_targets(self) -> List['outputs.RouteSpecTcpRouteActionWeightedTarget']:
+    def weighted_targets(self) -> Sequence['outputs.RouteSpecTcpRouteActionWeightedTarget']:
         """
         The targets that traffic is routed to when a request matches the route.
         You can specify one or more targets and their relative weights with which to distribute traffic.
@@ -512,12 +512,12 @@ class RouteSpecTcpRouteActionWeightedTarget(dict):
 @pulumi.output_type
 class VirtualNodeSpec(dict):
     def __init__(__self__, *,
-                 backends: Optional[List['outputs.VirtualNodeSpecBackend']] = None,
+                 backends: Optional[Sequence['outputs.VirtualNodeSpecBackend']] = None,
                  listener: Optional['outputs.VirtualNodeSpecListener'] = None,
                  logging: Optional['outputs.VirtualNodeSpecLogging'] = None,
                  service_discovery: Optional['outputs.VirtualNodeSpecServiceDiscovery'] = None):
         """
-        :param List['VirtualNodeSpecBackendArgs'] backends: The backends to which the virtual node is expected to send outbound traffic.
+        :param Sequence['VirtualNodeSpecBackendArgs'] backends: The backends to which the virtual node is expected to send outbound traffic.
         :param 'VirtualNodeSpecListenerArgs' listener: The listeners from which the virtual node is expected to receive inbound traffic.
         :param 'VirtualNodeSpecLoggingArgs' logging: The inbound and outbound access logging information for the virtual node.
         :param 'VirtualNodeSpecServiceDiscoveryArgs' service_discovery: The service discovery information for the virtual node.
@@ -533,7 +533,7 @@ class VirtualNodeSpec(dict):
 
     @property
     @pulumi.getter
-    def backends(self) -> Optional[List['outputs.VirtualNodeSpecBackend']]:
+    def backends(self) -> Optional[Sequence['outputs.VirtualNodeSpecBackend']]:
         """
         The backends to which the virtual node is expected to send outbound traffic.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,11 +20,11 @@ class AccessPointPosixUserArgs:
     def __init__(__self__, *,
                  gid: pulumi.Input[float],
                  uid: pulumi.Input[float],
-                 secondary_gids: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None):
+                 secondary_gids: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
         """
         :param pulumi.Input[float] gid: The POSIX group ID used for all file system operations using this access point.
         :param pulumi.Input[float] uid: The POSIX user ID used for all file system operations using this access point.
-        :param pulumi.Input[List[pulumi.Input[float]]] secondary_gids: Secondary POSIX group IDs used for all file system operations using this access point.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] secondary_gids: Secondary POSIX group IDs used for all file system operations using this access point.
         """
         pulumi.set(__self__, "gid", gid)
         pulumi.set(__self__, "uid", uid)
@@ -57,14 +57,14 @@ class AccessPointPosixUserArgs:
 
     @property
     @pulumi.getter(name="secondaryGids")
-    def secondary_gids(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def secondary_gids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
         """
         Secondary POSIX group IDs used for all file system operations using this access point.
         """
         return pulumi.get(self, "secondary_gids")
 
     @secondary_gids.setter
-    def secondary_gids(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def secondary_gids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
         pulumi.set(self, "secondary_gids", value)
 
 

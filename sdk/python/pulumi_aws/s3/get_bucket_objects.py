@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -61,7 +61,7 @@ class GetBucketObjectsResult:
 
     @property
     @pulumi.getter(name="commonPrefixes")
-    def common_prefixes(self) -> List[str]:
+    def common_prefixes(self) -> Sequence[str]:
         """
         List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
         """
@@ -92,7 +92,7 @@ class GetBucketObjectsResult:
 
     @property
     @pulumi.getter
-    def keys(self) -> List[str]:
+    def keys(self) -> Sequence[str]:
         """
         List of strings representing object keys
         """
@@ -105,7 +105,7 @@ class GetBucketObjectsResult:
 
     @property
     @pulumi.getter
-    def owners(self) -> List[str]:
+    def owners(self) -> Sequence[str]:
         """
         List of strings representing object owner IDs (see `fetch_owner` above)
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -25,13 +25,13 @@ class PolicyStepScalingPolicyConfigurationArgs:
                  cooldown: Optional[pulumi.Input[float]] = None,
                  metric_aggregation_type: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[float]] = None,
-                 step_adjustments: Optional[pulumi.Input[List[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]]] = None):
+                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]]] = None):
         """
         :param pulumi.Input[str] adjustment_type: Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
         :param pulumi.Input[float] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
         :param pulumi.Input[str] metric_aggregation_type: The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
         :param pulumi.Input[float] min_adjustment_magnitude: The minimum number to adjust your scalable dimension as a result of a scaling activity. If the adjustment type is PercentChangeInCapacity, the scaling policy changes the scalable dimension of the scalable target by this amount.
-        :param pulumi.Input[List[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]] step_adjustments: A set of adjustments that manage scaling. These have the following structure:
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]] step_adjustments: A set of adjustments that manage scaling. These have the following structure:
         """
         if adjustment_type is not None:
             pulumi.set(__self__, "adjustment_type", adjustment_type)
@@ -94,14 +94,14 @@ class PolicyStepScalingPolicyConfigurationArgs:
 
     @property
     @pulumi.getter(name="stepAdjustments")
-    def step_adjustments(self) -> Optional[pulumi.Input[List[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]]]:
+    def step_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]]]:
         """
         A set of adjustments that manage scaling. These have the following structure:
         """
         return pulumi.get(self, "step_adjustments")
 
     @step_adjustments.setter
-    def step_adjustments(self, value: Optional[pulumi.Input[List[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]]]):
+    def step_adjustments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStepScalingPolicyConfigurationStepAdjustmentArgs']]]]):
         pulumi.set(self, "step_adjustments", value)
 
 
@@ -267,13 +267,13 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
                  metric_name: pulumi.Input[str],
                  namespace: pulumi.Input[str],
                  statistic: pulumi.Input[str],
-                 dimensions: Optional[pulumi.Input[List[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_name: The name of the metric.
         :param pulumi.Input[str] namespace: The namespace of the metric.
         :param pulumi.Input[str] statistic: The statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
-        :param pulumi.Input[List[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]] dimensions: Configuration block(s) with the dimensions of the metric if the metric was published with dimensions. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]] dimensions: Configuration block(s) with the dimensions of the metric if the metric was published with dimensions. Detailed below.
         :param pulumi.Input[str] unit: The unit of the metric.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -322,14 +322,14 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]]]:
         """
         Configuration block(s) with the dimensions of the metric if the metric was published with dimensions. Detailed below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @property

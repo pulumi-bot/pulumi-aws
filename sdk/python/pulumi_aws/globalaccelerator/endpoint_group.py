@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class EndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
+                 endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[float]] = None,
                  health_check_path: Optional[pulumi.Input[str]] = None,
@@ -48,7 +48,7 @@ class EndpointGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.
         :param pulumi.Input[str] endpoint_group_region: The name of the AWS Region where the endpoint group is located.
         :param pulumi.Input[float] health_check_interval_seconds: The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
         :param pulumi.Input[str] health_check_path: If the protocol is HTTP/S, then this specifies the path that is the destination for health check targets. The default value is slash (/).
@@ -96,7 +96,7 @@ class EndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
+            endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
             endpoint_group_region: Optional[pulumi.Input[str]] = None,
             health_check_interval_seconds: Optional[pulumi.Input[float]] = None,
             health_check_path: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.
         :param pulumi.Input[str] endpoint_group_region: The name of the AWS Region where the endpoint group is located.
         :param pulumi.Input[float] health_check_interval_seconds: The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
         :param pulumi.Input[str] health_check_path: If the protocol is HTTP/S, then this specifies the path that is the destination for health check targets. The default value is slash (/).
@@ -139,7 +139,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointConfigurations")
-    def endpoint_configurations(self) -> pulumi.Output[Optional[List['outputs.EndpointGroupEndpointConfiguration']]]:
+    def endpoint_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.EndpointGroupEndpointConfiguration']]]:
         """
         The list of endpoint objects. Fields documented below.
         """

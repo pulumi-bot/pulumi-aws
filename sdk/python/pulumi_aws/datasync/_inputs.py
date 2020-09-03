@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,10 +19,10 @@ __all__ = [
 @pulumi.input_type
 class EfsLocationEc2ConfigArgs:
     def __init__(__self__, *,
-                 security_group_arns: pulumi.Input[List[pulumi.Input[str]]],
+                 security_group_arns: pulumi.Input[Sequence[pulumi.Input[str]]],
                  subnet_arn: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_arns: List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_arns: List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
         :param pulumi.Input[str] subnet_arn: Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
         """
         pulumi.set(__self__, "security_group_arns", security_group_arns)
@@ -30,14 +30,14 @@ class EfsLocationEc2ConfigArgs:
 
     @property
     @pulumi.getter(name="securityGroupArns")
-    def security_group_arns(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def security_group_arns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
         """
         return pulumi.get(self, "security_group_arns")
 
     @security_group_arns.setter
-    def security_group_arns(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def security_group_arns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "security_group_arns", value)
 
     @property
@@ -79,22 +79,22 @@ class LocationSmbMountOptionsArgs:
 @pulumi.input_type
 class NfsLocationOnPremConfigArgs:
     def __init__(__self__, *,
-                 agent_arns: pulumi.Input[List[pulumi.Input[str]]]):
+                 agent_arns: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] agent_arns: List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] agent_arns: List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
         """
         pulumi.set(__self__, "agent_arns", agent_arns)
 
     @property
     @pulumi.getter(name="agentArns")
-    def agent_arns(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def agent_arns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
         """
         return pulumi.get(self, "agent_arns")
 
     @agent_arns.setter
-    def agent_arns(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def agent_arns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "agent_arns", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -100,7 +100,7 @@ class BrokerEncryptionOptionsArgs:
 class BrokerInstanceArgs:
     def __init__(__self__, *,
                  console_url: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
         if console_url is not None:
             pulumi.set(__self__, "console_url", console_url)
@@ -120,11 +120,11 @@ class BrokerInstanceArgs:
 
     @property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "endpoints", value)
 
     @property
@@ -234,12 +234,12 @@ class BrokerUserArgs:
                  password: pulumi.Input[str],
                  username: pulumi.Input[str],
                  console_access: Optional[pulumi.Input[bool]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] password: The password of the user. It must be 12 to 250 characters long, at least 4 unique characters, and must not contain commas.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[bool] console_access: Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user.
-        :param pulumi.Input[List[pulumi.Input[str]]] groups: The list of groups (20 maximum) to which the ActiveMQ user belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The list of groups (20 maximum) to which the ActiveMQ user belongs.
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
@@ -286,14 +286,14 @@ class BrokerUserArgs:
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of groups (20 maximum) to which the ActiveMQ user belongs.
         """
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
 

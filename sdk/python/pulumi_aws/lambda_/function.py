@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -24,7 +24,7 @@ class Function(pulumi.CustomResource):
                  file_system_config: Optional[pulumi.Input[pulumi.InputType['FunctionFileSystemConfigArgs']]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
-                 layers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_size: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
@@ -165,7 +165,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FunctionFileSystemConfigArgs']] file_system_config: The connection settings for an EFS file system. Fields documented below. Before creating or updating Lambda functions with `file_system_config`, EFS mount targets much be in available lifecycle state. Use `depends_on` to explicitly declare this dependency. See [Using Amazon EFS with Lambda](https://docs.aws.amazon.com/lambda/latest/dg/services-efs.html).
         :param pulumi.Input[str] handler: The function [entrypoint](https://docs.aws.amazon.com/lambda/latest/dg/walkthrough-custom-events-create-test-function.html) in your code.
         :param pulumi.Input[str] kms_key_arn: Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key that is used to encrypt environment variables. If this configuration is not provided when environment variables are in use, AWS Lambda uses a default service key. If this configuration is provided when environment variables are not in use, the AWS Lambda API does not save this configuration and this provider will show a perpetual difference of adding the key. To fix the perpetual difference, remove this configuration.
-        :param pulumi.Input[List[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
         :param pulumi.Input[float] memory_size: Amount of memory in MB your Lambda Function can use at runtime. Defaults to `128`. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html)
         :param pulumi.Input[str] name: A unique name for your Lambda Function.
         :param pulumi.Input[bool] publish: Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
@@ -251,7 +251,7 @@ class Function(pulumi.CustomResource):
             invoke_arn: Optional[pulumi.Input[str]] = None,
             kms_key_arn: Optional[pulumi.Input[str]] = None,
             last_modified: Optional[pulumi.Input[str]] = None,
-            layers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             memory_size: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
             publish: Optional[pulumi.Input[bool]] = None,
@@ -286,7 +286,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] invoke_arn: The ARN to be used for invoking Lambda Function from API Gateway - to be used in `apigateway.Integration`'s `uri`
         :param pulumi.Input[str] kms_key_arn: Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key that is used to encrypt environment variables. If this configuration is not provided when environment variables are in use, AWS Lambda uses a default service key. If this configuration is provided when environment variables are not in use, the AWS Lambda API does not save this configuration and this provider will show a perpetual difference of adding the key. To fix the perpetual difference, remove this configuration.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[List[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
         :param pulumi.Input[float] memory_size: Amount of memory in MB your Lambda Function can use at runtime. Defaults to `128`. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html)
         :param pulumi.Input[str] name: A unique name for your Lambda Function.
         :param pulumi.Input[bool] publish: Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
@@ -421,7 +421,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def layers(self) -> pulumi.Output[Optional[List[str]]]:
+    def layers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
         """

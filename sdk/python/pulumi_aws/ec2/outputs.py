@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -935,11 +935,11 @@ class DefaultSecurityGroupEgress(dict):
                  from_port: float,
                  protocol: str,
                  to_port: float,
-                 cidr_blocks: Optional[List[str]] = None,
+                 cidr_blocks: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
-                 ipv6_cidr_blocks: Optional[List[str]] = None,
-                 prefix_list_ids: Optional[List[str]] = None,
-                 security_groups: Optional[List[str]] = None,
+                 ipv6_cidr_blocks: Optional[Sequence[str]] = None,
+                 prefix_list_ids: Optional[Sequence[str]] = None,
+                 security_groups: Optional[Sequence[str]] = None,
                  self: Optional[bool] = None):
         """
         :param str description: The description of the security group
@@ -977,7 +977,7 @@ class DefaultSecurityGroupEgress(dict):
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[List[str]]:
+    def cidr_blocks(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "cidr_blocks")
 
     @property
@@ -990,17 +990,17 @@ class DefaultSecurityGroupEgress(dict):
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> Optional[List[str]]:
+    def ipv6_cidr_blocks(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ipv6_cidr_blocks")
 
     @property
     @pulumi.getter(name="prefixListIds")
-    def prefix_list_ids(self) -> Optional[List[str]]:
+    def prefix_list_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "prefix_list_ids")
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "security_groups")
 
     @property
@@ -1018,11 +1018,11 @@ class DefaultSecurityGroupIngress(dict):
                  from_port: float,
                  protocol: str,
                  to_port: float,
-                 cidr_blocks: Optional[List[str]] = None,
+                 cidr_blocks: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
-                 ipv6_cidr_blocks: Optional[List[str]] = None,
-                 prefix_list_ids: Optional[List[str]] = None,
-                 security_groups: Optional[List[str]] = None,
+                 ipv6_cidr_blocks: Optional[Sequence[str]] = None,
+                 prefix_list_ids: Optional[Sequence[str]] = None,
+                 security_groups: Optional[Sequence[str]] = None,
                  self: Optional[bool] = None):
         """
         :param str description: The description of the security group
@@ -1060,7 +1060,7 @@ class DefaultSecurityGroupIngress(dict):
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[List[str]]:
+    def cidr_blocks(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "cidr_blocks")
 
     @property
@@ -1073,17 +1073,17 @@ class DefaultSecurityGroupIngress(dict):
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> Optional[List[str]]:
+    def ipv6_cidr_blocks(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ipv6_cidr_blocks")
 
     @property
     @pulumi.getter(name="prefixListIds")
-    def prefix_list_ids(self) -> Optional[List[str]]:
+    def prefix_list_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "prefix_list_ids")
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "security_groups")
 
     @property
@@ -1099,10 +1099,10 @@ class DefaultSecurityGroupIngress(dict):
 class FleetLaunchTemplateConfig(dict):
     def __init__(__self__, *,
                  launch_template_specification: 'outputs.FleetLaunchTemplateConfigLaunchTemplateSpecification',
-                 overrides: Optional[List['outputs.FleetLaunchTemplateConfigOverride']] = None):
+                 overrides: Optional[Sequence['outputs.FleetLaunchTemplateConfigOverride']] = None):
         """
         :param 'FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs' launch_template_specification: Nested argument containing EC2 Launch Template to use. Defined below.
-        :param List['FleetLaunchTemplateConfigOverrideArgs'] overrides: Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
+        :param Sequence['FleetLaunchTemplateConfigOverrideArgs'] overrides: Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
         """
         pulumi.set(__self__, "launch_template_specification", launch_template_specification)
         if overrides is not None:
@@ -1118,7 +1118,7 @@ class FleetLaunchTemplateConfig(dict):
 
     @property
     @pulumi.getter
-    def overrides(self) -> Optional[List['outputs.FleetLaunchTemplateConfigOverride']]:
+    def overrides(self) -> Optional[Sequence['outputs.FleetLaunchTemplateConfigOverride']]:
         """
         Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
         """
@@ -2494,12 +2494,12 @@ class LaunchTemplateNetworkInterface(dict):
                  description: Optional[str] = None,
                  device_index: Optional[float] = None,
                  ipv4_address_count: Optional[float] = None,
-                 ipv4_addresses: Optional[List[str]] = None,
+                 ipv4_addresses: Optional[Sequence[str]] = None,
                  ipv6_address_count: Optional[float] = None,
-                 ipv6_addresses: Optional[List[str]] = None,
+                 ipv6_addresses: Optional[Sequence[str]] = None,
                  network_interface_id: Optional[str] = None,
                  private_ip_address: Optional[str] = None,
-                 security_groups: Optional[List[str]] = None,
+                 security_groups: Optional[Sequence[str]] = None,
                  subnet_id: Optional[str] = None):
         """
         :param str associate_public_ip_address: Associate a public ip address with the network interface.  Boolean value.
@@ -2507,12 +2507,12 @@ class LaunchTemplateNetworkInterface(dict):
         :param str description: Description of the network interface.
         :param float device_index: The integer index of the network interface attachment.
         :param float ipv4_address_count: The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4_addresses`
-        :param List[str] ipv4_addresses: One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
+        :param Sequence[str] ipv4_addresses: One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
         :param float ipv6_address_count: The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6_addresses`
-        :param List[str] ipv6_addresses: One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
+        :param Sequence[str] ipv6_addresses: One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
         :param str network_interface_id: The ID of the network interface to attach.
         :param str private_ip_address: The primary private IPv4 address.
-        :param List[str] security_groups: A list of security group IDs to associate.
+        :param Sequence[str] security_groups: A list of security group IDs to associate.
         :param str subnet_id: The VPC Subnet ID to associate.
         """
         if associate_public_ip_address is not None:
@@ -2582,7 +2582,7 @@ class LaunchTemplateNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="ipv4Addresses")
-    def ipv4_addresses(self) -> Optional[List[str]]:
+    def ipv4_addresses(self) -> Optional[Sequence[str]]:
         """
         One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
         """
@@ -2598,7 +2598,7 @@ class LaunchTemplateNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="ipv6Addresses")
-    def ipv6_addresses(self) -> Optional[List[str]]:
+    def ipv6_addresses(self) -> Optional[Sequence[str]]:
         """
         One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
         """
@@ -2622,7 +2622,7 @@ class LaunchTemplateNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> Optional[Sequence[str]]:
         """
         A list of security group IDs to associate.
         """
@@ -3278,22 +3278,22 @@ class SecurityGroupEgress(dict):
                  from_port: float,
                  protocol: str,
                  to_port: float,
-                 cidr_blocks: Optional[List[str]] = None,
+                 cidr_blocks: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
-                 ipv6_cidr_blocks: Optional[List[str]] = None,
-                 prefix_list_ids: Optional[List[str]] = None,
-                 security_groups: Optional[List[str]] = None,
+                 ipv6_cidr_blocks: Optional[Sequence[str]] = None,
+                 prefix_list_ids: Optional[Sequence[str]] = None,
+                 security_groups: Optional[Sequence[str]] = None,
                  self: Optional[bool] = None):
         """
         :param float from_port: The start port (or ICMP type number if protocol is "icmp")
         :param str protocol: The protocol. If you select a protocol of
                "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "from_port" and "to_port" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
         :param float to_port: The end range port (or ICMP code if protocol is "icmp").
-        :param List[str] cidr_blocks: List of CIDR blocks.
+        :param Sequence[str] cidr_blocks: List of CIDR blocks.
         :param str description: Description of this egress rule.
-        :param List[str] ipv6_cidr_blocks: List of IPv6 CIDR blocks.
-        :param List[str] prefix_list_ids: List of prefix list IDs (for allowing access to VPC endpoints)
-        :param List[str] security_groups: List of security group Group Names if using
+        :param Sequence[str] ipv6_cidr_blocks: List of IPv6 CIDR blocks.
+        :param Sequence[str] prefix_list_ids: List of prefix list IDs (for allowing access to VPC endpoints)
+        :param Sequence[str] security_groups: List of security group Group Names if using
                EC2-Classic, or Group IDs if using a VPC.
         :param bool self: If true, the security group itself will be added as
                a source to this egress rule.
@@ -3341,7 +3341,7 @@ class SecurityGroupEgress(dict):
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[List[str]]:
+    def cidr_blocks(self) -> Optional[Sequence[str]]:
         """
         List of CIDR blocks.
         """
@@ -3357,7 +3357,7 @@ class SecurityGroupEgress(dict):
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> Optional[List[str]]:
+    def ipv6_cidr_blocks(self) -> Optional[Sequence[str]]:
         """
         List of IPv6 CIDR blocks.
         """
@@ -3365,7 +3365,7 @@ class SecurityGroupEgress(dict):
 
     @property
     @pulumi.getter(name="prefixListIds")
-    def prefix_list_ids(self) -> Optional[List[str]]:
+    def prefix_list_ids(self) -> Optional[Sequence[str]]:
         """
         List of prefix list IDs (for allowing access to VPC endpoints)
         """
@@ -3373,7 +3373,7 @@ class SecurityGroupEgress(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> Optional[Sequence[str]]:
         """
         List of security group Group Names if using
         EC2-Classic, or Group IDs if using a VPC.
@@ -3399,22 +3399,22 @@ class SecurityGroupIngress(dict):
                  from_port: float,
                  protocol: str,
                  to_port: float,
-                 cidr_blocks: Optional[List[str]] = None,
+                 cidr_blocks: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
-                 ipv6_cidr_blocks: Optional[List[str]] = None,
-                 prefix_list_ids: Optional[List[str]] = None,
-                 security_groups: Optional[List[str]] = None,
+                 ipv6_cidr_blocks: Optional[Sequence[str]] = None,
+                 prefix_list_ids: Optional[Sequence[str]] = None,
+                 security_groups: Optional[Sequence[str]] = None,
                  self: Optional[bool] = None):
         """
         :param float from_port: The start port (or ICMP type number if protocol is "icmp")
         :param str protocol: The protocol. If you select a protocol of
                "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "from_port" and "to_port" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
         :param float to_port: The end range port (or ICMP code if protocol is "icmp").
-        :param List[str] cidr_blocks: List of CIDR blocks.
+        :param Sequence[str] cidr_blocks: List of CIDR blocks.
         :param str description: Description of this egress rule.
-        :param List[str] ipv6_cidr_blocks: List of IPv6 CIDR blocks.
-        :param List[str] prefix_list_ids: List of prefix list IDs (for allowing access to VPC endpoints)
-        :param List[str] security_groups: List of security group Group Names if using
+        :param Sequence[str] ipv6_cidr_blocks: List of IPv6 CIDR blocks.
+        :param Sequence[str] prefix_list_ids: List of prefix list IDs (for allowing access to VPC endpoints)
+        :param Sequence[str] security_groups: List of security group Group Names if using
                EC2-Classic, or Group IDs if using a VPC.
         :param bool self: If true, the security group itself will be added as
                a source to this egress rule.
@@ -3462,7 +3462,7 @@ class SecurityGroupIngress(dict):
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[List[str]]:
+    def cidr_blocks(self) -> Optional[Sequence[str]]:
         """
         List of CIDR blocks.
         """
@@ -3478,7 +3478,7 @@ class SecurityGroupIngress(dict):
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> Optional[List[str]]:
+    def ipv6_cidr_blocks(self) -> Optional[Sequence[str]]:
         """
         List of IPv6 CIDR blocks.
         """
@@ -3486,7 +3486,7 @@ class SecurityGroupIngress(dict):
 
     @property
     @pulumi.getter(name="prefixListIds")
-    def prefix_list_ids(self) -> Optional[List[str]]:
+    def prefix_list_ids(self) -> Optional[Sequence[str]]:
         """
         List of prefix list IDs (for allowing access to VPC endpoints)
         """
@@ -3494,7 +3494,7 @@ class SecurityGroupIngress(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> Optional[Sequence[str]]:
         """
         List of security group Group Names if using
         EC2-Classic, or Group IDs if using a VPC.
@@ -3521,21 +3521,21 @@ class SpotFleetRequestLaunchSpecification(dict):
                  instance_type: str,
                  associate_public_ip_address: Optional[bool] = None,
                  availability_zone: Optional[str] = None,
-                 ebs_block_devices: Optional[List['outputs.SpotFleetRequestLaunchSpecificationEbsBlockDevice']] = None,
+                 ebs_block_devices: Optional[Sequence['outputs.SpotFleetRequestLaunchSpecificationEbsBlockDevice']] = None,
                  ebs_optimized: Optional[bool] = None,
-                 ephemeral_block_devices: Optional[List['outputs.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice']] = None,
+                 ephemeral_block_devices: Optional[Sequence['outputs.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice']] = None,
                  iam_instance_profile: Optional[str] = None,
                  iam_instance_profile_arn: Optional[str] = None,
                  key_name: Optional[str] = None,
                  monitoring: Optional[bool] = None,
                  placement_group: Optional[str] = None,
                  placement_tenancy: Optional[str] = None,
-                 root_block_devices: Optional[List['outputs.SpotFleetRequestLaunchSpecificationRootBlockDevice']] = None,
+                 root_block_devices: Optional[Sequence['outputs.SpotFleetRequestLaunchSpecificationRootBlockDevice']] = None,
                  spot_price: Optional[str] = None,
                  subnet_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  user_data: Optional[str] = None,
-                 vpc_security_group_ids: Optional[List[str]] = None,
+                 vpc_security_group_ids: Optional[Sequence[str]] = None,
                  weighted_capacity: Optional[str] = None):
         """
         :param str instance_type: The type of instance to request.
@@ -3612,7 +3612,7 @@ class SpotFleetRequestLaunchSpecification(dict):
 
     @property
     @pulumi.getter(name="ebsBlockDevices")
-    def ebs_block_devices(self) -> Optional[List['outputs.SpotFleetRequestLaunchSpecificationEbsBlockDevice']]:
+    def ebs_block_devices(self) -> Optional[Sequence['outputs.SpotFleetRequestLaunchSpecificationEbsBlockDevice']]:
         return pulumi.get(self, "ebs_block_devices")
 
     @property
@@ -3622,7 +3622,7 @@ class SpotFleetRequestLaunchSpecification(dict):
 
     @property
     @pulumi.getter(name="ephemeralBlockDevices")
-    def ephemeral_block_devices(self) -> Optional[List['outputs.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice']]:
+    def ephemeral_block_devices(self) -> Optional[Sequence['outputs.SpotFleetRequestLaunchSpecificationEphemeralBlockDevice']]:
         return pulumi.get(self, "ephemeral_block_devices")
 
     @property
@@ -3657,7 +3657,7 @@ class SpotFleetRequestLaunchSpecification(dict):
 
     @property
     @pulumi.getter(name="rootBlockDevices")
-    def root_block_devices(self) -> Optional[List['outputs.SpotFleetRequestLaunchSpecificationRootBlockDevice']]:
+    def root_block_devices(self) -> Optional[Sequence['outputs.SpotFleetRequestLaunchSpecificationRootBlockDevice']]:
         return pulumi.get(self, "root_block_devices")
 
     @property
@@ -3691,7 +3691,7 @@ class SpotFleetRequestLaunchSpecification(dict):
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
-    def vpc_security_group_ids(self) -> Optional[List[str]]:
+    def vpc_security_group_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "vpc_security_group_ids")
 
     @property
@@ -3859,10 +3859,10 @@ class SpotFleetRequestLaunchSpecificationRootBlockDevice(dict):
 class SpotFleetRequestLaunchTemplateConfig(dict):
     def __init__(__self__, *,
                  launch_template_specification: 'outputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification',
-                 overrides: Optional[List['outputs.SpotFleetRequestLaunchTemplateConfigOverride']] = None):
+                 overrides: Optional[Sequence['outputs.SpotFleetRequestLaunchTemplateConfigOverride']] = None):
         """
         :param 'SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs' launch_template_specification: Launch template specification. See Launch Template Specification below for more details.
-        :param List['SpotFleetRequestLaunchTemplateConfigOverrideArgs'] overrides: One or more override configurations. See Overrides below for more details.
+        :param Sequence['SpotFleetRequestLaunchTemplateConfigOverrideArgs'] overrides: One or more override configurations. See Overrides below for more details.
         """
         pulumi.set(__self__, "launch_template_specification", launch_template_specification)
         if overrides is not None:
@@ -3878,7 +3878,7 @@ class SpotFleetRequestLaunchTemplateConfig(dict):
 
     @property
     @pulumi.getter
-    def overrides(self) -> Optional[List['outputs.SpotFleetRequestLaunchTemplateConfigOverride']]:
+    def overrides(self) -> Optional[Sequence['outputs.SpotFleetRequestLaunchTemplateConfigOverride']]:
         """
         One or more override configurations. See Overrides below for more details.
         """
@@ -4822,11 +4822,11 @@ class VpnConnectionVgwTelemetry(dict):
 class GetCoipPoolFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A COIP Pool will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -4843,7 +4843,7 @@ class GetCoipPoolFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A COIP Pool will be selected if any one of the given values matches.
@@ -4855,11 +4855,11 @@ class GetCoipPoolFilterResult(dict):
 class GetCoipPoolsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A COIP Pool will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -4876,7 +4876,7 @@ class GetCoipPoolsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A COIP Pool will be selected if any one of the given values matches.
@@ -4888,7 +4888,7 @@ class GetCoipPoolsFilterResult(dict):
 class GetCustomerGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
@@ -4899,7 +4899,7 @@ class GetCustomerGatewayFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 
@@ -5059,7 +5059,7 @@ class GetInstanceEphemeralBlockDeviceResult(dict):
 class GetInstanceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
@@ -5070,7 +5070,7 @@ class GetInstanceFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 
@@ -5205,10 +5205,10 @@ class GetInstanceRootBlockDeviceResult(dict):
 class GetInstanceTypeOfferingFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        :param List[str] values: List of one or more values for the filter.
+        :param Sequence[str] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -5223,7 +5223,7 @@ class GetInstanceTypeOfferingFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of one or more values for the filter.
         """
@@ -5234,10 +5234,10 @@ class GetInstanceTypeOfferingFilterResult(dict):
 class GetInstanceTypeOfferingsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        :param List[str] values: List of one or more values for the filter.
+        :param Sequence[str] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -5252,7 +5252,7 @@ class GetInstanceTypeOfferingsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of one or more values for the filter.
         """
@@ -5263,7 +5263,7 @@ class GetInstanceTypeOfferingsFilterResult(dict):
 class GetInstancesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
@@ -5274,7 +5274,7 @@ class GetInstancesFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 
@@ -5311,11 +5311,11 @@ class GetInternetGatewayAttachmentResult(dict):
 class GetInternetGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                An Internet Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -5332,7 +5332,7 @@ class GetInternetGatewayFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         An Internet Gateway will be selected if any one of the given values matches.
@@ -5519,7 +5519,7 @@ class GetLaunchConfigurationRootBlockDeviceResult(dict):
 class GetLaunchTemplateBlockDeviceMappingResult(dict):
     def __init__(__self__, *,
                  device_name: str,
-                 ebs: List['outputs.GetLaunchTemplateBlockDeviceMappingEbResult'],
+                 ebs: Sequence['outputs.GetLaunchTemplateBlockDeviceMappingEbResult'],
                  no_device: str,
                  virtual_name: str):
         pulumi.set(__self__, "device_name", device_name)
@@ -5534,7 +5534,7 @@ class GetLaunchTemplateBlockDeviceMappingResult(dict):
 
     @property
     @pulumi.getter
-    def ebs(self) -> List['outputs.GetLaunchTemplateBlockDeviceMappingEbResult']:
+    def ebs(self) -> Sequence['outputs.GetLaunchTemplateBlockDeviceMappingEbResult']:
         return pulumi.get(self, "ebs")
 
     @property
@@ -5630,10 +5630,10 @@ class GetLaunchTemplateElasticGpuSpecificationResult(dict):
 class GetLaunchTemplateFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        :param List[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -5648,7 +5648,7 @@ class GetLaunchTemplateFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
@@ -5700,7 +5700,7 @@ class GetLaunchTemplateIamInstanceProfileResult(dict):
 class GetLaunchTemplateInstanceMarketOptionResult(dict):
     def __init__(__self__, *,
                  market_type: str,
-                 spot_options: List['outputs.GetLaunchTemplateInstanceMarketOptionSpotOptionResult']):
+                 spot_options: Sequence['outputs.GetLaunchTemplateInstanceMarketOptionSpotOptionResult']):
         pulumi.set(__self__, "market_type", market_type)
         pulumi.set(__self__, "spot_options", spot_options)
 
@@ -5711,7 +5711,7 @@ class GetLaunchTemplateInstanceMarketOptionResult(dict):
 
     @property
     @pulumi.getter(name="spotOptions")
-    def spot_options(self) -> List['outputs.GetLaunchTemplateInstanceMarketOptionSpotOptionResult']:
+    def spot_options(self) -> Sequence['outputs.GetLaunchTemplateInstanceMarketOptionSpotOptionResult']:
         return pulumi.get(self, "spot_options")
 
 
@@ -5814,12 +5814,12 @@ class GetLaunchTemplateNetworkInterfaceResult(dict):
                  description: str,
                  device_index: float,
                  ipv4_address_count: float,
-                 ipv4_addresses: List[str],
+                 ipv4_addresses: Sequence[str],
                  ipv6_address_count: float,
-                 ipv6_addresses: List[str],
+                 ipv6_addresses: Sequence[str],
                  network_interface_id: str,
                  private_ip_address: str,
-                 security_groups: List[str],
+                 security_groups: Sequence[str],
                  subnet_id: str,
                  associate_public_ip_address: Optional[bool] = None):
         """
@@ -5864,7 +5864,7 @@ class GetLaunchTemplateNetworkInterfaceResult(dict):
 
     @property
     @pulumi.getter(name="ipv4Addresses")
-    def ipv4_addresses(self) -> List[str]:
+    def ipv4_addresses(self) -> Sequence[str]:
         return pulumi.get(self, "ipv4_addresses")
 
     @property
@@ -5874,7 +5874,7 @@ class GetLaunchTemplateNetworkInterfaceResult(dict):
 
     @property
     @pulumi.getter(name="ipv6Addresses")
-    def ipv6_addresses(self) -> List[str]:
+    def ipv6_addresses(self) -> Sequence[str]:
         return pulumi.get(self, "ipv6_addresses")
 
     @property
@@ -5889,7 +5889,7 @@ class GetLaunchTemplateNetworkInterfaceResult(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> Sequence[str]:
         return pulumi.get(self, "security_groups")
 
     @property
@@ -5986,11 +5986,11 @@ class GetLaunchTemplateTagSpecificationResult(dict):
 class GetLocalGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A Local Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6007,7 +6007,7 @@ class GetLocalGatewayFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A Local Gateway will be selected if any one of the given values matches.
@@ -6019,11 +6019,11 @@ class GetLocalGatewayFilterResult(dict):
 class GetLocalGatewayRouteTableFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A local gateway route table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6040,7 +6040,7 @@ class GetLocalGatewayRouteTableFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A local gateway route table will be selected if any one of the given values matches.
@@ -6052,11 +6052,11 @@ class GetLocalGatewayRouteTableFilterResult(dict):
 class GetLocalGatewayRouteTablesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A Local Gateway Route Table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6073,7 +6073,7 @@ class GetLocalGatewayRouteTablesFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A Local Gateway Route Table will be selected if any one of the given values matches.
@@ -6085,10 +6085,10 @@ class GetLocalGatewayRouteTablesFilterResult(dict):
 class GetLocalGatewayVirtualInterfaceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
+        :param Sequence[str] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6103,7 +6103,7 @@ class GetLocalGatewayVirtualInterfaceFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of one or more values for the filter.
         """
@@ -6114,10 +6114,10 @@ class GetLocalGatewayVirtualInterfaceFilterResult(dict):
 class GetLocalGatewayVirtualInterfaceGroupFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
+        :param Sequence[str] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6132,7 +6132,7 @@ class GetLocalGatewayVirtualInterfaceGroupFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of one or more values for the filter.
         """
@@ -6143,10 +6143,10 @@ class GetLocalGatewayVirtualInterfaceGroupFilterResult(dict):
 class GetLocalGatewayVirtualInterfaceGroupsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
+        :param Sequence[str] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6161,7 +6161,7 @@ class GetLocalGatewayVirtualInterfaceGroupsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of one or more values for the filter.
         """
@@ -6172,11 +6172,11 @@ class GetLocalGatewayVirtualInterfaceGroupsFilterResult(dict):
 class GetLocalGatewaysFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A Local Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6193,7 +6193,7 @@ class GetLocalGatewaysFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A Local Gateway will be selected if any one of the given values matches.
@@ -6205,11 +6205,11 @@ class GetLocalGatewaysFilterResult(dict):
 class GetNatGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                An Nat Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6226,7 +6226,7 @@ class GetNatGatewayFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         An Nat Gateway will be selected if any one of the given values matches.
@@ -6238,11 +6238,11 @@ class GetNatGatewayFilterResult(dict):
 class GetNetworkAclsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A VPC will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6259,7 +6259,7 @@ class GetNetworkAclsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A VPC will be selected if any one of the given values matches.
@@ -6366,7 +6366,7 @@ class GetNetworkInterfaceAttachmentResult(dict):
 class GetNetworkInterfaceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
@@ -6377,7 +6377,7 @@ class GetNetworkInterfaceFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 
@@ -6385,11 +6385,11 @@ class GetNetworkInterfaceFilterResult(dict):
 class GetNetworkInterfacesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaces.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6405,7 +6405,7 @@ class GetNetworkInterfacesFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         """
@@ -6478,11 +6478,11 @@ class GetRouteTableAssociationResult(dict):
 class GetRouteTableFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A Route Table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6499,7 +6499,7 @@ class GetRouteTableFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A Route Table will be selected if any one of the given values matches.
@@ -6617,11 +6617,11 @@ class GetRouteTableRouteResult(dict):
 class GetRouteTablesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A Route Table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6638,7 +6638,7 @@ class GetRouteTablesFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A Route Table will be selected if any one of the given values matches.
@@ -6650,11 +6650,11 @@ class GetRouteTablesFilterResult(dict):
 class GetSecurityGroupFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A Security Group will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6671,7 +6671,7 @@ class GetSecurityGroupFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A Security Group will be selected if any one of the given values matches.
@@ -6683,7 +6683,7 @@ class GetSecurityGroupFilterResult(dict):
 class GetSecurityGroupsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
@@ -6694,7 +6694,7 @@ class GetSecurityGroupsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 
@@ -6702,10 +6702,10 @@ class GetSecurityGroupsFilterResult(dict):
 class GetSpotPriceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
+        :param Sequence[str] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6720,7 +6720,7 @@ class GetSpotPriceFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of one or more values for the filter.
         """
@@ -6731,12 +6731,12 @@ class GetSpotPriceFilterResult(dict):
 class GetSubnetFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
                For example, if matching against tag `Name`, use:
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A subnet will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6754,7 +6754,7 @@ class GetSubnetFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A subnet will be selected if any one of the given values matches.
@@ -6766,12 +6766,12 @@ class GetSubnetFilterResult(dict):
 class GetSubnetIdsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
                For example, if matching against tag `Name`, use:
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                Subnet IDs will be selected if any one of the given values match.
         """
         pulumi.set(__self__, "name", name)
@@ -6789,7 +6789,7 @@ class GetSubnetIdsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         Subnet IDs will be selected if any one of the given values match.
@@ -6843,10 +6843,10 @@ class GetVpcCidrBlockAssociationResult(dict):
 class GetVpcDhcpOptionsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter.
-        :param List[str] values: Set of values for filtering.
+        :param Sequence[str] values: Set of values for filtering.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6861,7 +6861,7 @@ class GetVpcDhcpOptionsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values for filtering.
         """
@@ -6901,11 +6901,11 @@ class GetVpcEndpointDnsEntryResult(dict):
 class GetVpcEndpointFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A VPC Endpoint will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6922,7 +6922,7 @@ class GetVpcEndpointFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A VPC Endpoint will be selected if any one of the given values matches.
@@ -6934,10 +6934,10 @@ class GetVpcEndpointFilterResult(dict):
 class GetVpcEndpointServiceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
-        :param List[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6952,7 +6952,7 @@ class GetVpcEndpointServiceFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
@@ -6963,11 +6963,11 @@ class GetVpcEndpointServiceFilterResult(dict):
 class GetVpcFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A VPC will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6984,7 +6984,7 @@ class GetVpcFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A VPC will be selected if any one of the given values matches.
@@ -6996,11 +6996,11 @@ class GetVpcFilterResult(dict):
 class GetVpcPeeringConnectionFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A VPC Peering Connection will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7017,7 +7017,7 @@ class GetVpcPeeringConnectionFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A VPC Peering Connection will be selected if any one of the given values matches.
@@ -7029,11 +7029,11 @@ class GetVpcPeeringConnectionFilterResult(dict):
 class GetVpcsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A VPC will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7050,7 +7050,7 @@ class GetVpcsFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A VPC will be selected if any one of the given values matches.
@@ -7062,11 +7062,11 @@ class GetVpcsFilterResult(dict):
 class GetVpnGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
                A VPN Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7083,7 +7083,7 @@ class GetVpnGatewayFilterResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         Set of values that are accepted for the given field.
         A VPN Gateway will be selected if any one of the given values matches.
