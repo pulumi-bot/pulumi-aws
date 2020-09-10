@@ -13,9 +13,6 @@ namespace Pulumi.Aws.S3.Outputs
     [OutputType]
     public sealed class BucketServerSideEncryptionConfigurationRule
     {
-        /// <summary>
-        /// A single object for setting server-side encryption by default. (documented below)
-        /// </summary>
         public readonly Outputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault ApplyServerSideEncryptionByDefault;
 
         [OutputConstructor]

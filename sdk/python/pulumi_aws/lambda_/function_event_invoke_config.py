@@ -26,80 +26,9 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an asynchronous invocation configuration for a Lambda Function or Alias. More information about asynchronous invocations and the configurable values can be found in the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html).
-
-        ## Example Usage
-        ### Destination Configuration
-
-        > **NOTE:** Ensure the Lambda Function IAM Role has necessary permissions for the destination, such as `sqs:SendMessage` or `sns:Publish`, otherwise the API will return a generic `InvalidParameterValueException: The destination ARN arn:PARTITION:SERVICE:REGION:ACCOUNT:RESOURCE is invalid.` error.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            destination_config=aws.lambda..FunctionEventInvokeConfigDestinationConfigArgs(
-                on_failure={
-                    "destination": aws_sqs_queue["example"]["arn"],
-                },
-                on_success=aws.lambda..FunctionEventInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=aws_sns_topic["example"]["arn"],
-                ),
-            ))
-        ```
-        ### Error Handling Configuration
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            maximum_event_age_in_seconds=60,
-            maximum_retry_attempts=0)
-        ```
-        ### Configuration for Alias Name
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            qualifier=aws_lambda_alias["example"]["name"])
-        # ... other configuration ...
-        ```
-        ### Configuration for Function Latest Unpublished Version
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_function["example"]["function_name"],
-            qualifier="$LATEST")
-        # ... other configuration ...
-        ```
-        ### Configuration for Function Published Version
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_function["example"]["function_name"],
-            qualifier=aws_lambda_function["example"]["version"])
-        # ... other configuration ...
-        ```
-
+        Create a FunctionEventInvokeConfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionEventInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.
-        :param pulumi.Input[str] function_name: Name or Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
-        :param pulumi.Input[float] maximum_event_age_in_seconds: Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.
-        :param pulumi.Input[float] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
-        :param pulumi.Input[str] qualifier: Lambda Function published version, `$LATEST`, or Lambda Alias name.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -147,11 +76,6 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionEventInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.
-        :param pulumi.Input[str] function_name: Name or Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
-        :param pulumi.Input[float] maximum_event_age_in_seconds: Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.
-        :param pulumi.Input[float] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
-        :param pulumi.Input[str] qualifier: Lambda Function published version, `$LATEST`, or Lambda Alias name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -167,41 +91,26 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="destinationConfig")
     def destination_config(self) -> pulumi.Output[Optional['outputs.FunctionEventInvokeConfigDestinationConfig']]:
-        """
-        Configuration block with destination configuration. See below for details.
-        """
         return pulumi.get(self, "destination_config")
 
     @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[str]:
-        """
-        Name or Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
-        """
         return pulumi.get(self, "function_name")
 
     @property
     @pulumi.getter(name="maximumEventAgeInSeconds")
     def maximum_event_age_in_seconds(self) -> pulumi.Output[Optional[float]]:
-        """
-        Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.
-        """
         return pulumi.get(self, "maximum_event_age_in_seconds")
 
     @property
     @pulumi.getter(name="maximumRetryAttempts")
     def maximum_retry_attempts(self) -> pulumi.Output[Optional[float]]:
-        """
-        Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
-        """
         return pulumi.get(self, "maximum_retry_attempts")
 
     @property
     @pulumi.getter
     def qualifier(self) -> pulumi.Output[Optional[str]]:
-        """
-        Lambda Function published version, `$LATEST`, or Lambda Alias name.
-        """
         return pulumi.get(self, "qualifier")
 
     def translate_output_property(self, prop):

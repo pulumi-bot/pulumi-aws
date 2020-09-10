@@ -12,18 +12,11 @@ namespace Pulumi.Aws.ApiGatewayV2.Inputs
 
     public sealed class ApiCorsConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether credentials are included in the CORS request.
-        /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }
 
         [Input("allowHeaders")]
         private InputList<string>? _allowHeaders;
-
-        /// <summary>
-        /// The set of allowed HTTP headers.
-        /// </summary>
         public InputList<string> AllowHeaders
         {
             get => _allowHeaders ?? (_allowHeaders = new InputList<string>());
@@ -32,10 +25,6 @@ namespace Pulumi.Aws.ApiGatewayV2.Inputs
 
         [Input("allowMethods")]
         private InputList<string>? _allowMethods;
-
-        /// <summary>
-        /// The set of allowed HTTP methods.
-        /// </summary>
         public InputList<string> AllowMethods
         {
             get => _allowMethods ?? (_allowMethods = new InputList<string>());
@@ -44,10 +33,6 @@ namespace Pulumi.Aws.ApiGatewayV2.Inputs
 
         [Input("allowOrigins")]
         private InputList<string>? _allowOrigins;
-
-        /// <summary>
-        /// The set of allowed origins.
-        /// </summary>
         public InputList<string> AllowOrigins
         {
             get => _allowOrigins ?? (_allowOrigins = new InputList<string>());
@@ -56,19 +41,12 @@ namespace Pulumi.Aws.ApiGatewayV2.Inputs
 
         [Input("exposeHeaders")]
         private InputList<string>? _exposeHeaders;
-
-        /// <summary>
-        /// The set of exposed HTTP headers.
-        /// </summary>
         public InputList<string> ExposeHeaders
         {
             get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
             set => _exposeHeaders = value;
         }
 
-        /// <summary>
-        /// The number of seconds that the browser should cache preflight request results.
-        /// </summary>
         [Input("maxAge")]
         public Input<int>? MaxAge { get; set; }
 

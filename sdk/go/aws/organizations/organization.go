@@ -9,57 +9,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to create an organization.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewOrganization(ctx, "org", &organizations.OrganizationArgs{
-// 			AwsServiceAccessPrincipals: pulumi.StringArray{
-// 				pulumi.String("cloudtrail.amazonaws.com"),
-// 				pulumi.String("config.amazonaws.com"),
-// 			},
-// 			FeatureSet: pulumi.String("ALL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Organization struct {
 	pulumi.CustomResourceState
 
-	// List of organization accounts including the master account. For a list excluding the master account, see the `nonMasterAccounts` attribute. All elements have these attributes:
-	Accounts OrganizationAccountArrayOutput `pulumi:"accounts"`
-	// ARN of the root
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
-	AwsServiceAccessPrincipals pulumi.StringArrayOutput `pulumi:"awsServiceAccessPrincipals"`
-	// List of Organizations policy types to enable in the Organization Root. Organization must have `featureSet` set to `ALL`. For additional information about valid policy types (e.g. `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY`, and `TAG_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
-	EnabledPolicyTypes pulumi.StringArrayOutput `pulumi:"enabledPolicyTypes"`
-	// Specify "ALL" (default) or "CONSOLIDATED_BILLING".
-	FeatureSet pulumi.StringPtrOutput `pulumi:"featureSet"`
-	// ARN of the master account
-	MasterAccountArn pulumi.StringOutput `pulumi:"masterAccountArn"`
-	// Email address of the master account
-	MasterAccountEmail pulumi.StringOutput `pulumi:"masterAccountEmail"`
-	// Identifier of the master account
-	MasterAccountId pulumi.StringOutput `pulumi:"masterAccountId"`
-	// List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
-	NonMasterAccounts OrganizationNonMasterAccountArrayOutput `pulumi:"nonMasterAccounts"`
-	// List of organization roots. All elements have these attributes:
-	Roots OrganizationRootArrayOutput `pulumi:"roots"`
+	Accounts                   OrganizationAccountArrayOutput          `pulumi:"accounts"`
+	Arn                        pulumi.StringOutput                     `pulumi:"arn"`
+	AwsServiceAccessPrincipals pulumi.StringArrayOutput                `pulumi:"awsServiceAccessPrincipals"`
+	EnabledPolicyTypes         pulumi.StringArrayOutput                `pulumi:"enabledPolicyTypes"`
+	FeatureSet                 pulumi.StringPtrOutput                  `pulumi:"featureSet"`
+	MasterAccountArn           pulumi.StringOutput                     `pulumi:"masterAccountArn"`
+	MasterAccountEmail         pulumi.StringOutput                     `pulumi:"masterAccountEmail"`
+	MasterAccountId            pulumi.StringOutput                     `pulumi:"masterAccountId"`
+	NonMasterAccounts          OrganizationNonMasterAccountArrayOutput `pulumi:"nonMasterAccounts"`
+	Roots                      OrganizationRootArrayOutput             `pulumi:"roots"`
 }
 
 // NewOrganization registers a new resource with the given unique name, arguments, and options.
@@ -90,49 +52,29 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
-	// List of organization accounts including the master account. For a list excluding the master account, see the `nonMasterAccounts` attribute. All elements have these attributes:
-	Accounts []OrganizationAccount `pulumi:"accounts"`
-	// ARN of the root
-	Arn *string `pulumi:"arn"`
-	// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
-	AwsServiceAccessPrincipals []string `pulumi:"awsServiceAccessPrincipals"`
-	// List of Organizations policy types to enable in the Organization Root. Organization must have `featureSet` set to `ALL`. For additional information about valid policy types (e.g. `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY`, and `TAG_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
-	EnabledPolicyTypes []string `pulumi:"enabledPolicyTypes"`
-	// Specify "ALL" (default) or "CONSOLIDATED_BILLING".
-	FeatureSet *string `pulumi:"featureSet"`
-	// ARN of the master account
-	MasterAccountArn *string `pulumi:"masterAccountArn"`
-	// Email address of the master account
-	MasterAccountEmail *string `pulumi:"masterAccountEmail"`
-	// Identifier of the master account
-	MasterAccountId *string `pulumi:"masterAccountId"`
-	// List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
-	NonMasterAccounts []OrganizationNonMasterAccount `pulumi:"nonMasterAccounts"`
-	// List of organization roots. All elements have these attributes:
-	Roots []OrganizationRoot `pulumi:"roots"`
+	Accounts                   []OrganizationAccount          `pulumi:"accounts"`
+	Arn                        *string                        `pulumi:"arn"`
+	AwsServiceAccessPrincipals []string                       `pulumi:"awsServiceAccessPrincipals"`
+	EnabledPolicyTypes         []string                       `pulumi:"enabledPolicyTypes"`
+	FeatureSet                 *string                        `pulumi:"featureSet"`
+	MasterAccountArn           *string                        `pulumi:"masterAccountArn"`
+	MasterAccountEmail         *string                        `pulumi:"masterAccountEmail"`
+	MasterAccountId            *string                        `pulumi:"masterAccountId"`
+	NonMasterAccounts          []OrganizationNonMasterAccount `pulumi:"nonMasterAccounts"`
+	Roots                      []OrganizationRoot             `pulumi:"roots"`
 }
 
 type OrganizationState struct {
-	// List of organization accounts including the master account. For a list excluding the master account, see the `nonMasterAccounts` attribute. All elements have these attributes:
-	Accounts OrganizationAccountArrayInput
-	// ARN of the root
-	Arn pulumi.StringPtrInput
-	// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
+	Accounts                   OrganizationAccountArrayInput
+	Arn                        pulumi.StringPtrInput
 	AwsServiceAccessPrincipals pulumi.StringArrayInput
-	// List of Organizations policy types to enable in the Organization Root. Organization must have `featureSet` set to `ALL`. For additional information about valid policy types (e.g. `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY`, and `TAG_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
-	EnabledPolicyTypes pulumi.StringArrayInput
-	// Specify "ALL" (default) or "CONSOLIDATED_BILLING".
-	FeatureSet pulumi.StringPtrInput
-	// ARN of the master account
-	MasterAccountArn pulumi.StringPtrInput
-	// Email address of the master account
-	MasterAccountEmail pulumi.StringPtrInput
-	// Identifier of the master account
-	MasterAccountId pulumi.StringPtrInput
-	// List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
-	NonMasterAccounts OrganizationNonMasterAccountArrayInput
-	// List of organization roots. All elements have these attributes:
-	Roots OrganizationRootArrayInput
+	EnabledPolicyTypes         pulumi.StringArrayInput
+	FeatureSet                 pulumi.StringPtrInput
+	MasterAccountArn           pulumi.StringPtrInput
+	MasterAccountEmail         pulumi.StringPtrInput
+	MasterAccountId            pulumi.StringPtrInput
+	NonMasterAccounts          OrganizationNonMasterAccountArrayInput
+	Roots                      OrganizationRootArrayInput
 }
 
 func (OrganizationState) ElementType() reflect.Type {
@@ -140,22 +82,16 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
 	AwsServiceAccessPrincipals []string `pulumi:"awsServiceAccessPrincipals"`
-	// List of Organizations policy types to enable in the Organization Root. Organization must have `featureSet` set to `ALL`. For additional information about valid policy types (e.g. `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY`, and `TAG_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
-	EnabledPolicyTypes []string `pulumi:"enabledPolicyTypes"`
-	// Specify "ALL" (default) or "CONSOLIDATED_BILLING".
-	FeatureSet *string `pulumi:"featureSet"`
+	EnabledPolicyTypes         []string `pulumi:"enabledPolicyTypes"`
+	FeatureSet                 *string  `pulumi:"featureSet"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
 	AwsServiceAccessPrincipals pulumi.StringArrayInput
-	// List of Organizations policy types to enable in the Organization Root. Organization must have `featureSet` set to `ALL`. For additional information about valid policy types (e.g. `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY`, and `TAG_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
-	EnabledPolicyTypes pulumi.StringArrayInput
-	// Specify "ALL" (default) or "CONSOLIDATED_BILLING".
-	FeatureSet pulumi.StringPtrInput
+	EnabledPolicyTypes         pulumi.StringArrayInput
+	FeatureSet                 pulumi.StringPtrInput
 }
 
 func (OrganizationArgs) ElementType() reflect.Type {

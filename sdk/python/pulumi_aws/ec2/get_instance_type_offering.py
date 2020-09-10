@@ -54,9 +54,6 @@ class GetInstanceTypeOfferingResult:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
-        """
-        EC2 Instance Type.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
@@ -88,33 +85,7 @@ def get_instance_type_offering(filters: Optional[List[pulumi.InputType['GetInsta
                                preferred_instance_types: Optional[List[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypeOfferingResult:
     """
-    Information about single EC2 Instance Type Offering.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2.get_instance_type_offering(filters=[aws.ec2.GetInstanceTypeOfferingFilterArgs(
-            name="instance-type",
-            values=[
-                "t1.micro",
-                "t2.micro",
-                "t3.micro",
-            ],
-        )],
-        preferred_instance_types=[
-            "t3.micro",
-            "t2.micro",
-            "t1.micro",
-        ])
-    ```
-
-
-    :param List[pulumi.InputType['GetInstanceTypeOfferingFilterArgs']] filters: One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
-    :param str location_type: Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
-    :param List[str] preferred_instance_types: Ordered list of preferred EC2 Instance Types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

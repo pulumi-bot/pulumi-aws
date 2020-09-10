@@ -10,30 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AppSync Resolver.
 type Resolver struct {
 	pulumi.CustomResourceState
 
-	// The API ID for the GraphQL API.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// The ARN
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The CachingConfig.
-	CachingConfig ResolverCachingConfigPtrOutput `pulumi:"cachingConfig"`
-	// The DataSource name.
-	DataSource pulumi.StringPtrOutput `pulumi:"dataSource"`
-	// The field name from the schema defined in the GraphQL API.
-	Field pulumi.StringOutput `pulumi:"field"`
-	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// The PipelineConfig.
-	PipelineConfig ResolverPipelineConfigPtrOutput `pulumi:"pipelineConfig"`
-	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-	RequestTemplate pulumi.StringOutput `pulumi:"requestTemplate"`
-	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
-	ResponseTemplate pulumi.StringOutput `pulumi:"responseTemplate"`
-	// The type name from the schema defined in the GraphQL API.
-	Type pulumi.StringOutput `pulumi:"type"`
+	ApiId            pulumi.StringOutput             `pulumi:"apiId"`
+	Arn              pulumi.StringOutput             `pulumi:"arn"`
+	CachingConfig    ResolverCachingConfigPtrOutput  `pulumi:"cachingConfig"`
+	DataSource       pulumi.StringPtrOutput          `pulumi:"dataSource"`
+	Field            pulumi.StringOutput             `pulumi:"field"`
+	Kind             pulumi.StringPtrOutput          `pulumi:"kind"`
+	PipelineConfig   ResolverPipelineConfigPtrOutput `pulumi:"pipelineConfig"`
+	RequestTemplate  pulumi.StringOutput             `pulumi:"requestTemplate"`
+	ResponseTemplate pulumi.StringOutput             `pulumi:"responseTemplate"`
+	Type             pulumi.StringOutput             `pulumi:"type"`
 }
 
 // NewResolver registers a new resource with the given unique name, arguments, and options.
@@ -79,49 +68,29 @@ func GetResolver(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resolver resources.
 type resolverState struct {
-	// The API ID for the GraphQL API.
-	ApiId *string `pulumi:"apiId"`
-	// The ARN
-	Arn *string `pulumi:"arn"`
-	// The CachingConfig.
-	CachingConfig *ResolverCachingConfig `pulumi:"cachingConfig"`
-	// The DataSource name.
-	DataSource *string `pulumi:"dataSource"`
-	// The field name from the schema defined in the GraphQL API.
-	Field *string `pulumi:"field"`
-	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
-	Kind *string `pulumi:"kind"`
-	// The PipelineConfig.
-	PipelineConfig *ResolverPipelineConfig `pulumi:"pipelineConfig"`
-	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-	RequestTemplate *string `pulumi:"requestTemplate"`
-	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
-	ResponseTemplate *string `pulumi:"responseTemplate"`
-	// The type name from the schema defined in the GraphQL API.
-	Type *string `pulumi:"type"`
+	ApiId            *string                 `pulumi:"apiId"`
+	Arn              *string                 `pulumi:"arn"`
+	CachingConfig    *ResolverCachingConfig  `pulumi:"cachingConfig"`
+	DataSource       *string                 `pulumi:"dataSource"`
+	Field            *string                 `pulumi:"field"`
+	Kind             *string                 `pulumi:"kind"`
+	PipelineConfig   *ResolverPipelineConfig `pulumi:"pipelineConfig"`
+	RequestTemplate  *string                 `pulumi:"requestTemplate"`
+	ResponseTemplate *string                 `pulumi:"responseTemplate"`
+	Type             *string                 `pulumi:"type"`
 }
 
 type ResolverState struct {
-	// The API ID for the GraphQL API.
-	ApiId pulumi.StringPtrInput
-	// The ARN
-	Arn pulumi.StringPtrInput
-	// The CachingConfig.
-	CachingConfig ResolverCachingConfigPtrInput
-	// The DataSource name.
-	DataSource pulumi.StringPtrInput
-	// The field name from the schema defined in the GraphQL API.
-	Field pulumi.StringPtrInput
-	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
-	Kind pulumi.StringPtrInput
-	// The PipelineConfig.
-	PipelineConfig ResolverPipelineConfigPtrInput
-	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-	RequestTemplate pulumi.StringPtrInput
-	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
+	ApiId            pulumi.StringPtrInput
+	Arn              pulumi.StringPtrInput
+	CachingConfig    ResolverCachingConfigPtrInput
+	DataSource       pulumi.StringPtrInput
+	Field            pulumi.StringPtrInput
+	Kind             pulumi.StringPtrInput
+	PipelineConfig   ResolverPipelineConfigPtrInput
+	RequestTemplate  pulumi.StringPtrInput
 	ResponseTemplate pulumi.StringPtrInput
-	// The type name from the schema defined in the GraphQL API.
-	Type pulumi.StringPtrInput
+	Type             pulumi.StringPtrInput
 }
 
 func (ResolverState) ElementType() reflect.Type {
@@ -129,46 +98,28 @@ func (ResolverState) ElementType() reflect.Type {
 }
 
 type resolverArgs struct {
-	// The API ID for the GraphQL API.
-	ApiId string `pulumi:"apiId"`
-	// The CachingConfig.
-	CachingConfig *ResolverCachingConfig `pulumi:"cachingConfig"`
-	// The DataSource name.
-	DataSource *string `pulumi:"dataSource"`
-	// The field name from the schema defined in the GraphQL API.
-	Field string `pulumi:"field"`
-	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
-	Kind *string `pulumi:"kind"`
-	// The PipelineConfig.
-	PipelineConfig *ResolverPipelineConfig `pulumi:"pipelineConfig"`
-	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-	RequestTemplate string `pulumi:"requestTemplate"`
-	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
-	ResponseTemplate string `pulumi:"responseTemplate"`
-	// The type name from the schema defined in the GraphQL API.
-	Type string `pulumi:"type"`
+	ApiId            string                  `pulumi:"apiId"`
+	CachingConfig    *ResolverCachingConfig  `pulumi:"cachingConfig"`
+	DataSource       *string                 `pulumi:"dataSource"`
+	Field            string                  `pulumi:"field"`
+	Kind             *string                 `pulumi:"kind"`
+	PipelineConfig   *ResolverPipelineConfig `pulumi:"pipelineConfig"`
+	RequestTemplate  string                  `pulumi:"requestTemplate"`
+	ResponseTemplate string                  `pulumi:"responseTemplate"`
+	Type             string                  `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Resolver resource.
 type ResolverArgs struct {
-	// The API ID for the GraphQL API.
-	ApiId pulumi.StringInput
-	// The CachingConfig.
-	CachingConfig ResolverCachingConfigPtrInput
-	// The DataSource name.
-	DataSource pulumi.StringPtrInput
-	// The field name from the schema defined in the GraphQL API.
-	Field pulumi.StringInput
-	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
-	Kind pulumi.StringPtrInput
-	// The PipelineConfig.
-	PipelineConfig ResolverPipelineConfigPtrInput
-	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-	RequestTemplate pulumi.StringInput
-	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
+	ApiId            pulumi.StringInput
+	CachingConfig    ResolverCachingConfigPtrInput
+	DataSource       pulumi.StringPtrInput
+	Field            pulumi.StringInput
+	Kind             pulumi.StringPtrInput
+	PipelineConfig   ResolverPipelineConfigPtrInput
+	RequestTemplate  pulumi.StringInput
 	ResponseTemplate pulumi.StringInput
-	// The type name from the schema defined in the GraphQL API.
-	Type pulumi.StringInput
+	Type             pulumi.StringInput
 }
 
 func (ResolverArgs) ElementType() reflect.Type {

@@ -10,53 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a SSM resource data sync.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		hogeBucket, err := s3.NewBucket(ctx, "hogeBucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = s3.NewBucketPolicy(ctx, "hogeBucketPolicy", &s3.BucketPolicyArgs{
-// 			Bucket: hogeBucket.Bucket,
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\": \"2012-10-17\",\n", "    \"Statement\": [\n", "        {\n", "            \"Sid\": \"SSMBucketPermissionsCheck\",\n", "            \"Effect\": \"Allow\",\n", "            \"Principal\": {\n", "                \"Service\": \"ssm.amazonaws.com\"\n", "            },\n", "            \"Action\": \"s3:GetBucketAcl\",\n", "            \"Resource\": \"arn:aws:s3:::tf-test-bucket-1234\"\n", "        },\n", "        {\n", "            \"Sid\": \" SSMBucketDelivery\",\n", "            \"Effect\": \"Allow\",\n", "            \"Principal\": {\n", "                \"Service\": \"ssm.amazonaws.com\"\n", "            },\n", "            \"Action\": \"s3:PutObject\",\n", "            \"Resource\": [\"arn:aws:s3:::tf-test-bucket-1234/*\"],\n", "            \"Condition\": {\n", "                \"StringEquals\": {\n", "                    \"s3:x-amz-acl\": \"bucket-owner-full-control\"\n", "                }\n", "            }\n", "        }\n", "    ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ssm.NewResourceDataSync(ctx, "foo", &ssm.ResourceDataSyncArgs{
-// 			S3Destination: &ssm.ResourceDataSyncS3DestinationArgs{
-// 				BucketName: hogeBucket.Bucket,
-// 				Region:     hogeBucket.Region,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ResourceDataSync struct {
 	pulumi.CustomResourceState
 
-	// Name for the configuration.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Amazon S3 configuration details for the sync.
+	Name          pulumi.StringOutput                 `pulumi:"name"`
 	S3Destination ResourceDataSyncS3DestinationOutput `pulumi:"s3Destination"`
 }
 
@@ -91,16 +48,12 @@ func GetResourceDataSync(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceDataSync resources.
 type resourceDataSyncState struct {
-	// Name for the configuration.
-	Name *string `pulumi:"name"`
-	// Amazon S3 configuration details for the sync.
+	Name          *string                        `pulumi:"name"`
 	S3Destination *ResourceDataSyncS3Destination `pulumi:"s3Destination"`
 }
 
 type ResourceDataSyncState struct {
-	// Name for the configuration.
-	Name pulumi.StringPtrInput
-	// Amazon S3 configuration details for the sync.
+	Name          pulumi.StringPtrInput
 	S3Destination ResourceDataSyncS3DestinationPtrInput
 }
 
@@ -109,17 +62,13 @@ func (ResourceDataSyncState) ElementType() reflect.Type {
 }
 
 type resourceDataSyncArgs struct {
-	// Name for the configuration.
-	Name *string `pulumi:"name"`
-	// Amazon S3 configuration details for the sync.
+	Name          *string                       `pulumi:"name"`
 	S3Destination ResourceDataSyncS3Destination `pulumi:"s3Destination"`
 }
 
 // The set of arguments for constructing a ResourceDataSync resource.
 type ResourceDataSyncArgs struct {
-	// Name for the configuration.
-	Name pulumi.StringPtrInput
-	// Amazon S3 configuration details for the sync.
+	Name          pulumi.StringPtrInput
 	S3Destination ResourceDataSyncS3DestinationInput
 }
 

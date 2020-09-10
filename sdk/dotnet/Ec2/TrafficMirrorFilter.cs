@@ -9,52 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an Traffic mirror filter.\
-    /// Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
-    /// 
-    /// ## Example Usage
-    /// 
-    /// To create a basic traffic mirror filter
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Aws.Ec2.TrafficMirrorFilter("foo", new Aws.Ec2.TrafficMirrorFilterArgs
-    ///         {
-    ///             Description = "traffic mirror filter - example",
-    ///             NetworkServices = 
-    ///             {
-    ///                 "amazon-dns",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class TrafficMirrorFilter : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A description of the filter.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-        /// </summary>
         [Output("networkServices")]
         public Output<ImmutableArray<string>> NetworkServices { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -104,18 +66,11 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class TrafficMirrorFilterArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the filter.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("networkServices")]
         private InputList<string>? _networkServices;
-
-        /// <summary>
-        /// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-        /// </summary>
         public InputList<string> NetworkServices
         {
             get => _networkServices ?? (_networkServices = new InputList<string>());
@@ -124,10 +79,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -141,18 +92,11 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class TrafficMirrorFilterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the filter.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("networkServices")]
         private InputList<string>? _networkServices;
-
-        /// <summary>
-        /// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-        /// </summary>
         public InputList<string> NetworkServices
         {
             get => _networkServices ?? (_networkServices = new InputList<string>());
@@ -161,10 +105,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

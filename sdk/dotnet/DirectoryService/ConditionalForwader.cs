@@ -9,51 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DirectoryService
 {
-    /// <summary>
-    /// Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DirectoryService.ConditionalForwader("example", new Aws.DirectoryService.ConditionalForwaderArgs
-    ///         {
-    ///             DirectoryId = aws_directory_service_directory.Ad.Id,
-    ///             RemoteDomainName = "example.com",
-    ///             DnsIps = 
-    ///             {
-    ///                 "8.8.8.8",
-    ///                 "8.8.4.4",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ConditionalForwader : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The id of directory.
-        /// </summary>
         [Output("directoryId")]
         public Output<string> DirectoryId { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of forwarder IP addresses.
-        /// </summary>
         [Output("dnsIps")]
         public Output<ImmutableArray<string>> DnsIps { get; private set; } = null!;
 
-        /// <summary>
-        /// The fully qualified domain name of the remote domain for which forwarders will be used.
-        /// </summary>
         [Output("remoteDomainName")]
         public Output<string> RemoteDomainName { get; private set; } = null!;
 
@@ -103,27 +66,17 @@ namespace Pulumi.Aws.DirectoryService
 
     public sealed class ConditionalForwaderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of directory.
-        /// </summary>
         [Input("directoryId", required: true)]
         public Input<string> DirectoryId { get; set; } = null!;
 
         [Input("dnsIps", required: true)]
         private InputList<string>? _dnsIps;
-
-        /// <summary>
-        /// A list of forwarder IP addresses.
-        /// </summary>
         public InputList<string> DnsIps
         {
             get => _dnsIps ?? (_dnsIps = new InputList<string>());
             set => _dnsIps = value;
         }
 
-        /// <summary>
-        /// The fully qualified domain name of the remote domain for which forwarders will be used.
-        /// </summary>
         [Input("remoteDomainName", required: true)]
         public Input<string> RemoteDomainName { get; set; } = null!;
 
@@ -134,27 +87,17 @@ namespace Pulumi.Aws.DirectoryService
 
     public sealed class ConditionalForwaderState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of directory.
-        /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
         [Input("dnsIps")]
         private InputList<string>? _dnsIps;
-
-        /// <summary>
-        /// A list of forwarder IP addresses.
-        /// </summary>
         public InputList<string> DnsIps
         {
             get => _dnsIps ?? (_dnsIps = new InputList<string>());
             set => _dnsIps = value;
         }
 
-        /// <summary>
-        /// The fully qualified domain name of the remote domain for which forwarders will be used.
-        /// </summary>
         [Input("remoteDomainName")]
         public Input<string>? RemoteDomainName { get; set; }
 

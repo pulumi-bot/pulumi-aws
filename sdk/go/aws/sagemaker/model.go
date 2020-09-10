@@ -10,81 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a SageMaker model resource.
-//
-// ## Example Usage
-//
-// Basic usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sagemaker"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sagemaker.NewModel(ctx, "model", &sagemaker.ModelArgs{
-// 			ExecutionRoleArn: pulumi.Any(aws_iam_role.Foo.Arn),
-// 			PrimaryContainer: &sagemaker.ModelPrimaryContainerArgs{
-// 				Image: pulumi.String("174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			Statements: []iam.GetPolicyDocumentStatement{
-// 				iam.GetPolicyDocumentStatement{
-// 					Actions: []string{
-// 						"sts:AssumeRole",
-// 					},
-// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// 						iam.GetPolicyDocumentStatementPrincipal{
-// 							Type: "Service",
-// 							Identifiers: []string{
-// 								"sagemaker.amazonaws.com",
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRole(ctx, "role", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Model struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) assigned by AWS to this model.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers ModelContainerArrayOutput `pulumi:"containers"`
-	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
-	EnableNetworkIsolation pulumi.BoolPtrOutput `pulumi:"enableNetworkIsolation"`
-	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-	ExecutionRoleArn pulumi.StringOutput `pulumi:"executionRoleArn"`
-	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer ModelPrimaryContainerPtrOutput `pulumi:"primaryContainer"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig ModelVpcConfigPtrOutput `pulumi:"vpcConfig"`
+	Arn                    pulumi.StringOutput            `pulumi:"arn"`
+	Containers             ModelContainerArrayOutput      `pulumi:"containers"`
+	EnableNetworkIsolation pulumi.BoolPtrOutput           `pulumi:"enableNetworkIsolation"`
+	ExecutionRoleArn       pulumi.StringOutput            `pulumi:"executionRoleArn"`
+	Name                   pulumi.StringOutput            `pulumi:"name"`
+	PrimaryContainer       ModelPrimaryContainerPtrOutput `pulumi:"primaryContainer"`
+	Tags                   pulumi.StringMapOutput         `pulumi:"tags"`
+	VpcConfig              ModelVpcConfigPtrOutput        `pulumi:"vpcConfig"`
 }
 
 // NewModel registers a new resource with the given unique name, arguments, and options.
@@ -118,41 +54,25 @@ func GetModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Model resources.
 type modelState struct {
-	// The Amazon Resource Name (ARN) assigned by AWS to this model.
-	Arn *string `pulumi:"arn"`
-	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers []ModelContainer `pulumi:"containers"`
-	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
-	EnableNetworkIsolation *bool `pulumi:"enableNetworkIsolation"`
-	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-	ExecutionRoleArn *string `pulumi:"executionRoleArn"`
-	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer *ModelPrimaryContainer `pulumi:"primaryContainer"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig *ModelVpcConfig `pulumi:"vpcConfig"`
+	Arn                    *string                `pulumi:"arn"`
+	Containers             []ModelContainer       `pulumi:"containers"`
+	EnableNetworkIsolation *bool                  `pulumi:"enableNetworkIsolation"`
+	ExecutionRoleArn       *string                `pulumi:"executionRoleArn"`
+	Name                   *string                `pulumi:"name"`
+	PrimaryContainer       *ModelPrimaryContainer `pulumi:"primaryContainer"`
+	Tags                   map[string]string      `pulumi:"tags"`
+	VpcConfig              *ModelVpcConfig        `pulumi:"vpcConfig"`
 }
 
 type ModelState struct {
-	// The Amazon Resource Name (ARN) assigned by AWS to this model.
-	Arn pulumi.StringPtrInput
-	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers ModelContainerArrayInput
-	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
+	Arn                    pulumi.StringPtrInput
+	Containers             ModelContainerArrayInput
 	EnableNetworkIsolation pulumi.BoolPtrInput
-	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-	ExecutionRoleArn pulumi.StringPtrInput
-	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer ModelPrimaryContainerPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig ModelVpcConfigPtrInput
+	ExecutionRoleArn       pulumi.StringPtrInput
+	Name                   pulumi.StringPtrInput
+	PrimaryContainer       ModelPrimaryContainerPtrInput
+	Tags                   pulumi.StringMapInput
+	VpcConfig              ModelVpcConfigPtrInput
 }
 
 func (ModelState) ElementType() reflect.Type {
@@ -160,38 +80,24 @@ func (ModelState) ElementType() reflect.Type {
 }
 
 type modelArgs struct {
-	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers []ModelContainer `pulumi:"containers"`
-	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
-	EnableNetworkIsolation *bool `pulumi:"enableNetworkIsolation"`
-	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-	ExecutionRoleArn string `pulumi:"executionRoleArn"`
-	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer *ModelPrimaryContainer `pulumi:"primaryContainer"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig *ModelVpcConfig `pulumi:"vpcConfig"`
+	Containers             []ModelContainer       `pulumi:"containers"`
+	EnableNetworkIsolation *bool                  `pulumi:"enableNetworkIsolation"`
+	ExecutionRoleArn       string                 `pulumi:"executionRoleArn"`
+	Name                   *string                `pulumi:"name"`
+	PrimaryContainer       *ModelPrimaryContainer `pulumi:"primaryContainer"`
+	Tags                   map[string]string      `pulumi:"tags"`
+	VpcConfig              *ModelVpcConfig        `pulumi:"vpcConfig"`
 }
 
 // The set of arguments for constructing a Model resource.
 type ModelArgs struct {
-	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers ModelContainerArrayInput
-	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
+	Containers             ModelContainerArrayInput
 	EnableNetworkIsolation pulumi.BoolPtrInput
-	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-	ExecutionRoleArn pulumi.StringInput
-	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer ModelPrimaryContainerPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig ModelVpcConfigPtrInput
+	ExecutionRoleArn       pulumi.StringInput
+	Name                   pulumi.StringPtrInput
+	PrimaryContainer       ModelPrimaryContainerPtrInput
+	Tags                   pulumi.StringMapInput
+	VpcConfig              ModelVpcConfigPtrInput
 }
 
 func (ModelArgs) ElementType() reflect.Type {

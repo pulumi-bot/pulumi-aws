@@ -9,88 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iot
 {
-    /// <summary>
-    /// Creates and manages an AWS IoT certificate.
-    /// 
-    /// ## Example Usage
-    /// ### With CSR
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
-    ///         {
-    ///             Csr = File.ReadAllText("/my/csr.pem"),
-    ///             Active = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Without CSR
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
-    ///         {
-    ///             Active = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Boolean flag to indicate if the certificate should be active
-        /// </summary>
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the created certificate.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate data, in PEM format.
-        /// </summary>
         [Output("certificatePem")]
         public Output<string> CertificatePem { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate signing request. Review
-        /// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-        /// for more information on generating a certificate from a certificate signing request (CSR).
-        /// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-        /// for more information on generating keys and a certificate.
-        /// </summary>
         [Output("csr")]
         public Output<string?> Csr { get; private set; } = null!;
 
-        /// <summary>
-        /// When no CSR is provided, the private key.
-        /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
 
-        /// <summary>
-        /// When no CSR is provided, the public key.
-        /// </summary>
         [Output("publicKey")]
         public Output<string> PublicKey { get; private set; } = null!;
 
@@ -140,19 +75,9 @@ namespace Pulumi.Aws.Iot
 
     public sealed class CertificateArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Boolean flag to indicate if the certificate should be active
-        /// </summary>
         [Input("active", required: true)]
         public Input<bool> Active { get; set; } = null!;
 
-        /// <summary>
-        /// The certificate signing request. Review
-        /// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-        /// for more information on generating a certificate from a certificate signing request (CSR).
-        /// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-        /// for more information on generating keys and a certificate.
-        /// </summary>
         [Input("csr")]
         public Input<string>? Csr { get; set; }
 
@@ -163,43 +88,21 @@ namespace Pulumi.Aws.Iot
 
     public sealed class CertificateState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Boolean flag to indicate if the certificate should be active
-        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
-        /// <summary>
-        /// The ARN of the created certificate.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The certificate data, in PEM format.
-        /// </summary>
         [Input("certificatePem")]
         public Input<string>? CertificatePem { get; set; }
 
-        /// <summary>
-        /// The certificate signing request. Review
-        /// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-        /// for more information on generating a certificate from a certificate signing request (CSR).
-        /// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-        /// for more information on generating keys and a certificate.
-        /// </summary>
         [Input("csr")]
         public Input<string>? Csr { get; set; }
 
-        /// <summary>
-        /// When no CSR is provided, the private key.
-        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
-        /// <summary>
-        /// When no CSR is provided, the public key.
-        /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
 

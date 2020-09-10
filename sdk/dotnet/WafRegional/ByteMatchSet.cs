@@ -9,52 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafRegional
 {
-    /// <summary>
-    /// Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var byteSet = new Aws.WafRegional.ByteMatchSet("byteSet", new Aws.WafRegional.ByteMatchSetArgs
-    ///         {
-    ///             ByteMatchTuples = 
-    ///             {
-    ///                 new Aws.WafRegional.Inputs.ByteMatchSetByteMatchTupleArgs
-    ///                 {
-    ///                     FieldToMatch = new Aws.WafRegional.Inputs.ByteMatchSetByteMatchTupleFieldToMatchArgs
-    ///                     {
-    ///                         Data = "referer",
-    ///                         Type = "HEADER",
-    ///                     },
-    ///                     PositionalConstraint = "CONTAINS",
-    ///                     TargetString = "badrefer1",
-    ///                     TextTransformation = "NONE",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ByteMatchSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-        /// </summary>
         [Output("byteMatchTuples")]
         public Output<ImmutableArray<Outputs.ByteMatchSetByteMatchTuple>> ByteMatchTuples { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or description of the ByteMatchSet.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -106,19 +65,12 @@ namespace Pulumi.Aws.WafRegional
     {
         [Input("byteMatchTuples")]
         private InputList<Inputs.ByteMatchSetByteMatchTupleArgs>? _byteMatchTuples;
-
-        /// <summary>
-        /// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-        /// </summary>
         public InputList<Inputs.ByteMatchSetByteMatchTupleArgs> ByteMatchTuples
         {
             get => _byteMatchTuples ?? (_byteMatchTuples = new InputList<Inputs.ByteMatchSetByteMatchTupleArgs>());
             set => _byteMatchTuples = value;
         }
 
-        /// <summary>
-        /// The name or description of the ByteMatchSet.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -131,19 +83,12 @@ namespace Pulumi.Aws.WafRegional
     {
         [Input("byteMatchTuples")]
         private InputList<Inputs.ByteMatchSetByteMatchTupleGetArgs>? _byteMatchTuples;
-
-        /// <summary>
-        /// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-        /// </summary>
         public InputList<Inputs.ByteMatchSetByteMatchTupleGetArgs> ByteMatchTuples
         {
             get => _byteMatchTuples ?? (_byteMatchTuples = new InputList<Inputs.ByteMatchSetByteMatchTupleGetArgs>());
             set => _byteMatchTuples = value;
         }
 
-        /// <summary>
-        /// The name or description of the ByteMatchSet.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

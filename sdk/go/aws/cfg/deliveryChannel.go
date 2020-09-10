@@ -10,80 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS Config Delivery Channel.
-//
-// > **Note:** Delivery Channel requires a `Configuration Recorder` to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cfg"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
-// 			ForceDestroy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		role, err := iam.NewRole(ctx, "role", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": \"sts:AssumeRole\",\n", "      \"Principal\": {\n", "        \"Service\": \"config.amazonaws.com\"\n", "      },\n", "      \"Effect\": \"Allow\",\n", "      \"Sid\": \"\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooRecorder, err := cfg.NewRecorder(ctx, "fooRecorder", &cfg.RecorderArgs{
-// 			RoleArn: role.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewDeliveryChannel(ctx, "fooDeliveryChannel", &cfg.DeliveryChannelArgs{
-// 			S3BucketName: bucket.Bucket,
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			fooRecorder,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicy(ctx, "rolePolicy", &iam.RolePolicyArgs{
-// 			Role: role.ID(),
-// 			Policy: pulumi.All(bucket.Arn, bucket.Arn).ApplyT(func(_args []interface{}) (string, error) {
-// 				bucketArn := _args[0].(string)
-// 				bucketArn1 := _args[1].(string)
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": [\n", "        \"s3:*\"\n", "      ],\n", "      \"Effect\": \"Allow\",\n", "      \"Resource\": [\n", "        \"", bucketArn, "\",\n", "        \"", bucketArn1, "/*\"\n", "      ]\n", "    }\n", "  ]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DeliveryChannel struct {
 	pulumi.CustomResourceState
 
-	// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the S3 bucket used to store the configuration history.
-	S3BucketName pulumi.StringOutput `pulumi:"s3BucketName"`
-	// The prefix for the specified S3 bucket.
-	S3KeyPrefix pulumi.StringPtrOutput `pulumi:"s3KeyPrefix"`
-	// Options for how AWS Config delivers configuration snapshots. See below
+	Name                       pulumi.StringOutput                                `pulumi:"name"`
+	S3BucketName               pulumi.StringOutput                                `pulumi:"s3BucketName"`
+	S3KeyPrefix                pulumi.StringPtrOutput                             `pulumi:"s3KeyPrefix"`
 	SnapshotDeliveryProperties DeliveryChannelSnapshotDeliveryPropertiesPtrOutput `pulumi:"snapshotDeliveryProperties"`
-	// The ARN of the SNS topic that AWS Config delivers notifications to.
-	SnsTopicArn pulumi.StringPtrOutput `pulumi:"snsTopicArn"`
+	SnsTopicArn                pulumi.StringPtrOutput                             `pulumi:"snsTopicArn"`
 }
 
 // NewDeliveryChannel registers a new resource with the given unique name, arguments, and options.
@@ -117,29 +51,19 @@ func GetDeliveryChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeliveryChannel resources.
 type deliveryChannelState struct {
-	// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-	Name *string `pulumi:"name"`
-	// The name of the S3 bucket used to store the configuration history.
-	S3BucketName *string `pulumi:"s3BucketName"`
-	// The prefix for the specified S3 bucket.
-	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
-	// Options for how AWS Config delivers configuration snapshots. See below
+	Name                       *string                                    `pulumi:"name"`
+	S3BucketName               *string                                    `pulumi:"s3BucketName"`
+	S3KeyPrefix                *string                                    `pulumi:"s3KeyPrefix"`
 	SnapshotDeliveryProperties *DeliveryChannelSnapshotDeliveryProperties `pulumi:"snapshotDeliveryProperties"`
-	// The ARN of the SNS topic that AWS Config delivers notifications to.
-	SnsTopicArn *string `pulumi:"snsTopicArn"`
+	SnsTopicArn                *string                                    `pulumi:"snsTopicArn"`
 }
 
 type DeliveryChannelState struct {
-	// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-	Name pulumi.StringPtrInput
-	// The name of the S3 bucket used to store the configuration history.
-	S3BucketName pulumi.StringPtrInput
-	// The prefix for the specified S3 bucket.
-	S3KeyPrefix pulumi.StringPtrInput
-	// Options for how AWS Config delivers configuration snapshots. See below
+	Name                       pulumi.StringPtrInput
+	S3BucketName               pulumi.StringPtrInput
+	S3KeyPrefix                pulumi.StringPtrInput
 	SnapshotDeliveryProperties DeliveryChannelSnapshotDeliveryPropertiesPtrInput
-	// The ARN of the SNS topic that AWS Config delivers notifications to.
-	SnsTopicArn pulumi.StringPtrInput
+	SnsTopicArn                pulumi.StringPtrInput
 }
 
 func (DeliveryChannelState) ElementType() reflect.Type {
@@ -147,30 +71,20 @@ func (DeliveryChannelState) ElementType() reflect.Type {
 }
 
 type deliveryChannelArgs struct {
-	// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-	Name *string `pulumi:"name"`
-	// The name of the S3 bucket used to store the configuration history.
-	S3BucketName string `pulumi:"s3BucketName"`
-	// The prefix for the specified S3 bucket.
-	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
-	// Options for how AWS Config delivers configuration snapshots. See below
+	Name                       *string                                    `pulumi:"name"`
+	S3BucketName               string                                     `pulumi:"s3BucketName"`
+	S3KeyPrefix                *string                                    `pulumi:"s3KeyPrefix"`
 	SnapshotDeliveryProperties *DeliveryChannelSnapshotDeliveryProperties `pulumi:"snapshotDeliveryProperties"`
-	// The ARN of the SNS topic that AWS Config delivers notifications to.
-	SnsTopicArn *string `pulumi:"snsTopicArn"`
+	SnsTopicArn                *string                                    `pulumi:"snsTopicArn"`
 }
 
 // The set of arguments for constructing a DeliveryChannel resource.
 type DeliveryChannelArgs struct {
-	// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-	Name pulumi.StringPtrInput
-	// The name of the S3 bucket used to store the configuration history.
-	S3BucketName pulumi.StringInput
-	// The prefix for the specified S3 bucket.
-	S3KeyPrefix pulumi.StringPtrInput
-	// Options for how AWS Config delivers configuration snapshots. See below
+	Name                       pulumi.StringPtrInput
+	S3BucketName               pulumi.StringInput
+	S3KeyPrefix                pulumi.StringPtrInput
 	SnapshotDeliveryProperties DeliveryChannelSnapshotDeliveryPropertiesPtrInput
-	// The ARN of the SNS topic that AWS Config delivers notifications to.
-	SnsTopicArn pulumi.StringPtrInput
+	SnsTopicArn                pulumi.StringPtrInput
 }
 
 func (DeliveryChannelArgs) ElementType() reflect.Type {

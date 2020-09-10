@@ -20,22 +20,9 @@ class EncryptionByDefault(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `ebs.DefaultKmsKey` resource.
-
-        > **NOTE:** Removing this resource disables default EBS encryption.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ebs.EncryptionByDefault("example", enabled=True)
-        ```
-
+        Create a EncryptionByDefault resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +60,6 @@ class EncryptionByDefault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -85,9 +71,6 @@ class EncryptionByDefault(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     def translate_output_property(self, prop):

@@ -24,24 +24,9 @@ class CatalogDatabase(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Glue Catalog Database Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        aws_glue_catalog_database = aws.glue.CatalogDatabase("awsGlueCatalogDatabase", name="MyCatalogDatabase")
-        ```
-
+        Create a CatalogDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-        :param pulumi.Input[str] description: Description of the database.
-        :param pulumi.Input[str] location_uri: The location of the database (for example, an HDFS path).
-        :param pulumi.Input[str] name: The name of the database.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A list of key-value pairs that define parameters and properties of the database.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,12 +74,6 @@ class CatalogDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the Glue Catalog Database.
-        :param pulumi.Input[str] catalog_id: ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-        :param pulumi.Input[str] description: Description of the database.
-        :param pulumi.Input[str] location_uri: The location of the database (for example, an HDFS path).
-        :param pulumi.Input[str] name: The name of the database.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A list of key-value pairs that define parameters and properties of the database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,49 +90,31 @@ class CatalogDatabase(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the Glue Catalog Database.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[str]:
-        """
-        ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-        """
         return pulumi.get(self, "catalog_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the database.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="locationUri")
     def location_uri(self) -> pulumi.Output[Optional[str]]:
-        """
-        The location of the database (for example, an HDFS path).
-        """
         return pulumi.get(self, "location_uri")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the database.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A list of key-value pairs that define parameters and properties of the database.
-        """
         return pulumi.get(self, "parameters")
 
     def translate_output_property(self, prop):

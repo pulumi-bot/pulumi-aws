@@ -9,75 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DirectConnect
 {
-    /// <summary>
-    /// Provides a resource to manage the accepter's side of a Direct Connect hosted public virtual interface.
-    /// This resource accepts ownership of a public virtual interface created by another AWS account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var accepter = new Aws.Provider("accepter", new Aws.ProviderArgs
-    ///         {
-    ///         });
-    ///         // Accepter's credentials.
-    ///         var accepterCallerIdentity = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
-    ///         // Creator's side of the VIF
-    ///         var creator = new Aws.DirectConnect.HostedPublicVirtualInterface("creator", new Aws.DirectConnect.HostedPublicVirtualInterfaceArgs
-    ///         {
-    ///             ConnectionId = "dxcon-zzzzzzzz",
-    ///             OwnerAccountId = accepterCallerIdentity.Apply(accepterCallerIdentity =&gt; accepterCallerIdentity.AccountId),
-    ///             Vlan = 4094,
-    ///             AddressFamily = "ipv4",
-    ///             BgpAsn = 65352,
-    ///             CustomerAddress = "175.45.176.1/30",
-    ///             AmazonAddress = "175.45.176.2/30",
-    ///             RouteFilterPrefixes = 
-    ///             {
-    ///                 "210.52.109.0/24",
-    ///                 "175.45.176.0/22",
-    ///             },
-    ///         });
-    ///         // Accepter's side of the VIF.
-    ///         var accepterHostedPublicVirtualInterfaceAccepter = new Aws.DirectConnect.HostedPublicVirtualInterfaceAccepter("accepterHostedPublicVirtualInterfaceAccepter", new Aws.DirectConnect.HostedPublicVirtualInterfaceAccepterArgs
-    ///         {
-    ///             VirtualInterfaceId = creator.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Side", "Accepter" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Accepter,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class HostedPublicVirtualInterfaceAccepter : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the virtual interface.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Direct Connect virtual interface to accept.
-        /// </summary>
         [Output("virtualInterfaceId")]
         public Output<string> VirtualInterfaceId { get; private set; } = null!;
 
@@ -129,19 +68,12 @@ namespace Pulumi.Aws.DirectConnect
     {
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the Direct Connect virtual interface to accept.
-        /// </summary>
         [Input("virtualInterfaceId", required: true)]
         public Input<string> VirtualInterfaceId { get; set; } = null!;
 
@@ -152,27 +84,17 @@ namespace Pulumi.Aws.DirectConnect
 
     public sealed class HostedPublicVirtualInterfaceAccepterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the virtual interface.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the Direct Connect virtual interface to accept.
-        /// </summary>
         [Input("virtualInterfaceId")]
         public Input<string>? VirtualInterfaceId { get; set; }
 

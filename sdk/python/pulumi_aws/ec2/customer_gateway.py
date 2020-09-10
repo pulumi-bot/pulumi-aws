@@ -23,30 +23,9 @@ class CustomerGateway(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a customer gateway inside a VPC. These objects can be connected to VPN gateways via VPN connections, and allow you to establish tunnels between your network and the VPC.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ec2.CustomerGateway("main",
-            bgp_asn="65000",
-            ip_address="172.83.124.10",
-            tags={
-                "Name": "main-customer-gateway",
-            },
-            type="ipsec.1")
-        ```
-
+        Create a CustomerGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bgp_asn: The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-        :param pulumi.Input[str] ip_address: The IP address of the gateway's Internet-routable external interface.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags to apply to the gateway.
-        :param pulumi.Input[str] type: The type of customer gateway. The only type AWS
-               supports at this time is "ipsec.1".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,12 +77,6 @@ class CustomerGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the customer gateway.
-        :param pulumi.Input[str] bgp_asn: The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-        :param pulumi.Input[str] ip_address: The IP address of the gateway's Internet-routable external interface.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags to apply to the gateway.
-        :param pulumi.Input[str] type: The type of customer gateway. The only type AWS
-               supports at this time is "ipsec.1".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,42 +92,26 @@ class CustomerGateway(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the customer gateway.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="bgpAsn")
     def bgp_asn(self) -> pulumi.Output[str]:
-        """
-        The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-        """
         return pulumi.get(self, "bgp_asn")
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
-        """
-        The IP address of the gateway's Internet-routable external interface.
-        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Tags to apply to the gateway.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        The type of customer gateway. The only type AWS
-        supports at this time is "ipsec.1".
-        """
         return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):

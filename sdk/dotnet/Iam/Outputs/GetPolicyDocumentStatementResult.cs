@@ -13,52 +13,14 @@ namespace Pulumi.Aws.Iam.Outputs
     [OutputType]
     public sealed class GetPolicyDocumentStatementResult
     {
-        /// <summary>
-        /// A list of actions that this statement either allows
-        /// or denies. For example, ``["ec2:RunInstances", "s3:*"]``.
-        /// </summary>
         public readonly ImmutableArray<string> Actions;
-        /// <summary>
-        /// A nested configuration block (described below)
-        /// that defines a further, possibly-service-specific condition that constrains
-        /// whether this statement applies.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementConditionResult> Conditions;
-        /// <summary>
-        /// Either "Allow" or "Deny", to specify whether this
-        /// statement allows or denies the given actions. The default is "Allow".
-        /// </summary>
         public readonly string? Effect;
-        /// <summary>
-        /// A list of actions that this statement does *not*
-        /// apply to. Used to apply a policy statement to all actions *except* those
-        /// listed.
-        /// </summary>
         public readonly ImmutableArray<string> NotActions;
-        /// <summary>
-        /// Like `principals` except gives principals that
-        /// the statement does *not* apply to.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementNotPrincipalResult> NotPrincipals;
-        /// <summary>
-        /// A list of resource ARNs that this statement
-        /// does *not* apply to. Used to apply a policy statement to all resources
-        /// *except* those listed.
-        /// </summary>
         public readonly ImmutableArray<string> NotResources;
-        /// <summary>
-        /// A nested configuration block (described below)
-        /// specifying a principal (or principal pattern) to which this statement applies.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyDocumentStatementPrincipalResult> Principals;
-        /// <summary>
-        /// A list of resource ARNs that this statement applies
-        /// to. This is required by AWS if used for an IAM policy.
-        /// </summary>
         public readonly ImmutableArray<string> Resources;
-        /// <summary>
-        /// An ID for the policy statement.
-        /// </summary>
         public readonly string? Sid;
 
         [OutputConstructor]

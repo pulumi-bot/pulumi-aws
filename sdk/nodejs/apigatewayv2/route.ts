@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 route.
- * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Route("example", {
- *     apiId: aws_apigatewayv2_api.example.id,
- *     routeKey: `$default`,
- * });
- * ```
- */
 export class Route extends pulumi.CustomResource {
     /**
      * Get an existing Route resource's state with the given name, ID, and optional extra
@@ -49,52 +32,16 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
-    /**
-     * The API identifier.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * Boolean whether an API key is required for the route. Defaults to `false`.
-     */
     public readonly apiKeyRequired!: pulumi.Output<boolean | undefined>;
-    /**
-     * The authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-     */
     public readonly authorizationScopes!: pulumi.Output<string[] | undefined>;
-    /**
-     * The authorization type for the route.
-     * For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-     * For HTTP APIs, valid values are `NONE` for open access, or `JWT` for using JSON Web Tokens.
-     * Defaults to `NONE`.
-     */
     public readonly authorizationType!: pulumi.Output<string | undefined>;
-    /**
-     * The identifier of the `aws.apigatewayv2.Authorizer` resource to be associated with this route, if the authorizationType is `CUSTOM`.
-     */
     public readonly authorizerId!: pulumi.Output<string | undefined>;
-    /**
-     * The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route.
-     */
     public readonly modelSelectionExpression!: pulumi.Output<string | undefined>;
-    /**
-     * The operation name for the route.
-     */
     public readonly operationName!: pulumi.Output<string | undefined>;
-    /**
-     * The request models for the route.
-     */
     public readonly requestModels!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The route key for the route.
-     */
     public readonly routeKey!: pulumi.Output<string>;
-    /**
-     * The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route.
-     */
     public readonly routeResponseSelectionExpression!: pulumi.Output<string | undefined>;
-    /**
-     * The target for the route.
-     */
     public readonly target!: pulumi.Output<string | undefined>;
 
     /**
@@ -155,52 +102,16 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
-    /**
-     * The API identifier.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * Boolean whether an API key is required for the route. Defaults to `false`.
-     */
     readonly apiKeyRequired?: pulumi.Input<boolean>;
-    /**
-     * The authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-     */
     readonly authorizationScopes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The authorization type for the route.
-     * For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-     * For HTTP APIs, valid values are `NONE` for open access, or `JWT` for using JSON Web Tokens.
-     * Defaults to `NONE`.
-     */
     readonly authorizationType?: pulumi.Input<string>;
-    /**
-     * The identifier of the `aws.apigatewayv2.Authorizer` resource to be associated with this route, if the authorizationType is `CUSTOM`.
-     */
     readonly authorizerId?: pulumi.Input<string>;
-    /**
-     * The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route.
-     */
     readonly modelSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The operation name for the route.
-     */
     readonly operationName?: pulumi.Input<string>;
-    /**
-     * The request models for the route.
-     */
     readonly requestModels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The route key for the route.
-     */
     readonly routeKey?: pulumi.Input<string>;
-    /**
-     * The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route.
-     */
     readonly routeResponseSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The target for the route.
-     */
     readonly target?: pulumi.Input<string>;
 }
 
@@ -208,51 +119,15 @@ export interface RouteState {
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
-    /**
-     * The API identifier.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * Boolean whether an API key is required for the route. Defaults to `false`.
-     */
     readonly apiKeyRequired?: pulumi.Input<boolean>;
-    /**
-     * The authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-     */
     readonly authorizationScopes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The authorization type for the route.
-     * For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-     * For HTTP APIs, valid values are `NONE` for open access, or `JWT` for using JSON Web Tokens.
-     * Defaults to `NONE`.
-     */
     readonly authorizationType?: pulumi.Input<string>;
-    /**
-     * The identifier of the `aws.apigatewayv2.Authorizer` resource to be associated with this route, if the authorizationType is `CUSTOM`.
-     */
     readonly authorizerId?: pulumi.Input<string>;
-    /**
-     * The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route.
-     */
     readonly modelSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The operation name for the route.
-     */
     readonly operationName?: pulumi.Input<string>;
-    /**
-     * The request models for the route.
-     */
     readonly requestModels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The route key for the route.
-     */
     readonly routeKey: pulumi.Input<string>;
-    /**
-     * The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route.
-     */
     readonly routeResponseSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The target for the route.
-     */
     readonly target?: pulumi.Input<string>;
 }

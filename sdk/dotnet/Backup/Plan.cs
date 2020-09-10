@@ -9,65 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Backup
 {
-    /// <summary>
-    /// Provides an AWS Backup plan resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Backup.Plan("example", new Aws.Backup.PlanArgs
-    ///         {
-    ///             Rules = 
-    ///             {
-    ///                 new Aws.Backup.Inputs.PlanRuleArgs
-    ///                 {
-    ///                     RuleName = "tf_example_backup_rule",
-    ///                     TargetVaultName = aws_backup_vault.Test.Name,
-    ///                     Schedule = "cron(0 12 * * ? *)",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Plan : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the backup plan.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The display name of a backup plan.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-        /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.PlanRule>> Rules { get; private set; } = null!;
 
-        /// <summary>
-        /// Metadata that you can assign to help organize the plans you create.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -117,18 +72,11 @@ namespace Pulumi.Aws.Backup
 
     public sealed class PlanArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The display name of a backup plan.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("rules", required: true)]
         private InputList<Inputs.PlanRuleArgs>? _rules;
-
-        /// <summary>
-        /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-        /// </summary>
         public InputList<Inputs.PlanRuleArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.PlanRuleArgs>());
@@ -137,10 +85,6 @@ namespace Pulumi.Aws.Backup
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Metadata that you can assign to help organize the plans you create.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -154,24 +98,14 @@ namespace Pulumi.Aws.Backup
 
     public sealed class PlanState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the backup plan.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The display name of a backup plan.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.PlanRuleGetArgs>? _rules;
-
-        /// <summary>
-        /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-        /// </summary>
         public InputList<Inputs.PlanRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.PlanRuleGetArgs>());
@@ -180,19 +114,12 @@ namespace Pulumi.Aws.Backup
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Metadata that you can assign to help organize the plans you create.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

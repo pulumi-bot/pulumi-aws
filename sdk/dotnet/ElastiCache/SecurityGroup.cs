@@ -9,57 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElastiCache
 {
-    /// <summary>
-    /// Provides an ElastiCache Security Group to control access to one or more cache
-    /// clusters.
-    /// 
-    /// &gt; **NOTE:** ElastiCache Security Groups are for use only when working with an
-    /// ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
-    /// ElastiCache Subnet Group resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var barSecurityGroup = new Aws.Ec2.SecurityGroup("barSecurityGroup", new Aws.Ec2.SecurityGroupArgs
-    ///         {
-    ///         });
-    ///         var barElasticache_securityGroupSecurityGroup = new Aws.ElastiCache.SecurityGroup("barElasticache/securityGroupSecurityGroup", new Aws.ElastiCache.SecurityGroupArgs
-    ///         {
-    ///             SecurityGroupNames = 
-    ///             {
-    ///                 barSecurityGroup.Name,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// description for the cache security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Name for the cache security group. This value is stored as a lowercase string.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// List of EC2 security group names to be
-        /// authorized for ingress to the cache security group
-        /// </summary>
         [Output("securityGroupNames")]
         public Output<ImmutableArray<string>> SecurityGroupNames { get; private set; } = null!;
 
@@ -109,25 +66,14 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class SecurityGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// description for the cache security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name for the cache security group. This value is stored as a lowercase string.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("securityGroupNames", required: true)]
         private InputList<string>? _securityGroupNames;
-
-        /// <summary>
-        /// List of EC2 security group names to be
-        /// authorized for ingress to the cache security group
-        /// </summary>
         public InputList<string> SecurityGroupNames
         {
             get => _securityGroupNames ?? (_securityGroupNames = new InputList<string>());
@@ -142,25 +88,14 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class SecurityGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// description for the cache security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name for the cache security group. This value is stored as a lowercase string.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("securityGroupNames")]
         private InputList<string>? _securityGroupNames;
-
-        /// <summary>
-        /// List of EC2 security group names to be
-        /// authorized for ingress to the cache security group
-        /// </summary>
         public InputList<string> SecurityGroupNames
         {
             get => _securityGroupNames ?? (_securityGroupNames = new InputList<string>());

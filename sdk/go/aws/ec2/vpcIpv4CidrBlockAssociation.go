@@ -10,47 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to associate additional IPv4 CIDR blocks with a VPC.
-//
-// When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
-// The `ec2.VpcIpv4CidrBlockAssociation` resource allows further IPv4 CIDR blocks to be added to the VPC.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := ec2.NewVpc(ctx, "main", &ec2.VpcArgs{
-// 			CidrBlock: pulumi.String("10.0.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewVpcIpv4CidrBlockAssociation(ctx, "secondaryCidr", &ec2.VpcIpv4CidrBlockAssociationArgs{
-// 			VpcId:     main.ID(),
-// 			CidrBlock: pulumi.String("172.2.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VpcIpv4CidrBlockAssociation struct {
 	pulumi.CustomResourceState
 
-	// The additional IPv4 CIDR block to associate with the VPC.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
-	// The ID of the VPC to make the association with.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	VpcId     pulumi.StringOutput `pulumi:"vpcId"`
 }
 
 // NewVpcIpv4CidrBlockAssociation registers a new resource with the given unique name, arguments, and options.
@@ -87,17 +51,13 @@ func GetVpcIpv4CidrBlockAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcIpv4CidrBlockAssociation resources.
 type vpcIpv4CidrBlockAssociationState struct {
-	// The additional IPv4 CIDR block to associate with the VPC.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// The ID of the VPC to make the association with.
-	VpcId *string `pulumi:"vpcId"`
+	VpcId     *string `pulumi:"vpcId"`
 }
 
 type VpcIpv4CidrBlockAssociationState struct {
-	// The additional IPv4 CIDR block to associate with the VPC.
 	CidrBlock pulumi.StringPtrInput
-	// The ID of the VPC to make the association with.
-	VpcId pulumi.StringPtrInput
+	VpcId     pulumi.StringPtrInput
 }
 
 func (VpcIpv4CidrBlockAssociationState) ElementType() reflect.Type {
@@ -105,18 +65,14 @@ func (VpcIpv4CidrBlockAssociationState) ElementType() reflect.Type {
 }
 
 type vpcIpv4CidrBlockAssociationArgs struct {
-	// The additional IPv4 CIDR block to associate with the VPC.
 	CidrBlock string `pulumi:"cidrBlock"`
-	// The ID of the VPC to make the association with.
-	VpcId string `pulumi:"vpcId"`
+	VpcId     string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a VpcIpv4CidrBlockAssociation resource.
 type VpcIpv4CidrBlockAssociationArgs struct {
-	// The additional IPv4 CIDR block to associate with the VPC.
 	CidrBlock pulumi.StringInput
-	// The ID of the VPC to make the association with.
-	VpcId pulumi.StringInput
+	VpcId     pulumi.StringInput
 }
 
 func (VpcIpv4CidrBlockAssociationArgs) ElementType() reflect.Type {

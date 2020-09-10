@@ -25,42 +25,9 @@ class Configuration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an MQ Configuration Resource.
-
-        For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.mq.Configuration("example",
-            data=\"\"\"<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-        <broker xmlns="http://activemq.apache.org/schema/core">
-          <plugins>
-            <forcePersistencyModeBrokerPlugin persistenceFlag="true"/>
-            <statisticsBrokerPlugin/>
-            <timeStampingBrokerPlugin ttlCeiling="86400000" zeroExpirationOverride="86400000"/>
-          </plugins>
-        </broker>
-
-        \"\"\",
-            description="Example Configuration",
-            engine_type="ActiveMQ",
-            engine_version="5.15.0")
-        ```
-
+        Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data: The broker configuration in XML format.
-               See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-               for supported parameters and format of the XML.
-        :param pulumi.Input[str] description: The description of the configuration.
-        :param pulumi.Input[str] engine_type: The type of broker engine.
-        :param pulumi.Input[str] engine_version: The version of the broker engine.
-        :param pulumi.Input[str] name: The name of the configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,16 +85,6 @@ class Configuration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the configuration.
-        :param pulumi.Input[str] data: The broker configuration in XML format.
-               See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-               for supported parameters and format of the XML.
-        :param pulumi.Input[str] description: The description of the configuration.
-        :param pulumi.Input[str] engine_type: The type of broker engine.
-        :param pulumi.Input[str] engine_version: The version of the broker engine.
-        :param pulumi.Input[float] latest_revision: The latest revision of the configuration.
-        :param pulumi.Input[str] name: The name of the configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -146,67 +103,41 @@ class Configuration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the configuration.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def data(self) -> pulumi.Output[str]:
-        """
-        The broker configuration in XML format.
-        See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-        for supported parameters and format of the XML.
-        """
         return pulumi.get(self, "data")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the configuration.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> pulumi.Output[str]:
-        """
-        The type of broker engine.
-        """
         return pulumi.get(self, "engine_type")
 
     @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
-        """
-        The version of the broker engine.
-        """
         return pulumi.get(self, "engine_version")
 
     @property
     @pulumi.getter(name="latestRevision")
     def latest_revision(self) -> pulumi.Output[float]:
-        """
-        The latest revision of the configuration.
-        """
         return pulumi.get(self, "latest_revision")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the configuration
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

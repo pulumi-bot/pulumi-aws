@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a SageMaker Endpoint resource.
- *
- * ## Example Usage
- *
- * Basic usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const endpoint = new aws.sagemaker.Endpoint("endpoint", {
- *     endpointConfigName: aws_sagemaker_endpoint_configuration.ec.name,
- *     tags: {
- *         Name: "foo",
- *     },
- * });
- * ```
- */
 export class Endpoint extends pulumi.CustomResource {
     /**
      * Get an existing Endpoint resource's state with the given name, ID, and optional extra
@@ -51,21 +32,9 @@ export class Endpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === Endpoint.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the endpoint configuration to use.
-     */
     public readonly endpointConfigName!: pulumi.Output<string>;
-    /**
-     * The name of the endpoint. If omitted, this provider will assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -109,21 +78,9 @@ export class Endpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Endpoint resources.
  */
 export interface EndpointState {
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the endpoint configuration to use.
-     */
     readonly endpointConfigName?: pulumi.Input<string>;
-    /**
-     * The name of the endpoint. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -131,16 +88,7 @@ export interface EndpointState {
  * The set of arguments for constructing a Endpoint resource.
  */
 export interface EndpointArgs {
-    /**
-     * The name of the endpoint configuration to use.
-     */
     readonly endpointConfigName: pulumi.Input<string>;
-    /**
-     * The name of the endpoint. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

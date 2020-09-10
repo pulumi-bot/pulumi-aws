@@ -10,62 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Enables AWS Shield Advanced for a specific AWS resource.
-// The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
-//
-// ## Example Usage
-// ### Create protection
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/shield"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetAvailabilityZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		currentRegion, err := aws.GetRegion(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		currentCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooEip, err := ec2.NewEip(ctx, "fooEip", &ec2.EipArgs{
-// 			Vpc: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = shield.NewProtection(ctx, "fooProtection", &shield.ProtectionArgs{
-// 			ResourceArn: fooEip.ID().ApplyT(func(id string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v", "arn:aws:ec2:", currentRegion.Name, ":", currentCallerIdentity.AccountId, ":eip-allocation/", id), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Protection struct {
 	pulumi.CustomResourceState
 
-	// A friendly name for the Protection you are creating.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ARN (Amazon Resource Name) of the resource to be protected.
+	Name        pulumi.StringOutput `pulumi:"name"`
 	ResourceArn pulumi.StringOutput `pulumi:"resourceArn"`
 }
 
@@ -100,16 +48,12 @@ func GetProtection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Protection resources.
 type protectionState struct {
-	// A friendly name for the Protection you are creating.
-	Name *string `pulumi:"name"`
-	// The ARN (Amazon Resource Name) of the resource to be protected.
+	Name        *string `pulumi:"name"`
 	ResourceArn *string `pulumi:"resourceArn"`
 }
 
 type ProtectionState struct {
-	// A friendly name for the Protection you are creating.
-	Name pulumi.StringPtrInput
-	// The ARN (Amazon Resource Name) of the resource to be protected.
+	Name        pulumi.StringPtrInput
 	ResourceArn pulumi.StringPtrInput
 }
 
@@ -118,17 +62,13 @@ func (ProtectionState) ElementType() reflect.Type {
 }
 
 type protectionArgs struct {
-	// A friendly name for the Protection you are creating.
-	Name *string `pulumi:"name"`
-	// The ARN (Amazon Resource Name) of the resource to be protected.
-	ResourceArn string `pulumi:"resourceArn"`
+	Name        *string `pulumi:"name"`
+	ResourceArn string  `pulumi:"resourceArn"`
 }
 
 // The set of arguments for constructing a Protection resource.
 type ProtectionArgs struct {
-	// A friendly name for the Protection you are creating.
-	Name pulumi.StringPtrInput
-	// The ARN (Amazon Resource Name) of the resource to be protected.
+	Name        pulumi.StringPtrInput
 	ResourceArn pulumi.StringInput
 }
 

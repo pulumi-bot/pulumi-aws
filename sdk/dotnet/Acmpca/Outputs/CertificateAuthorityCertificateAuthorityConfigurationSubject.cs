@@ -13,57 +13,18 @@ namespace Pulumi.Aws.Acmpca.Outputs
     [OutputType]
     public sealed class CertificateAuthorityCertificateAuthorityConfigurationSubject
     {
-        /// <summary>
-        /// Fully qualified domain name (FQDN) associated with the certificate subject.
-        /// </summary>
         public readonly string? CommonName;
-        /// <summary>
-        /// Two digit code that specifies the country in which the certificate subject located.
-        /// </summary>
         public readonly string? Country;
-        /// <summary>
-        /// Disambiguating information for the certificate subject.
-        /// </summary>
         public readonly string? DistinguishedNameQualifier;
-        /// <summary>
-        /// Typically a qualifier appended to the name of an individual. Examples include Jr. for junior, Sr. for senior, and III for third.
-        /// </summary>
         public readonly string? GenerationQualifier;
-        /// <summary>
-        /// First name.
-        /// </summary>
         public readonly string? GivenName;
-        /// <summary>
-        /// Concatenation that typically contains the first letter of the `given_name`, the first letter of the middle name if one exists, and the first letter of the `surname`.
-        /// </summary>
         public readonly string? Initials;
-        /// <summary>
-        /// The locality (such as a city or town) in which the certificate subject is located.
-        /// </summary>
         public readonly string? Locality;
-        /// <summary>
-        /// Legal name of the organization with which the certificate subject is affiliated.
-        /// </summary>
         public readonly string? Organization;
-        /// <summary>
-        /// A subdivision or unit of the organization (such as sales or finance) with which the certificate subject is affiliated.
-        /// </summary>
         public readonly string? OrganizationalUnit;
-        /// <summary>
-        /// Typically a shortened version of a longer `given_name`. For example, Jonathan is often shortened to John. Elizabeth is often shortened to Beth, Liz, or Eliza.
-        /// </summary>
         public readonly string? Pseudonym;
-        /// <summary>
-        /// State in which the subject of the certificate is located.
-        /// </summary>
         public readonly string? State;
-        /// <summary>
-        /// Family name. In the US and the UK for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first.
-        /// </summary>
         public readonly string? Surname;
-        /// <summary>
-        /// A title such as Mr. or Ms. which is pre-pended to the name to refer formally to the certificate subject.
-        /// </summary>
         public readonly string? Title;
 
         [OutputConstructor]

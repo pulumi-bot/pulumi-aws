@@ -9,99 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cur
 {
-    /// <summary>
-    /// Manages Cost and Usage Report Definitions.
-    /// 
-    /// &gt; *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
-    /// 
-    /// &gt; *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleCurReportDefinition = new Aws.Cur.ReportDefinition("exampleCurReportDefinition", new Aws.Cur.ReportDefinitionArgs
-    ///         {
-    ///             AdditionalArtifacts = 
-    ///             {
-    ///                 "REDSHIFT",
-    ///                 "QUICKSIGHT",
-    ///             },
-    ///             AdditionalSchemaElements = 
-    ///             {
-    ///                 "RESOURCES",
-    ///             },
-    ///             Compression = "GZIP",
-    ///             Format = "textORcsv",
-    ///             ReportName = "example-cur-report-definition",
-    ///             S3Bucket = "example-bucket-name",
-    ///             S3Region = "us-east-1",
-    ///             TimeUnit = "HOURLY",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ReportDefinition : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-        /// </summary>
         [Output("additionalArtifacts")]
         public Output<ImmutableArray<string>> AdditionalArtifacts { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of schema elements. Valid values are: RESOURCES.
-        /// </summary>
         [Output("additionalSchemaElements")]
         public Output<ImmutableArray<string>> AdditionalSchemaElements { get; private set; } = null!;
 
-        /// <summary>
-        /// Compression format for report. Valid values are: GZIP, ZIP.
-        /// </summary>
         [Output("compression")]
         public Output<string> Compression { get; private set; } = null!;
 
-        /// <summary>
-        /// Format for report. Valid values are: textORcsv.
-        /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-        /// </summary>
         [Output("reportName")]
         public Output<string> ReportName { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the existing S3 bucket to hold generated reports.
-        /// </summary>
         [Output("s3Bucket")]
         public Output<string> S3Bucket { get; private set; } = null!;
 
-        /// <summary>
-        /// Report path prefix. Limited to 256 characters.
-        /// </summary>
         [Output("s3Prefix")]
         public Output<string?> S3Prefix { get; private set; } = null!;
 
-        /// <summary>
-        /// Region of the existing S3 bucket to hold generated reports.
-        /// </summary>
         [Output("s3Region")]
         public Output<string> S3Region { get; private set; } = null!;
 
-        /// <summary>
-        /// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-        /// </summary>
         [Output("timeUnit")]
         public Output<string> TimeUnit { get; private set; } = null!;
 
@@ -153,10 +86,6 @@ namespace Pulumi.Aws.Cur
     {
         [Input("additionalArtifacts")]
         private InputList<string>? _additionalArtifacts;
-
-        /// <summary>
-        /// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-        /// </summary>
         public InputList<string> AdditionalArtifacts
         {
             get => _additionalArtifacts ?? (_additionalArtifacts = new InputList<string>());
@@ -165,55 +94,30 @@ namespace Pulumi.Aws.Cur
 
         [Input("additionalSchemaElements", required: true)]
         private InputList<string>? _additionalSchemaElements;
-
-        /// <summary>
-        /// A list of schema elements. Valid values are: RESOURCES.
-        /// </summary>
         public InputList<string> AdditionalSchemaElements
         {
             get => _additionalSchemaElements ?? (_additionalSchemaElements = new InputList<string>());
             set => _additionalSchemaElements = value;
         }
 
-        /// <summary>
-        /// Compression format for report. Valid values are: GZIP, ZIP.
-        /// </summary>
         [Input("compression", required: true)]
         public Input<string> Compression { get; set; } = null!;
 
-        /// <summary>
-        /// Format for report. Valid values are: textORcsv.
-        /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
-        /// <summary>
-        /// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-        /// </summary>
         [Input("reportName", required: true)]
         public Input<string> ReportName { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the existing S3 bucket to hold generated reports.
-        /// </summary>
         [Input("s3Bucket", required: true)]
         public Input<string> S3Bucket { get; set; } = null!;
 
-        /// <summary>
-        /// Report path prefix. Limited to 256 characters.
-        /// </summary>
         [Input("s3Prefix")]
         public Input<string>? S3Prefix { get; set; }
 
-        /// <summary>
-        /// Region of the existing S3 bucket to hold generated reports.
-        /// </summary>
         [Input("s3Region", required: true)]
         public Input<string> S3Region { get; set; } = null!;
 
-        /// <summary>
-        /// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-        /// </summary>
         [Input("timeUnit", required: true)]
         public Input<string> TimeUnit { get; set; } = null!;
 
@@ -226,10 +130,6 @@ namespace Pulumi.Aws.Cur
     {
         [Input("additionalArtifacts")]
         private InputList<string>? _additionalArtifacts;
-
-        /// <summary>
-        /// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-        /// </summary>
         public InputList<string> AdditionalArtifacts
         {
             get => _additionalArtifacts ?? (_additionalArtifacts = new InputList<string>());
@@ -238,55 +138,30 @@ namespace Pulumi.Aws.Cur
 
         [Input("additionalSchemaElements")]
         private InputList<string>? _additionalSchemaElements;
-
-        /// <summary>
-        /// A list of schema elements. Valid values are: RESOURCES.
-        /// </summary>
         public InputList<string> AdditionalSchemaElements
         {
             get => _additionalSchemaElements ?? (_additionalSchemaElements = new InputList<string>());
             set => _additionalSchemaElements = value;
         }
 
-        /// <summary>
-        /// Compression format for report. Valid values are: GZIP, ZIP.
-        /// </summary>
         [Input("compression")]
         public Input<string>? Compression { get; set; }
 
-        /// <summary>
-        /// Format for report. Valid values are: textORcsv.
-        /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
-        /// <summary>
-        /// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-        /// </summary>
         [Input("reportName")]
         public Input<string>? ReportName { get; set; }
 
-        /// <summary>
-        /// Name of the existing S3 bucket to hold generated reports.
-        /// </summary>
         [Input("s3Bucket")]
         public Input<string>? S3Bucket { get; set; }
 
-        /// <summary>
-        /// Report path prefix. Limited to 256 characters.
-        /// </summary>
         [Input("s3Prefix")]
         public Input<string>? S3Prefix { get; set; }
 
-        /// <summary>
-        /// Region of the existing S3 bucket to hold generated reports.
-        /// </summary>
         [Input("s3Region")]
         public Input<string>? S3Region { get; set; }
 
-        /// <summary>
-        /// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-        /// </summary>
         [Input("timeUnit")]
         public Input<string>? TimeUnit { get; set; }
 

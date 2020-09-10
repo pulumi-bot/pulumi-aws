@@ -9,66 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Swf
 {
-    /// <summary>
-    /// Provides an SWF Domain resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// To register a basic SWF domain:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Aws.Swf.Domain("foo", new Aws.Swf.DomainArgs
-    ///         {
-    ///             Description = "SWF Domain",
-    ///             WorkflowExecutionRetentionPeriodInDays = "30",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain description.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the domain. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
-        /// </summary>
         [Output("workflowExecutionRetentionPeriodInDays")]
         public Output<string> WorkflowExecutionRetentionPeriodInDays { get; private set; } = null!;
 
@@ -118,39 +75,23 @@ namespace Pulumi.Aws.Swf
 
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The domain description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the domain. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
-        /// </summary>
         [Input("workflowExecutionRetentionPeriodInDays", required: true)]
         public Input<string> WorkflowExecutionRetentionPeriodInDays { get; set; } = null!;
 
@@ -161,45 +102,26 @@ namespace Pulumi.Aws.Swf
 
     public sealed class DomainState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The domain description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the domain. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
-        /// </summary>
         [Input("workflowExecutionRetentionPeriodInDays")]
         public Input<string>? WorkflowExecutionRetentionPeriodInDays { get; set; }
 

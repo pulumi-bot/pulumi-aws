@@ -12,15 +12,9 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class RouteSpecHttpRouteGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The action to take if a match is determined.
-        /// </summary>
         [Input("action", required: true)]
         public Input<Inputs.RouteSpecHttpRouteActionGetArgs> Action { get; set; } = null!;
 
-        /// <summary>
-        /// The criteria for determining an HTTP request match.
-        /// </summary>
         [Input("match", required: true)]
         public Input<Inputs.RouteSpecHttpRouteMatchGetArgs> Match { get; set; } = null!;
 

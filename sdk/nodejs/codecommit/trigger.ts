@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CodeCommit Trigger Resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testRepository = new aws.codecommit.Repository("testRepository", {repositoryName: "test"});
- * const testTrigger = new aws.codecommit.Trigger("testTrigger", {
- *     repositoryName: testRepository.repositoryName,
- *     triggers: [{
- *         name: "all",
- *         events: ["all"],
- *         destinationArn: aws_sns_topic.test.arn,
- *     }],
- * });
- * ```
- */
 export class Trigger extends pulumi.CustomResource {
     /**
      * Get an existing Trigger resource's state with the given name, ID, and optional extra
@@ -55,9 +35,6 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly configurationId!: pulumi.Output<string>;
-    /**
-     * The name for the repository. This needs to be less than 100 characters.
-     */
     public readonly repositoryName!: pulumi.Output<string>;
     public readonly triggers!: pulumi.Output<outputs.codecommit.TriggerTrigger[]>;
 
@@ -104,9 +81,6 @@ export class Trigger extends pulumi.CustomResource {
  */
 export interface TriggerState {
     readonly configurationId?: pulumi.Input<string>;
-    /**
-     * The name for the repository. This needs to be less than 100 characters.
-     */
     readonly repositoryName?: pulumi.Input<string>;
     readonly triggers?: pulumi.Input<pulumi.Input<inputs.codecommit.TriggerTrigger>[]>;
 }
@@ -115,9 +89,6 @@ export interface TriggerState {
  * The set of arguments for constructing a Trigger resource.
  */
 export interface TriggerArgs {
-    /**
-     * The name for the repository. This needs to be less than 100 characters.
-     */
     readonly repositoryName: pulumi.Input<string>;
     readonly triggers: pulumi.Input<pulumi.Input<inputs.codecommit.TriggerTrigger>[]>;
 }

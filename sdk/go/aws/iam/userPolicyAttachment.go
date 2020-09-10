@@ -10,51 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Attaches a Managed IAM Policy to an IAM user
-//
-// > **NOTE:** The usage of this resource conflicts with the `iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		user, err := iam.NewUser(ctx, "user", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		policy, err := iam.NewPolicy(ctx, "policy", &iam.PolicyArgs{
-// 			Description: pulumi.String("A test policy"),
-// 			Policy:      pulumi.String(""),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewUserPolicyAttachment(ctx, "test_attach", &iam.UserPolicyAttachmentArgs{
-// 			PolicyArn: policy.Arn,
-// 			User:      user.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type UserPolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the policy you want to apply
 	PolicyArn pulumi.StringOutput `pulumi:"policyArn"`
-	// The user the policy should be applied to
-	User pulumi.StringOutput `pulumi:"user"`
+	User      pulumi.StringOutput `pulumi:"user"`
 }
 
 // NewUserPolicyAttachment registers a new resource with the given unique name, arguments, and options.
@@ -91,17 +51,13 @@ func GetUserPolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserPolicyAttachment resources.
 type userPolicyAttachmentState struct {
-	// The ARN of the policy you want to apply
 	PolicyArn *string `pulumi:"policyArn"`
-	// The user the policy should be applied to
-	User *string `pulumi:"user"`
+	User      *string `pulumi:"user"`
 }
 
 type UserPolicyAttachmentState struct {
-	// The ARN of the policy you want to apply
 	PolicyArn pulumi.StringPtrInput
-	// The user the policy should be applied to
-	User pulumi.StringPtrInput
+	User      pulumi.StringPtrInput
 }
 
 func (UserPolicyAttachmentState) ElementType() reflect.Type {
@@ -109,18 +65,14 @@ func (UserPolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type userPolicyAttachmentArgs struct {
-	// The ARN of the policy you want to apply
-	PolicyArn string `pulumi:"policyArn"`
-	// The user the policy should be applied to
-	User interface{} `pulumi:"user"`
+	PolicyArn string      `pulumi:"policyArn"`
+	User      interface{} `pulumi:"user"`
 }
 
 // The set of arguments for constructing a UserPolicyAttachment resource.
 type UserPolicyAttachmentArgs struct {
-	// The ARN of the policy you want to apply
 	PolicyArn pulumi.StringInput
-	// The user the policy should be applied to
-	User pulumi.Input
+	User      pulumi.Input
 }
 
 func (UserPolicyAttachmentArgs) ElementType() reflect.Type {

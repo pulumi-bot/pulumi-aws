@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a VPC DHCP Options Association resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const dnsResolver = new aws.ec2.VpcDhcpOptionsAssociation("dnsResolver", {
- *     vpcId: aws_vpc.foo.id,
- *     dhcpOptionsId: aws_vpc_dhcp_options.foo.id,
- * });
- * ```
- * ## Remarks
- *
- * * You can only associate one DHCP Options Set to a given VPC ID.
- * * Removing the DHCP Options Association automatically sets AWS's `default` DHCP Options Set to the VPC.
- */
 export class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
     /**
      * Get an existing VpcDhcpOptionsAssociation resource's state with the given name, ID, and optional extra
@@ -51,13 +32,7 @@ export class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpcDhcpOptionsAssociation.__pulumiType;
     }
 
-    /**
-     * The ID of the DHCP Options Set to associate to the VPC.
-     */
     public readonly dhcpOptionsId!: pulumi.Output<string>;
-    /**
-     * The ID of the VPC to which we would like to associate a DHCP Options Set.
-     */
     public readonly vpcId!: pulumi.Output<string>;
 
     /**
@@ -100,13 +75,7 @@ export class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcDhcpOptionsAssociation resources.
  */
 export interface VpcDhcpOptionsAssociationState {
-    /**
-     * The ID of the DHCP Options Set to associate to the VPC.
-     */
     readonly dhcpOptionsId?: pulumi.Input<string>;
-    /**
-     * The ID of the VPC to which we would like to associate a DHCP Options Set.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -114,12 +83,6 @@ export interface VpcDhcpOptionsAssociationState {
  * The set of arguments for constructing a VpcDhcpOptionsAssociation resource.
  */
 export interface VpcDhcpOptionsAssociationArgs {
-    /**
-     * The ID of the DHCP Options Set to associate to the VPC.
-     */
     readonly dhcpOptionsId: pulumi.Input<string>;
-    /**
-     * The ID of the VPC to which we would like to associate a DHCP Options Set.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

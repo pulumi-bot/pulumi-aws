@@ -9,107 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Route53
 {
-    /// <summary>
-    /// Provides a Route53 query logging configuration resource.
-    /// 
-    /// &gt; **NOTE:** There are restrictions on the configuration of query logging. Notably,
-    /// the CloudWatch log group must be in the `us-east-1` region,
-    /// a permissive CloudWatch log resource policy must be in place, and
-    /// the Route53 hosted zone must be public.
-    /// See [Configuring Logging for DNS Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html?console_help=true#query-logs-configuring) for additional details.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Example CloudWatch log group in us-east-1
-    ///         var us_east_1 = new Aws.Provider("us-east-1", new Aws.ProviderArgs
-    ///         {
-    ///             Region = "us-east-1",
-    ///         });
-    ///         var awsRoute53ExampleCom = new Aws.CloudWatch.LogGroup("awsRoute53ExampleCom", new Aws.CloudWatch.LogGroupArgs
-    ///         {
-    ///             RetentionInDays = 30,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Us_east_1,
-    ///         });
-    ///         // Example CloudWatch log resource policy to allow Route53 to write logs
-    ///         // to any log group under /aws/route53/*
-    ///         var route53_query_logging_policyPolicyDocument = Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "logs:CreateLogStream",
-    ///                         "logs:PutLogEvents",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         "arn:aws:logs:*:*:log-group:/aws/route53/*",
-    ///                     },
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
-    ///                         {
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 "route53.amazonaws.com",
-    ///                             },
-    ///                             Type = "Service",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var route53_query_logging_policyLogResourcePolicy = new Aws.CloudWatch.LogResourcePolicy("route53-query-logging-policyLogResourcePolicy", new Aws.CloudWatch.LogResourcePolicyArgs
-    ///         {
-    ///             PolicyDocument = route53_query_logging_policyPolicyDocument.Apply(route53_query_logging_policyPolicyDocument =&gt; route53_query_logging_policyPolicyDocument.Json),
-    ///             PolicyName = "route53-query-logging-policy",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Us_east_1,
-    ///         });
-    ///         // Example Route53 zone with query logging
-    ///         var exampleComZone = new Aws.Route53.Zone("exampleComZone", new Aws.Route53.ZoneArgs
-    ///         {
-    ///         });
-    ///         var exampleComQueryLog = new Aws.Route53.QueryLog("exampleComQueryLog", new Aws.Route53.QueryLogArgs
-    ///         {
-    ///             CloudwatchLogGroupArn = awsRoute53ExampleCom.Arn,
-    ///             ZoneId = exampleComZone.ZoneId,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 route53_query_logging_policyLogResourcePolicy,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class QueryLog : Pulumi.CustomResource
     {
-        /// <summary>
-        /// CloudWatch log group ARN to send query logs.
-        /// </summary>
         [Output("cloudwatchLogGroupArn")]
         public Output<string> CloudwatchLogGroupArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Route53 hosted zone ID to enable query logs.
-        /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
@@ -159,15 +63,9 @@ namespace Pulumi.Aws.Route53
 
     public sealed class QueryLogArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// CloudWatch log group ARN to send query logs.
-        /// </summary>
         [Input("cloudwatchLogGroupArn", required: true)]
         public Input<string> CloudwatchLogGroupArn { get; set; } = null!;
 
-        /// <summary>
-        /// Route53 hosted zone ID to enable query logs.
-        /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
@@ -178,15 +76,9 @@ namespace Pulumi.Aws.Route53
 
     public sealed class QueryLogState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// CloudWatch log group ARN to send query logs.
-        /// </summary>
         [Input("cloudwatchLogGroupArn")]
         public Input<string>? CloudwatchLogGroupArn { get; set; }
 
-        /// <summary>
-        /// Route53 hosted zone ID to enable query logs.
-        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

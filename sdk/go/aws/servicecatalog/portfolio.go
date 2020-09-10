@@ -9,44 +9,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to create a Service Catalog Portfolio.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/servicecatalog"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicecatalog.NewPortfolio(ctx, "portfolio", &servicecatalog.PortfolioArgs{
-// 			Description:  pulumi.String("List of my organizations apps"),
-// 			ProviderName: pulumi.String("Brett"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Portfolio struct {
 	pulumi.CustomResourceState
 
-	Arn         pulumi.StringOutput `pulumi:"arn"`
-	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// Description of the portfolio
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The name of the portfolio.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of the person or organization who owns the portfolio.
+	Arn          pulumi.StringOutput    `pulumi:"arn"`
+	CreatedTime  pulumi.StringOutput    `pulumi:"createdTime"`
+	Description  pulumi.StringOutput    `pulumi:"description"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
 	ProviderName pulumi.StringPtrOutput `pulumi:"providerName"`
-	// Tags to apply to the connection.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags         pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewPortfolio registers a new resource with the given unique name, arguments, and options.
@@ -77,29 +48,21 @@ func GetPortfolio(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Portfolio resources.
 type portfolioState struct {
-	Arn         *string `pulumi:"arn"`
-	CreatedTime *string `pulumi:"createdTime"`
-	// Description of the portfolio
-	Description *string `pulumi:"description"`
-	// The name of the portfolio.
-	Name *string `pulumi:"name"`
-	// Name of the person or organization who owns the portfolio.
-	ProviderName *string `pulumi:"providerName"`
-	// Tags to apply to the connection.
-	Tags map[string]string `pulumi:"tags"`
+	Arn          *string           `pulumi:"arn"`
+	CreatedTime  *string           `pulumi:"createdTime"`
+	Description  *string           `pulumi:"description"`
+	Name         *string           `pulumi:"name"`
+	ProviderName *string           `pulumi:"providerName"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 type PortfolioState struct {
-	Arn         pulumi.StringPtrInput
-	CreatedTime pulumi.StringPtrInput
-	// Description of the portfolio
-	Description pulumi.StringPtrInput
-	// The name of the portfolio.
-	Name pulumi.StringPtrInput
-	// Name of the person or organization who owns the portfolio.
+	Arn          pulumi.StringPtrInput
+	CreatedTime  pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	ProviderName pulumi.StringPtrInput
-	// Tags to apply to the connection.
-	Tags pulumi.StringMapInput
+	Tags         pulumi.StringMapInput
 }
 
 func (PortfolioState) ElementType() reflect.Type {
@@ -107,26 +70,18 @@ func (PortfolioState) ElementType() reflect.Type {
 }
 
 type portfolioArgs struct {
-	// Description of the portfolio
-	Description *string `pulumi:"description"`
-	// The name of the portfolio.
-	Name *string `pulumi:"name"`
-	// Name of the person or organization who owns the portfolio.
-	ProviderName *string `pulumi:"providerName"`
-	// Tags to apply to the connection.
-	Tags map[string]string `pulumi:"tags"`
+	Description  *string           `pulumi:"description"`
+	Name         *string           `pulumi:"name"`
+	ProviderName *string           `pulumi:"providerName"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Portfolio resource.
 type PortfolioArgs struct {
-	// Description of the portfolio
-	Description pulumi.StringPtrInput
-	// The name of the portfolio.
-	Name pulumi.StringPtrInput
-	// Name of the person or organization who owns the portfolio.
+	Description  pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	ProviderName pulumi.StringPtrInput
-	// Tags to apply to the connection.
-	Tags pulumi.StringMapInput
+	Tags         pulumi.StringMapInput
 }
 
 func (PortfolioArgs) ElementType() reflect.Type {

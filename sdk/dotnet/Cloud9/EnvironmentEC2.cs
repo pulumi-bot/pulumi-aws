@@ -9,81 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cloud9
 {
-    /// <summary>
-    /// Provides a Cloud9 EC2 Development Environment.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Cloud9.EnvironmentEC2("example", new Aws.Cloud9.EnvironmentEC2Args
-    ///         {
-    ///             InstanceType = "t2.micro",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EnvironmentEC2 : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the environment.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of minutes until the running instance is shut down after the environment has last been used.
-        /// </summary>
         [Output("automaticStopTimeMinutes")]
         public Output<int?> AutomaticStopTimeMinutes { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the environment.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of instance to connect to the environment, e.g. `t2.micro`.
-        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the environment.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-        /// </summary>
         [Output("ownerArn")]
         public Output<string> OwnerArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-        /// </summary>
         [Output("subnetId")]
         public Output<string?> SubnetId { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of the environment (e.g. `ssh` or `ec2`)
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -133,48 +84,26 @@ namespace Pulumi.Aws.Cloud9
 
     public sealed class EnvironmentEC2Args : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The number of minutes until the running instance is shut down after the environment has last been used.
-        /// </summary>
         [Input("automaticStopTimeMinutes")]
         public Input<int>? AutomaticStopTimeMinutes { get; set; }
 
-        /// <summary>
-        /// The description of the environment.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The type of instance to connect to the environment, e.g. `t2.micro`.
-        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the environment.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-        /// </summary>
         [Input("ownerArn")]
         public Input<string>? OwnerArn { get; set; }
 
-        /// <summary>
-        /// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -188,63 +117,35 @@ namespace Pulumi.Aws.Cloud9
 
     public sealed class EnvironmentEC2State : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the environment.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The number of minutes until the running instance is shut down after the environment has last been used.
-        /// </summary>
         [Input("automaticStopTimeMinutes")]
         public Input<int>? AutomaticStopTimeMinutes { get; set; }
 
-        /// <summary>
-        /// The description of the environment.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The type of instance to connect to the environment, e.g. `t2.micro`.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// The name of the environment.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-        /// </summary>
         [Input("ownerArn")]
         public Input<string>? OwnerArn { get; set; }
 
-        /// <summary>
-        /// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The type of the environment (e.g. `ssh` or `ec2`)
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

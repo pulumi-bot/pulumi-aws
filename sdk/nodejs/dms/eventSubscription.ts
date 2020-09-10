@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a DMS (Data Migration Service) event subscription resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.dms.EventSubscription("example", {
- *     enabled: true,
- *     eventCategories: [
- *         "creation",
- *         "failure",
- *     ],
- *     snsTopicArn: aws_sns_topic.example.arn,
- *     sourceIds: [aws_dms_replication_task.example.replication_task_id],
- *     sourceType: "replication-task",
- *     tags: {
- *         Name: "example",
- *     },
- * });
- * ```
- */
 export class EventSubscription extends pulumi.CustomResource {
     /**
      * Get an existing EventSubscription resource's state with the given name, ID, and optional extra
@@ -57,29 +33,11 @@ export class EventSubscription extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Whether the event subscription should be enabled.
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-     */
     public readonly eventCategories!: pulumi.Output<string[]>;
-    /**
-     * Name of event subscription.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * SNS topic arn to send events on.
-     */
     public readonly snsTopicArn!: pulumi.Output<string>;
-    /**
-     * Ids of sources to listen to.
-     */
     public readonly sourceIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * Type of source for events. Valid values: `replication-instance` or `replication-task`
-     */
     public readonly sourceType!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -136,29 +94,11 @@ export class EventSubscription extends pulumi.CustomResource {
  */
 export interface EventSubscriptionState {
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Whether the event subscription should be enabled.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-     */
     readonly eventCategories?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of event subscription.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * SNS topic arn to send events on.
-     */
     readonly snsTopicArn?: pulumi.Input<string>;
-    /**
-     * Ids of sources to listen to.
-     */
     readonly sourceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Type of source for events. Valid values: `replication-instance` or `replication-task`
-     */
     readonly sourceType?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -167,29 +107,11 @@ export interface EventSubscriptionState {
  * The set of arguments for constructing a EventSubscription resource.
  */
 export interface EventSubscriptionArgs {
-    /**
-     * Whether the event subscription should be enabled.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-     */
     readonly eventCategories: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of event subscription.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * SNS topic arn to send events on.
-     */
     readonly snsTopicArn: pulumi.Input<string>;
-    /**
-     * Ids of sources to listen to.
-     */
     readonly sourceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Type of source for events. Valid values: `replication-instance` or `replication-task`
-     */
     readonly sourceType?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

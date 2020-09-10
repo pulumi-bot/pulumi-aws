@@ -23,28 +23,9 @@ class GatewayAssociationProposal(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a Direct Connect Gateway Association Proposal, typically for enabling cross-account associations. For single account associations, see the `directconnect.GatewayAssociation` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.directconnect.GatewayAssociationProposal("example",
-            dx_gateway_id=aws_dx_gateway["example"]["id"],
-            dx_gateway_owner_account_id=aws_dx_gateway["example"]["owner_account_id"],
-            associated_gateway_id=aws_vpn_gateway["example"]["id"])
-        ```
-
-        A full example of how to create a VPN Gateway in one AWS account, create a Direct Connect Gateway in a second AWS account, and associate the VPN Gateway with the Direct Connect Gateway via the `directconnect.GatewayAssociationProposal` and `directconnect.GatewayAssociation` resources can be found in [the `./examples/dx-gateway-cross-account-vgw-association` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/dx-gateway-cross-account-vgw-association).
-
+        Create a GatewayAssociationProposal resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_prefixes: VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
-        :param pulumi.Input[str] associated_gateway_id: The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
-        :param pulumi.Input[str] dx_gateway_id: Direct Connect Gateway identifier.
-        :param pulumi.Input[str] dx_gateway_owner_account_id: AWS Account identifier of the Direct Connect Gateway's owner.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,12 +79,6 @@ class GatewayAssociationProposal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_prefixes: VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
-        :param pulumi.Input[str] associated_gateway_id: The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
-        :param pulumi.Input[str] associated_gateway_owner_account_id: The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
-        :param pulumi.Input[str] associated_gateway_type: The type of the associated gateway, `transitGateway` or `virtualPrivateGateway`.
-        :param pulumi.Input[str] dx_gateway_id: Direct Connect Gateway identifier.
-        :param pulumi.Input[str] dx_gateway_owner_account_id: AWS Account identifier of the Direct Connect Gateway's owner.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,49 +95,31 @@ class GatewayAssociationProposal(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowedPrefixes")
     def allowed_prefixes(self) -> pulumi.Output[List[str]]:
-        """
-        VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
-        """
         return pulumi.get(self, "allowed_prefixes")
 
     @property
     @pulumi.getter(name="associatedGatewayId")
     def associated_gateway_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
-        """
         return pulumi.get(self, "associated_gateway_id")
 
     @property
     @pulumi.getter(name="associatedGatewayOwnerAccountId")
     def associated_gateway_owner_account_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
-        """
         return pulumi.get(self, "associated_gateway_owner_account_id")
 
     @property
     @pulumi.getter(name="associatedGatewayType")
     def associated_gateway_type(self) -> pulumi.Output[str]:
-        """
-        The type of the associated gateway, `transitGateway` or `virtualPrivateGateway`.
-        """
         return pulumi.get(self, "associated_gateway_type")
 
     @property
     @pulumi.getter(name="dxGatewayId")
     def dx_gateway_id(self) -> pulumi.Output[str]:
-        """
-        Direct Connect Gateway identifier.
-        """
         return pulumi.get(self, "dx_gateway_id")
 
     @property
     @pulumi.getter(name="dxGatewayOwnerAccountId")
     def dx_gateway_owner_account_id(self) -> pulumi.Output[str]:
-        """
-        AWS Account identifier of the Direct Connect Gateway's owner.
-        """
         return pulumi.get(self, "dx_gateway_owner_account_id")
 
     def translate_output_property(self, prop):

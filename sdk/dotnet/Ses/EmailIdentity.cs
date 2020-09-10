@@ -9,39 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Provides an SES email identity resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ses.EmailIdentity("example", new Aws.Ses.EmailIdentityArgs
-    ///         {
-    ///             Email = "email@example.com",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EmailIdentity : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the email identity.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The email address to assign to SES
-        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
@@ -91,9 +63,6 @@ namespace Pulumi.Aws.Ses
 
     public sealed class EmailIdentityArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The email address to assign to SES
-        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
@@ -104,15 +73,9 @@ namespace Pulumi.Aws.Ses
 
     public sealed class EmailIdentityState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the email identity.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The email address to assign to SES
-        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 

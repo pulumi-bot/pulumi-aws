@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the ARN of a State Machine in AWS Step
-// Function (SFN). By using this data source, you can reference a
-// state machine without having to hard code the ARNs as input.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sfn"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sfn.LookupStateMachine(ctx, &sfn.LookupStateMachineArgs{
-// 			Name: "an_example_sfn_name",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupStateMachine(ctx *pulumi.Context, args *LookupStateMachineArgs, opts ...pulumi.InvokeOption) (*LookupStateMachineResult, error) {
 	var rv LookupStateMachineResult
 	err := ctx.Invoke("aws:sfn/getStateMachine:getStateMachine", args, &rv, opts...)
@@ -44,23 +18,17 @@ func LookupStateMachine(ctx *pulumi.Context, args *LookupStateMachineArgs, opts 
 
 // A collection of arguments for invoking getStateMachine.
 type LookupStateMachineArgs struct {
-	// The friendly name of the state machine to match.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getStateMachine.
 type LookupStateMachineResult struct {
-	// Set to the arn of the state function.
-	Arn string `pulumi:"arn"`
-	// The date the state machine was created.
+	Arn          string `pulumi:"arn"`
 	CreationDate string `pulumi:"creationDate"`
-	// Set to the state machine definition.
-	Definition string `pulumi:"definition"`
+	Definition   string `pulumi:"definition"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	// Set to the roleArn used by the state function.
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
 	RoleArn string `pulumi:"roleArn"`
-	// Set to the current status of the state machine.
-	Status string `pulumi:"status"`
+	Status  string `pulumi:"status"`
 }

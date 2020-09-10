@@ -9,84 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafV2
 {
-    /// <summary>
-    /// Provides a WAFv2 IP Set Resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.WafV2.IpSet("example", new Aws.WafV2.IpSetArgs
-    ///         {
-    ///             Addresses = 
-    ///             {
-    ///                 "1.2.3.4/32",
-    ///                 "5.6.7.8/32",
-    ///             },
-    ///             Description = "Example IP set",
-    ///             IpAddressVersion = "IPV4",
-    ///             Scope = "REGIONAL",
-    ///             Tags = 
-    ///             {
-    ///                 { "Tag1", "Value1" },
-    ///                 { "Tag2", "Value2" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class IpSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all address ranges for IP versions IPv4 and IPv6.
-        /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the cluster.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly description of the IP set.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify IPV4 or IPV6. Valid values are `IPV4` or `IPV6`.
-        /// </summary>
         [Output("ipAddressVersion")]
         public Output<string> IpAddressVersion { get; private set; } = null!;
 
         [Output("lockToken")]
         public Output<string> LockToken { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly name of the IP set.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the Region US East (N. Virginia).
-        /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
-        /// <summary>
-        /// An array of key:value pairs to associate with the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -138,46 +83,26 @@ namespace Pulumi.Aws.WafV2
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
-
-        /// <summary>
-        /// Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all address ranges for IP versions IPv4 and IPv6.
-        /// </summary>
         public InputList<string> Addresses
         {
             get => _addresses ?? (_addresses = new InputList<string>());
             set => _addresses = value;
         }
 
-        /// <summary>
-        /// A friendly description of the IP set.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Specify IPV4 or IPV6. Valid values are `IPV4` or `IPV6`.
-        /// </summary>
         [Input("ipAddressVersion", required: true)]
         public Input<string> IpAddressVersion { get; set; } = null!;
 
-        /// <summary>
-        /// A friendly name of the IP set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the Region US East (N. Virginia).
-        /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// An array of key:value pairs to associate with the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -193,55 +118,32 @@ namespace Pulumi.Aws.WafV2
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
-
-        /// <summary>
-        /// Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all address ranges for IP versions IPv4 and IPv6.
-        /// </summary>
         public InputList<string> Addresses
         {
             get => _addresses ?? (_addresses = new InputList<string>());
             set => _addresses = value;
         }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the cluster.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A friendly description of the IP set.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Specify IPV4 or IPV6. Valid values are `IPV4` or `IPV6`.
-        /// </summary>
         [Input("ipAddressVersion")]
         public Input<string>? IpAddressVersion { get; set; }
 
         [Input("lockToken")]
         public Input<string>? LockToken { get; set; }
 
-        /// <summary>
-        /// A friendly name of the IP set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the Region US East (N. Virginia).
-        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// An array of key:value pairs to associate with the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -41,9 +41,6 @@ class GetActivityResult:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        The date the activity was created.
-        """
         return pulumi.get(self, "creation_date")
 
     @property
@@ -76,20 +73,7 @@ def get_activity(arn: Optional[str] = None,
                  name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActivityResult:
     """
-    Provides a Step Functions Activity data source
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    sfn_activity = aws.sfn.get_activity(name="my-activity")
-    ```
-
-
-    :param str arn: The Amazon Resource Name (ARN) that identifies the activity.
-    :param str name: The name that identifies the activity.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['arn'] = arn

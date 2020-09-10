@@ -10,46 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SNS topic policy resource
-//
-// > **NOTE:** If a Principal is specified as just an AWS account ID rather than an ARN, AWS silently converts it to the ARN for the root user, causing future deployments to differ. To avoid this problem, just specify the full ARN, e.g. `arn:aws:iam::123456789012:root`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := sns.NewTopic(ctx, "test", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sns.NewTopicPolicy(ctx, "_default", &sns.TopicPolicyArgs{
-// 			Arn: test.Arn,
-// 			Policy: snsTopicPolicy.ApplyT(func(snsTopicPolicy iam.GetPolicyDocumentResult) (string, error) {
-// 				return snsTopicPolicy.Json, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TopicPolicy struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the SNS topic
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The fully-formed AWS policy as JSON.
+	Arn    pulumi.StringOutput `pulumi:"arn"`
 	Policy pulumi.StringOutput `pulumi:"policy"`
 }
 
@@ -87,16 +51,12 @@ func GetTopicPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TopicPolicy resources.
 type topicPolicyState struct {
-	// The ARN of the SNS topic
-	Arn *string `pulumi:"arn"`
-	// The fully-formed AWS policy as JSON.
+	Arn    *string `pulumi:"arn"`
 	Policy *string `pulumi:"policy"`
 }
 
 type TopicPolicyState struct {
-	// The ARN of the SNS topic
-	Arn pulumi.StringPtrInput
-	// The fully-formed AWS policy as JSON.
+	Arn    pulumi.StringPtrInput
 	Policy pulumi.StringPtrInput
 }
 
@@ -105,17 +65,13 @@ func (TopicPolicyState) ElementType() reflect.Type {
 }
 
 type topicPolicyArgs struct {
-	// The ARN of the SNS topic
-	Arn string `pulumi:"arn"`
-	// The fully-formed AWS policy as JSON.
+	Arn    string `pulumi:"arn"`
 	Policy string `pulumi:"policy"`
 }
 
 // The set of arguments for constructing a TopicPolicy resource.
 type TopicPolicyArgs struct {
-	// The ARN of the SNS topic
-	Arn pulumi.StringInput
-	// The fully-formed AWS policy as JSON.
+	Arn    pulumi.StringInput
 	Policy pulumi.StringInput
 }
 

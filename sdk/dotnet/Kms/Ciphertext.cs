@@ -9,66 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Kms
 {
-    /// <summary>
-    /// The KMS ciphertext resource allows you to encrypt plaintext into ciphertext
-    /// by using an AWS KMS customer master key. The value returned by this resource
-    /// is stable across every apply. For a changing ciphertext value each apply, see
-    /// the `aws.kms.Ciphertext` data source.
-    /// 
-    /// &gt; **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var oauthConfig = new Aws.Kms.Key("oauthConfig", new Aws.Kms.KeyArgs
-    ///         {
-    ///             Description = "oauth config",
-    ///             IsEnabled = true,
-    ///         });
-    ///         var oauth = new Aws.Kms.Ciphertext("oauth", new Aws.Kms.CiphertextArgs
-    ///         {
-    ///             KeyId = oauthConfig.KeyId,
-    ///             Plaintext = @"{
-    ///   ""client_id"": ""e587dbae22222f55da22"",
-    ///   ""client_secret"": ""8289575d00000ace55e1815ec13673955721b8a5""
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Ciphertext : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Base64 encoded ciphertext
-        /// </summary>
         [Output("ciphertextBlob")]
         public Output<string> CiphertextBlob { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional mapping that makes up the encryption context.
-        /// </summary>
         [Output("context")]
         public Output<ImmutableDictionary<string, string>?> Context { get; private set; } = null!;
 
-        /// <summary>
-        /// Globally unique key ID for the customer master key.
-        /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
-        /// </summary>
         [Output("plaintext")]
         public Output<string> Plaintext { get; private set; } = null!;
 
@@ -120,25 +71,15 @@ namespace Pulumi.Aws.Kms
     {
         [Input("context")]
         private InputMap<string>? _context;
-
-        /// <summary>
-        /// An optional mapping that makes up the encryption context.
-        /// </summary>
         public InputMap<string> Context
         {
             get => _context ?? (_context = new InputMap<string>());
             set => _context = value;
         }
 
-        /// <summary>
-        /// Globally unique key ID for the customer master key.
-        /// </summary>
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
 
-        /// <summary>
-        /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
-        /// </summary>
         [Input("plaintext", required: true)]
         public Input<string> Plaintext { get; set; } = null!;
 
@@ -149,33 +90,20 @@ namespace Pulumi.Aws.Kms
 
     public sealed class CiphertextState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Base64 encoded ciphertext
-        /// </summary>
         [Input("ciphertextBlob")]
         public Input<string>? CiphertextBlob { get; set; }
 
         [Input("context")]
         private InputMap<string>? _context;
-
-        /// <summary>
-        /// An optional mapping that makes up the encryption context.
-        /// </summary>
         public InputMap<string> Context
         {
             get => _context ?? (_context = new InputMap<string>());
             set => _context = value;
         }
 
-        /// <summary>
-        /// Globally unique key ID for the customer master key.
-        /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
-        /// <summary>
-        /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
-        /// </summary>
         [Input("plaintext")]
         public Input<string>? Plaintext { get; set; }
 

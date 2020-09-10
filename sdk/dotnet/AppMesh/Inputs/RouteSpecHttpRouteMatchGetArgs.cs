@@ -14,32 +14,18 @@ namespace Pulumi.Aws.AppMesh.Inputs
     {
         [Input("headers")]
         private InputList<Inputs.RouteSpecHttpRouteMatchHeaderGetArgs>? _headers;
-
-        /// <summary>
-        /// The client request headers to match on.
-        /// </summary>
         public InputList<Inputs.RouteSpecHttpRouteMatchHeaderGetArgs> Headers
         {
             get => _headers ?? (_headers = new InputList<Inputs.RouteSpecHttpRouteMatchHeaderGetArgs>());
             set => _headers = value;
         }
 
-        /// <summary>
-        /// The client request header method to match on. Valid values: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
-        /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
-        /// <summary>
-        /// Specifies the path with which to match requests.
-        /// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-        /// </summary>
         [Input("prefix", required: true)]
         public Input<string> Prefix { get; set; } = null!;
 
-        /// <summary>
-        /// The client request header scheme to match on. Valid values: `http`, `https`.
-        /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 

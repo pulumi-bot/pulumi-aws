@@ -13,18 +13,8 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class RouteSpec
     {
-        /// <summary>
-        /// The HTTP routing information for the route.
-        /// </summary>
         public readonly Outputs.RouteSpecHttpRoute? HttpRoute;
-        /// <summary>
-        /// The priority for the route, between `0` and `1000`.
-        /// Routes are matched based on the specified value, where `0` is the highest priority.
-        /// </summary>
         public readonly int? Priority;
-        /// <summary>
-        /// The TCP routing information for the route.
-        /// </summary>
         public readonly Outputs.RouteSpecTcpRoute? TcpRoute;
 
         [OutputConstructor]

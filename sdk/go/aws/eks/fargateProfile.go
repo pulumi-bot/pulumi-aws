@@ -10,75 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an EKS Fargate Profile.
-//
-// ## Example Usage
-// ### Example IAM Role for EKS Fargate Profile
-//
-// ```go
-// package main
-//
-// import (
-// 	"encoding/json"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"Statement": []map[string]interface{}{
-// 				map[string]interface{}{
-// 					"Action": "sts:AssumeRole",
-// 					"Effect": "Allow",
-// 					"Principal": map[string]interface{}{
-// 						"Service": "eks-fargate-pods.amazonaws.com",
-// 					},
-// 				},
-// 			},
-// 			"Version": "2012-10-17",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "example_AmazonEKSFargatePodExecutionRolePolicy", &iam.RolePolicyAttachmentArgs{
-// 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"),
-// 			Role:      example.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type FargateProfile struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the EKS Fargate Profile.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Name of the EKS Cluster.
-	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
-	// Name of the EKS Fargate Profile.
-	FargateProfileName pulumi.StringOutput `pulumi:"fargateProfileName"`
-	// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
-	PodExecutionRoleArn pulumi.StringOutput `pulumi:"podExecutionRoleArn"`
-	// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-	Selectors FargateProfileSelectorArrayOutput `pulumi:"selectors"`
-	// Status of the EKS Fargate Profile.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
-	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                 pulumi.StringOutput               `pulumi:"arn"`
+	ClusterName         pulumi.StringOutput               `pulumi:"clusterName"`
+	FargateProfileName  pulumi.StringOutput               `pulumi:"fargateProfileName"`
+	PodExecutionRoleArn pulumi.StringOutput               `pulumi:"podExecutionRoleArn"`
+	Selectors           FargateProfileSelectorArrayOutput `pulumi:"selectors"`
+	Status              pulumi.StringOutput               `pulumi:"status"`
+	SubnetIds           pulumi.StringArrayOutput          `pulumi:"subnetIds"`
+	Tags                pulumi.StringMapOutput            `pulumi:"tags"`
 }
 
 // NewFargateProfile registers a new resource with the given unique name, arguments, and options.
@@ -118,41 +60,25 @@ func GetFargateProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FargateProfile resources.
 type fargateProfileState struct {
-	// Amazon Resource Name (ARN) of the EKS Fargate Profile.
-	Arn *string `pulumi:"arn"`
-	// Name of the EKS Cluster.
-	ClusterName *string `pulumi:"clusterName"`
-	// Name of the EKS Fargate Profile.
-	FargateProfileName *string `pulumi:"fargateProfileName"`
-	// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
-	PodExecutionRoleArn *string `pulumi:"podExecutionRoleArn"`
-	// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-	Selectors []FargateProfileSelector `pulumi:"selectors"`
-	// Status of the EKS Fargate Profile.
-	Status *string `pulumi:"status"`
-	// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
-	SubnetIds []string `pulumi:"subnetIds"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                 *string                  `pulumi:"arn"`
+	ClusterName         *string                  `pulumi:"clusterName"`
+	FargateProfileName  *string                  `pulumi:"fargateProfileName"`
+	PodExecutionRoleArn *string                  `pulumi:"podExecutionRoleArn"`
+	Selectors           []FargateProfileSelector `pulumi:"selectors"`
+	Status              *string                  `pulumi:"status"`
+	SubnetIds           []string                 `pulumi:"subnetIds"`
+	Tags                map[string]string        `pulumi:"tags"`
 }
 
 type FargateProfileState struct {
-	// Amazon Resource Name (ARN) of the EKS Fargate Profile.
-	Arn pulumi.StringPtrInput
-	// Name of the EKS Cluster.
-	ClusterName pulumi.StringPtrInput
-	// Name of the EKS Fargate Profile.
-	FargateProfileName pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
+	Arn                 pulumi.StringPtrInput
+	ClusterName         pulumi.StringPtrInput
+	FargateProfileName  pulumi.StringPtrInput
 	PodExecutionRoleArn pulumi.StringPtrInput
-	// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-	Selectors FargateProfileSelectorArrayInput
-	// Status of the EKS Fargate Profile.
-	Status pulumi.StringPtrInput
-	// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
-	SubnetIds pulumi.StringArrayInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
+	Selectors           FargateProfileSelectorArrayInput
+	Status              pulumi.StringPtrInput
+	SubnetIds           pulumi.StringArrayInput
+	Tags                pulumi.StringMapInput
 }
 
 func (FargateProfileState) ElementType() reflect.Type {
@@ -160,34 +86,22 @@ func (FargateProfileState) ElementType() reflect.Type {
 }
 
 type fargateProfileArgs struct {
-	// Name of the EKS Cluster.
-	ClusterName string `pulumi:"clusterName"`
-	// Name of the EKS Fargate Profile.
-	FargateProfileName *string `pulumi:"fargateProfileName"`
-	// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
-	PodExecutionRoleArn string `pulumi:"podExecutionRoleArn"`
-	// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-	Selectors []FargateProfileSelector `pulumi:"selectors"`
-	// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
-	SubnetIds []string `pulumi:"subnetIds"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	ClusterName         string                   `pulumi:"clusterName"`
+	FargateProfileName  *string                  `pulumi:"fargateProfileName"`
+	PodExecutionRoleArn string                   `pulumi:"podExecutionRoleArn"`
+	Selectors           []FargateProfileSelector `pulumi:"selectors"`
+	SubnetIds           []string                 `pulumi:"subnetIds"`
+	Tags                map[string]string        `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a FargateProfile resource.
 type FargateProfileArgs struct {
-	// Name of the EKS Cluster.
-	ClusterName pulumi.StringInput
-	// Name of the EKS Fargate Profile.
-	FargateProfileName pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
+	ClusterName         pulumi.StringInput
+	FargateProfileName  pulumi.StringPtrInput
 	PodExecutionRoleArn pulumi.StringInput
-	// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-	Selectors FargateProfileSelectorArrayInput
-	// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
-	SubnetIds pulumi.StringArrayInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
+	Selectors           FargateProfileSelectorArrayInput
+	SubnetIds           pulumi.StringArrayInput
+	Tags                pulumi.StringMapInput
 }
 
 func (FargateProfileArgs) ElementType() reflect.Type {

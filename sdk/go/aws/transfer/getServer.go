@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the ARN of an AWS Transfer Server for use in other
-// resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/transfer"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := transfer.LookupServer(ctx, &transfer.LookupServerArgs{
-// 			ServerId: "s-1234567",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("aws:transfer/getServer:getServer", args, &rv, opts...)
@@ -43,25 +18,18 @@ func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getServer.
 type LookupServerArgs struct {
-	// ID for an SFTP server.
 	ServerId string `pulumi:"serverId"`
 }
 
 // A collection of values returned by getServer.
 type LookupServerResult struct {
-	// Amazon Resource Name (ARN) of Transfer Server
-	Arn string `pulumi:"arn"`
-	// The endpoint of the Transfer Server (e.g. `s-12345678.server.transfer.REGION.amazonaws.com`)
+	Arn      string `pulumi:"arn"`
 	Endpoint string `pulumi:"endpoint"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice.
+	Id                   string `pulumi:"id"`
 	IdentityProviderType string `pulumi:"identityProviderType"`
-	// Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identityProviderType` of `API_GATEWAY`.
-	InvocationRole string `pulumi:"invocationRole"`
-	// Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
-	LoggingRole string `pulumi:"loggingRole"`
-	ServerId    string `pulumi:"serverId"`
-	// URL of the service endpoint used to authenticate users with an `identityProviderType` of `API_GATEWAY`.
-	Url string `pulumi:"url"`
+	InvocationRole       string `pulumi:"invocationRole"`
+	LoggingRole          string `pulumi:"loggingRole"`
+	ServerId             string `pulumi:"serverId"`
+	Url                  string `pulumi:"url"`
 }

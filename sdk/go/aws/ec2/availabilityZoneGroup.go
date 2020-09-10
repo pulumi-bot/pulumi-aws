@@ -10,39 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an EC2 Availability Zone Group, such as updating its opt-in status.
-//
-// > **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewAvailabilityZoneGroup(ctx, "example", &ec2.AvailabilityZoneGroupArgs{
-// 			GroupName:   pulumi.String("us-west-2-lax-1"),
-// 			OptInStatus: pulumi.String("opted-in"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AvailabilityZoneGroup struct {
 	pulumi.CustomResourceState
 
-	// Name of the Availability Zone Group.
-	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
+	GroupName   pulumi.StringOutput `pulumi:"groupName"`
 	OptInStatus pulumi.StringOutput `pulumi:"optInStatus"`
 }
 
@@ -80,16 +51,12 @@ func GetAvailabilityZoneGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AvailabilityZoneGroup resources.
 type availabilityZoneGroupState struct {
-	// Name of the Availability Zone Group.
-	GroupName *string `pulumi:"groupName"`
-	// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
+	GroupName   *string `pulumi:"groupName"`
 	OptInStatus *string `pulumi:"optInStatus"`
 }
 
 type AvailabilityZoneGroupState struct {
-	// Name of the Availability Zone Group.
-	GroupName pulumi.StringPtrInput
-	// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
+	GroupName   pulumi.StringPtrInput
 	OptInStatus pulumi.StringPtrInput
 }
 
@@ -98,17 +65,13 @@ func (AvailabilityZoneGroupState) ElementType() reflect.Type {
 }
 
 type availabilityZoneGroupArgs struct {
-	// Name of the Availability Zone Group.
-	GroupName string `pulumi:"groupName"`
-	// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
+	GroupName   string `pulumi:"groupName"`
 	OptInStatus string `pulumi:"optInStatus"`
 }
 
 // The set of arguments for constructing a AvailabilityZoneGroup resource.
 type AvailabilityZoneGroupArgs struct {
-	// Name of the Availability Zone Group.
-	GroupName pulumi.StringInput
-	// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
+	GroupName   pulumi.StringInput
 	OptInStatus pulumi.StringInput
 }
 

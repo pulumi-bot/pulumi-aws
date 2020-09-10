@@ -10,24 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an AWS DataSync Task, which represents a configuration for synchronization. Starting an execution of these DataSync Tasks (actually synchronizing files) is performed outside of this resource.
 type Task struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the DataSync Task.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-	CloudwatchLogGroupArn pulumi.StringPtrOutput `pulumi:"cloudwatchLogGroupArn"`
-	// Amazon Resource Name (ARN) of destination DataSync Location.
-	DestinationLocationArn pulumi.StringOutput `pulumi:"destinationLocationArn"`
-	// Name of the DataSync Task.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options TaskOptionsPtrOutput `pulumi:"options"`
-	// Amazon Resource Name (ARN) of source DataSync Location.
-	SourceLocationArn pulumi.StringOutput `pulumi:"sourceLocationArn"`
-	// Key-value pairs of resource tags to assign to the DataSync Task.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                    pulumi.StringOutput    `pulumi:"arn"`
+	CloudwatchLogGroupArn  pulumi.StringPtrOutput `pulumi:"cloudwatchLogGroupArn"`
+	DestinationLocationArn pulumi.StringOutput    `pulumi:"destinationLocationArn"`
+	Name                   pulumi.StringOutput    `pulumi:"name"`
+	Options                TaskOptionsPtrOutput   `pulumi:"options"`
+	SourceLocationArn      pulumi.StringOutput    `pulumi:"sourceLocationArn"`
+	Tags                   pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewTask registers a new resource with the given unique name, arguments, and options.
@@ -64,37 +56,23 @@ func GetTask(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Task resources.
 type taskState struct {
-	// Amazon Resource Name (ARN) of the DataSync Task.
-	Arn *string `pulumi:"arn"`
-	// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-	CloudwatchLogGroupArn *string `pulumi:"cloudwatchLogGroupArn"`
-	// Amazon Resource Name (ARN) of destination DataSync Location.
-	DestinationLocationArn *string `pulumi:"destinationLocationArn"`
-	// Name of the DataSync Task.
-	Name *string `pulumi:"name"`
-	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options *TaskOptions `pulumi:"options"`
-	// Amazon Resource Name (ARN) of source DataSync Location.
-	SourceLocationArn *string `pulumi:"sourceLocationArn"`
-	// Key-value pairs of resource tags to assign to the DataSync Task.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                    *string           `pulumi:"arn"`
+	CloudwatchLogGroupArn  *string           `pulumi:"cloudwatchLogGroupArn"`
+	DestinationLocationArn *string           `pulumi:"destinationLocationArn"`
+	Name                   *string           `pulumi:"name"`
+	Options                *TaskOptions      `pulumi:"options"`
+	SourceLocationArn      *string           `pulumi:"sourceLocationArn"`
+	Tags                   map[string]string `pulumi:"tags"`
 }
 
 type TaskState struct {
-	// Amazon Resource Name (ARN) of the DataSync Task.
-	Arn pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-	CloudwatchLogGroupArn pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of destination DataSync Location.
+	Arn                    pulumi.StringPtrInput
+	CloudwatchLogGroupArn  pulumi.StringPtrInput
 	DestinationLocationArn pulumi.StringPtrInput
-	// Name of the DataSync Task.
-	Name pulumi.StringPtrInput
-	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options TaskOptionsPtrInput
-	// Amazon Resource Name (ARN) of source DataSync Location.
-	SourceLocationArn pulumi.StringPtrInput
-	// Key-value pairs of resource tags to assign to the DataSync Task.
-	Tags pulumi.StringMapInput
+	Name                   pulumi.StringPtrInput
+	Options                TaskOptionsPtrInput
+	SourceLocationArn      pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (TaskState) ElementType() reflect.Type {
@@ -102,34 +80,22 @@ func (TaskState) ElementType() reflect.Type {
 }
 
 type taskArgs struct {
-	// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-	CloudwatchLogGroupArn *string `pulumi:"cloudwatchLogGroupArn"`
-	// Amazon Resource Name (ARN) of destination DataSync Location.
-	DestinationLocationArn string `pulumi:"destinationLocationArn"`
-	// Name of the DataSync Task.
-	Name *string `pulumi:"name"`
-	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options *TaskOptions `pulumi:"options"`
-	// Amazon Resource Name (ARN) of source DataSync Location.
-	SourceLocationArn string `pulumi:"sourceLocationArn"`
-	// Key-value pairs of resource tags to assign to the DataSync Task.
-	Tags map[string]string `pulumi:"tags"`
+	CloudwatchLogGroupArn  *string           `pulumi:"cloudwatchLogGroupArn"`
+	DestinationLocationArn string            `pulumi:"destinationLocationArn"`
+	Name                   *string           `pulumi:"name"`
+	Options                *TaskOptions      `pulumi:"options"`
+	SourceLocationArn      string            `pulumi:"sourceLocationArn"`
+	Tags                   map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Task resource.
 type TaskArgs struct {
-	// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-	CloudwatchLogGroupArn pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of destination DataSync Location.
+	CloudwatchLogGroupArn  pulumi.StringPtrInput
 	DestinationLocationArn pulumi.StringInput
-	// Name of the DataSync Task.
-	Name pulumi.StringPtrInput
-	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options TaskOptionsPtrInput
-	// Amazon Resource Name (ARN) of source DataSync Location.
-	SourceLocationArn pulumi.StringInput
-	// Key-value pairs of resource tags to assign to the DataSync Task.
-	Tags pulumi.StringMapInput
+	Name                   pulumi.StringPtrInput
+	Options                TaskOptionsPtrInput
+	SourceLocationArn      pulumi.StringInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (TaskArgs) ElementType() reflect.Type {

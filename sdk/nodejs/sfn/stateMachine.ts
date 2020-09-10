@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Step Function State Machine resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // ...
- * const sfnStateMachine = new aws.sfn.StateMachine("sfnStateMachine", {
- *     roleArn: aws_iam_role.iam_for_sfn.arn,
- *     definition: `{
- *   "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
- *   "StartAt": "HelloWorld",
- *   "States": {
- *     "HelloWorld": {
- *       "Type": "Task",
- *       "Resource": "${aws_lambda_function.lambda.arn}",
- *       "End": true
- *     }
- *   }
- * }
- * `,
- * });
- * ```
- */
 export class StateMachine extends pulumi.CustomResource {
     /**
      * Get an existing StateMachine resource's state with the given name, ID, and optional extra
@@ -59,33 +32,12 @@ export class StateMachine extends pulumi.CustomResource {
         return obj['__pulumiType'] === StateMachine.__pulumiType;
     }
 
-    /**
-     * The ARN of the state machine.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The date the state machine was created.
-     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
-    /**
-     * The Amazon States Language definition of the state machine.
-     */
     public readonly definition!: pulumi.Output<string>;
-    /**
-     * The name of the state machine.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-     */
     public readonly roleArn!: pulumi.Output<string>;
-    /**
-     * The current status of the state machine. Either "ACTIVE" or "DELETING".
-     */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -138,33 +90,12 @@ export class StateMachine extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StateMachine resources.
  */
 export interface StateMachineState {
-    /**
-     * The ARN of the state machine.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The date the state machine was created.
-     */
     readonly creationDate?: pulumi.Input<string>;
-    /**
-     * The Amazon States Language definition of the state machine.
-     */
     readonly definition?: pulumi.Input<string>;
-    /**
-     * The name of the state machine.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-     */
     readonly roleArn?: pulumi.Input<string>;
-    /**
-     * The current status of the state machine. Either "ACTIVE" or "DELETING".
-     */
     readonly status?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -172,20 +103,8 @@ export interface StateMachineState {
  * The set of arguments for constructing a StateMachine resource.
  */
 export interface StateMachineArgs {
-    /**
-     * The Amazon States Language definition of the state machine.
-     */
     readonly definition: pulumi.Input<string>;
-    /**
-     * The name of the state machine.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-     */
     readonly roleArn: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

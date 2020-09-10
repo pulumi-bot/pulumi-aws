@@ -9,75 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.GuardDuty
 {
-    /// <summary>
-    /// Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct primary account on read, and disassociate with the primary account upon removal.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var primary = new Aws.Provider("primary", new Aws.ProviderArgs
-    ///         {
-    ///         });
-    ///         var member = new Aws.Provider("member", new Aws.ProviderArgs
-    ///         {
-    ///         });
-    ///         var primaryDetector = new Aws.GuardDuty.Detector("primaryDetector", new Aws.GuardDuty.DetectorArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Primary,
-    ///         });
-    ///         var memberDetector = new Aws.GuardDuty.Detector("memberDetector", new Aws.GuardDuty.DetectorArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Member,
-    ///         });
-    ///         var memberMember = new Aws.GuardDuty.Member("memberMember", new Aws.GuardDuty.MemberArgs
-    ///         {
-    ///             AccountId = memberDetector.AccountId,
-    ///             DetectorId = primaryDetector.Id,
-    ///             Email = "required@example.com",
-    ///             Invite = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Primary,
-    ///         });
-    ///         var memberInviteAccepter = new Aws.GuardDuty.InviteAccepter("memberInviteAccepter", new Aws.GuardDuty.InviteAccepterArgs
-    ///         {
-    ///             DetectorId = memberDetector.Id,
-    ///             MasterAccountId = primaryDetector.AccountId,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Member,
-    ///             DependsOn = 
-    ///             {
-    ///                 memberMember,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class InviteAccepter : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The detector ID of the member GuardDuty account.
-        /// </summary>
         [Output("detectorId")]
         public Output<string> DetectorId { get; private set; } = null!;
 
-        /// <summary>
-        /// AWS account ID for primary account.
-        /// </summary>
         [Output("masterAccountId")]
         public Output<string> MasterAccountId { get; private set; } = null!;
 
@@ -127,15 +63,9 @@ namespace Pulumi.Aws.GuardDuty
 
     public sealed class InviteAccepterArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The detector ID of the member GuardDuty account.
-        /// </summary>
         [Input("detectorId", required: true)]
         public Input<string> DetectorId { get; set; } = null!;
 
-        /// <summary>
-        /// AWS account ID for primary account.
-        /// </summary>
         [Input("masterAccountId", required: true)]
         public Input<string> MasterAccountId { get; set; } = null!;
 
@@ -146,15 +76,9 @@ namespace Pulumi.Aws.GuardDuty
 
     public sealed class InviteAccepterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The detector ID of the member GuardDuty account.
-        /// </summary>
         [Input("detectorId")]
         public Input<string>? DetectorId { get; set; }
 
-        /// <summary>
-        /// AWS account ID for primary account.
-        /// </summary>
         [Input("masterAccountId")]
         public Input<string>? MasterAccountId { get; set; }
 

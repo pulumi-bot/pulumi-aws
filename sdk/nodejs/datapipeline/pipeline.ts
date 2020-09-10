@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Data Pipeline resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const defaultPipeline = new aws.datapipeline.Pipeline("default", {});
- * ```
- */
 export class Pipeline extends pulumi.CustomResource {
     /**
      * Get an existing Pipeline resource's state with the given name, ID, and optional extra
@@ -44,17 +32,8 @@ export class Pipeline extends pulumi.CustomResource {
         return obj['__pulumiType'] === Pipeline.__pulumiType;
     }
 
-    /**
-     * The description of Pipeline.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of Pipeline.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -93,17 +72,8 @@ export class Pipeline extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Pipeline resources.
  */
 export interface PipelineState {
-    /**
-     * The description of Pipeline.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of Pipeline.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -111,16 +81,7 @@ export interface PipelineState {
  * The set of arguments for constructing a Pipeline resource.
  */
 export interface PipelineArgs {
-    /**
-     * The description of Pipeline.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of Pipeline.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

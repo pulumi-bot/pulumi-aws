@@ -25,34 +25,9 @@ class EndpointConfiguration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a SageMaker endpoint configuration resource.
-
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ec = aws.sagemaker.EndpointConfiguration("ec",
-            production_variants=[aws.sagemaker.EndpointConfigurationProductionVariantArgs(
-                variant_name="variant-1",
-                model_name=aws_sagemaker_model["m"]["name"],
-                initial_instance_count=1,
-                instance_type="ml.t2.medium",
-            )],
-            tags={
-                "Name": "foo",
-            })
-        ```
-
+        Create a EndpointConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] kms_key_arn: Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-        :param pulumi.Input[str] name: The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointConfigurationProductionVariantArgs']]]] production_variants: Fields are documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -100,11 +75,6 @@ class EndpointConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) assigned by AWS to this endpoint configuration.
-        :param pulumi.Input[str] kms_key_arn: Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-        :param pulumi.Input[str] name: The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointConfigurationProductionVariantArgs']]]] production_variants: Fields are documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,41 +90,26 @@ class EndpointConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) assigned by AWS to this endpoint configuration.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-        """
         return pulumi.get(self, "kms_key_arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="productionVariants")
     def production_variants(self) -> pulumi.Output[List['outputs.EndpointConfigurationProductionVariant']]:
-        """
-        Fields are documented below.
-        """
         return pulumi.get(self, "production_variants")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

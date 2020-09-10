@@ -6,46 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an OpsWorks application resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * from "fs";
- *
- * const foo_app = new aws.opsworks.Application("foo-app", {
- *     shortName: "foobar",
- *     stackId: aws_opsworks_stack.main.id,
- *     type: "rails",
- *     description: "This is a Rails application",
- *     domains: [
- *         "example.com",
- *         "sub.example.com",
- *     ],
- *     environments: [{
- *         key: "key",
- *         value: "value",
- *         secure: false,
- *     }],
- *     appSources: [{
- *         type: "git",
- *         revision: "master",
- *         url: "https://github.com/example.git",
- *     }],
- *     enableSsl: true,
- *     sslConfigurations: [{
- *         privateKey: fs.readFileSync("./foobar.key"),
- *         certificate: fs.readFileSync("./foobar.crt"),
- *     }],
- *     documentRoot: "public",
- *     autoBundleOnDeploy: true,
- *     railsEnv: "staging",
- * });
- * ```
- */
 export class Application extends pulumi.CustomResource {
     /**
      * Get an existing Application resource's state with the given name, ID, and optional extra
@@ -74,73 +34,22 @@ export class Application extends pulumi.CustomResource {
         return obj['__pulumiType'] === Application.__pulumiType;
     }
 
-    /**
-     * SCM configuration of the app as described below.
-     */
     public readonly appSources!: pulumi.Output<outputs.opsworks.ApplicationAppSource[]>;
-    /**
-     * Run bundle install when deploying for application of type `rails`.
-     */
     public readonly autoBundleOnDeploy!: pulumi.Output<string | undefined>;
-    /**
-     * Specify activity and workflow workers for your app using the aws-flow gem.
-     */
     public readonly awsFlowRubySettings!: pulumi.Output<string | undefined>;
-    /**
-     * The data source's ARN.
-     */
     public readonly dataSourceArn!: pulumi.Output<string | undefined>;
-    /**
-     * The database name.
-     */
     public readonly dataSourceDatabaseName!: pulumi.Output<string | undefined>;
-    /**
-     * The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-     */
     public readonly dataSourceType!: pulumi.Output<string | undefined>;
-    /**
-     * A description of the app.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Subfolder for the document root for application of type `rails`.
-     */
     public readonly documentRoot!: pulumi.Output<string | undefined>;
-    /**
-     * A list of virtual host alias.
-     */
     public readonly domains!: pulumi.Output<string[] | undefined>;
-    /**
-     * Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-     */
     public readonly enableSsl!: pulumi.Output<boolean | undefined>;
-    /**
-     * Object to define environment variables.  Object is described below.
-     */
     public readonly environments!: pulumi.Output<outputs.opsworks.ApplicationEnvironment[] | undefined>;
-    /**
-     * A human-readable name for the application.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The name of the Rails environment for application of type `rails`.
-     */
     public readonly railsEnv!: pulumi.Output<string | undefined>;
-    /**
-     * A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-     */
     public readonly shortName!: pulumi.Output<string>;
-    /**
-     * The SSL configuration of the app. Object is described below.
-     */
     public readonly sslConfigurations!: pulumi.Output<outputs.opsworks.ApplicationSslConfiguration[] | undefined>;
-    /**
-     * The id of the stack the application will belong to.
-     */
     public readonly stackId!: pulumi.Output<string>;
-    /**
-     * Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-     */
     public readonly type!: pulumi.Output<string>;
 
     /**
@@ -213,73 +122,22 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
-    /**
-     * SCM configuration of the app as described below.
-     */
     readonly appSources?: pulumi.Input<pulumi.Input<inputs.opsworks.ApplicationAppSource>[]>;
-    /**
-     * Run bundle install when deploying for application of type `rails`.
-     */
     readonly autoBundleOnDeploy?: pulumi.Input<string>;
-    /**
-     * Specify activity and workflow workers for your app using the aws-flow gem.
-     */
     readonly awsFlowRubySettings?: pulumi.Input<string>;
-    /**
-     * The data source's ARN.
-     */
     readonly dataSourceArn?: pulumi.Input<string>;
-    /**
-     * The database name.
-     */
     readonly dataSourceDatabaseName?: pulumi.Input<string>;
-    /**
-     * The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-     */
     readonly dataSourceType?: pulumi.Input<string>;
-    /**
-     * A description of the app.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Subfolder for the document root for application of type `rails`.
-     */
     readonly documentRoot?: pulumi.Input<string>;
-    /**
-     * A list of virtual host alias.
-     */
     readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-     */
     readonly enableSsl?: pulumi.Input<boolean>;
-    /**
-     * Object to define environment variables.  Object is described below.
-     */
     readonly environments?: pulumi.Input<pulumi.Input<inputs.opsworks.ApplicationEnvironment>[]>;
-    /**
-     * A human-readable name for the application.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of the Rails environment for application of type `rails`.
-     */
     readonly railsEnv?: pulumi.Input<string>;
-    /**
-     * A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-     */
     readonly shortName?: pulumi.Input<string>;
-    /**
-     * The SSL configuration of the app. Object is described below.
-     */
     readonly sslConfigurations?: pulumi.Input<pulumi.Input<inputs.opsworks.ApplicationSslConfiguration>[]>;
-    /**
-     * The id of the stack the application will belong to.
-     */
     readonly stackId?: pulumi.Input<string>;
-    /**
-     * Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -287,72 +145,21 @@ export interface ApplicationState {
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
-    /**
-     * SCM configuration of the app as described below.
-     */
     readonly appSources?: pulumi.Input<pulumi.Input<inputs.opsworks.ApplicationAppSource>[]>;
-    /**
-     * Run bundle install when deploying for application of type `rails`.
-     */
     readonly autoBundleOnDeploy?: pulumi.Input<string>;
-    /**
-     * Specify activity and workflow workers for your app using the aws-flow gem.
-     */
     readonly awsFlowRubySettings?: pulumi.Input<string>;
-    /**
-     * The data source's ARN.
-     */
     readonly dataSourceArn?: pulumi.Input<string>;
-    /**
-     * The database name.
-     */
     readonly dataSourceDatabaseName?: pulumi.Input<string>;
-    /**
-     * The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-     */
     readonly dataSourceType?: pulumi.Input<string>;
-    /**
-     * A description of the app.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Subfolder for the document root for application of type `rails`.
-     */
     readonly documentRoot?: pulumi.Input<string>;
-    /**
-     * A list of virtual host alias.
-     */
     readonly domains?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-     */
     readonly enableSsl?: pulumi.Input<boolean>;
-    /**
-     * Object to define environment variables.  Object is described below.
-     */
     readonly environments?: pulumi.Input<pulumi.Input<inputs.opsworks.ApplicationEnvironment>[]>;
-    /**
-     * A human-readable name for the application.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of the Rails environment for application of type `rails`.
-     */
     readonly railsEnv?: pulumi.Input<string>;
-    /**
-     * A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-     */
     readonly shortName?: pulumi.Input<string>;
-    /**
-     * The SSL configuration of the app. Object is described below.
-     */
     readonly sslConfigurations?: pulumi.Input<pulumi.Input<inputs.opsworks.ApplicationSslConfiguration>[]>;
-    /**
-     * The id of the stack the application will belong to.
-     */
     readonly stackId: pulumi.Input<string>;
-    /**
-     * Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-     */
     readonly type: pulumi.Input<string>;
 }

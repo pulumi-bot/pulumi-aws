@@ -22,13 +22,9 @@ class NotebookInstanceLifecycleConfiguration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a lifecycle configuration for SageMaker Notebook Instances.
-
+        Create a NotebookInstanceLifecycleConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-        :param pulumi.Input[str] on_create: A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
-        :param pulumi.Input[str] on_start: A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,10 +68,6 @@ class NotebookInstanceLifecycleConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-        :param pulumi.Input[str] name: The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-        :param pulumi.Input[str] on_create: A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
-        :param pulumi.Input[str] on_start: A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -90,33 +82,21 @@ class NotebookInstanceLifecycleConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="onCreate")
     def on_create(self) -> pulumi.Output[Optional[str]]:
-        """
-        A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
-        """
         return pulumi.get(self, "on_create")
 
     @property
     @pulumi.getter(name="onStart")
     def on_start(self) -> pulumi.Output[Optional[str]]:
-        """
-        A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-        """
         return pulumi.get(self, "on_start")
 
     def translate_output_property(self, prop):

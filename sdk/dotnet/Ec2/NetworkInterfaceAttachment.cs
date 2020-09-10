@@ -9,59 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Attach an Elastic network interface (ENI) resource with EC2 instance.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.Ec2.NetworkInterfaceAttachment("test", new Aws.Ec2.NetworkInterfaceAttachmentArgs
-    ///         {
-    ///             InstanceId = aws_instance.Test.Id,
-    ///             NetworkInterfaceId = aws_network_interface.Test.Id,
-    ///             DeviceIndex = 0,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class NetworkInterfaceAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ENI Attachment ID.
-        /// </summary>
         [Output("attachmentId")]
         public Output<string> AttachmentId { get; private set; } = null!;
 
-        /// <summary>
-        /// Network interface index (int).
-        /// </summary>
         [Output("deviceIndex")]
         public Output<int> DeviceIndex { get; private set; } = null!;
 
-        /// <summary>
-        /// Instance ID to attach.
-        /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
-        /// <summary>
-        /// ENI ID to attach.
-        /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The status of the Network Interface Attachment.
-        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -111,21 +72,12 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class NetworkInterfaceAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Network interface index (int).
-        /// </summary>
         [Input("deviceIndex", required: true)]
         public Input<int> DeviceIndex { get; set; } = null!;
 
-        /// <summary>
-        /// Instance ID to attach.
-        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
-        /// <summary>
-        /// ENI ID to attach.
-        /// </summary>
         [Input("networkInterfaceId", required: true)]
         public Input<string> NetworkInterfaceId { get; set; } = null!;
 
@@ -136,33 +88,18 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class NetworkInterfaceAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ENI Attachment ID.
-        /// </summary>
         [Input("attachmentId")]
         public Input<string>? AttachmentId { get; set; }
 
-        /// <summary>
-        /// Network interface index (int).
-        /// </summary>
         [Input("deviceIndex")]
         public Input<int>? DeviceIndex { get; set; }
 
-        /// <summary>
-        /// Instance ID to attach.
-        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
-        /// <summary>
-        /// ENI ID to attach.
-        /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The status of the Network Interface Attachment.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

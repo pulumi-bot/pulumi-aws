@@ -42,9 +42,6 @@ class GetUserResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) assigned by AWS for this user.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -58,33 +55,21 @@ class GetUserResult:
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        Path in which this user was created.
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="permissionsBoundary")
     def permissions_boundary(self) -> str:
-        """
-        The ARN of the policy that is used to set the permissions boundary for the user.
-        """
         return pulumi.get(self, "permissions_boundary")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        The unique ID assigned by AWS for this user.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> str:
-        """
-        The name associated to this User
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -105,21 +90,7 @@ class AwaitableGetUserResult(GetUserResult):
 def get_user(user_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    This data source can be used to fetch information about a specific
-    IAM user. By using this data source, you can reference IAM user
-    properties without having to hard code ARNs or unique IDs as input.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.iam.get_user(user_name="an_example_user_name")
-    ```
-
-
-    :param str user_name: The friendly IAM user name to match.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['userName'] = user_name

@@ -9,83 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafV2
 {
-    /// <summary>
-    /// Provides an AWS WAFv2 Regex Pattern Set Resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.WafV2.RegexPatternSet("example", new Aws.WafV2.RegexPatternSetArgs
-    ///         {
-    ///             Description = "Example regex pattern set",
-    ///             RegularExpressions = 
-    ///             {
-    ///                 new Aws.WafV2.Inputs.RegexPatternSetRegularExpressionArgs
-    ///                 {
-    ///                     RegexString = "one",
-    ///                 },
-    ///                 new Aws.WafV2.Inputs.RegexPatternSetRegularExpressionArgs
-    ///                 {
-    ///                     RegexString = "two",
-    ///                 },
-    ///             },
-    ///             Scope = "REGIONAL",
-    ///             Tags = 
-    ///             {
-    ///                 { "Tag1", "Value1" },
-    ///                 { "Tag2", "Value2" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RegexPatternSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the cluster.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly description of the regular expression pattern set.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("lockToken")]
         public Output<string> LockToken { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly name of the regular expression pattern set.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// One or more blocks of regular expression patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. See Regular Expression below for details.
-        /// </summary>
         [Output("regularExpressions")]
         public Output<ImmutableArray<Outputs.RegexPatternSetRegularExpression>> RegularExpressions { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-        /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
-        /// <summary>
-        /// An array of key:value pairs to associate with the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -135,42 +78,25 @@ namespace Pulumi.Aws.WafV2
 
     public sealed class RegexPatternSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A friendly description of the regular expression pattern set.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// A friendly name of the regular expression pattern set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("regularExpressions")]
         private InputList<Inputs.RegexPatternSetRegularExpressionArgs>? _regularExpressions;
-
-        /// <summary>
-        /// One or more blocks of regular expression patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. See Regular Expression below for details.
-        /// </summary>
         public InputList<Inputs.RegexPatternSetRegularExpressionArgs> RegularExpressions
         {
             get => _regularExpressions ?? (_regularExpressions = new InputList<Inputs.RegexPatternSetRegularExpressionArgs>());
             set => _regularExpressions = value;
         }
 
-        /// <summary>
-        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-        /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// An array of key:value pairs to associate with the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -184,51 +110,31 @@ namespace Pulumi.Aws.WafV2
 
     public sealed class RegexPatternSetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the cluster.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A friendly description of the regular expression pattern set.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("lockToken")]
         public Input<string>? LockToken { get; set; }
 
-        /// <summary>
-        /// A friendly name of the regular expression pattern set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("regularExpressions")]
         private InputList<Inputs.RegexPatternSetRegularExpressionGetArgs>? _regularExpressions;
-
-        /// <summary>
-        /// One or more blocks of regular expression patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. See Regular Expression below for details.
-        /// </summary>
         public InputList<Inputs.RegexPatternSetRegularExpressionGetArgs> RegularExpressions
         {
             get => _regularExpressions ?? (_regularExpressions = new InputList<Inputs.RegexPatternSetRegularExpressionGetArgs>());
             set => _regularExpressions = value;
         }
 
-        /// <summary>
-        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// An array of key:value pairs to associate with the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

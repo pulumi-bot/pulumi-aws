@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Resource for managing QuickSight Group
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.quicksight.Group("example", {
- *     groupName: "tf-example",
- * });
- * ```
- */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -46,25 +32,10 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN) of group
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The ID for the AWS account that the group is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account.
-     */
     public readonly awsAccountId!: pulumi.Output<string>;
-    /**
-     * A description for the group.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A name for the group.
-     */
     public readonly groupName!: pulumi.Output<string>;
-    /**
-     * The namespace. Currently, you should set this to `default`.
-     */
     public readonly namespace!: pulumi.Output<string | undefined>;
 
     /**
@@ -110,25 +81,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
-    /**
-     * Amazon Resource Name (ARN) of group
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The ID for the AWS account that the group is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account.
-     */
     readonly awsAccountId?: pulumi.Input<string>;
-    /**
-     * A description for the group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A name for the group.
-     */
     readonly groupName?: pulumi.Input<string>;
-    /**
-     * The namespace. Currently, you should set this to `default`.
-     */
     readonly namespace?: pulumi.Input<string>;
 }
 
@@ -136,20 +92,8 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
-    /**
-     * The ID for the AWS account that the group is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account.
-     */
     readonly awsAccountId?: pulumi.Input<string>;
-    /**
-     * A description for the group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A name for the group.
-     */
     readonly groupName: pulumi.Input<string>;
-    /**
-     * The namespace. Currently, you should set this to `default`.
-     */
     readonly namespace?: pulumi.Input<string>;
 }

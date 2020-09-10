@@ -10,67 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS App Mesh virtual router resource.
-//
-// ## Breaking Changes
-//
-// Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92) and [here](https://github.com/awslabs/aws-app-mesh-examples/issues/94)), `appmesh.VirtualRouter` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
-//
-// * Remove service `serviceNames` from the `spec` argument.
-// AWS has created a `appmesh.VirtualService` resource for each of service names.
-// These resource can be imported using `import`.
-//
-// * Add a `listener` configuration block to the `spec` argument.
-//
-// The state associated with existing resources will automatically be migrated.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appmesh"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appmesh.NewVirtualRouter(ctx, "serviceb", &appmesh.VirtualRouterArgs{
-// 			MeshName: pulumi.Any(aws_appmesh_mesh.Simple.Id),
-// 			Spec: &appmesh.VirtualRouterSpecArgs{
-// 				Listener: &appmesh.VirtualRouterSpecListenerArgs{
-// 					PortMapping: &appmesh.VirtualRouterSpecListenerPortMappingArgs{
-// 						Port:     pulumi.Int(8080),
-// 						Protocol: pulumi.String("http"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VirtualRouter struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the virtual router.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The creation date of the virtual router.
-	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
-	// The last update date of the virtual router.
-	LastUpdatedDate pulumi.StringOutput `pulumi:"lastUpdatedDate"`
-	// The name of the service mesh in which to create the virtual router.
-	MeshName pulumi.StringOutput `pulumi:"meshName"`
-	// The name to use for the virtual router.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The virtual router specification to apply.
-	Spec VirtualRouterSpecOutput `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn             pulumi.StringOutput     `pulumi:"arn"`
+	CreatedDate     pulumi.StringOutput     `pulumi:"createdDate"`
+	LastUpdatedDate pulumi.StringOutput     `pulumi:"lastUpdatedDate"`
+	MeshName        pulumi.StringOutput     `pulumi:"meshName"`
+	Name            pulumi.StringOutput     `pulumi:"name"`
+	Spec            VirtualRouterSpecOutput `pulumi:"spec"`
+	Tags            pulumi.StringMapOutput  `pulumi:"tags"`
 }
 
 // NewVirtualRouter registers a new resource with the given unique name, arguments, and options.
@@ -107,37 +56,23 @@ func GetVirtualRouter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VirtualRouter resources.
 type virtualRouterState struct {
-	// The ARN of the virtual router.
-	Arn *string `pulumi:"arn"`
-	// The creation date of the virtual router.
-	CreatedDate *string `pulumi:"createdDate"`
-	// The last update date of the virtual router.
-	LastUpdatedDate *string `pulumi:"lastUpdatedDate"`
-	// The name of the service mesh in which to create the virtual router.
-	MeshName *string `pulumi:"meshName"`
-	// The name to use for the virtual router.
-	Name *string `pulumi:"name"`
-	// The virtual router specification to apply.
-	Spec *VirtualRouterSpec `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn             *string            `pulumi:"arn"`
+	CreatedDate     *string            `pulumi:"createdDate"`
+	LastUpdatedDate *string            `pulumi:"lastUpdatedDate"`
+	MeshName        *string            `pulumi:"meshName"`
+	Name            *string            `pulumi:"name"`
+	Spec            *VirtualRouterSpec `pulumi:"spec"`
+	Tags            map[string]string  `pulumi:"tags"`
 }
 
 type VirtualRouterState struct {
-	// The ARN of the virtual router.
-	Arn pulumi.StringPtrInput
-	// The creation date of the virtual router.
-	CreatedDate pulumi.StringPtrInput
-	// The last update date of the virtual router.
+	Arn             pulumi.StringPtrInput
+	CreatedDate     pulumi.StringPtrInput
 	LastUpdatedDate pulumi.StringPtrInput
-	// The name of the service mesh in which to create the virtual router.
-	MeshName pulumi.StringPtrInput
-	// The name to use for the virtual router.
-	Name pulumi.StringPtrInput
-	// The virtual router specification to apply.
-	Spec VirtualRouterSpecPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	MeshName        pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	Spec            VirtualRouterSpecPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (VirtualRouterState) ElementType() reflect.Type {
@@ -145,26 +80,18 @@ func (VirtualRouterState) ElementType() reflect.Type {
 }
 
 type virtualRouterArgs struct {
-	// The name of the service mesh in which to create the virtual router.
-	MeshName string `pulumi:"meshName"`
-	// The name to use for the virtual router.
-	Name *string `pulumi:"name"`
-	// The virtual router specification to apply.
-	Spec VirtualRouterSpec `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	MeshName string            `pulumi:"meshName"`
+	Name     *string           `pulumi:"name"`
+	Spec     VirtualRouterSpec `pulumi:"spec"`
+	Tags     map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a VirtualRouter resource.
 type VirtualRouterArgs struct {
-	// The name of the service mesh in which to create the virtual router.
 	MeshName pulumi.StringInput
-	// The name to use for the virtual router.
-	Name pulumi.StringPtrInput
-	// The virtual router specification to apply.
-	Spec VirtualRouterSpecInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Name     pulumi.StringPtrInput
+	Spec     VirtualRouterSpecInput
+	Tags     pulumi.StringMapInput
 }
 
 func (VirtualRouterArgs) ElementType() reflect.Type {

@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Transfer.Inputs
 
     public sealed class ServerEndpointDetailsGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the VPC endpoint.
-        /// </summary>
         [Input("vpcEndpointId", required: true)]
         public Input<string> VpcEndpointId { get; set; } = null!;
 

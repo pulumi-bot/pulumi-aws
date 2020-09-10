@@ -9,60 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a Virtual Private Gateway attachment resource, allowing for an existing
-    /// hardware VPN gateway to be attached and/or detached from a VPC.
-    /// 
-    /// &gt; **Note:** The `aws.ec2.VpnGateway`
-    /// resource can also automatically attach the Virtual Private Gateway it creates
-    /// to an existing VPC by setting the `vpc_id` attribute accordingly.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var network = new Aws.Ec2.Vpc("network", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///         });
-    ///         var vpn = new Aws.Ec2.VpnGateway("vpn", new Aws.Ec2.VpnGatewayArgs
-    ///         {
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "example-vpn-gateway" },
-    ///             },
-    ///         });
-    ///         var vpnAttachment = new Aws.Ec2.VpnGatewayAttachment("vpnAttachment", new Aws.Ec2.VpnGatewayAttachmentArgs
-    ///         {
-    ///             VpcId = network.Id,
-    ///             VpnGatewayId = vpn.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// See [Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
-    /// and [Virtual Private Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) user
-    /// guides for more information.
-    /// </summary>
     public partial class VpnGatewayAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the VPC.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Virtual Private Gateway.
-        /// </summary>
         [Output("vpnGatewayId")]
         public Output<string> VpnGatewayId { get; private set; } = null!;
 
@@ -112,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpnGatewayAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the VPC.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the Virtual Private Gateway.
-        /// </summary>
         [Input("vpnGatewayId", required: true)]
         public Input<string> VpnGatewayId { get; set; } = null!;
 
@@ -131,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpnGatewayAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the VPC.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
-        /// <summary>
-        /// The ID of the Virtual Private Gateway.
-        /// </summary>
         [Input("vpnGatewayId")]
         public Input<string>? VpnGatewayId { get; set; }
 

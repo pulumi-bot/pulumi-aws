@@ -9,55 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Athena
 {
-    /// <summary>
-    /// Provides an Athena database.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var hogeBucket = new Aws.S3.Bucket("hogeBucket", new Aws.S3.BucketArgs
-    ///         {
-    ///         });
-    ///         var hogeDatabase = new Aws.Athena.Database("hogeDatabase", new Aws.Athena.DatabaseArgs
-    ///         {
-    ///             Name = "database_name",
-    ///             Bucket = hogeBucket.BucketName,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Name of s3 bucket to save the results of the query execution.
-        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
-        /// <summary>
-        /// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
-        /// </summary>
         [Output("encryptionConfiguration")]
         public Output<Outputs.DatabaseEncryptionConfiguration?> EncryptionConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the database to create.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -107,27 +69,15 @@ namespace Pulumi.Aws.Athena
 
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of s3 bucket to save the results of the query execution.
-        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
-        /// <summary>
-        /// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
-        /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.DatabaseEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
 
-        /// <summary>
-        /// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
-        /// <summary>
-        /// Name of the database to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -138,27 +88,15 @@ namespace Pulumi.Aws.Athena
 
     public sealed class DatabaseState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of s3 bucket to save the results of the query execution.
-        /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
-        /// <summary>
-        /// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
-        /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.DatabaseEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
 
-        /// <summary>
-        /// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
-        /// <summary>
-        /// Name of the database to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

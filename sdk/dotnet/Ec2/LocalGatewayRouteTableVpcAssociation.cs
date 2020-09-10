@@ -9,57 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Manages an EC2 Local Gateway Route Table VPC Association. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-local-gateways.html#vpc-associations).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleLocalGatewayRouteTable = Output.Create(Aws.Ec2.GetLocalGatewayRouteTable.InvokeAsync(new Aws.Ec2.GetLocalGatewayRouteTableArgs
-    ///         {
-    ///             OutpostArn = "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef",
-    ///         }));
-    ///         var exampleVpc = new Aws.Ec2.Vpc("exampleVpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///         });
-    ///         var exampleLocalGatewayRouteTableVpcAssociation = new Aws.Ec2.LocalGatewayRouteTableVpcAssociation("exampleLocalGatewayRouteTableVpcAssociation", new Aws.Ec2.LocalGatewayRouteTableVpcAssociationArgs
-    ///         {
-    ///             LocalGatewayRouteTableId = exampleLocalGatewayRouteTable.Apply(exampleLocalGatewayRouteTable =&gt; exampleLocalGatewayRouteTable.Id),
-    ///             VpcId = exampleVpc.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class LocalGatewayRouteTableVpcAssociation : Pulumi.CustomResource
     {
         [Output("localGatewayId")]
         public Output<string> LocalGatewayId { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of EC2 Local Gateway Route Table.
-        /// </summary>
         [Output("localGatewayRouteTableId")]
         public Output<string> LocalGatewayRouteTableId { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of EC2 VPC.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -109,27 +69,17 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class LocalGatewayRouteTableVpcAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Identifier of EC2 Local Gateway Route Table.
-        /// </summary>
         [Input("localGatewayRouteTableId", required: true)]
         public Input<string> LocalGatewayRouteTableId { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Identifier of EC2 VPC.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -143,27 +93,17 @@ namespace Pulumi.Aws.Ec2
         [Input("localGatewayId")]
         public Input<string>? LocalGatewayId { get; set; }
 
-        /// <summary>
-        /// Identifier of EC2 Local Gateway Route Table.
-        /// </summary>
         [Input("localGatewayRouteTableId")]
         public Input<string>? LocalGatewayRouteTableId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Identifier of EC2 VPC.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

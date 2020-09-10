@@ -9,57 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Dax
 {
-    /// <summary>
-    /// Provides a DAX Parameter Group resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Dax.ParameterGroup("example", new Aws.Dax.ParameterGroupArgs
-    ///         {
-    ///             Parameters = 
-    ///             {
-    ///                 new Aws.Dax.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "query-ttl-millis",
-    ///                     Value = "100000",
-    ///                 },
-    ///                 new Aws.Dax.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "record-ttl-millis",
-    ///                     Value = "100000",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ParameterGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A description of the parameter group.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the parameter group.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The parameters of the parameter group.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ParameterGroupParameter>> Parameters { get; private set; } = null!;
 
@@ -109,24 +66,14 @@ namespace Pulumi.Aws.Dax
 
     public sealed class ParameterGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the parameter group.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the parameter group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterArgs>? _parameters;
-
-        /// <summary>
-        /// The parameters of the parameter group.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterArgs>());
@@ -140,24 +87,14 @@ namespace Pulumi.Aws.Dax
 
     public sealed class ParameterGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the parameter group.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the parameter group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// The parameters of the parameter group.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterGetArgs>());

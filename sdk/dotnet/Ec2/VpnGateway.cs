@@ -9,61 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a resource to create a VPC VPN Gateway.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpnGw = new Aws.Ec2.VpnGateway("vpnGw", new Aws.Ec2.VpnGatewayArgs
-    ///         {
-    ///             VpcId = aws_vpc.Main.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "main" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpnGateway : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
-        /// </summary>
         [Output("amazonSideAsn")]
         public Output<string> AmazonSideAsn { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the VPN Gateway.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The Availability Zone for the virtual private gateway.
-        /// </summary>
         [Output("availabilityZone")]
         public Output<string?> AvailabilityZone { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC ID to create in.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -113,33 +72,20 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpnGatewayArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
-        /// </summary>
         [Input("amazonSideAsn")]
         public Input<string>? AmazonSideAsn { get; set; }
 
-        /// <summary>
-        /// The Availability Zone for the virtual private gateway.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID to create in.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
@@ -150,39 +96,23 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpnGatewayState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
-        /// </summary>
         [Input("amazonSideAsn")]
         public Input<string>? AmazonSideAsn { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the VPN Gateway.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The Availability Zone for the virtual private gateway.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID to create in.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

@@ -10,53 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an ElastiCache parameter group resource.
-//
-// > **NOTE:** Attempting to remove the `reserved-memory` parameter when `family` is set to `redis2.6` or `redis2.8` may show a perpetual difference in this provider due to an Elasticache API limitation. Leave that parameter configured with any value to workaround the issue.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elasticache"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elasticache.NewParameterGroup(ctx, "_default", &elasticache.ParameterGroupArgs{
-// 			Family: pulumi.String("redis2.8"),
-// 			Parameters: elasticache.ParameterGroupParameterArray{
-// 				&elasticache.ParameterGroupParameterArgs{
-// 					Name:  pulumi.String("activerehashing"),
-// 					Value: pulumi.String("yes"),
-// 				},
-// 				&elasticache.ParameterGroupParameterArgs{
-// 					Name:  pulumi.String("min-slaves-to-write"),
-// 					Value: pulumi.String("2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ParameterGroup struct {
 	pulumi.CustomResourceState
 
-	// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The family of the ElastiCache parameter group.
-	Family pulumi.StringOutput `pulumi:"family"`
-	// The name of the ElastiCache parameter.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of ElastiCache parameters to apply.
-	Parameters ParameterGroupParameterArrayOutput `pulumi:"parameters"`
+	Description pulumi.StringOutput                `pulumi:"description"`
+	Family      pulumi.StringOutput                `pulumi:"family"`
+	Name        pulumi.StringOutput                `pulumi:"name"`
+	Parameters  ParameterGroupParameterArrayOutput `pulumi:"parameters"`
 }
 
 // NewParameterGroup registers a new resource with the given unique name, arguments, and options.
@@ -93,25 +53,17 @@ func GetParameterGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ParameterGroup resources.
 type parameterGroupState struct {
-	// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// The family of the ElastiCache parameter group.
-	Family *string `pulumi:"family"`
-	// The name of the ElastiCache parameter.
-	Name *string `pulumi:"name"`
-	// A list of ElastiCache parameters to apply.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	Description *string                   `pulumi:"description"`
+	Family      *string                   `pulumi:"family"`
+	Name        *string                   `pulumi:"name"`
+	Parameters  []ParameterGroupParameter `pulumi:"parameters"`
 }
 
 type ParameterGroupState struct {
-	// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// The family of the ElastiCache parameter group.
-	Family pulumi.StringPtrInput
-	// The name of the ElastiCache parameter.
-	Name pulumi.StringPtrInput
-	// A list of ElastiCache parameters to apply.
-	Parameters ParameterGroupParameterArrayInput
+	Family      pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Parameters  ParameterGroupParameterArrayInput
 }
 
 func (ParameterGroupState) ElementType() reflect.Type {
@@ -119,26 +71,18 @@ func (ParameterGroupState) ElementType() reflect.Type {
 }
 
 type parameterGroupArgs struct {
-	// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// The family of the ElastiCache parameter group.
-	Family string `pulumi:"family"`
-	// The name of the ElastiCache parameter.
-	Name *string `pulumi:"name"`
-	// A list of ElastiCache parameters to apply.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	Description *string                   `pulumi:"description"`
+	Family      string                    `pulumi:"family"`
+	Name        *string                   `pulumi:"name"`
+	Parameters  []ParameterGroupParameter `pulumi:"parameters"`
 }
 
 // The set of arguments for constructing a ParameterGroup resource.
 type ParameterGroupArgs struct {
-	// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// The family of the ElastiCache parameter group.
-	Family pulumi.StringInput
-	// The name of the ElastiCache parameter.
-	Name pulumi.StringPtrInput
-	// A list of ElastiCache parameters to apply.
-	Parameters ParameterGroupParameterArrayInput
+	Family      pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Parameters  ParameterGroupParameterArrayInput
 }
 
 func (ParameterGroupArgs) ElementType() reflect.Type {

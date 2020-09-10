@@ -10,66 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an ElastiCache Subnet Group resource.
-//
-// > **NOTE:** ElastiCache Subnet Groups are only for use when working with an
-// ElastiCache cluster **inside** of a VPC. If you are on EC2 Classic, see the
-// ElastiCache Security Group resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elasticache"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooVpc, err := ec2.NewVpc(ctx, "fooVpc", &ec2.VpcArgs{
-// 			CidrBlock: pulumi.String("10.0.0.0/16"),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("tf-test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooSubnet, err := ec2.NewSubnet(ctx, "fooSubnet", &ec2.SubnetArgs{
-// 			VpcId:            fooVpc.ID(),
-// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
-// 			AvailabilityZone: pulumi.String("us-west-2a"),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("tf-test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = elasticache.NewSubnetGroup(ctx, "bar", &elasticache.SubnetGroupArgs{
-// 			SubnetIds: pulumi.StringArray{
-// 				fooSubnet.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SubnetGroup struct {
 	pulumi.CustomResourceState
 
-	// Description for the cache subnet group. Defaults to "Managed by Pulumi".
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Name for the cache subnet group. Elasticache converts this name to lowercase.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// List of VPC Subnet IDs for the cache subnet group
-	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
+	Description pulumi.StringOutput      `pulumi:"description"`
+	Name        pulumi.StringOutput      `pulumi:"name"`
+	SubnetIds   pulumi.StringArrayOutput `pulumi:"subnetIds"`
 }
 
 // NewSubnetGroup registers a new resource with the given unique name, arguments, and options.
@@ -106,21 +52,15 @@ func GetSubnetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SubnetGroup resources.
 type subnetGroupState struct {
-	// Description for the cache subnet group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// Name for the cache subnet group. Elasticache converts this name to lowercase.
-	Name *string `pulumi:"name"`
-	// List of VPC Subnet IDs for the cache subnet group
-	SubnetIds []string `pulumi:"subnetIds"`
+	Description *string  `pulumi:"description"`
+	Name        *string  `pulumi:"name"`
+	SubnetIds   []string `pulumi:"subnetIds"`
 }
 
 type SubnetGroupState struct {
-	// Description for the cache subnet group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// Name for the cache subnet group. Elasticache converts this name to lowercase.
-	Name pulumi.StringPtrInput
-	// List of VPC Subnet IDs for the cache subnet group
-	SubnetIds pulumi.StringArrayInput
+	Name        pulumi.StringPtrInput
+	SubnetIds   pulumi.StringArrayInput
 }
 
 func (SubnetGroupState) ElementType() reflect.Type {
@@ -128,22 +68,16 @@ func (SubnetGroupState) ElementType() reflect.Type {
 }
 
 type subnetGroupArgs struct {
-	// Description for the cache subnet group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// Name for the cache subnet group. Elasticache converts this name to lowercase.
-	Name *string `pulumi:"name"`
-	// List of VPC Subnet IDs for the cache subnet group
-	SubnetIds []string `pulumi:"subnetIds"`
+	Description *string  `pulumi:"description"`
+	Name        *string  `pulumi:"name"`
+	SubnetIds   []string `pulumi:"subnetIds"`
 }
 
 // The set of arguments for constructing a SubnetGroup resource.
 type SubnetGroupArgs struct {
-	// Description for the cache subnet group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// Name for the cache subnet group. Elasticache converts this name to lowercase.
-	Name pulumi.StringPtrInput
-	// List of VPC Subnet IDs for the cache subnet group
-	SubnetIds pulumi.StringArrayInput
+	Name        pulumi.StringPtrInput
+	SubnetIds   pulumi.StringArrayInput
 }
 
 func (SubnetGroupArgs) ElementType() reflect.Type {

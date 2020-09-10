@@ -17,27 +17,17 @@ class GetResourceShareFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the tag key to filter on.
-        :param List[str] values: The value of the tag key.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the tag key to filter on.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        The value of the tag key.
-        """
         return pulumi.get(self, "values")
 
 

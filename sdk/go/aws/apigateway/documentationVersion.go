@@ -10,57 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to manage an API Gateway Documentation Version.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRestApi, err := apigateway.NewRestApi(ctx, "exampleRestApi", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDocumentationPart, err := apigateway.NewDocumentationPart(ctx, "exampleDocumentationPart", &apigateway.DocumentationPartArgs{
-// 			Location: &apigateway.DocumentationPartLocationArgs{
-// 				Type: pulumi.String("API"),
-// 			},
-// 			Properties: pulumi.String("{\"description\":\"Example\"}"),
-// 			RestApiId:  exampleRestApi.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewDocumentationVersion(ctx, "exampleDocumentationVersion", &apigateway.DocumentationVersionArgs{
-// 			Version:     pulumi.String("example_version"),
-// 			RestApiId:   exampleRestApi.ID(),
-// 			Description: pulumi.String("Example description"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleDocumentationPart,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DocumentationVersion struct {
 	pulumi.CustomResourceState
 
-	// The description of the API documentation version.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the associated Rest API
-	RestApiId pulumi.StringOutput `pulumi:"restApiId"`
-	// The version identifier of the API documentation snapshot.
-	Version pulumi.StringOutput `pulumi:"version"`
+	RestApiId   pulumi.StringOutput    `pulumi:"restApiId"`
+	Version     pulumi.StringOutput    `pulumi:"version"`
 }
 
 // NewDocumentationVersion registers a new resource with the given unique name, arguments, and options.
@@ -97,21 +52,15 @@ func GetDocumentationVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DocumentationVersion resources.
 type documentationVersionState struct {
-	// The description of the API documentation version.
 	Description *string `pulumi:"description"`
-	// The ID of the associated Rest API
-	RestApiId *string `pulumi:"restApiId"`
-	// The version identifier of the API documentation snapshot.
-	Version *string `pulumi:"version"`
+	RestApiId   *string `pulumi:"restApiId"`
+	Version     *string `pulumi:"version"`
 }
 
 type DocumentationVersionState struct {
-	// The description of the API documentation version.
 	Description pulumi.StringPtrInput
-	// The ID of the associated Rest API
-	RestApiId pulumi.StringPtrInput
-	// The version identifier of the API documentation snapshot.
-	Version pulumi.StringPtrInput
+	RestApiId   pulumi.StringPtrInput
+	Version     pulumi.StringPtrInput
 }
 
 func (DocumentationVersionState) ElementType() reflect.Type {
@@ -119,22 +68,16 @@ func (DocumentationVersionState) ElementType() reflect.Type {
 }
 
 type documentationVersionArgs struct {
-	// The description of the API documentation version.
 	Description *string `pulumi:"description"`
-	// The ID of the associated Rest API
-	RestApiId string `pulumi:"restApiId"`
-	// The version identifier of the API documentation snapshot.
-	Version string `pulumi:"version"`
+	RestApiId   string  `pulumi:"restApiId"`
+	Version     string  `pulumi:"version"`
 }
 
 // The set of arguments for constructing a DocumentationVersion resource.
 type DocumentationVersionArgs struct {
-	// The description of the API documentation version.
 	Description pulumi.StringPtrInput
-	// The ID of the associated Rest API
-	RestApiId pulumi.StringInput
-	// The version identifier of the API documentation snapshot.
-	Version pulumi.StringInput
+	RestApiId   pulumi.StringInput
+	Version     pulumi.StringInput
 }
 
 func (DocumentationVersionArgs) ElementType() reflect.Type {

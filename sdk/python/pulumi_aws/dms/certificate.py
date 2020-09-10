@@ -22,27 +22,9 @@ class Certificate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a DMS (Data Migration Service) certificate resource. DMS certificates can be created, deleted, and imported.
-
-        > **Note:** All arguments including the PEM encoded certificate will be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new certificate
-        test = aws.dms.Certificate("test",
-            certificate_id="test-dms-certificate-tf",
-            certificate_pem="...")
-        ```
-
+        Create a Certificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_id: The certificate identifier.
-        :param pulumi.Input[str] certificate_pem: The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
-        :param pulumi.Input[str] certificate_wallet: The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,10 +70,6 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_arn: The Amazon Resource Name (ARN) for the certificate.
-        :param pulumi.Input[str] certificate_id: The certificate identifier.
-        :param pulumi.Input[str] certificate_pem: The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
-        :param pulumi.Input[str] certificate_wallet: The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -106,33 +84,21 @@ class Certificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="certificateArn")
     def certificate_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) for the certificate.
-        """
         return pulumi.get(self, "certificate_arn")
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[str]:
-        """
-        The certificate identifier.
-        """
         return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter(name="certificatePem")
     def certificate_pem(self) -> pulumi.Output[Optional[str]]:
-        """
-        The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
-        """
         return pulumi.get(self, "certificate_pem")
 
     @property
     @pulumi.getter(name="certificateWallet")
     def certificate_wallet(self) -> pulumi.Output[Optional[str]]:
-        """
-        The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
-        """
         return pulumi.get(self, "certificate_wallet")
 
     def translate_output_property(self, prop):

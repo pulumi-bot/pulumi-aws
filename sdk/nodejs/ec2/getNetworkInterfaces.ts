@@ -6,49 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * The following shows outputing all network interface ids in a region.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleNetworkInterfaces = aws.ec2.getNetworkInterfaces({});
- * export const example = exampleNetworkInterfaces.then(exampleNetworkInterfaces => exampleNetworkInterfaces.ids);
- * ```
- *
- * The following example retrieves a list of all network interface ids with a custom tag of `Name` set to a value of `test`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = aws.ec2.getNetworkInterfaces({
- *     tags: {
- *         Name: "test",
- *     },
- * });
- * export const example1 = example.then(example => example.ids);
- * ```
- *
- * The following example retrieves a network interface ids which associated
- * with specific subnet.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleNetworkInterfaces = aws.ec2.getNetworkInterfaces({
- *     filters: [{
- *         name: "subnet-id",
- *         values: [aws_subnet.test.id],
- *     }],
- * });
- * export const example = exampleNetworkInterfaces.then(exampleNetworkInterfaces => exampleNetworkInterfaces.ids);
- * ```
- */
 export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> {
     args = args || {};
     if (!opts) {
@@ -68,14 +25,7 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
  * A collection of arguments for invoking getNetworkInterfaces.
  */
 export interface GetNetworkInterfacesArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: inputs.ec2.GetNetworkInterfacesFilter[];
-    /**
-     * A map of tags, each pair of which must exactly match
-     * a pair on the desired network interfaces.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -88,9 +38,6 @@ export interface GetNetworkInterfacesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of all the network interface ids found. This data source will fail if none are found.
-     */
     readonly ids: string[];
     readonly tags: {[key: string]: string};
 }

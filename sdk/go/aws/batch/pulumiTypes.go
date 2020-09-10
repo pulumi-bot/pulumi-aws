@@ -11,36 +11,21 @@ import (
 )
 
 type ComputeEnvironmentComputeResources struct {
-	// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
-	AllocationStrategy *string `pulumi:"allocationStrategy"`
-	// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
-	BidPercentage *int `pulumi:"bidPercentage"`
-	// The desired number of EC2 vCPUS in the compute environment.
-	DesiredVcpus *int `pulumi:"desiredVcpus"`
-	// The EC2 key pair that is used for instances launched in the compute environment.
-	Ec2KeyPair *string `pulumi:"ec2KeyPair"`
-	// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
-	ImageId *string `pulumi:"imageId"`
-	// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
-	InstanceRole string `pulumi:"instanceRole"`
-	// A list of instance types that may be launched.
-	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The launch template to use for your compute resources. See details below.
-	LaunchTemplate *ComputeEnvironmentComputeResourcesLaunchTemplate `pulumi:"launchTemplate"`
-	// The maximum number of EC2 vCPUs that an environment can reach.
-	MaxVcpus int `pulumi:"maxVcpus"`
-	// The minimum number of EC2 vCPUs that an environment should maintain.
-	MinVcpus int `pulumi:"minVcpus"`
-	// A list of EC2 security group that are associated with instances launched in the compute environment.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
-	SpotIamFleetRole *string `pulumi:"spotIamFleetRole"`
-	// A list of VPC subnets into which the compute resources are launched.
-	Subnets []string `pulumi:"subnets"`
-	// Key-value pair tags to be applied to resources that are launched in the compute environment.
-	Tags map[string]string `pulumi:"tags"`
-	// The type of compute environment. Valid items are `EC2` or `SPOT`.
-	Type string `pulumi:"type"`
+	AllocationStrategy *string                                           `pulumi:"allocationStrategy"`
+	BidPercentage      *int                                              `pulumi:"bidPercentage"`
+	DesiredVcpus       *int                                              `pulumi:"desiredVcpus"`
+	Ec2KeyPair         *string                                           `pulumi:"ec2KeyPair"`
+	ImageId            *string                                           `pulumi:"imageId"`
+	InstanceRole       string                                            `pulumi:"instanceRole"`
+	InstanceTypes      []string                                          `pulumi:"instanceTypes"`
+	LaunchTemplate     *ComputeEnvironmentComputeResourcesLaunchTemplate `pulumi:"launchTemplate"`
+	MaxVcpus           int                                               `pulumi:"maxVcpus"`
+	MinVcpus           int                                               `pulumi:"minVcpus"`
+	SecurityGroupIds   []string                                          `pulumi:"securityGroupIds"`
+	SpotIamFleetRole   *string                                           `pulumi:"spotIamFleetRole"`
+	Subnets            []string                                          `pulumi:"subnets"`
+	Tags               map[string]string                                 `pulumi:"tags"`
+	Type               string                                            `pulumi:"type"`
 }
 
 // ComputeEnvironmentComputeResourcesInput is an input type that accepts ComputeEnvironmentComputeResourcesArgs and ComputeEnvironmentComputeResourcesOutput values.
@@ -55,36 +40,21 @@ type ComputeEnvironmentComputeResourcesInput interface {
 }
 
 type ComputeEnvironmentComputeResourcesArgs struct {
-	// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
-	AllocationStrategy pulumi.StringPtrInput `pulumi:"allocationStrategy"`
-	// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
-	BidPercentage pulumi.IntPtrInput `pulumi:"bidPercentage"`
-	// The desired number of EC2 vCPUS in the compute environment.
-	DesiredVcpus pulumi.IntPtrInput `pulumi:"desiredVcpus"`
-	// The EC2 key pair that is used for instances launched in the compute environment.
-	Ec2KeyPair pulumi.StringPtrInput `pulumi:"ec2KeyPair"`
-	// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
-	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
-	// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
-	InstanceRole pulumi.StringInput `pulumi:"instanceRole"`
-	// A list of instance types that may be launched.
-	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
-	// The launch template to use for your compute resources. See details below.
-	LaunchTemplate ComputeEnvironmentComputeResourcesLaunchTemplatePtrInput `pulumi:"launchTemplate"`
-	// The maximum number of EC2 vCPUs that an environment can reach.
-	MaxVcpus pulumi.IntInput `pulumi:"maxVcpus"`
-	// The minimum number of EC2 vCPUs that an environment should maintain.
-	MinVcpus pulumi.IntInput `pulumi:"minVcpus"`
-	// A list of EC2 security group that are associated with instances launched in the compute environment.
-	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
-	SpotIamFleetRole pulumi.StringPtrInput `pulumi:"spotIamFleetRole"`
-	// A list of VPC subnets into which the compute resources are launched.
-	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
-	// Key-value pair tags to be applied to resources that are launched in the compute environment.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The type of compute environment. Valid items are `EC2` or `SPOT`.
-	Type pulumi.StringInput `pulumi:"type"`
+	AllocationStrategy pulumi.StringPtrInput                                    `pulumi:"allocationStrategy"`
+	BidPercentage      pulumi.IntPtrInput                                       `pulumi:"bidPercentage"`
+	DesiredVcpus       pulumi.IntPtrInput                                       `pulumi:"desiredVcpus"`
+	Ec2KeyPair         pulumi.StringPtrInput                                    `pulumi:"ec2KeyPair"`
+	ImageId            pulumi.StringPtrInput                                    `pulumi:"imageId"`
+	InstanceRole       pulumi.StringInput                                       `pulumi:"instanceRole"`
+	InstanceTypes      pulumi.StringArrayInput                                  `pulumi:"instanceTypes"`
+	LaunchTemplate     ComputeEnvironmentComputeResourcesLaunchTemplatePtrInput `pulumi:"launchTemplate"`
+	MaxVcpus           pulumi.IntInput                                          `pulumi:"maxVcpus"`
+	MinVcpus           pulumi.IntInput                                          `pulumi:"minVcpus"`
+	SecurityGroupIds   pulumi.StringArrayInput                                  `pulumi:"securityGroupIds"`
+	SpotIamFleetRole   pulumi.StringPtrInput                                    `pulumi:"spotIamFleetRole"`
+	Subnets            pulumi.StringArrayInput                                  `pulumi:"subnets"`
+	Tags               pulumi.StringMapInput                                    `pulumi:"tags"`
+	Type               pulumi.StringInput                                       `pulumi:"type"`
 }
 
 func (ComputeEnvironmentComputeResourcesArgs) ElementType() reflect.Type {
@@ -163,80 +133,64 @@ func (o ComputeEnvironmentComputeResourcesOutput) ToComputeEnvironmentComputeRes
 		return &v
 	}).(ComputeEnvironmentComputeResourcesPtrOutput)
 }
-
-// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
 func (o ComputeEnvironmentComputeResourcesOutput) AllocationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
 }
 
-// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
 func (o ComputeEnvironmentComputeResourcesOutput) BidPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *int { return v.BidPercentage }).(pulumi.IntPtrOutput)
 }
 
-// The desired number of EC2 vCPUS in the compute environment.
 func (o ComputeEnvironmentComputeResourcesOutput) DesiredVcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *int { return v.DesiredVcpus }).(pulumi.IntPtrOutput)
 }
 
-// The EC2 key pair that is used for instances launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesOutput) Ec2KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *string { return v.Ec2KeyPair }).(pulumi.StringPtrOutput)
 }
 
-// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
 
-// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
 func (o ComputeEnvironmentComputeResourcesOutput) InstanceRole() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) string { return v.InstanceRole }).(pulumi.StringOutput)
 }
 
-// A list of instance types that may be launched.
 func (o ComputeEnvironmentComputeResourcesOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// The launch template to use for your compute resources. See details below.
 func (o ComputeEnvironmentComputeResourcesOutput) LaunchTemplate() ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *ComputeEnvironmentComputeResourcesLaunchTemplate {
 		return v.LaunchTemplate
 	}).(ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput)
 }
 
-// The maximum number of EC2 vCPUs that an environment can reach.
 func (o ComputeEnvironmentComputeResourcesOutput) MaxVcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) int { return v.MaxVcpus }).(pulumi.IntOutput)
 }
 
-// The minimum number of EC2 vCPUs that an environment should maintain.
 func (o ComputeEnvironmentComputeResourcesOutput) MinVcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) int { return v.MinVcpus }).(pulumi.IntOutput)
 }
 
-// A list of EC2 security group that are associated with instances launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
 func (o ComputeEnvironmentComputeResourcesOutput) SpotIamFleetRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) *string { return v.SpotIamFleetRole }).(pulumi.StringPtrOutput)
 }
 
-// A list of VPC subnets into which the compute resources are launched.
 func (o ComputeEnvironmentComputeResourcesOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
-// Key-value pair tags to be applied to resources that are launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of compute environment. Valid items are `EC2` or `SPOT`.
 func (o ComputeEnvironmentComputeResourcesOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -259,7 +213,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Elem() ComputeEnvironmentCo
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) ComputeEnvironmentComputeResources { return *v }).(ComputeEnvironmentComputeResourcesOutput)
 }
 
-// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *string {
 		if v == nil {
@@ -269,7 +222,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) AllocationStrategy() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) BidPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *int {
 		if v == nil {
@@ -279,7 +231,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) BidPercentage() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The desired number of EC2 vCPUS in the compute environment.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) DesiredVcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *int {
 		if v == nil {
@@ -289,7 +240,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) DesiredVcpus() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The EC2 key pair that is used for instances launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *string {
 		if v == nil {
@@ -299,7 +249,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Ec2KeyPair() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *string {
 		if v == nil {
@@ -309,7 +258,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) ImageId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) InstanceRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *string {
 		if v == nil {
@@ -319,7 +267,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) InstanceRole() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of instance types that may be launched.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) []string {
 		if v == nil {
@@ -329,7 +276,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) InstanceTypes() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// The launch template to use for your compute resources. See details below.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) LaunchTemplate() ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *ComputeEnvironmentComputeResourcesLaunchTemplate {
 		if v == nil {
@@ -339,7 +285,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) LaunchTemplate() ComputeEnv
 	}).(ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput)
 }
 
-// The maximum number of EC2 vCPUs that an environment can reach.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) MaxVcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *int {
 		if v == nil {
@@ -349,7 +294,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) MaxVcpus() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// The minimum number of EC2 vCPUs that an environment should maintain.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) MinVcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *int {
 		if v == nil {
@@ -359,7 +303,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) MinVcpus() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// A list of EC2 security group that are associated with instances launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) []string {
 		if v == nil {
@@ -369,7 +312,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) SecurityGroupIds() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
-// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) SpotIamFleetRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *string {
 		if v == nil {
@@ -379,7 +321,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) SpotIamFleetRole() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of VPC subnets into which the compute resources are launched.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) []string {
 		if v == nil {
@@ -389,7 +330,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Subnets() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Key-value pair tags to be applied to resources that are launched in the compute environment.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) map[string]string {
 		if v == nil {
@@ -399,7 +339,6 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Tags() pulumi.StringMapOutp
 	}).(pulumi.StringMapOutput)
 }
 
-// The type of compute environment. Valid items are `EC2` or `SPOT`.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResources) *string {
 		if v == nil {
@@ -410,12 +349,9 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Type() pulumi.StringPtrOutp
 }
 
 type ComputeEnvironmentComputeResourcesLaunchTemplate struct {
-	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
-	LaunchTemplateId *string `pulumi:"launchTemplateId"`
-	// Name of the launch template.
+	LaunchTemplateId   *string `pulumi:"launchTemplateId"`
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// The version number of the launch template. Default: The default version of the launch template.
-	Version *string `pulumi:"version"`
+	Version            *string `pulumi:"version"`
 }
 
 // ComputeEnvironmentComputeResourcesLaunchTemplateInput is an input type that accepts ComputeEnvironmentComputeResourcesLaunchTemplateArgs and ComputeEnvironmentComputeResourcesLaunchTemplateOutput values.
@@ -430,12 +366,9 @@ type ComputeEnvironmentComputeResourcesLaunchTemplateInput interface {
 }
 
 type ComputeEnvironmentComputeResourcesLaunchTemplateArgs struct {
-	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
-	LaunchTemplateId pulumi.StringPtrInput `pulumi:"launchTemplateId"`
-	// Name of the launch template.
+	LaunchTemplateId   pulumi.StringPtrInput `pulumi:"launchTemplateId"`
 	LaunchTemplateName pulumi.StringPtrInput `pulumi:"launchTemplateName"`
-	// The version number of the launch template. Default: The default version of the launch template.
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	Version            pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ComputeEnvironmentComputeResourcesLaunchTemplateArgs) ElementType() reflect.Type {
@@ -514,18 +447,14 @@ func (o ComputeEnvironmentComputeResourcesLaunchTemplateOutput) ToComputeEnviron
 		return &v
 	}).(ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput)
 }
-
-// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
 func (o ComputeEnvironmentComputeResourcesLaunchTemplateOutput) LaunchTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplate) *string { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the launch template.
 func (o ComputeEnvironmentComputeResourcesLaunchTemplateOutput) LaunchTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplate) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
 }
 
-// The version number of the launch template. Default: The default version of the launch template.
 func (o ComputeEnvironmentComputeResourcesLaunchTemplateOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplate) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -550,7 +479,6 @@ func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) Elem() Comput
 	}).(ComputeEnvironmentComputeResourcesLaunchTemplateOutput)
 }
 
-// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
 func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) LaunchTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResourcesLaunchTemplate) *string {
 		if v == nil {
@@ -560,7 +488,6 @@ func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) LaunchTemplat
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the launch template.
 func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) LaunchTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResourcesLaunchTemplate) *string {
 		if v == nil {
@@ -570,7 +497,6 @@ func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) LaunchTemplat
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version number of the launch template. Default: The default version of the launch template.
 func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEnvironmentComputeResourcesLaunchTemplate) *string {
 		if v == nil {
@@ -581,7 +507,6 @@ func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) Version() pul
 }
 
 type JobDefinitionRetryStrategy struct {
-	// The number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
 	Attempts *int `pulumi:"attempts"`
 }
 
@@ -597,7 +522,6 @@ type JobDefinitionRetryStrategyInput interface {
 }
 
 type JobDefinitionRetryStrategyArgs struct {
-	// The number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
 	Attempts pulumi.IntPtrInput `pulumi:"attempts"`
 }
 
@@ -677,8 +601,6 @@ func (o JobDefinitionRetryStrategyOutput) ToJobDefinitionRetryStrategyPtrOutputW
 		return &v
 	}).(JobDefinitionRetryStrategyPtrOutput)
 }
-
-// The number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
 func (o JobDefinitionRetryStrategyOutput) Attempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobDefinitionRetryStrategy) *int { return v.Attempts }).(pulumi.IntPtrOutput)
 }
@@ -701,7 +623,6 @@ func (o JobDefinitionRetryStrategyPtrOutput) Elem() JobDefinitionRetryStrategyOu
 	return o.ApplyT(func(v *JobDefinitionRetryStrategy) JobDefinitionRetryStrategy { return *v }).(JobDefinitionRetryStrategyOutput)
 }
 
-// The number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
 func (o JobDefinitionRetryStrategyPtrOutput) Attempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobDefinitionRetryStrategy) *int {
 		if v == nil {
@@ -712,7 +633,6 @@ func (o JobDefinitionRetryStrategyPtrOutput) Attempts() pulumi.IntPtrOutput {
 }
 
 type JobDefinitionTimeout struct {
-	// The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
 	AttemptDurationSeconds *int `pulumi:"attemptDurationSeconds"`
 }
 
@@ -728,7 +648,6 @@ type JobDefinitionTimeoutInput interface {
 }
 
 type JobDefinitionTimeoutArgs struct {
-	// The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
 	AttemptDurationSeconds pulumi.IntPtrInput `pulumi:"attemptDurationSeconds"`
 }
 
@@ -808,8 +727,6 @@ func (o JobDefinitionTimeoutOutput) ToJobDefinitionTimeoutPtrOutputWithContext(c
 		return &v
 	}).(JobDefinitionTimeoutPtrOutput)
 }
-
-// The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
 func (o JobDefinitionTimeoutOutput) AttemptDurationSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobDefinitionTimeout) *int { return v.AttemptDurationSeconds }).(pulumi.IntPtrOutput)
 }
@@ -832,7 +749,6 @@ func (o JobDefinitionTimeoutPtrOutput) Elem() JobDefinitionTimeoutOutput {
 	return o.ApplyT(func(v *JobDefinitionTimeout) JobDefinitionTimeout { return *v }).(JobDefinitionTimeoutOutput)
 }
 
-// The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
 func (o JobDefinitionTimeoutPtrOutput) AttemptDurationSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobDefinitionTimeout) *int {
 		if v == nil {

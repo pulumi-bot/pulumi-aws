@@ -13,9 +13,6 @@ namespace Pulumi.Aws.AppSync.Outputs
     [OutputType]
     public sealed class DataSourceHttpConfig
     {
-        /// <summary>
-        /// HTTP URL.
-        /// </summary>
         public readonly string Endpoint;
 
         [OutputConstructor]

@@ -21,131 +21,9 @@ class WebAclAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an association with WAF Regional Web ACL.
-
-        > **Note:** An Application Load Balancer can only be associated with one WAF Regional WebACL.
-
-        ## Application Load Balancer Association Example
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
-        foo_rule = aws.wafregional.Rule("fooRule",
-            metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )])
-        foo_web_acl = aws.wafregional.WebAcl("fooWebAcl",
-            metric_name="foo",
-            default_action=aws.wafregional.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.wafregional.WebAclRuleArgs(
-                action=aws.wafregional.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=foo_rule.id,
-            )])
-        foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.1.0.0/16")
-        available = aws.get_availability_zones()
-        foo_subnet = aws.ec2.Subnet("fooSubnet",
-            vpc_id=foo_vpc.id,
-            cidr_block="10.1.1.0/24",
-            availability_zone=available.names[0])
-        bar = aws.ec2.Subnet("bar",
-            vpc_id=foo_vpc.id,
-            cidr_block="10.1.2.0/24",
-            availability_zone=available.names[1])
-        foo_load_balancer = aws.alb.LoadBalancer("fooLoadBalancer",
-            internal=True,
-            subnets=[
-                foo_subnet.id,
-                bar.id,
-            ])
-        foo_web_acl_association = aws.wafregional.WebAclAssociation("fooWebAclAssociation",
-            resource_arn=foo_load_balancer.arn,
-            web_acl_id=foo_web_acl.id)
-        ```
-
-        ## API Gateway Association Example
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
-        foo_rule = aws.wafregional.Rule("fooRule",
-            metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )])
-        foo_web_acl = aws.wafregional.WebAcl("fooWebAcl",
-            metric_name="foo",
-            default_action=aws.wafregional.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.wafregional.WebAclRuleArgs(
-                action=aws.wafregional.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=foo_rule.id,
-            )])
-        test_rest_api = aws.apigateway.RestApi("testRestApi")
-        test_resource = aws.apigateway.Resource("testResource",
-            parent_id=test_rest_api.root_resource_id,
-            path_part="test",
-            rest_api=test_rest_api.id)
-        test_method = aws.apigateway.Method("testMethod",
-            authorization="NONE",
-            http_method="GET",
-            resource_id=test_resource.id,
-            rest_api=test_rest_api.id)
-        test_method_response = aws.apigateway.MethodResponse("testMethodResponse",
-            http_method=test_method.http_method,
-            resource_id=test_resource.id,
-            rest_api=test_rest_api.id,
-            status_code="400")
-        test_integration = aws.apigateway.Integration("testIntegration",
-            http_method=test_method.http_method,
-            integration_http_method="GET",
-            resource_id=test_resource.id,
-            rest_api=test_rest_api.id,
-            type="HTTP",
-            uri="http://www.example.com")
-        test_integration_response = aws.apigateway.IntegrationResponse("testIntegrationResponse",
-            rest_api=test_rest_api.id,
-            resource_id=test_resource.id,
-            http_method=test_integration.http_method,
-            status_code=test_method_response.status_code)
-        test_deployment = aws.apigateway.Deployment("testDeployment", rest_api=test_rest_api.id,
-        opts=ResourceOptions(depends_on=[test_integration_response]))
-        test_stage = aws.apigateway.Stage("testStage",
-            deployment=test_deployment.id,
-            rest_api=test_rest_api.id,
-            stage_name="test")
-        association = aws.wafregional.WebAclAssociation("association",
-            resource_arn=test_stage.arn,
-            web_acl_id=foo_web_acl.id)
-        ```
-
+        Create a WebAclAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] resource_arn: ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
-        :param pulumi.Input[str] web_acl_id: The ID of the WAF Regional WebACL to create an association.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -189,8 +67,6 @@ class WebAclAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] resource_arn: ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
-        :param pulumi.Input[str] web_acl_id: The ID of the WAF Regional WebACL to create an association.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -203,17 +79,11 @@ class WebAclAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> pulumi.Output[str]:
-        """
-        ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
-        """
         return pulumi.get(self, "resource_arn")
 
     @property
     @pulumi.getter(name="webAclId")
     def web_acl_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the WAF Regional WebACL to create an association.
-        """
         return pulumi.get(self, "web_acl_id")
 
     def translate_output_property(self, prop):

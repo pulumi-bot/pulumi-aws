@@ -9,43 +9,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a WAF SQL Injection Match Set Resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/waf"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := waf.NewSqlInjectionMatchSet(ctx, "sqlInjectionMatchSet", &waf.SqlInjectionMatchSetArgs{
-// 			SqlInjectionMatchTuples: waf.SqlInjectionMatchSetSqlInjectionMatchTupleArray{
-// 				&waf.SqlInjectionMatchSetSqlInjectionMatchTupleArgs{
-// 					FieldToMatch: &waf.SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs{
-// 						Type: pulumi.String("QUERY_STRING"),
-// 					},
-// 					TextTransformation: pulumi.String("URL_DECODE"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SqlInjectionMatchSet struct {
 	pulumi.CustomResourceState
 
-	// The name or description of the SQL Injection Match Set.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
+	Name                    pulumi.StringOutput                                   `pulumi:"name"`
 	SqlInjectionMatchTuples SqlInjectionMatchSetSqlInjectionMatchTupleArrayOutput `pulumi:"sqlInjectionMatchTuples"`
 }
 
@@ -77,16 +44,12 @@ func GetSqlInjectionMatchSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlInjectionMatchSet resources.
 type sqlInjectionMatchSetState struct {
-	// The name or description of the SQL Injection Match Set.
-	Name *string `pulumi:"name"`
-	// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
+	Name                    *string                                      `pulumi:"name"`
 	SqlInjectionMatchTuples []SqlInjectionMatchSetSqlInjectionMatchTuple `pulumi:"sqlInjectionMatchTuples"`
 }
 
 type SqlInjectionMatchSetState struct {
-	// The name or description of the SQL Injection Match Set.
-	Name pulumi.StringPtrInput
-	// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
+	Name                    pulumi.StringPtrInput
 	SqlInjectionMatchTuples SqlInjectionMatchSetSqlInjectionMatchTupleArrayInput
 }
 
@@ -95,17 +58,13 @@ func (SqlInjectionMatchSetState) ElementType() reflect.Type {
 }
 
 type sqlInjectionMatchSetArgs struct {
-	// The name or description of the SQL Injection Match Set.
-	Name *string `pulumi:"name"`
-	// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
+	Name                    *string                                      `pulumi:"name"`
 	SqlInjectionMatchTuples []SqlInjectionMatchSetSqlInjectionMatchTuple `pulumi:"sqlInjectionMatchTuples"`
 }
 
 // The set of arguments for constructing a SqlInjectionMatchSet resource.
 type SqlInjectionMatchSetArgs struct {
-	// The name or description of the SQL Injection Match Set.
-	Name pulumi.StringPtrInput
-	// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
+	Name                    pulumi.StringPtrInput
 	SqlInjectionMatchTuples SqlInjectionMatchSetSqlInjectionMatchTupleArrayInput
 }
 

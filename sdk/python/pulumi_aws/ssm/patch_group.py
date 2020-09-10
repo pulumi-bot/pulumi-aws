@@ -21,24 +21,9 @@ class PatchGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an SSM Patch Group resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        production = aws.ssm.PatchBaseline("production", approved_patches=["KB123456"])
-        patchgroup = aws.ssm.PatchGroup("patchgroup",
-            baseline_id=production.id,
-            patch_group="patch-group-name")
-        ```
-
+        Create a PatchGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] baseline_id: The ID of the patch baseline to register the patch group with.
-        :param pulumi.Input[str] patch_group: The name of the patch group that should be registered with the patch baseline.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,8 +67,6 @@ class PatchGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] baseline_id: The ID of the patch baseline to register the patch group with.
-        :param pulumi.Input[str] patch_group: The name of the patch group that should be registered with the patch baseline.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -96,17 +79,11 @@ class PatchGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="baselineId")
     def baseline_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the patch baseline to register the patch group with.
-        """
         return pulumi.get(self, "baseline_id")
 
     @property
     @pulumi.getter(name="patchGroup")
     def patch_group(self) -> pulumi.Output[str]:
-        """
-        The name of the patch group that should be registered with the patch baseline.
-        """
         return pulumi.get(self, "patch_group")
 
     def translate_output_property(self, prop):

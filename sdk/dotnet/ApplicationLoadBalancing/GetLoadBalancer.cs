@@ -12,42 +12,6 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     [Obsolete(@"aws.applicationloadbalancing.getLoadBalancer has been deprecated in favor of aws.alb.getLoadBalancer")]
     public static class GetLoadBalancer
     {
-        /// <summary>
-        /// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
-        /// 
-        /// Provides information about a Load Balancer.
-        /// 
-        /// This data source can prove useful when a module accepts an LB as an input
-        /// variable and needs to, for example, determine the security groups associated
-        /// with it, etc.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var lbArn = config.Get("lbArn") ?? "";
-        ///         var lbName = config.Get("lbName") ?? "";
-        ///         var test = Output.Create(Aws.LB.GetLoadBalancer.InvokeAsync(new Aws.LB.GetLoadBalancerArgs
-        ///         {
-        ///             Arn = lbArn,
-        ///             Name = lbName,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("aws:applicationloadbalancing/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
     }
@@ -55,15 +19,9 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
 
     public sealed class GetLoadBalancerArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The full ARN of the load balancer.
-        /// </summary>
         [Input("arn")]
         public string? Arn { get; set; }
 
-        /// <summary>
-        /// The unique name of the load balancer.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

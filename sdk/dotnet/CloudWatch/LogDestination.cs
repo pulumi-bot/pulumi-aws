@@ -9,52 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CloudWatch
 {
-    /// <summary>
-    /// Provides a CloudWatch Logs destination resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testDestination = new Aws.CloudWatch.LogDestination("testDestination", new Aws.CloudWatch.LogDestinationArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Iam_for_cloudwatch.Arn,
-    ///             TargetArn = aws_kinesis_stream.Kinesis_for_cloudwatch.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class LogDestination : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the log destination.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A name for the log destination
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the target Amazon Kinesis stream resource for the destination
-        /// </summary>
         [Output("targetArn")]
         public Output<string> TargetArn { get; private set; } = null!;
 
@@ -104,21 +69,12 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class LogDestinationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A name for the log destination
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
-        /// <summary>
-        /// The ARN of the target Amazon Kinesis stream resource for the destination
-        /// </summary>
         [Input("targetArn", required: true)]
         public Input<string> TargetArn { get; set; } = null!;
 
@@ -129,27 +85,15 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class LogDestinationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the log destination.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A name for the log destination
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// The ARN of the target Amazon Kinesis stream resource for the destination
-        /// </summary>
         [Input("targetArn")]
         public Input<string>? TargetArn { get; set; }
 

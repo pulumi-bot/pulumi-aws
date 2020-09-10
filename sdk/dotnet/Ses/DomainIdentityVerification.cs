@@ -9,66 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Represents a successful verification of an SES domain identity.
-    /// 
-    /// Most commonly, this resource is used together with `aws.route53.Record` and
-    /// `aws.ses.DomainIdentity` to request an SES domain identity,
-    /// deploy the required DNS verification records, and wait for verification to complete.
-    /// 
-    /// &gt; **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ses.DomainIdentity("example", new Aws.Ses.DomainIdentityArgs
-    ///         {
-    ///             Domain = "example.com",
-    ///         });
-    ///         var exampleAmazonsesVerificationRecord = new Aws.Route53.Record("exampleAmazonsesVerificationRecord", new Aws.Route53.RecordArgs
-    ///         {
-    ///             ZoneId = aws_route53_zone.Example.Zone_id,
-    ///             Name = example.Id.Apply(id =&gt; $"_amazonses.{id}"),
-    ///             Type = "TXT",
-    ///             Ttl = 600,
-    ///             Records = 
-    ///             {
-    ///                 example.VerificationToken,
-    ///             },
-    ///         });
-    ///         var exampleVerification = new Aws.Ses.DomainIdentityVerification("exampleVerification", new Aws.Ses.DomainIdentityVerificationArgs
-    ///         {
-    ///             Domain = example.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleAmazonsesVerificationRecord,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DomainIdentityVerification : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the domain identity.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain name of the SES domain identity to verify.
-        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
@@ -118,9 +63,6 @@ namespace Pulumi.Aws.Ses
 
     public sealed class DomainIdentityVerificationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The domain name of the SES domain identity to verify.
-        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
@@ -131,15 +73,9 @@ namespace Pulumi.Aws.Ses
 
     public sealed class DomainIdentityVerificationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the domain identity.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The domain name of the SES domain identity to verify.
-        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 

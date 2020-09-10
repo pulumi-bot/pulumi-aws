@@ -9,192 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AppMesh
 {
-    /// <summary>
-    /// Provides an AWS App Mesh route resource.
-    /// 
-    /// ## Example Usage
-    /// ### HTTP Routing
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var serviceb = new Aws.AppMesh.Route("serviceb", new Aws.AppMesh.RouteArgs
-    ///         {
-    ///             MeshName = aws_appmesh_mesh.Simple.Id,
-    ///             VirtualRouterName = aws_appmesh_virtual_router.Serviceb.Name,
-    ///             Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
-    ///             {
-    ///                 HttpRoute = new Aws.AppMesh.Inputs.RouteSpecHttpRouteArgs
-    ///                 {
-    ///                     Match = new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchArgs
-    ///                     {
-    ///                         Prefix = "/",
-    ///                     },
-    ///                     Action = new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionArgs
-    ///                     {
-    ///                         WeightedTargets = 
-    ///                         {
-    ///                             new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionWeightedTargetArgs
-    ///                             {
-    ///                                 VirtualNode = aws_appmesh_virtual_node.Serviceb1.Name,
-    ///                                 Weight = 90,
-    ///                             },
-    ///                             new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionWeightedTargetArgs
-    ///                             {
-    ///                                 VirtualNode = aws_appmesh_virtual_node.Serviceb2.Name,
-    ///                                 Weight = 10,
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### HTTP Header Routing
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var serviceb = new Aws.AppMesh.Route("serviceb", new Aws.AppMesh.RouteArgs
-    ///         {
-    ///             MeshName = aws_appmesh_mesh.Simple.Id,
-    ///             VirtualRouterName = aws_appmesh_virtual_router.Serviceb.Name,
-    ///             Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
-    ///             {
-    ///                 HttpRoute = new Aws.AppMesh.Inputs.RouteSpecHttpRouteArgs
-    ///                 {
-    ///                     Match = new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchArgs
-    ///                     {
-    ///                         Method = "POST",
-    ///                         Prefix = "/",
-    ///                         Scheme = "https",
-    ///                         Headers = 
-    ///                         {
-    ///                             new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchHeaderArgs
-    ///                             {
-    ///                                 Name = "clientRequestId",
-    ///                                 Match = new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchHeaderMatchArgs
-    ///                                 {
-    ///                                     Prefix = "123",
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Action = new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionArgs
-    ///                     {
-    ///                         WeightedTargets = 
-    ///                         {
-    ///                             new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionWeightedTargetArgs
-    ///                             {
-    ///                                 VirtualNode = aws_appmesh_virtual_node.Serviceb.Name,
-    ///                                 Weight = 100,
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### TCP Routing
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var serviceb = new Aws.AppMesh.Route("serviceb", new Aws.AppMesh.RouteArgs
-    ///         {
-    ///             MeshName = aws_appmesh_mesh.Simple.Id,
-    ///             VirtualRouterName = aws_appmesh_virtual_router.Serviceb.Name,
-    ///             Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
-    ///             {
-    ///                 TcpRoute = new Aws.AppMesh.Inputs.RouteSpecTcpRouteArgs
-    ///                 {
-    ///                     Action = new Aws.AppMesh.Inputs.RouteSpecTcpRouteActionArgs
-    ///                     {
-    ///                         WeightedTargets = 
-    ///                         {
-    ///                             new Aws.AppMesh.Inputs.RouteSpecTcpRouteActionWeightedTargetArgs
-    ///                             {
-    ///                                 VirtualNode = aws_appmesh_virtual_node.Serviceb1.Name,
-    ///                                 Weight = 100,
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Route : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the route.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The creation date of the route.
-        /// </summary>
         [Output("createdDate")]
         public Output<string> CreatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The last update date of the route.
-        /// </summary>
         [Output("lastUpdatedDate")]
         public Output<string> LastUpdatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the service mesh in which to create the route.
-        /// </summary>
         [Output("meshName")]
         public Output<string> MeshName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name to use for the route.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The route specification to apply.
-        /// </summary>
         [Output("spec")]
         public Output<Outputs.RouteSpec> Spec { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the virtual router in which to create the route.
-        /// </summary>
         [Output("virtualRouterName")]
         public Output<string> VirtualRouterName { get; private set; } = null!;
 
@@ -244,39 +81,23 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class RouteArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the service mesh in which to create the route.
-        /// </summary>
         [Input("meshName", required: true)]
         public Input<string> MeshName { get; set; } = null!;
 
-        /// <summary>
-        /// The name to use for the route.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The route specification to apply.
-        /// </summary>
         [Input("spec", required: true)]
         public Input<Inputs.RouteSpecArgs> Spec { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The name of the virtual router in which to create the route.
-        /// </summary>
         [Input("virtualRouterName", required: true)]
         public Input<string> VirtualRouterName { get; set; } = null!;
 
@@ -287,57 +108,32 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class RouteState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the route.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The creation date of the route.
-        /// </summary>
         [Input("createdDate")]
         public Input<string>? CreatedDate { get; set; }
 
-        /// <summary>
-        /// The last update date of the route.
-        /// </summary>
         [Input("lastUpdatedDate")]
         public Input<string>? LastUpdatedDate { get; set; }
 
-        /// <summary>
-        /// The name of the service mesh in which to create the route.
-        /// </summary>
         [Input("meshName")]
         public Input<string>? MeshName { get; set; }
 
-        /// <summary>
-        /// The name to use for the route.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The route specification to apply.
-        /// </summary>
         [Input("spec")]
         public Input<Inputs.RouteSpecGetArgs>? Spec { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The name of the virtual router in which to create the route.
-        /// </summary>
         [Input("virtualRouterName")]
         public Input<string>? VirtualRouterName { get; set; }
 

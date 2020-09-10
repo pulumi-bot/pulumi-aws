@@ -10,67 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages Cost and Usage Report Definitions.
-//
-// > *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
-//
-// > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cur"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cur.NewReportDefinition(ctx, "exampleCurReportDefinition", &cur.ReportDefinitionArgs{
-// 			AdditionalArtifacts: pulumi.StringArray{
-// 				pulumi.String("REDSHIFT"),
-// 				pulumi.String("QUICKSIGHT"),
-// 			},
-// 			AdditionalSchemaElements: pulumi.StringArray{
-// 				pulumi.String("RESOURCES"),
-// 			},
-// 			Compression: pulumi.String("GZIP"),
-// 			Format:      pulumi.String("textORcsv"),
-// 			ReportName:  pulumi.String("example-cur-report-definition"),
-// 			S3Bucket:    pulumi.String("example-bucket-name"),
-// 			S3Region:    pulumi.String("us-east-1"),
-// 			TimeUnit:    pulumi.String("HOURLY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ReportDefinition struct {
 	pulumi.CustomResourceState
 
-	// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-	AdditionalArtifacts pulumi.StringArrayOutput `pulumi:"additionalArtifacts"`
-	// A list of schema elements. Valid values are: RESOURCES.
+	AdditionalArtifacts      pulumi.StringArrayOutput `pulumi:"additionalArtifacts"`
 	AdditionalSchemaElements pulumi.StringArrayOutput `pulumi:"additionalSchemaElements"`
-	// Compression format for report. Valid values are: GZIP, ZIP.
-	Compression pulumi.StringOutput `pulumi:"compression"`
-	// Format for report. Valid values are: textORcsv.
-	Format pulumi.StringOutput `pulumi:"format"`
-	// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-	ReportName pulumi.StringOutput `pulumi:"reportName"`
-	// Name of the existing S3 bucket to hold generated reports.
-	S3Bucket pulumi.StringOutput `pulumi:"s3Bucket"`
-	// Report path prefix. Limited to 256 characters.
-	S3Prefix pulumi.StringPtrOutput `pulumi:"s3Prefix"`
-	// Region of the existing S3 bucket to hold generated reports.
-	S3Region pulumi.StringOutput `pulumi:"s3Region"`
-	// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-	TimeUnit pulumi.StringOutput `pulumi:"timeUnit"`
+	Compression              pulumi.StringOutput      `pulumi:"compression"`
+	Format                   pulumi.StringOutput      `pulumi:"format"`
+	ReportName               pulumi.StringOutput      `pulumi:"reportName"`
+	S3Bucket                 pulumi.StringOutput      `pulumi:"s3Bucket"`
+	S3Prefix                 pulumi.StringPtrOutput   `pulumi:"s3Prefix"`
+	S3Region                 pulumi.StringOutput      `pulumi:"s3Region"`
+	TimeUnit                 pulumi.StringOutput      `pulumi:"timeUnit"`
 }
 
 // NewReportDefinition registers a new resource with the given unique name, arguments, and options.
@@ -122,45 +73,27 @@ func GetReportDefinition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReportDefinition resources.
 type reportDefinitionState struct {
-	// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-	AdditionalArtifacts []string `pulumi:"additionalArtifacts"`
-	// A list of schema elements. Valid values are: RESOURCES.
+	AdditionalArtifacts      []string `pulumi:"additionalArtifacts"`
 	AdditionalSchemaElements []string `pulumi:"additionalSchemaElements"`
-	// Compression format for report. Valid values are: GZIP, ZIP.
-	Compression *string `pulumi:"compression"`
-	// Format for report. Valid values are: textORcsv.
-	Format *string `pulumi:"format"`
-	// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-	ReportName *string `pulumi:"reportName"`
-	// Name of the existing S3 bucket to hold generated reports.
-	S3Bucket *string `pulumi:"s3Bucket"`
-	// Report path prefix. Limited to 256 characters.
-	S3Prefix *string `pulumi:"s3Prefix"`
-	// Region of the existing S3 bucket to hold generated reports.
-	S3Region *string `pulumi:"s3Region"`
-	// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-	TimeUnit *string `pulumi:"timeUnit"`
+	Compression              *string  `pulumi:"compression"`
+	Format                   *string  `pulumi:"format"`
+	ReportName               *string  `pulumi:"reportName"`
+	S3Bucket                 *string  `pulumi:"s3Bucket"`
+	S3Prefix                 *string  `pulumi:"s3Prefix"`
+	S3Region                 *string  `pulumi:"s3Region"`
+	TimeUnit                 *string  `pulumi:"timeUnit"`
 }
 
 type ReportDefinitionState struct {
-	// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-	AdditionalArtifacts pulumi.StringArrayInput
-	// A list of schema elements. Valid values are: RESOURCES.
+	AdditionalArtifacts      pulumi.StringArrayInput
 	AdditionalSchemaElements pulumi.StringArrayInput
-	// Compression format for report. Valid values are: GZIP, ZIP.
-	Compression pulumi.StringPtrInput
-	// Format for report. Valid values are: textORcsv.
-	Format pulumi.StringPtrInput
-	// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-	ReportName pulumi.StringPtrInput
-	// Name of the existing S3 bucket to hold generated reports.
-	S3Bucket pulumi.StringPtrInput
-	// Report path prefix. Limited to 256 characters.
-	S3Prefix pulumi.StringPtrInput
-	// Region of the existing S3 bucket to hold generated reports.
-	S3Region pulumi.StringPtrInput
-	// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-	TimeUnit pulumi.StringPtrInput
+	Compression              pulumi.StringPtrInput
+	Format                   pulumi.StringPtrInput
+	ReportName               pulumi.StringPtrInput
+	S3Bucket                 pulumi.StringPtrInput
+	S3Prefix                 pulumi.StringPtrInput
+	S3Region                 pulumi.StringPtrInput
+	TimeUnit                 pulumi.StringPtrInput
 }
 
 func (ReportDefinitionState) ElementType() reflect.Type {
@@ -168,46 +101,28 @@ func (ReportDefinitionState) ElementType() reflect.Type {
 }
 
 type reportDefinitionArgs struct {
-	// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-	AdditionalArtifacts []string `pulumi:"additionalArtifacts"`
-	// A list of schema elements. Valid values are: RESOURCES.
+	AdditionalArtifacts      []string `pulumi:"additionalArtifacts"`
 	AdditionalSchemaElements []string `pulumi:"additionalSchemaElements"`
-	// Compression format for report. Valid values are: GZIP, ZIP.
-	Compression string `pulumi:"compression"`
-	// Format for report. Valid values are: textORcsv.
-	Format string `pulumi:"format"`
-	// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-	ReportName string `pulumi:"reportName"`
-	// Name of the existing S3 bucket to hold generated reports.
-	S3Bucket string `pulumi:"s3Bucket"`
-	// Report path prefix. Limited to 256 characters.
-	S3Prefix *string `pulumi:"s3Prefix"`
-	// Region of the existing S3 bucket to hold generated reports.
-	S3Region string `pulumi:"s3Region"`
-	// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-	TimeUnit string `pulumi:"timeUnit"`
+	Compression              string   `pulumi:"compression"`
+	Format                   string   `pulumi:"format"`
+	ReportName               string   `pulumi:"reportName"`
+	S3Bucket                 string   `pulumi:"s3Bucket"`
+	S3Prefix                 *string  `pulumi:"s3Prefix"`
+	S3Region                 string   `pulumi:"s3Region"`
+	TimeUnit                 string   `pulumi:"timeUnit"`
 }
 
 // The set of arguments for constructing a ReportDefinition resource.
 type ReportDefinitionArgs struct {
-	// A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-	AdditionalArtifacts pulumi.StringArrayInput
-	// A list of schema elements. Valid values are: RESOURCES.
+	AdditionalArtifacts      pulumi.StringArrayInput
 	AdditionalSchemaElements pulumi.StringArrayInput
-	// Compression format for report. Valid values are: GZIP, ZIP.
-	Compression pulumi.StringInput
-	// Format for report. Valid values are: textORcsv.
-	Format pulumi.StringInput
-	// Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-	ReportName pulumi.StringInput
-	// Name of the existing S3 bucket to hold generated reports.
-	S3Bucket pulumi.StringInput
-	// Report path prefix. Limited to 256 characters.
-	S3Prefix pulumi.StringPtrInput
-	// Region of the existing S3 bucket to hold generated reports.
-	S3Region pulumi.StringInput
-	// The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-	TimeUnit pulumi.StringInput
+	Compression              pulumi.StringInput
+	Format                   pulumi.StringInput
+	ReportName               pulumi.StringInput
+	S3Bucket                 pulumi.StringInput
+	S3Prefix                 pulumi.StringPtrInput
+	S3Region                 pulumi.StringInput
+	TimeUnit                 pulumi.StringInput
 }
 
 func (ReportDefinitionArgs) ElementType() reflect.Type {

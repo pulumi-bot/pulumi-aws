@@ -13,17 +13,8 @@ namespace Pulumi.Aws.WafV2.Outputs
     [OutputType]
     public sealed class RuleGroupRuleAction
     {
-        /// <summary>
-        /// Instructs AWS WAF to allow the web request.
-        /// </summary>
         public readonly Outputs.RuleGroupRuleActionAllow? Allow;
-        /// <summary>
-        /// Instructs AWS WAF to block the web request.
-        /// </summary>
         public readonly Outputs.RuleGroupRuleActionBlock? Block;
-        /// <summary>
-        /// Instructs AWS WAF to count the web request and allow it.
-        /// </summary>
         public readonly Outputs.RuleGroupRuleActionCount? Count;
 
         [OutputConstructor]

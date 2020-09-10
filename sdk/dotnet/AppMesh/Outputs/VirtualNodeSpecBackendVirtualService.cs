@@ -13,9 +13,6 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class VirtualNodeSpecBackendVirtualService
     {
-        /// <summary>
-        /// The name of the virtual service that is acting as a virtual node backend.
-        /// </summary>
         public readonly string VirtualServiceName;
 
         [OutputConstructor]

@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get detailed information about
- * the specified KMS Key with flexible key id input.
- * This can be useful to reference key alias
- * without having to hard code the ARN as input.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const foo = pulumi.output(aws.kms.getKey({
- *     keyId: "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
- * }, { async: true }));
- * ```
- */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
     if (!opts) {
         opts = {}
@@ -41,17 +24,7 @@ export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getKey.
  */
 export interface GetKeyArgs {
-    /**
-     * List of grant tokens
-     */
     readonly grantTokens?: string[];
-    /**
-     * Key identifier which can be one of the following format:
-     * * Key ID. E.g: `1234abcd-12ab-34cd-56ef-1234567890ab`
-     * * Key ARN. E.g.: `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
-     * * Alias name. E.g.: `alias/my-key`
-     * * Alias ARN: E.g.: `arn:aws:kms:us-east-1:111122223333:alias/my-key`
-     */
     readonly keyId: string;
 }
 

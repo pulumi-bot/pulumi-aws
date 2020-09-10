@@ -9,253 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AppSync
 {
-    /// <summary>
-    /// Provides an AppSync GraphQL API.
-    /// 
-    /// ## Example Usage
-    /// ### API Key Authentication
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AppSync.GraphQLApi("example", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AuthenticationType = "API_KEY",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### AWS Cognito User Pool Authentication
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AppSync.GraphQLApi("example", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AuthenticationType = "AMAZON_COGNITO_USER_POOLS",
-    ///             UserPoolConfig = new Aws.AppSync.Inputs.GraphQLApiUserPoolConfigArgs
-    ///             {
-    ///                 AwsRegion = data.Aws_region.Current.Name,
-    ///                 DefaultAction = "DENY",
-    ///                 UserPoolId = aws_cognito_user_pool.Example.Id,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### AWS IAM Authentication
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AppSync.GraphQLApi("example", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AuthenticationType = "AWS_IAM",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### With Schema
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AppSync.GraphQLApi("example", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AuthenticationType = "AWS_IAM",
-    ///             Schema = @"schema {
-    /// 	query: Query
-    /// }
-    /// type Query {
-    ///   test: Int
-    /// }
-    /// 
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### OpenID Connect Authentication
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AppSync.GraphQLApi("example", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AuthenticationType = "OPENID_CONNECT",
-    ///             OpenidConnectConfig = new Aws.AppSync.Inputs.GraphQLApiOpenidConnectConfigArgs
-    ///             {
-    ///                 Issuer = "https://example.com",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### With Multiple Authentication Providers
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AppSync.GraphQLApi("example", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AdditionalAuthenticationProviders = 
-    ///             {
-    ///                 new Aws.AppSync.Inputs.GraphQLApiAdditionalAuthenticationProviderArgs
-    ///                 {
-    ///                     AuthenticationType = "AWS_IAM",
-    ///                 },
-    ///             },
-    ///             AuthenticationType = "API_KEY",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Enabling Logging
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRole = new Aws.Iam.Role("exampleRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///     ""Version"": ""2012-10-17"",
-    ///     ""Statement"": [
-    ///         {
-    ///         ""Effect"": ""Allow"",
-    ///         ""Principal"": {
-    ///             ""Service"": ""appsync.amazonaws.com""
-    ///         },
-    ///         ""Action"": ""sts:AssumeRole""
-    ///         }
-    ///     ]
-    /// }
-    /// ",
-    ///         });
-    ///         var exampleRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("exampleRolePolicyAttachment", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             PolicyArn = "arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs",
-    ///             Role = exampleRole.Name,
-    ///         });
-    ///         // ... other configuration ...
-    ///         var exampleGraphQLApi = new Aws.AppSync.GraphQLApi("exampleGraphQLApi", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             LogConfig = new Aws.AppSync.Inputs.GraphQLApiLogConfigArgs
-    ///             {
-    ///                 CloudwatchLogsRoleArn = exampleRole.Arn,
-    ///                 FieldLogLevel = "ERROR",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class GraphQLApi : Pulumi.CustomResource
     {
-        /// <summary>
-        /// One or more additional authentication providers for the GraphqlApi. Defined below.
-        /// </summary>
         [Output("additionalAuthenticationProviders")]
         public Output<ImmutableArray<Outputs.GraphQLApiAdditionalAuthenticationProvider>> AdditionalAuthenticationProviders { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-        /// </summary>
         [Output("authenticationType")]
         public Output<string> AuthenticationType { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested argument containing logging configuration. Defined below.
-        /// </summary>
         [Output("logConfig")]
         public Output<Outputs.GraphQLApiLogConfig?> LogConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// A user-supplied name for the GraphqlApi.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested argument containing OpenID Connect configuration. Defined below.
-        /// </summary>
         [Output("openidConnectConfig")]
         public Output<Outputs.GraphQLApiOpenidConnectConfig?> OpenidConnectConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-        /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Map of URIs associated with the API. e.g. `uris["GRAPHQL"] = https://ID.appsync-api.REGION.amazonaws.com/graphql`
-        /// </summary>
         [Output("uris")]
         public Output<ImmutableDictionary<string, string>> Uris { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Cognito User Pool configuration. Defined below.
-        /// </summary>
         [Output("userPoolConfig")]
         public Output<Outputs.GraphQLApiUserPoolConfig?> UserPoolConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether tracing with X-ray is enabled. Defaults to false.
-        /// </summary>
         [Output("xrayEnabled")]
         public Output<bool?> XrayEnabled { get; private set; } = null!;
 
@@ -307,67 +92,38 @@ namespace Pulumi.Aws.AppSync
     {
         [Input("additionalAuthenticationProviders")]
         private InputList<Inputs.GraphQLApiAdditionalAuthenticationProviderArgs>? _additionalAuthenticationProviders;
-
-        /// <summary>
-        /// One or more additional authentication providers for the GraphqlApi. Defined below.
-        /// </summary>
         public InputList<Inputs.GraphQLApiAdditionalAuthenticationProviderArgs> AdditionalAuthenticationProviders
         {
             get => _additionalAuthenticationProviders ?? (_additionalAuthenticationProviders = new InputList<Inputs.GraphQLApiAdditionalAuthenticationProviderArgs>());
             set => _additionalAuthenticationProviders = value;
         }
 
-        /// <summary>
-        /// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-        /// </summary>
         [Input("authenticationType", required: true)]
         public Input<string> AuthenticationType { get; set; } = null!;
 
-        /// <summary>
-        /// Nested argument containing logging configuration. Defined below.
-        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.GraphQLApiLogConfigArgs>? LogConfig { get; set; }
 
-        /// <summary>
-        /// A user-supplied name for the GraphqlApi.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Nested argument containing OpenID Connect configuration. Defined below.
-        /// </summary>
         [Input("openidConnectConfig")]
         public Input<Inputs.GraphQLApiOpenidConnectConfigArgs>? OpenidConnectConfig { get; set; }
 
-        /// <summary>
-        /// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The Amazon Cognito User Pool configuration. Defined below.
-        /// </summary>
         [Input("userPoolConfig")]
         public Input<Inputs.GraphQLApiUserPoolConfigArgs>? UserPoolConfig { get; set; }
 
-        /// <summary>
-        /// Whether tracing with X-ray is enabled. Defaults to false.
-        /// </summary>
         [Input("xrayEnabled")]
         public Input<bool>? XrayEnabled { get; set; }
 
@@ -380,58 +136,32 @@ namespace Pulumi.Aws.AppSync
     {
         [Input("additionalAuthenticationProviders")]
         private InputList<Inputs.GraphQLApiAdditionalAuthenticationProviderGetArgs>? _additionalAuthenticationProviders;
-
-        /// <summary>
-        /// One or more additional authentication providers for the GraphqlApi. Defined below.
-        /// </summary>
         public InputList<Inputs.GraphQLApiAdditionalAuthenticationProviderGetArgs> AdditionalAuthenticationProviders
         {
             get => _additionalAuthenticationProviders ?? (_additionalAuthenticationProviders = new InputList<Inputs.GraphQLApiAdditionalAuthenticationProviderGetArgs>());
             set => _additionalAuthenticationProviders = value;
         }
 
-        /// <summary>
-        /// The ARN
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-        /// </summary>
         [Input("authenticationType")]
         public Input<string>? AuthenticationType { get; set; }
 
-        /// <summary>
-        /// Nested argument containing logging configuration. Defined below.
-        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.GraphQLApiLogConfigGetArgs>? LogConfig { get; set; }
 
-        /// <summary>
-        /// A user-supplied name for the GraphqlApi.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Nested argument containing OpenID Connect configuration. Defined below.
-        /// </summary>
         [Input("openidConnectConfig")]
         public Input<Inputs.GraphQLApiOpenidConnectConfigGetArgs>? OpenidConnectConfig { get; set; }
 
-        /// <summary>
-        /// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -440,25 +170,15 @@ namespace Pulumi.Aws.AppSync
 
         [Input("uris")]
         private InputMap<string>? _uris;
-
-        /// <summary>
-        /// Map of URIs associated with the API. e.g. `uris["GRAPHQL"] = https://ID.appsync-api.REGION.amazonaws.com/graphql`
-        /// </summary>
         public InputMap<string> Uris
         {
             get => _uris ?? (_uris = new InputMap<string>());
             set => _uris = value;
         }
 
-        /// <summary>
-        /// The Amazon Cognito User Pool configuration. Defined below.
-        /// </summary>
         [Input("userPoolConfig")]
         public Input<Inputs.GraphQLApiUserPoolConfigGetArgs>? UserPoolConfig { get; set; }
 
-        /// <summary>
-        /// Whether tracing with X-ray is enabled. Defaults to false.
-        /// </summary>
         [Input("xrayEnabled")]
         public Input<bool>? XrayEnabled { get; set; }
 

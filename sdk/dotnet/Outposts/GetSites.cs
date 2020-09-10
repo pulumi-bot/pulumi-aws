@@ -11,29 +11,6 @@ namespace Pulumi.Aws.Outposts
 {
     public static class GetSites
     {
-        /// <summary>
-        /// Provides details about multiple Outposts Sites.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Aws.Outposts.GetSites.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetSitesResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSitesResult>("aws:outposts/getSites:getSites", InvokeArgs.Empty, options.WithVersion());
     }
@@ -46,9 +23,6 @@ namespace Pulumi.Aws.Outposts
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Set of Outposts Site identifiers.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]

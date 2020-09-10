@@ -10,169 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a S3 Bucket Notification Configuration. For additional information, see the [Configuring S3 Event Notifications section in the Amazon S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
-//
-// > **NOTE:** S3 Buckets only support a single notification configuration. Declaring multiple `s3.BucketNotification` resources to the same S3 Bucket will cause a perpetual difference in configuration. See the example "Trigger multiple Lambda functions" for an option.
-//
-// ## Example Usage
-// ### Add notification configuration to SNS Topic
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		topic, err := sns.NewTopic(ctx, "topic", &sns.TopicArgs{
-// 			Policy: bucket.Arn.ApplyT(func(arn string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\":\"2012-10-17\",\n", "    \"Statement\":[{\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\"AWS\":\"*\"},\n", "        \"Action\": \"SNS:Publish\",\n", "        \"Resource\": \"arn:aws:sns:*:*:s3-event-notification-topic\",\n", "        \"Condition\":{\n", "            \"ArnLike\":{\"aws:SourceArn\":\"", arn, "\"}\n", "        }\n", "    }]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = s3.NewBucketNotification(ctx, "bucketNotification", &s3.BucketNotificationArgs{
-// 			Bucket: bucket.ID(),
-// 			Topics: s3.BucketNotificationTopicArray{
-// 				&s3.BucketNotificationTopicArgs{
-// 					TopicArn: topic.Arn,
-// 					Events: pulumi.StringArray{
-// 						pulumi.String("s3:ObjectCreated:*"),
-// 					},
-// 					FilterSuffix: pulumi.String(".log"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Add notification configuration to SQS Queue
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sqs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		queue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-// 			Policy: bucket.Arn.ApplyT(func(arn string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Effect\": \"Allow\",\n", "      \"Principal\": \"*\",\n", "      \"Action\": \"sqs:SendMessage\",\n", "	  \"Resource\": \"arn:aws:sqs:*:*:s3-event-notification-queue\",\n", "      \"Condition\": {\n", "        \"ArnEquals\": { \"aws:SourceArn\": \"", arn, "\" }\n", "      }\n", "    }\n", "  ]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = s3.NewBucketNotification(ctx, "bucketNotification", &s3.BucketNotificationArgs{
-// 			Bucket: bucket.ID(),
-// 			Queues: s3.BucketNotificationQueueArray{
-// 				&s3.BucketNotificationQueueArgs{
-// 					QueueArn: queue.Arn,
-// 					Events: pulumi.StringArray{
-// 						pulumi.String("s3:ObjectCreated:*"),
-// 					},
-// 					FilterSuffix: pulumi.String(".log"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Add multiple notification configurations to SQS Queue
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sqs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		queue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-// 			Policy: bucket.Arn.ApplyT(func(arn string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Effect\": \"Allow\",\n", "      \"Principal\": \"*\",\n", "      \"Action\": \"sqs:SendMessage\",\n", "	  \"Resource\": \"arn:aws:sqs:*:*:s3-event-notification-queue\",\n", "      \"Condition\": {\n", "        \"ArnEquals\": { \"aws:SourceArn\": \"", arn, "\" }\n", "      }\n", "    }\n", "  ]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = s3.NewBucketNotification(ctx, "bucketNotification", &s3.BucketNotificationArgs{
-// 			Bucket: bucket.ID(),
-// 			Queues: s3.BucketNotificationQueueArray{
-// 				&s3.BucketNotificationQueueArgs{
-// 					Id:       pulumi.String("image-upload-event"),
-// 					QueueArn: queue.Arn,
-// 					Events: pulumi.StringArray{
-// 						pulumi.String("s3:ObjectCreated:*"),
-// 					},
-// 					FilterPrefix: pulumi.String("images/"),
-// 				},
-// 				&s3.BucketNotificationQueueArgs{
-// 					Id:       pulumi.String("video-upload-event"),
-// 					QueueArn: queue.Arn,
-// 					Events: pulumi.StringArray{
-// 						pulumi.String("s3:ObjectCreated:*"),
-// 					},
-// 					FilterPrefix: pulumi.String("videos/"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type BucketNotification struct {
 	pulumi.CustomResourceState
 
-	// The name of the bucket to put notification configuration.
-	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// Used to configure notifications to a Lambda Function (documented below).
+	Bucket          pulumi.StringOutput                         `pulumi:"bucket"`
 	LambdaFunctions BucketNotificationLambdaFunctionArrayOutput `pulumi:"lambdaFunctions"`
-	// The notification configuration to SQS Queue (documented below).
-	Queues BucketNotificationQueueArrayOutput `pulumi:"queues"`
-	// The notification configuration to SNS Topic (documented below).
-	Topics BucketNotificationTopicArrayOutput `pulumi:"topics"`
+	Queues          BucketNotificationQueueArrayOutput          `pulumi:"queues"`
+	Topics          BucketNotificationTopicArrayOutput          `pulumi:"topics"`
 }
 
 // NewBucketNotification registers a new resource with the given unique name, arguments, and options.
@@ -206,25 +50,17 @@ func GetBucketNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketNotification resources.
 type bucketNotificationState struct {
-	// The name of the bucket to put notification configuration.
-	Bucket *string `pulumi:"bucket"`
-	// Used to configure notifications to a Lambda Function (documented below).
+	Bucket          *string                            `pulumi:"bucket"`
 	LambdaFunctions []BucketNotificationLambdaFunction `pulumi:"lambdaFunctions"`
-	// The notification configuration to SQS Queue (documented below).
-	Queues []BucketNotificationQueue `pulumi:"queues"`
-	// The notification configuration to SNS Topic (documented below).
-	Topics []BucketNotificationTopic `pulumi:"topics"`
+	Queues          []BucketNotificationQueue          `pulumi:"queues"`
+	Topics          []BucketNotificationTopic          `pulumi:"topics"`
 }
 
 type BucketNotificationState struct {
-	// The name of the bucket to put notification configuration.
-	Bucket pulumi.StringPtrInput
-	// Used to configure notifications to a Lambda Function (documented below).
+	Bucket          pulumi.StringPtrInput
 	LambdaFunctions BucketNotificationLambdaFunctionArrayInput
-	// The notification configuration to SQS Queue (documented below).
-	Queues BucketNotificationQueueArrayInput
-	// The notification configuration to SNS Topic (documented below).
-	Topics BucketNotificationTopicArrayInput
+	Queues          BucketNotificationQueueArrayInput
+	Topics          BucketNotificationTopicArrayInput
 }
 
 func (BucketNotificationState) ElementType() reflect.Type {
@@ -232,26 +68,18 @@ func (BucketNotificationState) ElementType() reflect.Type {
 }
 
 type bucketNotificationArgs struct {
-	// The name of the bucket to put notification configuration.
-	Bucket string `pulumi:"bucket"`
-	// Used to configure notifications to a Lambda Function (documented below).
+	Bucket          string                             `pulumi:"bucket"`
 	LambdaFunctions []BucketNotificationLambdaFunction `pulumi:"lambdaFunctions"`
-	// The notification configuration to SQS Queue (documented below).
-	Queues []BucketNotificationQueue `pulumi:"queues"`
-	// The notification configuration to SNS Topic (documented below).
-	Topics []BucketNotificationTopic `pulumi:"topics"`
+	Queues          []BucketNotificationQueue          `pulumi:"queues"`
+	Topics          []BucketNotificationTopic          `pulumi:"topics"`
 }
 
 // The set of arguments for constructing a BucketNotification resource.
 type BucketNotificationArgs struct {
-	// The name of the bucket to put notification configuration.
-	Bucket pulumi.StringInput
-	// Used to configure notifications to a Lambda Function (documented below).
+	Bucket          pulumi.StringInput
 	LambdaFunctions BucketNotificationLambdaFunctionArrayInput
-	// The notification configuration to SQS Queue (documented below).
-	Queues BucketNotificationQueueArrayInput
-	// The notification configuration to SNS Topic (documented below).
-	Topics BucketNotificationTopicArrayInput
+	Queues          BucketNotificationQueueArrayInput
+	Topics          BucketNotificationTopicArrayInput
 }
 
 func (BucketNotificationArgs) ElementType() reflect.Type {

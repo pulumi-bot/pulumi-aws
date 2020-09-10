@@ -9,32 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Fms
 {
-    /// <summary>
-    /// Provides a resource to associate/disassociate an AWS Firewall Manager administrator account. This operation must be performed in the `us-east-1` region.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Fms.AdminAccount("example", new Aws.Fms.AdminAccountArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AdminAccount : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
@@ -84,9 +60,6 @@ namespace Pulumi.Aws.Fms
 
     public sealed class AdminAccountArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -97,9 +70,6 @@ namespace Pulumi.Aws.Fms
 
     public sealed class AdminAccountState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

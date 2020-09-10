@@ -9,54 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Glue
 {
-    /// <summary>
-    /// Manages a Glue Security Configuration.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Glue.SecurityConfiguration("example", new Aws.Glue.SecurityConfigurationArgs
-    ///         {
-    ///             EncryptionConfiguration = new Aws.Glue.Inputs.SecurityConfigurationEncryptionConfigurationArgs
-    ///             {
-    ///                 CloudwatchEncryption = new Aws.Glue.Inputs.SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs
-    ///                 {
-    ///                     CloudwatchEncryptionMode = "DISABLED",
-    ///                 },
-    ///                 JobBookmarksEncryption = new Aws.Glue.Inputs.SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs
-    ///                 {
-    ///                     JobBookmarksEncryptionMode = "DISABLED",
-    ///                 },
-    ///                 S3Encryption = new Aws.Glue.Inputs.SecurityConfigurationEncryptionConfigurationS3EncryptionArgs
-    ///                 {
-    ///                     KmsKeyArn = data.Aws_kms_key.Example.Arn,
-    ///                     S3EncryptionMode = "SSE-KMS",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SecurityConfiguration : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Configuration block containing encryption configuration. Detailed below.
-        /// </summary>
         [Output("encryptionConfiguration")]
         public Output<Outputs.SecurityConfigurationEncryptionConfiguration> EncryptionConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the security configuration.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -106,15 +63,9 @@ namespace Pulumi.Aws.Glue
 
     public sealed class SecurityConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block containing encryption configuration. Detailed below.
-        /// </summary>
         [Input("encryptionConfiguration", required: true)]
         public Input<Inputs.SecurityConfigurationEncryptionConfigurationArgs> EncryptionConfiguration { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the security configuration.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -125,15 +76,9 @@ namespace Pulumi.Aws.Glue
 
     public sealed class SecurityConfigurationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block containing encryption configuration. Detailed below.
-        /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.SecurityConfigurationEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
 
-        /// <summary>
-        /// Name of the security configuration.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

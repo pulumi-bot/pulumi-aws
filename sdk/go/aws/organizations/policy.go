@@ -10,45 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to manage an [AWS Organizations policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewPolicy(ctx, "example", &organizations.PolicyArgs{
-// 			Content: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": {\n", "    \"Effect\": \"Allow\",\n", "    \"Action\": \"*\",\n", "    \"Resource\": \"*\"\n", "  }\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the policy.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The policy content to add to the new policy. For example, if you create a [service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see the [Service Control Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) and for more information on the Tag Policy syntax, see the [Tag Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-tag-policies.html).
-	Content pulumi.StringOutput `pulumi:"content"`
-	// A description to assign to the policy.
+	Arn         pulumi.StringOutput    `pulumi:"arn"`
+	Content     pulumi.StringOutput    `pulumi:"content"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The friendly name to assign to the policy.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of policy to create. Valid values are `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), and `TAG_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Type        pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -82,29 +51,19 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// Amazon Resource Name (ARN) of the policy.
-	Arn *string `pulumi:"arn"`
-	// The policy content to add to the new policy. For example, if you create a [service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see the [Service Control Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) and for more information on the Tag Policy syntax, see the [Tag Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-tag-policies.html).
-	Content *string `pulumi:"content"`
-	// A description to assign to the policy.
+	Arn         *string `pulumi:"arn"`
+	Content     *string `pulumi:"content"`
 	Description *string `pulumi:"description"`
-	// The friendly name to assign to the policy.
-	Name *string `pulumi:"name"`
-	// The type of policy to create. Valid values are `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), and `TAG_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
-	Type *string `pulumi:"type"`
+	Name        *string `pulumi:"name"`
+	Type        *string `pulumi:"type"`
 }
 
 type PolicyState struct {
-	// Amazon Resource Name (ARN) of the policy.
-	Arn pulumi.StringPtrInput
-	// The policy content to add to the new policy. For example, if you create a [service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see the [Service Control Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) and for more information on the Tag Policy syntax, see the [Tag Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-tag-policies.html).
-	Content pulumi.StringPtrInput
-	// A description to assign to the policy.
+	Arn         pulumi.StringPtrInput
+	Content     pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// The friendly name to assign to the policy.
-	Name pulumi.StringPtrInput
-	// The type of policy to create. Valid values are `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), and `TAG_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
-	Type pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Type        pulumi.StringPtrInput
 }
 
 func (PolicyState) ElementType() reflect.Type {
@@ -112,26 +71,18 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// The policy content to add to the new policy. For example, if you create a [service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see the [Service Control Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) and for more information on the Tag Policy syntax, see the [Tag Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-tag-policies.html).
-	Content string `pulumi:"content"`
-	// A description to assign to the policy.
+	Content     string  `pulumi:"content"`
 	Description *string `pulumi:"description"`
-	// The friendly name to assign to the policy.
-	Name *string `pulumi:"name"`
-	// The type of policy to create. Valid values are `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), and `TAG_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
-	Type *string `pulumi:"type"`
+	Name        *string `pulumi:"name"`
+	Type        *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// The policy content to add to the new policy. For example, if you create a [service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see the [Service Control Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html) and for more information on the Tag Policy syntax, see the [Tag Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-tag-policies.html).
-	Content pulumi.StringInput
-	// A description to assign to the policy.
+	Content     pulumi.StringInput
 	Description pulumi.StringPtrInput
-	// The friendly name to assign to the policy.
-	Name pulumi.StringPtrInput
-	// The type of policy to create. Valid values are `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), and `TAG_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
-	Type pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Type        pulumi.StringPtrInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {

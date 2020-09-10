@@ -13,13 +13,7 @@ namespace Pulumi.Aws.ApiGateway.Outputs
     [OutputType]
     public sealed class AccountThrottleSettings
     {
-        /// <summary>
-        /// The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-        /// </summary>
         public readonly int? BurstLimit;
-        /// <summary>
-        /// The number of times API Gateway allows the API to be called per second on average (RPS).
-        /// </summary>
         public readonly double? RateLimit;
 
         [OutputConstructor]

@@ -9,88 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafRegional
 {
-    /// <summary>
-    /// Provides an WAF Regional Rule Resource for use with Application Load Balancer.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ipset = new Aws.WafRegional.IpSet("ipset", new Aws.WafRegional.IpSetArgs
-    ///         {
-    ///             IpSetDescriptors = 
-    ///             {
-    ///                 new Aws.WafRegional.Inputs.IpSetIpSetDescriptorArgs
-    ///                 {
-    ///                     Type = "IPV4",
-    ///                     Value = "192.0.7.0/24",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var wafrule = new Aws.WafRegional.Rule("wafrule", new Aws.WafRegional.RuleArgs
-    ///         {
-    ///             MetricName = "tfWAFRule",
-    ///             Predicates = 
-    ///             {
-    ///                 new Aws.WafRegional.Inputs.RulePredicateArgs
-    ///                 {
-    ///                     Type = "IPMatch",
-    ///                     DataId = ipset.Id,
-    ///                     Negated = false,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Nested Fields
-    /// 
-    /// ### `predicate`
-    /// 
-    /// See the [WAF Documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_Predicate.html) for more information.
-    /// 
-    /// #### Arguments
-    /// 
-    /// * `type` - (Required) The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
-    /// * `data_id` - (Required) The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
-    /// * `negated` - (Required) Whether to use the settings or the negated settings that you specified in the objects.
-    /// </summary>
     public partial class Rule : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the WAF Regional Rule.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or description for the Amazon CloudWatch metric of this rule.
-        /// </summary>
         [Output("metricName")]
         public Output<string> MetricName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or description of the rule.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The objects to include in a rule (documented below).
-        /// </summary>
         [Output("predicates")]
         public Output<ImmutableArray<Outputs.RulePredicate>> Predicates { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -140,24 +72,14 @@ namespace Pulumi.Aws.WafRegional
 
     public sealed class RuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name or description for the Amazon CloudWatch metric of this rule.
-        /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
-        /// <summary>
-        /// The name or description of the rule.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("predicates")]
         private InputList<Inputs.RulePredicateArgs>? _predicates;
-
-        /// <summary>
-        /// The objects to include in a rule (documented below).
-        /// </summary>
         public InputList<Inputs.RulePredicateArgs> Predicates
         {
             get => _predicates ?? (_predicates = new InputList<Inputs.RulePredicateArgs>());
@@ -166,10 +88,6 @@ namespace Pulumi.Aws.WafRegional
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -183,30 +101,17 @@ namespace Pulumi.Aws.WafRegional
 
     public sealed class RuleState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the WAF Regional Rule.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name or description for the Amazon CloudWatch metric of this rule.
-        /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
 
-        /// <summary>
-        /// The name or description of the rule.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("predicates")]
         private InputList<Inputs.RulePredicateGetArgs>? _predicates;
-
-        /// <summary>
-        /// The objects to include in a rule (documented below).
-        /// </summary>
         public InputList<Inputs.RulePredicateGetArgs> Predicates
         {
             get => _predicates ?? (_predicates = new InputList<Inputs.RulePredicateGetArgs>());
@@ -215,10 +120,6 @@ namespace Pulumi.Aws.WafRegional
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

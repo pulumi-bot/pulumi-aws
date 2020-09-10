@@ -12,21 +12,12 @@ namespace Pulumi.Aws.Dlm.Inputs
 
     public sealed class LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
-        /// </summary>
         [Input("interval", required: true)]
         public Input<int> Interval { get; set; } = null!;
 
-        /// <summary>
-        /// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
-        /// </summary>
         [Input("intervalUnit")]
         public Input<string>? IntervalUnit { get; set; }
 
-        /// <summary>
-        /// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
-        /// </summary>
         [Input("times")]
         public Input<string>? Times { get; set; }
 

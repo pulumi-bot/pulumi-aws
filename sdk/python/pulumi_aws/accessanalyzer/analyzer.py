@@ -22,22 +22,9 @@ class Analyzer(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Access Analyzer Analyzer. More information can be found in the [Access Analyzer User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.accessanalyzer.Analyzer("example", analyzer_name="example")
-        ```
-
+        Create a Analyzer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] analyzer_name: Name of the Analyzer.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
-        :param pulumi.Input[str] type: Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,9 +70,6 @@ class Analyzer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] analyzer_name: Name of the Analyzer.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
-        :param pulumi.Input[str] type: Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -100,9 +84,6 @@ class Analyzer(pulumi.CustomResource):
     @property
     @pulumi.getter(name="analyzerName")
     def analyzer_name(self) -> pulumi.Output[str]:
-        """
-        Name of the Analyzer.
-        """
         return pulumi.get(self, "analyzer_name")
 
     @property
@@ -113,17 +94,11 @@ class Analyzer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-        """
         return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):

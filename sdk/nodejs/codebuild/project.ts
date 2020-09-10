@@ -6,188 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CodeBuild Project resource. See also the `aws.codebuild.Webhook` resource, which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleBucket = new aws.s3.Bucket("exampleBucket", {acl: "private"});
- * const exampleRole = new aws.iam.Role("exampleRole", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Effect": "Allow",
- *       "Principal": {
- *         "Service": "codebuild.amazonaws.com"
- *       },
- *       "Action": "sts:AssumeRole"
- *     }
- *   ]
- * }
- * `});
- * const exampleRolePolicy = new aws.iam.RolePolicy("exampleRolePolicy", {
- *     role: exampleRole.name,
- *     policy: pulumi.interpolate`{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Effect": "Allow",
- *       "Resource": [
- *         "*"
- *       ],
- *       "Action": [
- *         "logs:CreateLogGroup",
- *         "logs:CreateLogStream",
- *         "logs:PutLogEvents"
- *       ]
- *     },
- *     {
- *       "Effect": "Allow",
- *       "Action": [
- *         "ec2:CreateNetworkInterface",
- *         "ec2:DescribeDhcpOptions",
- *         "ec2:DescribeNetworkInterfaces",
- *         "ec2:DeleteNetworkInterface",
- *         "ec2:DescribeSubnets",
- *         "ec2:DescribeSecurityGroups",
- *         "ec2:DescribeVpcs"
- *       ],
- *       "Resource": "*"
- *     },
- *     {
- *       "Effect": "Allow",
- *       "Action": [
- *         "ec2:CreateNetworkInterfacePermission"
- *       ],
- *       "Resource": [
- *         "arn:aws:ec2:us-east-1:123456789012:network-interface/*"
- *       ],
- *       "Condition": {
- *         "StringEquals": {
- *           "ec2:Subnet": [
- *             "${aws_subnet.example1.arn}",
- *             "${aws_subnet.example2.arn}"
- *           ],
- *           "ec2:AuthorizedService": "codebuild.amazonaws.com"
- *         }
- *       }
- *     },
- *     {
- *       "Effect": "Allow",
- *       "Action": [
- *         "s3:*"
- *       ],
- *       "Resource": [
- *         "${exampleBucket.arn}",
- *         "${exampleBucket.arn}/*"
- *       ]
- *     }
- *   ]
- * }
- * `,
- * });
- * const exampleProject = new aws.codebuild.Project("exampleProject", {
- *     description: "test_codebuild_project",
- *     buildTimeout: "5",
- *     serviceRole: exampleRole.arn,
- *     artifacts: {
- *         type: "NO_ARTIFACTS",
- *     },
- *     cache: {
- *         type: "S3",
- *         location: exampleBucket.bucket,
- *     },
- *     environment: {
- *         computeType: "BUILD_GENERAL1_SMALL",
- *         image: "aws/codebuild/standard:1.0",
- *         type: "LINUX_CONTAINER",
- *         imagePullCredentialsType: "CODEBUILD",
- *         environmentVariables: [
- *             {
- *                 name: "SOME_KEY1",
- *                 value: "SOME_VALUE1",
- *             },
- *             {
- *                 name: "SOME_KEY2",
- *                 value: "SOME_VALUE2",
- *                 type: "PARAMETER_STORE",
- *             },
- *         ],
- *     },
- *     logsConfig: {
- *         cloudwatchLogs: {
- *             groupName: "log-group",
- *             streamName: "log-stream",
- *         },
- *         s3Logs: {
- *             status: "ENABLED",
- *             location: pulumi.interpolate`${exampleBucket.id}/build-log`,
- *         },
- *     },
- *     source: {
- *         type: "GITHUB",
- *         location: "https://github.com/mitchellh/packer.git",
- *         gitCloneDepth: 1,
- *         gitSubmodulesConfig: {
- *             fetchSubmodules: true,
- *         },
- *     },
- *     sourceVersion: "master",
- *     vpcConfig: {
- *         vpcId: aws_vpc.example.id,
- *         subnets: [
- *             aws_subnet.example1.id,
- *             aws_subnet.example2.id,
- *         ],
- *         securityGroupIds: [
- *             aws_security_group.example1.id,
- *             aws_security_group.example2.id,
- *         ],
- *     },
- *     tags: {
- *         Environment: "Test",
- *     },
- * });
- * const project_with_cache = new aws.codebuild.Project("project-with-cache", {
- *     description: "test_codebuild_project_cache",
- *     buildTimeout: "5",
- *     queuedTimeout: "5",
- *     serviceRole: exampleRole.arn,
- *     artifacts: {
- *         type: "NO_ARTIFACTS",
- *     },
- *     cache: {
- *         type: "LOCAL",
- *         modes: [
- *             "LOCAL_DOCKER_LAYER_CACHE",
- *             "LOCAL_SOURCE_CACHE",
- *         ],
- *     },
- *     environment: {
- *         computeType: "BUILD_GENERAL1_SMALL",
- *         image: "aws/codebuild/standard:1.0",
- *         type: "LINUX_CONTAINER",
- *         imagePullCredentialsType: "CODEBUILD",
- *         environmentVariables: [{
- *             name: "SOME_KEY1",
- *             value: "SOME_VALUE1",
- *         }],
- *     },
- *     source: {
- *         type: "GITHUB",
- *         location: "https://github.com/mitchellh/packer.git",
- *         gitCloneDepth: 1,
- *     },
- *     tags: {
- *         Environment: "Test",
- *     },
- * });
- * ```
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -216,81 +34,24 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
-    /**
-     * The ARN of the CodeBuild project.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Information about the project's build output artifacts. Artifact blocks are documented below.
-     */
     public readonly artifacts!: pulumi.Output<outputs.codebuild.ProjectArtifacts>;
-    /**
-     * Generates a publicly-accessible URL for the projects build badge. Available as `badgeUrl` attribute when enabled.
-     */
     public readonly badgeEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * The URL of the build badge when `badgeEnabled` is enabled.
-     */
     public /*out*/ readonly badgeUrl!: pulumi.Output<string>;
-    /**
-     * How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.
-     */
     public readonly buildTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * Information about the cache storage for the project. Cache blocks are documented below.
-     */
     public readonly cache!: pulumi.Output<outputs.codebuild.ProjectCache | undefined>;
-    /**
-     * A short description of the project.
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts.
-     */
     public readonly encryptionKey!: pulumi.Output<string>;
-    /**
-     * Information about the project's build environment. Environment blocks are documented below.
-     */
     public readonly environment!: pulumi.Output<outputs.codebuild.ProjectEnvironment>;
-    /**
-     * Configuration for the builds to store log data to CloudWatch or S3.
-     */
     public readonly logsConfig!: pulumi.Output<outputs.codebuild.ProjectLogsConfig | undefined>;
-    /**
-     * The projects name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
-     */
     public readonly queuedTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-     */
     public readonly secondaryArtifacts!: pulumi.Output<outputs.codebuild.ProjectSecondaryArtifact[] | undefined>;
-    /**
-     * A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
-     */
     public readonly secondarySources!: pulumi.Output<outputs.codebuild.ProjectSecondarySource[] | undefined>;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
-     */
     public readonly serviceRole!: pulumi.Output<string>;
-    /**
-     * Information about the project's input source code. Source blocks are documented below.
-     */
     public readonly source!: pulumi.Output<outputs.codebuild.ProjectSource>;
-    /**
-     * A version of the build input to be built for this project. If not specified, the latest version is used.
-     */
     public readonly sourceVersion!: pulumi.Output<string | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
-     */
     public readonly vpcConfig!: pulumi.Output<outputs.codebuild.ProjectVpcConfig | undefined>;
 
     /**
@@ -373,81 +134,24 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
-    /**
-     * The ARN of the CodeBuild project.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Information about the project's build output artifacts. Artifact blocks are documented below.
-     */
     readonly artifacts?: pulumi.Input<inputs.codebuild.ProjectArtifacts>;
-    /**
-     * Generates a publicly-accessible URL for the projects build badge. Available as `badgeUrl` attribute when enabled.
-     */
     readonly badgeEnabled?: pulumi.Input<boolean>;
-    /**
-     * The URL of the build badge when `badgeEnabled` is enabled.
-     */
     readonly badgeUrl?: pulumi.Input<string>;
-    /**
-     * How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.
-     */
     readonly buildTimeout?: pulumi.Input<number>;
-    /**
-     * Information about the cache storage for the project. Cache blocks are documented below.
-     */
     readonly cache?: pulumi.Input<inputs.codebuild.ProjectCache>;
-    /**
-     * A short description of the project.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts.
-     */
     readonly encryptionKey?: pulumi.Input<string>;
-    /**
-     * Information about the project's build environment. Environment blocks are documented below.
-     */
     readonly environment?: pulumi.Input<inputs.codebuild.ProjectEnvironment>;
-    /**
-     * Configuration for the builds to store log data to CloudWatch or S3.
-     */
     readonly logsConfig?: pulumi.Input<inputs.codebuild.ProjectLogsConfig>;
-    /**
-     * The projects name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
-     */
     readonly queuedTimeout?: pulumi.Input<number>;
-    /**
-     * A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-     */
     readonly secondaryArtifacts?: pulumi.Input<pulumi.Input<inputs.codebuild.ProjectSecondaryArtifact>[]>;
-    /**
-     * A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
-     */
     readonly secondarySources?: pulumi.Input<pulumi.Input<inputs.codebuild.ProjectSecondarySource>[]>;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
-     */
     readonly serviceRole?: pulumi.Input<string>;
-    /**
-     * Information about the project's input source code. Source blocks are documented below.
-     */
     readonly source?: pulumi.Input<inputs.codebuild.ProjectSource>;
-    /**
-     * A version of the build input to be built for this project. If not specified, the latest version is used.
-     */
     readonly sourceVersion?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
-     */
     readonly vpcConfig?: pulumi.Input<inputs.codebuild.ProjectVpcConfig>;
 }
 
@@ -455,72 +159,21 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
-    /**
-     * Information about the project's build output artifacts. Artifact blocks are documented below.
-     */
     readonly artifacts: pulumi.Input<inputs.codebuild.ProjectArtifacts>;
-    /**
-     * Generates a publicly-accessible URL for the projects build badge. Available as `badgeUrl` attribute when enabled.
-     */
     readonly badgeEnabled?: pulumi.Input<boolean>;
-    /**
-     * How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.
-     */
     readonly buildTimeout?: pulumi.Input<number>;
-    /**
-     * Information about the cache storage for the project. Cache blocks are documented below.
-     */
     readonly cache?: pulumi.Input<inputs.codebuild.ProjectCache>;
-    /**
-     * A short description of the project.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts.
-     */
     readonly encryptionKey?: pulumi.Input<string>;
-    /**
-     * Information about the project's build environment. Environment blocks are documented below.
-     */
     readonly environment: pulumi.Input<inputs.codebuild.ProjectEnvironment>;
-    /**
-     * Configuration for the builds to store log data to CloudWatch or S3.
-     */
     readonly logsConfig?: pulumi.Input<inputs.codebuild.ProjectLogsConfig>;
-    /**
-     * The projects name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
-     */
     readonly queuedTimeout?: pulumi.Input<number>;
-    /**
-     * A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-     */
     readonly secondaryArtifacts?: pulumi.Input<pulumi.Input<inputs.codebuild.ProjectSecondaryArtifact>[]>;
-    /**
-     * A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
-     */
     readonly secondarySources?: pulumi.Input<pulumi.Input<inputs.codebuild.ProjectSecondarySource>[]>;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
-     */
     readonly serviceRole: pulumi.Input<string>;
-    /**
-     * Information about the project's input source code. Source blocks are documented below.
-     */
     readonly source: pulumi.Input<inputs.codebuild.ProjectSource>;
-    /**
-     * A version of the build input to be built for this project. If not specified, the latest version is used.
-     */
     readonly sourceVersion?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
-     */
     readonly vpcConfig?: pulumi.Input<inputs.codebuild.ProjectVpcConfig>;
 }

@@ -12,9 +12,6 @@ namespace Pulumi.Aws.ElasticSearch.Inputs
 
     public sealed class DomainNodeToNodeEncryptionGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
-        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

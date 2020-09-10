@@ -51,25 +51,16 @@ class GetClusterResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name (ARN) of the MSK cluster.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="bootstrapBrokers")
     def bootstrap_brokers(self) -> str:
-        """
-        A comma separated list of one or more hostname:port pairs of Kafka brokers suitable to boostrap connectivity to the Kafka cluster.
-        """
         return pulumi.get(self, "bootstrap_brokers")
 
     @property
     @pulumi.getter(name="bootstrapBrokersTls")
     def bootstrap_brokers_tls(self) -> str:
-        """
-        A comma separated list of one or more DNS names (or IPs) and TLS port pairs kafka brokers suitable to boostrap connectivity to the kafka cluster.
-        """
         return pulumi.get(self, "bootstrap_brokers_tls")
 
     @property
@@ -88,33 +79,21 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> str:
-        """
-        Apache Kafka version.
-        """
         return pulumi.get(self, "kafka_version")
 
     @property
     @pulumi.getter(name="numberOfBrokerNodes")
     def number_of_broker_nodes(self) -> float:
-        """
-        Number of broker nodes in the cluster.
-        """
         return pulumi.get(self, "number_of_broker_nodes")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Map of key-value pairs assigned to the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="zookeeperConnectString")
     def zookeeper_connect_string(self) -> str:
-        """
-        A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster.
-        """
         return pulumi.get(self, "zookeeper_connect_string")
 
 
@@ -139,20 +118,7 @@ def get_cluster(cluster_name: Optional[str] = None,
                 tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Get information on an Amazon MSK Cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.msk.get_cluster(cluster_name="example")
-    ```
-
-
-    :param str cluster_name: Name of the cluster.
-    :param Mapping[str, str] tags: Map of key-value pairs assigned to the cluster.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterName'] = cluster_name

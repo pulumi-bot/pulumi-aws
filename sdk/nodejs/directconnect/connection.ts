@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Connection of Direct Connect.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const hoge = new aws.directconnect.Connection("hoge", {
- *     bandwidth: "1Gbps",
- *     location: "EqDC2",
- * });
- * ```
- */
 export class Connection extends pulumi.CustomResource {
     /**
      * Get an existing Connection resource's state with the given name, ID, and optional extra
@@ -47,37 +32,13 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
-    /**
-     * The ARN of the connection.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The Direct Connect endpoint on which the physical connection terminates.
-     */
     public /*out*/ readonly awsDevice!: pulumi.Output<string>;
-    /**
-     * The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-     */
     public readonly bandwidth!: pulumi.Output<string>;
-    /**
-     * Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-     */
     public /*out*/ readonly hasLogicalRedundancy!: pulumi.Output<string>;
-    /**
-     * Boolean value representing if jumbo frames have been enabled for this connection.
-     */
     public /*out*/ readonly jumboFrameCapable!: pulumi.Output<boolean>;
-    /**
-     * The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-     */
     public readonly location!: pulumi.Output<string>;
-    /**
-     * The name of the connection.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -132,37 +93,13 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
-    /**
-     * The ARN of the connection.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The Direct Connect endpoint on which the physical connection terminates.
-     */
     readonly awsDevice?: pulumi.Input<string>;
-    /**
-     * The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-     */
     readonly bandwidth?: pulumi.Input<string>;
-    /**
-     * Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-     */
     readonly hasLogicalRedundancy?: pulumi.Input<string>;
-    /**
-     * Boolean value representing if jumbo frames have been enabled for this connection.
-     */
     readonly jumboFrameCapable?: pulumi.Input<boolean>;
-    /**
-     * The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-     */
     readonly location?: pulumi.Input<string>;
-    /**
-     * The name of the connection.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -170,20 +107,8 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
-    /**
-     * The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-     */
     readonly bandwidth: pulumi.Input<string>;
-    /**
-     * The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-     */
     readonly location: pulumi.Input<string>;
-    /**
-     * The name of the connection.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

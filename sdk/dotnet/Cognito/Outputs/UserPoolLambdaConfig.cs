@@ -13,45 +13,15 @@ namespace Pulumi.Aws.Cognito.Outputs
     [OutputType]
     public sealed class UserPoolLambdaConfig
     {
-        /// <summary>
-        /// The ARN of the lambda creating an authentication challenge.
-        /// </summary>
         public readonly string? CreateAuthChallenge;
-        /// <summary>
-        /// A custom Message AWS Lambda trigger.
-        /// </summary>
         public readonly string? CustomMessage;
-        /// <summary>
-        /// Defines the authentication challenge.
-        /// </summary>
         public readonly string? DefineAuthChallenge;
-        /// <summary>
-        /// A post-authentication AWS Lambda trigger.
-        /// </summary>
         public readonly string? PostAuthentication;
-        /// <summary>
-        /// A post-confirmation AWS Lambda trigger.
-        /// </summary>
         public readonly string? PostConfirmation;
-        /// <summary>
-        /// A pre-authentication AWS Lambda trigger.
-        /// </summary>
         public readonly string? PreAuthentication;
-        /// <summary>
-        /// A pre-registration AWS Lambda trigger.
-        /// </summary>
         public readonly string? PreSignUp;
-        /// <summary>
-        /// Allow to customize identity token claims before token generation.
-        /// </summary>
         public readonly string? PreTokenGeneration;
-        /// <summary>
-        /// The user migration Lambda config type.
-        /// </summary>
         public readonly string? UserMigration;
-        /// <summary>
-        /// Verifies the authentication challenge response.
-        /// </summary>
         public readonly string? VerifyAuthChallengeResponse;
 
         [OutputConstructor]

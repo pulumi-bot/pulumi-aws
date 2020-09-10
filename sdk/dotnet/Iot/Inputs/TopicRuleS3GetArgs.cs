@@ -12,21 +12,12 @@ namespace Pulumi.Aws.Iot.Inputs
 
     public sealed class TopicRuleS3GetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon S3 bucket name.
-        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
-        /// <summary>
-        /// The object key.
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// The IAM role ARN that allows access to the CloudWatch alarm.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 

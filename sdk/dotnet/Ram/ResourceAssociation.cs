@@ -9,42 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ram
 {
-    /// <summary>
-    /// Manages a Resource Access Manager (RAM) Resource Association.
-    /// 
-    /// &gt; *NOTE:* Certain AWS resources (e.g. EC2 Subnets) can only be shared in an AWS account that is a member of an AWS Organizations organization with organization-wide Resource Access Manager functionality enabled. See the [Resource Access Manager User Guide](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) and AWS service specific documentation for additional information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ram.ResourceAssociation("example", new Aws.Ram.ResourceAssociationArgs
-    ///         {
-    ///             ResourceArn = aws_subnet.Example.Arn,
-    ///             ResourceShareArn = aws_ram_resource_share.Example.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ResourceAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-        /// </summary>
         [Output("resourceArn")]
         public Output<string> ResourceArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the RAM Resource Share.
-        /// </summary>
         [Output("resourceShareArn")]
         public Output<string> ResourceShareArn { get; private set; } = null!;
 
@@ -94,15 +63,9 @@ namespace Pulumi.Aws.Ram
 
     public sealed class ResourceAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-        /// </summary>
         [Input("resourceArn", required: true)]
         public Input<string> ResourceArn { get; set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the RAM Resource Share.
-        /// </summary>
         [Input("resourceShareArn", required: true)]
         public Input<string> ResourceShareArn { get; set; } = null!;
 
@@ -113,15 +76,9 @@ namespace Pulumi.Aws.Ram
 
     public sealed class ResourceAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-        /// </summary>
         [Input("resourceArn")]
         public Input<string>? ResourceArn { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the RAM Resource Share.
-        /// </summary>
         [Input("resourceShareArn")]
         public Input<string>? ResourceShareArn { get; set; }
 

@@ -9,114 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides an API Gateway Usage Plan.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myapi = new Aws.ApiGateway.RestApi("myapi", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///         });
-    ///         // ...
-    ///         var dev = new Aws.ApiGateway.Deployment("dev", new Aws.ApiGateway.DeploymentArgs
-    ///         {
-    ///             RestApi = myapi.Id,
-    ///             StageName = "dev",
-    ///         });
-    ///         var prod = new Aws.ApiGateway.Deployment("prod", new Aws.ApiGateway.DeploymentArgs
-    ///         {
-    ///             RestApi = myapi.Id,
-    ///             StageName = "prod",
-    ///         });
-    ///         var myUsagePlan = new Aws.ApiGateway.UsagePlan("myUsagePlan", new Aws.ApiGateway.UsagePlanArgs
-    ///         {
-    ///             Description = "my description",
-    ///             ProductCode = "MYCODE",
-    ///             ApiStages = 
-    ///             {
-    ///                 new Aws.ApiGateway.Inputs.UsagePlanApiStageArgs
-    ///                 {
-    ///                     ApiId = myapi.Id,
-    ///                     Stage = dev.StageName,
-    ///                 },
-    ///                 new Aws.ApiGateway.Inputs.UsagePlanApiStageArgs
-    ///                 {
-    ///                     ApiId = myapi.Id,
-    ///                     Stage = prod.StageName,
-    ///                 },
-    ///             },
-    ///             QuotaSettings = new Aws.ApiGateway.Inputs.UsagePlanQuotaSettingsArgs
-    ///             {
-    ///                 Limit = 20,
-    ///                 Offset = 2,
-    ///                 Period = "WEEK",
-    ///             },
-    ///             ThrottleSettings = new Aws.ApiGateway.Inputs.UsagePlanThrottleSettingsArgs
-    ///             {
-    ///                 BurstLimit = 5,
-    ///                 RateLimit = 10,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class UsagePlan : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The associated API stages of the usage plan.
-        /// </summary>
         [Output("apiStages")]
         public Output<ImmutableArray<Outputs.UsagePlanApiStage>> ApiStages { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of a usage plan.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the usage plan.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-        /// </summary>
         [Output("productCode")]
         public Output<string?> ProductCode { get; private set; } = null!;
 
-        /// <summary>
-        /// The quota settings of the usage plan.
-        /// </summary>
         [Output("quotaSettings")]
         public Output<Outputs.UsagePlanQuotaSettings?> QuotaSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The throttling limits of the usage plan.
-        /// </summary>
         [Output("throttleSettings")]
         public Output<Outputs.UsagePlanThrottleSettings?> ThrottleSettings { get; private set; } = null!;
 
@@ -168,55 +83,32 @@ namespace Pulumi.Aws.ApiGateway
     {
         [Input("apiStages")]
         private InputList<Inputs.UsagePlanApiStageArgs>? _apiStages;
-
-        /// <summary>
-        /// The associated API stages of the usage plan.
-        /// </summary>
         public InputList<Inputs.UsagePlanApiStageArgs> ApiStages
         {
             get => _apiStages ?? (_apiStages = new InputList<Inputs.UsagePlanApiStageArgs>());
             set => _apiStages = value;
         }
 
-        /// <summary>
-        /// The description of a usage plan.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the usage plan.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-        /// </summary>
         [Input("productCode")]
         public Input<string>? ProductCode { get; set; }
 
-        /// <summary>
-        /// The quota settings of the usage plan.
-        /// </summary>
         [Input("quotaSettings")]
         public Input<Inputs.UsagePlanQuotaSettingsArgs>? QuotaSettings { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The throttling limits of the usage plan.
-        /// </summary>
         [Input("throttleSettings")]
         public Input<Inputs.UsagePlanThrottleSettingsArgs>? ThrottleSettings { get; set; }
 
@@ -229,61 +121,35 @@ namespace Pulumi.Aws.ApiGateway
     {
         [Input("apiStages")]
         private InputList<Inputs.UsagePlanApiStageGetArgs>? _apiStages;
-
-        /// <summary>
-        /// The associated API stages of the usage plan.
-        /// </summary>
         public InputList<Inputs.UsagePlanApiStageGetArgs> ApiStages
         {
             get => _apiStages ?? (_apiStages = new InputList<Inputs.UsagePlanApiStageGetArgs>());
             set => _apiStages = value;
         }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of a usage plan.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the usage plan.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-        /// </summary>
         [Input("productCode")]
         public Input<string>? ProductCode { get; set; }
 
-        /// <summary>
-        /// The quota settings of the usage plan.
-        /// </summary>
         [Input("quotaSettings")]
         public Input<Inputs.UsagePlanQuotaSettingsGetArgs>? QuotaSettings { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The throttling limits of the usage plan.
-        /// </summary>
         [Input("throttleSettings")]
         public Input<Inputs.UsagePlanThrottleSettingsGetArgs>? ThrottleSettings { get; set; }
 

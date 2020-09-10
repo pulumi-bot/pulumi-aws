@@ -6,27 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about an EC2 Local Gateway Route Table.
- *
- * This data source can prove useful when a module accepts a local gateway route table id as
- * an input variable and needs to, for example, find the associated Outpost or Local Gateway.
- *
- * ## Example Usage
- *
- * The following example returns a specific local gateway route table ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const config = new pulumi.Config();
- * const awsEc2LocalGatewayRouteTable = config.requireObject("awsEc2LocalGatewayRouteTable");
- * const selected = aws.ec2.getLocalGatewayRouteTable({
- *     localGatewayRouteTableId: awsEc2LocalGatewayRouteTable,
- * });
- * ```
- */
 export function getLocalGatewayRouteTable(args?: GetLocalGatewayRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalGatewayRouteTableResult> {
     args = args || {};
     if (!opts) {
@@ -51,26 +30,10 @@ export function getLocalGatewayRouteTable(args?: GetLocalGatewayRouteTableArgs, 
  */
 export interface GetLocalGatewayRouteTableArgs {
     readonly filters?: inputs.ec2.GetLocalGatewayRouteTableFilter[];
-    /**
-     * The id of the specific local gateway route table to retrieve.
-     */
     readonly localGatewayId?: string;
-    /**
-     * Local Gateway Route Table Id assigned to desired local gateway route table
-     */
     readonly localGatewayRouteTableId?: string;
-    /**
-     * The arn of the Outpost the local gateway route table is associated with.
-     */
     readonly outpostArn?: string;
-    /**
-     * The state of the local gateway route table.
-     */
     readonly state?: string;
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired local gateway route table.
-     */
     readonly tags?: {[key: string]: string};
 }
 

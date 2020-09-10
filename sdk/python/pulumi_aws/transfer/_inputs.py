@@ -16,17 +16,11 @@ __all__ = [
 class ServerEndpointDetailsArgs:
     def __init__(__self__, *,
                  vpc_endpoint_id: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] vpc_endpoint_id: The ID of the VPC endpoint.
-        """
         pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
 
     @property
     @pulumi.getter(name="vpcEndpointId")
     def vpc_endpoint_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the VPC endpoint.
-        """
         return pulumi.get(self, "vpc_endpoint_id")
 
     @vpc_endpoint_id.setter

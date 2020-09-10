@@ -14,10 +14,6 @@ namespace Pulumi.Aws.Eks.Inputs
     {
         [Input("oidcs")]
         private InputList<Inputs.ClusterIdentityOidcArgs>? _oidcs;
-
-        /// <summary>
-        /// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
-        /// </summary>
         public InputList<Inputs.ClusterIdentityOidcArgs> Oidcs
         {
             get => _oidcs ?? (_oidcs = new InputList<Inputs.ClusterIdentityOidcArgs>());

@@ -12,9 +12,6 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class RouteSpecTcpRouteArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The action to take if a match is determined.
-        /// </summary>
         [Input("action", required: true)]
         public Input<Inputs.RouteSpecTcpRouteActionArgs> Action { get; set; } = null!;
 

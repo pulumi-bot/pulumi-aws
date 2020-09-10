@@ -9,70 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides an API Gateway Gateway Response for a REST API Gateway.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var main = new Aws.ApiGateway.RestApi("main", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///         });
-    ///         var test = new Aws.ApiGateway.Response("test", new Aws.ApiGateway.ResponseArgs
-    ///         {
-    ///             RestApiId = main.Id,
-    ///             StatusCode = "401",
-    ///             ResponseType = "UNAUTHORIZED",
-    ///             ResponseTemplates = 
-    ///             {
-    ///                 { "application/json", "{'message':$context.error.messageString}" },
-    ///             },
-    ///             ResponseParameters = 
-    ///             {
-    ///                 { "gatewayresponse.header.Authorization", "'Basic'" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Response : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A map specifying the parameters (paths, query strings and headers) of the Gateway Response.
-        /// </summary>
         [Output("responseParameters")]
         public Output<ImmutableDictionary<string, string>?> ResponseParameters { get; private set; } = null!;
 
-        /// <summary>
-        /// A map specifying the templates used to transform the response body.
-        /// </summary>
         [Output("responseTemplates")]
         public Output<ImmutableDictionary<string, string>?> ResponseTemplates { get; private set; } = null!;
 
-        /// <summary>
-        /// The response type of the associated GatewayResponse.
-        /// </summary>
         [Output("responseType")]
         public Output<string> ResponseType { get; private set; } = null!;
 
-        /// <summary>
-        /// The string identifier of the associated REST API.
-        /// </summary>
         [Output("restApiId")]
         public Output<string> RestApiId { get; private set; } = null!;
 
-        /// <summary>
-        /// The HTTP status code of the Gateway Response.
-        /// </summary>
         [Output("statusCode")]
         public Output<string?> StatusCode { get; private set; } = null!;
 
@@ -124,10 +74,6 @@ namespace Pulumi.Aws.ApiGateway
     {
         [Input("responseParameters")]
         private InputMap<string>? _responseParameters;
-
-        /// <summary>
-        /// A map specifying the parameters (paths, query strings and headers) of the Gateway Response.
-        /// </summary>
         public InputMap<string> ResponseParameters
         {
             get => _responseParameters ?? (_responseParameters = new InputMap<string>());
@@ -136,31 +82,18 @@ namespace Pulumi.Aws.ApiGateway
 
         [Input("responseTemplates")]
         private InputMap<string>? _responseTemplates;
-
-        /// <summary>
-        /// A map specifying the templates used to transform the response body.
-        /// </summary>
         public InputMap<string> ResponseTemplates
         {
             get => _responseTemplates ?? (_responseTemplates = new InputMap<string>());
             set => _responseTemplates = value;
         }
 
-        /// <summary>
-        /// The response type of the associated GatewayResponse.
-        /// </summary>
         [Input("responseType", required: true)]
         public Input<string> ResponseType { get; set; } = null!;
 
-        /// <summary>
-        /// The string identifier of the associated REST API.
-        /// </summary>
         [Input("restApiId", required: true)]
         public Input<string> RestApiId { get; set; } = null!;
 
-        /// <summary>
-        /// The HTTP status code of the Gateway Response.
-        /// </summary>
         [Input("statusCode")]
         public Input<string>? StatusCode { get; set; }
 
@@ -173,10 +106,6 @@ namespace Pulumi.Aws.ApiGateway
     {
         [Input("responseParameters")]
         private InputMap<string>? _responseParameters;
-
-        /// <summary>
-        /// A map specifying the parameters (paths, query strings and headers) of the Gateway Response.
-        /// </summary>
         public InputMap<string> ResponseParameters
         {
             get => _responseParameters ?? (_responseParameters = new InputMap<string>());
@@ -185,31 +114,18 @@ namespace Pulumi.Aws.ApiGateway
 
         [Input("responseTemplates")]
         private InputMap<string>? _responseTemplates;
-
-        /// <summary>
-        /// A map specifying the templates used to transform the response body.
-        /// </summary>
         public InputMap<string> ResponseTemplates
         {
             get => _responseTemplates ?? (_responseTemplates = new InputMap<string>());
             set => _responseTemplates = value;
         }
 
-        /// <summary>
-        /// The response type of the associated GatewayResponse.
-        /// </summary>
         [Input("responseType")]
         public Input<string>? ResponseType { get; set; }
 
-        /// <summary>
-        /// The string identifier of the associated REST API.
-        /// </summary>
         [Input("restApiId")]
         public Input<string>? RestApiId { get; set; }
 
-        /// <summary>
-        /// The HTTP status code of the Gateway Response.
-        /// </summary>
         [Input("statusCode")]
         public Input<string>? StatusCode { get; set; }
 

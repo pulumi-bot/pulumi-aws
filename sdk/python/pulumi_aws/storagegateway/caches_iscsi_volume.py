@@ -26,64 +26,9 @@ class CachesIscsiVolume(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an AWS Storage Gateway cached iSCSI volume.
-
-        > **NOTE:** The gateway must have cache added (e.g. via the `storagegateway.Cache` resource) before creating volumes otherwise the Storage Gateway API will return an error.
-
-        > **NOTE:** The gateway must have an upload buffer added (e.g. via the `storagegateway.UploadBuffer` resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
-
-        ## Example Usage
-
-        > **NOTE:** These examples are referencing the `storagegateway.Cache` resource `gateway_arn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `depends_on = [aws_storagegateway_cache.example]`) to ensure proper ordering.
-        ### Create Empty Cached iSCSI Volume
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.storagegateway.CachesIscsiVolume("example",
-            gateway_arn=aws_storagegateway_cache["example"]["gateway_arn"],
-            network_interface_id=aws_instance["example"]["private_ip"],
-            target_name="example",
-            volume_size_in_bytes=5368709120)
-        # 5 GB
-        ```
-        ### Create Cached iSCSI Volume From Snapshot
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.storagegateway.CachesIscsiVolume("example",
-            gateway_arn=aws_storagegateway_cache["example"]["gateway_arn"],
-            network_interface_id=aws_instance["example"]["private_ip"],
-            snapshot_id=aws_ebs_snapshot["example"]["id"],
-            target_name="example",
-            volume_size_in_bytes=aws_ebs_snapshot["example"]["volume_size"] * 1024 * 1024 * 1024)
-        ```
-        ### Create Cached iSCSI Volume From Source Volume
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.storagegateway.CachesIscsiVolume("example",
-            gateway_arn=aws_storagegateway_cache["example"]["gateway_arn"],
-            network_interface_id=aws_instance["example"]["private_ip"],
-            source_volume_arn=aws_storagegateway_cached_iscsi_volume["existing"]["arn"],
-            target_name="example",
-            volume_size_in_bytes=aws_storagegateway_cached_iscsi_volume["existing"]["volume_size_in_bytes"])
-        ```
-
+        Create a CachesIscsiVolume resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] gateway_arn: The Amazon Resource Name (ARN) of the gateway.
-        :param pulumi.Input[str] network_interface_id: The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted.
-        :param pulumi.Input[str] snapshot_id: The snapshot ID of the snapshot to restore as the new cached volume. e.g. `snap-1122aabb`.
-        :param pulumi.Input[str] source_volume_arn: The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volume_size_in_bytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[str] target_name: The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
-        :param pulumi.Input[float] volume_size_in_bytes: The size of the volume in bytes.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -155,20 +100,6 @@ class CachesIscsiVolume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Volume Amazon Resource Name (ARN), e.g. `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
-        :param pulumi.Input[bool] chap_enabled: Whether mutual CHAP is enabled for the iSCSI target.
-        :param pulumi.Input[str] gateway_arn: The Amazon Resource Name (ARN) of the gateway.
-        :param pulumi.Input[float] lun_number: Logical disk number.
-        :param pulumi.Input[str] network_interface_id: The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted.
-        :param pulumi.Input[float] network_interface_port: The port used to communicate with iSCSI targets.
-        :param pulumi.Input[str] snapshot_id: The snapshot ID of the snapshot to restore as the new cached volume. e.g. `snap-1122aabb`.
-        :param pulumi.Input[str] source_volume_arn: The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volume_size_in_bytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[str] target_arn: Target Amazon Resource Name (ARN), e.g. `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
-        :param pulumi.Input[str] target_name: The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
-        :param pulumi.Input[str] volume_arn: Volume Amazon Resource Name (ARN), e.g. `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
-        :param pulumi.Input[str] volume_id: Volume ID, e.g. `vol-12345678`.
-        :param pulumi.Input[float] volume_size_in_bytes: The size of the volume in bytes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -193,113 +124,71 @@ class CachesIscsiVolume(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Volume Amazon Resource Name (ARN), e.g. `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="chapEnabled")
     def chap_enabled(self) -> pulumi.Output[bool]:
-        """
-        Whether mutual CHAP is enabled for the iSCSI target.
-        """
         return pulumi.get(self, "chap_enabled")
 
     @property
     @pulumi.getter(name="gatewayArn")
     def gateway_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the gateway.
-        """
         return pulumi.get(self, "gateway_arn")
 
     @property
     @pulumi.getter(name="lunNumber")
     def lun_number(self) -> pulumi.Output[float]:
-        """
-        Logical disk number.
-        """
         return pulumi.get(self, "lun_number")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[str]:
-        """
-        The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="networkInterfacePort")
     def network_interface_port(self) -> pulumi.Output[float]:
-        """
-        The port used to communicate with iSCSI targets.
-        """
         return pulumi.get(self, "network_interface_port")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The snapshot ID of the snapshot to restore as the new cached volume. e.g. `snap-1122aabb`.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="sourceVolumeArn")
     def source_volume_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volume_size_in_bytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
-        """
         return pulumi.get(self, "source_volume_arn")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetArn")
     def target_arn(self) -> pulumi.Output[str]:
-        """
-        Target Amazon Resource Name (ARN), e.g. `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
-        """
         return pulumi.get(self, "target_arn")
 
     @property
     @pulumi.getter(name="targetName")
     def target_name(self) -> pulumi.Output[str]:
-        """
-        The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
-        """
         return pulumi.get(self, "target_name")
 
     @property
     @pulumi.getter(name="volumeArn")
     def volume_arn(self) -> pulumi.Output[str]:
-        """
-        Volume Amazon Resource Name (ARN), e.g. `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
-        """
         return pulumi.get(self, "volume_arn")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Output[str]:
-        """
-        Volume ID, e.g. `vol-12345678`.
-        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeSizeInBytes")
     def volume_size_in_bytes(self) -> pulumi.Output[float]:
-        """
-        The size of the volume in bytes.
-        """
         return pulumi.get(self, "volume_size_in_bytes")
 
     def translate_output_property(self, prop):

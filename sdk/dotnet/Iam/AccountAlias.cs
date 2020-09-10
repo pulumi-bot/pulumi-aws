@@ -9,35 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// &gt; **Note:** There is only a single account alias per AWS account.
-    /// 
-    /// Manages the account alias for the AWS Account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @alias = new Aws.Iam.AccountAlias("alias", new Aws.Iam.AccountAliasArgs
-    ///         {
-    ///             AccountAlias = "my-account-alias",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AccountAlias : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account alias
-        /// </summary>
         [Output("accountAlias")]
         public Output<string> Alias { get; private set; } = null!;
 
@@ -87,9 +60,6 @@ namespace Pulumi.Aws.Iam
 
     public sealed class AccountAliasArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account alias
-        /// </summary>
         [Input("accountAlias", required: true)]
         public Input<string> Alias { get; set; } = null!;
 
@@ -100,9 +70,6 @@ namespace Pulumi.Aws.Iam
 
     public sealed class AccountAliasState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account alias
-        /// </summary>
         [Input("accountAlias")]
         public Input<string>? Alias { get; set; }
 

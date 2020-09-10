@@ -45,17 +45,11 @@ class GetLogGroupResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the Cloudwatch log group
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> float:
-        """
-        The creation time of the log group, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
-        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -69,9 +63,6 @@ class GetLogGroupResult:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> str:
-        """
-        The ARN of the KMS Key to use when encrypting log data.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
@@ -82,17 +73,11 @@ class GetLogGroupResult:
     @property
     @pulumi.getter(name="retentionInDays")
     def retention_in_days(self) -> float:
-        """
-        The number of days log events retained in the specified log group.
-        """
         return pulumi.get(self, "retention_in_days")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -115,20 +100,7 @@ def get_log_group(name: Optional[str] = None,
                   tags: Optional[Mapping[str, str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogGroupResult:
     """
-    Use this data source to get information about an AWS Cloudwatch Log Group
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.cloudwatch.get_log_group(name="MyImportantLogs")
-    ```
-
-
-    :param str name: The name of the Cloudwatch log group
-    :param Mapping[str, str] tags: A map of tags to assign to the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

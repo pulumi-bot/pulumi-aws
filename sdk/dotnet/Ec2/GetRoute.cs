@@ -11,50 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetRoute
     {
-        /// <summary>
-        /// `aws.ec2.Route` provides details about a specific Route.
-        /// 
-        /// This resource can prove useful when finding the resource
-        /// associated with a CIDR. For example, finding the peering
-        /// connection associated with a CIDR value.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might use a CIDR value to find a network interface id
-        /// and use this to create a data source of that network interface.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var subnetId = config.RequireObject&lt;dynamic&gt;("subnetId");
-        ///         var selected = Output.Create(Aws.Ec2.GetRouteTable.InvokeAsync(new Aws.Ec2.GetRouteTableArgs
-        ///         {
-        ///             SubnetId = subnetId,
-        ///         }));
-        ///         var route = Output.Create(Aws.Ec2.GetRoute.InvokeAsync(new Aws.Ec2.GetRouteArgs
-        ///         {
-        ///             RouteTableId = aws_route_table.Selected.Id,
-        ///             DestinationCidrBlock = "10.0.1.0/24",
-        ///         }));
-        ///         var @interface = route.Apply(route =&gt; Output.Create(Aws.Ec2.GetNetworkInterface.InvokeAsync(new Aws.Ec2.GetNetworkInterfaceArgs
-        ///         {
-        ///             Id = route.NetworkInterfaceId,
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetRouteResult> InvokeAsync(GetRouteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteResult>("aws:ec2/getRoute:getRoute", args ?? new GetRouteArgs(), options.WithVersion());
     }
@@ -62,63 +18,33 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class GetRouteArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The CIDR block of the Route belonging to the Route Table.
-        /// </summary>
         [Input("destinationCidrBlock")]
         public string? DestinationCidrBlock { get; set; }
 
-        /// <summary>
-        /// The IPv6 CIDR block of the Route belonging to the Route Table.
-        /// </summary>
         [Input("destinationIpv6CidrBlock")]
         public string? DestinationIpv6CidrBlock { get; set; }
 
-        /// <summary>
-        /// The Egress Only Gateway ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("egressOnlyGatewayId")]
         public string? EgressOnlyGatewayId { get; set; }
 
-        /// <summary>
-        /// The Gateway ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("gatewayId")]
         public string? GatewayId { get; set; }
 
-        /// <summary>
-        /// The Instance ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
-        /// <summary>
-        /// The NAT Gateway ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("natGatewayId")]
         public string? NatGatewayId { get; set; }
 
-        /// <summary>
-        /// The Network Interface ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("networkInterfaceId")]
         public string? NetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The id of the specific Route Table containing the Route entry.
-        /// </summary>
         [Input("routeTableId", required: true)]
         public string RouteTableId { get; set; } = null!;
 
-        /// <summary>
-        /// The EC2 Transit Gateway ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("transitGatewayId")]
         public string? TransitGatewayId { get; set; }
 
-        /// <summary>
-        /// The VPC Peering Connection ID of the Route belonging to the Route Table.
-        /// </summary>
         [Input("vpcPeeringConnectionId")]
         public string? VpcPeeringConnectionId { get; set; }
 

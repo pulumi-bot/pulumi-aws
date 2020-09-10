@@ -13,45 +13,15 @@ namespace Pulumi.Aws.WafV2.Outputs
     [OutputType]
     public sealed class WebAclRuleStatementAndStatementStatementOrStatementStatement
     {
-        /// <summary>
-        /// A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementAndStatement? AndStatement;
-        /// <summary>
-        /// A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementByteMatchStatement? ByteMatchStatement;
-        /// <summary>
-        /// A rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementGeoMatchStatement? GeoMatchStatement;
-        /// <summary>
-        /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement? IpSetReferenceStatement;
-        /// <summary>
-        /// A logical rule statement used to negate the results of another rule statement. See NOT Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementNotStatement? NotStatement;
-        /// <summary>
-        /// A logical rule statement used to combine other rule statements with OR logic. See OR Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementOrStatement? OrStatement;
-        /// <summary>
-        /// A rule statement used to search web request components for matches with regular expressions. See Regex Pattern Set Reference Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement? RegexPatternSetReferenceStatement;
-        /// <summary>
-        /// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementSizeConstraintStatement? SizeConstraintStatement;
-        /// <summary>
-        /// An SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementSqliMatchStatement? SqliMatchStatement;
-        /// <summary>
-        /// A rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
-        /// </summary>
         public readonly Outputs.WebAclRuleStatementAndStatementStatementOrStatementStatementXssMatchStatement? XssMatchStatement;
 
         [OutputConstructor]

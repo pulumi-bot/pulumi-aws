@@ -9,62 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DataSync
 {
-    /// <summary>
-    /// Manages an S3 Location within AWS DataSync.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DataSync.S3Location("example", new Aws.DataSync.S3LocationArgs
-    ///         {
-    ///             S3BucketArn = aws_s3_bucket.Example.Arn,
-    ///             Subdirectory = "/example/prefix",
-    ///             S3Config = new Aws.DataSync.Inputs.S3LocationS3ConfigArgs
-    ///             {
-    ///                 BucketAccessRoleArn = aws_iam_role.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class S3Location : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the S3 Bucket.
-        /// </summary>
         [Output("s3BucketArn")]
         public Output<string> S3BucketArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing information for connecting to S3.
-        /// </summary>
         [Output("s3Config")]
         public Output<Outputs.S3LocationS3Config> S3Config { get; private set; } = null!;
 
-        /// <summary>
-        /// Prefix to perform actions as source or destination.
-        /// </summary>
         [Output("subdirectory")]
         public Output<string> Subdirectory { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -117,30 +75,17 @@ namespace Pulumi.Aws.DataSync
 
     public sealed class S3LocationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the S3 Bucket.
-        /// </summary>
         [Input("s3BucketArn", required: true)]
         public Input<string> S3BucketArn { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing information for connecting to S3.
-        /// </summary>
         [Input("s3Config", required: true)]
         public Input<Inputs.S3LocationS3ConfigArgs> S3Config { get; set; } = null!;
 
-        /// <summary>
-        /// Prefix to perform actions as source or destination.
-        /// </summary>
         [Input("subdirectory", required: true)]
         public Input<string> Subdirectory { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -154,36 +99,20 @@ namespace Pulumi.Aws.DataSync
 
     public sealed class S3LocationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the S3 Bucket.
-        /// </summary>
         [Input("s3BucketArn")]
         public Input<string>? S3BucketArn { get; set; }
 
-        /// <summary>
-        /// Configuration block containing information for connecting to S3.
-        /// </summary>
         [Input("s3Config")]
         public Input<Inputs.S3LocationS3ConfigGetArgs>? S3Config { get; set; }
 
-        /// <summary>
-        /// Prefix to perform actions as source or destination.
-        /// </summary>
         [Input("subdirectory")]
         public Input<string>? Subdirectory { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

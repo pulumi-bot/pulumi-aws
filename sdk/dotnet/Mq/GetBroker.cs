@@ -11,39 +11,6 @@ namespace Pulumi.Aws.Mq
 {
     public static class GetBroker
     {
-        /// <summary>
-        /// Provides information about a MQ Broker.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var brokerId = config.Get("brokerId") ?? "";
-        ///         var brokerName = config.Get("brokerName") ?? "";
-        ///         var byId = Output.Create(Aws.Mq.GetBroker.InvokeAsync(new Aws.Mq.GetBrokerArgs
-        ///         {
-        ///             BrokerId = brokerId,
-        ///         }));
-        ///         var byName = Output.Create(Aws.Mq.GetBroker.InvokeAsync(new Aws.Mq.GetBrokerArgs
-        ///         {
-        ///             BrokerName = brokerName,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetBrokerResult> InvokeAsync(GetBrokerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBrokerResult>("aws:mq/getBroker:getBroker", args ?? new GetBrokerArgs(), options.WithVersion());
     }
@@ -51,15 +18,9 @@ namespace Pulumi.Aws.Mq
 
     public sealed class GetBrokerArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique id of the mq broker.
-        /// </summary>
         [Input("brokerId")]
         public string? BrokerId { get; set; }
 
-        /// <summary>
-        /// The unique name of the mq broker.
-        /// </summary>
         [Input("brokerName")]
         public string? BrokerName { get; set; }
 

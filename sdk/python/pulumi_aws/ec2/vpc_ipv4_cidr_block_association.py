@@ -21,27 +21,9 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to associate additional IPv4 CIDR blocks with a VPC.
-
-        When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
-        The `ec2.VpcIpv4CidrBlockAssociation` resource allows further IPv4 CIDR blocks to be added to the VPC.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ec2.Vpc("main", cidr_block="10.0.0.0/16")
-        secondary_cidr = aws.ec2.VpcIpv4CidrBlockAssociation("secondaryCidr",
-            vpc_id=main.id,
-            cidr_block="172.2.0.0/16")
-        ```
-
+        Create a VpcIpv4CidrBlockAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr_block: The additional IPv4 CIDR block to associate with the VPC.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC to make the association with.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,8 +67,6 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr_block: The additional IPv4 CIDR block to associate with the VPC.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC to make the association with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -99,17 +79,11 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[str]:
-        """
-        The additional IPv4 CIDR block to associate with the VPC.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the VPC to make the association with.
-        """
         return pulumi.get(self, "vpc_id")
 
     def translate_output_property(self, prop):

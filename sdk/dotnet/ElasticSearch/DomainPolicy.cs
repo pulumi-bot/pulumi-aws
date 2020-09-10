@@ -9,58 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElasticSearch
 {
-    /// <summary>
-    /// Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.ElasticSearch.Domain("example", new Aws.ElasticSearch.DomainArgs
-    ///         {
-    ///             ElasticsearchVersion = "2.3",
-    ///         });
-    ///         var main = new Aws.ElasticSearch.DomainPolicy("main", new Aws.ElasticSearch.DomainPolicyArgs
-    ///         {
-    ///             DomainName = example.DomainName,
-    ///             AccessPolicies = example.Arn.Apply(arn =&gt; @$"{{
-    ///     ""Version"": ""2012-10-17"",
-    ///     ""Statement"": [
-    ///         {{
-    ///             ""Action"": ""es:*"",
-    ///             ""Principal"": ""*"",
-    ///             ""Effect"": ""Allow"",
-    ///             ""Condition"": {{
-    ///                 ""IpAddress"": {{""aws:SourceIp"": ""127.0.0.1/32""}}
-    ///             }},
-    ///             ""Resource"": ""{arn}/*""
-    ///         }}
-    ///     ]
-    /// }}
-    /// "),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DomainPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// IAM policy document specifying the access policies for the domain
-        /// </summary>
         [Output("accessPolicies")]
         public Output<string> AccessPolicies { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the domain.
-        /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
 
@@ -110,15 +63,9 @@ namespace Pulumi.Aws.ElasticSearch
 
     public sealed class DomainPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// IAM policy document specifying the access policies for the domain
-        /// </summary>
         [Input("accessPolicies", required: true)]
         public Input<string> AccessPolicies { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the domain.
-        /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
@@ -129,15 +76,9 @@ namespace Pulumi.Aws.ElasticSearch
 
     public sealed class DomainPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// IAM policy document specifying the access policies for the domain
-        /// </summary>
         [Input("accessPolicies")]
         public Input<string>? AccessPolicies { get; set; }
 
-        /// <summary>
-        /// Name of the domain.
-        /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 

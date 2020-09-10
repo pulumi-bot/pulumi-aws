@@ -9,82 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sfn
 {
-    /// <summary>
-    /// Provides a Step Function State Machine resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // ...
-    ///         var sfnStateMachine = new Aws.Sfn.StateMachine("sfnStateMachine", new Aws.Sfn.StateMachineArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Iam_for_sfn.Arn,
-    ///             Definition = @$"{{
-    ///   ""Comment"": ""A Hello World example of the Amazon States Language using an AWS Lambda Function"",
-    ///   ""StartAt"": ""HelloWorld"",
-    ///   ""States"": {{
-    ///     ""HelloWorld"": {{
-    ///       ""Type"": ""Task"",
-    ///       ""Resource"": ""{aws_lambda_function.Lambda.Arn}"",
-    ///       ""End"": true
-    ///     }}
-    ///   }}
-    /// }}
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class StateMachine : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the state machine.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The date the state machine was created.
-        /// </summary>
         [Output("creationDate")]
         public Output<string> CreationDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon States Language definition of the state machine.
-        /// </summary>
         [Output("definition")]
         public Output<string> Definition { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the state machine.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The current status of the state machine. Either "ACTIVE" or "DELETING".
-        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -134,30 +78,17 @@ namespace Pulumi.Aws.Sfn
 
     public sealed class StateMachineArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon States Language definition of the state machine.
-        /// </summary>
         [Input("definition", required: true)]
         public Input<string> Definition { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the state machine.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -171,48 +102,26 @@ namespace Pulumi.Aws.Sfn
 
     public sealed class StateMachineState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the state machine.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The date the state machine was created.
-        /// </summary>
         [Input("creationDate")]
         public Input<string>? CreationDate { get; set; }
 
-        /// <summary>
-        /// The Amazon States Language definition of the state machine.
-        /// </summary>
         [Input("definition")]
         public Input<string>? Definition { get; set; }
 
-        /// <summary>
-        /// The name of the state machine.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// The current status of the state machine. Either "ACTIVE" or "DELETING".
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

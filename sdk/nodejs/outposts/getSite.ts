@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about an Outposts Site.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.outposts.getSite({
- *     name: "example",
- * }, { async: true }));
- * ```
- */
 export function getSite(args?: GetSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteResult> {
     args = args || {};
     if (!opts) {
@@ -39,13 +25,7 @@ export function getSite(args?: GetSiteArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getSite.
  */
 export interface GetSiteArgs {
-    /**
-     * Identifier of the Site.
-     */
     readonly id?: string;
-    /**
-     * Name of the Site.
-     */
     readonly name?: string;
 }
 
@@ -53,13 +33,7 @@ export interface GetSiteArgs {
  * A collection of values returned by getSite.
  */
 export interface GetSiteResult {
-    /**
-     * AWS Account identifier.
-     */
     readonly accountId: string;
-    /**
-     * Description.
-     */
     readonly description: string;
     readonly id: string;
     readonly name: string;

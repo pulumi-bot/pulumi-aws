@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Glue.Outputs
     [OutputType]
     public sealed class CrawlerCatalogTarget
     {
-        /// <summary>
-        /// The name of the Glue database to be synchronized.
-        /// </summary>
         public readonly string DatabaseName;
-        /// <summary>
-        /// A list of catalog tables to be synchronized.
-        /// </summary>
         public readonly ImmutableArray<string> Tables;
 
         [OutputConstructor]

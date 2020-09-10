@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Gamelift Alias resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.gamelift.Alias("example", {
- *     description: "Example Description",
- *     routingStrategy: {
- *         message: "Example Message",
- *         type: "TERMINAL",
- *     },
- * });
- * ```
- */
 export class Alias extends pulumi.CustomResource {
     /**
      * Get an existing Alias resource's state with the given name, ID, and optional extra
@@ -52,25 +34,10 @@ export class Alias extends pulumi.CustomResource {
         return obj['__pulumiType'] === Alias.__pulumiType;
     }
 
-    /**
-     * Alias ARN.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Description of the alias.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the alias.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Specifies the fleet and/or routing type to use for the alias.
-     */
     public readonly routingStrategy!: pulumi.Output<outputs.gamelift.AliasRoutingStrategy>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -116,25 +83,10 @@ export class Alias extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Alias resources.
  */
 export interface AliasState {
-    /**
-     * Alias ARN.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Description of the alias.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name of the alias.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Specifies the fleet and/or routing type to use for the alias.
-     */
     readonly routingStrategy?: pulumi.Input<inputs.gamelift.AliasRoutingStrategy>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -142,20 +94,8 @@ export interface AliasState {
  * The set of arguments for constructing a Alias resource.
  */
 export interface AliasArgs {
-    /**
-     * Description of the alias.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name of the alias.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Specifies the fleet and/or routing type to use for the alias.
-     */
     readonly routingStrategy: pulumi.Input<inputs.gamelift.AliasRoutingStrategy>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

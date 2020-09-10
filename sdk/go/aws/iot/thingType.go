@@ -9,38 +9,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates and manages an AWS IoT Thing Type.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iot.NewThingType(ctx, "foo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ThingType struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the created AWS IoT Thing Type.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-	Deprecated pulumi.BoolPtrOutput `pulumi:"deprecated"`
-	// The name of the thing type.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// , Configuration block that can contain the following properties of the thing type:
+	Arn        pulumi.StringOutput          `pulumi:"arn"`
+	Deprecated pulumi.BoolPtrOutput         `pulumi:"deprecated"`
+	Name       pulumi.StringOutput          `pulumi:"name"`
 	Properties ThingTypePropertiesPtrOutput `pulumi:"properties"`
 }
 
@@ -72,24 +46,16 @@ func GetThingType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ThingType resources.
 type thingTypeState struct {
-	// The ARN of the created AWS IoT Thing Type.
-	Arn *string `pulumi:"arn"`
-	// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-	Deprecated *bool `pulumi:"deprecated"`
-	// The name of the thing type.
-	Name *string `pulumi:"name"`
-	// , Configuration block that can contain the following properties of the thing type:
+	Arn        *string              `pulumi:"arn"`
+	Deprecated *bool                `pulumi:"deprecated"`
+	Name       *string              `pulumi:"name"`
 	Properties *ThingTypeProperties `pulumi:"properties"`
 }
 
 type ThingTypeState struct {
-	// The ARN of the created AWS IoT Thing Type.
-	Arn pulumi.StringPtrInput
-	// Whether the thing type is deprecated. If true, no new things could be associated with this type.
+	Arn        pulumi.StringPtrInput
 	Deprecated pulumi.BoolPtrInput
-	// The name of the thing type.
-	Name pulumi.StringPtrInput
-	// , Configuration block that can contain the following properties of the thing type:
+	Name       pulumi.StringPtrInput
 	Properties ThingTypePropertiesPtrInput
 }
 
@@ -98,21 +64,15 @@ func (ThingTypeState) ElementType() reflect.Type {
 }
 
 type thingTypeArgs struct {
-	// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-	Deprecated *bool `pulumi:"deprecated"`
-	// The name of the thing type.
-	Name *string `pulumi:"name"`
-	// , Configuration block that can contain the following properties of the thing type:
+	Deprecated *bool                `pulumi:"deprecated"`
+	Name       *string              `pulumi:"name"`
 	Properties *ThingTypeProperties `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a ThingType resource.
 type ThingTypeArgs struct {
-	// Whether the thing type is deprecated. If true, no new things could be associated with this type.
 	Deprecated pulumi.BoolPtrInput
-	// The name of the thing type.
-	Name pulumi.StringPtrInput
-	// , Configuration block that can contain the following properties of the thing type:
+	Name       pulumi.StringPtrInput
 	Properties ThingTypePropertiesPtrInput
 }
 

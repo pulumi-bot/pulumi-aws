@@ -4,54 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AutoScaling Attachment resource.
- *
- * > **NOTE on AutoScaling Groups and ASG Attachments:** This provider currently provides
- * both a standalone ASG Attachment resource (describing an ASG attached to
- * an ELB or ALB), and an AutoScaling Group resource with
- * `loadBalancers` and `targetGroupArns` defined in-line. At this time you can use an ASG with in-line
- * `load balancers` or `targetGroupArns` in conjunction with an ASG Attachment resource, however, to prevent
- * unintended resource updates, the `aws.autoscaling.Group` resource must be configured
- * to ignore changes to the `loadBalancers` and `targetGroupArns` arguments within a [`lifecycle` configuration block](https://www.terraform.io/docs/configuration/resources.html#lifecycle-lifecycle-customizations).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // Create a new load balancer attachment
- * const asgAttachmentBar = new aws.autoscaling.Attachment("asgAttachmentBar", {
- *     autoscalingGroupName: aws_autoscaling_group.asg.id,
- *     elb: aws_elb.bar.id,
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // Create a new ALB Target Group attachment
- * const asgAttachmentBar = new aws.autoscaling.Attachment("asgAttachmentBar", {
- *     autoscalingGroupName: aws_autoscaling_group.asg.id,
- *     albTargetGroupArn: aws_alb_target_group.test.arn,
- * });
- * ```
- * ## With An AutoScaling Group Resource
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // ... other configuration ...
- * const asg = new aws.autoscaling.Group("asg", {});
- * const asgAttachmentBar = new aws.autoscaling.Attachment("asgAttachmentBar", {
- *     autoscalingGroupName: asg.id,
- *     elb: aws_elb.test.id,
- * });
- * ```
- */
 export class Attachment extends pulumi.CustomResource {
     /**
      * Get an existing Attachment resource's state with the given name, ID, and optional extra
@@ -80,17 +32,8 @@ export class Attachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Attachment.__pulumiType;
     }
 
-    /**
-     * The ARN of an ALB Target Group.
-     */
     public readonly albTargetGroupArn!: pulumi.Output<string | undefined>;
-    /**
-     * Name of ASG to associate with the ELB.
-     */
     public readonly autoscalingGroupName!: pulumi.Output<string>;
-    /**
-     * The name of the ELB.
-     */
     public readonly elb!: pulumi.Output<string | undefined>;
 
     /**
@@ -132,17 +75,8 @@ export class Attachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Attachment resources.
  */
 export interface AttachmentState {
-    /**
-     * The ARN of an ALB Target Group.
-     */
     readonly albTargetGroupArn?: pulumi.Input<string>;
-    /**
-     * Name of ASG to associate with the ELB.
-     */
     readonly autoscalingGroupName?: pulumi.Input<string>;
-    /**
-     * The name of the ELB.
-     */
     readonly elb?: pulumi.Input<string>;
 }
 
@@ -150,16 +84,7 @@ export interface AttachmentState {
  * The set of arguments for constructing a Attachment resource.
  */
 export interface AttachmentArgs {
-    /**
-     * The ARN of an ALB Target Group.
-     */
     readonly albTargetGroupArn?: pulumi.Input<string>;
-    /**
-     * Name of ASG to associate with the ELB.
-     */
     readonly autoscalingGroupName: pulumi.Input<string>;
-    /**
-     * The name of the ELB.
-     */
     readonly elb?: pulumi.Input<string>;
 }

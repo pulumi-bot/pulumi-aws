@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Associates an SSM Document to an instance or EC2 tag.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ssm.Association("example", {targets: [{
- *     key: "InstanceIds",
- *     values: [aws_instance.example.id],
- * }]});
- * ```
- */
 export class Association extends pulumi.CustomResource {
     /**
      * Get an existing Association resource's state with the given name, ID, and optional extra
@@ -49,57 +34,18 @@ export class Association extends pulumi.CustomResource {
         return obj['__pulumiType'] === Association.__pulumiType;
     }
 
-    /**
-     * The ID of the SSM association.
-     */
     public /*out*/ readonly associationId!: pulumi.Output<string>;
-    /**
-     * The descriptive name for the association.
-     */
     public readonly associationName!: pulumi.Output<string | undefined>;
-    /**
-     * Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls.
-     */
     public readonly automationTargetParameterName!: pulumi.Output<string | undefined>;
-    /**
-     * The compliance severity for the association. Can be one of the following: `UNSPECIFIED`, `LOW`, `MEDIUM`, `HIGH` or `CRITICAL`
-     */
     public readonly complianceSeverity!: pulumi.Output<string | undefined>;
-    /**
-     * The document version you want to associate with the target(s). Can be a specific version or the default version.
-     */
     public readonly documentVersion!: pulumi.Output<string>;
-    /**
-     * The instance ID to apply an SSM document to. Use `targets` with key `InstanceIds` for document schema versions 2.0 and above.
-     */
     public readonly instanceId!: pulumi.Output<string | undefined>;
-    /**
-     * The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-     */
     public readonly maxConcurrency!: pulumi.Output<string | undefined>;
-    /**
-     * The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-     */
     public readonly maxErrors!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the SSM document to apply.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * An output location block. Output Location is documented below.
-     */
     public readonly outputLocation!: pulumi.Output<outputs.ssm.AssociationOutputLocation | undefined>;
-    /**
-     * A block of arbitrary string parameters to pass to the SSM document.
-     */
     public readonly parameters!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * A cron expression when the association will be applied to the target(s).
-     */
     public readonly scheduleExpression!: pulumi.Output<string | undefined>;
-    /**
-     * A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-     */
     public readonly targets!: pulumi.Output<outputs.ssm.AssociationTarget[]>;
 
     /**
@@ -158,57 +104,18 @@ export class Association extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Association resources.
  */
 export interface AssociationState {
-    /**
-     * The ID of the SSM association.
-     */
     readonly associationId?: pulumi.Input<string>;
-    /**
-     * The descriptive name for the association.
-     */
     readonly associationName?: pulumi.Input<string>;
-    /**
-     * Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls.
-     */
     readonly automationTargetParameterName?: pulumi.Input<string>;
-    /**
-     * The compliance severity for the association. Can be one of the following: `UNSPECIFIED`, `LOW`, `MEDIUM`, `HIGH` or `CRITICAL`
-     */
     readonly complianceSeverity?: pulumi.Input<string>;
-    /**
-     * The document version you want to associate with the target(s). Can be a specific version or the default version.
-     */
     readonly documentVersion?: pulumi.Input<string>;
-    /**
-     * The instance ID to apply an SSM document to. Use `targets` with key `InstanceIds` for document schema versions 2.0 and above.
-     */
     readonly instanceId?: pulumi.Input<string>;
-    /**
-     * The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-     */
     readonly maxConcurrency?: pulumi.Input<string>;
-    /**
-     * The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-     */
     readonly maxErrors?: pulumi.Input<string>;
-    /**
-     * The name of the SSM document to apply.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * An output location block. Output Location is documented below.
-     */
     readonly outputLocation?: pulumi.Input<inputs.ssm.AssociationOutputLocation>;
-    /**
-     * A block of arbitrary string parameters to pass to the SSM document.
-     */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A cron expression when the association will be applied to the target(s).
-     */
     readonly scheduleExpression?: pulumi.Input<string>;
-    /**
-     * A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-     */
     readonly targets?: pulumi.Input<pulumi.Input<inputs.ssm.AssociationTarget>[]>;
 }
 
@@ -216,52 +123,16 @@ export interface AssociationState {
  * The set of arguments for constructing a Association resource.
  */
 export interface AssociationArgs {
-    /**
-     * The descriptive name for the association.
-     */
     readonly associationName?: pulumi.Input<string>;
-    /**
-     * Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls.
-     */
     readonly automationTargetParameterName?: pulumi.Input<string>;
-    /**
-     * The compliance severity for the association. Can be one of the following: `UNSPECIFIED`, `LOW`, `MEDIUM`, `HIGH` or `CRITICAL`
-     */
     readonly complianceSeverity?: pulumi.Input<string>;
-    /**
-     * The document version you want to associate with the target(s). Can be a specific version or the default version.
-     */
     readonly documentVersion?: pulumi.Input<string>;
-    /**
-     * The instance ID to apply an SSM document to. Use `targets` with key `InstanceIds` for document schema versions 2.0 and above.
-     */
     readonly instanceId?: pulumi.Input<string>;
-    /**
-     * The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-     */
     readonly maxConcurrency?: pulumi.Input<string>;
-    /**
-     * The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-     */
     readonly maxErrors?: pulumi.Input<string>;
-    /**
-     * The name of the SSM document to apply.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * An output location block. Output Location is documented below.
-     */
     readonly outputLocation?: pulumi.Input<inputs.ssm.AssociationOutputLocation>;
-    /**
-     * A block of arbitrary string parameters to pass to the SSM document.
-     */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A cron expression when the association will be applied to the target(s).
-     */
     readonly scheduleExpression?: pulumi.Input<string>;
-    /**
-     * A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-     */
     readonly targets?: pulumi.Input<pulumi.Input<inputs.ssm.AssociationTarget>[]>;
 }

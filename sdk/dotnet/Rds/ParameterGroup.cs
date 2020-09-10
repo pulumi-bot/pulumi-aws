@@ -9,88 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Rds
 {
-    /// <summary>
-    /// Provides an RDS DB parameter group resource .Documentation of the available parameters for various RDS engines can be found at:
-    /// 
-    /// * [Aurora MySQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Reference.html)
-    /// * [Aurora PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraPostgreSQL.Reference.html)
-    /// * [MariaDB Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MariaDB.Parameters.html)
-    /// * [Oracle Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ModifyInstance.Oracle.html#USER_ModifyInstance.Oracle.sqlnet)
-    /// * [PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.Parameters)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.Rds.ParameterGroup("default", new Aws.Rds.ParameterGroupArgs
-    ///         {
-    ///             Family = "mysql5.6",
-    ///             Parameters = 
-    ///             {
-    ///                 new Aws.Rds.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "character_set_server",
-    ///                     Value = "utf8",
-    ///                 },
-    ///                 new Aws.Rds.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "character_set_client",
-    ///                     Value = "utf8",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ParameterGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the db parameter group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the DB parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The family of the DB parameter group.
-        /// </summary>
         [Output("family")]
         public Output<string> Family { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the DB parameter.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ParameterGroupParameter>> Parameters { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -140,36 +78,20 @@ namespace Pulumi.Aws.Rds
 
     public sealed class ParameterGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the DB parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the DB parameter group.
-        /// </summary>
         [Input("family", required: true)]
         public Input<string> Family { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the DB parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterArgs>? _parameters;
-
-        /// <summary>
-        /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterArgs>());
@@ -178,10 +100,6 @@ namespace Pulumi.Aws.Rds
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -196,42 +114,23 @@ namespace Pulumi.Aws.Rds
 
     public sealed class ParameterGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the db parameter group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of the DB parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the DB parameter group.
-        /// </summary>
         [Input("family")]
         public Input<string>? Family { get; set; }
 
-        /// <summary>
-        /// The name of the DB parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterGetArgs>());
@@ -240,10 +139,6 @@ namespace Pulumi.Aws.Rds
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

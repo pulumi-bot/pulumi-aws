@@ -9,99 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Dms
 {
-    /// <summary>
-    /// Provides a DMS (Data Migration Service) replication task resource. DMS replication tasks can be created, updated, deleted, and imported.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new replication task
-    ///         var test = new Aws.Dms.ReplicationTask("test", new Aws.Dms.ReplicationTaskArgs
-    ///         {
-    ///             CdcStartTime = "1484346880",
-    ///             MigrationType = "full-load",
-    ///             ReplicationInstanceArn = aws_dms_replication_instance.Test_dms_replication_instance_tf.Replication_instance_arn,
-    ///             ReplicationTaskId = "test-dms-replication-task-tf",
-    ///             ReplicationTaskSettings = "...",
-    ///             SourceEndpointArn = aws_dms_endpoint.Test_dms_source_endpoint_tf.Endpoint_arn,
-    ///             TableMappings = "{\"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"object-locator\":{\"schema-name\":\"%\",\"table-name\":\"%\"},\"rule-action\":\"include\"}]}",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "test" },
-    ///             },
-    ///             TargetEndpointArn = aws_dms_endpoint.Test_dms_target_endpoint_tf.Endpoint_arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ReplicationTask : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Unix timestamp integer for the start of the Change Data Capture (CDC) operation.
-        /// </summary>
         [Output("cdcStartTime")]
         public Output<string?> CdcStartTime { get; private set; } = null!;
 
-        /// <summary>
-        /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
-        /// </summary>
         [Output("migrationType")]
         public Output<string> MigrationType { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the replication instance.
-        /// </summary>
         [Output("replicationInstanceArn")]
         public Output<string> ReplicationInstanceArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) for the replication task.
-        /// </summary>
         [Output("replicationTaskArn")]
         public Output<string> ReplicationTaskArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The replication task identifier.
-        /// </summary>
         [Output("replicationTaskId")]
         public Output<string> ReplicationTaskId { get; private set; } = null!;
 
-        /// <summary>
-        /// An escaped JSON string that contains the task settings. For a complete list of task settings, see [Task Settings for AWS Database Migration Service Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html).
-        /// </summary>
         [Output("replicationTaskSettings")]
         public Output<string?> ReplicationTaskSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
-        /// </summary>
         [Output("sourceEndpointArn")]
         public Output<string> SourceEndpointArn { get; private set; } = null!;
 
-        /// <summary>
-        /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
-        /// </summary>
         [Output("tableMappings")]
         public Output<string> TableMappings { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
-        /// </summary>
         [Output("targetEndpointArn")]
         public Output<string> TargetEndpointArn { get; private set; } = null!;
 
@@ -151,63 +87,35 @@ namespace Pulumi.Aws.Dms
 
     public sealed class ReplicationTaskArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Unix timestamp integer for the start of the Change Data Capture (CDC) operation.
-        /// </summary>
         [Input("cdcStartTime")]
         public Input<string>? CdcStartTime { get; set; }
 
-        /// <summary>
-        /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
-        /// </summary>
         [Input("migrationType", required: true)]
         public Input<string> MigrationType { get; set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the replication instance.
-        /// </summary>
         [Input("replicationInstanceArn", required: true)]
         public Input<string> ReplicationInstanceArn { get; set; } = null!;
 
-        /// <summary>
-        /// The replication task identifier.
-        /// </summary>
         [Input("replicationTaskId", required: true)]
         public Input<string> ReplicationTaskId { get; set; } = null!;
 
-        /// <summary>
-        /// An escaped JSON string that contains the task settings. For a complete list of task settings, see [Task Settings for AWS Database Migration Service Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html).
-        /// </summary>
         [Input("replicationTaskSettings")]
         public Input<string>? ReplicationTaskSettings { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
-        /// </summary>
         [Input("sourceEndpointArn", required: true)]
         public Input<string> SourceEndpointArn { get; set; } = null!;
 
-        /// <summary>
-        /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
-        /// </summary>
         [Input("tableMappings", required: true)]
         public Input<string> TableMappings { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
-        /// </summary>
         [Input("targetEndpointArn", required: true)]
         public Input<string> TargetEndpointArn { get; set; } = null!;
 
@@ -218,69 +126,38 @@ namespace Pulumi.Aws.Dms
 
     public sealed class ReplicationTaskState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Unix timestamp integer for the start of the Change Data Capture (CDC) operation.
-        /// </summary>
         [Input("cdcStartTime")]
         public Input<string>? CdcStartTime { get; set; }
 
-        /// <summary>
-        /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
-        /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the replication instance.
-        /// </summary>
         [Input("replicationInstanceArn")]
         public Input<string>? ReplicationInstanceArn { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) for the replication task.
-        /// </summary>
         [Input("replicationTaskArn")]
         public Input<string>? ReplicationTaskArn { get; set; }
 
-        /// <summary>
-        /// The replication task identifier.
-        /// </summary>
         [Input("replicationTaskId")]
         public Input<string>? ReplicationTaskId { get; set; }
 
-        /// <summary>
-        /// An escaped JSON string that contains the task settings. For a complete list of task settings, see [Task Settings for AWS Database Migration Service Tasks](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html).
-        /// </summary>
         [Input("replicationTaskSettings")]
         public Input<string>? ReplicationTaskSettings { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
-        /// </summary>
         [Input("sourceEndpointArn")]
         public Input<string>? SourceEndpointArn { get; set; }
 
-        /// <summary>
-        /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
-        /// </summary>
         [Input("tableMappings")]
         public Input<string>? TableMappings { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
-        /// </summary>
         [Input("targetEndpointArn")]
         public Input<string>? TargetEndpointArn { get; set; }
 

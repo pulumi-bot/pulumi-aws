@@ -66,9 +66,6 @@ class GetRouteTableResult:
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> str:
-        """
-        The Gateway ID. Only set when associated with an Internet Gateway or Virtual Private Gateway.
-        """
         return pulumi.get(self, "gateway_id")
 
     @property
@@ -82,17 +79,11 @@ class GetRouteTableResult:
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> str:
-        """
-        The ID of the AWS account that owns the route table
-        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> str:
-        """
-        The Route Table ID.
-        """
         return pulumi.get(self, "route_table_id")
 
     @property
@@ -103,9 +94,6 @@ class GetRouteTableResult:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
-        """
-        The Subnet ID. Only set when associated with a Subnet.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
@@ -145,38 +133,7 @@ def get_route_table(filters: Optional[List[pulumi.InputType['GetRouteTableFilter
                     vpc_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTableResult:
     """
-    `ec2.RouteTable` provides details about a specific Route Table.
-
-    This resource can prove useful when a module accepts a Subnet id as
-    an input variable and needs to, for example, add a route in
-    the Route Table.
-
-    ## Example Usage
-
-    The following example shows how one might accept a Route Table id as a variable
-    and use this data source to obtain the data necessary to create a route.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    subnet_id = config.require_object("subnetId")
-    selected = aws.ec2.get_route_table(subnet_id=subnet_id)
-    route = aws.ec2.Route("route",
-        route_table_id=selected.id,
-        destination_cidr_block="10.0.1.0/22",
-        vpc_peering_connection_id="pcx-45ff3dc1")
-    ```
-
-
-    :param List[pulumi.InputType['GetRouteTableFilterArgs']] filters: Custom filter block as described below.
-    :param str gateway_id: The id of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-    :param str route_table_id: The id of the specific Route Table to retrieve.
-    :param str subnet_id: The id of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
-           a pair on the desired Route Table.
-    :param str vpc_id: The id of the VPC that the desired Route Table belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

@@ -7,7 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides information for multiple EC2 Customer-Owned IP Pools, such as their identifiers.
 func GetCoipPools(ctx *pulumi.Context, args *GetCoipPoolsArgs, opts ...pulumi.InvokeOption) (*GetCoipPoolsResult, error) {
 	var rv GetCoipPoolsResult
 	err := ctx.Invoke("aws:ec2/getCoipPools:getCoipPools", args, &rv, opts...)
@@ -19,19 +18,15 @@ func GetCoipPools(ctx *pulumi.Context, args *GetCoipPoolsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getCoipPools.
 type GetCoipPoolsArgs struct {
-	// Custom filter block as described below.
 	Filters []GetCoipPoolsFilter `pulumi:"filters"`
-	// A mapping of tags, each pair of which must exactly match
-	// a pair on the desired aws_ec2_coip_pools.
-	Tags map[string]string `pulumi:"tags"`
+	Tags    map[string]string    `pulumi:"tags"`
 }
 
 // A collection of values returned by getCoipPools.
 type GetCoipPoolsResult struct {
 	Filters []GetCoipPoolsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Set of COIP Pool Identifiers
+	Id      string            `pulumi:"id"`
 	PoolIds []string          `pulumi:"poolIds"`
 	Tags    map[string]string `pulumi:"tags"`
 }

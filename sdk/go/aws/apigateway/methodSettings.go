@@ -10,105 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an API Gateway Method Settings, e.g. logging or monitoring.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testRestApi, err := apigateway.NewRestApi(ctx, "testRestApi", &apigateway.RestApiArgs{
-// 			Description: pulumi.String("This is my API for demonstration purposes"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testResource, err := apigateway.NewResource(ctx, "testResource", &apigateway.ResourceArgs{
-// 			RestApi:  testRestApi.ID(),
-// 			ParentId: testRestApi.RootResourceId,
-// 			PathPart: pulumi.String("mytestresource"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testMethod, err := apigateway.NewMethod(ctx, "testMethod", &apigateway.MethodArgs{
-// 			RestApi:       testRestApi.ID(),
-// 			ResourceId:    testResource.ID(),
-// 			HttpMethod:    pulumi.String("GET"),
-// 			Authorization: pulumi.String("NONE"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testIntegration, err := apigateway.NewIntegration(ctx, "testIntegration", &apigateway.IntegrationArgs{
-// 			RestApi:    testRestApi.ID(),
-// 			ResourceId: testResource.ID(),
-// 			HttpMethod: testMethod.HttpMethod,
-// 			Type:       pulumi.String("MOCK"),
-// 			RequestTemplates: pulumi.StringMap{
-// 				"application/xml": pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "{\n", "   \"body\" : ", "$", "input.json('", "$", "')\n", "}\n")),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testDeployment, err := apigateway.NewDeployment(ctx, "testDeployment", &apigateway.DeploymentArgs{
-// 			RestApi:   testRestApi.ID(),
-// 			StageName: pulumi.String("dev"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			testIntegration,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testStage, err := apigateway.NewStage(ctx, "testStage", &apigateway.StageArgs{
-// 			StageName:  pulumi.String("prod"),
-// 			RestApi:    testRestApi.ID(),
-// 			Deployment: testDeployment.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewMethodSettings(ctx, "methodSettings", &apigateway.MethodSettingsArgs{
-// 			RestApi:   testRestApi.ID(),
-// 			StageName: testStage.StageName,
-// 			MethodPath: pulumi.All(testResource.PathPart, testMethod.HttpMethod).ApplyT(func(_args []interface{}) (string, error) {
-// 				pathPart := _args[0].(string)
-// 				httpMethod := _args[1].(string)
-// 				return fmt.Sprintf("%v%v%v", pathPart, "/", httpMethod), nil
-// 			}).(pulumi.StringOutput),
-// 			Settings: &apigateway.MethodSettingsSettingsArgs{
-// 				MetricsEnabled: pulumi.Bool(true),
-// 				LoggingLevel:   pulumi.String("INFO"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type MethodSettings struct {
 	pulumi.CustomResourceState
 
-	// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
-	MethodPath pulumi.StringOutput `pulumi:"methodPath"`
-	// The ID of the REST API
-	RestApi pulumi.StringOutput `pulumi:"restApi"`
-	// The settings block, see below.
-	Settings MethodSettingsSettingsOutput `pulumi:"settings"`
-	// The name of the stage
-	StageName pulumi.StringOutput `pulumi:"stageName"`
+	MethodPath pulumi.StringOutput          `pulumi:"methodPath"`
+	RestApi    pulumi.StringOutput          `pulumi:"restApi"`
+	Settings   MethodSettingsSettingsOutput `pulumi:"settings"`
+	StageName  pulumi.StringOutput          `pulumi:"stageName"`
 }
 
 // NewMethodSettings registers a new resource with the given unique name, arguments, and options.
@@ -151,25 +59,17 @@ func GetMethodSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MethodSettings resources.
 type methodSettingsState struct {
-	// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
-	MethodPath *string `pulumi:"methodPath"`
-	// The ID of the REST API
-	RestApi *string `pulumi:"restApi"`
-	// The settings block, see below.
-	Settings *MethodSettingsSettings `pulumi:"settings"`
-	// The name of the stage
-	StageName *string `pulumi:"stageName"`
+	MethodPath *string                 `pulumi:"methodPath"`
+	RestApi    *string                 `pulumi:"restApi"`
+	Settings   *MethodSettingsSettings `pulumi:"settings"`
+	StageName  *string                 `pulumi:"stageName"`
 }
 
 type MethodSettingsState struct {
-	// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
 	MethodPath pulumi.StringPtrInput
-	// The ID of the REST API
-	RestApi pulumi.StringPtrInput
-	// The settings block, see below.
-	Settings MethodSettingsSettingsPtrInput
-	// The name of the stage
-	StageName pulumi.StringPtrInput
+	RestApi    pulumi.StringPtrInput
+	Settings   MethodSettingsSettingsPtrInput
+	StageName  pulumi.StringPtrInput
 }
 
 func (MethodSettingsState) ElementType() reflect.Type {
@@ -177,26 +77,18 @@ func (MethodSettingsState) ElementType() reflect.Type {
 }
 
 type methodSettingsArgs struct {
-	// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
-	MethodPath string `pulumi:"methodPath"`
-	// The ID of the REST API
-	RestApi interface{} `pulumi:"restApi"`
-	// The settings block, see below.
-	Settings MethodSettingsSettings `pulumi:"settings"`
-	// The name of the stage
-	StageName string `pulumi:"stageName"`
+	MethodPath string                 `pulumi:"methodPath"`
+	RestApi    interface{}            `pulumi:"restApi"`
+	Settings   MethodSettingsSettings `pulumi:"settings"`
+	StageName  string                 `pulumi:"stageName"`
 }
 
 // The set of arguments for constructing a MethodSettings resource.
 type MethodSettingsArgs struct {
-	// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
 	MethodPath pulumi.StringInput
-	// The ID of the REST API
-	RestApi pulumi.Input
-	// The settings block, see below.
-	Settings MethodSettingsSettingsInput
-	// The name of the stage
-	StageName pulumi.StringInput
+	RestApi    pulumi.Input
+	Settings   MethodSettingsSettingsInput
+	StageName  pulumi.StringInput
 }
 
 func (MethodSettingsArgs) ElementType() reflect.Type {

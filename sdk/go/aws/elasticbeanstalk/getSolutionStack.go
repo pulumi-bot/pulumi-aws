@@ -7,34 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the name of a elastic beanstalk solution stack.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elasticbeanstalk"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		_, err := elasticbeanstalk.GetSolutionStack(ctx, &elasticbeanstalk.GetSolutionStackArgs{
-// 			MostRecent: &opt0,
-// 			NameRegex:  fmt.Sprintf("%v%v", "^64bit Amazon Linux (.*) Multi-container Docker (.*)", "$"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetSolutionStack(ctx *pulumi.Context, args *GetSolutionStackArgs, opts ...pulumi.InvokeOption) (*GetSolutionStackResult, error) {
 	var rv GetSolutionStackResult
 	err := ctx.Invoke("aws:elasticbeanstalk/getSolutionStack:getSolutionStack", args, &rv, opts...)
@@ -46,13 +18,8 @@ func GetSolutionStack(ctx *pulumi.Context, args *GetSolutionStackArgs, opts ...p
 
 // A collection of arguments for invoking getSolutionStack.
 type GetSolutionStackArgs struct {
-	// If more than one result is returned, use the most
-	// recent solution stack.
-	MostRecent *bool `pulumi:"mostRecent"`
-	// A regex string to apply to the solution stack list returned
-	// by AWS. See [Elastic Beanstalk Supported Platforms][beanstalk-platforms] from
-	// AWS documentation for reference solution stack names.
-	NameRegex string `pulumi:"nameRegex"`
+	MostRecent *bool  `pulumi:"mostRecent"`
+	NameRegex  string `pulumi:"nameRegex"`
 }
 
 // A collection of values returned by getSolutionStack.
@@ -60,7 +27,6 @@ type GetSolutionStackResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
 	MostRecent *bool  `pulumi:"mostRecent"`
-	// The name of the solution stack.
-	Name      string `pulumi:"name"`
-	NameRegex string `pulumi:"nameRegex"`
+	Name       string `pulumi:"name"`
+	NameRegex  string `pulumi:"nameRegex"`
 }

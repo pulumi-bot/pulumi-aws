@@ -9,66 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iot
 {
-    /// <summary>
-    /// Provides an IoT role alias.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var role = new Aws.Iam.Role("role", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Effect"": ""Allow"",
-    ///       ""Principal"": {""Service"": ""credentials.iot.amazonaws.com"",
-    ///       ""Action"": ""sts:AssumeRole""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var @alias = new Aws.Iot.RoleAlias("alias", new Aws.Iot.RoleAliasArgs
-    ///         {
-    ///             Alias = "Thermostat-dynamodb-access-role-alias",
-    ///             RoleArn = role.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RoleAlias : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the role alias.
-        /// </summary>
         [Output("alias")]
         public Output<string> Alias { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN assigned by AWS to this role alias.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-        /// </summary>
         [Output("credentialDuration")]
         public Output<int?> CredentialDuration { get; private set; } = null!;
 
-        /// <summary>
-        /// The identity of the role to which the alias refers.
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
@@ -118,21 +69,12 @@ namespace Pulumi.Aws.Iot
 
     public sealed class RoleAliasArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the role alias.
-        /// </summary>
         [Input("alias", required: true)]
         public Input<string> Alias { get; set; } = null!;
 
-        /// <summary>
-        /// The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-        /// </summary>
         [Input("credentialDuration")]
         public Input<int>? CredentialDuration { get; set; }
 
-        /// <summary>
-        /// The identity of the role to which the alias refers.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
@@ -143,27 +85,15 @@ namespace Pulumi.Aws.Iot
 
     public sealed class RoleAliasState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the role alias.
-        /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
-        /// <summary>
-        /// The ARN assigned by AWS to this role alias.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-        /// </summary>
         [Input("credentialDuration")]
         public Input<int>? CredentialDuration { get; set; }
 
-        /// <summary>
-        /// The identity of the role to which the alias refers.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

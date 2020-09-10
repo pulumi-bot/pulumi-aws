@@ -10,42 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an OpsWorks User Profile resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/opsworks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := opsworks.NewUserProfile(ctx, "myProfile", &opsworks.UserProfileArgs{
-// 			UserArn:     pulumi.Any(aws_iam_user.User.Arn),
-// 			SshUsername: pulumi.String("my_user"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type UserProfile struct {
 	pulumi.CustomResourceState
 
-	// Whether users can specify their own SSH public key through the My Settings page
-	AllowSelfManagement pulumi.BoolPtrOutput `pulumi:"allowSelfManagement"`
-	// The users public key
-	SshPublicKey pulumi.StringPtrOutput `pulumi:"sshPublicKey"`
-	// The ssh username, with witch this user wants to log in
-	SshUsername pulumi.StringOutput `pulumi:"sshUsername"`
-	// The user's IAM ARN
-	UserArn pulumi.StringOutput `pulumi:"userArn"`
+	AllowSelfManagement pulumi.BoolPtrOutput   `pulumi:"allowSelfManagement"`
+	SshPublicKey        pulumi.StringPtrOutput `pulumi:"sshPublicKey"`
+	SshUsername         pulumi.StringOutput    `pulumi:"sshUsername"`
+	UserArn             pulumi.StringOutput    `pulumi:"userArn"`
 }
 
 // NewUserProfile registers a new resource with the given unique name, arguments, and options.
@@ -82,25 +53,17 @@ func GetUserProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserProfile resources.
 type userProfileState struct {
-	// Whether users can specify their own SSH public key through the My Settings page
-	AllowSelfManagement *bool `pulumi:"allowSelfManagement"`
-	// The users public key
-	SshPublicKey *string `pulumi:"sshPublicKey"`
-	// The ssh username, with witch this user wants to log in
-	SshUsername *string `pulumi:"sshUsername"`
-	// The user's IAM ARN
-	UserArn *string `pulumi:"userArn"`
+	AllowSelfManagement *bool   `pulumi:"allowSelfManagement"`
+	SshPublicKey        *string `pulumi:"sshPublicKey"`
+	SshUsername         *string `pulumi:"sshUsername"`
+	UserArn             *string `pulumi:"userArn"`
 }
 
 type UserProfileState struct {
-	// Whether users can specify their own SSH public key through the My Settings page
 	AllowSelfManagement pulumi.BoolPtrInput
-	// The users public key
-	SshPublicKey pulumi.StringPtrInput
-	// The ssh username, with witch this user wants to log in
-	SshUsername pulumi.StringPtrInput
-	// The user's IAM ARN
-	UserArn pulumi.StringPtrInput
+	SshPublicKey        pulumi.StringPtrInput
+	SshUsername         pulumi.StringPtrInput
+	UserArn             pulumi.StringPtrInput
 }
 
 func (UserProfileState) ElementType() reflect.Type {
@@ -108,26 +71,18 @@ func (UserProfileState) ElementType() reflect.Type {
 }
 
 type userProfileArgs struct {
-	// Whether users can specify their own SSH public key through the My Settings page
-	AllowSelfManagement *bool `pulumi:"allowSelfManagement"`
-	// The users public key
-	SshPublicKey *string `pulumi:"sshPublicKey"`
-	// The ssh username, with witch this user wants to log in
-	SshUsername string `pulumi:"sshUsername"`
-	// The user's IAM ARN
-	UserArn string `pulumi:"userArn"`
+	AllowSelfManagement *bool   `pulumi:"allowSelfManagement"`
+	SshPublicKey        *string `pulumi:"sshPublicKey"`
+	SshUsername         string  `pulumi:"sshUsername"`
+	UserArn             string  `pulumi:"userArn"`
 }
 
 // The set of arguments for constructing a UserProfile resource.
 type UserProfileArgs struct {
-	// Whether users can specify their own SSH public key through the My Settings page
 	AllowSelfManagement pulumi.BoolPtrInput
-	// The users public key
-	SshPublicKey pulumi.StringPtrInput
-	// The ssh username, with witch this user wants to log in
-	SshUsername pulumi.StringInput
-	// The user's IAM ARN
-	UserArn pulumi.StringInput
+	SshPublicKey        pulumi.StringPtrInput
+	SshUsername         pulumi.StringInput
+	UserArn             pulumi.StringInput
 }
 
 func (UserProfileArgs) ElementType() reflect.Type {

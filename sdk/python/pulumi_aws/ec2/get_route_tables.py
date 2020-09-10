@@ -54,9 +54,6 @@ class GetRouteTablesResult:
     @property
     @pulumi.getter
     def ids(self) -> List[str]:
-        """
-        A set of all the route table ids found. This data source will fail if none are found.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -88,36 +85,7 @@ def get_route_tables(filters: Optional[List[pulumi.InputType['GetRouteTablesFilt
                      vpc_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTablesResult:
     """
-    This resource can be useful for getting back a list of route table ids to be referenced elsewhere.
-
-    ## Example Usage
-
-    The following adds a route for a particular cidr block to every (private
-    kops) route table in a specified vpc to use a particular vpc peering
-    connection.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    rts = aws.ec2.get_route_tables(vpc_id=var["vpc_id"],
-        filters=[aws.ec2.GetRouteTablesFilterArgs(
-            name="tag:kubernetes.io/kops/role",
-            values=["private*"],
-        )])
-    route = []
-    for range in [{"value": i} for i in range(0, len(rts.ids))]:
-        route.append(aws.ec2.Route(f"route-{range['value']}",
-            route_table_id=rts.ids[range["value"]],
-            destination_cidr_block="10.0.1.0/22",
-            vpc_peering_connection_id="pcx-0e9a7a9ecd137dc54"))
-    ```
-
-
-    :param List[pulumi.InputType['GetRouteTablesFilterArgs']] filters: Custom filter block as described below.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
-           a pair on the desired route tables.
-    :param str vpc_id: The VPC ID that you want to filter from.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

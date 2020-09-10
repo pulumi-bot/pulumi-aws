@@ -10,223 +10,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AppSync GraphQL API.
-//
-// ## Example Usage
-// ### API Key Authentication
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-// 			AuthenticationType: pulumi.String("API_KEY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### AWS Cognito User Pool Authentication
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-// 			AuthenticationType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
-// 			UserPoolConfig: &appsync.GraphQLApiUserPoolConfigArgs{
-// 				AwsRegion:     pulumi.Any(data.Aws_region.Current.Name),
-// 				DefaultAction: pulumi.String("DENY"),
-// 				UserPoolId:    pulumi.Any(aws_cognito_user_pool.Example.Id),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### AWS IAM Authentication
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-// 			AuthenticationType: pulumi.String("AWS_IAM"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### With Schema
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-// 			AuthenticationType: pulumi.String("AWS_IAM"),
-// 			Schema: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "schema {\n", "	query: Query\n", "}\n", "type Query {\n", "  test: Int\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### OpenID Connect Authentication
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-// 			AuthenticationType: pulumi.String("OPENID_CONNECT"),
-// 			OpenidConnectConfig: &appsync.GraphQLApiOpenidConnectConfigArgs{
-// 				Issuer: pulumi.String("https://example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### With Multiple Authentication Providers
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-// 			AdditionalAuthenticationProviders: appsync.GraphQLApiAdditionalAuthenticationProviderArray{
-// 				&appsync.GraphQLApiAdditionalAuthenticationProviderArgs{
-// 					AuthenticationType: pulumi.String("AWS_IAM"),
-// 				},
-// 			},
-// 			AuthenticationType: pulumi.String("API_KEY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Enabling Logging
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRole, err := iam.NewRole(ctx, "exampleRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\": \"2012-10-17\",\n", "    \"Statement\": [\n", "        {\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\n", "            \"Service\": \"appsync.amazonaws.com\"\n", "        },\n", "        \"Action\": \"sts:AssumeRole\"\n", "        }\n", "    ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "exampleRolePolicyAttachment", &iam.RolePolicyAttachmentArgs{
-// 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs"),
-// 			Role:      exampleRole.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = appsync.NewGraphQLApi(ctx, "exampleGraphQLApi", &appsync.GraphQLApiArgs{
-// 			LogConfig: &appsync.GraphQLApiLogConfigArgs{
-// 				CloudwatchLogsRoleArn: exampleRole.Arn,
-// 				FieldLogLevel:         pulumi.String("ERROR"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type GraphQLApi struct {
 	pulumi.CustomResourceState
 
-	// One or more additional authentication providers for the GraphqlApi. Defined below.
 	AdditionalAuthenticationProviders GraphQLApiAdditionalAuthenticationProviderArrayOutput `pulumi:"additionalAuthenticationProviders"`
-	// The ARN
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-	AuthenticationType pulumi.StringOutput `pulumi:"authenticationType"`
-	// Nested argument containing logging configuration. Defined below.
-	LogConfig GraphQLApiLogConfigPtrOutput `pulumi:"logConfig"`
-	// A user-supplied name for the GraphqlApi.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig GraphQLApiOpenidConnectConfigPtrOutput `pulumi:"openidConnectConfig"`
-	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-	Schema pulumi.StringPtrOutput `pulumi:"schema"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Map of URIs associated with the API. e.g. `uris["GRAPHQL"] = https://ID.appsync-api.REGION.amazonaws.com/graphql`
-	Uris pulumi.StringMapOutput `pulumi:"uris"`
-	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig GraphQLApiUserPoolConfigPtrOutput `pulumi:"userPoolConfig"`
-	// Whether tracing with X-ray is enabled. Defaults to false.
-	XrayEnabled pulumi.BoolPtrOutput `pulumi:"xrayEnabled"`
+	Arn                               pulumi.StringOutput                                   `pulumi:"arn"`
+	AuthenticationType                pulumi.StringOutput                                   `pulumi:"authenticationType"`
+	LogConfig                         GraphQLApiLogConfigPtrOutput                          `pulumi:"logConfig"`
+	Name                              pulumi.StringOutput                                   `pulumi:"name"`
+	OpenidConnectConfig               GraphQLApiOpenidConnectConfigPtrOutput                `pulumi:"openidConnectConfig"`
+	Schema                            pulumi.StringPtrOutput                                `pulumi:"schema"`
+	Tags                              pulumi.StringMapOutput                                `pulumi:"tags"`
+	Uris                              pulumi.StringMapOutput                                `pulumi:"uris"`
+	UserPoolConfig                    GraphQLApiUserPoolConfigPtrOutput                     `pulumi:"userPoolConfig"`
+	XrayEnabled                       pulumi.BoolPtrOutput                                  `pulumi:"xrayEnabled"`
 }
 
 // NewGraphQLApi registers a new resource with the given unique name, arguments, and options.
@@ -260,53 +57,31 @@ func GetGraphQLApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GraphQLApi resources.
 type graphQLApiState struct {
-	// One or more additional authentication providers for the GraphqlApi. Defined below.
 	AdditionalAuthenticationProviders []GraphQLApiAdditionalAuthenticationProvider `pulumi:"additionalAuthenticationProviders"`
-	// The ARN
-	Arn *string `pulumi:"arn"`
-	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-	AuthenticationType *string `pulumi:"authenticationType"`
-	// Nested argument containing logging configuration. Defined below.
-	LogConfig *GraphQLApiLogConfig `pulumi:"logConfig"`
-	// A user-supplied name for the GraphqlApi.
-	Name *string `pulumi:"name"`
-	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig *GraphQLApiOpenidConnectConfig `pulumi:"openidConnectConfig"`
-	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-	Schema *string `pulumi:"schema"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// Map of URIs associated with the API. e.g. `uris["GRAPHQL"] = https://ID.appsync-api.REGION.amazonaws.com/graphql`
-	Uris map[string]string `pulumi:"uris"`
-	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig *GraphQLApiUserPoolConfig `pulumi:"userPoolConfig"`
-	// Whether tracing with X-ray is enabled. Defaults to false.
-	XrayEnabled *bool `pulumi:"xrayEnabled"`
+	Arn                               *string                                      `pulumi:"arn"`
+	AuthenticationType                *string                                      `pulumi:"authenticationType"`
+	LogConfig                         *GraphQLApiLogConfig                         `pulumi:"logConfig"`
+	Name                              *string                                      `pulumi:"name"`
+	OpenidConnectConfig               *GraphQLApiOpenidConnectConfig               `pulumi:"openidConnectConfig"`
+	Schema                            *string                                      `pulumi:"schema"`
+	Tags                              map[string]string                            `pulumi:"tags"`
+	Uris                              map[string]string                            `pulumi:"uris"`
+	UserPoolConfig                    *GraphQLApiUserPoolConfig                    `pulumi:"userPoolConfig"`
+	XrayEnabled                       *bool                                        `pulumi:"xrayEnabled"`
 }
 
 type GraphQLApiState struct {
-	// One or more additional authentication providers for the GraphqlApi. Defined below.
 	AdditionalAuthenticationProviders GraphQLApiAdditionalAuthenticationProviderArrayInput
-	// The ARN
-	Arn pulumi.StringPtrInput
-	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-	AuthenticationType pulumi.StringPtrInput
-	// Nested argument containing logging configuration. Defined below.
-	LogConfig GraphQLApiLogConfigPtrInput
-	// A user-supplied name for the GraphqlApi.
-	Name pulumi.StringPtrInput
-	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig GraphQLApiOpenidConnectConfigPtrInput
-	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-	Schema pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// Map of URIs associated with the API. e.g. `uris["GRAPHQL"] = https://ID.appsync-api.REGION.amazonaws.com/graphql`
-	Uris pulumi.StringMapInput
-	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig GraphQLApiUserPoolConfigPtrInput
-	// Whether tracing with X-ray is enabled. Defaults to false.
-	XrayEnabled pulumi.BoolPtrInput
+	Arn                               pulumi.StringPtrInput
+	AuthenticationType                pulumi.StringPtrInput
+	LogConfig                         GraphQLApiLogConfigPtrInput
+	Name                              pulumi.StringPtrInput
+	OpenidConnectConfig               GraphQLApiOpenidConnectConfigPtrInput
+	Schema                            pulumi.StringPtrInput
+	Tags                              pulumi.StringMapInput
+	Uris                              pulumi.StringMapInput
+	UserPoolConfig                    GraphQLApiUserPoolConfigPtrInput
+	XrayEnabled                       pulumi.BoolPtrInput
 }
 
 func (GraphQLApiState) ElementType() reflect.Type {
@@ -314,46 +89,28 @@ func (GraphQLApiState) ElementType() reflect.Type {
 }
 
 type graphQLApiArgs struct {
-	// One or more additional authentication providers for the GraphqlApi. Defined below.
 	AdditionalAuthenticationProviders []GraphQLApiAdditionalAuthenticationProvider `pulumi:"additionalAuthenticationProviders"`
-	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-	AuthenticationType string `pulumi:"authenticationType"`
-	// Nested argument containing logging configuration. Defined below.
-	LogConfig *GraphQLApiLogConfig `pulumi:"logConfig"`
-	// A user-supplied name for the GraphqlApi.
-	Name *string `pulumi:"name"`
-	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig *GraphQLApiOpenidConnectConfig `pulumi:"openidConnectConfig"`
-	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-	Schema *string `pulumi:"schema"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig *GraphQLApiUserPoolConfig `pulumi:"userPoolConfig"`
-	// Whether tracing with X-ray is enabled. Defaults to false.
-	XrayEnabled *bool `pulumi:"xrayEnabled"`
+	AuthenticationType                string                                       `pulumi:"authenticationType"`
+	LogConfig                         *GraphQLApiLogConfig                         `pulumi:"logConfig"`
+	Name                              *string                                      `pulumi:"name"`
+	OpenidConnectConfig               *GraphQLApiOpenidConnectConfig               `pulumi:"openidConnectConfig"`
+	Schema                            *string                                      `pulumi:"schema"`
+	Tags                              map[string]string                            `pulumi:"tags"`
+	UserPoolConfig                    *GraphQLApiUserPoolConfig                    `pulumi:"userPoolConfig"`
+	XrayEnabled                       *bool                                        `pulumi:"xrayEnabled"`
 }
 
 // The set of arguments for constructing a GraphQLApi resource.
 type GraphQLApiArgs struct {
-	// One or more additional authentication providers for the GraphqlApi. Defined below.
 	AdditionalAuthenticationProviders GraphQLApiAdditionalAuthenticationProviderArrayInput
-	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
-	AuthenticationType pulumi.StringInput
-	// Nested argument containing logging configuration. Defined below.
-	LogConfig GraphQLApiLogConfigPtrInput
-	// A user-supplied name for the GraphqlApi.
-	Name pulumi.StringPtrInput
-	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig GraphQLApiOpenidConnectConfigPtrInput
-	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
-	Schema pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig GraphQLApiUserPoolConfigPtrInput
-	// Whether tracing with X-ray is enabled. Defaults to false.
-	XrayEnabled pulumi.BoolPtrInput
+	AuthenticationType                pulumi.StringInput
+	LogConfig                         GraphQLApiLogConfigPtrInput
+	Name                              pulumi.StringPtrInput
+	OpenidConnectConfig               GraphQLApiOpenidConnectConfigPtrInput
+	Schema                            pulumi.StringPtrInput
+	Tags                              pulumi.StringMapInput
+	UserPoolConfig                    GraphQLApiUserPoolConfigPtrInput
+	XrayEnabled                       pulumi.BoolPtrInput
 }
 
 func (GraphQLApiArgs) ElementType() reflect.Type {

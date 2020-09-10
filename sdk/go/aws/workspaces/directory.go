@@ -10,101 +10,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a directory registration in AWS WorkSpaces Service
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directoryservice"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/workspaces"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mainVpc, err := ec2.NewVpc(ctx, "mainVpc", &ec2.VpcArgs{
-// 			CidrBlock: pulumi.String("10.0.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewSubnet(ctx, "private_a", &ec2.SubnetArgs{
-// 			VpcId:            mainVpc.ID(),
-// 			AvailabilityZone: pulumi.String("us-east-1a"),
-// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewSubnet(ctx, "private_b", &ec2.SubnetArgs{
-// 			VpcId:            mainVpc.ID(),
-// 			AvailabilityZone: pulumi.String("us-east-1b"),
-// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		mainDirectory, err := directoryservice.NewDirectory(ctx, "mainDirectory", &directoryservice.DirectoryArgs{
-// 			Password: pulumi.String("#S1ncerely"),
-// 			Size:     pulumi.String("Small"),
-// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-// 				VpcId: mainVpc.ID(),
-// 				SubnetIds: pulumi.StringArray{
-// 					private_a.ID(),
-// 					private_b.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = workspaces.NewDirectory(ctx, "mainWorkspaces_directoryDirectory", &workspaces.DirectoryArgs{
-// 			DirectoryId: mainDirectory.ID(),
-// 			SelfServicePermissions: &workspaces.DirectorySelfServicePermissionsArgs{
-// 				IncreaseVolumeSize: pulumi.Bool(true),
-// 				RebuildWorkspace:   pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Directory struct {
 	pulumi.CustomResourceState
 
-	// The directory alias.
-	Alias pulumi.StringOutput `pulumi:"alias"`
-	// The user name for the service account.
-	CustomerUserName pulumi.StringOutput `pulumi:"customerUserName"`
-	// The directory identifier for registration in WorkSpaces service.
-	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// The name of the directory.
-	DirectoryName pulumi.StringOutput `pulumi:"directoryName"`
-	// The directory type.
-	DirectoryType pulumi.StringOutput `pulumi:"directoryType"`
-	// The IP addresses of the DNS servers for the directory.
-	DnsIpAddresses pulumi.StringArrayOutput `pulumi:"dnsIpAddresses"`
-	// The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.
-	IamRoleId pulumi.StringOutput `pulumi:"iamRoleId"`
-	// The identifiers of the IP access control groups associated with the directory.
-	IpGroupIds pulumi.StringArrayOutput `pulumi:"ipGroupIds"`
-	// The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
-	RegistrationCode pulumi.StringOutput `pulumi:"registrationCode"`
-	// The permissions to enable or disable self-service capabilities.
-	SelfServicePermissions DirectorySelfServicePermissionsOutput `pulumi:"selfServicePermissions"`
-	// The identifiers of the subnets where the directory resides.
-	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// A map of tags assigned to the WorkSpaces directory.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The identifier of the security group that is assigned to new WorkSpaces.
-	WorkspaceSecurityGroupId pulumi.StringOutput `pulumi:"workspaceSecurityGroupId"`
+	Alias                    pulumi.StringOutput                   `pulumi:"alias"`
+	CustomerUserName         pulumi.StringOutput                   `pulumi:"customerUserName"`
+	DirectoryId              pulumi.StringOutput                   `pulumi:"directoryId"`
+	DirectoryName            pulumi.StringOutput                   `pulumi:"directoryName"`
+	DirectoryType            pulumi.StringOutput                   `pulumi:"directoryType"`
+	DnsIpAddresses           pulumi.StringArrayOutput              `pulumi:"dnsIpAddresses"`
+	IamRoleId                pulumi.StringOutput                   `pulumi:"iamRoleId"`
+	IpGroupIds               pulumi.StringArrayOutput              `pulumi:"ipGroupIds"`
+	RegistrationCode         pulumi.StringOutput                   `pulumi:"registrationCode"`
+	SelfServicePermissions   DirectorySelfServicePermissionsOutput `pulumi:"selfServicePermissions"`
+	SubnetIds                pulumi.StringArrayOutput              `pulumi:"subnetIds"`
+	Tags                     pulumi.StringMapOutput                `pulumi:"tags"`
+	WorkspaceSecurityGroupId pulumi.StringOutput                   `pulumi:"workspaceSecurityGroupId"`
 }
 
 // NewDirectory registers a new resource with the given unique name, arguments, and options.
@@ -138,60 +59,34 @@ func GetDirectory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Directory resources.
 type directoryState struct {
-	// The directory alias.
-	Alias *string `pulumi:"alias"`
-	// The user name for the service account.
-	CustomerUserName *string `pulumi:"customerUserName"`
-	// The directory identifier for registration in WorkSpaces service.
-	DirectoryId *string `pulumi:"directoryId"`
-	// The name of the directory.
-	DirectoryName *string `pulumi:"directoryName"`
-	// The directory type.
-	DirectoryType *string `pulumi:"directoryType"`
-	// The IP addresses of the DNS servers for the directory.
-	DnsIpAddresses []string `pulumi:"dnsIpAddresses"`
-	// The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.
-	IamRoleId *string `pulumi:"iamRoleId"`
-	// The identifiers of the IP access control groups associated with the directory.
-	IpGroupIds []string `pulumi:"ipGroupIds"`
-	// The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
-	RegistrationCode *string `pulumi:"registrationCode"`
-	// The permissions to enable or disable self-service capabilities.
-	SelfServicePermissions *DirectorySelfServicePermissions `pulumi:"selfServicePermissions"`
-	// The identifiers of the subnets where the directory resides.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// A map of tags assigned to the WorkSpaces directory.
-	Tags map[string]string `pulumi:"tags"`
-	// The identifier of the security group that is assigned to new WorkSpaces.
-	WorkspaceSecurityGroupId *string `pulumi:"workspaceSecurityGroupId"`
+	Alias                    *string                          `pulumi:"alias"`
+	CustomerUserName         *string                          `pulumi:"customerUserName"`
+	DirectoryId              *string                          `pulumi:"directoryId"`
+	DirectoryName            *string                          `pulumi:"directoryName"`
+	DirectoryType            *string                          `pulumi:"directoryType"`
+	DnsIpAddresses           []string                         `pulumi:"dnsIpAddresses"`
+	IamRoleId                *string                          `pulumi:"iamRoleId"`
+	IpGroupIds               []string                         `pulumi:"ipGroupIds"`
+	RegistrationCode         *string                          `pulumi:"registrationCode"`
+	SelfServicePermissions   *DirectorySelfServicePermissions `pulumi:"selfServicePermissions"`
+	SubnetIds                []string                         `pulumi:"subnetIds"`
+	Tags                     map[string]string                `pulumi:"tags"`
+	WorkspaceSecurityGroupId *string                          `pulumi:"workspaceSecurityGroupId"`
 }
 
 type DirectoryState struct {
-	// The directory alias.
-	Alias pulumi.StringPtrInput
-	// The user name for the service account.
-	CustomerUserName pulumi.StringPtrInput
-	// The directory identifier for registration in WorkSpaces service.
-	DirectoryId pulumi.StringPtrInput
-	// The name of the directory.
-	DirectoryName pulumi.StringPtrInput
-	// The directory type.
-	DirectoryType pulumi.StringPtrInput
-	// The IP addresses of the DNS servers for the directory.
-	DnsIpAddresses pulumi.StringArrayInput
-	// The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.
-	IamRoleId pulumi.StringPtrInput
-	// The identifiers of the IP access control groups associated with the directory.
-	IpGroupIds pulumi.StringArrayInput
-	// The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
-	RegistrationCode pulumi.StringPtrInput
-	// The permissions to enable or disable self-service capabilities.
-	SelfServicePermissions DirectorySelfServicePermissionsPtrInput
-	// The identifiers of the subnets where the directory resides.
-	SubnetIds pulumi.StringArrayInput
-	// A map of tags assigned to the WorkSpaces directory.
-	Tags pulumi.StringMapInput
-	// The identifier of the security group that is assigned to new WorkSpaces.
+	Alias                    pulumi.StringPtrInput
+	CustomerUserName         pulumi.StringPtrInput
+	DirectoryId              pulumi.StringPtrInput
+	DirectoryName            pulumi.StringPtrInput
+	DirectoryType            pulumi.StringPtrInput
+	DnsIpAddresses           pulumi.StringArrayInput
+	IamRoleId                pulumi.StringPtrInput
+	IpGroupIds               pulumi.StringArrayInput
+	RegistrationCode         pulumi.StringPtrInput
+	SelfServicePermissions   DirectorySelfServicePermissionsPtrInput
+	SubnetIds                pulumi.StringArrayInput
+	Tags                     pulumi.StringMapInput
 	WorkspaceSecurityGroupId pulumi.StringPtrInput
 }
 
@@ -200,26 +95,18 @@ func (DirectoryState) ElementType() reflect.Type {
 }
 
 type directoryArgs struct {
-	// The directory identifier for registration in WorkSpaces service.
-	DirectoryId string `pulumi:"directoryId"`
-	// The permissions to enable or disable self-service capabilities.
+	DirectoryId            string                           `pulumi:"directoryId"`
 	SelfServicePermissions *DirectorySelfServicePermissions `pulumi:"selfServicePermissions"`
-	// The identifiers of the subnets where the directory resides.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// A map of tags assigned to the WorkSpaces directory.
-	Tags map[string]string `pulumi:"tags"`
+	SubnetIds              []string                         `pulumi:"subnetIds"`
+	Tags                   map[string]string                `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Directory resource.
 type DirectoryArgs struct {
-	// The directory identifier for registration in WorkSpaces service.
-	DirectoryId pulumi.StringInput
-	// The permissions to enable or disable self-service capabilities.
+	DirectoryId            pulumi.StringInput
 	SelfServicePermissions DirectorySelfServicePermissionsPtrInput
-	// The identifiers of the subnets where the directory resides.
-	SubnetIds pulumi.StringArrayInput
-	// A map of tags assigned to the WorkSpaces directory.
-	Tags pulumi.StringMapInput
+	SubnetIds              pulumi.StringArrayInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (DirectoryArgs) ElementType() reflect.Type {

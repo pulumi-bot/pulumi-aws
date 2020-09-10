@@ -9,99 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an Traffic mirror session.\
-    /// Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
-    /// 
-    /// ## Example Usage
-    /// 
-    /// To create a basic traffic mirror session
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var filter = new Aws.Ec2.TrafficMirrorFilter("filter", new Aws.Ec2.TrafficMirrorFilterArgs
-    ///         {
-    ///             Description = "traffic mirror filter - example",
-    ///             NetworkServices = 
-    ///             {
-    ///                 "amazon-dns",
-    ///             },
-    ///         });
-    ///         var target = new Aws.Ec2.TrafficMirrorTarget("target", new Aws.Ec2.TrafficMirrorTargetArgs
-    ///         {
-    ///             NetworkLoadBalancerArn = aws_lb.Lb.Arn,
-    ///         });
-    ///         var session = new Aws.Ec2.TrafficMirrorSession("session", new Aws.Ec2.TrafficMirrorSessionArgs
-    ///         {
-    ///             Description = "traffic mirror session - example",
-    ///             NetworkInterfaceId = aws_instance.Test.Primary_network_interface_id,
-    ///             TrafficMirrorFilterId = filter.Id,
-    ///             TrafficMirrorTargetId = target.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class TrafficMirrorSession : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the traffic mirror session.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A description of the traffic mirror session.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the source network interface. Not all network interfaces are eligible as mirror sources. On EC2 instances only nitro based instances support mirroring.
-        /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do not specify this parameter when you want to mirror the entire packet. To mirror a subset of the packet, set this to the length (in bytes) that you want to mirror.
-        /// </summary>
         [Output("packetLength")]
         public Output<int?> PacketLength { get; private set; } = null!;
 
-        /// <summary>
-        /// - The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. The first session with a matching filter is the one that mirrors the packets.
-        /// </summary>
         [Output("sessionNumber")]
         public Output<int> SessionNumber { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the traffic mirror filter to be used
-        /// </summary>
         [Output("trafficMirrorFilterId")]
         public Output<string> TrafficMirrorFilterId { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the traffic mirror target to be used
-        /// </summary>
         [Output("trafficMirrorTargetId")]
         public Output<string> TrafficMirrorTargetId { get; private set; } = null!;
 
-        /// <summary>
-        /// - The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
-        /// </summary>
         [Output("virtualNetworkId")]
         public Output<int> VirtualNetworkId { get; private set; } = null!;
 
@@ -151,57 +84,32 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class TrafficMirrorSessionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the traffic mirror session.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// ID of the source network interface. Not all network interfaces are eligible as mirror sources. On EC2 instances only nitro based instances support mirroring.
-        /// </summary>
         [Input("networkInterfaceId", required: true)]
         public Input<string> NetworkInterfaceId { get; set; } = null!;
 
-        /// <summary>
-        /// The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do not specify this parameter when you want to mirror the entire packet. To mirror a subset of the packet, set this to the length (in bytes) that you want to mirror.
-        /// </summary>
         [Input("packetLength")]
         public Input<int>? PacketLength { get; set; }
 
-        /// <summary>
-        /// - The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. The first session with a matching filter is the one that mirrors the packets.
-        /// </summary>
         [Input("sessionNumber", required: true)]
         public Input<int> SessionNumber { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// ID of the traffic mirror filter to be used
-        /// </summary>
         [Input("trafficMirrorFilterId", required: true)]
         public Input<string> TrafficMirrorFilterId { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the traffic mirror target to be used
-        /// </summary>
         [Input("trafficMirrorTargetId", required: true)]
         public Input<string> TrafficMirrorTargetId { get; set; } = null!;
 
-        /// <summary>
-        /// - The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
-        /// </summary>
         [Input("virtualNetworkId")]
         public Input<int>? VirtualNetworkId { get; set; }
 
@@ -212,63 +120,35 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class TrafficMirrorSessionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the traffic mirror session.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A description of the traffic mirror session.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// ID of the source network interface. Not all network interfaces are eligible as mirror sources. On EC2 instances only nitro based instances support mirroring.
-        /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do not specify this parameter when you want to mirror the entire packet. To mirror a subset of the packet, set this to the length (in bytes) that you want to mirror.
-        /// </summary>
         [Input("packetLength")]
         public Input<int>? PacketLength { get; set; }
 
-        /// <summary>
-        /// - The session number determines the order in which sessions are evaluated when an interface is used by multiple sessions. The first session with a matching filter is the one that mirrors the packets.
-        /// </summary>
         [Input("sessionNumber")]
         public Input<int>? SessionNumber { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// ID of the traffic mirror filter to be used
-        /// </summary>
         [Input("trafficMirrorFilterId")]
         public Input<string>? TrafficMirrorFilterId { get; set; }
 
-        /// <summary>
-        /// ID of the traffic mirror target to be used
-        /// </summary>
         [Input("trafficMirrorTargetId")]
         public Input<string>? TrafficMirrorTargetId { get; set; }
 
-        /// <summary>
-        /// - The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
-        /// </summary>
         [Input("virtualNetworkId")]
         public Input<int>? VirtualNetworkId { get; set; }
 

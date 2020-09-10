@@ -9,50 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iot
 {
-    /// <summary>
-    /// Creates and manages an AWS IoT Thing Type.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Aws.Iot.ThingType("foo", new Aws.Iot.ThingTypeArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ThingType : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the created AWS IoT Thing Type.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-        /// </summary>
         [Output("deprecated")]
         public Output<bool?> Deprecated { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the thing type.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// , Configuration block that can contain the following properties of the thing type:
-        /// </summary>
         [Output("properties")]
         public Output<Outputs.ThingTypeProperties?> Properties { get; private set; } = null!;
 
@@ -102,21 +69,12 @@ namespace Pulumi.Aws.Iot
 
     public sealed class ThingTypeArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-        /// </summary>
         [Input("deprecated")]
         public Input<bool>? Deprecated { get; set; }
 
-        /// <summary>
-        /// The name of the thing type.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// , Configuration block that can contain the following properties of the thing type:
-        /// </summary>
         [Input("properties")]
         public Input<Inputs.ThingTypePropertiesArgs>? Properties { get; set; }
 
@@ -127,27 +85,15 @@ namespace Pulumi.Aws.Iot
 
     public sealed class ThingTypeState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the created AWS IoT Thing Type.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-        /// </summary>
         [Input("deprecated")]
         public Input<bool>? Deprecated { get; set; }
 
-        /// <summary>
-        /// The name of the thing type.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// , Configuration block that can contain the following properties of the thing type:
-        /// </summary>
         [Input("properties")]
         public Input<Inputs.ThingTypePropertiesGetArgs>? Properties { get; set; }
 

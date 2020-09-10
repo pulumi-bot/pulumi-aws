@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a DocDB database cluster snapshot for DocDB clusters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.docdb.ClusterSnapshot("example", {
- *     dbClusterIdentifier: aws_docdb_cluster.example.id,
- *     dbClusterSnapshotIdentifier: "resourcetestsnapshot1234",
- * });
- * ```
- */
 export class ClusterSnapshot extends pulumi.CustomResource {
     /**
      * Get an existing ClusterSnapshot resource's state with the given name, ID, and optional extra
@@ -47,51 +32,18 @@ export class ClusterSnapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClusterSnapshot.__pulumiType;
     }
 
-    /**
-     * List of EC2 Availability Zones that instances in the DocDB cluster snapshot can be restored in.
-     */
     public /*out*/ readonly availabilityZones!: pulumi.Output<string[]>;
-    /**
-     * The DocDB Cluster Identifier from which to take the snapshot.
-     */
     public readonly dbClusterIdentifier!: pulumi.Output<string>;
-    /**
-     * The Amazon Resource Name (ARN) for the DocDB Cluster Snapshot.
-     */
     public /*out*/ readonly dbClusterSnapshotArn!: pulumi.Output<string>;
-    /**
-     * The Identifier for the snapshot.
-     */
     public readonly dbClusterSnapshotIdentifier!: pulumi.Output<string>;
-    /**
-     * Specifies the name of the database engine.
-     */
     public /*out*/ readonly engine!: pulumi.Output<string>;
-    /**
-     * Version of the database engine for this DocDB cluster snapshot.
-     */
     public /*out*/ readonly engineVersion!: pulumi.Output<string>;
-    /**
-     * If storageEncrypted is true, the AWS KMS key identifier for the encrypted DocDB cluster snapshot.
-     */
     public /*out*/ readonly kmsKeyId!: pulumi.Output<string>;
-    /**
-     * Port that the DocDB cluster was listening on at the time of the snapshot.
-     */
     public /*out*/ readonly port!: pulumi.Output<number>;
     public /*out*/ readonly snapshotType!: pulumi.Output<string>;
     public /*out*/ readonly sourceDbClusterSnapshotArn!: pulumi.Output<string>;
-    /**
-     * The status of this DocDB Cluster Snapshot.
-     */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * Specifies whether the DocDB cluster snapshot is encrypted.
-     */
     public /*out*/ readonly storageEncrypted!: pulumi.Output<boolean>;
-    /**
-     * The VPC ID associated with the DocDB cluster snapshot.
-     */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
 
     /**
@@ -156,51 +108,18 @@ export class ClusterSnapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClusterSnapshot resources.
  */
 export interface ClusterSnapshotState {
-    /**
-     * List of EC2 Availability Zones that instances in the DocDB cluster snapshot can be restored in.
-     */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The DocDB Cluster Identifier from which to take the snapshot.
-     */
     readonly dbClusterIdentifier?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) for the DocDB Cluster Snapshot.
-     */
     readonly dbClusterSnapshotArn?: pulumi.Input<string>;
-    /**
-     * The Identifier for the snapshot.
-     */
     readonly dbClusterSnapshotIdentifier?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the database engine.
-     */
     readonly engine?: pulumi.Input<string>;
-    /**
-     * Version of the database engine for this DocDB cluster snapshot.
-     */
     readonly engineVersion?: pulumi.Input<string>;
-    /**
-     * If storageEncrypted is true, the AWS KMS key identifier for the encrypted DocDB cluster snapshot.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * Port that the DocDB cluster was listening on at the time of the snapshot.
-     */
     readonly port?: pulumi.Input<number>;
     readonly snapshotType?: pulumi.Input<string>;
     readonly sourceDbClusterSnapshotArn?: pulumi.Input<string>;
-    /**
-     * The status of this DocDB Cluster Snapshot.
-     */
     readonly status?: pulumi.Input<string>;
-    /**
-     * Specifies whether the DocDB cluster snapshot is encrypted.
-     */
     readonly storageEncrypted?: pulumi.Input<boolean>;
-    /**
-     * The VPC ID associated with the DocDB cluster snapshot.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -208,12 +127,6 @@ export interface ClusterSnapshotState {
  * The set of arguments for constructing a ClusterSnapshot resource.
  */
 export interface ClusterSnapshotArgs {
-    /**
-     * The DocDB Cluster Identifier from which to take the snapshot.
-     */
     readonly dbClusterIdentifier: pulumi.Input<string>;
-    /**
-     * The Identifier for the snapshot.
-     */
     readonly dbClusterSnapshotIdentifier: pulumi.Input<string>;
 }

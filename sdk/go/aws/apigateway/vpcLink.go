@@ -10,61 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an API Gateway VPC Link.
-//
-// > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
-// To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleLoadBalancer, err := lb.NewLoadBalancer(ctx, "exampleLoadBalancer", &lb.LoadBalancerArgs{
-// 			Internal:         pulumi.Bool(true),
-// 			LoadBalancerType: pulumi.String("network"),
-// 			SubnetMappings: lb.LoadBalancerSubnetMappingArray{
-// 				&lb.LoadBalancerSubnetMappingArgs{
-// 					SubnetId: pulumi.String("12345"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewVpcLink(ctx, "exampleVpcLink", &apigateway.VpcLinkArgs{
-// 			Description: pulumi.String("example description"),
-// 			TargetArn: pulumi.String(pulumi.String{
-// 				exampleLoadBalancer.Arn,
-// 			}),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VpcLink struct {
 	pulumi.CustomResourceState
 
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The description of the VPC link.
+	Arn         pulumi.StringOutput    `pulumi:"arn"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name used to label and identify the VPC link.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-	TargetArn pulumi.StringOutput `pulumi:"targetArn"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Tags        pulumi.StringMapOutput `pulumi:"tags"`
+	TargetArn   pulumi.StringOutput    `pulumi:"targetArn"`
 }
 
 // NewVpcLink registers a new resource with the given unique name, arguments, and options.
@@ -98,27 +51,19 @@ func GetVpcLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcLink resources.
 type vpcLinkState struct {
-	Arn *string `pulumi:"arn"`
-	// The description of the VPC link.
-	Description *string `pulumi:"description"`
-	// The name used to label and identify the VPC link.
-	Name *string `pulumi:"name"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-	TargetArn *string `pulumi:"targetArn"`
+	Arn         *string           `pulumi:"arn"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Tags        map[string]string `pulumi:"tags"`
+	TargetArn   *string           `pulumi:"targetArn"`
 }
 
 type VpcLinkState struct {
-	Arn pulumi.StringPtrInput
-	// The description of the VPC link.
+	Arn         pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// The name used to label and identify the VPC link.
-	Name pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-	TargetArn pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
+	TargetArn   pulumi.StringPtrInput
 }
 
 func (VpcLinkState) ElementType() reflect.Type {
@@ -126,26 +71,18 @@ func (VpcLinkState) ElementType() reflect.Type {
 }
 
 type vpcLinkArgs struct {
-	// The description of the VPC link.
-	Description *string `pulumi:"description"`
-	// The name used to label and identify the VPC link.
-	Name *string `pulumi:"name"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-	TargetArn string `pulumi:"targetArn"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Tags        map[string]string `pulumi:"tags"`
+	TargetArn   string            `pulumi:"targetArn"`
 }
 
 // The set of arguments for constructing a VpcLink resource.
 type VpcLinkArgs struct {
-	// The description of the VPC link.
 	Description pulumi.StringPtrInput
-	// The name used to label and identify the VPC link.
-	Name pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-	TargetArn pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
+	TargetArn   pulumi.StringInput
 }
 
 func (VpcLinkArgs) ElementType() reflect.Type {

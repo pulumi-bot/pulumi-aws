@@ -13,17 +13,8 @@ namespace Pulumi.Aws.Ec2.Outputs
     [OutputType]
     public sealed class SpotInstanceRequestNetworkInterface
     {
-        /// <summary>
-        /// Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
-        /// </summary>
         public readonly bool? DeleteOnTermination;
-        /// <summary>
-        /// The integer index of the network interface attachment. Limited by instance type.
-        /// </summary>
         public readonly int DeviceIndex;
-        /// <summary>
-        /// The ID of the network interface to attach.
-        /// </summary>
         public readonly string NetworkInterfaceId;
 
         [OutputConstructor]

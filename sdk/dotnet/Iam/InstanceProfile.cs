@@ -9,87 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// Provides an IAM instance profile.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var role = new Aws.Iam.Role("role", new Aws.Iam.RoleArgs
-    ///         {
-    ///             Path = "/",
-    ///             AssumeRolePolicy = @"{
-    ///     ""Version"": ""2012-10-17"",
-    ///     ""Statement"": [
-    ///         {
-    ///             ""Action"": ""sts:AssumeRole"",
-    ///             ""Principal"": {
-    ///                ""Service"": ""ec2.amazonaws.com""
-    ///             },
-    ///             ""Effect"": ""Allow"",
-    ///             ""Sid"": """"
-    ///         }
-    ///     ]
-    /// }
-    /// ",
-    ///         });
-    ///         var testProfile = new Aws.Iam.InstanceProfile("testProfile", new Aws.Iam.InstanceProfileArgs
-    ///         {
-    ///             Role = role.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class InstanceProfile : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN assigned by AWS to the instance profile.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The creation timestamp of the instance profile.
-        /// </summary>
         [Output("createDate")]
         public Output<string> CreateDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The profile's name. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// Path in which to create the profile.
-        /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
 
-        /// <summary>
-        /// The role name to include in the profile.
-        /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
-        /// <summary>
-        /// The [unique ID][1] assigned by AWS.
-        /// </summary>
         [Output("uniqueId")]
         public Output<string> UniqueId { get; private set; } = null!;
 
@@ -139,27 +78,15 @@ namespace Pulumi.Aws.Iam
 
     public sealed class InstanceProfileArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The profile's name. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// Path in which to create the profile.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// The role name to include in the profile.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
@@ -170,45 +97,24 @@ namespace Pulumi.Aws.Iam
 
     public sealed class InstanceProfileState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN assigned by AWS to the instance profile.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The creation timestamp of the instance profile.
-        /// </summary>
         [Input("createDate")]
         public Input<string>? CreateDate { get; set; }
 
-        /// <summary>
-        /// The profile's name. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// Path in which to create the profile.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// The role name to include in the profile.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        /// <summary>
-        /// The [unique ID][1] assigned by AWS.
-        /// </summary>
         [Input("uniqueId")]
         public Input<string>? UniqueId { get; set; }
 

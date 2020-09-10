@@ -10,48 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a Glue Security Configuration.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glue"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := glue.NewSecurityConfiguration(ctx, "example", &glue.SecurityConfigurationArgs{
-// 			EncryptionConfiguration: &glue.SecurityConfigurationEncryptionConfigurationArgs{
-// 				CloudwatchEncryption: &glue.SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs{
-// 					CloudwatchEncryptionMode: pulumi.String("DISABLED"),
-// 				},
-// 				JobBookmarksEncryption: &glue.SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs{
-// 					JobBookmarksEncryptionMode: pulumi.String("DISABLED"),
-// 				},
-// 				S3Encryption: &glue.SecurityConfigurationEncryptionConfigurationS3EncryptionArgs{
-// 					KmsKeyArn:        pulumi.Any(data.Aws_kms_key.Example.Arn),
-// 					S3EncryptionMode: pulumi.String("SSE-KMS"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SecurityConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Configuration block containing encryption configuration. Detailed below.
 	EncryptionConfiguration SecurityConfigurationEncryptionConfigurationOutput `pulumi:"encryptionConfiguration"`
-	// Name of the security configuration.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name                    pulumi.StringOutput                                `pulumi:"name"`
 }
 
 // NewSecurityConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -85,17 +48,13 @@ func GetSecurityConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityConfiguration resources.
 type securityConfigurationState struct {
-	// Configuration block containing encryption configuration. Detailed below.
 	EncryptionConfiguration *SecurityConfigurationEncryptionConfiguration `pulumi:"encryptionConfiguration"`
-	// Name of the security configuration.
-	Name *string `pulumi:"name"`
+	Name                    *string                                       `pulumi:"name"`
 }
 
 type SecurityConfigurationState struct {
-	// Configuration block containing encryption configuration. Detailed below.
 	EncryptionConfiguration SecurityConfigurationEncryptionConfigurationPtrInput
-	// Name of the security configuration.
-	Name pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
 }
 
 func (SecurityConfigurationState) ElementType() reflect.Type {
@@ -103,18 +62,14 @@ func (SecurityConfigurationState) ElementType() reflect.Type {
 }
 
 type securityConfigurationArgs struct {
-	// Configuration block containing encryption configuration. Detailed below.
 	EncryptionConfiguration SecurityConfigurationEncryptionConfiguration `pulumi:"encryptionConfiguration"`
-	// Name of the security configuration.
-	Name *string `pulumi:"name"`
+	Name                    *string                                      `pulumi:"name"`
 }
 
 // The set of arguments for constructing a SecurityConfiguration resource.
 type SecurityConfigurationArgs struct {
-	// Configuration block containing encryption configuration. Detailed below.
 	EncryptionConfiguration SecurityConfigurationEncryptionConfigurationInput
-	// Name of the security configuration.
-	Name pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
 }
 
 func (SecurityConfigurationArgs) ElementType() reflect.Type {

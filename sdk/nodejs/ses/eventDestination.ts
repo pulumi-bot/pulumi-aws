@@ -6,68 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an SES event destination
- *
- * ## Example Usage
- * ### CloudWatch Destination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const cloudwatch = new aws.ses.EventDestination("cloudwatch", {
- *     cloudwatchDestinations: [{
- *         defaultValue: "default",
- *         dimensionName: "dimension",
- *         valueSource: "emailHeader",
- *     }],
- *     configurationSetName: aws_ses_configuration_set_example.name,
- *     enabled: true,
- *     matchingTypes: [
- *         "bounce",
- *         "send",
- *     ],
- * });
- * ```
- * ### Kinesis Destination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const kinesis = new aws.ses.EventDestination("kinesis", {
- *     configurationSetName: aws_ses_configuration_set_example.name,
- *     enabled: true,
- *     kinesisDestination: {
- *         roleArn: aws_iam_role_example.arn,
- *         streamArn: aws_kinesis_firehose_delivery_stream_example.arn,
- *     },
- *     matchingTypes: [
- *         "bounce",
- *         "send",
- *     ],
- * });
- * ```
- * ### SNS Destination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const sns = new aws.ses.EventDestination("sns", {
- *     configurationSetName: aws_ses_configuration_set_example.name,
- *     enabled: true,
- *     matchingTypes: [
- *         "bounce",
- *         "send",
- *     ],
- *     snsDestination: {
- *         topicArn: aws_sns_topic_example.arn,
- *     },
- * });
- * ```
- */
 export class EventDestination extends pulumi.CustomResource {
     /**
      * Get an existing EventDestination resource's state with the given name, ID, and optional extra
@@ -96,33 +34,12 @@ export class EventDestination extends pulumi.CustomResource {
         return obj['__pulumiType'] === EventDestination.__pulumiType;
     }
 
-    /**
-     * CloudWatch destination for the events
-     */
     public readonly cloudwatchDestinations!: pulumi.Output<outputs.ses.EventDestinationCloudwatchDestination[] | undefined>;
-    /**
-     * The name of the configuration set
-     */
     public readonly configurationSetName!: pulumi.Output<string>;
-    /**
-     * If true, the event destination will be enabled
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Send the events to a kinesis firehose destination
-     */
     public readonly kinesisDestination!: pulumi.Output<outputs.ses.EventDestinationKinesisDestination | undefined>;
-    /**
-     * A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-     */
     public readonly matchingTypes!: pulumi.Output<string[]>;
-    /**
-     * The name of the event destination
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Send the events to an SNS Topic destination
-     */
     public readonly snsDestination!: pulumi.Output<outputs.ses.EventDestinationSnsDestination | undefined>;
 
     /**
@@ -175,33 +92,12 @@ export class EventDestination extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EventDestination resources.
  */
 export interface EventDestinationState {
-    /**
-     * CloudWatch destination for the events
-     */
     readonly cloudwatchDestinations?: pulumi.Input<pulumi.Input<inputs.ses.EventDestinationCloudwatchDestination>[]>;
-    /**
-     * The name of the configuration set
-     */
     readonly configurationSetName?: pulumi.Input<string>;
-    /**
-     * If true, the event destination will be enabled
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Send the events to a kinesis firehose destination
-     */
     readonly kinesisDestination?: pulumi.Input<inputs.ses.EventDestinationKinesisDestination>;
-    /**
-     * A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-     */
     readonly matchingTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the event destination
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Send the events to an SNS Topic destination
-     */
     readonly snsDestination?: pulumi.Input<inputs.ses.EventDestinationSnsDestination>;
 }
 
@@ -209,32 +105,11 @@ export interface EventDestinationState {
  * The set of arguments for constructing a EventDestination resource.
  */
 export interface EventDestinationArgs {
-    /**
-     * CloudWatch destination for the events
-     */
     readonly cloudwatchDestinations?: pulumi.Input<pulumi.Input<inputs.ses.EventDestinationCloudwatchDestination>[]>;
-    /**
-     * The name of the configuration set
-     */
     readonly configurationSetName: pulumi.Input<string>;
-    /**
-     * If true, the event destination will be enabled
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Send the events to a kinesis firehose destination
-     */
     readonly kinesisDestination?: pulumi.Input<inputs.ses.EventDestinationKinesisDestination>;
-    /**
-     * A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-     */
     readonly matchingTypes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the event destination
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Send the events to an SNS Topic destination
-     */
     readonly snsDestination?: pulumi.Input<inputs.ses.EventDestinationSnsDestination>;
 }

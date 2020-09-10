@@ -21,14 +21,9 @@ class Association(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a License Manager association.
-
-        > **Note:** License configurations can also be associated with launch templates by specifying the `license_specifications` block for an `ec2.LaunchTemplate`.
-
+        Create a Association resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] license_configuration_arn: ARN of the license configuration.
-        :param pulumi.Input[str] resource_arn: ARN of the resource associated with the license configuration.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,8 +67,6 @@ class Association(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] license_configuration_arn: ARN of the license configuration.
-        :param pulumi.Input[str] resource_arn: ARN of the resource associated with the license configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -86,17 +79,11 @@ class Association(pulumi.CustomResource):
     @property
     @pulumi.getter(name="licenseConfigurationArn")
     def license_configuration_arn(self) -> pulumi.Output[str]:
-        """
-        ARN of the license configuration.
-        """
         return pulumi.get(self, "license_configuration_arn")
 
     @property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> pulumi.Output[str]:
-        """
-        ARN of the resource associated with the license configuration.
-        """
         return pulumi.get(self, "resource_arn")
 
     def translate_output_property(self, prop):

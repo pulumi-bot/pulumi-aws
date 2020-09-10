@@ -12,18 +12,11 @@ namespace Pulumi.Aws.Glue.Inputs
 
     public sealed class CrawlerCatalogTargetGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the Glue database to be synchronized.
-        /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         [Input("tables", required: true)]
         private InputList<string>? _tables;
-
-        /// <summary>
-        /// A list of catalog tables to be synchronized.
-        /// </summary>
         public InputList<string> Tables
         {
             get => _tables ?? (_tables = new InputList<string>());

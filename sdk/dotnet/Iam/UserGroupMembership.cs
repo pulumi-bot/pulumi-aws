@@ -9,69 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// Provides a resource for adding an [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html). This
-    /// resource can be used multiple times with the same user for non-overlapping
-    /// groups.
-    /// 
-    /// To exclusively manage the users in a group, see the
-    /// [`aws.iam.GroupMembership` resource][3].
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var user1 = new Aws.Iam.User("user1", new Aws.Iam.UserArgs
-    ///         {
-    ///         });
-    ///         var group1 = new Aws.Iam.Group("group1", new Aws.Iam.GroupArgs
-    ///         {
-    ///         });
-    ///         var group2 = new Aws.Iam.Group("group2", new Aws.Iam.GroupArgs
-    ///         {
-    ///         });
-    ///         var example1 = new Aws.Iam.UserGroupMembership("example1", new Aws.Iam.UserGroupMembershipArgs
-    ///         {
-    ///             User = user1.Name,
-    ///             Groups = 
-    ///             {
-    ///                 group1.Name,
-    ///                 group2.Name,
-    ///             },
-    ///         });
-    ///         var group3 = new Aws.Iam.Group("group3", new Aws.Iam.GroupArgs
-    ///         {
-    ///         });
-    ///         var example2 = new Aws.Iam.UserGroupMembership("example2", new Aws.Iam.UserGroupMembershipArgs
-    ///         {
-    ///             User = user1.Name,
-    ///             Groups = 
-    ///             {
-    ///                 group3.Name,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class UserGroupMembership : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
-        /// </summary>
         [Output("groups")]
         public Output<ImmutableArray<string>> Groups { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
-        /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
 
@@ -123,19 +65,12 @@ namespace Pulumi.Aws.Iam
     {
         [Input("groups", required: true)]
         private InputList<string>? _groups;
-
-        /// <summary>
-        /// A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
-        /// </summary>
         public InputList<string> Groups
         {
             get => _groups ?? (_groups = new InputList<string>());
             set => _groups = value;
         }
 
-        /// <summary>
-        /// The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
-        /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 
@@ -148,19 +83,12 @@ namespace Pulumi.Aws.Iam
     {
         [Input("groups")]
         private InputList<string>? _groups;
-
-        /// <summary>
-        /// A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
-        /// </summary>
         public InputList<string> Groups
         {
             get => _groups ?? (_groups = new InputList<string>());
             set => _groups = value;
         }
 
-        /// <summary>
-        /// The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
-        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

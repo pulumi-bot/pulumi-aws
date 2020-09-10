@@ -22,22 +22,9 @@ class Vault(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS Backup vault resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.backup.Vault("example", kms_key_arn=aws_kms_key["example"]["arn"])
-        ```
-
+        Create a Vault resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] kms_key_arn: The server-side encryption key that is used to protect your backups.
-        :param pulumi.Input[str] name: Name of the backup vault to create.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Metadata that you can assign to help organize the resources that you create.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,11 +70,6 @@ class Vault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the vault.
-        :param pulumi.Input[str] kms_key_arn: The server-side encryption key that is used to protect your backups.
-        :param pulumi.Input[str] name: Name of the backup vault to create.
-        :param pulumi.Input[float] recovery_points: The number of recovery points that are stored in a backup vault.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Metadata that you can assign to help organize the resources that you create.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -103,41 +85,26 @@ class Vault(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the vault.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> pulumi.Output[str]:
-        """
-        The server-side encryption key that is used to protect your backups.
-        """
         return pulumi.get(self, "kms_key_arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the backup vault to create.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="recoveryPoints")
     def recovery_points(self) -> pulumi.Output[float]:
-        """
-        The number of recovery points that are stored in a backup vault.
-        """
         return pulumi.get(self, "recovery_points")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Metadata that you can assign to help organize the resources that you create.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

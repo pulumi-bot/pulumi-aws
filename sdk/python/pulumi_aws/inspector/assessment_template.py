@@ -24,32 +24,9 @@ class AssessmentTemplate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Inspector assessment template
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.inspector.AssessmentTemplate("example",
-            target_arn=aws_inspector_assessment_target["example"]["arn"],
-            duration=3600,
-            rules_package_arns=[
-                "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p",
-                "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc",
-                "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ",
-                "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD",
-            ])
-        ```
-
+        Create a AssessmentTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] duration: The duration of the inspector run.
-        :param pulumi.Input[str] name: The name of the assessment template.
-        :param pulumi.Input[List[pulumi.Input[str]]] rules_package_arns: The rules to be used during the run.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Inspector assessment template.
-        :param pulumi.Input[str] target_arn: The assessment target ARN to attach the template to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,12 +80,6 @@ class AssessmentTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The template assessment ARN.
-        :param pulumi.Input[float] duration: The duration of the inspector run.
-        :param pulumi.Input[str] name: The name of the assessment template.
-        :param pulumi.Input[List[pulumi.Input[str]]] rules_package_arns: The rules to be used during the run.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Inspector assessment template.
-        :param pulumi.Input[str] target_arn: The assessment target ARN to attach the template to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -125,49 +96,31 @@ class AssessmentTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The template assessment ARN.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Output[float]:
-        """
-        The duration of the inspector run.
-        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the assessment template.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="rulesPackageArns")
     def rules_package_arns(self) -> pulumi.Output[List[str]]:
-        """
-        The rules to be used during the run.
-        """
         return pulumi.get(self, "rules_package_arns")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of tags for the Inspector assessment template.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetArn")
     def target_arn(self) -> pulumi.Output[str]:
-        """
-        The assessment target ARN to attach the template to.
-        """
         return pulumi.get(self, "target_arn")
 
     def translate_output_property(self, prop):

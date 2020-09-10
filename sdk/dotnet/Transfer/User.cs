@@ -9,111 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Transfer
 {
-    /// <summary>
-    /// Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the `aws.transfer.SshKey` resource.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var fooServer = new Aws.Transfer.Server("fooServer", new Aws.Transfer.ServerArgs
-    ///         {
-    ///             IdentityProviderType = "SERVICE_MANAGED",
-    ///             Tags = 
-    ///             {
-    ///                 { "NAME", "tf-acc-test-transfer-server" },
-    ///             },
-    ///         });
-    ///         var fooRole = new Aws.Iam.Role("fooRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    /// 	""Version"": ""2012-10-17"",
-    /// 	""Statement"": [
-    /// 		{
-    /// 		""Effect"": ""Allow"",
-    /// 		""Principal"": {
-    /// 			""Service"": ""transfer.amazonaws.com""
-    /// 		},
-    /// 		""Action"": ""sts:AssumeRole""
-    /// 		}
-    /// 	]
-    /// }
-    /// ",
-    ///         });
-    ///         var fooRolePolicy = new Aws.Iam.RolePolicy("fooRolePolicy", new Aws.Iam.RolePolicyArgs
-    ///         {
-    ///             Role = fooRole.Id,
-    ///             Policy = @"{
-    /// 	""Version"": ""2012-10-17"",
-    /// 	""Statement"": [
-    /// 		{
-    /// 			""Sid"": ""AllowFullAccesstoS3"",
-    /// 			""Effect"": ""Allow"",
-    /// 			""Action"": [
-    /// 				""s3:*""
-    /// 			],
-    /// 			""Resource"": ""*""
-    /// 		}
-    /// 	]
-    /// }
-    /// ",
-    ///         });
-    ///         var fooUser = new Aws.Transfer.User("fooUser", new Aws.Transfer.UserArgs
-    ///         {
-    ///             ServerId = fooServer.Id,
-    ///             UserName = "tftestuser",
-    ///             Role = fooRole.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class User : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of Transfer User
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-        /// </summary>
         [Output("homeDirectory")]
         public Output<string?> HomeDirectory { get; private set; } = null!;
 
-        /// <summary>
-        /// An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-        /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
-        /// <summary>
-        /// The Server ID of the Transfer Server (e.g. `s-12345678`)
-        /// </summary>
         [Output("serverId")]
         public Output<string> ServerId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The name used for log in to your SFTP server.
-        /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
 
@@ -163,45 +78,26 @@ namespace Pulumi.Aws.Transfer
 
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-        /// </summary>
         [Input("homeDirectory")]
         public Input<string>? HomeDirectory { get; set; }
 
-        /// <summary>
-        /// An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        /// <summary>
-        /// The Server ID of the Transfer Server (e.g. `s-12345678`)
-        /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The name used for log in to your SFTP server.
-        /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
 
@@ -212,51 +108,29 @@ namespace Pulumi.Aws.Transfer
 
     public sealed class UserState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of Transfer User
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-        /// </summary>
         [Input("homeDirectory")]
         public Input<string>? HomeDirectory { get; set; }
 
-        /// <summary>
-        /// An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        /// <summary>
-        /// The Server ID of the Transfer Server (e.g. `s-12345678`)
-        /// </summary>
         [Input("serverId")]
         public Input<string>? ServerId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The name used for log in to your SFTP server.
-        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

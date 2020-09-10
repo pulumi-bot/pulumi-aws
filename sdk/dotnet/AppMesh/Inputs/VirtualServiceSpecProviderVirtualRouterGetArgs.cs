@@ -12,9 +12,6 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class VirtualServiceSpecProviderVirtualRouterGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the virtual router that is acting as a service provider.
-        /// </summary>
         [Input("virtualRouterName", required: true)]
         public Input<string> VirtualRouterName { get; set; } = null!;
 

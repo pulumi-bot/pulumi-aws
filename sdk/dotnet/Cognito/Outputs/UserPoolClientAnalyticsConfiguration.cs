@@ -13,21 +13,9 @@ namespace Pulumi.Aws.Cognito.Outputs
     [OutputType]
     public sealed class UserPoolClientAnalyticsConfiguration
     {
-        /// <summary>
-        /// The application ID for an Amazon Pinpoint application.
-        /// </summary>
         public readonly string ApplicationId;
-        /// <summary>
-        /// An ID for the Analytics Configuration.
-        /// </summary>
         public readonly string ExternalId;
-        /// <summary>
-        /// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
-        /// </summary>
         public readonly string RoleArn;
-        /// <summary>
-        /// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
-        /// </summary>
         public readonly bool? UserDataShared;
 
         [OutputConstructor]

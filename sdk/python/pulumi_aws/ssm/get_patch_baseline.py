@@ -50,9 +50,6 @@ class GetPatchBaselineResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the baseline.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -66,9 +63,6 @@ class GetPatchBaselineResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the baseline.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -108,38 +102,7 @@ def get_patch_baseline(default_baseline: Optional[bool] = None,
                        owner: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPatchBaselineResult:
     """
-    Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
-
-    ## Example Usage
-
-    To retrieve a baseline provided by AWS:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    centos = aws.ssm.get_patch_baseline(name_prefix="AWS-",
-        operating_system="CENTOS",
-        owner="AWS")
-    ```
-
-    To retrieve a baseline on your account:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    default_custom = aws.ssm.get_patch_baseline(default_baseline=True,
-        name_prefix="MyCustomBaseline",
-        operating_system="WINDOWS",
-        owner="Self")
-    ```
-
-
-    :param bool default_baseline: Filters the results against the baselines default_baseline field.
-    :param str name_prefix: Filter results by the baseline name prefix.
-    :param str operating_system: The specified OS for the baseline.
-    :param str owner: The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['defaultBaseline'] = default_baseline

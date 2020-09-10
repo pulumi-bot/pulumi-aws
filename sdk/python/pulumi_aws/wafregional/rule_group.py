@@ -25,32 +25,9 @@ class RuleGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a WAF Regional Rule Group Resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_rule = aws.wafregional.Rule("exampleRule", metric_name="example")
-        example_rule_group = aws.wafregional.RuleGroup("exampleRuleGroup",
-            metric_name="example",
-            activated_rules=[aws.wafregional.RuleGroupActivatedRuleArgs(
-                action=aws.wafregional.RuleGroupActivatedRuleActionArgs(
-                    type="COUNT",
-                ),
-                priority=50,
-                rule_id=example_rule.id,
-            )])
-        ```
-
+        Create a RuleGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RuleGroupActivatedRuleArgs']]]] activated_rules: A list of activated rules, see below
-        :param pulumi.Input[str] metric_name: A friendly name for the metrics from the rule group
-        :param pulumi.Input[str] name: A friendly name of the rule group
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,11 +75,6 @@ class RuleGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RuleGroupActivatedRuleArgs']]]] activated_rules: A list of activated rules, see below
-        :param pulumi.Input[str] arn: The ARN of the WAF Regional Rule Group.
-        :param pulumi.Input[str] metric_name: A friendly name for the metrics from the rule group
-        :param pulumi.Input[str] name: A friendly name of the rule group
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -118,41 +90,26 @@ class RuleGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="activatedRules")
     def activated_rules(self) -> pulumi.Output[Optional[List['outputs.RuleGroupActivatedRule']]]:
-        """
-        A list of activated rules, see below
-        """
         return pulumi.get(self, "activated_rules")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the WAF Regional Rule Group.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Output[str]:
-        """
-        A friendly name for the metrics from the rule group
-        """
         return pulumi.get(self, "metric_name")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A friendly name of the rule group
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

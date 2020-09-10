@@ -9,100 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Glacier
 {
-    /// <summary>
-    /// Provides a Glacier Vault Resource. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html) for a full explanation of the Glacier Vault functionality
-    /// 
-    /// &gt; **NOTE:** When removing a Glacier Vault, the Vault must be empty.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var awsSnsTopic = new Aws.Sns.Topic("awsSnsTopic", new Aws.Sns.TopicArgs
-    ///         {
-    ///         });
-    ///         var myArchive = new Aws.Glacier.Vault("myArchive", new Aws.Glacier.VaultArgs
-    ///         {
-    ///             Notifications = 
-    ///             {
-    ///                 new Aws.Glacier.Inputs.VaultNotificationArgs
-    ///                 {
-    ///                     SnsTopic = awsSnsTopic.Arn,
-    ///                     Events = 
-    ///                     {
-    ///                         "ArchiveRetrievalCompleted",
-    ///                         "InventoryRetrievalCompleted",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             AccessPolicy = @"{
-    ///     ""Version"":""2012-10-17"",
-    ///     ""Statement"":[
-    ///        {
-    ///           ""Sid"": ""add-read-only-perm"",
-    ///           ""Principal"": ""*"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Action"": [
-    ///              ""glacier:InitiateJob"",
-    ///              ""glacier:GetJobOutput""
-    ///           ],
-    ///           ""Resource"": ""arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive""
-    ///        }
-    ///     ]
-    /// }
-    /// ",
-    ///             Tags = 
-    ///             {
-    ///                 { "Test", "MyArchive" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Vault : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-        /// </summary>
         [Output("accessPolicy")]
         public Output<string?> AccessPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the vault.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The URI of the vault that was created.
-        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The notifications for the Vault. Fields documented below.
-        /// </summary>
         [Output("notifications")]
         public Output<ImmutableArray<Outputs.VaultNotification>> Notifications { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -152,25 +75,14 @@ namespace Pulumi.Aws.Glacier
 
     public sealed class VaultArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-        /// </summary>
         [Input("accessPolicy")]
         public Input<string>? AccessPolicy { get; set; }
 
-        /// <summary>
-        /// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("notifications")]
         private InputList<Inputs.VaultNotificationArgs>? _notifications;
-
-        /// <summary>
-        /// The notifications for the Vault. Fields documented below.
-        /// </summary>
         public InputList<Inputs.VaultNotificationArgs> Notifications
         {
             get => _notifications ?? (_notifications = new InputList<Inputs.VaultNotificationArgs>());
@@ -179,10 +91,6 @@ namespace Pulumi.Aws.Glacier
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -196,37 +104,20 @@ namespace Pulumi.Aws.Glacier
 
     public sealed class VaultState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-        /// </summary>
         [Input("accessPolicy")]
         public Input<string>? AccessPolicy { get; set; }
 
-        /// <summary>
-        /// The ARN of the vault.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The URI of the vault that was created.
-        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        /// <summary>
-        /// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("notifications")]
         private InputList<Inputs.VaultNotificationGetArgs>? _notifications;
-
-        /// <summary>
-        /// The notifications for the Vault. Fields documented below.
-        /// </summary>
         public InputList<Inputs.VaultNotificationGetArgs> Notifications
         {
             get => _notifications ?? (_notifications = new InputList<Inputs.VaultNotificationGetArgs>());
@@ -235,10 +126,6 @@ namespace Pulumi.Aws.Glacier
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

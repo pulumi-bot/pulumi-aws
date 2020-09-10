@@ -6,49 +6,6 @@ import * as utilities from "../utilities";
 
 import {RestApi} from "./index";
 
-/**
- * Provides an API Gateway REST Deployment.
- *
- * > **Note:** This resource depends on having at least one `aws.apigateway.Integration` created in the REST API, which
- * itself has other dependencies. To avoid race conditions when all resources are being created together, you need to add
- * implicit resource references via the `triggers` argument or explicit resource references using the
- * [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const myDemoAPI = new aws.apigateway.RestApi("myDemoAPI", {description: "This is my API for demonstration purposes"});
- * const myDemoResource = new aws.apigateway.Resource("myDemoResource", {
- *     restApi: myDemoAPI.id,
- *     parentId: myDemoAPI.rootResourceId,
- *     pathPart: "test",
- * });
- * const myDemoMethod = new aws.apigateway.Method("myDemoMethod", {
- *     restApi: myDemoAPI.id,
- *     resourceId: myDemoResource.id,
- *     httpMethod: "GET",
- *     authorization: "NONE",
- * });
- * const myDemoIntegration = new aws.apigateway.Integration("myDemoIntegration", {
- *     restApi: myDemoAPI.id,
- *     resourceId: myDemoResource.id,
- *     httpMethod: myDemoMethod.httpMethod,
- *     type: "MOCK",
- * });
- * const myDemoDeployment = new aws.apigateway.Deployment("myDemoDeployment", {
- *     restApi: myDemoAPI.id,
- *     stageName: "test",
- *     variables: {
- *         answer: "42",
- *     },
- * }, {
- *     dependsOn: [myDemoIntegration],
- * });
- * ```
- */
 export class Deployment extends pulumi.CustomResource {
     /**
      * Get an existing Deployment resource's state with the given name, ID, and optional extra
@@ -77,44 +34,14 @@ export class Deployment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Deployment.__pulumiType;
     }
 
-    /**
-     * The creation date of the deployment
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * The description of the deployment
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The execution ARN to be used in `lambdaPermission` resource's `sourceArn`
-     * when allowing API Gateway to invoke a Lambda function,
-     * e.g. `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
-     */
     public /*out*/ readonly executionArn!: pulumi.Output<string>;
-    /**
-     * The URL to invoke the API pointing to the stage,
-     * e.g. `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
-     */
     public /*out*/ readonly invokeUrl!: pulumi.Output<string>;
-    /**
-     * The ID of the associated REST API
-     */
     public readonly restApi!: pulumi.Output<string>;
-    /**
-     * The description of the stage
-     */
     public readonly stageDescription!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the stage. If the specified stage already exists, it will be updated to point to the new deployment. If the stage does not exist, a new one will be created and point to this deployment.
-     */
     public readonly stageName!: pulumi.Output<string | undefined>;
-    /**
-     * A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-     */
     public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A map that defines variables for the stage
-     */
     public readonly variables!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -168,44 +95,14 @@ export class Deployment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Deployment resources.
  */
 export interface DeploymentState {
-    /**
-     * The creation date of the deployment
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * The description of the deployment
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The execution ARN to be used in `lambdaPermission` resource's `sourceArn`
-     * when allowing API Gateway to invoke a Lambda function,
-     * e.g. `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
-     */
     readonly executionArn?: pulumi.Input<string>;
-    /**
-     * The URL to invoke the API pointing to the stage,
-     * e.g. `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
-     */
     readonly invokeUrl?: pulumi.Input<string>;
-    /**
-     * The ID of the associated REST API
-     */
     readonly restApi?: pulumi.Input<string | RestApi>;
-    /**
-     * The description of the stage
-     */
     readonly stageDescription?: pulumi.Input<string>;
-    /**
-     * The name of the stage. If the specified stage already exists, it will be updated to point to the new deployment. If the stage does not exist, a new one will be created and point to this deployment.
-     */
     readonly stageName?: pulumi.Input<string>;
-    /**
-     * A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-     */
     readonly triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A map that defines variables for the stage
-     */
     readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -213,28 +110,10 @@ export interface DeploymentState {
  * The set of arguments for constructing a Deployment resource.
  */
 export interface DeploymentArgs {
-    /**
-     * The description of the deployment
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The ID of the associated REST API
-     */
     readonly restApi: pulumi.Input<string | RestApi>;
-    /**
-     * The description of the stage
-     */
     readonly stageDescription?: pulumi.Input<string>;
-    /**
-     * The name of the stage. If the specified stage already exists, it will be updated to point to the new deployment. If the stage does not exist, a new one will be created and point to this deployment.
-     */
     readonly stageName?: pulumi.Input<string>;
-    /**
-     * A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-     */
     readonly triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A map that defines variables for the stage
-     */
     readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -10,49 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 route response.
-// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-//
-// ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewRouteResponse(ctx, "example", &apigatewayv2.RouteResponseArgs{
-// 			ApiId:            pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			RouteId:          pulumi.Any(aws_apigatewayv2_route.Example.Id),
-// 			RouteResponseKey: pulumi.String(fmt.Sprintf("%v%v", "$", "default")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RouteResponse struct {
 	pulumi.CustomResourceState
 
-	// The API identifier.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
+	ApiId                    pulumi.StringOutput    `pulumi:"apiId"`
 	ModelSelectionExpression pulumi.StringPtrOutput `pulumi:"modelSelectionExpression"`
-	// The response models for the route response.
-	ResponseModels pulumi.StringMapOutput `pulumi:"responseModels"`
-	// The identifier of the `apigatewayv2.Route`.
-	RouteId pulumi.StringOutput `pulumi:"routeId"`
-	// The route response key.
-	RouteResponseKey pulumi.StringOutput `pulumi:"routeResponseKey"`
+	ResponseModels           pulumi.StringMapOutput `pulumi:"responseModels"`
+	RouteId                  pulumi.StringOutput    `pulumi:"routeId"`
+	RouteResponseKey         pulumi.StringOutput    `pulumi:"routeResponseKey"`
 }
 
 // NewRouteResponse registers a new resource with the given unique name, arguments, and options.
@@ -92,29 +57,19 @@ func GetRouteResponse(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouteResponse resources.
 type routeResponseState struct {
-	// The API identifier.
-	ApiId *string `pulumi:"apiId"`
-	// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-	ModelSelectionExpression *string `pulumi:"modelSelectionExpression"`
-	// The response models for the route response.
-	ResponseModels map[string]string `pulumi:"responseModels"`
-	// The identifier of the `apigatewayv2.Route`.
-	RouteId *string `pulumi:"routeId"`
-	// The route response key.
-	RouteResponseKey *string `pulumi:"routeResponseKey"`
+	ApiId                    *string           `pulumi:"apiId"`
+	ModelSelectionExpression *string           `pulumi:"modelSelectionExpression"`
+	ResponseModels           map[string]string `pulumi:"responseModels"`
+	RouteId                  *string           `pulumi:"routeId"`
+	RouteResponseKey         *string           `pulumi:"routeResponseKey"`
 }
 
 type RouteResponseState struct {
-	// The API identifier.
-	ApiId pulumi.StringPtrInput
-	// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
+	ApiId                    pulumi.StringPtrInput
 	ModelSelectionExpression pulumi.StringPtrInput
-	// The response models for the route response.
-	ResponseModels pulumi.StringMapInput
-	// The identifier of the `apigatewayv2.Route`.
-	RouteId pulumi.StringPtrInput
-	// The route response key.
-	RouteResponseKey pulumi.StringPtrInput
+	ResponseModels           pulumi.StringMapInput
+	RouteId                  pulumi.StringPtrInput
+	RouteResponseKey         pulumi.StringPtrInput
 }
 
 func (RouteResponseState) ElementType() reflect.Type {
@@ -122,30 +77,20 @@ func (RouteResponseState) ElementType() reflect.Type {
 }
 
 type routeResponseArgs struct {
-	// The API identifier.
-	ApiId string `pulumi:"apiId"`
-	// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-	ModelSelectionExpression *string `pulumi:"modelSelectionExpression"`
-	// The response models for the route response.
-	ResponseModels map[string]string `pulumi:"responseModels"`
-	// The identifier of the `apigatewayv2.Route`.
-	RouteId string `pulumi:"routeId"`
-	// The route response key.
-	RouteResponseKey string `pulumi:"routeResponseKey"`
+	ApiId                    string            `pulumi:"apiId"`
+	ModelSelectionExpression *string           `pulumi:"modelSelectionExpression"`
+	ResponseModels           map[string]string `pulumi:"responseModels"`
+	RouteId                  string            `pulumi:"routeId"`
+	RouteResponseKey         string            `pulumi:"routeResponseKey"`
 }
 
 // The set of arguments for constructing a RouteResponse resource.
 type RouteResponseArgs struct {
-	// The API identifier.
-	ApiId pulumi.StringInput
-	// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
+	ApiId                    pulumi.StringInput
 	ModelSelectionExpression pulumi.StringPtrInput
-	// The response models for the route response.
-	ResponseModels pulumi.StringMapInput
-	// The identifier of the `apigatewayv2.Route`.
-	RouteId pulumi.StringInput
-	// The route response key.
-	RouteResponseKey pulumi.StringInput
+	ResponseModels           pulumi.StringMapInput
+	RouteId                  pulumi.StringInput
+	RouteResponseKey         pulumi.StringInput
 }
 
 func (RouteResponseArgs) ElementType() reflect.Type {

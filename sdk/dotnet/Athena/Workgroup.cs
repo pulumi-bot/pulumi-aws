@@ -9,82 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Athena
 {
-    /// <summary>
-    /// Provides an Athena Workgroup.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Athena.Workgroup("example", new Aws.Athena.WorkgroupArgs
-    ///         {
-    ///             Configuration = new Aws.Athena.Inputs.WorkgroupConfigurationArgs
-    ///             {
-    ///                 EnforceWorkgroupConfiguration = true,
-    ///                 PublishCloudwatchMetricsEnabled = true,
-    ///                 ResultConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationArgs
-    ///                 {
-    ///                     OutputLocation = "s3://{aws_s3_bucket.example.bucket}/output/",
-    ///                     EncryptionConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs
-    ///                     {
-    ///                         EncryptionOption = "SSE_KMS",
-    ///                         KmsKeyArn = aws_kms_key.Example.Arn,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Workgroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the workgroup
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block with various settings for the workgroup. Documented below.
-        /// </summary>
         [Output("configuration")]
         public Output<Outputs.WorkgroupConfiguration?> Configuration { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the workgroup.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the workgroup.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-        /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags for the workgroup.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -134,42 +78,23 @@ namespace Pulumi.Aws.Athena
 
     public sealed class WorkgroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block with various settings for the workgroup. Documented below.
-        /// </summary>
         [Input("configuration")]
         public Input<Inputs.WorkgroupConfigurationArgs>? Configuration { get; set; }
 
-        /// <summary>
-        /// Description of the workgroup.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
-        /// <summary>
-        /// Name of the workgroup.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags for the workgroup.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -183,48 +108,26 @@ namespace Pulumi.Aws.Athena
 
     public sealed class WorkgroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the workgroup
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Configuration block with various settings for the workgroup. Documented below.
-        /// </summary>
         [Input("configuration")]
         public Input<Inputs.WorkgroupConfigurationGetArgs>? Configuration { get; set; }
 
-        /// <summary>
-        /// Description of the workgroup.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
-        /// <summary>
-        /// Name of the workgroup.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags for the workgroup.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

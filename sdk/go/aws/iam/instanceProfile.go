@@ -9,56 +9,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IAM instance profile.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		role, err := iam.NewRole(ctx, "role", &iam.RoleArgs{
-// 			Path:             pulumi.String("/"),
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\": \"2012-10-17\",\n", "    \"Statement\": [\n", "        {\n", "            \"Action\": \"sts:AssumeRole\",\n", "            \"Principal\": {\n", "               \"Service\": \"ec2.amazonaws.com\"\n", "            },\n", "            \"Effect\": \"Allow\",\n", "            \"Sid\": \"\"\n", "        }\n", "    ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewInstanceProfile(ctx, "testProfile", &iam.InstanceProfileArgs{
-// 			Role: role.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type InstanceProfile struct {
 	pulumi.CustomResourceState
 
-	// The ARN assigned by AWS to the instance profile.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The creation timestamp of the instance profile.
-	CreateDate pulumi.StringOutput `pulumi:"createDate"`
-	// The profile's name. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+	Arn        pulumi.StringOutput    `pulumi:"arn"`
+	CreateDate pulumi.StringOutput    `pulumi:"createDate"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// Path in which to create the profile.
-	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// The role name to include in the profile.
-	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// The [unique ID][1] assigned by AWS.
-	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
+	Path       pulumi.StringPtrOutput `pulumi:"path"`
+	Role       pulumi.StringPtrOutput `pulumi:"role"`
+	UniqueId   pulumi.StringOutput    `pulumi:"uniqueId"`
 }
 
 // NewInstanceProfile registers a new resource with the given unique name, arguments, and options.
@@ -89,37 +49,23 @@ func GetInstanceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceProfile resources.
 type instanceProfileState struct {
-	// The ARN assigned by AWS to the instance profile.
-	Arn *string `pulumi:"arn"`
-	// The creation timestamp of the instance profile.
+	Arn        *string `pulumi:"arn"`
 	CreateDate *string `pulumi:"createDate"`
-	// The profile's name. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Path in which to create the profile.
-	Path *string `pulumi:"path"`
-	// The role name to include in the profile.
-	Role *string `pulumi:"role"`
-	// The [unique ID][1] assigned by AWS.
-	UniqueId *string `pulumi:"uniqueId"`
+	Path       *string `pulumi:"path"`
+	Role       *string `pulumi:"role"`
+	UniqueId   *string `pulumi:"uniqueId"`
 }
 
 type InstanceProfileState struct {
-	// The ARN assigned by AWS to the instance profile.
-	Arn pulumi.StringPtrInput
-	// The creation timestamp of the instance profile.
+	Arn        pulumi.StringPtrInput
 	CreateDate pulumi.StringPtrInput
-	// The profile's name. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// Path in which to create the profile.
-	Path pulumi.StringPtrInput
-	// The role name to include in the profile.
-	Role pulumi.StringPtrInput
-	// The [unique ID][1] assigned by AWS.
-	UniqueId pulumi.StringPtrInput
+	Path       pulumi.StringPtrInput
+	Role       pulumi.StringPtrInput
+	UniqueId   pulumi.StringPtrInput
 }
 
 func (InstanceProfileState) ElementType() reflect.Type {
@@ -127,26 +73,18 @@ func (InstanceProfileState) ElementType() reflect.Type {
 }
 
 type instanceProfileArgs struct {
-	// The profile's name. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Path in which to create the profile.
-	Path *string `pulumi:"path"`
-	// The role name to include in the profile.
-	Role interface{} `pulumi:"role"`
+	Name       *string     `pulumi:"name"`
+	NamePrefix *string     `pulumi:"namePrefix"`
+	Path       *string     `pulumi:"path"`
+	Role       interface{} `pulumi:"role"`
 }
 
 // The set of arguments for constructing a InstanceProfile resource.
 type InstanceProfileArgs struct {
-	// The profile's name. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// Path in which to create the profile.
-	Path pulumi.StringPtrInput
-	// The role name to include in the profile.
-	Role pulumi.Input
+	Path       pulumi.StringPtrInput
+	Role       pulumi.Input
 }
 
 func (InstanceProfileArgs) ElementType() reflect.Type {

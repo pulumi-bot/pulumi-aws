@@ -9,135 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a resource to manage the accepter's side of a VPC Peering Connection.
-    /// 
-    /// When a cross-account (requester's AWS account differs from the accepter's AWS account) or an inter-region
-    /// VPC Peering Connection is created, a VPC Peering Connection resource is automatically created in the
-    /// accepter's account.
-    /// The requester can use the `aws.ec2.VpcPeeringConnection` resource to manage its side of the connection
-    /// and the accepter can use the `aws.ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
-    /// connection into management.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var peer = new Aws.Provider("peer", new Aws.ProviderArgs
-    ///         {
-    ///             Region = "us-west-2",
-    ///         });
-    ///         // Accepter's credentials.
-    ///         var main = new Aws.Ec2.Vpc("main", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///         });
-    ///         var peerVpc = new Aws.Ec2.Vpc("peerVpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.1.0.0/16",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Peer,
-    ///         });
-    ///         var peerCallerIdentity = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
-    ///         // Requester's side of the connection.
-    ///         var peerVpcPeeringConnection = new Aws.Ec2.VpcPeeringConnection("peerVpcPeeringConnection", new Aws.Ec2.VpcPeeringConnectionArgs
-    ///         {
-    ///             VpcId = main.Id,
-    ///             PeerVpcId = peerVpc.Id,
-    ///             PeerOwnerId = peerCallerIdentity.Apply(peerCallerIdentity =&gt; peerCallerIdentity.AccountId),
-    ///             PeerRegion = "us-west-2",
-    ///             AutoAccept = false,
-    ///             Tags = 
-    ///             {
-    ///                 { "Side", "Requester" },
-    ///             },
-    ///         });
-    ///         // Accepter's side of the connection.
-    ///         var peerVpcPeeringConnectionAccepter = new Aws.Ec2.VpcPeeringConnectionAccepter("peerVpcPeeringConnectionAccepter", new Aws.Ec2.VpcPeeringConnectionAccepterArgs
-    ///         {
-    ///             VpcPeeringConnectionId = peerVpcPeeringConnection.Id,
-    ///             AutoAccept = true,
-    ///             Tags = 
-    ///             {
-    ///                 { "Side", "Accepter" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Peer,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpcPeeringConnectionAccepter : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The status of the VPC Peering Connection request.
-        /// </summary>
         [Output("acceptStatus")]
         public Output<string> AcceptStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// A configuration block that describes [VPC Peering Connection]
-        /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
-        /// </summary>
         [Output("accepter")]
         public Output<Outputs.VpcPeeringConnectionAccepterAccepter> Accepter { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether or not to accept the peering request. Defaults to `false`.
-        /// </summary>
         [Output("autoAccept")]
         public Output<bool?> AutoAccept { get; private set; } = null!;
 
-        /// <summary>
-        /// The AWS account ID of the owner of the requester VPC.
-        /// </summary>
         [Output("peerOwnerId")]
         public Output<string> PeerOwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The region of the accepter VPC.
-        /// </summary>
         [Output("peerRegion")]
         public Output<string> PeerRegion { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the requester VPC.
-        /// </summary>
         [Output("peerVpcId")]
         public Output<string> PeerVpcId { get; private set; } = null!;
 
-        /// <summary>
-        /// A configuration block that describes [VPC Peering Connection]
-        /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
-        /// </summary>
         [Output("requester")]
         public Output<Outputs.VpcPeeringConnectionAccepterRequester> Requester { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the accepter VPC.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC Peering Connection ID to manage.
-        /// </summary>
         [Output("vpcPeeringConnectionId")]
         public Output<string> VpcPeeringConnectionId { get; private set; } = null!;
 
@@ -187,41 +87,23 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcPeeringConnectionAccepterArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A configuration block that describes [VPC Peering Connection]
-        /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
-        /// </summary>
         [Input("accepter")]
         public Input<Inputs.VpcPeeringConnectionAccepterAccepterArgs>? Accepter { get; set; }
 
-        /// <summary>
-        /// Whether or not to accept the peering request. Defaults to `false`.
-        /// </summary>
         [Input("autoAccept")]
         public Input<bool>? AutoAccept { get; set; }
 
-        /// <summary>
-        /// A configuration block that describes [VPC Peering Connection]
-        /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
-        /// </summary>
         [Input("requester")]
         public Input<Inputs.VpcPeeringConnectionAccepterRequesterArgs>? Requester { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC Peering Connection ID to manage.
-        /// </summary>
         [Input("vpcPeeringConnectionId", required: true)]
         public Input<string> VpcPeeringConnectionId { get; set; } = null!;
 
@@ -232,71 +114,38 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcPeeringConnectionAccepterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The status of the VPC Peering Connection request.
-        /// </summary>
         [Input("acceptStatus")]
         public Input<string>? AcceptStatus { get; set; }
 
-        /// <summary>
-        /// A configuration block that describes [VPC Peering Connection]
-        /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
-        /// </summary>
         [Input("accepter")]
         public Input<Inputs.VpcPeeringConnectionAccepterAccepterGetArgs>? Accepter { get; set; }
 
-        /// <summary>
-        /// Whether or not to accept the peering request. Defaults to `false`.
-        /// </summary>
         [Input("autoAccept")]
         public Input<bool>? AutoAccept { get; set; }
 
-        /// <summary>
-        /// The AWS account ID of the owner of the requester VPC.
-        /// </summary>
         [Input("peerOwnerId")]
         public Input<string>? PeerOwnerId { get; set; }
 
-        /// <summary>
-        /// The region of the accepter VPC.
-        /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
 
-        /// <summary>
-        /// The ID of the requester VPC.
-        /// </summary>
         [Input("peerVpcId")]
         public Input<string>? PeerVpcId { get; set; }
 
-        /// <summary>
-        /// A configuration block that describes [VPC Peering Connection]
-        /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
-        /// </summary>
         [Input("requester")]
         public Input<Inputs.VpcPeeringConnectionAccepterRequesterGetArgs>? Requester { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the accepter VPC.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
-        /// <summary>
-        /// The VPC Peering Connection ID to manage.
-        /// </summary>
         [Input("vpcPeeringConnectionId")]
         public Input<string>? VpcPeeringConnectionId { get; set; }
 

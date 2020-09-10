@@ -62,33 +62,21 @@ class GetContainerDefinitionResult:
     @property
     @pulumi.getter
     def cpu(self) -> float:
-        """
-        The CPU limit for this container definition
-        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter(name="disableNetworking")
     def disable_networking(self) -> bool:
-        """
-        Indicator if networking is disabled
-        """
         return pulumi.get(self, "disable_networking")
 
     @property
     @pulumi.getter(name="dockerLabels")
     def docker_labels(self) -> Mapping[str, str]:
-        """
-        Set docker labels
-        """
         return pulumi.get(self, "docker_labels")
 
     @property
     @pulumi.getter
     def environment(self) -> Mapping[str, str]:
-        """
-        The environment in use
-        """
         return pulumi.get(self, "environment")
 
     @property
@@ -102,33 +90,21 @@ class GetContainerDefinitionResult:
     @property
     @pulumi.getter
     def image(self) -> str:
-        """
-        The docker image in use, including the digest
-        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="imageDigest")
     def image_digest(self) -> str:
-        """
-        The digest of the docker image in use
-        """
         return pulumi.get(self, "image_digest")
 
     @property
     @pulumi.getter
     def memory(self) -> float:
-        """
-        The memory limit for this container definition
-        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter(name="memoryReservation")
     def memory_reservation(self) -> float:
-        """
-        The soft limit (in MiB) of memory to reserve for the container. When system memory is under contention, Docker attempts to keep the container memory to this soft limit
-        """
         return pulumi.get(self, "memory_reservation")
 
     @property
@@ -160,22 +136,7 @@ def get_container_definition(container_name: Optional[str] = None,
                              task_definition: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerDefinitionResult:
     """
-    The ECS container definition data source allows access to details of
-    a specific container within an AWS ECS service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    ecs_mongo = aws.ecs.get_container_definition(task_definition=aws_ecs_task_definition["mongo"]["id"],
-        container_name="mongodb")
-    ```
-
-
-    :param str container_name: The name of the container definition
-    :param str task_definition: The ARN of the task definition which contains the container
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['containerName'] = container_name

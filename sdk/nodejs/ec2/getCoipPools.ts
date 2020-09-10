@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides information for multiple EC2 Customer-Owned IP Pools, such as their identifiers.
- */
 export function getCoipPools(args?: GetCoipPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetCoipPoolsResult> {
     args = args || {};
     if (!opts) {
@@ -28,14 +25,7 @@ export function getCoipPools(args?: GetCoipPoolsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getCoipPools.
  */
 export interface GetCoipPoolsArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: inputs.ec2.GetCoipPoolsFilter[];
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired aws_ec2_coip_pools.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -48,9 +38,6 @@ export interface GetCoipPoolsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set of COIP Pool Identifiers
-     */
     readonly poolIds: string[];
     readonly tags: {[key: string]: string};
 }

@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Eks.Inputs
 
     public sealed class NodeGroupResourceAutoscalingGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the AutoScaling Group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

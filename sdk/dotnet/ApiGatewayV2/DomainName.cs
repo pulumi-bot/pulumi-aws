@@ -9,68 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGatewayV2
 {
-    /// <summary>
-    /// Manages an Amazon API Gateway Version 2 domain name.
-    /// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
-    /// 
-    /// &gt; **Note:** This resource establishes ownership of and the TLS settings for
-    /// a particular domain name. An API stage can be associated with the domain name using the `aws.apigatewayv2.ApiMapping` resource.
-    /// 
-    /// ## Example Usage
-    /// ### Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.ApiGatewayV2.DomainName("example", new Aws.ApiGatewayV2.DomainNameArgs
-    ///         {
-    ///             DomainName = "ws-api.example.com",
-    ///             DomainNameConfiguration = new Aws.ApiGatewayV2.Inputs.DomainNameDomainNameConfigurationArgs
-    ///             {
-    ///                 CertificateArn = aws_acm_certificate.Example.Arn,
-    ///                 EndpointType = "REGIONAL",
-    ///                 SecurityPolicy = "TLS_1_2",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DomainName : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-        /// </summary>
         [Output("apiMappingSelectionExpression")]
         public Output<string> ApiMappingSelectionExpression { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the domain name.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain name.
-        /// </summary>
         [Output("domainName")]
         public Output<string> Domain { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain name configuration.
-        /// </summary>
         [Output("domainNameConfiguration")]
         public Output<Outputs.DomainNameDomainNameConfiguration> DomainNameConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the domain name.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -120,24 +72,14 @@ namespace Pulumi.Aws.ApiGatewayV2
 
     public sealed class DomainNameArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The domain name.
-        /// </summary>
         [Input("domainName", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
-        /// <summary>
-        /// The domain name configuration.
-        /// </summary>
         [Input("domainNameConfiguration", required: true)]
         public Input<Inputs.DomainNameDomainNameConfigurationArgs> DomainNameConfiguration { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the domain name.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -151,36 +93,20 @@ namespace Pulumi.Aws.ApiGatewayV2
 
     public sealed class DomainNameState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-        /// </summary>
         [Input("apiMappingSelectionExpression")]
         public Input<string>? ApiMappingSelectionExpression { get; set; }
 
-        /// <summary>
-        /// The ARN of the domain name.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The domain name.
-        /// </summary>
         [Input("domainName")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// The domain name configuration.
-        /// </summary>
         [Input("domainNameConfiguration")]
         public Input<Inputs.DomainNameDomainNameConfigurationGetArgs>? DomainNameConfiguration { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the domain name.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

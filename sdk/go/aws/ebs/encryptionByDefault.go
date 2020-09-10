@@ -9,36 +9,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `ebs.DefaultKmsKey` resource.
-//
-// > **NOTE:** Removing this resource disables default EBS encryption.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ebs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ebs.NewEncryptionByDefault(ctx, "example", &ebs.EncryptionByDefaultArgs{
-// 			Enabled: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type EncryptionByDefault struct {
 	pulumi.CustomResourceState
 
-	// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 }
 
@@ -70,12 +43,10 @@ func GetEncryptionByDefault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EncryptionByDefault resources.
 type encryptionByDefaultState struct {
-	// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 }
 
 type EncryptionByDefaultState struct {
-	// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 }
 
@@ -84,13 +55,11 @@ func (EncryptionByDefaultState) ElementType() reflect.Type {
 }
 
 type encryptionByDefaultArgs struct {
-	// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 }
 
 // The set of arguments for constructing a EncryptionByDefault resource.
 type EncryptionByDefaultArgs struct {
-	// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 }
 

@@ -24,63 +24,9 @@ class PolicyAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Attaches a Managed IAM Policy to user(s), role(s), and/or group(s)
-
-        !> **WARNING:** The iam.PolicyAttachment resource creates **exclusive** attachments of IAM policies. Across the entire AWS account, all of the users/roles/groups to which a single policy is attached must be declared by a single iam.PolicyAttachment resource. This means that even any users/roles/groups that have the attached policy via any other mechanism (including other resources managed by this provider) will have that attached policy revoked by this resource. Consider `iam.RolePolicyAttachment`, `iam.UserPolicyAttachment`, or `iam.GroupPolicyAttachment` instead. These resources do not enforce exclusive attachment of an IAM policy.
-
-        > **NOTE:** The usage of this resource conflicts with the `iam.GroupPolicyAttachment`, `iam.RolePolicyAttachment`, and `iam.UserPolicyAttachment` resources and will permanently show a difference if both are defined.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user = aws.iam.User("user")
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "ec2.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-        \"\"\")
-        group = aws.iam.Group("group")
-        policy = aws.iam.Policy("policy",
-            description="A test policy",
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "ec2:Describe*"
-              ],
-              "Effect": "Allow",
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        test_attach = aws.iam.PolicyAttachment("test-attach",
-            users=[user.name],
-            roles=[role.name],
-            groups=[group.name],
-            policy_arn=policy.arn)
-        ```
-
+        Create a PolicyAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] groups: The group(s) the policy should be applied to
-        :param pulumi.Input[str] name: The name of the attachment. This cannot be an empty string.
-        :param pulumi.Input[str] policy_arn: The ARN of the policy you want to apply
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: The role(s) the policy should be applied to
-        :param pulumi.Input[List[pulumi.Input[str]]] users: The user(s) the policy should be applied to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,11 +74,6 @@ class PolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] groups: The group(s) the policy should be applied to
-        :param pulumi.Input[str] name: The name of the attachment. This cannot be an empty string.
-        :param pulumi.Input[str] policy_arn: The ARN of the policy you want to apply
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: The role(s) the policy should be applied to
-        :param pulumi.Input[List[pulumi.Input[str]]] users: The user(s) the policy should be applied to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -148,41 +89,26 @@ class PolicyAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def groups(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        The group(s) the policy should be applied to
-        """
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the attachment. This cannot be an empty string.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="policyArn")
     def policy_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the policy you want to apply
-        """
         return pulumi.get(self, "policy_arn")
 
     @property
     @pulumi.getter
     def roles(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        The role(s) the policy should be applied to
-        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def users(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        The user(s) the policy should be applied to
-        """
         return pulumi.get(self, "users")
 
     def translate_output_property(self, prop):

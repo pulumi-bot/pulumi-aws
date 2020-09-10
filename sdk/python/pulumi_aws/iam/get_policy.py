@@ -42,17 +42,11 @@ class GetPolicyResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) specifying the policy.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the policy.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -66,25 +60,16 @@ class GetPolicyResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the IAM policy.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        The path to the policy.
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def policy(self) -> str:
-        """
-        The policy document of the policy.
-        """
         return pulumi.get(self, "policy")
 
 
@@ -105,20 +90,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(arn: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
-    This data source can be used to fetch information about a specific
-    IAM policy.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.iam.get_policy(arn="arn:aws:iam::123456789012:policy/UsersManageOwnCredentials")
-    ```
-
-
-    :param str arn: ARN of the IAM policy.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['arn'] = arn

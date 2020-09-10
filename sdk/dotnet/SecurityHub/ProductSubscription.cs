@@ -9,49 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.SecurityHub
 {
-    /// <summary>
-    /// Subscribes to a Security Hub product.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleAccount = new Aws.SecurityHub.Account("exampleAccount", new Aws.SecurityHub.AccountArgs
-    ///         {
-    ///         });
-    ///         var current = Output.Create(Aws.GetRegion.InvokeAsync());
-    ///         var exampleProductSubscription = new Aws.SecurityHub.ProductSubscription("exampleProductSubscription", new Aws.SecurityHub.ProductSubscriptionArgs
-    ///         {
-    ///             ProductArn = current.Apply(current =&gt; $"arn:aws:securityhub:{current.Name}:733251395267:product/alertlogic/althreatmanagement"),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleAccount,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ProductSubscription : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
-        /// </summary>
         [Output("productArn")]
         public Output<string> ProductArn { get; private set; } = null!;
 
@@ -101,9 +63,6 @@ namespace Pulumi.Aws.SecurityHub
 
     public sealed class ProductSubscriptionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
-        /// </summary>
         [Input("productArn", required: true)]
         public Input<string> ProductArn { get; set; } = null!;
 
@@ -114,15 +73,9 @@ namespace Pulumi.Aws.SecurityHub
 
     public sealed class ProductSubscriptionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
-        /// </summary>
         [Input("productArn")]
         public Input<string>? ProductArn { get; set; }
 

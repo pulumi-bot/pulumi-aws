@@ -15,9 +15,6 @@ namespace Pulumi.Aws.Ec2.Outputs
     {
         public readonly bool? AssociatePublicIpAddress;
         public readonly bool DeleteOnTermination;
-        /// <summary>
-        /// Description of the launch template.
-        /// </summary>
         public readonly string Description;
         public readonly int DeviceIndex;
         public readonly int Ipv4AddressCount;

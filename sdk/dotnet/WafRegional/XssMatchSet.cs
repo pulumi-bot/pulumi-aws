@@ -9,57 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafRegional
 {
-    /// <summary>
-    /// Provides a WAF Regional XSS Match Set Resource for use with Application Load Balancer.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var xssMatchSet = new Aws.WafRegional.XssMatchSet("xssMatchSet", new Aws.WafRegional.XssMatchSetArgs
-    ///         {
-    ///             XssMatchTuples = 
-    ///             {
-    ///                 new Aws.WafRegional.Inputs.XssMatchSetXssMatchTupleArgs
-    ///                 {
-    ///                     FieldToMatch = new Aws.WafRegional.Inputs.XssMatchSetXssMatchTupleFieldToMatchArgs
-    ///                     {
-    ///                         Type = "URI",
-    ///                     },
-    ///                     TextTransformation = "NONE",
-    ///                 },
-    ///                 new Aws.WafRegional.Inputs.XssMatchSetXssMatchTupleArgs
-    ///                 {
-    ///                     FieldToMatch = new Aws.WafRegional.Inputs.XssMatchSetXssMatchTupleFieldToMatchArgs
-    ///                     {
-    ///                         Type = "QUERY_STRING",
-    ///                     },
-    ///                     TextTransformation = "NONE",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class XssMatchSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the set
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-        /// </summary>
         [Output("xssMatchTuples")]
         public Output<ImmutableArray<Outputs.XssMatchSetXssMatchTuple>> XssMatchTuples { get; private set; } = null!;
 
@@ -109,18 +63,11 @@ namespace Pulumi.Aws.WafRegional
 
     public sealed class XssMatchSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the set
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("xssMatchTuples")]
         private InputList<Inputs.XssMatchSetXssMatchTupleArgs>? _xssMatchTuples;
-
-        /// <summary>
-        /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-        /// </summary>
         public InputList<Inputs.XssMatchSetXssMatchTupleArgs> XssMatchTuples
         {
             get => _xssMatchTuples ?? (_xssMatchTuples = new InputList<Inputs.XssMatchSetXssMatchTupleArgs>());
@@ -134,18 +81,11 @@ namespace Pulumi.Aws.WafRegional
 
     public sealed class XssMatchSetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the set
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("xssMatchTuples")]
         private InputList<Inputs.XssMatchSetXssMatchTupleGetArgs>? _xssMatchTuples;
-
-        /// <summary>
-        /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-        /// </summary>
         public InputList<Inputs.XssMatchSetXssMatchTupleGetArgs> XssMatchTuples
         {
             get => _xssMatchTuples ?? (_xssMatchTuples = new InputList<Inputs.XssMatchSetXssMatchTupleGetArgs>());

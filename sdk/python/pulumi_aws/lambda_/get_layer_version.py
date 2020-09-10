@@ -60,9 +60,6 @@ class GetLayerVersionResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the Lambda Layer with version.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -73,25 +70,16 @@ class GetLayerVersionResult:
     @property
     @pulumi.getter(name="compatibleRuntimes")
     def compatible_runtimes(self) -> List[str]:
-        """
-        A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleRuntimes) the specific Lambda Layer version is compatible with.
-        """
         return pulumi.get(self, "compatible_runtimes")
 
     @property
     @pulumi.getter(name="createdDate")
     def created_date(self) -> str:
-        """
-        The date this resource was created.
-        """
         return pulumi.get(self, "created_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description of the specific Lambda Layer version.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -105,9 +93,6 @@ class GetLayerVersionResult:
     @property
     @pulumi.getter(name="layerArn")
     def layer_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the Lambda Layer without version.
-        """
         return pulumi.get(self, "layer_arn")
 
     @property
@@ -118,33 +103,21 @@ class GetLayerVersionResult:
     @property
     @pulumi.getter(name="licenseInfo")
     def license_info(self) -> str:
-        """
-        License info associated with the specific Lambda Layer version.
-        """
         return pulumi.get(self, "license_info")
 
     @property
     @pulumi.getter(name="sourceCodeHash")
     def source_code_hash(self) -> str:
-        """
-        Base64-encoded representation of raw SHA-256 sum of the zip file.
-        """
         return pulumi.get(self, "source_code_hash")
 
     @property
     @pulumi.getter(name="sourceCodeSize")
     def source_code_size(self) -> float:
-        """
-        The size in bytes of the function .zip file.
-        """
         return pulumi.get(self, "source_code_size")
 
     @property
     @pulumi.getter
     def version(self) -> float:
-        """
-        This Lamba Layer version.
-        """
         return pulumi.get(self, "version")
 
 
@@ -173,23 +146,7 @@ def get_layer_version(compatible_runtime: Optional[str] = None,
                       version: Optional[float] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLayerVersionResult:
     """
-    Provides information about a Lambda Layer Version.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    layer_name = config.require("layerName")
-    existing = aws.lambda.get_layer_version(layer_name=layer_name)
-    ```
-
-
-    :param str compatible_runtime: Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
-    :param str layer_name: Name of the lambda layer.
-    :param float version: Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['compatibleRuntime'] = compatible_runtime

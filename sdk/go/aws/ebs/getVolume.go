@@ -7,46 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get information about an EBS volume for use in other
-// resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ebs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		_, err := ebs.LookupVolume(ctx, &ebs.LookupVolumeArgs{
-// 			Filters: []ebs.GetVolumeFilter{
-// 				ebs.GetVolumeFilter{
-// 					Name: "volume-type",
-// 					Values: []string{
-// 						"gp2",
-// 					},
-// 				},
-// 				ebs.GetVolumeFilter{
-// 					Name: "tag:Name",
-// 					Values: []string{
-// 						"Example",
-// 					},
-// 				},
-// 			},
-// 			MostRecent: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	var rv LookupVolumeResult
 	err := ctx.Invoke("aws:ebs/getVolume:getVolume", args, &rv, opts...)
@@ -58,45 +18,27 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getVolume.
 type LookupVolumeArgs struct {
-	// One or more name/value pairs to filter off of. There are
-	// several valid keys, for a full reference, check out
-	// [describe-volumes in the AWS CLI reference][1].
-	Filters []GetVolumeFilter `pulumi:"filters"`
-	// If more than one result is returned, use the most
-	// recent Volume.
-	MostRecent *bool `pulumi:"mostRecent"`
-	// A map of tags for the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Filters    []GetVolumeFilter `pulumi:"filters"`
+	MostRecent *bool             `pulumi:"mostRecent"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getVolume.
 type LookupVolumeResult struct {
-	// The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-	Arn string `pulumi:"arn"`
-	// The AZ where the EBS volume exists.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Whether the disk is encrypted.
-	Encrypted bool              `pulumi:"encrypted"`
-	Filters   []GetVolumeFilter `pulumi:"filters"`
+	Arn              string            `pulumi:"arn"`
+	AvailabilityZone string            `pulumi:"availabilityZone"`
+	Encrypted        bool              `pulumi:"encrypted"`
+	Filters          []GetVolumeFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The amount of IOPS for the disk.
-	Iops int `pulumi:"iops"`
-	// The ARN for the KMS encryption key.
-	KmsKeyId   string `pulumi:"kmsKeyId"`
-	MostRecent *bool  `pulumi:"mostRecent"`
-	// (Optional) Specifies whether Amazon EBS Multi-Attach is enabled.
-	MultiAttachEnabled bool `pulumi:"multiAttachEnabled"`
-	// The Amazon Resource Name (ARN) of the Outpost.
-	OutpostArn string `pulumi:"outpostArn"`
-	// The size of the drive in GiBs.
-	Size int `pulumi:"size"`
-	// The snapshotId the EBS volume is based off.
-	SnapshotId string `pulumi:"snapshotId"`
-	// A map of tags for the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The volume ID (e.g. vol-59fcb34e).
-	VolumeId string `pulumi:"volumeId"`
-	// The type of EBS volume.
-	VolumeType string `pulumi:"volumeType"`
+	Id                 string            `pulumi:"id"`
+	Iops               int               `pulumi:"iops"`
+	KmsKeyId           string            `pulumi:"kmsKeyId"`
+	MostRecent         *bool             `pulumi:"mostRecent"`
+	MultiAttachEnabled bool              `pulumi:"multiAttachEnabled"`
+	OutpostArn         string            `pulumi:"outpostArn"`
+	Size               int               `pulumi:"size"`
+	SnapshotId         string            `pulumi:"snapshotId"`
+	Tags               map[string]string `pulumi:"tags"`
+	VolumeId           string            `pulumi:"volumeId"`
+	VolumeType         string            `pulumi:"volumeType"`
 }

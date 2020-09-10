@@ -24,22 +24,9 @@ class ThingType(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates and manages an AWS IoT Thing Type.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.iot.ThingType("foo")
-        ```
-
+        Create a ThingType resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] deprecated: Whether the thing type is deprecated. If true, no new things could be associated with this type.
-        :param pulumi.Input[str] name: The name of the thing type.
-        :param pulumi.Input[pulumi.InputType['ThingTypePropertiesArgs']] properties: , Configuration block that can contain the following properties of the thing type:
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,10 +70,6 @@ class ThingType(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the created AWS IoT Thing Type.
-        :param pulumi.Input[bool] deprecated: Whether the thing type is deprecated. If true, no new things could be associated with this type.
-        :param pulumi.Input[str] name: The name of the thing type.
-        :param pulumi.Input[pulumi.InputType['ThingTypePropertiesArgs']] properties: , Configuration block that can contain the following properties of the thing type:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -101,33 +84,21 @@ class ThingType(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the created AWS IoT Thing Type.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def deprecated(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether the thing type is deprecated. If true, no new things could be associated with this type.
-        """
         return pulumi.get(self, "deprecated")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the thing type.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional['outputs.ThingTypeProperties']]:
-        """
-        , Configuration block that can contain the following properties of the thing type:
-        """
         return pulumi.get(self, "properties")
 
     def translate_output_property(self, prop):

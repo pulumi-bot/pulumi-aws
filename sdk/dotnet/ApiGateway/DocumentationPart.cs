@@ -9,55 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides a settings of an API Gateway Documentation Part.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRestApi = new Aws.ApiGateway.RestApi("exampleRestApi", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///         });
-    ///         var exampleDocumentationPart = new Aws.ApiGateway.DocumentationPart("exampleDocumentationPart", new Aws.ApiGateway.DocumentationPartArgs
-    ///         {
-    ///             Location = new Aws.ApiGateway.Inputs.DocumentationPartLocationArgs
-    ///             {
-    ///                 Type = "METHOD",
-    ///                 Method = "GET",
-    ///                 Path = "/example",
-    ///             },
-    ///             Properties = "{\"description\":\"Example description\"}",
-    ///             RestApiId = exampleRestApi.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DocumentationPart : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The location of the targeted API entity of the to-be-created documentation part. See below.
-        /// </summary>
         [Output("location")]
         public Output<Outputs.DocumentationPartLocation> Location { get; private set; } = null!;
 
-        /// <summary>
-        /// A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
-        /// </summary>
         [Output("properties")]
         public Output<string> Properties { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated Rest API
-        /// </summary>
         [Output("restApiId")]
         public Output<string> RestApiId { get; private set; } = null!;
 
@@ -107,21 +66,12 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class DocumentationPartArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The location of the targeted API entity of the to-be-created documentation part. See below.
-        /// </summary>
         [Input("location", required: true)]
         public Input<Inputs.DocumentationPartLocationArgs> Location { get; set; } = null!;
 
-        /// <summary>
-        /// A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
-        /// </summary>
         [Input("properties", required: true)]
         public Input<string> Properties { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated Rest API
-        /// </summary>
         [Input("restApiId", required: true)]
         public Input<string> RestApiId { get; set; } = null!;
 
@@ -132,21 +82,12 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class DocumentationPartState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The location of the targeted API entity of the to-be-created documentation part. See below.
-        /// </summary>
         [Input("location")]
         public Input<Inputs.DocumentationPartLocationGetArgs>? Location { get; set; }
 
-        /// <summary>
-        /// A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
-        /// </summary>
         [Input("properties")]
         public Input<string>? Properties { get; set; }
 
-        /// <summary>
-        /// The ID of the associated Rest API
-        /// </summary>
         [Input("restApiId")]
         public Input<string>? RestApiId { get; set; }
 

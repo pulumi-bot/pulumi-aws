@@ -100,41 +100,26 @@ class GetFunctionResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Unqualified (no `:QUALIFIER` or `:VERSION` suffix) Amazon Resource Name (ARN) identifying your Lambda Function. See also `qualified_arn`.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="deadLetterConfig")
     def dead_letter_config(self) -> 'outputs.GetFunctionDeadLetterConfigResult':
-        """
-        Configure the function's *dead letter queue*.
-        """
         return pulumi.get(self, "dead_letter_config")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description of what your Lambda Function does.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def environment(self) -> 'outputs.GetFunctionEnvironmentResult':
-        """
-        The Lambda environment's configuration settings.
-        """
         return pulumi.get(self, "environment")
 
     @property
     @pulumi.getter(name="fileSystemConfigs")
     def file_system_configs(self) -> List['outputs.GetFunctionFileSystemConfigResult']:
-        """
-        The connection settings for an Amazon EFS file system.
-        """
         return pulumi.get(self, "file_system_configs")
 
     @property
@@ -145,9 +130,6 @@ class GetFunctionResult:
     @property
     @pulumi.getter
     def handler(self) -> str:
-        """
-        The function entrypoint in your code.
-        """
         return pulumi.get(self, "handler")
 
     @property
@@ -161,49 +143,31 @@ class GetFunctionResult:
     @property
     @pulumi.getter(name="invokeArn")
     def invoke_arn(self) -> str:
-        """
-        The ARN to be used for invoking Lambda Function from API Gateway.
-        """
         return pulumi.get(self, "invoke_arn")
 
     @property
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> str:
-        """
-        The ARN for the KMS encryption key.
-        """
         return pulumi.get(self, "kms_key_arn")
 
     @property
     @pulumi.getter(name="lastModified")
     def last_modified(self) -> str:
-        """
-        The date this resource was last modified.
-        """
         return pulumi.get(self, "last_modified")
 
     @property
     @pulumi.getter
     def layers(self) -> List[str]:
-        """
-        A list of Lambda Layer ARNs attached to your Lambda Function.
-        """
         return pulumi.get(self, "layers")
 
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> float:
-        """
-        Amount of memory in MB your Lambda Function can use at runtime.
-        """
         return pulumi.get(self, "memory_size")
 
     @property
     @pulumi.getter(name="qualifiedArn")
     def qualified_arn(self) -> str:
-        """
-        Qualified (`:QUALIFIER` or `:VERSION` suffix) Amazon Resource Name (ARN) identifying your Lambda Function. See also `arn`.
-        """
         return pulumi.get(self, "qualified_arn")
 
     @property
@@ -214,41 +178,26 @@ class GetFunctionResult:
     @property
     @pulumi.getter(name="reservedConcurrentExecutions")
     def reserved_concurrent_executions(self) -> float:
-        """
-        The amount of reserved concurrent executions for this lambda function or `-1` if unreserved.
-        """
         return pulumi.get(self, "reserved_concurrent_executions")
 
     @property
     @pulumi.getter
     def role(self) -> str:
-        """
-        IAM role attached to the Lambda Function.
-        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
     def runtime(self) -> str:
-        """
-        The runtime environment for the Lambda function..
-        """
         return pulumi.get(self, "runtime")
 
     @property
     @pulumi.getter(name="sourceCodeHash")
     def source_code_hash(self) -> str:
-        """
-        Base64-encoded representation of raw SHA-256 sum of the zip file.
-        """
         return pulumi.get(self, "source_code_hash")
 
     @property
     @pulumi.getter(name="sourceCodeSize")
     def source_code_size(self) -> float:
-        """
-        The size in bytes of the function .zip file.
-        """
         return pulumi.get(self, "source_code_size")
 
     @property
@@ -259,33 +208,21 @@ class GetFunctionResult:
     @property
     @pulumi.getter
     def timeout(self) -> float:
-        """
-        The function execution time at which Lambda should terminate the function.
-        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="tracingConfig")
     def tracing_config(self) -> 'outputs.GetFunctionTracingConfigResult':
-        """
-        Tracing settings of the function.
-        """
         return pulumi.get(self, "tracing_config")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        The version of the Lambda function.
-        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="vpcConfig")
     def vpc_config(self) -> 'outputs.GetFunctionVpcConfigResult':
-        """
-        VPC configuration associated with your Lambda function.
-        """
         return pulumi.get(self, "vpc_config")
 
 
@@ -327,22 +264,7 @@ def get_function(function_name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionResult:
     """
-    Provides information about a Lambda Function.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    function_name = config.require("functionName")
-    existing = aws.lambda.get_function(function_name=function_name)
-    ```
-
-
-    :param str function_name: Name of the lambda function.
-    :param str qualifier: Alias name or version number of the lambda function. e.g. `$LATEST`, `my-alias`, or `1`
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['functionName'] = function_name

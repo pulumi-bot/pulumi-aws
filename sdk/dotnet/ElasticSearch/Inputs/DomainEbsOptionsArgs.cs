@@ -12,29 +12,15 @@ namespace Pulumi.Aws.ElasticSearch.Inputs
 
     public sealed class DomainEbsOptionsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether EBS volumes are attached to data nodes in the domain.
-        /// </summary>
         [Input("ebsEnabled", required: true)]
         public Input<bool> EbsEnabled { get; set; } = null!;
 
-        /// <summary>
-        /// The baseline input/output (I/O) performance of EBS volumes
-        /// attached to data nodes. Applicable only for the Provisioned IOPS EBS volume type.
-        /// </summary>
         [Input("iops")]
         public Input<int>? Iops { get; set; }
 
-        /// <summary>
-        /// The size of EBS volumes attached to data nodes (in GB).
-        /// **Required** if `ebs_enabled` is set to `true`.
-        /// </summary>
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
 
-        /// <summary>
-        /// The type of EBS volumes attached to data nodes.
-        /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
 

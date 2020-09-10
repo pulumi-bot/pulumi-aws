@@ -12,15 +12,9 @@ namespace Pulumi.Aws.Dms.Inputs
 
     public sealed class EndpointKafkaSettingsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Kafka broker location. Specify in the form broker-hostname-or-ip:port.
-        /// </summary>
         [Input("broker", required: true)]
         public Input<string> Broker { get; set; } = null!;
 
-        /// <summary>
-        /// Kafka topic for migration. Defaults to `kafka-default-topic`.
-        /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
 

@@ -11,16 +11,11 @@ import (
 )
 
 type DirectorySelfServicePermissions struct {
-	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
-	ChangeComputeType *bool `pulumi:"changeComputeType"`
-	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+	ChangeComputeType  *bool `pulumi:"changeComputeType"`
 	IncreaseVolumeSize *bool `pulumi:"increaseVolumeSize"`
-	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
-	RebuildWorkspace *bool `pulumi:"rebuildWorkspace"`
-	// Whether WorkSpaces directory users can restart their workspace. Default `true`.
-	RestartWorkspace *bool `pulumi:"restartWorkspace"`
-	// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
-	SwitchRunningMode *bool `pulumi:"switchRunningMode"`
+	RebuildWorkspace   *bool `pulumi:"rebuildWorkspace"`
+	RestartWorkspace   *bool `pulumi:"restartWorkspace"`
+	SwitchRunningMode  *bool `pulumi:"switchRunningMode"`
 }
 
 // DirectorySelfServicePermissionsInput is an input type that accepts DirectorySelfServicePermissionsArgs and DirectorySelfServicePermissionsOutput values.
@@ -35,16 +30,11 @@ type DirectorySelfServicePermissionsInput interface {
 }
 
 type DirectorySelfServicePermissionsArgs struct {
-	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
-	ChangeComputeType pulumi.BoolPtrInput `pulumi:"changeComputeType"`
-	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+	ChangeComputeType  pulumi.BoolPtrInput `pulumi:"changeComputeType"`
 	IncreaseVolumeSize pulumi.BoolPtrInput `pulumi:"increaseVolumeSize"`
-	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
-	RebuildWorkspace pulumi.BoolPtrInput `pulumi:"rebuildWorkspace"`
-	// Whether WorkSpaces directory users can restart their workspace. Default `true`.
-	RestartWorkspace pulumi.BoolPtrInput `pulumi:"restartWorkspace"`
-	// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
-	SwitchRunningMode pulumi.BoolPtrInput `pulumi:"switchRunningMode"`
+	RebuildWorkspace   pulumi.BoolPtrInput `pulumi:"rebuildWorkspace"`
+	RestartWorkspace   pulumi.BoolPtrInput `pulumi:"restartWorkspace"`
+	SwitchRunningMode  pulumi.BoolPtrInput `pulumi:"switchRunningMode"`
 }
 
 func (DirectorySelfServicePermissionsArgs) ElementType() reflect.Type {
@@ -123,28 +113,22 @@ func (o DirectorySelfServicePermissionsOutput) ToDirectorySelfServicePermissions
 		return &v
 	}).(DirectorySelfServicePermissionsPtrOutput)
 }
-
-// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
 func (o DirectorySelfServicePermissionsOutput) ChangeComputeType() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DirectorySelfServicePermissions) *bool { return v.ChangeComputeType }).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
 func (o DirectorySelfServicePermissionsOutput) IncreaseVolumeSize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DirectorySelfServicePermissions) *bool { return v.IncreaseVolumeSize }).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
 func (o DirectorySelfServicePermissionsOutput) RebuildWorkspace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DirectorySelfServicePermissions) *bool { return v.RebuildWorkspace }).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can restart their workspace. Default `true`.
 func (o DirectorySelfServicePermissionsOutput) RestartWorkspace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DirectorySelfServicePermissions) *bool { return v.RestartWorkspace }).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
 func (o DirectorySelfServicePermissionsOutput) SwitchRunningMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DirectorySelfServicePermissions) *bool { return v.SwitchRunningMode }).(pulumi.BoolPtrOutput)
 }
@@ -167,7 +151,6 @@ func (o DirectorySelfServicePermissionsPtrOutput) Elem() DirectorySelfServicePer
 	return o.ApplyT(func(v *DirectorySelfServicePermissions) DirectorySelfServicePermissions { return *v }).(DirectorySelfServicePermissionsOutput)
 }
 
-// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
 func (o DirectorySelfServicePermissionsPtrOutput) ChangeComputeType() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DirectorySelfServicePermissions) *bool {
 		if v == nil {
@@ -177,7 +160,6 @@ func (o DirectorySelfServicePermissionsPtrOutput) ChangeComputeType() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
 func (o DirectorySelfServicePermissionsPtrOutput) IncreaseVolumeSize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DirectorySelfServicePermissions) *bool {
 		if v == nil {
@@ -187,7 +169,6 @@ func (o DirectorySelfServicePermissionsPtrOutput) IncreaseVolumeSize() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
 func (o DirectorySelfServicePermissionsPtrOutput) RebuildWorkspace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DirectorySelfServicePermissions) *bool {
 		if v == nil {
@@ -197,7 +178,6 @@ func (o DirectorySelfServicePermissionsPtrOutput) RebuildWorkspace() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can restart their workspace. Default `true`.
 func (o DirectorySelfServicePermissionsPtrOutput) RestartWorkspace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DirectorySelfServicePermissions) *bool {
 		if v == nil {
@@ -207,7 +187,6 @@ func (o DirectorySelfServicePermissionsPtrOutput) RestartWorkspace() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
 func (o DirectorySelfServicePermissionsPtrOutput) SwitchRunningMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DirectorySelfServicePermissions) *bool {
 		if v == nil {
@@ -218,10 +197,8 @@ func (o DirectorySelfServicePermissionsPtrOutput) SwitchRunningMode() pulumi.Boo
 }
 
 type IpGroupRule struct {
-	// The description.
 	Description *string `pulumi:"description"`
-	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
-	Source string `pulumi:"source"`
+	Source      string  `pulumi:"source"`
 }
 
 // IpGroupRuleInput is an input type that accepts IpGroupRuleArgs and IpGroupRuleOutput values.
@@ -236,10 +213,8 @@ type IpGroupRuleInput interface {
 }
 
 type IpGroupRuleArgs struct {
-	// The description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
-	Source pulumi.StringInput `pulumi:"source"`
+	Source      pulumi.StringInput    `pulumi:"source"`
 }
 
 func (IpGroupRuleArgs) ElementType() reflect.Type {
@@ -293,12 +268,10 @@ func (o IpGroupRuleOutput) ToIpGroupRuleOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The description.
 func (o IpGroupRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpGroupRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
 func (o IpGroupRuleOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v IpGroupRule) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -324,16 +297,11 @@ func (o IpGroupRuleArrayOutput) Index(i pulumi.IntInput) IpGroupRuleOutput {
 }
 
 type WorkspaceWorkspaceProperties struct {
-	// The compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
-	ComputeTypeName *string `pulumi:"computeTypeName"`
-	// The size of the root volume.
-	RootVolumeSizeGib *int `pulumi:"rootVolumeSizeGib"`
-	// The running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
-	RunningMode *string `pulumi:"runningMode"`
-	// The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
-	RunningModeAutoStopTimeoutInMinutes *int `pulumi:"runningModeAutoStopTimeoutInMinutes"`
-	// The size of the user storage.
-	UserVolumeSizeGib *int `pulumi:"userVolumeSizeGib"`
+	ComputeTypeName                     *string `pulumi:"computeTypeName"`
+	RootVolumeSizeGib                   *int    `pulumi:"rootVolumeSizeGib"`
+	RunningMode                         *string `pulumi:"runningMode"`
+	RunningModeAutoStopTimeoutInMinutes *int    `pulumi:"runningModeAutoStopTimeoutInMinutes"`
+	UserVolumeSizeGib                   *int    `pulumi:"userVolumeSizeGib"`
 }
 
 // WorkspaceWorkspacePropertiesInput is an input type that accepts WorkspaceWorkspacePropertiesArgs and WorkspaceWorkspacePropertiesOutput values.
@@ -348,16 +316,11 @@ type WorkspaceWorkspacePropertiesInput interface {
 }
 
 type WorkspaceWorkspacePropertiesArgs struct {
-	// The compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
-	ComputeTypeName pulumi.StringPtrInput `pulumi:"computeTypeName"`
-	// The size of the root volume.
-	RootVolumeSizeGib pulumi.IntPtrInput `pulumi:"rootVolumeSizeGib"`
-	// The running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
-	RunningMode pulumi.StringPtrInput `pulumi:"runningMode"`
-	// The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
-	RunningModeAutoStopTimeoutInMinutes pulumi.IntPtrInput `pulumi:"runningModeAutoStopTimeoutInMinutes"`
-	// The size of the user storage.
-	UserVolumeSizeGib pulumi.IntPtrInput `pulumi:"userVolumeSizeGib"`
+	ComputeTypeName                     pulumi.StringPtrInput `pulumi:"computeTypeName"`
+	RootVolumeSizeGib                   pulumi.IntPtrInput    `pulumi:"rootVolumeSizeGib"`
+	RunningMode                         pulumi.StringPtrInput `pulumi:"runningMode"`
+	RunningModeAutoStopTimeoutInMinutes pulumi.IntPtrInput    `pulumi:"runningModeAutoStopTimeoutInMinutes"`
+	UserVolumeSizeGib                   pulumi.IntPtrInput    `pulumi:"userVolumeSizeGib"`
 }
 
 func (WorkspaceWorkspacePropertiesArgs) ElementType() reflect.Type {
@@ -436,28 +399,22 @@ func (o WorkspaceWorkspacePropertiesOutput) ToWorkspaceWorkspacePropertiesPtrOut
 		return &v
 	}).(WorkspaceWorkspacePropertiesPtrOutput)
 }
-
-// The compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
 func (o WorkspaceWorkspacePropertiesOutput) ComputeTypeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceWorkspaceProperties) *string { return v.ComputeTypeName }).(pulumi.StringPtrOutput)
 }
 
-// The size of the root volume.
 func (o WorkspaceWorkspacePropertiesOutput) RootVolumeSizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceWorkspaceProperties) *int { return v.RootVolumeSizeGib }).(pulumi.IntPtrOutput)
 }
 
-// The running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
 func (o WorkspaceWorkspacePropertiesOutput) RunningMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceWorkspaceProperties) *string { return v.RunningMode }).(pulumi.StringPtrOutput)
 }
 
-// The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
 func (o WorkspaceWorkspacePropertiesOutput) RunningModeAutoStopTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceWorkspaceProperties) *int { return v.RunningModeAutoStopTimeoutInMinutes }).(pulumi.IntPtrOutput)
 }
 
-// The size of the user storage.
 func (o WorkspaceWorkspacePropertiesOutput) UserVolumeSizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkspaceWorkspaceProperties) *int { return v.UserVolumeSizeGib }).(pulumi.IntPtrOutput)
 }
@@ -480,7 +437,6 @@ func (o WorkspaceWorkspacePropertiesPtrOutput) Elem() WorkspaceWorkspaceProperti
 	return o.ApplyT(func(v *WorkspaceWorkspaceProperties) WorkspaceWorkspaceProperties { return *v }).(WorkspaceWorkspacePropertiesOutput)
 }
 
-// The compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
 func (o WorkspaceWorkspacePropertiesPtrOutput) ComputeTypeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceWorkspaceProperties) *string {
 		if v == nil {
@@ -490,7 +446,6 @@ func (o WorkspaceWorkspacePropertiesPtrOutput) ComputeTypeName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The size of the root volume.
 func (o WorkspaceWorkspacePropertiesPtrOutput) RootVolumeSizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkspaceWorkspaceProperties) *int {
 		if v == nil {
@@ -500,7 +455,6 @@ func (o WorkspaceWorkspacePropertiesPtrOutput) RootVolumeSizeGib() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// The running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
 func (o WorkspaceWorkspacePropertiesPtrOutput) RunningMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceWorkspaceProperties) *string {
 		if v == nil {
@@ -510,7 +464,6 @@ func (o WorkspaceWorkspacePropertiesPtrOutput) RunningMode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
 func (o WorkspaceWorkspacePropertiesPtrOutput) RunningModeAutoStopTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkspaceWorkspaceProperties) *int {
 		if v == nil {
@@ -520,7 +473,6 @@ func (o WorkspaceWorkspacePropertiesPtrOutput) RunningModeAutoStopTimeoutInMinut
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the user storage.
 func (o WorkspaceWorkspacePropertiesPtrOutput) UserVolumeSizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkspaceWorkspaceProperties) *int {
 		if v == nil {
@@ -531,7 +483,6 @@ func (o WorkspaceWorkspacePropertiesPtrOutput) UserVolumeSizeGib() pulumi.IntPtr
 }
 
 type GetBundleComputeType struct {
-	// The name of the bundle. You cannot combine this parameter with `bundleId`.
 	Name string `pulumi:"name"`
 }
 
@@ -547,7 +498,6 @@ type GetBundleComputeTypeInput interface {
 }
 
 type GetBundleComputeTypeArgs struct {
-	// The name of the bundle. You cannot combine this parameter with `bundleId`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -602,7 +552,6 @@ func (o GetBundleComputeTypeOutput) ToGetBundleComputeTypeOutputWithContext(ctx 
 	return o
 }
 
-// The name of the bundle. You cannot combine this parameter with `bundleId`.
 func (o GetBundleComputeTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundleComputeType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -628,7 +577,6 @@ func (o GetBundleComputeTypeArrayOutput) Index(i pulumi.IntInput) GetBundleCompu
 }
 
 type GetBundleRootStorage struct {
-	// The size of the user storage.
 	Capacity string `pulumi:"capacity"`
 }
 
@@ -644,7 +592,6 @@ type GetBundleRootStorageInput interface {
 }
 
 type GetBundleRootStorageArgs struct {
-	// The size of the user storage.
 	Capacity pulumi.StringInput `pulumi:"capacity"`
 }
 
@@ -699,7 +646,6 @@ func (o GetBundleRootStorageOutput) ToGetBundleRootStorageOutputWithContext(ctx 
 	return o
 }
 
-// The size of the user storage.
 func (o GetBundleRootStorageOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundleRootStorage) string { return v.Capacity }).(pulumi.StringOutput)
 }
@@ -725,7 +671,6 @@ func (o GetBundleRootStorageArrayOutput) Index(i pulumi.IntInput) GetBundleRootS
 }
 
 type GetBundleUserStorage struct {
-	// The size of the user storage.
 	Capacity string `pulumi:"capacity"`
 }
 
@@ -741,7 +686,6 @@ type GetBundleUserStorageInput interface {
 }
 
 type GetBundleUserStorageArgs struct {
-	// The size of the user storage.
 	Capacity pulumi.StringInput `pulumi:"capacity"`
 }
 
@@ -796,7 +740,6 @@ func (o GetBundleUserStorageOutput) ToGetBundleUserStorageOutputWithContext(ctx 
 	return o
 }
 
-// The size of the user storage.
 func (o GetBundleUserStorageOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundleUserStorage) string { return v.Capacity }).(pulumi.StringOutput)
 }
@@ -822,16 +765,11 @@ func (o GetBundleUserStorageArrayOutput) Index(i pulumi.IntInput) GetBundleUserS
 }
 
 type GetDirectorySelfServicePermission struct {
-	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
-	ChangeComputeType bool `pulumi:"changeComputeType"`
-	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
+	ChangeComputeType  bool `pulumi:"changeComputeType"`
 	IncreaseVolumeSize bool `pulumi:"increaseVolumeSize"`
-	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
-	RebuildWorkspace bool `pulumi:"rebuildWorkspace"`
-	// Whether WorkSpaces directory users can restart their workspace.
-	RestartWorkspace bool `pulumi:"restartWorkspace"`
-	// Whether WorkSpaces directory users can switch the running mode of their workspace.
-	SwitchRunningMode bool `pulumi:"switchRunningMode"`
+	RebuildWorkspace   bool `pulumi:"rebuildWorkspace"`
+	RestartWorkspace   bool `pulumi:"restartWorkspace"`
+	SwitchRunningMode  bool `pulumi:"switchRunningMode"`
 }
 
 // GetDirectorySelfServicePermissionInput is an input type that accepts GetDirectorySelfServicePermissionArgs and GetDirectorySelfServicePermissionOutput values.
@@ -846,16 +784,11 @@ type GetDirectorySelfServicePermissionInput interface {
 }
 
 type GetDirectorySelfServicePermissionArgs struct {
-	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
-	ChangeComputeType pulumi.BoolInput `pulumi:"changeComputeType"`
-	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
+	ChangeComputeType  pulumi.BoolInput `pulumi:"changeComputeType"`
 	IncreaseVolumeSize pulumi.BoolInput `pulumi:"increaseVolumeSize"`
-	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
-	RebuildWorkspace pulumi.BoolInput `pulumi:"rebuildWorkspace"`
-	// Whether WorkSpaces directory users can restart their workspace.
-	RestartWorkspace pulumi.BoolInput `pulumi:"restartWorkspace"`
-	// Whether WorkSpaces directory users can switch the running mode of their workspace.
-	SwitchRunningMode pulumi.BoolInput `pulumi:"switchRunningMode"`
+	RebuildWorkspace   pulumi.BoolInput `pulumi:"rebuildWorkspace"`
+	RestartWorkspace   pulumi.BoolInput `pulumi:"restartWorkspace"`
+	SwitchRunningMode  pulumi.BoolInput `pulumi:"switchRunningMode"`
 }
 
 func (GetDirectorySelfServicePermissionArgs) ElementType() reflect.Type {
@@ -909,27 +842,22 @@ func (o GetDirectorySelfServicePermissionOutput) ToGetDirectorySelfServicePermis
 	return o
 }
 
-// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
 func (o GetDirectorySelfServicePermissionOutput) ChangeComputeType() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDirectorySelfServicePermission) bool { return v.ChangeComputeType }).(pulumi.BoolOutput)
 }
 
-// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
 func (o GetDirectorySelfServicePermissionOutput) IncreaseVolumeSize() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDirectorySelfServicePermission) bool { return v.IncreaseVolumeSize }).(pulumi.BoolOutput)
 }
 
-// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
 func (o GetDirectorySelfServicePermissionOutput) RebuildWorkspace() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDirectorySelfServicePermission) bool { return v.RebuildWorkspace }).(pulumi.BoolOutput)
 }
 
-// Whether WorkSpaces directory users can restart their workspace.
 func (o GetDirectorySelfServicePermissionOutput) RestartWorkspace() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDirectorySelfServicePermission) bool { return v.RestartWorkspace }).(pulumi.BoolOutput)
 }
 
-// Whether WorkSpaces directory users can switch the running mode of their workspace.
 func (o GetDirectorySelfServicePermissionOutput) SwitchRunningMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDirectorySelfServicePermission) bool { return v.SwitchRunningMode }).(pulumi.BoolOutput)
 }

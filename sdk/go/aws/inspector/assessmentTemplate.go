@@ -10,52 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Inspector assessment template
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/inspector"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := inspector.NewAssessmentTemplate(ctx, "example", &inspector.AssessmentTemplateArgs{
-// 			TargetArn: pulumi.Any(aws_inspector_assessment_target.Example.Arn),
-// 			Duration:  pulumi.Int(3600),
-// 			RulesPackageArns: pulumi.StringArray{
-// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p"),
-// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc"),
-// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"),
-// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AssessmentTemplate struct {
 	pulumi.CustomResourceState
 
-	// The template assessment ARN.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The duration of the inspector run.
-	Duration pulumi.IntOutput `pulumi:"duration"`
-	// The name of the assessment template.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The rules to be used during the run.
+	Arn              pulumi.StringOutput      `pulumi:"arn"`
+	Duration         pulumi.IntOutput         `pulumi:"duration"`
+	Name             pulumi.StringOutput      `pulumi:"name"`
 	RulesPackageArns pulumi.StringArrayOutput `pulumi:"rulesPackageArns"`
-	// Key-value map of tags for the Inspector assessment template.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The assessment target ARN to attach the template to.
-	TargetArn pulumi.StringOutput `pulumi:"targetArn"`
+	Tags             pulumi.StringMapOutput   `pulumi:"tags"`
+	TargetArn        pulumi.StringOutput      `pulumi:"targetArn"`
 }
 
 // NewAssessmentTemplate registers a new resource with the given unique name, arguments, and options.
@@ -95,33 +58,21 @@ func GetAssessmentTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AssessmentTemplate resources.
 type assessmentTemplateState struct {
-	// The template assessment ARN.
-	Arn *string `pulumi:"arn"`
-	// The duration of the inspector run.
-	Duration *int `pulumi:"duration"`
-	// The name of the assessment template.
-	Name *string `pulumi:"name"`
-	// The rules to be used during the run.
-	RulesPackageArns []string `pulumi:"rulesPackageArns"`
-	// Key-value map of tags for the Inspector assessment template.
-	Tags map[string]string `pulumi:"tags"`
-	// The assessment target ARN to attach the template to.
-	TargetArn *string `pulumi:"targetArn"`
+	Arn              *string           `pulumi:"arn"`
+	Duration         *int              `pulumi:"duration"`
+	Name             *string           `pulumi:"name"`
+	RulesPackageArns []string          `pulumi:"rulesPackageArns"`
+	Tags             map[string]string `pulumi:"tags"`
+	TargetArn        *string           `pulumi:"targetArn"`
 }
 
 type AssessmentTemplateState struct {
-	// The template assessment ARN.
-	Arn pulumi.StringPtrInput
-	// The duration of the inspector run.
-	Duration pulumi.IntPtrInput
-	// The name of the assessment template.
-	Name pulumi.StringPtrInput
-	// The rules to be used during the run.
+	Arn              pulumi.StringPtrInput
+	Duration         pulumi.IntPtrInput
+	Name             pulumi.StringPtrInput
 	RulesPackageArns pulumi.StringArrayInput
-	// Key-value map of tags for the Inspector assessment template.
-	Tags pulumi.StringMapInput
-	// The assessment target ARN to attach the template to.
-	TargetArn pulumi.StringPtrInput
+	Tags             pulumi.StringMapInput
+	TargetArn        pulumi.StringPtrInput
 }
 
 func (AssessmentTemplateState) ElementType() reflect.Type {
@@ -129,30 +80,20 @@ func (AssessmentTemplateState) ElementType() reflect.Type {
 }
 
 type assessmentTemplateArgs struct {
-	// The duration of the inspector run.
-	Duration int `pulumi:"duration"`
-	// The name of the assessment template.
-	Name *string `pulumi:"name"`
-	// The rules to be used during the run.
-	RulesPackageArns []string `pulumi:"rulesPackageArns"`
-	// Key-value map of tags for the Inspector assessment template.
-	Tags map[string]string `pulumi:"tags"`
-	// The assessment target ARN to attach the template to.
-	TargetArn string `pulumi:"targetArn"`
+	Duration         int               `pulumi:"duration"`
+	Name             *string           `pulumi:"name"`
+	RulesPackageArns []string          `pulumi:"rulesPackageArns"`
+	Tags             map[string]string `pulumi:"tags"`
+	TargetArn        string            `pulumi:"targetArn"`
 }
 
 // The set of arguments for constructing a AssessmentTemplate resource.
 type AssessmentTemplateArgs struct {
-	// The duration of the inspector run.
-	Duration pulumi.IntInput
-	// The name of the assessment template.
-	Name pulumi.StringPtrInput
-	// The rules to be used during the run.
+	Duration         pulumi.IntInput
+	Name             pulumi.StringPtrInput
 	RulesPackageArns pulumi.StringArrayInput
-	// Key-value map of tags for the Inspector assessment template.
-	Tags pulumi.StringMapInput
-	// The assessment target ARN to attach the template to.
-	TargetArn pulumi.StringInput
+	Tags             pulumi.StringMapInput
+	TargetArn        pulumi.StringInput
 }
 
 func (AssessmentTemplateArgs) ElementType() reflect.Type {

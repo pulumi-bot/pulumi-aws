@@ -51,9 +51,6 @@ class GetComputeEnvironmentResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the compute environment.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -64,9 +61,6 @@ class GetComputeEnvironmentResult:
     @property
     @pulumi.getter(name="ecsClusterArn")
     def ecs_cluster_arn(self) -> str:
-        """
-        The ARN of the underlying Amazon ECS cluster used by the compute environment.
-        """
         return pulumi.get(self, "ecs_cluster_arn")
 
     @property
@@ -80,41 +74,26 @@ class GetComputeEnvironmentResult:
     @property
     @pulumi.getter(name="serviceRole")
     def service_role(self) -> str:
-        """
-        The ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-        """
         return pulumi.get(self, "service_role")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        The state of the compute environment (for example, `ENABLED` or `DISABLED`). If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The current status of the compute environment (for example, `CREATING` or `VALID`).
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="statusReason")
     def status_reason(self) -> str:
-        """
-        A short, human-readable string to provide additional details about the current status of the compute environment.
-        """
         return pulumi.get(self, "status_reason")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
-        """
         return pulumi.get(self, "type")
 
 
@@ -138,20 +117,7 @@ class AwaitableGetComputeEnvironmentResult(GetComputeEnvironmentResult):
 def get_compute_environment(compute_environment_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeEnvironmentResult:
     """
-    The Batch Compute Environment data source allows access to details of a specific
-    compute environment within AWS Batch.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    batch_mongo = aws.batch.get_compute_environment(compute_environment_name="batch-mongo-production")
-    ```
-
-
-    :param str compute_environment_name: The name of the Batch Compute Environment
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['computeEnvironmentName'] = compute_environment_name

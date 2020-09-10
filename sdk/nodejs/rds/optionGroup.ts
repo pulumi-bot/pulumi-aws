@@ -6,48 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an RDS DB option group resource. Documentation of the available options for various RDS engines can be found at:
- *
- * * [MariaDB Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MariaDB.Options.html)
- * * [Microsoft SQL Server Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.html)
- * * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
- * * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.rds.OptionGroup("example", {
- *     optionGroupDescription: "Option Group",
- *     engineName: "sqlserver-ee",
- *     majorEngineVersion: "11.00",
- *     options: [
- *         {
- *             optionName: "Timezone",
- *             optionSettings: [{
- *                 name: "TIME_ZONE",
- *                 value: "UTC",
- *             }],
- *         },
- *         {
- *             optionName: "SQLSERVER_BACKUP_RESTORE",
- *             optionSettings: [{
- *                 name: "IAM_ROLE_ARN",
- *                 value: aws_iam_role.example.arn,
- *             }],
- *         },
- *         {
- *             optionName: "TDE",
- *         },
- *     ],
- * });
- * ```
- *
- * > **Note**: Any modifications to the `dbOptionGroup` are set to happen immediately as we default to applying immediately.
- */
 export class OptionGroup extends pulumi.CustomResource {
     /**
      * Get an existing OptionGroup resource's state with the given name, ID, and optional extra
@@ -76,37 +34,13 @@ export class OptionGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === OptionGroup.__pulumiType;
     }
 
-    /**
-     * The ARN of the db option group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Specifies the name of the engine that this option group should be associated with.
-     */
     public readonly engineName!: pulumi.Output<string>;
-    /**
-     * Specifies the major version of the engine that this option group should be associated with.
-     */
     public readonly majorEngineVersion!: pulumi.Output<string>;
-    /**
-     * The Name of the setting.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-     */
     public readonly namePrefix!: pulumi.Output<string>;
-    /**
-     * The description of the option group. Defaults to "Managed by Pulumi".
-     */
     public readonly optionGroupDescription!: pulumi.Output<string>;
-    /**
-     * A list of Options to apply.
-     */
     public readonly options!: pulumi.Output<outputs.rds.OptionGroupOption[] | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -161,37 +95,13 @@ export class OptionGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OptionGroup resources.
  */
 export interface OptionGroupState {
-    /**
-     * The ARN of the db option group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the engine that this option group should be associated with.
-     */
     readonly engineName?: pulumi.Input<string>;
-    /**
-     * Specifies the major version of the engine that this option group should be associated with.
-     */
     readonly majorEngineVersion?: pulumi.Input<string>;
-    /**
-     * The Name of the setting.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * The description of the option group. Defaults to "Managed by Pulumi".
-     */
     readonly optionGroupDescription?: pulumi.Input<string>;
-    /**
-     * A list of Options to apply.
-     */
     readonly options?: pulumi.Input<pulumi.Input<inputs.rds.OptionGroupOption>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -199,32 +109,11 @@ export interface OptionGroupState {
  * The set of arguments for constructing a OptionGroup resource.
  */
 export interface OptionGroupArgs {
-    /**
-     * Specifies the name of the engine that this option group should be associated with.
-     */
     readonly engineName: pulumi.Input<string>;
-    /**
-     * Specifies the major version of the engine that this option group should be associated with.
-     */
     readonly majorEngineVersion: pulumi.Input<string>;
-    /**
-     * The Name of the setting.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * The description of the option group. Defaults to "Managed by Pulumi".
-     */
     readonly optionGroupDescription?: pulumi.Input<string>;
-    /**
-     * A list of Options to apply.
-     */
     readonly options?: pulumi.Input<pulumi.Input<inputs.rds.OptionGroupOption>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

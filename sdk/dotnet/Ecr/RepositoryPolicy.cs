@@ -9,77 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ecr
 {
-    /// <summary>
-    /// Provides an Elastic Container Registry Repository Policy.
-    /// 
-    /// Note that currently only one policy may be applied to a repository.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Aws.Ecr.Repository("foo", new Aws.Ecr.RepositoryArgs
-    ///         {
-    ///         });
-    ///         var foopolicy = new Aws.Ecr.RepositoryPolicy("foopolicy", new Aws.Ecr.RepositoryPolicyArgs
-    ///         {
-    ///             Repository = foo.Name,
-    ///             Policy = @"{
-    ///     ""Version"": ""2008-10-17"",
-    ///     ""Statement"": [
-    ///         {
-    ///             ""Sid"": ""new policy"",
-    ///             ""Effect"": ""Allow"",
-    ///             ""Principal"": ""*"",
-    ///             ""Action"": [
-    ///                 ""ecr:GetDownloadUrlForLayer"",
-    ///                 ""ecr:BatchGetImage"",
-    ///                 ""ecr:BatchCheckLayerAvailability"",
-    ///                 ""ecr:PutImage"",
-    ///                 ""ecr:InitiateLayerUpload"",
-    ///                 ""ecr:UploadLayerPart"",
-    ///                 ""ecr:CompleteLayerUpload"",
-    ///                 ""ecr:DescribeRepositories"",
-    ///                 ""ecr:GetRepositoryPolicy"",
-    ///                 ""ecr:ListImages"",
-    ///                 ""ecr:DeleteRepository"",
-    ///                 ""ecr:BatchDeleteImage"",
-    ///                 ""ecr:SetRepositoryPolicy"",
-    ///                 ""ecr:DeleteRepositoryPolicy""
-    ///             ]
-    ///         }
-    ///     ]
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RepositoryPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
-        /// <summary>
-        /// The registry ID where the repository was created.
-        /// </summary>
         [Output("registryId")]
         public Output<string> RegistryId { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the repository to apply the policy.
-        /// </summary>
         [Output("repository")]
         public Output<string> Repository { get; private set; } = null!;
 
@@ -129,15 +66,9 @@ namespace Pulumi.Aws.Ecr
 
     public sealed class RepositoryPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the repository to apply the policy.
-        /// </summary>
         [Input("repository", required: true)]
         public Input<string> Repository { get; set; } = null!;
 
@@ -148,21 +79,12 @@ namespace Pulumi.Aws.Ecr
 
     public sealed class RepositoryPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// The registry ID where the repository was created.
-        /// </summary>
         [Input("registryId")]
         public Input<string>? RegistryId { get; set; }
 
-        /// <summary>
-        /// Name of the repository to apply the policy.
-        /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
 

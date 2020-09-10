@@ -9,62 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iot
 {
-    /// <summary>
-    /// Provides an IoT policy attachment.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var pubsub = new Aws.Iot.Policy("pubsub", new Aws.Iot.PolicyArgs
-    ///         {
-    ///             Policy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": [
-    ///         ""iot:*""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": ""*""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
-    ///         {
-    ///             Csr = File.ReadAllText("csr.pem"),
-    ///             Active = true,
-    ///         });
-    ///         var att = new Aws.Iot.PolicyAttachment("att", new Aws.Iot.PolicyAttachmentArgs
-    ///         {
-    ///             Policy = pubsub.Name,
-    ///             Target = cert.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PolicyAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the policy to attach.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
-        /// <summary>
-        /// The identity to which the policy is attached.
-        /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
 
@@ -114,15 +63,9 @@ namespace Pulumi.Aws.Iot
 
     public sealed class PolicyAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the policy to attach.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
-        /// <summary>
-        /// The identity to which the policy is attached.
-        /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
@@ -133,15 +76,9 @@ namespace Pulumi.Aws.Iot
 
     public sealed class PolicyAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the policy to attach.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// The identity to which the policy is attached.
-        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 

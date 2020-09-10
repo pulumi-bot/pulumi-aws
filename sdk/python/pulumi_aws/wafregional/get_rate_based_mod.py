@@ -54,19 +54,7 @@ class AwaitableGetRateBasedModResult(GetRateBasedModResult):
 def get_rate_based_mod(name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRateBasedModResult:
     """
-    `wafregional.RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource Id.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.wafregional.get_rate_based_mod(name="tfWAFRegionalRateBasedRule")
-    ```
-
-
-    :param str name: The name of the WAF Regional rate based rule.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -59,9 +59,6 @@ class GetDirectConnectGatewayAttachmentResult:
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Key-value tags for the EC2 Transit Gateway Attachment
-        """
         return pulumi.get(self, "tags")
 
     @property
@@ -89,24 +86,7 @@ def get_direct_connect_gateway_attachment(dx_gateway_id: Optional[str] = None,
                                           transit_gateway_id: Optional[str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectConnectGatewayAttachmentResult:
     """
-    Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
-
-    ## Example Usage
-    ### By Transit Gateway and Direct Connect Gateway Identifiers
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2transitgateway.get_direct_connect_gateway_attachment(transit_gateway_id=aws_ec2_transit_gateway["example"]["id"],
-        dx_gateway_id=aws_dx_gateway["example"]["id"])
-    ```
-
-
-    :param str dx_gateway_id: Identifier of the Direct Connect Gateway.
-    :param List[pulumi.InputType['GetDirectConnectGatewayAttachmentFilterArgs']] filters: Configuration block(s) for filtering. Detailed below.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway Direct Connect Gateway Attachment.
-    :param str transit_gateway_id: Identifier of the EC2 Transit Gateway.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dxGatewayId'] = dx_gateway_id

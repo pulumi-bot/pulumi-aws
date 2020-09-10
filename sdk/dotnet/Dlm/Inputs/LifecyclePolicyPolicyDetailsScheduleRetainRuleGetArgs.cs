@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Dlm.Inputs
 
     public sealed class LifecyclePolicyPolicyDetailsScheduleRetainRuleGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// How many snapshots to keep. Must be an integer between 1 and 1000.
-        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 

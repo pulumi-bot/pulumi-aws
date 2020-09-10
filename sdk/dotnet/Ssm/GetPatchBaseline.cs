@@ -11,58 +11,6 @@ namespace Pulumi.Aws.Ssm
 {
     public static class GetPatchBaseline
     {
-        /// <summary>
-        /// Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// To retrieve a baseline provided by AWS:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var centos = Output.Create(Aws.Ssm.GetPatchBaseline.InvokeAsync(new Aws.Ssm.GetPatchBaselineArgs
-        ///         {
-        ///             NamePrefix = "AWS-",
-        ///             OperatingSystem = "CENTOS",
-        ///             Owner = "AWS",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// To retrieve a baseline on your account:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var defaultCustom = Output.Create(Aws.Ssm.GetPatchBaseline.InvokeAsync(new Aws.Ssm.GetPatchBaselineArgs
-        ///         {
-        ///             DefaultBaseline = true,
-        ///             NamePrefix = "MyCustomBaseline",
-        ///             OperatingSystem = "WINDOWS",
-        ///             Owner = "Self",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetPatchBaselineResult> InvokeAsync(GetPatchBaselineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselineResult>("aws:ssm/getPatchBaseline:getPatchBaseline", args ?? new GetPatchBaselineArgs(), options.WithVersion());
     }
@@ -70,27 +18,15 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class GetPatchBaselineArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Filters the results against the baselines default_baseline field.
-        /// </summary>
         [Input("defaultBaseline")]
         public bool? DefaultBaseline { get; set; }
 
-        /// <summary>
-        /// Filter results by the baseline name prefix.
-        /// </summary>
         [Input("namePrefix")]
         public string? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The specified OS for the baseline.
-        /// </summary>
         [Input("operatingSystem")]
         public string? OperatingSystem { get; set; }
 
-        /// <summary>
-        /// The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
-        /// </summary>
         [Input("owner", required: true)]
         public string Owner { get; set; } = null!;
 
@@ -104,17 +40,11 @@ namespace Pulumi.Aws.Ssm
     public sealed class GetPatchBaselineResult
     {
         public readonly bool? DefaultBaseline;
-        /// <summary>
-        /// The description of the baseline.
-        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of the baseline.
-        /// </summary>
         public readonly string Name;
         public readonly string? NamePrefix;
         public readonly string? OperatingSystem;

@@ -10,47 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Gamelift Alias resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/gamelift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gamelift.NewAlias(ctx, "example", &gamelift.AliasArgs{
-// 			Description: pulumi.String("Example Description"),
-// 			RoutingStrategy: &gamelift.AliasRoutingStrategyArgs{
-// 				Message: pulumi.String("Example Message"),
-// 				Type:    pulumi.String("TERMINAL"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Alias struct {
 	pulumi.CustomResourceState
 
-	// Alias ARN.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Description of the alias.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Name of the alias.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the fleet and/or routing type to use for the alias.
+	Arn             pulumi.StringOutput        `pulumi:"arn"`
+	Description     pulumi.StringPtrOutput     `pulumi:"description"`
+	Name            pulumi.StringOutput        `pulumi:"name"`
 	RoutingStrategy AliasRoutingStrategyOutput `pulumi:"routingStrategy"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags            pulumi.StringMapOutput     `pulumi:"tags"`
 }
 
 // NewAlias registers a new resource with the given unique name, arguments, and options.
@@ -84,29 +51,19 @@ func GetAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Alias resources.
 type aliasState struct {
-	// Alias ARN.
-	Arn *string `pulumi:"arn"`
-	// Description of the alias.
-	Description *string `pulumi:"description"`
-	// Name of the alias.
-	Name *string `pulumi:"name"`
-	// Specifies the fleet and/or routing type to use for the alias.
+	Arn             *string               `pulumi:"arn"`
+	Description     *string               `pulumi:"description"`
+	Name            *string               `pulumi:"name"`
 	RoutingStrategy *AliasRoutingStrategy `pulumi:"routingStrategy"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Tags            map[string]string     `pulumi:"tags"`
 }
 
 type AliasState struct {
-	// Alias ARN.
-	Arn pulumi.StringPtrInput
-	// Description of the alias.
-	Description pulumi.StringPtrInput
-	// Name of the alias.
-	Name pulumi.StringPtrInput
-	// Specifies the fleet and/or routing type to use for the alias.
+	Arn             pulumi.StringPtrInput
+	Description     pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
 	RoutingStrategy AliasRoutingStrategyPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags            pulumi.StringMapInput
 }
 
 func (AliasState) ElementType() reflect.Type {
@@ -114,26 +71,18 @@ func (AliasState) ElementType() reflect.Type {
 }
 
 type aliasArgs struct {
-	// Description of the alias.
-	Description *string `pulumi:"description"`
-	// Name of the alias.
-	Name *string `pulumi:"name"`
-	// Specifies the fleet and/or routing type to use for the alias.
+	Description     *string              `pulumi:"description"`
+	Name            *string              `pulumi:"name"`
 	RoutingStrategy AliasRoutingStrategy `pulumi:"routingStrategy"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Tags            map[string]string    `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Alias resource.
 type AliasArgs struct {
-	// Description of the alias.
-	Description pulumi.StringPtrInput
-	// Name of the alias.
-	Name pulumi.StringPtrInput
-	// Specifies the fleet and/or routing type to use for the alias.
+	Description     pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
 	RoutingStrategy AliasRoutingStrategyInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags            pulumi.StringMapInput
 }
 
 func (AliasArgs) ElementType() reflect.Type {

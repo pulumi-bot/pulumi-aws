@@ -60,9 +60,6 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def ids(self) -> List[str]:
-        """
-        IDs of instances found through the filter
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -78,17 +75,11 @@ class GetInstancesResult:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> List[str]:
-        """
-        Private IP addresses of instances found through the filter
-        """
         return pulumi.get(self, "private_ips")
 
     @property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> List[str]:
-        """
-        Public IP addresses of instances found through the filter
-        """
         return pulumi.get(self, "public_ips")
 
 
@@ -112,43 +103,7 @@ def get_instances(filters: Optional[List[pulumi.InputType['GetInstancesFilterArg
                   instance_tags: Optional[Mapping[str, str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to get IDs or IPs of Amazon EC2 instances to be referenced elsewhere,
-    e.g. to allow easier migration from another management solution
-    or to make it easier for an operator to connect through bastion host(s).
-
-    > **Note:** It's strongly discouraged to use this data source for querying ephemeral
-    instances (e.g. managed via autoscaling group), as the output may change at any time
-    and you'd need to re-run `apply` every time an instance comes up or dies.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test_instances = aws.ec2.get_instances(instance_tags={
-            "Role": "HardWorker",
-        },
-        filters=[aws.ec2.GetInstancesFilterArgs(
-            name="instance.group-id",
-            values=["sg-12345678"],
-        )],
-        instance_state_names=[
-            "running",
-            "stopped",
-        ])
-    test_eip = []
-    for range in [{"value": i} for i in range(0, len(test_instances.ids))]:
-        test_eip.append(aws.ec2.Eip(f"testEip-{range['value']}", instance=test_instances.ids[range["value"]]))
-    ```
-
-
-    :param List[pulumi.InputType['GetInstancesFilterArgs']] filters: One or more name/value pairs to use as filters. There are
-           several valid keys, for a full reference, check out
-           [describe-instances in the AWS CLI reference][1].
-    :param List[str] instance_state_names: A list of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
-    :param Mapping[str, str] instance_tags: A map of tags, each pair of which must
-           exactly match a pair on desired instances.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

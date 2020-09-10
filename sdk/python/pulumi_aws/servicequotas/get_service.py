@@ -41,9 +41,6 @@ class GetServiceResult:
     @property
     @pulumi.getter(name="serviceCode")
     def service_code(self) -> str:
-        """
-        Code of the service.
-        """
         return pulumi.get(self, "service_code")
 
     @property
@@ -66,19 +63,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Retrieve information about a Service Quotas Service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.servicequotas.get_service(service_name="Amazon Virtual Private Cloud (Amazon VPC)")
-    ```
-
-
-    :param str service_name: Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

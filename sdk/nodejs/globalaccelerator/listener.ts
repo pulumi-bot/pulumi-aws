@@ -6,35 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Global Accelerator listener.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleAccelerator = new aws.globalaccelerator.Accelerator("example", {
- *     attributes: {
- *         flowLogsEnabled: true,
- *         flowLogsS3Bucket: "example-bucket",
- *         flowLogsS3Prefix: "flow-logs/",
- *     },
- *     enabled: true,
- *     ipAddressType: "IPV4",
- * });
- * const exampleListener = new aws.globalaccelerator.Listener("example", {
- *     acceleratorArn: exampleAccelerator.id,
- *     clientAffinity: "SOURCE_IP",
- *     portRanges: [{
- *         fromPort: 80,
- *         toPort: 80,
- *     }],
- *     protocol: "TCP",
- * });
- * ```
- */
 export class Listener extends pulumi.CustomResource {
     /**
      * Get an existing Listener resource's state with the given name, ID, and optional extra
@@ -63,21 +34,9 @@ export class Listener extends pulumi.CustomResource {
         return obj['__pulumiType'] === Listener.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of your accelerator.
-     */
     public readonly acceleratorArn!: pulumi.Output<string>;
-    /**
-     * Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
-     */
     public readonly clientAffinity!: pulumi.Output<string | undefined>;
-    /**
-     * The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-     */
     public readonly portRanges!: pulumi.Output<outputs.globalaccelerator.ListenerPortRange[]>;
-    /**
-     * The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
-     */
     public readonly protocol!: pulumi.Output<string>;
 
     /**
@@ -127,21 +86,9 @@ export class Listener extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Listener resources.
  */
 export interface ListenerState {
-    /**
-     * The Amazon Resource Name (ARN) of your accelerator.
-     */
     readonly acceleratorArn?: pulumi.Input<string>;
-    /**
-     * Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
-     */
     readonly clientAffinity?: pulumi.Input<string>;
-    /**
-     * The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-     */
     readonly portRanges?: pulumi.Input<pulumi.Input<inputs.globalaccelerator.ListenerPortRange>[]>;
-    /**
-     * The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
-     */
     readonly protocol?: pulumi.Input<string>;
 }
 
@@ -149,20 +96,8 @@ export interface ListenerState {
  * The set of arguments for constructing a Listener resource.
  */
 export interface ListenerArgs {
-    /**
-     * The Amazon Resource Name (ARN) of your accelerator.
-     */
     readonly acceleratorArn: pulumi.Input<string>;
-    /**
-     * Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
-     */
     readonly clientAffinity?: pulumi.Input<string>;
-    /**
-     * The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-     */
     readonly portRanges: pulumi.Input<pulumi.Input<inputs.globalaccelerator.ListenerPortRange>[]>;
-    /**
-     * The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
-     */
     readonly protocol: pulumi.Input<string>;
 }

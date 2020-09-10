@@ -12,9 +12,6 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class VirtualServiceSpecProviderVirtualNodeGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the virtual node that is acting as a service provider.
-        /// </summary>
         [Input("virtualNodeName", required: true)]
         public Input<string> VirtualNodeName { get; set; } = null!;
 

@@ -6,110 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Simple or Managed Microsoft directory in AWS Directory Service.
- *
- * > **Note:** All arguments including the password and customer username will be stored in the raw state as plain-text.
- *
- * ## Example Usage
- * ### SimpleAD
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const main = new aws.ec2.Vpc("main", {cidrBlock: "10.0.0.0/16"});
- * const foo = new aws.ec2.Subnet("foo", {
- *     vpcId: main.id,
- *     availabilityZone: "us-west-2a",
- *     cidrBlock: "10.0.1.0/24",
- * });
- * const barSubnet = new aws.ec2.Subnet("barSubnet", {
- *     vpcId: main.id,
- *     availabilityZone: "us-west-2b",
- *     cidrBlock: "10.0.2.0/24",
- * });
- * const barDirectory = new aws.directoryservice.Directory("barDirectory", {
- *     password: "SuperSecretPassw0rd",
- *     size: "Small",
- *     vpcSettings: {
- *         vpcId: main.id,
- *         subnetIds: [
- *             foo.id,
- *             barSubnet.id,
- *         ],
- *     },
- *     tags: {
- *         Project: "foo",
- *     },
- * });
- * ```
- * ### Microsoft Active Directory (MicrosoftAD)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const main = new aws.ec2.Vpc("main", {cidrBlock: "10.0.0.0/16"});
- * const foo = new aws.ec2.Subnet("foo", {
- *     vpcId: main.id,
- *     availabilityZone: "us-west-2a",
- *     cidrBlock: "10.0.1.0/24",
- * });
- * const barSubnet = new aws.ec2.Subnet("barSubnet", {
- *     vpcId: main.id,
- *     availabilityZone: "us-west-2b",
- *     cidrBlock: "10.0.2.0/24",
- * });
- * const barDirectory = new aws.directoryservice.Directory("barDirectory", {
- *     password: "SuperSecretPassw0rd",
- *     edition: "Standard",
- *     type: "MicrosoftAD",
- *     vpcSettings: {
- *         vpcId: main.id,
- *         subnetIds: [
- *             foo.id,
- *             barSubnet.id,
- *         ],
- *     },
- *     tags: {
- *         Project: "foo",
- *     },
- * });
- * ```
- * ### Microsoft Active Directory Connector (ADConnector)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const main = new aws.ec2.Vpc("main", {cidrBlock: "10.0.0.0/16"});
- * const foo = new aws.ec2.Subnet("foo", {
- *     vpcId: main.id,
- *     availabilityZone: "us-west-2a",
- *     cidrBlock: "10.0.1.0/24",
- * });
- * const bar = new aws.ec2.Subnet("bar", {
- *     vpcId: main.id,
- *     availabilityZone: "us-west-2b",
- *     cidrBlock: "10.0.2.0/24",
- * });
- * const connector = new aws.directoryservice.Directory("connector", {
- *     password: "SuperSecretPassw0rd",
- *     size: "Small",
- *     type: "ADConnector",
- *     connectSettings: {
- *         customerDnsIps: ["A.B.C.D"],
- *         customerUsername: "Admin",
- *         subnetIds: [
- *             foo.id,
- *             bar.id,
- *         ],
- *         vpcId: main.id,
- *     },
- * });
- * ```
- */
 export class Directory extends pulumi.CustomResource {
     /**
      * Get an existing Directory resource's state with the given name, ID, and optional extra
@@ -138,65 +34,20 @@ export class Directory extends pulumi.CustomResource {
         return obj['__pulumiType'] === Directory.__pulumiType;
     }
 
-    /**
-     * The access URL for the directory, such as `http://alias.awsapps.com`.
-     */
     public /*out*/ readonly accessUrl!: pulumi.Output<string>;
-    /**
-     * The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
-     */
     public readonly alias!: pulumi.Output<string>;
-    /**
-     * Connector related information about the directory. Fields documented below.
-     */
     public readonly connectSettings!: pulumi.Output<outputs.directoryservice.DirectoryConnectSettings | undefined>;
-    /**
-     * A textual description for the directory.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A list of IP addresses of the DNS servers for the directory or connector.
-     */
     public /*out*/ readonly dnsIpAddresses!: pulumi.Output<string[]>;
-    /**
-     * The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise` (applies to MicrosoftAD type only).
-     */
     public readonly edition!: pulumi.Output<string>;
-    /**
-     * Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
-     */
     public readonly enableSso!: pulumi.Output<boolean | undefined>;
-    /**
-     * The fully qualified name for the directory, such as `corp.example.com`
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The password for the directory administrator or connector user.
-     */
     public readonly password!: pulumi.Output<string>;
-    /**
-     * The ID of the security group created by the directory.
-     */
     public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
-    /**
-     * The short name of the directory, such as `CORP`.
-     */
     public readonly shortName!: pulumi.Output<string>;
-    /**
-     * The size of the directory (`Small` or `Large` are accepted values).
-     */
     public readonly size!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
-     */
     public readonly type!: pulumi.Output<string | undefined>;
-    /**
-     * VPC related information about the directory. Fields documented below.
-     */
     public readonly vpcSettings!: pulumi.Output<outputs.directoryservice.DirectoryVpcSettings | undefined>;
 
     /**
@@ -262,65 +113,20 @@ export class Directory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Directory resources.
  */
 export interface DirectoryState {
-    /**
-     * The access URL for the directory, such as `http://alias.awsapps.com`.
-     */
     readonly accessUrl?: pulumi.Input<string>;
-    /**
-     * The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
-     */
     readonly alias?: pulumi.Input<string>;
-    /**
-     * Connector related information about the directory. Fields documented below.
-     */
     readonly connectSettings?: pulumi.Input<inputs.directoryservice.DirectoryConnectSettings>;
-    /**
-     * A textual description for the directory.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A list of IP addresses of the DNS servers for the directory or connector.
-     */
     readonly dnsIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise` (applies to MicrosoftAD type only).
-     */
     readonly edition?: pulumi.Input<string>;
-    /**
-     * Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
-     */
     readonly enableSso?: pulumi.Input<boolean>;
-    /**
-     * The fully qualified name for the directory, such as `corp.example.com`
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The password for the directory administrator or connector user.
-     */
     readonly password?: pulumi.Input<string>;
-    /**
-     * The ID of the security group created by the directory.
-     */
     readonly securityGroupId?: pulumi.Input<string>;
-    /**
-     * The short name of the directory, such as `CORP`.
-     */
     readonly shortName?: pulumi.Input<string>;
-    /**
-     * The size of the directory (`Small` or `Large` are accepted values).
-     */
     readonly size?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
-     */
     readonly type?: pulumi.Input<string>;
-    /**
-     * VPC related information about the directory. Fields documented below.
-     */
     readonly vpcSettings?: pulumi.Input<inputs.directoryservice.DirectoryVpcSettings>;
 }
 
@@ -328,52 +134,16 @@ export interface DirectoryState {
  * The set of arguments for constructing a Directory resource.
  */
 export interface DirectoryArgs {
-    /**
-     * The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
-     */
     readonly alias?: pulumi.Input<string>;
-    /**
-     * Connector related information about the directory. Fields documented below.
-     */
     readonly connectSettings?: pulumi.Input<inputs.directoryservice.DirectoryConnectSettings>;
-    /**
-     * A textual description for the directory.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise` (applies to MicrosoftAD type only).
-     */
     readonly edition?: pulumi.Input<string>;
-    /**
-     * Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
-     */
     readonly enableSso?: pulumi.Input<boolean>;
-    /**
-     * The fully qualified name for the directory, such as `corp.example.com`
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The password for the directory administrator or connector user.
-     */
     readonly password: pulumi.Input<string>;
-    /**
-     * The short name of the directory, such as `CORP`.
-     */
     readonly shortName?: pulumi.Input<string>;
-    /**
-     * The size of the directory (`Small` or `Large` are accepted values).
-     */
     readonly size?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
-     */
     readonly type?: pulumi.Input<string>;
-    /**
-     * VPC related information about the directory. Fields documented below.
-     */
     readonly vpcSettings?: pulumi.Input<inputs.directoryservice.DirectoryVpcSettings>;
 }

@@ -26,31 +26,9 @@ class Accelerator(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a Global Accelerator accelerator.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.globalaccelerator.Accelerator("example",
-            attributes=aws.globalaccelerator.AcceleratorAttributesArgs(
-                flow_logs_enabled=True,
-                flow_logs_s3_bucket="example-bucket",
-                flow_logs_s3_prefix="flow-logs/",
-            ),
-            enabled=True,
-            ip_address_type="IPV4")
-        ```
-
+        Create a Accelerator resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AcceleratorAttributesArgs']] attributes: The attributes of the accelerator. Fields documented below.
-        :param pulumi.Input[bool] enabled: Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
-        :param pulumi.Input[str] ip_address_type: The value for the address type must be `IPV4`.
-        :param pulumi.Input[str] name: The name of the accelerator.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,16 +80,6 @@ class Accelerator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AcceleratorAttributesArgs']] attributes: The attributes of the accelerator. Fields documented below.
-        :param pulumi.Input[str] dns_name: The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
-               * `hosted_zone_id` --  The Global Accelerator Route 53 zone ID that can be used to
-               route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-               is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
-        :param pulumi.Input[bool] enabled: Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
-        :param pulumi.Input[str] ip_address_type: The value for the address type must be `IPV4`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AcceleratorIpSetArgs']]]] ip_sets: IP address set associated with the accelerator.
-        :param pulumi.Input[str] name: The name of the accelerator.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -130,28 +98,16 @@ class Accelerator(pulumi.CustomResource):
     @property
     @pulumi.getter
     def attributes(self) -> pulumi.Output[Optional['outputs.AcceleratorAttributes']]:
-        """
-        The attributes of the accelerator. Fields documented below.
-        """
         return pulumi.get(self, "attributes")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> pulumi.Output[str]:
-        """
-        The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
-        * `hosted_zone_id` --  The Global Accelerator Route 53 zone ID that can be used to
-        route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-        is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -162,33 +118,21 @@ class Accelerator(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ipAddressType")
     def ip_address_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The value for the address type must be `IPV4`.
-        """
         return pulumi.get(self, "ip_address_type")
 
     @property
     @pulumi.getter(name="ipSets")
     def ip_sets(self) -> pulumi.Output[List['outputs.AcceleratorIpSet']]:
-        """
-        IP address set associated with the accelerator.
-        """
         return pulumi.get(self, "ip_sets")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the accelerator.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

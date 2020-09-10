@@ -25,23 +25,9 @@ class Cluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates an Amazon CloudHSM v2 cluster.
-
-        For information about CloudHSM v2, see the
-        [AWS CloudHSM User Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html) and the [Amazon
-        CloudHSM API Reference][2].
-
-        > **NOTE:** A CloudHSM Cluster can take several minutes to set up.
-        Practically no single attribute can be updated, except for `tags`.
-        If you need to delete a cluster, you have to remove its HSM modules first.
-        To initialize cluster, you have to add an HSM instance to the cluster, then sign CSR and upload it.
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] hsm_type: The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-        :param pulumi.Input[str] source_backup_identifier: The id of Cloud HSM v2 cluster backup to be restored.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: The IDs of subnets in which cluster will operate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,20 +85,6 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterClusterCertificateArgs']]]] cluster_certificates: The list of cluster certificates.
-               * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-               * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-               * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-               * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-               * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
-        :param pulumi.Input[str] cluster_id: The id of the CloudHSM cluster.
-        :param pulumi.Input[str] cluster_state: The state of the CloudHSM cluster.
-        :param pulumi.Input[str] hsm_type: The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-        :param pulumi.Input[str] security_group_id: The ID of the security group associated with the CloudHSM cluster.
-        :param pulumi.Input[str] source_backup_identifier: The id of Cloud HSM v2 cluster backup to be restored.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: The IDs of subnets in which cluster will operate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the VPC that the CloudHSM cluster resides in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -132,78 +104,46 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterCertificates")
     def cluster_certificates(self) -> pulumi.Output[List['outputs.ClusterClusterCertificate']]:
-        """
-        The list of cluster certificates.
-        * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-        * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-        * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-        * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-        * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
-        """
         return pulumi.get(self, "cluster_certificates")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
-        """
-        The id of the CloudHSM cluster.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="clusterState")
     def cluster_state(self) -> pulumi.Output[str]:
-        """
-        The state of the CloudHSM cluster.
-        """
         return pulumi.get(self, "cluster_state")
 
     @property
     @pulumi.getter(name="hsmType")
     def hsm_type(self) -> pulumi.Output[str]:
-        """
-        The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-        """
         return pulumi.get(self, "hsm_type")
 
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the security group associated with the CloudHSM cluster.
-        """
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter(name="sourceBackupIdentifier")
     def source_backup_identifier(self) -> pulumi.Output[Optional[str]]:
-        """
-        The id of Cloud HSM v2 cluster backup to be restored.
-        """
         return pulumi.get(self, "source_backup_identifier")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[List[str]]:
-        """
-        The IDs of subnets in which cluster will operate.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        The id of the VPC that the CloudHSM cluster resides in.
-        """
         return pulumi.get(self, "vpc_id")
 
     def translate_output_property(self, prop):

@@ -10,108 +10,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Elastic Transcoder preset resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elastictranscoder"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elastictranscoder.NewPreset(ctx, "bar", &elastictranscoder.PresetArgs{
-// 			Audio: &elastictranscoder.PresetAudioArgs{
-// 				AudioPackingMode: pulumi.String("SingleTrack"),
-// 				BitRate:          pulumi.String("96"),
-// 				Channels:         pulumi.String("2"),
-// 				Codec:            pulumi.String("AAC"),
-// 				SampleRate:       pulumi.String("44100"),
-// 			},
-// 			AudioCodecOptions: &elastictranscoder.PresetAudioCodecOptionsArgs{
-// 				Profile: pulumi.String("AAC-LC"),
-// 			},
-// 			Container:   pulumi.String("mp4"),
-// 			Description: pulumi.String("Sample Preset"),
-// 			Thumbnails: &elastictranscoder.PresetThumbnailsArgs{
-// 				Format:        pulumi.String("png"),
-// 				Interval:      pulumi.String("120"),
-// 				MaxHeight:     pulumi.String("auto"),
-// 				MaxWidth:      pulumi.String("auto"),
-// 				PaddingPolicy: pulumi.String("Pad"),
-// 				SizingPolicy:  pulumi.String("Fit"),
-// 			},
-// 			Video: &elastictranscoder.PresetVideoArgs{
-// 				BitRate:            pulumi.String("1600"),
-// 				Codec:              pulumi.String("H.264"),
-// 				DisplayAspectRatio: pulumi.String("16:9"),
-// 				FixedGop:           pulumi.String("false"),
-// 				FrameRate:          pulumi.String("auto"),
-// 				KeyframesMaxDist:   pulumi.String("240"),
-// 				MaxFrameRate:       pulumi.String("60"),
-// 				MaxHeight:          pulumi.String("auto"),
-// 				MaxWidth:           pulumi.String("auto"),
-// 				PaddingPolicy:      pulumi.String("Pad"),
-// 				SizingPolicy:       pulumi.String("Fit"),
-// 			},
-// 			VideoCodecOptions: pulumi.StringMap{
-// 				"ColorSpaceConversionMode": pulumi.String("None"),
-// 				"InterlacedMode":           pulumi.String("Progressive"),
-// 				"Level":                    pulumi.String("2.2"),
-// 				"MaxReferenceFrames":       pulumi.String("3"),
-// 				"Profile":                  pulumi.String("main"),
-// 			},
-// 			VideoWatermarks: elastictranscoder.PresetVideoWatermarkArray{
-// 				&elastictranscoder.PresetVideoWatermarkArgs{
-// 					HorizontalAlign:  pulumi.String("Right"),
-// 					HorizontalOffset: pulumi.String("10px"),
-// 					Id:               pulumi.String("Test"),
-// 					MaxHeight:        pulumi.String(fmt.Sprintf("%v%v", "20", "%")),
-// 					MaxWidth:         pulumi.String(fmt.Sprintf("%v%v", "20", "%")),
-// 					Opacity:          pulumi.String("55.5"),
-// 					SizingPolicy:     pulumi.String("ShrinkToFit"),
-// 					Target:           pulumi.String("Content"),
-// 					VerticalAlign:    pulumi.String("Bottom"),
-// 					VerticalOffset:   pulumi.String("10px"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Preset struct {
 	pulumi.CustomResourceState
 
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Audio parameters object (documented below).
-	Audio PresetAudioPtrOutput `pulumi:"audio"`
-	// Codec options for the audio parameters (documented below)
+	Arn               pulumi.StringOutput              `pulumi:"arn"`
+	Audio             PresetAudioPtrOutput             `pulumi:"audio"`
 	AudioCodecOptions PresetAudioCodecOptionsPtrOutput `pulumi:"audioCodecOptions"`
-	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
-	Container pulumi.StringOutput `pulumi:"container"`
-	// A description of the preset (maximum 255 characters)
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the preset. (maximum 40 characters)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Thumbnail parameters object (documented below)
-	Thumbnails PresetThumbnailsPtrOutput `pulumi:"thumbnails"`
-	Type       pulumi.StringOutput       `pulumi:"type"`
-	// Video parameters object (documented below)
-	Video PresetVideoPtrOutput `pulumi:"video"`
-	// Codec options for the video parameters
-	VideoCodecOptions pulumi.StringMapOutput `pulumi:"videoCodecOptions"`
-	// Watermark parameters for the video parameters (documented below)
-	VideoWatermarks PresetVideoWatermarkArrayOutput `pulumi:"videoWatermarks"`
+	Container         pulumi.StringOutput              `pulumi:"container"`
+	Description       pulumi.StringPtrOutput           `pulumi:"description"`
+	Name              pulumi.StringOutput              `pulumi:"name"`
+	Thumbnails        PresetThumbnailsPtrOutput        `pulumi:"thumbnails"`
+	Type              pulumi.StringOutput              `pulumi:"type"`
+	Video             PresetVideoPtrOutput             `pulumi:"video"`
+	VideoCodecOptions pulumi.StringMapOutput           `pulumi:"videoCodecOptions"`
+	VideoWatermarks   PresetVideoWatermarkArrayOutput  `pulumi:"videoWatermarks"`
 }
 
 // NewPreset registers a new resource with the given unique name, arguments, and options.
@@ -145,49 +57,31 @@ func GetPreset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Preset resources.
 type presetState struct {
-	Arn *string `pulumi:"arn"`
-	// Audio parameters object (documented below).
-	Audio *PresetAudio `pulumi:"audio"`
-	// Codec options for the audio parameters (documented below)
+	Arn               *string                  `pulumi:"arn"`
+	Audio             *PresetAudio             `pulumi:"audio"`
 	AudioCodecOptions *PresetAudioCodecOptions `pulumi:"audioCodecOptions"`
-	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
-	Container *string `pulumi:"container"`
-	// A description of the preset (maximum 255 characters)
-	Description *string `pulumi:"description"`
-	// The name of the preset. (maximum 40 characters)
-	Name *string `pulumi:"name"`
-	// Thumbnail parameters object (documented below)
-	Thumbnails *PresetThumbnails `pulumi:"thumbnails"`
-	Type       *string           `pulumi:"type"`
-	// Video parameters object (documented below)
-	Video *PresetVideo `pulumi:"video"`
-	// Codec options for the video parameters
-	VideoCodecOptions map[string]string `pulumi:"videoCodecOptions"`
-	// Watermark parameters for the video parameters (documented below)
-	VideoWatermarks []PresetVideoWatermark `pulumi:"videoWatermarks"`
+	Container         *string                  `pulumi:"container"`
+	Description       *string                  `pulumi:"description"`
+	Name              *string                  `pulumi:"name"`
+	Thumbnails        *PresetThumbnails        `pulumi:"thumbnails"`
+	Type              *string                  `pulumi:"type"`
+	Video             *PresetVideo             `pulumi:"video"`
+	VideoCodecOptions map[string]string        `pulumi:"videoCodecOptions"`
+	VideoWatermarks   []PresetVideoWatermark   `pulumi:"videoWatermarks"`
 }
 
 type PresetState struct {
-	Arn pulumi.StringPtrInput
-	// Audio parameters object (documented below).
-	Audio PresetAudioPtrInput
-	// Codec options for the audio parameters (documented below)
+	Arn               pulumi.StringPtrInput
+	Audio             PresetAudioPtrInput
 	AudioCodecOptions PresetAudioCodecOptionsPtrInput
-	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
-	Container pulumi.StringPtrInput
-	// A description of the preset (maximum 255 characters)
-	Description pulumi.StringPtrInput
-	// The name of the preset. (maximum 40 characters)
-	Name pulumi.StringPtrInput
-	// Thumbnail parameters object (documented below)
-	Thumbnails PresetThumbnailsPtrInput
-	Type       pulumi.StringPtrInput
-	// Video parameters object (documented below)
-	Video PresetVideoPtrInput
-	// Codec options for the video parameters
+	Container         pulumi.StringPtrInput
+	Description       pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	Thumbnails        PresetThumbnailsPtrInput
+	Type              pulumi.StringPtrInput
+	Video             PresetVideoPtrInput
 	VideoCodecOptions pulumi.StringMapInput
-	// Watermark parameters for the video parameters (documented below)
-	VideoWatermarks PresetVideoWatermarkArrayInput
+	VideoWatermarks   PresetVideoWatermarkArrayInput
 }
 
 func (PresetState) ElementType() reflect.Type {
@@ -195,48 +89,30 @@ func (PresetState) ElementType() reflect.Type {
 }
 
 type presetArgs struct {
-	// Audio parameters object (documented below).
-	Audio *PresetAudio `pulumi:"audio"`
-	// Codec options for the audio parameters (documented below)
+	Audio             *PresetAudio             `pulumi:"audio"`
 	AudioCodecOptions *PresetAudioCodecOptions `pulumi:"audioCodecOptions"`
-	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
-	Container string `pulumi:"container"`
-	// A description of the preset (maximum 255 characters)
-	Description *string `pulumi:"description"`
-	// The name of the preset. (maximum 40 characters)
-	Name *string `pulumi:"name"`
-	// Thumbnail parameters object (documented below)
-	Thumbnails *PresetThumbnails `pulumi:"thumbnails"`
-	Type       *string           `pulumi:"type"`
-	// Video parameters object (documented below)
-	Video *PresetVideo `pulumi:"video"`
-	// Codec options for the video parameters
-	VideoCodecOptions map[string]string `pulumi:"videoCodecOptions"`
-	// Watermark parameters for the video parameters (documented below)
-	VideoWatermarks []PresetVideoWatermark `pulumi:"videoWatermarks"`
+	Container         string                   `pulumi:"container"`
+	Description       *string                  `pulumi:"description"`
+	Name              *string                  `pulumi:"name"`
+	Thumbnails        *PresetThumbnails        `pulumi:"thumbnails"`
+	Type              *string                  `pulumi:"type"`
+	Video             *PresetVideo             `pulumi:"video"`
+	VideoCodecOptions map[string]string        `pulumi:"videoCodecOptions"`
+	VideoWatermarks   []PresetVideoWatermark   `pulumi:"videoWatermarks"`
 }
 
 // The set of arguments for constructing a Preset resource.
 type PresetArgs struct {
-	// Audio parameters object (documented below).
-	Audio PresetAudioPtrInput
-	// Codec options for the audio parameters (documented below)
+	Audio             PresetAudioPtrInput
 	AudioCodecOptions PresetAudioCodecOptionsPtrInput
-	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
-	Container pulumi.StringInput
-	// A description of the preset (maximum 255 characters)
-	Description pulumi.StringPtrInput
-	// The name of the preset. (maximum 40 characters)
-	Name pulumi.StringPtrInput
-	// Thumbnail parameters object (documented below)
-	Thumbnails PresetThumbnailsPtrInput
-	Type       pulumi.StringPtrInput
-	// Video parameters object (documented below)
-	Video PresetVideoPtrInput
-	// Codec options for the video parameters
+	Container         pulumi.StringInput
+	Description       pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	Thumbnails        PresetThumbnailsPtrInput
+	Type              pulumi.StringPtrInput
+	Video             PresetVideoPtrInput
 	VideoCodecOptions pulumi.StringMapInput
-	// Watermark parameters for the video parameters (documented below)
-	VideoWatermarks PresetVideoWatermarkArrayInput
+	VideoWatermarks   PresetVideoWatermarkArrayInput
 }
 
 func (PresetArgs) ElementType() reflect.Type {

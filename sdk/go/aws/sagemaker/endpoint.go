@@ -10,46 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a SageMaker Endpoint resource.
-//
-// ## Example Usage
-//
-// Basic usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sagemaker"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sagemaker.NewEndpoint(ctx, "endpoint", &sagemaker.EndpointArgs{
-// 			EndpointConfigName: pulumi.Any(aws_sagemaker_endpoint_configuration.Ec.Name),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("foo"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Endpoint struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the endpoint configuration to use.
-	EndpointConfigName pulumi.StringOutput `pulumi:"endpointConfigName"`
-	// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                pulumi.StringOutput    `pulumi:"arn"`
+	EndpointConfigName pulumi.StringOutput    `pulumi:"endpointConfigName"`
+	Name               pulumi.StringOutput    `pulumi:"name"`
+	Tags               pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -83,25 +50,17 @@ func GetEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Endpoint resources.
 type endpointState struct {
-	// The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-	Arn *string `pulumi:"arn"`
-	// The name of the endpoint configuration to use.
-	EndpointConfigName *string `pulumi:"endpointConfigName"`
-	// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                *string           `pulumi:"arn"`
+	EndpointConfigName *string           `pulumi:"endpointConfigName"`
+	Name               *string           `pulumi:"name"`
+	Tags               map[string]string `pulumi:"tags"`
 }
 
 type EndpointState struct {
-	// The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-	Arn pulumi.StringPtrInput
-	// The name of the endpoint configuration to use.
+	Arn                pulumi.StringPtrInput
 	EndpointConfigName pulumi.StringPtrInput
-	// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Name               pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
 }
 
 func (EndpointState) ElementType() reflect.Type {
@@ -109,22 +68,16 @@ func (EndpointState) ElementType() reflect.Type {
 }
 
 type endpointArgs struct {
-	// The name of the endpoint configuration to use.
-	EndpointConfigName string `pulumi:"endpointConfigName"`
-	// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	EndpointConfigName string            `pulumi:"endpointConfigName"`
+	Name               *string           `pulumi:"name"`
+	Tags               map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Endpoint resource.
 type EndpointArgs struct {
-	// The name of the endpoint configuration to use.
 	EndpointConfigName pulumi.StringInput
-	// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Name               pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
 }
 
 func (EndpointArgs) ElementType() reflect.Type {

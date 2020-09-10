@@ -50,10 +50,6 @@ class ThingTypePropertiesArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  searchable_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] description: The description of the thing type.
-        :param pulumi.Input[List[pulumi.Input[str]]] searchable_attributes: A list of searchable thing attribute names.
-        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if searchable_attributes is not None:
@@ -62,9 +58,6 @@ class ThingTypePropertiesArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the thing type.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -74,9 +67,6 @@ class ThingTypePropertiesArgs:
     @property
     @pulumi.getter(name="searchableAttributes")
     def searchable_attributes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
-        """
-        A list of searchable thing attribute names.
-        """
         return pulumi.get(self, "searchable_attributes")
 
     @searchable_attributes.setter
@@ -91,12 +81,6 @@ class TopicRuleCloudwatchAlarmArgs:
                  role_arn: pulumi.Input[str],
                  state_reason: pulumi.Input[str],
                  state_value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] alarm_name: The CloudWatch alarm name.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch alarm.
-        :param pulumi.Input[str] state_reason: The reason for the alarm change.
-        :param pulumi.Input[str] state_value: The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
-        """
         pulumi.set(__self__, "alarm_name", alarm_name)
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "state_reason", state_reason)
@@ -105,9 +89,6 @@ class TopicRuleCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="alarmName")
     def alarm_name(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch alarm name.
-        """
         return pulumi.get(self, "alarm_name")
 
     @alarm_name.setter
@@ -117,9 +98,6 @@ class TopicRuleCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -129,9 +107,6 @@ class TopicRuleCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> pulumi.Input[str]:
-        """
-        The reason for the alarm change.
-        """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
@@ -141,9 +116,6 @@ class TopicRuleCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="stateValue")
     def state_value(self) -> pulumi.Input[str]:
-        """
-        The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
-        """
         return pulumi.get(self, "state_value")
 
     @state_value.setter
@@ -160,14 +132,6 @@ class TopicRuleCloudwatchMetricArgs:
                  metric_value: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  metric_timestamp: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] metric_name: The CloudWatch metric name.
-        :param pulumi.Input[str] metric_namespace: The CloudWatch metric namespace name.
-        :param pulumi.Input[str] metric_unit: The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
-        :param pulumi.Input[str] metric_value: The CloudWatch metric value.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch metric.
-        :param pulumi.Input[str] metric_timestamp: An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
-        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "metric_namespace", metric_namespace)
         pulumi.set(__self__, "metric_unit", metric_unit)
@@ -179,9 +143,6 @@ class TopicRuleCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch metric name.
-        """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
@@ -191,9 +152,6 @@ class TopicRuleCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricNamespace")
     def metric_namespace(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch metric namespace name.
-        """
         return pulumi.get(self, "metric_namespace")
 
     @metric_namespace.setter
@@ -203,9 +161,6 @@ class TopicRuleCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricUnit")
     def metric_unit(self) -> pulumi.Input[str]:
-        """
-        The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
-        """
         return pulumi.get(self, "metric_unit")
 
     @metric_unit.setter
@@ -215,9 +170,6 @@ class TopicRuleCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricValue")
     def metric_value(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch metric value.
-        """
         return pulumi.get(self, "metric_value")
 
     @metric_value.setter
@@ -227,9 +179,6 @@ class TopicRuleCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch metric.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -239,9 +188,6 @@ class TopicRuleCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricTimestamp")
     def metric_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
-        """
         return pulumi.get(self, "metric_timestamp")
 
     @metric_timestamp.setter
@@ -262,18 +208,6 @@ class TopicRuleDynamodbArgs:
                  range_key_field: Optional[pulumi.Input[str]] = None,
                  range_key_type: Optional[pulumi.Input[str]] = None,
                  range_key_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] hash_key_field: The hash key name.
-        :param pulumi.Input[str] hash_key_value: The hash key value.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access to the DynamoDB table.
-        :param pulumi.Input[str] table_name: The name of the DynamoDB table.
-        :param pulumi.Input[str] hash_key_type: The hash key type. Valid values are "STRING" or "NUMBER".
-        :param pulumi.Input[str] operation: The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
-        :param pulumi.Input[str] payload_field: The action payload.
-        :param pulumi.Input[str] range_key_field: The range key name.
-        :param pulumi.Input[str] range_key_type: The range key type. Valid values are "STRING" or "NUMBER".
-        :param pulumi.Input[str] range_key_value: The range key value.
-        """
         pulumi.set(__self__, "hash_key_field", hash_key_field)
         pulumi.set(__self__, "hash_key_value", hash_key_value)
         pulumi.set(__self__, "role_arn", role_arn)
@@ -294,9 +228,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="hashKeyField")
     def hash_key_field(self) -> pulumi.Input[str]:
-        """
-        The hash key name.
-        """
         return pulumi.get(self, "hash_key_field")
 
     @hash_key_field.setter
@@ -306,9 +237,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="hashKeyValue")
     def hash_key_value(self) -> pulumi.Input[str]:
-        """
-        The hash key value.
-        """
         return pulumi.get(self, "hash_key_value")
 
     @hash_key_value.setter
@@ -318,9 +246,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access to the DynamoDB table.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -330,9 +255,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="tableName")
     def table_name(self) -> pulumi.Input[str]:
-        """
-        The name of the DynamoDB table.
-        """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
@@ -342,9 +264,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="hashKeyType")
     def hash_key_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The hash key type. Valid values are "STRING" or "NUMBER".
-        """
         return pulumi.get(self, "hash_key_type")
 
     @hash_key_type.setter
@@ -354,9 +273,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input[str]]:
-        """
-        The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
-        """
         return pulumi.get(self, "operation")
 
     @operation.setter
@@ -366,9 +282,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="payloadField")
     def payload_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        The action payload.
-        """
         return pulumi.get(self, "payload_field")
 
     @payload_field.setter
@@ -378,9 +291,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="rangeKeyField")
     def range_key_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        The range key name.
-        """
         return pulumi.get(self, "range_key_field")
 
     @range_key_field.setter
@@ -390,9 +300,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="rangeKeyType")
     def range_key_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The range key type. Valid values are "STRING" or "NUMBER".
-        """
         return pulumi.get(self, "range_key_type")
 
     @range_key_type.setter
@@ -402,9 +309,6 @@ class TopicRuleDynamodbArgs:
     @property
     @pulumi.getter(name="rangeKeyValue")
     def range_key_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The range key value.
-        """
         return pulumi.get(self, "range_key_value")
 
     @range_key_value.setter
@@ -417,10 +321,6 @@ class TopicRuleDynamodbv2Args:
     def __init__(__self__, *,
                  role_arn: pulumi.Input[str],
                  put_item: Optional[pulumi.Input['TopicRuleDynamodbv2PutItemArgs']] = None):
-        """
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch alarm.
-        :param pulumi.Input['TopicRuleDynamodbv2PutItemArgs'] put_item: Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         if put_item is not None:
             pulumi.set(__self__, "put_item", put_item)
@@ -428,9 +328,6 @@ class TopicRuleDynamodbv2Args:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -440,9 +337,6 @@ class TopicRuleDynamodbv2Args:
     @property
     @pulumi.getter(name="putItem")
     def put_item(self) -> Optional[pulumi.Input['TopicRuleDynamodbv2PutItemArgs']]:
-        """
-        Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
-        """
         return pulumi.get(self, "put_item")
 
     @put_item.setter
@@ -454,17 +348,11 @@ class TopicRuleDynamodbv2Args:
 class TopicRuleDynamodbv2PutItemArgs:
     def __init__(__self__, *,
                  table_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] table_name: The name of the DynamoDB table.
-        """
         pulumi.set(__self__, "table_name", table_name)
 
     @property
     @pulumi.getter(name="tableName")
     def table_name(self) -> pulumi.Input[str]:
-        """
-        The name of the DynamoDB table.
-        """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
@@ -480,13 +368,6 @@ class TopicRuleElasticsearchArgs:
                  index: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] endpoint: The endpoint of your Elasticsearch domain.
-        :param pulumi.Input[str] id: The unique identifier for the document you are storing.
-        :param pulumi.Input[str] index: The Elasticsearch index where you want to store your data.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that has access to Elasticsearch.
-        :param pulumi.Input[str] type: The type of document you are storing.
-        """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "index", index)
@@ -496,9 +377,6 @@ class TopicRuleElasticsearchArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
-        """
-        The endpoint of your Elasticsearch domain.
-        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -508,9 +386,6 @@ class TopicRuleElasticsearchArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
-        """
-        The unique identifier for the document you are storing.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -520,9 +395,6 @@ class TopicRuleElasticsearchArgs:
     @property
     @pulumi.getter
     def index(self) -> pulumi.Input[str]:
-        """
-        The Elasticsearch index where you want to store your data.
-        """
         return pulumi.get(self, "index")
 
     @index.setter
@@ -532,9 +404,6 @@ class TopicRuleElasticsearchArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that has access to Elasticsearch.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -544,9 +413,6 @@ class TopicRuleElasticsearchArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The type of document you are storing.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -746,12 +612,6 @@ class TopicRuleErrorActionCloudwatchAlarmArgs:
                  role_arn: pulumi.Input[str],
                  state_reason: pulumi.Input[str],
                  state_value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] alarm_name: The CloudWatch alarm name.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch alarm.
-        :param pulumi.Input[str] state_reason: The reason for the alarm change.
-        :param pulumi.Input[str] state_value: The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
-        """
         pulumi.set(__self__, "alarm_name", alarm_name)
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "state_reason", state_reason)
@@ -760,9 +620,6 @@ class TopicRuleErrorActionCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="alarmName")
     def alarm_name(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch alarm name.
-        """
         return pulumi.get(self, "alarm_name")
 
     @alarm_name.setter
@@ -772,9 +629,6 @@ class TopicRuleErrorActionCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -784,9 +638,6 @@ class TopicRuleErrorActionCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> pulumi.Input[str]:
-        """
-        The reason for the alarm change.
-        """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
@@ -796,9 +647,6 @@ class TopicRuleErrorActionCloudwatchAlarmArgs:
     @property
     @pulumi.getter(name="stateValue")
     def state_value(self) -> pulumi.Input[str]:
-        """
-        The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
-        """
         return pulumi.get(self, "state_value")
 
     @state_value.setter
@@ -815,14 +663,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
                  metric_value: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  metric_timestamp: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] metric_name: The CloudWatch metric name.
-        :param pulumi.Input[str] metric_namespace: The CloudWatch metric namespace name.
-        :param pulumi.Input[str] metric_unit: The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
-        :param pulumi.Input[str] metric_value: The CloudWatch metric value.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch metric.
-        :param pulumi.Input[str] metric_timestamp: An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
-        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "metric_namespace", metric_namespace)
         pulumi.set(__self__, "metric_unit", metric_unit)
@@ -834,9 +674,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch metric name.
-        """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
@@ -846,9 +683,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricNamespace")
     def metric_namespace(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch metric namespace name.
-        """
         return pulumi.get(self, "metric_namespace")
 
     @metric_namespace.setter
@@ -858,9 +692,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricUnit")
     def metric_unit(self) -> pulumi.Input[str]:
-        """
-        The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
-        """
         return pulumi.get(self, "metric_unit")
 
     @metric_unit.setter
@@ -870,9 +701,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricValue")
     def metric_value(self) -> pulumi.Input[str]:
-        """
-        The CloudWatch metric value.
-        """
         return pulumi.get(self, "metric_value")
 
     @metric_value.setter
@@ -882,9 +710,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch metric.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -894,9 +719,6 @@ class TopicRuleErrorActionCloudwatchMetricArgs:
     @property
     @pulumi.getter(name="metricTimestamp")
     def metric_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
-        """
         return pulumi.get(self, "metric_timestamp")
 
     @metric_timestamp.setter
@@ -917,18 +739,6 @@ class TopicRuleErrorActionDynamodbArgs:
                  range_key_field: Optional[pulumi.Input[str]] = None,
                  range_key_type: Optional[pulumi.Input[str]] = None,
                  range_key_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] hash_key_field: The hash key name.
-        :param pulumi.Input[str] hash_key_value: The hash key value.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access to the DynamoDB table.
-        :param pulumi.Input[str] table_name: The name of the DynamoDB table.
-        :param pulumi.Input[str] hash_key_type: The hash key type. Valid values are "STRING" or "NUMBER".
-        :param pulumi.Input[str] operation: The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
-        :param pulumi.Input[str] payload_field: The action payload.
-        :param pulumi.Input[str] range_key_field: The range key name.
-        :param pulumi.Input[str] range_key_type: The range key type. Valid values are "STRING" or "NUMBER".
-        :param pulumi.Input[str] range_key_value: The range key value.
-        """
         pulumi.set(__self__, "hash_key_field", hash_key_field)
         pulumi.set(__self__, "hash_key_value", hash_key_value)
         pulumi.set(__self__, "role_arn", role_arn)
@@ -949,9 +759,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="hashKeyField")
     def hash_key_field(self) -> pulumi.Input[str]:
-        """
-        The hash key name.
-        """
         return pulumi.get(self, "hash_key_field")
 
     @hash_key_field.setter
@@ -961,9 +768,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="hashKeyValue")
     def hash_key_value(self) -> pulumi.Input[str]:
-        """
-        The hash key value.
-        """
         return pulumi.get(self, "hash_key_value")
 
     @hash_key_value.setter
@@ -973,9 +777,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access to the DynamoDB table.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -985,9 +786,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="tableName")
     def table_name(self) -> pulumi.Input[str]:
-        """
-        The name of the DynamoDB table.
-        """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
@@ -997,9 +795,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="hashKeyType")
     def hash_key_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The hash key type. Valid values are "STRING" or "NUMBER".
-        """
         return pulumi.get(self, "hash_key_type")
 
     @hash_key_type.setter
@@ -1009,9 +804,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input[str]]:
-        """
-        The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
-        """
         return pulumi.get(self, "operation")
 
     @operation.setter
@@ -1021,9 +813,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="payloadField")
     def payload_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        The action payload.
-        """
         return pulumi.get(self, "payload_field")
 
     @payload_field.setter
@@ -1033,9 +822,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="rangeKeyField")
     def range_key_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        The range key name.
-        """
         return pulumi.get(self, "range_key_field")
 
     @range_key_field.setter
@@ -1045,9 +831,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="rangeKeyType")
     def range_key_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The range key type. Valid values are "STRING" or "NUMBER".
-        """
         return pulumi.get(self, "range_key_type")
 
     @range_key_type.setter
@@ -1057,9 +840,6 @@ class TopicRuleErrorActionDynamodbArgs:
     @property
     @pulumi.getter(name="rangeKeyValue")
     def range_key_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The range key value.
-        """
         return pulumi.get(self, "range_key_value")
 
     @range_key_value.setter
@@ -1072,10 +852,6 @@ class TopicRuleErrorActionDynamodbv2Args:
     def __init__(__self__, *,
                  role_arn: pulumi.Input[str],
                  put_item: Optional[pulumi.Input['TopicRuleErrorActionDynamodbv2PutItemArgs']] = None):
-        """
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch alarm.
-        :param pulumi.Input['TopicRuleErrorActionDynamodbv2PutItemArgs'] put_item: Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         if put_item is not None:
             pulumi.set(__self__, "put_item", put_item)
@@ -1083,9 +859,6 @@ class TopicRuleErrorActionDynamodbv2Args:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1095,9 +868,6 @@ class TopicRuleErrorActionDynamodbv2Args:
     @property
     @pulumi.getter(name="putItem")
     def put_item(self) -> Optional[pulumi.Input['TopicRuleErrorActionDynamodbv2PutItemArgs']]:
-        """
-        Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
-        """
         return pulumi.get(self, "put_item")
 
     @put_item.setter
@@ -1109,17 +879,11 @@ class TopicRuleErrorActionDynamodbv2Args:
 class TopicRuleErrorActionDynamodbv2PutItemArgs:
     def __init__(__self__, *,
                  table_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] table_name: The name of the DynamoDB table.
-        """
         pulumi.set(__self__, "table_name", table_name)
 
     @property
     @pulumi.getter(name="tableName")
     def table_name(self) -> pulumi.Input[str]:
-        """
-        The name of the DynamoDB table.
-        """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
@@ -1135,13 +899,6 @@ class TopicRuleErrorActionElasticsearchArgs:
                  index: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] endpoint: The endpoint of your Elasticsearch domain.
-        :param pulumi.Input[str] id: The unique identifier for the document you are storing.
-        :param pulumi.Input[str] index: The Elasticsearch index where you want to store your data.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that has access to Elasticsearch.
-        :param pulumi.Input[str] type: The type of document you are storing.
-        """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "index", index)
@@ -1151,9 +908,6 @@ class TopicRuleErrorActionElasticsearchArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
-        """
-        The endpoint of your Elasticsearch domain.
-        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -1163,9 +917,6 @@ class TopicRuleErrorActionElasticsearchArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
-        """
-        The unique identifier for the document you are storing.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1175,9 +926,6 @@ class TopicRuleErrorActionElasticsearchArgs:
     @property
     @pulumi.getter
     def index(self) -> pulumi.Input[str]:
-        """
-        The Elasticsearch index where you want to store your data.
-        """
         return pulumi.get(self, "index")
 
     @index.setter
@@ -1187,9 +935,6 @@ class TopicRuleErrorActionElasticsearchArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that has access to Elasticsearch.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1199,9 +944,6 @@ class TopicRuleErrorActionElasticsearchArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The type of document you are storing.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1215,11 +957,6 @@ class TopicRuleErrorActionFirehoseArgs:
                  delivery_stream_name: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  separator: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] delivery_stream_name: The delivery stream name.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
-        :param pulumi.Input[str] separator: A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
-        """
         pulumi.set(__self__, "delivery_stream_name", delivery_stream_name)
         pulumi.set(__self__, "role_arn", role_arn)
         if separator is not None:
@@ -1228,9 +965,6 @@ class TopicRuleErrorActionFirehoseArgs:
     @property
     @pulumi.getter(name="deliveryStreamName")
     def delivery_stream_name(self) -> pulumi.Input[str]:
-        """
-        The delivery stream name.
-        """
         return pulumi.get(self, "delivery_stream_name")
 
     @delivery_stream_name.setter
@@ -1240,9 +974,6 @@ class TopicRuleErrorActionFirehoseArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1252,9 +983,6 @@ class TopicRuleErrorActionFirehoseArgs:
     @property
     @pulumi.getter
     def separator(self) -> Optional[pulumi.Input[str]]:
-        """
-        A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
-        """
         return pulumi.get(self, "separator")
 
     @separator.setter
@@ -1267,19 +995,12 @@ class TopicRuleErrorActionIotAnalyticsArgs:
     def __init__(__self__, *,
                  channel_name: pulumi.Input[str],
                  role_arn: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] channel_name: Name of AWS IOT Analytics channel.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        """
         pulumi.set(__self__, "channel_name", channel_name)
         pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter(name="channelName")
     def channel_name(self) -> pulumi.Input[str]:
-        """
-        Name of AWS IOT Analytics channel.
-        """
         return pulumi.get(self, "channel_name")
 
     @channel_name.setter
@@ -1289,9 +1010,6 @@ class TopicRuleErrorActionIotAnalyticsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1305,11 +1023,6 @@ class TopicRuleErrorActionIotEventsArgs:
                  input_name: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  message_id: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] input_name: The name of the AWS IoT Events input.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[str] message_id: Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
-        """
         pulumi.set(__self__, "input_name", input_name)
         pulumi.set(__self__, "role_arn", role_arn)
         if message_id is not None:
@@ -1318,9 +1031,6 @@ class TopicRuleErrorActionIotEventsArgs:
     @property
     @pulumi.getter(name="inputName")
     def input_name(self) -> pulumi.Input[str]:
-        """
-        The name of the AWS IoT Events input.
-        """
         return pulumi.get(self, "input_name")
 
     @input_name.setter
@@ -1330,9 +1040,6 @@ class TopicRuleErrorActionIotEventsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1342,9 +1049,6 @@ class TopicRuleErrorActionIotEventsArgs:
     @property
     @pulumi.getter(name="messageId")
     def message_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
-        """
         return pulumi.get(self, "message_id")
 
     @message_id.setter
@@ -1358,11 +1062,6 @@ class TopicRuleErrorActionKinesisArgs:
                  role_arn: pulumi.Input[str],
                  stream_name: pulumi.Input[str],
                  partition_key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access to the Amazon Kinesis stream.
-        :param pulumi.Input[str] stream_name: The name of the Amazon Kinesis stream.
-        :param pulumi.Input[str] partition_key: The partition key.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "stream_name", stream_name)
         if partition_key is not None:
@@ -1371,9 +1070,6 @@ class TopicRuleErrorActionKinesisArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access to the Amazon Kinesis stream.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1383,9 +1079,6 @@ class TopicRuleErrorActionKinesisArgs:
     @property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> pulumi.Input[str]:
-        """
-        The name of the Amazon Kinesis stream.
-        """
         return pulumi.get(self, "stream_name")
 
     @stream_name.setter
@@ -1395,9 +1088,6 @@ class TopicRuleErrorActionKinesisArgs:
     @property
     @pulumi.getter(name="partitionKey")
     def partition_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The partition key.
-        """
         return pulumi.get(self, "partition_key")
 
     @partition_key.setter
@@ -1409,17 +1099,11 @@ class TopicRuleErrorActionKinesisArgs:
 class TopicRuleErrorActionLambdaArgs:
     def __init__(__self__, *,
                  function_arn: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] function_arn: The ARN of the Lambda function.
-        """
         pulumi.set(__self__, "function_arn", function_arn)
 
     @property
     @pulumi.getter(name="functionArn")
     def function_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the Lambda function.
-        """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
@@ -1433,11 +1117,6 @@ class TopicRuleErrorActionRepublishArgs:
                  role_arn: pulumi.Input[str],
                  topic: pulumi.Input[str],
                  qos: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[str] topic: The name of the MQTT topic the message should be republished to.
-        :param pulumi.Input[float] qos: The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "topic", topic)
         if qos is not None:
@@ -1446,9 +1125,6 @@ class TopicRuleErrorActionRepublishArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1458,9 +1134,6 @@ class TopicRuleErrorActionRepublishArgs:
     @property
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
-        """
-        The name of the MQTT topic the message should be republished to.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -1470,9 +1143,6 @@ class TopicRuleErrorActionRepublishArgs:
     @property
     @pulumi.getter
     def qos(self) -> Optional[pulumi.Input[float]]:
-        """
-        The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
-        """
         return pulumi.get(self, "qos")
 
     @qos.setter
@@ -1486,11 +1156,6 @@ class TopicRuleErrorActionS3Args:
                  bucket_name: pulumi.Input[str],
                  key: pulumi.Input[str],
                  role_arn: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] bucket_name: The Amazon S3 bucket name.
-        :param pulumi.Input[str] key: The object key.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "role_arn", role_arn)
@@ -1498,9 +1163,6 @@ class TopicRuleErrorActionS3Args:
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[str]:
-        """
-        The Amazon S3 bucket name.
-        """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
@@ -1510,9 +1172,6 @@ class TopicRuleErrorActionS3Args:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        The object key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1522,9 +1181,6 @@ class TopicRuleErrorActionS3Args:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1538,11 +1194,6 @@ class TopicRuleErrorActionSnsArgs:
                  role_arn: pulumi.Input[str],
                  target_arn: pulumi.Input[str],
                  message_format: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[str] target_arn: The ARN of the SNS topic.
-        :param pulumi.Input[str] message_format: The message format of the message to publish. Accepted values are "JSON" and "RAW".
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "target_arn", target_arn)
         if message_format is not None:
@@ -1551,9 +1202,6 @@ class TopicRuleErrorActionSnsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1563,9 +1211,6 @@ class TopicRuleErrorActionSnsArgs:
     @property
     @pulumi.getter(name="targetArn")
     def target_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the SNS topic.
-        """
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
@@ -1575,9 +1220,6 @@ class TopicRuleErrorActionSnsArgs:
     @property
     @pulumi.getter(name="messageFormat")
     def message_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        The message format of the message to publish. Accepted values are "JSON" and "RAW".
-        """
         return pulumi.get(self, "message_format")
 
     @message_format.setter
@@ -1591,11 +1233,6 @@ class TopicRuleErrorActionSqsArgs:
                  queue_url: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  use_base64: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[str] queue_url: The URL of the Amazon SQS queue.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[bool] use_base64: Specifies whether to use Base64 encoding.
-        """
         pulumi.set(__self__, "queue_url", queue_url)
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "use_base64", use_base64)
@@ -1603,9 +1240,6 @@ class TopicRuleErrorActionSqsArgs:
     @property
     @pulumi.getter(name="queueUrl")
     def queue_url(self) -> pulumi.Input[str]:
-        """
-        The URL of the Amazon SQS queue.
-        """
         return pulumi.get(self, "queue_url")
 
     @queue_url.setter
@@ -1615,9 +1249,6 @@ class TopicRuleErrorActionSqsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1627,9 +1258,6 @@ class TopicRuleErrorActionSqsArgs:
     @property
     @pulumi.getter(name="useBase64")
     def use_base64(self) -> pulumi.Input[bool]:
-        """
-        Specifies whether to use Base64 encoding.
-        """
         return pulumi.get(self, "use_base64")
 
     @use_base64.setter
@@ -1643,11 +1271,6 @@ class TopicRuleErrorActionStepFunctionsArgs:
                  role_arn: pulumi.Input[str],
                  state_machine_name: pulumi.Input[str],
                  execution_name_prefix: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access to start execution of the state machine.
-        :param pulumi.Input[str] state_machine_name: The name of the Step Functions state machine whose execution will be started.
-        :param pulumi.Input[str] execution_name_prefix: The prefix used to generate, along with a UUID, the unique state machine execution name.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "state_machine_name", state_machine_name)
         if execution_name_prefix is not None:
@@ -1656,9 +1279,6 @@ class TopicRuleErrorActionStepFunctionsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access to start execution of the state machine.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1668,9 +1288,6 @@ class TopicRuleErrorActionStepFunctionsArgs:
     @property
     @pulumi.getter(name="stateMachineName")
     def state_machine_name(self) -> pulumi.Input[str]:
-        """
-        The name of the Step Functions state machine whose execution will be started.
-        """
         return pulumi.get(self, "state_machine_name")
 
     @state_machine_name.setter
@@ -1680,9 +1297,6 @@ class TopicRuleErrorActionStepFunctionsArgs:
     @property
     @pulumi.getter(name="executionNamePrefix")
     def execution_name_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        The prefix used to generate, along with a UUID, the unique state machine execution name.
-        """
         return pulumi.get(self, "execution_name_prefix")
 
     @execution_name_prefix.setter
@@ -1696,11 +1310,6 @@ class TopicRuleFirehoseArgs:
                  delivery_stream_name: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  separator: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] delivery_stream_name: The delivery stream name.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
-        :param pulumi.Input[str] separator: A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
-        """
         pulumi.set(__self__, "delivery_stream_name", delivery_stream_name)
         pulumi.set(__self__, "role_arn", role_arn)
         if separator is not None:
@@ -1709,9 +1318,6 @@ class TopicRuleFirehoseArgs:
     @property
     @pulumi.getter(name="deliveryStreamName")
     def delivery_stream_name(self) -> pulumi.Input[str]:
-        """
-        The delivery stream name.
-        """
         return pulumi.get(self, "delivery_stream_name")
 
     @delivery_stream_name.setter
@@ -1721,9 +1327,6 @@ class TopicRuleFirehoseArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1733,9 +1336,6 @@ class TopicRuleFirehoseArgs:
     @property
     @pulumi.getter
     def separator(self) -> Optional[pulumi.Input[str]]:
-        """
-        A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
-        """
         return pulumi.get(self, "separator")
 
     @separator.setter
@@ -1748,19 +1348,12 @@ class TopicRuleIotAnalyticArgs:
     def __init__(__self__, *,
                  channel_name: pulumi.Input[str],
                  role_arn: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] channel_name: Name of AWS IOT Analytics channel.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        """
         pulumi.set(__self__, "channel_name", channel_name)
         pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter(name="channelName")
     def channel_name(self) -> pulumi.Input[str]:
-        """
-        Name of AWS IOT Analytics channel.
-        """
         return pulumi.get(self, "channel_name")
 
     @channel_name.setter
@@ -1770,9 +1363,6 @@ class TopicRuleIotAnalyticArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1786,11 +1376,6 @@ class TopicRuleIotEventArgs:
                  input_name: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  message_id: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] input_name: The name of the AWS IoT Events input.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[str] message_id: Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
-        """
         pulumi.set(__self__, "input_name", input_name)
         pulumi.set(__self__, "role_arn", role_arn)
         if message_id is not None:
@@ -1799,9 +1384,6 @@ class TopicRuleIotEventArgs:
     @property
     @pulumi.getter(name="inputName")
     def input_name(self) -> pulumi.Input[str]:
-        """
-        The name of the AWS IoT Events input.
-        """
         return pulumi.get(self, "input_name")
 
     @input_name.setter
@@ -1811,9 +1393,6 @@ class TopicRuleIotEventArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1823,9 +1402,6 @@ class TopicRuleIotEventArgs:
     @property
     @pulumi.getter(name="messageId")
     def message_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
-        """
         return pulumi.get(self, "message_id")
 
     @message_id.setter
@@ -1839,11 +1415,6 @@ class TopicRuleKinesisArgs:
                  role_arn: pulumi.Input[str],
                  stream_name: pulumi.Input[str],
                  partition_key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access to the Amazon Kinesis stream.
-        :param pulumi.Input[str] stream_name: The name of the Amazon Kinesis stream.
-        :param pulumi.Input[str] partition_key: The partition key.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "stream_name", stream_name)
         if partition_key is not None:
@@ -1852,9 +1423,6 @@ class TopicRuleKinesisArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access to the Amazon Kinesis stream.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1864,9 +1432,6 @@ class TopicRuleKinesisArgs:
     @property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> pulumi.Input[str]:
-        """
-        The name of the Amazon Kinesis stream.
-        """
         return pulumi.get(self, "stream_name")
 
     @stream_name.setter
@@ -1876,9 +1441,6 @@ class TopicRuleKinesisArgs:
     @property
     @pulumi.getter(name="partitionKey")
     def partition_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The partition key.
-        """
         return pulumi.get(self, "partition_key")
 
     @partition_key.setter
@@ -1890,17 +1452,11 @@ class TopicRuleKinesisArgs:
 class TopicRuleLambdaArgs:
     def __init__(__self__, *,
                  function_arn: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] function_arn: The ARN of the Lambda function.
-        """
         pulumi.set(__self__, "function_arn", function_arn)
 
     @property
     @pulumi.getter(name="functionArn")
     def function_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the Lambda function.
-        """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
@@ -1914,11 +1470,6 @@ class TopicRuleRepublishArgs:
                  role_arn: pulumi.Input[str],
                  topic: pulumi.Input[str],
                  qos: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[str] topic: The name of the MQTT topic the message should be republished to.
-        :param pulumi.Input[float] qos: The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "topic", topic)
         if qos is not None:
@@ -1927,9 +1478,6 @@ class TopicRuleRepublishArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1939,9 +1487,6 @@ class TopicRuleRepublishArgs:
     @property
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
-        """
-        The name of the MQTT topic the message should be republished to.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -1951,9 +1496,6 @@ class TopicRuleRepublishArgs:
     @property
     @pulumi.getter
     def qos(self) -> Optional[pulumi.Input[float]]:
-        """
-        The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
-        """
         return pulumi.get(self, "qos")
 
     @qos.setter
@@ -1967,11 +1509,6 @@ class TopicRuleS3Args:
                  bucket_name: pulumi.Input[str],
                  key: pulumi.Input[str],
                  role_arn: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] bucket_name: The Amazon S3 bucket name.
-        :param pulumi.Input[str] key: The object key.
-        :param pulumi.Input[str] role_arn: The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "role_arn", role_arn)
@@ -1979,9 +1516,6 @@ class TopicRuleS3Args:
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[str]:
-        """
-        The Amazon S3 bucket name.
-        """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
@@ -1991,9 +1525,6 @@ class TopicRuleS3Args:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        The object key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2003,9 +1534,6 @@ class TopicRuleS3Args:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The IAM role ARN that allows access to the CloudWatch alarm.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2019,11 +1547,6 @@ class TopicRuleSnsArgs:
                  role_arn: pulumi.Input[str],
                  target_arn: pulumi.Input[str],
                  message_format: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[str] target_arn: The ARN of the SNS topic.
-        :param pulumi.Input[str] message_format: The message format of the message to publish. Accepted values are "JSON" and "RAW".
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "target_arn", target_arn)
         if message_format is not None:
@@ -2032,9 +1555,6 @@ class TopicRuleSnsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2044,9 +1564,6 @@ class TopicRuleSnsArgs:
     @property
     @pulumi.getter(name="targetArn")
     def target_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the SNS topic.
-        """
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
@@ -2056,9 +1573,6 @@ class TopicRuleSnsArgs:
     @property
     @pulumi.getter(name="messageFormat")
     def message_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        The message format of the message to publish. Accepted values are "JSON" and "RAW".
-        """
         return pulumi.get(self, "message_format")
 
     @message_format.setter
@@ -2072,11 +1586,6 @@ class TopicRuleSqsArgs:
                  queue_url: pulumi.Input[str],
                  role_arn: pulumi.Input[str],
                  use_base64: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[str] queue_url: The URL of the Amazon SQS queue.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access.
-        :param pulumi.Input[bool] use_base64: Specifies whether to use Base64 encoding.
-        """
         pulumi.set(__self__, "queue_url", queue_url)
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "use_base64", use_base64)
@@ -2084,9 +1593,6 @@ class TopicRuleSqsArgs:
     @property
     @pulumi.getter(name="queueUrl")
     def queue_url(self) -> pulumi.Input[str]:
-        """
-        The URL of the Amazon SQS queue.
-        """
         return pulumi.get(self, "queue_url")
 
     @queue_url.setter
@@ -2096,9 +1602,6 @@ class TopicRuleSqsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2108,9 +1611,6 @@ class TopicRuleSqsArgs:
     @property
     @pulumi.getter(name="useBase64")
     def use_base64(self) -> pulumi.Input[bool]:
-        """
-        Specifies whether to use Base64 encoding.
-        """
         return pulumi.get(self, "use_base64")
 
     @use_base64.setter
@@ -2124,11 +1624,6 @@ class TopicRuleStepFunctionArgs:
                  role_arn: pulumi.Input[str],
                  state_machine_name: pulumi.Input[str],
                  execution_name_prefix: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that grants access to start execution of the state machine.
-        :param pulumi.Input[str] state_machine_name: The name of the Step Functions state machine whose execution will be started.
-        :param pulumi.Input[str] execution_name_prefix: The prefix used to generate, along with a UUID, the unique state machine execution name.
-        """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "state_machine_name", state_machine_name)
         if execution_name_prefix is not None:
@@ -2137,9 +1632,6 @@ class TopicRuleStepFunctionArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the IAM role that grants access to start execution of the state machine.
-        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2149,9 +1641,6 @@ class TopicRuleStepFunctionArgs:
     @property
     @pulumi.getter(name="stateMachineName")
     def state_machine_name(self) -> pulumi.Input[str]:
-        """
-        The name of the Step Functions state machine whose execution will be started.
-        """
         return pulumi.get(self, "state_machine_name")
 
     @state_machine_name.setter
@@ -2161,9 +1650,6 @@ class TopicRuleStepFunctionArgs:
     @property
     @pulumi.getter(name="executionNamePrefix")
     def execution_name_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        The prefix used to generate, along with a UUID, the unique state machine execution name.
-        """
         return pulumi.get(self, "execution_name_prefix")
 
     @execution_name_prefix.setter

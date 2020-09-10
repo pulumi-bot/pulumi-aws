@@ -9,29 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.SecurityHub
 {
-    /// <summary>
-    /// Enables Security Hub for this AWS account.
-    /// 
-    /// &gt; **NOTE:** Destroying this resource will disable Security Hub for this AWS account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.SecurityHub.Account("example", new Aws.SecurityHub.AccountArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

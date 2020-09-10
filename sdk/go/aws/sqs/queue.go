@@ -9,125 +9,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"encoding/json"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sqs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"deadLetterTargetArn": aws_sqs_queue.Queue_deadletter.Arn,
-// 			"maxReceiveCount":     4,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-// 			DelaySeconds:            pulumi.Int(90),
-// 			MaxMessageSize:          pulumi.Int(2048),
-// 			MessageRetentionSeconds: pulumi.Int(86400),
-// 			ReceiveWaitTimeSeconds:  pulumi.Int(10),
-// 			RedrivePolicy:           pulumi.String(json0),
-// 			Tags: pulumi.StringMap{
-// 				"Environment": pulumi.String("production"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## FIFO queue
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sqs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-// 			ContentBasedDeduplication: pulumi.Bool(true),
-// 			FifoQueue:                 pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Server-side encryption (SSE)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sqs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
-// 			KmsDataKeyReusePeriodSeconds: pulumi.Int(300),
-// 			KmsMasterKeyId:               pulumi.String("alias/aws/sqs"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Queue struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the SQS queue
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-	ContentBasedDeduplication pulumi.BoolPtrOutput `pulumi:"contentBasedDeduplication"`
-	// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-	DelaySeconds pulumi.IntPtrOutput `pulumi:"delaySeconds"`
-	// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-	FifoQueue pulumi.BoolPtrOutput `pulumi:"fifoQueue"`
-	// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
-	KmsDataKeyReusePeriodSeconds pulumi.IntOutput `pulumi:"kmsDataKeyReusePeriodSeconds"`
-	// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-	KmsMasterKeyId pulumi.StringPtrOutput `pulumi:"kmsMasterKeyId"`
-	// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-	MaxMessageSize pulumi.IntPtrOutput `pulumi:"maxMessageSize"`
-	// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-	MessageRetentionSeconds pulumi.IntPtrOutput `pulumi:"messageRetentionSeconds"`
-	// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// The JSON policy for the SQS queue.
-	Policy pulumi.StringOutput `pulumi:"policy"`
-	// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-	ReceiveWaitTimeSeconds pulumi.IntPtrOutput `pulumi:"receiveWaitTimeSeconds"`
-	// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-	RedrivePolicy pulumi.StringPtrOutput `pulumi:"redrivePolicy"`
-	// A map of tags to assign to the queue.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-	VisibilityTimeoutSeconds pulumi.IntPtrOutput `pulumi:"visibilityTimeoutSeconds"`
+	Arn                          pulumi.StringOutput    `pulumi:"arn"`
+	ContentBasedDeduplication    pulumi.BoolPtrOutput   `pulumi:"contentBasedDeduplication"`
+	DelaySeconds                 pulumi.IntPtrOutput    `pulumi:"delaySeconds"`
+	FifoQueue                    pulumi.BoolPtrOutput   `pulumi:"fifoQueue"`
+	KmsDataKeyReusePeriodSeconds pulumi.IntOutput       `pulumi:"kmsDataKeyReusePeriodSeconds"`
+	KmsMasterKeyId               pulumi.StringPtrOutput `pulumi:"kmsMasterKeyId"`
+	MaxMessageSize               pulumi.IntPtrOutput    `pulumi:"maxMessageSize"`
+	MessageRetentionSeconds      pulumi.IntPtrOutput    `pulumi:"messageRetentionSeconds"`
+	Name                         pulumi.StringOutput    `pulumi:"name"`
+	NamePrefix                   pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	Policy                       pulumi.StringOutput    `pulumi:"policy"`
+	ReceiveWaitTimeSeconds       pulumi.IntPtrOutput    `pulumi:"receiveWaitTimeSeconds"`
+	RedrivePolicy                pulumi.StringPtrOutput `pulumi:"redrivePolicy"`
+	Tags                         pulumi.StringMapOutput `pulumi:"tags"`
+	VisibilityTimeoutSeconds     pulumi.IntPtrOutput    `pulumi:"visibilityTimeoutSeconds"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -158,69 +57,39 @@ func GetQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Queue resources.
 type queueState struct {
-	// The ARN of the SQS queue
-	Arn *string `pulumi:"arn"`
-	// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-	ContentBasedDeduplication *bool `pulumi:"contentBasedDeduplication"`
-	// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-	DelaySeconds *int `pulumi:"delaySeconds"`
-	// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-	FifoQueue *bool `pulumi:"fifoQueue"`
-	// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
-	KmsDataKeyReusePeriodSeconds *int `pulumi:"kmsDataKeyReusePeriodSeconds"`
-	// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-	KmsMasterKeyId *string `pulumi:"kmsMasterKeyId"`
-	// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-	MaxMessageSize *int `pulumi:"maxMessageSize"`
-	// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-	MessageRetentionSeconds *int `pulumi:"messageRetentionSeconds"`
-	// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The JSON policy for the SQS queue.
-	Policy *string `pulumi:"policy"`
-	// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-	ReceiveWaitTimeSeconds *int `pulumi:"receiveWaitTimeSeconds"`
-	// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-	RedrivePolicy *string `pulumi:"redrivePolicy"`
-	// A map of tags to assign to the queue.
-	Tags map[string]string `pulumi:"tags"`
-	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-	VisibilityTimeoutSeconds *int `pulumi:"visibilityTimeoutSeconds"`
+	Arn                          *string           `pulumi:"arn"`
+	ContentBasedDeduplication    *bool             `pulumi:"contentBasedDeduplication"`
+	DelaySeconds                 *int              `pulumi:"delaySeconds"`
+	FifoQueue                    *bool             `pulumi:"fifoQueue"`
+	KmsDataKeyReusePeriodSeconds *int              `pulumi:"kmsDataKeyReusePeriodSeconds"`
+	KmsMasterKeyId               *string           `pulumi:"kmsMasterKeyId"`
+	MaxMessageSize               *int              `pulumi:"maxMessageSize"`
+	MessageRetentionSeconds      *int              `pulumi:"messageRetentionSeconds"`
+	Name                         *string           `pulumi:"name"`
+	NamePrefix                   *string           `pulumi:"namePrefix"`
+	Policy                       *string           `pulumi:"policy"`
+	ReceiveWaitTimeSeconds       *int              `pulumi:"receiveWaitTimeSeconds"`
+	RedrivePolicy                *string           `pulumi:"redrivePolicy"`
+	Tags                         map[string]string `pulumi:"tags"`
+	VisibilityTimeoutSeconds     *int              `pulumi:"visibilityTimeoutSeconds"`
 }
 
 type QueueState struct {
-	// The ARN of the SQS queue
-	Arn pulumi.StringPtrInput
-	// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-	ContentBasedDeduplication pulumi.BoolPtrInput
-	// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-	DelaySeconds pulumi.IntPtrInput
-	// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-	FifoQueue pulumi.BoolPtrInput
-	// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
+	Arn                          pulumi.StringPtrInput
+	ContentBasedDeduplication    pulumi.BoolPtrInput
+	DelaySeconds                 pulumi.IntPtrInput
+	FifoQueue                    pulumi.BoolPtrInput
 	KmsDataKeyReusePeriodSeconds pulumi.IntPtrInput
-	// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-	KmsMasterKeyId pulumi.StringPtrInput
-	// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-	MaxMessageSize pulumi.IntPtrInput
-	// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-	MessageRetentionSeconds pulumi.IntPtrInput
-	// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// The JSON policy for the SQS queue.
-	Policy pulumi.StringPtrInput
-	// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-	ReceiveWaitTimeSeconds pulumi.IntPtrInput
-	// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-	RedrivePolicy pulumi.StringPtrInput
-	// A map of tags to assign to the queue.
-	Tags pulumi.StringMapInput
-	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-	VisibilityTimeoutSeconds pulumi.IntPtrInput
+	KmsMasterKeyId               pulumi.StringPtrInput
+	MaxMessageSize               pulumi.IntPtrInput
+	MessageRetentionSeconds      pulumi.IntPtrInput
+	Name                         pulumi.StringPtrInput
+	NamePrefix                   pulumi.StringPtrInput
+	Policy                       pulumi.StringPtrInput
+	ReceiveWaitTimeSeconds       pulumi.IntPtrInput
+	RedrivePolicy                pulumi.StringPtrInput
+	Tags                         pulumi.StringMapInput
+	VisibilityTimeoutSeconds     pulumi.IntPtrInput
 }
 
 func (QueueState) ElementType() reflect.Type {
@@ -228,66 +97,38 @@ func (QueueState) ElementType() reflect.Type {
 }
 
 type queueArgs struct {
-	// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-	ContentBasedDeduplication *bool `pulumi:"contentBasedDeduplication"`
-	// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-	DelaySeconds *int `pulumi:"delaySeconds"`
-	// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-	FifoQueue *bool `pulumi:"fifoQueue"`
-	// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
-	KmsDataKeyReusePeriodSeconds *int `pulumi:"kmsDataKeyReusePeriodSeconds"`
-	// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-	KmsMasterKeyId *string `pulumi:"kmsMasterKeyId"`
-	// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-	MaxMessageSize *int `pulumi:"maxMessageSize"`
-	// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-	MessageRetentionSeconds *int `pulumi:"messageRetentionSeconds"`
-	// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The JSON policy for the SQS queue.
-	Policy *string `pulumi:"policy"`
-	// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-	ReceiveWaitTimeSeconds *int `pulumi:"receiveWaitTimeSeconds"`
-	// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-	RedrivePolicy *string `pulumi:"redrivePolicy"`
-	// A map of tags to assign to the queue.
-	Tags map[string]string `pulumi:"tags"`
-	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-	VisibilityTimeoutSeconds *int `pulumi:"visibilityTimeoutSeconds"`
+	ContentBasedDeduplication    *bool             `pulumi:"contentBasedDeduplication"`
+	DelaySeconds                 *int              `pulumi:"delaySeconds"`
+	FifoQueue                    *bool             `pulumi:"fifoQueue"`
+	KmsDataKeyReusePeriodSeconds *int              `pulumi:"kmsDataKeyReusePeriodSeconds"`
+	KmsMasterKeyId               *string           `pulumi:"kmsMasterKeyId"`
+	MaxMessageSize               *int              `pulumi:"maxMessageSize"`
+	MessageRetentionSeconds      *int              `pulumi:"messageRetentionSeconds"`
+	Name                         *string           `pulumi:"name"`
+	NamePrefix                   *string           `pulumi:"namePrefix"`
+	Policy                       *string           `pulumi:"policy"`
+	ReceiveWaitTimeSeconds       *int              `pulumi:"receiveWaitTimeSeconds"`
+	RedrivePolicy                *string           `pulumi:"redrivePolicy"`
+	Tags                         map[string]string `pulumi:"tags"`
+	VisibilityTimeoutSeconds     *int              `pulumi:"visibilityTimeoutSeconds"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
-	// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-	ContentBasedDeduplication pulumi.BoolPtrInput
-	// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-	DelaySeconds pulumi.IntPtrInput
-	// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-	FifoQueue pulumi.BoolPtrInput
-	// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
+	ContentBasedDeduplication    pulumi.BoolPtrInput
+	DelaySeconds                 pulumi.IntPtrInput
+	FifoQueue                    pulumi.BoolPtrInput
 	KmsDataKeyReusePeriodSeconds pulumi.IntPtrInput
-	// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-	KmsMasterKeyId pulumi.StringPtrInput
-	// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-	MaxMessageSize pulumi.IntPtrInput
-	// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-	MessageRetentionSeconds pulumi.IntPtrInput
-	// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// The JSON policy for the SQS queue.
-	Policy pulumi.StringPtrInput
-	// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-	ReceiveWaitTimeSeconds pulumi.IntPtrInput
-	// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-	RedrivePolicy pulumi.StringPtrInput
-	// A map of tags to assign to the queue.
-	Tags pulumi.StringMapInput
-	// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-	VisibilityTimeoutSeconds pulumi.IntPtrInput
+	KmsMasterKeyId               pulumi.StringPtrInput
+	MaxMessageSize               pulumi.IntPtrInput
+	MessageRetentionSeconds      pulumi.IntPtrInput
+	Name                         pulumi.StringPtrInput
+	NamePrefix                   pulumi.StringPtrInput
+	Policy                       pulumi.StringPtrInput
+	ReceiveWaitTimeSeconds       pulumi.IntPtrInput
+	RedrivePolicy                pulumi.StringPtrInput
+	Tags                         pulumi.StringMapInput
+	VisibilityTimeoutSeconds     pulumi.IntPtrInput
 }
 
 func (QueueArgs) ElementType() reflect.Type {

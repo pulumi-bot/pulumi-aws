@@ -26,61 +26,9 @@ class DeliveryChannel(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS Config Delivery Channel.
-
-        > **Note:** Delivery Channel requires a `Configuration Recorder` to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bucket = aws.s3.Bucket("bucket", force_destroy=True)
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "config.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-        \"\"\")
-        foo_recorder = aws.cfg.Recorder("fooRecorder", role_arn=role.arn)
-        foo_delivery_channel = aws.cfg.DeliveryChannel("fooDeliveryChannel", s3_bucket_name=bucket.bucket,
-        opts=ResourceOptions(depends_on=[foo_recorder]))
-        role_policy = aws.iam.RolePolicy("rolePolicy",
-            role=role.id,
-            policy=pulumi.Output.all(bucket.arn, bucket.arn).apply(lambda bucketArn, bucketArn1: f\"\"\"{{
-          "Version": "2012-10-17",
-          "Statement": [
-            {{
-              "Action": [
-                "s3:*"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                "{bucket_arn}",
-                "{bucket_arn1}/*"
-              ]
-            }}
-          ]
-        }}
-        \"\"\"))
-        ```
-
+        Create a DeliveryChannel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-        :param pulumi.Input[str] s3_bucket_name: The name of the S3 bucket used to store the configuration history.
-        :param pulumi.Input[str] s3_key_prefix: The prefix for the specified S3 bucket.
-        :param pulumi.Input[pulumi.InputType['DeliveryChannelSnapshotDeliveryPropertiesArgs']] snapshot_delivery_properties: Options for how AWS Config delivers configuration snapshots. See below
-        :param pulumi.Input[str] sns_topic_arn: The ARN of the SNS topic that AWS Config delivers notifications to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,11 +76,6 @@ class DeliveryChannel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-        :param pulumi.Input[str] s3_bucket_name: The name of the S3 bucket used to store the configuration history.
-        :param pulumi.Input[str] s3_key_prefix: The prefix for the specified S3 bucket.
-        :param pulumi.Input[pulumi.InputType['DeliveryChannelSnapshotDeliveryPropertiesArgs']] snapshot_delivery_properties: Options for how AWS Config delivers configuration snapshots. See below
-        :param pulumi.Input[str] sns_topic_arn: The ARN of the SNS topic that AWS Config delivers notifications to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -148,41 +91,26 @@ class DeliveryChannel(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="s3BucketName")
     def s3_bucket_name(self) -> pulumi.Output[str]:
-        """
-        The name of the S3 bucket used to store the configuration history.
-        """
         return pulumi.get(self, "s3_bucket_name")
 
     @property
     @pulumi.getter(name="s3KeyPrefix")
     def s3_key_prefix(self) -> pulumi.Output[Optional[str]]:
-        """
-        The prefix for the specified S3 bucket.
-        """
         return pulumi.get(self, "s3_key_prefix")
 
     @property
     @pulumi.getter(name="snapshotDeliveryProperties")
     def snapshot_delivery_properties(self) -> pulumi.Output[Optional['outputs.DeliveryChannelSnapshotDeliveryProperties']]:
-        """
-        Options for how AWS Config delivers configuration snapshots. See below
-        """
         return pulumi.get(self, "snapshot_delivery_properties")
 
     @property
     @pulumi.getter(name="snsTopicArn")
     def sns_topic_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN of the SNS topic that AWS Config delivers notifications to.
-        """
         return pulumi.get(self, "sns_topic_arn")
 
     def translate_output_property(self, prop):

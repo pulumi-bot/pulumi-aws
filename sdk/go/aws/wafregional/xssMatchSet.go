@@ -9,49 +9,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a WAF Regional XSS Match Set Resource for use with Application Load Balancer.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/wafregional"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := wafregional.NewXssMatchSet(ctx, "xssMatchSet", &wafregional.XssMatchSetArgs{
-// 			XssMatchTuples: wafregional.XssMatchSetXssMatchTupleArray{
-// 				&wafregional.XssMatchSetXssMatchTupleArgs{
-// 					FieldToMatch: &wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs{
-// 						Type: pulumi.String("URI"),
-// 					},
-// 					TextTransformation: pulumi.String("NONE"),
-// 				},
-// 				&wafregional.XssMatchSetXssMatchTupleArgs{
-// 					FieldToMatch: &wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs{
-// 						Type: pulumi.String("QUERY_STRING"),
-// 					},
-// 					TextTransformation: pulumi.String("NONE"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type XssMatchSet struct {
 	pulumi.CustomResourceState
 
-	// The name of the set
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The parts of web requests that you want to inspect for cross-site scripting attacks.
+	Name           pulumi.StringOutput                 `pulumi:"name"`
 	XssMatchTuples XssMatchSetXssMatchTupleArrayOutput `pulumi:"xssMatchTuples"`
 }
 
@@ -83,16 +44,12 @@ func GetXssMatchSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering XssMatchSet resources.
 type xssMatchSetState struct {
-	// The name of the set
-	Name *string `pulumi:"name"`
-	// The parts of web requests that you want to inspect for cross-site scripting attacks.
+	Name           *string                    `pulumi:"name"`
 	XssMatchTuples []XssMatchSetXssMatchTuple `pulumi:"xssMatchTuples"`
 }
 
 type XssMatchSetState struct {
-	// The name of the set
-	Name pulumi.StringPtrInput
-	// The parts of web requests that you want to inspect for cross-site scripting attacks.
+	Name           pulumi.StringPtrInput
 	XssMatchTuples XssMatchSetXssMatchTupleArrayInput
 }
 
@@ -101,17 +58,13 @@ func (XssMatchSetState) ElementType() reflect.Type {
 }
 
 type xssMatchSetArgs struct {
-	// The name of the set
-	Name *string `pulumi:"name"`
-	// The parts of web requests that you want to inspect for cross-site scripting attacks.
+	Name           *string                    `pulumi:"name"`
 	XssMatchTuples []XssMatchSetXssMatchTuple `pulumi:"xssMatchTuples"`
 }
 
 // The set of arguments for constructing a XssMatchSet resource.
 type XssMatchSetArgs struct {
-	// The name of the set
-	Name pulumi.StringPtrInput
-	// The parts of web requests that you want to inspect for cross-site scripting attacks.
+	Name           pulumi.StringPtrInput
 	XssMatchTuples XssMatchSetXssMatchTupleArrayInput
 }
 

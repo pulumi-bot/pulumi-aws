@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Step Functions Activity data source
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const sfnActivity = pulumi.output(aws.sfn.getActivity({
- *     name: "my-activity",
- * }, { async: true }));
- * ```
- */
 export function getActivity(args?: GetActivityArgs, opts?: pulumi.InvokeOptions): Promise<GetActivityResult> {
     args = args || {};
     if (!opts) {
@@ -39,13 +25,7 @@ export function getActivity(args?: GetActivityArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getActivity.
  */
 export interface GetActivityArgs {
-    /**
-     * The Amazon Resource Name (ARN) that identifies the activity.
-     */
     readonly arn?: string;
-    /**
-     * The name that identifies the activity.
-     */
     readonly name?: string;
 }
 
@@ -54,9 +34,6 @@ export interface GetActivityArgs {
  */
 export interface GetActivityResult {
     readonly arn: string;
-    /**
-     * The date the activity was created.
-     */
     readonly creationDate: string;
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -9,66 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Rds
 {
-    /// <summary>
-    /// Provides an RDS security group resource. This is only for DB instances in the
-    /// EC2-Classic Platform. For instances inside a VPC, use the
-    /// `aws_db_instance.vpc_security_group_ids`
-    /// attribute instead.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.Rds.SecurityGroup("default", new Aws.Rds.SecurityGroupArgs
-    ///         {
-    ///             Ingress = 
-    ///             {
-    ///                 new Aws.Rds.Inputs.SecurityGroupIngressArgs
-    ///                 {
-    ///                     Cidr = "10.0.0.0/24",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The arn of the DB security group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the DB security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of ingress rules.
-        /// </summary>
         [Output("ingress")]
         public Output<ImmutableArray<Outputs.SecurityGroupIngress>> Ingress { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the DB security group.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -118,36 +72,22 @@ namespace Pulumi.Aws.Rds
 
     public sealed class SecurityGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the DB security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("ingress", required: true)]
         private InputList<Inputs.SecurityGroupIngressArgs>? _ingress;
-
-        /// <summary>
-        /// A list of ingress rules.
-        /// </summary>
         public InputList<Inputs.SecurityGroupIngressArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.SecurityGroupIngressArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The name of the DB security group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -162,42 +102,25 @@ namespace Pulumi.Aws.Rds
 
     public sealed class SecurityGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The arn of the DB security group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of the DB security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("ingress")]
         private InputList<Inputs.SecurityGroupIngressGetArgs>? _ingress;
-
-        /// <summary>
-        /// A list of ingress rules.
-        /// </summary>
         public InputList<Inputs.SecurityGroupIngressGetArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.SecurityGroupIngressGetArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The name of the DB security group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -54,19 +54,7 @@ class AwaitableGetWebAclResult(GetWebAclResult):
 def get_web_acl(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebAclResult:
     """
-    `waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.waf.get_web_acl(name="tfWAFWebACL")
-    ```
-
-
-    :param str name: The name of the WAF Web ACL.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

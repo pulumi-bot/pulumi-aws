@@ -9,52 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CodeCommit
 {
-    /// <summary>
-    /// Provides a CodeCommit Trigger Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testRepository = new Aws.CodeCommit.Repository("testRepository", new Aws.CodeCommit.RepositoryArgs
-    ///         {
-    ///             RepositoryName = "test",
-    ///         });
-    ///         var testTrigger = new Aws.CodeCommit.Trigger("testTrigger", new Aws.CodeCommit.TriggerArgs
-    ///         {
-    ///             RepositoryName = testRepository.RepositoryName,
-    ///             Triggers = 
-    ///             {
-    ///                 new Aws.CodeCommit.Inputs.TriggerTriggerArgs
-    ///                 {
-    ///                     Name = "all",
-    ///                     Events = 
-    ///                     {
-    ///                         "all",
-    ///                     },
-    ///                     DestinationArn = aws_sns_topic.Test.Arn,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {
         [Output("configurationId")]
         public Output<string> ConfigurationId { get; private set; } = null!;
 
-        /// <summary>
-        /// The name for the repository. This needs to be less than 100 characters.
-        /// </summary>
         [Output("repositoryName")]
         public Output<string> RepositoryName { get; private set; } = null!;
 
@@ -107,9 +66,6 @@ namespace Pulumi.Aws.CodeCommit
 
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name for the repository. This needs to be less than 100 characters.
-        /// </summary>
         [Input("repositoryName", required: true)]
         public Input<string> RepositoryName { get; set; } = null!;
 
@@ -131,9 +87,6 @@ namespace Pulumi.Aws.CodeCommit
         [Input("configurationId")]
         public Input<string>? ConfigurationId { get; set; }
 
-        /// <summary>
-        /// The name for the repository. This needs to be less than 100 characters.
-        /// </summary>
         [Input("repositoryName")]
         public Input<string>? RepositoryName { get; set; }
 

@@ -19,11 +19,6 @@ class GatewaySmbActiveDirectorySettings(dict):
                  domain_name: str,
                  password: str,
                  username: str):
-        """
-        :param str domain_name: The name of the domain that you want the gateway to join.
-        :param str password: The password of the user who has permission to add the gateway to the Active Directory domain.
-        :param str username: The user name of user who has permission to add the gateway to the Active Directory domain.
-        """
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
@@ -31,25 +26,16 @@ class GatewaySmbActiveDirectorySettings(dict):
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
-        """
-        The name of the domain that you want the gateway to join.
-        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        The password of the user who has permission to add the gateway to the Active Directory domain.
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The user name of user who has permission to add the gateway to the Active Directory domain.
-        """
         return pulumi.get(self, "username")
 
     def _translate_property(self, prop):
@@ -63,12 +49,6 @@ class NfsFileShareNfsFileShareDefaults(dict):
                  file_mode: Optional[str] = None,
                  group_id: Optional[float] = None,
                  owner_id: Optional[float] = None):
-        """
-        :param str directory_mode: The Unix directory mode in the string form "nnnn". Defaults to `"0777"`.
-        :param str file_mode: The Unix file mode in the string form "nnnn". Defaults to `"0666"`.
-        :param float group_id: The default group ID for the file share (unless the files have another group ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-        :param float owner_id: The default owner ID for the file share (unless the files have another owner ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-        """
         if directory_mode is not None:
             pulumi.set(__self__, "directory_mode", directory_mode)
         if file_mode is not None:
@@ -81,33 +61,21 @@ class NfsFileShareNfsFileShareDefaults(dict):
     @property
     @pulumi.getter(name="directoryMode")
     def directory_mode(self) -> Optional[str]:
-        """
-        The Unix directory mode in the string form "nnnn". Defaults to `"0777"`.
-        """
         return pulumi.get(self, "directory_mode")
 
     @property
     @pulumi.getter(name="fileMode")
     def file_mode(self) -> Optional[str]:
-        """
-        The Unix file mode in the string form "nnnn". Defaults to `"0666"`.
-        """
         return pulumi.get(self, "file_mode")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[float]:
-        """
-        The default group ID for the file share (unless the files have another group ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> Optional[float]:
-        """
-        The default owner ID for the file share (unless the files have another owner ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-        """
         return pulumi.get(self, "owner_id")
 
     def _translate_property(self, prop):

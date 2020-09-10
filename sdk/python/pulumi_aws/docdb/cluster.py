@@ -43,68 +43,9 @@ class Cluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a DocDB Cluster.
-
-        Changes to a DocDB Cluster can occur when you manually change a
-        parameter, such as `port`, and are reflected in the next maintenance
-        window. Because of this, this provider may report a difference in its planning
-        phase because a modification has not yet taken place. You can use the
-        `apply_immediately` flag to instruct the service to apply the change immediately
-        (see documentation below).
-
-        > **Note:** using `apply_immediately` can result in a brief downtime as the server reboots.
-        **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        docdb = aws.docdb.Cluster("docdb",
-            backup_retention_period=5,
-            cluster_identifier="my-docdb-cluster",
-            engine="docdb",
-            master_password="mustbeeightchars",
-            master_username="foo",
-            preferred_backup_window="07:00-09:00",
-            skip_final_snapshot=True)
-        ```
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] apply_immediately: Specifies whether any cluster modifications
-               are applied immediately, or during the next maintenance window. Default is
-               `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of EC2 Availability Zones that
-               instances in the DB cluster can be created in.
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Default `1`
-        :param pulumi.Input[str] cluster_identifier: The cluster identifier. If omitted, this provider will assign a random, unique identifier.
-        :param pulumi.Input[str] cluster_identifier_prefix: Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifer`.
-        :param pulumi.Input[List[pulumi.Input[str]]] cluster_members: List of DocDB Instances that are a part of this cluster
-        :param pulumi.Input[str] db_cluster_parameter_group_name: A cluster parameter group to associate with the cluster.
-        :param pulumi.Input[str] db_subnet_group_name: A DB subnet group to associate with this DB instance.
-        :param pulumi.Input[bool] deletion_protection: A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] enabled_cloudwatch_logs_exports: List of log types to export to cloudwatch. If omitted, no logs will be exported.
-               The following log types are supported: `audit`, `profiler`.
-        :param pulumi.Input[str] engine: The name of the database engine to be used for this DB cluster. Defaults to `docdb`. Valid Values: `docdb`
-        :param pulumi.Input[str] engine_version: The database engine version. Updating this argument results in an outage.
-        :param pulumi.Input[str] final_snapshot_identifier: The name of your final DB snapshot
-               when this DB cluster is deleted. If omitted, no final snapshot will be
-               made.
-        :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
-        :param pulumi.Input[str] master_password: Password for the master DB user. Note that this may
-               show up in logs, and it will be stored in the state file. Please refer to the DocDB Naming Constraints.
-        :param pulumi.Input[str] master_username: Username for the master DB user.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections
-        :param pulumi.Input[str] preferred_backup_window: The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC
-               Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
-        :param pulumi.Input[bool] skip_final_snapshot: Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
-        :param pulumi.Input[str] snapshot_identifier: Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot.
-        :param pulumi.Input[bool] storage_encrypted: Specifies whether the DB cluster is encrypted. The default is `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the DB cluster.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_security_group_ids: List of VPC security groups to associate
-               with the Cluster
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -198,43 +139,6 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] apply_immediately: Specifies whether any cluster modifications
-               are applied immediately, or during the next maintenance window. Default is
-               `false`.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of cluster
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of EC2 Availability Zones that
-               instances in the DB cluster can be created in.
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Default `1`
-        :param pulumi.Input[str] cluster_identifier: The cluster identifier. If omitted, this provider will assign a random, unique identifier.
-        :param pulumi.Input[str] cluster_identifier_prefix: Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifer`.
-        :param pulumi.Input[List[pulumi.Input[str]]] cluster_members: List of DocDB Instances that are a part of this cluster
-        :param pulumi.Input[str] cluster_resource_id: The DocDB Cluster Resource ID
-        :param pulumi.Input[str] db_cluster_parameter_group_name: A cluster parameter group to associate with the cluster.
-        :param pulumi.Input[str] db_subnet_group_name: A DB subnet group to associate with this DB instance.
-        :param pulumi.Input[bool] deletion_protection: A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] enabled_cloudwatch_logs_exports: List of log types to export to cloudwatch. If omitted, no logs will be exported.
-               The following log types are supported: `audit`, `profiler`.
-        :param pulumi.Input[str] endpoint: The DNS address of the DocDB instance
-        :param pulumi.Input[str] engine: The name of the database engine to be used for this DB cluster. Defaults to `docdb`. Valid Values: `docdb`
-        :param pulumi.Input[str] engine_version: The database engine version. Updating this argument results in an outage.
-        :param pulumi.Input[str] final_snapshot_identifier: The name of your final DB snapshot
-               when this DB cluster is deleted. If omitted, no final snapshot will be
-               made.
-        :param pulumi.Input[str] hosted_zone_id: The Route53 Hosted Zone ID of the endpoint
-        :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
-        :param pulumi.Input[str] master_password: Password for the master DB user. Note that this may
-               show up in logs, and it will be stored in the state file. Please refer to the DocDB Naming Constraints.
-        :param pulumi.Input[str] master_username: Username for the master DB user.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections
-        :param pulumi.Input[str] preferred_backup_window: The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC
-               Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
-        :param pulumi.Input[str] reader_endpoint: A read-only endpoint for the DocDB cluster, automatically load-balanced across replicas
-        :param pulumi.Input[bool] skip_final_snapshot: Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
-        :param pulumi.Input[str] snapshot_identifier: Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot.
-        :param pulumi.Input[bool] storage_encrypted: Specifies whether the DB cluster is encrypted. The default is `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the DB cluster.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_security_group_ids: List of VPC security groups to associate
-               with the Cluster
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -274,185 +178,111 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> pulumi.Output[bool]:
-        """
-        Specifies whether any cluster modifications
-        are applied immediately, or during the next maintenance window. Default is
-        `false`.
-        """
         return pulumi.get(self, "apply_immediately")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of cluster
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[List[str]]:
-        """
-        A list of EC2 Availability Zones that
-        instances in the DB cluster can be created in.
-        """
         return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
     def backup_retention_period(self) -> pulumi.Output[Optional[float]]:
-        """
-        The days to retain backups for. Default `1`
-        """
         return pulumi.get(self, "backup_retention_period")
 
     @property
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> pulumi.Output[str]:
-        """
-        The cluster identifier. If omitted, this provider will assign a random, unique identifier.
-        """
         return pulumi.get(self, "cluster_identifier")
 
     @property
     @pulumi.getter(name="clusterIdentifierPrefix")
     def cluster_identifier_prefix(self) -> pulumi.Output[str]:
-        """
-        Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifer`.
-        """
         return pulumi.get(self, "cluster_identifier_prefix")
 
     @property
     @pulumi.getter(name="clusterMembers")
     def cluster_members(self) -> pulumi.Output[List[str]]:
-        """
-        List of DocDB Instances that are a part of this cluster
-        """
         return pulumi.get(self, "cluster_members")
 
     @property
     @pulumi.getter(name="clusterResourceId")
     def cluster_resource_id(self) -> pulumi.Output[str]:
-        """
-        The DocDB Cluster Resource ID
-        """
         return pulumi.get(self, "cluster_resource_id")
 
     @property
     @pulumi.getter(name="dbClusterParameterGroupName")
     def db_cluster_parameter_group_name(self) -> pulumi.Output[str]:
-        """
-        A cluster parameter group to associate with the cluster.
-        """
         return pulumi.get(self, "db_cluster_parameter_group_name")
 
     @property
     @pulumi.getter(name="dbSubnetGroupName")
     def db_subnet_group_name(self) -> pulumi.Output[str]:
-        """
-        A DB subnet group to associate with this DB instance.
-        """
         return pulumi.get(self, "db_subnet_group_name")
 
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="enabledCloudwatchLogsExports")
     def enabled_cloudwatch_logs_exports(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        List of log types to export to cloudwatch. If omitted, no logs will be exported.
-        The following log types are supported: `audit`, `profiler`.
-        """
         return pulumi.get(self, "enabled_cloudwatch_logs_exports")
 
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[str]:
-        """
-        The DNS address of the DocDB instance
-        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def engine(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the database engine to be used for this DB cluster. Defaults to `docdb`. Valid Values: `docdb`
-        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
-        """
-        The database engine version. Updating this argument results in an outage.
-        """
         return pulumi.get(self, "engine_version")
 
     @property
     @pulumi.getter(name="finalSnapshotIdentifier")
     def final_snapshot_identifier(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of your final DB snapshot
-        when this DB cluster is deleted. If omitted, no final snapshot will be
-        made.
-        """
         return pulumi.get(self, "final_snapshot_identifier")
 
     @property
     @pulumi.getter(name="hostedZoneId")
     def hosted_zone_id(self) -> pulumi.Output[str]:
-        """
-        The Route53 Hosted Zone ID of the endpoint
-        """
         return pulumi.get(self, "hosted_zone_id")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[str]:
-        """
-        The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="masterPassword")
     def master_password(self) -> pulumi.Output[Optional[str]]:
-        """
-        Password for the master DB user. Note that this may
-        show up in logs, and it will be stored in the state file. Please refer to the DocDB Naming Constraints.
-        """
         return pulumi.get(self, "master_password")
 
     @property
     @pulumi.getter(name="masterUsername")
     def master_username(self) -> pulumi.Output[str]:
-        """
-        Username for the master DB user.
-        """
         return pulumi.get(self, "master_username")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[float]]:
-        """
-        The port on which the DB accepts connections
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="preferredBackupWindow")
     def preferred_backup_window(self) -> pulumi.Output[str]:
-        """
-        The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC
-        Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
-        """
         return pulumi.get(self, "preferred_backup_window")
 
     @property
@@ -463,50 +293,31 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="readerEndpoint")
     def reader_endpoint(self) -> pulumi.Output[str]:
-        """
-        A read-only endpoint for the DocDB cluster, automatically load-balanced across replicas
-        """
         return pulumi.get(self, "reader_endpoint")
 
     @property
     @pulumi.getter(name="skipFinalSnapshot")
     def skip_final_snapshot(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
-        """
         return pulumi.get(self, "skip_final_snapshot")
 
     @property
     @pulumi.getter(name="snapshotIdentifier")
     def snapshot_identifier(self) -> pulumi.Output[Optional[str]]:
-        """
-        Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot.
-        """
         return pulumi.get(self, "snapshot_identifier")
 
     @property
     @pulumi.getter(name="storageEncrypted")
     def storage_encrypted(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Specifies whether the DB cluster is encrypted. The default is `false`.
-        """
         return pulumi.get(self, "storage_encrypted")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the DB cluster.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
     def vpc_security_group_ids(self) -> pulumi.Output[List[str]]:
-        """
-        List of VPC security groups to associate
-        with the Cluster
-        """
         return pulumi.get(self, "vpc_security_group_ids")
 
     def translate_output_property(self, prop):

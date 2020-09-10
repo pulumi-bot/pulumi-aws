@@ -11,12 +11,9 @@ import (
 )
 
 type AccessPointPosixUser struct {
-	// The POSIX group ID used for all file system operations using this access point.
-	Gid int `pulumi:"gid"`
-	// Secondary POSIX group IDs used for all file system operations using this access point.
+	Gid           int   `pulumi:"gid"`
 	SecondaryGids []int `pulumi:"secondaryGids"`
-	// The POSIX user ID used for all file system operations using this access point.
-	Uid int `pulumi:"uid"`
+	Uid           int   `pulumi:"uid"`
 }
 
 // AccessPointPosixUserInput is an input type that accepts AccessPointPosixUserArgs and AccessPointPosixUserOutput values.
@@ -31,12 +28,9 @@ type AccessPointPosixUserInput interface {
 }
 
 type AccessPointPosixUserArgs struct {
-	// The POSIX group ID used for all file system operations using this access point.
-	Gid pulumi.IntInput `pulumi:"gid"`
-	// Secondary POSIX group IDs used for all file system operations using this access point.
+	Gid           pulumi.IntInput      `pulumi:"gid"`
 	SecondaryGids pulumi.IntArrayInput `pulumi:"secondaryGids"`
-	// The POSIX user ID used for all file system operations using this access point.
-	Uid pulumi.IntInput `pulumi:"uid"`
+	Uid           pulumi.IntInput      `pulumi:"uid"`
 }
 
 func (AccessPointPosixUserArgs) ElementType() reflect.Type {
@@ -115,18 +109,14 @@ func (o AccessPointPosixUserOutput) ToAccessPointPosixUserPtrOutputWithContext(c
 		return &v
 	}).(AccessPointPosixUserPtrOutput)
 }
-
-// The POSIX group ID used for all file system operations using this access point.
 func (o AccessPointPosixUserOutput) Gid() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPointPosixUser) int { return v.Gid }).(pulumi.IntOutput)
 }
 
-// Secondary POSIX group IDs used for all file system operations using this access point.
 func (o AccessPointPosixUserOutput) SecondaryGids() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v AccessPointPosixUser) []int { return v.SecondaryGids }).(pulumi.IntArrayOutput)
 }
 
-// The POSIX user ID used for all file system operations using this access point.
 func (o AccessPointPosixUserOutput) Uid() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPointPosixUser) int { return v.Uid }).(pulumi.IntOutput)
 }
@@ -149,7 +139,6 @@ func (o AccessPointPosixUserPtrOutput) Elem() AccessPointPosixUserOutput {
 	return o.ApplyT(func(v *AccessPointPosixUser) AccessPointPosixUser { return *v }).(AccessPointPosixUserOutput)
 }
 
-// The POSIX group ID used for all file system operations using this access point.
 func (o AccessPointPosixUserPtrOutput) Gid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPointPosixUser) *int {
 		if v == nil {
@@ -159,7 +148,6 @@ func (o AccessPointPosixUserPtrOutput) Gid() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Secondary POSIX group IDs used for all file system operations using this access point.
 func (o AccessPointPosixUserPtrOutput) SecondaryGids() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *AccessPointPosixUser) []int {
 		if v == nil {
@@ -169,7 +157,6 @@ func (o AccessPointPosixUserPtrOutput) SecondaryGids() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
-// The POSIX user ID used for all file system operations using this access point.
 func (o AccessPointPosixUserPtrOutput) Uid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPointPosixUser) *int {
 		if v == nil {
@@ -180,10 +167,8 @@ func (o AccessPointPosixUserPtrOutput) Uid() pulumi.IntPtrOutput {
 }
 
 type AccessPointRootDirectory struct {
-	// Specifies the POSIX IDs and permissions to apply to the access point's Root Directory. See Creation Info below.
 	CreationInfo *AccessPointRootDirectoryCreationInfo `pulumi:"creationInfo"`
-	// Specifies the path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creationInfo`.
-	Path *string `pulumi:"path"`
+	Path         *string                               `pulumi:"path"`
 }
 
 // AccessPointRootDirectoryInput is an input type that accepts AccessPointRootDirectoryArgs and AccessPointRootDirectoryOutput values.
@@ -198,10 +183,8 @@ type AccessPointRootDirectoryInput interface {
 }
 
 type AccessPointRootDirectoryArgs struct {
-	// Specifies the POSIX IDs and permissions to apply to the access point's Root Directory. See Creation Info below.
 	CreationInfo AccessPointRootDirectoryCreationInfoPtrInput `pulumi:"creationInfo"`
-	// Specifies the path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creationInfo`.
-	Path pulumi.StringPtrInput `pulumi:"path"`
+	Path         pulumi.StringPtrInput                        `pulumi:"path"`
 }
 
 func (AccessPointRootDirectoryArgs) ElementType() reflect.Type {
@@ -280,13 +263,10 @@ func (o AccessPointRootDirectoryOutput) ToAccessPointRootDirectoryPtrOutputWithC
 		return &v
 	}).(AccessPointRootDirectoryPtrOutput)
 }
-
-// Specifies the POSIX IDs and permissions to apply to the access point's Root Directory. See Creation Info below.
 func (o AccessPointRootDirectoryOutput) CreationInfo() AccessPointRootDirectoryCreationInfoPtrOutput {
 	return o.ApplyT(func(v AccessPointRootDirectory) *AccessPointRootDirectoryCreationInfo { return v.CreationInfo }).(AccessPointRootDirectoryCreationInfoPtrOutput)
 }
 
-// Specifies the path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creationInfo`.
 func (o AccessPointRootDirectoryOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPointRootDirectory) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -309,7 +289,6 @@ func (o AccessPointRootDirectoryPtrOutput) Elem() AccessPointRootDirectoryOutput
 	return o.ApplyT(func(v *AccessPointRootDirectory) AccessPointRootDirectory { return *v }).(AccessPointRootDirectoryOutput)
 }
 
-// Specifies the POSIX IDs and permissions to apply to the access point's Root Directory. See Creation Info below.
 func (o AccessPointRootDirectoryPtrOutput) CreationInfo() AccessPointRootDirectoryCreationInfoPtrOutput {
 	return o.ApplyT(func(v *AccessPointRootDirectory) *AccessPointRootDirectoryCreationInfo {
 		if v == nil {
@@ -319,7 +298,6 @@ func (o AccessPointRootDirectoryPtrOutput) CreationInfo() AccessPointRootDirecto
 	}).(AccessPointRootDirectoryCreationInfoPtrOutput)
 }
 
-// Specifies the path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creationInfo`.
 func (o AccessPointRootDirectoryPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPointRootDirectory) *string {
 		if v == nil {
@@ -330,11 +308,8 @@ func (o AccessPointRootDirectoryPtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 type AccessPointRootDirectoryCreationInfo struct {
-	// Specifies the POSIX group ID to apply to the `rootDirectory`.
-	OwnerGid int `pulumi:"ownerGid"`
-	// Specifies the POSIX user ID to apply to the `rootDirectory`.
-	OwnerUid int `pulumi:"ownerUid"`
-	// Specifies the POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
+	OwnerGid    int    `pulumi:"ownerGid"`
+	OwnerUid    int    `pulumi:"ownerUid"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -350,11 +325,8 @@ type AccessPointRootDirectoryCreationInfoInput interface {
 }
 
 type AccessPointRootDirectoryCreationInfoArgs struct {
-	// Specifies the POSIX group ID to apply to the `rootDirectory`.
-	OwnerGid pulumi.IntInput `pulumi:"ownerGid"`
-	// Specifies the POSIX user ID to apply to the `rootDirectory`.
-	OwnerUid pulumi.IntInput `pulumi:"ownerUid"`
-	// Specifies the POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
+	OwnerGid    pulumi.IntInput    `pulumi:"ownerGid"`
+	OwnerUid    pulumi.IntInput    `pulumi:"ownerUid"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -434,18 +406,14 @@ func (o AccessPointRootDirectoryCreationInfoOutput) ToAccessPointRootDirectoryCr
 		return &v
 	}).(AccessPointRootDirectoryCreationInfoPtrOutput)
 }
-
-// Specifies the POSIX group ID to apply to the `rootDirectory`.
 func (o AccessPointRootDirectoryCreationInfoOutput) OwnerGid() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPointRootDirectoryCreationInfo) int { return v.OwnerGid }).(pulumi.IntOutput)
 }
 
-// Specifies the POSIX user ID to apply to the `rootDirectory`.
 func (o AccessPointRootDirectoryCreationInfoOutput) OwnerUid() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPointRootDirectoryCreationInfo) int { return v.OwnerUid }).(pulumi.IntOutput)
 }
 
-// Specifies the POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
 func (o AccessPointRootDirectoryCreationInfoOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPointRootDirectoryCreationInfo) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -468,7 +436,6 @@ func (o AccessPointRootDirectoryCreationInfoPtrOutput) Elem() AccessPointRootDir
 	return o.ApplyT(func(v *AccessPointRootDirectoryCreationInfo) AccessPointRootDirectoryCreationInfo { return *v }).(AccessPointRootDirectoryCreationInfoOutput)
 }
 
-// Specifies the POSIX group ID to apply to the `rootDirectory`.
 func (o AccessPointRootDirectoryCreationInfoPtrOutput) OwnerGid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPointRootDirectoryCreationInfo) *int {
 		if v == nil {
@@ -478,7 +445,6 @@ func (o AccessPointRootDirectoryCreationInfoPtrOutput) OwnerGid() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the POSIX user ID to apply to the `rootDirectory`.
 func (o AccessPointRootDirectoryCreationInfoPtrOutput) OwnerUid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPointRootDirectoryCreationInfo) *int {
 		if v == nil {
@@ -488,7 +454,6 @@ func (o AccessPointRootDirectoryCreationInfoPtrOutput) OwnerUid() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
 func (o AccessPointRootDirectoryCreationInfoPtrOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPointRootDirectoryCreationInfo) *string {
 		if v == nil {
@@ -499,7 +464,6 @@ func (o AccessPointRootDirectoryCreationInfoPtrOutput) Permissions() pulumi.Stri
 }
 
 type FileSystemLifecyclePolicy struct {
-	// Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
 	TransitionToIa string `pulumi:"transitionToIa"`
 }
 
@@ -515,7 +479,6 @@ type FileSystemLifecyclePolicyInput interface {
 }
 
 type FileSystemLifecyclePolicyArgs struct {
-	// Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
 	TransitionToIa pulumi.StringInput `pulumi:"transitionToIa"`
 }
 
@@ -595,8 +558,6 @@ func (o FileSystemLifecyclePolicyOutput) ToFileSystemLifecyclePolicyPtrOutputWit
 		return &v
 	}).(FileSystemLifecyclePolicyPtrOutput)
 }
-
-// Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
 func (o FileSystemLifecyclePolicyOutput) TransitionToIa() pulumi.StringOutput {
 	return o.ApplyT(func(v FileSystemLifecyclePolicy) string { return v.TransitionToIa }).(pulumi.StringOutput)
 }
@@ -619,7 +580,6 @@ func (o FileSystemLifecyclePolicyPtrOutput) Elem() FileSystemLifecyclePolicyOutp
 	return o.ApplyT(func(v *FileSystemLifecyclePolicy) FileSystemLifecyclePolicy { return *v }).(FileSystemLifecyclePolicyOutput)
 }
 
-// Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_7_DAYS`, `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
 func (o FileSystemLifecyclePolicyPtrOutput) TransitionToIa() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystemLifecyclePolicy) *string {
 		if v == nil {
@@ -630,13 +590,9 @@ func (o FileSystemLifecyclePolicyPtrOutput) TransitionToIa() pulumi.StringPtrOut
 }
 
 type GetAccessPointPosixUser struct {
-	// Group ID
-	Gid int `pulumi:"gid"`
-	// Secondary group IDs
+	Gid           int   `pulumi:"gid"`
 	SecondaryGids []int `pulumi:"secondaryGids"`
-	// User Id
-	// * `rootDirectory`- Single element list containing information on the directory on the Amazon EFS file system that the access point provides access to.
-	Uid int `pulumi:"uid"`
+	Uid           int   `pulumi:"uid"`
 }
 
 // GetAccessPointPosixUserInput is an input type that accepts GetAccessPointPosixUserArgs and GetAccessPointPosixUserOutput values.
@@ -651,13 +607,9 @@ type GetAccessPointPosixUserInput interface {
 }
 
 type GetAccessPointPosixUserArgs struct {
-	// Group ID
-	Gid pulumi.IntInput `pulumi:"gid"`
-	// Secondary group IDs
+	Gid           pulumi.IntInput      `pulumi:"gid"`
 	SecondaryGids pulumi.IntArrayInput `pulumi:"secondaryGids"`
-	// User Id
-	// * `rootDirectory`- Single element list containing information on the directory on the Amazon EFS file system that the access point provides access to.
-	Uid pulumi.IntInput `pulumi:"uid"`
+	Uid           pulumi.IntInput      `pulumi:"uid"`
 }
 
 func (GetAccessPointPosixUserArgs) ElementType() reflect.Type {
@@ -711,18 +663,14 @@ func (o GetAccessPointPosixUserOutput) ToGetAccessPointPosixUserOutputWithContex
 	return o
 }
 
-// Group ID
 func (o GetAccessPointPosixUserOutput) Gid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessPointPosixUser) int { return v.Gid }).(pulumi.IntOutput)
 }
 
-// Secondary group IDs
 func (o GetAccessPointPosixUserOutput) SecondaryGids() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAccessPointPosixUser) []int { return v.SecondaryGids }).(pulumi.IntArrayOutput)
 }
 
-// User Id
-// * `rootDirectory`- Single element list containing information on the directory on the Amazon EFS file system that the access point provides access to.
 func (o GetAccessPointPosixUserOutput) Uid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessPointPosixUser) int { return v.Uid }).(pulumi.IntOutput)
 }
@@ -748,10 +696,8 @@ func (o GetAccessPointPosixUserArrayOutput) Index(i pulumi.IntInput) GetAccessPo
 }
 
 type GetAccessPointRootDirectory struct {
-	// Single element list containing information on the creation permissions of the directory
 	CreationInfos []GetAccessPointRootDirectoryCreationInfo `pulumi:"creationInfos"`
-	// Path exposed as the root directory
-	Path string `pulumi:"path"`
+	Path          string                                    `pulumi:"path"`
 }
 
 // GetAccessPointRootDirectoryInput is an input type that accepts GetAccessPointRootDirectoryArgs and GetAccessPointRootDirectoryOutput values.
@@ -766,10 +712,8 @@ type GetAccessPointRootDirectoryInput interface {
 }
 
 type GetAccessPointRootDirectoryArgs struct {
-	// Single element list containing information on the creation permissions of the directory
 	CreationInfos GetAccessPointRootDirectoryCreationInfoArrayInput `pulumi:"creationInfos"`
-	// Path exposed as the root directory
-	Path pulumi.StringInput `pulumi:"path"`
+	Path          pulumi.StringInput                                `pulumi:"path"`
 }
 
 func (GetAccessPointRootDirectoryArgs) ElementType() reflect.Type {
@@ -823,12 +767,10 @@ func (o GetAccessPointRootDirectoryOutput) ToGetAccessPointRootDirectoryOutputWi
 	return o
 }
 
-// Single element list containing information on the creation permissions of the directory
 func (o GetAccessPointRootDirectoryOutput) CreationInfos() GetAccessPointRootDirectoryCreationInfoArrayOutput {
 	return o.ApplyT(func(v GetAccessPointRootDirectory) []GetAccessPointRootDirectoryCreationInfo { return v.CreationInfos }).(GetAccessPointRootDirectoryCreationInfoArrayOutput)
 }
 
-// Path exposed as the root directory
 func (o GetAccessPointRootDirectoryOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPointRootDirectory) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -854,11 +796,8 @@ func (o GetAccessPointRootDirectoryArrayOutput) Index(i pulumi.IntInput) GetAcce
 }
 
 type GetAccessPointRootDirectoryCreationInfo struct {
-	// POSIX owner group ID
-	OwnerGid int `pulumi:"ownerGid"`
-	// POSIX owner user ID
-	OwnerUid int `pulumi:"ownerUid"`
-	// POSIX permissions mode
+	OwnerGid    int    `pulumi:"ownerGid"`
+	OwnerUid    int    `pulumi:"ownerUid"`
 	Permissions string `pulumi:"permissions"`
 }
 
@@ -874,11 +813,8 @@ type GetAccessPointRootDirectoryCreationInfoInput interface {
 }
 
 type GetAccessPointRootDirectoryCreationInfoArgs struct {
-	// POSIX owner group ID
-	OwnerGid pulumi.IntInput `pulumi:"ownerGid"`
-	// POSIX owner user ID
-	OwnerUid pulumi.IntInput `pulumi:"ownerUid"`
-	// POSIX permissions mode
+	OwnerGid    pulumi.IntInput    `pulumi:"ownerGid"`
+	OwnerUid    pulumi.IntInput    `pulumi:"ownerUid"`
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 }
 
@@ -933,17 +869,14 @@ func (o GetAccessPointRootDirectoryCreationInfoOutput) ToGetAccessPointRootDirec
 	return o
 }
 
-// POSIX owner group ID
 func (o GetAccessPointRootDirectoryCreationInfoOutput) OwnerGid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessPointRootDirectoryCreationInfo) int { return v.OwnerGid }).(pulumi.IntOutput)
 }
 
-// POSIX owner user ID
 func (o GetAccessPointRootDirectoryCreationInfoOutput) OwnerUid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessPointRootDirectoryCreationInfo) int { return v.OwnerUid }).(pulumi.IntOutput)
 }
 
-// POSIX permissions mode
 func (o GetAccessPointRootDirectoryCreationInfoOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPointRootDirectoryCreationInfo) string { return v.Permissions }).(pulumi.StringOutput)
 }
