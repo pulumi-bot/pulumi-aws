@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Retrieves the summary of a WAFv2 Rule Group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.wafv2.getRuleGroup({
- *     name: "some-rule-group",
- *     scope: "REGIONAL",
- * }, { async: true }));
- * ```
- */
 export function getRuleGroup(args: GetRuleGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleGroupResult> {
     if (!opts) {
         opts = {}
@@ -39,13 +24,7 @@ export function getRuleGroup(args: GetRuleGroupArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getRuleGroup.
  */
 export interface GetRuleGroupArgs {
-    /**
-     * The name of the WAFv2 Rule Group.
-     */
     readonly name: string;
-    /**
-     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-     */
     readonly scope: string;
 }
 
@@ -53,13 +32,7 @@ export interface GetRuleGroupArgs {
  * A collection of values returned by getRuleGroup.
  */
 export interface GetRuleGroupResult {
-    /**
-     * The Amazon Resource Name (ARN) of the entity.
-     */
     readonly arn: string;
-    /**
-     * The description of the rule group that helps with identification.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.

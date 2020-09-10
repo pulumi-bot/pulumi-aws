@@ -48,18 +48,11 @@ class GetInstanceProfileResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) specifying the instance profile.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="createDate")
     def create_date(self) -> str:
-        """
-        The string representation of the date the instance profile
-        was created.
-        """
         return pulumi.get(self, "create_date")
 
     @property
@@ -78,33 +71,21 @@ class GetInstanceProfileResult:
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        The path to the instance profile.
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
-        """
-        The role arn associated with this instance profile.
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
-        """
-        The role id associated with this instance profile.
-        """
         return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> str:
-        """
-        The role name associated with this instance profile.
-        """
         return pulumi.get(self, "role_name")
 
 
@@ -127,21 +108,7 @@ class AwaitableGetInstanceProfileResult(GetInstanceProfileResult):
 def get_instance_profile(name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceProfileResult:
     """
-    This data source can be used to fetch information about a specific
-    IAM instance profile. By using this data source, you can reference IAM
-    instance profile properties without having to hard code ARNs as input.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.iam.get_instance_profile(name="an_example_instance_profile_name")
-    ```
-
-
-    :param str name: The friendly IAM instance profile name to match.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

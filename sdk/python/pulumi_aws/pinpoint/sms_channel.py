@@ -23,24 +23,9 @@ class SmsChannel(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Pinpoint SMS Channel resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        sms = aws.pinpoint.SmsChannel("sms", application_id=app.application_id)
-        ```
-
+        Create a SmsChannel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
-        :param pulumi.Input[str] sender_id: Sender identifier of your messages.
-        :param pulumi.Input[str] short_code: The Short Code registered with the phone provider.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,12 +75,6 @@ class SmsChannel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
-        :param pulumi.Input[float] promotional_messages_per_second: Promotional messages per second that can be sent.
-        :param pulumi.Input[str] sender_id: Sender identifier of your messages.
-        :param pulumi.Input[str] short_code: The Short Code registered with the phone provider.
-        :param pulumi.Input[float] transactional_messages_per_second: Transactional messages per second that can be sent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -112,49 +91,31 @@ class SmsChannel(pulumi.CustomResource):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
-        """
-        The application ID.
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether the channel is enabled or disabled. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="promotionalMessagesPerSecond")
     def promotional_messages_per_second(self) -> pulumi.Output[float]:
-        """
-        Promotional messages per second that can be sent.
-        """
         return pulumi.get(self, "promotional_messages_per_second")
 
     @property
     @pulumi.getter(name="senderId")
     def sender_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Sender identifier of your messages.
-        """
         return pulumi.get(self, "sender_id")
 
     @property
     @pulumi.getter(name="shortCode")
     def short_code(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Short Code registered with the phone provider.
-        """
         return pulumi.get(self, "short_code")
 
     @property
     @pulumi.getter(name="transactionalMessagesPerSecond")
     def transactional_messages_per_second(self) -> pulumi.Output[float]:
-        """
-        Transactional messages per second that can be sent.
-        """
         return pulumi.get(self, "transactional_messages_per_second")
 
     def translate_output_property(self, prop):

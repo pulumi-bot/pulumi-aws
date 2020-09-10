@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages the accepter's side of an EC2 Transit Gateway Peering Attachment.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.TransitGatewayPeeringAttachmentAccepter("example", {
- *     tags: {
- *         Name: "Example cross-account attachment",
- *     },
- *     transitGatewayAttachmentId: aws_ec2_transit_gateway_peering_attachment_example.id,
- * });
- * ```
- */
 export class TransitGatewayPeeringAttachmentAccepter extends pulumi.CustomResource {
     /**
      * Get an existing TransitGatewayPeeringAttachmentAccepter resource's state with the given name, ID, and optional extra
@@ -49,26 +32,11 @@ export class TransitGatewayPeeringAttachmentAccepter extends pulumi.CustomResour
         return obj['__pulumiType'] === TransitGatewayPeeringAttachmentAccepter.__pulumiType;
     }
 
-    /**
-     * Identifier of the AWS account that owns the EC2 TGW peering.
-     */
     public /*out*/ readonly peerAccountId!: pulumi.Output<string>;
     public /*out*/ readonly peerRegion!: pulumi.Output<string>;
-    /**
-     * Identifier of EC2 Transit Gateway to peer with.
-     */
     public /*out*/ readonly peerTransitGatewayId!: pulumi.Output<string>;
-    /**
-     * Key-value tags for the EC2 Transit Gateway Peering Attachment.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The ID of the EC2 Transit Gateway Peering Attachment to manage.
-     */
     public readonly transitGatewayAttachmentId!: pulumi.Output<string>;
-    /**
-     * Identifier of EC2 Transit Gateway.
-     */
     public /*out*/ readonly transitGatewayId!: pulumi.Output<string>;
 
     /**
@@ -116,26 +84,11 @@ export class TransitGatewayPeeringAttachmentAccepter extends pulumi.CustomResour
  * Input properties used for looking up and filtering TransitGatewayPeeringAttachmentAccepter resources.
  */
 export interface TransitGatewayPeeringAttachmentAccepterState {
-    /**
-     * Identifier of the AWS account that owns the EC2 TGW peering.
-     */
     readonly peerAccountId?: pulumi.Input<string>;
     readonly peerRegion?: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 Transit Gateway to peer with.
-     */
     readonly peerTransitGatewayId?: pulumi.Input<string>;
-    /**
-     * Key-value tags for the EC2 Transit Gateway Peering Attachment.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The ID of the EC2 Transit Gateway Peering Attachment to manage.
-     */
     readonly transitGatewayAttachmentId?: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 Transit Gateway.
-     */
     readonly transitGatewayId?: pulumi.Input<string>;
 }
 
@@ -143,12 +96,6 @@ export interface TransitGatewayPeeringAttachmentAccepterState {
  * The set of arguments for constructing a TransitGatewayPeeringAttachmentAccepter resource.
  */
 export interface TransitGatewayPeeringAttachmentAccepterArgs {
-    /**
-     * Key-value tags for the EC2 Transit Gateway Peering Attachment.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The ID of the EC2 Transit Gateway Peering Attachment to manage.
-     */
     readonly transitGatewayAttachmentId: pulumi.Input<string>;
 }

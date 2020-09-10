@@ -6,55 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an AWS Config Configuration Aggregator
- *
- * ## Example Usage
- * ### Account Based Aggregation
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const account = new aws.cfg.ConfigurationAggregator("account", {
- *     accountAggregationSource: {
- *         accountIds: ["123456789012"],
- *         regions: ["us-west-2"],
- *     },
- * });
- * ```
- * ### Organization Based Aggregation
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const organizationRole = new aws.iam.Role("organizationRole", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Sid": "",
- *       "Effect": "Allow",
- *       "Principal": {
- *         "Service": "config.amazonaws.com"
- *       },
- *       "Action": "sts:AssumeRole"
- *     }
- *   ]
- * }
- * `});
- * const organizationRolePolicyAttachment = new aws.iam.RolePolicyAttachment("organizationRolePolicyAttachment", {
- *     role: organizationRole.name,
- *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations",
- * });
- * const organizationConfigurationAggregator = new aws.cfg.ConfigurationAggregator("organizationConfigurationAggregator", {organizationAggregationSource: {
- *     allRegions: true,
- *     roleArn: organizationRole.arn,
- * }}, {
- *     dependsOn: [organizationRolePolicyAttachment],
- * });
- * ```
- */
 export class ConfigurationAggregator extends pulumi.CustomResource {
     /**
      * Get an existing ConfigurationAggregator resource's state with the given name, ID, and optional extra
@@ -83,25 +34,10 @@ export class ConfigurationAggregator extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigurationAggregator.__pulumiType;
     }
 
-    /**
-     * The account(s) to aggregate config data from as documented below.
-     */
     public readonly accountAggregationSource!: pulumi.Output<outputs.cfg.ConfigurationAggregatorAccountAggregationSource | undefined>;
-    /**
-     * The ARN of the aggregator
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the configuration aggregator.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The organization to aggregate config data from as documented below.
-     */
     public readonly organizationAggregationSource!: pulumi.Output<outputs.cfg.ConfigurationAggregatorOrganizationAggregationSource | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -144,25 +80,10 @@ export class ConfigurationAggregator extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigurationAggregator resources.
  */
 export interface ConfigurationAggregatorState {
-    /**
-     * The account(s) to aggregate config data from as documented below.
-     */
     readonly accountAggregationSource?: pulumi.Input<inputs.cfg.ConfigurationAggregatorAccountAggregationSource>;
-    /**
-     * The ARN of the aggregator
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the configuration aggregator.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The organization to aggregate config data from as documented below.
-     */
     readonly organizationAggregationSource?: pulumi.Input<inputs.cfg.ConfigurationAggregatorOrganizationAggregationSource>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -170,20 +91,8 @@ export interface ConfigurationAggregatorState {
  * The set of arguments for constructing a ConfigurationAggregator resource.
  */
 export interface ConfigurationAggregatorArgs {
-    /**
-     * The account(s) to aggregate config data from as documented below.
-     */
     readonly accountAggregationSource?: pulumi.Input<inputs.cfg.ConfigurationAggregatorAccountAggregationSource>;
-    /**
-     * The name of the configuration aggregator.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The organization to aggregate config data from as documented below.
-     */
     readonly organizationAggregationSource?: pulumi.Input<inputs.cfg.ConfigurationAggregatorOrganizationAggregationSource>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

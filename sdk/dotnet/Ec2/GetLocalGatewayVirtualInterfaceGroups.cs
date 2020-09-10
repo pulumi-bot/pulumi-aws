@@ -11,29 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetLocalGatewayVirtualInterfaceGroups
     {
-        /// <summary>
-        /// Provides details about multiple EC2 Local Gateway Virtual Interface Groups, such as identifiers. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Aws.Ec2.GetLocalGatewayVirtualInterfaceGroups.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLocalGatewayVirtualInterfaceGroupsResult> InvokeAsync(GetLocalGatewayVirtualInterfaceGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewayVirtualInterfaceGroupsResult>("aws:ec2/getLocalGatewayVirtualInterfaceGroups:getLocalGatewayVirtualInterfaceGroups", args ?? new GetLocalGatewayVirtualInterfaceGroupsArgs(), options.WithVersion());
     }
@@ -43,10 +20,6 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetLocalGatewayVirtualInterfaceGroupsFilterArgs>? _filters;
-
-        /// <summary>
-        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
-        /// </summary>
         public List<Inputs.GetLocalGatewayVirtualInterfaceGroupsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetLocalGatewayVirtualInterfaceGroupsFilterArgs>());
@@ -55,10 +28,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -79,13 +48,7 @@ namespace Pulumi.Aws.Ec2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Set of EC2 Local Gateway Virtual Interface Group identifiers.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
-        /// <summary>
-        /// Set of EC2 Local Gateway Virtual Interface identifiers.
-        /// </summary>
         public readonly ImmutableArray<string> LocalGatewayVirtualInterfaceIds;
         public readonly ImmutableDictionary<string, string> Tags;
 

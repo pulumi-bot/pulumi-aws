@@ -60,23 +60,7 @@ class AwaitableGetDelegationSetResult(GetDelegationSetResult):
 def get_delegation_set(id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDelegationSetResult:
     """
-    `route53.DelegationSet` provides details about a specific Route 53 Delegation Set.
-
-    This data source allows to find a list of name servers associated with a specific delegation set.
-
-    ## Example Usage
-
-    The following example shows how to get a delegation set from its id.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    dset = aws.route53.get_delegation_set(id="MQWGHCBFAKEID")
-    ```
-
-
-    :param str id: The Hosted Zone id of the desired delegation set.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

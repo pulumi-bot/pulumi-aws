@@ -96,26 +96,16 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        The Availability Zone for the cache cluster.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="cacheNodes")
     def cache_nodes(self) -> List['outputs.GetClusterCacheNodeResult']:
-        """
-        List of node objects including `id`, `address`, `port` and `availability_zone`.
-        Referenceable e.g. as `${data.aws_elasticache_cluster.bar.cache_nodes.0.address}`
-        """
         return pulumi.get(self, "cache_nodes")
 
     @property
     @pulumi.getter(name="clusterAddress")
     def cluster_address(self) -> str:
-        """
-        (Memcached only) The DNS name of the cache cluster without the port appended.
-        """
         return pulumi.get(self, "cluster_address")
 
     @property
@@ -126,25 +116,16 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="configurationEndpoint")
     def configuration_endpoint(self) -> str:
-        """
-        (Memcached only) The configuration endpoint to allow host discovery.
-        """
         return pulumi.get(self, "configuration_endpoint")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
-        """
-        Name of the cache engine.
-        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
-        """
-        Version number of the cache engine.
-        """
         return pulumi.get(self, "engine_version")
 
     @property
@@ -158,110 +139,66 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> str:
-        """
-        Specifies the weekly time range for when maintenance
-        on the cache cluster is performed.
-        """
         return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="nodeType")
     def node_type(self) -> str:
-        """
-        The cluster node type.
-        """
         return pulumi.get(self, "node_type")
 
     @property
     @pulumi.getter(name="notificationTopicArn")
     def notification_topic_arn(self) -> str:
-        """
-        An Amazon Resource Name (ARN) of an
-        SNS topic that ElastiCache notifications get sent to.
-        """
         return pulumi.get(self, "notification_topic_arn")
 
     @property
     @pulumi.getter(name="numCacheNodes")
     def num_cache_nodes(self) -> float:
-        """
-        The number of cache nodes that the cache cluster has.
-        """
         return pulumi.get(self, "num_cache_nodes")
 
     @property
     @pulumi.getter(name="parameterGroupName")
     def parameter_group_name(self) -> str:
-        """
-        Name of the parameter group associated with this cache cluster.
-        """
         return pulumi.get(self, "parameter_group_name")
 
     @property
     @pulumi.getter
     def port(self) -> float:
-        """
-        The port number on which each of the cache nodes will
-        accept connections.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="replicationGroupId")
     def replication_group_id(self) -> str:
-        """
-        The replication group to which this cache cluster belongs.
-        """
         return pulumi.get(self, "replication_group_id")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> List[str]:
-        """
-        List VPC security groups associated with the cache cluster.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="securityGroupNames")
     def security_group_names(self) -> List[str]:
-        """
-        List of security group names associated with this cache cluster.
-        """
         return pulumi.get(self, "security_group_names")
 
     @property
     @pulumi.getter(name="snapshotRetentionLimit")
     def snapshot_retention_limit(self) -> float:
-        """
-        The number of days for which ElastiCache will
-        retain automatic cache cluster snapshots before deleting them.
-        """
         return pulumi.get(self, "snapshot_retention_limit")
 
     @property
     @pulumi.getter(name="snapshotWindow")
     def snapshot_window(self) -> str:
-        """
-        The daily time range (in UTC) during which ElastiCache will
-        begin taking a daily snapshot of the cache cluster.
-        """
         return pulumi.get(self, "snapshot_window")
 
     @property
     @pulumi.getter(name="subnetGroupName")
     def subnet_group_name(self) -> str:
-        """
-        Name of the subnet group associated to the cache cluster.
-        """
         return pulumi.get(self, "subnet_group_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        The tags assigned to the resource
-        """
         return pulumi.get(self, "tags")
 
 
@@ -299,20 +236,7 @@ def get_cluster(cluster_id: Optional[str] = None,
                 tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Use this data source to get information about an Elasticache Cluster
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    my_cluster = aws.elasticache.get_cluster(cluster_id="my-cluster-id")
-    ```
-
-
-    :param str cluster_id: Group identifier.
-    :param Mapping[str, str] tags: The tags assigned to the resource
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

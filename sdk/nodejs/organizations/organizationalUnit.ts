@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create an organizational unit.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.organizations.OrganizationalUnit("example", {parentId: aws_organizations_organization.example.roots[0].id});
- * ```
- */
 export class OrganizationalUnit extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationalUnit resource's state with the given name, ID, and optional extra
@@ -46,21 +34,9 @@ export class OrganizationalUnit extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationalUnit.__pulumiType;
     }
 
-    /**
-     * List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-     */
     public /*out*/ readonly accounts!: pulumi.Output<outputs.organizations.OrganizationalUnitAccount[]>;
-    /**
-     * ARN of the organizational unit
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name for the organizational unit
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * ID of the parent organizational unit, which may be the root
-     */
     public readonly parentId!: pulumi.Output<string>;
 
     /**
@@ -104,21 +80,9 @@ export class OrganizationalUnit extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrganizationalUnit resources.
  */
 export interface OrganizationalUnitState {
-    /**
-     * List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-     */
     readonly accounts?: pulumi.Input<pulumi.Input<inputs.organizations.OrganizationalUnitAccount>[]>;
-    /**
-     * ARN of the organizational unit
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name for the organizational unit
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * ID of the parent organizational unit, which may be the root
-     */
     readonly parentId?: pulumi.Input<string>;
 }
 
@@ -126,12 +90,6 @@ export interface OrganizationalUnitState {
  * The set of arguments for constructing a OrganizationalUnit resource.
  */
 export interface OrganizationalUnitArgs {
-    /**
-     * The name for the organizational unit
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * ID of the parent organizational unit, which may be the root
-     */
     readonly parentId: pulumi.Input<string>;
 }

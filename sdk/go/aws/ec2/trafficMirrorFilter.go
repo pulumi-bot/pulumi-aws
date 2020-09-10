@@ -9,45 +9,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Traffic mirror filter.\
-// Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
-//
-// ## Example Usage
-//
-// To create a basic traffic mirror filter
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewTrafficMirrorFilter(ctx, "foo", &ec2.TrafficMirrorFilterArgs{
-// 			Description: pulumi.String("traffic mirror filter - example"),
-// 			NetworkServices: pulumi.StringArray{
-// 				pulumi.String("amazon-dns"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TrafficMirrorFilter struct {
 	pulumi.CustomResourceState
 
-	// A description of the filter.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
+	Description     pulumi.StringPtrOutput   `pulumi:"description"`
 	NetworkServices pulumi.StringArrayOutput `pulumi:"networkServices"`
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags            pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewTrafficMirrorFilter registers a new resource with the given unique name, arguments, and options.
@@ -78,21 +45,15 @@ func GetTrafficMirrorFilter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrafficMirrorFilter resources.
 type trafficMirrorFilterState struct {
-	// A description of the filter.
-	Description *string `pulumi:"description"`
-	// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-	NetworkServices []string `pulumi:"networkServices"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Description     *string           `pulumi:"description"`
+	NetworkServices []string          `pulumi:"networkServices"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 type TrafficMirrorFilterState struct {
-	// A description of the filter.
-	Description pulumi.StringPtrInput
-	// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
+	Description     pulumi.StringPtrInput
 	NetworkServices pulumi.StringArrayInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
+	Tags            pulumi.StringMapInput
 }
 
 func (TrafficMirrorFilterState) ElementType() reflect.Type {
@@ -100,22 +61,16 @@ func (TrafficMirrorFilterState) ElementType() reflect.Type {
 }
 
 type trafficMirrorFilterArgs struct {
-	// A description of the filter.
-	Description *string `pulumi:"description"`
-	// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-	NetworkServices []string `pulumi:"networkServices"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Description     *string           `pulumi:"description"`
+	NetworkServices []string          `pulumi:"networkServices"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a TrafficMirrorFilter resource.
 type TrafficMirrorFilterArgs struct {
-	// A description of the filter.
-	Description pulumi.StringPtrInput
-	// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
+	Description     pulumi.StringPtrInput
 	NetworkServices pulumi.StringArrayInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
+	Tags            pulumi.StringMapInput
 }
 
 func (TrafficMirrorFilterArgs) ElementType() reflect.Type {

@@ -9,66 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Pinpoint
 {
-    /// <summary>
-    /// Provides a Pinpoint SMS Channel resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new Aws.Pinpoint.App("app", new Aws.Pinpoint.AppArgs
-    ///         {
-    ///         });
-    ///         var sms = new Aws.Pinpoint.SmsChannel("sms", new Aws.Pinpoint.SmsChannelArgs
-    ///         {
-    ///             ApplicationId = app.ApplicationId,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SmsChannel : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The application ID.
-        /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether the channel is enabled or disabled. Defaults to `true`.
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// Promotional messages per second that can be sent.
-        /// </summary>
         [Output("promotionalMessagesPerSecond")]
         public Output<int> PromotionalMessagesPerSecond { get; private set; } = null!;
 
-        /// <summary>
-        /// Sender identifier of your messages.
-        /// </summary>
         [Output("senderId")]
         public Output<string?> SenderId { get; private set; } = null!;
 
-        /// <summary>
-        /// The Short Code registered with the phone provider.
-        /// </summary>
         [Output("shortCode")]
         public Output<string?> ShortCode { get; private set; } = null!;
 
-        /// <summary>
-        /// Transactional messages per second that can be sent.
-        /// </summary>
         [Output("transactionalMessagesPerSecond")]
         public Output<int> TransactionalMessagesPerSecond { get; private set; } = null!;
 
@@ -118,27 +75,15 @@ namespace Pulumi.Aws.Pinpoint
 
     public sealed class SmsChannelArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The application ID.
-        /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
-        /// <summary>
-        /// Whether the channel is enabled or disabled. Defaults to `true`.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Sender identifier of your messages.
-        /// </summary>
         [Input("senderId")]
         public Input<string>? SenderId { get; set; }
 
-        /// <summary>
-        /// The Short Code registered with the phone provider.
-        /// </summary>
         [Input("shortCode")]
         public Input<string>? ShortCode { get; set; }
 
@@ -149,39 +94,21 @@ namespace Pulumi.Aws.Pinpoint
 
     public sealed class SmsChannelState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The application ID.
-        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
-        /// <summary>
-        /// Whether the channel is enabled or disabled. Defaults to `true`.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Promotional messages per second that can be sent.
-        /// </summary>
         [Input("promotionalMessagesPerSecond")]
         public Input<int>? PromotionalMessagesPerSecond { get; set; }
 
-        /// <summary>
-        /// Sender identifier of your messages.
-        /// </summary>
         [Input("senderId")]
         public Input<string>? SenderId { get; set; }
 
-        /// <summary>
-        /// The Short Code registered with the phone provider.
-        /// </summary>
         [Input("shortCode")]
         public Input<string>? ShortCode { get; set; }
 
-        /// <summary>
-        /// Transactional messages per second that can be sent.
-        /// </summary>
         [Input("transactionalMessagesPerSecond")]
         public Input<int>? TransactionalMessagesPerSecond { get; set; }
 

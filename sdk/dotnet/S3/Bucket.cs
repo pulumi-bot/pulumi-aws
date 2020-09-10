@@ -9,592 +9,77 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.S3
 {
-    /// <summary>
-    /// Provides a S3 bucket resource.
-    /// 
-    /// ## Example Usage
-    /// ### Private Bucket w/ Tags
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             Tags = 
-    ///             {
-    ///                 { "Environment", "Dev" },
-    ///                 { "Name", "My bucket" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Static Website Hosting
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "public-read",
-    ///             Policy = File.ReadAllText("policy.json"),
-    ///             Website = new Aws.S3.Inputs.BucketWebsiteArgs
-    ///             {
-    ///                 IndexDocument = "index.html",
-    ///                 ErrorDocument = "error.html",
-    ///                 RoutingRules = @"[{
-    ///     ""Condition"": {
-    ///         ""KeyPrefixEquals"": ""docs/""
-    ///     },
-    ///     ""Redirect"": {
-    ///         ""ReplaceKeyPrefixWith"": ""documents/""
-    ///     }
-    /// }]
-    /// ",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using CORS
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "public-read",
-    ///             CorsRules = 
-    ///             {
-    ///                 new Aws.S3.Inputs.BucketCorsRuleArgs
-    ///                 {
-    ///                     AllowedHeaders = 
-    ///                     {
-    ///                         "*",
-    ///                     },
-    ///                     AllowedMethods = 
-    ///                     {
-    ///                         "PUT",
-    ///                         "POST",
-    ///                     },
-    ///                     AllowedOrigins = 
-    ///                     {
-    ///                         "https://s3-website-test.mydomain.com",
-    ///                     },
-    ///                     ExposeHeaders = 
-    ///                     {
-    ///                         "ETag",
-    ///                     },
-    ///                     MaxAgeSeconds = 3000,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using versioning
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             Versioning = new Aws.S3.Inputs.BucketVersioningArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Enable Logging
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var logBucket = new Aws.S3.Bucket("logBucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "log-delivery-write",
-    ///         });
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             Loggings = 
-    ///             {
-    ///                 new Aws.S3.Inputs.BucketLoggingArgs
-    ///                 {
-    ///                     TargetBucket = logBucket.Id,
-    ///                     TargetPrefix = "log/",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using object lifecycle
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             LifecycleRules = 
-    ///             {
-    ///                 new Aws.S3.Inputs.BucketLifecycleRuleArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Expiration = new Aws.S3.Inputs.BucketLifecycleRuleExpirationArgs
-    ///                     {
-    ///                         Days = 90,
-    ///                     },
-    ///                     Id = "log",
-    ///                     Prefix = "log/",
-    ///                     Tags = 
-    ///                     {
-    ///                         { "autoclean", "true" },
-    ///                         { "rule", "log" },
-    ///                     },
-    ///                     Transitions = 
-    ///                     {
-    ///                         new Aws.S3.Inputs.BucketLifecycleRuleTransitionArgs
-    ///                         {
-    ///                             Days = 30,
-    ///                             StorageClass = "STANDARD_IA",
-    ///                         },
-    ///                         new Aws.S3.Inputs.BucketLifecycleRuleTransitionArgs
-    ///                         {
-    ///                             Days = 60,
-    ///                             StorageClass = "GLACIER",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Aws.S3.Inputs.BucketLifecycleRuleArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Expiration = new Aws.S3.Inputs.BucketLifecycleRuleExpirationArgs
-    ///                     {
-    ///                         Date = "2016-01-12",
-    ///                     },
-    ///                     Id = "tmp",
-    ///                     Prefix = "tmp/",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var versioningBucket = new Aws.S3.Bucket("versioningBucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             LifecycleRules = 
-    ///             {
-    ///                 new Aws.S3.Inputs.BucketLifecycleRuleArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     NoncurrentVersionExpiration = new Aws.S3.Inputs.BucketLifecycleRuleNoncurrentVersionExpirationArgs
-    ///                     {
-    ///                         Days = 90,
-    ///                     },
-    ///                     NoncurrentVersionTransitions = 
-    ///                     {
-    ///                         new Aws.S3.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
-    ///                         {
-    ///                             Days = 30,
-    ///                             StorageClass = "STANDARD_IA",
-    ///                         },
-    ///                         new Aws.S3.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
-    ///                         {
-    ///                             Days = 60,
-    ///                             StorageClass = "GLACIER",
-    ///                         },
-    ///                     },
-    ///                     Prefix = "config/",
-    ///                 },
-    ///             },
-    ///             Versioning = new Aws.S3.Inputs.BucketVersioningArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using replication configuration
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var central = new Aws.Provider("central", new Aws.ProviderArgs
-    ///         {
-    ///             Region = "eu-central-1",
-    ///         });
-    ///         var replicationRole = new Aws.Iam.Role("replicationRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": ""sts:AssumeRole"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""s3.amazonaws.com""
-    ///       },
-    ///       ""Effect"": ""Allow"",
-    ///       ""Sid"": """"
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var destination = new Aws.S3.Bucket("destination", new Aws.S3.BucketArgs
-    ///         {
-    ///             Versioning = new Aws.S3.Inputs.BucketVersioningArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         });
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             Versioning = new Aws.S3.Inputs.BucketVersioningArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///             ReplicationConfiguration = new Aws.S3.Inputs.BucketReplicationConfigurationArgs
-    ///             {
-    ///                 Role = replicationRole.Arn,
-    ///                 Rules = 
-    ///                 {
-    ///                     new Aws.S3.Inputs.BucketReplicationConfigurationRuleArgs
-    ///                     {
-    ///                         Id = "foobar",
-    ///                         Prefix = "foo",
-    ///                         Status = "Enabled",
-    ///                         Destination = new Aws.S3.Inputs.BucketReplicationConfigurationRuleDestinationArgs
-    ///                         {
-    ///                             Bucket = destination.Arn,
-    ///                             StorageClass = "STANDARD",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Central,
-    ///         });
-    ///         var replicationPolicy = new Aws.Iam.Policy("replicationPolicy", new Aws.Iam.PolicyArgs
-    ///         {
-    ///             Policy = Output.Tuple(bucket.Arn, bucket.Arn, destination.Arn).Apply(values =&gt;
-    ///             {
-    ///                 var bucketArn = values.Item1;
-    ///                 var bucketArn1 = values.Item2;
-    ///                 var destinationArn = values.Item3;
-    ///                 return @$"{{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {{
-    ///       ""Action"": [
-    ///         ""s3:GetReplicationConfiguration"",
-    ///         ""s3:ListBucket""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": [
-    ///         ""{bucketArn}""
-    ///       ]
-    ///     }},
-    ///     {{
-    ///       ""Action"": [
-    ///         ""s3:GetObjectVersion"",
-    ///         ""s3:GetObjectVersionAcl""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": [
-    ///         ""{bucketArn1}/*""
-    ///       ]
-    ///     }},
-    ///     {{
-    ///       ""Action"": [
-    ///         ""s3:ReplicateObject"",
-    ///         ""s3:ReplicateDelete""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": ""{destinationArn}/*""
-    ///     }}
-    ///   ]
-    /// }}
-    /// ";
-    ///             }),
-    ///         });
-    ///         var replicationRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("replicationRolePolicyAttachment", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             Role = replicationRole.Name,
-    ///             PolicyArn = replicationPolicy.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Enable Default Server Side Encryption
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var mykey = new Aws.Kms.Key("mykey", new Aws.Kms.KeyArgs
-    ///         {
-    ///             Description = "This key is used to encrypt bucket objects",
-    ///             DeletionWindowInDays = 10,
-    ///         });
-    ///         var mybucket = new Aws.S3.Bucket("mybucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             ServerSideEncryptionConfiguration = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationArgs
-    ///             {
-    ///                 Rule = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleArgs
-    ///                 {
-    ///                     ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs
-    ///                     {
-    ///                         KmsMasterKeyId = mykey.Arn,
-    ///                         SseAlgorithm = "aws:kms",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using ACL policy grants
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var currentUser = Output.Create(Aws.GetCanonicalUserId.InvokeAsync());
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Grants = 
-    ///             {
-    ///                 new Aws.S3.Inputs.BucketGrantArgs
-    ///                 {
-    ///                     Id = currentUser.Apply(currentUser =&gt; currentUser.Id),
-    ///                     Type = "CanonicalUser",
-    ///                     Permissions = 
-    ///                     {
-    ///                         "FULL_CONTROL",
-    ///                     },
-    ///                 },
-    ///                 new Aws.S3.Inputs.BucketGrantArgs
-    ///                 {
-    ///                     Type = "Group",
-    ///                     Permissions = 
-    ///                     {
-    ///                         "READ",
-    ///                         "WRITE",
-    ///                     },
-    ///                     Uri = "http://acs.amazonaws.com/groups/s3/LogDelivery",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Sets the accelerate configuration of an existing bucket. Can be `Enabled` or `Suspended`.
-        /// </summary>
         [Output("accelerationStatus")]
         public Output<string> AccelerationStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// The [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Defaults to "private".  Conflicts with `grant`.
-        /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the bucket. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("bucket")]
         public Output<string> BucketName { get; private set; } = null!;
 
-        /// <summary>
-        /// The bucket domain name. Will be of format `bucketname.s3.amazonaws.com`.
-        /// </summary>
         [Output("bucketDomainName")]
         public Output<string> BucketDomainName { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
-        /// </summary>
         [Output("bucketPrefix")]
         public Output<string?> BucketPrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// The bucket region-specific domain name. The bucket domain name including the region name, please refer [here](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) for format. Note: The AWS CloudFront allows specifying S3 region-specific endpoint when creating S3 origin, it will prevent [redirect issues](https://forums.aws.amazon.com/thread.jspa?threadID=216814) from CloudFront to S3 Origin URL.
-        /// </summary>
         [Output("bucketRegionalDomainName")]
         public Output<string> BucketRegionalDomainName { get; private set; } = null!;
 
-        /// <summary>
-        /// A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
-        /// </summary>
         [Output("corsRules")]
         public Output<ImmutableArray<Outputs.BucketCorsRule>> CorsRules { get; private set; } = null!;
 
-        /// <summary>
-        /// A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
-        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
-        /// <summary>
-        /// An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
-        /// </summary>
         [Output("grants")]
         public Output<ImmutableArray<Outputs.BucketGrant>> Grants { get; private set; } = null!;
 
-        /// <summary>
-        /// The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
-        /// </summary>
         [Output("hostedZoneId")]
         public Output<string> HostedZoneId { get; private set; } = null!;
 
-        /// <summary>
-        /// A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
-        /// </summary>
         [Output("lifecycleRules")]
         public Output<ImmutableArray<Outputs.BucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
-        /// <summary>
-        /// A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
-        /// </summary>
         [Output("loggings")]
         public Output<ImmutableArray<Outputs.BucketLogging>> Loggings { get; private set; } = null!;
 
-        /// <summary>
-        /// A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
-        /// </summary>
         [Output("objectLockConfiguration")]
         public Output<Outputs.BucketObjectLockConfiguration?> ObjectLockConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), the provider may view the policy as constantly changing in a `pulumi up / preview / update`. In this case, please make sure you use the verbose/specific version of the policy.
-        /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
 
-        /// <summary>
-        /// The AWS region this bucket resides in.
-        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
-        /// <summary>
-        /// A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
-        /// </summary>
         [Output("replicationConfiguration")]
         public Output<Outputs.BucketReplicationConfiguration?> ReplicationConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies who should bear the cost of Amazon S3 data transfer.
-        /// Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
-        /// the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
-        /// developer guide for more information.
-        /// </summary>
         [Output("requestPayer")]
         public Output<string> RequestPayer { get; private set; } = null!;
 
-        /// <summary>
-        /// A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
-        /// </summary>
         [Output("serverSideEncryptionConfiguration")]
         public Output<Outputs.BucketServerSideEncryptionConfiguration?> ServerSideEncryptionConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// A mapping of tags to assign to the bucket.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
-        /// </summary>
         [Output("versioning")]
         public Output<Outputs.BucketVersioning> Versioning { get; private set; } = null!;
 
-        /// <summary>
-        /// A website object (documented below).
-        /// </summary>
         [Output("website")]
         public Output<Outputs.BucketWebsite?> Website { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
-        /// </summary>
         [Output("websiteDomain")]
         public Output<string> WebsiteDomain { get; private set; } = null!;
 
-        /// <summary>
-        /// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
-        /// </summary>
         [Output("websiteEndpoint")]
         public Output<string> WebsiteEndpoint { get; private set; } = null!;
 
@@ -644,78 +129,45 @@ namespace Pulumi.Aws.S3
 
     public sealed class BucketArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Sets the accelerate configuration of an existing bucket. Can be `Enabled` or `Suspended`.
-        /// </summary>
         [Input("accelerationStatus")]
         public Input<string>? AccelerationStatus { get; set; }
 
-        /// <summary>
-        /// The [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Defaults to "private".  Conflicts with `grant`.
-        /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
 
-        /// <summary>
-        /// The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the bucket. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("bucket")]
         public Input<string>? BucketName { get; set; }
 
-        /// <summary>
-        /// Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
-        /// </summary>
         [Input("bucketPrefix")]
         public Input<string>? BucketPrefix { get; set; }
 
         [Input("corsRules")]
         private InputList<Inputs.BucketCorsRuleArgs>? _corsRules;
-
-        /// <summary>
-        /// A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
-        /// </summary>
         public InputList<Inputs.BucketCorsRuleArgs> CorsRules
         {
             get => _corsRules ?? (_corsRules = new InputList<Inputs.BucketCorsRuleArgs>());
             set => _corsRules = value;
         }
 
-        /// <summary>
-        /// A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("grants")]
         private InputList<Inputs.BucketGrantArgs>? _grants;
-
-        /// <summary>
-        /// An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
-        /// </summary>
         public InputList<Inputs.BucketGrantArgs> Grants
         {
             get => _grants ?? (_grants = new InputList<Inputs.BucketGrantArgs>());
             set => _grants = value;
         }
 
-        /// <summary>
-        /// The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
-        /// </summary>
         [Input("hostedZoneId")]
         public Input<string>? HostedZoneId { get; set; }
 
         [Input("lifecycleRules")]
         private InputList<Inputs.BucketLifecycleRuleArgs>? _lifecycleRules;
-
-        /// <summary>
-        /// A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
-        /// </summary>
         public InputList<Inputs.BucketLifecycleRuleArgs> LifecycleRules
         {
             get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.BucketLifecycleRuleArgs>());
@@ -724,82 +176,44 @@ namespace Pulumi.Aws.S3
 
         [Input("loggings")]
         private InputList<Inputs.BucketLoggingArgs>? _loggings;
-
-        /// <summary>
-        /// A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
-        /// </summary>
         public InputList<Inputs.BucketLoggingArgs> Loggings
         {
             get => _loggings ?? (_loggings = new InputList<Inputs.BucketLoggingArgs>());
             set => _loggings = value;
         }
 
-        /// <summary>
-        /// A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
-        /// </summary>
         [Input("objectLockConfiguration")]
         public Input<Inputs.BucketObjectLockConfigurationArgs>? ObjectLockConfiguration { get; set; }
 
-        /// <summary>
-        /// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), the provider may view the policy as constantly changing in a `pulumi up / preview / update`. In this case, please make sure you use the verbose/specific version of the policy.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
-        /// </summary>
         [Input("replicationConfiguration")]
         public Input<Inputs.BucketReplicationConfigurationArgs>? ReplicationConfiguration { get; set; }
 
-        /// <summary>
-        /// Specifies who should bear the cost of Amazon S3 data transfer.
-        /// Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
-        /// the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
-        /// developer guide for more information.
-        /// </summary>
         [Input("requestPayer")]
         public Input<string>? RequestPayer { get; set; }
 
-        /// <summary>
-        /// A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
-        /// </summary>
         [Input("serverSideEncryptionConfiguration")]
         public Input<Inputs.BucketServerSideEncryptionConfigurationArgs>? ServerSideEncryptionConfiguration { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the bucket.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
-        /// </summary>
         [Input("versioning")]
         public Input<Inputs.BucketVersioningArgs>? Versioning { get; set; }
 
-        /// <summary>
-        /// A website object (documented below).
-        /// </summary>
         [Input("website")]
         public Input<Inputs.BucketWebsiteArgs>? Website { get; set; }
 
-        /// <summary>
-        /// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
-        /// </summary>
         [Input("websiteDomain")]
         public Input<string>? WebsiteDomain { get; set; }
 
-        /// <summary>
-        /// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
-        /// </summary>
         [Input("websiteEndpoint")]
         public Input<string>? WebsiteEndpoint { get; set; }
 
@@ -810,90 +224,51 @@ namespace Pulumi.Aws.S3
 
     public sealed class BucketState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Sets the accelerate configuration of an existing bucket. Can be `Enabled` or `Suspended`.
-        /// </summary>
         [Input("accelerationStatus")]
         public Input<string>? AccelerationStatus { get; set; }
 
-        /// <summary>
-        /// The [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Defaults to "private".  Conflicts with `grant`.
-        /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
 
-        /// <summary>
-        /// The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the bucket. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("bucket")]
         public Input<string>? BucketName { get; set; }
 
-        /// <summary>
-        /// The bucket domain name. Will be of format `bucketname.s3.amazonaws.com`.
-        /// </summary>
         [Input("bucketDomainName")]
         public Input<string>? BucketDomainName { get; set; }
 
-        /// <summary>
-        /// Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
-        /// </summary>
         [Input("bucketPrefix")]
         public Input<string>? BucketPrefix { get; set; }
 
-        /// <summary>
-        /// The bucket region-specific domain name. The bucket domain name including the region name, please refer [here](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) for format. Note: The AWS CloudFront allows specifying S3 region-specific endpoint when creating S3 origin, it will prevent [redirect issues](https://forums.aws.amazon.com/thread.jspa?threadID=216814) from CloudFront to S3 Origin URL.
-        /// </summary>
         [Input("bucketRegionalDomainName")]
         public Input<string>? BucketRegionalDomainName { get; set; }
 
         [Input("corsRules")]
         private InputList<Inputs.BucketCorsRuleGetArgs>? _corsRules;
-
-        /// <summary>
-        /// A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
-        /// </summary>
         public InputList<Inputs.BucketCorsRuleGetArgs> CorsRules
         {
             get => _corsRules ?? (_corsRules = new InputList<Inputs.BucketCorsRuleGetArgs>());
             set => _corsRules = value;
         }
 
-        /// <summary>
-        /// A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("grants")]
         private InputList<Inputs.BucketGrantGetArgs>? _grants;
-
-        /// <summary>
-        /// An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
-        /// </summary>
         public InputList<Inputs.BucketGrantGetArgs> Grants
         {
             get => _grants ?? (_grants = new InputList<Inputs.BucketGrantGetArgs>());
             set => _grants = value;
         }
 
-        /// <summary>
-        /// The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
-        /// </summary>
         [Input("hostedZoneId")]
         public Input<string>? HostedZoneId { get; set; }
 
         [Input("lifecycleRules")]
         private InputList<Inputs.BucketLifecycleRuleGetArgs>? _lifecycleRules;
-
-        /// <summary>
-        /// A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
-        /// </summary>
         public InputList<Inputs.BucketLifecycleRuleGetArgs> LifecycleRules
         {
             get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.BucketLifecycleRuleGetArgs>());
@@ -902,88 +277,47 @@ namespace Pulumi.Aws.S3
 
         [Input("loggings")]
         private InputList<Inputs.BucketLoggingGetArgs>? _loggings;
-
-        /// <summary>
-        /// A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
-        /// </summary>
         public InputList<Inputs.BucketLoggingGetArgs> Loggings
         {
             get => _loggings ?? (_loggings = new InputList<Inputs.BucketLoggingGetArgs>());
             set => _loggings = value;
         }
 
-        /// <summary>
-        /// A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
-        /// </summary>
         [Input("objectLockConfiguration")]
         public Input<Inputs.BucketObjectLockConfigurationGetArgs>? ObjectLockConfiguration { get; set; }
 
-        /// <summary>
-        /// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), the provider may view the policy as constantly changing in a `pulumi up / preview / update`. In this case, please make sure you use the verbose/specific version of the policy.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// The AWS region this bucket resides in.
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
-        /// </summary>
         [Input("replicationConfiguration")]
         public Input<Inputs.BucketReplicationConfigurationGetArgs>? ReplicationConfiguration { get; set; }
 
-        /// <summary>
-        /// Specifies who should bear the cost of Amazon S3 data transfer.
-        /// Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
-        /// the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
-        /// developer guide for more information.
-        /// </summary>
         [Input("requestPayer")]
         public Input<string>? RequestPayer { get; set; }
 
-        /// <summary>
-        /// A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
-        /// </summary>
         [Input("serverSideEncryptionConfiguration")]
         public Input<Inputs.BucketServerSideEncryptionConfigurationGetArgs>? ServerSideEncryptionConfiguration { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the bucket.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
-        /// </summary>
         [Input("versioning")]
         public Input<Inputs.BucketVersioningGetArgs>? Versioning { get; set; }
 
-        /// <summary>
-        /// A website object (documented below).
-        /// </summary>
         [Input("website")]
         public Input<Inputs.BucketWebsiteGetArgs>? Website { get; set; }
 
-        /// <summary>
-        /// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
-        /// </summary>
         [Input("websiteDomain")]
         public Input<string>? WebsiteDomain { get; set; }
 
-        /// <summary>
-        /// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
-        /// </summary>
         [Input("websiteEndpoint")]
         public Input<string>? WebsiteEndpoint { get; set; }
 

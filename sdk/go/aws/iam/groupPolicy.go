@@ -10,52 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IAM policy attached to a group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myDevelopers, err := iam.NewGroup(ctx, "myDevelopers", &iam.GroupArgs{
-// 			Path: pulumi.String("/users/"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewGroupPolicy(ctx, "myDeveloperPolicy", &iam.GroupPolicyArgs{
-// 			Group:  myDevelopers.ID(),
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": [\n", "        \"ec2:Describe*\"\n", "      ],\n", "      \"Effect\": \"Allow\",\n", "      \"Resource\": \"*\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type GroupPolicy struct {
 	pulumi.CustomResourceState
 
-	// The IAM group to attach to the policy.
-	Group pulumi.StringOutput `pulumi:"group"`
-	// The name of the policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Group      pulumi.StringOutput    `pulumi:"group"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// The policy document. This is a JSON formatted string.
-	Policy pulumi.StringOutput `pulumi:"policy"`
+	Policy     pulumi.StringOutput    `pulumi:"policy"`
 }
 
 // NewGroupPolicy registers a new resource with the given unique name, arguments, and options.
@@ -92,29 +53,17 @@ func GetGroupPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupPolicy resources.
 type groupPolicyState struct {
-	// The IAM group to attach to the policy.
-	Group *string `pulumi:"group"`
-	// The name of the policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Group      *string `pulumi:"group"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The policy document. This is a JSON formatted string.
-	Policy *string `pulumi:"policy"`
+	Policy     *string `pulumi:"policy"`
 }
 
 type GroupPolicyState struct {
-	// The IAM group to attach to the policy.
-	Group pulumi.StringPtrInput
-	// The name of the policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Group      pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// The policy document. This is a JSON formatted string.
-	Policy pulumi.StringPtrInput
+	Policy     pulumi.StringPtrInput
 }
 
 func (GroupPolicyState) ElementType() reflect.Type {
@@ -122,30 +71,18 @@ func (GroupPolicyState) ElementType() reflect.Type {
 }
 
 type groupPolicyArgs struct {
-	// The IAM group to attach to the policy.
-	Group string `pulumi:"group"`
-	// The name of the policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The policy document. This is a JSON formatted string.
-	Policy interface{} `pulumi:"policy"`
+	Group      string      `pulumi:"group"`
+	Name       *string     `pulumi:"name"`
+	NamePrefix *string     `pulumi:"namePrefix"`
+	Policy     interface{} `pulumi:"policy"`
 }
 
 // The set of arguments for constructing a GroupPolicy resource.
 type GroupPolicyArgs struct {
-	// The IAM group to attach to the policy.
-	Group pulumi.StringInput
-	// The name of the policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Group      pulumi.StringInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// The policy document. This is a JSON formatted string.
-	Policy pulumi.Input
+	Policy     pulumi.Input
 }
 
 func (GroupPolicyArgs) ElementType() reflect.Type {

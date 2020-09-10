@@ -51,9 +51,6 @@ class GetVpcsResult:
     @property
     @pulumi.getter
     def ids(self) -> List[str]:
-        """
-        A list of all the VPC Ids found. This data source will fail if none are found.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -78,14 +75,7 @@ def get_vpcs(filters: Optional[List[pulumi.InputType['GetVpcsFilterArgs']]] = No
              tags: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcsResult:
     """
-    This resource can be useful for getting back a list of VPC Ids for a region.
-
-    The following example retrieves a list of VPC Ids with a custom tag of `service` set to a value of "production".
-
-
-    :param List[pulumi.InputType['GetVpcsFilterArgs']] filters: Custom filter block as described below.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
-           a pair on the desired vpcs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

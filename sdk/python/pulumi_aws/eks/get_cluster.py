@@ -67,41 +67,26 @@ class GetClusterResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the cluster.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> 'outputs.GetClusterCertificateAuthorityResult':
-        """
-        Nested attribute containing `certificate-authority-data` for your cluster.
-        """
         return pulumi.get(self, "certificate_authority")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The Unix epoch time stamp in seconds for when the cluster was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="enabledClusterLogTypes")
     def enabled_cluster_log_types(self) -> List[str]:
-        """
-        The enabled control plane logs.
-        """
         return pulumi.get(self, "enabled_cluster_log_types")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
-        """
-        The endpoint for your Kubernetes API server.
-        """
         return pulumi.get(self, "endpoint")
 
     @property
@@ -115,9 +100,6 @@ class GetClusterResult:
     @property
     @pulumi.getter
     def identities(self) -> List['outputs.GetClusterIdentityResult']:
-        """
-        Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `eks.Cluster` resource documentation.
-        """
         return pulumi.get(self, "identities")
 
     @property
@@ -128,49 +110,31 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="platformVersion")
     def platform_version(self) -> str:
-        """
-        The platform version for the cluster.
-        """
         return pulumi.get(self, "platform_version")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf.
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the EKS cluster. One of `CREATING`, `ACTIVE`, `DELETING`, `FAILED`.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Key-value map of resource tags.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        The Kubernetes server version for the cluster.
-        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="vpcConfig")
     def vpc_config(self) -> 'outputs.GetClusterVpcConfigResult':
-        """
-        Nested list containing VPC configuration for the cluster.
-        """
         return pulumi.get(self, "vpc_config")
 
 
@@ -200,11 +164,7 @@ def get_cluster(name: Optional[str] = None,
                 tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Retrieve information about an EKS Cluster.
-
-
-    :param str name: The name of the cluster
-    :param Mapping[str, str] tags: Key-value map of resource tags.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

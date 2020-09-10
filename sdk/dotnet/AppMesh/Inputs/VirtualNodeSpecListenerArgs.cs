@@ -12,15 +12,9 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class VirtualNodeSpecListenerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The health check information for the listener.
-        /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.VirtualNodeSpecListenerHealthCheckArgs>? HealthCheck { get; set; }
 
-        /// <summary>
-        /// The port mapping information for the listener.
-        /// </summary>
         [Input("portMapping", required: true)]
         public Input<Inputs.VirtualNodeSpecListenerPortMappingArgs> PortMapping { get; set; } = null!;
 

@@ -9,103 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.LB
 {
-    /// <summary>
-    /// Provides the ability to register instances and containers with an Application Load Balancer (ALB) or Network Load Balancer (NLB) target group. For attaching resources with Elastic Load Balancer (ELB), see the `aws.elb.Attachment` resource.
-    /// 
-    /// &gt; **Note:** `aws.alb.TargetGroupAttachment` is known as `aws.lb.TargetGroupAttachment`. The functionality is identical.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testTargetGroup = new Aws.LB.TargetGroup("testTargetGroup", new Aws.LB.TargetGroupArgs
-    ///         {
-    ///         });
-    ///         // Other arguments
-    ///         var testInstance = new Aws.Ec2.Instance("testInstance", new Aws.Ec2.InstanceArgs
-    ///         {
-    ///         });
-    ///         // Other arguments
-    ///         var testTargetGroupAttachment = new Aws.LB.TargetGroupAttachment("testTargetGroupAttachment", new Aws.LB.TargetGroupAttachmentArgs
-    ///         {
-    ///             TargetGroupArn = testTargetGroup.Arn,
-    ///             TargetId = testInstance.Id,
-    ///             Port = 80,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Usage with lambda
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testTargetGroup = new Aws.LB.TargetGroup("testTargetGroup", new Aws.LB.TargetGroupArgs
-    ///         {
-    ///             TargetType = "lambda",
-    ///         });
-    ///         var testFunction = new Aws.Lambda.Function("testFunction", new Aws.Lambda.FunctionArgs
-    ///         {
-    ///         });
-    ///         // Other arguments
-    ///         var withLb = new Aws.Lambda.Permission("withLb", new Aws.Lambda.PermissionArgs
-    ///         {
-    ///             Action = "lambda:InvokeFunction",
-    ///             Function = testFunction.Arn,
-    ///             Principal = "elasticloadbalancing.amazonaws.com",
-    ///             SourceArn = testTargetGroup.Arn,
-    ///         });
-    ///         var testTargetGroupAttachment = new Aws.LB.TargetGroupAttachment("testTargetGroupAttachment", new Aws.LB.TargetGroupAttachmentArgs
-    ///         {
-    ///             TargetGroupArn = testTargetGroup.Arn,
-    ///             TargetId = testFunction.Arn,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 withLb,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class TargetGroupAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-        /// </summary>
         [Output("availabilityZone")]
         public Output<string?> AvailabilityZone { get; private set; } = null!;
 
-        /// <summary>
-        /// The port on which targets receive traffic.
-        /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the target group with which to register targets
-        /// </summary>
         [Output("targetGroupArn")]
         public Output<string> TargetGroupArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
 
@@ -134,7 +48,7 @@ namespace Pulumi.Aws.LB
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "aws:elasticloadbalancingv2/targetGroupAttachment:TargetGroupAttachment"},
+                    new Pulumi.Alias { Type = "aws:elasticloadbalancingv2/targetGroupAttachment:TargetGroupAttachment"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -159,27 +73,15 @@ namespace Pulumi.Aws.LB
 
     public sealed class TargetGroupAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The port on which targets receive traffic.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The ARN of the target group with which to register targets
-        /// </summary>
         [Input("targetGroupArn", required: true)]
         public Input<string> TargetGroupArn { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
 
@@ -190,27 +92,15 @@ namespace Pulumi.Aws.LB
 
     public sealed class TargetGroupAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The port on which targets receive traffic.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The ARN of the target group with which to register targets
-        /// </summary>
         [Input("targetGroupArn")]
         public Input<string>? TargetGroupArn { get; set; }
 
-        /// <summary>
-        /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
 

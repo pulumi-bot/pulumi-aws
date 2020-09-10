@@ -9,72 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ResourceGroups
 {
-    /// <summary>
-    /// Provides a Resource Group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.ResourceGroups.Group("test", new Aws.ResourceGroups.GroupArgs
-    ///         {
-    ///             ResourceQuery = new Aws.ResourceGroups.Inputs.GroupResourceQueryArgs
-    ///             {
-    ///                 Query = @"{
-    ///   ""ResourceTypeFilters"": [
-    ///     ""AWS::EC2::Instance""
-    ///   ],
-    ///   ""TagFilters"": [
-    ///     {
-    ///       ""Key"": ""Stage"",
-    ///       ""Values"": [""Test""]
-    ///     }
-    ///   ]
-    /// }
-    /// 
-    /// ",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN assigned by AWS for this resource group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A description of the resource group.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A `resource_query` block. Resource queries are documented below.
-        /// </summary>
         [Output("resourceQuery")]
         public Output<Outputs.GroupResourceQuery> ResourceQuery { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -124,30 +72,17 @@ namespace Pulumi.Aws.ResourceGroups
 
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the resource group.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// A `resource_query` block. Resource queries are documented below.
-        /// </summary>
         [Input("resourceQuery", required: true)]
         public Input<Inputs.GroupResourceQueryArgs> ResourceQuery { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -161,36 +96,20 @@ namespace Pulumi.Aws.ResourceGroups
 
     public sealed class GroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN assigned by AWS for this resource group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A description of the resource group.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// A `resource_query` block. Resource queries are documented below.
-        /// </summary>
         [Input("resourceQuery")]
         public Input<Inputs.GroupResourceQueryGetArgs>? ResourceQuery { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

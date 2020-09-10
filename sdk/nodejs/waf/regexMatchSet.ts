@@ -6,29 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Regex Match Set Resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleRegexPatternSet = new aws.waf.RegexPatternSet("exampleRegexPatternSet", {regexPatternStrings: [
- *     "one",
- *     "two",
- * ]});
- * const exampleRegexMatchSet = new aws.waf.RegexMatchSet("exampleRegexMatchSet", {regexMatchTuples: [{
- *     fieldToMatch: {
- *         data: "User-Agent",
- *         type: "HEADER",
- *     },
- *     regexPatternSetId: exampleRegexPatternSet.id,
- *     textTransformation: "NONE",
- * }]});
- * ```
- */
 export class RegexMatchSet extends pulumi.CustomResource {
     /**
      * Get an existing RegexMatchSet resource's state with the given name, ID, and optional extra
@@ -57,18 +34,8 @@ export class RegexMatchSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegexMatchSet.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN)
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name or description of the Regex Match Set.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The regular expression pattern that you want AWS WAF to search for in web requests,
-     * the location in requests that you want AWS WAF to search, and other settings. See below.
-     */
     public readonly regexMatchTuples!: pulumi.Output<outputs.waf.RegexMatchSetRegexMatchTuple[] | undefined>;
 
     /**
@@ -107,18 +74,8 @@ export class RegexMatchSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegexMatchSet resources.
  */
 export interface RegexMatchSetState {
-    /**
-     * Amazon Resource Name (ARN)
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name or description of the Regex Match Set.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The regular expression pattern that you want AWS WAF to search for in web requests,
-     * the location in requests that you want AWS WAF to search, and other settings. See below.
-     */
     readonly regexMatchTuples?: pulumi.Input<pulumi.Input<inputs.waf.RegexMatchSetRegexMatchTuple>[]>;
 }
 
@@ -126,13 +83,6 @@ export interface RegexMatchSetState {
  * The set of arguments for constructing a RegexMatchSet resource.
  */
 export interface RegexMatchSetArgs {
-    /**
-     * The name or description of the Regex Match Set.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The regular expression pattern that you want AWS WAF to search for in web requests,
-     * the location in requests that you want AWS WAF to search, and other settings. See below.
-     */
     readonly regexMatchTuples?: pulumi.Input<pulumi.Input<inputs.waf.RegexMatchSetRegexMatchTuple>[]>;
 }

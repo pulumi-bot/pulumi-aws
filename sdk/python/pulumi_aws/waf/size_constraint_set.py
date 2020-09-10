@@ -23,28 +23,9 @@ class SizeConstraintSet(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a WAF Size Constraint Set Resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        size_constraint_set = aws.waf.SizeConstraintSet("sizeConstraintSet", size_constraints=[aws.waf.SizeConstraintSetSizeConstraintArgs(
-            comparison_operator="EQ",
-            field_to_match=aws.waf.SizeConstraintSetSizeConstraintFieldToMatchArgs(
-                type="BODY",
-            ),
-            size=4096,
-            text_transformation="NONE",
-        )])
-        ```
-
+        Create a SizeConstraintSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name or description of the Size Constraint Set.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SizeConstraintSetSizeConstraintArgs']]]] size_constraints: Specifies the parts of web requests that you want to inspect the size of.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,9 +67,6 @@ class SizeConstraintSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN)
-        :param pulumi.Input[str] name: The name or description of the Size Constraint Set.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SizeConstraintSetSizeConstraintArgs']]]] size_constraints: Specifies the parts of web requests that you want to inspect the size of.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -102,25 +80,16 @@ class SizeConstraintSet(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN)
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name or description of the Size Constraint Set.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="sizeConstraints")
     def size_constraints(self) -> pulumi.Output[Optional[List['outputs.SizeConstraintSetSizeConstraint']]]:
-        """
-        Specifies the parts of web requests that you want to inspect the size of.
-        """
         return pulumi.get(self, "size_constraints")
 
     def translate_output_property(self, prop):

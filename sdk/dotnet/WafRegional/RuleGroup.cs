@@ -9,73 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafRegional
 {
-    /// <summary>
-    /// Provides a WAF Regional Rule Group Resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRule = new Aws.WafRegional.Rule("exampleRule", new Aws.WafRegional.RuleArgs
-    ///         {
-    ///             MetricName = "example",
-    ///         });
-    ///         var exampleRuleGroup = new Aws.WafRegional.RuleGroup("exampleRuleGroup", new Aws.WafRegional.RuleGroupArgs
-    ///         {
-    ///             MetricName = "example",
-    ///             ActivatedRules = 
-    ///             {
-    ///                 new Aws.WafRegional.Inputs.RuleGroupActivatedRuleArgs
-    ///                 {
-    ///                     Action = new Aws.WafRegional.Inputs.RuleGroupActivatedRuleActionArgs
-    ///                     {
-    ///                         Type = "COUNT",
-    ///                     },
-    ///                     Priority = 50,
-    ///                     RuleId = exampleRule.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RuleGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A list of activated rules, see below
-        /// </summary>
         [Output("activatedRules")]
         public Output<ImmutableArray<Outputs.RuleGroupActivatedRule>> ActivatedRules { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the WAF Regional Rule Group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly name for the metrics from the rule group
-        /// </summary>
         [Output("metricName")]
         public Output<string> MetricName { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly name of the rule group
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -127,34 +74,20 @@ namespace Pulumi.Aws.WafRegional
     {
         [Input("activatedRules")]
         private InputList<Inputs.RuleGroupActivatedRuleArgs>? _activatedRules;
-
-        /// <summary>
-        /// A list of activated rules, see below
-        /// </summary>
         public InputList<Inputs.RuleGroupActivatedRuleArgs> ActivatedRules
         {
             get => _activatedRules ?? (_activatedRules = new InputList<Inputs.RuleGroupActivatedRuleArgs>());
             set => _activatedRules = value;
         }
 
-        /// <summary>
-        /// A friendly name for the metrics from the rule group
-        /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
-        /// <summary>
-        /// A friendly name of the rule group
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -170,40 +103,23 @@ namespace Pulumi.Aws.WafRegional
     {
         [Input("activatedRules")]
         private InputList<Inputs.RuleGroupActivatedRuleGetArgs>? _activatedRules;
-
-        /// <summary>
-        /// A list of activated rules, see below
-        /// </summary>
         public InputList<Inputs.RuleGroupActivatedRuleGetArgs> ActivatedRules
         {
             get => _activatedRules ?? (_activatedRules = new InputList<Inputs.RuleGroupActivatedRuleGetArgs>());
             set => _activatedRules = value;
         }
 
-        /// <summary>
-        /// The ARN of the WAF Regional Rule Group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A friendly name for the metrics from the rule group
-        /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
 
-        /// <summary>
-        /// A friendly name of the rule group
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

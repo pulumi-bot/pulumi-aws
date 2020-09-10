@@ -23,25 +23,9 @@ class Connection(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Connection of Direct Connect.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        hoge = aws.directconnect.Connection("hoge",
-            bandwidth="1Gbps",
-            location="EqDC2")
-        ```
-
+        Create a Connection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-        :param pulumi.Input[str] location: The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-        :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,14 +81,6 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the connection.
-        :param pulumi.Input[str] aws_device: The Direct Connect endpoint on which the physical connection terminates.
-        :param pulumi.Input[str] bandwidth: The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-        :param pulumi.Input[str] has_logical_redundancy: Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-        :param pulumi.Input[bool] jumbo_frame_capable: Boolean value representing if jumbo frames have been enabled for this connection.
-        :param pulumi.Input[str] location: The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-        :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -123,65 +99,41 @@ class Connection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the connection.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="awsDevice")
     def aws_device(self) -> pulumi.Output[str]:
-        """
-        The Direct Connect endpoint on which the physical connection terminates.
-        """
         return pulumi.get(self, "aws_device")
 
     @property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[str]:
-        """
-        The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-        """
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="hasLogicalRedundancy")
     def has_logical_redundancy(self) -> pulumi.Output[str]:
-        """
-        Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-        """
         return pulumi.get(self, "has_logical_redundancy")
 
     @property
     @pulumi.getter(name="jumboFrameCapable")
     def jumbo_frame_capable(self) -> pulumi.Output[bool]:
-        """
-        Boolean value representing if jumbo frames have been enabled for this connection.
-        """
         return pulumi.get(self, "jumbo_frame_capable")
 
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the connection.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

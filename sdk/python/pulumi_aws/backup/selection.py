@@ -26,76 +26,9 @@ class Selection(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages selection conditions for AWS Backup plan resources.
-
-        ## Example Usage
-        ### IAM Role
-
-        > For more information about creating and managing IAM Roles for backups and restores, see the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/iam-service-roles.html).
-
-        The below example creates an IAM role with the default managed IAM Policy for allowing AWS Backup to create backups.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_role = aws.iam.Role("exampleRole", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": ["sts:AssumeRole"],
-              "Effect": "allow",
-              "Principal": {
-                "Service": ["backup.amazonaws.com"]
-              }
-            }
-          ]
-        }
-        \"\"\")
-        example_role_policy_attachment = aws.iam.RolePolicyAttachment("exampleRolePolicyAttachment",
-            policy_arn="arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup",
-            role=example_role.name)
-        # ... other configuration ...
-        example_selection = aws.backup.Selection("exampleSelection", iam_role_arn=example_role.arn)
-        ```
-        ### Selecting Backups By Tag
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.backup.Selection("example",
-            iam_role_arn=aws_iam_role["example"]["arn"],
-            plan_id=aws_backup_plan["example"]["id"],
-            selection_tags=[aws.backup.SelectionSelectionTagArgs(
-                type="STRINGEQUALS",
-                key="foo",
-                value="bar",
-            )])
-        ```
-        ### Selecting Backups By Resource
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.backup.Selection("example",
-            iam_role_arn=aws_iam_role["example"]["arn"],
-            plan_id=aws_backup_plan["example"]["id"],
-            resources=[
-                aws_db_instance["example"]["arn"],
-                aws_ebs_volume["example"]["arn"],
-                aws_efs_file_system["example"]["arn"],
-            ])
-        ```
-
+        Create a Selection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] iam_role_arn: The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
-        :param pulumi.Input[str] name: The display name of a resource selection document.
-        :param pulumi.Input[str] plan_id: The backup plan ID to be associated with the selection of resources.
-        :param pulumi.Input[List[pulumi.Input[str]]] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SelectionSelectionTagArgs']]]] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -145,11 +78,6 @@ class Selection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] iam_role_arn: The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
-        :param pulumi.Input[str] name: The display name of a resource selection document.
-        :param pulumi.Input[str] plan_id: The backup plan ID to be associated with the selection of resources.
-        :param pulumi.Input[List[pulumi.Input[str]]] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SelectionSelectionTagArgs']]]] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -165,41 +93,26 @@ class Selection(pulumi.CustomResource):
     @property
     @pulumi.getter(name="iamRoleArn")
     def iam_role_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
-        """
         return pulumi.get(self, "iam_role_arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The display name of a resource selection document.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="planId")
     def plan_id(self) -> pulumi.Output[str]:
-        """
-        The backup plan ID to be associated with the selection of resources.
-        """
         return pulumi.get(self, "plan_id")
 
     @property
     @pulumi.getter
     def resources(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
-        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="selectionTags")
     def selection_tags(self) -> pulumi.Output[Optional[List['outputs.SelectionSelectionTag']]]:
-        """
-        Tag-based conditions used to specify a set of resources to assign to a backup plan.
-        """
         return pulumi.get(self, "selection_tags")
 
     def translate_output_property(self, prop):

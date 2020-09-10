@@ -26,47 +26,9 @@ class ApplicationVersion(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Elastic Beanstalk Application Version Resource. Elastic Beanstalk allows
-        you to deploy and manage applications in the AWS cloud without worrying about
-        the infrastructure that runs those applications.
-
-        This resource creates a Beanstalk Application Version that can be deployed to a Beanstalk
-        Environment.
-
-        > **NOTE on Application Version Resource:**  When using the Application Version resource with multiple
-        Elastic Beanstalk Environments it is possible that an error may be returned
-        when attempting to delete an Application Version while it is still in use by a different environment.
-        To work around this you can either create each environment in a separate AWS account or create your `elasticbeanstalk.ApplicationVersion` resources with a unique names in your Elastic Beanstalk Application. For example &lt;revision&gt;-&lt;environment&gt;.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_bucket = aws.s3.Bucket("defaultBucket")
-        default_bucket_object = aws.s3.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="beanstalk/go-v1.zip",
-            source=pulumi.FileAsset("go-v1.zip"))
-        default_application = aws.elasticbeanstalk.Application("defaultApplication", description="tf-test-desc")
-        default_application_version = aws.elasticbeanstalk.ApplicationVersion("defaultApplicationVersion",
-            application="tf-test-name",
-            description="application version",
-            bucket=default_bucket.id,
-            key=default_bucket_object.id)
-        ```
-
+        Create a ApplicationVersion resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application: Name of the Beanstalk Application the version is associated with.
-        :param pulumi.Input[str] bucket: S3 bucket that contains the Application Version source bundle.
-        :param pulumi.Input[str] description: Short description of the Application Version.
-        :param pulumi.Input[bool] force_delete: On delete, force an Application Version to be deleted when it may be in use
-               by multiple Elastic Beanstalk Environments.
-        :param pulumi.Input[str] key: S3 object that is the Application Version source bundle.
-        :param pulumi.Input[str] name: A unique name for the this Application Version.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Elastic Beanstalk Application Version.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,15 +86,6 @@ class ApplicationVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application: Name of the Beanstalk Application the version is associated with.
-        :param pulumi.Input[str] arn: The ARN assigned by AWS for this Elastic Beanstalk Application.
-        :param pulumi.Input[str] bucket: S3 bucket that contains the Application Version source bundle.
-        :param pulumi.Input[str] description: Short description of the Application Version.
-        :param pulumi.Input[bool] force_delete: On delete, force an Application Version to be deleted when it may be in use
-               by multiple Elastic Beanstalk Environments.
-        :param pulumi.Input[str] key: S3 object that is the Application Version source bundle.
-        :param pulumi.Input[str] name: A unique name for the this Application Version.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Elastic Beanstalk Application Version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -151,66 +104,41 @@ class ApplicationVersion(pulumi.CustomResource):
     @property
     @pulumi.getter
     def application(self) -> pulumi.Output[str]:
-        """
-        Name of the Beanstalk Application the version is associated with.
-        """
         return pulumi.get(self, "application")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN assigned by AWS for this Elastic Beanstalk Application.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        S3 bucket that contains the Application Version source bundle.
-        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Short description of the Application Version.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[Optional[bool]]:
-        """
-        On delete, force an Application Version to be deleted when it may be in use
-        by multiple Elastic Beanstalk Environments.
-        """
         return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
-        """
-        S3 object that is the Application Version source bundle.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the this Application Version.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of tags for the Elastic Beanstalk Application Version.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

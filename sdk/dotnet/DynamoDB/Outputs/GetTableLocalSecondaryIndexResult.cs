@@ -13,9 +13,6 @@ namespace Pulumi.Aws.DynamoDB.Outputs
     [OutputType]
     public sealed class GetTableLocalSecondaryIndexResult
     {
-        /// <summary>
-        /// The name of the DynamoDB table.
-        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<string> NonKeyAttributes;
         public readonly string ProjectionType;

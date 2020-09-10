@@ -9,67 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.S3
 {
-    /// <summary>
-    /// Manages S3 account-level Public Access Block configuration. For more information about these settings, see the [AWS S3 Block Public Access documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
-    /// 
-    /// &gt; **NOTE:** Each AWS account may only have one S3 Public Access Block configuration. Multiple configurations of the resource against the same AWS account will cause a perpetual difference.
-    /// 
-    /// &gt; Advanced usage: To use a custom API endpoint for this resource, use the `s3control` endpoint provider configuration, not the `s3` endpoint provider configuration.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.S3.AccountPublicAccessBlock("example", new Aws.S3.AccountPublicAccessBlockArgs
-    ///         {
-    ///             BlockPublicAcls = true,
-    ///             BlockPublicPolicy = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AccountPublicAccessBlock : Pulumi.CustomResource
     {
-        /// <summary>
-        /// AWS account ID to configure. Defaults to automatically determined account ID of the this provider AWS provider.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether Amazon S3 should block public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
-        /// * PUT Bucket acl and PUT Object acl calls will fail if the specified ACL allows public access.
-        /// * PUT Object calls will fail if the request includes an object ACL.
-        /// </summary>
         [Output("blockPublicAcls")]
         public Output<bool?> BlockPublicAcls { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether Amazon S3 should block public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing bucket policies. When set to `true` causes Amazon S3 to:
-        /// * Reject calls to PUT Bucket policy if the specified bucket policy allows public access.
-        /// </summary>
         [Output("blockPublicPolicy")]
         public Output<bool?> BlockPublicPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether Amazon S3 should ignore public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true` causes Amazon S3 to:
-        /// * Ignore all public ACLs on buckets in this account and any objects that they contain.
-        /// </summary>
         [Output("ignorePublicAcls")]
         public Output<bool?> IgnorePublicAcls { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether Amazon S3 should restrict public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
-        /// * Only the bucket owner and AWS Services can access buckets with public policies.
-        /// </summary>
         [Output("restrictPublicBuckets")]
         public Output<bool?> RestrictPublicBuckets { get; private set; } = null!;
 
@@ -119,38 +72,18 @@ namespace Pulumi.Aws.S3
 
     public sealed class AccountPublicAccessBlockArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AWS account ID to configure. Defaults to automatically determined account ID of the this provider AWS provider.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should block public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
-        /// * PUT Bucket acl and PUT Object acl calls will fail if the specified ACL allows public access.
-        /// * PUT Object calls will fail if the request includes an object ACL.
-        /// </summary>
         [Input("blockPublicAcls")]
         public Input<bool>? BlockPublicAcls { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should block public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing bucket policies. When set to `true` causes Amazon S3 to:
-        /// * Reject calls to PUT Bucket policy if the specified bucket policy allows public access.
-        /// </summary>
         [Input("blockPublicPolicy")]
         public Input<bool>? BlockPublicPolicy { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should ignore public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true` causes Amazon S3 to:
-        /// * Ignore all public ACLs on buckets in this account and any objects that they contain.
-        /// </summary>
         [Input("ignorePublicAcls")]
         public Input<bool>? IgnorePublicAcls { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should restrict public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
-        /// * Only the bucket owner and AWS Services can access buckets with public policies.
-        /// </summary>
         [Input("restrictPublicBuckets")]
         public Input<bool>? RestrictPublicBuckets { get; set; }
 
@@ -161,38 +94,18 @@ namespace Pulumi.Aws.S3
 
     public sealed class AccountPublicAccessBlockState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AWS account ID to configure. Defaults to automatically determined account ID of the this provider AWS provider.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should block public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
-        /// * PUT Bucket acl and PUT Object acl calls will fail if the specified ACL allows public access.
-        /// * PUT Object calls will fail if the request includes an object ACL.
-        /// </summary>
         [Input("blockPublicAcls")]
         public Input<bool>? BlockPublicAcls { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should block public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing bucket policies. When set to `true` causes Amazon S3 to:
-        /// * Reject calls to PUT Bucket policy if the specified bucket policy allows public access.
-        /// </summary>
         [Input("blockPublicPolicy")]
         public Input<bool>? BlockPublicPolicy { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should ignore public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true` causes Amazon S3 to:
-        /// * Ignore all public ACLs on buckets in this account and any objects that they contain.
-        /// </summary>
         [Input("ignorePublicAcls")]
         public Input<bool>? IgnorePublicAcls { get; set; }
 
-        /// <summary>
-        /// Whether Amazon S3 should restrict public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
-        /// * Only the bucket owner and AWS Services can access buckets with public policies.
-        /// </summary>
         [Input("restrictPublicBuckets")]
         public Input<bool>? RestrictPublicBuckets { get; set; }
 

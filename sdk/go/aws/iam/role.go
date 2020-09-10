@@ -10,108 +10,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IAM role.
-//
-// > *NOTE:* If policies are attached to the role via the `iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `forceDetachPolicies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iam.NewRole(ctx, "testRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": \"sts:AssumeRole\",\n", "      \"Principal\": {\n", "        \"Service\": \"ec2.amazonaws.com\"\n", "      },\n", "      \"Effect\": \"Allow\",\n", "      \"Sid\": \"\"\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 			Tags: pulumi.StringMap{
-// 				"tag-key": pulumi.String("tag-value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Example of Using Data Source for Assume Role Policy
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance_assume_role_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			Statements: []iam.GetPolicyDocumentStatement{
-// 				iam.GetPolicyDocumentStatement{
-// 					Actions: []string{
-// 						"sts:AssumeRole",
-// 					},
-// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// 						iam.GetPolicyDocumentStatementPrincipal{
-// 							Type: "Service",
-// 							Identifiers: []string{
-// 								"ec2.amazonaws.com",
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRole(ctx, "instance", &iam.RoleArgs{
-// 			Path:             pulumi.String("/system/"),
-// 			AssumeRolePolicy: pulumi.String(instance_assume_role_policy.Json),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Role struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) specifying the role.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The policy that grants an entity permission to assume the role.
-	AssumeRolePolicy pulumi.StringOutput `pulumi:"assumeRolePolicy"`
-	// The creation date of the IAM role.
-	CreateDate pulumi.StringOutput `pulumi:"createDate"`
-	// The description of the role.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies to force detaching any policies the role has before destroying it. Defaults to `false`.
-	ForceDetachPolicies pulumi.BoolPtrOutput `pulumi:"forceDetachPolicies"`
-	// The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-	MaxSessionDuration pulumi.IntPtrOutput `pulumi:"maxSessionDuration"`
-	// The name of the role. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// The path to the role.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// The ARN of the policy that is used to set the permissions boundary for the role.
+	Arn                 pulumi.StringOutput    `pulumi:"arn"`
+	AssumeRolePolicy    pulumi.StringOutput    `pulumi:"assumeRolePolicy"`
+	CreateDate          pulumi.StringOutput    `pulumi:"createDate"`
+	Description         pulumi.StringPtrOutput `pulumi:"description"`
+	ForceDetachPolicies pulumi.BoolPtrOutput   `pulumi:"forceDetachPolicies"`
+	MaxSessionDuration  pulumi.IntPtrOutput    `pulumi:"maxSessionDuration"`
+	Name                pulumi.StringOutput    `pulumi:"name"`
+	NamePrefix          pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	Path                pulumi.StringPtrOutput `pulumi:"path"`
 	PermissionsBoundary pulumi.StringPtrOutput `pulumi:"permissionsBoundary"`
-	// Key-value map of tags for the IAM role
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The stable and unique string identifying the role.
-	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
+	Tags                pulumi.StringMapOutput `pulumi:"tags"`
+	UniqueId            pulumi.StringOutput    `pulumi:"uniqueId"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -145,59 +58,33 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// The Amazon Resource Name (ARN) specifying the role.
-	Arn *string `pulumi:"arn"`
-	// The policy that grants an entity permission to assume the role.
-	AssumeRolePolicy *string `pulumi:"assumeRolePolicy"`
-	// The creation date of the IAM role.
-	CreateDate *string `pulumi:"createDate"`
-	// The description of the role.
-	Description *string `pulumi:"description"`
-	// Specifies to force detaching any policies the role has before destroying it. Defaults to `false`.
-	ForceDetachPolicies *bool `pulumi:"forceDetachPolicies"`
-	// The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
-	// The name of the role. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The path to the role.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-	Path *string `pulumi:"path"`
-	// The ARN of the policy that is used to set the permissions boundary for the role.
-	PermissionsBoundary *string `pulumi:"permissionsBoundary"`
-	// Key-value map of tags for the IAM role
-	Tags map[string]string `pulumi:"tags"`
-	// The stable and unique string identifying the role.
-	UniqueId *string `pulumi:"uniqueId"`
+	Arn                 *string           `pulumi:"arn"`
+	AssumeRolePolicy    *string           `pulumi:"assumeRolePolicy"`
+	CreateDate          *string           `pulumi:"createDate"`
+	Description         *string           `pulumi:"description"`
+	ForceDetachPolicies *bool             `pulumi:"forceDetachPolicies"`
+	MaxSessionDuration  *int              `pulumi:"maxSessionDuration"`
+	Name                *string           `pulumi:"name"`
+	NamePrefix          *string           `pulumi:"namePrefix"`
+	Path                *string           `pulumi:"path"`
+	PermissionsBoundary *string           `pulumi:"permissionsBoundary"`
+	Tags                map[string]string `pulumi:"tags"`
+	UniqueId            *string           `pulumi:"uniqueId"`
 }
 
 type RoleState struct {
-	// The Amazon Resource Name (ARN) specifying the role.
-	Arn pulumi.StringPtrInput
-	// The policy that grants an entity permission to assume the role.
-	AssumeRolePolicy pulumi.StringPtrInput
-	// The creation date of the IAM role.
-	CreateDate pulumi.StringPtrInput
-	// The description of the role.
-	Description pulumi.StringPtrInput
-	// Specifies to force detaching any policies the role has before destroying it. Defaults to `false`.
+	Arn                 pulumi.StringPtrInput
+	AssumeRolePolicy    pulumi.StringPtrInput
+	CreateDate          pulumi.StringPtrInput
+	Description         pulumi.StringPtrInput
 	ForceDetachPolicies pulumi.BoolPtrInput
-	// The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-	MaxSessionDuration pulumi.IntPtrInput
-	// The name of the role. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// The path to the role.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-	Path pulumi.StringPtrInput
-	// The ARN of the policy that is used to set the permissions boundary for the role.
+	MaxSessionDuration  pulumi.IntPtrInput
+	Name                pulumi.StringPtrInput
+	NamePrefix          pulumi.StringPtrInput
+	Path                pulumi.StringPtrInput
 	PermissionsBoundary pulumi.StringPtrInput
-	// Key-value map of tags for the IAM role
-	Tags pulumi.StringMapInput
-	// The stable and unique string identifying the role.
-	UniqueId pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
+	UniqueId            pulumi.StringPtrInput
 }
 
 func (RoleState) ElementType() reflect.Type {
@@ -205,48 +92,28 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// The policy that grants an entity permission to assume the role.
-	AssumeRolePolicy interface{} `pulumi:"assumeRolePolicy"`
-	// The description of the role.
-	Description *string `pulumi:"description"`
-	// Specifies to force detaching any policies the role has before destroying it. Defaults to `false`.
-	ForceDetachPolicies *bool `pulumi:"forceDetachPolicies"`
-	// The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
-	// The name of the role. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The path to the role.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-	Path *string `pulumi:"path"`
-	// The ARN of the policy that is used to set the permissions boundary for the role.
-	PermissionsBoundary *string `pulumi:"permissionsBoundary"`
-	// Key-value map of tags for the IAM role
-	Tags map[string]string `pulumi:"tags"`
+	AssumeRolePolicy    interface{}       `pulumi:"assumeRolePolicy"`
+	Description         *string           `pulumi:"description"`
+	ForceDetachPolicies *bool             `pulumi:"forceDetachPolicies"`
+	MaxSessionDuration  *int              `pulumi:"maxSessionDuration"`
+	Name                *string           `pulumi:"name"`
+	NamePrefix          *string           `pulumi:"namePrefix"`
+	Path                *string           `pulumi:"path"`
+	PermissionsBoundary *string           `pulumi:"permissionsBoundary"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// The policy that grants an entity permission to assume the role.
-	AssumeRolePolicy pulumi.Input
-	// The description of the role.
-	Description pulumi.StringPtrInput
-	// Specifies to force detaching any policies the role has before destroying it. Defaults to `false`.
+	AssumeRolePolicy    pulumi.Input
+	Description         pulumi.StringPtrInput
 	ForceDetachPolicies pulumi.BoolPtrInput
-	// The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-	MaxSessionDuration pulumi.IntPtrInput
-	// The name of the role. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// The path to the role.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-	Path pulumi.StringPtrInput
-	// The ARN of the policy that is used to set the permissions boundary for the role.
+	MaxSessionDuration  pulumi.IntPtrInput
+	Name                pulumi.StringPtrInput
+	NamePrefix          pulumi.StringPtrInput
+	Path                pulumi.StringPtrInput
 	PermissionsBoundary pulumi.StringPtrInput
-	// Key-value map of tags for the IAM role
-	Tags pulumi.StringMapInput
+	Tags                pulumi.StringMapInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {

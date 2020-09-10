@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Outposts
 {
     public static class GetOutpostInstanceTypes
     {
-        /// <summary>
-        /// Information about Outposts Instance Types.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Outposts.GetOutpostInstanceTypes.InvokeAsync(new Aws.Outposts.GetOutpostInstanceTypesArgs
-        ///         {
-        ///             Arn = data.Aws_outposts_outpost.Example.Arn,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetOutpostInstanceTypesResult> InvokeAsync(GetOutpostInstanceTypesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOutpostInstanceTypesResult>("aws:outposts/getOutpostInstanceTypes:getOutpostInstanceTypes", args ?? new GetOutpostInstanceTypesArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.Outposts
 
     public sealed class GetOutpostInstanceTypesArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Outpost Amazon Resource Name (ARN).
-        /// </summary>
         [Input("arn", required: true)]
         public string Arn { get; set; } = null!;
 
@@ -64,9 +35,6 @@ namespace Pulumi.Aws.Outposts
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Set of instance types.
-        /// </summary>
         public readonly ImmutableArray<string> InstanceTypes;
 
         [OutputConstructor]

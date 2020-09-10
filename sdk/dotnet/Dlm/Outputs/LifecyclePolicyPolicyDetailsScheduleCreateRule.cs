@@ -13,17 +13,8 @@ namespace Pulumi.Aws.Dlm.Outputs
     [OutputType]
     public sealed class LifecyclePolicyPolicyDetailsScheduleCreateRule
     {
-        /// <summary>
-        /// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
-        /// </summary>
         public readonly int Interval;
-        /// <summary>
-        /// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
-        /// </summary>
         public readonly string? IntervalUnit;
-        /// <summary>
-        /// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
-        /// </summary>
         public readonly string? Times;
 
         [OutputConstructor]

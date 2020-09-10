@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Athena.Outputs
     [OutputType]
     public sealed class WorkgroupConfigurationResultConfiguration
     {
-        /// <summary>
-        /// Configuration block with encryption settings. Documented below.
-        /// </summary>
         public readonly Outputs.WorkgroupConfigurationResultConfigurationEncryptionConfiguration? EncryptionConfiguration;
-        /// <summary>
-        /// The location in Amazon S3 where your query results are stored, such as `s3://path/to/query/bucket/`. For more information, see [Queries and Query Result Files](https://docs.aws.amazon.com/athena/latest/ug/querying.html).
-        /// </summary>
         public readonly string? OutputLocation;
 
         [OutputConstructor]

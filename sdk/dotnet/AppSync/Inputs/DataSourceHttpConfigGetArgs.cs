@@ -12,9 +12,6 @@ namespace Pulumi.Aws.AppSync.Inputs
 
     public sealed class DataSourceHttpConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// HTTP URL.
-        /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 

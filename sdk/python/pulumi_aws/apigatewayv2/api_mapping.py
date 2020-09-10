@@ -23,28 +23,9 @@ class ApiMapping(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Amazon API Gateway Version 2 API mapping.
-        More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigatewayv2.ApiMapping("example",
-            api_id=aws_apigatewayv2_api["example"]["id"],
-            domain_name=aws_apigatewayv2_domain_name["example"]["id"],
-            stage=aws_apigatewayv2_stage["example"]["id"])
-        ```
-
+        Create a ApiMapping resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] api_mapping_key: The [API mapping key](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-mapping-template-reference.html).
-        :param pulumi.Input[str] domain_name: The domain name. Use the `apigatewayv2.DomainName` resource to configure a domain name.
-        :param pulumi.Input[str] stage: The API stage. Use the `apigatewayv2.Stage` resource to configure an API stage.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,10 +75,6 @@ class ApiMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] api_mapping_key: The [API mapping key](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-mapping-template-reference.html).
-        :param pulumi.Input[str] domain_name: The domain name. Use the `apigatewayv2.DomainName` resource to configure a domain name.
-        :param pulumi.Input[str] stage: The API stage. Use the `apigatewayv2.Stage` resource to configure an API stage.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -112,33 +89,21 @@ class ApiMapping(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
-        """
-        The API identifier.
-        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="apiMappingKey")
     def api_mapping_key(self) -> pulumi.Output[Optional[str]]:
-        """
-        The [API mapping key](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-mapping-template-reference.html).
-        """
         return pulumi.get(self, "api_mapping_key")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
-        """
-        The domain name. Use the `apigatewayv2.DomainName` resource to configure a domain name.
-        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter
     def stage(self) -> pulumi.Output[str]:
-        """
-        The API stage. Use the `apigatewayv2.Stage` resource to configure an API stage.
-        """
         return pulumi.get(self, "stage")
 
     def translate_output_property(self, prop):

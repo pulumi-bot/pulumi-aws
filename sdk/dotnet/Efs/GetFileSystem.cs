@@ -11,34 +11,6 @@ namespace Pulumi.Aws.Efs
 {
     public static class GetFileSystem
     {
-        /// <summary>
-        /// Provides information about an Elastic File System (EFS) File System.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var fileSystemId = config.Get("fileSystemId") ?? "";
-        ///         var byId = Output.Create(Aws.Efs.GetFileSystem.InvokeAsync(new Aws.Efs.GetFileSystemArgs
-        ///         {
-        ///             FileSystemId = fileSystemId,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetFileSystemResult> InvokeAsync(GetFileSystemArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemResult>("aws:efs/getFileSystem:getFileSystem", args ?? new GetFileSystemArgs(), options.WithVersion());
     }
@@ -46,15 +18,9 @@ namespace Pulumi.Aws.Efs
 
     public sealed class GetFileSystemArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Restricts the list to the file system with this creation token.
-        /// </summary>
         [Input("creationToken")]
         public string? CreationToken { get; set; }
 
-        /// <summary>
-        /// The ID that identifies the file system (e.g. fs-ccfc0d65).
-        /// </summary>
         [Input("fileSystemId")]
         public string? FileSystemId { get; set; }
 
@@ -75,49 +41,21 @@ namespace Pulumi.Aws.Efs
     [OutputType]
     public sealed class GetFileSystemResult
     {
-        /// <summary>
-        /// Amazon Resource Name of the file system.
-        /// </summary>
         public readonly string Arn;
         public readonly string CreationToken;
-        /// <summary>
-        /// The DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
-        /// </summary>
         public readonly string DnsName;
-        /// <summary>
-        /// Whether EFS is encrypted.
-        /// </summary>
         public readonly bool Encrypted;
         public readonly string FileSystemId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The ARN for the KMS encryption key.
-        /// </summary>
         public readonly string KmsKeyId;
-        /// <summary>
-        /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object.
-        /// </summary>
         public readonly Outputs.GetFileSystemLifecyclePolicyResult LifecyclePolicy;
-        /// <summary>
-        /// The file system performance mode.
-        /// </summary>
         public readonly string PerformanceMode;
-        /// <summary>
-        /// The throughput, measured in MiB/s, that you want to provision for the file system.
-        /// * `tags` -A map of tags to assign to the file system.
-        /// </summary>
         public readonly double ProvisionedThroughputInMibps;
-        /// <summary>
-        /// The current byte count used by the file system.
-        /// </summary>
         public readonly int SizeInBytes;
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// Throughput mode for the file system.
-        /// </summary>
         public readonly string ThroughputMode;
 
         [OutputConstructor]

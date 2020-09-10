@@ -9,47 +9,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates and manages an AWS IoT Thing.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iot.NewThing(ctx, "example", &iot.ThingArgs{
-// 			Attributes: pulumi.StringMap{
-// 				"First": pulumi.String("examplevalue"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Thing struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the thing.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Map of attributes of the thing.
-	Attributes pulumi.StringMapOutput `pulumi:"attributes"`
-	// The default client ID.
-	DefaultClientId pulumi.StringOutput `pulumi:"defaultClientId"`
-	// The name of the thing.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The thing type name.
-	ThingTypeName pulumi.StringPtrOutput `pulumi:"thingTypeName"`
-	// The current version of the thing record in the registry.
-	Version pulumi.IntOutput `pulumi:"version"`
+	Arn             pulumi.StringOutput    `pulumi:"arn"`
+	Attributes      pulumi.StringMapOutput `pulumi:"attributes"`
+	DefaultClientId pulumi.StringOutput    `pulumi:"defaultClientId"`
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	ThingTypeName   pulumi.StringPtrOutput `pulumi:"thingTypeName"`
+	Version         pulumi.IntOutput       `pulumi:"version"`
 }
 
 // NewThing registers a new resource with the given unique name, arguments, and options.
@@ -80,33 +48,21 @@ func GetThing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Thing resources.
 type thingState struct {
-	// The ARN of the thing.
-	Arn *string `pulumi:"arn"`
-	// Map of attributes of the thing.
-	Attributes map[string]string `pulumi:"attributes"`
-	// The default client ID.
-	DefaultClientId *string `pulumi:"defaultClientId"`
-	// The name of the thing.
-	Name *string `pulumi:"name"`
-	// The thing type name.
-	ThingTypeName *string `pulumi:"thingTypeName"`
-	// The current version of the thing record in the registry.
-	Version *int `pulumi:"version"`
+	Arn             *string           `pulumi:"arn"`
+	Attributes      map[string]string `pulumi:"attributes"`
+	DefaultClientId *string           `pulumi:"defaultClientId"`
+	Name            *string           `pulumi:"name"`
+	ThingTypeName   *string           `pulumi:"thingTypeName"`
+	Version         *int              `pulumi:"version"`
 }
 
 type ThingState struct {
-	// The ARN of the thing.
-	Arn pulumi.StringPtrInput
-	// Map of attributes of the thing.
-	Attributes pulumi.StringMapInput
-	// The default client ID.
+	Arn             pulumi.StringPtrInput
+	Attributes      pulumi.StringMapInput
 	DefaultClientId pulumi.StringPtrInput
-	// The name of the thing.
-	Name pulumi.StringPtrInput
-	// The thing type name.
-	ThingTypeName pulumi.StringPtrInput
-	// The current version of the thing record in the registry.
-	Version pulumi.IntPtrInput
+	Name            pulumi.StringPtrInput
+	ThingTypeName   pulumi.StringPtrInput
+	Version         pulumi.IntPtrInput
 }
 
 func (ThingState) ElementType() reflect.Type {
@@ -114,21 +70,15 @@ func (ThingState) ElementType() reflect.Type {
 }
 
 type thingArgs struct {
-	// Map of attributes of the thing.
-	Attributes map[string]string `pulumi:"attributes"`
-	// The name of the thing.
-	Name *string `pulumi:"name"`
-	// The thing type name.
-	ThingTypeName *string `pulumi:"thingTypeName"`
+	Attributes    map[string]string `pulumi:"attributes"`
+	Name          *string           `pulumi:"name"`
+	ThingTypeName *string           `pulumi:"thingTypeName"`
 }
 
 // The set of arguments for constructing a Thing resource.
 type ThingArgs struct {
-	// Map of attributes of the thing.
-	Attributes pulumi.StringMapInput
-	// The name of the thing.
-	Name pulumi.StringPtrInput
-	// The thing type name.
+	Attributes    pulumi.StringMapInput
+	Name          pulumi.StringPtrInput
 	ThingTypeName pulumi.StringPtrInput
 }
 

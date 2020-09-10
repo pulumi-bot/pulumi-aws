@@ -25,9 +25,6 @@ class Tag(pulumi.CustomResource):
         Create a Tag resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key: The tag name.
-        :param pulumi.Input[str] resource_id: The ID of the EC2 resource to manage the tag for.
-        :param pulumi.Input[str] value: The value of the tag.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,9 +72,6 @@ class Tag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key: The tag name.
-        :param pulumi.Input[str] resource_id: The ID of the EC2 resource to manage the tag for.
-        :param pulumi.Input[str] value: The value of the tag.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -91,25 +85,16 @@ class Tag(pulumi.CustomResource):
     @property
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
-        """
-        The tag name.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the EC2 resource to manage the tag for.
-        """
         return pulumi.get(self, "resource_id")
 
     @property
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
-        """
-        The value of the tag.
-        """
         return pulumi.get(self, "value")
 
     def translate_output_property(self, prop):

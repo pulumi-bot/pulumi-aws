@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Retrieve information about an Elastic Beanstalk Application.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = aws.elasticbeanstalk.getApplication({
- *     name: "example",
- * });
- * export const arn = example.then(example => example.arn);
- * export const description = example.then(example => example.description);
- * ```
- */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     if (!opts) {
         opts = {}
@@ -39,9 +23,6 @@ export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
-    /**
-     * The name of the application
-     */
     readonly name: string;
 }
 
@@ -50,13 +31,7 @@ export interface GetApplicationArgs {
  */
 export interface GetApplicationResult {
     readonly appversionLifecycle: outputs.elasticbeanstalk.GetApplicationAppversionLifecycle;
-    /**
-     * The Amazon Resource Name (ARN) of the application.
-     */
     readonly arn: string;
-    /**
-     * Short description of the application
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.

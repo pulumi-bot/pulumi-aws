@@ -7,38 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides information about a MQ Broker.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/mq"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := brokerId
-// 		_, err := mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
-// 			BrokerId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := brokerName
-// 		_, err = mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
-// 			BrokerName: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupBroker(ctx *pulumi.Context, args *LookupBrokerArgs, opts ...pulumi.InvokeOption) (*LookupBrokerResult, error) {
 	var rv LookupBrokerResult
 	err := ctx.Invoke("aws:mq/getBroker:getBroker", args, &rv, opts...)
@@ -50,9 +18,7 @@ func LookupBroker(ctx *pulumi.Context, args *LookupBrokerArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getBroker.
 type LookupBrokerArgs struct {
-	// The unique id of the mq broker.
-	BrokerId *string `pulumi:"brokerId"`
-	// The unique name of the mq broker.
+	BrokerId   *string           `pulumi:"brokerId"`
 	BrokerName *string           `pulumi:"brokerName"`
 	Logs       *GetBrokerLogs    `pulumi:"logs"`
 	Tags       map[string]string `pulumi:"tags"`

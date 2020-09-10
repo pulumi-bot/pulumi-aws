@@ -10,48 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 [model](https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-models).
-//
-// ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewModel(ctx, "example", &apigatewayv2.ModelArgs{
-// 			ApiId:       pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			ContentType: pulumi.String("application/json"),
-// 			Schema:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"", "$", "schema\": \"http://json-schema.org/draft-04/schema#\",\n", "  \"title\": \"ExampleModel\",\n", "  \"type\": \"object\",\n", "  \"properties\": {\n", "    \"id\": { \"type\": \"string\" }\n", "  }\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Model struct {
 	pulumi.CustomResourceState
 
-	// The API identifier.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// The content-type for the model, for example, `application/json`.
-	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// The description of the model.
+	ApiId       pulumi.StringOutput    `pulumi:"apiId"`
+	ContentType pulumi.StringOutput    `pulumi:"contentType"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the model. Must be alphanumeric.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-	Schema pulumi.StringOutput `pulumi:"schema"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Schema      pulumi.StringOutput    `pulumi:"schema"`
 }
 
 // NewModel registers a new resource with the given unique name, arguments, and options.
@@ -91,29 +57,19 @@ func GetModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Model resources.
 type modelState struct {
-	// The API identifier.
-	ApiId *string `pulumi:"apiId"`
-	// The content-type for the model, for example, `application/json`.
+	ApiId       *string `pulumi:"apiId"`
 	ContentType *string `pulumi:"contentType"`
-	// The description of the model.
 	Description *string `pulumi:"description"`
-	// The name of the model. Must be alphanumeric.
-	Name *string `pulumi:"name"`
-	// The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-	Schema *string `pulumi:"schema"`
+	Name        *string `pulumi:"name"`
+	Schema      *string `pulumi:"schema"`
 }
 
 type ModelState struct {
-	// The API identifier.
-	ApiId pulumi.StringPtrInput
-	// The content-type for the model, for example, `application/json`.
+	ApiId       pulumi.StringPtrInput
 	ContentType pulumi.StringPtrInput
-	// The description of the model.
 	Description pulumi.StringPtrInput
-	// The name of the model. Must be alphanumeric.
-	Name pulumi.StringPtrInput
-	// The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-	Schema pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Schema      pulumi.StringPtrInput
 }
 
 func (ModelState) ElementType() reflect.Type {
@@ -121,30 +77,20 @@ func (ModelState) ElementType() reflect.Type {
 }
 
 type modelArgs struct {
-	// The API identifier.
-	ApiId string `pulumi:"apiId"`
-	// The content-type for the model, for example, `application/json`.
-	ContentType string `pulumi:"contentType"`
-	// The description of the model.
+	ApiId       string  `pulumi:"apiId"`
+	ContentType string  `pulumi:"contentType"`
 	Description *string `pulumi:"description"`
-	// The name of the model. Must be alphanumeric.
-	Name *string `pulumi:"name"`
-	// The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-	Schema string `pulumi:"schema"`
+	Name        *string `pulumi:"name"`
+	Schema      string  `pulumi:"schema"`
 }
 
 // The set of arguments for constructing a Model resource.
 type ModelArgs struct {
-	// The API identifier.
-	ApiId pulumi.StringInput
-	// The content-type for the model, for example, `application/json`.
+	ApiId       pulumi.StringInput
 	ContentType pulumi.StringInput
-	// The description of the model.
 	Description pulumi.StringPtrInput
-	// The name of the model. Must be alphanumeric.
-	Name pulumi.StringPtrInput
-	// The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-	Schema pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Schema      pulumi.StringInput
 }
 
 func (ModelArgs) ElementType() reflect.Type {

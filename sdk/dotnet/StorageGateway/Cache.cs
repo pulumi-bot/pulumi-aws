@@ -9,42 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.StorageGateway
 {
-    /// <summary>
-    /// Manages an AWS Storage Gateway cache.
-    /// 
-    /// &gt; **NOTE:** The Storage Gateway API provides no method to remove a cache disk. Destroying this resource does not perform any Storage Gateway actions.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.StorageGateway.Cache("example", new Aws.StorageGateway.CacheArgs
-    ///         {
-    ///             DiskId = data.Aws_storagegateway_local_disk.Example.Id,
-    ///             GatewayArn = aws_storagegateway_gateway.Example.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Cache : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-        /// </summary>
         [Output("diskId")]
         public Output<string> DiskId { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the gateway.
-        /// </summary>
         [Output("gatewayArn")]
         public Output<string> GatewayArn { get; private set; } = null!;
 
@@ -94,15 +63,9 @@ namespace Pulumi.Aws.StorageGateway
 
     public sealed class CacheArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-        /// </summary>
         [Input("diskId", required: true)]
         public Input<string> DiskId { get; set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the gateway.
-        /// </summary>
         [Input("gatewayArn", required: true)]
         public Input<string> GatewayArn { get; set; } = null!;
 
@@ -113,15 +76,9 @@ namespace Pulumi.Aws.StorageGateway
 
     public sealed class CacheState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-        /// </summary>
         [Input("diskId")]
         public Input<string>? DiskId { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the gateway.
-        /// </summary>
         [Input("gatewayArn")]
         public Input<string>? GatewayArn { get; set; }
 

@@ -12,27 +12,15 @@ namespace Pulumi.Aws.CloudWatch.Inputs
 
     public sealed class LogMetricFilterMetricTransformationGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The value to emit when a filter pattern does not match a log event.
-        /// </summary>
         [Input("defaultValue")]
         public Input<string>? DefaultValue { get; set; }
 
-        /// <summary>
-        /// The name of the CloudWatch metric to which the monitored log information should be published (e.g. `ErrorCount`)
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The destination namespace of the CloudWatch metric.
-        /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
-        /// <summary>
-        /// What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

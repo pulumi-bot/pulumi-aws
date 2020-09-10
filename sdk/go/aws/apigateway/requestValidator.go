@@ -10,42 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an API Gateway Request Validator.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.NewRequestValidator(ctx, "example", &apigateway.RequestValidatorArgs{
-// 			RestApi:                   pulumi.Any(aws_api_gateway_rest_api.Example.Id),
-// 			ValidateRequestBody:       pulumi.Bool(true),
-// 			ValidateRequestParameters: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RequestValidator struct {
 	pulumi.CustomResourceState
 
-	// The name of the request validator
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the associated Rest API
-	RestApi pulumi.StringOutput `pulumi:"restApi"`
-	// Boolean whether to validate request body. Defaults to `false`.
-	ValidateRequestBody pulumi.BoolPtrOutput `pulumi:"validateRequestBody"`
-	// Boolean whether to validate request parameters. Defaults to `false`.
+	Name                      pulumi.StringOutput  `pulumi:"name"`
+	RestApi                   pulumi.StringOutput  `pulumi:"restApi"`
+	ValidateRequestBody       pulumi.BoolPtrOutput `pulumi:"validateRequestBody"`
 	ValidateRequestParameters pulumi.BoolPtrOutput `pulumi:"validateRequestParameters"`
 }
 
@@ -80,24 +50,16 @@ func GetRequestValidator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RequestValidator resources.
 type requestValidatorState struct {
-	// The name of the request validator
-	Name *string `pulumi:"name"`
-	// The ID of the associated Rest API
-	RestApi *string `pulumi:"restApi"`
-	// Boolean whether to validate request body. Defaults to `false`.
-	ValidateRequestBody *bool `pulumi:"validateRequestBody"`
-	// Boolean whether to validate request parameters. Defaults to `false`.
-	ValidateRequestParameters *bool `pulumi:"validateRequestParameters"`
+	Name                      *string `pulumi:"name"`
+	RestApi                   *string `pulumi:"restApi"`
+	ValidateRequestBody       *bool   `pulumi:"validateRequestBody"`
+	ValidateRequestParameters *bool   `pulumi:"validateRequestParameters"`
 }
 
 type RequestValidatorState struct {
-	// The name of the request validator
-	Name pulumi.StringPtrInput
-	// The ID of the associated Rest API
-	RestApi pulumi.StringPtrInput
-	// Boolean whether to validate request body. Defaults to `false`.
-	ValidateRequestBody pulumi.BoolPtrInput
-	// Boolean whether to validate request parameters. Defaults to `false`.
+	Name                      pulumi.StringPtrInput
+	RestApi                   pulumi.StringPtrInput
+	ValidateRequestBody       pulumi.BoolPtrInput
 	ValidateRequestParameters pulumi.BoolPtrInput
 }
 
@@ -106,25 +68,17 @@ func (RequestValidatorState) ElementType() reflect.Type {
 }
 
 type requestValidatorArgs struct {
-	// The name of the request validator
-	Name *string `pulumi:"name"`
-	// The ID of the associated Rest API
-	RestApi interface{} `pulumi:"restApi"`
-	// Boolean whether to validate request body. Defaults to `false`.
-	ValidateRequestBody *bool `pulumi:"validateRequestBody"`
-	// Boolean whether to validate request parameters. Defaults to `false`.
-	ValidateRequestParameters *bool `pulumi:"validateRequestParameters"`
+	Name                      *string     `pulumi:"name"`
+	RestApi                   interface{} `pulumi:"restApi"`
+	ValidateRequestBody       *bool       `pulumi:"validateRequestBody"`
+	ValidateRequestParameters *bool       `pulumi:"validateRequestParameters"`
 }
 
 // The set of arguments for constructing a RequestValidator resource.
 type RequestValidatorArgs struct {
-	// The name of the request validator
-	Name pulumi.StringPtrInput
-	// The ID of the associated Rest API
-	RestApi pulumi.Input
-	// Boolean whether to validate request body. Defaults to `false`.
-	ValidateRequestBody pulumi.BoolPtrInput
-	// Boolean whether to validate request parameters. Defaults to `false`.
+	Name                      pulumi.StringPtrInput
+	RestApi                   pulumi.Input
+	ValidateRequestBody       pulumi.BoolPtrInput
 	ValidateRequestParameters pulumi.BoolPtrInput
 }
 

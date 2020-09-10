@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Route53 Resolver rule association.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.route53.ResolverRuleAssociation("example", {
- *     resolverRuleId: aws_route53_resolver_rule.sys.id,
- *     vpcId: aws_vpc.foo.id,
- * });
- * ```
- */
 export class ResolverRuleAssociation extends pulumi.CustomResource {
     /**
      * Get an existing ResolverRuleAssociation resource's state with the given name, ID, and optional extra
@@ -47,17 +32,8 @@ export class ResolverRuleAssociation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResolverRuleAssociation.__pulumiType;
     }
 
-    /**
-     * A name for the association that you're creating between a resolver rule and a VPC.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the resolver rule that you want to associate with the VPC.
-     */
     public readonly resolverRuleId!: pulumi.Output<string>;
-    /**
-     * The ID of the VPC that you want to associate the resolver rule with.
-     */
     public readonly vpcId!: pulumi.Output<string>;
 
     /**
@@ -102,17 +78,8 @@ export class ResolverRuleAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResolverRuleAssociation resources.
  */
 export interface ResolverRuleAssociationState {
-    /**
-     * A name for the association that you're creating between a resolver rule and a VPC.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the resolver rule that you want to associate with the VPC.
-     */
     readonly resolverRuleId?: pulumi.Input<string>;
-    /**
-     * The ID of the VPC that you want to associate the resolver rule with.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -120,16 +87,7 @@ export interface ResolverRuleAssociationState {
  * The set of arguments for constructing a ResolverRuleAssociation resource.
  */
 export interface ResolverRuleAssociationArgs {
-    /**
-     * A name for the association that you're creating between a resolver rule and a VPC.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the resolver rule that you want to associate with the VPC.
-     */
     readonly resolverRuleId: pulumi.Input<string>;
-    /**
-     * The ID of the VPC that you want to associate the resolver rule with.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

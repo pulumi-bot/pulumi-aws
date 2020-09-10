@@ -12,18 +12,11 @@ namespace Pulumi.Aws.Ram.Inputs
 
     public sealed class GetResourceShareFilterArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the tag key to filter on.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         [Input("values", required: true)]
         private List<string>? _values;
-
-        /// <summary>
-        /// The value of the tag key.
-        /// </summary>
         public List<string> Values
         {
             get => _values ?? (_values = new List<string>());

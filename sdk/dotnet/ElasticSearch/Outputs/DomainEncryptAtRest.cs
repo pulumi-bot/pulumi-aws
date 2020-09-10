@@ -13,13 +13,7 @@ namespace Pulumi.Aws.ElasticSearch.Outputs
     [OutputType]
     public sealed class DomainEncryptAtRest
     {
-        /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The KMS key id to encrypt the Elasticsearch domain with. If not specified then it defaults to using the `aws/es` service KMS key.
-        /// </summary>
         public readonly string? KmsKeyId;
 
         [OutputConstructor]

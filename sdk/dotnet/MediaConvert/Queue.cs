@@ -9,68 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.MediaConvert
 {
-    /// <summary>
-    /// Provides an AWS Elemental MediaConvert Queue.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.MediaConvert.Queue("test", new Aws.MediaConvert.QueueArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Arn of the queue
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A description of the queue
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// A unique identifier describing the queue
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-        /// </summary>
         [Output("pricingPlan")]
         public Output<string?> PricingPlan { get; private set; } = null!;
 
-        /// <summary>
-        /// A detail pricing plan of the  reserved queue. See below.
-        /// </summary>
         [Output("reservationPlanSettings")]
         public Output<Outputs.QueueReservationPlanSettings> ReservationPlanSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-        /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -120,42 +78,23 @@ namespace Pulumi.Aws.MediaConvert
 
     public sealed class QueueArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of the queue
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// A unique identifier describing the queue
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-        /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
 
-        /// <summary>
-        /// A detail pricing plan of the  reserved queue. See below.
-        /// </summary>
         [Input("reservationPlanSettings")]
         public Input<Inputs.QueueReservationPlanSettingsArgs>? ReservationPlanSettings { get; set; }
 
-        /// <summary>
-        /// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -169,48 +108,26 @@ namespace Pulumi.Aws.MediaConvert
 
     public sealed class QueueState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Arn of the queue
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A description of the queue
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// A unique identifier describing the queue
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-        /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
 
-        /// <summary>
-        /// A detail pricing plan of the  reserved queue. See below.
-        /// </summary>
         [Input("reservationPlanSettings")]
         public Input<Inputs.QueueReservationPlanSettingsGetArgs>? ReservationPlanSettings { get; set; }
 
-        /// <summary>
-        /// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

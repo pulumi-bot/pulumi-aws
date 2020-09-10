@@ -6,140 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CloudWatch Event Target resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const console = new aws.cloudwatch.EventRule("console", {
- *     description: "Capture all EC2 scaling events",
- *     eventPattern: `{
- *   "source": [
- *     "aws.autoscaling"
- *   ],
- *   "detail-type": [
- *     "EC2 Instance Launch Successful",
- *     "EC2 Instance Terminate Successful",
- *     "EC2 Instance Launch Unsuccessful",
- *     "EC2 Instance Terminate Unsuccessful"
- *   ]
- * }
- * `,
- * });
- * const testStream = new aws.kinesis.Stream("testStream", {shardCount: 1});
- * const yada = new aws.cloudwatch.EventTarget("yada", {
- *     rule: console.name,
- *     arn: testStream.arn,
- *     runCommandTargets: [
- *         {
- *             key: "tag:Name",
- *             values: ["FooBar"],
- *         },
- *         {
- *             key: "InstanceIds",
- *             values: ["i-162058cd308bffec2"],
- *         },
- *     ],
- * });
- * ```
- * ## Example SSM Document Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ssmLifecycleTrust = aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             type: "Service",
- *             identifiers: ["events.amazonaws.com"],
- *         }],
- *     }],
- * });
- * const stopInstance = new aws.ssm.Document("stopInstance", {
- *     documentType: "Command",
- *     content: `  {
- *     "schemaVersion": "1.2",
- *     "description": "Stop an instance",
- *     "parameters": {
- *
- *     },
- *     "runtimeConfig": {
- *       "aws:runShellScript": {
- *         "properties": [
- *           {
- *             "id": "0.aws:runShellScript",
- *             "runCommand": ["halt"]
- *           }
- *         ]
- *       }
- *     }
- *   }
- * `,
- * });
- * const ssmLifecyclePolicyDocument = stopInstance.arn.apply(arn => aws.iam.getPolicyDocument({
- *     statements: [
- *         {
- *             effect: "Allow",
- *             actions: ["ssm:SendCommand"],
- *             resources: ["arn:aws:ec2:eu-west-1:1234567890:instance/*"],
- *             conditions: [{
- *                 test: "StringEquals",
- *                 variable: "ec2:ResourceTag/Terminate",
- *                 values: ["*"],
- *             }],
- *         },
- *         {
- *             effect: "Allow",
- *             actions: ["ssm:SendCommand"],
- *             resources: [arn],
- *         },
- *     ],
- * }));
- * const ssmLifecycleRole = new aws.iam.Role("ssmLifecycleRole", {assumeRolePolicy: ssmLifecycleTrust.then(ssmLifecycleTrust => ssmLifecycleTrust.json)});
- * const ssmLifecyclePolicy = new aws.iam.Policy("ssmLifecyclePolicy", {policy: ssmLifecyclePolicyDocument.json});
- * const stopInstancesEventRule = new aws.cloudwatch.EventRule("stopInstancesEventRule", {
- *     description: "Stop instances nightly",
- *     scheduleExpression: "cron(0 0 * * ? *)",
- * });
- * const stopInstancesEventTarget = new aws.cloudwatch.EventTarget("stopInstancesEventTarget", {
- *     arn: stopInstance.arn,
- *     rule: stopInstancesEventRule.name,
- *     roleArn: ssmLifecycleRole.arn,
- *     runCommandTargets: [{
- *         key: "tag:Terminate",
- *         values: ["midnight"],
- *     }],
- * });
- * ```
- *
- * ## Example RunCommand Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const stopInstancesEventRule = new aws.cloudwatch.EventRule("stopInstancesEventRule", {
- *     description: "Stop instances nightly",
- *     scheduleExpression: "cron(0 0 * * ? *)",
- * });
- * const stopInstancesEventTarget = new aws.cloudwatch.EventTarget("stopInstancesEventTarget", {
- *     arn: `arn:aws:ssm:${_var.aws_region}::document/AWS-RunShellScript`,
- *     input: "{\"commands\":[\"halt\"]}",
- *     rule: stopInstancesEventRule.name,
- *     roleArn: aws_iam_role.ssm_lifecycle.arn,
- *     runCommandTargets: [{
- *         key: "tag:Terminate",
- *         values: ["midnight"],
- *     }],
- * });
- * ```
- */
 export class EventTarget extends pulumi.CustomResource {
     /**
      * Get an existing EventTarget resource's state with the given name, ID, and optional extra
@@ -168,54 +34,17 @@ export class EventTarget extends pulumi.CustomResource {
         return obj['__pulumiType'] === EventTarget.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) associated of the target.
-     */
     public readonly arn!: pulumi.Output<string>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-     */
     public readonly batchTarget!: pulumi.Output<outputs.cloudwatch.EventTargetBatchTarget | undefined>;
-    /**
-     * Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-     */
     public readonly ecsTarget!: pulumi.Output<outputs.cloudwatch.EventTargetEcsTarget | undefined>;
-    /**
-     * Valid JSON text passed to the target.
-     */
     public readonly input!: pulumi.Output<string | undefined>;
-    /**
-     * The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-     * that is used for extracting part of the matched event when passing it to the target.
-     */
     public readonly inputPath!: pulumi.Output<string | undefined>;
-    /**
-     * Parameters used when you are providing a custom input to a target based on certain event data.
-     */
     public readonly inputTransformer!: pulumi.Output<outputs.cloudwatch.EventTargetInputTransformer | undefined>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-     */
     public readonly kinesisTarget!: pulumi.Output<outputs.cloudwatch.EventTargetKinesisTarget | undefined>;
-    /**
-     * The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used.
-     */
     public readonly roleArn!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the rule you want to add targets to.
-     */
     public readonly rule!: pulumi.Output<string>;
-    /**
-     * Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-     */
     public readonly runCommandTargets!: pulumi.Output<outputs.cloudwatch.EventTargetRunCommandTarget[] | undefined>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-     */
     public readonly sqsTarget!: pulumi.Output<outputs.cloudwatch.EventTargetSqsTarget | undefined>;
-    /**
-     * The unique target assignment ID.  If missing, will generate a random, unique id.
-     */
     public readonly targetId!: pulumi.Output<string>;
 
     /**
@@ -278,54 +107,17 @@ export class EventTarget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EventTarget resources.
  */
 export interface EventTargetState {
-    /**
-     * The Amazon Resource Name (ARN) associated of the target.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-     */
     readonly batchTarget?: pulumi.Input<inputs.cloudwatch.EventTargetBatchTarget>;
-    /**
-     * Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-     */
     readonly ecsTarget?: pulumi.Input<inputs.cloudwatch.EventTargetEcsTarget>;
-    /**
-     * Valid JSON text passed to the target.
-     */
     readonly input?: pulumi.Input<string>;
-    /**
-     * The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-     * that is used for extracting part of the matched event when passing it to the target.
-     */
     readonly inputPath?: pulumi.Input<string>;
-    /**
-     * Parameters used when you are providing a custom input to a target based on certain event data.
-     */
     readonly inputTransformer?: pulumi.Input<inputs.cloudwatch.EventTargetInputTransformer>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-     */
     readonly kinesisTarget?: pulumi.Input<inputs.cloudwatch.EventTargetKinesisTarget>;
-    /**
-     * The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used.
-     */
     readonly roleArn?: pulumi.Input<string>;
-    /**
-     * The name of the rule you want to add targets to.
-     */
     readonly rule?: pulumi.Input<string>;
-    /**
-     * Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-     */
     readonly runCommandTargets?: pulumi.Input<pulumi.Input<inputs.cloudwatch.EventTargetRunCommandTarget>[]>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-     */
     readonly sqsTarget?: pulumi.Input<inputs.cloudwatch.EventTargetSqsTarget>;
-    /**
-     * The unique target assignment ID.  If missing, will generate a random, unique id.
-     */
     readonly targetId?: pulumi.Input<string>;
 }
 
@@ -333,53 +125,16 @@ export interface EventTargetState {
  * The set of arguments for constructing a EventTarget resource.
  */
 export interface EventTargetArgs {
-    /**
-     * The Amazon Resource Name (ARN) associated of the target.
-     */
     readonly arn: pulumi.Input<string>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-     */
     readonly batchTarget?: pulumi.Input<inputs.cloudwatch.EventTargetBatchTarget>;
-    /**
-     * Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-     */
     readonly ecsTarget?: pulumi.Input<inputs.cloudwatch.EventTargetEcsTarget>;
-    /**
-     * Valid JSON text passed to the target.
-     */
     readonly input?: pulumi.Input<string>;
-    /**
-     * The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-     * that is used for extracting part of the matched event when passing it to the target.
-     */
     readonly inputPath?: pulumi.Input<string>;
-    /**
-     * Parameters used when you are providing a custom input to a target based on certain event data.
-     */
     readonly inputTransformer?: pulumi.Input<inputs.cloudwatch.EventTargetInputTransformer>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-     */
     readonly kinesisTarget?: pulumi.Input<inputs.cloudwatch.EventTargetKinesisTarget>;
-    /**
-     * The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used.
-     */
     readonly roleArn?: pulumi.Input<string>;
-    /**
-     * The name of the rule you want to add targets to.
-     */
     readonly rule: pulumi.Input<string>;
-    /**
-     * Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-     */
     readonly runCommandTargets?: pulumi.Input<pulumi.Input<inputs.cloudwatch.EventTargetRunCommandTarget>[]>;
-    /**
-     * Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-     */
     readonly sqsTarget?: pulumi.Input<inputs.cloudwatch.EventTargetSqsTarget>;
-    /**
-     * The unique target assignment ID.  If missing, will generate a random, unique id.
-     */
     readonly targetId?: pulumi.Input<string>;
 }

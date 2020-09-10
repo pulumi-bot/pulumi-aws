@@ -11,12 +11,8 @@ import (
 )
 
 type ClusterLogging struct {
-	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
-	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-	BucketName *string `pulumi:"bucketName"`
-	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
-	Enable bool `pulumi:"enable"`
-	// The prefix applied to the log file names.
+	BucketName  *string `pulumi:"bucketName"`
+	Enable      bool    `pulumi:"enable"`
 	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
 }
 
@@ -32,12 +28,8 @@ type ClusterLoggingInput interface {
 }
 
 type ClusterLoggingArgs struct {
-	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
-	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
-	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
-	Enable pulumi.BoolInput `pulumi:"enable"`
-	// The prefix applied to the log file names.
+	BucketName  pulumi.StringPtrInput `pulumi:"bucketName"`
+	Enable      pulumi.BoolInput      `pulumi:"enable"`
 	S3KeyPrefix pulumi.StringPtrInput `pulumi:"s3KeyPrefix"`
 }
 
@@ -117,19 +109,14 @@ func (o ClusterLoggingOutput) ToClusterLoggingPtrOutputWithContext(ctx context.C
 		return &v
 	}).(ClusterLoggingPtrOutput)
 }
-
-// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
-// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
 func (o ClusterLoggingOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterLogging) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
-// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
 func (o ClusterLoggingOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterLogging) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// The prefix applied to the log file names.
 func (o ClusterLoggingOutput) S3KeyPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterLogging) *string { return v.S3KeyPrefix }).(pulumi.StringPtrOutput)
 }
@@ -152,8 +139,6 @@ func (o ClusterLoggingPtrOutput) Elem() ClusterLoggingOutput {
 	return o.ApplyT(func(v *ClusterLogging) ClusterLogging { return *v }).(ClusterLoggingOutput)
 }
 
-// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
-// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
 func (o ClusterLoggingPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterLogging) *string {
 		if v == nil {
@@ -163,7 +148,6 @@ func (o ClusterLoggingPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
 func (o ClusterLoggingPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterLogging) *bool {
 		if v == nil {
@@ -173,7 +157,6 @@ func (o ClusterLoggingPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The prefix applied to the log file names.
 func (o ClusterLoggingPtrOutput) S3KeyPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterLogging) *string {
 		if v == nil {
@@ -184,12 +167,9 @@ func (o ClusterLoggingPtrOutput) S3KeyPrefix() pulumi.StringPtrOutput {
 }
 
 type ClusterSnapshotCopy struct {
-	// The destination region that you want to copy snapshots to.
-	DestinationRegion string `pulumi:"destinationRegion"`
-	// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
-	GrantName *string `pulumi:"grantName"`
-	// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
-	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	DestinationRegion string  `pulumi:"destinationRegion"`
+	GrantName         *string `pulumi:"grantName"`
+	RetentionPeriod   *int    `pulumi:"retentionPeriod"`
 }
 
 // ClusterSnapshotCopyInput is an input type that accepts ClusterSnapshotCopyArgs and ClusterSnapshotCopyOutput values.
@@ -204,12 +184,9 @@ type ClusterSnapshotCopyInput interface {
 }
 
 type ClusterSnapshotCopyArgs struct {
-	// The destination region that you want to copy snapshots to.
-	DestinationRegion pulumi.StringInput `pulumi:"destinationRegion"`
-	// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
-	GrantName pulumi.StringPtrInput `pulumi:"grantName"`
-	// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
-	RetentionPeriod pulumi.IntPtrInput `pulumi:"retentionPeriod"`
+	DestinationRegion pulumi.StringInput    `pulumi:"destinationRegion"`
+	GrantName         pulumi.StringPtrInput `pulumi:"grantName"`
+	RetentionPeriod   pulumi.IntPtrInput    `pulumi:"retentionPeriod"`
 }
 
 func (ClusterSnapshotCopyArgs) ElementType() reflect.Type {
@@ -288,18 +265,14 @@ func (o ClusterSnapshotCopyOutput) ToClusterSnapshotCopyPtrOutputWithContext(ctx
 		return &v
 	}).(ClusterSnapshotCopyPtrOutput)
 }
-
-// The destination region that you want to copy snapshots to.
 func (o ClusterSnapshotCopyOutput) DestinationRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterSnapshotCopy) string { return v.DestinationRegion }).(pulumi.StringOutput)
 }
 
-// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
 func (o ClusterSnapshotCopyOutput) GrantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterSnapshotCopy) *string { return v.GrantName }).(pulumi.StringPtrOutput)
 }
 
-// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
 func (o ClusterSnapshotCopyOutput) RetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterSnapshotCopy) *int { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
 }
@@ -322,7 +295,6 @@ func (o ClusterSnapshotCopyPtrOutput) Elem() ClusterSnapshotCopyOutput {
 	return o.ApplyT(func(v *ClusterSnapshotCopy) ClusterSnapshotCopy { return *v }).(ClusterSnapshotCopyOutput)
 }
 
-// The destination region that you want to copy snapshots to.
 func (o ClusterSnapshotCopyPtrOutput) DestinationRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterSnapshotCopy) *string {
 		if v == nil {
@@ -332,7 +304,6 @@ func (o ClusterSnapshotCopyPtrOutput) DestinationRegion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
 func (o ClusterSnapshotCopyPtrOutput) GrantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterSnapshotCopy) *string {
 		if v == nil {
@@ -342,7 +313,6 @@ func (o ClusterSnapshotCopyPtrOutput) GrantName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
 func (o ClusterSnapshotCopyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterSnapshotCopy) *int {
 		if v == nil {
@@ -353,9 +323,7 @@ func (o ClusterSnapshotCopyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 }
 
 type ParameterGroupParameter struct {
-	// The name of the Redshift parameter.
-	Name string `pulumi:"name"`
-	// The value of the Redshift parameter.
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -371,9 +339,7 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// The name of the Redshift parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the Redshift parameter.
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -428,12 +394,10 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// The name of the Redshift parameter.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the Redshift parameter.
 func (o ParameterGroupParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -459,12 +423,8 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 }
 
 type SecurityGroupIngress struct {
-	// The CIDR block to accept
-	Cidr *string `pulumi:"cidr"`
-	// The name of the security group to authorize
-	SecurityGroupName *string `pulumi:"securityGroupName"`
-	// The owner Id of the security group provided
-	// by `securityGroupName`.
+	Cidr                 *string `pulumi:"cidr"`
+	SecurityGroupName    *string `pulumi:"securityGroupName"`
 	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
 }
 
@@ -480,12 +440,8 @@ type SecurityGroupIngressInput interface {
 }
 
 type SecurityGroupIngressArgs struct {
-	// The CIDR block to accept
-	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
-	// The name of the security group to authorize
-	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
-	// The owner Id of the security group provided
-	// by `securityGroupName`.
+	Cidr                 pulumi.StringPtrInput `pulumi:"cidr"`
+	SecurityGroupName    pulumi.StringPtrInput `pulumi:"securityGroupName"`
 	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
 }
 
@@ -540,18 +496,14 @@ func (o SecurityGroupIngressOutput) ToSecurityGroupIngressOutputWithContext(ctx 
 	return o
 }
 
-// The CIDR block to accept
 func (o SecurityGroupIngressOutput) Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
-// The name of the security group to authorize
 func (o SecurityGroupIngressOutput) SecurityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The owner Id of the security group provided
-// by `securityGroupName`.
 func (o SecurityGroupIngressOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
 }

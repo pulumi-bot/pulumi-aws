@@ -9,172 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CodePipeline
 {
-    /// <summary>
-    /// Provides a CodePipeline Webhook.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// using Github = Pulumi.Github;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var barPipeline = new Aws.CodePipeline.Pipeline("barPipeline", new Aws.CodePipeline.PipelineArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Bar.Arn,
-    ///             ArtifactStore = new Aws.CodePipeline.Inputs.PipelineArtifactStoreArgs
-    ///             {
-    ///                 Location = aws_s3_bucket.Bar.Bucket,
-    ///                 Type = "S3",
-    ///                 EncryptionKey = new Aws.CodePipeline.Inputs.PipelineArtifactStoreEncryptionKeyArgs
-    ///                 {
-    ///                     Id = data.Aws_kms_alias.S3kmskey.Arn,
-    ///                     Type = "KMS",
-    ///                 },
-    ///             },
-    ///             Stages = 
-    ///             {
-    ///                 new Aws.CodePipeline.Inputs.PipelineStageArgs
-    ///                 {
-    ///                     Name = "Source",
-    ///                     Actions = 
-    ///                     {
-    ///                         new Aws.CodePipeline.Inputs.PipelineStageActionArgs
-    ///                         {
-    ///                             Name = "Source",
-    ///                             Category = "Source",
-    ///                             Owner = "ThirdParty",
-    ///                             Provider = "GitHub",
-    ///                             Version = "1",
-    ///                             OutputArtifacts = 
-    ///                             {
-    ///                                 "test",
-    ///                             },
-    ///                             Configuration = 
-    ///                             {
-    ///                                 { "Owner", "my-organization" },
-    ///                                 { "Repo", "test" },
-    ///                                 { "Branch", "master" },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Aws.CodePipeline.Inputs.PipelineStageArgs
-    ///                 {
-    ///                     Name = "Build",
-    ///                     Actions = 
-    ///                     {
-    ///                         new Aws.CodePipeline.Inputs.PipelineStageActionArgs
-    ///                         {
-    ///                             Name = "Build",
-    ///                             Category = "Build",
-    ///                             Owner = "AWS",
-    ///                             Provider = "CodeBuild",
-    ///                             InputArtifacts = 
-    ///                             {
-    ///                                 "test",
-    ///                             },
-    ///                             Version = "1",
-    ///                             Configuration = 
-    ///                             {
-    ///                                 { "ProjectName", "test" },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var webhookSecret = "super-secret";
-    ///         var barWebhook = new Aws.CodePipeline.Webhook("barWebhook", new Aws.CodePipeline.WebhookArgs
-    ///         {
-    ///             Authentication = "GITHUB_HMAC",
-    ///             TargetAction = "Source",
-    ///             TargetPipeline = barPipeline.Name,
-    ///             AuthenticationConfiguration = new Aws.CodePipeline.Inputs.WebhookAuthenticationConfigurationArgs
-    ///             {
-    ///                 SecretToken = webhookSecret,
-    ///             },
-    ///             Filters = 
-    ///             {
-    ///                 new Aws.CodePipeline.Inputs.WebhookFilterArgs
-    ///                 {
-    ///                     JsonPath = "$.ref",
-    ///                     MatchEquals = "refs/heads/{Branch}",
-    ///                 },
-    ///             },
-    ///         });
-    ///         // Wire the CodePipeline webhook into a GitHub repository.
-    ///         var barRepositoryWebhook = new Github.RepositoryWebhook("barRepositoryWebhook", new Github.RepositoryWebhookArgs
-    ///         {
-    ///             Repository = github_repository.Repo.Name,
-    ///             Configuration = new Github.Inputs.RepositoryWebhookConfigurationArgs
-    ///             {
-    ///                 Url = barWebhook.Url,
-    ///                 ContentType = "json",
-    ///                 InsecureSsl = true,
-    ///                 Secret = webhookSecret,
-    ///             },
-    ///             Events = 
-    ///             {
-    ///                 "push",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Webhook : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
-        /// </summary>
         [Output("authentication")]
         public Output<string> Authentication { get; private set; } = null!;
 
-        /// <summary>
-        /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
-        /// </summary>
         [Output("authenticationConfiguration")]
         public Output<Outputs.WebhookAuthenticationConfiguration?> AuthenticationConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// One or more `filter` blocks. Filter blocks are documented below.
-        /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<Outputs.WebhookFilter>> Filters { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the webhook.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
-        /// </summary>
         [Output("targetAction")]
         public Output<string> TargetAction { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the pipeline.
-        /// </summary>
         [Output("targetPipeline")]
         public Output<string> TargetPipeline { get; private set; } = null!;
 
-        /// <summary>
-        /// The CodePipeline webhook's URL. POST events to this endpoint to trigger the target.
-        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
@@ -224,57 +81,34 @@ namespace Pulumi.Aws.CodePipeline
 
     public sealed class WebhookArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
-        /// </summary>
         [Input("authentication", required: true)]
         public Input<string> Authentication { get; set; } = null!;
 
-        /// <summary>
-        /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
-        /// </summary>
         [Input("authenticationConfiguration")]
         public Input<Inputs.WebhookAuthenticationConfigurationArgs>? AuthenticationConfiguration { get; set; }
 
         [Input("filters", required: true)]
         private InputList<Inputs.WebhookFilterArgs>? _filters;
-
-        /// <summary>
-        /// One or more `filter` blocks. Filter blocks are documented below.
-        /// </summary>
         public InputList<Inputs.WebhookFilterArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.WebhookFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The name of the webhook.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
-        /// </summary>
         [Input("targetAction", required: true)]
         public Input<string> TargetAction { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the pipeline.
-        /// </summary>
         [Input("targetPipeline", required: true)]
         public Input<string> TargetPipeline { get; set; } = null!;
 
@@ -285,63 +119,37 @@ namespace Pulumi.Aws.CodePipeline
 
     public sealed class WebhookState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
-        /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
 
-        /// <summary>
-        /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
-        /// </summary>
         [Input("authenticationConfiguration")]
         public Input<Inputs.WebhookAuthenticationConfigurationGetArgs>? AuthenticationConfiguration { get; set; }
 
         [Input("filters")]
         private InputList<Inputs.WebhookFilterGetArgs>? _filters;
-
-        /// <summary>
-        /// One or more `filter` blocks. Filter blocks are documented below.
-        /// </summary>
         public InputList<Inputs.WebhookFilterGetArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.WebhookFilterGetArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The name of the webhook.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
-        /// </summary>
         [Input("targetAction")]
         public Input<string>? TargetAction { get; set; }
 
-        /// <summary>
-        /// The name of the pipeline.
-        /// </summary>
         [Input("targetPipeline")]
         public Input<string>? TargetPipeline { get; set; }
 
-        /// <summary>
-        /// The CodePipeline webhook's URL. POST events to this endpoint to trigger the target.
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

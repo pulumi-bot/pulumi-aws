@@ -10,96 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 authorizer.
-// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-//
-// ## Example Usage
-// ### Basic WebSocket API
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewAuthorizer(ctx, "example", &apigatewayv2.AuthorizerArgs{
-// 			ApiId:          pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			AuthorizerType: pulumi.String("REQUEST"),
-// 			AuthorizerUri:  pulumi.Any(aws_lambda_function.Example.Invoke_arn),
-// 			IdentitySources: pulumi.StringArray{
-// 				pulumi.String("route.request.header.Auth"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Basic HTTP API
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewAuthorizer(ctx, "example", &apigatewayv2.AuthorizerArgs{
-// 			ApiId:          pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			AuthorizerType: pulumi.String("JWT"),
-// 			IdentitySources: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("%v%v", "$", "request.header.Authorization")),
-// 			},
-// 			JwtConfiguration: &apigatewayv2.AuthorizerJwtConfigurationArgs{
-// 				Audiences: pulumi.StringArray{
-// 					pulumi.String("example"),
-// 				},
-// 				Issuer: pulumi.String(fmt.Sprintf("%v%v", "https://", aws_cognito_user_pool.Example.Endpoint)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Authorizer struct {
 	pulumi.CustomResourceState
 
-	// The API identifier.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerCredentialsArn pulumi.StringPtrOutput `pulumi:"authorizerCredentialsArn"`
-	// The authorizer type. Valid values: `JWT`, `REQUEST`.
-	// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-	// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-	AuthorizerType pulumi.StringOutput `pulumi:"authorizerType"`
-	// The authorizer's Uniform Resource Identifier (URI).
-	// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `lambda.Function` resource.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerUri pulumi.StringPtrOutput `pulumi:"authorizerUri"`
-	// The identity sources for which authorization is requested.
-	// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-	// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-	IdentitySources pulumi.StringArrayOutput `pulumi:"identitySources"`
-	// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-	// Supported only for HTTP APIs.
-	JwtConfiguration AuthorizerJwtConfigurationPtrOutput `pulumi:"jwtConfiguration"`
-	// The name of the authorizer.
-	Name pulumi.StringOutput `pulumi:"name"`
+	ApiId                    pulumi.StringOutput                 `pulumi:"apiId"`
+	AuthorizerCredentialsArn pulumi.StringPtrOutput              `pulumi:"authorizerCredentialsArn"`
+	AuthorizerType           pulumi.StringOutput                 `pulumi:"authorizerType"`
+	AuthorizerUri            pulumi.StringPtrOutput              `pulumi:"authorizerUri"`
+	IdentitySources          pulumi.StringArrayOutput            `pulumi:"identitySources"`
+	JwtConfiguration         AuthorizerJwtConfigurationPtrOutput `pulumi:"jwtConfiguration"`
+	Name                     pulumi.StringOutput                 `pulumi:"name"`
 }
 
 // NewAuthorizer registers a new resource with the given unique name, arguments, and options.
@@ -139,53 +59,23 @@ func GetAuthorizer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Authorizer resources.
 type authorizerState struct {
-	// The API identifier.
-	ApiId *string `pulumi:"apiId"`
-	// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerCredentialsArn *string `pulumi:"authorizerCredentialsArn"`
-	// The authorizer type. Valid values: `JWT`, `REQUEST`.
-	// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-	// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-	AuthorizerType *string `pulumi:"authorizerType"`
-	// The authorizer's Uniform Resource Identifier (URI).
-	// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `lambda.Function` resource.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerUri *string `pulumi:"authorizerUri"`
-	// The identity sources for which authorization is requested.
-	// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-	// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-	IdentitySources []string `pulumi:"identitySources"`
-	// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-	// Supported only for HTTP APIs.
-	JwtConfiguration *AuthorizerJwtConfiguration `pulumi:"jwtConfiguration"`
-	// The name of the authorizer.
-	Name *string `pulumi:"name"`
+	ApiId                    *string                     `pulumi:"apiId"`
+	AuthorizerCredentialsArn *string                     `pulumi:"authorizerCredentialsArn"`
+	AuthorizerType           *string                     `pulumi:"authorizerType"`
+	AuthorizerUri            *string                     `pulumi:"authorizerUri"`
+	IdentitySources          []string                    `pulumi:"identitySources"`
+	JwtConfiguration         *AuthorizerJwtConfiguration `pulumi:"jwtConfiguration"`
+	Name                     *string                     `pulumi:"name"`
 }
 
 type AuthorizerState struct {
-	// The API identifier.
-	ApiId pulumi.StringPtrInput
-	// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-	// Supported only for `REQUEST` authorizers.
+	ApiId                    pulumi.StringPtrInput
 	AuthorizerCredentialsArn pulumi.StringPtrInput
-	// The authorizer type. Valid values: `JWT`, `REQUEST`.
-	// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-	// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-	AuthorizerType pulumi.StringPtrInput
-	// The authorizer's Uniform Resource Identifier (URI).
-	// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `lambda.Function` resource.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerUri pulumi.StringPtrInput
-	// The identity sources for which authorization is requested.
-	// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-	// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-	IdentitySources pulumi.StringArrayInput
-	// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-	// Supported only for HTTP APIs.
-	JwtConfiguration AuthorizerJwtConfigurationPtrInput
-	// The name of the authorizer.
-	Name pulumi.StringPtrInput
+	AuthorizerType           pulumi.StringPtrInput
+	AuthorizerUri            pulumi.StringPtrInput
+	IdentitySources          pulumi.StringArrayInput
+	JwtConfiguration         AuthorizerJwtConfigurationPtrInput
+	Name                     pulumi.StringPtrInput
 }
 
 func (AuthorizerState) ElementType() reflect.Type {
@@ -193,54 +83,24 @@ func (AuthorizerState) ElementType() reflect.Type {
 }
 
 type authorizerArgs struct {
-	// The API identifier.
-	ApiId string `pulumi:"apiId"`
-	// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerCredentialsArn *string `pulumi:"authorizerCredentialsArn"`
-	// The authorizer type. Valid values: `JWT`, `REQUEST`.
-	// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-	// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-	AuthorizerType string `pulumi:"authorizerType"`
-	// The authorizer's Uniform Resource Identifier (URI).
-	// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `lambda.Function` resource.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerUri *string `pulumi:"authorizerUri"`
-	// The identity sources for which authorization is requested.
-	// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-	// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-	IdentitySources []string `pulumi:"identitySources"`
-	// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-	// Supported only for HTTP APIs.
-	JwtConfiguration *AuthorizerJwtConfiguration `pulumi:"jwtConfiguration"`
-	// The name of the authorizer.
-	Name *string `pulumi:"name"`
+	ApiId                    string                      `pulumi:"apiId"`
+	AuthorizerCredentialsArn *string                     `pulumi:"authorizerCredentialsArn"`
+	AuthorizerType           string                      `pulumi:"authorizerType"`
+	AuthorizerUri            *string                     `pulumi:"authorizerUri"`
+	IdentitySources          []string                    `pulumi:"identitySources"`
+	JwtConfiguration         *AuthorizerJwtConfiguration `pulumi:"jwtConfiguration"`
+	Name                     *string                     `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Authorizer resource.
 type AuthorizerArgs struct {
-	// The API identifier.
-	ApiId pulumi.StringInput
-	// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-	// Supported only for `REQUEST` authorizers.
+	ApiId                    pulumi.StringInput
 	AuthorizerCredentialsArn pulumi.StringPtrInput
-	// The authorizer type. Valid values: `JWT`, `REQUEST`.
-	// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-	// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-	AuthorizerType pulumi.StringInput
-	// The authorizer's Uniform Resource Identifier (URI).
-	// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `lambda.Function` resource.
-	// Supported only for `REQUEST` authorizers.
-	AuthorizerUri pulumi.StringPtrInput
-	// The identity sources for which authorization is requested.
-	// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-	// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-	IdentitySources pulumi.StringArrayInput
-	// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-	// Supported only for HTTP APIs.
-	JwtConfiguration AuthorizerJwtConfigurationPtrInput
-	// The name of the authorizer.
-	Name pulumi.StringPtrInput
+	AuthorizerType           pulumi.StringInput
+	AuthorizerUri            pulumi.StringPtrInput
+	IdentitySources          pulumi.StringArrayInput
+	JwtConfiguration         AuthorizerJwtConfigurationPtrInput
+	Name                     pulumi.StringPtrInput
 }
 
 func (AuthorizerArgs) ElementType() reflect.Type {

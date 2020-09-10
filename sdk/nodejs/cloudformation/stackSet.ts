@@ -4,70 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CloudFormation StackSet. StackSets allow CloudFormation templates to be easily deployed across multiple accounts and regions via StackSet Instances (`aws.cloudformation.StackSetInstance` resource). Additional information about StackSets can be found in the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html).
- *
- * > **NOTE:** All template parameters, including those with a `Default`, must be configured or ignored with the `lifecycle` configuration block `ignoreChanges` argument.
- *
- * > **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy = aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         effect: "Allow",
- *         principals: [{
- *             identifiers: ["cloudformation.amazonaws.com"],
- *             type: "Service",
- *         }],
- *     }],
- * });
- * const aWSCloudFormationStackSetAdministrationRole = new aws.iam.Role("aWSCloudFormationStackSetAdministrationRole", {assumeRolePolicy: aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy.then(aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy => aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy.json)});
- * const example = new aws.cloudformation.StackSet("example", {
- *     administrationRoleArn: aWSCloudFormationStackSetAdministrationRole.arn,
- *     parameters: {
- *         VPCCidr: "10.0.0.0/16",
- *     },
- *     templateBody: `{
- *   "Parameters" : {
- *     "VPCCidr" : {
- *       "Type" : "String",
- *       "Default" : "10.0.0.0/16",
- *       "Description" : "Enter the CIDR block for the VPC. Default is 10.0.0.0/16."
- *     }
- *   },
- *   "Resources" : {
- *     "myVpc": {
- *       "Type" : "AWS::EC2::VPC",
- *       "Properties" : {
- *         "CidrBlock" : { "Ref" : "VPCCidr" },
- *         "Tags" : [
- *           {"Key": "Name", "Value": "Primary_CF_VPC"}
- *         ]
- *       }
- *     }
- *   }
- * }
- * `,
- * });
- * const aWSCloudFormationStackSetAdministrationRoleExecutionPolicyPolicyDocument = example.executionRoleName.apply(executionRoleName => aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         effect: "Allow",
- *         resources: [`arn:aws:iam::*:role/${executionRoleName}`],
- *     }],
- * }));
- * const aWSCloudFormationStackSetAdministrationRoleExecutionPolicyRolePolicy = new aws.iam.RolePolicy("aWSCloudFormationStackSetAdministrationRoleExecutionPolicyRolePolicy", {
- *     policy: aWSCloudFormationStackSetAdministrationRoleExecutionPolicyPolicyDocument.json,
- *     role: aWSCloudFormationStackSetAdministrationRole.name,
- * });
- * ```
- */
 export class StackSet extends pulumi.CustomResource {
     /**
      * Get an existing StackSet resource's state with the given name, ID, and optional extra
@@ -96,49 +32,16 @@ export class StackSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === StackSet.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Number (ARN) of the IAM Role in the administrator account.
-     */
     public readonly administrationRoleArn!: pulumi.Output<string>;
-    /**
-     * Amazon Resource Name (ARN) of the StackSet.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A list of capabilities. Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_AUTO_EXPAND`.
-     */
     public readonly capabilities!: pulumi.Output<string[] | undefined>;
-    /**
-     * Description of the StackSet.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the IAM Role in all target accounts for StackSet operations. Defaults to `AWSCloudFormationStackSetExecutionRole`.
-     */
     public readonly executionRoleName!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the StackSet. The name must be unique in the region where you create your StackSet. The name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignoreChanges` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
-     */
     public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Unique identifier of the StackSet.
-     */
     public /*out*/ readonly stackSetId!: pulumi.Output<string>;
-    /**
-     * Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `templateUrl`.
-     */
     public readonly templateBody!: pulumi.Output<string>;
-    /**
-     * String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `templateBody`.
-     */
     public readonly templateUrl!: pulumi.Output<string | undefined>;
 
     /**
@@ -196,49 +99,16 @@ export class StackSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StackSet resources.
  */
 export interface StackSetState {
-    /**
-     * Amazon Resource Number (ARN) of the IAM Role in the administrator account.
-     */
     readonly administrationRoleArn?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN) of the StackSet.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A list of capabilities. Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_AUTO_EXPAND`.
-     */
     readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Description of the StackSet.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name of the IAM Role in all target accounts for StackSet operations. Defaults to `AWSCloudFormationStackSetExecutionRole`.
-     */
     readonly executionRoleName?: pulumi.Input<string>;
-    /**
-     * Name of the StackSet. The name must be unique in the region where you create your StackSet. The name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignoreChanges` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
-     */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Unique identifier of the StackSet.
-     */
     readonly stackSetId?: pulumi.Input<string>;
-    /**
-     * Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `templateUrl`.
-     */
     readonly templateBody?: pulumi.Input<string>;
-    /**
-     * String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `templateBody`.
-     */
     readonly templateUrl?: pulumi.Input<string>;
 }
 
@@ -246,40 +116,13 @@ export interface StackSetState {
  * The set of arguments for constructing a StackSet resource.
  */
 export interface StackSetArgs {
-    /**
-     * Amazon Resource Number (ARN) of the IAM Role in the administrator account.
-     */
     readonly administrationRoleArn: pulumi.Input<string>;
-    /**
-     * A list of capabilities. Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_AUTO_EXPAND`.
-     */
     readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Description of the StackSet.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name of the IAM Role in all target accounts for StackSet operations. Defaults to `AWSCloudFormationStackSetExecutionRole`.
-     */
     readonly executionRoleName?: pulumi.Input<string>;
-    /**
-     * Name of the StackSet. The name must be unique in the region where you create your StackSet. The name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignoreChanges` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
-     */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `templateUrl`.
-     */
     readonly templateBody?: pulumi.Input<string>;
-    /**
-     * String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `templateBody`.
-     */
     readonly templateUrl?: pulumi.Input<string>;
 }

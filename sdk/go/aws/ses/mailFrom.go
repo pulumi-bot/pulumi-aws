@@ -10,77 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SES domain MAIL FROM resource.
-//
-// > **NOTE:** For the MAIL FROM domain to be fully usable, this resource should be paired with the `ses.DomainIdentity` resource. To validate the MAIL FROM domain, a DNS MX record is required. To pass SPF checks, a DNS TXT record may also be required. See the [Amazon SES MAIL FROM documentation](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html) for more information.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ses"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleDomainIdentity, err := ses.NewDomainIdentity(ctx, "exampleDomainIdentity", &ses.DomainIdentityArgs{
-// 			Domain: pulumi.String("example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleMailFrom, err := ses.NewMailFrom(ctx, "exampleMailFrom", &ses.MailFromArgs{
-// 			Domain: exampleDomainIdentity.Domain,
-// 			MailFromDomain: exampleDomainIdentity.Domain.ApplyT(func(domain string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "bounce.", domain), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewRecord(ctx, "exampleSesDomainMailFromMx", &route53.RecordArgs{
-// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Id),
-// 			Name:   exampleMailFrom.MailFromDomain,
-// 			Type:   pulumi.String("MX"),
-// 			Ttl:    pulumi.Int(600),
-// 			Records: pulumi.StringArray{
-// 				pulumi.String("10 feedback-smtp.us-east-1.amazonses.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewRecord(ctx, "exampleSesDomainMailFromTxt", &route53.RecordArgs{
-// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Id),
-// 			Name:   exampleMailFrom.MailFromDomain,
-// 			Type:   pulumi.String("TXT"),
-// 			Ttl:    pulumi.Int(600),
-// 			Records: pulumi.StringArray{
-// 				pulumi.String("v=spf1 include:amazonses.com -all"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type MailFrom struct {
 	pulumi.CustomResourceState
 
-	// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
 	BehaviorOnMxFailure pulumi.StringPtrOutput `pulumi:"behaviorOnMxFailure"`
-	// Verified domain name to generate DKIM tokens for.
-	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
-	MailFromDomain pulumi.StringOutput `pulumi:"mailFromDomain"`
+	Domain              pulumi.StringOutput    `pulumi:"domain"`
+	MailFromDomain      pulumi.StringOutput    `pulumi:"mailFromDomain"`
 }
 
 // NewMailFrom registers a new resource with the given unique name, arguments, and options.
@@ -117,21 +52,15 @@ func GetMailFrom(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MailFrom resources.
 type mailFromState struct {
-	// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
 	BehaviorOnMxFailure *string `pulumi:"behaviorOnMxFailure"`
-	// Verified domain name to generate DKIM tokens for.
-	Domain *string `pulumi:"domain"`
-	// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
-	MailFromDomain *string `pulumi:"mailFromDomain"`
+	Domain              *string `pulumi:"domain"`
+	MailFromDomain      *string `pulumi:"mailFromDomain"`
 }
 
 type MailFromState struct {
-	// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
 	BehaviorOnMxFailure pulumi.StringPtrInput
-	// Verified domain name to generate DKIM tokens for.
-	Domain pulumi.StringPtrInput
-	// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
-	MailFromDomain pulumi.StringPtrInput
+	Domain              pulumi.StringPtrInput
+	MailFromDomain      pulumi.StringPtrInput
 }
 
 func (MailFromState) ElementType() reflect.Type {
@@ -139,22 +68,16 @@ func (MailFromState) ElementType() reflect.Type {
 }
 
 type mailFromArgs struct {
-	// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
 	BehaviorOnMxFailure *string `pulumi:"behaviorOnMxFailure"`
-	// Verified domain name to generate DKIM tokens for.
-	Domain string `pulumi:"domain"`
-	// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
-	MailFromDomain string `pulumi:"mailFromDomain"`
+	Domain              string  `pulumi:"domain"`
+	MailFromDomain      string  `pulumi:"mailFromDomain"`
 }
 
 // The set of arguments for constructing a MailFrom resource.
 type MailFromArgs struct {
-	// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
 	BehaviorOnMxFailure pulumi.StringPtrInput
-	// Verified domain name to generate DKIM tokens for.
-	Domain pulumi.StringInput
-	// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
-	MailFromDomain pulumi.StringInput
+	Domain              pulumi.StringInput
+	MailFromDomain      pulumi.StringInput
 }
 
 func (MailFromArgs) ElementType() reflect.Type {

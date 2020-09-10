@@ -21,54 +21,9 @@ class WebAclAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a WAFv2 Web ACL Association.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_rest_api = aws.apigateway.RestApi("exampleRestApi")
-        example_resource = aws.apigateway.Resource("exampleResource",
-            rest_api=example_rest_api.id,
-            parent_id=example_rest_api.root_resource_id,
-            path_part="mytestresource")
-        example_method = aws.apigateway.Method("exampleMethod",
-            rest_api=example_rest_api.id,
-            resource_id=example_resource.id,
-            http_method="GET",
-            authorization="NONE")
-        example_integration = aws.apigateway.Integration("exampleIntegration",
-            rest_api=example_rest_api.id,
-            resource_id=example_resource.id,
-            http_method=example_method.http_method,
-            type="MOCK")
-        example_deployment = aws.apigateway.Deployment("exampleDeployment", rest_api=example_rest_api.id,
-        opts=ResourceOptions(depends_on=[example_integration]))
-        example_stage = aws.apigateway.Stage("exampleStage",
-            stage_name="test",
-            rest_api=example_rest_api.id,
-            deployment=example_deployment.id)
-        example_web_acl = aws.wafv2.WebAcl("exampleWebAcl",
-            scope="REGIONAL",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                allow=aws.wafv2.WebAclDefaultActionAllowArgs(),
-            ),
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
-        example_web_acl_association = aws.wafv2.WebAclAssociation("exampleWebAclAssociation",
-            resource_arn=example_stage.arn,
-            web_acl_arn=example_web_acl.arn)
-        ```
-
+        Create a WebAclAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] resource_arn: The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-        :param pulumi.Input[str] web_acl_arn: The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -112,8 +67,6 @@ class WebAclAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] resource_arn: The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-        :param pulumi.Input[str] web_acl_arn: The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -126,17 +79,11 @@ class WebAclAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-        """
         return pulumi.get(self, "resource_arn")
 
     @property
     @pulumi.getter(name="webAclArn")
     def web_acl_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-        """
         return pulumi.get(self, "web_acl_arn")
 
     def translate_output_property(self, prop):

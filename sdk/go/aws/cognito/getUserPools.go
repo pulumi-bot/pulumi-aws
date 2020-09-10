@@ -7,52 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get a list of cognito user pools.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cognito"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selectedRestApi, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
-// 			Name: _var.Api_gateway_name,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		selectedUserPools, err := cognito.GetUserPools(ctx, &cognito.GetUserPoolsArgs{
-// 			Name: _var.Cognito_user_pool_name,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewAuthorizer(ctx, "cognito", &apigateway.AuthorizerArgs{
-// 			Type:         pulumi.String("COGNITO_USER_POOLS"),
-// 			RestApi:      pulumi.String(selectedRestApi.Id),
-// 			ProviderArns: toPulumiStringArray(selectedUserPools.Arns),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
 func GetUserPools(ctx *pulumi.Context, args *GetUserPoolsArgs, opts ...pulumi.InvokeOption) (*GetUserPoolsResult, error) {
 	var rv GetUserPoolsResult
 	err := ctx.Invoke("aws:cognito/getUserPools:getUserPools", args, &rv, opts...)
@@ -64,7 +18,6 @@ func GetUserPools(ctx *pulumi.Context, args *GetUserPoolsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getUserPools.
 type GetUserPoolsArgs struct {
-	// Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.
 	Name string `pulumi:"name"`
 }
 
@@ -72,8 +25,7 @@ type GetUserPoolsArgs struct {
 type GetUserPoolsResult struct {
 	Arns []string `pulumi:"arns"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The list of cognito user pool ids.
+	Id   string   `pulumi:"id"`
 	Ids  []string `pulumi:"ids"`
 	Name string   `pulumi:"name"`
 }

@@ -10,49 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS Backup plan resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/backup"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := backup.NewPlan(ctx, "example", &backup.PlanArgs{
-// 			Rules: backup.PlanRuleArray{
-// 				&backup.PlanRuleArgs{
-// 					RuleName:        pulumi.String("tf_example_backup_rule"),
-// 					TargetVaultName: pulumi.Any(aws_backup_vault.Test.Name),
-// 					Schedule:        pulumi.String("cron(0 12 * * ? *)"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Plan struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the backup plan.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The display name of a backup plan.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-	Rules PlanRuleArrayOutput `pulumi:"rules"`
-	// Metadata that you can assign to help organize the plans you create.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-	Version pulumi.StringOutput `pulumi:"version"`
+	Arn     pulumi.StringOutput    `pulumi:"arn"`
+	Name    pulumi.StringOutput    `pulumi:"name"`
+	Rules   PlanRuleArrayOutput    `pulumi:"rules"`
+	Tags    pulumi.StringMapOutput `pulumi:"tags"`
+	Version pulumi.StringOutput    `pulumi:"version"`
 }
 
 // NewPlan registers a new resource with the given unique name, arguments, and options.
@@ -86,28 +51,18 @@ func GetPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Plan resources.
 type planState struct {
-	// The ARN of the backup plan.
-	Arn *string `pulumi:"arn"`
-	// The display name of a backup plan.
-	Name *string `pulumi:"name"`
-	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-	Rules []PlanRule `pulumi:"rules"`
-	// Metadata that you can assign to help organize the plans you create.
-	Tags map[string]string `pulumi:"tags"`
-	// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-	Version *string `pulumi:"version"`
+	Arn     *string           `pulumi:"arn"`
+	Name    *string           `pulumi:"name"`
+	Rules   []PlanRule        `pulumi:"rules"`
+	Tags    map[string]string `pulumi:"tags"`
+	Version *string           `pulumi:"version"`
 }
 
 type PlanState struct {
-	// The ARN of the backup plan.
-	Arn pulumi.StringPtrInput
-	// The display name of a backup plan.
-	Name pulumi.StringPtrInput
-	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-	Rules PlanRuleArrayInput
-	// Metadata that you can assign to help organize the plans you create.
-	Tags pulumi.StringMapInput
-	// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
+	Arn     pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Rules   PlanRuleArrayInput
+	Tags    pulumi.StringMapInput
 	Version pulumi.StringPtrInput
 }
 
@@ -116,22 +71,16 @@ func (PlanState) ElementType() reflect.Type {
 }
 
 type planArgs struct {
-	// The display name of a backup plan.
-	Name *string `pulumi:"name"`
-	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-	Rules []PlanRule `pulumi:"rules"`
-	// Metadata that you can assign to help organize the plans you create.
-	Tags map[string]string `pulumi:"tags"`
+	Name  *string           `pulumi:"name"`
+	Rules []PlanRule        `pulumi:"rules"`
+	Tags  map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Plan resource.
 type PlanArgs struct {
-	// The display name of a backup plan.
-	Name pulumi.StringPtrInput
-	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
+	Name  pulumi.StringPtrInput
 	Rules PlanRuleArrayInput
-	// Metadata that you can assign to help organize the plans you create.
-	Tags pulumi.StringMapInput
+	Tags  pulumi.StringMapInput
 }
 
 func (PlanArgs) ElementType() reflect.Type {

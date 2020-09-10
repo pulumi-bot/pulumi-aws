@@ -13,33 +13,12 @@ namespace Pulumi.Aws.S3.Outputs
     [OutputType]
     public sealed class BucketReplicationConfigurationRule
     {
-        /// <summary>
-        /// Specifies the destination for the rule (documented below).
-        /// </summary>
         public readonly Outputs.BucketReplicationConfigurationRuleDestination Destination;
-        /// <summary>
-        /// Filter that identifies subset of objects to which the replication rule applies (documented below).
-        /// </summary>
         public readonly Outputs.BucketReplicationConfigurationRuleFilter? Filter;
-        /// <summary>
-        /// Unique identifier for the rule.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Object keyname prefix identifying one or more objects to which the rule applies.
-        /// </summary>
         public readonly string? Prefix;
-        /// <summary>
-        /// is optional (with a default value of `0`) but must be unique between multiple rules
-        /// </summary>
         public readonly int? Priority;
-        /// <summary>
-        /// Specifies special object selection criteria (documented below).
-        /// </summary>
         public readonly Outputs.BucketReplicationConfigurationRuleSourceSelectionCriteria? SourceSelectionCriteria;
-        /// <summary>
-        /// The status of the rule. Either `Enabled` or `Disabled`. The rule is ignored if status is not Enabled.
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

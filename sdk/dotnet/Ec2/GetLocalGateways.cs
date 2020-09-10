@@ -11,40 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetLocalGateways
     {
-        /// <summary>
-        /// Provides information for multiple EC2 Local Gateways, such as their identifiers.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example retrieves Local Gateways with a resource tag of `service` set to `production`.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var fooLocalGateways = Output.Create(Aws.Ec2.GetLocalGateways.InvokeAsync(new Aws.Ec2.GetLocalGatewaysArgs
-        ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "service", "production" },
-        ///             },
-        ///         }));
-        ///         this.Foo = fooLocalGateways.Apply(fooLocalGateways =&gt; fooLocalGateways.Ids);
-        ///     }
-        /// 
-        ///     [Output("foo")]
-        ///     public Output&lt;string&gt; Foo { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLocalGatewaysResult> InvokeAsync(GetLocalGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewaysResult>("aws:ec2/getLocalGateways:getLocalGateways", args ?? new GetLocalGatewaysArgs(), options.WithVersion());
     }
@@ -54,10 +20,6 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetLocalGatewaysFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetLocalGatewaysFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetLocalGatewaysFilterArgs>());
@@ -66,11 +28,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags, each pair of which must exactly match
-        /// a pair on the desired local_gateways.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -91,9 +48,6 @@ namespace Pulumi.Aws.Ec2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Set of all the Local Gateway identifiers
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableDictionary<string, string> Tags;
 

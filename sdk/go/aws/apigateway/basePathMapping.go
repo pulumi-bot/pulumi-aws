@@ -10,20 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Connects a custom domain name registered via `apigateway.DomainName`
-// with a deployed API so that its methods can be called via the
-// custom domain name.
 type BasePathMapping struct {
 	pulumi.CustomResourceState
 
-	// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-	BasePath pulumi.StringPtrOutput `pulumi:"basePath"`
-	// The already-registered domain name to connect the API to.
-	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The id of the API to connect.
-	RestApi pulumi.StringOutput `pulumi:"restApi"`
-	// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-	StageName pulumi.StringPtrOutput `pulumi:"stageName"`
+	BasePath   pulumi.StringPtrOutput `pulumi:"basePath"`
+	DomainName pulumi.StringOutput    `pulumi:"domainName"`
+	RestApi    pulumi.StringOutput    `pulumi:"restApi"`
+	StageName  pulumi.StringPtrOutput `pulumi:"stageName"`
 }
 
 // NewBasePathMapping registers a new resource with the given unique name, arguments, and options.
@@ -60,25 +53,17 @@ func GetBasePathMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BasePathMapping resources.
 type basePathMappingState struct {
-	// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-	BasePath *string `pulumi:"basePath"`
-	// The already-registered domain name to connect the API to.
+	BasePath   *string `pulumi:"basePath"`
 	DomainName *string `pulumi:"domainName"`
-	// The id of the API to connect.
-	RestApi *string `pulumi:"restApi"`
-	// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-	StageName *string `pulumi:"stageName"`
+	RestApi    *string `pulumi:"restApi"`
+	StageName  *string `pulumi:"stageName"`
 }
 
 type BasePathMappingState struct {
-	// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-	BasePath pulumi.StringPtrInput
-	// The already-registered domain name to connect the API to.
+	BasePath   pulumi.StringPtrInput
 	DomainName pulumi.StringPtrInput
-	// The id of the API to connect.
-	RestApi pulumi.StringPtrInput
-	// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-	StageName pulumi.StringPtrInput
+	RestApi    pulumi.StringPtrInput
+	StageName  pulumi.StringPtrInput
 }
 
 func (BasePathMappingState) ElementType() reflect.Type {
@@ -86,26 +71,18 @@ func (BasePathMappingState) ElementType() reflect.Type {
 }
 
 type basePathMappingArgs struct {
-	// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-	BasePath *string `pulumi:"basePath"`
-	// The already-registered domain name to connect the API to.
-	DomainName string `pulumi:"domainName"`
-	// The id of the API to connect.
-	RestApi interface{} `pulumi:"restApi"`
-	// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-	StageName *string `pulumi:"stageName"`
+	BasePath   *string     `pulumi:"basePath"`
+	DomainName string      `pulumi:"domainName"`
+	RestApi    interface{} `pulumi:"restApi"`
+	StageName  *string     `pulumi:"stageName"`
 }
 
 // The set of arguments for constructing a BasePathMapping resource.
 type BasePathMappingArgs struct {
-	// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-	BasePath pulumi.StringPtrInput
-	// The already-registered domain name to connect the API to.
+	BasePath   pulumi.StringPtrInput
 	DomainName pulumi.StringInput
-	// The id of the API to connect.
-	RestApi pulumi.Input
-	// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-	StageName pulumi.StringPtrInput
+	RestApi    pulumi.Input
+	StageName  pulumi.StringPtrInput
 }
 
 func (BasePathMappingArgs) ElementType() reflect.Type {

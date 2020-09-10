@@ -13,17 +13,8 @@ namespace Pulumi.Aws.Ec2.Outputs
     [OutputType]
     public sealed class InstanceMetadataOptions
     {
-        /// <summary>
-        /// Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        /// </summary>
         public readonly string? HttpEndpoint;
-        /// <summary>
-        /// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        /// </summary>
         public readonly int? HttpPutResponseHopLimit;
-        /// <summary>
-        /// Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        /// </summary>
         public readonly string? HttpTokens;
 
         [OutputConstructor]

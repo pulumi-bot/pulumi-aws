@@ -7,9 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `ec2.getSubnetIds` provides a set of ids for a vpcId
-//
-// This resource can be useful for getting back a set of subnet ids for a vpc.
 func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.InvokeOption) (*GetSubnetIdsResult, error) {
 	var rv GetSubnetIdsResult
 	err := ctx.Invoke("aws:ec2/getSubnetIds:getSubnetIds", args, &rv, opts...)
@@ -21,21 +18,16 @@ func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSubnetIds.
 type GetSubnetIdsArgs struct {
-	// Custom filter block as described below.
 	Filters []GetSubnetIdsFilter `pulumi:"filters"`
-	// A map of tags, each pair of which must exactly match
-	// a pair on the desired subnets.
-	Tags map[string]string `pulumi:"tags"`
-	// The VPC ID that you want to filter from.
-	VpcId string `pulumi:"vpcId"`
+	Tags    map[string]string    `pulumi:"tags"`
+	VpcId   string               `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getSubnetIds.
 type GetSubnetIdsResult struct {
 	Filters []GetSubnetIdsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A set of all the subnet ids found. This data source will fail if none are found.
+	Id    string            `pulumi:"id"`
 	Ids   []string          `pulumi:"ids"`
 	Tags  map[string]string `pulumi:"tags"`
 	VpcId string            `pulumi:"vpcId"`

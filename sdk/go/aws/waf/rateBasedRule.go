@@ -10,69 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a WAF Rate Based Rule Resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/waf"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ipset, err := waf.NewIpSet(ctx, "ipset", &waf.IpSetArgs{
-// 			IpSetDescriptors: waf.IpSetIpSetDescriptorArray{
-// 				&waf.IpSetIpSetDescriptorArgs{
-// 					Type:  pulumi.String("IPV4"),
-// 					Value: pulumi.String("192.0.7.0/24"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
-// 			MetricName: pulumi.String("tfWAFRule"),
-// 			RateKey:    pulumi.String("IP"),
-// 			RateLimit:  pulumi.Int(100),
-// 			Predicates: waf.RateBasedRulePredicateArray{
-// 				&waf.RateBasedRulePredicateArgs{
-// 					DataId:  ipset.ID(),
-// 					Negated: pulumi.Bool(false),
-// 					Type:    pulumi.String("IPMatch"),
-// 				},
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			ipset,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RateBasedRule struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name or description for the Amazon CloudWatch metric of this rule.
-	MetricName pulumi.StringOutput `pulumi:"metricName"`
-	// The name or description of the rule.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The objects to include in a rule (documented below).
+	Arn        pulumi.StringOutput               `pulumi:"arn"`
+	MetricName pulumi.StringOutput               `pulumi:"metricName"`
+	Name       pulumi.StringOutput               `pulumi:"name"`
 	Predicates RateBasedRulePredicateArrayOutput `pulumi:"predicates"`
-	// Valid value is IP.
-	RateKey pulumi.StringOutput `pulumi:"rateKey"`
-	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-	RateLimit pulumi.IntOutput `pulumi:"rateLimit"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	RateKey    pulumi.StringOutput               `pulumi:"rateKey"`
+	RateLimit  pulumi.IntOutput                  `pulumi:"rateLimit"`
+	Tags       pulumi.StringMapOutput            `pulumi:"tags"`
 }
 
 // NewRateBasedRule registers a new resource with the given unique name, arguments, and options.
@@ -112,37 +59,23 @@ func GetRateBasedRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RateBasedRule resources.
 type rateBasedRuleState struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// The name or description for the Amazon CloudWatch metric of this rule.
-	MetricName *string `pulumi:"metricName"`
-	// The name or description of the rule.
-	Name *string `pulumi:"name"`
-	// The objects to include in a rule (documented below).
+	Arn        *string                  `pulumi:"arn"`
+	MetricName *string                  `pulumi:"metricName"`
+	Name       *string                  `pulumi:"name"`
 	Predicates []RateBasedRulePredicate `pulumi:"predicates"`
-	// Valid value is IP.
-	RateKey *string `pulumi:"rateKey"`
-	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-	RateLimit *int `pulumi:"rateLimit"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	RateKey    *string                  `pulumi:"rateKey"`
+	RateLimit  *int                     `pulumi:"rateLimit"`
+	Tags       map[string]string        `pulumi:"tags"`
 }
 
 type RateBasedRuleState struct {
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringPtrInput
-	// The name or description for the Amazon CloudWatch metric of this rule.
+	Arn        pulumi.StringPtrInput
 	MetricName pulumi.StringPtrInput
-	// The name or description of the rule.
-	Name pulumi.StringPtrInput
-	// The objects to include in a rule (documented below).
+	Name       pulumi.StringPtrInput
 	Predicates RateBasedRulePredicateArrayInput
-	// Valid value is IP.
-	RateKey pulumi.StringPtrInput
-	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-	RateLimit pulumi.IntPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	RateKey    pulumi.StringPtrInput
+	RateLimit  pulumi.IntPtrInput
+	Tags       pulumi.StringMapInput
 }
 
 func (RateBasedRuleState) ElementType() reflect.Type {
@@ -150,34 +83,22 @@ func (RateBasedRuleState) ElementType() reflect.Type {
 }
 
 type rateBasedRuleArgs struct {
-	// The name or description for the Amazon CloudWatch metric of this rule.
-	MetricName string `pulumi:"metricName"`
-	// The name or description of the rule.
-	Name *string `pulumi:"name"`
-	// The objects to include in a rule (documented below).
+	MetricName string                   `pulumi:"metricName"`
+	Name       *string                  `pulumi:"name"`
 	Predicates []RateBasedRulePredicate `pulumi:"predicates"`
-	// Valid value is IP.
-	RateKey string `pulumi:"rateKey"`
-	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-	RateLimit int `pulumi:"rateLimit"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	RateKey    string                   `pulumi:"rateKey"`
+	RateLimit  int                      `pulumi:"rateLimit"`
+	Tags       map[string]string        `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RateBasedRule resource.
 type RateBasedRuleArgs struct {
-	// The name or description for the Amazon CloudWatch metric of this rule.
 	MetricName pulumi.StringInput
-	// The name or description of the rule.
-	Name pulumi.StringPtrInput
-	// The objects to include in a rule (documented below).
+	Name       pulumi.StringPtrInput
 	Predicates RateBasedRulePredicateArrayInput
-	// Valid value is IP.
-	RateKey pulumi.StringInput
-	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-	RateLimit pulumi.IntInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	RateKey    pulumi.StringInput
+	RateLimit  pulumi.IntInput
+	Tags       pulumi.StringMapInput
 }
 
 func (RateBasedRuleArgs) ElementType() reflect.Type {

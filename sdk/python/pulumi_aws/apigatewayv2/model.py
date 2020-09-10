@@ -24,36 +24,9 @@ class Model(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Amazon API Gateway Version 2 [model](https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-models).
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigatewayv2.Model("example",
-            api_id=aws_apigatewayv2_api["example"]["id"],
-            content_type="application/json",
-            schema=\"\"\"{
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "title": "ExampleModel",
-          "type": "object",
-          "properties": {
-            "id": { "type": "string" }
-          }
-        }
-        \"\"\")
-        ```
-
+        Create a Model resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] content_type: The content-type for the model, for example, `application/json`.
-        :param pulumi.Input[str] description: The description of the model.
-        :param pulumi.Input[str] name: The name of the model. Must be alphanumeric.
-        :param pulumi.Input[str] schema: The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,11 +78,6 @@ class Model(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] content_type: The content-type for the model, for example, `application/json`.
-        :param pulumi.Input[str] description: The description of the model.
-        :param pulumi.Input[str] name: The name of the model. Must be alphanumeric.
-        :param pulumi.Input[str] schema: The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -125,41 +93,26 @@ class Model(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
-        """
-        The API identifier.
-        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
-        """
-        The content-type for the model, for example, `application/json`.
-        """
         return pulumi.get(self, "content_type")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the model.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the model. Must be alphanumeric.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
-        """
-        The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-        """
         return pulumi.get(self, "schema")
 
     def translate_output_property(self, prop):

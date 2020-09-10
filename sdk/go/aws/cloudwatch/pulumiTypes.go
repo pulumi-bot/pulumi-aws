@@ -11,11 +11,8 @@ import (
 )
 
 type EventPermissionCondition struct {
-	// Key for the condition. Valid values: `aws:PrincipalOrgID`.
-	Key string `pulumi:"key"`
-	// Type of condition. Value values: `StringEquals`.
-	Type string `pulumi:"type"`
-	// Value for the key.
+	Key   string `pulumi:"key"`
+	Type  string `pulumi:"type"`
 	Value string `pulumi:"value"`
 }
 
@@ -31,11 +28,8 @@ type EventPermissionConditionInput interface {
 }
 
 type EventPermissionConditionArgs struct {
-	// Key for the condition. Valid values: `aws:PrincipalOrgID`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Type of condition. Value values: `StringEquals`.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Value for the key.
+	Key   pulumi.StringInput `pulumi:"key"`
+	Type  pulumi.StringInput `pulumi:"type"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -115,18 +109,14 @@ func (o EventPermissionConditionOutput) ToEventPermissionConditionPtrOutputWithC
 		return &v
 	}).(EventPermissionConditionPtrOutput)
 }
-
-// Key for the condition. Valid values: `aws:PrincipalOrgID`.
 func (o EventPermissionConditionOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EventPermissionCondition) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Type of condition. Value values: `StringEquals`.
 func (o EventPermissionConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EventPermissionCondition) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Value for the key.
 func (o EventPermissionConditionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EventPermissionCondition) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -149,7 +139,6 @@ func (o EventPermissionConditionPtrOutput) Elem() EventPermissionConditionOutput
 	return o.ApplyT(func(v *EventPermissionCondition) EventPermissionCondition { return *v }).(EventPermissionConditionOutput)
 }
 
-// Key for the condition. Valid values: `aws:PrincipalOrgID`.
 func (o EventPermissionConditionPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventPermissionCondition) *string {
 		if v == nil {
@@ -159,7 +148,6 @@ func (o EventPermissionConditionPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of condition. Value values: `StringEquals`.
 func (o EventPermissionConditionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventPermissionCondition) *string {
 		if v == nil {
@@ -169,7 +157,6 @@ func (o EventPermissionConditionPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value for the key.
 func (o EventPermissionConditionPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventPermissionCondition) *string {
 		if v == nil {
@@ -180,14 +167,10 @@ func (o EventPermissionConditionPtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 type EventTargetBatchTarget struct {
-	// The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
-	ArraySize *int `pulumi:"arraySize"`
-	// The number of times to attempt to retry, if the job fails. Valid values are 1 to 10.
-	JobAttempts *int `pulumi:"jobAttempts"`
-	// The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
+	ArraySize     *int   `pulumi:"arraySize"`
+	JobAttempts   *int   `pulumi:"jobAttempts"`
 	JobDefinition string `pulumi:"jobDefinition"`
-	// The name to use for this execution of the job, if the target is an AWS Batch job.
-	JobName string `pulumi:"jobName"`
+	JobName       string `pulumi:"jobName"`
 }
 
 // EventTargetBatchTargetInput is an input type that accepts EventTargetBatchTargetArgs and EventTargetBatchTargetOutput values.
@@ -202,14 +185,10 @@ type EventTargetBatchTargetInput interface {
 }
 
 type EventTargetBatchTargetArgs struct {
-	// The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
-	ArraySize pulumi.IntPtrInput `pulumi:"arraySize"`
-	// The number of times to attempt to retry, if the job fails. Valid values are 1 to 10.
-	JobAttempts pulumi.IntPtrInput `pulumi:"jobAttempts"`
-	// The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
+	ArraySize     pulumi.IntPtrInput `pulumi:"arraySize"`
+	JobAttempts   pulumi.IntPtrInput `pulumi:"jobAttempts"`
 	JobDefinition pulumi.StringInput `pulumi:"jobDefinition"`
-	// The name to use for this execution of the job, if the target is an AWS Batch job.
-	JobName pulumi.StringInput `pulumi:"jobName"`
+	JobName       pulumi.StringInput `pulumi:"jobName"`
 }
 
 func (EventTargetBatchTargetArgs) ElementType() reflect.Type {
@@ -288,23 +267,18 @@ func (o EventTargetBatchTargetOutput) ToEventTargetBatchTargetPtrOutputWithConte
 		return &v
 	}).(EventTargetBatchTargetPtrOutput)
 }
-
-// The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
 func (o EventTargetBatchTargetOutput) ArraySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EventTargetBatchTarget) *int { return v.ArraySize }).(pulumi.IntPtrOutput)
 }
 
-// The number of times to attempt to retry, if the job fails. Valid values are 1 to 10.
 func (o EventTargetBatchTargetOutput) JobAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EventTargetBatchTarget) *int { return v.JobAttempts }).(pulumi.IntPtrOutput)
 }
 
-// The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
 func (o EventTargetBatchTargetOutput) JobDefinition() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTargetBatchTarget) string { return v.JobDefinition }).(pulumi.StringOutput)
 }
 
-// The name to use for this execution of the job, if the target is an AWS Batch job.
 func (o EventTargetBatchTargetOutput) JobName() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTargetBatchTarget) string { return v.JobName }).(pulumi.StringOutput)
 }
@@ -327,7 +301,6 @@ func (o EventTargetBatchTargetPtrOutput) Elem() EventTargetBatchTargetOutput {
 	return o.ApplyT(func(v *EventTargetBatchTarget) EventTargetBatchTarget { return *v }).(EventTargetBatchTargetOutput)
 }
 
-// The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
 func (o EventTargetBatchTargetPtrOutput) ArraySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventTargetBatchTarget) *int {
 		if v == nil {
@@ -337,7 +310,6 @@ func (o EventTargetBatchTargetPtrOutput) ArraySize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of times to attempt to retry, if the job fails. Valid values are 1 to 10.
 func (o EventTargetBatchTargetPtrOutput) JobAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventTargetBatchTarget) *int {
 		if v == nil {
@@ -347,7 +319,6 @@ func (o EventTargetBatchTargetPtrOutput) JobAttempts() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
 func (o EventTargetBatchTargetPtrOutput) JobDefinition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetBatchTarget) *string {
 		if v == nil {
@@ -357,7 +328,6 @@ func (o EventTargetBatchTargetPtrOutput) JobDefinition() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name to use for this execution of the job, if the target is an AWS Batch job.
 func (o EventTargetBatchTargetPtrOutput) JobName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetBatchTarget) *string {
 		if v == nil {
@@ -368,18 +338,12 @@ func (o EventTargetBatchTargetPtrOutput) JobName() pulumi.StringPtrOutput {
 }
 
 type EventTargetEcsTarget struct {
-	// Specifies an ECS task group for the task. The maximum length is 255 characters.
-	Group *string `pulumi:"group"`
-	// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. Valid values are EC2 or FARGATE.
-	LaunchType *string `pulumi:"launchType"`
-	// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if launchType is FARGATE because the awsvpc mode is required for Fargate tasks.
+	Group                *string                                   `pulumi:"group"`
+	LaunchType           *string                                   `pulumi:"launchType"`
 	NetworkConfiguration *EventTargetEcsTargetNetworkConfiguration `pulumi:"networkConfiguration"`
-	// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This is used only if LaunchType is FARGATE. For more information about valid platform versions, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
-	PlatformVersion *string `pulumi:"platformVersion"`
-	// The number of tasks to create based on the TaskDefinition. The default is 1.
-	TaskCount *int `pulumi:"taskCount"`
-	// The ARN of the task definition to use if the event target is an Amazon ECS cluster.
-	TaskDefinitionArn string `pulumi:"taskDefinitionArn"`
+	PlatformVersion      *string                                   `pulumi:"platformVersion"`
+	TaskCount            *int                                      `pulumi:"taskCount"`
+	TaskDefinitionArn    string                                    `pulumi:"taskDefinitionArn"`
 }
 
 // EventTargetEcsTargetInput is an input type that accepts EventTargetEcsTargetArgs and EventTargetEcsTargetOutput values.
@@ -394,18 +358,12 @@ type EventTargetEcsTargetInput interface {
 }
 
 type EventTargetEcsTargetArgs struct {
-	// Specifies an ECS task group for the task. The maximum length is 255 characters.
-	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. Valid values are EC2 or FARGATE.
-	LaunchType pulumi.StringPtrInput `pulumi:"launchType"`
-	// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if launchType is FARGATE because the awsvpc mode is required for Fargate tasks.
+	Group                pulumi.StringPtrInput                            `pulumi:"group"`
+	LaunchType           pulumi.StringPtrInput                            `pulumi:"launchType"`
 	NetworkConfiguration EventTargetEcsTargetNetworkConfigurationPtrInput `pulumi:"networkConfiguration"`
-	// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This is used only if LaunchType is FARGATE. For more information about valid platform versions, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
-	PlatformVersion pulumi.StringPtrInput `pulumi:"platformVersion"`
-	// The number of tasks to create based on the TaskDefinition. The default is 1.
-	TaskCount pulumi.IntPtrInput `pulumi:"taskCount"`
-	// The ARN of the task definition to use if the event target is an Amazon ECS cluster.
-	TaskDefinitionArn pulumi.StringInput `pulumi:"taskDefinitionArn"`
+	PlatformVersion      pulumi.StringPtrInput                            `pulumi:"platformVersion"`
+	TaskCount            pulumi.IntPtrInput                               `pulumi:"taskCount"`
+	TaskDefinitionArn    pulumi.StringInput                               `pulumi:"taskDefinitionArn"`
 }
 
 func (EventTargetEcsTargetArgs) ElementType() reflect.Type {
@@ -484,33 +442,26 @@ func (o EventTargetEcsTargetOutput) ToEventTargetEcsTargetPtrOutputWithContext(c
 		return &v
 	}).(EventTargetEcsTargetPtrOutput)
 }
-
-// Specifies an ECS task group for the task. The maximum length is 255 characters.
 func (o EventTargetEcsTargetOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventTargetEcsTarget) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. Valid values are EC2 or FARGATE.
 func (o EventTargetEcsTargetOutput) LaunchType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventTargetEcsTarget) *string { return v.LaunchType }).(pulumi.StringPtrOutput)
 }
 
-// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if launchType is FARGATE because the awsvpc mode is required for Fargate tasks.
 func (o EventTargetEcsTargetOutput) NetworkConfiguration() EventTargetEcsTargetNetworkConfigurationPtrOutput {
 	return o.ApplyT(func(v EventTargetEcsTarget) *EventTargetEcsTargetNetworkConfiguration { return v.NetworkConfiguration }).(EventTargetEcsTargetNetworkConfigurationPtrOutput)
 }
 
-// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This is used only if LaunchType is FARGATE. For more information about valid platform versions, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 func (o EventTargetEcsTargetOutput) PlatformVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventTargetEcsTarget) *string { return v.PlatformVersion }).(pulumi.StringPtrOutput)
 }
 
-// The number of tasks to create based on the TaskDefinition. The default is 1.
 func (o EventTargetEcsTargetOutput) TaskCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EventTargetEcsTarget) *int { return v.TaskCount }).(pulumi.IntPtrOutput)
 }
 
-// The ARN of the task definition to use if the event target is an Amazon ECS cluster.
 func (o EventTargetEcsTargetOutput) TaskDefinitionArn() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTargetEcsTarget) string { return v.TaskDefinitionArn }).(pulumi.StringOutput)
 }
@@ -533,7 +484,6 @@ func (o EventTargetEcsTargetPtrOutput) Elem() EventTargetEcsTargetOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) EventTargetEcsTarget { return *v }).(EventTargetEcsTargetOutput)
 }
 
-// Specifies an ECS task group for the task. The maximum length is 255 characters.
 func (o EventTargetEcsTargetPtrOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) *string {
 		if v == nil {
@@ -543,7 +493,6 @@ func (o EventTargetEcsTargetPtrOutput) Group() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. Valid values are EC2 or FARGATE.
 func (o EventTargetEcsTargetPtrOutput) LaunchType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) *string {
 		if v == nil {
@@ -553,7 +502,6 @@ func (o EventTargetEcsTargetPtrOutput) LaunchType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if launchType is FARGATE because the awsvpc mode is required for Fargate tasks.
 func (o EventTargetEcsTargetPtrOutput) NetworkConfiguration() EventTargetEcsTargetNetworkConfigurationPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) *EventTargetEcsTargetNetworkConfiguration {
 		if v == nil {
@@ -563,7 +511,6 @@ func (o EventTargetEcsTargetPtrOutput) NetworkConfiguration() EventTargetEcsTarg
 	}).(EventTargetEcsTargetNetworkConfigurationPtrOutput)
 }
 
-// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This is used only if LaunchType is FARGATE. For more information about valid platform versions, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 func (o EventTargetEcsTargetPtrOutput) PlatformVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) *string {
 		if v == nil {
@@ -573,7 +520,6 @@ func (o EventTargetEcsTargetPtrOutput) PlatformVersion() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of tasks to create based on the TaskDefinition. The default is 1.
 func (o EventTargetEcsTargetPtrOutput) TaskCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) *int {
 		if v == nil {
@@ -583,7 +529,6 @@ func (o EventTargetEcsTargetPtrOutput) TaskCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The ARN of the task definition to use if the event target is an Amazon ECS cluster.
 func (o EventTargetEcsTargetPtrOutput) TaskDefinitionArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTarget) *string {
 		if v == nil {
@@ -594,12 +539,9 @@ func (o EventTargetEcsTargetPtrOutput) TaskDefinitionArn() pulumi.StringPtrOutpu
 }
 
 type EventTargetEcsTargetNetworkConfiguration struct {
-	// Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
-	AssignPublicIp *bool `pulumi:"assignPublicIp"`
-	// The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
+	AssignPublicIp *bool    `pulumi:"assignPublicIp"`
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The subnets associated with the task or service.
-	Subnets []string `pulumi:"subnets"`
+	Subnets        []string `pulumi:"subnets"`
 }
 
 // EventTargetEcsTargetNetworkConfigurationInput is an input type that accepts EventTargetEcsTargetNetworkConfigurationArgs and EventTargetEcsTargetNetworkConfigurationOutput values.
@@ -614,12 +556,9 @@ type EventTargetEcsTargetNetworkConfigurationInput interface {
 }
 
 type EventTargetEcsTargetNetworkConfigurationArgs struct {
-	// Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
-	AssignPublicIp pulumi.BoolPtrInput `pulumi:"assignPublicIp"`
-	// The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
+	AssignPublicIp pulumi.BoolPtrInput     `pulumi:"assignPublicIp"`
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
-	// The subnets associated with the task or service.
-	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+	Subnets        pulumi.StringArrayInput `pulumi:"subnets"`
 }
 
 func (EventTargetEcsTargetNetworkConfigurationArgs) ElementType() reflect.Type {
@@ -698,18 +637,14 @@ func (o EventTargetEcsTargetNetworkConfigurationOutput) ToEventTargetEcsTargetNe
 		return &v
 	}).(EventTargetEcsTargetNetworkConfigurationPtrOutput)
 }
-
-// Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
 func (o EventTargetEcsTargetNetworkConfigurationOutput) AssignPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EventTargetEcsTargetNetworkConfiguration) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
 }
 
-// The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
 func (o EventTargetEcsTargetNetworkConfigurationOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventTargetEcsTargetNetworkConfiguration) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
-// The subnets associated with the task or service.
 func (o EventTargetEcsTargetNetworkConfigurationOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventTargetEcsTargetNetworkConfiguration) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
@@ -732,7 +667,6 @@ func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) Elem() EventTargetEcs
 	return o.ApplyT(func(v *EventTargetEcsTargetNetworkConfiguration) EventTargetEcsTargetNetworkConfiguration { return *v }).(EventTargetEcsTargetNetworkConfigurationOutput)
 }
 
-// Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
 func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EventTargetEcsTargetNetworkConfiguration) *bool {
 		if v == nil {
@@ -742,7 +676,6 @@ func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) AssignPublicIp() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
 func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EventTargetEcsTargetNetworkConfiguration) []string {
 		if v == nil {
@@ -752,7 +685,6 @@ func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) SecurityGroups() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The subnets associated with the task or service.
 func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EventTargetEcsTargetNetworkConfiguration) []string {
 		if v == nil {
@@ -763,10 +695,8 @@ func (o EventTargetEcsTargetNetworkConfigurationPtrOutput) Subnets() pulumi.Stri
 }
 
 type EventTargetInputTransformer struct {
-	// Key value pairs specified in the form of JSONPath (for example, time = $.time)
-	InputPaths map[string]string `pulumi:"inputPaths"`
-	// Structure containing the template body.
-	InputTemplate string `pulumi:"inputTemplate"`
+	InputPaths    map[string]string `pulumi:"inputPaths"`
+	InputTemplate string            `pulumi:"inputTemplate"`
 }
 
 // EventTargetInputTransformerInput is an input type that accepts EventTargetInputTransformerArgs and EventTargetInputTransformerOutput values.
@@ -781,10 +711,8 @@ type EventTargetInputTransformerInput interface {
 }
 
 type EventTargetInputTransformerArgs struct {
-	// Key value pairs specified in the form of JSONPath (for example, time = $.time)
-	InputPaths pulumi.StringMapInput `pulumi:"inputPaths"`
-	// Structure containing the template body.
-	InputTemplate pulumi.StringInput `pulumi:"inputTemplate"`
+	InputPaths    pulumi.StringMapInput `pulumi:"inputPaths"`
+	InputTemplate pulumi.StringInput    `pulumi:"inputTemplate"`
 }
 
 func (EventTargetInputTransformerArgs) ElementType() reflect.Type {
@@ -863,13 +791,10 @@ func (o EventTargetInputTransformerOutput) ToEventTargetInputTransformerPtrOutpu
 		return &v
 	}).(EventTargetInputTransformerPtrOutput)
 }
-
-// Key value pairs specified in the form of JSONPath (for example, time = $.time)
 func (o EventTargetInputTransformerOutput) InputPaths() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EventTargetInputTransformer) map[string]string { return v.InputPaths }).(pulumi.StringMapOutput)
 }
 
-// Structure containing the template body.
 func (o EventTargetInputTransformerOutput) InputTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTargetInputTransformer) string { return v.InputTemplate }).(pulumi.StringOutput)
 }
@@ -892,7 +817,6 @@ func (o EventTargetInputTransformerPtrOutput) Elem() EventTargetInputTransformer
 	return o.ApplyT(func(v *EventTargetInputTransformer) EventTargetInputTransformer { return *v }).(EventTargetInputTransformerOutput)
 }
 
-// Key value pairs specified in the form of JSONPath (for example, time = $.time)
 func (o EventTargetInputTransformerPtrOutput) InputPaths() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EventTargetInputTransformer) map[string]string {
 		if v == nil {
@@ -902,7 +826,6 @@ func (o EventTargetInputTransformerPtrOutput) InputPaths() pulumi.StringMapOutpu
 	}).(pulumi.StringMapOutput)
 }
 
-// Structure containing the template body.
 func (o EventTargetInputTransformerPtrOutput) InputTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetInputTransformer) *string {
 		if v == nil {
@@ -913,7 +836,6 @@ func (o EventTargetInputTransformerPtrOutput) InputTemplate() pulumi.StringPtrOu
 }
 
 type EventTargetKinesisTarget struct {
-	// The JSON path to be extracted from the event and used as the partition key.
 	PartitionKeyPath *string `pulumi:"partitionKeyPath"`
 }
 
@@ -929,7 +851,6 @@ type EventTargetKinesisTargetInput interface {
 }
 
 type EventTargetKinesisTargetArgs struct {
-	// The JSON path to be extracted from the event and used as the partition key.
 	PartitionKeyPath pulumi.StringPtrInput `pulumi:"partitionKeyPath"`
 }
 
@@ -1009,8 +930,6 @@ func (o EventTargetKinesisTargetOutput) ToEventTargetKinesisTargetPtrOutputWithC
 		return &v
 	}).(EventTargetKinesisTargetPtrOutput)
 }
-
-// The JSON path to be extracted from the event and used as the partition key.
 func (o EventTargetKinesisTargetOutput) PartitionKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventTargetKinesisTarget) *string { return v.PartitionKeyPath }).(pulumi.StringPtrOutput)
 }
@@ -1033,7 +952,6 @@ func (o EventTargetKinesisTargetPtrOutput) Elem() EventTargetKinesisTargetOutput
 	return o.ApplyT(func(v *EventTargetKinesisTarget) EventTargetKinesisTarget { return *v }).(EventTargetKinesisTargetOutput)
 }
 
-// The JSON path to be extracted from the event and used as the partition key.
 func (o EventTargetKinesisTargetPtrOutput) PartitionKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetKinesisTarget) *string {
 		if v == nil {
@@ -1044,9 +962,7 @@ func (o EventTargetKinesisTargetPtrOutput) PartitionKeyPath() pulumi.StringPtrOu
 }
 
 type EventTargetRunCommandTarget struct {
-	// Can be either `tag:tag-key` or `InstanceIds`.
-	Key string `pulumi:"key"`
-	// If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
+	Key    string   `pulumi:"key"`
 	Values []string `pulumi:"values"`
 }
 
@@ -1062,9 +978,7 @@ type EventTargetRunCommandTargetInput interface {
 }
 
 type EventTargetRunCommandTargetArgs struct {
-	// Can be either `tag:tag-key` or `InstanceIds`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
+	Key    pulumi.StringInput      `pulumi:"key"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1119,12 +1033,10 @@ func (o EventTargetRunCommandTargetOutput) ToEventTargetRunCommandTargetOutputWi
 	return o
 }
 
-// Can be either `tag:tag-key` or `InstanceIds`.
 func (o EventTargetRunCommandTargetOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTargetRunCommandTarget) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
 func (o EventTargetRunCommandTargetOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventTargetRunCommandTarget) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1150,7 +1062,6 @@ func (o EventTargetRunCommandTargetArrayOutput) Index(i pulumi.IntInput) EventTa
 }
 
 type EventTargetSqsTarget struct {
-	// The FIFO message group ID to use as the target.
 	MessageGroupId *string `pulumi:"messageGroupId"`
 }
 
@@ -1166,7 +1077,6 @@ type EventTargetSqsTargetInput interface {
 }
 
 type EventTargetSqsTargetArgs struct {
-	// The FIFO message group ID to use as the target.
 	MessageGroupId pulumi.StringPtrInput `pulumi:"messageGroupId"`
 }
 
@@ -1246,8 +1156,6 @@ func (o EventTargetSqsTargetOutput) ToEventTargetSqsTargetPtrOutputWithContext(c
 		return &v
 	}).(EventTargetSqsTargetPtrOutput)
 }
-
-// The FIFO message group ID to use as the target.
 func (o EventTargetSqsTargetOutput) MessageGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventTargetSqsTarget) *string { return v.MessageGroupId }).(pulumi.StringPtrOutput)
 }
@@ -1270,7 +1178,6 @@ func (o EventTargetSqsTargetPtrOutput) Elem() EventTargetSqsTargetOutput {
 	return o.ApplyT(func(v *EventTargetSqsTarget) EventTargetSqsTarget { return *v }).(EventTargetSqsTargetOutput)
 }
 
-// The FIFO message group ID to use as the target.
 func (o EventTargetSqsTargetPtrOutput) MessageGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTargetSqsTarget) *string {
 		if v == nil {
@@ -1281,14 +1188,10 @@ func (o EventTargetSqsTargetPtrOutput) MessageGroupId() pulumi.StringPtrOutput {
 }
 
 type LogMetricFilterMetricTransformation struct {
-	// The value to emit when a filter pattern does not match a log event.
 	DefaultValue *string `pulumi:"defaultValue"`
-	// The name of the CloudWatch metric to which the monitored log information should be published (e.g. `ErrorCount`)
-	Name string `pulumi:"name"`
-	// The destination namespace of the CloudWatch metric.
-	Namespace string `pulumi:"namespace"`
-	// What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
-	Value string `pulumi:"value"`
+	Name         string  `pulumi:"name"`
+	Namespace    string  `pulumi:"namespace"`
+	Value        string  `pulumi:"value"`
 }
 
 // LogMetricFilterMetricTransformationInput is an input type that accepts LogMetricFilterMetricTransformationArgs and LogMetricFilterMetricTransformationOutput values.
@@ -1303,14 +1206,10 @@ type LogMetricFilterMetricTransformationInput interface {
 }
 
 type LogMetricFilterMetricTransformationArgs struct {
-	// The value to emit when a filter pattern does not match a log event.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
-	// The name of the CloudWatch metric to which the monitored log information should be published (e.g. `ErrorCount`)
-	Name pulumi.StringInput `pulumi:"name"`
-	// The destination namespace of the CloudWatch metric.
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
-	Value pulumi.StringInput `pulumi:"value"`
+	Name         pulumi.StringInput    `pulumi:"name"`
+	Namespace    pulumi.StringInput    `pulumi:"namespace"`
+	Value        pulumi.StringInput    `pulumi:"value"`
 }
 
 func (LogMetricFilterMetricTransformationArgs) ElementType() reflect.Type {
@@ -1389,23 +1288,18 @@ func (o LogMetricFilterMetricTransformationOutput) ToLogMetricFilterMetricTransf
 		return &v
 	}).(LogMetricFilterMetricTransformationPtrOutput)
 }
-
-// The value to emit when a filter pattern does not match a log event.
 func (o LogMetricFilterMetricTransformationOutput) DefaultValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogMetricFilterMetricTransformation) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
-// The name of the CloudWatch metric to which the monitored log information should be published (e.g. `ErrorCount`)
 func (o LogMetricFilterMetricTransformationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMetricFilterMetricTransformation) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The destination namespace of the CloudWatch metric.
 func (o LogMetricFilterMetricTransformationOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMetricFilterMetricTransformation) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
 func (o LogMetricFilterMetricTransformationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMetricFilterMetricTransformation) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1428,7 +1322,6 @@ func (o LogMetricFilterMetricTransformationPtrOutput) Elem() LogMetricFilterMetr
 	return o.ApplyT(func(v *LogMetricFilterMetricTransformation) LogMetricFilterMetricTransformation { return *v }).(LogMetricFilterMetricTransformationOutput)
 }
 
-// The value to emit when a filter pattern does not match a log event.
 func (o LogMetricFilterMetricTransformationPtrOutput) DefaultValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogMetricFilterMetricTransformation) *string {
 		if v == nil {
@@ -1438,7 +1331,6 @@ func (o LogMetricFilterMetricTransformationPtrOutput) DefaultValue() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the CloudWatch metric to which the monitored log information should be published (e.g. `ErrorCount`)
 func (o LogMetricFilterMetricTransformationPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogMetricFilterMetricTransformation) *string {
 		if v == nil {
@@ -1448,7 +1340,6 @@ func (o LogMetricFilterMetricTransformationPtrOutput) Name() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The destination namespace of the CloudWatch metric.
 func (o LogMetricFilterMetricTransformationPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogMetricFilterMetricTransformation) *string {
 		if v == nil {
@@ -1458,7 +1349,6 @@ func (o LogMetricFilterMetricTransformationPtrOutput) Namespace() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
 func (o LogMetricFilterMetricTransformationPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogMetricFilterMetricTransformation) *string {
 		if v == nil {
@@ -1469,16 +1359,11 @@ func (o LogMetricFilterMetricTransformationPtrOutput) Value() pulumi.StringPtrOu
 }
 
 type MetricAlarmMetricQuery struct {
-	// The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the id of the other metrics to refer to those metrics, and can also use the id of other expressions to use the result of those expressions. For more information about metric math expressions, see Metric Math Syntax and Functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax).
-	Expression *string `pulumi:"expression"`
-	// A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
-	Id string `pulumi:"id"`
-	// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-	Label *string `pulumi:"label"`
-	// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-	Metric *MetricAlarmMetricQueryMetric `pulumi:"metric"`
-	// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
-	ReturnData *bool `pulumi:"returnData"`
+	Expression *string                       `pulumi:"expression"`
+	Id         string                        `pulumi:"id"`
+	Label      *string                       `pulumi:"label"`
+	Metric     *MetricAlarmMetricQueryMetric `pulumi:"metric"`
+	ReturnData *bool                         `pulumi:"returnData"`
 }
 
 // MetricAlarmMetricQueryInput is an input type that accepts MetricAlarmMetricQueryArgs and MetricAlarmMetricQueryOutput values.
@@ -1493,16 +1378,11 @@ type MetricAlarmMetricQueryInput interface {
 }
 
 type MetricAlarmMetricQueryArgs struct {
-	// The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the id of the other metrics to refer to those metrics, and can also use the id of other expressions to use the result of those expressions. For more information about metric math expressions, see Metric Math Syntax and Functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax).
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
-	Id pulumi.StringInput `pulumi:"id"`
-	// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-	Metric MetricAlarmMetricQueryMetricPtrInput `pulumi:"metric"`
-	// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
-	ReturnData pulumi.BoolPtrInput `pulumi:"returnData"`
+	Expression pulumi.StringPtrInput                `pulumi:"expression"`
+	Id         pulumi.StringInput                   `pulumi:"id"`
+	Label      pulumi.StringPtrInput                `pulumi:"label"`
+	Metric     MetricAlarmMetricQueryMetricPtrInput `pulumi:"metric"`
+	ReturnData pulumi.BoolPtrInput                  `pulumi:"returnData"`
 }
 
 func (MetricAlarmMetricQueryArgs) ElementType() reflect.Type {
@@ -1556,27 +1436,22 @@ func (o MetricAlarmMetricQueryOutput) ToMetricAlarmMetricQueryOutputWithContext(
 	return o
 }
 
-// The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the id of the other metrics to refer to those metrics, and can also use the id of other expressions to use the result of those expressions. For more information about metric math expressions, see Metric Math Syntax and Functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax).
 func (o MetricAlarmMetricQueryOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
 func (o MetricAlarmMetricQueryOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
 func (o MetricAlarmMetricQueryOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
 func (o MetricAlarmMetricQueryOutput) Metric() MetricAlarmMetricQueryMetricPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *MetricAlarmMetricQueryMetric { return v.Metric }).(MetricAlarmMetricQueryMetricPtrOutput)
 }
 
-// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
 func (o MetricAlarmMetricQueryOutput) ReturnData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *bool { return v.ReturnData }).(pulumi.BoolPtrOutput)
 }
@@ -1602,21 +1477,12 @@ func (o MetricAlarmMetricQueryArrayOutput) Index(i pulumi.IntInput) MetricAlarmM
 }
 
 type MetricAlarmMetricQueryMetric struct {
-	// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	Dimensions map[string]string `pulumi:"dimensions"`
-	// The name for this metric.
-	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName string `pulumi:"metricName"`
-	// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
-	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	Namespace *string `pulumi:"namespace"`
-	// The period in seconds over which the specified `stat` is applied.
-	Period int `pulumi:"period"`
-	// The statistic to apply to this metric.
-	// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
-	Stat string `pulumi:"stat"`
-	// The unit for this metric.
-	Unit *string `pulumi:"unit"`
+	MetricName string            `pulumi:"metricName"`
+	Namespace  *string           `pulumi:"namespace"`
+	Period     int               `pulumi:"period"`
+	Stat       string            `pulumi:"stat"`
+	Unit       *string           `pulumi:"unit"`
 }
 
 // MetricAlarmMetricQueryMetricInput is an input type that accepts MetricAlarmMetricQueryMetricArgs and MetricAlarmMetricQueryMetricOutput values.
@@ -1631,21 +1497,12 @@ type MetricAlarmMetricQueryMetricInput interface {
 }
 
 type MetricAlarmMetricQueryMetricArgs struct {
-	// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	Dimensions pulumi.StringMapInput `pulumi:"dimensions"`
-	// The name for this metric.
-	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName pulumi.StringInput `pulumi:"metricName"`
-	// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
-	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// The period in seconds over which the specified `stat` is applied.
-	Period pulumi.IntInput `pulumi:"period"`
-	// The statistic to apply to this metric.
-	// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
-	Stat pulumi.StringInput `pulumi:"stat"`
-	// The unit for this metric.
-	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	MetricName pulumi.StringInput    `pulumi:"metricName"`
+	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	Period     pulumi.IntInput       `pulumi:"period"`
+	Stat       pulumi.StringInput    `pulumi:"stat"`
+	Unit       pulumi.StringPtrInput `pulumi:"unit"`
 }
 
 func (MetricAlarmMetricQueryMetricArgs) ElementType() reflect.Type {
@@ -1724,36 +1581,26 @@ func (o MetricAlarmMetricQueryMetricOutput) ToMetricAlarmMetricQueryMetricPtrOut
 		return &v
 	}).(MetricAlarmMetricQueryMetricPtrOutput)
 }
-
-// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricOutput) Dimensions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
-// The name for this metric.
-// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
-// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
-// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// The period in seconds over which the specified `stat` is applied.
 func (o MetricAlarmMetricQueryMetricOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) int { return v.Period }).(pulumi.IntOutput)
 }
 
-// The statistic to apply to this metric.
-// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
 func (o MetricAlarmMetricQueryMetricOutput) Stat() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) string { return v.Stat }).(pulumi.StringOutput)
 }
 
-// The unit for this metric.
 func (o MetricAlarmMetricQueryMetricOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
@@ -1776,7 +1623,6 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Elem() MetricAlarmMetricQueryMetr
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) MetricAlarmMetricQueryMetric { return *v }).(MetricAlarmMetricQueryMetricOutput)
 }
 
-// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricPtrOutput) Dimensions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) map[string]string {
 		if v == nil {
@@ -1786,8 +1632,6 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Dimensions() pulumi.StringMapOutp
 	}).(pulumi.StringMapOutput)
 }
 
-// The name for this metric.
-// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricPtrOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) *string {
 		if v == nil {
@@ -1797,8 +1641,6 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) MetricName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
-// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) *string {
 		if v == nil {
@@ -1808,7 +1650,6 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Namespace() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The period in seconds over which the specified `stat` is applied.
 func (o MetricAlarmMetricQueryMetricPtrOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) *int {
 		if v == nil {
@@ -1818,8 +1659,6 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Period() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The statistic to apply to this metric.
-// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
 func (o MetricAlarmMetricQueryMetricPtrOutput) Stat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) *string {
 		if v == nil {
@@ -1829,7 +1668,6 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Stat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The unit for this metric.
 func (o MetricAlarmMetricQueryMetricPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) *string {
 		if v == nil {

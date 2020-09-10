@@ -6,52 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create a VPC routing table.
- *
- * > **NOTE on Route Tables and Routes:** This provider currently
- * provides both a standalone Route resource and a Route Table resource with routes
- * defined in-line. At this time you cannot use a Route Table with in-line routes
- * in conjunction with any Route resources. Doing so will cause
- * a conflict of rule settings and will overwrite rules.
- *
- * > **NOTE on `gatewayId` and `natGatewayId`:** The AWS API is very forgiving with these two
- * attributes and the `aws.ec2.RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
- * This _will_ lead to a permanent diff between your configuration and statefile, as the API returns the correct
- * parameters in the returned route table. If you're experiencing constant diffs in your `aws.ec2.RouteTable` resources,
- * the first thing to check is whether or not you're specifying a NAT ID instead of a Gateway ID, or vice-versa.
- *
- * > **NOTE on `propagatingVgws` and the `aws.ec2.VpnGatewayRoutePropagation` resource:**
- * If the `propagatingVgws` argument is present, it's not supported to _also_
- * define route propagations using `aws.ec2.VpnGatewayRoutePropagation`, since
- * this resource will delete any propagating gateways not explicitly listed in
- * `propagatingVgws`. Omit this argument when defining route propagation using
- * the separate resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const routeTable = new aws.ec2.RouteTable("routeTable", {
- *     vpcId: aws_vpc["default"].id,
- *     routes: [
- *         {
- *             cidrBlock: "10.0.1.0/24",
- *             gatewayId: aws_internet_gateway.main.id,
- *         },
- *         {
- *             ipv6CidrBlock: "::/0",
- *             egressOnlyGatewayId: aws_egress_only_internet_gateway.foo.id,
- *         },
- *     ],
- *     tags: {
- *         Name: "main",
- *     },
- * });
- * ```
- */
 export class RouteTable extends pulumi.CustomResource {
     /**
      * Get an existing RouteTable resource's state with the given name, ID, and optional extra
@@ -80,25 +34,10 @@ export class RouteTable extends pulumi.CustomResource {
         return obj['__pulumiType'] === RouteTable.__pulumiType;
     }
 
-    /**
-     * The ID of the AWS account that owns the route table.
-     */
     public /*out*/ readonly ownerId!: pulumi.Output<string>;
-    /**
-     * A list of virtual gateways for propagation.
-     */
     public readonly propagatingVgws!: pulumi.Output<string[]>;
-    /**
-     * A list of route objects. Their keys are documented below.
-     */
     public readonly routes!: pulumi.Output<outputs.ec2.RouteTableRoute[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The VPC ID.
-     */
     public readonly vpcId!: pulumi.Output<string>;
 
     /**
@@ -144,25 +83,10 @@ export class RouteTable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouteTable resources.
  */
 export interface RouteTableState {
-    /**
-     * The ID of the AWS account that owns the route table.
-     */
     readonly ownerId?: pulumi.Input<string>;
-    /**
-     * A list of virtual gateways for propagation.
-     */
     readonly propagatingVgws?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of route objects. Their keys are documented below.
-     */
     readonly routes?: pulumi.Input<pulumi.Input<inputs.ec2.RouteTableRoute>[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The VPC ID.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -170,20 +94,8 @@ export interface RouteTableState {
  * The set of arguments for constructing a RouteTable resource.
  */
 export interface RouteTableArgs {
-    /**
-     * A list of virtual gateways for propagation.
-     */
     readonly propagatingVgws?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of route objects. Their keys are documented below.
-     */
     readonly routes?: pulumi.Input<pulumi.Input<inputs.ec2.RouteTableRoute>[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The VPC ID.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

@@ -23,45 +23,9 @@ class SubnetGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.1.0.0/16")
-        foo_subnet = aws.ec2.Subnet("fooSubnet",
-            cidr_block="10.1.1.0/24",
-            availability_zone="us-west-2a",
-            vpc_id=foo_vpc.id,
-            tags={
-                "Name": "tf-dbsubnet-test-1",
-            })
-        bar = aws.ec2.Subnet("bar",
-            cidr_block="10.1.2.0/24",
-            availability_zone="us-west-2b",
-            vpc_id=foo_vpc.id,
-            tags={
-                "Name": "tf-dbsubnet-test-2",
-            })
-        foo_subnet_group = aws.redshift.SubnetGroup("fooSubnetGroup",
-            subnet_ids=[
-                foo_subnet.id,
-                bar.id,
-            ],
-            tags={
-                "environment": "Production",
-            })
-        ```
-
+        Create a SubnetGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the Redshift Subnet group. Defaults to "Managed by Pulumi".
-        :param pulumi.Input[str] name: The name of the Redshift Subnet group.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: An array of VPC subnet IDs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,11 +75,6 @@ class SubnetGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the Redshift Subnet group name
-        :param pulumi.Input[str] description: The description of the Redshift Subnet group. Defaults to "Managed by Pulumi".
-        :param pulumi.Input[str] name: The name of the Redshift Subnet group.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: An array of VPC subnet IDs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -131,41 +90,26 @@ class SubnetGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the Redshift Subnet group name
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        The description of the Redshift Subnet group. Defaults to "Managed by Pulumi".
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the Redshift Subnet group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[List[str]]:
-        """
-        An array of VPC subnet IDs.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

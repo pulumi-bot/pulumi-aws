@@ -9,55 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Provides a resource to create a SES template.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myTemplate = new Aws.Ses.Template("myTemplate", new Aws.Ses.TemplateArgs
-    ///         {
-    ///             Html = "&lt;h1&gt;Hello {{name}},&lt;/h1&gt;&lt;p&gt;Your favorite animal is {{favoriteanimal}}.&lt;/p&gt;",
-    ///             Subject = "Greetings, {{name}}!",
-    ///             Text = @"Hello {{name}},
-    /// Your favorite animal is {{favoriteanimal}}.
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Template : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-        /// </summary>
         [Output("html")]
         public Output<string?> Html { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The subject line of the email.
-        /// </summary>
         [Output("subject")]
         public Output<string?> Subject { get; private set; } = null!;
 
-        /// <summary>
-        /// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-        /// </summary>
         [Output("text")]
         public Output<string?> Text { get; private set; } = null!;
 
@@ -107,27 +69,15 @@ namespace Pulumi.Aws.Ses
 
     public sealed class TemplateArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-        /// </summary>
         [Input("html")]
         public Input<string>? Html { get; set; }
 
-        /// <summary>
-        /// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The subject line of the email.
-        /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 
-        /// <summary>
-        /// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-        /// </summary>
         [Input("text")]
         public Input<string>? Text { get; set; }
 
@@ -138,27 +88,15 @@ namespace Pulumi.Aws.Ses
 
     public sealed class TemplateState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-        /// </summary>
         [Input("html")]
         public Input<string>? Html { get; set; }
 
-        /// <summary>
-        /// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The subject line of the email.
-        /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 
-        /// <summary>
-        /// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-        /// </summary>
         [Input("text")]
         public Input<string>? Text { get; set; }
 

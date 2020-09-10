@@ -9,40 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Manages a VPC Endpoint Route Table Association
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.VpcEndpointRouteTableAssociation("example", new Aws.Ec2.VpcEndpointRouteTableAssociationArgs
-    ///         {
-    ///             RouteTableId = aws_route_table.Example.Id,
-    ///             VpcEndpointId = aws_vpc_endpoint.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpcEndpointRouteTableAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-        /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-        /// </summary>
         [Output("vpcEndpointId")]
         public Output<string> VpcEndpointId { get; private set; } = null!;
 
@@ -92,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcEndpointRouteTableAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-        /// </summary>
         [Input("routeTableId", required: true)]
         public Input<string> RouteTableId { get; set; } = null!;
 
-        /// <summary>
-        /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-        /// </summary>
         [Input("vpcEndpointId", required: true)]
         public Input<string> VpcEndpointId { get; set; } = null!;
 
@@ -111,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcEndpointRouteTableAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-        /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
-        /// <summary>
-        /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-        /// </summary>
         [Input("vpcEndpointId")]
         public Input<string>? VpcEndpointId { get; set; }
 

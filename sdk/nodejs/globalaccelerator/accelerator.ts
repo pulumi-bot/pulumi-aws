@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a Global Accelerator accelerator.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.globalaccelerator.Accelerator("example", {
- *     attributes: {
- *         flowLogsEnabled: true,
- *         flowLogsS3Bucket: "example-bucket",
- *         flowLogsS3Prefix: "flow-logs/",
- *     },
- *     enabled: true,
- *     ipAddressType: "IPV4",
- * });
- * ```
- */
 export class Accelerator extends pulumi.CustomResource {
     /**
      * Get an existing Accelerator resource's state with the given name, ID, and optional extra
@@ -54,37 +34,13 @@ export class Accelerator extends pulumi.CustomResource {
         return obj['__pulumiType'] === Accelerator.__pulumiType;
     }
 
-    /**
-     * The attributes of the accelerator. Fields documented below.
-     */
     public readonly attributes!: pulumi.Output<outputs.globalaccelerator.AcceleratorAttributes | undefined>;
-    /**
-     * The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
-     * * `hostedZoneId` --  The Global Accelerator Route 53 zone ID that can be used to
-     * route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-     * is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
-     */
     public /*out*/ readonly dnsName!: pulumi.Output<string>;
-    /**
-     * Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly hostedZoneId!: pulumi.Output<string>;
-    /**
-     * The value for the address type must be `IPV4`.
-     */
     public readonly ipAddressType!: pulumi.Output<string | undefined>;
-    /**
-     * IP address set associated with the accelerator.
-     */
     public /*out*/ readonly ipSets!: pulumi.Output<outputs.globalaccelerator.AcceleratorIpSet[]>;
-    /**
-     * The name of the accelerator.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -133,37 +89,13 @@ export class Accelerator extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Accelerator resources.
  */
 export interface AcceleratorState {
-    /**
-     * The attributes of the accelerator. Fields documented below.
-     */
     readonly attributes?: pulumi.Input<inputs.globalaccelerator.AcceleratorAttributes>;
-    /**
-     * The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
-     * * `hostedZoneId` --  The Global Accelerator Route 53 zone ID that can be used to
-     * route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-     * is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
-     */
     readonly dnsName?: pulumi.Input<string>;
-    /**
-     * Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
-     */
     readonly enabled?: pulumi.Input<boolean>;
     readonly hostedZoneId?: pulumi.Input<string>;
-    /**
-     * The value for the address type must be `IPV4`.
-     */
     readonly ipAddressType?: pulumi.Input<string>;
-    /**
-     * IP address set associated with the accelerator.
-     */
     readonly ipSets?: pulumi.Input<pulumi.Input<inputs.globalaccelerator.AcceleratorIpSet>[]>;
-    /**
-     * The name of the accelerator.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -171,24 +103,9 @@ export interface AcceleratorState {
  * The set of arguments for constructing a Accelerator resource.
  */
 export interface AcceleratorArgs {
-    /**
-     * The attributes of the accelerator. Fields documented below.
-     */
     readonly attributes?: pulumi.Input<inputs.globalaccelerator.AcceleratorAttributes>;
-    /**
-     * Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * The value for the address type must be `IPV4`.
-     */
     readonly ipAddressType?: pulumi.Input<string>;
-    /**
-     * The name of the accelerator.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

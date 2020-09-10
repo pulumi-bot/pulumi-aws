@@ -36,17 +36,11 @@ class GetLedgerResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name (ARN) of the ledger.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> bool:
-        """
-        Deletion protection on the QLDB Ledger instance. Set to `true` by default.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property
@@ -78,19 +72,7 @@ class AwaitableGetLedgerResult(GetLedgerResult):
 def get_ledger(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLedgerResult:
     """
-    Use this data source to fetch information about a Quantum Ledger Database.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.qldb.get_ledger(name="an_example_ledger")
-    ```
-
-
-    :param str name: The friendly name of the ledger to match.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

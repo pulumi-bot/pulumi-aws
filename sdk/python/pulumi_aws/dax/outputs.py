@@ -21,9 +21,6 @@ class ClusterNode(dict):
                  availability_zone: Optional[str] = None,
                  id: Optional[str] = None,
                  port: Optional[float] = None):
-        """
-        :param float port: The port used by the configuration endpoint
-        """
         if address is not None:
             pulumi.set(__self__, "address", address)
         if availability_zone is not None:
@@ -51,9 +48,6 @@ class ClusterNode(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[float]:
-        """
-        The port used by the configuration endpoint
-        """
         return pulumi.get(self, "port")
 
     def _translate_property(self, prop):
@@ -64,18 +58,12 @@ class ClusterNode(dict):
 class ClusterServerSideEncryption(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
-        """
-        :param bool enabled: Whether to enable encryption at rest. Defaults to `false`.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Whether to enable encryption at rest. Defaults to `false`.
-        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -87,27 +75,17 @@ class ParameterGroupParameter(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
-        """
-        :param str name: The name of the parameter.
-        :param str value: The value for the parameter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the parameter.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The value for the parameter.
-        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):

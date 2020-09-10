@@ -27,27 +27,9 @@ class TransitGateway(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an EC2 Transit Gateway.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2transitgateway.TransitGateway("example", description="example")
-        ```
-
+        Create a TransitGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] amazon_side_asn: Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
-        :param pulumi.Input[str] auto_accept_shared_attachments: Whether resource attachment requests are automatically accepted. Valid values: `disable`, `enable`. Default value: `disable`.
-        :param pulumi.Input[str] default_route_table_association: Whether resource attachments are automatically associated with the default association route table. Valid values: `disable`, `enable`. Default value: `enable`.
-        :param pulumi.Input[str] default_route_table_propagation: Whether resource attachments automatically propagate routes to the default propagation route table. Valid values: `disable`, `enable`. Default value: `enable`.
-        :param pulumi.Input[str] description: Description of the EC2 Transit Gateway.
-        :param pulumi.Input[str] dns_support: Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value tags for the EC2 Transit Gateway.
-        :param pulumi.Input[str] vpn_ecmp_support: Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,18 +89,6 @@ class TransitGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] amazon_side_asn: Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
-        :param pulumi.Input[str] arn: EC2 Transit Gateway Amazon Resource Name (ARN)
-        :param pulumi.Input[str] association_default_route_table_id: Identifier of the default association route table
-        :param pulumi.Input[str] auto_accept_shared_attachments: Whether resource attachment requests are automatically accepted. Valid values: `disable`, `enable`. Default value: `disable`.
-        :param pulumi.Input[str] default_route_table_association: Whether resource attachments are automatically associated with the default association route table. Valid values: `disable`, `enable`. Default value: `enable`.
-        :param pulumi.Input[str] default_route_table_propagation: Whether resource attachments automatically propagate routes to the default propagation route table. Valid values: `disable`, `enable`. Default value: `enable`.
-        :param pulumi.Input[str] description: Description of the EC2 Transit Gateway.
-        :param pulumi.Input[str] dns_support: Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-        :param pulumi.Input[str] owner_id: Identifier of the AWS account that owns the EC2 Transit Gateway
-        :param pulumi.Input[str] propagation_default_route_table_id: Identifier of the default propagation route table
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value tags for the EC2 Transit Gateway.
-        :param pulumi.Input[str] vpn_ecmp_support: Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -141,97 +111,61 @@ class TransitGateway(pulumi.CustomResource):
     @property
     @pulumi.getter(name="amazonSideAsn")
     def amazon_side_asn(self) -> pulumi.Output[Optional[float]]:
-        """
-        Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
-        """
         return pulumi.get(self, "amazon_side_asn")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        EC2 Transit Gateway Amazon Resource Name (ARN)
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="associationDefaultRouteTableId")
     def association_default_route_table_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of the default association route table
-        """
         return pulumi.get(self, "association_default_route_table_id")
 
     @property
     @pulumi.getter(name="autoAcceptSharedAttachments")
     def auto_accept_shared_attachments(self) -> pulumi.Output[Optional[str]]:
-        """
-        Whether resource attachment requests are automatically accepted. Valid values: `disable`, `enable`. Default value: `disable`.
-        """
         return pulumi.get(self, "auto_accept_shared_attachments")
 
     @property
     @pulumi.getter(name="defaultRouteTableAssociation")
     def default_route_table_association(self) -> pulumi.Output[Optional[str]]:
-        """
-        Whether resource attachments are automatically associated with the default association route table. Valid values: `disable`, `enable`. Default value: `enable`.
-        """
         return pulumi.get(self, "default_route_table_association")
 
     @property
     @pulumi.getter(name="defaultRouteTablePropagation")
     def default_route_table_propagation(self) -> pulumi.Output[Optional[str]]:
-        """
-        Whether resource attachments automatically propagate routes to the default propagation route table. Valid values: `disable`, `enable`. Default value: `enable`.
-        """
         return pulumi.get(self, "default_route_table_propagation")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the EC2 Transit Gateway.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsSupport")
     def dns_support(self) -> pulumi.Output[Optional[str]]:
-        """
-        Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-        """
         return pulumi.get(self, "dns_support")
 
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of the AWS account that owns the EC2 Transit Gateway
-        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="propagationDefaultRouteTableId")
     def propagation_default_route_table_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of the default propagation route table
-        """
         return pulumi.get(self, "propagation_default_route_table_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value tags for the EC2 Transit Gateway.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpnEcmpSupport")
     def vpn_ecmp_support(self) -> pulumi.Output[Optional[str]]:
-        """
-        Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-        """
         return pulumi.get(self, "vpn_ecmp_support")
 
     def translate_output_property(self, prop):

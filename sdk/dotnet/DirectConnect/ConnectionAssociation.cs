@@ -9,50 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DirectConnect
 {
-    /// <summary>
-    /// Associates a Direct Connect Connection with a LAG.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleConnection = new Aws.DirectConnect.Connection("exampleConnection", new Aws.DirectConnect.ConnectionArgs
-    ///         {
-    ///             Bandwidth = "1Gbps",
-    ///             Location = "EqSe2",
-    ///         });
-    ///         var exampleLinkAggregationGroup = new Aws.DirectConnect.LinkAggregationGroup("exampleLinkAggregationGroup", new Aws.DirectConnect.LinkAggregationGroupArgs
-    ///         {
-    ///             ConnectionsBandwidth = "1Gbps",
-    ///             Location = "EqSe2",
-    ///         });
-    ///         var exampleConnectionAssociation = new Aws.DirectConnect.ConnectionAssociation("exampleConnectionAssociation", new Aws.DirectConnect.ConnectionAssociationArgs
-    ///         {
-    ///             ConnectionId = exampleConnection.Id,
-    ///             LagId = exampleLinkAggregationGroup.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ConnectionAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the connection.
-        /// </summary>
         [Output("connectionId")]
         public Output<string> ConnectionId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the LAG with which to associate the connection.
-        /// </summary>
         [Output("lagId")]
         public Output<string> LagId { get; private set; } = null!;
 
@@ -102,15 +63,9 @@ namespace Pulumi.Aws.DirectConnect
 
     public sealed class ConnectionAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the connection.
-        /// </summary>
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the LAG with which to associate the connection.
-        /// </summary>
         [Input("lagId", required: true)]
         public Input<string> LagId { get; set; } = null!;
 
@@ -121,15 +76,9 @@ namespace Pulumi.Aws.DirectConnect
 
     public sealed class ConnectionAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the connection.
-        /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
-        /// <summary>
-        /// The ID of the LAG with which to associate the connection.
-        /// </summary>
         [Input("lagId")]
         public Input<string>? LagId { get; set; }
 

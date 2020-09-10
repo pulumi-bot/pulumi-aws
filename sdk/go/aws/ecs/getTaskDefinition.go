@@ -7,8 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ECS task definition data source allows access to details of
-// a specific AWS ECS task definition.
 func LookupTaskDefinition(ctx *pulumi.Context, args *LookupTaskDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupTaskDefinitionResult, error) {
 	var rv LookupTaskDefinitionResult
 	err := ctx.Invoke("aws:ecs/getTaskDefinition:getTaskDefinition", args, &rv, opts...)
@@ -20,23 +18,17 @@ func LookupTaskDefinition(ctx *pulumi.Context, args *LookupTaskDefinitionArgs, o
 
 // A collection of arguments for invoking getTaskDefinition.
 type LookupTaskDefinitionArgs struct {
-	// The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
 	TaskDefinition string `pulumi:"taskDefinition"`
 }
 
 // A collection of values returned by getTaskDefinition.
 type LookupTaskDefinitionResult struct {
-	// The family of this task definition
 	Family string `pulumi:"family"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The Docker networking mode to use for the containers in this task.
-	NetworkMode string `pulumi:"networkMode"`
-	// The revision of this task definition
-	Revision int `pulumi:"revision"`
-	// The status of this task definition
+	Id             string `pulumi:"id"`
+	NetworkMode    string `pulumi:"networkMode"`
+	Revision       int    `pulumi:"revision"`
 	Status         string `pulumi:"status"`
 	TaskDefinition string `pulumi:"taskDefinition"`
-	// The ARN of the IAM role that containers in this task can assume
-	TaskRoleArn string `pulumi:"taskRoleArn"`
+	TaskRoleArn    string `pulumi:"taskRoleArn"`
 }

@@ -13,25 +13,10 @@ namespace Pulumi.Aws.Ec2.Outputs
     [OutputType]
     public sealed class GetNetworkInterfaceAssociationResult
     {
-        /// <summary>
-        /// The allocation ID.
-        /// </summary>
         public readonly string AllocationId;
-        /// <summary>
-        /// The association ID.
-        /// </summary>
         public readonly string AssociationId;
-        /// <summary>
-        /// The ID of the Elastic IP address owner.
-        /// </summary>
         public readonly string IpOwnerId;
-        /// <summary>
-        /// The public DNS name.
-        /// </summary>
         public readonly string PublicDnsName;
-        /// <summary>
-        /// The address of the Elastic IP address bound to the network interface.
-        /// </summary>
         public readonly string PublicIp;
 
         [OutputConstructor]

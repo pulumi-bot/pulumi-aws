@@ -9,78 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Neptune
 {
-    /// <summary>
-    /// Manages a Neptune Cluster Parameter Group
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Neptune.ClusterParameterGroup("example", new Aws.Neptune.ClusterParameterGroupArgs
-    ///         {
-    ///             Description = "neptune cluster parameter group",
-    ///             Family = "neptune1",
-    ///             Parameters = 
-    ///             {
-    ///                 new Aws.Neptune.Inputs.ClusterParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "neptune_enable_audit_log",
-    ///                     Value = "1",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ClusterParameterGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the neptune cluster parameter group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The family of the neptune cluster parameter group.
-        /// </summary>
         [Output("family")]
         public Output<string> Family { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the neptune parameter.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of neptune parameters to apply.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ClusterParameterGroupParameter>> Parameters { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -130,36 +78,20 @@ namespace Pulumi.Aws.Neptune
 
     public sealed class ClusterParameterGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the neptune cluster parameter group.
-        /// </summary>
         [Input("family", required: true)]
         public Input<string> Family { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the neptune parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ClusterParameterGroupParameterArgs>? _parameters;
-
-        /// <summary>
-        /// A list of neptune parameters to apply.
-        /// </summary>
         public InputList<Inputs.ClusterParameterGroupParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ClusterParameterGroupParameterArgs>());
@@ -168,10 +100,6 @@ namespace Pulumi.Aws.Neptune
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -185,42 +113,23 @@ namespace Pulumi.Aws.Neptune
 
     public sealed class ClusterParameterGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the neptune cluster parameter group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the neptune cluster parameter group.
-        /// </summary>
         [Input("family")]
         public Input<string>? Family { get; set; }
 
-        /// <summary>
-        /// The name of the neptune parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ClusterParameterGroupParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// A list of neptune parameters to apply.
-        /// </summary>
         public InputList<Inputs.ClusterParameterGroupParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ClusterParameterGroupParameterGetArgs>());
@@ -229,10 +138,6 @@ namespace Pulumi.Aws.Neptune
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

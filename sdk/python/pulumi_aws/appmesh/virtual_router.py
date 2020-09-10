@@ -25,44 +25,9 @@ class VirtualRouter(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS App Mesh virtual router resource.
-
-        ## Breaking Changes
-
-        Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92) and [here](https://github.com/awslabs/aws-app-mesh-examples/issues/94)), `appmesh.VirtualRouter` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
-
-        * Remove service `service_names` from the `spec` argument.
-        AWS has created a `appmesh.VirtualService` resource for each of service names.
-        These resource can be imported using `import`.
-
-        * Add a `listener` configuration block to the `spec` argument.
-
-        The state associated with existing resources will automatically be migrated.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb = aws.appmesh.VirtualRouter("serviceb",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualRouterSpecArgs(
-                listener=aws.appmesh.VirtualRouterSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualRouterSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-            ))
-        ```
-
+        Create a VirtualRouter resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual router.
-        :param pulumi.Input[str] name: The name to use for the virtual router.
-        :param pulumi.Input[pulumi.InputType['VirtualRouterSpecArgs']] spec: The virtual router specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -116,13 +81,6 @@ class VirtualRouter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the virtual router.
-        :param pulumi.Input[str] created_date: The creation date of the virtual router.
-        :param pulumi.Input[str] last_updated_date: The last update date of the virtual router.
-        :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual router.
-        :param pulumi.Input[str] name: The name to use for the virtual router.
-        :param pulumi.Input[pulumi.InputType['VirtualRouterSpecArgs']] spec: The virtual router specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,57 +98,36 @@ class VirtualRouter(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the virtual router.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="createdDate")
     def created_date(self) -> pulumi.Output[str]:
-        """
-        The creation date of the virtual router.
-        """
         return pulumi.get(self, "created_date")
 
     @property
     @pulumi.getter(name="lastUpdatedDate")
     def last_updated_date(self) -> pulumi.Output[str]:
-        """
-        The last update date of the virtual router.
-        """
         return pulumi.get(self, "last_updated_date")
 
     @property
     @pulumi.getter(name="meshName")
     def mesh_name(self) -> pulumi.Output[str]:
-        """
-        The name of the service mesh in which to create the virtual router.
-        """
         return pulumi.get(self, "mesh_name")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name to use for the virtual router.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.VirtualRouterSpec']:
-        """
-        The virtual router specification to apply.
-        """
         return pulumi.get(self, "spec")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

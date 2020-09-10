@@ -11,34 +11,6 @@ namespace Pulumi.Aws.Sqs
 {
     public static class GetQueue
     {
-        /// <summary>
-        /// Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
-        /// By using this data source, you can reference SQS queues without having to hardcode
-        /// the ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Sqs.GetQueue.InvokeAsync(new Aws.Sqs.GetQueueArgs
-        ///         {
-        ///             Name = "queue",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetQueueResult> InvokeAsync(GetQueueArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQueueResult>("aws:sqs/getQueue:getQueue", args ?? new GetQueueArgs(), options.WithVersion());
     }
@@ -46,18 +18,11 @@ namespace Pulumi.Aws.Sqs
 
     public sealed class GetQueueArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the queue to match.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags for the resource.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -73,22 +38,13 @@ namespace Pulumi.Aws.Sqs
     [OutputType]
     public sealed class GetQueueResult
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the queue.
-        /// </summary>
         public readonly string Arn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        /// <summary>
-        /// A map of tags for the resource.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// The URL of the queue.
-        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

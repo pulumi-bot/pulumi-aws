@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides information for multiple EC2 Local Gateway Route Tables, such as their identifiers.
- */
 export function getLocalGatewayRouteTables(args?: GetLocalGatewayRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalGatewayRouteTablesResult> {
     args = args || {};
     if (!opts) {
@@ -28,14 +25,7 @@ export function getLocalGatewayRouteTables(args?: GetLocalGatewayRouteTablesArgs
  * A collection of arguments for invoking getLocalGatewayRouteTables.
  */
 export interface GetLocalGatewayRouteTablesArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: inputs.ec2.GetLocalGatewayRouteTablesFilter[];
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired local gateway route table.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -48,9 +38,6 @@ export interface GetLocalGatewayRouteTablesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set of Local Gateway Route Table identifiers
-     */
     readonly ids: string[];
     readonly tags: {[key: string]: string};
 }

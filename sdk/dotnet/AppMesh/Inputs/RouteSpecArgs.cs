@@ -12,22 +12,12 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class RouteSpecArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The HTTP routing information for the route.
-        /// </summary>
         [Input("httpRoute")]
         public Input<Inputs.RouteSpecHttpRouteArgs>? HttpRoute { get; set; }
 
-        /// <summary>
-        /// The priority for the route, between `0` and `1000`.
-        /// Routes are matched based on the specified value, where `0` is the highest priority.
-        /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// The TCP routing information for the route.
-        /// </summary>
         [Input("tcpRoute")]
         public Input<Inputs.RouteSpecTcpRouteArgs>? TcpRoute { get; set; }
 

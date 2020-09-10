@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Direct Connect public virtual interface resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const foo = new aws.directconnect.PublicVirtualInterface("foo", {
- *     addressFamily: "ipv4",
- *     amazonAddress: "175.45.176.2/30",
- *     bgpAsn: 65352,
- *     connectionId: "dxcon-zzzzzzzz",
- *     customerAddress: "175.45.176.1/30",
- *     routeFilterPrefixes: [
- *         "210.52.109.0/24",
- *         "175.45.176.0/22",
- *     ],
- *     vlan: 4094,
- * });
- * ```
- */
 export class PublicVirtualInterface extends pulumi.CustomResource {
     /**
      * Get an existing PublicVirtualInterface resource's state with the given name, ID, and optional extra
@@ -55,54 +32,18 @@ export class PublicVirtualInterface extends pulumi.CustomResource {
         return obj['__pulumiType'] === PublicVirtualInterface.__pulumiType;
     }
 
-    /**
-     * The address family for the BGP peer. `ipv4 ` or `ipv6`.
-     */
     public readonly addressFamily!: pulumi.Output<string>;
-    /**
-     * The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-     */
     public readonly amazonAddress!: pulumi.Output<string>;
     public /*out*/ readonly amazonSideAsn!: pulumi.Output<string>;
-    /**
-     * The ARN of the virtual interface.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The Direct Connect endpoint on which the virtual interface terminates.
-     */
     public /*out*/ readonly awsDevice!: pulumi.Output<string>;
-    /**
-     * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-     */
     public readonly bgpAsn!: pulumi.Output<number>;
-    /**
-     * The authentication key for BGP configuration.
-     */
     public readonly bgpAuthKey!: pulumi.Output<string>;
-    /**
-     * The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-     */
     public readonly connectionId!: pulumi.Output<string>;
-    /**
-     * The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-     */
     public readonly customerAddress!: pulumi.Output<string>;
-    /**
-     * The name for the virtual interface.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A list of routes to be advertised to the AWS network in this region.
-     */
     public readonly routeFilterPrefixes!: pulumi.Output<string[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The VLAN ID.
-     */
     public readonly vlan!: pulumi.Output<number>;
 
     /**
@@ -176,54 +117,18 @@ export class PublicVirtualInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PublicVirtualInterface resources.
  */
 export interface PublicVirtualInterfaceState {
-    /**
-     * The address family for the BGP peer. `ipv4 ` or `ipv6`.
-     */
     readonly addressFamily?: pulumi.Input<string>;
-    /**
-     * The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-     */
     readonly amazonAddress?: pulumi.Input<string>;
     readonly amazonSideAsn?: pulumi.Input<string>;
-    /**
-     * The ARN of the virtual interface.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The Direct Connect endpoint on which the virtual interface terminates.
-     */
     readonly awsDevice?: pulumi.Input<string>;
-    /**
-     * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-     */
     readonly bgpAsn?: pulumi.Input<number>;
-    /**
-     * The authentication key for BGP configuration.
-     */
     readonly bgpAuthKey?: pulumi.Input<string>;
-    /**
-     * The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-     */
     readonly connectionId?: pulumi.Input<string>;
-    /**
-     * The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-     */
     readonly customerAddress?: pulumi.Input<string>;
-    /**
-     * The name for the virtual interface.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of routes to be advertised to the AWS network in this region.
-     */
     readonly routeFilterPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The VLAN ID.
-     */
     readonly vlan?: pulumi.Input<number>;
 }
 
@@ -231,44 +136,14 @@ export interface PublicVirtualInterfaceState {
  * The set of arguments for constructing a PublicVirtualInterface resource.
  */
 export interface PublicVirtualInterfaceArgs {
-    /**
-     * The address family for the BGP peer. `ipv4 ` or `ipv6`.
-     */
     readonly addressFamily: pulumi.Input<string>;
-    /**
-     * The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-     */
     readonly amazonAddress?: pulumi.Input<string>;
-    /**
-     * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-     */
     readonly bgpAsn: pulumi.Input<number>;
-    /**
-     * The authentication key for BGP configuration.
-     */
     readonly bgpAuthKey?: pulumi.Input<string>;
-    /**
-     * The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-     */
     readonly connectionId: pulumi.Input<string>;
-    /**
-     * The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-     */
     readonly customerAddress?: pulumi.Input<string>;
-    /**
-     * The name for the virtual interface.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of routes to be advertised to the AWS network in this region.
-     */
     readonly routeFilterPrefixes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The VLAN ID.
-     */
     readonly vlan: pulumi.Input<number>;
 }

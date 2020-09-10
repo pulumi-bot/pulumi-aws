@@ -6,38 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a S3 bucket [metrics configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html) resource.
- *
- * ## Example Usage
- * ### Add metrics configuration for entire S3 bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.s3.Bucket("example", {});
- * const example_entire_bucket = new aws.s3.BucketMetric("example-entire-bucket", {bucket: example.bucket});
- * ```
- * ### Add metrics configuration with S3 bucket object filter
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.s3.Bucket("example", {});
- * const example_filtered = new aws.s3.BucketMetric("example-filtered", {
- *     bucket: example.bucket,
- *     filter: {
- *         prefix: "documents/",
- *         tags: {
- *             priority: "high",
- *             "class": "blue",
- *         },
- *     },
- * });
- * ```
- */
 export class BucketMetric extends pulumi.CustomResource {
     /**
      * Get an existing BucketMetric resource's state with the given name, ID, and optional extra
@@ -66,17 +34,8 @@ export class BucketMetric extends pulumi.CustomResource {
         return obj['__pulumiType'] === BucketMetric.__pulumiType;
     }
 
-    /**
-     * The name of the bucket to put metric configuration.
-     */
     public readonly bucket!: pulumi.Output<string>;
-    /**
-     * [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-     */
     public readonly filter!: pulumi.Output<outputs.s3.BucketMetricFilter | undefined>;
-    /**
-     * Unique identifier of the metrics configuration for the bucket.
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -118,17 +77,8 @@ export class BucketMetric extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BucketMetric resources.
  */
 export interface BucketMetricState {
-    /**
-     * The name of the bucket to put metric configuration.
-     */
     readonly bucket?: pulumi.Input<string>;
-    /**
-     * [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-     */
     readonly filter?: pulumi.Input<inputs.s3.BucketMetricFilter>;
-    /**
-     * Unique identifier of the metrics configuration for the bucket.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -136,16 +86,7 @@ export interface BucketMetricState {
  * The set of arguments for constructing a BucketMetric resource.
  */
 export interface BucketMetricArgs {
-    /**
-     * The name of the bucket to put metric configuration.
-     */
     readonly bucket: pulumi.Input<string>;
-    /**
-     * [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-     */
     readonly filter?: pulumi.Input<inputs.s3.BucketMetricFilter>;
-    /**
-     * Unique identifier of the metrics configuration for the bucket.
-     */
     readonly name?: pulumi.Input<string>;
 }

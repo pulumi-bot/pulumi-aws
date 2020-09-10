@@ -24,29 +24,9 @@ class Permission(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an OpsWorks permission resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_stack_permission = aws.opsworks.Permission("myStackPermission",
-            allow_ssh=True,
-            allow_sudo=True,
-            level="iam_only",
-            user_arn=aws_iam_user["user"]["arn"],
-            stack_id=aws_opsworks_stack["stack"]["id"])
-        ```
-
+        Create a Permission resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_ssh: Whether the user is allowed to use SSH to communicate with the instance
-        :param pulumi.Input[bool] allow_sudo: Whether the user is allowed to use sudo to elevate privileges
-        :param pulumi.Input[str] level: The users permission level. Mus be one of `deny`, `show`, `deploy`, `manage`, `iam_only`
-        :param pulumi.Input[str] stack_id: The stack to set the permissions for
-        :param pulumi.Input[str] user_arn: The user's IAM ARN to set permissions for
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,11 +74,6 @@ class Permission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_ssh: Whether the user is allowed to use SSH to communicate with the instance
-        :param pulumi.Input[bool] allow_sudo: Whether the user is allowed to use sudo to elevate privileges
-        :param pulumi.Input[str] level: The users permission level. Mus be one of `deny`, `show`, `deploy`, `manage`, `iam_only`
-        :param pulumi.Input[str] stack_id: The stack to set the permissions for
-        :param pulumi.Input[str] user_arn: The user's IAM ARN to set permissions for
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -114,41 +89,26 @@ class Permission(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowSsh")
     def allow_ssh(self) -> pulumi.Output[bool]:
-        """
-        Whether the user is allowed to use SSH to communicate with the instance
-        """
         return pulumi.get(self, "allow_ssh")
 
     @property
     @pulumi.getter(name="allowSudo")
     def allow_sudo(self) -> pulumi.Output[bool]:
-        """
-        Whether the user is allowed to use sudo to elevate privileges
-        """
         return pulumi.get(self, "allow_sudo")
 
     @property
     @pulumi.getter
     def level(self) -> pulumi.Output[str]:
-        """
-        The users permission level. Mus be one of `deny`, `show`, `deploy`, `manage`, `iam_only`
-        """
         return pulumi.get(self, "level")
 
     @property
     @pulumi.getter(name="stackId")
     def stack_id(self) -> pulumi.Output[str]:
-        """
-        The stack to set the permissions for
-        """
         return pulumi.get(self, "stack_id")
 
     @property
     @pulumi.getter(name="userArn")
     def user_arn(self) -> pulumi.Output[str]:
-        """
-        The user's IAM ARN to set permissions for
-        """
         return pulumi.get(self, "user_arn")
 
     def translate_output_property(self, prop):

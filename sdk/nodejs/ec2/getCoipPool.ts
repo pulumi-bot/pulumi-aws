@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about a specific EC2 Customer-Owned IP Pool.
- *
- * This data source can prove useful when a module accepts a coip pool id as
- * an input variable and needs to, for example, determine the CIDR block of that
- * COIP Pool.
- *
- * ## Example Usage
- *
- * The following example returns a specific coip pool ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const config = new pulumi.Config();
- * const coipPoolId = config.requireObject("coipPoolId");
- * const selected = aws.ec2.getCoipPool({
- *     id: coipPoolId,
- * });
- * ```
- */
 export function getCoipPool(args?: GetCoipPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetCoipPoolResult> {
     args = args || {};
     if (!opts) {
@@ -50,18 +28,8 @@ export function getCoipPool(args?: GetCoipPoolArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetCoipPoolArgs {
     readonly filters?: inputs.ec2.GetCoipPoolFilter[];
-    /**
-     * Local Gateway Route Table Id assigned to desired COIP Pool
-     */
     readonly localGatewayRouteTableId?: string;
-    /**
-     * The id of the specific COIP Pool to retrieve.
-     */
     readonly poolId?: string;
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired COIP Pool.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -75,9 +43,6 @@ export interface GetCoipPoolResult {
      */
     readonly id: string;
     readonly localGatewayRouteTableId: string;
-    /**
-     * Set of CIDR blocks in pool
-     */
     readonly poolCidrs: string[];
     readonly poolId: string;
     readonly tags: {[key: string]: string};

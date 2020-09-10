@@ -10,85 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages status (recording / stopped) of an AWS Config Configuration Recorder.
-//
-// > **Note:** Starting Configuration Recorder requires a `Delivery Channel` to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cfg"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooDeliveryChannel, err := cfg.NewDeliveryChannel(ctx, "fooDeliveryChannel", &cfg.DeliveryChannelArgs{
-// 			S3BucketName: bucket.Bucket,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewRecorderStatus(ctx, "fooRecorderStatus", &cfg.RecorderStatusArgs{
-// 			IsEnabled: pulumi.Bool(true),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			fooDeliveryChannel,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		role, err := iam.NewRole(ctx, "role", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": \"sts:AssumeRole\",\n", "      \"Principal\": {\n", "        \"Service\": \"config.amazonaws.com\"\n", "      },\n", "      \"Effect\": \"Allow\",\n", "      \"Sid\": \"\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "rolePolicyAttachment", &iam.RolePolicyAttachmentArgs{
-// 			Role:      role.Name,
-// 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AWSConfigRole"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewRecorder(ctx, "fooRecorder", &cfg.RecorderArgs{
-// 			RoleArn: role.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicy(ctx, "rolePolicy", &iam.RolePolicyArgs{
-// 			Role: role.ID(),
-// 			Policy: pulumi.All(bucket.Arn, bucket.Arn).ApplyT(func(_args []interface{}) (string, error) {
-// 				bucketArn := _args[0].(string)
-// 				bucketArn1 := _args[1].(string)
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": [\n", "        \"s3:*\"\n", "      ],\n", "      \"Effect\": \"Allow\",\n", "      \"Resource\": [\n", "        \"", bucketArn, "\",\n", "        \"", bucketArn1, "/*\"\n", "      ]\n", "    }\n", "  ]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RecorderStatus struct {
 	pulumi.CustomResourceState
 
-	// Whether the configuration recorder should be enabled or disabled.
-	IsEnabled pulumi.BoolOutput `pulumi:"isEnabled"`
-	// The name of the recorder
-	Name pulumi.StringOutput `pulumi:"name"`
+	IsEnabled pulumi.BoolOutput   `pulumi:"isEnabled"`
+	Name      pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewRecorderStatus registers a new resource with the given unique name, arguments, and options.
@@ -122,17 +48,13 @@ func GetRecorderStatus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RecorderStatus resources.
 type recorderStatusState struct {
-	// Whether the configuration recorder should be enabled or disabled.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The name of the recorder
-	Name *string `pulumi:"name"`
+	IsEnabled *bool   `pulumi:"isEnabled"`
+	Name      *string `pulumi:"name"`
 }
 
 type RecorderStatusState struct {
-	// Whether the configuration recorder should be enabled or disabled.
 	IsEnabled pulumi.BoolPtrInput
-	// The name of the recorder
-	Name pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 }
 
 func (RecorderStatusState) ElementType() reflect.Type {
@@ -140,18 +62,14 @@ func (RecorderStatusState) ElementType() reflect.Type {
 }
 
 type recorderStatusArgs struct {
-	// Whether the configuration recorder should be enabled or disabled.
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The name of the recorder
-	Name *string `pulumi:"name"`
+	IsEnabled bool    `pulumi:"isEnabled"`
+	Name      *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a RecorderStatus resource.
 type RecorderStatusArgs struct {
-	// Whether the configuration recorder should be enabled or disabled.
 	IsEnabled pulumi.BoolInput
-	// The name of the recorder
-	Name pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 }
 
 func (RecorderStatusArgs) ElementType() reflect.Type {

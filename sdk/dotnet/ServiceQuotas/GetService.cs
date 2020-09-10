@@ -11,32 +11,6 @@ namespace Pulumi.Aws.ServiceQuotas
 {
     public static class GetService
     {
-        /// <summary>
-        /// Retrieve information about a Service Quotas Service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.ServiceQuotas.GetService.InvokeAsync(new Aws.ServiceQuotas.GetServiceArgs
-        ///         {
-        ///             ServiceName = "Amazon Virtual Private Cloud (Amazon VPC)",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("aws:servicequotas/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.ServiceQuotas
 
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -63,9 +34,6 @@ namespace Pulumi.Aws.ServiceQuotas
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Code of the service.
-        /// </summary>
         public readonly string ServiceCode;
         public readonly string ServiceName;
 

@@ -21,35 +21,9 @@ class LogDestinationPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a CloudWatch Logs destination policy resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_destination = aws.cloudwatch.LogDestination("testDestination",
-            role_arn=aws_iam_role["iam_for_cloudwatch"]["arn"],
-            target_arn=aws_kinesis_stream["kinesis_for_cloudwatch"]["arn"])
-        test_destination_policy_policy_document = test_destination.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=["123456789012"],
-            )],
-            actions=["logs:PutSubscriptionFilter"],
-            resources=[arn],
-        )]))
-        test_destination_policy_log_destination_policy = aws.cloudwatch.LogDestinationPolicy("testDestinationPolicyLogDestinationPolicy",
-            destination_name=test_destination.name,
-            access_policy=test_destination_policy_policy_document.json)
-        ```
-
+        Create a LogDestinationPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_policy: The policy document. This is a JSON formatted string.
-        :param pulumi.Input[str] destination_name: A name for the subscription filter
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,8 +67,6 @@ class LogDestinationPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_policy: The policy document. This is a JSON formatted string.
-        :param pulumi.Input[str] destination_name: A name for the subscription filter
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -107,17 +79,11 @@ class LogDestinationPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> pulumi.Output[str]:
-        """
-        The policy document. This is a JSON formatted string.
-        """
         return pulumi.get(self, "access_policy")
 
     @property
     @pulumi.getter(name="destinationName")
     def destination_name(self) -> pulumi.Output[str]:
-        """
-        A name for the subscription filter
-        """
         return pulumi.get(self, "destination_name")
 
     def translate_output_property(self, prop):

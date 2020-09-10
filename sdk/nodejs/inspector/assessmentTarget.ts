@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Inspector assessment target
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const bar = new aws.inspector.ResourceGroup("bar", {tags: {
- *     Name: "foo",
- *     Env: "bar",
- * }});
- * const foo = new aws.inspector.AssessmentTarget("foo", {resourceGroupArn: bar.arn});
- * ```
- */
 export class AssessmentTarget extends pulumi.CustomResource {
     /**
      * Get an existing AssessmentTarget resource's state with the given name, ID, and optional extra
@@ -48,17 +32,8 @@ export class AssessmentTarget extends pulumi.CustomResource {
         return obj['__pulumiType'] === AssessmentTarget.__pulumiType;
     }
 
-    /**
-     * The target assessment ARN.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the assessment target.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-     */
     public readonly resourceGroupArn!: pulumi.Output<string | undefined>;
 
     /**
@@ -97,17 +72,8 @@ export class AssessmentTarget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AssessmentTarget resources.
  */
 export interface AssessmentTargetState {
-    /**
-     * The target assessment ARN.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the assessment target.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-     */
     readonly resourceGroupArn?: pulumi.Input<string>;
 }
 
@@ -115,12 +81,6 @@ export interface AssessmentTargetState {
  * The set of arguments for constructing a AssessmentTarget resource.
  */
 export interface AssessmentTargetArgs {
-    /**
-     * The name of the assessment target.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-     */
     readonly resourceGroupArn?: pulumi.Input<string>;
 }

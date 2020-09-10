@@ -6,33 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Rate Based Rule Resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ipset = new aws.wafregional.IpSet("ipset", {ipSetDescriptors: [{
- *     type: "IPV4",
- *     value: "192.0.7.0/24",
- * }]});
- * const wafrule = new aws.wafregional.RateBasedRule("wafrule", {
- *     metricName: "tfWAFRule",
- *     rateKey: "IP",
- *     rateLimit: 100,
- *     predicates: [{
- *         dataId: ipset.id,
- *         negated: false,
- *         type: "IPMatch",
- *     }],
- * }, {
- *     dependsOn: [ipset],
- * });
- * ```
- */
 export class RateBasedRule extends pulumi.CustomResource {
     /**
      * Get an existing RateBasedRule resource's state with the given name, ID, and optional extra
@@ -61,33 +34,12 @@ export class RateBasedRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === RateBasedRule.__pulumiType;
     }
 
-    /**
-     * The ARN of the WAF Regional Rate Based Rule.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule.
-     */
     public readonly metricName!: pulumi.Output<string>;
-    /**
-     * The name or description of the rule.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     public readonly predicates!: pulumi.Output<outputs.wafregional.RateBasedRulePredicate[] | undefined>;
-    /**
-     * Valid value is IP.
-     */
     public readonly rateKey!: pulumi.Output<string>;
-    /**
-     * The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-     */
     public readonly rateLimit!: pulumi.Output<number>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -143,33 +95,12 @@ export class RateBasedRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RateBasedRule resources.
  */
 export interface RateBasedRuleState {
-    /**
-     * The ARN of the WAF Regional Rate Based Rule.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule.
-     */
     readonly metricName?: pulumi.Input<string>;
-    /**
-     * The name or description of the rule.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     readonly predicates?: pulumi.Input<pulumi.Input<inputs.wafregional.RateBasedRulePredicate>[]>;
-    /**
-     * Valid value is IP.
-     */
     readonly rateKey?: pulumi.Input<string>;
-    /**
-     * The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-     */
     readonly rateLimit?: pulumi.Input<number>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -177,28 +108,10 @@ export interface RateBasedRuleState {
  * The set of arguments for constructing a RateBasedRule resource.
  */
 export interface RateBasedRuleArgs {
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule.
-     */
     readonly metricName: pulumi.Input<string>;
-    /**
-     * The name or description of the rule.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     readonly predicates?: pulumi.Input<pulumi.Input<inputs.wafregional.RateBasedRulePredicate>[]>;
-    /**
-     * Valid value is IP.
-     */
     readonly rateKey: pulumi.Input<string>;
-    /**
-     * The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-     */
     readonly rateLimit: pulumi.Input<number>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

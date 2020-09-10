@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct primary account on read, and disassociate with the primary account upon removal.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const primary = new aws.Provider("primary", {});
- * const member = new aws.Provider("member", {});
- * const primaryDetector = new aws.guardduty.Detector("primaryDetector", {}, {
- *     provider: aws.primary,
- * });
- * const memberDetector = new aws.guardduty.Detector("memberDetector", {}, {
- *     provider: aws.member,
- * });
- * const memberMember = new aws.guardduty.Member("memberMember", {
- *     accountId: memberDetector.accountId,
- *     detectorId: primaryDetector.id,
- *     email: "required@example.com",
- *     invite: true,
- * }, {
- *     provider: aws.primary,
- * });
- * const memberInviteAccepter = new aws.guardduty.InviteAccepter("memberInviteAccepter", {
- *     detectorId: memberDetector.id,
- *     masterAccountId: primaryDetector.accountId,
- * }, {
- *     provider: aws.member,
- *     dependsOn: [memberMember],
- * });
- * ```
- */
 export class InviteAccepter extends pulumi.CustomResource {
     /**
      * Get an existing InviteAccepter resource's state with the given name, ID, and optional extra
@@ -66,13 +32,7 @@ export class InviteAccepter extends pulumi.CustomResource {
         return obj['__pulumiType'] === InviteAccepter.__pulumiType;
     }
 
-    /**
-     * The detector ID of the member GuardDuty account.
-     */
     public readonly detectorId!: pulumi.Output<string>;
-    /**
-     * AWS account ID for primary account.
-     */
     public readonly masterAccountId!: pulumi.Output<string>;
 
     /**
@@ -115,13 +75,7 @@ export class InviteAccepter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InviteAccepter resources.
  */
 export interface InviteAccepterState {
-    /**
-     * The detector ID of the member GuardDuty account.
-     */
     readonly detectorId?: pulumi.Input<string>;
-    /**
-     * AWS account ID for primary account.
-     */
     readonly masterAccountId?: pulumi.Input<string>;
 }
 
@@ -129,12 +83,6 @@ export interface InviteAccepterState {
  * The set of arguments for constructing a InviteAccepter resource.
  */
 export interface InviteAccepterArgs {
-    /**
-     * The detector ID of the member GuardDuty account.
-     */
     readonly detectorId: pulumi.Input<string>;
-    /**
-     * AWS account ID for primary account.
-     */
     readonly masterAccountId: pulumi.Input<string>;
 }

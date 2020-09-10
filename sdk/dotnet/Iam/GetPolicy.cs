@@ -11,33 +11,6 @@ namespace Pulumi.Aws.Iam
 {
     public static class GetPolicy
     {
-        /// <summary>
-        /// This data source can be used to fetch information about a specific
-        /// IAM policy.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Iam.GetPolicy.InvokeAsync(new Aws.Iam.GetPolicyArgs
-        ///         {
-        ///             Arn = "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("aws:iam/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithVersion());
     }
@@ -45,9 +18,6 @@ namespace Pulumi.Aws.Iam
 
     public sealed class GetPolicyArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ARN of the IAM policy.
-        /// </summary>
         [Input("arn", required: true)]
         public string Arn { get; set; } = null!;
 
@@ -60,29 +30,14 @@ namespace Pulumi.Aws.Iam
     [OutputType]
     public sealed class GetPolicyResult
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the policy.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The description of the policy.
-        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of the IAM policy.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The path to the policy.
-        /// </summary>
         public readonly string Path;
-        /// <summary>
-        /// The policy document of the policy.
-        /// </summary>
         public readonly string Policy;
 
         [OutputConstructor]

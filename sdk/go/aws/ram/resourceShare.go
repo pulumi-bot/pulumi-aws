@@ -9,44 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `ram.PrincipalAssociation` resource. To associate resources with the share, see the `ram.ResourceAssociation` resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ram"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewResourceShare(ctx, "example", &ram.ResourceShareArgs{
-// 			AllowExternalPrincipals: pulumi.Bool(true),
-// 			Tags: pulumi.StringMap{
-// 				"Environment": pulumi.String("Production"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ResourceShare struct {
 	pulumi.CustomResourceState
 
-	// Indicates whether principals outside your organization can be associated with a resource share.
-	AllowExternalPrincipals pulumi.BoolPtrOutput `pulumi:"allowExternalPrincipals"`
-	// The Amazon Resource Name (ARN) of the resource share.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the resource share.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the resource share.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	AllowExternalPrincipals pulumi.BoolPtrOutput   `pulumi:"allowExternalPrincipals"`
+	Arn                     pulumi.StringOutput    `pulumi:"arn"`
+	Name                    pulumi.StringOutput    `pulumi:"name"`
+	Tags                    pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewResourceShare registers a new resource with the given unique name, arguments, and options.
@@ -77,25 +46,17 @@ func GetResourceShare(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceShare resources.
 type resourceShareState struct {
-	// Indicates whether principals outside your organization can be associated with a resource share.
-	AllowExternalPrincipals *bool `pulumi:"allowExternalPrincipals"`
-	// The Amazon Resource Name (ARN) of the resource share.
-	Arn *string `pulumi:"arn"`
-	// The name of the resource share.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource share.
-	Tags map[string]string `pulumi:"tags"`
+	AllowExternalPrincipals *bool             `pulumi:"allowExternalPrincipals"`
+	Arn                     *string           `pulumi:"arn"`
+	Name                    *string           `pulumi:"name"`
+	Tags                    map[string]string `pulumi:"tags"`
 }
 
 type ResourceShareState struct {
-	// Indicates whether principals outside your organization can be associated with a resource share.
 	AllowExternalPrincipals pulumi.BoolPtrInput
-	// The Amazon Resource Name (ARN) of the resource share.
-	Arn pulumi.StringPtrInput
-	// The name of the resource share.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource share.
-	Tags pulumi.StringMapInput
+	Arn                     pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	Tags                    pulumi.StringMapInput
 }
 
 func (ResourceShareState) ElementType() reflect.Type {
@@ -103,22 +64,16 @@ func (ResourceShareState) ElementType() reflect.Type {
 }
 
 type resourceShareArgs struct {
-	// Indicates whether principals outside your organization can be associated with a resource share.
-	AllowExternalPrincipals *bool `pulumi:"allowExternalPrincipals"`
-	// The name of the resource share.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource share.
-	Tags map[string]string `pulumi:"tags"`
+	AllowExternalPrincipals *bool             `pulumi:"allowExternalPrincipals"`
+	Name                    *string           `pulumi:"name"`
+	Tags                    map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ResourceShare resource.
 type ResourceShareArgs struct {
-	// Indicates whether principals outside your organization can be associated with a resource share.
 	AllowExternalPrincipals pulumi.BoolPtrInput
-	// The name of the resource share.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource share.
-	Tags pulumi.StringMapInput
+	Name                    pulumi.StringPtrInput
+	Tags                    pulumi.StringMapInput
 }
 
 func (ResourceShareArgs) ElementType() reflect.Type {

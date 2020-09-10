@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides information about a "classic" Elastic Load Balancer (ELB).
- * See `LB` Data Source if you are looking for "v2"
- * Application Load Balancer (ALB) or Network Load Balancer (NLB).
- *
- * This data source can prove useful when a module accepts an LB as an input
- * variable and needs to, for example, determine the security groups associated
- * with it, etc.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const config = new pulumi.Config();
- * const lbName = config.get("lbName") || "";
- * const test = aws.elb.getLoadBalancer({
- *     name: lbName,
- * });
- * ```
- */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     if (!opts) {
         opts = {}
@@ -46,9 +24,6 @@ export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getLoadBalancer.
  */
 export interface GetLoadBalancerArgs {
-    /**
-     * The unique name of the load balancer.
-     */
     readonly name: string;
     readonly tags?: {[key: string]: string};
 }

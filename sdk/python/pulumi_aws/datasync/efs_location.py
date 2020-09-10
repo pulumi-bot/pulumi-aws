@@ -25,30 +25,9 @@ class EfsLocation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an AWS DataSync EFS Location.
-
-        > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.datasync.EfsLocation("example",
-            efs_file_system_arn=aws_efs_mount_target["example"]["file_system_arn"],
-            ec2_config=aws.datasync.EfsLocationEc2ConfigArgs(
-                security_group_arns=[aws_security_group["example"]["arn"]],
-                subnet_arn=aws_subnet["example"]["arn"],
-            ))
-        ```
-
+        Create a EfsLocation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EfsLocationEc2ConfigArgs']] ec2_config: Configuration block containing EC2 configurations for connecting to the EFS File System.
-        :param pulumi.Input[str] efs_file_system_arn: Amazon Resource Name (ARN) of EFS File System.
-        :param pulumi.Input[str] subdirectory: Subdirectory to perform actions as source or destination. Default `/`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value pairs of resource tags to assign to the DataSync Location.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -100,11 +79,6 @@ class EfsLocation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the DataSync Location.
-        :param pulumi.Input[pulumi.InputType['EfsLocationEc2ConfigArgs']] ec2_config: Configuration block containing EC2 configurations for connecting to the EFS File System.
-        :param pulumi.Input[str] efs_file_system_arn: Amazon Resource Name (ARN) of EFS File System.
-        :param pulumi.Input[str] subdirectory: Subdirectory to perform actions as source or destination. Default `/`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value pairs of resource tags to assign to the DataSync Location.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,41 +95,26 @@ class EfsLocation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the DataSync Location.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="ec2Config")
     def ec2_config(self) -> pulumi.Output['outputs.EfsLocationEc2Config']:
-        """
-        Configuration block containing EC2 configurations for connecting to the EFS File System.
-        """
         return pulumi.get(self, "ec2_config")
 
     @property
     @pulumi.getter(name="efsFileSystemArn")
     def efs_file_system_arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of EFS File System.
-        """
         return pulumi.get(self, "efs_file_system_arn")
 
     @property
     @pulumi.getter
     def subdirectory(self) -> pulumi.Output[Optional[str]]:
-        """
-        Subdirectory to perform actions as source or destination. Default `/`.
-        """
         return pulumi.get(self, "subdirectory")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value pairs of resource tags to assign to the DataSync Location.
-        """
         return pulumi.get(self, "tags")
 
     @property

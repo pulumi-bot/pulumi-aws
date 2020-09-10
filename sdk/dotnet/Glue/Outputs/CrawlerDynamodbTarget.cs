@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Glue.Outputs
     [OutputType]
     public sealed class CrawlerDynamodbTarget
     {
-        /// <summary>
-        /// The name of the DynamoDB table to crawl.
-        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Access Analyzer Analyzer. More information can be found in the [Access Analyzer User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.accessanalyzer.Analyzer("example", {
- *     analyzerName: "example",
- * });
- * ```
- */
 export class Analyzer extends pulumi.CustomResource {
     /**
      * Get an existing Analyzer resource's state with the given name, ID, and optional extra
@@ -46,18 +32,9 @@ export class Analyzer extends pulumi.CustomResource {
         return obj['__pulumiType'] === Analyzer.__pulumiType;
     }
 
-    /**
-     * Name of the Analyzer.
-     */
     public readonly analyzerName!: pulumi.Output<string>;
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-     */
     public readonly type!: pulumi.Output<string | undefined>;
 
     /**
@@ -101,18 +78,9 @@ export class Analyzer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Analyzer resources.
  */
 export interface AnalyzerState {
-    /**
-     * Name of the Analyzer.
-     */
     readonly analyzerName?: pulumi.Input<string>;
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -120,16 +88,7 @@ export interface AnalyzerState {
  * The set of arguments for constructing a Analyzer resource.
  */
 export interface AnalyzerArgs {
-    /**
-     * Name of the Analyzer.
-     */
     readonly analyzerName: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-     */
     readonly type?: pulumi.Input<string>;
 }

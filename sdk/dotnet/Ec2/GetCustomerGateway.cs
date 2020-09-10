@@ -11,54 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetCustomerGateway
     {
-        /// <summary>
-        /// Get an existing AWS Customer Gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Aws.Ec2.GetCustomerGateway.InvokeAsync(new Aws.Ec2.GetCustomerGatewayArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetCustomerGatewayFilterArgs
-        ///                 {
-        ///                     Name = "tag:Name",
-        ///                     Values = 
-        ///                     {
-        ///                         "foo-prod",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///         var main = new Aws.Ec2.VpnGateway("main", new Aws.Ec2.VpnGatewayArgs
-        ///         {
-        ///             VpcId = aws_vpc.Main.Id,
-        ///             AmazonSideAsn = "7224",
-        ///         });
-        ///         var transit = new Aws.Ec2.VpnConnection("transit", new Aws.Ec2.VpnConnectionArgs
-        ///         {
-        ///             VpnGatewayId = main.Id,
-        ///             CustomerGatewayId = foo.Apply(foo =&gt; foo.Id),
-        ///             Type = foo.Apply(foo =&gt; foo.Type),
-        ///             StaticRoutesOnly = false,
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetCustomerGatewayResult> InvokeAsync(GetCustomerGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewayResult>("aws:ec2/getCustomerGateway:getCustomerGateway", args ?? new GetCustomerGatewayArgs(), options.WithVersion());
     }
@@ -68,28 +20,17 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetCustomerGatewayFilterArgs>? _filters;
-
-        /// <summary>
-        /// One or more [name-value pairs][dcg-filters] to filter by.
-        /// </summary>
         public List<Inputs.GetCustomerGatewayFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetCustomerGatewayFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The ID of the gateway.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// Map of key-value pairs assigned to the gateway.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -105,27 +46,12 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetCustomerGatewayResult
     {
-        /// <summary>
-        /// The ARN of the customer gateway.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// (Optional) The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-        /// </summary>
         public readonly int BgpAsn;
         public readonly ImmutableArray<Outputs.GetCustomerGatewayFilterResult> Filters;
         public readonly string? Id;
-        /// <summary>
-        /// (Optional) The IP address of the gateway's Internet-routable external interface.
-        /// </summary>
         public readonly string IpAddress;
-        /// <summary>
-        /// Map of key-value pairs assigned to the gateway.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

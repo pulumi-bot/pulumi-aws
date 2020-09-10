@@ -9,79 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Manages a SES Identity Policy. More information about SES Sending Authorization Policies can be found in the [SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleDomainIdentity = new Aws.Ses.DomainIdentity("exampleDomainIdentity", new Aws.Ses.DomainIdentityArgs
-    ///         {
-    ///             Domain = "example.com",
-    ///         });
-    ///         var examplePolicyDocument = exampleDomainIdentity.Arn.Apply(arn =&gt; Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "SES:SendEmail",
-    ///                         "SES:SendRawEmail",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         arn,
-    ///                     },
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
-    ///                         {
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 "*",
-    ///                             },
-    ///                             Type = "AWS",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var exampleIdentityPolicy = new Aws.Ses.IdentityPolicy("exampleIdentityPolicy", new Aws.Ses.IdentityPolicyArgs
-    ///         {
-    ///             Identity = exampleDomainIdentity.Arn,
-    ///             Policy = examplePolicyDocument.Apply(examplePolicyDocument =&gt; examplePolicyDocument.Json),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class IdentityPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Name or Amazon Resource Name (ARN) of the SES Identity.
-        /// </summary>
         [Output("identity")]
         public Output<string> Identity { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the policy.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// JSON string of the policy.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
@@ -131,21 +66,12 @@ namespace Pulumi.Aws.Ses
 
     public sealed class IdentityPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name or Amazon Resource Name (ARN) of the SES Identity.
-        /// </summary>
         [Input("identity", required: true)]
         public Input<string> Identity { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the policy.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// JSON string of the policy.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
@@ -156,21 +82,12 @@ namespace Pulumi.Aws.Ses
 
     public sealed class IdentityPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name or Amazon Resource Name (ARN) of the SES Identity.
-        /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
-        /// <summary>
-        /// Name of the policy.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// JSON string of the policy.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

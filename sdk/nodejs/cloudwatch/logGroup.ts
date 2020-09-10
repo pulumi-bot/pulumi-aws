@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CloudWatch Log Group resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const yada = new aws.cloudwatch.LogGroup("yada", {
- *     tags: {
- *         Application: "serviceA",
- *         Environment: "production",
- *     },
- * });
- * ```
- */
 export class LogGroup extends pulumi.CustomResource {
     /**
      * Get an existing LogGroup resource's state with the given name, ID, and optional extra
@@ -49,32 +32,11 @@ export class LogGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === LogGroup.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) specifying the log group. Any `:*` suffix added by the API, denoting all CloudWatch Log Streams under the CloudWatch Log Group, is removed for greater compatibility with other AWS services that do not accept the suffix.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group,
-     * AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires
-     * permissions for the CMK whenever the encrypted data is requested.
-     */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the log group. If omitted, this provider will assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the number of days
-     * you want to retain log events in the specified log group.  Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.
-     */
     public readonly retentionInDays!: pulumi.Output<number | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -119,32 +81,11 @@ export class LogGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogGroup resources.
  */
 export interface LogGroupState {
-    /**
-     * The Amazon Resource Name (ARN) specifying the log group. Any `:*` suffix added by the API, denoting all CloudWatch Log Streams under the CloudWatch Log Group, is removed for greater compatibility with other AWS services that do not accept the suffix.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group,
-     * AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires
-     * permissions for the CMK whenever the encrypted data is requested.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The name of the log group. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Specifies the number of days
-     * you want to retain log events in the specified log group.  Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.
-     */
     readonly retentionInDays?: pulumi.Input<number>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -152,27 +93,9 @@ export interface LogGroupState {
  * The set of arguments for constructing a LogGroup resource.
  */
 export interface LogGroupArgs {
-    /**
-     * The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group,
-     * AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires
-     * permissions for the CMK whenever the encrypted data is requested.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The name of the log group. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Specifies the number of days
-     * you want to retain log events in the specified log group.  Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.
-     */
     readonly retentionInDays?: pulumi.Input<number>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

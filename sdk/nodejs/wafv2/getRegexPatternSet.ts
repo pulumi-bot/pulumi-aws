@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Retrieves the summary of a WAFv2 Regex Pattern Set.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.wafv2.getRegexPatternSet({
- *     name: "some-regex-pattern-set",
- *     scope: "REGIONAL",
- * }, { async: true }));
- * ```
- */
 export function getRegexPatternSet(args: GetRegexPatternSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRegexPatternSetResult> {
     if (!opts) {
         opts = {}
@@ -39,13 +24,7 @@ export function getRegexPatternSet(args: GetRegexPatternSetArgs, opts?: pulumi.I
  * A collection of arguments for invoking getRegexPatternSet.
  */
 export interface GetRegexPatternSetArgs {
-    /**
-     * The name of the WAFv2 Regex Pattern Set.
-     */
     readonly name: string;
-    /**
-     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-     */
     readonly scope: string;
 }
 
@@ -53,22 +32,13 @@ export interface GetRegexPatternSetArgs {
  * A collection of values returned by getRegexPatternSet.
  */
 export interface GetRegexPatternSetResult {
-    /**
-     * The Amazon Resource Name (ARN) of the entity.
-     */
     readonly arn: string;
-    /**
-     * The description of the set that helps with identification.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
-    /**
-     * One or more blocks of regular expression patterns that AWS WAF is searching for. See Regular Expression below for details.
-     */
     readonly regularExpressions: outputs.wafv2.GetRegexPatternSetRegularExpression[];
     readonly scope: string;
 }

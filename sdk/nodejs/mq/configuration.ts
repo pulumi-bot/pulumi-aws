@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an MQ Configuration Resource.
- *
- * For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.mq.Configuration("example", {
- *     data: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
- * <broker xmlns="http://activemq.apache.org/schema/core">
- *   <plugins>
- *     <forcePersistencyModeBrokerPlugin persistenceFlag="true"/>
- *     <statisticsBrokerPlugin/>
- *     <timeStampingBrokerPlugin ttlCeiling="86400000" zeroExpirationOverride="86400000"/>
- *   </plugins>
- * </broker>
- * `,
- *     description: "Example Configuration",
- *     engineType: "ActiveMQ",
- *     engineVersion: "5.15.0",
- * });
- * ```
- */
 export class Configuration extends pulumi.CustomResource {
     /**
      * Get an existing Configuration resource's state with the given name, ID, and optional extra
@@ -59,39 +32,13 @@ export class Configuration extends pulumi.CustomResource {
         return obj['__pulumiType'] === Configuration.__pulumiType;
     }
 
-    /**
-     * The ARN of the configuration.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The broker configuration in XML format.
-     * See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-     * for supported parameters and format of the XML.
-     */
     public readonly data!: pulumi.Output<string>;
-    /**
-     * The description of the configuration.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The type of broker engine.
-     */
     public readonly engineType!: pulumi.Output<string>;
-    /**
-     * The version of the broker engine.
-     */
     public readonly engineVersion!: pulumi.Output<string>;
-    /**
-     * The latest revision of the configuration.
-     */
     public /*out*/ readonly latestRevision!: pulumi.Output<number>;
-    /**
-     * The name of the configuration
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -149,39 +96,13 @@ export class Configuration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Configuration resources.
  */
 export interface ConfigurationState {
-    /**
-     * The ARN of the configuration.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The broker configuration in XML format.
-     * See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-     * for supported parameters and format of the XML.
-     */
     readonly data?: pulumi.Input<string>;
-    /**
-     * The description of the configuration.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The type of broker engine.
-     */
     readonly engineType?: pulumi.Input<string>;
-    /**
-     * The version of the broker engine.
-     */
     readonly engineVersion?: pulumi.Input<string>;
-    /**
-     * The latest revision of the configuration.
-     */
     readonly latestRevision?: pulumi.Input<number>;
-    /**
-     * The name of the configuration
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -189,30 +110,10 @@ export interface ConfigurationState {
  * The set of arguments for constructing a Configuration resource.
  */
 export interface ConfigurationArgs {
-    /**
-     * The broker configuration in XML format.
-     * See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-     * for supported parameters and format of the XML.
-     */
     readonly data: pulumi.Input<string>;
-    /**
-     * The description of the configuration.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The type of broker engine.
-     */
     readonly engineType: pulumi.Input<string>;
-    /**
-     * The version of the broker engine.
-     */
     readonly engineVersion: pulumi.Input<string>;
-    /**
-     * The name of the configuration
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

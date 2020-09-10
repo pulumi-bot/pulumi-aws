@@ -24,62 +24,9 @@ class EmailChannel(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Pinpoint Email Channel resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        identity = aws.ses.DomainIdentity("identity", domain="example.com")
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "pinpoint.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-
-        \"\"\")
-        email = aws.pinpoint.EmailChannel("email",
-            application_id=app.application_id,
-            from_address="user@example.com",
-            identity=identity.arn,
-            role_arn=role.arn)
-        role_policy = aws.iam.RolePolicy("rolePolicy",
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": {
-            "Action": [
-              "mobileanalytics:PutEvents",
-              "mobileanalytics:PutItems"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-              "*"
-            ]
-          }
-        }
-
-        \"\"\",
-            role=role.id)
-        ```
-
+        Create a EmailChannel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
-        :param pulumi.Input[str] from_address: The email address used to send emails from.
-        :param pulumi.Input[str] identity: The ARN of an identity verified with SES.
-        :param pulumi.Input[str] role_arn: The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,12 +82,6 @@ class EmailChannel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
-        :param pulumi.Input[str] from_address: The email address used to send emails from.
-        :param pulumi.Input[str] identity: The ARN of an identity verified with SES.
-        :param pulumi.Input[float] messages_per_second: Messages per second that can be sent.
-        :param pulumi.Input[str] role_arn: The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -157,49 +98,31 @@ class EmailChannel(pulumi.CustomResource):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
-        """
-        The application ID.
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether the channel is enabled or disabled. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="fromAddress")
     def from_address(self) -> pulumi.Output[str]:
-        """
-        The email address used to send emails from.
-        """
         return pulumi.get(self, "from_address")
 
     @property
     @pulumi.getter
     def identity(self) -> pulumi.Output[str]:
-        """
-        The ARN of an identity verified with SES.
-        """
         return pulumi.get(self, "identity")
 
     @property
     @pulumi.getter(name="messagesPerSecond")
     def messages_per_second(self) -> pulumi.Output[float]:
-        """
-        Messages per second that can be sent.
-        """
         return pulumi.get(self, "messages_per_second")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
-        """
         return pulumi.get(self, "role_arn")
 
     def translate_output_property(self, prop):

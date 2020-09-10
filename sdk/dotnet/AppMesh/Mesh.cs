@@ -9,87 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AppMesh
 {
-    /// <summary>
-    /// Provides an AWS App Mesh service mesh resource.
-    /// 
-    /// ## Example Usage
-    /// ### Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var simple = new Aws.AppMesh.Mesh("simple", new Aws.AppMesh.MeshArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Egress Filter
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var simple = new Aws.AppMesh.Mesh("simple", new Aws.AppMesh.MeshArgs
-    ///         {
-    ///             Spec = new Aws.AppMesh.Inputs.MeshSpecArgs
-    ///             {
-    ///                 EgressFilter = new Aws.AppMesh.Inputs.MeshSpecEgressFilterArgs
-    ///                 {
-    ///                     Type = "ALLOW_ALL",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Mesh : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the service mesh.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The creation date of the service mesh.
-        /// </summary>
         [Output("createdDate")]
         public Output<string> CreatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The last update date of the service mesh.
-        /// </summary>
         [Output("lastUpdatedDate")]
         public Output<string> LastUpdatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The name to use for the service mesh.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The service mesh specification to apply.
-        /// </summary>
         [Output("spec")]
         public Output<Outputs.MeshSpec?> Spec { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -139,24 +75,14 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class MeshArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name to use for the service mesh.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The service mesh specification to apply.
-        /// </summary>
         [Input("spec")]
         public Input<Inputs.MeshSpecArgs>? Spec { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -170,42 +96,23 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class MeshState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the service mesh.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The creation date of the service mesh.
-        /// </summary>
         [Input("createdDate")]
         public Input<string>? CreatedDate { get; set; }
 
-        /// <summary>
-        /// The last update date of the service mesh.
-        /// </summary>
         [Input("lastUpdatedDate")]
         public Input<string>? LastUpdatedDate { get; set; }
 
-        /// <summary>
-        /// The name to use for the service mesh.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The service mesh specification to apply.
-        /// </summary>
         [Input("spec")]
         public Input<Inputs.MeshSpecGetArgs>? Spec { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

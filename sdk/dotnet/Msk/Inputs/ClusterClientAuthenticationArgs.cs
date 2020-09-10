@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Msk.Inputs
 
     public sealed class ClusterClientAuthenticationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block for specifying TLS client authentication. See below.
-        /// </summary>
         [Input("tls")]
         public Input<Inputs.ClusterClientAuthenticationTlsArgs>? Tls { get; set; }
 

@@ -12,15 +12,9 @@ namespace Pulumi.Aws.GlobalAccelerator.Inputs
 
     public sealed class EndpointGroupEndpointConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
-        /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
 
-        /// <summary>
-        /// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
-        /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 

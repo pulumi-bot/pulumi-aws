@@ -9,67 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DataSync
 {
-    /// <summary>
-    /// Manages an NFS Location within AWS DataSync.
-    /// 
-    /// &gt; **NOTE:** The DataSync Agents must be available before creating this resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DataSync.NfsLocation("example", new Aws.DataSync.NfsLocationArgs
-    ///         {
-    ///             ServerHostname = "nfs.example.com",
-    ///             Subdirectory = "/exported/path",
-    ///             OnPremConfig = new Aws.DataSync.Inputs.NfsLocationOnPremConfigArgs
-    ///             {
-    ///                 AgentArns = 
-    ///                 {
-    ///                     aws_datasync_agent.Example.Arn,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class NfsLocation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing information for connecting to the NFS File System.
-        /// </summary>
         [Output("onPremConfig")]
         public Output<Outputs.NfsLocationOnPremConfig> OnPremConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies the IP address or DNS name of the NFS server. The DataSync Agent(s) use this to mount the NFS server.
-        /// </summary>
         [Output("serverHostname")]
         public Output<string> ServerHostname { get; private set; } = null!;
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-        /// </summary>
         [Output("subdirectory")]
         public Output<string> Subdirectory { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -122,30 +75,17 @@ namespace Pulumi.Aws.DataSync
 
     public sealed class NfsLocationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block containing information for connecting to the NFS File System.
-        /// </summary>
         [Input("onPremConfig", required: true)]
         public Input<Inputs.NfsLocationOnPremConfigArgs> OnPremConfig { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the IP address or DNS name of the NFS server. The DataSync Agent(s) use this to mount the NFS server.
-        /// </summary>
         [Input("serverHostname", required: true)]
         public Input<string> ServerHostname { get; set; } = null!;
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-        /// </summary>
         [Input("subdirectory", required: true)]
         public Input<string> Subdirectory { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -159,36 +99,20 @@ namespace Pulumi.Aws.DataSync
 
     public sealed class NfsLocationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Configuration block containing information for connecting to the NFS File System.
-        /// </summary>
         [Input("onPremConfig")]
         public Input<Inputs.NfsLocationOnPremConfigGetArgs>? OnPremConfig { get; set; }
 
-        /// <summary>
-        /// Specifies the IP address or DNS name of the NFS server. The DataSync Agent(s) use this to mount the NFS server.
-        /// </summary>
         [Input("serverHostname")]
         public Input<string>? ServerHostname { get; set; }
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-        /// </summary>
         [Input("subdirectory")]
         public Input<string>? Subdirectory { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

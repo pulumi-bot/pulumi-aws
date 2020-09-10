@@ -23,31 +23,9 @@ class UserLoginProfile(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an IAM User Login Profile with limited support for password creation during this provider resource creation. Uses PGP to encrypt the password for safe transport to the user. PGP keys can be obtained from Keybase.
-
-        > To reset an IAM User login password via this provider, you can use delete and recreate this resource or change any of the arguments.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_user = aws.iam.User("exampleUser",
-            path="/",
-            force_destroy=True)
-        example_user_login_profile = aws.iam.UserLoginProfile("exampleUserLoginProfile",
-            user=example_user.name,
-            pgp_key="keybase:some_person_that_exists")
-        pulumi.export("password", example_user_login_profile.encrypted_password)
-        ```
-
+        Create a UserLoginProfile resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] password_length: The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument.
-        :param pulumi.Input[bool] password_reset_required: Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument.
-        :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
-        :param pulumi.Input[str] user: The IAM user's name.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,12 +77,6 @@ class UserLoginProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] encrypted_password: The encrypted password, base64 encoded. Only available if password was handled on this provider resource creation, not import.
-        :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the password. Only available if password was handled on this provider resource creation, not import.
-        :param pulumi.Input[float] password_length: The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument.
-        :param pulumi.Input[bool] password_reset_required: Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument.
-        :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
-        :param pulumi.Input[str] user: The IAM user's name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,49 +93,31 @@ class UserLoginProfile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="encryptedPassword")
     def encrypted_password(self) -> pulumi.Output[str]:
-        """
-        The encrypted password, base64 encoded. Only available if password was handled on this provider resource creation, not import.
-        """
         return pulumi.get(self, "encrypted_password")
 
     @property
     @pulumi.getter(name="keyFingerprint")
     def key_fingerprint(self) -> pulumi.Output[str]:
-        """
-        The fingerprint of the PGP key used to encrypt the password. Only available if password was handled on this provider resource creation, not import.
-        """
         return pulumi.get(self, "key_fingerprint")
 
     @property
     @pulumi.getter(name="passwordLength")
     def password_length(self) -> pulumi.Output[Optional[float]]:
-        """
-        The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument.
-        """
         return pulumi.get(self, "password_length")
 
     @property
     @pulumi.getter(name="passwordResetRequired")
     def password_reset_required(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument.
-        """
         return pulumi.get(self, "password_reset_required")
 
     @property
     @pulumi.getter(name="pgpKey")
     def pgp_key(self) -> pulumi.Output[str]:
-        """
-        Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
-        """
         return pulumi.get(self, "pgp_key")
 
     @property
     @pulumi.getter
     def user(self) -> pulumi.Output[str]:
-        """
-        The IAM user's name.
-        """
         return pulumi.get(self, "user")
 
     def translate_output_property(self, prop):

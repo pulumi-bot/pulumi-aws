@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create a Service Catalog Portfolio.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const portfolio = new aws.servicecatalog.Portfolio("portfolio", {
- *     description: "List of my organizations apps",
- *     providerName: "Brett",
- * });
- * ```
- */
 export class Portfolio extends pulumi.CustomResource {
     /**
      * Get an existing Portfolio resource's state with the given name, ID, and optional extra
@@ -49,21 +34,9 @@ export class Portfolio extends pulumi.CustomResource {
 
     public /*out*/ readonly arn!: pulumi.Output<string>;
     public /*out*/ readonly createdTime!: pulumi.Output<string>;
-    /**
-     * Description of the portfolio
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * The name of the portfolio.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Name of the person or organization who owns the portfolio.
-     */
     public readonly providerName!: pulumi.Output<string | undefined>;
-    /**
-     * Tags to apply to the connection.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -110,21 +83,9 @@ export class Portfolio extends pulumi.CustomResource {
 export interface PortfolioState {
     readonly arn?: pulumi.Input<string>;
     readonly createdTime?: pulumi.Input<string>;
-    /**
-     * Description of the portfolio
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the portfolio.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Name of the person or organization who owns the portfolio.
-     */
     readonly providerName?: pulumi.Input<string>;
-    /**
-     * Tags to apply to the connection.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -132,20 +93,8 @@ export interface PortfolioState {
  * The set of arguments for constructing a Portfolio resource.
  */
 export interface PortfolioArgs {
-    /**
-     * Description of the portfolio
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the portfolio.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Name of the person or organization who owns the portfolio.
-     */
     readonly providerName?: pulumi.Input<string>;
-    /**
-     * Tags to apply to the connection.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

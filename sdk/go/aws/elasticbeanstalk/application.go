@@ -9,52 +9,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Elastic Beanstalk Application Resource. Elastic Beanstalk allows
-// you to deploy and manage applications in the AWS cloud without worrying about
-// the infrastructure that runs those applications.
-//
-// This resource creates an application that has one configuration template named
-// `default`, and no application versions
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elasticbeanstalk"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elasticbeanstalk.NewApplication(ctx, "tftest", &elasticbeanstalk.ApplicationArgs{
-// 			Description: pulumi.String("tf-test-desc"),
-// 			AppversionLifecycle: &elasticbeanstalk.ApplicationAppversionLifecycleArgs{
-// 				ServiceRole:        pulumi.Any(aws_iam_role.Beanstalk_service.Arn),
-// 				MaxCount:           pulumi.Int(128),
-// 				DeleteSourceFromS3: pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Application struct {
 	pulumi.CustomResourceState
 
 	AppversionLifecycle ApplicationAppversionLifecyclePtrOutput `pulumi:"appversionLifecycle"`
-	// The ARN assigned by AWS for this Elastic Beanstalk Application.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Short description of the application
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the application, must be unique within your account
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Key-value map of tags for the Elastic Beanstalk Application.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                 pulumi.StringOutput                     `pulumi:"arn"`
+	Description         pulumi.StringPtrOutput                  `pulumi:"description"`
+	Name                pulumi.StringOutput                     `pulumi:"name"`
+	Tags                pulumi.StringMapOutput                  `pulumi:"tags"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -86,26 +48,18 @@ func GetApplication(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
 	AppversionLifecycle *ApplicationAppversionLifecycle `pulumi:"appversionLifecycle"`
-	// The ARN assigned by AWS for this Elastic Beanstalk Application.
-	Arn *string `pulumi:"arn"`
-	// Short description of the application
-	Description *string `pulumi:"description"`
-	// The name of the application, must be unique within your account
-	Name *string `pulumi:"name"`
-	// Key-value map of tags for the Elastic Beanstalk Application.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                 *string                         `pulumi:"arn"`
+	Description         *string                         `pulumi:"description"`
+	Name                *string                         `pulumi:"name"`
+	Tags                map[string]string               `pulumi:"tags"`
 }
 
 type ApplicationState struct {
 	AppversionLifecycle ApplicationAppversionLifecyclePtrInput
-	// The ARN assigned by AWS for this Elastic Beanstalk Application.
-	Arn pulumi.StringPtrInput
-	// Short description of the application
-	Description pulumi.StringPtrInput
-	// The name of the application, must be unique within your account
-	Name pulumi.StringPtrInput
-	// Key-value map of tags for the Elastic Beanstalk Application.
-	Tags pulumi.StringMapInput
+	Arn                 pulumi.StringPtrInput
+	Description         pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -114,23 +68,17 @@ func (ApplicationState) ElementType() reflect.Type {
 
 type applicationArgs struct {
 	AppversionLifecycle *ApplicationAppversionLifecycle `pulumi:"appversionLifecycle"`
-	// Short description of the application
-	Description *string `pulumi:"description"`
-	// The name of the application, must be unique within your account
-	Name *string `pulumi:"name"`
-	// Key-value map of tags for the Elastic Beanstalk Application.
-	Tags map[string]string `pulumi:"tags"`
+	Description         *string                         `pulumi:"description"`
+	Name                *string                         `pulumi:"name"`
+	Tags                map[string]string               `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
 	AppversionLifecycle ApplicationAppversionLifecyclePtrInput
-	// Short description of the application
-	Description pulumi.StringPtrInput
-	// The name of the application, must be unique within your account
-	Name pulumi.StringPtrInput
-	// Key-value map of tags for the Elastic Beanstalk Application.
-	Tags pulumi.StringMapInput
+	Description         pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {

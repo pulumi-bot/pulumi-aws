@@ -9,49 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Organizations
 {
-    /// <summary>
-    /// Provides a resource to create a member account in the current organization.
-    /// 
-    /// &gt; **Note:** Account management must be done from the organization's master account.
-    /// 
-    /// !&gt; **WARNING:** Deleting this resource will only remove an AWS account from an organization. This provider will not close the account. The member account must be prepared to be a standalone account beforehand. See the [AWS Organizations documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html) for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var account = new Aws.Organizations.Account("account", new Aws.Organizations.AccountArgs
-    ///         {
-    ///             Email = "john@doe.org",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Account : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN for this account.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
-        /// <summary>
-        /// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
-        /// </summary>
         [Output("iamUserAccessToBilling")]
         public Output<string?> IamUserAccessToBilling { get; private set; } = null!;
 
@@ -61,30 +26,18 @@ namespace Pulumi.Aws.Organizations
         [Output("joinedTimestamp")]
         public Output<string> JoinedTimestamp { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly name for the member account.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-        /// </summary>
         [Output("roleName")]
         public Output<string?> RoleName { get; private set; } = null!;
 
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value mapping of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -134,42 +87,23 @@ namespace Pulumi.Aws.Organizations
 
     public sealed class AccountArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
-        /// <summary>
-        /// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
-        /// </summary>
         [Input("iamUserAccessToBilling")]
         public Input<string>? IamUserAccessToBilling { get; set; }
 
-        /// <summary>
-        /// A friendly name for the member account.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
-        /// <summary>
-        /// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-        /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value mapping of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -183,21 +117,12 @@ namespace Pulumi.Aws.Organizations
 
     public sealed class AccountState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN for this account.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
-        /// <summary>
-        /// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
-        /// </summary>
         [Input("iamUserAccessToBilling")]
         public Input<string>? IamUserAccessToBilling { get; set; }
 
@@ -207,21 +132,12 @@ namespace Pulumi.Aws.Organizations
         [Input("joinedTimestamp")]
         public Input<string>? JoinedTimestamp { get; set; }
 
-        /// <summary>
-        /// A friendly name for the member account.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
-        /// <summary>
-        /// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-        /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
@@ -230,10 +146,6 @@ namespace Pulumi.Aws.Organizations
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value mapping of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

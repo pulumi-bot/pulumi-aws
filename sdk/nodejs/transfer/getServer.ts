@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ARN of an AWS Transfer Server for use in other
- * resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.transfer.getServer({
- *     serverId: "s-1234567",
- * }, { async: true }));
- * ```
- */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
     if (!opts) {
         opts = {}
@@ -38,9 +23,6 @@ export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getServer.
  */
 export interface GetServerArgs {
-    /**
-     * ID for an SFTP server.
-     */
     readonly serverId: string;
 }
 
@@ -48,33 +30,15 @@ export interface GetServerArgs {
  * A collection of values returned by getServer.
  */
 export interface GetServerResult {
-    /**
-     * Amazon Resource Name (ARN) of Transfer Server
-     */
     readonly arn: string;
-    /**
-     * The endpoint of the Transfer Server (e.g. `s-12345678.server.transfer.REGION.amazonaws.com`)
-     */
     readonly endpoint: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice.
-     */
     readonly identityProviderType: string;
-    /**
-     * Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identityProviderType` of `API_GATEWAY`.
-     */
     readonly invocationRole: string;
-    /**
-     * Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
-     */
     readonly loggingRole: string;
     readonly serverId: string;
-    /**
-     * URL of the service endpoint used to authenticate users with an `identityProviderType` of `API_GATEWAY`.
-     */
     readonly url: string;
 }

@@ -10,52 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 VPC Link.
-//
-// > **Note:** Amazon API Gateway Version 2 VPC Links enable private integrations that connect HTTP APIs to private resources in a VPC.
-// To enable private integration for REST APIs, use the `Amazon API Gateway Version 1 VPC Link` resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewVpcLink(ctx, "example", &apigatewayv2.VpcLinkArgs{
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.Any(data.Aws_security_group.Example.Id),
-// 			},
-// 			SubnetIds: data.Aws_subnet_ids.Example.Ids,
-// 			Tags: pulumi.StringMap{
-// 				"Usage": pulumi.String("example"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VpcLink struct {
 	pulumi.CustomResourceState
 
-	// The VPC Link ARN.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the VPC Link.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Security group IDs for the VPC Link.
+	Arn              pulumi.StringOutput      `pulumi:"arn"`
+	Name             pulumi.StringOutput      `pulumi:"name"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Subnet IDs for the VPC Link.
-	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// A map of tags to assign to the VPC Link.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	SubnetIds        pulumi.StringArrayOutput `pulumi:"subnetIds"`
+	Tags             pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewVpcLink registers a new resource with the given unique name, arguments, and options.
@@ -92,29 +54,19 @@ func GetVpcLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcLink resources.
 type vpcLinkState struct {
-	// The VPC Link ARN.
-	Arn *string `pulumi:"arn"`
-	// The name of the VPC Link.
-	Name *string `pulumi:"name"`
-	// Security group IDs for the VPC Link.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Subnet IDs for the VPC Link.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// A map of tags to assign to the VPC Link.
-	Tags map[string]string `pulumi:"tags"`
+	Arn              *string           `pulumi:"arn"`
+	Name             *string           `pulumi:"name"`
+	SecurityGroupIds []string          `pulumi:"securityGroupIds"`
+	SubnetIds        []string          `pulumi:"subnetIds"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 type VpcLinkState struct {
-	// The VPC Link ARN.
-	Arn pulumi.StringPtrInput
-	// The name of the VPC Link.
-	Name pulumi.StringPtrInput
-	// Security group IDs for the VPC Link.
+	Arn              pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// Subnet IDs for the VPC Link.
-	SubnetIds pulumi.StringArrayInput
-	// A map of tags to assign to the VPC Link.
-	Tags pulumi.StringMapInput
+	SubnetIds        pulumi.StringArrayInput
+	Tags             pulumi.StringMapInput
 }
 
 func (VpcLinkState) ElementType() reflect.Type {
@@ -122,26 +74,18 @@ func (VpcLinkState) ElementType() reflect.Type {
 }
 
 type vpcLinkArgs struct {
-	// The name of the VPC Link.
-	Name *string `pulumi:"name"`
-	// Security group IDs for the VPC Link.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Subnet IDs for the VPC Link.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// A map of tags to assign to the VPC Link.
-	Tags map[string]string `pulumi:"tags"`
+	Name             *string           `pulumi:"name"`
+	SecurityGroupIds []string          `pulumi:"securityGroupIds"`
+	SubnetIds        []string          `pulumi:"subnetIds"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a VpcLink resource.
 type VpcLinkArgs struct {
-	// The name of the VPC Link.
-	Name pulumi.StringPtrInput
-	// Security group IDs for the VPC Link.
+	Name             pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// Subnet IDs for the VPC Link.
-	SubnetIds pulumi.StringArrayInput
-	// A map of tags to assign to the VPC Link.
-	Tags pulumi.StringMapInput
+	SubnetIds        pulumi.StringArrayInput
+	Tags             pulumi.StringMapInput
 }
 
 func (VpcLinkArgs) ElementType() reflect.Type {

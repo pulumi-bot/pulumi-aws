@@ -25,26 +25,9 @@ class Database(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Athena database.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        hoge_bucket = aws.s3.Bucket("hogeBucket")
-        hoge_database = aws.athena.Database("hogeDatabase",
-            name="database_name",
-            bucket=hoge_bucket.bucket)
-        ```
-
+        Create a Database resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: Name of s3 bucket to save the results of the query execution.
-        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigurationArgs']] encryption_configuration: The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
-        :param pulumi.Input[bool] force_destroy: A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-        :param pulumi.Input[str] name: Name of the database to create.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,10 +73,6 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: Name of s3 bucket to save the results of the query execution.
-        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigurationArgs']] encryption_configuration: The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
-        :param pulumi.Input[bool] force_destroy: A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-        :param pulumi.Input[str] name: Name of the database to create.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -108,33 +87,21 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        Name of s3 bucket to save the results of the query execution.
-        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="encryptionConfiguration")
     def encryption_configuration(self) -> pulumi.Output[Optional['outputs.DatabaseEncryptionConfiguration']]:
-        """
-        The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
-        """
         return pulumi.get(self, "encryption_configuration")
 
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-        """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the database to create.
-        """
         return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):

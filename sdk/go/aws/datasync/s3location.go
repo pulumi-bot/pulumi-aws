@@ -10,48 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an S3 Location within AWS DataSync.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/datasync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datasync.NewS3Location(ctx, "example", &datasync.S3LocationArgs{
-// 			S3BucketArn:  pulumi.Any(aws_s3_bucket.Example.Arn),
-// 			Subdirectory: pulumi.String("/example/prefix"),
-// 			S3Config: &datasync.S3LocationS3ConfigArgs{
-// 				BucketAccessRoleArn: pulumi.Any(aws_iam_role.Example.Arn),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type S3Location struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the DataSync Location.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Amazon Resource Name (ARN) of the S3 Bucket.
-	S3BucketArn pulumi.StringOutput `pulumi:"s3BucketArn"`
-	// Configuration block containing information for connecting to S3.
-	S3Config S3LocationS3ConfigOutput `pulumi:"s3Config"`
-	// Prefix to perform actions as source or destination.
-	Subdirectory pulumi.StringOutput `pulumi:"subdirectory"`
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	Uri  pulumi.StringOutput    `pulumi:"uri"`
+	Arn          pulumi.StringOutput      `pulumi:"arn"`
+	S3BucketArn  pulumi.StringOutput      `pulumi:"s3BucketArn"`
+	S3Config     S3LocationS3ConfigOutput `pulumi:"s3Config"`
+	Subdirectory pulumi.StringOutput      `pulumi:"subdirectory"`
+	Tags         pulumi.StringMapOutput   `pulumi:"tags"`
+	Uri          pulumi.StringOutput      `pulumi:"uri"`
 }
 
 // NewS3Location registers a new resource with the given unique name, arguments, and options.
@@ -91,31 +58,21 @@ func GetS3Location(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering S3Location resources.
 type s3locationState struct {
-	// Amazon Resource Name (ARN) of the DataSync Location.
-	Arn *string `pulumi:"arn"`
-	// Amazon Resource Name (ARN) of the S3 Bucket.
-	S3BucketArn *string `pulumi:"s3BucketArn"`
-	// Configuration block containing information for connecting to S3.
-	S3Config *S3LocationS3Config `pulumi:"s3Config"`
-	// Prefix to perform actions as source or destination.
-	Subdirectory *string `pulumi:"subdirectory"`
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags map[string]string `pulumi:"tags"`
-	Uri  *string           `pulumi:"uri"`
+	Arn          *string             `pulumi:"arn"`
+	S3BucketArn  *string             `pulumi:"s3BucketArn"`
+	S3Config     *S3LocationS3Config `pulumi:"s3Config"`
+	Subdirectory *string             `pulumi:"subdirectory"`
+	Tags         map[string]string   `pulumi:"tags"`
+	Uri          *string             `pulumi:"uri"`
 }
 
 type S3LocationState struct {
-	// Amazon Resource Name (ARN) of the DataSync Location.
-	Arn pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of the S3 Bucket.
-	S3BucketArn pulumi.StringPtrInput
-	// Configuration block containing information for connecting to S3.
-	S3Config S3LocationS3ConfigPtrInput
-	// Prefix to perform actions as source or destination.
+	Arn          pulumi.StringPtrInput
+	S3BucketArn  pulumi.StringPtrInput
+	S3Config     S3LocationS3ConfigPtrInput
 	Subdirectory pulumi.StringPtrInput
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags pulumi.StringMapInput
-	Uri  pulumi.StringPtrInput
+	Tags         pulumi.StringMapInput
+	Uri          pulumi.StringPtrInput
 }
 
 func (S3LocationState) ElementType() reflect.Type {
@@ -123,26 +80,18 @@ func (S3LocationState) ElementType() reflect.Type {
 }
 
 type s3locationArgs struct {
-	// Amazon Resource Name (ARN) of the S3 Bucket.
-	S3BucketArn string `pulumi:"s3BucketArn"`
-	// Configuration block containing information for connecting to S3.
-	S3Config S3LocationS3Config `pulumi:"s3Config"`
-	// Prefix to perform actions as source or destination.
-	Subdirectory string `pulumi:"subdirectory"`
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags map[string]string `pulumi:"tags"`
+	S3BucketArn  string             `pulumi:"s3BucketArn"`
+	S3Config     S3LocationS3Config `pulumi:"s3Config"`
+	Subdirectory string             `pulumi:"subdirectory"`
+	Tags         map[string]string  `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a S3Location resource.
 type S3LocationArgs struct {
-	// Amazon Resource Name (ARN) of the S3 Bucket.
-	S3BucketArn pulumi.StringInput
-	// Configuration block containing information for connecting to S3.
-	S3Config S3LocationS3ConfigInput
-	// Prefix to perform actions as source or destination.
+	S3BucketArn  pulumi.StringInput
+	S3Config     S3LocationS3ConfigInput
 	Subdirectory pulumi.StringInput
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags pulumi.StringMapInput
+	Tags         pulumi.StringMapInput
 }
 
 func (S3LocationArgs) ElementType() reflect.Type {

@@ -38,9 +38,6 @@ class GetSitesResult:
     @property
     @pulumi.getter
     def ids(self) -> List[str]:
-        """
-        Set of Outposts Site identifiers.
-        """
         return pulumi.get(self, "ids")
 
 
@@ -56,16 +53,7 @@ class AwaitableGetSitesResult(GetSitesResult):
 
 def get_sites(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSitesResult:
     """
-    Provides details about multiple Outposts Sites.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    all = aws.outposts.get_sites()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     if opts is None:

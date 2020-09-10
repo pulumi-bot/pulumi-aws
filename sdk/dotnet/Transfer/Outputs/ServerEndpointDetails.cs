@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Transfer.Outputs
     [OutputType]
     public sealed class ServerEndpointDetails
     {
-        /// <summary>
-        /// The ID of the VPC endpoint.
-        /// </summary>
         public readonly string VpcEndpointId;
 
         [OutputConstructor]

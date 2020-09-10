@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information on an AWS Cost and Usage Report Definition.
- *
- * > *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
- *
- * > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const reportDefinition = pulumi.output(aws.cur.getReportDefinition({
- *     reportName: "example",
- * }, { async: true }));
- * ```
- */
 export function getReportDefinition(args: GetReportDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetReportDefinitionResult> {
     if (!opts) {
         opts = {}
@@ -41,9 +23,6 @@ export function getReportDefinition(args: GetReportDefinitionArgs, opts?: pulumi
  * A collection of arguments for invoking getReportDefinition.
  */
 export interface GetReportDefinitionArgs {
-    /**
-     * The name of the report definition to match.
-     */
     readonly reportName: string;
 }
 
@@ -51,41 +30,17 @@ export interface GetReportDefinitionArgs {
  * A collection of values returned by getReportDefinition.
  */
 export interface GetReportDefinitionResult {
-    /**
-     * A list of additional artifacts.
-     */
     readonly additionalArtifacts: string[];
-    /**
-     * A list of schema elements.
-     */
     readonly additionalSchemaElements: string[];
-    /**
-     * Preferred format for report.
-     */
     readonly compression: string;
-    /**
-     * Preferred compression format for report.
-     */
     readonly format: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly reportName: string;
-    /**
-     * Name of customer S3 bucket.
-     */
     readonly s3Bucket: string;
-    /**
-     * Preferred report path prefix.
-     */
     readonly s3Prefix: string;
-    /**
-     * Region of customer S3 bucket.
-     */
     readonly s3Region: string;
-    /**
-     * The frequency on which report data are measured and displayed.
-     */
     readonly timeUnit: string;
 }

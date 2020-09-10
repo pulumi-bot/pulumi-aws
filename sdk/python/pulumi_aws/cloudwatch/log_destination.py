@@ -22,24 +22,9 @@ class LogDestination(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a CloudWatch Logs destination resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_destination = aws.cloudwatch.LogDestination("testDestination",
-            role_arn=aws_iam_role["iam_for_cloudwatch"]["arn"],
-            target_arn=aws_kinesis_stream["kinesis_for_cloudwatch"]["arn"])
-        ```
-
+        Create a LogDestination resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A name for the log destination
-        :param pulumi.Input[str] role_arn: The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
-        :param pulumi.Input[str] target_arn: The ARN of the target Amazon Kinesis stream resource for the destination
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,10 +72,6 @@ class LogDestination(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the log destination.
-        :param pulumi.Input[str] name: A name for the log destination
-        :param pulumi.Input[str] role_arn: The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
-        :param pulumi.Input[str] target_arn: The ARN of the target Amazon Kinesis stream resource for the destination
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -105,33 +86,21 @@ class LogDestination(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) specifying the log destination.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A name for the log destination
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="targetArn")
     def target_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the target Amazon Kinesis stream resource for the destination
-        """
         return pulumi.get(self, "target_arn")
 
     def translate_output_property(self, prop):

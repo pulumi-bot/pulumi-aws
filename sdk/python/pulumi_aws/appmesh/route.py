@@ -26,97 +26,9 @@ class Route(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS App Mesh route resource.
-
-        ## Example Usage
-        ### HTTP Routing
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb = aws.appmesh.Route("serviceb",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            virtual_router_name=aws_appmesh_virtual_router["serviceb"]["name"],
-            spec=aws.appmesh.RouteSpecArgs(
-                http_route=aws.appmesh.RouteSpecHttpRouteArgs(
-                    match=aws.appmesh.RouteSpecHttpRouteMatchArgs(
-                        prefix="/",
-                    ),
-                    action=aws.appmesh.RouteSpecHttpRouteActionArgs(
-                        weighted_targets=[
-                            aws.appmesh.RouteSpecHttpRouteActionWeightedTargetArgs(
-                                virtual_node=aws_appmesh_virtual_node["serviceb1"]["name"],
-                                weight=90,
-                            ),
-                            aws.appmesh.RouteSpecHttpRouteActionWeightedTargetArgs(
-                                virtual_node=aws_appmesh_virtual_node["serviceb2"]["name"],
-                                weight=10,
-                            ),
-                        ],
-                    ),
-                ),
-            ))
-        ```
-        ### HTTP Header Routing
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb = aws.appmesh.Route("serviceb",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            virtual_router_name=aws_appmesh_virtual_router["serviceb"]["name"],
-            spec=aws.appmesh.RouteSpecArgs(
-                http_route=aws.appmesh.RouteSpecHttpRouteArgs(
-                    match=aws.appmesh.RouteSpecHttpRouteMatchArgs(
-                        method="POST",
-                        prefix="/",
-                        scheme="https",
-                        headers=[aws.appmesh.RouteSpecHttpRouteMatchHeaderArgs(
-                            name="clientRequestId",
-                            match=aws.appmesh.RouteSpecHttpRouteMatchHeaderMatchArgs(
-                                prefix="123",
-                            ),
-                        )],
-                    ),
-                    action=aws.appmesh.RouteSpecHttpRouteActionArgs(
-                        weighted_targets=[aws.appmesh.RouteSpecHttpRouteActionWeightedTargetArgs(
-                            virtual_node=aws_appmesh_virtual_node["serviceb"]["name"],
-                            weight=100,
-                        )],
-                    ),
-                ),
-            ))
-        ```
-        ### TCP Routing
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb = aws.appmesh.Route("serviceb",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            virtual_router_name=aws_appmesh_virtual_router["serviceb"]["name"],
-            spec=aws.appmesh.RouteSpecArgs(
-                tcp_route=aws.appmesh.RouteSpecTcpRouteArgs(
-                    action=aws.appmesh.RouteSpecTcpRouteActionArgs(
-                        weighted_targets=[aws.appmesh.RouteSpecTcpRouteActionWeightedTargetArgs(
-                            virtual_node=aws_appmesh_virtual_node["serviceb1"]["name"],
-                            weight=100,
-                        )],
-                    ),
-                ),
-            ))
-        ```
-
+        Create a Route resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the route.
-        :param pulumi.Input[str] name: The name to use for the route.
-        :param pulumi.Input[pulumi.InputType['RouteSpecArgs']] spec: The route specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] virtual_router_name: The name of the virtual router in which to create the route.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -174,14 +86,6 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the route.
-        :param pulumi.Input[str] created_date: The creation date of the route.
-        :param pulumi.Input[str] last_updated_date: The last update date of the route.
-        :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the route.
-        :param pulumi.Input[str] name: The name to use for the route.
-        :param pulumi.Input[pulumi.InputType['RouteSpecArgs']] spec: The route specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] virtual_router_name: The name of the virtual router in which to create the route.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -200,65 +104,41 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the route.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="createdDate")
     def created_date(self) -> pulumi.Output[str]:
-        """
-        The creation date of the route.
-        """
         return pulumi.get(self, "created_date")
 
     @property
     @pulumi.getter(name="lastUpdatedDate")
     def last_updated_date(self) -> pulumi.Output[str]:
-        """
-        The last update date of the route.
-        """
         return pulumi.get(self, "last_updated_date")
 
     @property
     @pulumi.getter(name="meshName")
     def mesh_name(self) -> pulumi.Output[str]:
-        """
-        The name of the service mesh in which to create the route.
-        """
         return pulumi.get(self, "mesh_name")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name to use for the route.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.RouteSpec']:
-        """
-        The route specification to apply.
-        """
         return pulumi.get(self, "spec")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="virtualRouterName")
     def virtual_router_name(self) -> pulumi.Output[str]:
-        """
-        The name of the virtual router in which to create the route.
-        """
         return pulumi.get(self, "virtual_router_name")
 
     def translate_output_property(self, prop):

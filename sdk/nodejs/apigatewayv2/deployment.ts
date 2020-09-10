@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 deployment.
- * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
- *
- * > **Note:** Creating a deployment for an API requires at least one `aws.apigatewayv2.Route` resource associated with that API. To avoid race conditions when all resources are being created together, you need to add implicit resource references via the `triggers` argument or explicit resource references using the [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Deployment("example", {
- *     apiId: aws_apigatewayv2_route.example.api_id,
- *     description: "Example deployment",
- * });
- * ```
- */
 export class Deployment extends pulumi.CustomResource {
     /**
      * Get an existing Deployment resource's state with the given name, ID, and optional extra
@@ -51,21 +32,9 @@ export class Deployment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Deployment.__pulumiType;
     }
 
-    /**
-     * The API identifier.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * Whether the deployment was automatically released.
-     */
     public /*out*/ readonly autoDeployed!: pulumi.Output<boolean>;
-    /**
-     * The description for the deployment resource.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-     */
     public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -109,21 +78,9 @@ export class Deployment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Deployment resources.
  */
 export interface DeploymentState {
-    /**
-     * The API identifier.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * Whether the deployment was automatically released.
-     */
     readonly autoDeployed?: pulumi.Input<boolean>;
-    /**
-     * The description for the deployment resource.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-     */
     readonly triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -131,16 +88,7 @@ export interface DeploymentState {
  * The set of arguments for constructing a Deployment resource.
  */
 export interface DeploymentArgs {
-    /**
-     * The API identifier.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * The description for the deployment resource.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-     */
     readonly triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

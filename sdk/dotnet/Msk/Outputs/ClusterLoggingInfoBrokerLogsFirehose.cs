@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Msk.Outputs
     [OutputType]
     public sealed class ClusterLoggingInfoBrokerLogsFirehose
     {
-        /// <summary>
-        /// Name of the Kinesis Data Firehose delivery stream to deliver logs to.
-        /// </summary>
         public readonly string? DeliveryStream;
-        /// <summary>
-        /// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
-        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

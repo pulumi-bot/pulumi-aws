@@ -24,51 +24,9 @@ class UserGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Cognito User Group resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main_user_pool = aws.cognito.UserPool("mainUserPool")
-        group_role = aws.iam.Role("groupRole", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Sid": "",
-              "Effect": "Allow",
-              "Principal": {
-                "Federated": "cognito-identity.amazonaws.com"
-              },
-              "Action": "sts:AssumeRoleWithWebIdentity",
-              "Condition": {
-                "StringEquals": {
-                  "cognito-identity.amazonaws.com:aud": "us-east-1:12345678-dead-beef-cafe-123456790ab"
-                },
-                "ForAnyValue:StringLike": {
-                  "cognito-identity.amazonaws.com:amr": "authenticated"
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
-        main_user_group = aws.cognito.UserGroup("mainUserGroup",
-            user_pool_id=main_user_pool.id,
-            description="Managed by Pulumi",
-            precedence=42,
-            role_arn=group_role.arn)
-        ```
-
+        Create a UserGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the user group.
-        :param pulumi.Input[str] name: The name of the user group.
-        :param pulumi.Input[float] precedence: The precedence of the user group.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role to be associated with the user group.
-        :param pulumi.Input[str] user_pool_id: The user pool ID.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -116,11 +74,6 @@ class UserGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the user group.
-        :param pulumi.Input[str] name: The name of the user group.
-        :param pulumi.Input[float] precedence: The precedence of the user group.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role to be associated with the user group.
-        :param pulumi.Input[str] user_pool_id: The user pool ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,41 +89,26 @@ class UserGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the user group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the user group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def precedence(self) -> pulumi.Output[Optional[float]]:
-        """
-        The precedence of the user group.
-        """
         return pulumi.get(self, "precedence")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN of the IAM role to be associated with the user group.
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="userPoolId")
     def user_pool_id(self) -> pulumi.Output[str]:
-        """
-        The user pool ID.
-        """
         return pulumi.get(self, "user_pool_id")
 
     def translate_output_property(self, prop):

@@ -25,53 +25,9 @@ class AnalyticsConfiguration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a S3 bucket [analytics configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html) resource.
-
-        ## Example Usage
-        ### Add analytics configuration for entire S3 bucket and export results to a second S3 bucket
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.s3.Bucket("example")
-        analytics = aws.s3.Bucket("analytics")
-        example_entire_bucket = aws.s3.AnalyticsConfiguration("example-entire-bucket",
-            bucket=example.bucket,
-            storage_class_analysis=aws.s3.AnalyticsConfigurationStorageClassAnalysisArgs(
-                data_export=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportArgs(
-                    destination=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs(
-                        s3_bucket_destination=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs(
-                            bucket_arn=analytics.arn,
-                        ),
-                    ),
-                ),
-            ))
-        ```
-        ### Add analytics configuration with S3 bucket object filter
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.s3.Bucket("example")
-        example_filtered = aws.s3.AnalyticsConfiguration("example-filtered",
-            bucket=example.bucket,
-            filter=aws.s3.AnalyticsConfigurationFilterArgs(
-                prefix="documents/",
-                tags={
-                    "priority": "high",
-                    "class": "blue",
-                },
-            ))
-        ```
-
+        Create a AnalyticsConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket this analytics configuration is associated with.
-        :param pulumi.Input[pulumi.InputType['AnalyticsConfigurationFilterArgs']] filter: Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-        :param pulumi.Input[str] name: Unique identifier of the analytics configuration for the bucket.
-        :param pulumi.Input[pulumi.InputType['AnalyticsConfigurationStorageClassAnalysisArgs']] storage_class_analysis: Configuration for the analytics data export (documented below).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,10 +73,6 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket this analytics configuration is associated with.
-        :param pulumi.Input[pulumi.InputType['AnalyticsConfigurationFilterArgs']] filter: Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-        :param pulumi.Input[str] name: Unique identifier of the analytics configuration for the bucket.
-        :param pulumi.Input[pulumi.InputType['AnalyticsConfigurationStorageClassAnalysisArgs']] storage_class_analysis: Configuration for the analytics data export (documented below).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -135,33 +87,21 @@ class AnalyticsConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        The name of the bucket this analytics configuration is associated with.
-        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter
     def filter(self) -> pulumi.Output[Optional['outputs.AnalyticsConfigurationFilter']]:
-        """
-        Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Unique identifier of the analytics configuration for the bucket.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="storageClassAnalysis")
     def storage_class_analysis(self) -> pulumi.Output[Optional['outputs.AnalyticsConfigurationStorageClassAnalysis']]:
-        """
-        Configuration for the analytics data export (documented below).
-        """
         return pulumi.get(self, "storage_class_analysis")
 
     def translate_output_property(self, prop):

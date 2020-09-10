@@ -9,83 +9,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a CodeDeploy application to be used as a basis for deployments
-//
-// ## Example Usage
-// ### ECS Application
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/codedeploy"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := codedeploy.NewApplication(ctx, "example", &codedeploy.ApplicationArgs{
-// 			ComputePlatform: pulumi.String("ECS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Lambda Application
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/codedeploy"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := codedeploy.NewApplication(ctx, "example", &codedeploy.ApplicationArgs{
-// 			ComputePlatform: pulumi.String("Lambda"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Server Application
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/codedeploy"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := codedeploy.NewApplication(ctx, "example", &codedeploy.ApplicationArgs{
-// 			ComputePlatform: pulumi.String("Server"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Application struct {
 	pulumi.CustomResourceState
 
-	// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
 	ComputePlatform pulumi.StringPtrOutput `pulumi:"computePlatform"`
-	// The name of the application.
-	Name     pulumi.StringOutput `pulumi:"name"`
-	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	UniqueId        pulumi.StringOutput    `pulumi:"uniqueId"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -116,19 +45,15 @@ func GetApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
-	// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
 	ComputePlatform *string `pulumi:"computePlatform"`
-	// The name of the application.
-	Name     *string `pulumi:"name"`
-	UniqueId *string `pulumi:"uniqueId"`
+	Name            *string `pulumi:"name"`
+	UniqueId        *string `pulumi:"uniqueId"`
 }
 
 type ApplicationState struct {
-	// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
 	ComputePlatform pulumi.StringPtrInput
-	// The name of the application.
-	Name     pulumi.StringPtrInput
-	UniqueId pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	UniqueId        pulumi.StringPtrInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -136,20 +61,16 @@ func (ApplicationState) ElementType() reflect.Type {
 }
 
 type applicationArgs struct {
-	// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
 	ComputePlatform *string `pulumi:"computePlatform"`
-	// The name of the application.
-	Name     *string `pulumi:"name"`
-	UniqueId *string `pulumi:"uniqueId"`
+	Name            *string `pulumi:"name"`
+	UniqueId        *string `pulumi:"uniqueId"`
 }
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
-	// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
 	ComputePlatform pulumi.StringPtrInput
-	// The name of the application.
-	Name     pulumi.StringPtrInput
-	UniqueId pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	UniqueId        pulumi.StringPtrInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {

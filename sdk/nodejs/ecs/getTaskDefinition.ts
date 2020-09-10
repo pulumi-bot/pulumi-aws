@@ -6,10 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * The ECS task definition data source allows access to details of
- * a specific AWS ECS task definition.
- */
 export function getTaskDefinition(args: GetTaskDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskDefinitionResult> {
     if (!opts) {
         opts = {}
@@ -27,9 +23,6 @@ export function getTaskDefinition(args: GetTaskDefinitionArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getTaskDefinition.
  */
 export interface GetTaskDefinitionArgs {
-    /**
-     * The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
-     */
     readonly taskDefinition: string;
 }
 
@@ -37,29 +30,14 @@ export interface GetTaskDefinitionArgs {
  * A collection of values returned by getTaskDefinition.
  */
 export interface GetTaskDefinitionResult {
-    /**
-     * The family of this task definition
-     */
     readonly family: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The Docker networking mode to use for the containers in this task.
-     */
     readonly networkMode: string;
-    /**
-     * The revision of this task definition
-     */
     readonly revision: number;
-    /**
-     * The status of this task definition
-     */
     readonly status: string;
     readonly taskDefinition: string;
-    /**
-     * The ARN of the IAM role that containers in this task can assume
-     */
     readonly taskRoleArn: string;
 }

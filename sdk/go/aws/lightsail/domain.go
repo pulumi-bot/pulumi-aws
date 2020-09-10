@@ -10,43 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a domain resource for the specified domain (e.g., example.com).
-// You cannot register a new domain name using Lightsail. You must register
-// a domain name using Amazon Route 53 or another domain name registrar.
-// If you have already registered your domain, you can enter its name in
-// this parameter to manage the DNS records for that domain.
-//
-// > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
-//
-// ## Example Usage
-// ### Creating A New Domain
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lightsail"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := lightsail.NewDomain(ctx, "domainTest", &lightsail.DomainArgs{
-// 			DomainName: pulumi.String("mydomain.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the Lightsail domain
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the Lightsail domain to manage
+	Arn        pulumi.StringOutput `pulumi:"arn"`
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 }
 
@@ -81,16 +48,12 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The ARN of the Lightsail domain
-	Arn *string `pulumi:"arn"`
-	// The name of the Lightsail domain to manage
+	Arn        *string `pulumi:"arn"`
 	DomainName *string `pulumi:"domainName"`
 }
 
 type DomainState struct {
-	// The ARN of the Lightsail domain
-	Arn pulumi.StringPtrInput
-	// The name of the Lightsail domain to manage
+	Arn        pulumi.StringPtrInput
 	DomainName pulumi.StringPtrInput
 }
 
@@ -99,13 +62,11 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The name of the Lightsail domain to manage
 	DomainName string `pulumi:"domainName"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The name of the Lightsail domain to manage
 	DomainName pulumi.StringInput
 }
 

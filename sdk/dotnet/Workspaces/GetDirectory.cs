@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Workspaces
 {
     public static class GetDirectory
     {
-        /// <summary>
-        /// Retrieve information about an AWS WorkSpaces directory.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Workspaces.GetDirectory.InvokeAsync(new Aws.Workspaces.GetDirectoryArgs
-        ///         {
-        ///             DirectoryId = "d-9067783251",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDirectoryResult> InvokeAsync(GetDirectoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryResult>("aws:workspaces/getDirectory:getDirectory", args ?? new GetDirectoryArgs(), options.WithVersion());
     }
@@ -44,18 +18,11 @@ namespace Pulumi.Aws.Workspaces
 
     public sealed class GetDirectoryArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The directory identifier for registration in WorkSpaces service.
-        /// </summary>
         [Input("directoryId", required: true)]
         public string DirectoryId { get; set; } = null!;
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags assigned to the WorkSpaces directory.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -71,58 +38,22 @@ namespace Pulumi.Aws.Workspaces
     [OutputType]
     public sealed class GetDirectoryResult
     {
-        /// <summary>
-        /// The directory alias.
-        /// </summary>
         public readonly string Alias;
-        /// <summary>
-        /// The user name for the service account.
-        /// </summary>
         public readonly string CustomerUserName;
         public readonly string DirectoryId;
-        /// <summary>
-        /// The name of the directory.
-        /// </summary>
         public readonly string DirectoryName;
-        /// <summary>
-        /// The directory type.
-        /// </summary>
         public readonly string DirectoryType;
-        /// <summary>
-        /// The IP addresses of the DNS servers for the directory.
-        /// </summary>
         public readonly ImmutableArray<string> DnsIpAddresses;
-        /// <summary>
-        /// The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.
-        /// </summary>
         public readonly string IamRoleId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The identifiers of the IP access control groups associated with the directory.
-        /// </summary>
         public readonly ImmutableArray<string> IpGroupIds;
-        /// <summary>
-        /// The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
-        /// </summary>
         public readonly string RegistrationCode;
-        /// <summary>
-        /// The permissions to enable or disable self-service capabilities.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetDirectorySelfServicePermissionResult> SelfServicePermissions;
-        /// <summary>
-        /// The identifiers of the subnets where the directory resides.
-        /// </summary>
         public readonly ImmutableArray<string> SubnetIds;
-        /// <summary>
-        /// A map of tags assigned to the WorkSpaces directory.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        /// <summary>
-        /// The identifier of the security group that is assigned to new WorkSpaces.
-        /// </summary>
         public readonly string WorkspaceSecurityGroupId;
 
         [OutputConstructor]

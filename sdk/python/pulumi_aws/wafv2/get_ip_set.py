@@ -45,25 +45,16 @@ class GetIpSetResult:
     @property
     @pulumi.getter
     def addresses(self) -> List[str]:
-        """
-        An array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation.
-        """
         return pulumi.get(self, "addresses")
 
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the entity.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the set that helps with identification.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -77,9 +68,6 @@ class GetIpSetResult:
     @property
     @pulumi.getter(name="ipAddressVersion")
     def ip_address_version(self) -> str:
-        """
-        The IP address version of the set.
-        """
         return pulumi.get(self, "ip_address_version")
 
     @property
@@ -112,21 +100,7 @@ def get_ip_set(name: Optional[str] = None,
                scope: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpSetResult:
     """
-    Retrieves the summary of a WAFv2 IP Set.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.wafv2.get_ip_set(name="some-ip-set",
-        scope="REGIONAL")
-    ```
-
-
-    :param str name: The name of the WAFv2 IP Set.
-    :param str scope: Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

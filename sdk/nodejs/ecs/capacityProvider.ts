@@ -6,34 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an ECS cluster capacity provider. More information can be found on the [ECS Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html).
- *
- * > **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling Group will automatically add the `AmazonECSManaged` tag to the Auto Scaling Group. This tag should be included in the `aws.autoscaling.Group` resource configuration to prevent the provider from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling Group if `minSize` is above 0 on creation. Any EC2 Instances in the Auto Scaling Group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // ... other configuration, including potentially other tags ...
- * const testGroup = new aws.autoscaling.Group("testGroup", {tags: [{
- *     key: "AmazonECSManaged",
- *     propagateAtLaunch: true,
- * }]});
- * const testCapacityProvider = new aws.ecs.CapacityProvider("testCapacityProvider", {autoScalingGroupProvider: {
- *     autoScalingGroupArn: testGroup.arn,
- *     managedTerminationProtection: "ENABLED",
- *     managedScaling: {
- *         maximumScalingStepSize: 1000,
- *         minimumScalingStepSize: 1,
- *         status: "ENABLED",
- *         targetCapacity: 10,
- *     },
- * }});
- * ```
- */
 export class CapacityProvider extends pulumi.CustomResource {
     /**
      * Get an existing CapacityProvider resource's state with the given name, ID, and optional extra
@@ -62,21 +34,9 @@ export class CapacityProvider extends pulumi.CustomResource {
         return obj['__pulumiType'] === CapacityProvider.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) that identifies the capacity provider.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Nested argument defining the provider for the ECS auto scaling group. Defined below.
-     */
     public readonly autoScalingGroupProvider!: pulumi.Output<outputs.ecs.CapacityProviderAutoScalingGroupProvider>;
-    /**
-     * The name of the capacity provider.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -120,21 +80,9 @@ export class CapacityProvider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CapacityProvider resources.
  */
 export interface CapacityProviderState {
-    /**
-     * The Amazon Resource Name (ARN) that identifies the capacity provider.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Nested argument defining the provider for the ECS auto scaling group. Defined below.
-     */
     readonly autoScalingGroupProvider?: pulumi.Input<inputs.ecs.CapacityProviderAutoScalingGroupProvider>;
-    /**
-     * The name of the capacity provider.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -142,16 +90,7 @@ export interface CapacityProviderState {
  * The set of arguments for constructing a CapacityProvider resource.
  */
 export interface CapacityProviderArgs {
-    /**
-     * Nested argument defining the provider for the ECS auto scaling group. Defined below.
-     */
     readonly autoScalingGroupProvider: pulumi.Input<inputs.ecs.CapacityProviderAutoScalingGroupProvider>;
-    /**
-     * The name of the capacity provider.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

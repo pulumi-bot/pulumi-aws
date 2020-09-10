@@ -35,11 +35,6 @@ class CapacityProviderAutoScalingGroupProviderArgs:
                  auto_scaling_group_arn: pulumi.Input[str],
                  managed_scaling: Optional[pulumi.Input['CapacityProviderAutoScalingGroupProviderManagedScalingArgs']] = None,
                  managed_termination_protection: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] auto_scaling_group_arn: - The Amazon Resource Name (ARN) of the associated auto scaling group.
-        :param pulumi.Input['CapacityProviderAutoScalingGroupProviderManagedScalingArgs'] managed_scaling: - Nested argument defining the parameters of the auto scaling. Defined below.
-        :param pulumi.Input[str] managed_termination_protection: - Enables or disables container-aware termination of instances in the auto scaling group when scale-in happens. Valid values are `ENABLED` and `DISABLED`.
-        """
         pulumi.set(__self__, "auto_scaling_group_arn", auto_scaling_group_arn)
         if managed_scaling is not None:
             pulumi.set(__self__, "managed_scaling", managed_scaling)
@@ -49,9 +44,6 @@ class CapacityProviderAutoScalingGroupProviderArgs:
     @property
     @pulumi.getter(name="autoScalingGroupArn")
     def auto_scaling_group_arn(self) -> pulumi.Input[str]:
-        """
-        - The Amazon Resource Name (ARN) of the associated auto scaling group.
-        """
         return pulumi.get(self, "auto_scaling_group_arn")
 
     @auto_scaling_group_arn.setter
@@ -61,9 +53,6 @@ class CapacityProviderAutoScalingGroupProviderArgs:
     @property
     @pulumi.getter(name="managedScaling")
     def managed_scaling(self) -> Optional[pulumi.Input['CapacityProviderAutoScalingGroupProviderManagedScalingArgs']]:
-        """
-        - Nested argument defining the parameters of the auto scaling. Defined below.
-        """
         return pulumi.get(self, "managed_scaling")
 
     @managed_scaling.setter
@@ -73,9 +62,6 @@ class CapacityProviderAutoScalingGroupProviderArgs:
     @property
     @pulumi.getter(name="managedTerminationProtection")
     def managed_termination_protection(self) -> Optional[pulumi.Input[str]]:
-        """
-        - Enables or disables container-aware termination of instances in the auto scaling group when scale-in happens. Valid values are `ENABLED` and `DISABLED`.
-        """
         return pulumi.get(self, "managed_termination_protection")
 
     @managed_termination_protection.setter
@@ -90,12 +76,6 @@ class CapacityProviderAutoScalingGroupProviderManagedScalingArgs:
                  minimum_scaling_step_size: Optional[pulumi.Input[float]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  target_capacity: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[float] maximum_scaling_step_size: The maximum step adjustment size. A number between 1 and 10,000.
-        :param pulumi.Input[float] minimum_scaling_step_size: The minimum step adjustment size. A number between 1 and 10,000.
-        :param pulumi.Input[str] status: Whether auto scaling is managed by ECS. Valid values are `ENABLED` and `DISABLED`.
-        :param pulumi.Input[float] target_capacity: The target utilization for the capacity provider. A number between 1 and 100.
-        """
         if maximum_scaling_step_size is not None:
             pulumi.set(__self__, "maximum_scaling_step_size", maximum_scaling_step_size)
         if minimum_scaling_step_size is not None:
@@ -108,9 +88,6 @@ class CapacityProviderAutoScalingGroupProviderManagedScalingArgs:
     @property
     @pulumi.getter(name="maximumScalingStepSize")
     def maximum_scaling_step_size(self) -> Optional[pulumi.Input[float]]:
-        """
-        The maximum step adjustment size. A number between 1 and 10,000.
-        """
         return pulumi.get(self, "maximum_scaling_step_size")
 
     @maximum_scaling_step_size.setter
@@ -120,9 +97,6 @@ class CapacityProviderAutoScalingGroupProviderManagedScalingArgs:
     @property
     @pulumi.getter(name="minimumScalingStepSize")
     def minimum_scaling_step_size(self) -> Optional[pulumi.Input[float]]:
-        """
-        The minimum step adjustment size. A number between 1 and 10,000.
-        """
         return pulumi.get(self, "minimum_scaling_step_size")
 
     @minimum_scaling_step_size.setter
@@ -132,9 +106,6 @@ class CapacityProviderAutoScalingGroupProviderManagedScalingArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether auto scaling is managed by ECS. Valid values are `ENABLED` and `DISABLED`.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -144,9 +115,6 @@ class CapacityProviderAutoScalingGroupProviderManagedScalingArgs:
     @property
     @pulumi.getter(name="targetCapacity")
     def target_capacity(self) -> Optional[pulumi.Input[float]]:
-        """
-        The target utilization for the capacity provider. A number between 1 and 100.
-        """
         return pulumi.get(self, "target_capacity")
 
     @target_capacity.setter
@@ -160,11 +128,6 @@ class ClusterDefaultCapacityProviderStrategyArgs:
                  capacity_provider: pulumi.Input[str],
                  base: Optional[pulumi.Input[float]] = None,
                  weight: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] capacity_provider: The short name of the capacity provider.
-        :param pulumi.Input[float] base: The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
-        :param pulumi.Input[float] weight: The relative percentage of the total number of launched tasks that should use the specified capacity provider.
-        """
         pulumi.set(__self__, "capacity_provider", capacity_provider)
         if base is not None:
             pulumi.set(__self__, "base", base)
@@ -174,9 +137,6 @@ class ClusterDefaultCapacityProviderStrategyArgs:
     @property
     @pulumi.getter(name="capacityProvider")
     def capacity_provider(self) -> pulumi.Input[str]:
-        """
-        The short name of the capacity provider.
-        """
         return pulumi.get(self, "capacity_provider")
 
     @capacity_provider.setter
@@ -186,9 +146,6 @@ class ClusterDefaultCapacityProviderStrategyArgs:
     @property
     @pulumi.getter
     def base(self) -> Optional[pulumi.Input[float]]:
-        """
-        The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
-        """
         return pulumi.get(self, "base")
 
     @base.setter
@@ -198,9 +155,6 @@ class ClusterDefaultCapacityProviderStrategyArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[float]]:
-        """
-        The relative percentage of the total number of launched tasks that should use the specified capacity provider.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -213,19 +167,12 @@ class ClusterSettingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] name: Name of the setting to manage. Valid values: `containerInsights`.
-        :param pulumi.Input[str] value: The value to assign to the setting. Value values are `enabled` and `disabled`.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        Name of the setting to manage. Valid values: `containerInsights`.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -235,9 +182,6 @@ class ClusterSettingArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        The value to assign to the setting. Value values are `enabled` and `disabled`.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -251,11 +195,6 @@ class ServiceCapacityProviderStrategyArgs:
                  capacity_provider: pulumi.Input[str],
                  base: Optional[pulumi.Input[float]] = None,
                  weight: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] capacity_provider: The short name of the capacity provider.
-        :param pulumi.Input[float] base: The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
-        :param pulumi.Input[float] weight: The relative percentage of the total number of launched tasks that should use the specified capacity provider.
-        """
         pulumi.set(__self__, "capacity_provider", capacity_provider)
         if base is not None:
             pulumi.set(__self__, "base", base)
@@ -265,9 +204,6 @@ class ServiceCapacityProviderStrategyArgs:
     @property
     @pulumi.getter(name="capacityProvider")
     def capacity_provider(self) -> pulumi.Input[str]:
-        """
-        The short name of the capacity provider.
-        """
         return pulumi.get(self, "capacity_provider")
 
     @capacity_provider.setter
@@ -277,9 +213,6 @@ class ServiceCapacityProviderStrategyArgs:
     @property
     @pulumi.getter
     def base(self) -> Optional[pulumi.Input[float]]:
-        """
-        The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
-        """
         return pulumi.get(self, "base")
 
     @base.setter
@@ -289,9 +222,6 @@ class ServiceCapacityProviderStrategyArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[float]]:
-        """
-        The relative percentage of the total number of launched tasks that should use the specified capacity provider.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -303,18 +233,12 @@ class ServiceCapacityProviderStrategyArgs:
 class ServiceDeploymentControllerArgs:
     def __init__(__self__, *,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: Type of deployment controller. Valid values: `CODE_DEPLOY`, `ECS`, `EXTERNAL`. Default: `ECS`.
-        """
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of deployment controller. Valid values: `CODE_DEPLOY`, `ECS`, `EXTERNAL`. Default: `ECS`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -329,12 +253,6 @@ class ServiceLoadBalancerArgs:
                  container_port: pulumi.Input[float],
                  elb_name: Optional[pulumi.Input[str]] = None,
                  target_group_arn: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] container_name: The name of the container to associate with the load balancer (as it appears in a container definition).
-        :param pulumi.Input[float] container_port: The port on the container to associate with the load balancer.
-        :param pulumi.Input[str] elb_name: The name of the ELB (Classic) to associate with the service.
-        :param pulumi.Input[str] target_group_arn: The ARN of the Load Balancer target group to associate with the service.
-        """
         pulumi.set(__self__, "container_name", container_name)
         pulumi.set(__self__, "container_port", container_port)
         if elb_name is not None:
@@ -345,9 +263,6 @@ class ServiceLoadBalancerArgs:
     @property
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Input[str]:
-        """
-        The name of the container to associate with the load balancer (as it appears in a container definition).
-        """
         return pulumi.get(self, "container_name")
 
     @container_name.setter
@@ -357,9 +272,6 @@ class ServiceLoadBalancerArgs:
     @property
     @pulumi.getter(name="containerPort")
     def container_port(self) -> pulumi.Input[float]:
-        """
-        The port on the container to associate with the load balancer.
-        """
         return pulumi.get(self, "container_port")
 
     @container_port.setter
@@ -369,9 +281,6 @@ class ServiceLoadBalancerArgs:
     @property
     @pulumi.getter(name="elbName")
     def elb_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the ELB (Classic) to associate with the service.
-        """
         return pulumi.get(self, "elb_name")
 
     @elb_name.setter
@@ -381,9 +290,6 @@ class ServiceLoadBalancerArgs:
     @property
     @pulumi.getter(name="targetGroupArn")
     def target_group_arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ARN of the Load Balancer target group to associate with the service.
-        """
         return pulumi.get(self, "target_group_arn")
 
     @target_group_arn.setter
@@ -397,11 +303,6 @@ class ServiceNetworkConfigurationArgs:
                  subnets: pulumi.Input[List[pulumi.Input[str]]],
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
                  security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[List[pulumi.Input[str]]] subnets: The subnets associated with the task or service.
-        :param pulumi.Input[bool] assign_public_ip: Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
-        """
         pulumi.set(__self__, "subnets", subnets)
         if assign_public_ip is not None:
             pulumi.set(__self__, "assign_public_ip", assign_public_ip)
@@ -411,9 +312,6 @@ class ServiceNetworkConfigurationArgs:
     @property
     @pulumi.getter
     def subnets(self) -> pulumi.Input[List[pulumi.Input[str]]]:
-        """
-        The subnets associated with the task or service.
-        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -423,9 +321,6 @@ class ServiceNetworkConfigurationArgs:
     @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
-        """
         return pulumi.get(self, "assign_public_ip")
 
     @assign_public_ip.setter
@@ -435,9 +330,6 @@ class ServiceNetworkConfigurationArgs:
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
-        """
-        The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
-        """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -450,13 +342,6 @@ class ServiceOrderedPlacementStrategyArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  field: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: The type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
-        :param pulumi.Input[str] field: For the `spread` placement strategy, valid values are `instanceId` (or `host`,
-               which has the same effect), or any platform or custom attribute that is applied to a container instance.
-               For the `binpack` type, valid values are `memory` and `cpu`. For the `random` type, this attribute is not
-               needed. For more information, see [Placement Strategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html).
-        """
         pulumi.set(__self__, "type", type)
         if field is not None:
             pulumi.set(__self__, "field", field)
@@ -464,9 +349,6 @@ class ServiceOrderedPlacementStrategyArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The type of placement strategy. Must be one of: `binpack`, `random`, or `spread`
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -476,12 +358,6 @@ class ServiceOrderedPlacementStrategyArgs:
     @property
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
-        """
-        For the `spread` placement strategy, valid values are `instanceId` (or `host`,
-        which has the same effect), or any platform or custom attribute that is applied to a container instance.
-        For the `binpack` type, valid values are `memory` and `cpu`. For the `random` type, this attribute is not
-        needed. For more information, see [Placement Strategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html).
-        """
         return pulumi.get(self, "field")
 
     @field.setter
@@ -494,14 +370,6 @@ class ServicePlacementConstraintArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  expression: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: The type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`.
-        :param pulumi.Input[str] expression: Cluster Query Language expression to apply to the constraint. Does not need to be specified
-               for the `distinctInstance` type.
-               For more information, see [Cluster Query Language in the Amazon EC2 Container
-               Service Developer
-               Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-        """
         pulumi.set(__self__, "type", type)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -509,9 +377,6 @@ class ServicePlacementConstraintArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The type of constraint. The only valid values at this time are `memberOf` and `distinctInstance`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -521,13 +386,6 @@ class ServicePlacementConstraintArgs:
     @property
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster Query Language expression to apply to the constraint. Does not need to be specified
-        for the `distinctInstance` type.
-        For more information, see [Cluster Query Language in the Amazon EC2 Container
-        Service Developer
-        Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -542,12 +400,6 @@ class ServiceServiceRegistriesArgs:
                  container_name: Optional[pulumi.Input[str]] = None,
                  container_port: Optional[pulumi.Input[float]] = None,
                  port: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] registry_arn: The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`servicediscovery.Service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
-        :param pulumi.Input[str] container_name: The container name value, already specified in the task definition, to be used for your service discovery service.
-        :param pulumi.Input[float] container_port: The port value, already specified in the task definition, to be used for your service discovery service.
-        :param pulumi.Input[float] port: The port value used if your Service Discovery service specified an SRV record.
-        """
         pulumi.set(__self__, "registry_arn", registry_arn)
         if container_name is not None:
             pulumi.set(__self__, "container_name", container_name)
@@ -559,9 +411,6 @@ class ServiceServiceRegistriesArgs:
     @property
     @pulumi.getter(name="registryArn")
     def registry_arn(self) -> pulumi.Input[str]:
-        """
-        The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`servicediscovery.Service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
-        """
         return pulumi.get(self, "registry_arn")
 
     @registry_arn.setter
@@ -571,9 +420,6 @@ class ServiceServiceRegistriesArgs:
     @property
     @pulumi.getter(name="containerName")
     def container_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The container name value, already specified in the task definition, to be used for your service discovery service.
-        """
         return pulumi.get(self, "container_name")
 
     @container_name.setter
@@ -583,9 +429,6 @@ class ServiceServiceRegistriesArgs:
     @property
     @pulumi.getter(name="containerPort")
     def container_port(self) -> Optional[pulumi.Input[float]]:
-        """
-        The port value, already specified in the task definition, to be used for your service discovery service.
-        """
         return pulumi.get(self, "container_port")
 
     @container_port.setter
@@ -595,9 +438,6 @@ class ServiceServiceRegistriesArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[float]]:
-        """
-        The port value used if your Service Discovery service specified an SRV record.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -610,19 +450,12 @@ class TaskDefinitionInferenceAcceleratorArgs:
     def __init__(__self__, *,
                  device_name: pulumi.Input[str],
                  device_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] device_name: The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
-        :param pulumi.Input[str] device_type: The Elastic Inference accelerator type to use.
-        """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "device_type", device_type)
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> pulumi.Input[str]:
-        """
-        The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
-        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -632,9 +465,6 @@ class TaskDefinitionInferenceAcceleratorArgs:
     @property
     @pulumi.getter(name="deviceType")
     def device_type(self) -> pulumi.Input[str]:
-        """
-        The Elastic Inference accelerator type to use.
-        """
         return pulumi.get(self, "device_type")
 
     @device_type.setter
@@ -647,13 +477,6 @@ class TaskDefinitionPlacementConstraintArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  expression: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-        :param pulumi.Input[str] expression: Cluster Query Language expression to apply to the constraint.
-               For more information, see [Cluster Query Language in the Amazon EC2 Container
-               Service Developer
-               Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-        """
         pulumi.set(__self__, "type", type)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -661,9 +484,6 @@ class TaskDefinitionPlacementConstraintArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -673,12 +493,6 @@ class TaskDefinitionPlacementConstraintArgs:
     @property
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster Query Language expression to apply to the constraint.
-        For more information, see [Cluster Query Language in the Amazon EC2 Container
-        Service Developer
-        Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -692,11 +506,6 @@ class TaskDefinitionProxyConfigurationArgs:
                  container_name: pulumi.Input[str],
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] container_name: The name of the container that will serve as the App Mesh proxy.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-        :param pulumi.Input[str] type: The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-        """
         pulumi.set(__self__, "container_name", container_name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
@@ -706,9 +515,6 @@ class TaskDefinitionProxyConfigurationArgs:
     @property
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Input[str]:
-        """
-        The name of the container that will serve as the App Mesh proxy.
-        """
         return pulumi.get(self, "container_name")
 
     @container_name.setter
@@ -718,9 +524,6 @@ class TaskDefinitionProxyConfigurationArgs:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -730,9 +533,6 @@ class TaskDefinitionProxyConfigurationArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -747,13 +547,6 @@ class TaskDefinitionVolumeArgs:
                  docker_volume_configuration: Optional[pulumi.Input['TaskDefinitionVolumeDockerVolumeConfigurationArgs']] = None,
                  efs_volume_configuration: Optional[pulumi.Input['TaskDefinitionVolumeEfsVolumeConfigurationArgs']] = None,
                  host_path: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: The name of the volume. This name is referenced in the `sourceVolume`
-               parameter of container definition in the `mountPoints` section.
-        :param pulumi.Input['TaskDefinitionVolumeDockerVolumeConfigurationArgs'] docker_volume_configuration: Used to configure a docker volume
-        :param pulumi.Input['TaskDefinitionVolumeEfsVolumeConfigurationArgs'] efs_volume_configuration: Used to configure a EFS volume.
-        :param pulumi.Input[str] host_path: The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
-        """
         pulumi.set(__self__, "name", name)
         if docker_volume_configuration is not None:
             pulumi.set(__self__, "docker_volume_configuration", docker_volume_configuration)
@@ -765,10 +558,6 @@ class TaskDefinitionVolumeArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        The name of the volume. This name is referenced in the `sourceVolume`
-        parameter of container definition in the `mountPoints` section.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -778,9 +567,6 @@ class TaskDefinitionVolumeArgs:
     @property
     @pulumi.getter(name="dockerVolumeConfiguration")
     def docker_volume_configuration(self) -> Optional[pulumi.Input['TaskDefinitionVolumeDockerVolumeConfigurationArgs']]:
-        """
-        Used to configure a docker volume
-        """
         return pulumi.get(self, "docker_volume_configuration")
 
     @docker_volume_configuration.setter
@@ -790,9 +576,6 @@ class TaskDefinitionVolumeArgs:
     @property
     @pulumi.getter(name="efsVolumeConfiguration")
     def efs_volume_configuration(self) -> Optional[pulumi.Input['TaskDefinitionVolumeEfsVolumeConfigurationArgs']]:
-        """
-        Used to configure a EFS volume.
-        """
         return pulumi.get(self, "efs_volume_configuration")
 
     @efs_volume_configuration.setter
@@ -802,9 +585,6 @@ class TaskDefinitionVolumeArgs:
     @property
     @pulumi.getter(name="hostPath")
     def host_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
-        """
         return pulumi.get(self, "host_path")
 
     @host_path.setter
@@ -820,13 +600,6 @@ class TaskDefinitionVolumeDockerVolumeConfigurationArgs:
                  driver_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[bool] autoprovision: If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
-        :param pulumi.Input[str] driver: The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] driver_opts: A map of Docker driver specific options.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of custom metadata to add to your Docker volume.
-        :param pulumi.Input[str] scope: The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
-        """
         if autoprovision is not None:
             pulumi.set(__self__, "autoprovision", autoprovision)
         if driver is not None:
@@ -841,9 +614,6 @@ class TaskDefinitionVolumeDockerVolumeConfigurationArgs:
     @property
     @pulumi.getter
     def autoprovision(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
-        """
         return pulumi.get(self, "autoprovision")
 
     @autoprovision.setter
@@ -853,9 +623,6 @@ class TaskDefinitionVolumeDockerVolumeConfigurationArgs:
     @property
     @pulumi.getter
     def driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
-        """
         return pulumi.get(self, "driver")
 
     @driver.setter
@@ -865,9 +632,6 @@ class TaskDefinitionVolumeDockerVolumeConfigurationArgs:
     @property
     @pulumi.getter(name="driverOpts")
     def driver_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A map of Docker driver specific options.
-        """
         return pulumi.get(self, "driver_opts")
 
     @driver_opts.setter
@@ -877,9 +641,6 @@ class TaskDefinitionVolumeDockerVolumeConfigurationArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A map of custom metadata to add to your Docker volume.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -889,9 +650,6 @@ class TaskDefinitionVolumeDockerVolumeConfigurationArgs:
     @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -907,13 +665,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationArgs:
                  root_directory: Optional[pulumi.Input[str]] = None,
                  transit_encryption: Optional[pulumi.Input[str]] = None,
                  transit_encryption_port: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] file_system_id: The ID of the EFS File System.
-        :param pulumi.Input['TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs'] authorization_config: The authorization configuration details for the Amazon EFS file system.
-        :param pulumi.Input[str] root_directory: The directory within the Amazon EFS file system to mount as the root directory inside the host. If this parameter is omitted, the root of the Amazon EFS volume will be used. Specifying / will have the same effect as omitting this parameter. This argument is ignored when using `authorization_config`.
-        :param pulumi.Input[str] transit_encryption: Whether or not to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
-        :param pulumi.Input[float] transit_encryption_port: The port to use for transit encryption. If you do not specify a transit encryption port, it will use the port selection strategy that the Amazon EFS mount helper uses.
-        """
         pulumi.set(__self__, "file_system_id", file_system_id)
         if authorization_config is not None:
             pulumi.set(__self__, "authorization_config", authorization_config)
@@ -927,9 +678,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationArgs:
     @property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the EFS File System.
-        """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
@@ -939,9 +687,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationArgs:
     @property
     @pulumi.getter(name="authorizationConfig")
     def authorization_config(self) -> Optional[pulumi.Input['TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs']]:
-        """
-        The authorization configuration details for the Amazon EFS file system.
-        """
         return pulumi.get(self, "authorization_config")
 
     @authorization_config.setter
@@ -951,9 +696,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationArgs:
     @property
     @pulumi.getter(name="rootDirectory")
     def root_directory(self) -> Optional[pulumi.Input[str]]:
-        """
-        The directory within the Amazon EFS file system to mount as the root directory inside the host. If this parameter is omitted, the root of the Amazon EFS volume will be used. Specifying / will have the same effect as omitting this parameter. This argument is ignored when using `authorization_config`.
-        """
         return pulumi.get(self, "root_directory")
 
     @root_directory.setter
@@ -963,9 +705,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationArgs:
     @property
     @pulumi.getter(name="transitEncryption")
     def transit_encryption(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether or not to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
-        """
         return pulumi.get(self, "transit_encryption")
 
     @transit_encryption.setter
@@ -975,9 +714,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationArgs:
     @property
     @pulumi.getter(name="transitEncryptionPort")
     def transit_encryption_port(self) -> Optional[pulumi.Input[float]]:
-        """
-        The port to use for transit encryption. If you do not specify a transit encryption port, it will use the port selection strategy that the Amazon EFS mount helper uses.
-        """
         return pulumi.get(self, "transit_encryption_port")
 
     @transit_encryption_port.setter
@@ -990,10 +726,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs:
     def __init__(__self__, *,
                  access_point_id: Optional[pulumi.Input[str]] = None,
                  iam: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] access_point_id: The access point ID to use. If an access point is specified, the root directory value will be relative to the directory set for the access point. If specified, transit encryption must be enabled in the EFSVolumeConfiguration.
-        :param pulumi.Input[str] iam: Whether or not to use the Amazon ECS task IAM role defined in a task definition when mounting the Amazon EFS file system. If enabled, transit encryption must be enabled in the EFSVolumeConfiguration. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
-        """
         if access_point_id is not None:
             pulumi.set(__self__, "access_point_id", access_point_id)
         if iam is not None:
@@ -1002,9 +734,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs:
     @property
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The access point ID to use. If an access point is specified, the root directory value will be relative to the directory set for the access point. If specified, transit encryption must be enabled in the EFSVolumeConfiguration.
-        """
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
@@ -1014,9 +743,6 @@ class TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs:
     @property
     @pulumi.getter
     def iam(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether or not to use the Amazon ECS task IAM role defined in a task definition when mounting the Amazon EFS file system. If enabled, transit encryption must be enabled in the EFSVolumeConfiguration. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
-        """
         return pulumi.get(self, "iam")
 
     @iam.setter

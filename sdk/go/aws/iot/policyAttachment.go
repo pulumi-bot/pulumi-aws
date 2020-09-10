@@ -10,13 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IoT policy attachment.
 type PolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// The name of the policy to attach.
 	Policy pulumi.StringOutput `pulumi:"policy"`
-	// The identity to which the policy is attached.
 	Target pulumi.StringOutput `pulumi:"target"`
 }
 
@@ -54,16 +51,12 @@ func GetPolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolicyAttachment resources.
 type policyAttachmentState struct {
-	// The name of the policy to attach.
 	Policy *string `pulumi:"policy"`
-	// The identity to which the policy is attached.
 	Target *string `pulumi:"target"`
 }
 
 type PolicyAttachmentState struct {
-	// The name of the policy to attach.
 	Policy pulumi.StringPtrInput
-	// The identity to which the policy is attached.
 	Target pulumi.StringPtrInput
 }
 
@@ -72,17 +65,13 @@ func (PolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type policyAttachmentArgs struct {
-	// The name of the policy to attach.
 	Policy interface{} `pulumi:"policy"`
-	// The identity to which the policy is attached.
-	Target string `pulumi:"target"`
+	Target string      `pulumi:"target"`
 }
 
 // The set of arguments for constructing a PolicyAttachment resource.
 type PolicyAttachmentArgs struct {
-	// The name of the policy to attach.
 	Policy pulumi.Input
-	// The identity to which the policy is attached.
 	Target pulumi.StringInput
 }
 

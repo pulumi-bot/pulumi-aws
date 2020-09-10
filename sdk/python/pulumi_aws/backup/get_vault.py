@@ -42,9 +42,6 @@ class GetVaultResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the vault.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -58,9 +55,6 @@ class GetVaultResult:
     @property
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> str:
-        """
-        The server-side encryption key that is used to protect your backups.
-        """
         return pulumi.get(self, "kms_key_arn")
 
     @property
@@ -71,17 +65,11 @@ class GetVaultResult:
     @property
     @pulumi.getter(name="recoveryPoints")
     def recovery_points(self) -> float:
-        """
-        The number of recovery points that are stored in a backup vault.
-        """
         return pulumi.get(self, "recovery_points")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Metadata that you can assign to help organize the resources that you create.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -103,20 +91,7 @@ def get_vault(name: Optional[str] = None,
               tags: Optional[Mapping[str, str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVaultResult:
     """
-    Use this data source to get information on an existing backup vault.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.backup.get_vault(name="example_backup_vault")
-    ```
-
-
-    :param str name: The name of the backup vault.
-    :param Mapping[str, str] tags: Metadata that you can assign to help organize the resources that you create.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

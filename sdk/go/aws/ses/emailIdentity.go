@@ -10,36 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SES email identity resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ses"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ses.NewEmailIdentity(ctx, "example", &ses.EmailIdentityArgs{
-// 			Email: pulumi.String("email@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type EmailIdentity struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the email identity.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The email address to assign to SES
+	Arn   pulumi.StringOutput `pulumi:"arn"`
 	Email pulumi.StringOutput `pulumi:"email"`
 }
 
@@ -74,16 +48,12 @@ func GetEmailIdentity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailIdentity resources.
 type emailIdentityState struct {
-	// The ARN of the email identity.
-	Arn *string `pulumi:"arn"`
-	// The email address to assign to SES
+	Arn   *string `pulumi:"arn"`
 	Email *string `pulumi:"email"`
 }
 
 type EmailIdentityState struct {
-	// The ARN of the email identity.
-	Arn pulumi.StringPtrInput
-	// The email address to assign to SES
+	Arn   pulumi.StringPtrInput
 	Email pulumi.StringPtrInput
 }
 
@@ -92,13 +62,11 @@ func (EmailIdentityState) ElementType() reflect.Type {
 }
 
 type emailIdentityArgs struct {
-	// The email address to assign to SES
 	Email string `pulumi:"email"`
 }
 
 // The set of arguments for constructing a EmailIdentity resource.
 type EmailIdentityArgs struct {
-	// The email address to assign to SES
 	Email pulumi.StringInput
 }
 

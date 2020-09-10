@@ -9,81 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Dms
 {
-    /// <summary>
-    /// Provides a DMS (Data Migration Service) event subscription resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Dms.EventSubscription("example", new Aws.Dms.EventSubscriptionArgs
-    ///         {
-    ///             Enabled = true,
-    ///             EventCategories = 
-    ///             {
-    ///                 "creation",
-    ///                 "failure",
-    ///             },
-    ///             SnsTopicArn = aws_sns_topic.Example.Arn,
-    ///             SourceIds = 
-    ///             {
-    ///                 aws_dms_replication_task.Example.Replication_task_id,
-    ///             },
-    ///             SourceType = "replication-task",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "example" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EventSubscription : Pulumi.CustomResource
     {
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether the event subscription should be enabled.
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-        /// </summary>
         [Output("eventCategories")]
         public Output<ImmutableArray<string>> EventCategories { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of event subscription.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// SNS topic arn to send events on.
-        /// </summary>
         [Output("snsTopicArn")]
         public Output<string> SnsTopicArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Ids of sources to listen to.
-        /// </summary>
         [Output("sourceIds")]
         public Output<ImmutableArray<string>> SourceIds { get; private set; } = null!;
 
-        /// <summary>
-        /// Type of source for events. Valid values: `replication-instance` or `replication-task`
-        /// </summary>
         [Output("sourceType")]
         public Output<string?> SourceType { get; private set; } = null!;
 
@@ -136,51 +81,31 @@ namespace Pulumi.Aws.Dms
 
     public sealed class EventSubscriptionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether the event subscription should be enabled.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("eventCategories", required: true)]
         private InputList<string>? _eventCategories;
-
-        /// <summary>
-        /// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-        /// </summary>
         public InputList<string> EventCategories
         {
             get => _eventCategories ?? (_eventCategories = new InputList<string>());
             set => _eventCategories = value;
         }
 
-        /// <summary>
-        /// Name of event subscription.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// SNS topic arn to send events on.
-        /// </summary>
         [Input("snsTopicArn", required: true)]
         public Input<string> SnsTopicArn { get; set; } = null!;
 
         [Input("sourceIds")]
         private InputList<string>? _sourceIds;
-
-        /// <summary>
-        /// Ids of sources to listen to.
-        /// </summary>
         public InputList<string> SourceIds
         {
             get => _sourceIds ?? (_sourceIds = new InputList<string>());
             set => _sourceIds = value;
         }
 
-        /// <summary>
-        /// Type of source for events. Valid values: `replication-instance` or `replication-task`
-        /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 
@@ -202,51 +127,31 @@ namespace Pulumi.Aws.Dms
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Whether the event subscription should be enabled.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("eventCategories")]
         private InputList<string>? _eventCategories;
-
-        /// <summary>
-        /// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-        /// </summary>
         public InputList<string> EventCategories
         {
             get => _eventCategories ?? (_eventCategories = new InputList<string>());
             set => _eventCategories = value;
         }
 
-        /// <summary>
-        /// Name of event subscription.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// SNS topic arn to send events on.
-        /// </summary>
         [Input("snsTopicArn")]
         public Input<string>? SnsTopicArn { get; set; }
 
         [Input("sourceIds")]
         private InputList<string>? _sourceIds;
-
-        /// <summary>
-        /// Ids of sources to listen to.
-        /// </summary>
         public InputList<string> SourceIds
         {
             get => _sourceIds ?? (_sourceIds = new InputList<string>());
             set => _sourceIds = value;
         }
 
-        /// <summary>
-        /// Type of source for events. Valid values: `replication-instance` or `replication-task`
-        /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 

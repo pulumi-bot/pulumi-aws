@@ -23,48 +23,9 @@ class SecretVersion(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to manage AWS Secrets Manager secret version including its secret value. To manage secret metadata, see the `secretsmanager.Secret` resource.
-
-        > **NOTE:** If the `AWSCURRENT` staging label is present on this version during resource deletion, that label cannot be removed and will be skipped to prevent errors when fully deleting the secret. That label will leave this secret version active even after the resource is deleted from this provider unless the secret itself is deleted. Move the `AWSCURRENT` staging label before or after deleting this resource from this provider to fully trigger version deprecation if necessary.
-
-        ## Example Usage
-        ### Simple String Value
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.secretsmanager.SecretVersion("example",
-            secret_id=aws_secretsmanager_secret["example"]["id"],
-            secret_string="example-string-to-protect")
-        ```
-        ### Key-Value Pairs
-
-        Secrets Manager also accepts key-value pairs in JSON.
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_aws as aws
-
-        config = pulumi.Config()
-        example = config.get_object("example")
-        if example is None:
-            example = {
-                "key1": "value1",
-                "key2": "value2",
-            }
-        example_secret_version = aws.secretsmanager.SecretVersion("exampleSecretVersion",
-            secret_id=aws_secretsmanager_secret["example"]["id"],
-            secret_string=json.dumps(example))
-        ```
-
+        Create a SecretVersion resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] secret_binary: Specifies binary data that you want to encrypt and store in this version of the secret. This is required if secret_string is not set. Needs to be encoded to base64.
-        :param pulumi.Input[str] secret_id: Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
-        :param pulumi.Input[str] secret_string: Specifies text data that you want to encrypt and store in this version of the secret. This is required if secret_binary is not set.
-        :param pulumi.Input[List[pulumi.Input[str]]] version_stages: Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,12 +75,6 @@ class SecretVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the secret.
-        :param pulumi.Input[str] secret_binary: Specifies binary data that you want to encrypt and store in this version of the secret. This is required if secret_string is not set. Needs to be encoded to base64.
-        :param pulumi.Input[str] secret_id: Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
-        :param pulumi.Input[str] secret_string: Specifies text data that you want to encrypt and store in this version of the secret. This is required if secret_binary is not set.
-        :param pulumi.Input[str] version_id: The unique identifier of the version of the secret.
-        :param pulumi.Input[List[pulumi.Input[str]]] version_stages: Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,49 +91,31 @@ class SecretVersion(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the secret.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="secretBinary")
     def secret_binary(self) -> pulumi.Output[Optional[str]]:
-        """
-        Specifies binary data that you want to encrypt and store in this version of the secret. This is required if secret_string is not set. Needs to be encoded to base64.
-        """
         return pulumi.get(self, "secret_binary")
 
     @property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> pulumi.Output[str]:
-        """
-        Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
-        """
         return pulumi.get(self, "secret_id")
 
     @property
     @pulumi.getter(name="secretString")
     def secret_string(self) -> pulumi.Output[Optional[str]]:
-        """
-        Specifies text data that you want to encrypt and store in this version of the secret. This is required if secret_binary is not set.
-        """
         return pulumi.get(self, "secret_string")
 
     @property
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[str]:
-        """
-        The unique identifier of the version of the secret.
-        """
         return pulumi.get(self, "version_id")
 
     @property
     @pulumi.getter(name="versionStages")
     def version_stages(self) -> pulumi.Output[List[str]]:
-        """
-        Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
-        """
         return pulumi.get(self, "version_stages")
 
     def translate_output_property(self, prop):

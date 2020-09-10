@@ -9,96 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sns
 {
-    /// <summary>
-    /// Provides an SNS topic policy resource
-    /// 
-    /// &gt; **NOTE:** If a Principal is specified as just an AWS account ID rather than an ARN, AWS silently converts it to the ARN for the root user, causing future deployments to differ. To avoid this problem, just specify the full ARN, e.g. `arn:aws:iam::123456789012:root`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.Sns.Topic("test", new Aws.Sns.TopicArgs
-    ///         {
-    ///         });
-    ///         var snsTopicPolicy = test.Arn.Apply(arn =&gt; Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             PolicyId = "__default_policy_ID",
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "SNS:Subscribe",
-    ///                         "SNS:SetTopicAttributes",
-    ///                         "SNS:RemovePermission",
-    ///                         "SNS:Receive",
-    ///                         "SNS:Publish",
-    ///                         "SNS:ListSubscriptionsByTopic",
-    ///                         "SNS:GetTopicAttributes",
-    ///                         "SNS:DeleteTopic",
-    ///                         "SNS:AddPermission",
-    ///                     },
-    ///                     Conditions = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
-    ///                         {
-    ///                             Test = "StringEquals",
-    ///                             Variable = "AWS:SourceOwner",
-    ///                             Values = 
-    ///                             {
-    ///                                 @var.Account_id,
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Effect = "Allow",
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
-    ///                         {
-    ///                             Type = "AWS",
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 "*",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         arn,
-    ///                     },
-    ///                     Sid = "__default_statement_ID",
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var @default = new Aws.Sns.TopicPolicy("default", new Aws.Sns.TopicPolicyArgs
-    ///         {
-    ///             Arn = test.Arn,
-    ///             Policy = snsTopicPolicy.Apply(snsTopicPolicy =&gt; snsTopicPolicy.Json),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class TopicPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the SNS topic
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The fully-formed AWS policy as JSON.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
@@ -148,15 +63,9 @@ namespace Pulumi.Aws.Sns
 
     public sealed class TopicPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the SNS topic
-        /// </summary>
         [Input("arn", required: true)]
         public Input<string> Arn { get; set; } = null!;
 
-        /// <summary>
-        /// The fully-formed AWS policy as JSON.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
@@ -167,15 +76,9 @@ namespace Pulumi.Aws.Sns
 
     public sealed class TopicPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the SNS topic
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The fully-formed AWS policy as JSON.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

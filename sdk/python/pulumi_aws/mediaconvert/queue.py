@@ -27,25 +27,9 @@ class Queue(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS Elemental MediaConvert Queue.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.mediaconvert.Queue("test")
-        ```
-
+        Create a Queue resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description of the queue
-        :param pulumi.Input[str] name: A unique identifier describing the queue
-        :param pulumi.Input[str] pricing_plan: Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-        :param pulumi.Input[pulumi.InputType['QueueReservationPlanSettingsArgs']] reservation_plan_settings: A detail pricing plan of the  reserved queue. See below.
-        :param pulumi.Input[str] status: A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,13 +79,6 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Arn of the queue
-        :param pulumi.Input[str] description: A description of the queue
-        :param pulumi.Input[str] name: A unique identifier describing the queue
-        :param pulumi.Input[str] pricing_plan: Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-        :param pulumi.Input[pulumi.InputType['QueueReservationPlanSettingsArgs']] reservation_plan_settings: A detail pricing plan of the  reserved queue. See below.
-        :param pulumi.Input[str] status: A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,57 +96,36 @@ class Queue(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Arn of the queue
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        A description of the queue
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique identifier describing the queue
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> pulumi.Output[Optional[str]]:
-        """
-        Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-        """
         return pulumi.get(self, "pricing_plan")
 
     @property
     @pulumi.getter(name="reservationPlanSettings")
     def reservation_plan_settings(self) -> pulumi.Output['outputs.QueueReservationPlanSettings']:
-        """
-        A detail pricing plan of the  reserved queue. See below.
-        """
         return pulumi.get(self, "reservation_plan_settings")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[Optional[str]]:
-        """
-        A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

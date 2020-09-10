@@ -9,93 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DataSync
 {
-    /// <summary>
-    /// Manages a SMB Location within AWS DataSync.
-    /// 
-    /// &gt; **NOTE:** The DataSync Agents must be available before creating this resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DataSync.LocationSmb("example", new Aws.DataSync.LocationSmbArgs
-    ///         {
-    ///             ServerHostname = "smb.example.com",
-    ///             Subdirectory = "/exported/path",
-    ///             User = "Guest",
-    ///             Password = "ANotGreatPassword",
-    ///             AgentArns = 
-    ///             {
-    ///                 aws_datasync_agent.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class LocationSmb : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A list of DataSync Agent ARNs with which this location will be associated.
-        /// </summary>
         [Output("agentArns")]
         public Output<ImmutableArray<string>> AgentArns { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Windows domain the SMB server belongs to.
-        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing mount options used by DataSync to access the SMB Server. Can be `AUTOMATIC`, `SMB2`, or `SMB3`.
-        /// </summary>
         [Output("mountOptions")]
         public Output<Outputs.LocationSmbMountOptions?> MountOptions { get; private set; } = null!;
 
-        /// <summary>
-        /// The password of the user who can mount the share and has file permissions in the SMB.
-        /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies the IP address or DNS name of the SMB server. The DataSync Agent(s) use this to mount the SMB share.
-        /// </summary>
         [Output("serverHostname")]
         public Output<string> ServerHostname { get; private set; } = null!;
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-        /// </summary>
         [Output("subdirectory")]
         public Output<string> Subdirectory { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
 
-        /// <summary>
-        /// The user who can mount the share and has file and folder permissions in the SMB share.
-        /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
 
@@ -147,61 +89,35 @@ namespace Pulumi.Aws.DataSync
     {
         [Input("agentArns", required: true)]
         private InputList<string>? _agentArns;
-
-        /// <summary>
-        /// A list of DataSync Agent ARNs with which this location will be associated.
-        /// </summary>
         public InputList<string> AgentArns
         {
             get => _agentArns ?? (_agentArns = new InputList<string>());
             set => _agentArns = value;
         }
 
-        /// <summary>
-        /// The name of the Windows domain the SMB server belongs to.
-        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// Configuration block containing mount options used by DataSync to access the SMB Server. Can be `AUTOMATIC`, `SMB2`, or `SMB3`.
-        /// </summary>
         [Input("mountOptions")]
         public Input<Inputs.LocationSmbMountOptionsArgs>? MountOptions { get; set; }
 
-        /// <summary>
-        /// The password of the user who can mount the share and has file permissions in the SMB.
-        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the IP address or DNS name of the SMB server. The DataSync Agent(s) use this to mount the SMB share.
-        /// </summary>
         [Input("serverHostname", required: true)]
         public Input<string> ServerHostname { get; set; } = null!;
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-        /// </summary>
         [Input("subdirectory", required: true)]
         public Input<string> Subdirectory { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The user who can mount the share and has file and folder permissions in the SMB share.
-        /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 
@@ -214,58 +130,32 @@ namespace Pulumi.Aws.DataSync
     {
         [Input("agentArns")]
         private InputList<string>? _agentArns;
-
-        /// <summary>
-        /// A list of DataSync Agent ARNs with which this location will be associated.
-        /// </summary>
         public InputList<string> AgentArns
         {
             get => _agentArns ?? (_agentArns = new InputList<string>());
             set => _agentArns = value;
         }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the Windows domain the SMB server belongs to.
-        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// Configuration block containing mount options used by DataSync to access the SMB Server. Can be `AUTOMATIC`, `SMB2`, or `SMB3`.
-        /// </summary>
         [Input("mountOptions")]
         public Input<Inputs.LocationSmbMountOptionsGetArgs>? MountOptions { get; set; }
 
-        /// <summary>
-        /// The password of the user who can mount the share and has file permissions in the SMB.
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// Specifies the IP address or DNS name of the SMB server. The DataSync Agent(s) use this to mount the SMB share.
-        /// </summary>
         [Input("serverHostname")]
         public Input<string>? ServerHostname { get; set; }
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-        /// </summary>
         [Input("subdirectory")]
         public Input<string>? Subdirectory { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -275,9 +165,6 @@ namespace Pulumi.Aws.DataSync
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 
-        /// <summary>
-        /// The user who can mount the share and has file and folder permissions in the SMB share.
-        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

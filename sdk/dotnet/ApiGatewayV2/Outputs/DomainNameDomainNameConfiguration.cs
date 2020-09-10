@@ -13,26 +13,10 @@ namespace Pulumi.Aws.ApiGatewayV2.Outputs
     [OutputType]
     public sealed class DomainNameDomainNameConfiguration
     {
-        /// <summary>
-        /// The ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source.
-        /// Use the `aws.acm.Certificate` resource to configure an ACM certificate.
-        /// </summary>
         public readonly string CertificateArn;
-        /// <summary>
-        /// The endpoint type. Valid values: `REGIONAL`.
-        /// </summary>
         public readonly string EndpointType;
-        /// <summary>
-        /// The Amazon Route 53 Hosted Zone ID of the endpoint.
-        /// </summary>
         public readonly string? HostedZoneId;
-        /// <summary>
-        /// The Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.
-        /// </summary>
         public readonly string SecurityPolicy;
-        /// <summary>
-        /// The target domain name.
-        /// </summary>
         public readonly string? TargetDomainName;
 
         [OutputConstructor]

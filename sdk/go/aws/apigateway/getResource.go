@@ -7,38 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the id of a Resource in API Gateway.
-// To fetch the Resource, you must provide the REST API id as well as the full path.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myRestApi, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
-// 			Name: "my-rest-api",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.LookupResource(ctx, &apigateway.LookupResourceArgs{
-// 			RestApiId: myRestApi.Id,
-// 			Path:      "/endpoint/path",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	var rv LookupResourceResult
 	err := ctx.Invoke("aws:apigateway/getResource:getResource", args, &rv, opts...)
@@ -50,20 +18,16 @@ func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulum
 
 // A collection of arguments for invoking getResource.
 type LookupResourceArgs struct {
-	// The full path of the resource.  If no path is found, an error will be returned.
-	Path string `pulumi:"path"`
-	// The REST API id that owns the resource. If no REST API is found, an error will be returned.
+	Path      string `pulumi:"path"`
 	RestApiId string `pulumi:"restApiId"`
 }
 
 // A collection of values returned by getResource.
 type LookupResourceResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Set to the ID of the parent Resource.
-	ParentId string `pulumi:"parentId"`
-	Path     string `pulumi:"path"`
-	// Set to the path relative to the parent Resource.
+	Id        string `pulumi:"id"`
+	ParentId  string `pulumi:"parentId"`
+	Path      string `pulumi:"path"`
 	PathPart  string `pulumi:"pathPart"`
 	RestApiId string `pulumi:"restApiId"`
 }

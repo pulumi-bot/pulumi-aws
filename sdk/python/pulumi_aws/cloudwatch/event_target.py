@@ -33,143 +33,9 @@ class EventTarget(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a CloudWatch Event Target resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        console = aws.cloudwatch.EventRule("console",
-            description="Capture all EC2 scaling events",
-            event_pattern=\"\"\"{
-          "source": [
-            "aws.autoscaling"
-          ],
-          "detail-type": [
-            "EC2 Instance Launch Successful",
-            "EC2 Instance Terminate Successful",
-            "EC2 Instance Launch Unsuccessful",
-            "EC2 Instance Terminate Unsuccessful"
-          ]
-        }
-        \"\"\")
-        test_stream = aws.kinesis.Stream("testStream", shard_count=1)
-        yada = aws.cloudwatch.EventTarget("yada",
-            rule=console.name,
-            arn=test_stream.arn,
-            run_command_targets=[
-                aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                    key="tag:Name",
-                    values=["FooBar"],
-                ),
-                aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                    key="InstanceIds",
-                    values=["i-162058cd308bffec2"],
-                ),
-            ])
-        ```
-        ## Example SSM Document Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ssm_lifecycle_trust = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["events.amazonaws.com"],
-            )],
-        )])
-        stop_instance = aws.ssm.Document("stopInstance",
-            document_type="Command",
-            content=\"\"\"  {
-            "schemaVersion": "1.2",
-            "description": "Stop an instance",
-            "parameters": {
-
-            },
-            "runtimeConfig": {
-              "aws:runShellScript": {
-                "properties": [
-                  {
-                    "id": "0.aws:runShellScript",
-                    "runCommand": ["halt"]
-                  }
-                ]
-              }
-            }
-          }
-        \"\"\")
-        ssm_lifecycle_policy_document = stop_instance.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[
-            aws.iam.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=["ssm:SendCommand"],
-                resources=["arn:aws:ec2:eu-west-1:1234567890:instance/*"],
-                conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                    test="StringEquals",
-                    variable="ec2:ResourceTag/Terminate",
-                    values=["*"],
-                )],
-            ),
-            aws.iam.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=["ssm:SendCommand"],
-                resources=[arn],
-            ),
-        ]))
-        ssm_lifecycle_role = aws.iam.Role("ssmLifecycleRole", assume_role_policy=ssm_lifecycle_trust.json)
-        ssm_lifecycle_policy = aws.iam.Policy("ssmLifecyclePolicy", policy=ssm_lifecycle_policy_document.json)
-        stop_instances_event_rule = aws.cloudwatch.EventRule("stopInstancesEventRule",
-            description="Stop instances nightly",
-            schedule_expression="cron(0 0 * * ? *)")
-        stop_instances_event_target = aws.cloudwatch.EventTarget("stopInstancesEventTarget",
-            arn=stop_instance.arn,
-            rule=stop_instances_event_rule.name,
-            role_arn=ssm_lifecycle_role.arn,
-            run_command_targets=[aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                key="tag:Terminate",
-                values=["midnight"],
-            )])
-        ```
-
-        ## Example RunCommand Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        stop_instances_event_rule = aws.cloudwatch.EventRule("stopInstancesEventRule",
-            description="Stop instances nightly",
-            schedule_expression="cron(0 0 * * ? *)")
-        stop_instances_event_target = aws.cloudwatch.EventTarget("stopInstancesEventTarget",
-            arn=f"arn:aws:ssm:{var['aws_region']}::document/AWS-RunShellScript",
-            input="{\"commands\":[\"halt\"]}",
-            rule=stop_instances_event_rule.name,
-            role_arn=aws_iam_role["ssm_lifecycle"]["arn"],
-            run_command_targets=[aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                key="tag:Terminate",
-                values=["midnight"],
-            )])
-        ```
-
+        Create a EventTarget resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) associated of the target.
-        :param pulumi.Input[pulumi.InputType['EventTargetBatchTargetArgs']] batch_target: Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[pulumi.InputType['EventTargetEcsTargetArgs']] ecs_target: Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[str] input: Valid JSON text passed to the target.
-        :param pulumi.Input[str] input_path: The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-               that is used for extracting part of the matched event when passing it to the target.
-        :param pulumi.Input[pulumi.InputType['EventTargetInputTransformerArgs']] input_transformer: Parameters used when you are providing a custom input to a target based on certain event data.
-        :param pulumi.Input[pulumi.InputType['EventTargetKinesisTargetArgs']] kinesis_target: Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used.
-        :param pulumi.Input[str] rule: The name of the rule you want to add targets to.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EventTargetRunCommandTargetArgs']]]] run_command_targets: Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-        :param pulumi.Input[pulumi.InputType['EventTargetSqsTargetArgs']] sqs_target: Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[str] target_id: The unique target assignment ID.  If missing, will generate a random, unique id.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -233,19 +99,6 @@ class EventTarget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) associated of the target.
-        :param pulumi.Input[pulumi.InputType['EventTargetBatchTargetArgs']] batch_target: Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[pulumi.InputType['EventTargetEcsTargetArgs']] ecs_target: Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[str] input: Valid JSON text passed to the target.
-        :param pulumi.Input[str] input_path: The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-               that is used for extracting part of the matched event when passing it to the target.
-        :param pulumi.Input[pulumi.InputType['EventTargetInputTransformerArgs']] input_transformer: Parameters used when you are providing a custom input to a target based on certain event data.
-        :param pulumi.Input[pulumi.InputType['EventTargetKinesisTargetArgs']] kinesis_target: Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used.
-        :param pulumi.Input[str] rule: The name of the rule you want to add targets to.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EventTargetRunCommandTargetArgs']]]] run_command_targets: Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-        :param pulumi.Input[pulumi.InputType['EventTargetSqsTargetArgs']] sqs_target: Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-        :param pulumi.Input[str] target_id: The unique target assignment ID.  If missing, will generate a random, unique id.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -268,98 +121,61 @@ class EventTarget(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) associated of the target.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="batchTarget")
     def batch_target(self) -> pulumi.Output[Optional['outputs.EventTargetBatchTarget']]:
-        """
-        Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-        """
         return pulumi.get(self, "batch_target")
 
     @property
     @pulumi.getter(name="ecsTarget")
     def ecs_target(self) -> pulumi.Output[Optional['outputs.EventTargetEcsTarget']]:
-        """
-        Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-        """
         return pulumi.get(self, "ecs_target")
 
     @property
     @pulumi.getter
     def input(self) -> pulumi.Output[Optional[str]]:
-        """
-        Valid JSON text passed to the target.
-        """
         return pulumi.get(self, "input")
 
     @property
     @pulumi.getter(name="inputPath")
     def input_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-        that is used for extracting part of the matched event when passing it to the target.
-        """
         return pulumi.get(self, "input_path")
 
     @property
     @pulumi.getter(name="inputTransformer")
     def input_transformer(self) -> pulumi.Output[Optional['outputs.EventTargetInputTransformer']]:
-        """
-        Parameters used when you are providing a custom input to a target based on certain event data.
-        """
         return pulumi.get(self, "input_transformer")
 
     @property
     @pulumi.getter(name="kinesisTarget")
     def kinesis_target(self) -> pulumi.Output[Optional['outputs.EventTargetKinesisTarget']]:
-        """
-        Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-        """
         return pulumi.get(self, "kinesis_target")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used.
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter
     def rule(self) -> pulumi.Output[str]:
-        """
-        The name of the rule you want to add targets to.
-        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter(name="runCommandTargets")
     def run_command_targets(self) -> pulumi.Output[Optional[List['outputs.EventTargetRunCommandTarget']]]:
-        """
-        Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-        """
         return pulumi.get(self, "run_command_targets")
 
     @property
     @pulumi.getter(name="sqsTarget")
     def sqs_target(self) -> pulumi.Output[Optional['outputs.EventTargetSqsTarget']]:
-        """
-        Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-        """
         return pulumi.get(self, "sqs_target")
 
     @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[str]:
-        """
-        The unique target assignment ID.  If missing, will generate a random, unique id.
-        """
         return pulumi.get(self, "target_id")
 
     def translate_output_property(self, prop):

@@ -10,138 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `appautoscaling.Policy` resource.
-//
-// > **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `iam.ServiceLinkedRole` resource.
-//
-// ## Example Usage
-// ### DynamoDB Table Autoscaling
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appautoscaling.NewTarget(ctx, "dynamodbTableReadTarget", &appautoscaling.TargetArgs{
-// 			MaxCapacity:       pulumi.Int(100),
-// 			MinCapacity:       pulumi.Int(5),
-// 			ResourceId:        pulumi.String(fmt.Sprintf("%v%v", "table/", aws_dynamodb_table.Example.Name)),
-// 			ScalableDimension: pulumi.String("dynamodb:table:ReadCapacityUnits"),
-// 			ServiceNamespace:  pulumi.String("dynamodb"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### DynamoDB Index Autoscaling
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appautoscaling.NewTarget(ctx, "dynamodbIndexReadTarget", &appautoscaling.TargetArgs{
-// 			MaxCapacity:       pulumi.Int(100),
-// 			MinCapacity:       pulumi.Int(5),
-// 			ResourceId:        pulumi.String(fmt.Sprintf("%v%v%v%v", "table/", aws_dynamodb_table.Example.Name, "/index/", _var.Index_name)),
-// 			ScalableDimension: pulumi.String("dynamodb:index:ReadCapacityUnits"),
-// 			ServiceNamespace:  pulumi.String("dynamodb"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### ECS Service Autoscaling
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appautoscaling.NewTarget(ctx, "ecsTarget", &appautoscaling.TargetArgs{
-// 			MaxCapacity:       pulumi.Int(4),
-// 			MinCapacity:       pulumi.Int(1),
-// 			ResourceId:        pulumi.String(fmt.Sprintf("%v%v%v%v", "service/", aws_ecs_cluster.Example.Name, "/", aws_ecs_service.Example.Name)),
-// 			ScalableDimension: pulumi.String("ecs:service:DesiredCount"),
-// 			ServiceNamespace:  pulumi.String("ecs"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Aurora Read Replica Autoscaling
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appautoscaling.NewTarget(ctx, "replicas", &appautoscaling.TargetArgs{
-// 			MaxCapacity:       pulumi.Int(15),
-// 			MinCapacity:       pulumi.Int(1),
-// 			ResourceId:        pulumi.String(fmt.Sprintf("%v%v", "cluster:", aws_rds_cluster.Example.Id)),
-// 			ScalableDimension: pulumi.String("rds:cluster:ReadReplicaCount"),
-// 			ServiceNamespace:  pulumi.String("rds"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Target struct {
 	pulumi.CustomResourceState
 
-	// The max capacity of the scalable target.
-	MaxCapacity pulumi.IntOutput `pulumi:"maxCapacity"`
-	// The min capacity of the scalable target.
-	MinCapacity pulumi.IntOutput `pulumi:"minCapacity"`
-	// The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// The ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
-	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
-	// The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
+	MaxCapacity       pulumi.IntOutput    `pulumi:"maxCapacity"`
+	MinCapacity       pulumi.IntOutput    `pulumi:"minCapacity"`
+	ResourceId        pulumi.StringOutput `pulumi:"resourceId"`
+	RoleArn           pulumi.StringOutput `pulumi:"roleArn"`
 	ScalableDimension pulumi.StringOutput `pulumi:"scalableDimension"`
-	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ServiceNamespace pulumi.StringOutput `pulumi:"serviceNamespace"`
+	ServiceNamespace  pulumi.StringOutput `pulumi:"serviceNamespace"`
 }
 
 // NewTarget registers a new resource with the given unique name, arguments, and options.
@@ -187,33 +64,21 @@ func GetTarget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Target resources.
 type targetState struct {
-	// The max capacity of the scalable target.
-	MaxCapacity *int `pulumi:"maxCapacity"`
-	// The min capacity of the scalable target.
-	MinCapacity *int `pulumi:"minCapacity"`
-	// The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ResourceId *string `pulumi:"resourceId"`
-	// The ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
-	RoleArn *string `pulumi:"roleArn"`
-	// The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
+	MaxCapacity       *int    `pulumi:"maxCapacity"`
+	MinCapacity       *int    `pulumi:"minCapacity"`
+	ResourceId        *string `pulumi:"resourceId"`
+	RoleArn           *string `pulumi:"roleArn"`
 	ScalableDimension *string `pulumi:"scalableDimension"`
-	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ServiceNamespace *string `pulumi:"serviceNamespace"`
+	ServiceNamespace  *string `pulumi:"serviceNamespace"`
 }
 
 type TargetState struct {
-	// The max capacity of the scalable target.
-	MaxCapacity pulumi.IntPtrInput
-	// The min capacity of the scalable target.
-	MinCapacity pulumi.IntPtrInput
-	// The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ResourceId pulumi.StringPtrInput
-	// The ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
-	RoleArn pulumi.StringPtrInput
-	// The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
+	MaxCapacity       pulumi.IntPtrInput
+	MinCapacity       pulumi.IntPtrInput
+	ResourceId        pulumi.StringPtrInput
+	RoleArn           pulumi.StringPtrInput
 	ScalableDimension pulumi.StringPtrInput
-	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ServiceNamespace pulumi.StringPtrInput
+	ServiceNamespace  pulumi.StringPtrInput
 }
 
 func (TargetState) ElementType() reflect.Type {
@@ -221,34 +86,22 @@ func (TargetState) ElementType() reflect.Type {
 }
 
 type targetArgs struct {
-	// The max capacity of the scalable target.
-	MaxCapacity int `pulumi:"maxCapacity"`
-	// The min capacity of the scalable target.
-	MinCapacity int `pulumi:"minCapacity"`
-	// The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ResourceId string `pulumi:"resourceId"`
-	// The ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
-	RoleArn *string `pulumi:"roleArn"`
-	// The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ScalableDimension string `pulumi:"scalableDimension"`
-	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ServiceNamespace string `pulumi:"serviceNamespace"`
+	MaxCapacity       int     `pulumi:"maxCapacity"`
+	MinCapacity       int     `pulumi:"minCapacity"`
+	ResourceId        string  `pulumi:"resourceId"`
+	RoleArn           *string `pulumi:"roleArn"`
+	ScalableDimension string  `pulumi:"scalableDimension"`
+	ServiceNamespace  string  `pulumi:"serviceNamespace"`
 }
 
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
-	// The max capacity of the scalable target.
-	MaxCapacity pulumi.IntInput
-	// The min capacity of the scalable target.
-	MinCapacity pulumi.IntInput
-	// The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ResourceId pulumi.StringInput
-	// The ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
-	RoleArn pulumi.StringPtrInput
-	// The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
+	MaxCapacity       pulumi.IntInput
+	MinCapacity       pulumi.IntInput
+	ResourceId        pulumi.StringInput
+	RoleArn           pulumi.StringPtrInput
 	ScalableDimension pulumi.StringInput
-	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-	ServiceNamespace pulumi.StringInput
+	ServiceNamespace  pulumi.StringInput
 }
 
 func (TargetArgs) ElementType() reflect.Type {

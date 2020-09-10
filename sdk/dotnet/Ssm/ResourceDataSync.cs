@@ -9,79 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ssm
 {
-    /// <summary>
-    /// Provides a SSM resource data sync.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var hogeBucket = new Aws.S3.Bucket("hogeBucket", new Aws.S3.BucketArgs
-    ///         {
-    ///         });
-    ///         var hogeBucketPolicy = new Aws.S3.BucketPolicy("hogeBucketPolicy", new Aws.S3.BucketPolicyArgs
-    ///         {
-    ///             Bucket = hogeBucket.BucketName,
-    ///             Policy = @"{
-    ///     ""Version"": ""2012-10-17"",
-    ///     ""Statement"": [
-    ///         {
-    ///             ""Sid"": ""SSMBucketPermissionsCheck"",
-    ///             ""Effect"": ""Allow"",
-    ///             ""Principal"": {
-    ///                 ""Service"": ""ssm.amazonaws.com""
-    ///             },
-    ///             ""Action"": ""s3:GetBucketAcl"",
-    ///             ""Resource"": ""arn:aws:s3:::tf-test-bucket-1234""
-    ///         },
-    ///         {
-    ///             ""Sid"": "" SSMBucketDelivery"",
-    ///             ""Effect"": ""Allow"",
-    ///             ""Principal"": {
-    ///                 ""Service"": ""ssm.amazonaws.com""
-    ///             },
-    ///             ""Action"": ""s3:PutObject"",
-    ///             ""Resource"": [""arn:aws:s3:::tf-test-bucket-1234/*""],
-    ///             ""Condition"": {
-    ///                 ""StringEquals"": {
-    ///                     ""s3:x-amz-acl"": ""bucket-owner-full-control""
-    ///                 }
-    ///             }
-    ///         }
-    ///     ]
-    /// }
-    /// ",
-    ///         });
-    ///         var foo = new Aws.Ssm.ResourceDataSync("foo", new Aws.Ssm.ResourceDataSyncArgs
-    ///         {
-    ///             S3Destination = new Aws.Ssm.Inputs.ResourceDataSyncS3DestinationArgs
-    ///             {
-    ///                 BucketName = hogeBucket.BucketName,
-    ///                 Region = hogeBucket.Region,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ResourceDataSync : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Name for the configuration.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon S3 configuration details for the sync.
-        /// </summary>
         [Output("s3Destination")]
         public Output<Outputs.ResourceDataSyncS3Destination> S3Destination { get; private set; } = null!;
 
@@ -131,15 +63,9 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class ResourceDataSyncArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name for the configuration.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Amazon S3 configuration details for the sync.
-        /// </summary>
         [Input("s3Destination", required: true)]
         public Input<Inputs.ResourceDataSyncS3DestinationArgs> S3Destination { get; set; } = null!;
 
@@ -150,15 +76,9 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class ResourceDataSyncState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name for the configuration.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Amazon S3 configuration details for the sync.
-        /// </summary>
         [Input("s3Destination")]
         public Input<Inputs.ResourceDataSyncS3DestinationGetArgs>? S3Destination { get; set; }
 

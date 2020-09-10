@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an API Gateway VPC Link.
- *
- * > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
- * To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleLoadBalancer = new aws.lb.LoadBalancer("exampleLoadBalancer", {
- *     internal: true,
- *     loadBalancerType: "network",
- *     subnetMappings: [{
- *         subnetId: "12345",
- *     }],
- * });
- * const exampleVpcLink = new aws.apigateway.VpcLink("exampleVpcLink", {
- *     description: "example description",
- *     targetArn: [exampleLoadBalancer.arn],
- * });
- * ```
- */
 export class VpcLink extends pulumi.CustomResource {
     /**
      * Get an existing VpcLink resource's state with the given name, ID, and optional extra
@@ -58,21 +33,9 @@ export class VpcLink extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The description of the VPC link.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name used to label and identify the VPC link.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-     */
     public readonly targetArn!: pulumi.Output<string>;
 
     /**
@@ -119,21 +82,9 @@ export class VpcLink extends pulumi.CustomResource {
  */
 export interface VpcLinkState {
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description of the VPC link.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name used to label and identify the VPC link.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-     */
     readonly targetArn?: pulumi.Input<string>;
 }
 
@@ -141,20 +92,8 @@ export interface VpcLinkState {
  * The set of arguments for constructing a VpcLink resource.
  */
 export interface VpcLinkArgs {
-    /**
-     * The description of the VPC link.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name used to label and identify the VPC link.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-     */
     readonly targetArn: pulumi.Input<string>;
 }

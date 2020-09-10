@@ -10,52 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Gamelift Build resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/gamelift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gamelift.NewBuild(ctx, "test", &gamelift.BuildArgs{
-// 			OperatingSystem: pulumi.String("WINDOWS_2012"),
-// 			StorageLocation: &gamelift.BuildStorageLocationArgs{
-// 				Bucket:  pulumi.Any(aws_s3_bucket.Test.Bucket),
-// 				Key:     pulumi.Any(aws_s3_bucket_object.Test.Key),
-// 				RoleArn: pulumi.Any(aws_iam_role.Test.Arn),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			aws_iam_role_policy.Test,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Build struct {
 	pulumi.CustomResourceState
 
-	// Gamelift Build ARN.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Name of the build
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
-	OperatingSystem pulumi.StringOutput `pulumi:"operatingSystem"`
-	// Information indicating where your game build files are stored. See below.
+	Arn             pulumi.StringOutput        `pulumi:"arn"`
+	Name            pulumi.StringOutput        `pulumi:"name"`
+	OperatingSystem pulumi.StringOutput        `pulumi:"operatingSystem"`
 	StorageLocation BuildStorageLocationOutput `pulumi:"storageLocation"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Version that is associated with this build.
-	Version pulumi.StringPtrOutput `pulumi:"version"`
+	Tags            pulumi.StringMapOutput     `pulumi:"tags"`
+	Version         pulumi.StringPtrOutput     `pulumi:"version"`
 }
 
 // NewBuild registers a new resource with the given unique name, arguments, and options.
@@ -92,33 +55,21 @@ func GetBuild(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Build resources.
 type buildState struct {
-	// Gamelift Build ARN.
-	Arn *string `pulumi:"arn"`
-	// Name of the build
-	Name *string `pulumi:"name"`
-	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
-	OperatingSystem *string `pulumi:"operatingSystem"`
-	// Information indicating where your game build files are stored. See below.
+	Arn             *string               `pulumi:"arn"`
+	Name            *string               `pulumi:"name"`
+	OperatingSystem *string               `pulumi:"operatingSystem"`
 	StorageLocation *BuildStorageLocation `pulumi:"storageLocation"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Version that is associated with this build.
-	Version *string `pulumi:"version"`
+	Tags            map[string]string     `pulumi:"tags"`
+	Version         *string               `pulumi:"version"`
 }
 
 type BuildState struct {
-	// Gamelift Build ARN.
-	Arn pulumi.StringPtrInput
-	// Name of the build
-	Name pulumi.StringPtrInput
-	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
+	Arn             pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
 	OperatingSystem pulumi.StringPtrInput
-	// Information indicating where your game build files are stored. See below.
 	StorageLocation BuildStorageLocationPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// Version that is associated with this build.
-	Version pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
+	Version         pulumi.StringPtrInput
 }
 
 func (BuildState) ElementType() reflect.Type {
@@ -126,30 +77,20 @@ func (BuildState) ElementType() reflect.Type {
 }
 
 type buildArgs struct {
-	// Name of the build
-	Name *string `pulumi:"name"`
-	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
-	OperatingSystem string `pulumi:"operatingSystem"`
-	// Information indicating where your game build files are stored. See below.
+	Name            *string              `pulumi:"name"`
+	OperatingSystem string               `pulumi:"operatingSystem"`
 	StorageLocation BuildStorageLocation `pulumi:"storageLocation"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Version that is associated with this build.
-	Version *string `pulumi:"version"`
+	Tags            map[string]string    `pulumi:"tags"`
+	Version         *string              `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Build resource.
 type BuildArgs struct {
-	// Name of the build
-	Name pulumi.StringPtrInput
-	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
+	Name            pulumi.StringPtrInput
 	OperatingSystem pulumi.StringInput
-	// Information indicating where your game build files are stored. See below.
 	StorageLocation BuildStorageLocationInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// Version that is associated with this build.
-	Version pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
+	Version         pulumi.StringPtrInput
 }
 
 func (BuildArgs) ElementType() reflect.Type {

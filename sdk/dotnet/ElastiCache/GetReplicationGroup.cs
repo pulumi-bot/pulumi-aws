@@ -11,32 +11,6 @@ namespace Pulumi.Aws.ElastiCache
 {
     public static class GetReplicationGroup
     {
-        /// <summary>
-        /// Use this data source to get information about an Elasticache Replication Group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var bar = Output.Create(Aws.ElastiCache.GetReplicationGroup.InvokeAsync(new Aws.ElastiCache.GetReplicationGroupArgs
-        ///         {
-        ///             ReplicationGroupId = "example",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetReplicationGroupResult> InvokeAsync(GetReplicationGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReplicationGroupResult>("aws:elasticache/getReplicationGroup:getReplicationGroup", args ?? new GetReplicationGroupArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class GetReplicationGroupArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The identifier for the replication group.
-        /// </summary>
         [Input("replicationGroupId", required: true)]
         public string ReplicationGroupId { get; set; } = null!;
 
@@ -59,57 +30,21 @@ namespace Pulumi.Aws.ElastiCache
     [OutputType]
     public sealed class GetReplicationGroupResult
     {
-        /// <summary>
-        /// A flag that enables using an AuthToken (password) when issuing Redis commands.
-        /// </summary>
         public readonly bool AuthTokenEnabled;
-        /// <summary>
-        /// A flag whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails.
-        /// </summary>
         public readonly bool AutomaticFailoverEnabled;
-        /// <summary>
-        /// The configuration endpoint address to allow host discovery.
-        /// </summary>
         public readonly string ConfigurationEndpointAddress;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The identifiers of all the nodes that are part of this replication group.
-        /// </summary>
         public readonly ImmutableArray<string> MemberClusters;
-        /// <summary>
-        /// The cluster node type.
-        /// </summary>
         public readonly string NodeType;
-        /// <summary>
-        /// The number of cache clusters that the replication group has.
-        /// </summary>
         public readonly int NumberCacheClusters;
-        /// <summary>
-        /// The port number on which the configuration endpoint will accept connections.
-        /// </summary>
         public readonly int Port;
-        /// <summary>
-        /// The endpoint of the primary node in this node group (shard).
-        /// </summary>
         public readonly string PrimaryEndpointAddress;
-        /// <summary>
-        /// The description of the replication group.
-        /// </summary>
         public readonly string ReplicationGroupDescription;
-        /// <summary>
-        /// The identifier for the replication group.
-        /// </summary>
         public readonly string ReplicationGroupId;
-        /// <summary>
-        /// The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
-        /// </summary>
         public readonly int SnapshotRetentionLimit;
-        /// <summary>
-        /// The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
-        /// </summary>
         public readonly string SnapshotWindow;
 
         [OutputConstructor]

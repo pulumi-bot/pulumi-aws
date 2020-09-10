@@ -39,9 +39,6 @@ class GetLocalDiskResult:
     @property
     @pulumi.getter(name="diskId")
     def disk_id(self) -> str:
-        """
-        The disk identifier. e.g. `pci-0000:03:00.0-scsi-0:0:0:0`
-        """
         return pulumi.get(self, "disk_id")
 
     @property
@@ -86,22 +83,7 @@ def get_local_disk(disk_node: Optional[str] = None,
                    gateway_arn: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLocalDiskResult:
     """
-    Retrieve information about a Storage Gateway local disk. The disk identifier is useful for adding the disk as a cache or upload buffer to a gateway.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.storagegateway.get_local_disk(disk_path=aws_volume_attachment["test"]["device_name"],
-        gateway_arn=aws_storagegateway_gateway["test"]["arn"])
-    ```
-
-
-    :param str disk_node: The device node of the local disk to retrieve. For example, `/dev/sdb`.
-    :param str disk_path: The device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
-    :param str gateway_arn: The Amazon Resource Name (ARN) of the gateway.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['diskNode'] = disk_node

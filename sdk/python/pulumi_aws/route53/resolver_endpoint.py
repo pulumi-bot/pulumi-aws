@@ -26,44 +26,9 @@ class ResolverEndpoint(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Route 53 Resolver endpoint resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.route53.ResolverEndpoint("foo",
-            direction="INBOUND",
-            security_group_ids=[
-                aws_security_group["sg1"]["id"],
-                aws_security_group["sg2"]["id"],
-            ],
-            ip_addresses=[
-                aws.route53.ResolverEndpointIpAddressArgs(
-                    subnet_id=aws_subnet["sn1"]["id"],
-                ),
-                aws.route53.ResolverEndpointIpAddressArgs(
-                    subnet_id=aws_subnet["sn2"]["id"],
-                    ip="10.0.64.4",
-                ),
-            ],
-            tags={
-                "Environment": "Prod",
-            })
-        ```
-
+        Create a ResolverEndpoint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] direction: The direction of DNS queries to or from the Route 53 Resolver endpoint.
-               Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
-               or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ResolverEndpointIpAddressArgs']]]] ip_addresses: The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
-               to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-        :param pulumi.Input[str] name: The friendly name of the Route 53 Resolver endpoint.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: The ID of one or more security groups that you want to use to control access to this VPC.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,16 +84,6 @@ class ResolverEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the Route 53 Resolver endpoint.
-        :param pulumi.Input[str] direction: The direction of DNS queries to or from the Route 53 Resolver endpoint.
-               Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
-               or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
-        :param pulumi.Input[str] host_vpc_id: The ID of the VPC that you want to create the resolver endpoint in.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ResolverEndpointIpAddressArgs']]]] ip_addresses: The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
-               to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-        :param pulumi.Input[str] name: The friendly name of the Route 53 Resolver endpoint.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: The ID of one or more security groups that you want to use to control access to this VPC.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -146,60 +101,36 @@ class ResolverEndpoint(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the Route 53 Resolver endpoint.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def direction(self) -> pulumi.Output[str]:
-        """
-        The direction of DNS queries to or from the Route 53 Resolver endpoint.
-        Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
-        or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
-        """
         return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="hostVpcId")
     def host_vpc_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the VPC that you want to create the resolver endpoint in.
-        """
         return pulumi.get(self, "host_vpc_id")
 
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[List['outputs.ResolverEndpointIpAddress']]:
-        """
-        The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
-        to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The friendly name of the Route 53 Resolver endpoint.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[List[str]]:
-        """
-        The ID of one or more security groups that you want to use to control access to this VPC.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

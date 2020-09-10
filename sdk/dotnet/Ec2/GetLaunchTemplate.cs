@@ -11,62 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetLaunchTemplate
     {
-        /// <summary>
-        /// Provides information about a Launch Template.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Aws.Ec2.GetLaunchTemplate.InvokeAsync(new Aws.Ec2.GetLaunchTemplateArgs
-        ///         {
-        ///             Name = "my-launch-template",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Filter
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Ec2.GetLaunchTemplate.InvokeAsync(new Aws.Ec2.GetLaunchTemplateArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetLaunchTemplateFilterArgs
-        ///                 {
-        ///                     Name = "launch-template-name",
-        ///                     Values = 
-        ///                     {
-        ///                         "some-template",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLaunchTemplateResult> InvokeAsync(GetLaunchTemplateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLaunchTemplateResult>("aws:ec2/getLaunchTemplate:getLaunchTemplate", args ?? new GetLaunchTemplateArgs(), options.WithVersion());
     }
@@ -76,28 +20,17 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetLaunchTemplateFilterArgs>? _filters;
-
-        /// <summary>
-        /// Configuration block(s) for filtering. Detailed below.
-        /// </summary>
         public List<Inputs.GetLaunchTemplateFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetLaunchTemplateFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match a pair on the desired Launch Template.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -113,127 +46,38 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetLaunchTemplateResult
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the launch template.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// Specify volumes to attach to the instance besides the volumes specified by the AMI.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateBlockDeviceMappingResult> BlockDeviceMappings;
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit
-        /// Specification below for more details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateCreditSpecificationResult> CreditSpecifications;
-        /// <summary>
-        /// The default version of the launch template.
-        /// </summary>
         public readonly int DefaultVersion;
-        /// <summary>
-        /// Description of the launch template.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// If `true`, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         public readonly bool DisableApiTermination;
-        /// <summary>
-        /// If `true`, the launched EC2 instance will be EBS-optimized.
-        /// </summary>
         public readonly string EbsOptimized;
-        /// <summary>
-        /// The elastic GPU to attach to the instance. See Elastic GPU
-        /// below for more details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateElasticGpuSpecificationResult> ElasticGpuSpecifications;
         public readonly ImmutableArray<Outputs.GetLaunchTemplateFilterResult> Filters;
-        /// <summary>
-        /// The hibernation options for the instance.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateHibernationOptionResult> HibernationOptions;
-        /// <summary>
-        /// The IAM Instance Profile to launch the instance with. See Instance Profile
-        /// below for more details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateIamInstanceProfileResult> IamInstanceProfiles;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The AMI from which to launch the instance.
-        /// </summary>
         public readonly string ImageId;
-        /// <summary>
-        /// Shutdown behavior for the instance. Can be `stop` or `terminate`.
-        /// (Default: `stop`).
-        /// </summary>
         public readonly string InstanceInitiatedShutdownBehavior;
-        /// <summary>
-        /// The market (purchasing) option for the instance.
-        /// below for details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateInstanceMarketOptionResult> InstanceMarketOptions;
-        /// <summary>
-        /// The type of the instance.
-        /// </summary>
         public readonly string InstanceType;
-        /// <summary>
-        /// The kernel ID.
-        /// </summary>
         public readonly string KernelId;
-        /// <summary>
-        /// The key name to use for the instance.
-        /// </summary>
         public readonly string KeyName;
-        /// <summary>
-        /// The latest version of the launch template.
-        /// </summary>
         public readonly int LatestVersion;
-        /// <summary>
-        /// The metadata options for the instance.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateMetadataOptionResult> MetadataOptions;
-        /// <summary>
-        /// The monitoring option for the instance.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateMonitoringResult> Monitorings;
         public readonly string? Name;
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network
-        /// Interfaces below for more details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateNetworkInterfaceResult> NetworkInterfaces;
-        /// <summary>
-        /// The placement of the instance.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplatePlacementResult> Placements;
-        /// <summary>
-        /// The ID of the RAM disk.
-        /// </summary>
         public readonly string RamDiskId;
-        /// <summary>
-        /// A list of security group names to associate with. If you are creating Instances in a VPC, use
-        /// `vpc_security_group_ids` instead.
-        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupNames;
-        /// <summary>
-        /// The tags to apply to the resources during launch.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchTemplateTagSpecificationResult> TagSpecifications;
-        /// <summary>
-        /// (Optional) A map of tags to assign to the launch template.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// The Base64-encoded user data to provide when launching the instance.
-        /// </summary>
         public readonly string UserData;
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         public readonly ImmutableArray<string> VpcSecurityGroupIds;
 
         [OutputConstructor]

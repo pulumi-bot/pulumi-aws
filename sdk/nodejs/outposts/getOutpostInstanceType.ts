@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Information about single Outpost Instance Type.
- */
 export function getOutpostInstanceType(args: GetOutpostInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetOutpostInstanceTypeResult> {
     if (!opts) {
         opts = {}
@@ -28,17 +25,8 @@ export function getOutpostInstanceType(args: GetOutpostInstanceTypeArgs, opts?: 
  * A collection of arguments for invoking getOutpostInstanceType.
  */
 export interface GetOutpostInstanceTypeArgs {
-    /**
-     * Outpost Amazon Resource Name (ARN).
-     */
     readonly arn: string;
-    /**
-     * Desired instance type. Conflicts with `preferredInstanceTypes`.
-     */
     readonly instanceType?: string;
-    /**
-     * Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instanceType`.
-     */
     readonly preferredInstanceTypes?: string[];
 }
 

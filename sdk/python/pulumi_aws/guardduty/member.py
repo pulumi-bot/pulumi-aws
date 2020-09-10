@@ -25,33 +25,9 @@ class Member(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to manage a GuardDuty member. To accept invitations in member accounts, see the `guardduty.InviteAccepter` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        primary = aws.guardduty.Detector("primary", enable=True)
-        member_detector = aws.guardduty.Detector("memberDetector", enable=True,
-        opts=ResourceOptions(provider=aws["dev"]))
-        member_member = aws.guardduty.Member("memberMember",
-            account_id=member_detector.account_id,
-            detector_id=primary.id,
-            email="required@example.com",
-            invite=True,
-            invitation_message="please accept guardduty invitation")
-        ```
-
+        Create a Member resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: AWS account ID for member account.
-        :param pulumi.Input[str] detector_id: The detector ID of the GuardDuty account where you want to create member accounts.
-        :param pulumi.Input[bool] disable_email_notification: Boolean whether an email notification is sent to the accounts. Defaults to `false`.
-        :param pulumi.Input[str] email: Email address for member account.
-        :param pulumi.Input[str] invitation_message: Message for invitation.
-        :param pulumi.Input[bool] invite: Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,13 +83,6 @@ class Member(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: AWS account ID for member account.
-        :param pulumi.Input[str] detector_id: The detector ID of the GuardDuty account where you want to create member accounts.
-        :param pulumi.Input[bool] disable_email_notification: Boolean whether an email notification is sent to the accounts. Defaults to `false`.
-        :param pulumi.Input[str] email: Email address for member account.
-        :param pulumi.Input[str] invitation_message: Message for invitation.
-        :param pulumi.Input[bool] invite: Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
-        :param pulumi.Input[str] relationship_status: The status of the relationship between the member account and its primary account. More information can be found in [Amazon GuardDuty API Reference](https://docs.aws.amazon.com/guardduty/latest/ug/get-members.html).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -131,57 +100,36 @@ class Member(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        AWS account ID for member account.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="detectorId")
     def detector_id(self) -> pulumi.Output[str]:
-        """
-        The detector ID of the GuardDuty account where you want to create member accounts.
-        """
         return pulumi.get(self, "detector_id")
 
     @property
     @pulumi.getter(name="disableEmailNotification")
     def disable_email_notification(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean whether an email notification is sent to the accounts. Defaults to `false`.
-        """
         return pulumi.get(self, "disable_email_notification")
 
     @property
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
-        """
-        Email address for member account.
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="invitationMessage")
     def invitation_message(self) -> pulumi.Output[Optional[str]]:
-        """
-        Message for invitation.
-        """
         return pulumi.get(self, "invitation_message")
 
     @property
     @pulumi.getter
     def invite(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
-        """
         return pulumi.get(self, "invite")
 
     @property
     @pulumi.getter(name="relationshipStatus")
     def relationship_status(self) -> pulumi.Output[str]:
-        """
-        The status of the relationship between the member account and its primary account. More information can be found in [Amazon GuardDuty API Reference](https://docs.aws.amazon.com/guardduty/latest/ug/get-members.html).
-        """
         return pulumi.get(self, "relationship_status")
 
     def translate_output_property(self, prop):

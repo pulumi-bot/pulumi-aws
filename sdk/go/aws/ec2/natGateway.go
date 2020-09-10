@@ -10,73 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to create a VPC NAT Gateway.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewNatGateway(ctx, "gw", &ec2.NatGatewayArgs{
-// 			AllocationId: pulumi.Any(aws_eip.Nat.Id),
-// 			SubnetId:     pulumi.Any(aws_subnet.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// Usage with tags:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewNatGateway(ctx, "gw", &ec2.NatGatewayArgs{
-// 			AllocationId: pulumi.Any(aws_eip.Nat.Id),
-// 			SubnetId:     pulumi.Any(aws_subnet.Example.Id),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("gw NAT"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type NatGateway struct {
 	pulumi.CustomResourceState
 
-	// The Allocation ID of the Elastic IP address for the gateway.
-	AllocationId pulumi.StringOutput `pulumi:"allocationId"`
-	// The ENI ID of the network interface created by the NAT gateway.
-	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
-	// The private IP address of the NAT Gateway.
-	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
-	// The public IP address of the NAT Gateway.
-	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// The Subnet ID of the subnet in which to place the gateway.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	AllocationId       pulumi.StringOutput    `pulumi:"allocationId"`
+	NetworkInterfaceId pulumi.StringOutput    `pulumi:"networkInterfaceId"`
+	PrivateIp          pulumi.StringOutput    `pulumi:"privateIp"`
+	PublicIp           pulumi.StringOutput    `pulumi:"publicIp"`
+	SubnetId           pulumi.StringOutput    `pulumi:"subnetId"`
+	Tags               pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewNatGateway registers a new resource with the given unique name, arguments, and options.
@@ -113,33 +55,21 @@ func GetNatGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatGateway resources.
 type natGatewayState struct {
-	// The Allocation ID of the Elastic IP address for the gateway.
-	AllocationId *string `pulumi:"allocationId"`
-	// The ENI ID of the network interface created by the NAT gateway.
-	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
-	// The private IP address of the NAT Gateway.
-	PrivateIp *string `pulumi:"privateIp"`
-	// The public IP address of the NAT Gateway.
-	PublicIp *string `pulumi:"publicIp"`
-	// The Subnet ID of the subnet in which to place the gateway.
-	SubnetId *string `pulumi:"subnetId"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	AllocationId       *string           `pulumi:"allocationId"`
+	NetworkInterfaceId *string           `pulumi:"networkInterfaceId"`
+	PrivateIp          *string           `pulumi:"privateIp"`
+	PublicIp           *string           `pulumi:"publicIp"`
+	SubnetId           *string           `pulumi:"subnetId"`
+	Tags               map[string]string `pulumi:"tags"`
 }
 
 type NatGatewayState struct {
-	// The Allocation ID of the Elastic IP address for the gateway.
-	AllocationId pulumi.StringPtrInput
-	// The ENI ID of the network interface created by the NAT gateway.
+	AllocationId       pulumi.StringPtrInput
 	NetworkInterfaceId pulumi.StringPtrInput
-	// The private IP address of the NAT Gateway.
-	PrivateIp pulumi.StringPtrInput
-	// The public IP address of the NAT Gateway.
-	PublicIp pulumi.StringPtrInput
-	// The Subnet ID of the subnet in which to place the gateway.
-	SubnetId pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	PrivateIp          pulumi.StringPtrInput
+	PublicIp           pulumi.StringPtrInput
+	SubnetId           pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
 }
 
 func (NatGatewayState) ElementType() reflect.Type {
@@ -147,22 +77,16 @@ func (NatGatewayState) ElementType() reflect.Type {
 }
 
 type natGatewayArgs struct {
-	// The Allocation ID of the Elastic IP address for the gateway.
-	AllocationId string `pulumi:"allocationId"`
-	// The Subnet ID of the subnet in which to place the gateway.
-	SubnetId string `pulumi:"subnetId"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	AllocationId string            `pulumi:"allocationId"`
+	SubnetId     string            `pulumi:"subnetId"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a NatGateway resource.
 type NatGatewayArgs struct {
-	// The Allocation ID of the Elastic IP address for the gateway.
 	AllocationId pulumi.StringInput
-	// The Subnet ID of the subnet in which to place the gateway.
-	SubnetId pulumi.StringInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	SubnetId     pulumi.StringInput
+	Tags         pulumi.StringMapInput
 }
 
 func (NatGatewayArgs) ElementType() reflect.Type {

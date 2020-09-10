@@ -56,9 +56,6 @@ class GetNatGatewayResult:
     @property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> str:
-        """
-        The Id of the EIP allocated to the selected Nat Gateway.
-        """
         return pulumi.get(self, "allocation_id")
 
     @property
@@ -74,25 +71,16 @@ class GetNatGatewayResult:
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> str:
-        """
-        The Id of the ENI allocated to the selected Nat Gateway.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
-        """
-        The private Ip address of the selected Nat Gateway.
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
-        """
-        The public Ip (EIP) address of the selected Nat Gateway.
-        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -142,39 +130,7 @@ def get_nat_gateway(filters: Optional[List[pulumi.InputType['GetNatGatewayFilter
                     vpc_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatGatewayResult:
     """
-    Provides details about a specific Nat Gateway.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    subnet_id = config.require_object("subnetId")
-    default = aws.ec2.get_nat_gateway(subnet_id=aws_subnet["public"]["id"])
-    ```
-
-    Usage with tags:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    default = aws.ec2.get_nat_gateway(subnet_id=aws_subnet["public"]["id"],
-        tags={
-            "Name": "gw NAT",
-        })
-    ```
-
-
-    :param List[pulumi.InputType['GetNatGatewayFilterArgs']] filters: Custom filter block as described below.
-    :param str id: The id of the specific Nat Gateway to retrieve.
-    :param str state: The state of the NAT gateway (pending | failed | available | deleting | deleted ).
-    :param str subnet_id: The id of subnet that the Nat Gateway resides in.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
-           a pair on the desired Nat Gateway.
-    :param str vpc_id: The id of the VPC that the Nat Gateway resides in.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

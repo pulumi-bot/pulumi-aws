@@ -11,10 +11,8 @@ import (
 )
 
 type BrokerConfiguration struct {
-	// The Configuration ID.
-	Id *string `pulumi:"id"`
-	// Revision of the Configuration.
-	Revision *int `pulumi:"revision"`
+	Id       *string `pulumi:"id"`
+	Revision *int    `pulumi:"revision"`
 }
 
 // BrokerConfigurationInput is an input type that accepts BrokerConfigurationArgs and BrokerConfigurationOutput values.
@@ -29,10 +27,8 @@ type BrokerConfigurationInput interface {
 }
 
 type BrokerConfigurationArgs struct {
-	// The Configuration ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Revision of the Configuration.
-	Revision pulumi.IntPtrInput `pulumi:"revision"`
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	Revision pulumi.IntPtrInput    `pulumi:"revision"`
 }
 
 func (BrokerConfigurationArgs) ElementType() reflect.Type {
@@ -111,13 +107,10 @@ func (o BrokerConfigurationOutput) ToBrokerConfigurationPtrOutputWithContext(ctx
 		return &v
 	}).(BrokerConfigurationPtrOutput)
 }
-
-// The Configuration ID.
 func (o BrokerConfigurationOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrokerConfiguration) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Revision of the Configuration.
 func (o BrokerConfigurationOutput) Revision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BrokerConfiguration) *int { return v.Revision }).(pulumi.IntPtrOutput)
 }
@@ -140,7 +133,6 @@ func (o BrokerConfigurationPtrOutput) Elem() BrokerConfigurationOutput {
 	return o.ApplyT(func(v *BrokerConfiguration) BrokerConfiguration { return *v }).(BrokerConfigurationOutput)
 }
 
-// The Configuration ID.
 func (o BrokerConfigurationPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrokerConfiguration) *string {
 		if v == nil {
@@ -150,7 +142,6 @@ func (o BrokerConfigurationPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Revision of the Configuration.
 func (o BrokerConfigurationPtrOutput) Revision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BrokerConfiguration) *int {
 		if v == nil {
@@ -161,10 +152,8 @@ func (o BrokerConfigurationPtrOutput) Revision() pulumi.IntPtrOutput {
 }
 
 type BrokerEncryptionOptions struct {
-	// Amazon Resource Name (ARN) of Key Management Service (KMS) Customer Master Key (CMK) to use for encryption at rest. Requires setting `useAwsOwnedKey` to `false`. To perform drift detection when AWS managed CMKs or customer managed CMKs are in use, this value must be configured.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Boolean to enable an AWS owned Key Management Service (KMS) Customer Master Key (CMK) that is not in your account. Defaults to `true`. Setting to `false` without configuring `kmsKeyId` will create an AWS managed Customer Master Key (CMK) aliased to `aws/mq` in your account.
-	UseAwsOwnedKey *bool `pulumi:"useAwsOwnedKey"`
+	KmsKeyId       *string `pulumi:"kmsKeyId"`
+	UseAwsOwnedKey *bool   `pulumi:"useAwsOwnedKey"`
 }
 
 // BrokerEncryptionOptionsInput is an input type that accepts BrokerEncryptionOptionsArgs and BrokerEncryptionOptionsOutput values.
@@ -179,10 +168,8 @@ type BrokerEncryptionOptionsInput interface {
 }
 
 type BrokerEncryptionOptionsArgs struct {
-	// Amazon Resource Name (ARN) of Key Management Service (KMS) Customer Master Key (CMK) to use for encryption at rest. Requires setting `useAwsOwnedKey` to `false`. To perform drift detection when AWS managed CMKs or customer managed CMKs are in use, this value must be configured.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Boolean to enable an AWS owned Key Management Service (KMS) Customer Master Key (CMK) that is not in your account. Defaults to `true`. Setting to `false` without configuring `kmsKeyId` will create an AWS managed Customer Master Key (CMK) aliased to `aws/mq` in your account.
-	UseAwsOwnedKey pulumi.BoolPtrInput `pulumi:"useAwsOwnedKey"`
+	KmsKeyId       pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	UseAwsOwnedKey pulumi.BoolPtrInput   `pulumi:"useAwsOwnedKey"`
 }
 
 func (BrokerEncryptionOptionsArgs) ElementType() reflect.Type {
@@ -261,13 +248,10 @@ func (o BrokerEncryptionOptionsOutput) ToBrokerEncryptionOptionsPtrOutputWithCon
 		return &v
 	}).(BrokerEncryptionOptionsPtrOutput)
 }
-
-// Amazon Resource Name (ARN) of Key Management Service (KMS) Customer Master Key (CMK) to use for encryption at rest. Requires setting `useAwsOwnedKey` to `false`. To perform drift detection when AWS managed CMKs or customer managed CMKs are in use, this value must be configured.
 func (o BrokerEncryptionOptionsOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrokerEncryptionOptions) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Boolean to enable an AWS owned Key Management Service (KMS) Customer Master Key (CMK) that is not in your account. Defaults to `true`. Setting to `false` without configuring `kmsKeyId` will create an AWS managed Customer Master Key (CMK) aliased to `aws/mq` in your account.
 func (o BrokerEncryptionOptionsOutput) UseAwsOwnedKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrokerEncryptionOptions) *bool { return v.UseAwsOwnedKey }).(pulumi.BoolPtrOutput)
 }
@@ -290,7 +274,6 @@ func (o BrokerEncryptionOptionsPtrOutput) Elem() BrokerEncryptionOptionsOutput {
 	return o.ApplyT(func(v *BrokerEncryptionOptions) BrokerEncryptionOptions { return *v }).(BrokerEncryptionOptionsOutput)
 }
 
-// Amazon Resource Name (ARN) of Key Management Service (KMS) Customer Master Key (CMK) to use for encryption at rest. Requires setting `useAwsOwnedKey` to `false`. To perform drift detection when AWS managed CMKs or customer managed CMKs are in use, this value must be configured.
 func (o BrokerEncryptionOptionsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrokerEncryptionOptions) *string {
 		if v == nil {
@@ -300,7 +283,6 @@ func (o BrokerEncryptionOptionsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean to enable an AWS owned Key Management Service (KMS) Customer Master Key (CMK) that is not in your account. Defaults to `true`. Setting to `false` without configuring `kmsKeyId` will create an AWS managed Customer Master Key (CMK) aliased to `aws/mq` in your account.
 func (o BrokerEncryptionOptionsPtrOutput) UseAwsOwnedKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrokerEncryptionOptions) *bool {
 		if v == nil {
@@ -417,9 +399,7 @@ func (o BrokerInstanceArrayOutput) Index(i pulumi.IntInput) BrokerInstanceOutput
 }
 
 type BrokerLogs struct {
-	// Enables audit logging. User management action made using JMX or the ActiveMQ Web Console is logged. Defaults to `false`.
-	Audit *bool `pulumi:"audit"`
-	// Enables general logging via CloudWatch. Defaults to `false`.
+	Audit   *bool `pulumi:"audit"`
 	General *bool `pulumi:"general"`
 }
 
@@ -435,9 +415,7 @@ type BrokerLogsInput interface {
 }
 
 type BrokerLogsArgs struct {
-	// Enables audit logging. User management action made using JMX or the ActiveMQ Web Console is logged. Defaults to `false`.
-	Audit pulumi.BoolPtrInput `pulumi:"audit"`
-	// Enables general logging via CloudWatch. Defaults to `false`.
+	Audit   pulumi.BoolPtrInput `pulumi:"audit"`
 	General pulumi.BoolPtrInput `pulumi:"general"`
 }
 
@@ -517,13 +495,10 @@ func (o BrokerLogsOutput) ToBrokerLogsPtrOutputWithContext(ctx context.Context) 
 		return &v
 	}).(BrokerLogsPtrOutput)
 }
-
-// Enables audit logging. User management action made using JMX or the ActiveMQ Web Console is logged. Defaults to `false`.
 func (o BrokerLogsOutput) Audit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrokerLogs) *bool { return v.Audit }).(pulumi.BoolPtrOutput)
 }
 
-// Enables general logging via CloudWatch. Defaults to `false`.
 func (o BrokerLogsOutput) General() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrokerLogs) *bool { return v.General }).(pulumi.BoolPtrOutput)
 }
@@ -546,7 +521,6 @@ func (o BrokerLogsPtrOutput) Elem() BrokerLogsOutput {
 	return o.ApplyT(func(v *BrokerLogs) BrokerLogs { return *v }).(BrokerLogsOutput)
 }
 
-// Enables audit logging. User management action made using JMX or the ActiveMQ Web Console is logged. Defaults to `false`.
 func (o BrokerLogsPtrOutput) Audit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrokerLogs) *bool {
 		if v == nil {
@@ -556,7 +530,6 @@ func (o BrokerLogsPtrOutput) Audit() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enables general logging via CloudWatch. Defaults to `false`.
 func (o BrokerLogsPtrOutput) General() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrokerLogs) *bool {
 		if v == nil {
@@ -567,12 +540,9 @@ func (o BrokerLogsPtrOutput) General() pulumi.BoolPtrOutput {
 }
 
 type BrokerMaintenanceWindowStartTime struct {
-	// The day of the week. e.g. `MONDAY`, `TUESDAY`, or `WEDNESDAY`
 	DayOfWeek string `pulumi:"dayOfWeek"`
-	// The time, in 24-hour format. e.g. `02:00`
 	TimeOfDay string `pulumi:"timeOfDay"`
-	// The time zone, UTC by default, in either the Country/City format, or the UTC offset format. e.g. `CET`
-	TimeZone string `pulumi:"timeZone"`
+	TimeZone  string `pulumi:"timeZone"`
 }
 
 // BrokerMaintenanceWindowStartTimeInput is an input type that accepts BrokerMaintenanceWindowStartTimeArgs and BrokerMaintenanceWindowStartTimeOutput values.
@@ -587,12 +557,9 @@ type BrokerMaintenanceWindowStartTimeInput interface {
 }
 
 type BrokerMaintenanceWindowStartTimeArgs struct {
-	// The day of the week. e.g. `MONDAY`, `TUESDAY`, or `WEDNESDAY`
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// The time, in 24-hour format. e.g. `02:00`
 	TimeOfDay pulumi.StringInput `pulumi:"timeOfDay"`
-	// The time zone, UTC by default, in either the Country/City format, or the UTC offset format. e.g. `CET`
-	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	TimeZone  pulumi.StringInput `pulumi:"timeZone"`
 }
 
 func (BrokerMaintenanceWindowStartTimeArgs) ElementType() reflect.Type {
@@ -671,18 +638,14 @@ func (o BrokerMaintenanceWindowStartTimeOutput) ToBrokerMaintenanceWindowStartTi
 		return &v
 	}).(BrokerMaintenanceWindowStartTimePtrOutput)
 }
-
-// The day of the week. e.g. `MONDAY`, `TUESDAY`, or `WEDNESDAY`
 func (o BrokerMaintenanceWindowStartTimeOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerMaintenanceWindowStartTime) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
-// The time, in 24-hour format. e.g. `02:00`
 func (o BrokerMaintenanceWindowStartTimeOutput) TimeOfDay() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerMaintenanceWindowStartTime) string { return v.TimeOfDay }).(pulumi.StringOutput)
 }
 
-// The time zone, UTC by default, in either the Country/City format, or the UTC offset format. e.g. `CET`
 func (o BrokerMaintenanceWindowStartTimeOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerMaintenanceWindowStartTime) string { return v.TimeZone }).(pulumi.StringOutput)
 }
@@ -705,7 +668,6 @@ func (o BrokerMaintenanceWindowStartTimePtrOutput) Elem() BrokerMaintenanceWindo
 	return o.ApplyT(func(v *BrokerMaintenanceWindowStartTime) BrokerMaintenanceWindowStartTime { return *v }).(BrokerMaintenanceWindowStartTimeOutput)
 }
 
-// The day of the week. e.g. `MONDAY`, `TUESDAY`, or `WEDNESDAY`
 func (o BrokerMaintenanceWindowStartTimePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrokerMaintenanceWindowStartTime) *string {
 		if v == nil {
@@ -715,7 +677,6 @@ func (o BrokerMaintenanceWindowStartTimePtrOutput) DayOfWeek() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time, in 24-hour format. e.g. `02:00`
 func (o BrokerMaintenanceWindowStartTimePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrokerMaintenanceWindowStartTime) *string {
 		if v == nil {
@@ -725,7 +686,6 @@ func (o BrokerMaintenanceWindowStartTimePtrOutput) TimeOfDay() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time zone, UTC by default, in either the Country/City format, or the UTC offset format. e.g. `CET`
 func (o BrokerMaintenanceWindowStartTimePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrokerMaintenanceWindowStartTime) *string {
 		if v == nil {
@@ -736,14 +696,10 @@ func (o BrokerMaintenanceWindowStartTimePtrOutput) TimeZone() pulumi.StringPtrOu
 }
 
 type BrokerUser struct {
-	// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user.
-	ConsoleAccess *bool `pulumi:"consoleAccess"`
-	// The list of groups (20 maximum) to which the ActiveMQ user belongs.
-	Groups []string `pulumi:"groups"`
-	// The password of the user. It must be 12 to 250 characters long, at least 4 unique characters, and must not contain commas.
-	Password string `pulumi:"password"`
-	// The username of the user.
-	Username string `pulumi:"username"`
+	ConsoleAccess *bool    `pulumi:"consoleAccess"`
+	Groups        []string `pulumi:"groups"`
+	Password      string   `pulumi:"password"`
+	Username      string   `pulumi:"username"`
 }
 
 // BrokerUserInput is an input type that accepts BrokerUserArgs and BrokerUserOutput values.
@@ -758,14 +714,10 @@ type BrokerUserInput interface {
 }
 
 type BrokerUserArgs struct {
-	// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user.
-	ConsoleAccess pulumi.BoolPtrInput `pulumi:"consoleAccess"`
-	// The list of groups (20 maximum) to which the ActiveMQ user belongs.
-	Groups pulumi.StringArrayInput `pulumi:"groups"`
-	// The password of the user. It must be 12 to 250 characters long, at least 4 unique characters, and must not contain commas.
-	Password pulumi.StringInput `pulumi:"password"`
-	// The username of the user.
-	Username pulumi.StringInput `pulumi:"username"`
+	ConsoleAccess pulumi.BoolPtrInput     `pulumi:"consoleAccess"`
+	Groups        pulumi.StringArrayInput `pulumi:"groups"`
+	Password      pulumi.StringInput      `pulumi:"password"`
+	Username      pulumi.StringInput      `pulumi:"username"`
 }
 
 func (BrokerUserArgs) ElementType() reflect.Type {
@@ -819,22 +771,18 @@ func (o BrokerUserOutput) ToBrokerUserOutputWithContext(ctx context.Context) Bro
 	return o
 }
 
-// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user.
 func (o BrokerUserOutput) ConsoleAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrokerUser) *bool { return v.ConsoleAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The list of groups (20 maximum) to which the ActiveMQ user belongs.
 func (o BrokerUserOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BrokerUser) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
-// The password of the user. It must be 12 to 250 characters long, at least 4 unique characters, and must not contain commas.
 func (o BrokerUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerUser) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The username of the user.
 func (o BrokerUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerUser) string { return v.Username }).(pulumi.StringOutput)
 }

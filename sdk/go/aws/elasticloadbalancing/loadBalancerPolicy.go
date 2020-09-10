@@ -10,20 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a load balancer policy, which can be attached to an ELB listener or backend server.
-//
 // Deprecated: aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favor of aws.elb.LoadBalancerPolicy
 type LoadBalancerPolicy struct {
 	pulumi.CustomResourceState
 
-	// The load balancer on which the policy is defined.
-	LoadBalancerName pulumi.StringOutput `pulumi:"loadBalancerName"`
-	// Policy attribute to apply to the policy.
+	LoadBalancerName pulumi.StringOutput                          `pulumi:"loadBalancerName"`
 	PolicyAttributes LoadBalancerPolicyPolicyAttributeArrayOutput `pulumi:"policyAttributes"`
-	// The name of the load balancer policy.
-	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// The policy type.
-	PolicyTypeName pulumi.StringOutput `pulumi:"policyTypeName"`
+	PolicyName       pulumi.StringOutput                          `pulumi:"policyName"`
+	PolicyTypeName   pulumi.StringOutput                          `pulumi:"policyTypeName"`
 }
 
 // NewLoadBalancerPolicy registers a new resource with the given unique name, arguments, and options.
@@ -63,25 +57,17 @@ func GetLoadBalancerPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerPolicy resources.
 type loadBalancerPolicyState struct {
-	// The load balancer on which the policy is defined.
-	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// Policy attribute to apply to the policy.
+	LoadBalancerName *string                             `pulumi:"loadBalancerName"`
 	PolicyAttributes []LoadBalancerPolicyPolicyAttribute `pulumi:"policyAttributes"`
-	// The name of the load balancer policy.
-	PolicyName *string `pulumi:"policyName"`
-	// The policy type.
-	PolicyTypeName *string `pulumi:"policyTypeName"`
+	PolicyName       *string                             `pulumi:"policyName"`
+	PolicyTypeName   *string                             `pulumi:"policyTypeName"`
 }
 
 type LoadBalancerPolicyState struct {
-	// The load balancer on which the policy is defined.
 	LoadBalancerName pulumi.StringPtrInput
-	// Policy attribute to apply to the policy.
 	PolicyAttributes LoadBalancerPolicyPolicyAttributeArrayInput
-	// The name of the load balancer policy.
-	PolicyName pulumi.StringPtrInput
-	// The policy type.
-	PolicyTypeName pulumi.StringPtrInput
+	PolicyName       pulumi.StringPtrInput
+	PolicyTypeName   pulumi.StringPtrInput
 }
 
 func (LoadBalancerPolicyState) ElementType() reflect.Type {
@@ -89,26 +75,18 @@ func (LoadBalancerPolicyState) ElementType() reflect.Type {
 }
 
 type loadBalancerPolicyArgs struct {
-	// The load balancer on which the policy is defined.
-	LoadBalancerName string `pulumi:"loadBalancerName"`
-	// Policy attribute to apply to the policy.
+	LoadBalancerName string                              `pulumi:"loadBalancerName"`
 	PolicyAttributes []LoadBalancerPolicyPolicyAttribute `pulumi:"policyAttributes"`
-	// The name of the load balancer policy.
-	PolicyName string `pulumi:"policyName"`
-	// The policy type.
-	PolicyTypeName string `pulumi:"policyTypeName"`
+	PolicyName       string                              `pulumi:"policyName"`
+	PolicyTypeName   string                              `pulumi:"policyTypeName"`
 }
 
 // The set of arguments for constructing a LoadBalancerPolicy resource.
 type LoadBalancerPolicyArgs struct {
-	// The load balancer on which the policy is defined.
 	LoadBalancerName pulumi.StringInput
-	// Policy attribute to apply to the policy.
 	PolicyAttributes LoadBalancerPolicyPolicyAttributeArrayInput
-	// The name of the load balancer policy.
-	PolicyName pulumi.StringInput
-	// The policy type.
-	PolicyTypeName pulumi.StringInput
+	PolicyName       pulumi.StringInput
+	PolicyTypeName   pulumi.StringInput
 }
 
 func (LoadBalancerPolicyArgs) ElementType() reflect.Type {

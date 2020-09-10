@@ -9,39 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/servicediscovery"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicediscovery.NewHttpNamespace(ctx, "example", &servicediscovery.HttpNamespaceArgs{
-// 			Description: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type HttpNamespace struct {
 	pulumi.CustomResourceState
 
-	// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The description that you specify for the namespace when you create it.
+	Arn         pulumi.StringOutput    `pulumi:"arn"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the http namespace.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the namespace.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Tags        pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewHttpNamespace registers a new resource with the given unique name, arguments, and options.
@@ -72,25 +46,17 @@ func GetHttpNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpNamespace resources.
 type httpNamespaceState struct {
-	// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-	Arn *string `pulumi:"arn"`
-	// The description that you specify for the namespace when you create it.
-	Description *string `pulumi:"description"`
-	// The name of the http namespace.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the namespace.
-	Tags map[string]string `pulumi:"tags"`
+	Arn         *string           `pulumi:"arn"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Tags        map[string]string `pulumi:"tags"`
 }
 
 type HttpNamespaceState struct {
-	// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-	Arn pulumi.StringPtrInput
-	// The description that you specify for the namespace when you create it.
+	Arn         pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// The name of the http namespace.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the namespace.
-	Tags pulumi.StringMapInput
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
 }
 
 func (HttpNamespaceState) ElementType() reflect.Type {
@@ -98,22 +64,16 @@ func (HttpNamespaceState) ElementType() reflect.Type {
 }
 
 type httpNamespaceArgs struct {
-	// The description that you specify for the namespace when you create it.
-	Description *string `pulumi:"description"`
-	// The name of the http namespace.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the namespace.
-	Tags map[string]string `pulumi:"tags"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Tags        map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a HttpNamespace resource.
 type HttpNamespaceArgs struct {
-	// The description that you specify for the namespace when you create it.
 	Description pulumi.StringPtrInput
-	// The name of the http namespace.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the namespace.
-	Tags pulumi.StringMapInput
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
 }
 
 func (HttpNamespaceArgs) ElementType() reflect.Type {

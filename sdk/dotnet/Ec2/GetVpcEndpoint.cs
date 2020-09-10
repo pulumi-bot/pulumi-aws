@@ -11,39 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetVpcEndpoint
     {
-        /// <summary>
-        /// The VPC Endpoint data source provides details about
-        /// a specific VPC endpoint.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var s3 = Output.Create(Aws.Ec2.GetVpcEndpoint.InvokeAsync(new Aws.Ec2.GetVpcEndpointArgs
-        ///         {
-        ///             VpcId = aws_vpc.Foo.Id,
-        ///             ServiceName = "com.amazonaws.us-west-2.s3",
-        ///         }));
-        ///         var privateS3 = new Aws.Ec2.VpcEndpointRouteTableAssociation("privateS3", new Aws.Ec2.VpcEndpointRouteTableAssociationArgs
-        ///         {
-        ///             VpcEndpointId = s3.Apply(s3 =&gt; s3.Id),
-        ///             RouteTableId = aws_route_table.Private.Id,
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVpcEndpointResult> InvokeAsync(GetVpcEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointResult>("aws:ec2/getVpcEndpoint:getVpcEndpoint", args ?? new GetVpcEndpointArgs(), options.WithVersion());
     }
@@ -53,50 +20,29 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetVpcEndpointFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetVpcEndpointFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVpcEndpointFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The ID of the specific VPC Endpoint to retrieve.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The service name of the specific VPC Endpoint to retrieve. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
-        /// </summary>
         [Input("serviceName")]
         public string? ServiceName { get; set; }
 
-        /// <summary>
-        /// The state of the specific VPC Endpoint to retrieve.
-        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the specific VPC Endpoint to retrieve.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the VPC in which the specific VPC Endpoint is used.
-        /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
@@ -109,62 +55,23 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetVpcEndpointResult
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the VPC endpoint.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The list of CIDR blocks for the exposed AWS service. Applicable for endpoints of type `Gateway`.
-        /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
-        /// <summary>
-        /// The DNS entries for the VPC Endpoint. Applicable for endpoints of type `Interface`. DNS blocks are documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcEndpointDnsEntryResult> DnsEntries;
         public readonly ImmutableArray<Outputs.GetVpcEndpointFilterResult> Filters;
         public readonly string Id;
-        /// <summary>
-        /// One or more network interfaces for the VPC Endpoint. Applicable for endpoints of type `Interface`.
-        /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceIds;
-        /// <summary>
-        /// The ID of the AWS account that owns the VPC endpoint.
-        /// </summary>
         public readonly string OwnerId;
-        /// <summary>
-        /// The policy document associated with the VPC Endpoint. Applicable for endpoints of type `Gateway`.
-        /// </summary>
         public readonly string Policy;
-        /// <summary>
-        /// The prefix list ID of the exposed AWS service. Applicable for endpoints of type `Gateway`.
-        /// </summary>
         public readonly string PrefixListId;
-        /// <summary>
-        /// Whether or not the VPC is associated with a private hosted zone - `true` or `false`. Applicable for endpoints of type `Interface`.
-        /// </summary>
         public readonly bool PrivateDnsEnabled;
-        /// <summary>
-        /// Whether or not the VPC Endpoint is being managed by its service - `true` or `false`.
-        /// </summary>
         public readonly bool RequesterManaged;
-        /// <summary>
-        /// One or more route tables associated with the VPC Endpoint. Applicable for endpoints of type `Gateway`.
-        /// </summary>
         public readonly ImmutableArray<string> RouteTableIds;
-        /// <summary>
-        /// One or more security groups associated with the network interfaces. Applicable for endpoints of type `Interface`.
-        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         public readonly string ServiceName;
         public readonly string State;
-        /// <summary>
-        /// One or more subnets in which the VPC Endpoint is located. Applicable for endpoints of type `Interface`.
-        /// </summary>
         public readonly ImmutableArray<string> SubnetIds;
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// The VPC Endpoint type, `Gateway` or `Interface`.
-        /// </summary>
         public readonly string VpcEndpointType;
         public readonly string VpcId;
 

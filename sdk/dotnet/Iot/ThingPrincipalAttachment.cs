@@ -9,49 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iot
 {
-    /// <summary>
-    /// Attaches Principal to AWS IoT Thing.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Iot.Thing("example", new Aws.Iot.ThingArgs
-    ///         {
-    ///         });
-    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
-    ///         {
-    ///             Csr = File.ReadAllText("csr.pem"),
-    ///             Active = true,
-    ///         });
-    ///         var att = new Aws.Iot.ThingPrincipalAttachment("att", new Aws.Iot.ThingPrincipalAttachmentArgs
-    ///         {
-    ///             Principal = cert.Arn,
-    ///             Thing = example.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ThingPrincipalAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The AWS IoT Certificate ARN or Amazon Cognito Identity ID.
-        /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the thing.
-        /// </summary>
         [Output("thing")]
         public Output<string> Thing { get; private set; } = null!;
 
@@ -101,15 +63,9 @@ namespace Pulumi.Aws.Iot
 
     public sealed class ThingPrincipalAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS IoT Certificate ARN or Amazon Cognito Identity ID.
-        /// </summary>
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the thing.
-        /// </summary>
         [Input("thing", required: true)]
         public Input<string> Thing { get; set; } = null!;
 
@@ -120,15 +76,9 @@ namespace Pulumi.Aws.Iot
 
     public sealed class ThingPrincipalAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS IoT Certificate ARN or Amazon Cognito Identity ID.
-        /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
 
-        /// <summary>
-        /// The name of the thing.
-        /// </summary>
         [Input("thing")]
         public Input<string>? Thing { get; set; }
 

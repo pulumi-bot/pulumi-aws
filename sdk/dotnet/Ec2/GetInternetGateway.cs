@@ -11,44 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetInternetGateway
     {
-        /// <summary>
-        /// `aws.ec2.InternetGateway` provides details about a specific Internet Gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var vpcId = config.RequireObject&lt;dynamic&gt;("vpcId");
-        ///         var @default = Output.Create(Aws.Ec2.GetInternetGateway.InvokeAsync(new Aws.Ec2.GetInternetGatewayArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetInternetGatewayFilterArgs
-        ///                 {
-        ///                     Name = "attachment.vpc-id",
-        ///                     Values = 
-        ///                     {
-        ///                         vpcId,
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetInternetGatewayResult> InvokeAsync(GetInternetGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInternetGatewayResult>("aws:ec2/getInternetGateway:getInternetGateway", args ?? new GetInternetGatewayArgs(), options.WithVersion());
     }
@@ -58,29 +20,17 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetInternetGatewayFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetInternetGatewayFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetInternetGatewayFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The id of the specific Internet Gateway to retrieve.
-        /// </summary>
         [Input("internetGatewayId")]
         public string? InternetGatewayId { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the desired Internet Gateway.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -96,9 +46,6 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetInternetGatewayResult
     {
-        /// <summary>
-        /// The ARN of the Internet Gateway.
-        /// </summary>
         public readonly string Arn;
         public readonly ImmutableArray<Outputs.GetInternetGatewayAttachmentResult> Attachments;
         public readonly ImmutableArray<Outputs.GetInternetGatewayFilterResult> Filters;
@@ -107,9 +54,6 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public readonly string Id;
         public readonly string InternetGatewayId;
-        /// <summary>
-        /// The ID of the AWS account that owns the internet gateway.
-        /// </summary>
         public readonly string OwnerId;
         public readonly ImmutableDictionary<string, string> Tags;
 

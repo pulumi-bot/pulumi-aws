@@ -21,36 +21,9 @@ class VpnGatewayAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Virtual Private Gateway attachment resource, allowing for an existing
-        hardware VPN gateway to be attached and/or detached from a VPC.
-
-        > **Note:** The `ec2.VpnGateway`
-        resource can also automatically attach the Virtual Private Gateway it creates
-        to an existing VPC by setting the `vpc_id` attribute accordingly.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        network = aws.ec2.Vpc("network", cidr_block="10.0.0.0/16")
-        vpn = aws.ec2.VpnGateway("vpn", tags={
-            "Name": "example-vpn-gateway",
-        })
-        vpn_attachment = aws.ec2.VpnGatewayAttachment("vpnAttachment",
-            vpc_id=network.id,
-            vpn_gateway_id=vpn.id)
-        ```
-
-        See [Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
-        and [Virtual Private Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) user
-        guides for more information.
-
+        Create a VpnGatewayAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[str] vpn_gateway_id: The ID of the Virtual Private Gateway.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,8 +67,6 @@ class VpnGatewayAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[str] vpn_gateway_id: The ID of the Virtual Private Gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -108,17 +79,11 @@ class VpnGatewayAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the VPC.
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vpnGatewayId")
     def vpn_gateway_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the Virtual Private Gateway.
-        """
         return pulumi.get(self, "vpn_gateway_id")
 
     def translate_output_property(self, prop):

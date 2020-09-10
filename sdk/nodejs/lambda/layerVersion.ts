@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Lambda Layer Version resource. Lambda Layers allow you to reuse shared bits of code across multiple lambda functions.
- *
- * For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const lambdaLayer = new aws.lambda.LayerVersion("lambda_layer", {
- *     compatibleRuntimes: ["nodejs8.10"],
- *     code: new pulumi.asset.FileArchive("lambda_layer_payload.zip"),
- *     layerName: "lambda_layer_name",
- * });
- * ```
- * ## Specifying the Deployment Package
- *
- * AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatibleRuntimes` this layer specifies.
- * See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) for the valid values of `compatibleRuntimes`.
- *
- * Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
- * indirectly via Amazon S3 (using the `s3Bucket`, `s3Key` and `s3ObjectVersion` arguments). When providing the deployment
- * package via S3 it may be useful to use the `aws.s3.BucketObject` resource to upload it.
- *
- * For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
- * large files efficiently.
- */
 export class LayerVersion extends pulumi.CustomResource {
     /**
      * Get an existing LayerVersion resource's state with the given name, ID, and optional extra
@@ -61,61 +32,19 @@ export class LayerVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === LayerVersion.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the Lambda Layer with version.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-     */
     public readonly code!: pulumi.Output<pulumi.asset.Archive | undefined>;
-    /**
-     * A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
-     */
     public readonly compatibleRuntimes!: pulumi.Output<string[] | undefined>;
-    /**
-     * The date this resource was created.
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * Description of what your Lambda Layer does.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The Amazon Resource Name (ARN) of the Lambda Layer without version.
-     */
     public /*out*/ readonly layerArn!: pulumi.Output<string>;
-    /**
-     * A unique name for your Lambda Layer
-     */
     public readonly layerName!: pulumi.Output<string>;
-    /**
-     * License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
-     */
     public readonly licenseInfo!: pulumi.Output<string | undefined>;
-    /**
-     * The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
-     */
     public readonly s3Bucket!: pulumi.Output<string | undefined>;
-    /**
-     * The S3 key of an object containing the function's deployment package. Conflicts with `filename`.
-     */
     public readonly s3Key!: pulumi.Output<string | undefined>;
-    /**
-     * The object version containing the function's deployment package. Conflicts with `filename`.
-     */
     public readonly s3ObjectVersion!: pulumi.Output<string | undefined>;
-    /**
-     * Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3Key`. The usual way to set this is `${filebase64sha256("file.zip")}` (this provider 0.11.12 or later) or `${base64sha256(file("file.zip"))}` (this provider 0.11.11 and earlier), where "file.zip" is the local filename of the lambda layer source archive.
-     */
     public readonly sourceCodeHash!: pulumi.Output<string>;
-    /**
-     * The size in bytes of the function .zip file.
-     */
     public /*out*/ readonly sourceCodeSize!: pulumi.Output<number>;
-    /**
-     * This Lamba Layer version.
-     */
     public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
@@ -179,61 +108,19 @@ export class LayerVersion extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LayerVersion resources.
  */
 export interface LayerVersionState {
-    /**
-     * The Amazon Resource Name (ARN) of the Lambda Layer with version.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-     */
     readonly code?: pulumi.Input<pulumi.asset.Archive>;
-    /**
-     * A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
-     */
     readonly compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The date this resource was created.
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * Description of what your Lambda Layer does.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the Lambda Layer without version.
-     */
     readonly layerArn?: pulumi.Input<string>;
-    /**
-     * A unique name for your Lambda Layer
-     */
     readonly layerName?: pulumi.Input<string>;
-    /**
-     * License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
-     */
     readonly licenseInfo?: pulumi.Input<string>;
-    /**
-     * The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
-     */
     readonly s3Bucket?: pulumi.Input<string>;
-    /**
-     * The S3 key of an object containing the function's deployment package. Conflicts with `filename`.
-     */
     readonly s3Key?: pulumi.Input<string>;
-    /**
-     * The object version containing the function's deployment package. Conflicts with `filename`.
-     */
     readonly s3ObjectVersion?: pulumi.Input<string>;
-    /**
-     * Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3Key`. The usual way to set this is `${filebase64sha256("file.zip")}` (this provider 0.11.12 or later) or `${base64sha256(file("file.zip"))}` (this provider 0.11.11 and earlier), where "file.zip" is the local filename of the lambda layer source archive.
-     */
     readonly sourceCodeHash?: pulumi.Input<string>;
-    /**
-     * The size in bytes of the function .zip file.
-     */
     readonly sourceCodeSize?: pulumi.Input<number>;
-    /**
-     * This Lamba Layer version.
-     */
     readonly version?: pulumi.Input<string>;
 }
 
@@ -241,40 +128,13 @@ export interface LayerVersionState {
  * The set of arguments for constructing a LayerVersion resource.
  */
 export interface LayerVersionArgs {
-    /**
-     * The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-     */
     readonly code?: pulumi.Input<pulumi.asset.Archive>;
-    /**
-     * A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 5 runtimes can be specified.
-     */
     readonly compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Description of what your Lambda Layer does.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A unique name for your Lambda Layer
-     */
     readonly layerName: pulumi.Input<string>;
-    /**
-     * License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
-     */
     readonly licenseInfo?: pulumi.Input<string>;
-    /**
-     * The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
-     */
     readonly s3Bucket?: pulumi.Input<string>;
-    /**
-     * The S3 key of an object containing the function's deployment package. Conflicts with `filename`.
-     */
     readonly s3Key?: pulumi.Input<string>;
-    /**
-     * The object version containing the function's deployment package. Conflicts with `filename`.
-     */
     readonly s3ObjectVersion?: pulumi.Input<string>;
-    /**
-     * Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3Key`. The usual way to set this is `${filebase64sha256("file.zip")}` (this provider 0.11.12 or later) or `${base64sha256(file("file.zip"))}` (this provider 0.11.11 and earlier), where "file.zip" is the local filename of the lambda layer source archive.
-     */
     readonly sourceCodeHash?: pulumi.Input<string>;
 }

@@ -11,13 +11,9 @@ import (
 )
 
 type CertificateDomainValidationOption struct {
-	// A domain name for which the certificate should be issued
-	DomainName *string `pulumi:"domainName"`
-	// The name of the DNS record to create to validate the certificate
-	ResourceRecordName *string `pulumi:"resourceRecordName"`
-	// The type of DNS record to create
-	ResourceRecordType *string `pulumi:"resourceRecordType"`
-	// The value the DNS record needs to have
+	DomainName          *string `pulumi:"domainName"`
+	ResourceRecordName  *string `pulumi:"resourceRecordName"`
+	ResourceRecordType  *string `pulumi:"resourceRecordType"`
 	ResourceRecordValue *string `pulumi:"resourceRecordValue"`
 }
 
@@ -33,13 +29,9 @@ type CertificateDomainValidationOptionInput interface {
 }
 
 type CertificateDomainValidationOptionArgs struct {
-	// A domain name for which the certificate should be issued
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
-	// The name of the DNS record to create to validate the certificate
-	ResourceRecordName pulumi.StringPtrInput `pulumi:"resourceRecordName"`
-	// The type of DNS record to create
-	ResourceRecordType pulumi.StringPtrInput `pulumi:"resourceRecordType"`
-	// The value the DNS record needs to have
+	DomainName          pulumi.StringPtrInput `pulumi:"domainName"`
+	ResourceRecordName  pulumi.StringPtrInput `pulumi:"resourceRecordName"`
+	ResourceRecordType  pulumi.StringPtrInput `pulumi:"resourceRecordType"`
 	ResourceRecordValue pulumi.StringPtrInput `pulumi:"resourceRecordValue"`
 }
 
@@ -94,22 +86,18 @@ func (o CertificateDomainValidationOptionOutput) ToCertificateDomainValidationOp
 	return o
 }
 
-// A domain name for which the certificate should be issued
 func (o CertificateDomainValidationOptionOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.DomainName }).(pulumi.StringPtrOutput)
 }
 
-// The name of the DNS record to create to validate the certificate
 func (o CertificateDomainValidationOptionOutput) ResourceRecordName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.ResourceRecordName }).(pulumi.StringPtrOutput)
 }
 
-// The type of DNS record to create
 func (o CertificateDomainValidationOptionOutput) ResourceRecordType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.ResourceRecordType }).(pulumi.StringPtrOutput)
 }
 
-// The value the DNS record needs to have
 func (o CertificateDomainValidationOptionOutput) ResourceRecordValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.ResourceRecordValue }).(pulumi.StringPtrOutput)
 }
@@ -135,7 +123,6 @@ func (o CertificateDomainValidationOptionArrayOutput) Index(i pulumi.IntInput) C
 }
 
 type CertificateOptions struct {
-	// Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
 	CertificateTransparencyLoggingPreference *string `pulumi:"certificateTransparencyLoggingPreference"`
 }
 
@@ -151,7 +138,6 @@ type CertificateOptionsInput interface {
 }
 
 type CertificateOptionsArgs struct {
-	// Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
 	CertificateTransparencyLoggingPreference pulumi.StringPtrInput `pulumi:"certificateTransparencyLoggingPreference"`
 }
 
@@ -231,8 +217,6 @@ func (o CertificateOptionsOutput) ToCertificateOptionsPtrOutputWithContext(ctx c
 		return &v
 	}).(CertificateOptionsPtrOutput)
 }
-
-// Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
 func (o CertificateOptionsOutput) CertificateTransparencyLoggingPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateOptions) *string { return v.CertificateTransparencyLoggingPreference }).(pulumi.StringPtrOutput)
 }
@@ -255,7 +239,6 @@ func (o CertificateOptionsPtrOutput) Elem() CertificateOptionsOutput {
 	return o.ApplyT(func(v *CertificateOptions) CertificateOptions { return *v }).(CertificateOptionsOutput)
 }
 
-// Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
 func (o CertificateOptionsPtrOutput) CertificateTransparencyLoggingPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateOptions) *string {
 		if v == nil {

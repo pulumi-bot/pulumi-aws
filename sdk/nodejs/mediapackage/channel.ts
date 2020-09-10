@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS Elemental MediaPackage Channel.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const kittens = new aws.mediapackage.Channel("kittens", {
- *     channelId: "kitten-channel",
- *     description: "A channel dedicated to amusing videos of kittens.",
- * });
- * ```
- */
 export class Channel extends pulumi.CustomResource {
     /**
      * Get an existing Channel resource's state with the given name, ID, and optional extra
@@ -49,25 +34,10 @@ export class Channel extends pulumi.CustomResource {
         return obj['__pulumiType'] === Channel.__pulumiType;
     }
 
-    /**
-     * The ARN of the channel
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A unique identifier describing the channel
-     */
     public readonly channelId!: pulumi.Output<string>;
-    /**
-     * A description of the channel
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * A single item list of HLS ingest information
-     */
     public /*out*/ readonly hlsIngests!: pulumi.Output<outputs.mediapackage.ChannelHlsIngest[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -113,25 +83,10 @@ export class Channel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Channel resources.
  */
 export interface ChannelState {
-    /**
-     * The ARN of the channel
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A unique identifier describing the channel
-     */
     readonly channelId?: pulumi.Input<string>;
-    /**
-     * A description of the channel
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A single item list of HLS ingest information
-     */
     readonly hlsIngests?: pulumi.Input<pulumi.Input<inputs.mediapackage.ChannelHlsIngest>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -139,16 +94,7 @@ export interface ChannelState {
  * The set of arguments for constructing a Channel resource.
  */
 export interface ChannelArgs {
-    /**
-     * A unique identifier describing the channel
-     */
     readonly channelId: pulumi.Input<string>;
-    /**
-     * A description of the channel
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

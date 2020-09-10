@@ -9,94 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sagemaker
 {
-    /// <summary>
-    /// Provides a Sagemaker Notebook Instance resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ni = new Aws.Sagemaker.NotebookInstance("ni", new Aws.Sagemaker.NotebookInstanceArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Role.Arn,
-    ///             InstanceType = "ml.t2.medium",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "foo" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class NotebookInstance : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this notebook instance.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
-        /// </summary>
         [Output("directInternetAccess")]
         public Output<string?> DirectInternetAccess { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of ML compute instance type.
-        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
-        /// <summary>
-        /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-        /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of a lifecycle configuration to associate with the notebook instance.
-        /// </summary>
         [Output("lifecycleConfigName")]
         public Output<string?> LifecycleConfigName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the notebook instance (must be unique).
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the IAM role to be used by the notebook instance which allows SageMaker to call other services on your behalf.
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The associated security groups.
-        /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC subnet ID.
-        /// </summary>
         [Output("subnetId")]
         public Output<string?> SubnetId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -146,66 +87,37 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class NotebookInstanceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
-        /// </summary>
         [Input("directInternetAccess")]
         public Input<string>? DirectInternetAccess { get; set; }
 
-        /// <summary>
-        /// The name of ML compute instance type.
-        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
-        /// <summary>
-        /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// The name of a lifecycle configuration to associate with the notebook instance.
-        /// </summary>
         [Input("lifecycleConfigName")]
         public Input<string>? LifecycleConfigName { get; set; }
 
-        /// <summary>
-        /// The name of the notebook instance (must be unique).
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ARN of the IAM role to be used by the notebook instance which allows SageMaker to call other services on your behalf.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
-
-        /// <summary>
-        /// The associated security groups.
-        /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// The VPC subnet ID.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -219,72 +131,40 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class NotebookInstanceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this notebook instance.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
-        /// </summary>
         [Input("directInternetAccess")]
         public Input<string>? DirectInternetAccess { get; set; }
 
-        /// <summary>
-        /// The name of ML compute instance type.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// The name of a lifecycle configuration to associate with the notebook instance.
-        /// </summary>
         [Input("lifecycleConfigName")]
         public Input<string>? LifecycleConfigName { get; set; }
 
-        /// <summary>
-        /// The name of the notebook instance (must be unique).
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ARN of the IAM role to be used by the notebook instance which allows SageMaker to call other services on your behalf.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
-
-        /// <summary>
-        /// The associated security groups.
-        /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// The VPC subnet ID.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

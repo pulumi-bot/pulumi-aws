@@ -9,93 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Route53
 {
-    /// <summary>
-    /// Provides a Route 53 Resolver endpoint resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Aws.Route53.ResolverEndpoint("foo", new Aws.Route53.ResolverEndpointArgs
-    ///         {
-    ///             Direction = "INBOUND",
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 aws_security_group.Sg1.Id,
-    ///                 aws_security_group.Sg2.Id,
-    ///             },
-    ///             IpAddresses = 
-    ///             {
-    ///                 new Aws.Route53.Inputs.ResolverEndpointIpAddressArgs
-    ///                 {
-    ///                     SubnetId = aws_subnet.Sn1.Id,
-    ///                 },
-    ///                 new Aws.Route53.Inputs.ResolverEndpointIpAddressArgs
-    ///                 {
-    ///                     SubnetId = aws_subnet.Sn2.Id,
-    ///                     Ip = "10.0.64.4",
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Environment", "Prod" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ResolverEndpoint : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the Route 53 Resolver endpoint.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The direction of DNS queries to or from the Route 53 Resolver endpoint.
-        /// Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
-        /// or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
-        /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC that you want to create the resolver endpoint in.
-        /// </summary>
         [Output("hostVpcId")]
         public Output<string> HostVpcId { get; private set; } = null!;
 
-        /// <summary>
-        /// The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
-        /// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-        /// </summary>
         [Output("ipAddresses")]
         public Output<ImmutableArray<Outputs.ResolverEndpointIpAddress>> IpAddresses { get; private set; } = null!;
 
-        /// <summary>
-        /// The friendly name of the Route 53 Resolver endpoint.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of one or more security groups that you want to use to control access to this VPC.
-        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -145,39 +78,22 @@ namespace Pulumi.Aws.Route53
 
     public sealed class ResolverEndpointArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The direction of DNS queries to or from the Route 53 Resolver endpoint.
-        /// Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
-        /// or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
-        /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         [Input("ipAddresses", required: true)]
         private InputList<Inputs.ResolverEndpointIpAddressArgs>? _ipAddresses;
-
-        /// <summary>
-        /// The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
-        /// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-        /// </summary>
         public InputList<Inputs.ResolverEndpointIpAddressArgs> IpAddresses
         {
             get => _ipAddresses ?? (_ipAddresses = new InputList<Inputs.ResolverEndpointIpAddressArgs>());
             set => _ipAddresses = value;
         }
 
-        /// <summary>
-        /// The friendly name of the Route 53 Resolver endpoint.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// The ID of one or more security groups that you want to use to control access to this VPC.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -186,10 +102,6 @@ namespace Pulumi.Aws.Route53
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -203,51 +115,28 @@ namespace Pulumi.Aws.Route53
 
     public sealed class ResolverEndpointState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the Route 53 Resolver endpoint.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The direction of DNS queries to or from the Route 53 Resolver endpoint.
-        /// Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
-        /// or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
-        /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
-        /// <summary>
-        /// The ID of the VPC that you want to create the resolver endpoint in.
-        /// </summary>
         [Input("hostVpcId")]
         public Input<string>? HostVpcId { get; set; }
 
         [Input("ipAddresses")]
         private InputList<Inputs.ResolverEndpointIpAddressGetArgs>? _ipAddresses;
-
-        /// <summary>
-        /// The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
-        /// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-        /// </summary>
         public InputList<Inputs.ResolverEndpointIpAddressGetArgs> IpAddresses
         {
             get => _ipAddresses ?? (_ipAddresses = new InputList<Inputs.ResolverEndpointIpAddressGetArgs>());
             set => _ipAddresses = value;
         }
 
-        /// <summary>
-        /// The friendly name of the Route 53 Resolver endpoint.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// The ID of one or more security groups that you want to use to control access to this VPC.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -256,10 +145,6 @@ namespace Pulumi.Aws.Route53
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

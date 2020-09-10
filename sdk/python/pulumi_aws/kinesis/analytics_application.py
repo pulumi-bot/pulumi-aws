@@ -29,57 +29,9 @@ class AnalyticsApplication(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Kinesis Analytics Application resource. Kinesis Analytics is a managed service that
-        allows processing and analyzing streaming data using standard SQL.
-
-        For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_stream = aws.kinesis.Stream("testStream", shard_count=1)
-        test_application = aws.kinesis.AnalyticsApplication("testApplication", inputs=aws.kinesis.AnalyticsApplicationInputsArgs(
-            name_prefix="test_prefix",
-            kinesis_stream=aws.kinesis.AnalyticsApplicationInputsKinesisStreamArgs(
-                resource_arn=test_stream.arn,
-                role_arn=aws_iam_role["test"]["arn"],
-            ),
-            parallelism=aws.kinesis.AnalyticsApplicationInputsParallelismArgs(
-                count=1,
-            ),
-            schema=aws.kinesis.AnalyticsApplicationInputsSchemaArgs(
-                record_columns=[aws.kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs(
-                    mapping="$.test",
-                    name="test",
-                    sql_type="VARCHAR(8)",
-                )],
-                record_encoding="UTF-8",
-                record_format=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatArgs(
-                    mapping_parameters=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs(
-                        json=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs(
-                            record_row_path="$",
-                        ),
-                    ),
-                ),
-            ),
-        ))
-        ```
-
+        Create a AnalyticsApplication resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AnalyticsApplicationCloudwatchLoggingOptionsArgs']] cloudwatch_logging_options: The CloudWatch log stream options to monitor application errors.
-               See CloudWatch Logging Options below for more details.
-        :param pulumi.Input[str] code: SQL Code to transform input data, and generate output.
-        :param pulumi.Input[str] description: Description of the application.
-        :param pulumi.Input[pulumi.InputType['AnalyticsApplicationInputsArgs']] inputs: Input configuration of the application. See Inputs below for more details.
-        :param pulumi.Input[str] name: Name of the Kinesis Analytics Application.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AnalyticsApplicationOutputArgs']]]] outputs: Output destination configuration of the application. See Outputs below for more details.
-        :param pulumi.Input[pulumi.InputType['AnalyticsApplicationReferenceDataSourcesArgs']] reference_data_sources: An S3 Reference Data Source for the application.
-               See Reference Data Sources below for more details.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Kinesis Analytics Application.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -141,21 +93,6 @@ class AnalyticsApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the Kinesis Analytics Appliation.
-        :param pulumi.Input[pulumi.InputType['AnalyticsApplicationCloudwatchLoggingOptionsArgs']] cloudwatch_logging_options: The CloudWatch log stream options to monitor application errors.
-               See CloudWatch Logging Options below for more details.
-        :param pulumi.Input[str] code: SQL Code to transform input data, and generate output.
-        :param pulumi.Input[str] create_timestamp: The Timestamp when the application version was created.
-        :param pulumi.Input[str] description: Description of the application.
-        :param pulumi.Input[pulumi.InputType['AnalyticsApplicationInputsArgs']] inputs: Input configuration of the application. See Inputs below for more details.
-        :param pulumi.Input[str] last_update_timestamp: The Timestamp when the application was last updated.
-        :param pulumi.Input[str] name: Name of the Kinesis Analytics Application.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AnalyticsApplicationOutputArgs']]]] outputs: Output destination configuration of the application. See Outputs below for more details.
-        :param pulumi.Input[pulumi.InputType['AnalyticsApplicationReferenceDataSourcesArgs']] reference_data_sources: An S3 Reference Data Source for the application.
-               See Reference Data Sources below for more details.
-        :param pulumi.Input[str] status: The Status of the application.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Kinesis Analytics Application.
-        :param pulumi.Input[float] version: The Version of the application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -179,107 +116,66 @@ class AnalyticsApplication(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the Kinesis Analytics Appliation.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="cloudwatchLoggingOptions")
     def cloudwatch_logging_options(self) -> pulumi.Output[Optional['outputs.AnalyticsApplicationCloudwatchLoggingOptions']]:
-        """
-        The CloudWatch log stream options to monitor application errors.
-        See CloudWatch Logging Options below for more details.
-        """
         return pulumi.get(self, "cloudwatch_logging_options")
 
     @property
     @pulumi.getter
     def code(self) -> pulumi.Output[Optional[str]]:
-        """
-        SQL Code to transform input data, and generate output.
-        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter(name="createTimestamp")
     def create_timestamp(self) -> pulumi.Output[str]:
-        """
-        The Timestamp when the application version was created.
-        """
         return pulumi.get(self, "create_timestamp")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the application.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def inputs(self) -> pulumi.Output[Optional['outputs.AnalyticsApplicationInputs']]:
-        """
-        Input configuration of the application. See Inputs below for more details.
-        """
         return pulumi.get(self, "inputs")
 
     @property
     @pulumi.getter(name="lastUpdateTimestamp")
     def last_update_timestamp(self) -> pulumi.Output[str]:
-        """
-        The Timestamp when the application was last updated.
-        """
         return pulumi.get(self, "last_update_timestamp")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the Kinesis Analytics Application.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def outputs(self) -> pulumi.Output[Optional[List['outputs.AnalyticsApplicationOutput']]]:
-        """
-        Output destination configuration of the application. See Outputs below for more details.
-        """
         return pulumi.get(self, "outputs")
 
     @property
     @pulumi.getter(name="referenceDataSources")
     def reference_data_sources(self) -> pulumi.Output[Optional['outputs.AnalyticsApplicationReferenceDataSources']]:
-        """
-        An S3 Reference Data Source for the application.
-        See Reference Data Sources below for more details.
-        """
         return pulumi.get(self, "reference_data_sources")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
-        """
-        The Status of the application.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of tags for the Kinesis Analytics Application.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def version(self) -> pulumi.Output[float]:
-        """
-        The Version of the application.
-        """
         return pulumi.get(self, "version")
 
     def translate_output_property(self, prop):

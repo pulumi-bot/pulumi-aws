@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an OpsWorks RDS DB Instance resource.
- *
- * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const myInstance = new aws.opsworks.RdsDbInstance("myInstance", {
- *     stackId: aws_opsworks_stack.my_stack.id,
- *     rdsDbInstanceArn: aws_db_instance.my_instance.arn,
- *     dbUser: "someUser",
- *     dbPassword: "somePass",
- * });
- * ```
- */
 export class RdsDbInstance extends pulumi.CustomResource {
     /**
      * Get an existing RdsDbInstance resource's state with the given name, ID, and optional extra
@@ -51,21 +32,9 @@ export class RdsDbInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === RdsDbInstance.__pulumiType;
     }
 
-    /**
-     * A db password
-     */
     public readonly dbPassword!: pulumi.Output<string>;
-    /**
-     * A db username
-     */
     public readonly dbUser!: pulumi.Output<string>;
-    /**
-     * The db instance to register for this stack. Changing this will force a new resource.
-     */
     public readonly rdsDbInstanceArn!: pulumi.Output<string>;
-    /**
-     * The stack to register a db instance for. Changing this will force a new resource.
-     */
     public readonly stackId!: pulumi.Output<string>;
 
     /**
@@ -118,21 +87,9 @@ export class RdsDbInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RdsDbInstance resources.
  */
 export interface RdsDbInstanceState {
-    /**
-     * A db password
-     */
     readonly dbPassword?: pulumi.Input<string>;
-    /**
-     * A db username
-     */
     readonly dbUser?: pulumi.Input<string>;
-    /**
-     * The db instance to register for this stack. Changing this will force a new resource.
-     */
     readonly rdsDbInstanceArn?: pulumi.Input<string>;
-    /**
-     * The stack to register a db instance for. Changing this will force a new resource.
-     */
     readonly stackId?: pulumi.Input<string>;
 }
 
@@ -140,20 +97,8 @@ export interface RdsDbInstanceState {
  * The set of arguments for constructing a RdsDbInstance resource.
  */
 export interface RdsDbInstanceArgs {
-    /**
-     * A db password
-     */
     readonly dbPassword: pulumi.Input<string>;
-    /**
-     * A db username
-     */
     readonly dbUser: pulumi.Input<string>;
-    /**
-     * The db instance to register for this stack. Changing this will force a new resource.
-     */
     readonly rdsDbInstanceArn: pulumi.Input<string>;
-    /**
-     * The stack to register a db instance for. Changing this will force a new resource.
-     */
     readonly stackId: pulumi.Input<string>;
 }

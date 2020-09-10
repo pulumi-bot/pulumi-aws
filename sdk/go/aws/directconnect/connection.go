@@ -10,50 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Connection of Direct Connect.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directconnect"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directconnect.NewConnection(ctx, "hoge", &directconnect.ConnectionArgs{
-// 			Bandwidth: pulumi.String("1Gbps"),
-// 			Location:  pulumi.String("EqDC2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the connection.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The Direct Connect endpoint on which the physical connection terminates.
-	AwsDevice pulumi.StringOutput `pulumi:"awsDevice"`
-	// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
-	// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-	HasLogicalRedundancy pulumi.StringOutput `pulumi:"hasLogicalRedundancy"`
-	// Boolean value representing if jumbo frames have been enabled for this connection.
-	JumboFrameCapable pulumi.BoolOutput `pulumi:"jumboFrameCapable"`
-	// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the connection.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                  pulumi.StringOutput    `pulumi:"arn"`
+	AwsDevice            pulumi.StringOutput    `pulumi:"awsDevice"`
+	Bandwidth            pulumi.StringOutput    `pulumi:"bandwidth"`
+	HasLogicalRedundancy pulumi.StringOutput    `pulumi:"hasLogicalRedundancy"`
+	JumboFrameCapable    pulumi.BoolOutput      `pulumi:"jumboFrameCapable"`
+	Location             pulumi.StringOutput    `pulumi:"location"`
+	Name                 pulumi.StringOutput    `pulumi:"name"`
+	Tags                 pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -90,41 +57,25 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// The ARN of the connection.
-	Arn *string `pulumi:"arn"`
-	// The Direct Connect endpoint on which the physical connection terminates.
-	AwsDevice *string `pulumi:"awsDevice"`
-	// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	Bandwidth *string `pulumi:"bandwidth"`
-	// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-	HasLogicalRedundancy *string `pulumi:"hasLogicalRedundancy"`
-	// Boolean value representing if jumbo frames have been enabled for this connection.
-	JumboFrameCapable *bool `pulumi:"jumboFrameCapable"`
-	// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location *string `pulumi:"location"`
-	// The name of the connection.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                  *string           `pulumi:"arn"`
+	AwsDevice            *string           `pulumi:"awsDevice"`
+	Bandwidth            *string           `pulumi:"bandwidth"`
+	HasLogicalRedundancy *string           `pulumi:"hasLogicalRedundancy"`
+	JumboFrameCapable    *bool             `pulumi:"jumboFrameCapable"`
+	Location             *string           `pulumi:"location"`
+	Name                 *string           `pulumi:"name"`
+	Tags                 map[string]string `pulumi:"tags"`
 }
 
 type ConnectionState struct {
-	// The ARN of the connection.
-	Arn pulumi.StringPtrInput
-	// The Direct Connect endpoint on which the physical connection terminates.
-	AwsDevice pulumi.StringPtrInput
-	// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	Bandwidth pulumi.StringPtrInput
-	// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
+	Arn                  pulumi.StringPtrInput
+	AwsDevice            pulumi.StringPtrInput
+	Bandwidth            pulumi.StringPtrInput
 	HasLogicalRedundancy pulumi.StringPtrInput
-	// Boolean value representing if jumbo frames have been enabled for this connection.
-	JumboFrameCapable pulumi.BoolPtrInput
-	// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location pulumi.StringPtrInput
-	// The name of the connection.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	JumboFrameCapable    pulumi.BoolPtrInput
+	Location             pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	Tags                 pulumi.StringMapInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -132,26 +83,18 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	Bandwidth string `pulumi:"bandwidth"`
-	// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location string `pulumi:"location"`
-	// The name of the connection.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Bandwidth string            `pulumi:"bandwidth"`
+	Location  string            `pulumi:"location"`
+	Name      *string           `pulumi:"name"`
+	Tags      map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
 	Bandwidth pulumi.StringInput
-	// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location pulumi.StringInput
-	// The name of the connection.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Location  pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Tags      pulumi.StringMapInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

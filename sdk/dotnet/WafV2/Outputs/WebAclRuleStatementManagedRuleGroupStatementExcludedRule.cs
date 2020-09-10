@@ -13,9 +13,6 @@ namespace Pulumi.Aws.WafV2.Outputs
     [OutputType]
     public sealed class WebAclRuleStatementManagedRuleGroupStatementExcludedRule
     {
-        /// <summary>
-        /// The name of the rule to exclude.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

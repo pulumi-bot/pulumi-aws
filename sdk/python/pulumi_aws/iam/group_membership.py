@@ -22,37 +22,9 @@ class GroupMembership(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        > **WARNING:** Multiple iam.GroupMembership resources with the same group name will produce inconsistent behavior!
-
-        Provides a top level resource to manage IAM Group membership for IAM Users. For
-        more information on managing IAM Groups or IAM Users, see [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) or
-        [IAM Users](https://www.terraform.io/docs/providers/aws/r/iam_user.html)
-
-        > **Note:** `iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
-        [`iam.UserGroupMembership` resource][3].
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        group = aws.iam.Group("group")
-        user_one = aws.iam.User("userOne")
-        user_two = aws.iam.User("userTwo")
-        team = aws.iam.GroupMembership("team",
-            users=[
-                user_one.name,
-                user_two.name,
-            ],
-            group=group.name)
-        ```
-
+        Create a GroupMembership resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: The IAM Group name to attach the list of `users` to
-        :param pulumi.Input[str] name: The name to identify the Group Membership
-        :param pulumi.Input[List[pulumi.Input[str]]] users: A list of IAM User names to associate with the Group
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,9 +70,6 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: The IAM Group name to attach the list of `users` to
-        :param pulumi.Input[str] name: The name to identify the Group Membership
-        :param pulumi.Input[List[pulumi.Input[str]]] users: A list of IAM User names to associate with the Group
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -114,25 +83,16 @@ class GroupMembership(pulumi.CustomResource):
     @property
     @pulumi.getter
     def group(self) -> pulumi.Output[str]:
-        """
-        The IAM Group name to attach the list of `users` to
-        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name to identify the Group Membership
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def users(self) -> pulumi.Output[List[str]]:
-        """
-        A list of IAM User names to associate with the Group
-        """
         return pulumi.get(self, "users")
 
     def translate_output_property(self, prop):

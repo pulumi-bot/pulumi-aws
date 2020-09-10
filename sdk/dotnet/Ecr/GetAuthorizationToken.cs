@@ -11,29 +11,6 @@ namespace Pulumi.Aws.Ecr
 {
     public static class GetAuthorizationToken
     {
-        /// <summary>
-        /// The ECR Authorization Token data source allows the authorization token, proxy endpoint, token expiration date, user name and password to be retrieved for an ECR repository.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var token = Output.Create(Aws.Ecr.GetAuthorizationToken.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAuthorizationTokenResult> InvokeAsync(GetAuthorizationTokenArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationTokenResult>("aws:ecr/getAuthorizationToken:getAuthorizationToken", args ?? new GetAuthorizationTokenArgs(), options.WithVersion());
     }
@@ -41,9 +18,6 @@ namespace Pulumi.Aws.Ecr
 
     public sealed class GetAuthorizationTokenArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// AWS account ID of the ECR Repository. If not specified the default account is assumed.
-        /// </summary>
         [Input("registryId")]
         public string? RegistryId { get; set; }
 
@@ -56,30 +30,15 @@ namespace Pulumi.Aws.Ecr
     [OutputType]
     public sealed class GetAuthorizationTokenResult
     {
-        /// <summary>
-        /// Temporary IAM authentication credentials to access the ECR repository encoded in base64 in the form of `user_name:password`.
-        /// </summary>
         public readonly string AuthorizationToken;
-        /// <summary>
-        /// The time in UTC RFC3339 format when the authorization token expires.
-        /// </summary>
         public readonly string ExpiresAt;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Password decoded from the authorization token.
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// The registry URL to use in the docker login command.
-        /// </summary>
         public readonly string ProxyEndpoint;
         public readonly string? RegistryId;
-        /// <summary>
-        /// User name decoded from the authorization token.
-        /// </summary>
         public readonly string UserName;
 
         [OutputConstructor]

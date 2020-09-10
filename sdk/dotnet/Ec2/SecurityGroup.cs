@@ -9,164 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a security group resource.
-    /// 
-    /// &gt; **NOTE on Security Groups and Security Group Rules:** This provider currently
-    /// provides both a standalone Security Group Rule resource (a single `ingress` or
-    /// `egress` rule), and a Security Group resource with `ingress` and `egress` rules
-    /// defined in-line. At this time you cannot use a Security Group with in-line rules
-    /// in conjunction with any Security Group Rule resources. Doing so will cause
-    /// a conflict of rule settings and will overwrite rules.
-    /// 
-    /// &gt; **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
-    /// 
-    /// &gt; **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var allowTls = new Aws.Ec2.SecurityGroup("allowTls", new Aws.Ec2.SecurityGroupArgs
-    ///         {
-    ///             Description = "Allow TLS inbound traffic",
-    ///             VpcId = aws_vpc.Main.Id,
-    ///             Ingress = 
-    ///             {
-    ///                 new Aws.Ec2.Inputs.SecurityGroupIngressArgs
-    ///                 {
-    ///                     Description = "TLS from VPC",
-    ///                     FromPort = 443,
-    ///                     ToPort = 443,
-    ///                     Protocol = "tcp",
-    ///                     CidrBlocks = 
-    ///                     {
-    ///                         aws_vpc.Main.Cidr_block,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Egress = 
-    ///             {
-    ///                 new Aws.Ec2.Inputs.SecurityGroupEgressArgs
-    ///                 {
-    ///                     FromPort = 0,
-    ///                     ToPort = 0,
-    ///                     Protocol = "-1",
-    ///                     CidrBlocks = 
-    ///                     {
-    ///                         "0.0.0.0/0",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "allow_tls" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Usage with prefix list IDs
-    /// 
-    /// Prefix list IDs are managed by AWS internally. Prefix list IDs
-    /// are associated with a prefix list name, or service name, that is linked to a specific region.
-    /// Prefix list IDs are exported on VPC Endpoints, so you can use this format:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // ...
-    ///         var myEndpoint = new Aws.Ec2.VpcEndpoint("myEndpoint", new Aws.Ec2.VpcEndpointArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the security group
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of this egress rule.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Can be specified multiple times for each
-        /// egress rule. Each egress block supports fields documented below.
-        /// </summary>
         [Output("egress")]
         public Output<ImmutableArray<Outputs.SecurityGroupEgress>> Egress { get; private set; } = null!;
 
-        /// <summary>
-        /// Can be specified multiple times for each
-        /// ingress rule. Each ingress block supports fields documented below.
-        /// </summary>
         [Output("ingress")]
         public Output<ImmutableArray<Outputs.SecurityGroupIngress>> Ingress { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the security group. If omitted, this provider will
-        /// assign a random, unique name
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// The owner ID.
-        /// </summary>
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// Instruct this provider to revoke all of the
-        /// Security Groups attached ingress and egress rules before deleting the rule
-        /// itself. This is normally not needed, however certain AWS services such as
-        /// Elastic Map Reduce may automatically add required rules to security groups used
-        /// with the service, and those rules may contain a cyclic dependency that prevent
-        /// the security groups from being destroyed without removing the dependency first.
-        /// Default `false`
-        /// </summary>
         [Output("revokeRulesOnDelete")]
         public Output<bool?> RevokeRulesOnDelete { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC ID.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -216,19 +87,11 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class SecurityGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description of this egress rule.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("egress")]
         private InputList<Inputs.SecurityGroupEgressArgs>? _egress;
-
-        /// <summary>
-        /// Can be specified multiple times for each
-        /// egress rule. Each egress block supports fields documented below.
-        /// </summary>
         public InputList<Inputs.SecurityGroupEgressArgs> Egress
         {
             get => _egress ?? (_egress = new InputList<Inputs.SecurityGroupEgressArgs>());
@@ -237,58 +100,29 @@ namespace Pulumi.Aws.Ec2
 
         [Input("ingress")]
         private InputList<Inputs.SecurityGroupIngressArgs>? _ingress;
-
-        /// <summary>
-        /// Can be specified multiple times for each
-        /// ingress rule. Each ingress block supports fields documented below.
-        /// </summary>
         public InputList<Inputs.SecurityGroupIngressArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.SecurityGroupIngressArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The name of the security group. If omitted, this provider will
-        /// assign a random, unique name
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// Instruct this provider to revoke all of the
-        /// Security Groups attached ingress and egress rules before deleting the rule
-        /// itself. This is normally not needed, however certain AWS services such as
-        /// Elastic Map Reduce may automatically add required rules to security groups used
-        /// with the service, and those rules may contain a cyclic dependency that prevent
-        /// the security groups from being destroyed without removing the dependency first.
-        /// Default `false`
-        /// </summary>
         [Input("revokeRulesOnDelete")]
         public Input<bool>? RevokeRulesOnDelete { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
@@ -300,25 +134,14 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class SecurityGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the security group
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Description of this egress rule.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("egress")]
         private InputList<Inputs.SecurityGroupEgressGetArgs>? _egress;
-
-        /// <summary>
-        /// Can be specified multiple times for each
-        /// egress rule. Each egress block supports fields documented below.
-        /// </summary>
         public InputList<Inputs.SecurityGroupEgressGetArgs> Egress
         {
             get => _egress ?? (_egress = new InputList<Inputs.SecurityGroupEgressGetArgs>());
@@ -327,64 +150,32 @@ namespace Pulumi.Aws.Ec2
 
         [Input("ingress")]
         private InputList<Inputs.SecurityGroupIngressGetArgs>? _ingress;
-
-        /// <summary>
-        /// Can be specified multiple times for each
-        /// ingress rule. Each ingress block supports fields documented below.
-        /// </summary>
         public InputList<Inputs.SecurityGroupIngressGetArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.SecurityGroupIngressGetArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The name of the security group. If omitted, this provider will
-        /// assign a random, unique name
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The owner ID.
-        /// </summary>
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
-        /// <summary>
-        /// Instruct this provider to revoke all of the
-        /// Security Groups attached ingress and egress rules before deleting the rule
-        /// itself. This is normally not needed, however certain AWS services such as
-        /// Elastic Map Reduce may automatically add required rules to security groups used
-        /// with the service, and those rules may contain a cyclic dependency that prevent
-        /// the security groups from being destroyed without removing the dependency first.
-        /// Default `false`
-        /// </summary>
         [Input("revokeRulesOnDelete")]
         public Input<bool>? RevokeRulesOnDelete { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

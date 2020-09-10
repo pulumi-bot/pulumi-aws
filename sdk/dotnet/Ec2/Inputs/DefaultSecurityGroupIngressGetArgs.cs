@@ -20,9 +20,6 @@ namespace Pulumi.Aws.Ec2.Inputs
             set => _cidrBlocks = value;
         }
 
-        /// <summary>
-        /// The description of the security group
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 

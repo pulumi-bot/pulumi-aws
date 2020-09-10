@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ECS Cluster data source allows access to details of a specific
-// cluster within an AWS ECS service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.LookupCluster(ctx, &ecs.LookupClusterArgs{
-// 			ClusterName: "ecs-mongo-production",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("aws:ecs/getCluster:getCluster", args, &rv, opts...)
@@ -43,25 +18,18 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
-	// The name of the ECS Cluster
 	ClusterName string `pulumi:"clusterName"`
 }
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	// The ARN of the ECS Cluster
 	Arn         string `pulumi:"arn"`
 	ClusterName string `pulumi:"clusterName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The number of pending tasks for the ECS Cluster
-	PendingTasksCount int `pulumi:"pendingTasksCount"`
-	// The number of registered container instances for the ECS Cluster
-	RegisteredContainerInstancesCount int `pulumi:"registeredContainerInstancesCount"`
-	// The number of running tasks for the ECS Cluster
-	RunningTasksCount int `pulumi:"runningTasksCount"`
-	// The settings associated with the ECS Cluster.
-	Settings []GetClusterSetting `pulumi:"settings"`
-	// The status of the ECS Cluster
-	Status string `pulumi:"status"`
+	Id                                string              `pulumi:"id"`
+	PendingTasksCount                 int                 `pulumi:"pendingTasksCount"`
+	RegisteredContainerInstancesCount int                 `pulumi:"registeredContainerInstancesCount"`
+	RunningTasksCount                 int                 `pulumi:"runningTasksCount"`
+	Settings                          []GetClusterSetting `pulumi:"settings"`
+	Status                            string              `pulumi:"status"`
 }

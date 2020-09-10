@@ -10,13 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
 type LogService struct {
 	pulumi.CustomResourceState
 
-	// The id of directory.
-	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
+	DirectoryId  pulumi.StringOutput `pulumi:"directoryId"`
 	LogGroupName pulumi.StringOutput `pulumi:"logGroupName"`
 }
 
@@ -54,16 +51,12 @@ func GetLogService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogService resources.
 type logServiceState struct {
-	// The id of directory.
-	DirectoryId *string `pulumi:"directoryId"`
-	// Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
+	DirectoryId  *string `pulumi:"directoryId"`
 	LogGroupName *string `pulumi:"logGroupName"`
 }
 
 type LogServiceState struct {
-	// The id of directory.
-	DirectoryId pulumi.StringPtrInput
-	// Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
+	DirectoryId  pulumi.StringPtrInput
 	LogGroupName pulumi.StringPtrInput
 }
 
@@ -72,17 +65,13 @@ func (LogServiceState) ElementType() reflect.Type {
 }
 
 type logServiceArgs struct {
-	// The id of directory.
-	DirectoryId string `pulumi:"directoryId"`
-	// Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
+	DirectoryId  string `pulumi:"directoryId"`
 	LogGroupName string `pulumi:"logGroupName"`
 }
 
 // The set of arguments for constructing a LogService resource.
 type LogServiceArgs struct {
-	// The id of directory.
-	DirectoryId pulumi.StringInput
-	// Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
+	DirectoryId  pulumi.StringInput
 	LogGroupName pulumi.StringInput
 }
 

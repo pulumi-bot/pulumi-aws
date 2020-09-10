@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides details about an EC2 Local Gateway Virtual Interface Group. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := data.Aws_ec2_local_gateway.Example.Id
-// 		_, err := ec2.GetLocalGatewayVirtualInterfaceGroup(ctx, &ec2.GetLocalGatewayVirtualInterfaceGroupArgs{
-// 			LocalGatewayId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetLocalGatewayVirtualInterfaceGroup(ctx *pulumi.Context, args *GetLocalGatewayVirtualInterfaceGroupArgs, opts ...pulumi.InvokeOption) (*GetLocalGatewayVirtualInterfaceGroupResult, error) {
 	var rv GetLocalGatewayVirtualInterfaceGroupResult
 	err := ctx.Invoke("aws:ec2/getLocalGatewayVirtualInterfaceGroup:getLocalGatewayVirtualInterfaceGroup", args, &rv, opts...)
@@ -43,22 +18,17 @@ func GetLocalGatewayVirtualInterfaceGroup(ctx *pulumi.Context, args *GetLocalGat
 
 // A collection of arguments for invoking getLocalGatewayVirtualInterfaceGroup.
 type GetLocalGatewayVirtualInterfaceGroupArgs struct {
-	// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
-	Filters []GetLocalGatewayVirtualInterfaceGroupFilter `pulumi:"filters"`
-	// Identifier of EC2 Local Gateway Virtual Interface Group.
-	Id *string `pulumi:"id"`
-	// Identifier of EC2 Local Gateway.
-	LocalGatewayId *string `pulumi:"localGatewayId"`
-	// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
-	Tags map[string]string `pulumi:"tags"`
+	Filters        []GetLocalGatewayVirtualInterfaceGroupFilter `pulumi:"filters"`
+	Id             *string                                      `pulumi:"id"`
+	LocalGatewayId *string                                      `pulumi:"localGatewayId"`
+	Tags           map[string]string                            `pulumi:"tags"`
 }
 
 // A collection of values returned by getLocalGatewayVirtualInterfaceGroup.
 type GetLocalGatewayVirtualInterfaceGroupResult struct {
-	Filters        []GetLocalGatewayVirtualInterfaceGroupFilter `pulumi:"filters"`
-	Id             string                                       `pulumi:"id"`
-	LocalGatewayId string                                       `pulumi:"localGatewayId"`
-	// Set of EC2 Local Gateway Virtual Interface identifiers.
-	LocalGatewayVirtualInterfaceIds []string          `pulumi:"localGatewayVirtualInterfaceIds"`
-	Tags                            map[string]string `pulumi:"tags"`
+	Filters                         []GetLocalGatewayVirtualInterfaceGroupFilter `pulumi:"filters"`
+	Id                              string                                       `pulumi:"id"`
+	LocalGatewayId                  string                                       `pulumi:"localGatewayId"`
+	LocalGatewayVirtualInterfaceIds []string                                     `pulumi:"localGatewayVirtualInterfaceIds"`
+	Tags                            map[string]string                            `pulumi:"tags"`
 }

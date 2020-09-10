@@ -12,15 +12,9 @@ namespace Pulumi.Aws.CodeBuild.Inputs
 
     public sealed class ProjectLogsConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration for the builds to store logs to CloudWatch
-        /// </summary>
         [Input("cloudwatchLogs")]
         public Input<Inputs.ProjectLogsConfigCloudwatchLogsArgs>? CloudwatchLogs { get; set; }
 
-        /// <summary>
-        /// Configuration for the builds to store logs to S3.
-        /// </summary>
         [Input("s3Logs")]
         public Input<Inputs.ProjectLogsConfigS3LogsArgs>? S3Logs { get; set; }
 

@@ -9,44 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DataPipeline
 {
-    /// <summary>
-    /// Provides a Data Pipeline resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.DataPipeline.Pipeline("default", new Aws.DataPipeline.PipelineArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Pipeline : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description of Pipeline.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of Pipeline.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -96,24 +66,14 @@ namespace Pulumi.Aws.DataPipeline
 
     public sealed class PipelineArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of Pipeline.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of Pipeline.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -127,24 +87,14 @@ namespace Pulumi.Aws.DataPipeline
 
     public sealed class PipelineState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of Pipeline.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of Pipeline.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * This data source can be used to fetch information about a specific
- * IAM user. By using this data source, you can reference IAM user
- * properties without having to hard code ARNs or unique IDs as input.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.iam.getUser({
- *     userName: "an_example_user_name",
- * }, { async: true }));
- * ```
- */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     if (!opts) {
         opts = {}
@@ -39,9 +23,6 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
-    /**
-     * The friendly IAM user name to match.
-     */
     readonly userName: string;
 }
 
@@ -49,28 +30,13 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS for this user.
-     */
     readonly arn: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Path in which this user was created.
-     */
     readonly path: string;
-    /**
-     * The ARN of the policy that is used to set the permissions boundary for the user.
-     */
     readonly permissionsBoundary: string;
-    /**
-     * The unique ID assigned by AWS for this user.
-     */
     readonly userId: string;
-    /**
-     * The name associated to this User
-     */
     readonly userName: string;
 }

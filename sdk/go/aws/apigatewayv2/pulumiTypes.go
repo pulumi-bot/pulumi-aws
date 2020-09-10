@@ -11,18 +11,12 @@ import (
 )
 
 type ApiCorsConfiguration struct {
-	// Whether credentials are included in the CORS request.
-	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP headers.
-	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods.
-	AllowMethods []string `pulumi:"allowMethods"`
-	// The set of allowed origins.
-	AllowOrigins []string `pulumi:"allowOrigins"`
-	// The set of exposed HTTP headers.
-	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// The number of seconds that the browser should cache preflight request results.
-	MaxAge *int `pulumi:"maxAge"`
+	AllowCredentials *bool    `pulumi:"allowCredentials"`
+	AllowHeaders     []string `pulumi:"allowHeaders"`
+	AllowMethods     []string `pulumi:"allowMethods"`
+	AllowOrigins     []string `pulumi:"allowOrigins"`
+	ExposeHeaders    []string `pulumi:"exposeHeaders"`
+	MaxAge           *int     `pulumi:"maxAge"`
 }
 
 // ApiCorsConfigurationInput is an input type that accepts ApiCorsConfigurationArgs and ApiCorsConfigurationOutput values.
@@ -37,18 +31,12 @@ type ApiCorsConfigurationInput interface {
 }
 
 type ApiCorsConfigurationArgs struct {
-	// Whether credentials are included in the CORS request.
-	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP headers.
-	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods.
-	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The set of allowed origins.
-	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
-	// The set of exposed HTTP headers.
-	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// The number of seconds that the browser should cache preflight request results.
-	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	AllowCredentials pulumi.BoolPtrInput     `pulumi:"allowCredentials"`
+	AllowHeaders     pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	AllowMethods     pulumi.StringArrayInput `pulumi:"allowMethods"`
+	AllowOrigins     pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	ExposeHeaders    pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	MaxAge           pulumi.IntPtrInput      `pulumi:"maxAge"`
 }
 
 func (ApiCorsConfigurationArgs) ElementType() reflect.Type {
@@ -127,33 +115,26 @@ func (o ApiCorsConfigurationOutput) ToApiCorsConfigurationPtrOutputWithContext(c
 		return &v
 	}).(ApiCorsConfigurationPtrOutput)
 }
-
-// Whether credentials are included in the CORS request.
 func (o ApiCorsConfigurationOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApiCorsConfiguration) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP headers.
 func (o ApiCorsConfigurationOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApiCorsConfiguration) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods.
 func (o ApiCorsConfigurationOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApiCorsConfiguration) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed origins.
 func (o ApiCorsConfigurationOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApiCorsConfiguration) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
-// The set of exposed HTTP headers.
 func (o ApiCorsConfigurationOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApiCorsConfiguration) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The number of seconds that the browser should cache preflight request results.
 func (o ApiCorsConfigurationOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApiCorsConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -176,7 +157,6 @@ func (o ApiCorsConfigurationPtrOutput) Elem() ApiCorsConfigurationOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) ApiCorsConfiguration { return *v }).(ApiCorsConfigurationOutput)
 }
 
-// Whether credentials are included in the CORS request.
 func (o ApiCorsConfigurationPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) *bool {
 		if v == nil {
@@ -186,7 +166,6 @@ func (o ApiCorsConfigurationPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The set of allowed HTTP headers.
 func (o ApiCorsConfigurationPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) []string {
 		if v == nil {
@@ -196,7 +175,6 @@ func (o ApiCorsConfigurationPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed HTTP methods.
 func (o ApiCorsConfigurationPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) []string {
 		if v == nil {
@@ -206,7 +184,6 @@ func (o ApiCorsConfigurationPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of allowed origins.
 func (o ApiCorsConfigurationPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) []string {
 		if v == nil {
@@ -216,7 +193,6 @@ func (o ApiCorsConfigurationPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The set of exposed HTTP headers.
 func (o ApiCorsConfigurationPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) []string {
 		if v == nil {
@@ -226,7 +202,6 @@ func (o ApiCorsConfigurationPtrOutput) ExposeHeaders() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The number of seconds that the browser should cache preflight request results.
 func (o ApiCorsConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApiCorsConfiguration) *int {
 		if v == nil {
@@ -237,10 +212,8 @@ func (o ApiCorsConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
 }
 
 type AuthorizerJwtConfiguration struct {
-	// A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
 	Audiences []string `pulumi:"audiences"`
-	// The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `cognito.UserPool` resource.
-	Issuer *string `pulumi:"issuer"`
+	Issuer    *string  `pulumi:"issuer"`
 }
 
 // AuthorizerJwtConfigurationInput is an input type that accepts AuthorizerJwtConfigurationArgs and AuthorizerJwtConfigurationOutput values.
@@ -255,10 +228,8 @@ type AuthorizerJwtConfigurationInput interface {
 }
 
 type AuthorizerJwtConfigurationArgs struct {
-	// A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
 	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `cognito.UserPool` resource.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	Issuer    pulumi.StringPtrInput   `pulumi:"issuer"`
 }
 
 func (AuthorizerJwtConfigurationArgs) ElementType() reflect.Type {
@@ -337,13 +308,10 @@ func (o AuthorizerJwtConfigurationOutput) ToAuthorizerJwtConfigurationPtrOutputW
 		return &v
 	}).(AuthorizerJwtConfigurationPtrOutput)
 }
-
-// A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
 func (o AuthorizerJwtConfigurationOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuthorizerJwtConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
-// The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `cognito.UserPool` resource.
 func (o AuthorizerJwtConfigurationOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorizerJwtConfiguration) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
@@ -366,7 +334,6 @@ func (o AuthorizerJwtConfigurationPtrOutput) Elem() AuthorizerJwtConfigurationOu
 	return o.ApplyT(func(v *AuthorizerJwtConfiguration) AuthorizerJwtConfiguration { return *v }).(AuthorizerJwtConfigurationOutput)
 }
 
-// A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
 func (o AuthorizerJwtConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthorizerJwtConfiguration) []string {
 		if v == nil {
@@ -376,7 +343,6 @@ func (o AuthorizerJwtConfigurationPtrOutput) Audiences() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `cognito.UserPool` resource.
 func (o AuthorizerJwtConfigurationPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizerJwtConfiguration) *string {
 		if v == nil {
@@ -387,16 +353,10 @@ func (o AuthorizerJwtConfigurationPtrOutput) Issuer() pulumi.StringPtrOutput {
 }
 
 type DomainNameDomainNameConfiguration struct {
-	// The ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source.
-	// Use the `acm.Certificate` resource to configure an ACM certificate.
-	CertificateArn string `pulumi:"certificateArn"`
-	// The endpoint type. Valid values: `REGIONAL`.
-	EndpointType string `pulumi:"endpointType"`
-	// The Amazon Route 53 Hosted Zone ID of the endpoint.
-	HostedZoneId *string `pulumi:"hostedZoneId"`
-	// The Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.
-	SecurityPolicy string `pulumi:"securityPolicy"`
-	// The target domain name.
+	CertificateArn   string  `pulumi:"certificateArn"`
+	EndpointType     string  `pulumi:"endpointType"`
+	HostedZoneId     *string `pulumi:"hostedZoneId"`
+	SecurityPolicy   string  `pulumi:"securityPolicy"`
 	TargetDomainName *string `pulumi:"targetDomainName"`
 }
 
@@ -412,16 +372,10 @@ type DomainNameDomainNameConfigurationInput interface {
 }
 
 type DomainNameDomainNameConfigurationArgs struct {
-	// The ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source.
-	// Use the `acm.Certificate` resource to configure an ACM certificate.
-	CertificateArn pulumi.StringInput `pulumi:"certificateArn"`
-	// The endpoint type. Valid values: `REGIONAL`.
-	EndpointType pulumi.StringInput `pulumi:"endpointType"`
-	// The Amazon Route 53 Hosted Zone ID of the endpoint.
-	HostedZoneId pulumi.StringPtrInput `pulumi:"hostedZoneId"`
-	// The Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.
-	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
-	// The target domain name.
+	CertificateArn   pulumi.StringInput    `pulumi:"certificateArn"`
+	EndpointType     pulumi.StringInput    `pulumi:"endpointType"`
+	HostedZoneId     pulumi.StringPtrInput `pulumi:"hostedZoneId"`
+	SecurityPolicy   pulumi.StringInput    `pulumi:"securityPolicy"`
 	TargetDomainName pulumi.StringPtrInput `pulumi:"targetDomainName"`
 }
 
@@ -501,29 +455,22 @@ func (o DomainNameDomainNameConfigurationOutput) ToDomainNameDomainNameConfigura
 		return &v
 	}).(DomainNameDomainNameConfigurationPtrOutput)
 }
-
-// The ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source.
-// Use the `acm.Certificate` resource to configure an ACM certificate.
 func (o DomainNameDomainNameConfigurationOutput) CertificateArn() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainNameDomainNameConfiguration) string { return v.CertificateArn }).(pulumi.StringOutput)
 }
 
-// The endpoint type. Valid values: `REGIONAL`.
 func (o DomainNameDomainNameConfigurationOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainNameDomainNameConfiguration) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// The Amazon Route 53 Hosted Zone ID of the endpoint.
 func (o DomainNameDomainNameConfigurationOutput) HostedZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNameDomainNameConfiguration) *string { return v.HostedZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.
 func (o DomainNameDomainNameConfigurationOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainNameDomainNameConfiguration) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
-// The target domain name.
 func (o DomainNameDomainNameConfigurationOutput) TargetDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNameDomainNameConfiguration) *string { return v.TargetDomainName }).(pulumi.StringPtrOutput)
 }
@@ -546,8 +493,6 @@ func (o DomainNameDomainNameConfigurationPtrOutput) Elem() DomainNameDomainNameC
 	return o.ApplyT(func(v *DomainNameDomainNameConfiguration) DomainNameDomainNameConfiguration { return *v }).(DomainNameDomainNameConfigurationOutput)
 }
 
-// The ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source.
-// Use the `acm.Certificate` resource to configure an ACM certificate.
 func (o DomainNameDomainNameConfigurationPtrOutput) CertificateArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNameDomainNameConfiguration) *string {
 		if v == nil {
@@ -557,7 +502,6 @@ func (o DomainNameDomainNameConfigurationPtrOutput) CertificateArn() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The endpoint type. Valid values: `REGIONAL`.
 func (o DomainNameDomainNameConfigurationPtrOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNameDomainNameConfiguration) *string {
 		if v == nil {
@@ -567,7 +511,6 @@ func (o DomainNameDomainNameConfigurationPtrOutput) EndpointType() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Amazon Route 53 Hosted Zone ID of the endpoint.
 func (o DomainNameDomainNameConfigurationPtrOutput) HostedZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNameDomainNameConfiguration) *string {
 		if v == nil {
@@ -577,7 +520,6 @@ func (o DomainNameDomainNameConfigurationPtrOutput) HostedZoneId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.
 func (o DomainNameDomainNameConfigurationPtrOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNameDomainNameConfiguration) *string {
 		if v == nil {
@@ -587,7 +529,6 @@ func (o DomainNameDomainNameConfigurationPtrOutput) SecurityPolicy() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The target domain name.
 func (o DomainNameDomainNameConfigurationPtrOutput) TargetDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNameDomainNameConfiguration) *string {
 		if v == nil {
@@ -598,7 +539,6 @@ func (o DomainNameDomainNameConfigurationPtrOutput) TargetDomainName() pulumi.St
 }
 
 type IntegrationTlsConfig struct {
-	// If you specify a server name, API Gateway uses it to verify the hostname on the integration's certificate. The server name is also included in the TLS handshake to support Server Name Indication (SNI) or virtual hosting.
 	ServerNameToVerify *string `pulumi:"serverNameToVerify"`
 }
 
@@ -614,7 +554,6 @@ type IntegrationTlsConfigInput interface {
 }
 
 type IntegrationTlsConfigArgs struct {
-	// If you specify a server name, API Gateway uses it to verify the hostname on the integration's certificate. The server name is also included in the TLS handshake to support Server Name Indication (SNI) or virtual hosting.
 	ServerNameToVerify pulumi.StringPtrInput `pulumi:"serverNameToVerify"`
 }
 
@@ -694,8 +633,6 @@ func (o IntegrationTlsConfigOutput) ToIntegrationTlsConfigPtrOutputWithContext(c
 		return &v
 	}).(IntegrationTlsConfigPtrOutput)
 }
-
-// If you specify a server name, API Gateway uses it to verify the hostname on the integration's certificate. The server name is also included in the TLS handshake to support Server Name Indication (SNI) or virtual hosting.
 func (o IntegrationTlsConfigOutput) ServerNameToVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationTlsConfig) *string { return v.ServerNameToVerify }).(pulumi.StringPtrOutput)
 }
@@ -718,7 +655,6 @@ func (o IntegrationTlsConfigPtrOutput) Elem() IntegrationTlsConfigOutput {
 	return o.ApplyT(func(v *IntegrationTlsConfig) IntegrationTlsConfig { return *v }).(IntegrationTlsConfigOutput)
 }
 
-// If you specify a server name, API Gateway uses it to verify the hostname on the integration's certificate. The server name is also included in the TLS handshake to support Server Name Indication (SNI) or virtual hosting.
 func (o IntegrationTlsConfigPtrOutput) ServerNameToVerify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IntegrationTlsConfig) *string {
 		if v == nil {
@@ -729,10 +665,8 @@ func (o IntegrationTlsConfigPtrOutput) ServerNameToVerify() pulumi.StringPtrOutp
 }
 
 type StageAccessLogSettings struct {
-	// The ARN of the CloudWatch Logs log group to receive access logs. Any trailing `:*` is trimmed from the ARN.
 	DestinationArn string `pulumi:"destinationArn"`
-	// A single line [format](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#apigateway-cloudwatch-log-formats) of the access logs of data, as specified by [selected $context variables](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-logging.html).
-	Format string `pulumi:"format"`
+	Format         string `pulumi:"format"`
 }
 
 // StageAccessLogSettingsInput is an input type that accepts StageAccessLogSettingsArgs and StageAccessLogSettingsOutput values.
@@ -747,10 +681,8 @@ type StageAccessLogSettingsInput interface {
 }
 
 type StageAccessLogSettingsArgs struct {
-	// The ARN of the CloudWatch Logs log group to receive access logs. Any trailing `:*` is trimmed from the ARN.
 	DestinationArn pulumi.StringInput `pulumi:"destinationArn"`
-	// A single line [format](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#apigateway-cloudwatch-log-formats) of the access logs of data, as specified by [selected $context variables](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-logging.html).
-	Format pulumi.StringInput `pulumi:"format"`
+	Format         pulumi.StringInput `pulumi:"format"`
 }
 
 func (StageAccessLogSettingsArgs) ElementType() reflect.Type {
@@ -829,13 +761,10 @@ func (o StageAccessLogSettingsOutput) ToStageAccessLogSettingsPtrOutputWithConte
 		return &v
 	}).(StageAccessLogSettingsPtrOutput)
 }
-
-// The ARN of the CloudWatch Logs log group to receive access logs. Any trailing `:*` is trimmed from the ARN.
 func (o StageAccessLogSettingsOutput) DestinationArn() pulumi.StringOutput {
 	return o.ApplyT(func(v StageAccessLogSettings) string { return v.DestinationArn }).(pulumi.StringOutput)
 }
 
-// A single line [format](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#apigateway-cloudwatch-log-formats) of the access logs of data, as specified by [selected $context variables](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-logging.html).
 func (o StageAccessLogSettingsOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v StageAccessLogSettings) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -858,7 +787,6 @@ func (o StageAccessLogSettingsPtrOutput) Elem() StageAccessLogSettingsOutput {
 	return o.ApplyT(func(v *StageAccessLogSettings) StageAccessLogSettings { return *v }).(StageAccessLogSettingsOutput)
 }
 
-// The ARN of the CloudWatch Logs log group to receive access logs. Any trailing `:*` is trimmed from the ARN.
 func (o StageAccessLogSettingsPtrOutput) DestinationArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StageAccessLogSettings) *string {
 		if v == nil {
@@ -868,7 +796,6 @@ func (o StageAccessLogSettingsPtrOutput) DestinationArn() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// A single line [format](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#apigateway-cloudwatch-log-formats) of the access logs of data, as specified by [selected $context variables](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-logging.html).
 func (o StageAccessLogSettingsPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StageAccessLogSettings) *string {
 		if v == nil {
@@ -879,18 +806,11 @@ func (o StageAccessLogSettingsPtrOutput) Format() pulumi.StringPtrOutput {
 }
 
 type StageDefaultRouteSettings struct {
-	// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Defaults to `false`. Supported only for WebSocket APIs.
-	DataTraceEnabled *bool `pulumi:"dataTraceEnabled"`
-	// Whether detailed metrics are enabled for the default route. Defaults to `false`.
-	DetailedMetricsEnabled *bool `pulumi:"detailedMetricsEnabled"`
-	// The logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-	LoggingLevel *string `pulumi:"loggingLevel"`
-	// The throttling burst limit for the default route.
-	ThrottlingBurstLimit *int `pulumi:"throttlingBurstLimit"`
-	// The throttling rate limit for the default route.
-	ThrottlingRateLimit *float64 `pulumi:"throttlingRateLimit"`
+	DataTraceEnabled       *bool    `pulumi:"dataTraceEnabled"`
+	DetailedMetricsEnabled *bool    `pulumi:"detailedMetricsEnabled"`
+	LoggingLevel           *string  `pulumi:"loggingLevel"`
+	ThrottlingBurstLimit   *int     `pulumi:"throttlingBurstLimit"`
+	ThrottlingRateLimit    *float64 `pulumi:"throttlingRateLimit"`
 }
 
 // StageDefaultRouteSettingsInput is an input type that accepts StageDefaultRouteSettingsArgs and StageDefaultRouteSettingsOutput values.
@@ -905,18 +825,11 @@ type StageDefaultRouteSettingsInput interface {
 }
 
 type StageDefaultRouteSettingsArgs struct {
-	// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Defaults to `false`. Supported only for WebSocket APIs.
-	DataTraceEnabled pulumi.BoolPtrInput `pulumi:"dataTraceEnabled"`
-	// Whether detailed metrics are enabled for the default route. Defaults to `false`.
-	DetailedMetricsEnabled pulumi.BoolPtrInput `pulumi:"detailedMetricsEnabled"`
-	// The logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-	LoggingLevel pulumi.StringPtrInput `pulumi:"loggingLevel"`
-	// The throttling burst limit for the default route.
-	ThrottlingBurstLimit pulumi.IntPtrInput `pulumi:"throttlingBurstLimit"`
-	// The throttling rate limit for the default route.
-	ThrottlingRateLimit pulumi.Float64PtrInput `pulumi:"throttlingRateLimit"`
+	DataTraceEnabled       pulumi.BoolPtrInput    `pulumi:"dataTraceEnabled"`
+	DetailedMetricsEnabled pulumi.BoolPtrInput    `pulumi:"detailedMetricsEnabled"`
+	LoggingLevel           pulumi.StringPtrInput  `pulumi:"loggingLevel"`
+	ThrottlingBurstLimit   pulumi.IntPtrInput     `pulumi:"throttlingBurstLimit"`
+	ThrottlingRateLimit    pulumi.Float64PtrInput `pulumi:"throttlingRateLimit"`
 }
 
 func (StageDefaultRouteSettingsArgs) ElementType() reflect.Type {
@@ -995,30 +908,22 @@ func (o StageDefaultRouteSettingsOutput) ToStageDefaultRouteSettingsPtrOutputWit
 		return &v
 	}).(StageDefaultRouteSettingsPtrOutput)
 }
-
-// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-// Defaults to `false`. Supported only for WebSocket APIs.
 func (o StageDefaultRouteSettingsOutput) DataTraceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StageDefaultRouteSettings) *bool { return v.DataTraceEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether detailed metrics are enabled for the default route. Defaults to `false`.
 func (o StageDefaultRouteSettingsOutput) DetailedMetricsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StageDefaultRouteSettings) *bool { return v.DetailedMetricsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
 func (o StageDefaultRouteSettingsOutput) LoggingLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StageDefaultRouteSettings) *string { return v.LoggingLevel }).(pulumi.StringPtrOutput)
 }
 
-// The throttling burst limit for the default route.
 func (o StageDefaultRouteSettingsOutput) ThrottlingBurstLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StageDefaultRouteSettings) *int { return v.ThrottlingBurstLimit }).(pulumi.IntPtrOutput)
 }
 
-// The throttling rate limit for the default route.
 func (o StageDefaultRouteSettingsOutput) ThrottlingRateLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StageDefaultRouteSettings) *float64 { return v.ThrottlingRateLimit }).(pulumi.Float64PtrOutput)
 }
@@ -1041,8 +946,6 @@ func (o StageDefaultRouteSettingsPtrOutput) Elem() StageDefaultRouteSettingsOutp
 	return o.ApplyT(func(v *StageDefaultRouteSettings) StageDefaultRouteSettings { return *v }).(StageDefaultRouteSettingsOutput)
 }
 
-// Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-// Defaults to `false`. Supported only for WebSocket APIs.
 func (o StageDefaultRouteSettingsPtrOutput) DataTraceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StageDefaultRouteSettings) *bool {
 		if v == nil {
@@ -1052,7 +955,6 @@ func (o StageDefaultRouteSettingsPtrOutput) DataTraceEnabled() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether detailed metrics are enabled for the default route. Defaults to `false`.
 func (o StageDefaultRouteSettingsPtrOutput) DetailedMetricsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StageDefaultRouteSettings) *bool {
 		if v == nil {
@@ -1062,8 +964,6 @@ func (o StageDefaultRouteSettingsPtrOutput) DetailedMetricsEnabled() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
-// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
 func (o StageDefaultRouteSettingsPtrOutput) LoggingLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StageDefaultRouteSettings) *string {
 		if v == nil {
@@ -1073,7 +973,6 @@ func (o StageDefaultRouteSettingsPtrOutput) LoggingLevel() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The throttling burst limit for the default route.
 func (o StageDefaultRouteSettingsPtrOutput) ThrottlingBurstLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StageDefaultRouteSettings) *int {
 		if v == nil {
@@ -1083,7 +982,6 @@ func (o StageDefaultRouteSettingsPtrOutput) ThrottlingBurstLimit() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// The throttling rate limit for the default route.
 func (o StageDefaultRouteSettingsPtrOutput) ThrottlingRateLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StageDefaultRouteSettings) *float64 {
 		if v == nil {
@@ -1094,20 +992,12 @@ func (o StageDefaultRouteSettingsPtrOutput) ThrottlingRateLimit() pulumi.Float64
 }
 
 type StageRouteSetting struct {
-	// Whether data trace logging is enabled for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Defaults to `false`. Supported only for WebSocket APIs.
-	DataTraceEnabled *bool `pulumi:"dataTraceEnabled"`
-	// Whether detailed metrics are enabled for the route. Defaults to `false`.
-	DetailedMetricsEnabled *bool `pulumi:"detailedMetricsEnabled"`
-	// The logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-	LoggingLevel *string `pulumi:"loggingLevel"`
-	// Route key.
-	RouteKey string `pulumi:"routeKey"`
-	// The throttling burst limit for the route.
-	ThrottlingBurstLimit *int `pulumi:"throttlingBurstLimit"`
-	// The throttling rate limit for the route.
-	ThrottlingRateLimit *float64 `pulumi:"throttlingRateLimit"`
+	DataTraceEnabled       *bool    `pulumi:"dataTraceEnabled"`
+	DetailedMetricsEnabled *bool    `pulumi:"detailedMetricsEnabled"`
+	LoggingLevel           *string  `pulumi:"loggingLevel"`
+	RouteKey               string   `pulumi:"routeKey"`
+	ThrottlingBurstLimit   *int     `pulumi:"throttlingBurstLimit"`
+	ThrottlingRateLimit    *float64 `pulumi:"throttlingRateLimit"`
 }
 
 // StageRouteSettingInput is an input type that accepts StageRouteSettingArgs and StageRouteSettingOutput values.
@@ -1122,20 +1012,12 @@ type StageRouteSettingInput interface {
 }
 
 type StageRouteSettingArgs struct {
-	// Whether data trace logging is enabled for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Defaults to `false`. Supported only for WebSocket APIs.
-	DataTraceEnabled pulumi.BoolPtrInput `pulumi:"dataTraceEnabled"`
-	// Whether detailed metrics are enabled for the route. Defaults to `false`.
-	DetailedMetricsEnabled pulumi.BoolPtrInput `pulumi:"detailedMetricsEnabled"`
-	// The logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-	// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-	LoggingLevel pulumi.StringPtrInput `pulumi:"loggingLevel"`
-	// Route key.
-	RouteKey pulumi.StringInput `pulumi:"routeKey"`
-	// The throttling burst limit for the route.
-	ThrottlingBurstLimit pulumi.IntPtrInput `pulumi:"throttlingBurstLimit"`
-	// The throttling rate limit for the route.
-	ThrottlingRateLimit pulumi.Float64PtrInput `pulumi:"throttlingRateLimit"`
+	DataTraceEnabled       pulumi.BoolPtrInput    `pulumi:"dataTraceEnabled"`
+	DetailedMetricsEnabled pulumi.BoolPtrInput    `pulumi:"detailedMetricsEnabled"`
+	LoggingLevel           pulumi.StringPtrInput  `pulumi:"loggingLevel"`
+	RouteKey               pulumi.StringInput     `pulumi:"routeKey"`
+	ThrottlingBurstLimit   pulumi.IntPtrInput     `pulumi:"throttlingBurstLimit"`
+	ThrottlingRateLimit    pulumi.Float64PtrInput `pulumi:"throttlingRateLimit"`
 }
 
 func (StageRouteSettingArgs) ElementType() reflect.Type {
@@ -1189,34 +1071,26 @@ func (o StageRouteSettingOutput) ToStageRouteSettingOutputWithContext(ctx contex
 	return o
 }
 
-// Whether data trace logging is enabled for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-// Defaults to `false`. Supported only for WebSocket APIs.
 func (o StageRouteSettingOutput) DataTraceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StageRouteSetting) *bool { return v.DataTraceEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether detailed metrics are enabled for the route. Defaults to `false`.
 func (o StageRouteSettingOutput) DetailedMetricsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StageRouteSetting) *bool { return v.DetailedMetricsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
 func (o StageRouteSettingOutput) LoggingLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StageRouteSetting) *string { return v.LoggingLevel }).(pulumi.StringPtrOutput)
 }
 
-// Route key.
 func (o StageRouteSettingOutput) RouteKey() pulumi.StringOutput {
 	return o.ApplyT(func(v StageRouteSetting) string { return v.RouteKey }).(pulumi.StringOutput)
 }
 
-// The throttling burst limit for the route.
 func (o StageRouteSettingOutput) ThrottlingBurstLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StageRouteSetting) *int { return v.ThrottlingBurstLimit }).(pulumi.IntPtrOutput)
 }
 
-// The throttling rate limit for the route.
 func (o StageRouteSettingOutput) ThrottlingRateLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StageRouteSetting) *float64 { return v.ThrottlingRateLimit }).(pulumi.Float64PtrOutput)
 }

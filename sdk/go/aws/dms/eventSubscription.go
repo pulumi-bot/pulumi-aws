@@ -10,24 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DMS (Data Migration Service) event subscription resource.
 type EventSubscription struct {
 	pulumi.CustomResourceState
 
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Whether the event subscription should be enabled.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
+	Arn             pulumi.StringOutput      `pulumi:"arn"`
+	Enabled         pulumi.BoolPtrOutput     `pulumi:"enabled"`
 	EventCategories pulumi.StringArrayOutput `pulumi:"eventCategories"`
-	// Name of event subscription.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// SNS topic arn to send events on.
-	SnsTopicArn pulumi.StringOutput `pulumi:"snsTopicArn"`
-	// Ids of sources to listen to.
-	SourceIds pulumi.StringArrayOutput `pulumi:"sourceIds"`
-	// Type of source for events. Valid values: `replication-instance` or `replication-task`
-	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
-	Tags       pulumi.StringMapOutput `pulumi:"tags"`
+	Name            pulumi.StringOutput      `pulumi:"name"`
+	SnsTopicArn     pulumi.StringOutput      `pulumi:"snsTopicArn"`
+	SourceIds       pulumi.StringArrayOutput `pulumi:"sourceIds"`
+	SourceType      pulumi.StringPtrOutput   `pulumi:"sourceType"`
+	Tags            pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewEventSubscription registers a new resource with the given unique name, arguments, and options.
@@ -64,37 +57,25 @@ func GetEventSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EventSubscription resources.
 type eventSubscriptionState struct {
-	Arn *string `pulumi:"arn"`
-	// Whether the event subscription should be enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-	EventCategories []string `pulumi:"eventCategories"`
-	// Name of event subscription.
-	Name *string `pulumi:"name"`
-	// SNS topic arn to send events on.
-	SnsTopicArn *string `pulumi:"snsTopicArn"`
-	// Ids of sources to listen to.
-	SourceIds []string `pulumi:"sourceIds"`
-	// Type of source for events. Valid values: `replication-instance` or `replication-task`
-	SourceType *string           `pulumi:"sourceType"`
-	Tags       map[string]string `pulumi:"tags"`
+	Arn             *string           `pulumi:"arn"`
+	Enabled         *bool             `pulumi:"enabled"`
+	EventCategories []string          `pulumi:"eventCategories"`
+	Name            *string           `pulumi:"name"`
+	SnsTopicArn     *string           `pulumi:"snsTopicArn"`
+	SourceIds       []string          `pulumi:"sourceIds"`
+	SourceType      *string           `pulumi:"sourceType"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 type EventSubscriptionState struct {
-	Arn pulumi.StringPtrInput
-	// Whether the event subscription should be enabled.
-	Enabled pulumi.BoolPtrInput
-	// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
+	Arn             pulumi.StringPtrInput
+	Enabled         pulumi.BoolPtrInput
 	EventCategories pulumi.StringArrayInput
-	// Name of event subscription.
-	Name pulumi.StringPtrInput
-	// SNS topic arn to send events on.
-	SnsTopicArn pulumi.StringPtrInput
-	// Ids of sources to listen to.
-	SourceIds pulumi.StringArrayInput
-	// Type of source for events. Valid values: `replication-instance` or `replication-task`
-	SourceType pulumi.StringPtrInput
-	Tags       pulumi.StringMapInput
+	Name            pulumi.StringPtrInput
+	SnsTopicArn     pulumi.StringPtrInput
+	SourceIds       pulumi.StringArrayInput
+	SourceType      pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (EventSubscriptionState) ElementType() reflect.Type {
@@ -102,36 +83,24 @@ func (EventSubscriptionState) ElementType() reflect.Type {
 }
 
 type eventSubscriptionArgs struct {
-	// Whether the event subscription should be enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-	EventCategories []string `pulumi:"eventCategories"`
-	// Name of event subscription.
-	Name *string `pulumi:"name"`
-	// SNS topic arn to send events on.
-	SnsTopicArn string `pulumi:"snsTopicArn"`
-	// Ids of sources to listen to.
-	SourceIds []string `pulumi:"sourceIds"`
-	// Type of source for events. Valid values: `replication-instance` or `replication-task`
-	SourceType *string           `pulumi:"sourceType"`
-	Tags       map[string]string `pulumi:"tags"`
+	Enabled         *bool             `pulumi:"enabled"`
+	EventCategories []string          `pulumi:"eventCategories"`
+	Name            *string           `pulumi:"name"`
+	SnsTopicArn     string            `pulumi:"snsTopicArn"`
+	SourceIds       []string          `pulumi:"sourceIds"`
+	SourceType      *string           `pulumi:"sourceType"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EventSubscription resource.
 type EventSubscriptionArgs struct {
-	// Whether the event subscription should be enabled.
-	Enabled pulumi.BoolPtrInput
-	// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
+	Enabled         pulumi.BoolPtrInput
 	EventCategories pulumi.StringArrayInput
-	// Name of event subscription.
-	Name pulumi.StringPtrInput
-	// SNS topic arn to send events on.
-	SnsTopicArn pulumi.StringInput
-	// Ids of sources to listen to.
-	SourceIds pulumi.StringArrayInput
-	// Type of source for events. Valid values: `replication-instance` or `replication-task`
-	SourceType pulumi.StringPtrInput
-	Tags       pulumi.StringMapInput
+	Name            pulumi.StringPtrInput
+	SnsTopicArn     pulumi.StringInput
+	SourceIds       pulumi.StringArrayInput
+	SourceType      pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (EventSubscriptionArgs) ElementType() reflect.Type {

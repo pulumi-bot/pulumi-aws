@@ -9,65 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElasticBeanstalk
 {
-    /// <summary>
-    /// Provides an Elastic Beanstalk Application Resource. Elastic Beanstalk allows
-    /// you to deploy and manage applications in the AWS cloud without worrying about
-    /// the infrastructure that runs those applications.
-    /// 
-    /// This resource creates an application that has one configuration template named
-    /// `default`, and no application versions
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var tftest = new Aws.ElasticBeanstalk.Application("tftest", new Aws.ElasticBeanstalk.ApplicationArgs
-    ///         {
-    ///             Description = "tf-test-desc",
-    ///             AppversionLifecycle = new Aws.ElasticBeanstalk.Inputs.ApplicationAppversionLifecycleArgs
-    ///             {
-    ///                 ServiceRole = aws_iam_role.Beanstalk_service.Arn,
-    ///                 MaxCount = 128,
-    ///                 DeleteSourceFromS3 = true,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Application : Pulumi.CustomResource
     {
         [Output("appversionLifecycle")]
         public Output<Outputs.ApplicationAppversionLifecycle?> AppversionLifecycle { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN assigned by AWS for this Elastic Beanstalk Application.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Short description of the application
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the application, must be unique within your account
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of tags for the Elastic Beanstalk Application.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -120,24 +75,14 @@ namespace Pulumi.Aws.ElasticBeanstalk
         [Input("appversionLifecycle")]
         public Input<Inputs.ApplicationAppversionLifecycleArgs>? AppversionLifecycle { get; set; }
 
-        /// <summary>
-        /// Short description of the application
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the application, must be unique within your account
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of tags for the Elastic Beanstalk Application.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -154,30 +99,17 @@ namespace Pulumi.Aws.ElasticBeanstalk
         [Input("appversionLifecycle")]
         public Input<Inputs.ApplicationAppversionLifecycleGetArgs>? AppversionLifecycle { get; set; }
 
-        /// <summary>
-        /// The ARN assigned by AWS for this Elastic Beanstalk Application.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Short description of the application
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the application, must be unique within your account
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of tags for the Elastic Beanstalk Application.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

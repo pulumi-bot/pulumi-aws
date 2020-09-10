@@ -9,116 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGatewayV2
 {
-    /// <summary>
-    /// Manages an Amazon API Gateway Version 2 authorizer.
-    /// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-    /// 
-    /// ## Example Usage
-    /// ### Basic WebSocket API
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.ApiGatewayV2.Authorizer("example", new Aws.ApiGatewayV2.AuthorizerArgs
-    ///         {
-    ///             ApiId = aws_apigatewayv2_api.Example.Id,
-    ///             AuthorizerType = "REQUEST",
-    ///             AuthorizerUri = aws_lambda_function.Example.Invoke_arn,
-    ///             IdentitySources = 
-    ///             {
-    ///                 "route.request.header.Auth",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Basic HTTP API
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.ApiGatewayV2.Authorizer("example", new Aws.ApiGatewayV2.AuthorizerArgs
-    ///         {
-    ///             ApiId = aws_apigatewayv2_api.Example.Id,
-    ///             AuthorizerType = "JWT",
-    ///             IdentitySources = 
-    ///             {
-    ///                 "$request.header.Authorization",
-    ///             },
-    ///             JwtConfiguration = new Aws.ApiGatewayV2.Inputs.AuthorizerJwtConfigurationArgs
-    ///             {
-    ///                 Audiences = 
-    ///                 {
-    ///                     "example",
-    ///                 },
-    ///                 Issuer = $"https://{aws_cognito_user_pool.Example.Endpoint}",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Authorizer : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The API identifier.
-        /// </summary>
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
 
-        /// <summary>
-        /// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-        /// Supported only for `REQUEST` authorizers.
-        /// </summary>
         [Output("authorizerCredentialsArn")]
         public Output<string?> AuthorizerCredentialsArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The authorizer type. Valid values: `JWT`, `REQUEST`.
-        /// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-        /// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-        /// </summary>
         [Output("authorizerType")]
         public Output<string> AuthorizerType { get; private set; } = null!;
 
-        /// <summary>
-        /// The authorizer's Uniform Resource Identifier (URI).
-        /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invoke_arn` attribute of the `aws.lambda.Function` resource.
-        /// Supported only for `REQUEST` authorizers.
-        /// </summary>
         [Output("authorizerUri")]
         public Output<string?> AuthorizerUri { get; private set; } = null!;
 
-        /// <summary>
-        /// The identity sources for which authorization is requested.
-        /// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-        /// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-        /// </summary>
         [Output("identitySources")]
         public Output<ImmutableArray<string>> IdentitySources { get; private set; } = null!;
 
-        /// <summary>
-        /// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-        /// Supported only for HTTP APIs.
-        /// </summary>
         [Output("jwtConfiguration")]
         public Output<Outputs.AuthorizerJwtConfiguration?> JwtConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the authorizer.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -168,59 +78,29 @@ namespace Pulumi.Aws.ApiGatewayV2
 
     public sealed class AuthorizerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The API identifier.
-        /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
 
-        /// <summary>
-        /// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-        /// Supported only for `REQUEST` authorizers.
-        /// </summary>
         [Input("authorizerCredentialsArn")]
         public Input<string>? AuthorizerCredentialsArn { get; set; }
 
-        /// <summary>
-        /// The authorizer type. Valid values: `JWT`, `REQUEST`.
-        /// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-        /// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-        /// </summary>
         [Input("authorizerType", required: true)]
         public Input<string> AuthorizerType { get; set; } = null!;
 
-        /// <summary>
-        /// The authorizer's Uniform Resource Identifier (URI).
-        /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invoke_arn` attribute of the `aws.lambda.Function` resource.
-        /// Supported only for `REQUEST` authorizers.
-        /// </summary>
         [Input("authorizerUri")]
         public Input<string>? AuthorizerUri { get; set; }
 
         [Input("identitySources", required: true)]
         private InputList<string>? _identitySources;
-
-        /// <summary>
-        /// The identity sources for which authorization is requested.
-        /// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-        /// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-        /// </summary>
         public InputList<string> IdentitySources
         {
             get => _identitySources ?? (_identitySources = new InputList<string>());
             set => _identitySources = value;
         }
 
-        /// <summary>
-        /// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-        /// Supported only for HTTP APIs.
-        /// </summary>
         [Input("jwtConfiguration")]
         public Input<Inputs.AuthorizerJwtConfigurationArgs>? JwtConfiguration { get; set; }
 
-        /// <summary>
-        /// The name of the authorizer.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -231,59 +111,29 @@ namespace Pulumi.Aws.ApiGatewayV2
 
     public sealed class AuthorizerState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The API identifier.
-        /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }
 
-        /// <summary>
-        /// The required credentials as an IAM role for API Gateway to invoke the authorizer.
-        /// Supported only for `REQUEST` authorizers.
-        /// </summary>
         [Input("authorizerCredentialsArn")]
         public Input<string>? AuthorizerCredentialsArn { get; set; }
 
-        /// <summary>
-        /// The authorizer type. Valid values: `JWT`, `REQUEST`.
-        /// For WebSocket APIs, specify `REQUEST` for a Lambda function using incoming request parameters.
-        /// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
-        /// </summary>
         [Input("authorizerType")]
         public Input<string>? AuthorizerType { get; set; }
 
-        /// <summary>
-        /// The authorizer's Uniform Resource Identifier (URI).
-        /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invoke_arn` attribute of the `aws.lambda.Function` resource.
-        /// Supported only for `REQUEST` authorizers.
-        /// </summary>
         [Input("authorizerUri")]
         public Input<string>? AuthorizerUri { get; set; }
 
         [Input("identitySources")]
         private InputList<string>? _identitySources;
-
-        /// <summary>
-        /// The identity sources for which authorization is requested.
-        /// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
-        /// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
-        /// </summary>
         public InputList<string> IdentitySources
         {
             get => _identitySources ?? (_identitySources = new InputList<string>());
             set => _identitySources = value;
         }
 
-        /// <summary>
-        /// The configuration of a JWT authorizer. Required for the `JWT` authorizer type.
-        /// Supported only for HTTP APIs.
-        /// </summary>
         [Input("jwtConfiguration")]
         public Input<Inputs.AuthorizerJwtConfigurationGetArgs>? JwtConfiguration { get; set; }
 
-        /// <summary>
-        /// The name of the authorizer.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Msk.Outputs
     [OutputType]
     public sealed class ClusterLoggingInfoBrokerLogsCloudwatchLogs
     {
-        /// <summary>
-        /// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// Name of the Cloudwatch Log Group to deliver logs to.
-        /// </summary>
         public readonly string? LogGroup;
 
         [OutputConstructor]

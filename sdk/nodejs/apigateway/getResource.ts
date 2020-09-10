@@ -6,25 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the id of a Resource in API Gateway.
- * To fetch the Resource, you must provide the REST API id as well as the full path.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const myRestApi = aws.apigateway.getRestApi({
- *     name: "my-rest-api",
- * });
- * const myResource = myRestApi.then(myRestApi => aws.apigateway.getResource({
- *     restApiId: myRestApi.id,
- *     path: "/endpoint/path",
- * }));
- * ```
- */
 export function getResource(args: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {
     if (!opts) {
         opts = {}
@@ -43,13 +24,7 @@ export function getResource(args: GetResourceArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getResource.
  */
 export interface GetResourceArgs {
-    /**
-     * The full path of the resource.  If no path is found, an error will be returned.
-     */
     readonly path: string;
-    /**
-     * The REST API id that owns the resource. If no REST API is found, an error will be returned.
-     */
     readonly restApiId: string;
 }
 
@@ -61,14 +36,8 @@ export interface GetResourceResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set to the ID of the parent Resource.
-     */
     readonly parentId: string;
     readonly path: string;
-    /**
-     * Set to the path relative to the parent Resource.
-     */
     readonly pathPart: string;
     readonly restApiId: string;
 }

@@ -9,58 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an EC2 placement group. Read more about placement groups
-    /// in [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var web = new Aws.Ec2.PlacementGroup("web", new Aws.Ec2.PlacementGroupArgs
-    ///         {
-    ///             Strategy = "cluster",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PlacementGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the placement group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the placement group.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the placement group.
-        /// </summary>
         [Output("placementGroupId")]
         public Output<string> PlacementGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// The placement strategy. Can be `"cluster"`, `"partition"` or `"spread"`.
-        /// </summary>
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -110,24 +72,14 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class PlacementGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the placement group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The placement strategy. Can be `"cluster"`, `"partition"` or `"spread"`.
-        /// </summary>
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -141,36 +93,20 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class PlacementGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the placement group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the placement group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the placement group.
-        /// </summary>
         [Input("placementGroupId")]
         public Input<string>? PlacementGroupId { get; set; }
 
-        /// <summary>
-        /// The placement strategy. Can be `"cluster"`, `"partition"` or `"spread"`.
-        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

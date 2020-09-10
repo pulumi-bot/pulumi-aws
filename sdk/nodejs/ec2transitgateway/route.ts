@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an EC2 Transit Gateway Route.
- *
- * ## Example Usage
- * ### Standard usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2transitgateway.Route("example", {
- *     destinationCidrBlock: "0.0.0.0/0",
- *     transitGatewayAttachmentId: aws_ec2_transit_gateway_vpc_attachment.example.id,
- *     transitGatewayRouteTableId: aws_ec2_transit_gateway.example.association_default_route_table_id,
- * });
- * ```
- * ### Blackhole route
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2transitgateway.Route("example", {
- *     destinationCidrBlock: "0.0.0.0/0",
- *     blackhole: true,
- *     transitGatewayRouteTableId: aws_ec2_transit_gateway.example.association_default_route_table_id,
- * });
- * ```
- */
 export class Route extends pulumi.CustomResource {
     /**
      * Get an existing Route resource's state with the given name, ID, and optional extra
@@ -61,21 +32,9 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
-    /**
-     * Indicates whether to drop traffic that matches this route (default to `false`).
-     */
     public readonly blackhole!: pulumi.Output<boolean | undefined>;
-    /**
-     * IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-     */
     public readonly destinationCidrBlock!: pulumi.Output<string>;
-    /**
-     * Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-     */
     public readonly transitGatewayAttachmentId!: pulumi.Output<string | undefined>;
-    /**
-     * Identifier of EC2 Transit Gateway Route Table.
-     */
     public readonly transitGatewayRouteTableId!: pulumi.Output<string>;
 
     /**
@@ -122,21 +81,9 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
-    /**
-     * Indicates whether to drop traffic that matches this route (default to `false`).
-     */
     readonly blackhole?: pulumi.Input<boolean>;
-    /**
-     * IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-     */
     readonly destinationCidrBlock?: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-     */
     readonly transitGatewayAttachmentId?: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 Transit Gateway Route Table.
-     */
     readonly transitGatewayRouteTableId?: pulumi.Input<string>;
 }
 
@@ -144,20 +91,8 @@ export interface RouteState {
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
-    /**
-     * Indicates whether to drop traffic that matches this route (default to `false`).
-     */
     readonly blackhole?: pulumi.Input<boolean>;
-    /**
-     * IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-     */
     readonly destinationCidrBlock: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-     */
     readonly transitGatewayAttachmentId?: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 Transit Gateway Route Table.
-     */
     readonly transitGatewayRouteTableId: pulumi.Input<string>;
 }

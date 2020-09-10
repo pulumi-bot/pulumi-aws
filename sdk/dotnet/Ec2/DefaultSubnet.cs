@@ -9,39 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a resource to manage a [default AWS VPC subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#default-vpc-basics)
-    /// in the current region.
-    /// 
-    /// The `aws.ec2.DefaultSubnet` behaves differently from normal resources, in that
-    /// this provider does not _create_ this resource, but instead "adopts" it
-    /// into management.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage with tags:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultAz1 = new Aws.Ec2.DefaultSubnet("defaultAz1", new Aws.Ec2.DefaultSubnetArgs
-    ///         {
-    ///             AvailabilityZone = "us-west-2a",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "Default subnet for us-west-2a" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DefaultSubnet : Pulumi.CustomResource
     {
         [Output("arn")]
@@ -56,47 +23,27 @@ namespace Pulumi.Aws.Ec2
         [Output("availabilityZoneId")]
         public Output<string> AvailabilityZoneId { get; private set; } = null!;
 
-        /// <summary>
-        /// The CIDR block for the subnet.
-        /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
 
-        /// <summary>
-        /// The IPv6 CIDR block.
-        /// </summary>
         [Output("ipv6CidrBlock")]
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
 
         [Output("ipv6CidrBlockAssociationId")]
         public Output<string> Ipv6CidrBlockAssociationId { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify true to indicate
-        /// that instances launched into the subnet should be assigned
-        /// a public IP address.
-        /// </summary>
         [Output("mapPublicIpOnLaunch")]
         public Output<bool> MapPublicIpOnLaunch { get; private set; } = null!;
 
         [Output("outpostArn")]
         public Output<string?> OutpostArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the AWS account that owns the subnet.
-        /// </summary>
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC ID.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -149,11 +96,6 @@ namespace Pulumi.Aws.Ec2
         [Input("availabilityZone", required: true)]
         public Input<string> AvailabilityZone { get; set; } = null!;
 
-        /// <summary>
-        /// Specify true to indicate
-        /// that instances launched into the subnet should be assigned
-        /// a public IP address.
-        /// </summary>
         [Input("mapPublicIpOnLaunch")]
         public Input<bool>? MapPublicIpOnLaunch { get; set; }
 
@@ -162,10 +104,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -191,53 +129,32 @@ namespace Pulumi.Aws.Ec2
         [Input("availabilityZoneId")]
         public Input<string>? AvailabilityZoneId { get; set; }
 
-        /// <summary>
-        /// The CIDR block for the subnet.
-        /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
-        /// <summary>
-        /// The IPv6 CIDR block.
-        /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
 
         [Input("ipv6CidrBlockAssociationId")]
         public Input<string>? Ipv6CidrBlockAssociationId { get; set; }
 
-        /// <summary>
-        /// Specify true to indicate
-        /// that instances launched into the subnet should be assigned
-        /// a public IP address.
-        /// </summary>
         [Input("mapPublicIpOnLaunch")]
         public Input<bool>? MapPublicIpOnLaunch { get; set; }
 
         [Input("outpostArn")]
         public Input<string>? OutpostArn { get; set; }
 
-        /// <summary>
-        /// The ID of the AWS account that owns the subnet.
-        /// </summary>
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

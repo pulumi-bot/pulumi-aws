@@ -22,44 +22,9 @@ class Notification(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AutoScaling Group with Notification support, via SNS Topics. Each of
-        the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
-        Services, and are applied to each AutoScaling Group you supply.
-
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.sns.Topic("example")
-        # arn is an exported attribute
-        bar = aws.autoscaling.Group("bar")
-        # ...
-        foo = aws.autoscaling.Group("foo")
-        # ...
-        example_notifications = aws.autoscaling.Notification("exampleNotifications",
-            group_names=[
-                bar.name,
-                foo.name,
-            ],
-            notifications=[
-                "autoscaling:EC2_INSTANCE_LAUNCH",
-                "autoscaling:EC2_INSTANCE_TERMINATE",
-                "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
-                "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
-            ],
-            topic_arn=example.arn)
-        ```
-
+        Create a Notification resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_names: A list of AutoScaling Group Names
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications: A list of Notification Types that trigger
-               notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-        :param pulumi.Input[str] topic_arn: The Topic ARN for notifications to be sent through
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,10 +72,6 @@ class Notification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_names: A list of AutoScaling Group Names
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications: A list of Notification Types that trigger
-               notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-        :param pulumi.Input[str] topic_arn: The Topic ARN for notifications to be sent through
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -124,26 +85,16 @@ class Notification(pulumi.CustomResource):
     @property
     @pulumi.getter(name="groupNames")
     def group_names(self) -> pulumi.Output[List[str]]:
-        """
-        A list of AutoScaling Group Names
-        """
         return pulumi.get(self, "group_names")
 
     @property
     @pulumi.getter
     def notifications(self) -> pulumi.Output[List[str]]:
-        """
-        A list of Notification Types that trigger
-        notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-        """
         return pulumi.get(self, "notifications")
 
     @property
     @pulumi.getter(name="topicArn")
     def topic_arn(self) -> pulumi.Output[str]:
-        """
-        The Topic ARN for notifications to be sent through
-        """
         return pulumi.get(self, "topic_arn")
 
     def translate_output_property(self, prop):

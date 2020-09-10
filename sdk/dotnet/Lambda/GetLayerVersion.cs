@@ -11,34 +11,6 @@ namespace Pulumi.Aws.Lambda
 {
     public static class GetLayerVersion
     {
-        /// <summary>
-        /// Provides information about a Lambda Layer Version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var layerName = config.Require("layerName");
-        ///         var existing = Output.Create(Aws.Lambda.GetLayerVersion.InvokeAsync(new Aws.Lambda.GetLayerVersionArgs
-        ///         {
-        ///             LayerName = layerName,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLayerVersionResult> InvokeAsync(GetLayerVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLayerVersionResult>("aws:lambda/getLayerVersion:getLayerVersion", args ?? new GetLayerVersionArgs(), options.WithVersion());
     }
@@ -46,21 +18,12 @@ namespace Pulumi.Aws.Lambda
 
     public sealed class GetLayerVersionArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
-        /// </summary>
         [Input("compatibleRuntime")]
         public string? CompatibleRuntime { get; set; }
 
-        /// <summary>
-        /// Name of the lambda layer.
-        /// </summary>
         [Input("layerName", required: true)]
         public string LayerName { get; set; } = null!;
 
-        /// <summary>
-        /// Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
-        /// </summary>
         [Input("version")]
         public int? Version { get; set; }
 
@@ -73,47 +36,20 @@ namespace Pulumi.Aws.Lambda
     [OutputType]
     public sealed class GetLayerVersionResult
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the Lambda Layer with version.
-        /// </summary>
         public readonly string Arn;
         public readonly string? CompatibleRuntime;
-        /// <summary>
-        /// A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleRuntimes) the specific Lambda Layer version is compatible with.
-        /// </summary>
         public readonly ImmutableArray<string> CompatibleRuntimes;
-        /// <summary>
-        /// The date this resource was created.
-        /// </summary>
         public readonly string CreatedDate;
-        /// <summary>
-        /// Description of the specific Lambda Layer version.
-        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the Lambda Layer without version.
-        /// </summary>
         public readonly string LayerArn;
         public readonly string LayerName;
-        /// <summary>
-        /// License info associated with the specific Lambda Layer version.
-        /// </summary>
         public readonly string LicenseInfo;
-        /// <summary>
-        /// Base64-encoded representation of raw SHA-256 sum of the zip file.
-        /// </summary>
         public readonly string SourceCodeHash;
-        /// <summary>
-        /// The size in bytes of the function .zip file.
-        /// </summary>
         public readonly int SourceCodeSize;
-        /// <summary>
-        /// This Lamba Layer version.
-        /// </summary>
         public readonly int Version;
 
         [OutputConstructor]

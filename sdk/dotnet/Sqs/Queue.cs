@@ -9,168 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sqs
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var queue = new Aws.Sqs.Queue("queue", new Aws.Sqs.QueueArgs
-    ///         {
-    ///             DelaySeconds = 90,
-    ///             MaxMessageSize = 2048,
-    ///             MessageRetentionSeconds = 86400,
-    ///             ReceiveWaitTimeSeconds = 10,
-    ///             RedrivePolicy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "deadLetterTargetArn", aws_sqs_queue.Queue_deadletter.Arn },
-    ///                 { "maxReceiveCount", 4 },
-    ///             }),
-    ///             Tags = 
-    ///             {
-    ///                 { "Environment", "production" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## FIFO queue
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var queue = new Aws.Sqs.Queue("queue", new Aws.Sqs.QueueArgs
-    ///         {
-    ///             ContentBasedDeduplication = true,
-    ///             FifoQueue = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Server-side encryption (SSE)
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var queue = new Aws.Sqs.Queue("queue", new Aws.Sqs.QueueArgs
-    ///         {
-    ///             KmsDataKeyReusePeriodSeconds = 300,
-    ///             KmsMasterKeyId = "alias/aws/sqs",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the SQS queue
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-        /// </summary>
         [Output("contentBasedDeduplication")]
         public Output<bool?> ContentBasedDeduplication { get; private set; } = null!;
 
-        /// <summary>
-        /// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-        /// </summary>
         [Output("delaySeconds")]
         public Output<int?> DelaySeconds { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-        /// </summary>
         [Output("fifoQueue")]
         public Output<bool?> FifoQueue { get; private set; } = null!;
 
-        /// <summary>
-        /// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
-        /// </summary>
         [Output("kmsDataKeyReusePeriodSeconds")]
         public Output<int> KmsDataKeyReusePeriodSeconds { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-        /// </summary>
         [Output("kmsMasterKeyId")]
         public Output<string?> KmsMasterKeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-        /// </summary>
         [Output("maxMessageSize")]
         public Output<int?> MaxMessageSize { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-        /// </summary>
         [Output("messageRetentionSeconds")]
         public Output<int?> MessageRetentionSeconds { get; private set; } = null!;
 
-        /// <summary>
-        /// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// The JSON policy for the SQS queue.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
-        /// <summary>
-        /// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-        /// </summary>
         [Output("receiveWaitTimeSeconds")]
         public Output<int?> ReceiveWaitTimeSeconds { get; private set; } = null!;
 
-        /// <summary>
-        /// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-        /// </summary>
         [Output("redrivePolicy")]
         public Output<string?> RedrivePolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the queue.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-        /// </summary>
         [Output("visibilityTimeoutSeconds")]
         public Output<int?> VisibilityTimeoutSeconds { get; private set; } = null!;
 
@@ -220,93 +102,50 @@ namespace Pulumi.Aws.Sqs
 
     public sealed class QueueArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-        /// </summary>
         [Input("contentBasedDeduplication")]
         public Input<bool>? ContentBasedDeduplication { get; set; }
 
-        /// <summary>
-        /// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-        /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
 
-        /// <summary>
-        /// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-        /// </summary>
         [Input("fifoQueue")]
         public Input<bool>? FifoQueue { get; set; }
 
-        /// <summary>
-        /// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
-        /// </summary>
         [Input("kmsDataKeyReusePeriodSeconds")]
         public Input<int>? KmsDataKeyReusePeriodSeconds { get; set; }
 
-        /// <summary>
-        /// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-        /// </summary>
         [Input("kmsMasterKeyId")]
         public Input<string>? KmsMasterKeyId { get; set; }
 
-        /// <summary>
-        /// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-        /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
 
-        /// <summary>
-        /// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-        /// </summary>
         [Input("messageRetentionSeconds")]
         public Input<int>? MessageRetentionSeconds { get; set; }
 
-        /// <summary>
-        /// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The JSON policy for the SQS queue.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-        /// </summary>
         [Input("receiveWaitTimeSeconds")]
         public Input<int>? ReceiveWaitTimeSeconds { get; set; }
 
-        /// <summary>
-        /// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-        /// </summary>
         [Input("redrivePolicy")]
         public Input<string>? RedrivePolicy { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the queue.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-        /// </summary>
         [Input("visibilityTimeoutSeconds")]
         public Input<int>? VisibilityTimeoutSeconds { get; set; }
 
@@ -317,99 +156,53 @@ namespace Pulumi.Aws.Sqs
 
     public sealed class QueueState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the SQS queue
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-        /// </summary>
         [Input("contentBasedDeduplication")]
         public Input<bool>? ContentBasedDeduplication { get; set; }
 
-        /// <summary>
-        /// The time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
-        /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
 
-        /// <summary>
-        /// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
-        /// </summary>
         [Input("fifoQueue")]
         public Input<bool>? FifoQueue { get; set; }
 
-        /// <summary>
-        /// The length of time, in seconds, for which Amazon SQS can reuse a data key to encrypt or decrypt messages before calling AWS KMS again. An integer representing seconds, between 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300 (5 minutes).
-        /// </summary>
         [Input("kmsDataKeyReusePeriodSeconds")]
         public Input<int>? KmsDataKeyReusePeriodSeconds { get; set; }
 
-        /// <summary>
-        /// The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK. For more information, see [Key Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-        /// </summary>
         [Input("kmsMasterKeyId")]
         public Input<string>? KmsMasterKeyId { get; set; }
 
-        /// <summary>
-        /// The limit of how many bytes a message can contain before Amazon SQS rejects it. An integer from 1024 bytes (1 KiB) up to 262144 bytes (256 KiB). The default for this attribute is 262144 (256 KiB).
-        /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
 
-        /// <summary>
-        /// The number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
-        /// </summary>
         [Input("messageRetentionSeconds")]
         public Input<int>? MessageRetentionSeconds { get; set; }
 
-        /// <summary>
-        /// This is the human-readable name of the queue. If omitted, this provider will assign a random name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The JSON policy for the SQS queue.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// The time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
-        /// </summary>
         [Input("receiveWaitTimeSeconds")]
         public Input<int>? ReceiveWaitTimeSeconds { get; set; }
 
-        /// <summary>
-        /// The JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
-        /// </summary>
         [Input("redrivePolicy")]
         public Input<string>? RedrivePolicy { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the queue.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-        /// </summary>
         [Input("visibilityTimeoutSeconds")]
         public Input<int>? VisibilityTimeoutSeconds { get; set; }
 

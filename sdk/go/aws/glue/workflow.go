@@ -9,71 +9,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Glue Workflow resource.
-// The workflow graph (DAG) can be build using the `glue.Trigger` resource.
-// See the example below for creating a graph with four nodes (two triggers and two jobs).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glue"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewWorkflow(ctx, "example", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = glue.NewTrigger(ctx, "example_start", &glue.TriggerArgs{
-// 			Type:         pulumi.String("ON_DEMAND"),
-// 			WorkflowName: example.Name,
-// 			Actions: glue.TriggerActionArray{
-// 				&glue.TriggerActionArgs{
-// 					JobName: pulumi.String("example-job"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = glue.NewTrigger(ctx, "example_inner", &glue.TriggerArgs{
-// 			Type:         pulumi.String("CONDITIONAL"),
-// 			WorkflowName: example.Name,
-// 			Predicate: &glue.TriggerPredicateArgs{
-// 				Conditions: glue.TriggerPredicateConditionArray{
-// 					&glue.TriggerPredicateConditionArgs{
-// 						JobName: pulumi.String("example-job"),
-// 						State:   pulumi.String("SUCCEEDED"),
-// 					},
-// 				},
-// 			},
-// 			Actions: glue.TriggerActionArray{
-// 				&glue.TriggerActionArgs{
-// 					JobName: pulumi.String("another-example-job"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-	DefaultRunProperties pulumi.MapOutput `pulumi:"defaultRunProperties"`
-	// Description of the workflow.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name you assign to this workflow.
-	Name pulumi.StringOutput `pulumi:"name"`
+	DefaultRunProperties pulumi.MapOutput       `pulumi:"defaultRunProperties"`
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Name                 pulumi.StringOutput    `pulumi:"name"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -104,21 +45,15 @@ func GetWorkflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workflow resources.
 type workflowState struct {
-	// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
 	DefaultRunProperties map[string]interface{} `pulumi:"defaultRunProperties"`
-	// Description of the workflow.
-	Description *string `pulumi:"description"`
-	// The name you assign to this workflow.
-	Name *string `pulumi:"name"`
+	Description          *string                `pulumi:"description"`
+	Name                 *string                `pulumi:"name"`
 }
 
 type WorkflowState struct {
-	// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
 	DefaultRunProperties pulumi.MapInput
-	// Description of the workflow.
-	Description pulumi.StringPtrInput
-	// The name you assign to this workflow.
-	Name pulumi.StringPtrInput
+	Description          pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
 }
 
 func (WorkflowState) ElementType() reflect.Type {
@@ -126,22 +61,16 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
 	DefaultRunProperties map[string]interface{} `pulumi:"defaultRunProperties"`
-	// Description of the workflow.
-	Description *string `pulumi:"description"`
-	// The name you assign to this workflow.
-	Name *string `pulumi:"name"`
+	Description          *string                `pulumi:"description"`
+	Name                 *string                `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
-	// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
 	DefaultRunProperties pulumi.MapInput
-	// Description of the workflow.
-	Description pulumi.StringPtrInput
-	// The name you assign to this workflow.
-	Name pulumi.StringPtrInput
+	Description          pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {

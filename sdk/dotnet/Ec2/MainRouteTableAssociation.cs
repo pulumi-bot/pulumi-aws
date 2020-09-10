@@ -9,55 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a resource for managing the main routing table of a VPC.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var mainRouteTableAssociation = new Aws.Ec2.MainRouteTableAssociation("mainRouteTableAssociation", new Aws.Ec2.MainRouteTableAssociationArgs
-    ///         {
-    ///             VpcId = aws_vpc.Foo.Id,
-    ///             RouteTableId = aws_route_table.Bar.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Notes
-    /// 
-    /// On VPC creation, the AWS API always creates an initial Main Route Table. This
-    /// resource records the ID of that Route Table under `original_route_table_id`.
-    /// The "Delete" action for a `main_route_table_association` consists of resetting
-    /// this original table as the Main Route Table for the VPC. You'll see this
-    /// additional Route Table in the AWS console; it must remain intact in order for
-    /// the `main_route_table_association` delete to work properly.
-    /// </summary>
     public partial class MainRouteTableAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Used internally, see __Notes__ below
-        /// </summary>
         [Output("originalRouteTableId")]
         public Output<string> OriginalRouteTableId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Route Table to set as the new
-        /// main route table for the target VPC
-        /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC whose main route table should be set
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -107,16 +66,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class MainRouteTableAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the Route Table to set as the new
-        /// main route table for the target VPC
-        /// </summary>
         [Input("routeTableId", required: true)]
         public Input<string> RouteTableId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC whose main route table should be set
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -127,22 +79,12 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class MainRouteTableAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Used internally, see __Notes__ below
-        /// </summary>
         [Input("originalRouteTableId")]
         public Input<string>? OriginalRouteTableId { get; set; }
 
-        /// <summary>
-        /// The ID of the Route Table to set as the new
-        /// main route table for the target VPC
-        /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
-        /// <summary>
-        /// The ID of the VPC whose main route table should be set
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

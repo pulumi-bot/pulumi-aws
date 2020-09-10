@@ -25,38 +25,9 @@ class IPSet(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to manage a GuardDuty IPSet.
-
-        > **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage IPSets. IPSets that are uploaded by the primary account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-ip-set.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        primary = aws.guardduty.Detector("primary", enable=True)
-        bucket = aws.s3.Bucket("bucket", acl="private")
-        my_ip_set = aws.s3.BucketObject("myIPSet",
-            acl="public-read",
-            content="10.0.0.0/8\n",
-            bucket=bucket.id,
-            key="MyIPSet")
-        example = aws.guardduty.IPSet("example",
-            activate=True,
-            detector_id=primary.id,
-            format="TXT",
-            location=pulumi.Output.all(my_ip_set.bucket, my_ip_set.key).apply(lambda bucket, key: f"https://s3.amazonaws.com/{bucket}/{key}"))
-        ```
-
+        Create a IPSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] activate: Specifies whether GuardDuty is to start using the uploaded IPSet.
-        :param pulumi.Input[str] detector_id: The detector ID of the GuardDuty.
-        :param pulumi.Input[str] format: The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
-        :param pulumi.Input[str] location: The URI of the file that contains the IPSet.
-        :param pulumi.Input[str] name: The friendly name to identify the IPSet.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,13 +85,6 @@ class IPSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] activate: Specifies whether GuardDuty is to start using the uploaded IPSet.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the GuardDuty IPSet.
-        :param pulumi.Input[str] detector_id: The detector ID of the GuardDuty.
-        :param pulumi.Input[str] format: The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
-        :param pulumi.Input[str] location: The URI of the file that contains the IPSet.
-        :param pulumi.Input[str] name: The friendly name to identify the IPSet.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -138,57 +102,36 @@ class IPSet(pulumi.CustomResource):
     @property
     @pulumi.getter
     def activate(self) -> pulumi.Output[bool]:
-        """
-        Specifies whether GuardDuty is to start using the uploaded IPSet.
-        """
         return pulumi.get(self, "activate")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the GuardDuty IPSet.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="detectorId")
     def detector_id(self) -> pulumi.Output[str]:
-        """
-        The detector ID of the GuardDuty.
-        """
         return pulumi.get(self, "detector_id")
 
     @property
     @pulumi.getter
     def format(self) -> pulumi.Output[str]:
-        """
-        The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
-        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        The URI of the file that contains the IPSet.
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The friendly name to identify the IPSet.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

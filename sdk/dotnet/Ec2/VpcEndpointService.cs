@@ -9,137 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a VPC Endpoint Service resource.
-    /// Service consumers can create an _Interface_ VPC Endpoint to connect to the service.
-    /// 
-    /// &gt; **NOTE on VPC Endpoint Services and VPC Endpoint Service Allowed Principals:** This provider provides
-    /// both a standalone VPC Endpoint Service Allowed Principal resource
-    /// and a VPC Endpoint Service resource with an `allowed_principals` attribute. Do not use the same principal ARN in both
-    /// a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
-    /// and will overwrite the association.
-    /// 
-    /// ## Example Usage
-    /// ### Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.VpcEndpointService("example", new Aws.Ec2.VpcEndpointServiceArgs
-    ///         {
-    ///             AcceptanceRequired = false,
-    ///             NetworkLoadBalancerArns = 
-    ///             {
-    ///                 aws_lb.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Basic w/ Tags
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.VpcEndpointService("example", new Aws.Ec2.VpcEndpointServiceArgs
-    ///         {
-    ///             AcceptanceRequired = false,
-    ///             NetworkLoadBalancerArns = 
-    ///             {
-    ///                 aws_lb.Example.Arn,
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Environment", "test" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpcEndpointService : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-        /// </summary>
         [Output("acceptanceRequired")]
         public Output<bool> AcceptanceRequired { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARNs of one or more principals allowed to discover the endpoint service.
-        /// </summary>
         [Output("allowedPrincipals")]
         public Output<ImmutableArray<string>> AllowedPrincipals { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the VPC endpoint service.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The Availability Zones in which the service is available.
-        /// </summary>
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
-        /// <summary>
-        /// The DNS names for the service.
-        /// </summary>
         [Output("baseEndpointDnsNames")]
         public Output<ImmutableArray<string>> BaseEndpointDnsNames { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether or not the service manages its VPC endpoints - `true` or `false`.
-        /// </summary>
         [Output("managesVpcEndpoints")]
         public Output<bool> ManagesVpcEndpoints { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARNs of one or more Network Load Balancers for the endpoint service.
-        /// </summary>
         [Output("networkLoadBalancerArns")]
         public Output<ImmutableArray<string>> NetworkLoadBalancerArns { get; private set; } = null!;
 
-        /// <summary>
-        /// The private DNS name for the service.
-        /// </summary>
         [Output("privateDnsName")]
         public Output<string> PrivateDnsName { get; private set; } = null!;
 
-        /// <summary>
-        /// The service name.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
-        /// <summary>
-        /// The service type, `Gateway` or `Interface`.
-        /// </summary>
         [Output("serviceType")]
         public Output<string> ServiceType { get; private set; } = null!;
 
-        /// <summary>
-        /// The state of the VPC endpoint service.
-        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -189,18 +93,11 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcEndpointServiceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-        /// </summary>
         [Input("acceptanceRequired", required: true)]
         public Input<bool> AcceptanceRequired { get; set; } = null!;
 
         [Input("allowedPrincipals")]
         private InputList<string>? _allowedPrincipals;
-
-        /// <summary>
-        /// The ARNs of one or more principals allowed to discover the endpoint service.
-        /// </summary>
         public InputList<string> AllowedPrincipals
         {
             get => _allowedPrincipals ?? (_allowedPrincipals = new InputList<string>());
@@ -209,10 +106,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("networkLoadBalancerArns", required: true)]
         private InputList<string>? _networkLoadBalancerArns;
-
-        /// <summary>
-        /// The ARNs of one or more Network Load Balancers for the endpoint service.
-        /// </summary>
         public InputList<string> NetworkLoadBalancerArns
         {
             get => _networkLoadBalancerArns ?? (_networkLoadBalancerArns = new InputList<string>());
@@ -221,10 +114,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -238,36 +127,22 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcEndpointServiceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-        /// </summary>
         [Input("acceptanceRequired")]
         public Input<bool>? AcceptanceRequired { get; set; }
 
         [Input("allowedPrincipals")]
         private InputList<string>? _allowedPrincipals;
-
-        /// <summary>
-        /// The ARNs of one or more principals allowed to discover the endpoint service.
-        /// </summary>
         public InputList<string> AllowedPrincipals
         {
             get => _allowedPrincipals ?? (_allowedPrincipals = new InputList<string>());
             set => _allowedPrincipals = value;
         }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the VPC endpoint service.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
-
-        /// <summary>
-        /// The Availability Zones in which the service is available.
-        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
@@ -276,64 +151,37 @@ namespace Pulumi.Aws.Ec2
 
         [Input("baseEndpointDnsNames")]
         private InputList<string>? _baseEndpointDnsNames;
-
-        /// <summary>
-        /// The DNS names for the service.
-        /// </summary>
         public InputList<string> BaseEndpointDnsNames
         {
             get => _baseEndpointDnsNames ?? (_baseEndpointDnsNames = new InputList<string>());
             set => _baseEndpointDnsNames = value;
         }
 
-        /// <summary>
-        /// Whether or not the service manages its VPC endpoints - `true` or `false`.
-        /// </summary>
         [Input("managesVpcEndpoints")]
         public Input<bool>? ManagesVpcEndpoints { get; set; }
 
         [Input("networkLoadBalancerArns")]
         private InputList<string>? _networkLoadBalancerArns;
-
-        /// <summary>
-        /// The ARNs of one or more Network Load Balancers for the endpoint service.
-        /// </summary>
         public InputList<string> NetworkLoadBalancerArns
         {
             get => _networkLoadBalancerArns ?? (_networkLoadBalancerArns = new InputList<string>());
             set => _networkLoadBalancerArns = value;
         }
 
-        /// <summary>
-        /// The private DNS name for the service.
-        /// </summary>
         [Input("privateDnsName")]
         public Input<string>? PrivateDnsName { get; set; }
 
-        /// <summary>
-        /// The service name.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        /// <summary>
-        /// The service type, `Gateway` or `Interface`.
-        /// </summary>
         [Input("serviceType")]
         public Input<string>? ServiceType { get; set; }
 
-        /// <summary>
-        /// The state of the VPC endpoint service.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
