@@ -28,55 +28,9 @@ class UsagePlan(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an API Gateway Usage Plan.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        myapi = aws.apigateway.RestApi("myapi")
-        # ...
-        dev = aws.apigateway.Deployment("dev",
-            rest_api=myapi.id,
-            stage_name="dev")
-        prod = aws.apigateway.Deployment("prod",
-            rest_api=myapi.id,
-            stage_name="prod")
-        my_usage_plan = aws.apigateway.UsagePlan("myUsagePlan",
-            description="my description",
-            product_code="MYCODE",
-            api_stages=[
-                aws.apigateway.UsagePlanApiStageArgs(
-                    api_id=myapi.id,
-                    stage=dev.stage_name,
-                ),
-                aws.apigateway.UsagePlanApiStageArgs(
-                    api_id=myapi.id,
-                    stage=prod.stage_name,
-                ),
-            ],
-            quota_settings=aws.apigateway.UsagePlanQuotaSettingsArgs(
-                limit=20,
-                offset=2,
-                period="WEEK",
-            ),
-            throttle_settings=aws.apigateway.UsagePlanThrottleSettingsArgs(
-                burst_limit=5,
-                rate_limit=10,
-            ))
-        ```
-
+        Create a UsagePlan resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['UsagePlanApiStageArgs']]]] api_stages: The associated API stages of the usage plan.
-        :param pulumi.Input[str] description: The description of a usage plan.
-        :param pulumi.Input[str] name: The name of the usage plan.
-        :param pulumi.Input[str] product_code: The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-        :param pulumi.Input[pulumi.InputType['UsagePlanQuotaSettingsArgs']] quota_settings: The quota settings of the usage plan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[pulumi.InputType['UsagePlanThrottleSettingsArgs']] throttle_settings: The throttling limits of the usage plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,14 +82,6 @@ class UsagePlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['UsagePlanApiStageArgs']]]] api_stages: The associated API stages of the usage plan.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN)
-        :param pulumi.Input[str] description: The description of a usage plan.
-        :param pulumi.Input[str] name: The name of the usage plan.
-        :param pulumi.Input[str] product_code: The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-        :param pulumi.Input[pulumi.InputType['UsagePlanQuotaSettingsArgs']] quota_settings: The quota settings of the usage plan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[pulumi.InputType['UsagePlanThrottleSettingsArgs']] throttle_settings: The throttling limits of the usage plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -154,65 +100,41 @@ class UsagePlan(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiStages")
     def api_stages(self) -> pulumi.Output[Optional[List['outputs.UsagePlanApiStage']]]:
-        """
-        The associated API stages of the usage plan.
-        """
         return pulumi.get(self, "api_stages")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN)
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of a usage plan.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the usage plan.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="productCode")
     def product_code(self) -> pulumi.Output[Optional[str]]:
-        """
-        The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-        """
         return pulumi.get(self, "product_code")
 
     @property
     @pulumi.getter(name="quotaSettings")
     def quota_settings(self) -> pulumi.Output[Optional['outputs.UsagePlanQuotaSettings']]:
-        """
-        The quota settings of the usage plan.
-        """
         return pulumi.get(self, "quota_settings")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="throttleSettings")
     def throttle_settings(self) -> pulumi.Output[Optional['outputs.UsagePlanThrottleSettings']]:
-        """
-        The throttling limits of the usage plan.
-        """
         return pulumi.get(self, "throttle_settings")
 
     def translate_output_property(self, prop):

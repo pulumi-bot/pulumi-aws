@@ -9,271 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ssm
 {
-    /// <summary>
-    /// Provides an SSM Patch Baseline resource
-    /// 
-    /// &gt; **NOTE on Patch Baselines:** The `approved_patches` and `approval_rule` are
-    /// both marked as optional fields, but the Patch Baseline requires that at least one
-    /// of them is specified.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage using `approved_patches` only
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var production = new Aws.Ssm.PatchBaseline("production", new Aws.Ssm.PatchBaselineArgs
-    ///         {
-    ///             ApprovedPatches = 
-    ///             {
-    ///                 "KB123456",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Advanced usage, specifying patch filters
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var production = new Aws.Ssm.PatchBaseline("production", new Aws.Ssm.PatchBaselineArgs
-    ///         {
-    ///             ApprovalRules = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
-    ///                 {
-    ///                     ApproveAfterDays = 7,
-    ///                     ComplianceLevel = "HIGH",
-    ///                     PatchFilters = 
-    ///                     {
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "PRODUCT",
-    ///                             Values = 
-    ///                             {
-    ///                                 "WindowsServer2016",
-    ///                             },
-    ///                         },
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "CLASSIFICATION",
-    ///                             Values = 
-    ///                             {
-    ///                                 "CriticalUpdates",
-    ///                                 "SecurityUpdates",
-    ///                                 "Updates",
-    ///                             },
-    ///                         },
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "MSRC_SEVERITY",
-    ///                             Values = 
-    ///                             {
-    ///                                 "Critical",
-    ///                                 "Important",
-    ///                                 "Moderate",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
-    ///                 {
-    ///                     ApproveAfterDays = 7,
-    ///                     PatchFilters = 
-    ///                     {
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "PRODUCT",
-    ///                             Values = 
-    ///                             {
-    ///                                 "WindowsServer2012",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ApprovedPatches = 
-    ///             {
-    ///                 "KB123456",
-    ///                 "KB456789",
-    ///             },
-    ///             Description = "Patch Baseline Description",
-    ///             GlobalFilters = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
-    ///                 {
-    ///                     Key = "PRODUCT",
-    ///                     Values = 
-    ///                     {
-    ///                         "WindowsServer2008",
-    ///                     },
-    ///                 },
-    ///                 new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
-    ///                 {
-    ///                     Key = "CLASSIFICATION",
-    ///                     Values = 
-    ///                     {
-    ///                         "ServicePacks",
-    ///                     },
-    ///                 },
-    ///                 new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
-    ///                 {
-    ///                     Key = "MSRC_SEVERITY",
-    ///                     Values = 
-    ///                     {
-    ///                         "Low",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             RejectedPatches = 
-    ///             {
-    ///                 "KB987654",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Advanced usage, specifying Microsoft application and Windows patch rules
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var windowsOsApps = new Aws.Ssm.PatchBaseline("windowsOsApps", new Aws.Ssm.PatchBaselineArgs
-    ///         {
-    ///             ApprovalRules = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
-    ///                 {
-    ///                     ApproveAfterDays = 7,
-    ///                     PatchFilters = 
-    ///                     {
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "CLASSIFICATION",
-    ///                             Values = 
-    ///                             {
-    ///                                 "CriticalUpdates",
-    ///                                 "SecurityUpdates",
-    ///                             },
-    ///                         },
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "MSRC_SEVERITY",
-    ///                             Values = 
-    ///                             {
-    ///                                 "Critical",
-    ///                                 "Important",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
-    ///                 {
-    ///                     ApproveAfterDays = 7,
-    ///                     PatchFilters = 
-    ///                     {
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "PATCH_SET",
-    ///                             Values = 
-    ///                             {
-    ///                                 "APPLICATION",
-    ///                             },
-    ///                         },
-    ///                         new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
-    ///                         {
-    ///                             Key = "PRODUCT",
-    ///                             Values = 
-    ///                             {
-    ///                                 "Office 2013",
-    ///                                 "Office 2016",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Description = "Patch both Windows and Microsoft apps",
-    ///             OperatingSystem = "WINDOWS",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PatchBaseline : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A set of rules used to include patches in the baseline. up to 10 approval rules can be specified. Each approval_rule block requires the fields documented below.
-        /// </summary>
         [Output("approvalRules")]
         public Output<ImmutableArray<Outputs.PatchBaselineApprovalRule>> ApprovalRules { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of explicitly approved patches for the baseline.
-        /// </summary>
         [Output("approvedPatches")]
         public Output<ImmutableArray<string>> ApprovedPatches { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid compliance levels include the following: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
-        /// </summary>
         [Output("approvedPatchesComplianceLevel")]
         public Output<string?> ApprovedPatchesComplianceLevel { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the patch baseline.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// A set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-        /// </summary>
         [Output("globalFilters")]
         public Output<ImmutableArray<Outputs.PatchBaselineGlobalFilter>> GlobalFilters { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the patch baseline.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines the operating system the patch baseline applies to. Supported operating systems include `WINDOWS`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `SUSE`, `UBUNTU`, `CENTOS`, and `REDHAT_ENTERPRISE_LINUX`. The Default value is `WINDOWS`.
-        /// </summary>
         [Output("operatingSystem")]
         public Output<string?> OperatingSystem { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of rejected patches.
-        /// </summary>
         [Output("rejectedPatches")]
         public Output<ImmutableArray<string>> RejectedPatches { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -325,10 +86,6 @@ namespace Pulumi.Aws.Ssm
     {
         [Input("approvalRules")]
         private InputList<Inputs.PatchBaselineApprovalRuleArgs>? _approvalRules;
-
-        /// <summary>
-        /// A set of rules used to include patches in the baseline. up to 10 approval rules can be specified. Each approval_rule block requires the fields documented below.
-        /// </summary>
         public InputList<Inputs.PatchBaselineApprovalRuleArgs> ApprovalRules
         {
             get => _approvalRules ?? (_approvalRules = new InputList<Inputs.PatchBaselineApprovalRuleArgs>());
@@ -337,58 +94,34 @@ namespace Pulumi.Aws.Ssm
 
         [Input("approvedPatches")]
         private InputList<string>? _approvedPatches;
-
-        /// <summary>
-        /// A list of explicitly approved patches for the baseline.
-        /// </summary>
         public InputList<string> ApprovedPatches
         {
             get => _approvedPatches ?? (_approvedPatches = new InputList<string>());
             set => _approvedPatches = value;
         }
 
-        /// <summary>
-        /// Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid compliance levels include the following: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
-        /// </summary>
         [Input("approvedPatchesComplianceLevel")]
         public Input<string>? ApprovedPatchesComplianceLevel { get; set; }
 
-        /// <summary>
-        /// The description of the patch baseline.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("globalFilters")]
         private InputList<Inputs.PatchBaselineGlobalFilterArgs>? _globalFilters;
-
-        /// <summary>
-        /// A set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-        /// </summary>
         public InputList<Inputs.PatchBaselineGlobalFilterArgs> GlobalFilters
         {
             get => _globalFilters ?? (_globalFilters = new InputList<Inputs.PatchBaselineGlobalFilterArgs>());
             set => _globalFilters = value;
         }
 
-        /// <summary>
-        /// The name of the patch baseline.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Defines the operating system the patch baseline applies to. Supported operating systems include `WINDOWS`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `SUSE`, `UBUNTU`, `CENTOS`, and `REDHAT_ENTERPRISE_LINUX`. The Default value is `WINDOWS`.
-        /// </summary>
         [Input("operatingSystem")]
         public Input<string>? OperatingSystem { get; set; }
 
         [Input("rejectedPatches")]
         private InputList<string>? _rejectedPatches;
-
-        /// <summary>
-        /// A list of rejected patches.
-        /// </summary>
         public InputList<string> RejectedPatches
         {
             get => _rejectedPatches ?? (_rejectedPatches = new InputList<string>());
@@ -397,10 +130,6 @@ namespace Pulumi.Aws.Ssm
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -416,10 +145,6 @@ namespace Pulumi.Aws.Ssm
     {
         [Input("approvalRules")]
         private InputList<Inputs.PatchBaselineApprovalRuleGetArgs>? _approvalRules;
-
-        /// <summary>
-        /// A set of rules used to include patches in the baseline. up to 10 approval rules can be specified. Each approval_rule block requires the fields documented below.
-        /// </summary>
         public InputList<Inputs.PatchBaselineApprovalRuleGetArgs> ApprovalRules
         {
             get => _approvalRules ?? (_approvalRules = new InputList<Inputs.PatchBaselineApprovalRuleGetArgs>());
@@ -428,58 +153,34 @@ namespace Pulumi.Aws.Ssm
 
         [Input("approvedPatches")]
         private InputList<string>? _approvedPatches;
-
-        /// <summary>
-        /// A list of explicitly approved patches for the baseline.
-        /// </summary>
         public InputList<string> ApprovedPatches
         {
             get => _approvedPatches ?? (_approvedPatches = new InputList<string>());
             set => _approvedPatches = value;
         }
 
-        /// <summary>
-        /// Defines the compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid compliance levels include the following: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
-        /// </summary>
         [Input("approvedPatchesComplianceLevel")]
         public Input<string>? ApprovedPatchesComplianceLevel { get; set; }
 
-        /// <summary>
-        /// The description of the patch baseline.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("globalFilters")]
         private InputList<Inputs.PatchBaselineGlobalFilterGetArgs>? _globalFilters;
-
-        /// <summary>
-        /// A set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-        /// </summary>
         public InputList<Inputs.PatchBaselineGlobalFilterGetArgs> GlobalFilters
         {
             get => _globalFilters ?? (_globalFilters = new InputList<Inputs.PatchBaselineGlobalFilterGetArgs>());
             set => _globalFilters = value;
         }
 
-        /// <summary>
-        /// The name of the patch baseline.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Defines the operating system the patch baseline applies to. Supported operating systems include `WINDOWS`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `SUSE`, `UBUNTU`, `CENTOS`, and `REDHAT_ENTERPRISE_LINUX`. The Default value is `WINDOWS`.
-        /// </summary>
         [Input("operatingSystem")]
         public Input<string>? OperatingSystem { get; set; }
 
         [Input("rejectedPatches")]
         private InputList<string>? _rejectedPatches;
-
-        /// <summary>
-        /// A list of rejected patches.
-        /// </summary>
         public InputList<string> RejectedPatches
         {
             get => _rejectedPatches ?? (_rejectedPatches = new InputList<string>());
@@ -488,10 +189,6 @@ namespace Pulumi.Aws.Ssm
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

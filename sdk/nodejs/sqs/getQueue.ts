@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
- * By using this data source, you can reference SQS queues without having to hardcode
- * the ARNs as input.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.sqs.getQueue({
- *     name: "queue",
- * }, { async: true }));
- * ```
- */
 export function getQueue(args: GetQueueArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueResult> {
     if (!opts) {
         opts = {}
@@ -40,13 +24,7 @@ export function getQueue(args: GetQueueArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getQueue.
  */
 export interface GetQueueArgs {
-    /**
-     * The name of the queue to match.
-     */
     readonly name: string;
-    /**
-     * A map of tags for the resource.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -54,21 +32,12 @@ export interface GetQueueArgs {
  * A collection of values returned by getQueue.
  */
 export interface GetQueueResult {
-    /**
-     * The Amazon Resource Name (ARN) of the queue.
-     */
     readonly arn: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
-    /**
-     * A map of tags for the resource.
-     */
     readonly tags: {[key: string]: string};
-    /**
-     * The URL of the queue.
-     */
     readonly url: string;
 }

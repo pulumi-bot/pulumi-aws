@@ -9,44 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Requests automatic route propagation between a VPN gateway and a route table.
-    /// 
-    /// &gt; **Note:** This resource should not be used with a route table that has
-    /// the `propagating_vgws` argument set. If that argument is set, any route
-    /// propagation not explicitly listed in its value will be removed.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.VpnGatewayRoutePropagation("example", new Aws.Ec2.VpnGatewayRoutePropagationArgs
-    ///         {
-    ///             VpnGatewayId = aws_vpn_gateway.Example.Id,
-    ///             RouteTableId = aws_route_table.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpnGatewayRoutePropagation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The id of the `aws.ec2.RouteTable` to propagate routes into.
-        /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
-        /// </summary>
         [Output("vpnGatewayId")]
         public Output<string> VpnGatewayId { get; private set; } = null!;
 
@@ -96,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpnGatewayRoutePropagationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the `aws.ec2.RouteTable` to propagate routes into.
-        /// </summary>
         [Input("routeTableId", required: true)]
         public Input<string> RouteTableId { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
-        /// </summary>
         [Input("vpnGatewayId", required: true)]
         public Input<string> VpnGatewayId { get; set; } = null!;
 
@@ -115,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpnGatewayRoutePropagationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the `aws.ec2.RouteTable` to propagate routes into.
-        /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
-        /// <summary>
-        /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
-        /// </summary>
         [Input("vpnGatewayId")]
         public Input<string>? VpnGatewayId { get; set; }
 

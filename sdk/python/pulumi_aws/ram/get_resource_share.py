@@ -50,9 +50,6 @@ class GetResourceShareResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the resource share.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -76,9 +73,6 @@ class GetResourceShareResult:
     @property
     @pulumi.getter(name="owningAccountId")
     def owning_account_id(self) -> str:
-        """
-        The ID of the AWS account that owns the resource share.
-        """
         return pulumi.get(self, "owning_account_id")
 
     @property
@@ -89,17 +83,11 @@ class GetResourceShareResult:
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The Status of the RAM share.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        The Tags attached to the RAM share
-        """
         return pulumi.get(self, "tags")
 
 
@@ -125,36 +113,7 @@ def get_resource_share(filters: Optional[List[pulumi.InputType['GetResourceShare
                        tags: Optional[Mapping[str, str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceShareResult:
     """
-    `ram.ResourceShare` Retrieve information about a RAM Resource Share.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ram.get_resource_share(name="example",
-        resource_owner="SELF")
-    ```
-    ## Search by filters
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    tag_filter = aws.ram.get_resource_share(filters=[aws.ram.GetResourceShareFilterArgs(
-            name="NameOfTag",
-            values=["exampleNameTagValue"],
-        )],
-        name="MyResourceName",
-        resource_owner="SELF")
-    ```
-
-
-    :param List[pulumi.InputType['GetResourceShareFilterArgs']] filters: A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
-    :param str name: The name of the tag key to filter on.
-    :param str resource_owner: The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
-    :param Mapping[str, str] tags: The Tags attached to the RAM share
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

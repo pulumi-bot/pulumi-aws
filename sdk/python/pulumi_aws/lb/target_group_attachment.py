@@ -23,51 +23,9 @@ class TargetGroupAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides the ability to register instances and containers with an Application Load Balancer (ALB) or Network Load Balancer (NLB) target group. For attaching resources with Elastic Load Balancer (ELB), see the `elb.Attachment` resource.
-
-        > **Note:** `alb.TargetGroupAttachment` is known as `lb.TargetGroupAttachment`. The functionality is identical.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_target_group = aws.lb.TargetGroup("testTargetGroup")
-        # Other arguments
-        test_instance = aws.ec2.Instance("testInstance")
-        # Other arguments
-        test_target_group_attachment = aws.lb.TargetGroupAttachment("testTargetGroupAttachment",
-            target_group_arn=test_target_group.arn,
-            target_id=test_instance.id,
-            port=80)
-        ```
-        ## Usage with lambda
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_target_group = aws.lb.TargetGroup("testTargetGroup", target_type="lambda")
-        test_function = aws.lambda_.Function("testFunction")
-        # Other arguments
-        with_lb = aws.lambda_.Permission("withLb",
-            action="lambda:InvokeFunction",
-            function=test_function.arn,
-            principal="elasticloadbalancing.amazonaws.com",
-            source_arn=test_target_group.arn)
-        test_target_group_attachment = aws.lb.TargetGroupAttachment("testTargetGroupAttachment",
-            target_group_arn=test_target_group.arn,
-            target_id=test_function.arn,
-            opts=ResourceOptions(depends_on=[with_lb]))
-        ```
-
+        Create a TargetGroupAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-        :param pulumi.Input[float] port: The port on which targets receive traffic.
-        :param pulumi.Input[str] target_group_arn: The ARN of the target group with which to register targets
-        :param pulumi.Input[str] target_id: The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,10 +75,6 @@ class TargetGroupAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-        :param pulumi.Input[float] port: The port on which targets receive traffic.
-        :param pulumi.Input[str] target_group_arn: The ARN of the target group with which to register targets
-        :param pulumi.Input[str] target_id: The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -135,33 +89,21 @@ class TargetGroupAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[float]]:
-        """
-        The port on which targets receive traffic.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="targetGroupArn")
     def target_group_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the target group with which to register targets
-        """
         return pulumi.get(self, "target_group_arn")
 
     @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        """
         return pulumi.get(self, "target_id")
 
     def translate_output_property(self, prop):

@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * This data source can be used to fetch information about a specific
- * IAM policy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.iam.getPolicy({
- *     arn: "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials",
- * }, { async: true }));
- * ```
- */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     if (!opts) {
         opts = {}
@@ -38,9 +23,6 @@ export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getPolicy.
  */
 export interface GetPolicyArgs {
-    /**
-     * ARN of the IAM policy.
-     */
     readonly arn: string;
 }
 
@@ -48,28 +30,13 @@ export interface GetPolicyArgs {
  * A collection of values returned by getPolicy.
  */
 export interface GetPolicyResult {
-    /**
-     * The Amazon Resource Name (ARN) specifying the policy.
-     */
     readonly arn: string;
-    /**
-     * The description of the policy.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The name of the IAM policy.
-     */
     readonly name: string;
-    /**
-     * The path to the policy.
-     */
     readonly path: string;
-    /**
-     * The policy document of the policy.
-     */
     readonly policy: string;
 }

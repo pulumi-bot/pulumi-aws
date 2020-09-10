@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 stage.
- * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Stage("example", {apiId: aws_apigatewayv2_api.example.id});
- * ```
- */
 export class Stage extends pulumi.CustomResource {
     /**
      * Get an existing Stage resource's state with the given name, ID, and optional extra
@@ -48,67 +34,19 @@ export class Stage extends pulumi.CustomResource {
         return obj['__pulumiType'] === Stage.__pulumiType;
     }
 
-    /**
-     * Settings for logging access in this stage.
-     * Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-     */
     public readonly accessLogSettings!: pulumi.Output<outputs.apigatewayv2.StageAccessLogSettings | undefined>;
-    /**
-     * The API identifier.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * The ARN of the stage.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Whether updates to an API automatically trigger a new deployment. Defaults to `false`.
-     */
     public readonly autoDeploy!: pulumi.Output<boolean | undefined>;
-    /**
-     * The identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
-     * Supported only for WebSocket APIs.
-     */
     public readonly clientCertificateId!: pulumi.Output<string | undefined>;
-    /**
-     * The default route settings for the stage.
-     */
     public readonly defaultRouteSettings!: pulumi.Output<outputs.apigatewayv2.StageDefaultRouteSettings | undefined>;
-    /**
-     * The deployment identifier of the stage. Use the [`aws.apigatewayv2.Deployment`](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment.html) resource to configure a deployment.
-     */
     public readonly deploymentId!: pulumi.Output<string>;
-    /**
-     * The description for the stage.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute
-     * or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-     * See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-     * Set only for WebSocket APIs.
-     */
     public /*out*/ readonly executionArn!: pulumi.Output<string>;
-    /**
-     * The URL to invoke the API pointing to the stage,
-     * e.g. `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
-     */
     public /*out*/ readonly invokeUrl!: pulumi.Output<string>;
-    /**
-     * The name of the stage.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Route settings for the stage.
-     */
     public readonly routeSettings!: pulumi.Output<outputs.apigatewayv2.StageRouteSetting[] | undefined>;
-    /**
-     * A map that defines the stage variables for the stage.
-     */
     public readonly stageVariables!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A map of tags to assign to the stage.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -172,67 +110,19 @@ export class Stage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Stage resources.
  */
 export interface StageState {
-    /**
-     * Settings for logging access in this stage.
-     * Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-     */
     readonly accessLogSettings?: pulumi.Input<inputs.apigatewayv2.StageAccessLogSettings>;
-    /**
-     * The API identifier.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * The ARN of the stage.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Whether updates to an API automatically trigger a new deployment. Defaults to `false`.
-     */
     readonly autoDeploy?: pulumi.Input<boolean>;
-    /**
-     * The identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
-     * Supported only for WebSocket APIs.
-     */
     readonly clientCertificateId?: pulumi.Input<string>;
-    /**
-     * The default route settings for the stage.
-     */
     readonly defaultRouteSettings?: pulumi.Input<inputs.apigatewayv2.StageDefaultRouteSettings>;
-    /**
-     * The deployment identifier of the stage. Use the [`aws.apigatewayv2.Deployment`](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment.html) resource to configure a deployment.
-     */
     readonly deploymentId?: pulumi.Input<string>;
-    /**
-     * The description for the stage.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute
-     * or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-     * See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-     * Set only for WebSocket APIs.
-     */
     readonly executionArn?: pulumi.Input<string>;
-    /**
-     * The URL to invoke the API pointing to the stage,
-     * e.g. `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
-     */
     readonly invokeUrl?: pulumi.Input<string>;
-    /**
-     * The name of the stage.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Route settings for the stage.
-     */
     readonly routeSettings?: pulumi.Input<pulumi.Input<inputs.apigatewayv2.StageRouteSetting>[]>;
-    /**
-     * A map that defines the stage variables for the stage.
-     */
     readonly stageVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A map of tags to assign to the stage.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -240,50 +130,15 @@ export interface StageState {
  * The set of arguments for constructing a Stage resource.
  */
 export interface StageArgs {
-    /**
-     * Settings for logging access in this stage.
-     * Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-     */
     readonly accessLogSettings?: pulumi.Input<inputs.apigatewayv2.StageAccessLogSettings>;
-    /**
-     * The API identifier.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * Whether updates to an API automatically trigger a new deployment. Defaults to `false`.
-     */
     readonly autoDeploy?: pulumi.Input<boolean>;
-    /**
-     * The identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
-     * Supported only for WebSocket APIs.
-     */
     readonly clientCertificateId?: pulumi.Input<string>;
-    /**
-     * The default route settings for the stage.
-     */
     readonly defaultRouteSettings?: pulumi.Input<inputs.apigatewayv2.StageDefaultRouteSettings>;
-    /**
-     * The deployment identifier of the stage. Use the [`aws.apigatewayv2.Deployment`](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment.html) resource to configure a deployment.
-     */
     readonly deploymentId?: pulumi.Input<string>;
-    /**
-     * The description for the stage.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the stage.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Route settings for the stage.
-     */
     readonly routeSettings?: pulumi.Input<pulumi.Input<inputs.apigatewayv2.StageRouteSetting>[]>;
-    /**
-     * A map that defines the stage variables for the stage.
-     */
     readonly stageVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A map of tags to assign to the stage.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

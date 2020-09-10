@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides information about an Elastic File System (EFS) Access Point.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const test = pulumi.output(aws.efs.getAccessPoint({
- *     accessPointId: "fsap-12345678",
- * }, { async: true }));
- * ```
- */
 export function getAccessPoint(args: GetAccessPointArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPointResult> {
     if (!opts) {
         opts = {}
@@ -38,13 +24,7 @@ export function getAccessPoint(args: GetAccessPointArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getAccessPoint.
  */
 export interface GetAccessPointArgs {
-    /**
-     * The ID that identifies the file system.
-     */
     readonly accessPointId: string;
-    /**
-     * Key-value mapping of resource tags.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -53,30 +33,15 @@ export interface GetAccessPointArgs {
  */
 export interface GetAccessPointResult {
     readonly accessPointId: string;
-    /**
-     * Amazon Resource Name of the file system.
-     */
     readonly arn: string;
-    /**
-     * Amazon Resource Name of the file system.
-     */
     readonly fileSystemArn: string;
-    /**
-     * The ID of the file system for which the access point is intended.
-     */
     readonly fileSystemId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ownerId: string;
-    /**
-     * Single element list containing operating system user and group applied to all file system requests made using the access point.
-     */
     readonly posixUsers: outputs.efs.GetAccessPointPosixUser[];
     readonly rootDirectories: outputs.efs.GetAccessPointRootDirectory[];
-    /**
-     * Key-value mapping of resource tags.
-     */
     readonly tags?: {[key: string]: string};
 }

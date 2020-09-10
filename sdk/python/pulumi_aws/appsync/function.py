@@ -26,71 +26,9 @@ class Function(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AppSync Function.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_graph_ql_api = aws.appsync.GraphQLApi("testGraphQLApi",
-            authentication_type="API_KEY",
-            schema=\"\"\"type Mutation {
-          putPost(id: ID!, title: String!): Post
-        }
-
-        type Post {
-          id: ID!
-          title: String!
-        }
-
-        type Query {
-          singlePost(id: ID!): Post
-        }
-
-        schema {
-          query: Query
-          mutation: Mutation
-        }
-        \"\"\")
-        test_data_source = aws.appsync.DataSource("testDataSource",
-            api_id=test_graph_ql_api.id,
-            name="tf-example",
-            type="HTTP",
-            http_config=aws.appsync.DataSourceHttpConfigArgs(
-                endpoint="http://example.com",
-            ))
-        test_function = aws.appsync.Function("testFunction",
-            api_id=test_graph_ql_api.id,
-            data_source=test_data_source.name,
-            name="tf_example",
-            request_mapping_template=\"\"\"{
-            "version": "2018-05-29",
-            "method": "GET",
-            "resourcePath": "/",
-            "params":{
-                "headers": $utils.http.copyheaders($ctx.request.headers)
-            }
-        }
-        \"\"\",
-            response_mapping_template=\"\"\"#if($ctx.result.statusCode == 200)
-            $ctx.result.body
-        #else
-            $utils.appendError($ctx.result.body, $ctx.result.statusCode)
-        #end
-        \"\"\")
-        ```
-
+        Create a Function resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The ID of the associated AppSync API.
-        :param pulumi.Input[str] data_source: The Function DataSource name.
-        :param pulumi.Input[str] description: The Function description.
-        :param pulumi.Input[str] function_version: The version of the request mapping template. Currently the supported value is `2018-05-29`.
-        :param pulumi.Input[str] name: The Function name. The function name does not have to be unique.
-        :param pulumi.Input[str] request_mapping_template: The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-        :param pulumi.Input[str] response_mapping_template: The Function response mapping template.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -152,15 +90,6 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The ID of the associated AppSync API.
-        :param pulumi.Input[str] arn: The ARN of the Function object.
-        :param pulumi.Input[str] data_source: The Function DataSource name.
-        :param pulumi.Input[str] description: The Function description.
-        :param pulumi.Input[str] function_id: A unique ID representing the Function object.
-        :param pulumi.Input[str] function_version: The version of the request mapping template. Currently the supported value is `2018-05-29`.
-        :param pulumi.Input[str] name: The Function name. The function name does not have to be unique.
-        :param pulumi.Input[str] request_mapping_template: The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-        :param pulumi.Input[str] response_mapping_template: The Function response mapping template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -180,73 +109,46 @@ class Function(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the associated AppSync API.
-        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the Function object.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="dataSource")
     def data_source(self) -> pulumi.Output[str]:
-        """
-        The Function DataSource name.
-        """
         return pulumi.get(self, "data_source")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Function description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="functionId")
     def function_id(self) -> pulumi.Output[str]:
-        """
-        A unique ID representing the Function object.
-        """
         return pulumi.get(self, "function_id")
 
     @property
     @pulumi.getter(name="functionVersion")
     def function_version(self) -> pulumi.Output[Optional[str]]:
-        """
-        The version of the request mapping template. Currently the supported value is `2018-05-29`.
-        """
         return pulumi.get(self, "function_version")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The Function name. The function name does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="requestMappingTemplate")
     def request_mapping_template(self) -> pulumi.Output[str]:
-        """
-        The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-        """
         return pulumi.get(self, "request_mapping_template")
 
     @property
     @pulumi.getter(name="responseMappingTemplate")
     def response_mapping_template(self) -> pulumi.Output[str]:
-        """
-        The Function response mapping template.
-        """
         return pulumi.get(self, "response_mapping_template")
 
     def translate_output_property(self, prop):

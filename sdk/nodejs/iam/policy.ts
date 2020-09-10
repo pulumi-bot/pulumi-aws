@@ -6,34 +6,6 @@ import * as utilities from "../utilities";
 
 import {PolicyDocument} from "./index";
 
-/**
- * Provides an IAM policy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const policy = new aws.iam.Policy("policy", {
- *     description: "My test policy",
- *     path: "/",
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "ec2:Describe*"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -62,30 +34,11 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
-    /**
-     * The ARN assigned by AWS to this policy.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Description of the IAM policy.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the policy. If omitted, this provider will assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
-    /**
-     * Path in which to create the policy.
-     * See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-     */
     public readonly path!: pulumi.Output<string | undefined>;
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     public readonly policy!: pulumi.Output<string>;
 
     /**
@@ -133,30 +86,11 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
-    /**
-     * The ARN assigned by AWS to this policy.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Description of the IAM policy.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the policy. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Path in which to create the policy.
-     * See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-     */
     readonly path?: pulumi.Input<string>;
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     readonly policy?: pulumi.Input<string | PolicyDocument>;
 }
 
@@ -164,25 +98,9 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
-    /**
-     * Description of the IAM policy.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the policy. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Path in which to create the policy.
-     * See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-     */
     readonly path?: pulumi.Input<string>;
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     readonly policy: pulumi.Input<string | PolicyDocument>;
 }

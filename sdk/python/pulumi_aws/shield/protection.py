@@ -21,27 +21,9 @@ class Protection(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Enables AWS Shield Advanced for a specific AWS resource.
-        The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
-
-        ## Example Usage
-        ### Create protection
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        available = aws.get_availability_zones()
-        current_region = aws.get_region()
-        current_caller_identity = aws.get_caller_identity()
-        foo_eip = aws.ec2.Eip("fooEip", vpc=True)
-        foo_protection = aws.shield.Protection("fooProtection", resource_arn=foo_eip.id.apply(lambda id: f"arn:aws:ec2:{current_region.name}:{current_caller_identity.account_id}:eip-allocation/{id}"))
-        ```
-
+        Create a Protection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A friendly name for the Protection you are creating.
-        :param pulumi.Input[str] resource_arn: The ARN (Amazon Resource Name) of the resource to be protected.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,8 +65,6 @@ class Protection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A friendly name for the Protection you are creating.
-        :param pulumi.Input[str] resource_arn: The ARN (Amazon Resource Name) of the resource to be protected.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -97,17 +77,11 @@ class Protection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A friendly name for the Protection you are creating.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="resourceArn")
     def resource_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN (Amazon Resource Name) of the resource to be protected.
-        """
         return pulumi.get(self, "resource_arn")
 
     def translate_output_property(self, prop):

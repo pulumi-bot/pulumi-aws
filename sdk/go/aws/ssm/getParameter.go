@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SSM Parameter data source.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ssm.LookupParameter(ctx, &ssm.LookupParameterArgs{
-// 			Name: "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// > **Note:** The data source is currently following the behavior of the [SSM API](https://docs.aws.amazon.com/sdk-for-go/api/service/ssm/#Parameter) to return a string value, regardless of parameter type.
 func LookupParameter(ctx *pulumi.Context, args *LookupParameterArgs, opts ...pulumi.InvokeOption) (*LookupParameterResult, error) {
 	var rv LookupParameterResult
 	err := ctx.Invoke("aws:ssm/getParameter:getParameter", args, &rv, opts...)
@@ -44,10 +18,8 @@ func LookupParameter(ctx *pulumi.Context, args *LookupParameterArgs, opts ...pul
 
 // A collection of arguments for invoking getParameter.
 type LookupParameterArgs struct {
-	// The name of the parameter.
-	Name string `pulumi:"name"`
-	// Whether to return decrypted `SecureString` value. Defaults to `true`.
-	WithDecryption *bool `pulumi:"withDecryption"`
+	Name           string `pulumi:"name"`
+	WithDecryption *bool  `pulumi:"withDecryption"`
 }
 
 // A collection of values returned by getParameter.

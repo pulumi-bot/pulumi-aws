@@ -26,38 +26,9 @@ class GameSessionQueue(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Gamelift Game Session Queue resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.gamelift.GameSessionQueue("test",
-            destinations=[
-                aws_gamelift_fleet["us_west_2_fleet"]["arn"],
-                aws_gamelift_fleet["eu_central_1_fleet"]["arn"],
-            ],
-            player_latency_policies=[
-                aws.gamelift.GameSessionQueuePlayerLatencyPolicyArgs(
-                    maximum_individual_player_latency_milliseconds=100,
-                    policy_duration_seconds=5,
-                ),
-                aws.gamelift.GameSessionQueuePlayerLatencyPolicyArgs(
-                    maximum_individual_player_latency_milliseconds=200,
-                ),
-            ],
-            timeout_in_seconds=60)
-        ```
-
+        Create a GameSessionQueue resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] destinations: List of fleet/alias ARNs used by session queue for placing game sessions.
-        :param pulumi.Input[str] name: Name of the session queue.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameSessionQueuePlayerLatencyPolicyArgs']]]] player_latency_policies: One or more policies used to choose fleet based on player latency. See below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[float] timeout_in_seconds: Maximum time a game session request can remain in the queue.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,12 +76,6 @@ class GameSessionQueue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Game Session Queue ARN.
-        :param pulumi.Input[List[pulumi.Input[str]]] destinations: List of fleet/alias ARNs used by session queue for placing game sessions.
-        :param pulumi.Input[str] name: Name of the session queue.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameSessionQueuePlayerLatencyPolicyArgs']]]] player_latency_policies: One or more policies used to choose fleet based on player latency. See below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[float] timeout_in_seconds: Maximum time a game session request can remain in the queue.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -127,49 +92,31 @@ class GameSessionQueue(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Game Session Queue ARN.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def destinations(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        List of fleet/alias ARNs used by session queue for placing game sessions.
-        """
         return pulumi.get(self, "destinations")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the session queue.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="playerLatencyPolicies")
     def player_latency_policies(self) -> pulumi.Output[Optional[List['outputs.GameSessionQueuePlayerLatencyPolicy']]]:
-        """
-        One or more policies used to choose fleet based on player latency. See below.
-        """
         return pulumi.get(self, "player_latency_policies")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="timeoutInSeconds")
     def timeout_in_seconds(self) -> pulumi.Output[Optional[float]]:
-        """
-        Maximum time a game session request can remain in the queue.
-        """
         return pulumi.get(self, "timeout_in_seconds")
 
     def translate_output_property(self, prop):

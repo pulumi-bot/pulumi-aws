@@ -10,72 +10,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Gamelift Fleet resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/gamelift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gamelift.NewFleet(ctx, "example", &gamelift.FleetArgs{
-// 			BuildId:         pulumi.Any(aws_gamelift_build.Example.Id),
-// 			Ec2InstanceType: pulumi.String("t2.micro"),
-// 			FleetType:       pulumi.String("ON_DEMAND"),
-// 			RuntimeConfiguration: &gamelift.FleetRuntimeConfigurationArgs{
-// 				ServerProcesses: gamelift.FleetRuntimeConfigurationServerProcessArray{
-// 					&gamelift.FleetRuntimeConfigurationServerProcessArgs{
-// 						ConcurrentExecutions: pulumi.Int(1),
-// 						LaunchPath:           pulumi.String("C:\\game\\GomokuServer.exe"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Fleet struct {
 	pulumi.CustomResourceState
 
-	// Fleet ARN.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// ID of the Gamelift Build to be deployed on the fleet.
-	BuildId pulumi.StringOutput `pulumi:"buildId"`
-	// Human-readable description of the fleet.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions FleetEc2InboundPermissionArrayOutput `pulumi:"ec2InboundPermissions"`
-	// Name of an EC2 instance type. e.g. `t2.micro`
-	Ec2InstanceType pulumi.StringOutput `pulumi:"ec2InstanceType"`
-	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
-	FleetType pulumi.StringPtrOutput `pulumi:"fleetType"`
-	// ARN of an IAM role that instances in the fleet can assume.
-	InstanceRoleArn pulumi.StringPtrOutput   `pulumi:"instanceRoleArn"`
-	LogPaths        pulumi.StringArrayOutput `pulumi:"logPaths"`
-	// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-	MetricGroups pulumi.StringArrayOutput `pulumi:"metricGroups"`
-	// The name of the fleet.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
-	NewGameSessionProtectionPolicy pulumi.StringPtrOutput `pulumi:"newGameSessionProtectionPolicy"`
-	// Operating system of the fleet's computing resources.
-	OperatingSystem pulumi.StringOutput `pulumi:"operatingSystem"`
-	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy FleetResourceCreationLimitPolicyPtrOutput `pulumi:"resourceCreationLimitPolicy"`
-	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration FleetRuntimeConfigurationPtrOutput `pulumi:"runtimeConfiguration"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                            pulumi.StringOutput                       `pulumi:"arn"`
+	BuildId                        pulumi.StringOutput                       `pulumi:"buildId"`
+	Description                    pulumi.StringPtrOutput                    `pulumi:"description"`
+	Ec2InboundPermissions          FleetEc2InboundPermissionArrayOutput      `pulumi:"ec2InboundPermissions"`
+	Ec2InstanceType                pulumi.StringOutput                       `pulumi:"ec2InstanceType"`
+	FleetType                      pulumi.StringPtrOutput                    `pulumi:"fleetType"`
+	InstanceRoleArn                pulumi.StringPtrOutput                    `pulumi:"instanceRoleArn"`
+	LogPaths                       pulumi.StringArrayOutput                  `pulumi:"logPaths"`
+	MetricGroups                   pulumi.StringArrayOutput                  `pulumi:"metricGroups"`
+	Name                           pulumi.StringOutput                       `pulumi:"name"`
+	NewGameSessionProtectionPolicy pulumi.StringPtrOutput                    `pulumi:"newGameSessionProtectionPolicy"`
+	OperatingSystem                pulumi.StringOutput                       `pulumi:"operatingSystem"`
+	ResourceCreationLimitPolicy    FleetResourceCreationLimitPolicyPtrOutput `pulumi:"resourceCreationLimitPolicy"`
+	RuntimeConfiguration           FleetRuntimeConfigurationPtrOutput        `pulumi:"runtimeConfiguration"`
+	Tags                           pulumi.StringMapOutput                    `pulumi:"tags"`
 }
 
 // NewFleet registers a new resource with the given unique name, arguments, and options.
@@ -112,67 +64,39 @@ func GetFleet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Fleet resources.
 type fleetState struct {
-	// Fleet ARN.
-	Arn *string `pulumi:"arn"`
-	// ID of the Gamelift Build to be deployed on the fleet.
-	BuildId *string `pulumi:"buildId"`
-	// Human-readable description of the fleet.
-	Description *string `pulumi:"description"`
-	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions []FleetEc2InboundPermission `pulumi:"ec2InboundPermissions"`
-	// Name of an EC2 instance type. e.g. `t2.micro`
-	Ec2InstanceType *string `pulumi:"ec2InstanceType"`
-	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
-	FleetType *string `pulumi:"fleetType"`
-	// ARN of an IAM role that instances in the fleet can assume.
-	InstanceRoleArn *string  `pulumi:"instanceRoleArn"`
-	LogPaths        []string `pulumi:"logPaths"`
-	// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-	MetricGroups []string `pulumi:"metricGroups"`
-	// The name of the fleet.
-	Name *string `pulumi:"name"`
-	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
-	NewGameSessionProtectionPolicy *string `pulumi:"newGameSessionProtectionPolicy"`
-	// Operating system of the fleet's computing resources.
-	OperatingSystem *string `pulumi:"operatingSystem"`
-	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy *FleetResourceCreationLimitPolicy `pulumi:"resourceCreationLimitPolicy"`
-	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration *FleetRuntimeConfiguration `pulumi:"runtimeConfiguration"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Arn                            *string                           `pulumi:"arn"`
+	BuildId                        *string                           `pulumi:"buildId"`
+	Description                    *string                           `pulumi:"description"`
+	Ec2InboundPermissions          []FleetEc2InboundPermission       `pulumi:"ec2InboundPermissions"`
+	Ec2InstanceType                *string                           `pulumi:"ec2InstanceType"`
+	FleetType                      *string                           `pulumi:"fleetType"`
+	InstanceRoleArn                *string                           `pulumi:"instanceRoleArn"`
+	LogPaths                       []string                          `pulumi:"logPaths"`
+	MetricGroups                   []string                          `pulumi:"metricGroups"`
+	Name                           *string                           `pulumi:"name"`
+	NewGameSessionProtectionPolicy *string                           `pulumi:"newGameSessionProtectionPolicy"`
+	OperatingSystem                *string                           `pulumi:"operatingSystem"`
+	ResourceCreationLimitPolicy    *FleetResourceCreationLimitPolicy `pulumi:"resourceCreationLimitPolicy"`
+	RuntimeConfiguration           *FleetRuntimeConfiguration        `pulumi:"runtimeConfiguration"`
+	Tags                           map[string]string                 `pulumi:"tags"`
 }
 
 type FleetState struct {
-	// Fleet ARN.
-	Arn pulumi.StringPtrInput
-	// ID of the Gamelift Build to be deployed on the fleet.
-	BuildId pulumi.StringPtrInput
-	// Human-readable description of the fleet.
-	Description pulumi.StringPtrInput
-	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions FleetEc2InboundPermissionArrayInput
-	// Name of an EC2 instance type. e.g. `t2.micro`
-	Ec2InstanceType pulumi.StringPtrInput
-	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
-	FleetType pulumi.StringPtrInput
-	// ARN of an IAM role that instances in the fleet can assume.
-	InstanceRoleArn pulumi.StringPtrInput
-	LogPaths        pulumi.StringArrayInput
-	// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-	MetricGroups pulumi.StringArrayInput
-	// The name of the fleet.
-	Name pulumi.StringPtrInput
-	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
+	Arn                            pulumi.StringPtrInput
+	BuildId                        pulumi.StringPtrInput
+	Description                    pulumi.StringPtrInput
+	Ec2InboundPermissions          FleetEc2InboundPermissionArrayInput
+	Ec2InstanceType                pulumi.StringPtrInput
+	FleetType                      pulumi.StringPtrInput
+	InstanceRoleArn                pulumi.StringPtrInput
+	LogPaths                       pulumi.StringArrayInput
+	MetricGroups                   pulumi.StringArrayInput
+	Name                           pulumi.StringPtrInput
 	NewGameSessionProtectionPolicy pulumi.StringPtrInput
-	// Operating system of the fleet's computing resources.
-	OperatingSystem pulumi.StringPtrInput
-	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy FleetResourceCreationLimitPolicyPtrInput
-	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration FleetRuntimeConfigurationPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	OperatingSystem                pulumi.StringPtrInput
+	ResourceCreationLimitPolicy    FleetResourceCreationLimitPolicyPtrInput
+	RuntimeConfiguration           FleetRuntimeConfigurationPtrInput
+	Tags                           pulumi.StringMapInput
 }
 
 func (FleetState) ElementType() reflect.Type {
@@ -180,58 +104,34 @@ func (FleetState) ElementType() reflect.Type {
 }
 
 type fleetArgs struct {
-	// ID of the Gamelift Build to be deployed on the fleet.
-	BuildId string `pulumi:"buildId"`
-	// Human-readable description of the fleet.
-	Description *string `pulumi:"description"`
-	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions []FleetEc2InboundPermission `pulumi:"ec2InboundPermissions"`
-	// Name of an EC2 instance type. e.g. `t2.micro`
-	Ec2InstanceType string `pulumi:"ec2InstanceType"`
-	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
-	FleetType *string `pulumi:"fleetType"`
-	// ARN of an IAM role that instances in the fleet can assume.
-	InstanceRoleArn *string `pulumi:"instanceRoleArn"`
-	// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-	MetricGroups []string `pulumi:"metricGroups"`
-	// The name of the fleet.
-	Name *string `pulumi:"name"`
-	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
-	NewGameSessionProtectionPolicy *string `pulumi:"newGameSessionProtectionPolicy"`
-	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy *FleetResourceCreationLimitPolicy `pulumi:"resourceCreationLimitPolicy"`
-	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration *FleetRuntimeConfiguration `pulumi:"runtimeConfiguration"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	BuildId                        string                            `pulumi:"buildId"`
+	Description                    *string                           `pulumi:"description"`
+	Ec2InboundPermissions          []FleetEc2InboundPermission       `pulumi:"ec2InboundPermissions"`
+	Ec2InstanceType                string                            `pulumi:"ec2InstanceType"`
+	FleetType                      *string                           `pulumi:"fleetType"`
+	InstanceRoleArn                *string                           `pulumi:"instanceRoleArn"`
+	MetricGroups                   []string                          `pulumi:"metricGroups"`
+	Name                           *string                           `pulumi:"name"`
+	NewGameSessionProtectionPolicy *string                           `pulumi:"newGameSessionProtectionPolicy"`
+	ResourceCreationLimitPolicy    *FleetResourceCreationLimitPolicy `pulumi:"resourceCreationLimitPolicy"`
+	RuntimeConfiguration           *FleetRuntimeConfiguration        `pulumi:"runtimeConfiguration"`
+	Tags                           map[string]string                 `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Fleet resource.
 type FleetArgs struct {
-	// ID of the Gamelift Build to be deployed on the fleet.
-	BuildId pulumi.StringInput
-	// Human-readable description of the fleet.
-	Description pulumi.StringPtrInput
-	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions FleetEc2InboundPermissionArrayInput
-	// Name of an EC2 instance type. e.g. `t2.micro`
-	Ec2InstanceType pulumi.StringInput
-	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
-	FleetType pulumi.StringPtrInput
-	// ARN of an IAM role that instances in the fleet can assume.
-	InstanceRoleArn pulumi.StringPtrInput
-	// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-	MetricGroups pulumi.StringArrayInput
-	// The name of the fleet.
-	Name pulumi.StringPtrInput
-	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
+	BuildId                        pulumi.StringInput
+	Description                    pulumi.StringPtrInput
+	Ec2InboundPermissions          FleetEc2InboundPermissionArrayInput
+	Ec2InstanceType                pulumi.StringInput
+	FleetType                      pulumi.StringPtrInput
+	InstanceRoleArn                pulumi.StringPtrInput
+	MetricGroups                   pulumi.StringArrayInput
+	Name                           pulumi.StringPtrInput
 	NewGameSessionProtectionPolicy pulumi.StringPtrInput
-	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy FleetResourceCreationLimitPolicyPtrInput
-	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration FleetRuntimeConfigurationPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	ResourceCreationLimitPolicy    FleetResourceCreationLimitPolicyPtrInput
+	RuntimeConfiguration           FleetRuntimeConfigurationPtrInput
+	Tags                           pulumi.StringMapInput
 }
 
 func (FleetArgs) ElementType() reflect.Type {

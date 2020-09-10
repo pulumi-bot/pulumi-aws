@@ -12,21 +12,12 @@ namespace Pulumi.Aws.ElasticSearch.Inputs
 
     public sealed class DomainAdvancedSecurityOptionsGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
-        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
-        /// <summary>
-        /// Whether the internal user database is enabled. If not set, defaults to `false` by the AWS API.
-        /// </summary>
         [Input("internalUserDatabaseEnabled")]
         public Input<bool>? InternalUserDatabaseEnabled { get; set; }
 
-        /// <summary>
-        /// Credentials for the master user: username and password, or ARN
-        /// </summary>
         [Input("masterUserOptions")]
         public Input<Inputs.DomainAdvancedSecurityOptionsMasterUserOptionsGetArgs>? MasterUserOptions { get; set; }
 

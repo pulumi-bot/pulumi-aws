@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Step Functions Activity data source
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sfn"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-activity"
-// 		_, err := sfn.LookupActivity(ctx, &sfn.LookupActivityArgs{
-// 			Name: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupActivity(ctx *pulumi.Context, args *LookupActivityArgs, opts ...pulumi.InvokeOption) (*LookupActivityResult, error) {
 	var rv LookupActivityResult
 	err := ctx.Invoke("aws:sfn/getActivity:getActivity", args, &rv, opts...)
@@ -43,16 +18,13 @@ func LookupActivity(ctx *pulumi.Context, args *LookupActivityArgs, opts ...pulum
 
 // A collection of arguments for invoking getActivity.
 type LookupActivityArgs struct {
-	// The Amazon Resource Name (ARN) that identifies the activity.
-	Arn *string `pulumi:"arn"`
-	// The name that identifies the activity.
+	Arn  *string `pulumi:"arn"`
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getActivity.
 type LookupActivityResult struct {
-	Arn string `pulumi:"arn"`
-	// The date the activity was created.
+	Arn          string `pulumi:"arn"`
 	CreationDate string `pulumi:"creationDate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`

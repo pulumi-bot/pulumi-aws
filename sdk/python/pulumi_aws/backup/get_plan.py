@@ -42,9 +42,6 @@ class GetPlanResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the backup plan.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -58,9 +55,6 @@ class GetPlanResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The display name of a backup plan.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -71,17 +65,11 @@ class GetPlanResult:
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Metadata that you can assign to help organize the plans you create.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-        """
         return pulumi.get(self, "version")
 
 
@@ -103,20 +91,7 @@ def get_plan(plan_id: Optional[str] = None,
              tags: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlanResult:
     """
-    Use this data source to get information on an existing backup plan.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.backup.get_plan(plan_id="tf_example_backup_plan_id")
-    ```
-
-
-    :param str plan_id: The backup plan ID.
-    :param Mapping[str, str] tags: Metadata that you can assign to help organize the plans you create.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['planId'] = plan_id

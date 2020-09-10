@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a WAFv2 Web ACL Logging Configuration resource.
- *
- * > **Note:** To start logging from a WAFv2 Web ACL, an Amazon Kinesis Data Firehose (e.g. [`aws.kinesis.FirehoseDeliveryStream` resource](https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html) must also be created with a PUT source (not a stream) and in the region that you are operating.
- * If you are capturing logs for Amazon CloudFront, always create the firehose in US East (N. Virginia).
- * Be sure to give the data firehose a name that starts with the prefix `aws-waf-logs-`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.wafv2.WebAclLoggingConfiguration("example", {
- *     logDestinationConfigs: [aws_kinesis_firehose_delivery_stream.example.arn],
- *     resourceArn: aws_wafv2_web_acl.example.arn,
- *     redactedFields: [{
- *         singleHeader: {
- *             name: "user-agent",
- *         },
- *     }],
- * });
- * ```
- */
 export class WebAclLoggingConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing WebAclLoggingConfiguration resource's state with the given name, ID, and optional extra
@@ -59,15 +35,15 @@ export class WebAclLoggingConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
+     * AWS Kinesis Firehose Delivery Stream ARNs
      */
     public readonly logDestinationConfigs!: pulumi.Output<string[]>;
     /**
-     * The parts of the request that you want to keep out of the logs. Up to 100 `redactedFields` blocks are supported.
+     * Parts of the request to exclude from logs
      */
     public readonly redactedFields!: pulumi.Output<outputs.wafv2.WebAclLoggingConfigurationRedactedField[] | undefined>;
     /**
-     * The Amazon Resource Name (ARN) of the web ACL that you want to associate with `logDestinationConfigs`.
+     * AWS WebACL ARN
      */
     public readonly resourceArn!: pulumi.Output<string>;
 
@@ -114,15 +90,15 @@ export class WebAclLoggingConfiguration extends pulumi.CustomResource {
  */
 export interface WebAclLoggingConfigurationState {
     /**
-     * The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
+     * AWS Kinesis Firehose Delivery Stream ARNs
      */
     readonly logDestinationConfigs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The parts of the request that you want to keep out of the logs. Up to 100 `redactedFields` blocks are supported.
+     * Parts of the request to exclude from logs
      */
     readonly redactedFields?: pulumi.Input<pulumi.Input<inputs.wafv2.WebAclLoggingConfigurationRedactedField>[]>;
     /**
-     * The Amazon Resource Name (ARN) of the web ACL that you want to associate with `logDestinationConfigs`.
+     * AWS WebACL ARN
      */
     readonly resourceArn?: pulumi.Input<string>;
 }
@@ -132,15 +108,15 @@ export interface WebAclLoggingConfigurationState {
  */
 export interface WebAclLoggingConfigurationArgs {
     /**
-     * The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
+     * AWS Kinesis Firehose Delivery Stream ARNs
      */
     readonly logDestinationConfigs: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The parts of the request that you want to keep out of the logs. Up to 100 `redactedFields` blocks are supported.
+     * Parts of the request to exclude from logs
      */
     readonly redactedFields?: pulumi.Input<pulumi.Input<inputs.wafv2.WebAclLoggingConfigurationRedactedField>[]>;
     /**
-     * The Amazon Resource Name (ARN) of the web ACL that you want to associate with `logDestinationConfigs`.
+     * AWS WebACL ARN
      */
     readonly resourceArn: pulumi.Input<string>;
 }

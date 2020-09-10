@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Authorizes a VPC in a peer account to be associated with a local Route53 Hosted Zone.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const alternate = new aws.Provider("alternate", {});
- * const exampleVpc = new aws.ec2.Vpc("exampleVpc", {
- *     cidrBlock: "10.6.0.0/16",
- *     enableDnsHostnames: true,
- *     enableDnsSupport: true,
- * });
- * const exampleZone = new aws.route53.Zone("exampleZone", {vpcs: [{
- *     vpcId: exampleVpc.id,
- * }]});
- * const alternateVpc = new aws.ec2.Vpc("alternateVpc", {
- *     cidrBlock: "10.7.0.0/16",
- *     enableDnsHostnames: true,
- *     enableDnsSupport: true,
- * }, {
- *     provider: "aws.alternate",
- * });
- * const exampleVpcAssociationAuthorization = new aws.route53.VpcAssociationAuthorization("exampleVpcAssociationAuthorization", {
- *     vpcId: alternateVpc.id,
- *     zoneId: exampleZone.id,
- * });
- * const exampleZoneAssociation = new aws.route53.ZoneAssociation("exampleZoneAssociation", {
- *     vpcId: exampleVpcAssociationAuthorization.vpcId,
- *     zoneId: exampleVpcAssociationAuthorization.zoneId,
- * }, {
- *     provider: "aws.alternate",
- * });
- * ```
- */
 export class VpcAssociationAuthorization extends pulumi.CustomResource {
     /**
      * Get an existing VpcAssociationAuthorization resource's state with the given name, ID, and optional extra
@@ -69,17 +32,8 @@ export class VpcAssociationAuthorization extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpcAssociationAuthorization.__pulumiType;
     }
 
-    /**
-     * The VPC to authorize for association with the private hosted zone.
-     */
     public readonly vpcId!: pulumi.Output<string>;
-    /**
-     * The VPC's region. Defaults to the region of the AWS provider.
-     */
     public readonly vpcRegion!: pulumi.Output<string>;
-    /**
-     * The ID of the private hosted zone that you want to authorize associating a VPC with.
-     */
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
@@ -124,17 +78,8 @@ export class VpcAssociationAuthorization extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcAssociationAuthorization resources.
  */
 export interface VpcAssociationAuthorizationState {
-    /**
-     * The VPC to authorize for association with the private hosted zone.
-     */
     readonly vpcId?: pulumi.Input<string>;
-    /**
-     * The VPC's region. Defaults to the region of the AWS provider.
-     */
     readonly vpcRegion?: pulumi.Input<string>;
-    /**
-     * The ID of the private hosted zone that you want to authorize associating a VPC with.
-     */
     readonly zoneId?: pulumi.Input<string>;
 }
 
@@ -142,16 +87,7 @@ export interface VpcAssociationAuthorizationState {
  * The set of arguments for constructing a VpcAssociationAuthorization resource.
  */
 export interface VpcAssociationAuthorizationArgs {
-    /**
-     * The VPC to authorize for association with the private hosted zone.
-     */
     readonly vpcId: pulumi.Input<string>;
-    /**
-     * The VPC's region. Defaults to the region of the AWS provider.
-     */
     readonly vpcRegion?: pulumi.Input<string>;
-    /**
-     * The ID of the private hosted zone that you want to authorize associating a VPC with.
-     */
     readonly zoneId: pulumi.Input<string>;
 }

@@ -20,20 +20,9 @@ class ReceiptRuleSet(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an SES receipt rule set resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ses.ReceiptRuleSet("main", rule_set_name="primary-rules")
-        ```
-
+        Create a ReceiptRuleSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] rule_set_name: The name of the rule set
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +62,6 @@ class ReceiptRuleSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] rule_set_name: The name of the rule set
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -85,9 +73,6 @@ class ReceiptRuleSet(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ruleSetName")
     def rule_set_name(self) -> pulumi.Output[str]:
-        """
-        The name of the rule set
-        """
         return pulumi.get(self, "rule_set_name")
 
     def translate_output_property(self, prop):

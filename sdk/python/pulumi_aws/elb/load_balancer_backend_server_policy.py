@@ -22,61 +22,9 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Attaches a load balancer policy to an ELB backend server.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        wu_tang = aws.elb.LoadBalancer("wu-tang",
-            availability_zones=["us-east-1a"],
-            listeners=[aws.elb.LoadBalancerListenerArgs(
-                instance_port=443,
-                instance_protocol="http",
-                lb_port=443,
-                lb_protocol="https",
-                ssl_certificate_id="arn:aws:iam::000000000000:server-certificate/wu-tang.net",
-            )],
-            tags={
-                "Name": "wu-tang",
-            })
-        wu_tang_ca_pubkey_policy = aws.elb.LoadBalancerPolicy("wu-tang-ca-pubkey-policy",
-            load_balancer_name=wu_tang.name,
-            policy_name="wu-tang-ca-pubkey-policy",
-            policy_type_name="PublicKeyPolicyType",
-            policy_attributes=[aws.elb.LoadBalancerPolicyPolicyAttributeArgs(
-                name="PublicKey",
-                value=(lambda path: open(path).read())("wu-tang-pubkey"),
-            )])
-        wu_tang_root_ca_backend_auth_policy = aws.elb.LoadBalancerPolicy("wu-tang-root-ca-backend-auth-policy",
-            load_balancer_name=wu_tang.name,
-            policy_name="wu-tang-root-ca-backend-auth-policy",
-            policy_type_name="BackendServerAuthenticationPolicyType",
-            policy_attributes=[aws.elb.LoadBalancerPolicyPolicyAttributeArgs(
-                name="PublicKeyPolicyName",
-                value=aws_load_balancer_policy["wu-tang-root-ca-pubkey-policy"]["policy_name"],
-            )])
-        wu_tang_backend_auth_policies_443 = aws.elb.LoadBalancerBackendServerPolicy("wu-tang-backend-auth-policies-443",
-            load_balancer_name=wu_tang.name,
-            instance_port=443,
-            policy_names=[wu_tang_root_ca_backend_auth_policy.policy_name])
-        ```
-
-        Where the file `pubkey` in the current directory contains only the _public key_ of the certificate.
-
-        ```python
-        import pulumi
-        ```
-
-        This example shows how to enable backend authentication for an ELB as well as customize the TLS settings.
-
+        Create a LoadBalancerBackendServerPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] instance_port: The instance port to apply the policy to.
-        :param pulumi.Input[str] load_balancer_name: The load balancer to attach the policy to.
-        :param pulumi.Input[List[pulumi.Input[str]]] policy_names: List of Policy Names to apply to the backend server.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,9 +72,6 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] instance_port: The instance port to apply the policy to.
-        :param pulumi.Input[str] load_balancer_name: The load balancer to attach the policy to.
-        :param pulumi.Input[List[pulumi.Input[str]]] policy_names: List of Policy Names to apply to the backend server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,25 +85,16 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instancePort")
     def instance_port(self) -> pulumi.Output[float]:
-        """
-        The instance port to apply the policy to.
-        """
         return pulumi.get(self, "instance_port")
 
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[str]:
-        """
-        The load balancer to attach the policy to.
-        """
         return pulumi.get(self, "load_balancer_name")
 
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        List of Policy Names to apply to the backend server.
-        """
         return pulumi.get(self, "policy_names")
 
     def translate_output_property(self, prop):

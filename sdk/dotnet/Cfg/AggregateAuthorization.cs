@@ -9,52 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cfg
 {
-    /// <summary>
-    /// Manages an AWS Config Aggregate Authorization
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Cfg.AggregateAuthorization("example", new Aws.Cfg.AggregateAuthorizationArgs
-    ///         {
-    ///             AccountId = "123456789012",
-    ///             Region = "eu-west-2",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AggregateAuthorization : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Account ID
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the authorization
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Region
-        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -104,24 +69,14 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class AggregateAuthorizationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account ID
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Region
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -135,30 +90,17 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class AggregateAuthorizationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account ID
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The ARN of the authorization
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Region
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

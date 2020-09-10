@@ -9,57 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sagemaker
 {
-    /// <summary>
-    /// Provides a SageMaker Endpoint resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var endpoint = new Aws.Sagemaker.Endpoint("endpoint", new Aws.Sagemaker.EndpointArgs
-    ///         {
-    ///             EndpointConfigName = aws_sagemaker_endpoint_configuration.Ec.Name,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "foo" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Endpoint : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the endpoint configuration to use.
-        /// </summary>
         [Output("endpointConfigName")]
         public Output<string> EndpointConfigName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -109,24 +69,14 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class EndpointArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the endpoint configuration to use.
-        /// </summary>
         [Input("endpointConfigName", required: true)]
         public Input<string> EndpointConfigName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -140,30 +90,17 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class EndpointState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the endpoint configuration to use.
-        /// </summary>
         [Input("endpointConfigName")]
         public Input<string>? EndpointConfigName { get; set; }
 
-        /// <summary>
-        /// The name of the endpoint. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

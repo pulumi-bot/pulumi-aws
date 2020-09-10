@@ -9,262 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Msk
 {
-    /// <summary>
-    /// Manages AWS Managed Streaming for Kafka cluster
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpc = new Aws.Ec2.Vpc("vpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/22",
-    ///         });
-    ///         var azs = Output.Create(Aws.GetAvailabilityZones.InvokeAsync(new Aws.GetAvailabilityZonesArgs
-    ///         {
-    ///             State = "available",
-    ///         }));
-    ///         var subnetAz1 = new Aws.Ec2.Subnet("subnetAz1", new Aws.Ec2.SubnetArgs
-    ///         {
-    ///             AvailabilityZone = azs.Apply(azs =&gt; azs.Names[0]),
-    ///             CidrBlock = "192.168.0.0/24",
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var subnetAz2 = new Aws.Ec2.Subnet("subnetAz2", new Aws.Ec2.SubnetArgs
-    ///         {
-    ///             AvailabilityZone = azs.Apply(azs =&gt; azs.Names[1]),
-    ///             CidrBlock = "192.168.1.0/24",
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var subnetAz3 = new Aws.Ec2.Subnet("subnetAz3", new Aws.Ec2.SubnetArgs
-    ///         {
-    ///             AvailabilityZone = azs.Apply(azs =&gt; azs.Names[2]),
-    ///             CidrBlock = "192.168.2.0/24",
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var sg = new Aws.Ec2.SecurityGroup("sg", new Aws.Ec2.SecurityGroupArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var kms = new Aws.Kms.Key("kms", new Aws.Kms.KeyArgs
-    ///         {
-    ///             Description = "example",
-    ///         });
-    ///         var test = new Aws.CloudWatch.LogGroup("test", new Aws.CloudWatch.LogGroupArgs
-    ///         {
-    ///         });
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///         });
-    ///         var firehoseRole = new Aws.Iam.Role("firehoseRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    /// ""Version"": ""2012-10-17"",
-    /// ""Statement"": [
-    ///   {
-    ///     ""Action"": ""sts:AssumeRole"",
-    ///     ""Principal"": {
-    ///       ""Service"": ""firehose.amazonaws.com""
-    ///     },
-    ///     ""Effect"": ""Allow"",
-    ///     ""Sid"": """"
-    ///   }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var testStream = new Aws.Kinesis.FirehoseDeliveryStream("testStream", new Aws.Kinesis.FirehoseDeliveryStreamArgs
-    ///         {
-    ///             Destination = "s3",
-    ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamS3ConfigurationArgs
-    ///             {
-    ///                 RoleArn = firehoseRole.Arn,
-    ///                 BucketArn = bucket.Arn,
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "LogDeliveryEnabled", "placeholder" },
-    ///             },
-    ///         });
-    ///         var example = new Aws.Msk.Cluster("example", new Aws.Msk.ClusterArgs
-    ///         {
-    ///             ClusterName = "example",
-    ///             KafkaVersion = "2.4.1",
-    ///             NumberOfBrokerNodes = 3,
-    ///             BrokerNodeGroupInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoArgs
-    ///             {
-    ///                 InstanceType = "kafka.m5.large",
-    ///                 EbsVolumeSize = 1000,
-    ///                 ClientSubnets = 
-    ///                 {
-    ///                     subnetAz1.Id,
-    ///                     subnetAz2.Id,
-    ///                     subnetAz3.Id,
-    ///                 },
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     sg.Id,
-    ///                 },
-    ///             },
-    ///             EncryptionInfo = new Aws.Msk.Inputs.ClusterEncryptionInfoArgs
-    ///             {
-    ///                 EncryptionAtRestKmsKeyArn = kms.Arn,
-    ///             },
-    ///             OpenMonitoring = new Aws.Msk.Inputs.ClusterOpenMonitoringArgs
-    ///             {
-    ///                 Prometheus = new Aws.Msk.Inputs.ClusterOpenMonitoringPrometheusArgs
-    ///                 {
-    ///                     JmxExporter = new Aws.Msk.Inputs.ClusterOpenMonitoringPrometheusJmxExporterArgs
-    ///                     {
-    ///                         EnabledInBroker = true,
-    ///                     },
-    ///                     NodeExporter = new Aws.Msk.Inputs.ClusterOpenMonitoringPrometheusNodeExporterArgs
-    ///                     {
-    ///                         EnabledInBroker = true,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             LoggingInfo = new Aws.Msk.Inputs.ClusterLoggingInfoArgs
-    ///             {
-    ///                 BrokerLogs = new Aws.Msk.Inputs.ClusterLoggingInfoBrokerLogsArgs
-    ///                 {
-    ///                     CloudwatchLogs = new Aws.Msk.Inputs.ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs
-    ///                     {
-    ///                         Enabled = true,
-    ///                         LogGroup = test.Name,
-    ///                     },
-    ///                     Firehose = new Aws.Msk.Inputs.ClusterLoggingInfoBrokerLogsFirehoseArgs
-    ///                     {
-    ///                         Enabled = true,
-    ///                         DeliveryStream = testStream.Name,
-    ///                     },
-    ///                     S3 = new Aws.Msk.Inputs.ClusterLoggingInfoBrokerLogsS3Args
-    ///                     {
-    ///                         Enabled = true,
-    ///                         Bucket = bucket.Id,
-    ///                         Prefix = "logs/msk-",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///         this.ZookeeperConnectString = example.ZookeeperConnectString;
-    ///         this.BootstrapBrokersTls = example.BootstrapBrokersTls;
-    ///     }
-    /// 
-    ///     [Output("zookeeperConnectString")]
-    ///     public Output&lt;string&gt; ZookeeperConnectString { get; set; }
-    ///     [Output("bootstrapBrokersTls")]
-    ///     public Output&lt;string&gt; BootstrapBrokersTls { get; set; }
-    /// }
-    /// ```
-    /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the MSK Configuration to use in the cluster.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A comma separated list of one or more hostname:port pairs of kafka brokers suitable to boostrap connectivity to the kafka cluster. Only contains value if `client_broker` encryption in transit is set to `PLAINTEXT` or `TLS_PLAINTEXT`.
-        /// </summary>
         [Output("bootstrapBrokers")]
         public Output<string> BootstrapBrokers { get; private set; } = null!;
 
-        /// <summary>
-        /// A comma separated list of one or more DNS names (or IPs) and TLS port pairs kafka brokers suitable to boostrap connectivity to the kafka cluster. Only contains value if `client_broker` encryption in transit is set to `TLS_PLAINTEXT` or `TLS`.
-        /// </summary>
         [Output("bootstrapBrokersTls")]
         public Output<string> BootstrapBrokersTls { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block for the broker nodes of the Kafka cluster.
-        /// </summary>
         [Output("brokerNodeGroupInfo")]
         public Output<Outputs.ClusterBrokerNodeGroupInfo> BrokerNodeGroupInfo { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block for specifying a client authentication. See below.
-        /// </summary>
         [Output("clientAuthentication")]
         public Output<Outputs.ClusterClientAuthentication?> ClientAuthentication { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the MSK cluster.
-        /// </summary>
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block for specifying a MSK Configuration to attach to Kafka brokers. See below.
-        /// </summary>
         [Output("configurationInfo")]
         public Output<Outputs.ClusterConfigurationInfo?> ConfigurationInfo { get; private set; } = null!;
 
-        /// <summary>
-        /// Current version of the MSK Cluster used for updates, e.g. `K13V1IB3VIYZZH`
-        /// * `encryption_info.0.encryption_at_rest_kms_key_arn` - The ARN of the KMS key used for encryption at rest of the broker data volumes.
-        /// </summary>
         [Output("currentVersion")]
         public Output<string> CurrentVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block for specifying encryption. See below.
-        /// </summary>
         [Output("encryptionInfo")]
         public Output<Outputs.ClusterEncryptionInfo?> EncryptionInfo { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify the desired enhanced MSK CloudWatch monitoring level.  See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
-        /// </summary>
         [Output("enhancedMonitoring")]
         public Output<string?> EnhancedMonitoring { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify the desired Kafka software version.
-        /// </summary>
         [Output("kafkaVersion")]
         public Output<string> KafkaVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See below.
-        /// </summary>
         [Output("loggingInfo")]
         public Output<Outputs.ClusterLoggingInfo?> LoggingInfo { get; private set; } = null!;
 
-        /// <summary>
-        /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
-        /// </summary>
         [Output("numberOfBrokerNodes")]
         public Output<int> NumberOfBrokerNodes { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block for JMX and Node monitoring for the MSK cluster. See below.
-        /// </summary>
         [Output("openMonitoring")]
         public Output<Outputs.ClusterOpenMonitoring?> OpenMonitoring { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster.
-        /// </summary>
         [Output("zookeeperConnectString")]
         public Output<string> ZookeeperConnectString { get; private set; } = null!;
 
@@ -314,72 +105,38 @@ namespace Pulumi.Aws.Msk
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block for the broker nodes of the Kafka cluster.
-        /// </summary>
         [Input("brokerNodeGroupInfo", required: true)]
         public Input<Inputs.ClusterBrokerNodeGroupInfoArgs> BrokerNodeGroupInfo { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block for specifying a client authentication. See below.
-        /// </summary>
         [Input("clientAuthentication")]
         public Input<Inputs.ClusterClientAuthenticationArgs>? ClientAuthentication { get; set; }
 
-        /// <summary>
-        /// Name of the MSK cluster.
-        /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block for specifying a MSK Configuration to attach to Kafka brokers. See below.
-        /// </summary>
         [Input("configurationInfo")]
         public Input<Inputs.ClusterConfigurationInfoArgs>? ConfigurationInfo { get; set; }
 
-        /// <summary>
-        /// Configuration block for specifying encryption. See below.
-        /// </summary>
         [Input("encryptionInfo")]
         public Input<Inputs.ClusterEncryptionInfoArgs>? EncryptionInfo { get; set; }
 
-        /// <summary>
-        /// Specify the desired enhanced MSK CloudWatch monitoring level.  See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
-        /// </summary>
         [Input("enhancedMonitoring")]
         public Input<string>? EnhancedMonitoring { get; set; }
 
-        /// <summary>
-        /// Specify the desired Kafka software version.
-        /// </summary>
         [Input("kafkaVersion", required: true)]
         public Input<string> KafkaVersion { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See below.
-        /// </summary>
         [Input("loggingInfo")]
         public Input<Inputs.ClusterLoggingInfoArgs>? LoggingInfo { get; set; }
 
-        /// <summary>
-        /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
-        /// </summary>
         [Input("numberOfBrokerNodes", required: true)]
         public Input<int> NumberOfBrokerNodes { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block for JMX and Node monitoring for the MSK cluster. See below.
-        /// </summary>
         [Input("openMonitoring")]
         public Input<Inputs.ClusterOpenMonitoringArgs>? OpenMonitoring { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -393,106 +150,56 @@ namespace Pulumi.Aws.Msk
 
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the MSK Configuration to use in the cluster.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A comma separated list of one or more hostname:port pairs of kafka brokers suitable to boostrap connectivity to the kafka cluster. Only contains value if `client_broker` encryption in transit is set to `PLAINTEXT` or `TLS_PLAINTEXT`.
-        /// </summary>
         [Input("bootstrapBrokers")]
         public Input<string>? BootstrapBrokers { get; set; }
 
-        /// <summary>
-        /// A comma separated list of one or more DNS names (or IPs) and TLS port pairs kafka brokers suitable to boostrap connectivity to the kafka cluster. Only contains value if `client_broker` encryption in transit is set to `TLS_PLAINTEXT` or `TLS`.
-        /// </summary>
         [Input("bootstrapBrokersTls")]
         public Input<string>? BootstrapBrokersTls { get; set; }
 
-        /// <summary>
-        /// Configuration block for the broker nodes of the Kafka cluster.
-        /// </summary>
         [Input("brokerNodeGroupInfo")]
         public Input<Inputs.ClusterBrokerNodeGroupInfoGetArgs>? BrokerNodeGroupInfo { get; set; }
 
-        /// <summary>
-        /// Configuration block for specifying a client authentication. See below.
-        /// </summary>
         [Input("clientAuthentication")]
         public Input<Inputs.ClusterClientAuthenticationGetArgs>? ClientAuthentication { get; set; }
 
-        /// <summary>
-        /// Name of the MSK cluster.
-        /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
-        /// <summary>
-        /// Configuration block for specifying a MSK Configuration to attach to Kafka brokers. See below.
-        /// </summary>
         [Input("configurationInfo")]
         public Input<Inputs.ClusterConfigurationInfoGetArgs>? ConfigurationInfo { get; set; }
 
-        /// <summary>
-        /// Current version of the MSK Cluster used for updates, e.g. `K13V1IB3VIYZZH`
-        /// * `encryption_info.0.encryption_at_rest_kms_key_arn` - The ARN of the KMS key used for encryption at rest of the broker data volumes.
-        /// </summary>
         [Input("currentVersion")]
         public Input<string>? CurrentVersion { get; set; }
 
-        /// <summary>
-        /// Configuration block for specifying encryption. See below.
-        /// </summary>
         [Input("encryptionInfo")]
         public Input<Inputs.ClusterEncryptionInfoGetArgs>? EncryptionInfo { get; set; }
 
-        /// <summary>
-        /// Specify the desired enhanced MSK CloudWatch monitoring level.  See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
-        /// </summary>
         [Input("enhancedMonitoring")]
         public Input<string>? EnhancedMonitoring { get; set; }
 
-        /// <summary>
-        /// Specify the desired Kafka software version.
-        /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }
 
-        /// <summary>
-        /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See below.
-        /// </summary>
         [Input("loggingInfo")]
         public Input<Inputs.ClusterLoggingInfoGetArgs>? LoggingInfo { get; set; }
 
-        /// <summary>
-        /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
-        /// </summary>
         [Input("numberOfBrokerNodes")]
         public Input<int>? NumberOfBrokerNodes { get; set; }
 
-        /// <summary>
-        /// Configuration block for JMX and Node monitoring for the MSK cluster. See below.
-        /// </summary>
         [Input("openMonitoring")]
         public Input<Inputs.ClusterOpenMonitoringGetArgs>? OpenMonitoring { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster.
-        /// </summary>
         [Input("zookeeperConnectString")]
         public Input<string>? ZookeeperConnectString { get; set; }
 

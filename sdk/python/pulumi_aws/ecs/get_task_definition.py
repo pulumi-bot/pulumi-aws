@@ -45,9 +45,6 @@ class GetTaskDefinitionResult:
     @property
     @pulumi.getter
     def family(self) -> str:
-        """
-        The family of this task definition
-        """
         return pulumi.get(self, "family")
 
     @property
@@ -61,25 +58,16 @@ class GetTaskDefinitionResult:
     @property
     @pulumi.getter(name="networkMode")
     def network_mode(self) -> str:
-        """
-        The Docker networking mode to use for the containers in this task.
-        """
         return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter
     def revision(self) -> float:
-        """
-        The revision of this task definition
-        """
         return pulumi.get(self, "revision")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of this task definition
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -90,9 +78,6 @@ class GetTaskDefinitionResult:
     @property
     @pulumi.getter(name="taskRoleArn")
     def task_role_arn(self) -> str:
-        """
-        The ARN of the IAM role that containers in this task can assume
-        """
         return pulumi.get(self, "task_role_arn")
 
 
@@ -114,11 +99,7 @@ class AwaitableGetTaskDefinitionResult(GetTaskDefinitionResult):
 def get_task_definition(task_definition: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTaskDefinitionResult:
     """
-    The ECS task definition data source allows access to details of
-    a specific AWS ECS task definition.
-
-
-    :param str task_definition: The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['taskDefinition'] = task_definition

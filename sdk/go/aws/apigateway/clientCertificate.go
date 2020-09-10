@@ -9,45 +9,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an API Gateway Client Certificate.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.NewClientCertificate(ctx, "demo", &apigateway.ClientCertificateArgs{
-// 			Description: pulumi.String("My client certificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ClientCertificate struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The date when the client certificate was created.
-	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
-	// The description of the client certificate.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The date when the client certificate will expire.
-	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
-	// The PEM-encoded public key of the client certificate.
-	PemEncodedCertificate pulumi.StringOutput `pulumi:"pemEncodedCertificate"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                   pulumi.StringOutput    `pulumi:"arn"`
+	CreatedDate           pulumi.StringOutput    `pulumi:"createdDate"`
+	Description           pulumi.StringPtrOutput `pulumi:"description"`
+	ExpirationDate        pulumi.StringOutput    `pulumi:"expirationDate"`
+	PemEncodedCertificate pulumi.StringOutput    `pulumi:"pemEncodedCertificate"`
+	Tags                  pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewClientCertificate registers a new resource with the given unique name, arguments, and options.
@@ -78,33 +48,21 @@ func GetClientCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClientCertificate resources.
 type clientCertificateState struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// The date when the client certificate was created.
-	CreatedDate *string `pulumi:"createdDate"`
-	// The description of the client certificate.
-	Description *string `pulumi:"description"`
-	// The date when the client certificate will expire.
-	ExpirationDate *string `pulumi:"expirationDate"`
-	// The PEM-encoded public key of the client certificate.
-	PemEncodedCertificate *string `pulumi:"pemEncodedCertificate"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Arn                   *string           `pulumi:"arn"`
+	CreatedDate           *string           `pulumi:"createdDate"`
+	Description           *string           `pulumi:"description"`
+	ExpirationDate        *string           `pulumi:"expirationDate"`
+	PemEncodedCertificate *string           `pulumi:"pemEncodedCertificate"`
+	Tags                  map[string]string `pulumi:"tags"`
 }
 
 type ClientCertificateState struct {
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringPtrInput
-	// The date when the client certificate was created.
-	CreatedDate pulumi.StringPtrInput
-	// The description of the client certificate.
-	Description pulumi.StringPtrInput
-	// The date when the client certificate will expire.
-	ExpirationDate pulumi.StringPtrInput
-	// The PEM-encoded public key of the client certificate.
+	Arn                   pulumi.StringPtrInput
+	CreatedDate           pulumi.StringPtrInput
+	Description           pulumi.StringPtrInput
+	ExpirationDate        pulumi.StringPtrInput
 	PemEncodedCertificate pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags                  pulumi.StringMapInput
 }
 
 func (ClientCertificateState) ElementType() reflect.Type {
@@ -112,18 +70,14 @@ func (ClientCertificateState) ElementType() reflect.Type {
 }
 
 type clientCertificateArgs struct {
-	// The description of the client certificate.
-	Description *string `pulumi:"description"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Description *string           `pulumi:"description"`
+	Tags        map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ClientCertificate resource.
 type ClientCertificateArgs struct {
-	// The description of the client certificate.
 	Description pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags        pulumi.StringMapInput
 }
 
 func (ClientCertificateArgs) ElementType() reflect.Type {

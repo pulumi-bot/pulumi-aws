@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ECS Service data source allows access to details of a specific
-// Service within a AWS ECS Cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.LookupService(ctx, &ecs.LookupServiceArgs{
-// 			ServiceName: "example",
-// 			ClusterArn:  data.Aws_ecs_cluster.Example.Arn,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("aws:ecs/getService:getService", args, &rv, opts...)
@@ -44,26 +18,19 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
-	// The arn of the ECS Cluster
-	ClusterArn string `pulumi:"clusterArn"`
-	// The name of the ECS Service
+	ClusterArn  string `pulumi:"clusterArn"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getService.
 type LookupServiceResult struct {
-	// The ARN of the ECS Service
-	Arn        string `pulumi:"arn"`
-	ClusterArn string `pulumi:"clusterArn"`
-	// The number of tasks for the ECS Service
-	DesiredCount int `pulumi:"desiredCount"`
+	Arn          string `pulumi:"arn"`
+	ClusterArn   string `pulumi:"clusterArn"`
+	DesiredCount int    `pulumi:"desiredCount"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The launch type for the ECS Service
-	LaunchType string `pulumi:"launchType"`
-	// The scheduling strategy for the ECS Service
+	Id                 string `pulumi:"id"`
+	LaunchType         string `pulumi:"launchType"`
 	SchedulingStrategy string `pulumi:"schedulingStrategy"`
 	ServiceName        string `pulumi:"serviceName"`
-	// The family for the latest ACTIVE revision
-	TaskDefinition string `pulumi:"taskDefinition"`
+	TaskDefinition     string `pulumi:"taskDefinition"`
 }

@@ -22,59 +22,9 @@ class Account(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
-
-        > **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cloudwatch_role = aws.iam.Role("cloudwatchRole", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Sid": "",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "apigateway.amazonaws.com"
-              },
-              "Action": "sts:AssumeRole"
-            }
-          ]
-        }
-        \"\"\")
-        demo = aws.apigateway.Account("demo", cloudwatch_role_arn=cloudwatch_role.arn)
-        cloudwatch_role_policy = aws.iam.RolePolicy("cloudwatchRolePolicy",
-            role=cloudwatch_role.id,
-            policy=\"\"\"{
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:DescribeLogGroups",
-                        "logs:DescribeLogStreams",
-                        "logs:PutLogEvents",
-                        "logs:GetLogEvents",
-                        "logs:FilterLogEvents"
-                    ],
-                    "Resource": "*"
-                }
-            ]
-        }
-        \"\"\")
-        ```
-
+        Create a Account resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloudwatch_role_arn: The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
-               See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
-               Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,10 +64,6 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloudwatch_role_arn: The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
-               See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
-               Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-        :param pulumi.Input[pulumi.InputType['AccountThrottleSettingsArgs']] throttle_settings: Account-Level throttle settings. See exported fields below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -130,19 +76,11 @@ class Account(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cloudwatchRoleArn")
     def cloudwatch_role_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
-        See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
-        Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-        """
         return pulumi.get(self, "cloudwatch_role_arn")
 
     @property
     @pulumi.getter(name="throttleSettings")
     def throttle_settings(self) -> pulumi.Output['outputs.AccountThrottleSettings']:
-        """
-        Account-Level throttle settings. See exported fields below.
-        """
         return pulumi.get(self, "throttle_settings")
 
     def translate_output_property(self, prop):

@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about an EC2 Local Gateway.
- *
- * ## Example Usage
- *
- * The following example shows how one might accept a local gateway id as a variable.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const config = new pulumi.Config();
- * const localGatewayId = config.requireObject("localGatewayId");
- * const selected = aws.ec2.getLocalGateway({
- *     id: localGatewayId,
- * });
- * ```
- */
 export function getLocalGateway(args?: GetLocalGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalGatewayResult> {
     args = args || {};
     if (!opts) {
@@ -45,23 +27,9 @@ export function getLocalGateway(args?: GetLocalGatewayArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getLocalGateway.
  */
 export interface GetLocalGatewayArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: inputs.ec2.GetLocalGatewayFilter[];
-    /**
-     * The id of the specific Local Gateway to retrieve.
-     */
     readonly id?: string;
-    /**
-     * The current state of the desired Local Gateway.
-     * Can be either `"pending"` or `"available"`.
-     */
     readonly state?: string;
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired Local Gateway.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -71,17 +39,8 @@ export interface GetLocalGatewayArgs {
 export interface GetLocalGatewayResult {
     readonly filters?: outputs.ec2.GetLocalGatewayFilter[];
     readonly id: string;
-    /**
-     * Amazon Resource Name (ARN) of Outpost
-     */
     readonly outpostArn: string;
-    /**
-     * AWS account identifier that owns the Local Gateway.
-     */
     readonly ownerId: string;
-    /**
-     * State of the local gateway.
-     */
     readonly state: string;
     readonly tags: {[key: string]: string};
 }

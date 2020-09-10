@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Rule Group Resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleRule = new aws.waf.Rule("exampleRule", {metricName: "example"});
- * const exampleRuleGroup = new aws.waf.RuleGroup("exampleRuleGroup", {
- *     metricName: "example",
- *     activatedRules: [{
- *         action: {
- *             type: "COUNT",
- *         },
- *         priority: 50,
- *         ruleId: exampleRule.id,
- *     }],
- * });
- * ```
- */
 export class RuleGroup extends pulumi.CustomResource {
     /**
      * Get an existing RuleGroup resource's state with the given name, ID, and optional extra
@@ -56,25 +34,10 @@ export class RuleGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === RuleGroup.__pulumiType;
     }
 
-    /**
-     * A list of activated rules, see below
-     */
     public readonly activatedRules!: pulumi.Output<outputs.waf.RuleGroupActivatedRule[] | undefined>;
-    /**
-     * The ARN of the WAF rule group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A friendly name for the metrics from the rule group
-     */
     public readonly metricName!: pulumi.Output<string>;
-    /**
-     * A friendly name of the rule group
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -120,25 +83,10 @@ export class RuleGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RuleGroup resources.
  */
 export interface RuleGroupState {
-    /**
-     * A list of activated rules, see below
-     */
     readonly activatedRules?: pulumi.Input<pulumi.Input<inputs.waf.RuleGroupActivatedRule>[]>;
-    /**
-     * The ARN of the WAF rule group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A friendly name for the metrics from the rule group
-     */
     readonly metricName?: pulumi.Input<string>;
-    /**
-     * A friendly name of the rule group
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -146,20 +94,8 @@ export interface RuleGroupState {
  * The set of arguments for constructing a RuleGroup resource.
  */
 export interface RuleGroupArgs {
-    /**
-     * A list of activated rules, see below
-     */
     readonly activatedRules?: pulumi.Input<pulumi.Input<inputs.waf.RuleGroupActivatedRule>[]>;
-    /**
-     * A friendly name for the metrics from the rule group
-     */
     readonly metricName: pulumi.Input<string>;
-    /**
-     * A friendly name of the rule group
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

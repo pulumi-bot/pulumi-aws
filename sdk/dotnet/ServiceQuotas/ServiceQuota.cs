@@ -9,59 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ServiceQuotas
 {
-    /// <summary>
-    /// Manages an individual Service Quota.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.ServiceQuotas.ServiceQuota("example", new Aws.ServiceQuotas.ServiceQuotaArgs
-    ///         {
-    ///             QuotaCode = "L-F678F1CE",
-    ///             ServiceCode = "vpc",
-    ///             Value = 75,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ServiceQuota : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether the service quota can be increased.
-        /// </summary>
         [Output("adjustable")]
         public Output<bool> Adjustable { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the service quota.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Default value of the service quota.
-        /// </summary>
         [Output("defaultValue")]
         public Output<double> DefaultValue { get; private set; } = null!;
 
-        /// <summary>
-        /// Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-        /// </summary>
         [Output("quotaCode")]
         public Output<string> QuotaCode { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the quota.
-        /// </summary>
         [Output("quotaName")]
         public Output<string> QuotaName { get; private set; } = null!;
 
@@ -71,21 +32,12 @@ namespace Pulumi.Aws.ServiceQuotas
         [Output("requestStatus")]
         public Output<string> RequestStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
-        /// </summary>
         [Output("serviceCode")]
         public Output<string> ServiceCode { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the service.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
-        /// <summary>
-        /// Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
-        /// </summary>
         [Output("value")]
         public Output<double> Value { get; private set; } = null!;
 
@@ -135,21 +87,12 @@ namespace Pulumi.Aws.ServiceQuotas
 
     public sealed class ServiceQuotaArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-        /// </summary>
         [Input("quotaCode", required: true)]
         public Input<string> QuotaCode { get; set; } = null!;
 
-        /// <summary>
-        /// Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
-        /// </summary>
         [Input("serviceCode", required: true)]
         public Input<string> ServiceCode { get; set; } = null!;
 
-        /// <summary>
-        /// Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
-        /// </summary>
         [Input("value", required: true)]
         public Input<double> Value { get; set; } = null!;
 
@@ -160,33 +103,18 @@ namespace Pulumi.Aws.ServiceQuotas
 
     public sealed class ServiceQuotaState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether the service quota can be increased.
-        /// </summary>
         [Input("adjustable")]
         public Input<bool>? Adjustable { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the service quota.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Default value of the service quota.
-        /// </summary>
         [Input("defaultValue")]
         public Input<double>? DefaultValue { get; set; }
 
-        /// <summary>
-        /// Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-        /// </summary>
         [Input("quotaCode")]
         public Input<string>? QuotaCode { get; set; }
 
-        /// <summary>
-        /// Name of the quota.
-        /// </summary>
         [Input("quotaName")]
         public Input<string>? QuotaName { get; set; }
 
@@ -196,21 +124,12 @@ namespace Pulumi.Aws.ServiceQuotas
         [Input("requestStatus")]
         public Input<string>? RequestStatus { get; set; }
 
-        /// <summary>
-        /// Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
-        /// </summary>
         [Input("serviceCode")]
         public Input<string>? ServiceCode { get; set; }
 
-        /// <summary>
-        /// Name of the service.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        /// <summary>
-        /// Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
-        /// </summary>
         [Input("value")]
         public Input<double>? Value { get; set; }
 

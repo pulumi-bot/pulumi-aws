@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Kinesis.Inputs
 
     public sealed class AnalyticsApplicationInputsProcessingConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Lambda function configuration. See Lambda below for more details.
-        /// </summary>
         [Input("lambda", required: true)]
         public Input<Inputs.AnalyticsApplicationInputsProcessingConfigurationLambdaArgs> Lambda { get; set; } = null!;
 

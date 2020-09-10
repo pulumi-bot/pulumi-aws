@@ -11,32 +11,6 @@ namespace Pulumi.Aws.WafRegional
 {
     public static class GetRateBasedMod
     {
-        /// <summary>
-        /// `aws.wafregional.RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource Id.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.WafRegional.GetRateBasedMod.InvokeAsync(new Aws.WafRegional.GetRateBasedModArgs
-        ///         {
-        ///             Name = "tfWAFRegionalRateBasedRule",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetRateBasedModResult> InvokeAsync(GetRateBasedModArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRateBasedModResult>("aws:wafregional/getRateBasedMod:getRateBasedMod", args ?? new GetRateBasedModArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.WafRegional
 
     public sealed class GetRateBasedModArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the WAF Regional rate based rule.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

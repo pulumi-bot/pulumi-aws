@@ -9,39 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a MediaStore Container.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/mediastore"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mediastore.NewContainer(ctx, "example", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Container struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the container.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The DNS endpoint of the container.
-	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// The name of the container. Must contain alphanumeric characters or underscores.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn      pulumi.StringOutput    `pulumi:"arn"`
+	Endpoint pulumi.StringOutput    `pulumi:"endpoint"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
+	Tags     pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewContainer registers a new resource with the given unique name, arguments, and options.
@@ -72,25 +46,17 @@ func GetContainer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Container resources.
 type containerState struct {
-	// The ARN of the container.
-	Arn *string `pulumi:"arn"`
-	// The DNS endpoint of the container.
-	Endpoint *string `pulumi:"endpoint"`
-	// The name of the container. Must contain alphanumeric characters or underscores.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn      *string           `pulumi:"arn"`
+	Endpoint *string           `pulumi:"endpoint"`
+	Name     *string           `pulumi:"name"`
+	Tags     map[string]string `pulumi:"tags"`
 }
 
 type ContainerState struct {
-	// The ARN of the container.
-	Arn pulumi.StringPtrInput
-	// The DNS endpoint of the container.
+	Arn      pulumi.StringPtrInput
 	Endpoint pulumi.StringPtrInput
-	// The name of the container. Must contain alphanumeric characters or underscores.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Name     pulumi.StringPtrInput
+	Tags     pulumi.StringMapInput
 }
 
 func (ContainerState) ElementType() reflect.Type {
@@ -98,17 +64,13 @@ func (ContainerState) ElementType() reflect.Type {
 }
 
 type containerArgs struct {
-	// The name of the container. Must contain alphanumeric characters or underscores.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
+	Name *string           `pulumi:"name"`
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Container resource.
 type ContainerArgs struct {
-	// The name of the container. Must contain alphanumeric characters or underscores.
 	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 }
 

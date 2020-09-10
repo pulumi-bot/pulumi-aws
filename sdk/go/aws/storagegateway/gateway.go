@@ -10,144 +10,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an AWS Storage Gateway file, tape, or volume gateway in the provider region.
-//
-// > NOTE: The Storage Gateway API requires the gateway to be connected to properly return information after activation. If you are receiving `The specified gateway is not connected` errors during resource creation (gateway activation), ensure your gateway instance meets the [Storage Gateway requirements](https://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html).
-//
-// ## Example Usage
-// ### File Gateway
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/storagegateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
-// 			GatewayIpAddress: pulumi.String("1.2.3.4"),
-// 			GatewayName:      pulumi.String("example"),
-// 			GatewayTimezone:  pulumi.String("GMT"),
-// 			GatewayType:      pulumi.String("FILE_S3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Tape Gateway
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/storagegateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
-// 			GatewayIpAddress:  pulumi.String("1.2.3.4"),
-// 			GatewayName:       pulumi.String("example"),
-// 			GatewayTimezone:   pulumi.String("GMT"),
-// 			GatewayType:       pulumi.String("VTL"),
-// 			MediumChangerType: pulumi.String("AWS-Gateway-VTL"),
-// 			TapeDriveType:     pulumi.String("IBM-ULT3580-TD5"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Volume Gateway (Cached)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/storagegateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
-// 			GatewayIpAddress: pulumi.String("1.2.3.4"),
-// 			GatewayName:      pulumi.String("example"),
-// 			GatewayTimezone:  pulumi.String("GMT"),
-// 			GatewayType:      pulumi.String("CACHED"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Volume Gateway (Stored)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/storagegateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
-// 			GatewayIpAddress: pulumi.String("1.2.3.4"),
-// 			GatewayName:      pulumi.String("example"),
-// 			GatewayTimezone:  pulumi.String("GMT"),
-// 			GatewayType:      pulumi.String("STORED"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	ActivationKey pulumi.StringOutput `pulumi:"activationKey"`
-	// Amazon Resource Name (ARN) of the gateway.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
-	CloudwatchLogGroupArn pulumi.StringPtrOutput `pulumi:"cloudwatchLogGroupArn"`
-	// Identifier of the gateway.
-	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
-	// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	GatewayIpAddress pulumi.StringOutput `pulumi:"gatewayIpAddress"`
-	// Name of the gateway.
-	GatewayName pulumi.StringOutput `pulumi:"gatewayName"`
-	// Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
-	GatewayTimezone pulumi.StringOutput `pulumi:"gatewayTimezone"`
-	// Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
-	GatewayType pulumi.StringPtrOutput `pulumi:"gatewayType"`
-	// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-	GatewayVpcEndpoint pulumi.StringPtrOutput `pulumi:"gatewayVpcEndpoint"`
-	// Type of medium changer to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `STK-L700`, `AWS-Gateway-VTL`.
-	MediumChangerType pulumi.StringPtrOutput `pulumi:"mediumChangerType"`
-	// Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+	ActivationKey              pulumi.StringOutput                        `pulumi:"activationKey"`
+	Arn                        pulumi.StringOutput                        `pulumi:"arn"`
+	CloudwatchLogGroupArn      pulumi.StringPtrOutput                     `pulumi:"cloudwatchLogGroupArn"`
+	GatewayId                  pulumi.StringOutput                        `pulumi:"gatewayId"`
+	GatewayIpAddress           pulumi.StringOutput                        `pulumi:"gatewayIpAddress"`
+	GatewayName                pulumi.StringOutput                        `pulumi:"gatewayName"`
+	GatewayTimezone            pulumi.StringOutput                        `pulumi:"gatewayTimezone"`
+	GatewayType                pulumi.StringPtrOutput                     `pulumi:"gatewayType"`
+	GatewayVpcEndpoint         pulumi.StringPtrOutput                     `pulumi:"gatewayVpcEndpoint"`
+	MediumChangerType          pulumi.StringPtrOutput                     `pulumi:"mediumChangerType"`
 	SmbActiveDirectorySettings GatewaySmbActiveDirectorySettingsPtrOutput `pulumi:"smbActiveDirectorySettings"`
-	// Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-	SmbGuestPassword pulumi.StringPtrOutput `pulumi:"smbGuestPassword"`
-	// Key-value mapping of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-	TapeDriveType pulumi.StringPtrOutput `pulumi:"tapeDriveType"`
+	SmbGuestPassword           pulumi.StringPtrOutput                     `pulumi:"smbGuestPassword"`
+	Tags                       pulumi.StringMapOutput                     `pulumi:"tags"`
+	TapeDriveType              pulumi.StringPtrOutput                     `pulumi:"tapeDriveType"`
 }
 
 // NewGateway registers a new resource with the given unique name, arguments, and options.
@@ -184,65 +63,37 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	ActivationKey *string `pulumi:"activationKey"`
-	// Amazon Resource Name (ARN) of the gateway.
-	Arn *string `pulumi:"arn"`
-	// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
-	CloudwatchLogGroupArn *string `pulumi:"cloudwatchLogGroupArn"`
-	// Identifier of the gateway.
-	GatewayId *string `pulumi:"gatewayId"`
-	// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	GatewayIpAddress *string `pulumi:"gatewayIpAddress"`
-	// Name of the gateway.
-	GatewayName *string `pulumi:"gatewayName"`
-	// Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
-	GatewayTimezone *string `pulumi:"gatewayTimezone"`
-	// Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
-	GatewayType *string `pulumi:"gatewayType"`
-	// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-	GatewayVpcEndpoint *string `pulumi:"gatewayVpcEndpoint"`
-	// Type of medium changer to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `STK-L700`, `AWS-Gateway-VTL`.
-	MediumChangerType *string `pulumi:"mediumChangerType"`
-	// Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+	ActivationKey              *string                            `pulumi:"activationKey"`
+	Arn                        *string                            `pulumi:"arn"`
+	CloudwatchLogGroupArn      *string                            `pulumi:"cloudwatchLogGroupArn"`
+	GatewayId                  *string                            `pulumi:"gatewayId"`
+	GatewayIpAddress           *string                            `pulumi:"gatewayIpAddress"`
+	GatewayName                *string                            `pulumi:"gatewayName"`
+	GatewayTimezone            *string                            `pulumi:"gatewayTimezone"`
+	GatewayType                *string                            `pulumi:"gatewayType"`
+	GatewayVpcEndpoint         *string                            `pulumi:"gatewayVpcEndpoint"`
+	MediumChangerType          *string                            `pulumi:"mediumChangerType"`
 	SmbActiveDirectorySettings *GatewaySmbActiveDirectorySettings `pulumi:"smbActiveDirectorySettings"`
-	// Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-	SmbGuestPassword *string `pulumi:"smbGuestPassword"`
-	// Key-value mapping of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-	TapeDriveType *string `pulumi:"tapeDriveType"`
+	SmbGuestPassword           *string                            `pulumi:"smbGuestPassword"`
+	Tags                       map[string]string                  `pulumi:"tags"`
+	TapeDriveType              *string                            `pulumi:"tapeDriveType"`
 }
 
 type GatewayState struct {
-	// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	ActivationKey pulumi.StringPtrInput
-	// Amazon Resource Name (ARN) of the gateway.
-	Arn pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
-	CloudwatchLogGroupArn pulumi.StringPtrInput
-	// Identifier of the gateway.
-	GatewayId pulumi.StringPtrInput
-	// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	GatewayIpAddress pulumi.StringPtrInput
-	// Name of the gateway.
-	GatewayName pulumi.StringPtrInput
-	// Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
-	GatewayTimezone pulumi.StringPtrInput
-	// Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
-	GatewayType pulumi.StringPtrInput
-	// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-	GatewayVpcEndpoint pulumi.StringPtrInput
-	// Type of medium changer to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `STK-L700`, `AWS-Gateway-VTL`.
-	MediumChangerType pulumi.StringPtrInput
-	// Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+	ActivationKey              pulumi.StringPtrInput
+	Arn                        pulumi.StringPtrInput
+	CloudwatchLogGroupArn      pulumi.StringPtrInput
+	GatewayId                  pulumi.StringPtrInput
+	GatewayIpAddress           pulumi.StringPtrInput
+	GatewayName                pulumi.StringPtrInput
+	GatewayTimezone            pulumi.StringPtrInput
+	GatewayType                pulumi.StringPtrInput
+	GatewayVpcEndpoint         pulumi.StringPtrInput
+	MediumChangerType          pulumi.StringPtrInput
 	SmbActiveDirectorySettings GatewaySmbActiveDirectorySettingsPtrInput
-	// Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-	SmbGuestPassword pulumi.StringPtrInput
-	// Key-value mapping of resource tags
-	Tags pulumi.StringMapInput
-	// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-	TapeDriveType pulumi.StringPtrInput
+	SmbGuestPassword           pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
+	TapeDriveType              pulumi.StringPtrInput
 }
 
 func (GatewayState) ElementType() reflect.Type {
@@ -250,58 +101,34 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	ActivationKey *string `pulumi:"activationKey"`
-	// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
-	CloudwatchLogGroupArn *string `pulumi:"cloudwatchLogGroupArn"`
-	// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	GatewayIpAddress *string `pulumi:"gatewayIpAddress"`
-	// Name of the gateway.
-	GatewayName string `pulumi:"gatewayName"`
-	// Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
-	GatewayTimezone string `pulumi:"gatewayTimezone"`
-	// Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
-	GatewayType *string `pulumi:"gatewayType"`
-	// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-	GatewayVpcEndpoint *string `pulumi:"gatewayVpcEndpoint"`
-	// Type of medium changer to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `STK-L700`, `AWS-Gateway-VTL`.
-	MediumChangerType *string `pulumi:"mediumChangerType"`
-	// Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+	ActivationKey              *string                            `pulumi:"activationKey"`
+	CloudwatchLogGroupArn      *string                            `pulumi:"cloudwatchLogGroupArn"`
+	GatewayIpAddress           *string                            `pulumi:"gatewayIpAddress"`
+	GatewayName                string                             `pulumi:"gatewayName"`
+	GatewayTimezone            string                             `pulumi:"gatewayTimezone"`
+	GatewayType                *string                            `pulumi:"gatewayType"`
+	GatewayVpcEndpoint         *string                            `pulumi:"gatewayVpcEndpoint"`
+	MediumChangerType          *string                            `pulumi:"mediumChangerType"`
 	SmbActiveDirectorySettings *GatewaySmbActiveDirectorySettings `pulumi:"smbActiveDirectorySettings"`
-	// Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-	SmbGuestPassword *string `pulumi:"smbGuestPassword"`
-	// Key-value mapping of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-	TapeDriveType *string `pulumi:"tapeDriveType"`
+	SmbGuestPassword           *string                            `pulumi:"smbGuestPassword"`
+	Tags                       map[string]string                  `pulumi:"tags"`
+	TapeDriveType              *string                            `pulumi:"tapeDriveType"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	ActivationKey pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
-	CloudwatchLogGroupArn pulumi.StringPtrInput
-	// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
-	GatewayIpAddress pulumi.StringPtrInput
-	// Name of the gateway.
-	GatewayName pulumi.StringInput
-	// Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
-	GatewayTimezone pulumi.StringInput
-	// Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_S3`, `STORED`, `VTL`.
-	GatewayType pulumi.StringPtrInput
-	// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
-	GatewayVpcEndpoint pulumi.StringPtrInput
-	// Type of medium changer to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `STK-L700`, `AWS-Gateway-VTL`.
-	MediumChangerType pulumi.StringPtrInput
-	// Nested argument with Active Directory domain join information for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `ActiveDirectory` authentication SMB file shares. More details below.
+	ActivationKey              pulumi.StringPtrInput
+	CloudwatchLogGroupArn      pulumi.StringPtrInput
+	GatewayIpAddress           pulumi.StringPtrInput
+	GatewayName                pulumi.StringInput
+	GatewayTimezone            pulumi.StringInput
+	GatewayType                pulumi.StringPtrInput
+	GatewayVpcEndpoint         pulumi.StringPtrInput
+	MediumChangerType          pulumi.StringPtrInput
 	SmbActiveDirectorySettings GatewaySmbActiveDirectorySettingsPtrInput
-	// Guest password for Server Message Block (SMB) file shares. Only valid for `FILE_S3` gateway type. Must be set before creating `GuestAccess` authentication SMB file shares. This provider can only detect drift of the existence of a guest password, not its actual value from the gateway. This provider can however update the password with changing the argument.
-	SmbGuestPassword pulumi.StringPtrInput
-	// Key-value mapping of resource tags
-	Tags pulumi.StringMapInput
-	// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.
-	TapeDriveType pulumi.StringPtrInput
+	SmbGuestPassword           pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
+	TapeDriveType              pulumi.StringPtrInput
 }
 
 func (GatewayArgs) ElementType() reflect.Type {

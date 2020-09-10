@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Dms.Outputs
     [OutputType]
     public sealed class EndpointKafkaSettings
     {
-        /// <summary>
-        /// Kafka broker location. Specify in the form broker-hostname-or-ip:port.
-        /// </summary>
         public readonly string Broker;
-        /// <summary>
-        /// Kafka topic for migration. Defaults to `kafka-default-topic`.
-        /// </summary>
         public readonly string? Topic;
 
         [OutputConstructor]

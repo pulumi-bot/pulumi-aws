@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a SES Identity Policy. More information about SES Sending Authorization Policies can be found in the [SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleDomainIdentity = new aws.ses.DomainIdentity("exampleDomainIdentity", {domain: "example.com"});
- * const examplePolicyDocument = exampleDomainIdentity.arn.apply(arn => aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: [
- *             "SES:SendEmail",
- *             "SES:SendRawEmail",
- *         ],
- *         resources: [arn],
- *         principals: [{
- *             identifiers: ["*"],
- *             type: "AWS",
- *         }],
- *     }],
- * }));
- * const exampleIdentityPolicy = new aws.ses.IdentityPolicy("exampleIdentityPolicy", {
- *     identity: exampleDomainIdentity.arn,
- *     policy: examplePolicyDocument.json,
- * });
- * ```
- */
 export class IdentityPolicy extends pulumi.CustomResource {
     /**
      * Get an existing IdentityPolicy resource's state with the given name, ID, and optional extra
@@ -61,17 +32,8 @@ export class IdentityPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === IdentityPolicy.__pulumiType;
     }
 
-    /**
-     * Name or Amazon Resource Name (ARN) of the SES Identity.
-     */
     public readonly identity!: pulumi.Output<string>;
-    /**
-     * Name of the policy.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * JSON string of the policy.
-     */
     public readonly policy!: pulumi.Output<string>;
 
     /**
@@ -116,17 +78,8 @@ export class IdentityPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IdentityPolicy resources.
  */
 export interface IdentityPolicyState {
-    /**
-     * Name or Amazon Resource Name (ARN) of the SES Identity.
-     */
     readonly identity?: pulumi.Input<string>;
-    /**
-     * Name of the policy.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * JSON string of the policy.
-     */
     readonly policy?: pulumi.Input<string>;
 }
 
@@ -134,16 +87,7 @@ export interface IdentityPolicyState {
  * The set of arguments for constructing a IdentityPolicy resource.
  */
 export interface IdentityPolicyArgs {
-    /**
-     * Name or Amazon Resource Name (ARN) of the SES Identity.
-     */
     readonly identity: pulumi.Input<string>;
-    /**
-     * Name of the policy.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * JSON string of the policy.
-     */
     readonly policy: pulumi.Input<string>;
 }

@@ -13,29 +13,11 @@ namespace Pulumi.Aws.CloudWatch.Outputs
     [OutputType]
     public sealed class EventTargetEcsTarget
     {
-        /// <summary>
-        /// Specifies an ECS task group for the task. The maximum length is 255 characters.
-        /// </summary>
         public readonly string? Group;
-        /// <summary>
-        /// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. Valid values are EC2 or FARGATE.
-        /// </summary>
         public readonly string? LaunchType;
-        /// <summary>
-        /// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if launch_type is FARGATE because the awsvpc mode is required for Fargate tasks.
-        /// </summary>
         public readonly Outputs.EventTargetEcsTargetNetworkConfiguration? NetworkConfiguration;
-        /// <summary>
-        /// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This is used only if LaunchType is FARGATE. For more information about valid platform versions, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
-        /// </summary>
         public readonly string? PlatformVersion;
-        /// <summary>
-        /// The number of tasks to create based on the TaskDefinition. The default is 1.
-        /// </summary>
         public readonly int? TaskCount;
-        /// <summary>
-        /// The ARN of the task definition to use if the event target is an Amazon ECS cluster.
-        /// </summary>
         public readonly string TaskDefinitionArn;
 
         [OutputConstructor]

@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Glue.Inputs
 
     public sealed class CrawlerDynamodbTargetGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the DynamoDB table to crawl.
-        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 

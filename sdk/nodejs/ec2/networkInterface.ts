@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Elastic network interface (ENI) resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const test = new aws.ec2.NetworkInterface("test", {
- *     attachments: [{
- *         deviceIndex: 1,
- *         instance: aws_instance_test.id,
- *     }],
- *     privateIps: ["10.0.0.50"],
- *     securityGroups: [aws_security_group_web.id],
- *     subnetId: aws_subnet_public_a.id,
- * });
- * ```
- */
 export class NetworkInterface extends pulumi.CustomResource {
     /**
      * Get an existing NetworkInterface resource's state with the given name, ID, and optional extra
@@ -54,47 +34,17 @@ export class NetworkInterface extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkInterface.__pulumiType;
     }
 
-    /**
-     * Block to define the attachment of the ENI. Documented below.
-     */
     public readonly attachments!: pulumi.Output<outputs.ec2.NetworkInterfaceAttachment[]>;
-    /**
-     * A description for the network interface.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The MAC address of the network interface.
-     */
     public /*out*/ readonly macAddress!: pulumi.Output<string>;
     public /*out*/ readonly outpostArn!: pulumi.Output<string>;
-    /**
-     * The private DNS name of the network interface (IPv4).
-     */
     public /*out*/ readonly privateDnsName!: pulumi.Output<string>;
     public readonly privateIp!: pulumi.Output<string>;
-    /**
-     * List of private IPs to assign to the ENI.
-     */
     public readonly privateIps!: pulumi.Output<string[]>;
-    /**
-     * Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-     */
     public readonly privateIpsCount!: pulumi.Output<number>;
-    /**
-     * List of security group IDs to assign to the ENI.
-     */
     public readonly securityGroups!: pulumi.Output<string[]>;
-    /**
-     * Whether to enable source destination checking for the ENI. Default true.
-     */
     public readonly sourceDestCheck!: pulumi.Output<boolean | undefined>;
-    /**
-     * Subnet ID to create the ENI in.
-     */
     public readonly subnetId!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -154,47 +104,17 @@ export class NetworkInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkInterface resources.
  */
 export interface NetworkInterfaceState {
-    /**
-     * Block to define the attachment of the ENI. Documented below.
-     */
     readonly attachments?: pulumi.Input<pulumi.Input<inputs.ec2.NetworkInterfaceAttachment>[]>;
-    /**
-     * A description for the network interface.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The MAC address of the network interface.
-     */
     readonly macAddress?: pulumi.Input<string>;
     readonly outpostArn?: pulumi.Input<string>;
-    /**
-     * The private DNS name of the network interface (IPv4).
-     */
     readonly privateDnsName?: pulumi.Input<string>;
     readonly privateIp?: pulumi.Input<string>;
-    /**
-     * List of private IPs to assign to the ENI.
-     */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-     */
     readonly privateIpsCount?: pulumi.Input<number>;
-    /**
-     * List of security group IDs to assign to the ENI.
-     */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to enable source destination checking for the ENI. Default true.
-     */
     readonly sourceDestCheck?: pulumi.Input<boolean>;
-    /**
-     * Subnet ID to create the ENI in.
-     */
     readonly subnetId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -202,37 +122,13 @@ export interface NetworkInterfaceState {
  * The set of arguments for constructing a NetworkInterface resource.
  */
 export interface NetworkInterfaceArgs {
-    /**
-     * Block to define the attachment of the ENI. Documented below.
-     */
     readonly attachments?: pulumi.Input<pulumi.Input<inputs.ec2.NetworkInterfaceAttachment>[]>;
-    /**
-     * A description for the network interface.
-     */
     readonly description?: pulumi.Input<string>;
     readonly privateIp?: pulumi.Input<string>;
-    /**
-     * List of private IPs to assign to the ENI.
-     */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-     */
     readonly privateIpsCount?: pulumi.Input<number>;
-    /**
-     * List of security group IDs to assign to the ENI.
-     */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to enable source destination checking for the ENI. Default true.
-     */
     readonly sourceDestCheck?: pulumi.Input<boolean>;
-    /**
-     * Subnet ID to create the ENI in.
-     */
     readonly subnetId: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

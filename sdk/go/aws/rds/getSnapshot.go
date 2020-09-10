@@ -7,51 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get information about a DB Snapshot for use when provisioning DB instances
-//
-// > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
-// See the `rds.ClusterSnapshot` data source for DB Cluster snapshots.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/rds"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		prod, err := rds.NewInstance(ctx, "prod", &rds.InstanceArgs{
-// 			AllocatedStorage:   pulumi.Int(10),
-// 			Engine:             pulumi.String("mysql"),
-// 			EngineVersion:      pulumi.String("5.6.17"),
-// 			InstanceClass:      pulumi.String("db.t2.micro"),
-// 			Name:               pulumi.String("mydb"),
-// 			Username:           pulumi.String("foo"),
-// 			Password:           pulumi.String("bar"),
-// 			DbSubnetGroupName:  pulumi.String("my_database_subnet_group"),
-// 			ParameterGroupName: pulumi.String("default.mysql5.6"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewInstance(ctx, "dev", &rds.InstanceArgs{
-// 			InstanceClass: pulumi.String("db.t2.micro"),
-// 			Name:          pulumi.String("mydbdev"),
-// 			SnapshotIdentifier: latestProdSnapshot.ApplyT(func(latestProdSnapshot rds.LookupSnapshotResult) (string, error) {
-// 				return latestProdSnapshot.Id, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("aws:rds/getSnapshot:getSnapshot", args, &rv, opts...)
@@ -63,67 +18,39 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 
 // A collection of arguments for invoking getSnapshot.
 type LookupSnapshotArgs struct {
-	// Returns the list of snapshots created by the specific db_instance
 	DbInstanceIdentifier *string `pulumi:"dbInstanceIdentifier"`
-	// Returns information on a specific snapshot_id.
 	DbSnapshotIdentifier *string `pulumi:"dbSnapshotIdentifier"`
-	// Set this value to true to include manual DB snapshots that are public and can be
-	// copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
-	IncludePublic *bool `pulumi:"includePublic"`
-	// Set this value to true to include shared manual DB snapshots from other
-	// AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
-	// The default is `false`.
-	IncludeShared *bool `pulumi:"includeShared"`
-	// If more than one result is returned, use the most
-	// recent Snapshot.
-	MostRecent *bool `pulumi:"mostRecent"`
-	// The type of snapshots to be returned. If you don't specify a SnapshotType
-	// value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not
-	// included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
-	SnapshotType *string `pulumi:"snapshotType"`
+	IncludePublic        *bool   `pulumi:"includePublic"`
+	IncludeShared        *bool   `pulumi:"includeShared"`
+	MostRecent           *bool   `pulumi:"mostRecent"`
+	SnapshotType         *string `pulumi:"snapshotType"`
 }
 
 // A collection of values returned by getSnapshot.
 type LookupSnapshotResult struct {
-	// Specifies the allocated storage size in gigabytes (GB).
-	AllocatedStorage int `pulumi:"allocatedStorage"`
-	// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
+	AllocatedStorage     int     `pulumi:"allocatedStorage"`
 	AvailabilityZone     string  `pulumi:"availabilityZone"`
 	DbInstanceIdentifier *string `pulumi:"dbInstanceIdentifier"`
-	// The Amazon Resource Name (ARN) for the DB snapshot.
 	DbSnapshotArn        string  `pulumi:"dbSnapshotArn"`
 	DbSnapshotIdentifier *string `pulumi:"dbSnapshotIdentifier"`
-	// Specifies whether the DB snapshot is encrypted.
-	Encrypted bool `pulumi:"encrypted"`
-	// Specifies the name of the database engine.
-	Engine string `pulumi:"engine"`
-	// Specifies the version of the database engine.
-	EngineVersion string `pulumi:"engineVersion"`
+	Encrypted            bool    `pulumi:"encrypted"`
+	Engine               string  `pulumi:"engine"`
+	EngineVersion        string  `pulumi:"engineVersion"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	IncludePublic *bool  `pulumi:"includePublic"`
-	IncludeShared *bool  `pulumi:"includeShared"`
-	// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
-	Iops int `pulumi:"iops"`
-	// The ARN for the KMS encryption key.
-	KmsKeyId string `pulumi:"kmsKeyId"`
-	// License model information for the restored DB instance.
-	LicenseModel string `pulumi:"licenseModel"`
-	MostRecent   *bool  `pulumi:"mostRecent"`
-	// Provides the option group name for the DB snapshot.
-	OptionGroupName string `pulumi:"optionGroupName"`
-	Port            int    `pulumi:"port"`
-	// Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).
-	SnapshotCreateTime string  `pulumi:"snapshotCreateTime"`
-	SnapshotType       *string `pulumi:"snapshotType"`
-	// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
-	SourceDbSnapshotIdentifier string `pulumi:"sourceDbSnapshotIdentifier"`
-	// The region that the DB snapshot was created in or copied from.
-	SourceRegion string `pulumi:"sourceRegion"`
-	// Specifies the status of this DB snapshot.
-	Status string `pulumi:"status"`
-	// Specifies the storage type associated with DB snapshot.
-	StorageType string `pulumi:"storageType"`
-	// Specifies the ID of the VPC associated with the DB snapshot.
-	VpcId string `pulumi:"vpcId"`
+	Id                         string  `pulumi:"id"`
+	IncludePublic              *bool   `pulumi:"includePublic"`
+	IncludeShared              *bool   `pulumi:"includeShared"`
+	Iops                       int     `pulumi:"iops"`
+	KmsKeyId                   string  `pulumi:"kmsKeyId"`
+	LicenseModel               string  `pulumi:"licenseModel"`
+	MostRecent                 *bool   `pulumi:"mostRecent"`
+	OptionGroupName            string  `pulumi:"optionGroupName"`
+	Port                       int     `pulumi:"port"`
+	SnapshotCreateTime         string  `pulumi:"snapshotCreateTime"`
+	SnapshotType               *string `pulumi:"snapshotType"`
+	SourceDbSnapshotIdentifier string  `pulumi:"sourceDbSnapshotIdentifier"`
+	SourceRegion               string  `pulumi:"sourceRegion"`
+	Status                     string  `pulumi:"status"`
+	StorageType                string  `pulumi:"storageType"`
+	VpcId                      string  `pulumi:"vpcId"`
 }

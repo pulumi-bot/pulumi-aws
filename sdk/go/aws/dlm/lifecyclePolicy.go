@@ -10,88 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a [Data Lifecycle Manager (DLM) lifecycle policy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) for managing snapshots.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/dlm"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dlmLifecycleRole, err := iam.NewRole(ctx, "dlmLifecycleRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": \"sts:AssumeRole\",\n", "      \"Principal\": {\n", "        \"Service\": \"dlm.amazonaws.com\"\n", "      },\n", "      \"Effect\": \"Allow\",\n", "      \"Sid\": \"\"\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicy(ctx, "dlmLifecycle", &iam.RolePolicyArgs{
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "   \"Version\": \"2012-10-17\",\n", "   \"Statement\": [\n", "      {\n", "         \"Effect\": \"Allow\",\n", "         \"Action\": [\n", "            \"ec2:CreateSnapshot\",\n", "            \"ec2:DeleteSnapshot\",\n", "            \"ec2:DescribeVolumes\",\n", "            \"ec2:DescribeSnapshots\"\n", "         ],\n", "         \"Resource\": \"*\"\n", "      },\n", "      {\n", "         \"Effect\": \"Allow\",\n", "         \"Action\": [\n", "            \"ec2:CreateTags\"\n", "         ],\n", "         \"Resource\": \"arn:aws:ec2:*::snapshot/*\"\n", "      }\n", "   ]\n", "}\n", "\n")),
-// 			Role:   dlmLifecycleRole.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dlm.NewLifecyclePolicy(ctx, "example", &dlm.LifecyclePolicyArgs{
-// 			Description:      pulumi.String("example DLM lifecycle policy"),
-// 			ExecutionRoleArn: dlmLifecycleRole.Arn,
-// 			PolicyDetails: &dlm.LifecyclePolicyPolicyDetailsArgs{
-// 				ResourceTypes: pulumi.StringArray{
-// 					pulumi.String("VOLUME"),
-// 				},
-// 				Schedules: dlm.LifecyclePolicyPolicyDetailsScheduleArray{
-// 					&dlm.LifecyclePolicyPolicyDetailsScheduleArgs{
-// 						CopyTags: pulumi.Bool(false),
-// 						CreateRule: &dlm.LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs{
-// 							Interval:     pulumi.Int(24),
-// 							IntervalUnit: pulumi.String("HOURS"),
-// 							Times:        pulumi.String("23:45"),
-// 						},
-// 						Name: pulumi.String("2 weeks of daily snapshots"),
-// 						RetainRule: &dlm.LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs{
-// 							Count: pulumi.Int(14),
-// 						},
-// 						TagsToAdd: pulumi.StringMap{
-// 							"SnapshotCreator": pulumi.String("DLM"),
-// 						},
-// 					},
-// 				},
-// 				TargetTags: pulumi.StringMap{
-// 					"Snapshot": pulumi.String("true"),
-// 				},
-// 			},
-// 			State: pulumi.String("ENABLED"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LifecyclePolicy struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// A description for the DLM lifecycle policy.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The ARN of an IAM role that is able to be assumed by the DLM service.
-	ExecutionRoleArn pulumi.StringOutput `pulumi:"executionRoleArn"`
-	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails LifecyclePolicyPolicyDetailsOutput `pulumi:"policyDetails"`
-	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-	State pulumi.StringPtrOutput `pulumi:"state"`
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn              pulumi.StringOutput                `pulumi:"arn"`
+	Description      pulumi.StringOutput                `pulumi:"description"`
+	ExecutionRoleArn pulumi.StringOutput                `pulumi:"executionRoleArn"`
+	PolicyDetails    LifecyclePolicyPolicyDetailsOutput `pulumi:"policyDetails"`
+	State            pulumi.StringPtrOutput             `pulumi:"state"`
+	Tags             pulumi.StringMapOutput             `pulumi:"tags"`
 }
 
 // NewLifecyclePolicy registers a new resource with the given unique name, arguments, and options.
@@ -131,33 +58,21 @@ func GetLifecyclePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LifecyclePolicy resources.
 type lifecyclePolicyState struct {
-	// Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-	Arn *string `pulumi:"arn"`
-	// A description for the DLM lifecycle policy.
-	Description *string `pulumi:"description"`
-	// The ARN of an IAM role that is able to be assumed by the DLM service.
-	ExecutionRoleArn *string `pulumi:"executionRoleArn"`
-	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails *LifecyclePolicyPolicyDetails `pulumi:"policyDetails"`
-	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-	State *string `pulumi:"state"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Arn              *string                       `pulumi:"arn"`
+	Description      *string                       `pulumi:"description"`
+	ExecutionRoleArn *string                       `pulumi:"executionRoleArn"`
+	PolicyDetails    *LifecyclePolicyPolicyDetails `pulumi:"policyDetails"`
+	State            *string                       `pulumi:"state"`
+	Tags             map[string]string             `pulumi:"tags"`
 }
 
 type LifecyclePolicyState struct {
-	// Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-	Arn pulumi.StringPtrInput
-	// A description for the DLM lifecycle policy.
-	Description pulumi.StringPtrInput
-	// The ARN of an IAM role that is able to be assumed by the DLM service.
+	Arn              pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
 	ExecutionRoleArn pulumi.StringPtrInput
-	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails LifecyclePolicyPolicyDetailsPtrInput
-	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-	State pulumi.StringPtrInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
+	PolicyDetails    LifecyclePolicyPolicyDetailsPtrInput
+	State            pulumi.StringPtrInput
+	Tags             pulumi.StringMapInput
 }
 
 func (LifecyclePolicyState) ElementType() reflect.Type {
@@ -165,30 +80,20 @@ func (LifecyclePolicyState) ElementType() reflect.Type {
 }
 
 type lifecyclePolicyArgs struct {
-	// A description for the DLM lifecycle policy.
-	Description string `pulumi:"description"`
-	// The ARN of an IAM role that is able to be assumed by the DLM service.
-	ExecutionRoleArn string `pulumi:"executionRoleArn"`
-	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails LifecyclePolicyPolicyDetails `pulumi:"policyDetails"`
-	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-	State *string `pulumi:"state"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Description      string                       `pulumi:"description"`
+	ExecutionRoleArn string                       `pulumi:"executionRoleArn"`
+	PolicyDetails    LifecyclePolicyPolicyDetails `pulumi:"policyDetails"`
+	State            *string                      `pulumi:"state"`
+	Tags             map[string]string            `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a LifecyclePolicy resource.
 type LifecyclePolicyArgs struct {
-	// A description for the DLM lifecycle policy.
-	Description pulumi.StringInput
-	// The ARN of an IAM role that is able to be assumed by the DLM service.
+	Description      pulumi.StringInput
 	ExecutionRoleArn pulumi.StringInput
-	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails LifecyclePolicyPolicyDetailsInput
-	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-	State pulumi.StringPtrInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
+	PolicyDetails    LifecyclePolicyPolicyDetailsInput
+	State            pulumi.StringPtrInput
+	Tags             pulumi.StringMapInput
 }
 
 func (LifecyclePolicyArgs) ElementType() reflect.Type {

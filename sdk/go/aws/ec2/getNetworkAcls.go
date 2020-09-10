@@ -18,21 +18,16 @@ func GetNetworkAcls(ctx *pulumi.Context, args *GetNetworkAclsArgs, opts ...pulum
 
 // A collection of arguments for invoking getNetworkAcls.
 type GetNetworkAclsArgs struct {
-	// Custom filter block as described below.
 	Filters []GetNetworkAclsFilter `pulumi:"filters"`
-	// A map of tags, each pair of which must exactly match
-	// a pair on the desired network ACLs.
-	Tags map[string]string `pulumi:"tags"`
-	// The VPC ID that you want to filter from.
-	VpcId *string `pulumi:"vpcId"`
+	Tags    map[string]string      `pulumi:"tags"`
+	VpcId   *string                `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getNetworkAcls.
 type GetNetworkAclsResult struct {
 	Filters []GetNetworkAclsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of all the network ACL ids found. This data source will fail if none are found.
+	Id    string            `pulumi:"id"`
 	Ids   []string          `pulumi:"ids"`
 	Tags  map[string]string `pulumi:"tags"`
 	VpcId *string           `pulumi:"vpcId"`

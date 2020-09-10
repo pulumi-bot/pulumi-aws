@@ -9,120 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ebs
 {
-    /// <summary>
-    /// Creates a Snapshot of a snapshot.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ebs.Volume("example", new Aws.Ebs.VolumeArgs
-    ///         {
-    ///             AvailabilityZone = "us-west-2a",
-    ///             Size = 40,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "HelloWorld" },
-    ///             },
-    ///         });
-    ///         var exampleSnapshot = new Aws.Ebs.Snapshot("exampleSnapshot", new Aws.Ebs.SnapshotArgs
-    ///         {
-    ///             VolumeId = example.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "HelloWorld_snap" },
-    ///             },
-    ///         });
-    ///         var exampleCopy = new Aws.Ebs.SnapshotCopy("exampleCopy", new Aws.Ebs.SnapshotCopyArgs
-    ///         {
-    ///             SourceSnapshotId = exampleSnapshot.Id,
-    ///             SourceRegion = "us-west-2",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "HelloWorld_copy_snap" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SnapshotCopy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the EBS Snapshot.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The data encryption key identifier for the snapshot.
-        /// * `source_snapshot_id` The ARN of the copied snapshot.
-        /// * `source_region` The region of the source snapshot.
-        /// </summary>
         [Output("dataEncryptionKeyId")]
         public Output<string> DataEncryptionKeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// A description of what the snapshot is.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether the snapshot is encrypted.
-        /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN for the KMS encryption key.
-        /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
-        /// </summary>
         [Output("ownerAlias")]
         public Output<string> OwnerAlias { get; private set; } = null!;
 
-        /// <summary>
-        /// The AWS account ID of the snapshot owner.
-        /// </summary>
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The region of the source snapshot.
-        /// </summary>
         [Output("sourceRegion")]
         public Output<string> SourceRegion { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN for the snapshot to be copied.
-        /// </summary>
         [Output("sourceSnapshotId")]
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags for the snapshot.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         [Output("volumeId")]
         public Output<string> VolumeId { get; private set; } = null!;
 
-        /// <summary>
-        /// The size of the drive in GiBs.
-        /// </summary>
         [Output("volumeSize")]
         public Output<int> VolumeSize { get; private set; } = null!;
 
@@ -172,42 +93,23 @@ namespace Pulumi.Aws.Ebs
 
     public sealed class SnapshotCopyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of what the snapshot is.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Whether the snapshot is encrypted.
-        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
-        /// <summary>
-        /// The ARN for the KMS encryption key.
-        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// The region of the source snapshot.
-        /// </summary>
         [Input("sourceRegion", required: true)]
         public Input<string> SourceRegion { get; set; } = null!;
 
-        /// <summary>
-        /// The ARN for the snapshot to be copied.
-        /// </summary>
         [Input("sourceSnapshotId", required: true)]
         public Input<string> SourceSnapshotId { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags for the snapshot.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -221,68 +123,35 @@ namespace Pulumi.Aws.Ebs
 
     public sealed class SnapshotCopyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the EBS Snapshot.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The data encryption key identifier for the snapshot.
-        /// * `source_snapshot_id` The ARN of the copied snapshot.
-        /// * `source_region` The region of the source snapshot.
-        /// </summary>
         [Input("dataEncryptionKeyId")]
         public Input<string>? DataEncryptionKeyId { get; set; }
 
-        /// <summary>
-        /// A description of what the snapshot is.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Whether the snapshot is encrypted.
-        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
-        /// <summary>
-        /// The ARN for the KMS encryption key.
-        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
-        /// </summary>
         [Input("ownerAlias")]
         public Input<string>? OwnerAlias { get; set; }
 
-        /// <summary>
-        /// The AWS account ID of the snapshot owner.
-        /// </summary>
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
-        /// <summary>
-        /// The region of the source snapshot.
-        /// </summary>
         [Input("sourceRegion")]
         public Input<string>? SourceRegion { get; set; }
 
-        /// <summary>
-        /// The ARN for the snapshot to be copied.
-        /// </summary>
         [Input("sourceSnapshotId")]
         public Input<string>? SourceSnapshotId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags for the snapshot.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -292,9 +161,6 @@ namespace Pulumi.Aws.Ebs
         [Input("volumeId")]
         public Input<string>? VolumeId { get; set; }
 
-        /// <summary>
-        /// The size of the drive in GiBs.
-        /// </summary>
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
 

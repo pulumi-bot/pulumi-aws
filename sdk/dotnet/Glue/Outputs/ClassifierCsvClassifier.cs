@@ -13,29 +13,11 @@ namespace Pulumi.Aws.Glue.Outputs
     [OutputType]
     public sealed class ClassifierCsvClassifier
     {
-        /// <summary>
-        /// Enables the processing of files that contain only one column.
-        /// </summary>
         public readonly bool? AllowSingleColumn;
-        /// <summary>
-        /// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
-        /// </summary>
         public readonly string? ContainsHeader;
-        /// <summary>
-        /// The delimiter used in the Csv to separate columns.
-        /// </summary>
         public readonly string? Delimiter;
-        /// <summary>
-        /// Specifies whether to trim column values.
-        /// </summary>
         public readonly bool? DisableValueTrimming;
-        /// <summary>
-        /// A list of strings representing column names.
-        /// </summary>
         public readonly ImmutableArray<string> Headers;
-        /// <summary>
-        /// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
-        /// </summary>
         public readonly string? QuoteSymbol;
 
         [OutputConstructor]

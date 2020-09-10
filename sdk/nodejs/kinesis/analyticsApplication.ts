@@ -8,46 +8,6 @@ import * as utilities from "../utilities";
 
 import {ARN} from "..";
 
-/**
- * Provides a Kinesis Analytics Application resource. Kinesis Analytics is a managed service that
- * allows processing and analyzing streaming data using standard SQL.
- *
- * For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testStream = new aws.kinesis.Stream("testStream", {shardCount: 1});
- * const testApplication = new aws.kinesis.AnalyticsApplication("testApplication", {inputs: {
- *     namePrefix: "test_prefix",
- *     kinesisStream: {
- *         resourceArn: testStream.arn,
- *         roleArn: aws_iam_role.test.arn,
- *     },
- *     parallelism: {
- *         count: 1,
- *     },
- *     schema: {
- *         recordColumns: [{
- *             mapping: `$.test`,
- *             name: "test",
- *             sqlType: "VARCHAR(8)",
- *         }],
- *         recordEncoding: "UTF-8",
- *         recordFormat: {
- *             mappingParameters: {
- *                 json: {
- *                     recordRowPath: "$",
- *                 },
- *             },
- *         },
- *     },
- * }});
- * ```
- */
 export class AnalyticsApplication extends pulumi.CustomResource {
     /**
      * Get an existing AnalyticsApplication resource's state with the given name, ID, and optional extra
@@ -76,59 +36,18 @@ export class AnalyticsApplication extends pulumi.CustomResource {
         return obj['__pulumiType'] === AnalyticsApplication.__pulumiType;
     }
 
-    /**
-     * The ARN of the Kinesis Analytics Appliation.
-     */
     public /*out*/ readonly arn!: pulumi.Output<ARN>;
-    /**
-     * The CloudWatch log stream options to monitor application errors.
-     * See CloudWatch Logging Options below for more details.
-     */
     public readonly cloudwatchLoggingOptions!: pulumi.Output<outputs.kinesis.AnalyticsApplicationCloudwatchLoggingOptions | undefined>;
-    /**
-     * SQL Code to transform input data, and generate output.
-     */
     public readonly code!: pulumi.Output<string | undefined>;
-    /**
-     * The Timestamp when the application version was created.
-     */
     public /*out*/ readonly createTimestamp!: pulumi.Output<string>;
-    /**
-     * Description of the application.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Input configuration of the application. See Inputs below for more details.
-     */
     public readonly inputs!: pulumi.Output<outputs.kinesis.AnalyticsApplicationInputs | undefined>;
-    /**
-     * The Timestamp when the application was last updated.
-     */
     public /*out*/ readonly lastUpdateTimestamp!: pulumi.Output<string>;
-    /**
-     * Name of the Kinesis Analytics Application.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Output destination configuration of the application. See Outputs below for more details.
-     */
     public readonly outputs!: pulumi.Output<outputs.kinesis.AnalyticsApplicationOutput[] | undefined>;
-    /**
-     * An S3 Reference Data Source for the application.
-     * See Reference Data Sources below for more details.
-     */
     public readonly referenceDataSources!: pulumi.Output<outputs.kinesis.AnalyticsApplicationReferenceDataSources | undefined>;
-    /**
-     * The Status of the application.
-     */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * Key-value map of tags for the Kinesis Analytics Application.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The Version of the application.
-     */
     public /*out*/ readonly version!: pulumi.Output<number>;
 
     /**
@@ -187,59 +106,18 @@ export class AnalyticsApplication extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AnalyticsApplication resources.
  */
 export interface AnalyticsApplicationState {
-    /**
-     * The ARN of the Kinesis Analytics Appliation.
-     */
     readonly arn?: pulumi.Input<ARN>;
-    /**
-     * The CloudWatch log stream options to monitor application errors.
-     * See CloudWatch Logging Options below for more details.
-     */
     readonly cloudwatchLoggingOptions?: pulumi.Input<inputs.kinesis.AnalyticsApplicationCloudwatchLoggingOptions>;
-    /**
-     * SQL Code to transform input data, and generate output.
-     */
     readonly code?: pulumi.Input<string>;
-    /**
-     * The Timestamp when the application version was created.
-     */
     readonly createTimestamp?: pulumi.Input<string>;
-    /**
-     * Description of the application.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Input configuration of the application. See Inputs below for more details.
-     */
     readonly inputs?: pulumi.Input<inputs.kinesis.AnalyticsApplicationInputs>;
-    /**
-     * The Timestamp when the application was last updated.
-     */
     readonly lastUpdateTimestamp?: pulumi.Input<string>;
-    /**
-     * Name of the Kinesis Analytics Application.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output destination configuration of the application. See Outputs below for more details.
-     */
     readonly outputs?: pulumi.Input<pulumi.Input<inputs.kinesis.AnalyticsApplicationOutput>[]>;
-    /**
-     * An S3 Reference Data Source for the application.
-     * See Reference Data Sources below for more details.
-     */
     readonly referenceDataSources?: pulumi.Input<inputs.kinesis.AnalyticsApplicationReferenceDataSources>;
-    /**
-     * The Status of the application.
-     */
     readonly status?: pulumi.Input<string>;
-    /**
-     * Key-value map of tags for the Kinesis Analytics Application.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The Version of the application.
-     */
     readonly version?: pulumi.Input<number>;
 }
 
@@ -247,38 +125,12 @@ export interface AnalyticsApplicationState {
  * The set of arguments for constructing a AnalyticsApplication resource.
  */
 export interface AnalyticsApplicationArgs {
-    /**
-     * The CloudWatch log stream options to monitor application errors.
-     * See CloudWatch Logging Options below for more details.
-     */
     readonly cloudwatchLoggingOptions?: pulumi.Input<inputs.kinesis.AnalyticsApplicationCloudwatchLoggingOptions>;
-    /**
-     * SQL Code to transform input data, and generate output.
-     */
     readonly code?: pulumi.Input<string>;
-    /**
-     * Description of the application.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Input configuration of the application. See Inputs below for more details.
-     */
     readonly inputs?: pulumi.Input<inputs.kinesis.AnalyticsApplicationInputs>;
-    /**
-     * Name of the Kinesis Analytics Application.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output destination configuration of the application. See Outputs below for more details.
-     */
     readonly outputs?: pulumi.Input<pulumi.Input<inputs.kinesis.AnalyticsApplicationOutput>[]>;
-    /**
-     * An S3 Reference Data Source for the application.
-     * See Reference Data Sources below for more details.
-     */
     readonly referenceDataSources?: pulumi.Input<inputs.kinesis.AnalyticsApplicationReferenceDataSources>;
-    /**
-     * Key-value map of tags for the Kinesis Analytics Application.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

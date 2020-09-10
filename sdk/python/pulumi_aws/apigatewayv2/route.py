@@ -30,37 +30,9 @@ class Route(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Amazon API Gateway Version 2 route.
-        More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigatewayv2.Route("example",
-            api_id=aws_apigatewayv2_api["example"]["id"],
-            route_key="$default")
-        ```
-
+        Create a Route resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[bool] api_key_required: Boolean whether an API key is required for the route. Defaults to `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorization_scopes: The authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-        :param pulumi.Input[str] authorization_type: The authorization type for the route.
-               For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-               For HTTP APIs, valid values are `NONE` for open access, or `JWT` for using JSON Web Tokens.
-               Defaults to `NONE`.
-        :param pulumi.Input[str] authorizer_id: The identifier of the `apigatewayv2.Authorizer` resource to be associated with this route, if the authorizationType is `CUSTOM`.
-        :param pulumi.Input[str] model_selection_expression: The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route.
-        :param pulumi.Input[str] operation_name: The operation name for the route.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_models: The request models for the route.
-        :param pulumi.Input[str] route_key: The route key for the route.
-        :param pulumi.Input[str] route_response_selection_expression: The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route.
-        :param pulumi.Input[str] target: The target for the route.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,20 +94,6 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[bool] api_key_required: Boolean whether an API key is required for the route. Defaults to `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorization_scopes: The authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-        :param pulumi.Input[str] authorization_type: The authorization type for the route.
-               For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-               For HTTP APIs, valid values are `NONE` for open access, or `JWT` for using JSON Web Tokens.
-               Defaults to `NONE`.
-        :param pulumi.Input[str] authorizer_id: The identifier of the `apigatewayv2.Authorizer` resource to be associated with this route, if the authorizationType is `CUSTOM`.
-        :param pulumi.Input[str] model_selection_expression: The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route.
-        :param pulumi.Input[str] operation_name: The operation name for the route.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_models: The request models for the route.
-        :param pulumi.Input[str] route_key: The route key for the route.
-        :param pulumi.Input[str] route_response_selection_expression: The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route.
-        :param pulumi.Input[str] target: The target for the route.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -157,92 +115,56 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
-        """
-        The API identifier.
-        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="apiKeyRequired")
     def api_key_required(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean whether an API key is required for the route. Defaults to `false`.
-        """
         return pulumi.get(self, "api_key_required")
 
     @property
     @pulumi.getter(name="authorizationScopes")
     def authorization_scopes(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        The authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-        """
         return pulumi.get(self, "authorization_scopes")
 
     @property
     @pulumi.getter(name="authorizationType")
     def authorization_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The authorization type for the route.
-        For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-        For HTTP APIs, valid values are `NONE` for open access, or `JWT` for using JSON Web Tokens.
-        Defaults to `NONE`.
-        """
         return pulumi.get(self, "authorization_type")
 
     @property
     @pulumi.getter(name="authorizerId")
     def authorizer_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The identifier of the `apigatewayv2.Authorizer` resource to be associated with this route, if the authorizationType is `CUSTOM`.
-        """
         return pulumi.get(self, "authorizer_id")
 
     @property
     @pulumi.getter(name="modelSelectionExpression")
     def model_selection_expression(self) -> pulumi.Output[Optional[str]]:
-        """
-        The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route.
-        """
         return pulumi.get(self, "model_selection_expression")
 
     @property
     @pulumi.getter(name="operationName")
     def operation_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The operation name for the route.
-        """
         return pulumi.get(self, "operation_name")
 
     @property
     @pulumi.getter(name="requestModels")
     def request_models(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        The request models for the route.
-        """
         return pulumi.get(self, "request_models")
 
     @property
     @pulumi.getter(name="routeKey")
     def route_key(self) -> pulumi.Output[str]:
-        """
-        The route key for the route.
-        """
         return pulumi.get(self, "route_key")
 
     @property
     @pulumi.getter(name="routeResponseSelectionExpression")
     def route_response_selection_expression(self) -> pulumi.Output[Optional[str]]:
-        """
-        The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route.
-        """
         return pulumi.get(self, "route_response_selection_expression")
 
     @property
     @pulumi.getter
     def target(self) -> pulumi.Output[Optional[str]]:
-        """
-        The target for the route.
-        """
         return pulumi.get(self, "target")
 
     def translate_output_property(self, prop):

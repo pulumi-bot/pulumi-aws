@@ -4,66 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AppSync Function.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testGraphQLApi = new aws.appsync.GraphQLApi("testGraphQLApi", {
- *     authenticationType: "API_KEY",
- *     schema: `type Mutation {
- *   putPost(id: ID!, title: String!): Post
- * }
- *
- * type Post {
- *   id: ID!
- *   title: String!
- * }
- *
- * type Query {
- *   singlePost(id: ID!): Post
- * }
- *
- * schema {
- *   query: Query
- *   mutation: Mutation
- * }
- * `,
- * });
- * const testDataSource = new aws.appsync.DataSource("testDataSource", {
- *     apiId: testGraphQLApi.id,
- *     name: "tf-example",
- *     type: "HTTP",
- *     httpConfig: {
- *         endpoint: "http://example.com",
- *     },
- * });
- * const testFunction = new aws.appsync.Function("testFunction", {
- *     apiId: testGraphQLApi.id,
- *     dataSource: testDataSource.name,
- *     name: "tf_example",
- *     requestMappingTemplate: `{
- *     "version": "2018-05-29",
- *     "method": "GET",
- *     "resourcePath": "/",
- *     "params":{
- *         "headers": $utils.http.copyheaders($ctx.request.headers)
- *     }
- * }
- * `,
- *     responseMappingTemplate: `#if($ctx.result.statusCode == 200)
- *     $ctx.result.body
- * #else
- *     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
- * #end
- * `,
- * });
- * ```
- */
 export class Function extends pulumi.CustomResource {
     /**
      * Get an existing Function resource's state with the given name, ID, and optional extra
@@ -92,41 +32,14 @@ export class Function extends pulumi.CustomResource {
         return obj['__pulumiType'] === Function.__pulumiType;
     }
 
-    /**
-     * The ID of the associated AppSync API.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * The ARN of the Function object.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The Function DataSource name.
-     */
     public readonly dataSource!: pulumi.Output<string>;
-    /**
-     * The Function description.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A unique ID representing the Function object.
-     */
     public /*out*/ readonly functionId!: pulumi.Output<string>;
-    /**
-     * The version of the request mapping template. Currently the supported value is `2018-05-29`.
-     */
     public readonly functionVersion!: pulumi.Output<string | undefined>;
-    /**
-     * The Function name. The function name does not have to be unique.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-     */
     public readonly requestMappingTemplate!: pulumi.Output<string>;
-    /**
-     * The Function response mapping template.
-     */
     public readonly responseMappingTemplate!: pulumi.Output<string>;
 
     /**
@@ -189,41 +102,14 @@ export class Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Function resources.
  */
 export interface FunctionState {
-    /**
-     * The ID of the associated AppSync API.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * The ARN of the Function object.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The Function DataSource name.
-     */
     readonly dataSource?: pulumi.Input<string>;
-    /**
-     * The Function description.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A unique ID representing the Function object.
-     */
     readonly functionId?: pulumi.Input<string>;
-    /**
-     * The version of the request mapping template. Currently the supported value is `2018-05-29`.
-     */
     readonly functionVersion?: pulumi.Input<string>;
-    /**
-     * The Function name. The function name does not have to be unique.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-     */
     readonly requestMappingTemplate?: pulumi.Input<string>;
-    /**
-     * The Function response mapping template.
-     */
     readonly responseMappingTemplate?: pulumi.Input<string>;
 }
 
@@ -231,32 +117,11 @@ export interface FunctionState {
  * The set of arguments for constructing a Function resource.
  */
 export interface FunctionArgs {
-    /**
-     * The ID of the associated AppSync API.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * The Function DataSource name.
-     */
     readonly dataSource: pulumi.Input<string>;
-    /**
-     * The Function description.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The version of the request mapping template. Currently the supported value is `2018-05-29`.
-     */
     readonly functionVersion?: pulumi.Input<string>;
-    /**
-     * The Function name. The function name does not have to be unique.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-     */
     readonly requestMappingTemplate: pulumi.Input<string>;
-    /**
-     * The Function response mapping template.
-     */
     readonly responseMappingTemplate: pulumi.Input<string>;
 }

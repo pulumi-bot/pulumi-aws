@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Kinesis.Outputs
     [OutputType]
     public sealed class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameter
     {
-        /// <summary>
-        /// Parameter name. Valid Values: `LambdaArn`, `NumberOfRetries`, `RoleArn`, `BufferSizeInMBs`, `BufferIntervalInSeconds`
-        /// </summary>
         public readonly string ParameterName;
-        /// <summary>
-        /// Parameter value. Must be between 1 and 512 length (inclusive). When providing a Lambda ARN, you should specify the resource version as well.
-        /// </summary>
         public readonly string ParameterValue;
 
         [OutputConstructor]

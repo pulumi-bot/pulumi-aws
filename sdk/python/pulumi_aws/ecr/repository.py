@@ -26,28 +26,9 @@ class Repository(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Elastic Container Registry Repository.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.ecr.Repository("foo",
-            image_scanning_configuration=aws.ecr.RepositoryImageScanningConfigurationArgs(
-                scan_on_push=True,
-            ),
-            image_tag_mutability="MUTABLE")
-        ```
-
+        Create a Repository resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RepositoryEncryptionConfigurationArgs']]]] encryption_configurations: Encryption configuration for the repository. See below for schema.
-        :param pulumi.Input[pulumi.InputType['RepositoryImageScanningConfigurationArgs']] image_scanning_configuration: Configuration block that defines image scanning configuration for the repository. By default, image scanning must be manually triggered. See the [ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) for more information about image scanning.
-        :param pulumi.Input[str] image_tag_mutability: The tag mutability setting for the repository. Must be one of: `MUTABLE` or `IMMUTABLE`. Defaults to `MUTABLE`.
-        :param pulumi.Input[str] name: Name of the repository.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,14 +80,6 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Full ARN of the repository.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RepositoryEncryptionConfigurationArgs']]]] encryption_configurations: Encryption configuration for the repository. See below for schema.
-        :param pulumi.Input[pulumi.InputType['RepositoryImageScanningConfigurationArgs']] image_scanning_configuration: Configuration block that defines image scanning configuration for the repository. By default, image scanning must be manually triggered. See the [ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) for more information about image scanning.
-        :param pulumi.Input[str] image_tag_mutability: The tag mutability setting for the repository. Must be one of: `MUTABLE` or `IMMUTABLE`. Defaults to `MUTABLE`.
-        :param pulumi.Input[str] name: Name of the repository.
-        :param pulumi.Input[str] registry_id: The registry ID where the repository was created.
-        :param pulumi.Input[str] repository_url: The URL of the repository (in the form `aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -125,65 +98,41 @@ class Repository(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Full ARN of the repository.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="encryptionConfigurations")
     def encryption_configurations(self) -> pulumi.Output[Optional[List['outputs.RepositoryEncryptionConfiguration']]]:
-        """
-        Encryption configuration for the repository. See below for schema.
-        """
         return pulumi.get(self, "encryption_configurations")
 
     @property
     @pulumi.getter(name="imageScanningConfiguration")
     def image_scanning_configuration(self) -> pulumi.Output[Optional['outputs.RepositoryImageScanningConfiguration']]:
-        """
-        Configuration block that defines image scanning configuration for the repository. By default, image scanning must be manually triggered. See the [ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) for more information about image scanning.
-        """
         return pulumi.get(self, "image_scanning_configuration")
 
     @property
     @pulumi.getter(name="imageTagMutability")
     def image_tag_mutability(self) -> pulumi.Output[Optional[str]]:
-        """
-        The tag mutability setting for the repository. Must be one of: `MUTABLE` or `IMMUTABLE`. Defaults to `MUTABLE`.
-        """
         return pulumi.get(self, "image_tag_mutability")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the repository.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="registryId")
     def registry_id(self) -> pulumi.Output[str]:
-        """
-        The registry ID where the repository was created.
-        """
         return pulumi.get(self, "registry_id")
 
     @property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> pulumi.Output[str]:
-        """
-        The URL of the repository (in the form `aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName`).
-        """
         return pulumi.get(self, "repository_url")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

@@ -5,49 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides the ability to register instances and containers with an Application Load Balancer (ALB) or Network Load Balancer (NLB) target group. For attaching resources with Elastic Load Balancer (ELB), see the `aws.elb.Attachment` resource.
- *
- * > **Note:** `aws.alb.TargetGroupAttachment` is known as `aws.lb.TargetGroupAttachment`. The functionality is identical.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testTargetGroup = new aws.lb.TargetGroup("testTargetGroup", {});
- * // Other arguments
- * const testInstance = new aws.ec2.Instance("testInstance", {});
- * // Other arguments
- * const testTargetGroupAttachment = new aws.lb.TargetGroupAttachment("testTargetGroupAttachment", {
- *     targetGroupArn: testTargetGroup.arn,
- *     targetId: testInstance.id,
- *     port: 80,
- * });
- * ```
- * ## Usage with lambda
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testTargetGroup = new aws.lb.TargetGroup("testTargetGroup", {targetType: "lambda"});
- * const testFunction = new aws.lambda.Function("testFunction", {});
- * // Other arguments
- * const withLb = new aws.lambda.Permission("withLb", {
- *     action: "lambda:InvokeFunction",
- *     "function": testFunction.arn,
- *     principal: "elasticloadbalancing.amazonaws.com",
- *     sourceArn: testTargetGroup.arn,
- * });
- * const testTargetGroupAttachment = new aws.lb.TargetGroupAttachment("testTargetGroupAttachment", {
- *     targetGroupArn: testTargetGroup.arn,
- *     targetId: testFunction.arn,
- * }, {
- *     dependsOn: [withLb],
- * });
- * ```
- *
  * @deprecated aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favor of aws.alb.TargetGroupAttachment
  */
 export class TargetGroupAttachment extends pulumi.CustomResource {
@@ -79,21 +36,9 @@ export class TargetGroupAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === TargetGroupAttachment.__pulumiType;
     }
 
-    /**
-     * The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-     */
     public readonly availabilityZone!: pulumi.Output<string | undefined>;
-    /**
-     * The port on which targets receive traffic.
-     */
     public readonly port!: pulumi.Output<number | undefined>;
-    /**
-     * The ARN of the target group with which to register targets
-     */
     public readonly targetGroupArn!: pulumi.Output<string>;
-    /**
-     * The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-     */
     public readonly targetId!: pulumi.Output<string>;
 
     /**
@@ -143,21 +88,9 @@ export class TargetGroupAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetGroupAttachment resources.
  */
 export interface TargetGroupAttachmentState {
-    /**
-     * The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-     */
     readonly availabilityZone?: pulumi.Input<string>;
-    /**
-     * The port on which targets receive traffic.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * The ARN of the target group with which to register targets
-     */
     readonly targetGroupArn?: pulumi.Input<string>;
-    /**
-     * The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-     */
     readonly targetId?: pulumi.Input<string>;
 }
 
@@ -165,20 +98,8 @@ export interface TargetGroupAttachmentState {
  * The set of arguments for constructing a TargetGroupAttachment resource.
  */
 export interface TargetGroupAttachmentArgs {
-    /**
-     * The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
-     */
     readonly availabilityZone?: pulumi.Input<string>;
-    /**
-     * The port on which targets receive traffic.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * The ARN of the target group with which to register targets
-     */
     readonly targetGroupArn: pulumi.Input<string>;
-    /**
-     * The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-     */
     readonly targetId: pulumi.Input<string>;
 }

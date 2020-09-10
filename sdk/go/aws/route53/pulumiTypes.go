@@ -11,12 +11,9 @@ import (
 )
 
 type RecordAlias struct {
-	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
-	EvaluateTargetHealth bool `pulumi:"evaluateTargetHealth"`
-	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
-	Name string `pulumi:"name"`
-	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See `resource_elb.zone_id` for example.
-	ZoneId string `pulumi:"zoneId"`
+	EvaluateTargetHealth bool   `pulumi:"evaluateTargetHealth"`
+	Name                 string `pulumi:"name"`
+	ZoneId               string `pulumi:"zoneId"`
 }
 
 // RecordAliasInput is an input type that accepts RecordAliasArgs and RecordAliasOutput values.
@@ -31,12 +28,9 @@ type RecordAliasInput interface {
 }
 
 type RecordAliasArgs struct {
-	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
-	EvaluateTargetHealth pulumi.BoolInput `pulumi:"evaluateTargetHealth"`
-	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See `resource_elb.zone_id` for example.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	EvaluateTargetHealth pulumi.BoolInput   `pulumi:"evaluateTargetHealth"`
+	Name                 pulumi.StringInput `pulumi:"name"`
+	ZoneId               pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (RecordAliasArgs) ElementType() reflect.Type {
@@ -90,17 +84,14 @@ func (o RecordAliasOutput) ToRecordAliasOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
 func (o RecordAliasOutput) EvaluateTargetHealth() pulumi.BoolOutput {
 	return o.ApplyT(func(v RecordAlias) bool { return v.EvaluateTargetHealth }).(pulumi.BoolOutput)
 }
 
-// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
 func (o RecordAliasOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordAlias) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See `resource_elb.zone_id` for example.
 func (o RecordAliasOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordAlias) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -126,7 +117,6 @@ func (o RecordAliasArrayOutput) Index(i pulumi.IntInput) RecordAliasOutput {
 }
 
 type RecordFailoverRoutingPolicy struct {
-	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
 	Type string `pulumi:"type"`
 }
 
@@ -142,7 +132,6 @@ type RecordFailoverRoutingPolicyInput interface {
 }
 
 type RecordFailoverRoutingPolicyArgs struct {
-	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -197,7 +186,6 @@ func (o RecordFailoverRoutingPolicyOutput) ToRecordFailoverRoutingPolicyOutputWi
 	return o
 }
 
-// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
 func (o RecordFailoverRoutingPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordFailoverRoutingPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -223,11 +211,8 @@ func (o RecordFailoverRoutingPolicyArrayOutput) Index(i pulumi.IntInput) RecordF
 }
 
 type RecordGeolocationRoutingPolicy struct {
-	// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
-	Continent *string `pulumi:"continent"`
-	// A two-character country code or `*` to indicate a default resource record set.
-	Country *string `pulumi:"country"`
-	// A subdivision code for a country.
+	Continent   *string `pulumi:"continent"`
+	Country     *string `pulumi:"country"`
 	Subdivision *string `pulumi:"subdivision"`
 }
 
@@ -243,11 +228,8 @@ type RecordGeolocationRoutingPolicyInput interface {
 }
 
 type RecordGeolocationRoutingPolicyArgs struct {
-	// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
-	Continent pulumi.StringPtrInput `pulumi:"continent"`
-	// A two-character country code or `*` to indicate a default resource record set.
-	Country pulumi.StringPtrInput `pulumi:"country"`
-	// A subdivision code for a country.
+	Continent   pulumi.StringPtrInput `pulumi:"continent"`
+	Country     pulumi.StringPtrInput `pulumi:"country"`
 	Subdivision pulumi.StringPtrInput `pulumi:"subdivision"`
 }
 
@@ -302,17 +284,14 @@ func (o RecordGeolocationRoutingPolicyOutput) ToRecordGeolocationRoutingPolicyOu
 	return o
 }
 
-// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
 func (o RecordGeolocationRoutingPolicyOutput) Continent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordGeolocationRoutingPolicy) *string { return v.Continent }).(pulumi.StringPtrOutput)
 }
 
-// A two-character country code or `*` to indicate a default resource record set.
 func (o RecordGeolocationRoutingPolicyOutput) Country() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordGeolocationRoutingPolicy) *string { return v.Country }).(pulumi.StringPtrOutput)
 }
 
-// A subdivision code for a country.
 func (o RecordGeolocationRoutingPolicyOutput) Subdivision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordGeolocationRoutingPolicy) *string { return v.Subdivision }).(pulumi.StringPtrOutput)
 }
@@ -338,7 +317,6 @@ func (o RecordGeolocationRoutingPolicyArrayOutput) Index(i pulumi.IntInput) Reco
 }
 
 type RecordLatencyRoutingPolicy struct {
-	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
 	Region string `pulumi:"region"`
 }
 
@@ -354,7 +332,6 @@ type RecordLatencyRoutingPolicyInput interface {
 }
 
 type RecordLatencyRoutingPolicyArgs struct {
-	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
 	Region pulumi.StringInput `pulumi:"region"`
 }
 
@@ -409,7 +386,6 @@ func (o RecordLatencyRoutingPolicyOutput) ToRecordLatencyRoutingPolicyOutputWith
 	return o
 }
 
-// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
 func (o RecordLatencyRoutingPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordLatencyRoutingPolicy) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -435,7 +411,6 @@ func (o RecordLatencyRoutingPolicyArrayOutput) Index(i pulumi.IntInput) RecordLa
 }
 
 type RecordWeightedRoutingPolicy struct {
-	// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
 	Weight int `pulumi:"weight"`
 }
 
@@ -451,7 +426,6 @@ type RecordWeightedRoutingPolicyInput interface {
 }
 
 type RecordWeightedRoutingPolicyArgs struct {
-	// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
@@ -506,7 +480,6 @@ func (o RecordWeightedRoutingPolicyOutput) ToRecordWeightedRoutingPolicyOutputWi
 	return o
 }
 
-// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
 func (o RecordWeightedRoutingPolicyOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v RecordWeightedRoutingPolicy) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -532,11 +505,9 @@ func (o RecordWeightedRoutingPolicyArrayOutput) Index(i pulumi.IntInput) RecordW
 }
 
 type ResolverEndpointIpAddress struct {
-	// The IP address in the subnet that you want to use for DNS queries.
-	Ip   *string `pulumi:"ip"`
-	IpId *string `pulumi:"ipId"`
-	// The ID of the subnet that contains the IP address.
-	SubnetId string `pulumi:"subnetId"`
+	Ip       *string `pulumi:"ip"`
+	IpId     *string `pulumi:"ipId"`
+	SubnetId string  `pulumi:"subnetId"`
 }
 
 // ResolverEndpointIpAddressInput is an input type that accepts ResolverEndpointIpAddressArgs and ResolverEndpointIpAddressOutput values.
@@ -551,11 +522,9 @@ type ResolverEndpointIpAddressInput interface {
 }
 
 type ResolverEndpointIpAddressArgs struct {
-	// The IP address in the subnet that you want to use for DNS queries.
-	Ip   pulumi.StringPtrInput `pulumi:"ip"`
-	IpId pulumi.StringPtrInput `pulumi:"ipId"`
-	// The ID of the subnet that contains the IP address.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	Ip       pulumi.StringPtrInput `pulumi:"ip"`
+	IpId     pulumi.StringPtrInput `pulumi:"ipId"`
+	SubnetId pulumi.StringInput    `pulumi:"subnetId"`
 }
 
 func (ResolverEndpointIpAddressArgs) ElementType() reflect.Type {
@@ -609,7 +578,6 @@ func (o ResolverEndpointIpAddressOutput) ToResolverEndpointIpAddressOutputWithCo
 	return o
 }
 
-// The IP address in the subnet that you want to use for DNS queries.
 func (o ResolverEndpointIpAddressOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResolverEndpointIpAddress) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
@@ -618,7 +586,6 @@ func (o ResolverEndpointIpAddressOutput) IpId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResolverEndpointIpAddress) *string { return v.IpId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the subnet that contains the IP address.
 func (o ResolverEndpointIpAddressOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResolverEndpointIpAddress) string { return v.SubnetId }).(pulumi.StringOutput)
 }
@@ -644,10 +611,8 @@ func (o ResolverEndpointIpAddressArrayOutput) Index(i pulumi.IntInput) ResolverE
 }
 
 type ResolverRuleTargetIp struct {
-	// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
-	Ip string `pulumi:"ip"`
-	// The port at `ip` that you want to forward DNS queries to. Default value is `53`
-	Port *int `pulumi:"port"`
+	Ip   string `pulumi:"ip"`
+	Port *int   `pulumi:"port"`
 }
 
 // ResolverRuleTargetIpInput is an input type that accepts ResolverRuleTargetIpArgs and ResolverRuleTargetIpOutput values.
@@ -662,9 +627,7 @@ type ResolverRuleTargetIpInput interface {
 }
 
 type ResolverRuleTargetIpArgs struct {
-	// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
-	Ip pulumi.StringInput `pulumi:"ip"`
-	// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+	Ip   pulumi.StringInput `pulumi:"ip"`
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -719,12 +682,10 @@ func (o ResolverRuleTargetIpOutput) ToResolverRuleTargetIpOutputWithContext(ctx 
 	return o
 }
 
-// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
 func (o ResolverRuleTargetIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v ResolverRuleTargetIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// The port at `ip` that you want to forward DNS queries to. Default value is `53`
 func (o ResolverRuleTargetIpOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResolverRuleTargetIp) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -750,9 +711,7 @@ func (o ResolverRuleTargetIpArrayOutput) Index(i pulumi.IntInput) ResolverRuleTa
 }
 
 type ZoneVpc struct {
-	// ID of the VPC to associate.
-	VpcId string `pulumi:"vpcId"`
-	// Region of the VPC to associate. Defaults to AWS provider region.
+	VpcId     string  `pulumi:"vpcId"`
 	VpcRegion *string `pulumi:"vpcRegion"`
 }
 
@@ -768,9 +727,7 @@ type ZoneVpcInput interface {
 }
 
 type ZoneVpcArgs struct {
-	// ID of the VPC to associate.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// Region of the VPC to associate. Defaults to AWS provider region.
+	VpcId     pulumi.StringInput    `pulumi:"vpcId"`
 	VpcRegion pulumi.StringPtrInput `pulumi:"vpcRegion"`
 }
 
@@ -825,12 +782,10 @@ func (o ZoneVpcOutput) ToZoneVpcOutputWithContext(ctx context.Context) ZoneVpcOu
 	return o
 }
 
-// ID of the VPC to associate.
 func (o ZoneVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// Region of the VPC to associate. Defaults to AWS provider region.
 func (o ZoneVpcOutput) VpcRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneVpc) *string { return v.VpcRegion }).(pulumi.StringPtrOutput)
 }

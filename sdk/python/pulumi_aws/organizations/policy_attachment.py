@@ -21,44 +21,9 @@ class PolicyAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to attach an AWS Organizations policy to an organization account, root, or unit.
-
-        ## Example Usage
-        ### Organization Account
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        account = aws.organizations.PolicyAttachment("account",
-            policy_id=aws_organizations_policy["example"]["id"],
-            target_id="123456789012")
-        ```
-        ### Organization Root
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        root = aws.organizations.PolicyAttachment("root",
-            policy_id=aws_organizations_policy["example"]["id"],
-            target_id=aws_organizations_organization["example"]["roots"][0]["id"])
-        ```
-        ### Organization Unit
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        unit = aws.organizations.PolicyAttachment("unit",
-            policy_id=aws_organizations_policy["example"]["id"],
-            target_id=aws_organizations_organizational_unit["example"]["id"])
-        ```
-
+        Create a PolicyAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_id: The unique identifier (ID) of the policy that you want to attach to the target.
-        :param pulumi.Input[str] target_id: The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,8 +67,6 @@ class PolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_id: The unique identifier (ID) of the policy that you want to attach to the target.
-        :param pulumi.Input[str] target_id: The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -116,17 +79,11 @@ class PolicyAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[str]:
-        """
-        The unique identifier (ID) of the policy that you want to attach to the target.
-        """
         return pulumi.get(self, "policy_id")
 
     @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[str]:
-        """
-        The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
-        """
         return pulumi.get(self, "target_id")
 
     def translate_output_property(self, prop):

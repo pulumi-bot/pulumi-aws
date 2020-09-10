@@ -9,68 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ServiceDiscovery
 {
-    /// <summary>
-    /// Provides a Service Discovery Private DNS Namespace resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleVpc = new Aws.Ec2.Vpc("exampleVpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///         });
-    ///         var examplePrivateDnsNamespace = new Aws.ServiceDiscovery.PrivateDnsNamespace("examplePrivateDnsNamespace", new Aws.ServiceDiscovery.PrivateDnsNamespaceArgs
-    ///         {
-    ///             Description = "example",
-    ///             Vpc = exampleVpc.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PrivateDnsNamespace : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description that you specify for the namespace when you create it.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
-        /// </summary>
         [Output("hostedZone")]
         public Output<string> HostedZone { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the namespace.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the namespace.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of VPC that you want to associate the namespace with.
-        /// </summary>
         [Output("vpc")]
         public Output<string> Vpc { get; private set; } = null!;
 
@@ -120,33 +75,20 @@ namespace Pulumi.Aws.ServiceDiscovery
 
     public sealed class PrivateDnsNamespaceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description that you specify for the namespace when you create it.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the namespace.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the namespace.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of VPC that you want to associate the namespace with.
-        /// </summary>
         [Input("vpc", required: true)]
         public Input<string> Vpc { get; set; } = null!;
 
@@ -157,45 +99,26 @@ namespace Pulumi.Aws.ServiceDiscovery
 
     public sealed class PrivateDnsNamespaceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description that you specify for the namespace when you create it.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
-        /// </summary>
         [Input("hostedZone")]
         public Input<string>? HostedZone { get; set; }
 
-        /// <summary>
-        /// The name of the namespace.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the namespace.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of VPC that you want to associate the namespace with.
-        /// </summary>
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
 

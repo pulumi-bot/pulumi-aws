@@ -10,32 +10,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Elastic network interface (ENI) resource.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
-	// Block to define the attachment of the ENI. Documented below.
-	Attachments NetworkInterfaceAttachmentTypeArrayOutput `pulumi:"attachments"`
-	// A description for the network interface.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The MAC address of the network interface.
-	MacAddress pulumi.StringOutput `pulumi:"macAddress"`
-	OutpostArn pulumi.StringOutput `pulumi:"outpostArn"`
-	// The private DNS name of the network interface (IPv4).
-	PrivateDnsName pulumi.StringOutput `pulumi:"privateDnsName"`
-	PrivateIp      pulumi.StringOutput `pulumi:"privateIp"`
-	// List of private IPs to assign to the ENI.
-	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
-	// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-	PrivateIpsCount pulumi.IntOutput `pulumi:"privateIpsCount"`
-	// List of security group IDs to assign to the ENI.
-	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	// Whether to enable source destination checking for the ENI. Default true.
-	SourceDestCheck pulumi.BoolPtrOutput `pulumi:"sourceDestCheck"`
-	// Subnet ID to create the ENI in.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Attachments     NetworkInterfaceAttachmentTypeArrayOutput `pulumi:"attachments"`
+	Description     pulumi.StringPtrOutput                    `pulumi:"description"`
+	MacAddress      pulumi.StringOutput                       `pulumi:"macAddress"`
+	OutpostArn      pulumi.StringOutput                       `pulumi:"outpostArn"`
+	PrivateDnsName  pulumi.StringOutput                       `pulumi:"privateDnsName"`
+	PrivateIp       pulumi.StringOutput                       `pulumi:"privateIp"`
+	PrivateIps      pulumi.StringArrayOutput                  `pulumi:"privateIps"`
+	PrivateIpsCount pulumi.IntOutput                          `pulumi:"privateIpsCount"`
+	SecurityGroups  pulumi.StringArrayOutput                  `pulumi:"securityGroups"`
+	SourceDestCheck pulumi.BoolPtrOutput                      `pulumi:"sourceDestCheck"`
+	SubnetId        pulumi.StringOutput                       `pulumi:"subnetId"`
+	Tags            pulumi.StringMapOutput                    `pulumi:"tags"`
 }
 
 // NewNetworkInterface registers a new resource with the given unique name, arguments, and options.
@@ -69,53 +58,33 @@ func GetNetworkInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkInterface resources.
 type networkInterfaceState struct {
-	// Block to define the attachment of the ENI. Documented below.
-	Attachments []NetworkInterfaceAttachmentType `pulumi:"attachments"`
-	// A description for the network interface.
-	Description *string `pulumi:"description"`
-	// The MAC address of the network interface.
-	MacAddress *string `pulumi:"macAddress"`
-	OutpostArn *string `pulumi:"outpostArn"`
-	// The private DNS name of the network interface (IPv4).
-	PrivateDnsName *string `pulumi:"privateDnsName"`
-	PrivateIp      *string `pulumi:"privateIp"`
-	// List of private IPs to assign to the ENI.
-	PrivateIps []string `pulumi:"privateIps"`
-	// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-	PrivateIpsCount *int `pulumi:"privateIpsCount"`
-	// List of security group IDs to assign to the ENI.
-	SecurityGroups []string `pulumi:"securityGroups"`
-	// Whether to enable source destination checking for the ENI. Default true.
-	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
-	// Subnet ID to create the ENI in.
-	SubnetId *string `pulumi:"subnetId"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Attachments     []NetworkInterfaceAttachmentType `pulumi:"attachments"`
+	Description     *string                          `pulumi:"description"`
+	MacAddress      *string                          `pulumi:"macAddress"`
+	OutpostArn      *string                          `pulumi:"outpostArn"`
+	PrivateDnsName  *string                          `pulumi:"privateDnsName"`
+	PrivateIp       *string                          `pulumi:"privateIp"`
+	PrivateIps      []string                         `pulumi:"privateIps"`
+	PrivateIpsCount *int                             `pulumi:"privateIpsCount"`
+	SecurityGroups  []string                         `pulumi:"securityGroups"`
+	SourceDestCheck *bool                            `pulumi:"sourceDestCheck"`
+	SubnetId        *string                          `pulumi:"subnetId"`
+	Tags            map[string]string                `pulumi:"tags"`
 }
 
 type NetworkInterfaceState struct {
-	// Block to define the attachment of the ENI. Documented below.
-	Attachments NetworkInterfaceAttachmentTypeArrayInput
-	// A description for the network interface.
-	Description pulumi.StringPtrInput
-	// The MAC address of the network interface.
-	MacAddress pulumi.StringPtrInput
-	OutpostArn pulumi.StringPtrInput
-	// The private DNS name of the network interface (IPv4).
-	PrivateDnsName pulumi.StringPtrInput
-	PrivateIp      pulumi.StringPtrInput
-	// List of private IPs to assign to the ENI.
-	PrivateIps pulumi.StringArrayInput
-	// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
+	Attachments     NetworkInterfaceAttachmentTypeArrayInput
+	Description     pulumi.StringPtrInput
+	MacAddress      pulumi.StringPtrInput
+	OutpostArn      pulumi.StringPtrInput
+	PrivateDnsName  pulumi.StringPtrInput
+	PrivateIp       pulumi.StringPtrInput
+	PrivateIps      pulumi.StringArrayInput
 	PrivateIpsCount pulumi.IntPtrInput
-	// List of security group IDs to assign to the ENI.
-	SecurityGroups pulumi.StringArrayInput
-	// Whether to enable source destination checking for the ENI. Default true.
+	SecurityGroups  pulumi.StringArrayInput
 	SourceDestCheck pulumi.BoolPtrInput
-	// Subnet ID to create the ENI in.
-	SubnetId pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	SubnetId        pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (NetworkInterfaceState) ElementType() reflect.Type {
@@ -123,44 +92,28 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 }
 
 type networkInterfaceArgs struct {
-	// Block to define the attachment of the ENI. Documented below.
-	Attachments []NetworkInterfaceAttachmentType `pulumi:"attachments"`
-	// A description for the network interface.
-	Description *string `pulumi:"description"`
-	PrivateIp   *string `pulumi:"privateIp"`
-	// List of private IPs to assign to the ENI.
-	PrivateIps []string `pulumi:"privateIps"`
-	// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-	PrivateIpsCount *int `pulumi:"privateIpsCount"`
-	// List of security group IDs to assign to the ENI.
-	SecurityGroups []string `pulumi:"securityGroups"`
-	// Whether to enable source destination checking for the ENI. Default true.
-	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
-	// Subnet ID to create the ENI in.
-	SubnetId string `pulumi:"subnetId"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Attachments     []NetworkInterfaceAttachmentType `pulumi:"attachments"`
+	Description     *string                          `pulumi:"description"`
+	PrivateIp       *string                          `pulumi:"privateIp"`
+	PrivateIps      []string                         `pulumi:"privateIps"`
+	PrivateIpsCount *int                             `pulumi:"privateIpsCount"`
+	SecurityGroups  []string                         `pulumi:"securityGroups"`
+	SourceDestCheck *bool                            `pulumi:"sourceDestCheck"`
+	SubnetId        string                           `pulumi:"subnetId"`
+	Tags            map[string]string                `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a NetworkInterface resource.
 type NetworkInterfaceArgs struct {
-	// Block to define the attachment of the ENI. Documented below.
-	Attachments NetworkInterfaceAttachmentTypeArrayInput
-	// A description for the network interface.
-	Description pulumi.StringPtrInput
-	PrivateIp   pulumi.StringPtrInput
-	// List of private IPs to assign to the ENI.
-	PrivateIps pulumi.StringArrayInput
-	// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
+	Attachments     NetworkInterfaceAttachmentTypeArrayInput
+	Description     pulumi.StringPtrInput
+	PrivateIp       pulumi.StringPtrInput
+	PrivateIps      pulumi.StringArrayInput
 	PrivateIpsCount pulumi.IntPtrInput
-	// List of security group IDs to assign to the ENI.
-	SecurityGroups pulumi.StringArrayInput
-	// Whether to enable source destination checking for the ENI. Default true.
+	SecurityGroups  pulumi.StringArrayInput
 	SourceDestCheck pulumi.BoolPtrInput
-	// Subnet ID to create the ENI in.
-	SubnetId pulumi.StringInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	SubnetId        pulumi.StringInput
+	Tags            pulumi.StringMapInput
 }
 
 func (NetworkInterfaceArgs) ElementType() reflect.Type {

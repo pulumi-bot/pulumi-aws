@@ -74,9 +74,6 @@ class GetSubnetResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the subnet.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -132,17 +129,11 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="outpostArn")
     def outpost_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the Outpost.
-        """
         return pulumi.get(self, "outpost_arn")
 
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> str:
-        """
-        The ID of the AWS account that owns the subnet.
-        """
         return pulumi.get(self, "owner_id")
 
     @property
@@ -197,49 +188,7 @@ def get_subnet(availability_zone: Optional[str] = None,
                vpc_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
-    `ec2.Subnet` provides details about a specific VPC subnet.
-
-    This resource can prove useful when a module accepts a subnet id as
-    an input variable and needs to, for example, determine the id of the
-    VPC that the subnet belongs to.
-
-    ## Example Usage
-
-    The following example shows how one might accept a subnet id as a variable
-    and use this data source to obtain the data necessary to create a security
-    group that allows connections from hosts in that subnet.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    subnet_id = config.require_object("subnetId")
-    selected = aws.ec2.get_subnet(id=subnet_id)
-    subnet = aws.ec2.SecurityGroup("subnet",
-        vpc_id=selected.vpc_id,
-        ingress=[aws.ec2.SecurityGroupIngressArgs(
-            cidr_blocks=[selected.cidr_block],
-            from_port=80,
-            to_port=80,
-            protocol="tcp",
-        )])
-    ```
-
-
-    :param str availability_zone: The availability zone where the
-           subnet must reside.
-    :param str availability_zone_id: The ID of the Availability Zone for the subnet.
-    :param str cidr_block: The cidr block of the desired subnet.
-    :param bool default_for_az: Boolean constraint for whether the desired
-           subnet must be the default subnet for its associated availability zone.
-    :param List[pulumi.InputType['GetSubnetFilterArgs']] filters: Custom filter block as described below.
-    :param str id: The id of the specific subnet to retrieve.
-    :param str ipv6_cidr_block: The Ipv6 cidr block of the desired subnet
-    :param str state: The state that the desired subnet must have.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
-           a pair on the desired subnet.
-    :param str vpc_id: The id of the VPC that the desired subnet belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

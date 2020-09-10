@@ -9,118 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cfg
 {
-    /// <summary>
-    /// Manages an AWS Config Configuration Aggregator
-    /// 
-    /// ## Example Usage
-    /// ### Account Based Aggregation
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var account = new Aws.Cfg.ConfigurationAggregator("account", new Aws.Cfg.ConfigurationAggregatorArgs
-    ///         {
-    ///             AccountAggregationSource = new Aws.Cfg.Inputs.ConfigurationAggregatorAccountAggregationSourceArgs
-    ///             {
-    ///                 AccountIds = 
-    ///                 {
-    ///                     "123456789012",
-    ///                 },
-    ///                 Regions = 
-    ///                 {
-    ///                     "us-west-2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Organization Based Aggregation
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var organizationRole = new Aws.Iam.Role("organizationRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Sid"": """",
-    ///       ""Effect"": ""Allow"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""config.amazonaws.com""
-    ///       },
-    ///       ""Action"": ""sts:AssumeRole""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var organizationRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("organizationRolePolicyAttachment", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             Role = organizationRole.Name,
-    ///             PolicyArn = "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations",
-    ///         });
-    ///         var organizationConfigurationAggregator = new Aws.Cfg.ConfigurationAggregator("organizationConfigurationAggregator", new Aws.Cfg.ConfigurationAggregatorArgs
-    ///         {
-    ///             OrganizationAggregationSource = new Aws.Cfg.Inputs.ConfigurationAggregatorOrganizationAggregationSourceArgs
-    ///             {
-    ///                 AllRegions = true,
-    ///                 RoleArn = organizationRole.Arn,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 organizationRolePolicyAttachment,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ConfigurationAggregator : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account(s) to aggregate config data from as documented below.
-        /// </summary>
         [Output("accountAggregationSource")]
         public Output<Outputs.ConfigurationAggregatorAccountAggregationSource?> AccountAggregationSource { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the aggregator
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the configuration aggregator.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The organization to aggregate config data from as documented below.
-        /// </summary>
         [Output("organizationAggregationSource")]
         public Output<Outputs.ConfigurationAggregatorOrganizationAggregationSource?> OrganizationAggregationSource { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -170,30 +72,17 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class ConfigurationAggregatorArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account(s) to aggregate config data from as documented below.
-        /// </summary>
         [Input("accountAggregationSource")]
         public Input<Inputs.ConfigurationAggregatorAccountAggregationSourceArgs>? AccountAggregationSource { get; set; }
 
-        /// <summary>
-        /// The name of the configuration aggregator.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The organization to aggregate config data from as documented below.
-        /// </summary>
         [Input("organizationAggregationSource")]
         public Input<Inputs.ConfigurationAggregatorOrganizationAggregationSourceArgs>? OrganizationAggregationSource { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -207,36 +96,20 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class ConfigurationAggregatorState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account(s) to aggregate config data from as documented below.
-        /// </summary>
         [Input("accountAggregationSource")]
         public Input<Inputs.ConfigurationAggregatorAccountAggregationSourceGetArgs>? AccountAggregationSource { get; set; }
 
-        /// <summary>
-        /// The ARN of the aggregator
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the configuration aggregator.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The organization to aggregate config data from as documented below.
-        /// </summary>
         [Input("organizationAggregationSource")]
         public Input<Inputs.ConfigurationAggregatorOrganizationAggregationSourceGetArgs>? OrganizationAggregationSource { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

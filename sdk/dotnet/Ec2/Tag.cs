@@ -11,21 +11,12 @@ namespace Pulumi.Aws.Ec2
 {
     public partial class Tag : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The tag name.
-        /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the EC2 resource to manage the tag for.
-        /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The value of the tag.
-        /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
@@ -75,21 +66,12 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class TagArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The tag name.
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the EC2 resource to manage the tag for.
-        /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
 
-        /// <summary>
-        /// The value of the tag.
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -100,21 +82,12 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class TagState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The tag name.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// The ID of the EC2 resource to manage the tag for.
-        /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
-        /// <summary>
-        /// The value of the tag.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

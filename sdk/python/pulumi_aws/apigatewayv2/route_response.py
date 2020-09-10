@@ -24,29 +24,9 @@ class RouteResponse(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Amazon API Gateway Version 2 route response.
-        More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigatewayv2.RouteResponse("example",
-            api_id=aws_apigatewayv2_api["example"]["id"],
-            route_id=aws_apigatewayv2_route["example"]["id"],
-            route_response_key="$default")
-        ```
-
+        Create a RouteResponse resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] model_selection_expression: The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] response_models: The response models for the route response.
-        :param pulumi.Input[str] route_id: The identifier of the `apigatewayv2.Route`.
-        :param pulumi.Input[str] route_response_key: The route response key.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,11 +78,6 @@ class RouteResponse(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] model_selection_expression: The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] response_models: The response models for the route response.
-        :param pulumi.Input[str] route_id: The identifier of the `apigatewayv2.Route`.
-        :param pulumi.Input[str] route_response_key: The route response key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -118,41 +93,26 @@ class RouteResponse(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
-        """
-        The API identifier.
-        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="modelSelectionExpression")
     def model_selection_expression(self) -> pulumi.Output[Optional[str]]:
-        """
-        The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-        """
         return pulumi.get(self, "model_selection_expression")
 
     @property
     @pulumi.getter(name="responseModels")
     def response_models(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        The response models for the route response.
-        """
         return pulumi.get(self, "response_models")
 
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Output[str]:
-        """
-        The identifier of the `apigatewayv2.Route`.
-        """
         return pulumi.get(self, "route_id")
 
     @property
     @pulumi.getter(name="routeResponseKey")
     def route_response_key(self) -> pulumi.Output[str]:
-        """
-        The route response key.
-        """
         return pulumi.get(self, "route_response_key")
 
     def translate_output_property(self, prop):

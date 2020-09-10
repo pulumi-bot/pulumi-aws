@@ -28,51 +28,9 @@ class Connection(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Glue Connection resource.
-
-        ## Example Usage
-        ### Non-VPC Connection
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Connection("example", connection_properties={
-            "JDBC_CONNECTION_URL": "jdbc:mysql://example.com/exampledatabase",
-            "PASSWORD": "examplepassword",
-            "USERNAME": "exampleusername",
-        })
-        ```
-        ### VPC Connection
-
-        For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html#connection-JDBC-VPC).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Connection("example",
-            connection_properties={
-                "JDBC_CONNECTION_URL": f"jdbc:mysql://{aws_rds_cluster['example']['endpoint']}/exampledatabase",
-                "PASSWORD": "examplepassword",
-                "USERNAME": "exampleusername",
-            },
-            physical_connection_requirements=aws.glue.ConnectionPhysicalConnectionRequirementsArgs(
-                availability_zone=aws_subnet["example"]["availability_zone"],
-                security_group_id_lists=[aws_security_group["example"]["id"]],
-                subnet_id=aws_subnet["example"]["id"],
-            ))
-        ```
-
+        Create a Connection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] connection_properties: A map of key-value pairs used as parameters for this connection.
-        :param pulumi.Input[str] connection_type: The type of the connection. Supported are: `JDBC`, `MONGODB`, `KAFKA`. Defaults to `JBDC`.
-        :param pulumi.Input[str] description: Description of the connection.
-        :param pulumi.Input[List[pulumi.Input[str]]] match_criterias: A list of criteria that can be used in selecting this connection.
-        :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionPhysicalConnectionRequirementsArgs']] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,14 +84,6 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the Glue Connection.
-        :param pulumi.Input[str] catalog_id: The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] connection_properties: A map of key-value pairs used as parameters for this connection.
-        :param pulumi.Input[str] connection_type: The type of the connection. Supported are: `JDBC`, `MONGODB`, `KAFKA`. Defaults to `JBDC`.
-        :param pulumi.Input[str] description: Description of the connection.
-        :param pulumi.Input[List[pulumi.Input[str]]] match_criterias: A list of criteria that can be used in selecting this connection.
-        :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionPhysicalConnectionRequirementsArgs']] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -152,65 +102,41 @@ class Connection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the Glue Connection.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
-        """
         return pulumi.get(self, "catalog_id")
 
     @property
     @pulumi.getter(name="connectionProperties")
     def connection_properties(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        A map of key-value pairs used as parameters for this connection.
-        """
         return pulumi.get(self, "connection_properties")
 
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The type of the connection. Supported are: `JDBC`, `MONGODB`, `KAFKA`. Defaults to `JBDC`.
-        """
         return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the connection.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="matchCriterias")
     def match_criterias(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        A list of criteria that can be used in selecting this connection.
-        """
         return pulumi.get(self, "match_criterias")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the connection.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="physicalConnectionRequirements")
     def physical_connection_requirements(self) -> pulumi.Output[Optional['outputs.ConnectionPhysicalConnectionRequirements']]:
-        """
-        A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
-        """
         return pulumi.get(self, "physical_connection_requirements")
 
     def translate_output_property(self, prop):

@@ -9,66 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Efs
 {
-    /// <summary>
-    /// Provides an Elastic File System (EFS) File System Policy resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var fs = new Aws.Efs.FileSystem("fs", new Aws.Efs.FileSystemArgs
-    ///         {
-    ///         });
-    ///         var policy = new Aws.Efs.FileSystemPolicy("policy", new Aws.Efs.FileSystemPolicyArgs
-    ///         {
-    ///             FileSystemId = fs.Id,
-    ///             Policy = @$"{{
-    ///     ""Version"": ""2012-10-17"",
-    ///     ""Id"": ""ExamplePolicy01"",
-    ///     ""Statement"": [
-    ///         {{
-    ///             ""Sid"": ""ExampleSatement01"",
-    ///             ""Effect"": ""Allow"",
-    ///             ""Principal"": {{
-    ///                 ""AWS"": ""*""
-    ///             }},
-    ///             ""Resource"": ""{aws_efs_file_system.Test.Arn}"",
-    ///             ""Action"": [
-    ///                 ""elasticfilesystem:ClientMount"",
-    ///                 ""elasticfilesystem:ClientWrite""
-    ///             ],
-    ///             ""Condition"": {{
-    ///                 ""Bool"": {{
-    ///                     ""aws:SecureTransport"": ""true""
-    ///                 }}
-    ///             }}
-    ///         }}
-    ///     ]
-    /// }}
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class FileSystemPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the EFS file system.
-        /// </summary>
         [Output("fileSystemId")]
         public Output<string> FileSystemId { get; private set; } = null!;
 
-        /// <summary>
-        /// The JSON formatted file system policy for the EFS file system. see [Docs](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies) for more info.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
@@ -118,15 +63,9 @@ namespace Pulumi.Aws.Efs
 
     public sealed class FileSystemPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the EFS file system.
-        /// </summary>
         [Input("fileSystemId", required: true)]
         public Input<string> FileSystemId { get; set; } = null!;
 
-        /// <summary>
-        /// The JSON formatted file system policy for the EFS file system. see [Docs](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies) for more info.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
@@ -137,15 +76,9 @@ namespace Pulumi.Aws.Efs
 
     public sealed class FileSystemPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the EFS file system.
-        /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
 
-        /// <summary>
-        /// The JSON formatted file system policy for the EFS file system. see [Docs](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies) for more info.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

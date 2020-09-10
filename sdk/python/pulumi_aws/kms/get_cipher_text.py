@@ -39,9 +39,6 @@ class GetCipherTextResult:
     @property
     @pulumi.getter(name="ciphertextBlob")
     def ciphertext_blob(self) -> str:
-        """
-        Base64 encoded ciphertext
-        """
         return pulumi.get(self, "ciphertext_blob")
 
     @property
@@ -86,32 +83,7 @@ def get_cipher_text(context: Optional[Mapping[str, str]] = None,
                     plaintext: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCipherTextResult:
     """
-    The KMS ciphertext data source allows you to encrypt plaintext into ciphertext
-    by using an AWS KMS customer master key. The value returned by this data source
-    changes every apply. For a stable ciphertext value, see the `kms.Ciphertext`
-    resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    oauth_config = aws.kms.Key("oauthConfig",
-        description="oauth config",
-        is_enabled=True)
-    oauth = oauth_config.key_id.apply(lambda key_id: aws.kms.get_cipher_text(key_id=key_id,
-        plaintext=\"\"\"{
-      "client_id": "e587dbae22222f55da22",
-      "client_secret": "8289575d00000ace55e1815ec13673955721b8a5"
-    }
-    \"\"\"))
-    ```
-
-
-    :param Mapping[str, str] context: An optional mapping that makes up the encryption context.
-    :param str key_id: Globally unique key ID for the customer master key.
-    :param str plaintext: Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['context'] = context

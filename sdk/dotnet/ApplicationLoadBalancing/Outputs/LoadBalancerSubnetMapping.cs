@@ -13,17 +13,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing.Outputs
     [OutputType]
     public sealed class LoadBalancerSubnetMapping
     {
-        /// <summary>
-        /// The allocation ID of the Elastic IP address.
-        /// </summary>
         public readonly string? AllocationId;
-        /// <summary>
-        /// A private ipv4 address within the subnet to assign to the internal-facing load balancer.
-        /// </summary>
         public readonly string? PrivateIpv4Address;
-        /// <summary>
-        /// The id of the subnet of which to attach to the load balancer. You can specify only one subnet per Availability Zone.
-        /// </summary>
         public readonly string SubnetId;
 
         [OutputConstructor]

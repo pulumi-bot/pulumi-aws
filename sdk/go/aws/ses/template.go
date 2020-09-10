@@ -9,45 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to create a SES template.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ses"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ses.NewTemplate(ctx, "myTemplate", &ses.TemplateArgs{
-// 			Html:    pulumi.String("<h1>Hello {{name}},</h1><p>Your favorite animal is {{favoriteanimal}}.</p>"),
-// 			Subject: pulumi.String("Greetings, {{name}}!"),
-// 			Text: pulumi.String(fmt.Sprintf("%v%v", "Hello {{name}},\n", "Your favorite animal is {{favoriteanimal}}.\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Template struct {
 	pulumi.CustomResourceState
 
-	// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-	Html pulumi.StringPtrOutput `pulumi:"html"`
-	// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The subject line of the email.
+	Html    pulumi.StringPtrOutput `pulumi:"html"`
+	Name    pulumi.StringOutput    `pulumi:"name"`
 	Subject pulumi.StringPtrOutput `pulumi:"subject"`
-	// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-	Text pulumi.StringPtrOutput `pulumi:"text"`
+	Text    pulumi.StringPtrOutput `pulumi:"text"`
 }
 
 // NewTemplate registers a new resource with the given unique name, arguments, and options.
@@ -78,25 +46,17 @@ func GetTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Template resources.
 type templateState struct {
-	// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-	Html *string `pulumi:"html"`
-	// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-	Name *string `pulumi:"name"`
-	// The subject line of the email.
+	Html    *string `pulumi:"html"`
+	Name    *string `pulumi:"name"`
 	Subject *string `pulumi:"subject"`
-	// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-	Text *string `pulumi:"text"`
+	Text    *string `pulumi:"text"`
 }
 
 type TemplateState struct {
-	// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-	Html pulumi.StringPtrInput
-	// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-	Name pulumi.StringPtrInput
-	// The subject line of the email.
+	Html    pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Subject pulumi.StringPtrInput
-	// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-	Text pulumi.StringPtrInput
+	Text    pulumi.StringPtrInput
 }
 
 func (TemplateState) ElementType() reflect.Type {
@@ -104,26 +64,18 @@ func (TemplateState) ElementType() reflect.Type {
 }
 
 type templateArgs struct {
-	// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-	Html *string `pulumi:"html"`
-	// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-	Name *string `pulumi:"name"`
-	// The subject line of the email.
+	Html    *string `pulumi:"html"`
+	Name    *string `pulumi:"name"`
 	Subject *string `pulumi:"subject"`
-	// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-	Text *string `pulumi:"text"`
+	Text    *string `pulumi:"text"`
 }
 
 // The set of arguments for constructing a Template resource.
 type TemplateArgs struct {
-	// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-	Html pulumi.StringPtrInput
-	// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-	Name pulumi.StringPtrInput
-	// The subject line of the email.
+	Html    pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Subject pulumi.StringPtrInput
-	// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-	Text pulumi.StringPtrInput
+	Text    pulumi.StringPtrInput
 }
 
 func (TemplateArgs) ElementType() reflect.Type {

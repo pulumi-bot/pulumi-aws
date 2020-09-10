@@ -48,17 +48,11 @@ class GetServerResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name (ARN) of Transfer Server
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
-        """
-        The endpoint of the Transfer Server (e.g. `s-12345678.server.transfer.REGION.amazonaws.com`)
-        """
         return pulumi.get(self, "endpoint")
 
     @property
@@ -72,25 +66,16 @@ class GetServerResult:
     @property
     @pulumi.getter(name="identityProviderType")
     def identity_provider_type(self) -> str:
-        """
-        The mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice.
-        """
         return pulumi.get(self, "identity_provider_type")
 
     @property
     @pulumi.getter(name="invocationRole")
     def invocation_role(self) -> str:
-        """
-        Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identity_provider_type` of `API_GATEWAY`.
-        """
         return pulumi.get(self, "invocation_role")
 
     @property
     @pulumi.getter(name="loggingRole")
     def logging_role(self) -> str:
-        """
-        Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
-        """
         return pulumi.get(self, "logging_role")
 
     @property
@@ -101,9 +86,6 @@ class GetServerResult:
     @property
     @pulumi.getter
     def url(self) -> str:
-        """
-        URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
-        """
         return pulumi.get(self, "url")
 
 
@@ -126,20 +108,7 @@ class AwaitableGetServerResult(GetServerResult):
 def get_server(server_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerResult:
     """
-    Use this data source to get the ARN of an AWS Transfer Server for use in other
-    resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.transfer.get_server(server_id="s-1234567")
-    ```
-
-
-    :param str server_id: ID for an SFTP server.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serverId'] = server_id

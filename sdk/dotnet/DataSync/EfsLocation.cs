@@ -9,67 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DataSync
 {
-    /// <summary>
-    /// Manages an AWS DataSync EFS Location.
-    /// 
-    /// &gt; **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DataSync.EfsLocation("example", new Aws.DataSync.EfsLocationArgs
-    ///         {
-    ///             EfsFileSystemArn = aws_efs_mount_target.Example.File_system_arn,
-    ///             Ec2Config = new Aws.DataSync.Inputs.EfsLocationEc2ConfigArgs
-    ///             {
-    ///                 SecurityGroupArns = 
-    ///                 {
-    ///                     aws_security_group.Example.Arn,
-    ///                 },
-    ///                 SubnetArn = aws_subnet.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EfsLocation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing EC2 configurations for connecting to the EFS File System.
-        /// </summary>
         [Output("ec2Config")]
         public Output<Outputs.EfsLocationEc2Config> Ec2Config { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of EFS File System.
-        /// </summary>
         [Output("efsFileSystemArn")]
         public Output<string> EfsFileSystemArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Default `/`.
-        /// </summary>
         [Output("subdirectory")]
         public Output<string?> Subdirectory { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -122,30 +75,17 @@ namespace Pulumi.Aws.DataSync
 
     public sealed class EfsLocationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block containing EC2 configurations for connecting to the EFS File System.
-        /// </summary>
         [Input("ec2Config", required: true)]
         public Input<Inputs.EfsLocationEc2ConfigArgs> Ec2Config { get; set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of EFS File System.
-        /// </summary>
         [Input("efsFileSystemArn", required: true)]
         public Input<string> EfsFileSystemArn { get; set; } = null!;
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Default `/`.
-        /// </summary>
         [Input("subdirectory")]
         public Input<string>? Subdirectory { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -159,36 +99,20 @@ namespace Pulumi.Aws.DataSync
 
     public sealed class EfsLocationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DataSync Location.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Configuration block containing EC2 configurations for connecting to the EFS File System.
-        /// </summary>
         [Input("ec2Config")]
         public Input<Inputs.EfsLocationEc2ConfigGetArgs>? Ec2Config { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of EFS File System.
-        /// </summary>
         [Input("efsFileSystemArn")]
         public Input<string>? EfsFileSystemArn { get; set; }
 
-        /// <summary>
-        /// Subdirectory to perform actions as source or destination. Default `/`.
-        /// </summary>
         [Input("subdirectory")]
         public Input<string>? Subdirectory { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value pairs of resource tags to assign to the DataSync Location.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

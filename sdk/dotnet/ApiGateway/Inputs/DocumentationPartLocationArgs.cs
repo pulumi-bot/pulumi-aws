@@ -12,33 +12,18 @@ namespace Pulumi.Aws.ApiGateway.Inputs
 
     public sealed class DocumentationPartLocationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The HTTP verb of a method. The default value is `*` for any method.
-        /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
-        /// <summary>
-        /// The name of the targeted API entity.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The URL path of the target. The default value is `/` for the root resource.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// The HTTP status code of a response. The default value is `*` for any status code.
-        /// </summary>
         [Input("statusCode")]
         public Input<string>? StatusCode { get; set; }
 
-        /// <summary>
-        /// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

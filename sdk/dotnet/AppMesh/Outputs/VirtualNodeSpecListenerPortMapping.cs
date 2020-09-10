@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class VirtualNodeSpecListenerPortMapping
     {
-        /// <summary>
-        /// The port used for the port mapping.
-        /// </summary>
         public readonly int Port;
-        /// <summary>
-        /// The protocol used for the port mapping. Valid values are `http` and `tcp`.
-        /// </summary>
         public readonly string Protocol;
 
         [OutputConstructor]

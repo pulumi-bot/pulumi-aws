@@ -7,40 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Retrieve information about a Service Quota.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/servicequotas"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "L-F678F1CE"
-// 		_, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
-// 			QuotaCode:   &opt0,
-// 			ServiceCode: "vpc",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := "VPCs per Region"
-// 		_, err = servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
-// 			QuotaName:   &opt1,
-// 			ServiceCode: "vpc",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupServiceQuota(ctx *pulumi.Context, args *LookupServiceQuotaArgs, opts ...pulumi.InvokeOption) (*LookupServiceQuotaResult, error) {
 	var rv LookupServiceQuotaResult
 	err := ctx.Invoke("aws:servicequotas/getServiceQuota:getServiceQuota", args, &rv, opts...)
@@ -52,31 +18,22 @@ func LookupServiceQuota(ctx *pulumi.Context, args *LookupServiceQuotaArgs, opts 
 
 // A collection of arguments for invoking getServiceQuota.
 type LookupServiceQuotaArgs struct {
-	// Quota code within the service. When configured, the data source directly looks up the service quota. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-	QuotaCode *string `pulumi:"quotaCode"`
-	// Quota name within the service. When configured, the data source searches through all service quotas to find the matching quota name. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-	QuotaName *string `pulumi:"quotaName"`
-	// Service code for the quota. Available values can be found with the `servicequotas.getService` data source or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
-	ServiceCode string `pulumi:"serviceCode"`
+	QuotaCode   *string `pulumi:"quotaCode"`
+	QuotaName   *string `pulumi:"quotaName"`
+	ServiceCode string  `pulumi:"serviceCode"`
 }
 
 // A collection of values returned by getServiceQuota.
 type LookupServiceQuotaResult struct {
-	// Whether the service quota is adjustable.
-	Adjustable bool `pulumi:"adjustable"`
-	// Amazon Resource Name (ARN) of the service quota.
-	Arn string `pulumi:"arn"`
-	// Default value of the service quota.
+	Adjustable   bool    `pulumi:"adjustable"`
+	Arn          string  `pulumi:"arn"`
 	DefaultValue float64 `pulumi:"defaultValue"`
-	// Whether the service quota is global for the AWS account.
-	GlobalQuota bool `pulumi:"globalQuota"`
+	GlobalQuota  bool    `pulumi:"globalQuota"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	QuotaCode   string `pulumi:"quotaCode"`
-	QuotaName   string `pulumi:"quotaName"`
-	ServiceCode string `pulumi:"serviceCode"`
-	// Name of the service.
-	ServiceName string `pulumi:"serviceName"`
-	// Current value of the service quota.
-	Value float64 `pulumi:"value"`
+	Id          string  `pulumi:"id"`
+	QuotaCode   string  `pulumi:"quotaCode"`
+	QuotaName   string  `pulumi:"quotaName"`
+	ServiceCode string  `pulumi:"serviceCode"`
+	ServiceName string  `pulumi:"serviceName"`
+	Value       float64 `pulumi:"value"`
 }

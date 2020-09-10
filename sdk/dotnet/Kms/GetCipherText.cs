@@ -11,45 +11,6 @@ namespace Pulumi.Aws.Kms
 {
     public static class GetCipherText
     {
-        /// <summary>
-        /// The KMS ciphertext data source allows you to encrypt plaintext into ciphertext
-        /// by using an AWS KMS customer master key. The value returned by this data source
-        /// changes every apply. For a stable ciphertext value, see the `aws.kms.Ciphertext`
-        /// resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var oauthConfig = new Aws.Kms.Key("oauthConfig", new Aws.Kms.KeyArgs
-        ///         {
-        ///             Description = "oauth config",
-        ///             IsEnabled = true,
-        ///         });
-        ///         var oauth = oauthConfig.KeyId.Apply(keyId =&gt; Aws.Kms.GetCipherText.InvokeAsync(new Aws.Kms.GetCipherTextArgs
-        ///         {
-        ///             KeyId = keyId,
-        ///             Plaintext = @"{
-        ///   ""client_id"": ""e587dbae22222f55da22"",
-        ///   ""client_secret"": ""8289575d00000ace55e1815ec13673955721b8a5""
-        /// }
-        /// ",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetCipherTextResult> InvokeAsync(GetCipherTextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCipherTextResult>("aws:kms/getCipherText:getCipherText", args ?? new GetCipherTextArgs(), options.WithVersion());
     }
@@ -59,25 +20,15 @@ namespace Pulumi.Aws.Kms
     {
         [Input("context")]
         private Dictionary<string, string>? _context;
-
-        /// <summary>
-        /// An optional mapping that makes up the encryption context.
-        /// </summary>
         public Dictionary<string, string> Context
         {
             get => _context ?? (_context = new Dictionary<string, string>());
             set => _context = value;
         }
 
-        /// <summary>
-        /// Globally unique key ID for the customer master key.
-        /// </summary>
         [Input("keyId", required: true)]
         public string KeyId { get; set; } = null!;
 
-        /// <summary>
-        /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
-        /// </summary>
         [Input("plaintext", required: true)]
         public string Plaintext { get; set; } = null!;
 
@@ -90,9 +41,6 @@ namespace Pulumi.Aws.Kms
     [OutputType]
     public sealed class GetCipherTextResult
     {
-        /// <summary>
-        /// Base64 encoded ciphertext
-        /// </summary>
         public readonly string CiphertextBlob;
         public readonly ImmutableDictionary<string, string>? Context;
         /// <summary>

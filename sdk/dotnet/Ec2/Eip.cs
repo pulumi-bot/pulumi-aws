@@ -9,228 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an Elastic IP resource.
-    /// 
-    /// &gt; **Note:** EIP may require IGW to exist prior to association. Use `depends_on` to set an explicit dependency on the IGW.
-    /// 
-    /// &gt; **Note:** Do not use `network_interface` to associate the EIP to `aws.lb.LoadBalancer` or `aws.ec2.NatGateway` resources. Instead use the `allocation_id` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Single EIP associated with an instance:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var lb = new Aws.Ec2.Eip("lb", new Aws.Ec2.EipArgs
-    ///         {
-    ///             Instance = aws_instance.Web.Id,
-    ///             Vpc = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Multiple EIPs associated with a single network interface:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var multi_ip = new Aws.Ec2.NetworkInterface("multi-ip", new Aws.Ec2.NetworkInterfaceArgs
-    ///         {
-    ///             SubnetId = aws_subnet.Main.Id,
-    ///             PrivateIps = 
-    ///             {
-    ///                 "10.0.0.10",
-    ///                 "10.0.0.11",
-    ///             },
-    ///         });
-    ///         var one = new Aws.Ec2.Eip("one", new Aws.Ec2.EipArgs
-    ///         {
-    ///             Vpc = true,
-    ///             NetworkInterface = multi_ip.Id,
-    ///             AssociateWithPrivateIp = "10.0.0.10",
-    ///         });
-    ///         var two = new Aws.Ec2.Eip("two", new Aws.Ec2.EipArgs
-    ///         {
-    ///             Vpc = true,
-    ///             NetworkInterface = multi_ip.Id,
-    ///             AssociateWithPrivateIp = "10.0.0.11",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Attaching an EIP to an Instance with a pre-assigned private ip (VPC Only):
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.Ec2.Vpc("default", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///             EnableDnsHostnames = true,
-    ///         });
-    ///         var gw = new Aws.Ec2.InternetGateway("gw", new Aws.Ec2.InternetGatewayArgs
-    ///         {
-    ///             VpcId = @default.Id,
-    ///         });
-    ///         var tfTestSubnet = new Aws.Ec2.Subnet("tfTestSubnet", new Aws.Ec2.SubnetArgs
-    ///         {
-    ///             VpcId = @default.Id,
-    ///             CidrBlock = "10.0.0.0/24",
-    ///             MapPublicIpOnLaunch = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 gw,
-    ///             },
-    ///         });
-    ///         var foo = new Aws.Ec2.Instance("foo", new Aws.Ec2.InstanceArgs
-    ///         {
-    ///             Ami = "ami-5189a661",
-    ///             InstanceType = "t2.micro",
-    ///             PrivateIp = "10.0.0.12",
-    ///             SubnetId = tfTestSubnet.Id,
-    ///         });
-    ///         var bar = new Aws.Ec2.Eip("bar", new Aws.Ec2.EipArgs
-    ///         {
-    ///             Vpc = true,
-    ///             Instance = foo.Id,
-    ///             AssociateWithPrivateIp = "10.0.0.12",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 gw,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Allocating EIP from the BYOIP pool:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var byoip_ip = new Aws.Ec2.Eip("byoip-ip", new Aws.Ec2.EipArgs
-    ///         {
-    ///             PublicIpv4Pool = "ipv4pool-ec2-012345",
-    ///             Vpc = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Eip : Pulumi.CustomResource
     {
         [Output("allocationId")]
         public Output<string> AllocationId { get; private set; } = null!;
 
-        /// <summary>
-        /// A user specified primary or secondary private IP address to
-        /// associate with the Elastic IP address. If no private IP address is specified,
-        /// the Elastic IP address is associated with the primary private IP address.
-        /// </summary>
         [Output("associateWithPrivateIp")]
         public Output<string?> AssociateWithPrivateIp { get; private set; } = null!;
 
         [Output("associationId")]
         public Output<string> AssociationId { get; private set; } = null!;
 
-        /// <summary>
-        /// Customer owned IP.
-        /// </summary>
         [Output("customerOwnedIp")]
         public Output<string> CustomerOwnedIp { get; private set; } = null!;
 
-        /// <summary>
-        /// The  ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-        /// </summary>
         [Output("customerOwnedIpv4Pool")]
         public Output<string?> CustomerOwnedIpv4Pool { get; private set; } = null!;
 
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
-        /// <summary>
-        /// EC2 instance ID.
-        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
-        /// <summary>
-        /// Network interface ID to associate with.
-        /// </summary>
         [Output("networkInterface")]
         public Output<string> NetworkInterface { get; private set; } = null!;
 
-        /// <summary>
-        /// The Private DNS associated with the Elastic IP address (if in VPC).
-        /// </summary>
         [Output("privateDns")]
         public Output<string> PrivateDns { get; private set; } = null!;
 
-        /// <summary>
-        /// Contains the private IP address (if in VPC).
-        /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
 
-        /// <summary>
-        /// Public DNS associated with the Elastic IP address.
-        /// </summary>
         [Output("publicDns")]
         public Output<string> PublicDns { get; private set; } = null!;
 
-        /// <summary>
-        /// Contains the public IP address.
-        /// </summary>
         [Output("publicIp")]
         public Output<string> PublicIp { get; private set; } = null!;
 
-        /// <summary>
-        /// EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-        /// </summary>
         [Output("publicIpv4Pool")]
         public Output<string> PublicIpv4Pool { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean if the EIP is in a VPC or not.
-        /// </summary>
         [Output("vpc")]
         public Output<bool> Vpc { get; private set; } = null!;
 
@@ -280,53 +102,29 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class EipArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A user specified primary or secondary private IP address to
-        /// associate with the Elastic IP address. If no private IP address is specified,
-        /// the Elastic IP address is associated with the primary private IP address.
-        /// </summary>
         [Input("associateWithPrivateIp")]
         public Input<string>? AssociateWithPrivateIp { get; set; }
 
-        /// <summary>
-        /// The  ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-        /// </summary>
         [Input("customerOwnedIpv4Pool")]
         public Input<string>? CustomerOwnedIpv4Pool { get; set; }
 
-        /// <summary>
-        /// EC2 instance ID.
-        /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
-        /// <summary>
-        /// Network interface ID to associate with.
-        /// </summary>
         [Input("networkInterface")]
         public Input<string>? NetworkInterface { get; set; }
 
-        /// <summary>
-        /// EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-        /// </summary>
         [Input("publicIpv4Pool")]
         public Input<string>? PublicIpv4Pool { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Boolean if the EIP is in a VPC or not.
-        /// </summary>
         [Input("vpc")]
         public Input<bool>? Vpc { get; set; }
 
@@ -340,89 +138,50 @@ namespace Pulumi.Aws.Ec2
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
 
-        /// <summary>
-        /// A user specified primary or secondary private IP address to
-        /// associate with the Elastic IP address. If no private IP address is specified,
-        /// the Elastic IP address is associated with the primary private IP address.
-        /// </summary>
         [Input("associateWithPrivateIp")]
         public Input<string>? AssociateWithPrivateIp { get; set; }
 
         [Input("associationId")]
         public Input<string>? AssociationId { get; set; }
 
-        /// <summary>
-        /// Customer owned IP.
-        /// </summary>
         [Input("customerOwnedIp")]
         public Input<string>? CustomerOwnedIp { get; set; }
 
-        /// <summary>
-        /// The  ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-        /// </summary>
         [Input("customerOwnedIpv4Pool")]
         public Input<string>? CustomerOwnedIpv4Pool { get; set; }
 
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        /// <summary>
-        /// EC2 instance ID.
-        /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
-        /// <summary>
-        /// Network interface ID to associate with.
-        /// </summary>
         [Input("networkInterface")]
         public Input<string>? NetworkInterface { get; set; }
 
-        /// <summary>
-        /// The Private DNS associated with the Elastic IP address (if in VPC).
-        /// </summary>
         [Input("privateDns")]
         public Input<string>? PrivateDns { get; set; }
 
-        /// <summary>
-        /// Contains the private IP address (if in VPC).
-        /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
-        /// <summary>
-        /// Public DNS associated with the Elastic IP address.
-        /// </summary>
         [Input("publicDns")]
         public Input<string>? PublicDns { get; set; }
 
-        /// <summary>
-        /// Contains the public IP address.
-        /// </summary>
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }
 
-        /// <summary>
-        /// EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-        /// </summary>
         [Input("publicIpv4Pool")]
         public Input<string>? PublicIpv4Pool { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Boolean if the EIP is in a VPC or not.
-        /// </summary>
         [Input("vpc")]
         public Input<bool>? Vpc { get; set; }
 

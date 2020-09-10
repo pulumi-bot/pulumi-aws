@@ -9,237 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ssm
 {
-    /// <summary>
-    /// Provides an SSM Maintenance Window Task resource
-    /// 
-    /// ## Example Usage
-    /// ### Automation Tasks
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ssm.MaintenanceWindowTask("example", new Aws.Ssm.MaintenanceWindowTaskArgs
-    ///         {
-    ///             MaxConcurrency = "2",
-    ///             MaxErrors = "1",
-    ///             Priority = 1,
-    ///             ServiceRoleArn = aws_iam_role.Example.Arn,
-    ///             TaskArn = "AWS-RestartEC2Instance",
-    ///             TaskType = "AUTOMATION",
-    ///             WindowId = aws_ssm_maintenance_window.Example.Id,
-    ///             Targets = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
-    ///                 {
-    ///                     Key = "InstanceIds",
-    ///                     Values = 
-    ///                     {
-    ///                         aws_instance.Example.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
-    ///             {
-    ///                 AutomationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs
-    ///                 {
-    ///                     DocumentVersion = "$LATEST",
-    ///                     Parameters = 
-    ///                     {
-    ///                         new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs
-    ///                         {
-    ///                             Name = "InstanceId",
-    ///                             Values = 
-    ///                             {
-    ///                                 aws_instance.Example.Id,
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Run Command Tasks
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ssm.MaintenanceWindowTask("example", new Aws.Ssm.MaintenanceWindowTaskArgs
-    ///         {
-    ///             MaxConcurrency = "2",
-    ///             MaxErrors = "1",
-    ///             Priority = 1,
-    ///             ServiceRoleArn = aws_iam_role.Example.Arn,
-    ///             TaskArn = "AWS-RunShellScript",
-    ///             TaskType = "RUN_COMMAND",
-    ///             WindowId = aws_ssm_maintenance_window.Example.Id,
-    ///             Targets = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
-    ///                 {
-    ///                     Key = "InstanceIds",
-    ///                     Values = 
-    ///                     {
-    ///                         aws_instance.Example.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
-    ///             {
-    ///                 RunCommandParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs
-    ///                 {
-    ///                     OutputS3Bucket = aws_s3_bucket.Example.Bucket,
-    ///                     OutputS3KeyPrefix = "output",
-    ///                     ServiceRoleArn = aws_iam_role.Example.Arn,
-    ///                     TimeoutSeconds = 600,
-    ///                     NotificationConfig = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs
-    ///                     {
-    ///                         NotificationArn = aws_sns_topic.Example.Arn,
-    ///                         NotificationEvents = 
-    ///                         {
-    ///                             "All",
-    ///                         },
-    ///                         NotificationType = "Command",
-    ///                     },
-    ///                     Parameters = 
-    ///                     {
-    ///                         new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterArgs
-    ///                         {
-    ///                             Name = "commands",
-    ///                             Values = 
-    ///                             {
-    ///                                 "date",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Step Function Tasks
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ssm.MaintenanceWindowTask("example", new Aws.Ssm.MaintenanceWindowTaskArgs
-    ///         {
-    ///             MaxConcurrency = "2",
-    ///             MaxErrors = "1",
-    ///             Priority = 1,
-    ///             ServiceRoleArn = aws_iam_role.Example.Arn,
-    ///             TaskArn = aws_sfn_activity.Example.Id,
-    ///             TaskType = "STEP_FUNCTIONS",
-    ///             WindowId = aws_ssm_maintenance_window.Example.Id,
-    ///             Targets = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
-    ///                 {
-    ///                     Key = "InstanceIds",
-    ///                     Values = 
-    ///                     {
-    ///                         aws_instance.Example.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
-    ///             {
-    ///                 StepFunctionsParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs
-    ///                 {
-    ///                     Input = "{\"key1\":\"value1\"}",
-    ///                     Name = "example",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class MaintenanceWindowTask : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description of the maintenance window task.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum number of targets this task can be run for in parallel.
-        /// </summary>
         [Output("maxConcurrency")]
         public Output<string> MaxConcurrency { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum number of errors allowed before this task stops being scheduled.
-        /// </summary>
         [Output("maxErrors")]
         public Output<string> MaxErrors { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the maintenance window task.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
-        /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
-        /// <summary>
-        /// The role that should be assumed when executing the task.
-        /// </summary>
         [Output("serviceRoleArn")]
         public Output<string> ServiceRoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-        /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.MaintenanceWindowTaskTarget>> Targets { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the task to execute.
-        /// </summary>
         [Output("taskArn")]
         public Output<string> TaskArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block with parameters for task execution.
-        /// </summary>
         [Output("taskInvocationParameters")]
         public Output<Outputs.MaintenanceWindowTaskTaskInvocationParameters?> TaskInvocationParameters { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of task being registered. The only allowed value is `RUN_COMMAND`.
-        /// </summary>
         [Output("taskType")]
         public Output<string> TaskType { get; private set; } = null!;
 
-        /// <summary>
-        /// The Id of the maintenance window to register the task with.
-        /// </summary>
         [Output("windowId")]
         public Output<string> WindowId { get; private set; } = null!;
 
@@ -289,75 +90,41 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class MaintenanceWindowTaskArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the maintenance window task.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The maximum number of targets this task can be run for in parallel.
-        /// </summary>
         [Input("maxConcurrency", required: true)]
         public Input<string> MaxConcurrency { get; set; } = null!;
 
-        /// <summary>
-        /// The maximum number of errors allowed before this task stops being scheduled.
-        /// </summary>
         [Input("maxErrors", required: true)]
         public Input<string> MaxErrors { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the maintenance window task.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
-        /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// The role that should be assumed when executing the task.
-        /// </summary>
         [Input("serviceRoleArn", required: true)]
         public Input<string> ServiceRoleArn { get; set; } = null!;
 
         [Input("targets", required: true)]
         private InputList<Inputs.MaintenanceWindowTaskTargetArgs>? _targets;
-
-        /// <summary>
-        /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-        /// </summary>
         public InputList<Inputs.MaintenanceWindowTaskTargetArgs> Targets
         {
             get => _targets ?? (_targets = new InputList<Inputs.MaintenanceWindowTaskTargetArgs>());
             set => _targets = value;
         }
 
-        /// <summary>
-        /// The ARN of the task to execute.
-        /// </summary>
         [Input("taskArn", required: true)]
         public Input<string> TaskArn { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block with parameters for task execution.
-        /// </summary>
         [Input("taskInvocationParameters")]
         public Input<Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs>? TaskInvocationParameters { get; set; }
 
-        /// <summary>
-        /// The type of task being registered. The only allowed value is `RUN_COMMAND`.
-        /// </summary>
         [Input("taskType", required: true)]
         public Input<string> TaskType { get; set; } = null!;
 
-        /// <summary>
-        /// The Id of the maintenance window to register the task with.
-        /// </summary>
         [Input("windowId", required: true)]
         public Input<string> WindowId { get; set; } = null!;
 
@@ -368,75 +135,41 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class MaintenanceWindowTaskState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the maintenance window task.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The maximum number of targets this task can be run for in parallel.
-        /// </summary>
         [Input("maxConcurrency")]
         public Input<string>? MaxConcurrency { get; set; }
 
-        /// <summary>
-        /// The maximum number of errors allowed before this task stops being scheduled.
-        /// </summary>
         [Input("maxErrors")]
         public Input<string>? MaxErrors { get; set; }
 
-        /// <summary>
-        /// The name of the maintenance window task.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
-        /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// The role that should be assumed when executing the task.
-        /// </summary>
         [Input("serviceRoleArn")]
         public Input<string>? ServiceRoleArn { get; set; }
 
         [Input("targets")]
         private InputList<Inputs.MaintenanceWindowTaskTargetGetArgs>? _targets;
-
-        /// <summary>
-        /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-        /// </summary>
         public InputList<Inputs.MaintenanceWindowTaskTargetGetArgs> Targets
         {
             get => _targets ?? (_targets = new InputList<Inputs.MaintenanceWindowTaskTargetGetArgs>());
             set => _targets = value;
         }
 
-        /// <summary>
-        /// The ARN of the task to execute.
-        /// </summary>
         [Input("taskArn")]
         public Input<string>? TaskArn { get; set; }
 
-        /// <summary>
-        /// Configuration block with parameters for task execution.
-        /// </summary>
         [Input("taskInvocationParameters")]
         public Input<Inputs.MaintenanceWindowTaskTaskInvocationParametersGetArgs>? TaskInvocationParameters { get; set; }
 
-        /// <summary>
-        /// The type of task being registered. The only allowed value is `RUN_COMMAND`.
-        /// </summary>
         [Input("taskType")]
         public Input<string>? TaskType { get; set; }
 
-        /// <summary>
-        /// The Id of the maintenance window to register the task with.
-        /// </summary>
         [Input("windowId")]
         public Input<string>? WindowId { get; set; }
 

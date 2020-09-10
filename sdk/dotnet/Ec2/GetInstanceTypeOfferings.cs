@@ -11,52 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetInstanceTypeOfferings
     {
-        /// <summary>
-        /// Information about EC2 Instance Type Offerings.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Ec2.GetInstanceTypeOfferings.InvokeAsync(new Aws.Ec2.GetInstanceTypeOfferingsArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetInstanceTypeOfferingsFilterArgs
-        ///                 {
-        ///                     Name = "instance-type",
-        ///                     Values = 
-        ///                     {
-        ///                         "t2.micro",
-        ///                         "t3.micro",
-        ///                     },
-        ///                 },
-        ///                 new Aws.Ec2.Inputs.GetInstanceTypeOfferingsFilterArgs
-        ///                 {
-        ///                     Name = "location",
-        ///                     Values = 
-        ///                     {
-        ///                         "usw2-az4",
-        ///                     },
-        ///                 },
-        ///             },
-        ///             LocationType = "availability-zone-id",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetInstanceTypeOfferingsResult> InvokeAsync(GetInstanceTypeOfferingsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeOfferingsResult>("aws:ec2/getInstanceTypeOfferings:getInstanceTypeOfferings", args ?? new GetInstanceTypeOfferingsArgs(), options.WithVersion());
     }
@@ -66,19 +20,12 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetInstanceTypeOfferingsFilterArgs>? _filters;
-
-        /// <summary>
-        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
-        /// </summary>
         public List<Inputs.GetInstanceTypeOfferingsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetInstanceTypeOfferingsFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
-        /// </summary>
         [Input("locationType")]
         public string? LocationType { get; set; }
 
@@ -96,9 +43,6 @@ namespace Pulumi.Aws.Ec2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Set of EC2 Instance Types.
-        /// </summary>
         public readonly ImmutableArray<string> InstanceTypes;
         public readonly string? LocationType;
 

@@ -54,19 +54,7 @@ class AwaitableGetIpsetResult(GetIpsetResult):
 def get_ipset(name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpsetResult:
     """
-    `waf.IpSet` Retrieves a WAF IP Set Resource Id.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.waf.get_ipset(name="tfWAFIPSet")
-    ```
-
-
-    :param str name: The name of the WAF IP set.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

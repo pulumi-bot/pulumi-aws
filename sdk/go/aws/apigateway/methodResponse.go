@@ -10,82 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an HTTP Method Response for an API Gateway Resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myDemoAPI, err := apigateway.NewRestApi(ctx, "myDemoAPI", &apigateway.RestApiArgs{
-// 			Description: pulumi.String("This is my API for demonstration purposes"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myDemoResource, err := apigateway.NewResource(ctx, "myDemoResource", &apigateway.ResourceArgs{
-// 			RestApi:  myDemoAPI.ID(),
-// 			ParentId: myDemoAPI.RootResourceId,
-// 			PathPart: pulumi.String("mydemoresource"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myDemoMethod, err := apigateway.NewMethod(ctx, "myDemoMethod", &apigateway.MethodArgs{
-// 			RestApi:       myDemoAPI.ID(),
-// 			ResourceId:    myDemoResource.ID(),
-// 			HttpMethod:    pulumi.String("GET"),
-// 			Authorization: pulumi.String("NONE"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewIntegration(ctx, "myDemoIntegration", &apigateway.IntegrationArgs{
-// 			RestApi:    myDemoAPI.ID(),
-// 			ResourceId: myDemoResource.ID(),
-// 			HttpMethod: myDemoMethod.HttpMethod,
-// 			Type:       pulumi.String("MOCK"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewMethodResponse(ctx, "response200", &apigateway.MethodResponseArgs{
-// 			RestApi:    myDemoAPI.ID(),
-// 			ResourceId: myDemoResource.ID(),
-// 			HttpMethod: myDemoMethod.HttpMethod,
-// 			StatusCode: pulumi.String("200"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type MethodResponse struct {
 	pulumi.CustomResourceState
 
-	// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-	HttpMethod pulumi.StringOutput `pulumi:"httpMethod"`
-	// The API resource ID
-	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// A map of the API models used for the response's content type
-	ResponseModels pulumi.StringMapOutput `pulumi:"responseModels"`
-	// A map of response parameters that can be sent to the caller.
-	// For example: `responseParameters = { "method.response.header.X-Some-Header" = true }`
-	// would define that the header `X-Some-Header` can be provided on the response.
-	ResponseParameters pulumi.BoolMapOutput `pulumi:"responseParameters"`
-	// The ID of the associated REST API
-	RestApi pulumi.StringOutput `pulumi:"restApi"`
-	// The HTTP status code
-	StatusCode pulumi.StringOutput `pulumi:"statusCode"`
+	HttpMethod         pulumi.StringOutput    `pulumi:"httpMethod"`
+	ResourceId         pulumi.StringOutput    `pulumi:"resourceId"`
+	ResponseModels     pulumi.StringMapOutput `pulumi:"responseModels"`
+	ResponseParameters pulumi.BoolMapOutput   `pulumi:"responseParameters"`
+	RestApi            pulumi.StringOutput    `pulumi:"restApi"`
+	StatusCode         pulumi.StringOutput    `pulumi:"statusCode"`
 }
 
 // NewMethodResponse registers a new resource with the given unique name, arguments, and options.
@@ -128,37 +61,21 @@ func GetMethodResponse(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MethodResponse resources.
 type methodResponseState struct {
-	// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-	HttpMethod *string `pulumi:"httpMethod"`
-	// The API resource ID
-	ResourceId *string `pulumi:"resourceId"`
-	// A map of the API models used for the response's content type
-	ResponseModels map[string]string `pulumi:"responseModels"`
-	// A map of response parameters that can be sent to the caller.
-	// For example: `responseParameters = { "method.response.header.X-Some-Header" = true }`
-	// would define that the header `X-Some-Header` can be provided on the response.
-	ResponseParameters map[string]bool `pulumi:"responseParameters"`
-	// The ID of the associated REST API
-	RestApi *string `pulumi:"restApi"`
-	// The HTTP status code
-	StatusCode *string `pulumi:"statusCode"`
+	HttpMethod         *string           `pulumi:"httpMethod"`
+	ResourceId         *string           `pulumi:"resourceId"`
+	ResponseModels     map[string]string `pulumi:"responseModels"`
+	ResponseParameters map[string]bool   `pulumi:"responseParameters"`
+	RestApi            *string           `pulumi:"restApi"`
+	StatusCode         *string           `pulumi:"statusCode"`
 }
 
 type MethodResponseState struct {
-	// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-	HttpMethod pulumi.StringPtrInput
-	// The API resource ID
-	ResourceId pulumi.StringPtrInput
-	// A map of the API models used for the response's content type
-	ResponseModels pulumi.StringMapInput
-	// A map of response parameters that can be sent to the caller.
-	// For example: `responseParameters = { "method.response.header.X-Some-Header" = true }`
-	// would define that the header `X-Some-Header` can be provided on the response.
+	HttpMethod         pulumi.StringPtrInput
+	ResourceId         pulumi.StringPtrInput
+	ResponseModels     pulumi.StringMapInput
 	ResponseParameters pulumi.BoolMapInput
-	// The ID of the associated REST API
-	RestApi pulumi.StringPtrInput
-	// The HTTP status code
-	StatusCode pulumi.StringPtrInput
+	RestApi            pulumi.StringPtrInput
+	StatusCode         pulumi.StringPtrInput
 }
 
 func (MethodResponseState) ElementType() reflect.Type {
@@ -166,38 +83,22 @@ func (MethodResponseState) ElementType() reflect.Type {
 }
 
 type methodResponseArgs struct {
-	// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-	HttpMethod string `pulumi:"httpMethod"`
-	// The API resource ID
-	ResourceId string `pulumi:"resourceId"`
-	// A map of the API models used for the response's content type
-	ResponseModels map[string]string `pulumi:"responseModels"`
-	// A map of response parameters that can be sent to the caller.
-	// For example: `responseParameters = { "method.response.header.X-Some-Header" = true }`
-	// would define that the header `X-Some-Header` can be provided on the response.
-	ResponseParameters map[string]bool `pulumi:"responseParameters"`
-	// The ID of the associated REST API
-	RestApi interface{} `pulumi:"restApi"`
-	// The HTTP status code
-	StatusCode string `pulumi:"statusCode"`
+	HttpMethod         string            `pulumi:"httpMethod"`
+	ResourceId         string            `pulumi:"resourceId"`
+	ResponseModels     map[string]string `pulumi:"responseModels"`
+	ResponseParameters map[string]bool   `pulumi:"responseParameters"`
+	RestApi            interface{}       `pulumi:"restApi"`
+	StatusCode         string            `pulumi:"statusCode"`
 }
 
 // The set of arguments for constructing a MethodResponse resource.
 type MethodResponseArgs struct {
-	// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-	HttpMethod pulumi.StringInput
-	// The API resource ID
-	ResourceId pulumi.StringInput
-	// A map of the API models used for the response's content type
-	ResponseModels pulumi.StringMapInput
-	// A map of response parameters that can be sent to the caller.
-	// For example: `responseParameters = { "method.response.header.X-Some-Header" = true }`
-	// would define that the header `X-Some-Header` can be provided on the response.
+	HttpMethod         pulumi.StringInput
+	ResourceId         pulumi.StringInput
+	ResponseModels     pulumi.StringMapInput
 	ResponseParameters pulumi.BoolMapInput
-	// The ID of the associated REST API
-	RestApi pulumi.Input
-	// The HTTP status code
-	StatusCode pulumi.StringInput
+	RestApi            pulumi.Input
+	StatusCode         pulumi.StringInput
 }
 
 func (MethodResponseArgs) ElementType() reflect.Type {

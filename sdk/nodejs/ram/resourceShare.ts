@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `aws.ram.PrincipalAssociation` resource. To associate resources with the share, see the `aws.ram.ResourceAssociation` resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ram.ResourceShare("example", {
- *     allowExternalPrincipals: true,
- *     tags: {
- *         Environment: "Production",
- *     },
- * });
- * ```
- */
 export class ResourceShare extends pulumi.CustomResource {
     /**
      * Get an existing ResourceShare resource's state with the given name, ID, and optional extra
@@ -49,21 +32,9 @@ export class ResourceShare extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceShare.__pulumiType;
     }
 
-    /**
-     * Indicates whether principals outside your organization can be associated with a resource share.
-     */
     public readonly allowExternalPrincipals!: pulumi.Output<boolean | undefined>;
-    /**
-     * The Amazon Resource Name (ARN) of the resource share.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the resource share.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource share.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -104,21 +75,9 @@ export class ResourceShare extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourceShare resources.
  */
 export interface ResourceShareState {
-    /**
-     * Indicates whether principals outside your organization can be associated with a resource share.
-     */
     readonly allowExternalPrincipals?: pulumi.Input<boolean>;
-    /**
-     * The Amazon Resource Name (ARN) of the resource share.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the resource share.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource share.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -126,16 +85,7 @@ export interface ResourceShareState {
  * The set of arguments for constructing a ResourceShare resource.
  */
 export interface ResourceShareArgs {
-    /**
-     * Indicates whether principals outside your organization can be associated with a resource share.
-     */
     readonly allowExternalPrincipals?: pulumi.Input<boolean>;
-    /**
-     * The name of the resource share.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource share.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

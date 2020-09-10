@@ -21,27 +21,9 @@ class SpotDatafeedSubscription(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        > **Note:** There is only a single subscription allowed per account.
-
-        To help you understand the charges for your Spot instances, Amazon EC2 provides a data feed that describes your Spot instance usage and pricing.
-        This data feed is sent to an Amazon S3 bucket that you specify when you subscribe to the data feed.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_bucket = aws.s3.Bucket("defaultBucket")
-        default_spot_datafeed_subscription = aws.ec2.SpotDatafeedSubscription("defaultSpotDatafeedSubscription",
-            bucket=default_bucket.bucket,
-            prefix="my_subdirectory")
-        ```
-
+        Create a SpotDatafeedSubscription resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The Amazon S3 bucket in which to store the Spot instance data feed.
-        :param pulumi.Input[str] prefix: Path of folder inside bucket to place spot pricing data.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,8 +65,6 @@ class SpotDatafeedSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The Amazon S3 bucket in which to store the Spot instance data feed.
-        :param pulumi.Input[str] prefix: Path of folder inside bucket to place spot pricing data.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -97,17 +77,11 @@ class SpotDatafeedSubscription(pulumi.CustomResource):
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        The Amazon S3 bucket in which to store the Spot instance data feed.
-        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter
     def prefix(self) -> pulumi.Output[Optional[str]]:
-        """
-        Path of folder inside bucket to place spot pricing data.
-        """
         return pulumi.get(self, "prefix")
 
     def translate_output_property(self, prop):

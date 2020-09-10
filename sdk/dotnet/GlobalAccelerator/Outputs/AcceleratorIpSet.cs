@@ -13,13 +13,7 @@ namespace Pulumi.Aws.GlobalAccelerator.Outputs
     [OutputType]
     public sealed class AcceleratorIpSet
     {
-        /// <summary>
-        /// A list of IP addresses in the IP address set.
-        /// </summary>
         public readonly ImmutableArray<string> IpAddresses;
-        /// <summary>
-        /// The types of IP addresses included in this IP set.
-        /// </summary>
         public readonly string? IpFamily;
 
         [OutputConstructor]

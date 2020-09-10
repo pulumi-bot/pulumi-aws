@@ -9,67 +9,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Glacier Vault Resource. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html) for a full explanation of the Glacier Vault functionality
-//
-// > **NOTE:** When removing a Glacier Vault, the Vault must be empty.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glacier"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awsSnsTopic, err := sns.NewTopic(ctx, "awsSnsTopic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = glacier.NewVault(ctx, "myArchive", &glacier.VaultArgs{
-// 			Notifications: glacier.VaultNotificationArray{
-// 				&glacier.VaultNotificationArgs{
-// 					SnsTopic: awsSnsTopic.Arn,
-// 					Events: pulumi.StringArray{
-// 						pulumi.String("ArchiveRetrievalCompleted"),
-// 						pulumi.String("InventoryRetrievalCompleted"),
-// 					},
-// 				},
-// 			},
-// 			AccessPolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\":\"2012-10-17\",\n", "    \"Statement\":[\n", "       {\n", "          \"Sid\": \"add-read-only-perm\",\n", "          \"Principal\": \"*\",\n", "          \"Effect\": \"Allow\",\n", "          \"Action\": [\n", "             \"glacier:InitiateJob\",\n", "             \"glacier:GetJobOutput\"\n", "          ],\n", "          \"Resource\": \"arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive\"\n", "       }\n", "    ]\n", "}\n")),
-// 			Tags: pulumi.StringMap{
-// 				"Test": pulumi.String("MyArchive"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Vault struct {
 	pulumi.CustomResourceState
 
-	// The policy document. This is a JSON formatted string.
-	// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-	AccessPolicy pulumi.StringPtrOutput `pulumi:"accessPolicy"`
-	// The ARN of the vault.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The URI of the vault that was created.
-	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The notifications for the Vault. Fields documented below.
+	AccessPolicy  pulumi.StringPtrOutput       `pulumi:"accessPolicy"`
+	Arn           pulumi.StringOutput          `pulumi:"arn"`
+	Location      pulumi.StringOutput          `pulumi:"location"`
+	Name          pulumi.StringOutput          `pulumi:"name"`
 	Notifications VaultNotificationArrayOutput `pulumi:"notifications"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags          pulumi.StringMapOutput       `pulumi:"tags"`
 }
 
 // NewVault registers a new resource with the given unique name, arguments, and options.
@@ -100,35 +48,21 @@ func GetVault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vault resources.
 type vaultState struct {
-	// The policy document. This is a JSON formatted string.
-	// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-	AccessPolicy *string `pulumi:"accessPolicy"`
-	// The ARN of the vault.
-	Arn *string `pulumi:"arn"`
-	// The URI of the vault that was created.
-	Location *string `pulumi:"location"`
-	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-	Name *string `pulumi:"name"`
-	// The notifications for the Vault. Fields documented below.
+	AccessPolicy  *string             `pulumi:"accessPolicy"`
+	Arn           *string             `pulumi:"arn"`
+	Location      *string             `pulumi:"location"`
+	Name          *string             `pulumi:"name"`
 	Notifications []VaultNotification `pulumi:"notifications"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Tags          map[string]string   `pulumi:"tags"`
 }
 
 type VaultState struct {
-	// The policy document. This is a JSON formatted string.
-	// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-	AccessPolicy pulumi.StringPtrInput
-	// The ARN of the vault.
-	Arn pulumi.StringPtrInput
-	// The URI of the vault that was created.
-	Location pulumi.StringPtrInput
-	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-	Name pulumi.StringPtrInput
-	// The notifications for the Vault. Fields documented below.
+	AccessPolicy  pulumi.StringPtrInput
+	Arn           pulumi.StringPtrInput
+	Location      pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
 	Notifications VaultNotificationArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags          pulumi.StringMapInput
 }
 
 func (VaultState) ElementType() reflect.Type {
@@ -136,28 +70,18 @@ func (VaultState) ElementType() reflect.Type {
 }
 
 type vaultArgs struct {
-	// The policy document. This is a JSON formatted string.
-	// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-	AccessPolicy *string `pulumi:"accessPolicy"`
-	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-	Name *string `pulumi:"name"`
-	// The notifications for the Vault. Fields documented below.
+	AccessPolicy  *string             `pulumi:"accessPolicy"`
+	Name          *string             `pulumi:"name"`
 	Notifications []VaultNotification `pulumi:"notifications"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Tags          map[string]string   `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Vault resource.
 type VaultArgs struct {
-	// The policy document. This is a JSON formatted string.
-	// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-	AccessPolicy pulumi.StringPtrInput
-	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-	Name pulumi.StringPtrInput
-	// The notifications for the Vault. Fields documented below.
+	AccessPolicy  pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
 	Notifications VaultNotificationArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags          pulumi.StringMapInput
 }
 
 func (VaultArgs) ElementType() reflect.Type {

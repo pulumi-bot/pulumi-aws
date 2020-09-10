@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * [IPv6 only] Creates an egress-only Internet gateway for your VPC.
- * An egress-only Internet gateway is used to enable outbound communication
- * over IPv6 from instances in your VPC to the Internet, and prevents hosts
- * outside of your VPC from initiating an IPv6 connection with your instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleVpc = new aws.ec2.Vpc("exampleVpc", {
- *     cidrBlock: "10.1.0.0/16",
- *     assignGeneratedIpv6CidrBlock: true,
- * });
- * const exampleEgressOnlyInternetGateway = new aws.ec2.EgressOnlyInternetGateway("exampleEgressOnlyInternetGateway", {
- *     vpcId: exampleVpc.id,
- *     tags: {
- *         Name: "main",
- *     },
- * });
- * ```
- */
 export class EgressOnlyInternetGateway extends pulumi.CustomResource {
     /**
      * Get an existing EgressOnlyInternetGateway resource's state with the given name, ID, and optional extra
@@ -56,13 +32,7 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === EgressOnlyInternetGateway.__pulumiType;
     }
 
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The VPC ID to create in.
-     */
     public readonly vpcId!: pulumi.Output<string>;
 
     /**
@@ -102,13 +72,7 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EgressOnlyInternetGateway resources.
  */
 export interface EgressOnlyInternetGatewayState {
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The VPC ID to create in.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -116,12 +80,6 @@ export interface EgressOnlyInternetGatewayState {
  * The set of arguments for constructing a EgressOnlyInternetGateway resource.
  */
 export interface EgressOnlyInternetGatewayArgs {
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The VPC ID to create in.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

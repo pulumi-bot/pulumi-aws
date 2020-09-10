@@ -9,63 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Glue
 {
-    /// <summary>
-    /// Provides a Glue Catalog Database Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var awsGlueCatalogDatabase = new Aws.Glue.CatalogDatabase("awsGlueCatalogDatabase", new Aws.Glue.CatalogDatabaseArgs
-    ///         {
-    ///             Name = "MyCatalogDatabase",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class CatalogDatabase : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the Glue Catalog Database.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-        /// </summary>
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the database.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The location of the database (for example, an HDFS path).
-        /// </summary>
         [Output("locationUri")]
         public Output<string?> LocationUri { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the database.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of key-value pairs that define parameters and properties of the database.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
 
@@ -115,36 +75,20 @@ namespace Pulumi.Aws.Glue
 
     public sealed class CatalogDatabaseArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-        /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
 
-        /// <summary>
-        /// Description of the database.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The location of the database (for example, an HDFS path).
-        /// </summary>
         [Input("locationUri")]
         public Input<string>? LocationUri { get; set; }
 
-        /// <summary>
-        /// The name of the database.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputMap<string>? _parameters;
-
-        /// <summary>
-        /// A list of key-value pairs that define parameters and properties of the database.
-        /// </summary>
         public InputMap<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputMap<string>());
@@ -158,42 +102,23 @@ namespace Pulumi.Aws.Glue
 
     public sealed class CatalogDatabaseState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the Glue Catalog Database.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-        /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
 
-        /// <summary>
-        /// Description of the database.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The location of the database (for example, an HDFS path).
-        /// </summary>
         [Input("locationUri")]
         public Input<string>? LocationUri { get; set; }
 
-        /// <summary>
-        /// The name of the database.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputMap<string>? _parameters;
-
-        /// <summary>
-        /// A list of key-value pairs that define parameters and properties of the database.
-        /// </summary>
         public InputMap<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputMap<string>());

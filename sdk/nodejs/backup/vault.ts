@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS Backup vault resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.backup.Vault("example", {kmsKeyArn: aws_kms_key.example.arn});
- * ```
- */
 export class Vault extends pulumi.CustomResource {
     /**
      * Get an existing Vault resource's state with the given name, ID, and optional extra
@@ -44,25 +32,10 @@ export class Vault extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vault.__pulumiType;
     }
 
-    /**
-     * The ARN of the vault.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The server-side encryption key that is used to protect your backups.
-     */
     public readonly kmsKeyArn!: pulumi.Output<string>;
-    /**
-     * Name of the backup vault to create.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The number of recovery points that are stored in a backup vault.
-     */
     public /*out*/ readonly recoveryPoints!: pulumi.Output<number>;
-    /**
-     * Metadata that you can assign to help organize the resources that you create.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -105,25 +78,10 @@ export class Vault extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vault resources.
  */
 export interface VaultState {
-    /**
-     * The ARN of the vault.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The server-side encryption key that is used to protect your backups.
-     */
     readonly kmsKeyArn?: pulumi.Input<string>;
-    /**
-     * Name of the backup vault to create.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The number of recovery points that are stored in a backup vault.
-     */
     readonly recoveryPoints?: pulumi.Input<number>;
-    /**
-     * Metadata that you can assign to help organize the resources that you create.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -131,16 +89,7 @@ export interface VaultState {
  * The set of arguments for constructing a Vault resource.
  */
 export interface VaultArgs {
-    /**
-     * The server-side encryption key that is used to protect your backups.
-     */
     readonly kmsKeyArn?: pulumi.Input<string>;
-    /**
-     * Name of the backup vault to create.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Metadata that you can assign to help organize the resources that you create.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

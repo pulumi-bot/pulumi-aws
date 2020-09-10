@@ -10,38 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewAmiLaunchPermission(ctx, "example", &ec2.AmiLaunchPermissionArgs{
-// 			AccountId: pulumi.String("123456789012"),
-// 			ImageId:   pulumi.String("ami-12345678"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AmiLaunchPermission struct {
 	pulumi.CustomResourceState
 
-	// An AWS Account ID to add launch permissions.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// A region-unique name for the AMI.
-	ImageId pulumi.StringOutput `pulumi:"imageId"`
+	ImageId   pulumi.StringOutput `pulumi:"imageId"`
 }
 
 // NewAmiLaunchPermission registers a new resource with the given unique name, arguments, and options.
@@ -78,17 +51,13 @@ func GetAmiLaunchPermission(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AmiLaunchPermission resources.
 type amiLaunchPermissionState struct {
-	// An AWS Account ID to add launch permissions.
 	AccountId *string `pulumi:"accountId"`
-	// A region-unique name for the AMI.
-	ImageId *string `pulumi:"imageId"`
+	ImageId   *string `pulumi:"imageId"`
 }
 
 type AmiLaunchPermissionState struct {
-	// An AWS Account ID to add launch permissions.
 	AccountId pulumi.StringPtrInput
-	// A region-unique name for the AMI.
-	ImageId pulumi.StringPtrInput
+	ImageId   pulumi.StringPtrInput
 }
 
 func (AmiLaunchPermissionState) ElementType() reflect.Type {
@@ -96,18 +65,14 @@ func (AmiLaunchPermissionState) ElementType() reflect.Type {
 }
 
 type amiLaunchPermissionArgs struct {
-	// An AWS Account ID to add launch permissions.
 	AccountId string `pulumi:"accountId"`
-	// A region-unique name for the AMI.
-	ImageId string `pulumi:"imageId"`
+	ImageId   string `pulumi:"imageId"`
 }
 
 // The set of arguments for constructing a AmiLaunchPermission resource.
 type AmiLaunchPermissionArgs struct {
-	// An AWS Account ID to add launch permissions.
 	AccountId pulumi.StringInput
-	// A region-unique name for the AMI.
-	ImageId pulumi.StringInput
+	ImageId   pulumi.StringInput
 }
 
 func (AmiLaunchPermissionArgs) ElementType() reflect.Type {

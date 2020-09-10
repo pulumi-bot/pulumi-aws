@@ -10,43 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DMS (Data Migration Service) certificate resource. DMS certificates can be created, deleted, and imported.
-//
-// > **Note:** All arguments including the PEM encoded certificate will be stored in the raw state as plain-text.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/dms"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dms.NewCertificate(ctx, "test", &dms.CertificateArgs{
-// 			CertificateId:  pulumi.String("test-dms-certificate-tf"),
-// 			CertificatePem: pulumi.String("..."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) for the certificate.
-	CertificateArn pulumi.StringOutput `pulumi:"certificateArn"`
-	// The certificate identifier.
-	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
-	// The contents of the .pem X.509 certificate file for the certificate. Either `certificatePem` or `certificateWallet` must be set.
-	CertificatePem pulumi.StringPtrOutput `pulumi:"certificatePem"`
-	// The contents of the Oracle Wallet certificate for use with SSL. Either `certificatePem` or `certificateWallet` must be set.
+	CertificateArn    pulumi.StringOutput    `pulumi:"certificateArn"`
+	CertificateId     pulumi.StringOutput    `pulumi:"certificateId"`
+	CertificatePem    pulumi.StringPtrOutput `pulumi:"certificatePem"`
 	CertificateWallet pulumi.StringPtrOutput `pulumi:"certificateWallet"`
 }
 
@@ -81,24 +50,16 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// The Amazon Resource Name (ARN) for the certificate.
-	CertificateArn *string `pulumi:"certificateArn"`
-	// The certificate identifier.
-	CertificateId *string `pulumi:"certificateId"`
-	// The contents of the .pem X.509 certificate file for the certificate. Either `certificatePem` or `certificateWallet` must be set.
-	CertificatePem *string `pulumi:"certificatePem"`
-	// The contents of the Oracle Wallet certificate for use with SSL. Either `certificatePem` or `certificateWallet` must be set.
+	CertificateArn    *string `pulumi:"certificateArn"`
+	CertificateId     *string `pulumi:"certificateId"`
+	CertificatePem    *string `pulumi:"certificatePem"`
 	CertificateWallet *string `pulumi:"certificateWallet"`
 }
 
 type CertificateState struct {
-	// The Amazon Resource Name (ARN) for the certificate.
-	CertificateArn pulumi.StringPtrInput
-	// The certificate identifier.
-	CertificateId pulumi.StringPtrInput
-	// The contents of the .pem X.509 certificate file for the certificate. Either `certificatePem` or `certificateWallet` must be set.
-	CertificatePem pulumi.StringPtrInput
-	// The contents of the Oracle Wallet certificate for use with SSL. Either `certificatePem` or `certificateWallet` must be set.
+	CertificateArn    pulumi.StringPtrInput
+	CertificateId     pulumi.StringPtrInput
+	CertificatePem    pulumi.StringPtrInput
 	CertificateWallet pulumi.StringPtrInput
 }
 
@@ -107,21 +68,15 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
-	// The certificate identifier.
-	CertificateId string `pulumi:"certificateId"`
-	// The contents of the .pem X.509 certificate file for the certificate. Either `certificatePem` or `certificateWallet` must be set.
-	CertificatePem *string `pulumi:"certificatePem"`
-	// The contents of the Oracle Wallet certificate for use with SSL. Either `certificatePem` or `certificateWallet` must be set.
+	CertificateId     string  `pulumi:"certificateId"`
+	CertificatePem    *string `pulumi:"certificatePem"`
 	CertificateWallet *string `pulumi:"certificateWallet"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
-	// The certificate identifier.
-	CertificateId pulumi.StringInput
-	// The contents of the .pem X.509 certificate file for the certificate. Either `certificatePem` or `certificateWallet` must be set.
-	CertificatePem pulumi.StringPtrInput
-	// The contents of the Oracle Wallet certificate for use with SSL. Either `certificatePem` or `certificateWallet` must be set.
+	CertificateId     pulumi.StringInput
+	CertificatePem    pulumi.StringPtrInput
 	CertificateWallet pulumi.StringPtrInput
 }
 

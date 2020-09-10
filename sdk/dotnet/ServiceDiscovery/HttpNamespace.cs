@@ -9,49 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ServiceDiscovery
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.ServiceDiscovery.HttpNamespace("example", new Aws.ServiceDiscovery.HttpNamespaceArgs
-    ///         {
-    ///             Description = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class HttpNamespace : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description that you specify for the namespace when you create it.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the http namespace.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the namespace.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -101,24 +69,14 @@ namespace Pulumi.Aws.ServiceDiscovery
 
     public sealed class HttpNamespaceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description that you specify for the namespace when you create it.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the http namespace.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the namespace.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -132,30 +90,17 @@ namespace Pulumi.Aws.ServiceDiscovery
 
     public sealed class HttpNamespaceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description that you specify for the namespace when you create it.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the http namespace.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the namespace.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -10,113 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a S3 bucket [inventory configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html) resource.
-//
-// ## Example Usage
-// ### Add inventory configuration
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testBucket, err := s3.NewBucket(ctx, "testBucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		inventory, err := s3.NewBucket(ctx, "inventory", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = s3.NewInventory(ctx, "testInventory", &s3.InventoryArgs{
-// 			Bucket:                 testBucket.ID(),
-// 			IncludedObjectVersions: pulumi.String("All"),
-// 			Schedule: &s3.InventoryScheduleArgs{
-// 				Frequency: pulumi.String("Daily"),
-// 			},
-// 			Destination: &s3.InventoryDestinationArgs{
-// 				Bucket: &s3.InventoryDestinationBucketArgs{
-// 					Format:    pulumi.String("ORC"),
-// 					BucketArn: inventory.Arn,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Add inventory configuration with S3 bucket object prefix
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := s3.NewBucket(ctx, "test", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		inventory, err := s3.NewBucket(ctx, "inventory", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = s3.NewInventory(ctx, "test_prefix", &s3.InventoryArgs{
-// 			Bucket:                 test.ID(),
-// 			IncludedObjectVersions: pulumi.String("All"),
-// 			Schedule: &s3.InventoryScheduleArgs{
-// 				Frequency: pulumi.String("Daily"),
-// 			},
-// 			Filter: &s3.InventoryFilterArgs{
-// 				Prefix: pulumi.String("documents/"),
-// 			},
-// 			Destination: &s3.InventoryDestinationArgs{
-// 				Bucket: &s3.InventoryDestinationBucketArgs{
-// 					Format:    pulumi.String("ORC"),
-// 					BucketArn: inventory.Arn,
-// 					Prefix:    pulumi.String("inventory"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Inventory struct {
 	pulumi.CustomResourceState
 
-	// The name of the bucket where the inventory configuration will be stored.
-	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// Contains information about where to publish the inventory results (documented below).
-	Destination InventoryDestinationOutput `pulumi:"destination"`
-	// Specifies whether the inventory is enabled or disabled.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
-	Filter InventoryFilterPtrOutput `pulumi:"filter"`
-	// Object versions to include in the inventory list. Valid values: `All`, `Current`.
-	IncludedObjectVersions pulumi.StringOutput `pulumi:"includedObjectVersions"`
-	// Unique identifier of the inventory configuration for the bucket.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// List of optional fields that are included in the inventory results.
-	// Valid values: `Size`, `LastModifiedDate`, `StorageClass`, `ETag`, `IsMultipartUploaded`, `ReplicationStatus`, `EncryptionStatus`, `ObjectLockRetainUntilDate`, `ObjectLockMode`, `ObjectLockLegalHoldStatus`, `IntelligentTieringAccessTier`.
-	OptionalFields pulumi.StringArrayOutput `pulumi:"optionalFields"`
-	// Specifies the schedule for generating inventory results (documented below).
-	Schedule InventoryScheduleOutput `pulumi:"schedule"`
+	Bucket                 pulumi.StringOutput        `pulumi:"bucket"`
+	Destination            InventoryDestinationOutput `pulumi:"destination"`
+	Enabled                pulumi.BoolPtrOutput       `pulumi:"enabled"`
+	Filter                 InventoryFilterPtrOutput   `pulumi:"filter"`
+	IncludedObjectVersions pulumi.StringOutput        `pulumi:"includedObjectVersions"`
+	Name                   pulumi.StringOutput        `pulumi:"name"`
+	OptionalFields         pulumi.StringArrayOutput   `pulumi:"optionalFields"`
+	Schedule               InventoryScheduleOutput    `pulumi:"schedule"`
 }
 
 // NewInventory registers a new resource with the given unique name, arguments, and options.
@@ -159,43 +63,25 @@ func GetInventory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Inventory resources.
 type inventoryState struct {
-	// The name of the bucket where the inventory configuration will be stored.
-	Bucket *string `pulumi:"bucket"`
-	// Contains information about where to publish the inventory results (documented below).
-	Destination *InventoryDestination `pulumi:"destination"`
-	// Specifies whether the inventory is enabled or disabled.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
-	Filter *InventoryFilter `pulumi:"filter"`
-	// Object versions to include in the inventory list. Valid values: `All`, `Current`.
-	IncludedObjectVersions *string `pulumi:"includedObjectVersions"`
-	// Unique identifier of the inventory configuration for the bucket.
-	Name *string `pulumi:"name"`
-	// List of optional fields that are included in the inventory results.
-	// Valid values: `Size`, `LastModifiedDate`, `StorageClass`, `ETag`, `IsMultipartUploaded`, `ReplicationStatus`, `EncryptionStatus`, `ObjectLockRetainUntilDate`, `ObjectLockMode`, `ObjectLockLegalHoldStatus`, `IntelligentTieringAccessTier`.
-	OptionalFields []string `pulumi:"optionalFields"`
-	// Specifies the schedule for generating inventory results (documented below).
-	Schedule *InventorySchedule `pulumi:"schedule"`
+	Bucket                 *string               `pulumi:"bucket"`
+	Destination            *InventoryDestination `pulumi:"destination"`
+	Enabled                *bool                 `pulumi:"enabled"`
+	Filter                 *InventoryFilter      `pulumi:"filter"`
+	IncludedObjectVersions *string               `pulumi:"includedObjectVersions"`
+	Name                   *string               `pulumi:"name"`
+	OptionalFields         []string              `pulumi:"optionalFields"`
+	Schedule               *InventorySchedule    `pulumi:"schedule"`
 }
 
 type InventoryState struct {
-	// The name of the bucket where the inventory configuration will be stored.
-	Bucket pulumi.StringPtrInput
-	// Contains information about where to publish the inventory results (documented below).
-	Destination InventoryDestinationPtrInput
-	// Specifies whether the inventory is enabled or disabled.
-	Enabled pulumi.BoolPtrInput
-	// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
-	Filter InventoryFilterPtrInput
-	// Object versions to include in the inventory list. Valid values: `All`, `Current`.
+	Bucket                 pulumi.StringPtrInput
+	Destination            InventoryDestinationPtrInput
+	Enabled                pulumi.BoolPtrInput
+	Filter                 InventoryFilterPtrInput
 	IncludedObjectVersions pulumi.StringPtrInput
-	// Unique identifier of the inventory configuration for the bucket.
-	Name pulumi.StringPtrInput
-	// List of optional fields that are included in the inventory results.
-	// Valid values: `Size`, `LastModifiedDate`, `StorageClass`, `ETag`, `IsMultipartUploaded`, `ReplicationStatus`, `EncryptionStatus`, `ObjectLockRetainUntilDate`, `ObjectLockMode`, `ObjectLockLegalHoldStatus`, `IntelligentTieringAccessTier`.
-	OptionalFields pulumi.StringArrayInput
-	// Specifies the schedule for generating inventory results (documented below).
-	Schedule InventorySchedulePtrInput
+	Name                   pulumi.StringPtrInput
+	OptionalFields         pulumi.StringArrayInput
+	Schedule               InventorySchedulePtrInput
 }
 
 func (InventoryState) ElementType() reflect.Type {
@@ -203,44 +89,26 @@ func (InventoryState) ElementType() reflect.Type {
 }
 
 type inventoryArgs struct {
-	// The name of the bucket where the inventory configuration will be stored.
-	Bucket string `pulumi:"bucket"`
-	// Contains information about where to publish the inventory results (documented below).
-	Destination InventoryDestination `pulumi:"destination"`
-	// Specifies whether the inventory is enabled or disabled.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
-	Filter *InventoryFilter `pulumi:"filter"`
-	// Object versions to include in the inventory list. Valid values: `All`, `Current`.
-	IncludedObjectVersions string `pulumi:"includedObjectVersions"`
-	// Unique identifier of the inventory configuration for the bucket.
-	Name *string `pulumi:"name"`
-	// List of optional fields that are included in the inventory results.
-	// Valid values: `Size`, `LastModifiedDate`, `StorageClass`, `ETag`, `IsMultipartUploaded`, `ReplicationStatus`, `EncryptionStatus`, `ObjectLockRetainUntilDate`, `ObjectLockMode`, `ObjectLockLegalHoldStatus`, `IntelligentTieringAccessTier`.
-	OptionalFields []string `pulumi:"optionalFields"`
-	// Specifies the schedule for generating inventory results (documented below).
-	Schedule InventorySchedule `pulumi:"schedule"`
+	Bucket                 string               `pulumi:"bucket"`
+	Destination            InventoryDestination `pulumi:"destination"`
+	Enabled                *bool                `pulumi:"enabled"`
+	Filter                 *InventoryFilter     `pulumi:"filter"`
+	IncludedObjectVersions string               `pulumi:"includedObjectVersions"`
+	Name                   *string              `pulumi:"name"`
+	OptionalFields         []string             `pulumi:"optionalFields"`
+	Schedule               InventorySchedule    `pulumi:"schedule"`
 }
 
 // The set of arguments for constructing a Inventory resource.
 type InventoryArgs struct {
-	// The name of the bucket where the inventory configuration will be stored.
-	Bucket pulumi.StringInput
-	// Contains information about where to publish the inventory results (documented below).
-	Destination InventoryDestinationInput
-	// Specifies whether the inventory is enabled or disabled.
-	Enabled pulumi.BoolPtrInput
-	// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
-	Filter InventoryFilterPtrInput
-	// Object versions to include in the inventory list. Valid values: `All`, `Current`.
+	Bucket                 pulumi.StringInput
+	Destination            InventoryDestinationInput
+	Enabled                pulumi.BoolPtrInput
+	Filter                 InventoryFilterPtrInput
 	IncludedObjectVersions pulumi.StringInput
-	// Unique identifier of the inventory configuration for the bucket.
-	Name pulumi.StringPtrInput
-	// List of optional fields that are included in the inventory results.
-	// Valid values: `Size`, `LastModifiedDate`, `StorageClass`, `ETag`, `IsMultipartUploaded`, `ReplicationStatus`, `EncryptionStatus`, `ObjectLockRetainUntilDate`, `ObjectLockMode`, `ObjectLockLegalHoldStatus`, `IntelligentTieringAccessTier`.
-	OptionalFields pulumi.StringArrayInput
-	// Specifies the schedule for generating inventory results (documented below).
-	Schedule InventoryScheduleInput
+	Name                   pulumi.StringPtrInput
+	OptionalFields         pulumi.StringArrayInput
+	Schedule               InventoryScheduleInput
 }
 
 func (InventoryArgs) ElementType() reflect.Type {

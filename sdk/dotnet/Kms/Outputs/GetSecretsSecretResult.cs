@@ -13,21 +13,9 @@ namespace Pulumi.Aws.Kms.Outputs
     [OutputType]
     public sealed class GetSecretsSecretResult
     {
-        /// <summary>
-        /// An optional mapping that makes up the Encryption Context for the secret.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Context;
-        /// <summary>
-        /// An optional list of Grant Tokens for the secret.
-        /// </summary>
         public readonly ImmutableArray<string> GrantTokens;
-        /// <summary>
-        /// The name to export this secret under in the attributes.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Base64 encoded payload, as returned from a KMS encrypt operation.
-        /// </summary>
         public readonly string Payload;
 
         [OutputConstructor]

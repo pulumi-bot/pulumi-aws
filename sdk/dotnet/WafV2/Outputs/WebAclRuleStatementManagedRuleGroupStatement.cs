@@ -13,17 +13,8 @@ namespace Pulumi.Aws.WafV2.Outputs
     [OutputType]
     public sealed class WebAclRuleStatementManagedRuleGroupStatement
     {
-        /// <summary>
-        /// The `rules` whose actions are set to `COUNT` by the web ACL, regardless of the action that is set on the rule. See Excluded Rule below for details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.WebAclRuleStatementManagedRuleGroupStatementExcludedRule> ExcludedRules;
-        /// <summary>
-        /// The name of the managed rule group.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The name of the managed rule group vendor.
-        /// </summary>
         public readonly string VendorName;
 
         [OutputConstructor]

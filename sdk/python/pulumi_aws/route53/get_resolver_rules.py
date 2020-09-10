@@ -60,9 +60,6 @@ class GetResolverRulesResult:
     @property
     @pulumi.getter(name="resolverRuleIds")
     def resolver_rule_ids(self) -> List[str]:
-        """
-        The IDs of the matched resolver rules.
-        """
         return pulumi.get(self, "resolver_rule_ids")
 
     @property
@@ -96,34 +93,7 @@ def get_resolver_rules(owner_id: Optional[str] = None,
                        share_status: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResolverRulesResult:
     """
-    `route53.getResolverRules` provides details about a set of Route53 Resolver rules.
-
-    ## Example Usage
-
-    Retrieving the default resolver rule.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.route53.get_resolver_rules(owner_id="Route 53 Resolver",
-        rule_type="RECURSIVE",
-        share_status="NOT_SHARED")
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.route53.get_resolver_rules(rule_type="FORWARD",
-        share_status="SHARED_WITH_ME")
-    ```
-
-
-    :param str owner_id: When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
-    :param str resolver_endpoint_id: The ID of the outbound resolver endpoint for the desired resolver rules.
-    :param str rule_type: The rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
-    :param str share_status: Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ownerId'] = owner_id

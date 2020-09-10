@@ -9,122 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Fsx
 {
-    /// <summary>
-    /// Manages a FSx Lustre File System. See the [FSx Lustre Guide](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Fsx.LustreFileSystem("example", new Aws.Fsx.LustreFileSystemArgs
-    ///         {
-    ///             ImportPath = $"s3://{aws_s3_bucket.Example.Bucket}",
-    ///             StorageCapacity = 1200,
-    ///             SubnetIds = 
-    ///             {
-    ///                 aws_subnet.Example.Id,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class LustreFileSystem : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name of the file system.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// - The filesystem deployment type. One of: `SCRATCH_1`, `SCRATCH_2`, `PERSISTENT_1`.
-        /// </summary>
         [Output("deploymentType")]
         public Output<string?> DeploymentType { get; private set; } = null!;
 
-        /// <summary>
-        /// DNS name for the file system, e.g. `fs-12345678.fsx.us-west-2.amazonaws.com`
-        /// </summary>
         [Output("dnsName")]
         public Output<string> DnsName { get; private set; } = null!;
 
-        /// <summary>
-        /// S3 URI (with optional prefix) where the root of your Amazon FSx file system is exported. Can only be specified with `import_path` argument and the path must use the same Amazon S3 bucket as specified in `import_path`. Set equal to `import_path` to overwrite files on export. Defaults to `s3://{IMPORT BUCKET}/FSxLustre{CREATION TIMESTAMP}`.
-        /// </summary>
         [Output("exportPath")]
         public Output<string> ExportPath { get; private set; } = null!;
 
-        /// <summary>
-        /// S3 URI (with optional prefix) that you're using as the data repository for your FSx for Lustre file system. For example, `s3://example-bucket/optional-prefix/`.
-        /// </summary>
         [Output("importPath")]
         public Output<string?> ImportPath { get; private set; } = null!;
 
-        /// <summary>
-        /// For files imported from a data repository, this value determines the stripe count and maximum amount of data per file (in MiB) stored on a single physical disk. Can only be specified with `import_path` argument. Defaults to `1024`. Minimum of `1` and maximum of `512000`.
-        /// </summary>
         [Output("importedFileChunkSize")]
         public Output<int> ImportedFileChunkSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Set of Elastic Network Interface identifiers from which the file system is accessible.
-        /// </summary>
         [Output("networkInterfaceIds")]
         public Output<ImmutableArray<string>> NetworkInterfaceIds { get; private set; } = null!;
 
-        /// <summary>
-        /// AWS account identifier that created the file system.
-        /// </summary>
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// - Describes the amount of read and write throughput for each 1 tebibyte of storage, in MB/s/TiB, required for the `PERSISTENT_1` deployment_type. For valid values, see the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystemLustreConfiguration.html).
-        /// </summary>
         [Output("perUnitStorageThroughput")]
         public Output<int?> PerUnitStorageThroughput { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
-        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
-        /// <summary>
-        /// The storage capacity (GiB) of the file system. Minimum of `1200`. Storage capacity is provisioned in increments of 3,600 GiB.
-        /// </summary>
         [Output("storageCapacity")]
         public Output<int> StorageCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of IDs for the subnets that the file system will be accessible from. File systems currently support only one subnet. The file server is also launched in that subnet's Availability Zone.
-        /// </summary>
         [Output("subnetIds")]
         public Output<string> SubnetIds { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the file system.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of the Virtual Private Cloud for the file system.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
-        /// <summary>
-        /// The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-        /// </summary>
         [Output("weeklyMaintenanceStartTime")]
         public Output<string> WeeklyMaintenanceStartTime { get; private set; } = null!;
 
@@ -174,75 +102,43 @@ namespace Pulumi.Aws.Fsx
 
     public sealed class LustreFileSystemArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// - The filesystem deployment type. One of: `SCRATCH_1`, `SCRATCH_2`, `PERSISTENT_1`.
-        /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
 
-        /// <summary>
-        /// S3 URI (with optional prefix) where the root of your Amazon FSx file system is exported. Can only be specified with `import_path` argument and the path must use the same Amazon S3 bucket as specified in `import_path`. Set equal to `import_path` to overwrite files on export. Defaults to `s3://{IMPORT BUCKET}/FSxLustre{CREATION TIMESTAMP}`.
-        /// </summary>
         [Input("exportPath")]
         public Input<string>? ExportPath { get; set; }
 
-        /// <summary>
-        /// S3 URI (with optional prefix) that you're using as the data repository for your FSx for Lustre file system. For example, `s3://example-bucket/optional-prefix/`.
-        /// </summary>
         [Input("importPath")]
         public Input<string>? ImportPath { get; set; }
 
-        /// <summary>
-        /// For files imported from a data repository, this value determines the stripe count and maximum amount of data per file (in MiB) stored on a single physical disk. Can only be specified with `import_path` argument. Defaults to `1024`. Minimum of `1` and maximum of `512000`.
-        /// </summary>
         [Input("importedFileChunkSize")]
         public Input<int>? ImportedFileChunkSize { get; set; }
 
-        /// <summary>
-        /// - Describes the amount of read and write throughput for each 1 tebibyte of storage, in MB/s/TiB, required for the `PERSISTENT_1` deployment_type. For valid values, see the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystemLustreConfiguration.html).
-        /// </summary>
         [Input("perUnitStorageThroughput")]
         public Input<int>? PerUnitStorageThroughput { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
 
-        /// <summary>
-        /// The storage capacity (GiB) of the file system. Minimum of `1200`. Storage capacity is provisioned in increments of 3,600 GiB.
-        /// </summary>
         [Input("storageCapacity", required: true)]
         public Input<int> StorageCapacity { get; set; } = null!;
 
-        /// <summary>
-        /// A list of IDs for the subnets that the file system will be accessible from. File systems currently support only one subnet. The file server is also launched in that subnet's Availability Zone.
-        /// </summary>
         [Input("subnetIds", required: true)]
         public Input<string> SubnetIds { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the file system.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-        /// </summary>
         [Input("weeklyMaintenanceStartTime")]
         public Input<string>? WeeklyMaintenanceStartTime { get; set; }
 
@@ -253,111 +149,63 @@ namespace Pulumi.Aws.Fsx
 
     public sealed class LustreFileSystemState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name of the file system.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// - The filesystem deployment type. One of: `SCRATCH_1`, `SCRATCH_2`, `PERSISTENT_1`.
-        /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
 
-        /// <summary>
-        /// DNS name for the file system, e.g. `fs-12345678.fsx.us-west-2.amazonaws.com`
-        /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
 
-        /// <summary>
-        /// S3 URI (with optional prefix) where the root of your Amazon FSx file system is exported. Can only be specified with `import_path` argument and the path must use the same Amazon S3 bucket as specified in `import_path`. Set equal to `import_path` to overwrite files on export. Defaults to `s3://{IMPORT BUCKET}/FSxLustre{CREATION TIMESTAMP}`.
-        /// </summary>
         [Input("exportPath")]
         public Input<string>? ExportPath { get; set; }
 
-        /// <summary>
-        /// S3 URI (with optional prefix) that you're using as the data repository for your FSx for Lustre file system. For example, `s3://example-bucket/optional-prefix/`.
-        /// </summary>
         [Input("importPath")]
         public Input<string>? ImportPath { get; set; }
 
-        /// <summary>
-        /// For files imported from a data repository, this value determines the stripe count and maximum amount of data per file (in MiB) stored on a single physical disk. Can only be specified with `import_path` argument. Defaults to `1024`. Minimum of `1` and maximum of `512000`.
-        /// </summary>
         [Input("importedFileChunkSize")]
         public Input<int>? ImportedFileChunkSize { get; set; }
 
         [Input("networkInterfaceIds")]
         private InputList<string>? _networkInterfaceIds;
-
-        /// <summary>
-        /// Set of Elastic Network Interface identifiers from which the file system is accessible.
-        /// </summary>
         public InputList<string> NetworkInterfaceIds
         {
             get => _networkInterfaceIds ?? (_networkInterfaceIds = new InputList<string>());
             set => _networkInterfaceIds = value;
         }
 
-        /// <summary>
-        /// AWS account identifier that created the file system.
-        /// </summary>
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
-        /// <summary>
-        /// - Describes the amount of read and write throughput for each 1 tebibyte of storage, in MB/s/TiB, required for the `PERSISTENT_1` deployment_type. For valid values, see the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystemLustreConfiguration.html).
-        /// </summary>
         [Input("perUnitStorageThroughput")]
         public Input<int>? PerUnitStorageThroughput { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
 
-        /// <summary>
-        /// The storage capacity (GiB) of the file system. Minimum of `1200`. Storage capacity is provisioned in increments of 3,600 GiB.
-        /// </summary>
         [Input("storageCapacity")]
         public Input<int>? StorageCapacity { get; set; }
 
-        /// <summary>
-        /// A list of IDs for the subnets that the file system will be accessible from. File systems currently support only one subnet. The file server is also launched in that subnet's Availability Zone.
-        /// </summary>
         [Input("subnetIds")]
         public Input<string>? SubnetIds { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the file system.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Identifier of the Virtual Private Cloud for the file system.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
-        /// <summary>
-        /// The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-        /// </summary>
         [Input("weeklyMaintenanceStartTime")]
         public Input<string>? WeeklyMaintenanceStartTime { get; set; }
 

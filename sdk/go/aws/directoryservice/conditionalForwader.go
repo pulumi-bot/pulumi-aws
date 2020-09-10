@@ -10,44 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directoryservice"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directoryservice.NewConditionalForwader(ctx, "example", &directoryservice.ConditionalForwaderArgs{
-// 			DirectoryId:      pulumi.Any(aws_directory_service_directory.Ad.Id),
-// 			RemoteDomainName: pulumi.String("example.com"),
-// 			DnsIps: pulumi.StringArray{
-// 				pulumi.String("8.8.8.8"),
-// 				pulumi.String("8.8.4.4"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ConditionalForwader struct {
 	pulumi.CustomResourceState
 
-	// The id of directory.
-	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// A list of forwarder IP addresses.
-	DnsIps pulumi.StringArrayOutput `pulumi:"dnsIps"`
-	// The fully qualified domain name of the remote domain for which forwarders will be used.
-	RemoteDomainName pulumi.StringOutput `pulumi:"remoteDomainName"`
+	DirectoryId      pulumi.StringOutput      `pulumi:"directoryId"`
+	DnsIps           pulumi.StringArrayOutput `pulumi:"dnsIps"`
+	RemoteDomainName pulumi.StringOutput      `pulumi:"remoteDomainName"`
 }
 
 // NewConditionalForwader registers a new resource with the given unique name, arguments, and options.
@@ -87,20 +55,14 @@ func GetConditionalForwader(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConditionalForwader resources.
 type conditionalForwaderState struct {
-	// The id of directory.
-	DirectoryId *string `pulumi:"directoryId"`
-	// A list of forwarder IP addresses.
-	DnsIps []string `pulumi:"dnsIps"`
-	// The fully qualified domain name of the remote domain for which forwarders will be used.
-	RemoteDomainName *string `pulumi:"remoteDomainName"`
+	DirectoryId      *string  `pulumi:"directoryId"`
+	DnsIps           []string `pulumi:"dnsIps"`
+	RemoteDomainName *string  `pulumi:"remoteDomainName"`
 }
 
 type ConditionalForwaderState struct {
-	// The id of directory.
-	DirectoryId pulumi.StringPtrInput
-	// A list of forwarder IP addresses.
-	DnsIps pulumi.StringArrayInput
-	// The fully qualified domain name of the remote domain for which forwarders will be used.
+	DirectoryId      pulumi.StringPtrInput
+	DnsIps           pulumi.StringArrayInput
 	RemoteDomainName pulumi.StringPtrInput
 }
 
@@ -109,21 +71,15 @@ func (ConditionalForwaderState) ElementType() reflect.Type {
 }
 
 type conditionalForwaderArgs struct {
-	// The id of directory.
-	DirectoryId string `pulumi:"directoryId"`
-	// A list of forwarder IP addresses.
-	DnsIps []string `pulumi:"dnsIps"`
-	// The fully qualified domain name of the remote domain for which forwarders will be used.
-	RemoteDomainName string `pulumi:"remoteDomainName"`
+	DirectoryId      string   `pulumi:"directoryId"`
+	DnsIps           []string `pulumi:"dnsIps"`
+	RemoteDomainName string   `pulumi:"remoteDomainName"`
 }
 
 // The set of arguments for constructing a ConditionalForwader resource.
 type ConditionalForwaderArgs struct {
-	// The id of directory.
-	DirectoryId pulumi.StringInput
-	// A list of forwarder IP addresses.
-	DnsIps pulumi.StringArrayInput
-	// The fully qualified domain name of the remote domain for which forwarders will be used.
+	DirectoryId      pulumi.StringInput
+	DnsIps           pulumi.StringArrayInput
 	RemoteDomainName pulumi.StringInput
 }
 

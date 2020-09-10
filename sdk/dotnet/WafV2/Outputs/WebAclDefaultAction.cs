@@ -13,13 +13,7 @@ namespace Pulumi.Aws.WafV2.Outputs
     [OutputType]
     public sealed class WebAclDefaultAction
     {
-        /// <summary>
-        /// Specifies that AWS WAF should allow requests by default.
-        /// </summary>
         public readonly Outputs.WebAclDefaultActionAllow? Allow;
-        /// <summary>
-        /// Specifies that AWS WAF should block requests by default.
-        /// </summary>
         public readonly Outputs.WebAclDefaultActionBlock? Block;
 
         [OutputConstructor]

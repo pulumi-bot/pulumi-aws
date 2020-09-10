@@ -9,52 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Provides an SES receipt filter resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var filter = new Aws.Ses.ReceiptFilter("filter", new Aws.Ses.ReceiptFilterArgs
-    ///         {
-    ///             Cidr = "10.10.10.10",
-    ///             Policy = "Block",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ReceiptFilter : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The SES receipt filter ARN.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The IP address or address range to filter, in CIDR notation
-        /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the filter
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Block or Allow
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
@@ -104,21 +69,12 @@ namespace Pulumi.Aws.Ses
 
     public sealed class ReceiptFilterArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IP address or address range to filter, in CIDR notation
-        /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the filter
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Block or Allow
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
@@ -129,27 +85,15 @@ namespace Pulumi.Aws.Ses
 
     public sealed class ReceiptFilterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The SES receipt filter ARN.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The IP address or address range to filter, in CIDR notation
-        /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
-        /// <summary>
-        /// The name of the filter
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Block or Allow
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

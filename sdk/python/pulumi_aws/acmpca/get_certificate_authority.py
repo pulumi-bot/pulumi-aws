@@ -67,25 +67,16 @@ class GetCertificateAuthorityResult:
     @property
     @pulumi.getter
     def certificate(self) -> str:
-        """
-        Base64-encoded certificate authority (CA) certificate. Only available after the certificate authority certificate has been imported.
-        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> str:
-        """
-        Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. Only available after the certificate authority certificate has been imported.
-        """
         return pulumi.get(self, "certificate_chain")
 
     @property
     @pulumi.getter(name="certificateSigningRequest")
     def certificate_signing_request(self) -> str:
-        """
-        The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
-        """
         return pulumi.get(self, "certificate_signing_request")
 
     @property
@@ -99,62 +90,36 @@ class GetCertificateAuthorityResult:
     @property
     @pulumi.getter(name="notAfter")
     def not_after(self) -> str:
-        """
-        Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-        """
         return pulumi.get(self, "not_after")
 
     @property
     @pulumi.getter(name="notBefore")
     def not_before(self) -> str:
-        """
-        Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-        """
         return pulumi.get(self, "not_before")
 
     @property
     @pulumi.getter(name="revocationConfigurations")
     def revocation_configurations(self) -> List['outputs.GetCertificateAuthorityRevocationConfigurationResult']:
-        """
-        Nested attribute containing revocation configuration.
-        * `revocation_configuration.0.crl_configuration` - Nested attribute containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority.
-        * `revocation_configuration.0.crl_configuration.0.custom_cname` - Name inserted into the certificate CRL Distribution Points extension that enables the use of an alias for the CRL distribution point.
-        * `revocation_configuration.0.crl_configuration.0.enabled` - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled.
-        * `revocation_configuration.0.crl_configuration.0.expiration_in_days` - Number of days until a certificate expires.
-        * `revocation_configuration.0.crl_configuration.0.s3_bucket_name` - Name of the S3 bucket that contains the CRL.
-        """
         return pulumi.get(self, "revocation_configurations")
 
     @property
     @pulumi.getter
     def serial(self) -> str:
-        """
-        Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
-        """
         return pulumi.get(self, "serial")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Status of the certificate authority.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Specifies a key-value map of user-defined tags that are attached to the certificate authority.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The type of the certificate authority.
-        """
         return pulumi.get(self, "type")
 
 
@@ -183,26 +148,7 @@ def get_certificate_authority(arn: Optional[str] = None,
                               tags: Optional[Mapping[str, str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateAuthorityResult:
     """
-    Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.acmpca.get_certificate_authority(arn="arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012")
-    ```
-
-
-    :param str arn: Amazon Resource Name (ARN) of the certificate authority.
-    :param List[pulumi.InputType['GetCertificateAuthorityRevocationConfigurationArgs']] revocation_configurations: Nested attribute containing revocation configuration.
-           * `revocation_configuration.0.crl_configuration` - Nested attribute containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority.
-           * `revocation_configuration.0.crl_configuration.0.custom_cname` - Name inserted into the certificate CRL Distribution Points extension that enables the use of an alias for the CRL distribution point.
-           * `revocation_configuration.0.crl_configuration.0.enabled` - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled.
-           * `revocation_configuration.0.crl_configuration.0.expiration_in_days` - Number of days until a certificate expires.
-           * `revocation_configuration.0.crl_configuration.0.s3_bucket_name` - Name of the S3 bucket that contains the CRL.
-    :param Mapping[str, str] tags: Specifies a key-value map of user-defined tags that are attached to the certificate authority.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['arn'] = arn

@@ -9,51 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// [IPv6 only] Creates an egress-only Internet gateway for your VPC.
-    /// An egress-only Internet gateway is used to enable outbound communication
-    /// over IPv6 from instances in your VPC to the Internet, and prevents hosts
-    /// outside of your VPC from initiating an IPv6 connection with your instance.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleVpc = new Aws.Ec2.Vpc("exampleVpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.1.0.0/16",
-    ///             AssignGeneratedIpv6CidrBlock = true,
-    ///         });
-    ///         var exampleEgressOnlyInternetGateway = new Aws.Ec2.EgressOnlyInternetGateway("exampleEgressOnlyInternetGateway", new Aws.Ec2.EgressOnlyInternetGatewayArgs
-    ///         {
-    ///             VpcId = exampleVpc.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "main" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EgressOnlyInternetGateway : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC ID to create in.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -105,19 +65,12 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID to create in.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -130,19 +83,12 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID to create in.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

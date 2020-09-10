@@ -10,48 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SWF Domain resource.
-//
-// ## Example Usage
-//
-// To register a basic SWF domain:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/swf"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := swf.NewDomain(ctx, "foo", &swf.DomainArgs{
-// 			Description:                            pulumi.String("SWF Domain"),
-// 			WorkflowExecutionRetentionPeriodInDays: pulumi.String("30"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The domain description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the domain. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
-	WorkflowExecutionRetentionPeriodInDays pulumi.StringOutput `pulumi:"workflowExecutionRetentionPeriodInDays"`
+	Arn                                    pulumi.StringOutput    `pulumi:"arn"`
+	Description                            pulumi.StringPtrOutput `pulumi:"description"`
+	Name                                   pulumi.StringOutput    `pulumi:"name"`
+	NamePrefix                             pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	Tags                                   pulumi.StringMapOutput `pulumi:"tags"`
+	WorkflowExecutionRetentionPeriodInDays pulumi.StringOutput    `pulumi:"workflowExecutionRetentionPeriodInDays"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -85,32 +52,20 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// The domain description.
-	Description *string `pulumi:"description"`
-	// The name of the domain. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
-	WorkflowExecutionRetentionPeriodInDays *string `pulumi:"workflowExecutionRetentionPeriodInDays"`
+	Arn                                    *string           `pulumi:"arn"`
+	Description                            *string           `pulumi:"description"`
+	Name                                   *string           `pulumi:"name"`
+	NamePrefix                             *string           `pulumi:"namePrefix"`
+	Tags                                   map[string]string `pulumi:"tags"`
+	WorkflowExecutionRetentionPeriodInDays *string           `pulumi:"workflowExecutionRetentionPeriodInDays"`
 }
 
 type DomainState struct {
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringPtrInput
-	// The domain description.
-	Description pulumi.StringPtrInput
-	// The name of the domain. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
+	Arn                                    pulumi.StringPtrInput
+	Description                            pulumi.StringPtrInput
+	Name                                   pulumi.StringPtrInput
+	NamePrefix                             pulumi.StringPtrInput
+	Tags                                   pulumi.StringMapInput
 	WorkflowExecutionRetentionPeriodInDays pulumi.StringPtrInput
 }
 
@@ -119,29 +74,19 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The domain description.
-	Description *string `pulumi:"description"`
-	// The name of the domain. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
-	WorkflowExecutionRetentionPeriodInDays string `pulumi:"workflowExecutionRetentionPeriodInDays"`
+	Description                            *string           `pulumi:"description"`
+	Name                                   *string           `pulumi:"name"`
+	NamePrefix                             *string           `pulumi:"namePrefix"`
+	Tags                                   map[string]string `pulumi:"tags"`
+	WorkflowExecutionRetentionPeriodInDays string            `pulumi:"workflowExecutionRetentionPeriodInDays"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The domain description.
-	Description pulumi.StringPtrInput
-	// The name of the domain. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
+	Description                            pulumi.StringPtrInput
+	Name                                   pulumi.StringPtrInput
+	NamePrefix                             pulumi.StringPtrInput
+	Tags                                   pulumi.StringMapInput
 	WorkflowExecutionRetentionPeriodInDays pulumi.StringInput
 }
 

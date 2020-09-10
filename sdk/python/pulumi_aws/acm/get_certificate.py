@@ -48,9 +48,6 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Set to the ARN of the found certificate, suitable for referencing in other resources that support ACM certificates.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -84,9 +81,6 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        A mapping of tags for the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
@@ -119,29 +113,7 @@ def get_certificate(domain: Optional[str] = None,
                     types: Optional[List[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Use this data source to get the ARN of a certificate in AWS Certificate
-    Manager (ACM), you can reference
-    it by domain without having to hard code the ARNs as input.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.acm.get_certificate(domain="tf.example.com",
-        key_types=["RSA_4096"])
-    ```
-
-
-    :param str domain: The domain of the certificate to look up. If no certificate is found with this name, an error will be returned.
-    :param List[str] key_types: A list of key algorithms to filter certificates. By default, ACM does not return all certificate types when searching. Valid values are `RSA_1024`, `RSA_2048`, `RSA_4096`, `EC_prime256v1`, `EC_secp384r1`, and `EC_secp521r1`.
-    :param bool most_recent: If set to true, it sorts the certificates matched by previous criteria by the NotBefore field, returning only the most recent one. If set to false, it returns an error if more than one certificate is found. Defaults to false.
-    :param List[str] statuses: A list of statuses on which to filter the returned list. Valid values are `PENDING_VALIDATION`, `ISSUED`,
-           `INACTIVE`, `EXPIRED`, `VALIDATION_TIMED_OUT`, `REVOKED` and `FAILED`. If no value is specified, only certificates in the `ISSUED` state
-           are returned.
-    :param Mapping[str, str] tags: A mapping of tags for the resource.
-    :param List[str] types: A list of types on which to filter the returned list. Valid values are `AMAZON_ISSUED` and `IMPORTED`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['domain'] = domain

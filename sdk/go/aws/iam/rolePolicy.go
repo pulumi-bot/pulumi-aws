@@ -10,52 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IAM role inline policy.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testRole, err := iam.NewRole(ctx, "testRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": \"sts:AssumeRole\",\n", "      \"Principal\": {\n", "        \"Service\": \"ec2.amazonaws.com\"\n", "      },\n", "      \"Effect\": \"Allow\",\n", "      \"Sid\": \"\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicy(ctx, "testPolicy", &iam.RolePolicyArgs{
-// 			Role:   testRole.ID(),
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": [\n", "        \"ec2:Describe*\"\n", "      ],\n", "      \"Effect\": \"Allow\",\n", "      \"Resource\": \"*\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RolePolicy struct {
 	pulumi.CustomResourceState
 
-	// The name of the role policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// The policy document. This is a JSON formatted string.
-	Policy pulumi.StringOutput `pulumi:"policy"`
-	// The IAM role to attach to the policy.
-	Role pulumi.StringOutput `pulumi:"role"`
+	Policy     pulumi.StringOutput    `pulumi:"policy"`
+	Role       pulumi.StringOutput    `pulumi:"role"`
 }
 
 // NewRolePolicy registers a new resource with the given unique name, arguments, and options.
@@ -92,29 +53,17 @@ func GetRolePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RolePolicy resources.
 type rolePolicyState struct {
-	// The name of the role policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The policy document. This is a JSON formatted string.
-	Policy *string `pulumi:"policy"`
-	// The IAM role to attach to the policy.
-	Role *string `pulumi:"role"`
+	Policy     *string `pulumi:"policy"`
+	Role       *string `pulumi:"role"`
 }
 
 type RolePolicyState struct {
-	// The name of the role policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// The policy document. This is a JSON formatted string.
-	Policy pulumi.StringPtrInput
-	// The IAM role to attach to the policy.
-	Role pulumi.StringPtrInput
+	Policy     pulumi.StringPtrInput
+	Role       pulumi.StringPtrInput
 }
 
 func (RolePolicyState) ElementType() reflect.Type {
@@ -122,30 +71,18 @@ func (RolePolicyState) ElementType() reflect.Type {
 }
 
 type rolePolicyArgs struct {
-	// The name of the role policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The policy document. This is a JSON formatted string.
-	Policy interface{} `pulumi:"policy"`
-	// The IAM role to attach to the policy.
-	Role interface{} `pulumi:"role"`
+	Name       *string     `pulumi:"name"`
+	NamePrefix *string     `pulumi:"namePrefix"`
+	Policy     interface{} `pulumi:"policy"`
+	Role       interface{} `pulumi:"role"`
 }
 
 // The set of arguments for constructing a RolePolicy resource.
 type RolePolicyArgs struct {
-	// The name of the role policy. If omitted, this provider will
-	// assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// The policy document. This is a JSON formatted string.
-	Policy pulumi.Input
-	// The IAM role to attach to the policy.
-	Role pulumi.Input
+	Policy     pulumi.Input
+	Role       pulumi.Input
 }
 
 func (RolePolicyArgs) ElementType() reflect.Type {

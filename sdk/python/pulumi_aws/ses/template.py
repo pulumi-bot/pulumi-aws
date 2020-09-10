@@ -23,28 +23,9 @@ class Template(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to create a SES template.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_template = aws.ses.Template("myTemplate",
-            html="<h1>Hello {{name}},</h1><p>Your favorite animal is {{favoriteanimal}}.</p>",
-            subject="Greetings, {{name}}!",
-            text=\"\"\"Hello {{name}},
-        Your favorite animal is {{favoriteanimal}}.
-        \"\"\")
-        ```
-
+        Create a Template resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] html: The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-        :param pulumi.Input[str] name: The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-        :param pulumi.Input[str] subject: The subject line of the email.
-        :param pulumi.Input[str] text: The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,10 +69,6 @@ class Template(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] html: The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-        :param pulumi.Input[str] name: The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-        :param pulumi.Input[str] subject: The subject line of the email.
-        :param pulumi.Input[str] text: The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -106,33 +83,21 @@ class Template(pulumi.CustomResource):
     @property
     @pulumi.getter
     def html(self) -> pulumi.Output[Optional[str]]:
-        """
-        The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-        """
         return pulumi.get(self, "html")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def subject(self) -> pulumi.Output[Optional[str]]:
-        """
-        The subject line of the email.
-        """
         return pulumi.get(self, "subject")
 
     @property
     @pulumi.getter
     def text(self) -> pulumi.Output[Optional[str]]:
-        """
-        The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-        """
         return pulumi.get(self, "text")
 
     def translate_output_property(self, prop):

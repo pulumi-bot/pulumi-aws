@@ -12,18 +12,11 @@ namespace Pulumi.Aws.Inputs
 
     public sealed class GetAutoscalingGroupsFilterArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         [Input("values", required: true)]
         private List<string>? _values;
-
-        /// <summary>
-        /// The value of the filter.
-        /// </summary>
         public List<string> Values
         {
             get => _values ?? (_values = new List<string>());

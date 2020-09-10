@@ -45,25 +45,16 @@ class GetStateMachineResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Set to the arn of the state function.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        The date the state machine was created.
-        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def definition(self) -> str:
-        """
-        Set to the state machine definition.
-        """
         return pulumi.get(self, "definition")
 
     @property
@@ -82,17 +73,11 @@ class GetStateMachineResult:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
-        """
-        Set to the role_arn used by the state function.
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Set to the current status of the state machine.
-        """
         return pulumi.get(self, "status")
 
 
@@ -114,21 +99,7 @@ class AwaitableGetStateMachineResult(GetStateMachineResult):
 def get_state_machine(name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStateMachineResult:
     """
-    Use this data source to get the ARN of a State Machine in AWS Step
-    Function (SFN). By using this data source, you can reference a
-    state machine without having to hard code the ARNs as input.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.sfn.get_state_machine(name="an_example_sfn_name")
-    ```
-
-
-    :param str name: The friendly name of the state machine to match.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

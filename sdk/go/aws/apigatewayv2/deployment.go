@@ -10,46 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 deployment.
-// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-//
-// > **Note:** Creating a deployment for an API requires at least one `apigatewayv2.Route` resource associated with that API. To avoid race conditions when all resources are being created together, you need to add implicit resource references via the `triggers` argument or explicit resource references using the [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
-//
-// ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewDeployment(ctx, "example", &apigatewayv2.DeploymentArgs{
-// 			ApiId:       pulumi.Any(aws_apigatewayv2_route.Example.Api_id),
-// 			Description: pulumi.String("Example deployment"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Deployment struct {
 	pulumi.CustomResourceState
 
-	// The API identifier.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// Whether the deployment was automatically released.
-	AutoDeployed pulumi.BoolOutput `pulumi:"autoDeployed"`
-	// The description for the deployment resource.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-	Triggers pulumi.StringMapOutput `pulumi:"triggers"`
+	ApiId        pulumi.StringOutput    `pulumi:"apiId"`
+	AutoDeployed pulumi.BoolOutput      `pulumi:"autoDeployed"`
+	Description  pulumi.StringPtrOutput `pulumi:"description"`
+	Triggers     pulumi.StringMapOutput `pulumi:"triggers"`
 }
 
 // NewDeployment registers a new resource with the given unique name, arguments, and options.
@@ -83,25 +50,17 @@ func GetDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Deployment resources.
 type deploymentState struct {
-	// The API identifier.
-	ApiId *string `pulumi:"apiId"`
-	// Whether the deployment was automatically released.
-	AutoDeployed *bool `pulumi:"autoDeployed"`
-	// The description for the deployment resource.
-	Description *string `pulumi:"description"`
-	// A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-	Triggers map[string]string `pulumi:"triggers"`
+	ApiId        *string           `pulumi:"apiId"`
+	AutoDeployed *bool             `pulumi:"autoDeployed"`
+	Description  *string           `pulumi:"description"`
+	Triggers     map[string]string `pulumi:"triggers"`
 }
 
 type DeploymentState struct {
-	// The API identifier.
-	ApiId pulumi.StringPtrInput
-	// Whether the deployment was automatically released.
+	ApiId        pulumi.StringPtrInput
 	AutoDeployed pulumi.BoolPtrInput
-	// The description for the deployment resource.
-	Description pulumi.StringPtrInput
-	// A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-	Triggers pulumi.StringMapInput
+	Description  pulumi.StringPtrInput
+	Triggers     pulumi.StringMapInput
 }
 
 func (DeploymentState) ElementType() reflect.Type {
@@ -109,22 +68,16 @@ func (DeploymentState) ElementType() reflect.Type {
 }
 
 type deploymentArgs struct {
-	// The API identifier.
-	ApiId string `pulumi:"apiId"`
-	// The description for the deployment resource.
-	Description *string `pulumi:"description"`
-	// A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-	Triggers map[string]string `pulumi:"triggers"`
+	ApiId       string            `pulumi:"apiId"`
+	Description *string           `pulumi:"description"`
+	Triggers    map[string]string `pulumi:"triggers"`
 }
 
 // The set of arguments for constructing a Deployment resource.
 type DeploymentArgs struct {
-	// The API identifier.
-	ApiId pulumi.StringInput
-	// The description for the deployment resource.
+	ApiId       pulumi.StringInput
 	Description pulumi.StringPtrInput
-	// A map of arbitrary keys and values that, when changed, will trigger a redeployment.
-	Triggers pulumi.StringMapInput
+	Triggers    pulumi.StringMapInput
 }
 
 func (DeploymentArgs) ElementType() reflect.Type {

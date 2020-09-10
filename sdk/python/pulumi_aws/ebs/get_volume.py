@@ -71,25 +71,16 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        The AZ where the EBS volume exists.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        Whether the disk is encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -108,17 +99,11 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def iops(self) -> float:
-        """
-        The amount of IOPS for the disk.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> str:
-        """
-        The ARN for the KMS encryption key.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
@@ -129,57 +114,36 @@ class GetVolumeResult:
     @property
     @pulumi.getter(name="multiAttachEnabled")
     def multi_attach_enabled(self) -> bool:
-        """
-        (Optional) Specifies whether Amazon EBS Multi-Attach is enabled.
-        """
         return pulumi.get(self, "multi_attach_enabled")
 
     @property
     @pulumi.getter(name="outpostArn")
     def outpost_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the Outpost.
-        """
         return pulumi.get(self, "outpost_arn")
 
     @property
     @pulumi.getter
     def size(self) -> float:
-        """
-        The size of the drive in GiBs.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
-        """
-        The snapshot_id the EBS volume is based off.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        A map of tags for the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> str:
-        """
-        The volume ID (e.g. vol-59fcb34e).
-        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The type of EBS volume.
-        """
         return pulumi.get(self, "volume_type")
 
 
@@ -211,35 +175,7 @@ def get_volume(filters: Optional[List[pulumi.InputType['GetVolumeFilterArgs']]] 
                tags: Optional[Mapping[str, str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Use this data source to get information about an EBS volume for use in other
-    resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    ebs_volume = aws.ebs.get_volume(filters=[
-            aws.ebs.GetVolumeFilterArgs(
-                name="volume-type",
-                values=["gp2"],
-            ),
-            aws.ebs.GetVolumeFilterArgs(
-                name="tag:Name",
-                values=["Example"],
-            ),
-        ],
-        most_recent=True)
-    ```
-
-
-    :param List[pulumi.InputType['GetVolumeFilterArgs']] filters: One or more name/value pairs to filter off of. There are
-           several valid keys, for a full reference, check out
-           [describe-volumes in the AWS CLI reference][1].
-    :param bool most_recent: If more than one result is returned, use the most
-           recent Volume.
-    :param Mapping[str, str] tags: A map of tags for the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

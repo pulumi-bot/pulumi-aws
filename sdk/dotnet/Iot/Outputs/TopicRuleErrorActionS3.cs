@@ -13,17 +13,8 @@ namespace Pulumi.Aws.Iot.Outputs
     [OutputType]
     public sealed class TopicRuleErrorActionS3
     {
-        /// <summary>
-        /// The Amazon S3 bucket name.
-        /// </summary>
         public readonly string BucketName;
-        /// <summary>
-        /// The object key.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The IAM role ARN that allows access to the CloudWatch alarm.
-        /// </summary>
         public readonly string RoleArn;
 
         [OutputConstructor]

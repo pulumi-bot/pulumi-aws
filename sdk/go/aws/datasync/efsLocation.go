@@ -10,52 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an AWS DataSync EFS Location.
-//
-// > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/datasync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datasync.NewEfsLocation(ctx, "example", &datasync.EfsLocationArgs{
-// 			EfsFileSystemArn: pulumi.Any(aws_efs_mount_target.Example.File_system_arn),
-// 			Ec2Config: &datasync.EfsLocationEc2ConfigArgs{
-// 				SecurityGroupArns: pulumi.StringArray{
-// 					pulumi.Any(aws_security_group.Example.Arn),
-// 				},
-// 				SubnetArn: pulumi.Any(aws_subnet.Example.Arn),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type EfsLocation struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the DataSync Location.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config EfsLocationEc2ConfigOutput `pulumi:"ec2Config"`
-	// Amazon Resource Name (ARN) of EFS File System.
-	EfsFileSystemArn pulumi.StringOutput `pulumi:"efsFileSystemArn"`
-	// Subdirectory to perform actions as source or destination. Default `/`.
-	Subdirectory pulumi.StringPtrOutput `pulumi:"subdirectory"`
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	Uri  pulumi.StringOutput    `pulumi:"uri"`
+	Arn              pulumi.StringOutput        `pulumi:"arn"`
+	Ec2Config        EfsLocationEc2ConfigOutput `pulumi:"ec2Config"`
+	EfsFileSystemArn pulumi.StringOutput        `pulumi:"efsFileSystemArn"`
+	Subdirectory     pulumi.StringPtrOutput     `pulumi:"subdirectory"`
+	Tags             pulumi.StringMapOutput     `pulumi:"tags"`
+	Uri              pulumi.StringOutput        `pulumi:"uri"`
 }
 
 // NewEfsLocation registers a new resource with the given unique name, arguments, and options.
@@ -92,31 +55,21 @@ func GetEfsLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EfsLocation resources.
 type efsLocationState struct {
-	// Amazon Resource Name (ARN) of the DataSync Location.
-	Arn *string `pulumi:"arn"`
-	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config *EfsLocationEc2Config `pulumi:"ec2Config"`
-	// Amazon Resource Name (ARN) of EFS File System.
-	EfsFileSystemArn *string `pulumi:"efsFileSystemArn"`
-	// Subdirectory to perform actions as source or destination. Default `/`.
-	Subdirectory *string `pulumi:"subdirectory"`
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags map[string]string `pulumi:"tags"`
-	Uri  *string           `pulumi:"uri"`
+	Arn              *string               `pulumi:"arn"`
+	Ec2Config        *EfsLocationEc2Config `pulumi:"ec2Config"`
+	EfsFileSystemArn *string               `pulumi:"efsFileSystemArn"`
+	Subdirectory     *string               `pulumi:"subdirectory"`
+	Tags             map[string]string     `pulumi:"tags"`
+	Uri              *string               `pulumi:"uri"`
 }
 
 type EfsLocationState struct {
-	// Amazon Resource Name (ARN) of the DataSync Location.
-	Arn pulumi.StringPtrInput
-	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config EfsLocationEc2ConfigPtrInput
-	// Amazon Resource Name (ARN) of EFS File System.
+	Arn              pulumi.StringPtrInput
+	Ec2Config        EfsLocationEc2ConfigPtrInput
 	EfsFileSystemArn pulumi.StringPtrInput
-	// Subdirectory to perform actions as source or destination. Default `/`.
-	Subdirectory pulumi.StringPtrInput
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags pulumi.StringMapInput
-	Uri  pulumi.StringPtrInput
+	Subdirectory     pulumi.StringPtrInput
+	Tags             pulumi.StringMapInput
+	Uri              pulumi.StringPtrInput
 }
 
 func (EfsLocationState) ElementType() reflect.Type {
@@ -124,26 +77,18 @@ func (EfsLocationState) ElementType() reflect.Type {
 }
 
 type efsLocationArgs struct {
-	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config EfsLocationEc2Config `pulumi:"ec2Config"`
-	// Amazon Resource Name (ARN) of EFS File System.
-	EfsFileSystemArn string `pulumi:"efsFileSystemArn"`
-	// Subdirectory to perform actions as source or destination. Default `/`.
-	Subdirectory *string `pulumi:"subdirectory"`
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags map[string]string `pulumi:"tags"`
+	Ec2Config        EfsLocationEc2Config `pulumi:"ec2Config"`
+	EfsFileSystemArn string               `pulumi:"efsFileSystemArn"`
+	Subdirectory     *string              `pulumi:"subdirectory"`
+	Tags             map[string]string    `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EfsLocation resource.
 type EfsLocationArgs struct {
-	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config EfsLocationEc2ConfigInput
-	// Amazon Resource Name (ARN) of EFS File System.
+	Ec2Config        EfsLocationEc2ConfigInput
 	EfsFileSystemArn pulumi.StringInput
-	// Subdirectory to perform actions as source or destination. Default `/`.
-	Subdirectory pulumi.StringPtrInput
-	// Key-value pairs of resource tags to assign to the DataSync Location.
-	Tags pulumi.StringMapInput
+	Subdirectory     pulumi.StringPtrInput
+	Tags             pulumi.StringMapInput
 }
 
 func (EfsLocationArgs) ElementType() reflect.Type {

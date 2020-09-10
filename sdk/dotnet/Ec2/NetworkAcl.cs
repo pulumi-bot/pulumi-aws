@@ -9,104 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an network ACL resource. You might set up network ACLs with rules similar
-    /// to your security groups in order to add an additional layer of security to your VPC.
-    /// 
-    /// &gt; **NOTE on Network ACLs and Network ACL Rules:** This provider currently
-    /// provides both a standalone Network ACL Rule resource and a Network ACL resource with rules
-    /// defined in-line. At this time you cannot use a Network ACL with in-line rules
-    /// in conjunction with any Network ACL Rule resources. Doing so will cause
-    /// a conflict of rule settings and will overwrite rules.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var main = new Aws.Ec2.NetworkAcl("main", new Aws.Ec2.NetworkAclArgs
-    ///         {
-    ///             VpcId = aws_vpc.Main.Id,
-    ///             Egress = 
-    ///             {
-    ///                 new Aws.Ec2.Inputs.NetworkAclEgressArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     RuleNo = 200,
-    ///                     Action = "allow",
-    ///                     CidrBlock = "10.3.0.0/18",
-    ///                     FromPort = 443,
-    ///                     ToPort = 443,
-    ///                 },
-    ///             },
-    ///             Ingress = 
-    ///             {
-    ///                 new Aws.Ec2.Inputs.NetworkAclIngressArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     RuleNo = 100,
-    ///                     Action = "allow",
-    ///                     CidrBlock = "10.3.0.0/18",
-    ///                     FromPort = 80,
-    ///                     ToPort = 80,
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "main" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class NetworkAcl : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the network ACL
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies an egress rule. Parameters defined below.
-        /// </summary>
         [Output("egress")]
         public Output<ImmutableArray<Outputs.NetworkAclEgress>> Egress { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies an ingress rule. Parameters defined below.
-        /// </summary>
         [Output("ingress")]
         public Output<ImmutableArray<Outputs.NetworkAclIngress>> Ingress { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the AWS account that owns the network ACL.
-        /// </summary>
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of Subnet IDs to apply the ACL to
-        /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated VPC.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -158,10 +80,6 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("egress")]
         private InputList<Inputs.NetworkAclEgressArgs>? _egress;
-
-        /// <summary>
-        /// Specifies an egress rule. Parameters defined below.
-        /// </summary>
         public InputList<Inputs.NetworkAclEgressArgs> Egress
         {
             get => _egress ?? (_egress = new InputList<Inputs.NetworkAclEgressArgs>());
@@ -170,10 +88,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("ingress")]
         private InputList<Inputs.NetworkAclIngressArgs>? _ingress;
-
-        /// <summary>
-        /// Specifies an ingress rule. Parameters defined below.
-        /// </summary>
         public InputList<Inputs.NetworkAclIngressArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.NetworkAclIngressArgs>());
@@ -182,10 +96,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
-
-        /// <summary>
-        /// A list of Subnet IDs to apply the ACL to
-        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -194,19 +104,12 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the associated VPC.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -217,18 +120,11 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class NetworkAclState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the network ACL
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         [Input("egress")]
         private InputList<Inputs.NetworkAclEgressGetArgs>? _egress;
-
-        /// <summary>
-        /// Specifies an egress rule. Parameters defined below.
-        /// </summary>
         public InputList<Inputs.NetworkAclEgressGetArgs> Egress
         {
             get => _egress ?? (_egress = new InputList<Inputs.NetworkAclEgressGetArgs>());
@@ -237,28 +133,17 @@ namespace Pulumi.Aws.Ec2
 
         [Input("ingress")]
         private InputList<Inputs.NetworkAclIngressGetArgs>? _ingress;
-
-        /// <summary>
-        /// Specifies an ingress rule. Parameters defined below.
-        /// </summary>
         public InputList<Inputs.NetworkAclIngressGetArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.NetworkAclIngressGetArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The ID of the AWS account that owns the network ACL.
-        /// </summary>
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
-
-        /// <summary>
-        /// A list of Subnet IDs to apply the ACL to
-        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -267,19 +152,12 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the associated VPC.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

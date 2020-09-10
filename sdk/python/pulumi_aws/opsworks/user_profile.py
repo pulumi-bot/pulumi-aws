@@ -23,25 +23,9 @@ class UserProfile(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an OpsWorks User Profile resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_profile = aws.opsworks.UserProfile("myProfile",
-            user_arn=aws_iam_user["user"]["arn"],
-            ssh_username="my_user")
-        ```
-
+        Create a UserProfile resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_self_management: Whether users can specify their own SSH public key through the My Settings page
-        :param pulumi.Input[str] ssh_public_key: The users public key
-        :param pulumi.Input[str] ssh_username: The ssh username, with witch this user wants to log in
-        :param pulumi.Input[str] user_arn: The user's IAM ARN
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,10 +73,6 @@ class UserProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_self_management: Whether users can specify their own SSH public key through the My Settings page
-        :param pulumi.Input[str] ssh_public_key: The users public key
-        :param pulumi.Input[str] ssh_username: The ssh username, with witch this user wants to log in
-        :param pulumi.Input[str] user_arn: The user's IAM ARN
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -107,33 +87,21 @@ class UserProfile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowSelfManagement")
     def allow_self_management(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether users can specify their own SSH public key through the My Settings page
-        """
         return pulumi.get(self, "allow_self_management")
 
     @property
     @pulumi.getter(name="sshPublicKey")
     def ssh_public_key(self) -> pulumi.Output[Optional[str]]:
-        """
-        The users public key
-        """
         return pulumi.get(self, "ssh_public_key")
 
     @property
     @pulumi.getter(name="sshUsername")
     def ssh_username(self) -> pulumi.Output[str]:
-        """
-        The ssh username, with witch this user wants to log in
-        """
         return pulumi.get(self, "ssh_username")
 
     @property
     @pulumi.getter(name="userArn")
     def user_arn(self) -> pulumi.Output[str]:
-        """
-        The user's IAM ARN
-        """
         return pulumi.get(self, "user_arn")
 
     def translate_output_property(self, prop):

@@ -9,64 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iot
 {
-    /// <summary>
-    /// Provides an IoT policy.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var pubsub = new Aws.Iot.Policy("pubsub", new Aws.Iot.PolicyArgs
-    ///         {
-    ///             Policy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": [
-    ///         ""iot:*""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": ""*""
-    ///     }
-    ///   ]
-    /// }
-    /// 
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN assigned by AWS to this policy.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The default version of this policy.
-        /// </summary>
         [Output("defaultVersionId")]
         public Output<string> DefaultVersionId { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the policy.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-        /// </summary>
         [Output("policy")]
         public Output<string> PolicyDocument { get; private set; } = null!;
 
@@ -116,15 +69,9 @@ namespace Pulumi.Aws.Iot
 
     public sealed class PolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the policy.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> PolicyDocument { get; set; } = null!;
 
@@ -135,27 +82,15 @@ namespace Pulumi.Aws.Iot
 
     public sealed class PolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN assigned by AWS to this policy.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The default version of this policy.
-        /// </summary>
         [Input("defaultVersionId")]
         public Input<string>? DefaultVersionId { get; set; }
 
-        /// <summary>
-        /// The name of the policy.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-        /// </summary>
         [Input("policy")]
         public Input<string>? PolicyDocument { get; set; }
 

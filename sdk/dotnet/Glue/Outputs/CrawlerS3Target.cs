@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Glue.Outputs
     [OutputType]
     public sealed class CrawlerS3Target
     {
-        /// <summary>
-        /// A list of glob patterns used to exclude from the crawl.
-        /// </summary>
         public readonly ImmutableArray<string> Exclusions;
-        /// <summary>
-        /// The name of the DynamoDB table to crawl.
-        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

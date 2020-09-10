@@ -51,9 +51,6 @@ class GetCoipPoolsResult:
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> List[str]:
-        """
-        Set of COIP Pool Identifiers
-        """
         return pulumi.get(self, "pool_ids")
 
     @property
@@ -78,12 +75,7 @@ def get_coip_pools(filters: Optional[List[pulumi.InputType['GetCoipPoolsFilterAr
                    tags: Optional[Mapping[str, str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCoipPoolsResult:
     """
-    Provides information for multiple EC2 Customer-Owned IP Pools, such as their identifiers.
-
-
-    :param List[pulumi.InputType['GetCoipPoolsFilterArgs']] filters: Custom filter block as described below.
-    :param Mapping[str, str] tags: A mapping of tags, each pair of which must exactly match
-           a pair on the desired aws_ec2_coip_pools.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

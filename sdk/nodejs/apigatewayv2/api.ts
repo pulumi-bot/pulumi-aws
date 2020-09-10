@@ -6,34 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 API.
- *
- * > **Note:** Amazon API Gateway Version 2 resources are used for creating and deploying WebSocket and HTTP APIs. To create and deploy REST APIs, use Amazon API Gateway Version 1.
- *
- * ## Example Usage
- * ### Basic WebSocket API
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Api("example", {
- *     protocolType: "WEBSOCKET",
- *     routeSelectionExpression: "$request.body.action",
- * });
- * ```
- * ### Basic HTTP API
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Api("example", {
- *     protocolType: "HTTP",
- * });
- * ```
- */
 export class Api extends pulumi.CustomResource {
     /**
      * Get an existing Api resource's state with the given name, ID, and optional extra
@@ -62,68 +34,19 @@ export class Api extends pulumi.CustomResource {
         return obj['__pulumiType'] === Api.__pulumiType;
     }
 
-    /**
-     * The URI of the API, of the form `{api-id}.execute-api.{region}.amazonaws.com`.
-     */
     public /*out*/ readonly apiEndpoint!: pulumi.Output<string>;
-    /**
-     * An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-     * Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-     * Applicable for WebSocket APIs.
-     */
     public readonly apiKeySelectionExpression!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN of the API.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-     */
     public readonly corsConfiguration!: pulumi.Output<outputs.apigatewayv2.ApiCorsConfiguration | undefined>;
-    /**
-     * Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-     */
     public readonly credentialsArn!: pulumi.Output<string | undefined>;
-    /**
-     * The description of the API.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute
-     * or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-     * See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-     */
     public /*out*/ readonly executionArn!: pulumi.Output<string>;
-    /**
-     * The name of the API.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-     */
     public readonly protocolType!: pulumi.Output<string>;
-    /**
-     * Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-     */
     public readonly routeKey!: pulumi.Output<string | undefined>;
-    /**
-     * The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-     * Defaults to `$request.method $request.path`.
-     */
     public readonly routeSelectionExpression!: pulumi.Output<string | undefined>;
-    /**
-     * A map of tags to assign to the API.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-     * For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-     * The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-     */
     public readonly target!: pulumi.Output<string | undefined>;
-    /**
-     * A version identifier for the API.
-     */
     public readonly version!: pulumi.Output<string | undefined>;
 
     /**
@@ -187,68 +110,19 @@ export class Api extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Api resources.
  */
 export interface ApiState {
-    /**
-     * The URI of the API, of the form `{api-id}.execute-api.{region}.amazonaws.com`.
-     */
     readonly apiEndpoint?: pulumi.Input<string>;
-    /**
-     * An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-     * Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-     * Applicable for WebSocket APIs.
-     */
     readonly apiKeySelectionExpression?: pulumi.Input<string>;
-    /**
-     * The ARN of the API.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-     */
     readonly corsConfiguration?: pulumi.Input<inputs.apigatewayv2.ApiCorsConfiguration>;
-    /**
-     * Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-     */
     readonly credentialsArn?: pulumi.Input<string>;
-    /**
-     * The description of the API.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute
-     * or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-     * See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-     */
     readonly executionArn?: pulumi.Input<string>;
-    /**
-     * The name of the API.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-     */
     readonly protocolType?: pulumi.Input<string>;
-    /**
-     * Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-     */
     readonly routeKey?: pulumi.Input<string>;
-    /**
-     * The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-     * Defaults to `$request.method $request.path`.
-     */
     readonly routeSelectionExpression?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the API.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-     * For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-     * The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-     */
     readonly target?: pulumi.Input<string>;
-    /**
-     * A version identifier for the API.
-     */
     readonly version?: pulumi.Input<string>;
 }
 
@@ -256,53 +130,15 @@ export interface ApiState {
  * The set of arguments for constructing a Api resource.
  */
 export interface ApiArgs {
-    /**
-     * An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-     * Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-     * Applicable for WebSocket APIs.
-     */
     readonly apiKeySelectionExpression?: pulumi.Input<string>;
-    /**
-     * The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-     */
     readonly corsConfiguration?: pulumi.Input<inputs.apigatewayv2.ApiCorsConfiguration>;
-    /**
-     * Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-     */
     readonly credentialsArn?: pulumi.Input<string>;
-    /**
-     * The description of the API.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the API.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-     */
     readonly protocolType: pulumi.Input<string>;
-    /**
-     * Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-     */
     readonly routeKey?: pulumi.Input<string>;
-    /**
-     * The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-     * Defaults to `$request.method $request.path`.
-     */
     readonly routeSelectionExpression?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the API.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-     * For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-     * The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-     */
     readonly target?: pulumi.Input<string>;
-    /**
-     * A version identifier for the API.
-     */
     readonly version?: pulumi.Input<string>;
 }

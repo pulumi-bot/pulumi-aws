@@ -9,51 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// Attaches a Managed IAM Policy to an IAM group
-    /// 
-    /// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @group = new Aws.Iam.Group("group", new Aws.Iam.GroupArgs
-    ///         {
-    ///         });
-    ///         var policy = new Aws.Iam.Policy("policy", new Aws.Iam.PolicyArgs
-    ///         {
-    ///             Description = "A test policy",
-    ///             Policy = "",
-    ///         });
-    ///         // insert policy here
-    ///         var test_attach = new Aws.Iam.GroupPolicyAttachment("test-attach", new Aws.Iam.GroupPolicyAttachmentArgs
-    ///         {
-    ///             Group = @group.Name,
-    ///             PolicyArn = policy.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class GroupPolicyAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The group the policy should be applied to
-        /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the policy you want to apply
-        /// </summary>
         [Output("policyArn")]
         public Output<string> PolicyArn { get; private set; } = null!;
 
@@ -103,15 +63,9 @@ namespace Pulumi.Aws.Iam
 
     public sealed class GroupPolicyAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The group the policy should be applied to
-        /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 
-        /// <summary>
-        /// The ARN of the policy you want to apply
-        /// </summary>
         [Input("policyArn", required: true)]
         public Input<string> PolicyArn { get; set; } = null!;
 
@@ -122,15 +76,9 @@ namespace Pulumi.Aws.Iam
 
     public sealed class GroupPolicyAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The group the policy should be applied to
-        /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
-        /// <summary>
-        /// The ARN of the policy you want to apply
-        /// </summary>
         [Input("policyArn")]
         public Input<string>? PolicyArn { get; set; }
 

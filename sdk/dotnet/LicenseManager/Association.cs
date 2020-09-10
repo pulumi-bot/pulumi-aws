@@ -9,22 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.LicenseManager
 {
-    /// <summary>
-    /// Provides a License Manager association.
-    /// 
-    /// &gt; **Note:** License configurations can also be associated with launch templates by specifying the `license_specifications` block for an `aws.ec2.LaunchTemplate`.
-    /// </summary>
     public partial class Association : Pulumi.CustomResource
     {
-        /// <summary>
-        /// ARN of the license configuration.
-        /// </summary>
         [Output("licenseConfigurationArn")]
         public Output<string> LicenseConfigurationArn { get; private set; } = null!;
 
-        /// <summary>
-        /// ARN of the resource associated with the license configuration.
-        /// </summary>
         [Output("resourceArn")]
         public Output<string> ResourceArn { get; private set; } = null!;
 
@@ -74,15 +63,9 @@ namespace Pulumi.Aws.LicenseManager
 
     public sealed class AssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ARN of the license configuration.
-        /// </summary>
         [Input("licenseConfigurationArn", required: true)]
         public Input<string> LicenseConfigurationArn { get; set; } = null!;
 
-        /// <summary>
-        /// ARN of the resource associated with the license configuration.
-        /// </summary>
         [Input("resourceArn", required: true)]
         public Input<string> ResourceArn { get; set; } = null!;
 
@@ -93,15 +76,9 @@ namespace Pulumi.Aws.LicenseManager
 
     public sealed class AssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ARN of the license configuration.
-        /// </summary>
         [Input("licenseConfigurationArn")]
         public Input<string>? LicenseConfigurationArn { get; set; }
 
-        /// <summary>
-        /// ARN of the resource associated with the license configuration.
-        /// </summary>
         [Input("resourceArn")]
         public Input<string>? ResourceArn { get; set; }
 

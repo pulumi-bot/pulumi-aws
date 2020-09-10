@@ -9,58 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.MediaPackage
 {
-    /// <summary>
-    /// Provides an AWS Elemental MediaPackage Channel.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var kittens = new Aws.MediaPackage.Channel("kittens", new Aws.MediaPackage.ChannelArgs
-    ///         {
-    ///             ChannelId = "kitten-channel",
-    ///             Description = "A channel dedicated to amusing videos of kittens.",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Channel : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the channel
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A unique identifier describing the channel
-        /// </summary>
         [Output("channelId")]
         public Output<string> ChannelId { get; private set; } = null!;
 
-        /// <summary>
-        /// A description of the channel
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// A single item list of HLS ingest information
-        /// </summary>
         [Output("hlsIngests")]
         public Output<ImmutableArray<Outputs.ChannelHlsIngest>> HlsIngests { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -110,24 +72,14 @@ namespace Pulumi.Aws.MediaPackage
 
     public sealed class ChannelArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A unique identifier describing the channel
-        /// </summary>
         [Input("channelId", required: true)]
         public Input<string> ChannelId { get; set; } = null!;
 
-        /// <summary>
-        /// A description of the channel
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -142,30 +94,17 @@ namespace Pulumi.Aws.MediaPackage
 
     public sealed class ChannelState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the channel
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A unique identifier describing the channel
-        /// </summary>
         [Input("channelId")]
         public Input<string>? ChannelId { get; set; }
 
-        /// <summary>
-        /// A description of the channel
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("hlsIngests")]
         private InputList<Inputs.ChannelHlsIngestGetArgs>? _hlsIngests;
-
-        /// <summary>
-        /// A single item list of HLS ingest information
-        /// </summary>
         public InputList<Inputs.ChannelHlsIngestGetArgs> HlsIngests
         {
             get => _hlsIngests ?? (_hlsIngests = new InputList<Inputs.ChannelHlsIngestGetArgs>());
@@ -174,10 +113,6 @@ namespace Pulumi.Aws.MediaPackage
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

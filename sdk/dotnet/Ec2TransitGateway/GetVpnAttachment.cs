@@ -11,64 +11,6 @@ namespace Pulumi.Aws.Ec2TransitGateway
 {
     public static class GetVpnAttachment
     {
-        /// <summary>
-        /// Get information on an EC2 Transit Gateway VPN Attachment.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// ### By Transit Gateway and VPN Connection Identifiers
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Ec2TransitGateway.GetVpnAttachment.InvokeAsync(new Aws.Ec2TransitGateway.GetVpnAttachmentArgs
-        ///         {
-        ///             TransitGatewayId = aws_ec2_transit_gateway.Example.Id,
-        ///             VpnConnectionId = aws_vpn_connection.Example.Id,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Filter
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Ec2TransitGateway.GetVpnAttachment.InvokeAsync(new Aws.Ec2TransitGateway.GetVpnAttachmentArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2TransitGateway.Inputs.GetVpnAttachmentFilterArgs
-        ///                 {
-        ///                     Name = "resource-id",
-        ///                     Values = 
-        ///                     {
-        ///                         "some-resource",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVpnAttachmentResult> InvokeAsync(GetVpnAttachmentArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpnAttachmentResult>("aws:ec2transitgateway/getVpnAttachment:getVpnAttachment", args ?? new GetVpnAttachmentArgs(), options.WithVersion());
     }
@@ -78,10 +20,6 @@ namespace Pulumi.Aws.Ec2TransitGateway
     {
         [Input("filters")]
         private List<Inputs.GetVpnAttachmentFilterArgs>? _filters;
-
-        /// <summary>
-        /// Configuration block(s) for filtering. Detailed below.
-        /// </summary>
         public List<Inputs.GetVpnAttachmentFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVpnAttachmentFilterArgs>());
@@ -90,25 +28,15 @@ namespace Pulumi.Aws.Ec2TransitGateway
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Identifier of the EC2 Transit Gateway.
-        /// </summary>
         [Input("transitGatewayId")]
         public string? TransitGatewayId { get; set; }
 
-        /// <summary>
-        /// Identifier of the EC2 VPN Connection.
-        /// </summary>
         [Input("vpnConnectionId")]
         public string? VpnConnectionId { get; set; }
 
@@ -126,9 +54,6 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Key-value tags for the EC2 Transit Gateway VPN Attachment
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         public readonly string? TransitGatewayId;
         public readonly string? VpnConnectionId;

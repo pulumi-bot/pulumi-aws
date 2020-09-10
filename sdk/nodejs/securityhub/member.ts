@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Security Hub member resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleAccount = new aws.securityhub.Account("exampleAccount", {});
- * const exampleMember = new aws.securityhub.Member("exampleMember", {
- *     accountId: "123456789012",
- *     email: "example@example.com",
- *     invite: true,
- * }, {
- *     dependsOn: [exampleAccount],
- * });
- * ```
- */
 export class Member extends pulumi.CustomResource {
     /**
      * Get an existing Member resource's state with the given name, ID, and optional extra
@@ -51,25 +32,10 @@ export class Member extends pulumi.CustomResource {
         return obj['__pulumiType'] === Member.__pulumiType;
     }
 
-    /**
-     * The ID of the member AWS account.
-     */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * The email of the member AWS account.
-     */
     public readonly email!: pulumi.Output<string>;
-    /**
-     * Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-     */
     public readonly invite!: pulumi.Output<boolean | undefined>;
-    /**
-     * The ID of the master Security Hub AWS account.
-     */
     public /*out*/ readonly masterId!: pulumi.Output<string>;
-    /**
-     * The status of the member account relationship.
-     */
     public /*out*/ readonly memberStatus!: pulumi.Output<string>;
 
     /**
@@ -118,25 +84,10 @@ export class Member extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Member resources.
  */
 export interface MemberState {
-    /**
-     * The ID of the member AWS account.
-     */
     readonly accountId?: pulumi.Input<string>;
-    /**
-     * The email of the member AWS account.
-     */
     readonly email?: pulumi.Input<string>;
-    /**
-     * Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-     */
     readonly invite?: pulumi.Input<boolean>;
-    /**
-     * The ID of the master Security Hub AWS account.
-     */
     readonly masterId?: pulumi.Input<string>;
-    /**
-     * The status of the member account relationship.
-     */
     readonly memberStatus?: pulumi.Input<string>;
 }
 
@@ -144,16 +95,7 @@ export interface MemberState {
  * The set of arguments for constructing a Member resource.
  */
 export interface MemberArgs {
-    /**
-     * The ID of the member AWS account.
-     */
     readonly accountId: pulumi.Input<string>;
-    /**
-     * The email of the member AWS account.
-     */
     readonly email: pulumi.Input<string>;
-    /**
-     * Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-     */
     readonly invite?: pulumi.Input<boolean>;
 }

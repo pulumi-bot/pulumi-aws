@@ -9,57 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Backup
 {
-    /// <summary>
-    /// Provides an AWS Backup vault resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Backup.Vault("example", new Aws.Backup.VaultArgs
-    ///         {
-    ///             KmsKeyArn = aws_kms_key.Example.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Vault : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the vault.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The server-side encryption key that is used to protect your backups.
-        /// </summary>
         [Output("kmsKeyArn")]
         public Output<string> KmsKeyArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the backup vault to create.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of recovery points that are stored in a backup vault.
-        /// </summary>
         [Output("recoveryPoints")]
         public Output<int> RecoveryPoints { get; private set; } = null!;
 
-        /// <summary>
-        /// Metadata that you can assign to help organize the resources that you create.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -109,24 +72,14 @@ namespace Pulumi.Aws.Backup
 
     public sealed class VaultArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The server-side encryption key that is used to protect your backups.
-        /// </summary>
         [Input("kmsKeyArn")]
         public Input<string>? KmsKeyArn { get; set; }
 
-        /// <summary>
-        /// Name of the backup vault to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Metadata that you can assign to help organize the resources that you create.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -140,36 +93,20 @@ namespace Pulumi.Aws.Backup
 
     public sealed class VaultState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the vault.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The server-side encryption key that is used to protect your backups.
-        /// </summary>
         [Input("kmsKeyArn")]
         public Input<string>? KmsKeyArn { get; set; }
 
-        /// <summary>
-        /// Name of the backup vault to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The number of recovery points that are stored in a backup vault.
-        /// </summary>
         [Input("recoveryPoints")]
         public Input<int>? RecoveryPoints { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Metadata that you can assign to help organize the resources that you create.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

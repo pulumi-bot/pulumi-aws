@@ -10,16 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a License Manager association.
-//
-// > **Note:** License configurations can also be associated with launch templates by specifying the `licenseSpecifications` block for an `ec2.LaunchTemplate`.
 type Association struct {
 	pulumi.CustomResourceState
 
-	// ARN of the license configuration.
 	LicenseConfigurationArn pulumi.StringOutput `pulumi:"licenseConfigurationArn"`
-	// ARN of the resource associated with the license configuration.
-	ResourceArn pulumi.StringOutput `pulumi:"resourceArn"`
+	ResourceArn             pulumi.StringOutput `pulumi:"resourceArn"`
 }
 
 // NewAssociation registers a new resource with the given unique name, arguments, and options.
@@ -56,17 +51,13 @@ func GetAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Association resources.
 type associationState struct {
-	// ARN of the license configuration.
 	LicenseConfigurationArn *string `pulumi:"licenseConfigurationArn"`
-	// ARN of the resource associated with the license configuration.
-	ResourceArn *string `pulumi:"resourceArn"`
+	ResourceArn             *string `pulumi:"resourceArn"`
 }
 
 type AssociationState struct {
-	// ARN of the license configuration.
 	LicenseConfigurationArn pulumi.StringPtrInput
-	// ARN of the resource associated with the license configuration.
-	ResourceArn pulumi.StringPtrInput
+	ResourceArn             pulumi.StringPtrInput
 }
 
 func (AssociationState) ElementType() reflect.Type {
@@ -74,18 +65,14 @@ func (AssociationState) ElementType() reflect.Type {
 }
 
 type associationArgs struct {
-	// ARN of the license configuration.
 	LicenseConfigurationArn string `pulumi:"licenseConfigurationArn"`
-	// ARN of the resource associated with the license configuration.
-	ResourceArn string `pulumi:"resourceArn"`
+	ResourceArn             string `pulumi:"resourceArn"`
 }
 
 // The set of arguments for constructing a Association resource.
 type AssociationArgs struct {
-	// ARN of the license configuration.
 	LicenseConfigurationArn pulumi.StringInput
-	// ARN of the resource associated with the license configuration.
-	ResourceArn pulumi.StringInput
+	ResourceArn             pulumi.StringInput
 }
 
 func (AssociationArgs) ElementType() reflect.Type {

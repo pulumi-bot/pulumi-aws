@@ -10,74 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a AWS Transfer User SSH Key resource.
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/transfer"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooServer, err := transfer.NewServer(ctx, "fooServer", &transfer.ServerArgs{
-// 			IdentityProviderType: pulumi.String("SERVICE_MANAGED"),
-// 			Tags: pulumi.StringMap{
-// 				"NAME": pulumi.String("tf-acc-test-transfer-server"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooRole, err := iam.NewRole(ctx, "fooRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [\n", "		{\n", "		\"Effect\": \"Allow\",\n", "		\"Principal\": {\n", "			\"Service\": \"transfer.amazonaws.com\"\n", "		},\n", "		\"Action\": \"sts:AssumeRole\"\n", "		}\n", "	]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicy(ctx, "fooRolePolicy", &iam.RolePolicyArgs{
-// 			Role: fooRole.ID(),
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [\n", "		{\n", "			\"Sid\": \"AllowFullAccesstoS3\",\n", "			\"Effect\": \"Allow\",\n", "			\"Action\": [\n", "				\"s3:*\"\n", "			],\n", "			\"Resource\": \"*\"\n", "		}\n", "	]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooUser, err := transfer.NewUser(ctx, "fooUser", &transfer.UserArgs{
-// 			ServerId: fooServer.ID(),
-// 			UserName: pulumi.String("tftestuser"),
-// 			Role:     fooRole.Arn,
-// 			Tags: pulumi.StringMap{
-// 				"NAME": pulumi.String("tftestuser"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = transfer.NewSshKey(ctx, "fooSshKey", &transfer.SshKeyArgs{
-// 			ServerId: fooServer.ID(),
-// 			UserName: fooUser.UserName,
-// 			Body:     pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 example@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SshKey struct {
 	pulumi.CustomResourceState
 
-	// The public key portion of an SSH key pair.
-	Body pulumi.StringOutput `pulumi:"body"`
-	// The Server ID of the Transfer Server (e.g. `s-12345678`)
+	Body     pulumi.StringOutput `pulumi:"body"`
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
-	// The name of the user account that is assigned to one or more servers.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -118,20 +55,14 @@ func GetSshKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SshKey resources.
 type sshKeyState struct {
-	// The public key portion of an SSH key pair.
-	Body *string `pulumi:"body"`
-	// The Server ID of the Transfer Server (e.g. `s-12345678`)
+	Body     *string `pulumi:"body"`
 	ServerId *string `pulumi:"serverId"`
-	// The name of the user account that is assigned to one or more servers.
 	UserName *string `pulumi:"userName"`
 }
 
 type SshKeyState struct {
-	// The public key portion of an SSH key pair.
-	Body pulumi.StringPtrInput
-	// The Server ID of the Transfer Server (e.g. `s-12345678`)
+	Body     pulumi.StringPtrInput
 	ServerId pulumi.StringPtrInput
-	// The name of the user account that is assigned to one or more servers.
 	UserName pulumi.StringPtrInput
 }
 
@@ -140,21 +71,15 @@ func (SshKeyState) ElementType() reflect.Type {
 }
 
 type sshKeyArgs struct {
-	// The public key portion of an SSH key pair.
-	Body string `pulumi:"body"`
-	// The Server ID of the Transfer Server (e.g. `s-12345678`)
+	Body     string `pulumi:"body"`
 	ServerId string `pulumi:"serverId"`
-	// The name of the user account that is assigned to one or more servers.
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a SshKey resource.
 type SshKeyArgs struct {
-	// The public key portion of an SSH key pair.
-	Body pulumi.StringInput
-	// The Server ID of the Transfer Server (e.g. `s-12345678`)
+	Body     pulumi.StringInput
 	ServerId pulumi.StringInput
-	// The name of the user account that is assigned to one or more servers.
 	UserName pulumi.StringInput
 }
 

@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Get information on an Amazon MSK Cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.msk.getCluster({
- *     clusterName: "example",
- * }, { async: true }));
- * ```
- */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     if (!opts) {
         opts = {}
@@ -38,13 +24,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterArgs {
-    /**
-     * Name of the cluster.
-     */
     readonly clusterName: string;
-    /**
-     * Map of key-value pairs assigned to the cluster.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -52,37 +32,16 @@ export interface GetClusterArgs {
  * A collection of values returned by getCluster.
  */
 export interface GetClusterResult {
-    /**
-     * Amazon Resource Name (ARN) of the MSK cluster.
-     */
     readonly arn: string;
-    /**
-     * A comma separated list of one or more hostname:port pairs of Kafka brokers suitable to boostrap connectivity to the Kafka cluster.
-     */
     readonly bootstrapBrokers: string;
-    /**
-     * A comma separated list of one or more DNS names (or IPs) and TLS port pairs kafka brokers suitable to boostrap connectivity to the kafka cluster.
-     */
     readonly bootstrapBrokersTls: string;
     readonly clusterName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Apache Kafka version.
-     */
     readonly kafkaVersion: string;
-    /**
-     * Number of broker nodes in the cluster.
-     */
     readonly numberOfBrokerNodes: number;
-    /**
-     * Map of key-value pairs assigned to the cluster.
-     */
     readonly tags: {[key: string]: string};
-    /**
-     * A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster.
-     */
     readonly zookeeperConnectString: string;
 }

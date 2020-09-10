@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Kinesis.Outputs
     [OutputType]
     public sealed class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor
     {
-        /// <summary>
-        /// Array of processor parameters. More details are given below
-        /// </summary>
         public readonly ImmutableArray<Outputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameter> Parameters;
-        /// <summary>
-        /// The type of processor. Valid Values: `Lambda`
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -6,220 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a WAFv2 Web ACL resource.
- *
- * ## Example Usage
- *
- * This resource is based on `aws.wafv2.RuleGroup`, check the documentation of the `aws.wafv2.RuleGroup` resource to see examples of the various available statements.
- * ### Managed Rule
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.wafv2.WebAcl("example", {
- *     defaultAction: {
- *         allow: {},
- *     },
- *     description: "Example of a managed rule.",
- *     rules: [{
- *         name: "rule-1",
- *         overrideAction: {
- *             count: {},
- *         },
- *         priority: 1,
- *         statement: {
- *             managedRuleGroupStatement: {
- *                 excludedRules: [
- *                     {
- *                         name: "SizeRestrictions_QUERYSTRING",
- *                     },
- *                     {
- *                         name: "NoUserAgent_HEADER",
- *                     },
- *                 ],
- *                 name: "AWSManagedRulesCommonRuleSet",
- *                 vendorName: "AWS",
- *             },
- *         },
- *         visibilityConfig: {
- *             cloudwatchMetricsEnabled: false,
- *             metricName: "friendly-rule-metric-name",
- *             sampledRequestsEnabled: false,
- *         },
- *     }],
- *     scope: "REGIONAL",
- *     tags: {
- *         Tag1: "Value1",
- *         Tag2: "Value2",
- *     },
- *     visibilityConfig: {
- *         cloudwatchMetricsEnabled: false,
- *         metricName: "friendly-metric-name",
- *         sampledRequestsEnabled: false,
- *     },
- * });
- * ```
- * ### Rate Based
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.wafv2.WebAcl("example", {
- *     defaultAction: {
- *         block: {},
- *     },
- *     description: "Example of a rate based statement.",
- *     rules: [{
- *         action: {
- *             count: {},
- *         },
- *         name: "rule-1",
- *         priority: 1,
- *         statement: {
- *             rateBasedStatement: {
- *                 aggregateKeyType: "IP",
- *                 limit: 10000,
- *                 scopeDownStatement: {
- *                     geoMatchStatement: {
- *                         countryCodes: [
- *                             "US",
- *                             "NL",
- *                         ],
- *                     },
- *                 },
- *             },
- *         },
- *         visibilityConfig: {
- *             cloudwatchMetricsEnabled: false,
- *             metricName: "friendly-rule-metric-name",
- *             sampledRequestsEnabled: false,
- *         },
- *     }],
- *     scope: "REGIONAL",
- *     tags: {
- *         Tag1: "Value1",
- *         Tag2: "Value2",
- *     },
- *     visibilityConfig: {
- *         cloudwatchMetricsEnabled: false,
- *         metricName: "friendly-metric-name",
- *         sampledRequestsEnabled: false,
- *     },
- * });
- * ```
- * ### Rule Group Reference
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.wafv2.RuleGroup("example", {
- *     capacity: 10,
- *     scope: "REGIONAL",
- *     rules: [
- *         {
- *             name: "rule-1",
- *             priority: 1,
- *             action: {
- *                 count: {},
- *             },
- *             statement: {
- *                 geoMatchStatement: {
- *                     countryCodes: ["NL"],
- *                 },
- *             },
- *             visibilityConfig: {
- *                 cloudwatchMetricsEnabled: false,
- *                 metricName: "friendly-rule-metric-name",
- *                 sampledRequestsEnabled: false,
- *             },
- *         },
- *         {
- *             name: "rule-to-exclude-a",
- *             priority: 10,
- *             action: {
- *                 allow: {},
- *             },
- *             statement: {
- *                 geoMatchStatement: {
- *                     countryCodes: ["US"],
- *                 },
- *             },
- *             visibilityConfig: {
- *                 cloudwatchMetricsEnabled: false,
- *                 metricName: "friendly-rule-metric-name",
- *                 sampledRequestsEnabled: false,
- *             },
- *         },
- *         {
- *             name: "rule-to-exclude-b",
- *             priority: 15,
- *             action: {
- *                 allow: {},
- *             },
- *             statement: {
- *                 geoMatchStatement: {
- *                     countryCodes: ["GB"],
- *                 },
- *             },
- *             visibilityConfig: {
- *                 cloudwatchMetricsEnabled: false,
- *                 metricName: "friendly-rule-metric-name",
- *                 sampledRequestsEnabled: false,
- *             },
- *         },
- *     ],
- *     visibilityConfig: {
- *         cloudwatchMetricsEnabled: false,
- *         metricName: "friendly-metric-name",
- *         sampledRequestsEnabled: false,
- *     },
- * });
- * const test = new aws.wafv2.WebAcl("test", {
- *     scope: "REGIONAL",
- *     defaultAction: {
- *         block: {},
- *     },
- *     rules: [{
- *         name: "rule-1",
- *         priority: 1,
- *         overrideAction: {
- *             count: {},
- *         },
- *         statement: {
- *             ruleGroupReferenceStatement: {
- *                 arn: example.arn,
- *                 excludedRules: [
- *                     {
- *                         name: "rule-to-exclude-b",
- *                     },
- *                     {
- *                         name: "rule-to-exclude-a",
- *                     },
- *                 ],
- *             },
- *         },
- *         visibilityConfig: {
- *             cloudwatchMetricsEnabled: false,
- *             metricName: "friendly-rule-metric-name",
- *             sampledRequestsEnabled: false,
- *         },
- *     }],
- *     tags: {
- *         Tag1: "Value1",
- *         Tag2: "Value2",
- *     },
- *     visibilityConfig: {
- *         cloudwatchMetricsEnabled: false,
- *         metricName: "friendly-metric-name",
- *         sampledRequestsEnabled: false,
- *     },
- * });
- * ```
- */
 export class WebAcl extends pulumi.CustomResource {
     /**
      * Get an existing WebAcl resource's state with the given name, ID, and optional extra
@@ -248,42 +34,15 @@ export class WebAcl extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebAcl.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the IP Set that this statement references.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The web ACL capacity units (WCUs) currently being used by this web ACL.
-     */
     public /*out*/ readonly capacity!: pulumi.Output<number>;
-    /**
-     * The action to perform if none of the `rules` contained in the WebACL match. See Default Action below for details.
-     */
     public readonly defaultAction!: pulumi.Output<outputs.wafv2.WebAclDefaultAction>;
-    /**
-     * A friendly description of the WebACL.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly lockToken!: pulumi.Output<string>;
-    /**
-     * A friendly name of the WebACL.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-     */
     public readonly rules!: pulumi.Output<outputs.wafv2.WebAclRule[] | undefined>;
-    /**
-     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-     */
     public readonly scope!: pulumi.Output<string>;
-    /**
-     * An array of key:value pairs to associate with the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
-     */
     public readonly visibilityConfig!: pulumi.Output<outputs.wafv2.WebAclVisibilityConfig>;
 
     /**
@@ -345,42 +104,15 @@ export class WebAcl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebAcl resources.
  */
 export interface WebAclState {
-    /**
-     * The Amazon Resource Name (ARN) of the IP Set that this statement references.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The web ACL capacity units (WCUs) currently being used by this web ACL.
-     */
     readonly capacity?: pulumi.Input<number>;
-    /**
-     * The action to perform if none of the `rules` contained in the WebACL match. See Default Action below for details.
-     */
     readonly defaultAction?: pulumi.Input<inputs.wafv2.WebAclDefaultAction>;
-    /**
-     * A friendly description of the WebACL.
-     */
     readonly description?: pulumi.Input<string>;
     readonly lockToken?: pulumi.Input<string>;
-    /**
-     * A friendly name of the WebACL.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-     */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.wafv2.WebAclRule>[]>;
-    /**
-     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-     */
     readonly scope?: pulumi.Input<string>;
-    /**
-     * An array of key:value pairs to associate with the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
-     */
     readonly visibilityConfig?: pulumi.Input<inputs.wafv2.WebAclVisibilityConfig>;
 }
 
@@ -388,32 +120,11 @@ export interface WebAclState {
  * The set of arguments for constructing a WebAcl resource.
  */
 export interface WebAclArgs {
-    /**
-     * The action to perform if none of the `rules` contained in the WebACL match. See Default Action below for details.
-     */
     readonly defaultAction: pulumi.Input<inputs.wafv2.WebAclDefaultAction>;
-    /**
-     * A friendly description of the WebACL.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A friendly name of the WebACL.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-     */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.wafv2.WebAclRule>[]>;
-    /**
-     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-     */
     readonly scope: pulumi.Input<string>;
-    /**
-     * An array of key:value pairs to associate with the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
-     */
     readonly visibilityConfig: pulumi.Input<inputs.wafv2.WebAclVisibilityConfig>;
 }

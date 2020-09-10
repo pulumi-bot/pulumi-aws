@@ -13,9 +13,6 @@ namespace Pulumi.Aws.DynamoDB.Outputs
     [OutputType]
     public sealed class TableReplica
     {
-        /// <summary>
-        /// Region name of the replica.
-        /// </summary>
         public readonly string RegionName;
 
         [OutputConstructor]

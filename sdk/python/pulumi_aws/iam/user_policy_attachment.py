@@ -21,30 +21,9 @@ class UserPolicyAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Attaches a Managed IAM Policy to an IAM user
-
-        > **NOTE:** The usage of this resource conflicts with the `iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user = aws.iam.User("user")
-        policy = aws.iam.Policy("policy",
-            description="A test policy",
-            policy="")
-        # insert policy here
-        test_attach = aws.iam.UserPolicyAttachment("test-attach",
-            policy_arn=policy.arn,
-            user=user.name)
-        ```
-
+        Create a UserPolicyAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_arn: The ARN of the policy you want to apply
-        :param pulumi.Input[str] user: The user the policy should be applied to
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,8 +67,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_arn: The ARN of the policy you want to apply
-        :param pulumi.Input[str] user: The user the policy should be applied to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -102,17 +79,11 @@ class UserPolicyAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="policyArn")
     def policy_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the policy you want to apply
-        """
         return pulumi.get(self, "policy_arn")
 
     @property
     @pulumi.getter
     def user(self) -> pulumi.Output[str]:
-        """
-        The user the policy should be applied to
-        """
         return pulumi.get(self, "user")
 
     def translate_output_property(self, prop):

@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 route response.
- * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.RouteResponse("example", {
- *     apiId: aws_apigatewayv2_api.example.id,
- *     routeId: aws_apigatewayv2_route.example.id,
- *     routeResponseKey: `$default`,
- * });
- * ```
- */
 export class RouteResponse extends pulumi.CustomResource {
     /**
      * Get an existing RouteResponse resource's state with the given name, ID, and optional extra
@@ -50,25 +32,10 @@ export class RouteResponse extends pulumi.CustomResource {
         return obj['__pulumiType'] === RouteResponse.__pulumiType;
     }
 
-    /**
-     * The API identifier.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-     */
     public readonly modelSelectionExpression!: pulumi.Output<string | undefined>;
-    /**
-     * The response models for the route response.
-     */
     public readonly responseModels!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The identifier of the `aws.apigatewayv2.Route`.
-     */
     public readonly routeId!: pulumi.Output<string>;
-    /**
-     * The route response key.
-     */
     public readonly routeResponseKey!: pulumi.Output<string>;
 
     /**
@@ -120,25 +87,10 @@ export class RouteResponse extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouteResponse resources.
  */
 export interface RouteResponseState {
-    /**
-     * The API identifier.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-     */
     readonly modelSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The response models for the route response.
-     */
     readonly responseModels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The identifier of the `aws.apigatewayv2.Route`.
-     */
     readonly routeId?: pulumi.Input<string>;
-    /**
-     * The route response key.
-     */
     readonly routeResponseKey?: pulumi.Input<string>;
 }
 
@@ -146,24 +98,9 @@ export interface RouteResponseState {
  * The set of arguments for constructing a RouteResponse resource.
  */
 export interface RouteResponseArgs {
-    /**
-     * The API identifier.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-     */
     readonly modelSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The response models for the route response.
-     */
     readonly responseModels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The identifier of the `aws.apigatewayv2.Route`.
-     */
     readonly routeId: pulumi.Input<string>;
-    /**
-     * The route response key.
-     */
     readonly routeResponseKey: pulumi.Input<string>;
 }

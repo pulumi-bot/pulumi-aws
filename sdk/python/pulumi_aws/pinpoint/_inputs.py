@@ -20,11 +20,6 @@ class AppCampaignHookArgs:
                  lambda_function_name: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  web_url: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] lambda_function_name: Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
-        :param pulumi.Input[str] mode: What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
-        :param pulumi.Input[str] web_url: Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
-        """
         if lambda_function_name is not None:
             pulumi.set(__self__, "lambda_function_name", lambda_function_name)
         if mode is not None:
@@ -35,9 +30,6 @@ class AppCampaignHookArgs:
     @property
     @pulumi.getter(name="lambdaFunctionName")
     def lambda_function_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
-        """
         return pulumi.get(self, "lambda_function_name")
 
     @lambda_function_name.setter
@@ -47,9 +39,6 @@ class AppCampaignHookArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
-        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -59,9 +48,6 @@ class AppCampaignHookArgs:
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
-        """
         return pulumi.get(self, "web_url")
 
     @web_url.setter
@@ -76,12 +62,6 @@ class AppLimitsArgs:
                  maximum_duration: Optional[pulumi.Input[float]] = None,
                  messages_per_second: Optional[pulumi.Input[float]] = None,
                  total: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[float] daily: The maximum number of messages that the campaign can send daily.
-        :param pulumi.Input[float] maximum_duration: The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
-        :param pulumi.Input[float] messages_per_second: The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
-        :param pulumi.Input[float] total: The maximum total number of messages that the campaign can send.
-        """
         if daily is not None:
             pulumi.set(__self__, "daily", daily)
         if maximum_duration is not None:
@@ -94,9 +74,6 @@ class AppLimitsArgs:
     @property
     @pulumi.getter
     def daily(self) -> Optional[pulumi.Input[float]]:
-        """
-        The maximum number of messages that the campaign can send daily.
-        """
         return pulumi.get(self, "daily")
 
     @daily.setter
@@ -106,9 +83,6 @@ class AppLimitsArgs:
     @property
     @pulumi.getter(name="maximumDuration")
     def maximum_duration(self) -> Optional[pulumi.Input[float]]:
-        """
-        The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
-        """
         return pulumi.get(self, "maximum_duration")
 
     @maximum_duration.setter
@@ -118,9 +92,6 @@ class AppLimitsArgs:
     @property
     @pulumi.getter(name="messagesPerSecond")
     def messages_per_second(self) -> Optional[pulumi.Input[float]]:
-        """
-        The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
-        """
         return pulumi.get(self, "messages_per_second")
 
     @messages_per_second.setter
@@ -130,9 +101,6 @@ class AppLimitsArgs:
     @property
     @pulumi.getter
     def total(self) -> Optional[pulumi.Input[float]]:
-        """
-        The maximum total number of messages that the campaign can send.
-        """
         return pulumi.get(self, "total")
 
     @total.setter
@@ -145,10 +113,6 @@ class AppQuietTimeArgs:
     def __init__(__self__, *,
                  end: Optional[pulumi.Input[str]] = None,
                  start: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] end: The default end time for quiet time in ISO 8601 format. Required if `start` is set
-        :param pulumi.Input[str] start: The default start time for quiet time in ISO 8601 format. Required if `end` is set
-        """
         if end is not None:
             pulumi.set(__self__, "end", end)
         if start is not None:
@@ -157,9 +121,6 @@ class AppQuietTimeArgs:
     @property
     @pulumi.getter
     def end(self) -> Optional[pulumi.Input[str]]:
-        """
-        The default end time for quiet time in ISO 8601 format. Required if `start` is set
-        """
         return pulumi.get(self, "end")
 
     @end.setter
@@ -169,9 +130,6 @@ class AppQuietTimeArgs:
     @property
     @pulumi.getter
     def start(self) -> Optional[pulumi.Input[str]]:
-        """
-        The default start time for quiet time in ISO 8601 format. Required if `end` is set
-        """
         return pulumi.get(self, "start")
 
     @start.setter

@@ -22,28 +22,9 @@ class ConditionalForwader(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.directoryservice.ConditionalForwader("example",
-            directory_id=aws_directory_service_directory["ad"]["id"],
-            remote_domain_name="example.com",
-            dns_ips=[
-                "8.8.8.8",
-                "8.8.4.4",
-            ])
-        ```
-
+        Create a ConditionalForwader resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] directory_id: The id of directory.
-        :param pulumi.Input[List[pulumi.Input[str]]] dns_ips: A list of forwarder IP addresses.
-        :param pulumi.Input[str] remote_domain_name: The fully qualified domain name of the remote domain for which forwarders will be used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,9 +72,6 @@ class ConditionalForwader(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] directory_id: The id of directory.
-        :param pulumi.Input[List[pulumi.Input[str]]] dns_ips: A list of forwarder IP addresses.
-        :param pulumi.Input[str] remote_domain_name: The fully qualified domain name of the remote domain for which forwarders will be used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -107,25 +85,16 @@ class ConditionalForwader(pulumi.CustomResource):
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[str]:
-        """
-        The id of directory.
-        """
         return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter(name="dnsIps")
     def dns_ips(self) -> pulumi.Output[List[str]]:
-        """
-        A list of forwarder IP addresses.
-        """
         return pulumi.get(self, "dns_ips")
 
     @property
     @pulumi.getter(name="remoteDomainName")
     def remote_domain_name(self) -> pulumi.Output[str]:
-        """
-        The fully qualified domain name of the remote domain for which forwarders will be used.
-        """
         return pulumi.get(self, "remote_domain_name")
 
     def translate_output_property(self, prop):

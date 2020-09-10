@@ -21,27 +21,9 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Adds permission to create volumes off of a given EBS Snapshot.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ebs.Volume("example",
-            availability_zone="us-west-2a",
-            size=40)
-        example_snapshot = aws.ebs.Snapshot("exampleSnapshot", volume_id=example.id)
-        example_perm = aws.ec2.SnapshotCreateVolumePermission("examplePerm",
-            snapshot_id=example_snapshot.id,
-            account_id="12345678")
-        ```
-
+        Create a SnapshotCreateVolumePermission resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: An AWS Account ID to add create volume permissions
-        :param pulumi.Input[str] snapshot_id: A snapshot ID
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,8 +67,6 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: An AWS Account ID to add create volume permissions
-        :param pulumi.Input[str] snapshot_id: A snapshot ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -99,17 +79,11 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        An AWS Account ID to add create volume permissions
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[str]:
-        """
-        A snapshot ID
-        """
         return pulumi.get(self, "snapshot_id")
 
     def translate_output_property(self, prop):

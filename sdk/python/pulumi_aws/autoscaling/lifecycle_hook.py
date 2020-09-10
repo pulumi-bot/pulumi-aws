@@ -27,58 +27,9 @@ class LifecycleHook(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AutoScaling Lifecycle Hook resource.
-
-        > **NOTE:** This provider has two types of ways you can add lifecycle hooks - via
-        the `initial_lifecycle_hook` attribute from the
-        `autoscaling.Group`
-        resource, or via this one. Hooks added via this resource will not be added
-        until the autoscaling group has been created, and depending on your
-        `capacity`
-        settings, after the initial instances have been launched, creating unintended
-        behavior. If you need hooks to run on all instances, add them with
-        `initial_lifecycle_hook` in
-        `autoscaling.Group`,
-        but take care to not duplicate those hooks with this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foobar_group = aws.autoscaling.Group("foobarGroup",
-            availability_zones=["us-west-2a"],
-            health_check_type="EC2",
-            termination_policies=["OldestInstance"],
-            tags=[aws.autoscaling.GroupTagArgs(
-                key="Foo",
-                value="foo-bar",
-                propagate_at_launch=True,
-            )])
-        foobar_lifecycle_hook = aws.autoscaling.LifecycleHook("foobarLifecycleHook",
-            autoscaling_group_name=foobar_group.name,
-            default_result="CONTINUE",
-            heartbeat_timeout=2000,
-            lifecycle_transition="autoscaling:EC2_INSTANCE_LAUNCHING",
-            notification_metadata=\"\"\"{
-          "foo": "bar"
-        }
-        \"\"\",
-            notification_target_arn="arn:aws:sqs:us-east-1:444455556666:queue1*",
-            role_arn="arn:aws:iam::123456789012:role/S3Access")
-        ```
-
+        Create a LifecycleHook resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] autoscaling_group_name: The name of the Auto Scaling group to which you want to assign the lifecycle hook
-        :param pulumi.Input[str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
-        :param pulumi.Input[float] heartbeat_timeout: Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
-        :param pulumi.Input[str] lifecycle_transition: The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
-        :param pulumi.Input[str] name: The name of the lifecycle hook.
-        :param pulumi.Input[str] notification_metadata: Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
-        :param pulumi.Input[str] notification_target_arn: The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,14 +85,6 @@ class LifecycleHook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] autoscaling_group_name: The name of the Auto Scaling group to which you want to assign the lifecycle hook
-        :param pulumi.Input[str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
-        :param pulumi.Input[float] heartbeat_timeout: Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
-        :param pulumi.Input[str] lifecycle_transition: The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
-        :param pulumi.Input[str] name: The name of the lifecycle hook.
-        :param pulumi.Input[str] notification_metadata: Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
-        :param pulumi.Input[str] notification_target_arn: The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic.
-        :param pulumi.Input[str] role_arn: The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -160,65 +103,41 @@ class LifecycleHook(pulumi.CustomResource):
     @property
     @pulumi.getter(name="autoscalingGroupName")
     def autoscaling_group_name(self) -> pulumi.Output[str]:
-        """
-        The name of the Auto Scaling group to which you want to assign the lifecycle hook
-        """
         return pulumi.get(self, "autoscaling_group_name")
 
     @property
     @pulumi.getter(name="defaultResult")
     def default_result(self) -> pulumi.Output[str]:
-        """
-        Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
-        """
         return pulumi.get(self, "default_result")
 
     @property
     @pulumi.getter(name="heartbeatTimeout")
     def heartbeat_timeout(self) -> pulumi.Output[Optional[float]]:
-        """
-        Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
-        """
         return pulumi.get(self, "heartbeat_timeout")
 
     @property
     @pulumi.getter(name="lifecycleTransition")
     def lifecycle_transition(self) -> pulumi.Output[str]:
-        """
-        The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
-        """
         return pulumi.get(self, "lifecycle_transition")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the lifecycle hook.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="notificationMetadata")
     def notification_metadata(self) -> pulumi.Output[Optional[str]]:
-        """
-        Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
-        """
         return pulumi.get(self, "notification_metadata")
 
     @property
     @pulumi.getter(name="notificationTargetArn")
     def notification_target_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic.
-        """
         return pulumi.get(self, "notification_target_arn")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
-        """
         return pulumi.get(self, "role_arn")
 
     def translate_output_property(self, prop):

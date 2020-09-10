@@ -11,33 +11,6 @@ namespace Pulumi.Aws.ElasticBeanstalk
 {
     public static class GetSolutionStack
     {
-        /// <summary>
-        /// Use this data source to get the name of a elastic beanstalk solution stack.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var multiDocker = Output.Create(Aws.ElasticBeanstalk.GetSolutionStack.InvokeAsync(new Aws.ElasticBeanstalk.GetSolutionStackArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^64bit Amazon Linux (.*) Multi-container Docker (.*)$",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetSolutionStackResult> InvokeAsync(GetSolutionStackArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSolutionStackResult>("aws:elasticbeanstalk/getSolutionStack:getSolutionStack", args ?? new GetSolutionStackArgs(), options.WithVersion());
     }
@@ -45,18 +18,9 @@ namespace Pulumi.Aws.ElasticBeanstalk
 
     public sealed class GetSolutionStackArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// If more than one result is returned, use the most
-        /// recent solution stack.
-        /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
 
-        /// <summary>
-        /// A regex string to apply to the solution stack list returned
-        /// by AWS. See [Elastic Beanstalk Supported Platforms][beanstalk-platforms] from
-        /// AWS documentation for reference solution stack names.
-        /// </summary>
         [Input("nameRegex", required: true)]
         public string NameRegex { get; set; } = null!;
 
@@ -74,9 +38,6 @@ namespace Pulumi.Aws.ElasticBeanstalk
         /// </summary>
         public readonly string Id;
         public readonly bool? MostRecent;
-        /// <summary>
-        /// The name of the solution stack.
-        /// </summary>
         public readonly string Name;
         public readonly string NameRegex;
 

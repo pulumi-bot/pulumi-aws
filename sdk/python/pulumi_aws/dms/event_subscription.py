@@ -26,36 +26,9 @@ class EventSubscription(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a DMS (Data Migration Service) event subscription resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.dms.EventSubscription("example",
-            enabled=True,
-            event_categories=[
-                "creation",
-                "failure",
-            ],
-            sns_topic_arn=aws_sns_topic["example"]["arn"],
-            source_ids=[aws_dms_replication_task["example"]["replication_task_id"]],
-            source_type="replication-task",
-            tags={
-                "Name": "example",
-            })
-        ```
-
+        Create a EventSubscription resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether the event subscription should be enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] event_categories: List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-        :param pulumi.Input[str] name: Name of event subscription.
-        :param pulumi.Input[str] sns_topic_arn: SNS topic arn to send events on.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_ids: Ids of sources to listen to.
-        :param pulumi.Input[str] source_type: Type of source for events. Valid values: `replication-instance` or `replication-task`
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,12 +84,6 @@ class EventSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether the event subscription should be enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] event_categories: List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-        :param pulumi.Input[str] name: Name of event subscription.
-        :param pulumi.Input[str] sns_topic_arn: SNS topic arn to send events on.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_ids: Ids of sources to listen to.
-        :param pulumi.Input[str] source_type: Type of source for events. Valid values: `replication-instance` or `replication-task`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,49 +107,31 @@ class EventSubscription(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether the event subscription should be enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="eventCategories")
     def event_categories(self) -> pulumi.Output[List[str]]:
-        """
-        List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
-        """
         return pulumi.get(self, "event_categories")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of event subscription.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="snsTopicArn")
     def sns_topic_arn(self) -> pulumi.Output[str]:
-        """
-        SNS topic arn to send events on.
-        """
         return pulumi.get(self, "sns_topic_arn")
 
     @property
     @pulumi.getter(name="sourceIds")
     def source_ids(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        Ids of sources to listen to.
-        """
         return pulumi.get(self, "source_ids")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Type of source for events. Valid values: `replication-instance` or `replication-task`
-        """
         return pulumi.get(self, "source_type")
 
     @property

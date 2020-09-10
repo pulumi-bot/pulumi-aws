@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides network associations for AWS Client VPN endpoints. For more information on usage, please see the
- * [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2clientvpn.NetworkAssociation("example", {
- *     clientVpnEndpointId: aws_ec2_client_vpn_endpoint.example.id,
- *     subnetId: aws_subnet.example.id,
- * });
- * ```
- */
 export class NetworkAssociation extends pulumi.CustomResource {
     /**
      * Get an existing NetworkAssociation resource's state with the given name, ID, and optional extra
@@ -48,25 +32,10 @@ export class NetworkAssociation extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkAssociation.__pulumiType;
     }
 
-    /**
-     * The ID of the Client VPN endpoint.
-     */
     public readonly clientVpnEndpointId!: pulumi.Output<string>;
-    /**
-     * The IDs of the security groups applied to the target network association.
-     */
     public /*out*/ readonly securityGroups!: pulumi.Output<string[]>;
-    /**
-     * The current state of the target network association.
-     */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * The ID of the subnet to associate with the Client VPN endpoint.
-     */
     public readonly subnetId!: pulumi.Output<string>;
-    /**
-     * The ID of the VPC in which the target network (subnet) is located.
-     */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
 
     /**
@@ -115,25 +84,10 @@ export class NetworkAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkAssociation resources.
  */
 export interface NetworkAssociationState {
-    /**
-     * The ID of the Client VPN endpoint.
-     */
     readonly clientVpnEndpointId?: pulumi.Input<string>;
-    /**
-     * The IDs of the security groups applied to the target network association.
-     */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The current state of the target network association.
-     */
     readonly status?: pulumi.Input<string>;
-    /**
-     * The ID of the subnet to associate with the Client VPN endpoint.
-     */
     readonly subnetId?: pulumi.Input<string>;
-    /**
-     * The ID of the VPC in which the target network (subnet) is located.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -141,12 +95,6 @@ export interface NetworkAssociationState {
  * The set of arguments for constructing a NetworkAssociation resource.
  */
 export interface NetworkAssociationArgs {
-    /**
-     * The ID of the Client VPN endpoint.
-     */
     readonly clientVpnEndpointId: pulumi.Input<string>;
-    /**
-     * The ID of the subnet to associate with the Client VPN endpoint.
-     */
     readonly subnetId: pulumi.Input<string>;
 }

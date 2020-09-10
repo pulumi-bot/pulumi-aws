@@ -9,65 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides a resource to manage an API Gateway Documentation Version.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRestApi = new Aws.ApiGateway.RestApi("exampleRestApi", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///         });
-    ///         var exampleDocumentationPart = new Aws.ApiGateway.DocumentationPart("exampleDocumentationPart", new Aws.ApiGateway.DocumentationPartArgs
-    ///         {
-    ///             Location = new Aws.ApiGateway.Inputs.DocumentationPartLocationArgs
-    ///             {
-    ///                 Type = "API",
-    ///             },
-    ///             Properties = "{\"description\":\"Example\"}",
-    ///             RestApiId = exampleRestApi.Id,
-    ///         });
-    ///         var exampleDocumentationVersion = new Aws.ApiGateway.DocumentationVersion("exampleDocumentationVersion", new Aws.ApiGateway.DocumentationVersionArgs
-    ///         {
-    ///             Version = "example_version",
-    ///             RestApiId = exampleRestApi.Id,
-    ///             Description = "Example description",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleDocumentationPart,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DocumentationVersion : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description of the API documentation version.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated Rest API
-        /// </summary>
         [Output("restApiId")]
         public Output<string> RestApiId { get; private set; } = null!;
 
-        /// <summary>
-        /// The version identifier of the API documentation snapshot.
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -117,21 +66,12 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class DocumentationVersionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the API documentation version.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The ID of the associated Rest API
-        /// </summary>
         [Input("restApiId", required: true)]
         public Input<string> RestApiId { get; set; } = null!;
 
-        /// <summary>
-        /// The version identifier of the API documentation snapshot.
-        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 
@@ -142,21 +82,12 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class DocumentationVersionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the API documentation version.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The ID of the associated Rest API
-        /// </summary>
         [Input("restApiId")]
         public Input<string>? RestApiId { get; set; }
 
-        /// <summary>
-        /// The version identifier of the API documentation snapshot.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

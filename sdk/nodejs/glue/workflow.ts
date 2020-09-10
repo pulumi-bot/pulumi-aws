@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Glue Workflow resource.
- * The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource.
- * See the example below for creating a graph with four nodes (two triggers and two jobs).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.glue.Workflow("example", {});
- * const example_start = new aws.glue.Trigger("example-start", {
- *     type: "ON_DEMAND",
- *     workflowName: example.name,
- *     actions: [{
- *         jobName: "example-job",
- *     }],
- * });
- * const example_inner = new aws.glue.Trigger("example-inner", {
- *     type: "CONDITIONAL",
- *     workflowName: example.name,
- *     predicate: {
- *         conditions: [{
- *             jobName: "example-job",
- *             state: "SUCCEEDED",
- *         }],
- *     },
- *     actions: [{
- *         jobName: "another-example-job",
- *     }],
- * });
- * ```
- */
 export class Workflow extends pulumi.CustomResource {
     /**
      * Get an existing Workflow resource's state with the given name, ID, and optional extra
@@ -66,17 +32,8 @@ export class Workflow extends pulumi.CustomResource {
         return obj['__pulumiType'] === Workflow.__pulumiType;
     }
 
-    /**
-     * A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-     */
     public readonly defaultRunProperties!: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * Description of the workflow.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name you assign to this workflow.
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -115,17 +72,8 @@ export class Workflow extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workflow resources.
  */
 export interface WorkflowState {
-    /**
-     * A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-     */
     readonly defaultRunProperties?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Description of the workflow.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name you assign to this workflow.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -133,16 +81,7 @@ export interface WorkflowState {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
-    /**
-     * A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-     */
     readonly defaultRunProperties?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Description of the workflow.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name you assign to this workflow.
-     */
     readonly name?: pulumi.Input<string>;
 }

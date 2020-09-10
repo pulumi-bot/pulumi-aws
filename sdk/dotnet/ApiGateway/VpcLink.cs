@@ -9,73 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides an API Gateway VPC Link.
-    /// 
-    /// &gt; **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
-    /// To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleLoadBalancer = new Aws.LB.LoadBalancer("exampleLoadBalancer", new Aws.LB.LoadBalancerArgs
-    ///         {
-    ///             Internal = true,
-    ///             LoadBalancerType = "network",
-    ///             SubnetMappings = 
-    ///             {
-    ///                 new Aws.LB.Inputs.LoadBalancerSubnetMappingArgs
-    ///                 {
-    ///                     SubnetId = "12345",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var exampleVpcLink = new Aws.ApiGateway.VpcLink("exampleVpcLink", new Aws.ApiGateway.VpcLinkArgs
-    ///         {
-    ///             Description = "example description",
-    ///             TargetArn = 
-    ///             {
-    ///                 exampleLoadBalancer.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpcLink : Pulumi.CustomResource
     {
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the VPC link.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name used to label and identify the VPC link.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-        /// </summary>
         [Output("targetArn")]
         public Output<string> TargetArn { get; private set; } = null!;
 
@@ -125,33 +72,20 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class VpcLinkArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the VPC link.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name used to label and identify the VPC link.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-        /// </summary>
         [Input("targetArn", required: true)]
         public Input<string> TargetArn { get; set; } = null!;
 
@@ -165,33 +99,20 @@ namespace Pulumi.Aws.ApiGateway
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of the VPC link.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name used to label and identify the VPC link.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-        /// </summary>
         [Input("targetArn")]
         public Input<string>? TargetArn { get; set; }
 

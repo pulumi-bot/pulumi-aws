@@ -9,61 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.RedShift
 {
-    /// <summary>
-    /// Creates a snapshot copy grant that allows AWS Redshift to encrypt copied snapshots with a customer master key from AWS KMS in a destination region.
-    /// 
-    /// Note that the grant must exist in the destination region, and not in the region of the cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testSnapshotCopyGrant = new Aws.RedShift.SnapshotCopyGrant("testSnapshotCopyGrant", new Aws.RedShift.SnapshotCopyGrantArgs
-    ///         {
-    ///             SnapshotCopyGrantName = "my-grant",
-    ///         });
-    ///         var testCluster = new Aws.RedShift.Cluster("testCluster", new Aws.RedShift.ClusterArgs
-    ///         {
-    ///             SnapshotCopy = new Aws.RedShift.Inputs.ClusterSnapshotCopyArgs
-    ///             {
-    ///                 DestinationRegion = "us-east-2",
-    ///                 GrantName = testSnapshotCopyGrant.SnapshotCopyGrantName,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SnapshotCopyGrant : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of snapshot copy grant
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-        /// </summary>
         [Output("kmsKeyId")]
         public Output<string> KmsKeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// A friendly name for identifying the grant.
-        /// </summary>
         [Output("snapshotCopyGrantName")]
         public Output<string> SnapshotCopyGrantName { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -113,24 +69,14 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class SnapshotCopyGrantArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// A friendly name for identifying the grant.
-        /// </summary>
         [Input("snapshotCopyGrantName", required: true)]
         public Input<string> SnapshotCopyGrantName { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -144,30 +90,17 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class SnapshotCopyGrantState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of snapshot copy grant
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// A friendly name for identifying the grant.
-        /// </summary>
         [Input("snapshotCopyGrantName")]
         public Input<string>? SnapshotCopyGrantName { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

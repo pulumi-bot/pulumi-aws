@@ -24,13 +24,6 @@ class DirectoryConnectSettings(dict):
                  vpc_id: str,
                  availability_zones: Optional[List[str]] = None,
                  connect_ips: Optional[List[str]] = None):
-        """
-        :param List[str] customer_dns_ips: The DNS IP addresses of the domain to connect to.
-        :param str customer_username: The username corresponding to the password provided.
-        :param List[str] subnet_ids: The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
-        :param str vpc_id: The identifier of the VPC that the directory is in.
-        :param List[str] connect_ips: The IP addresses of the AD Connector servers.
-        """
         pulumi.set(__self__, "customer_dns_ips", customer_dns_ips)
         pulumi.set(__self__, "customer_username", customer_username)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
@@ -43,33 +36,21 @@ class DirectoryConnectSettings(dict):
     @property
     @pulumi.getter(name="customerDnsIps")
     def customer_dns_ips(self) -> List[str]:
-        """
-        The DNS IP addresses of the domain to connect to.
-        """
         return pulumi.get(self, "customer_dns_ips")
 
     @property
     @pulumi.getter(name="customerUsername")
     def customer_username(self) -> str:
-        """
-        The username corresponding to the password provided.
-        """
         return pulumi.get(self, "customer_username")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> List[str]:
-        """
-        The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The identifier of the VPC that the directory is in.
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
@@ -80,9 +61,6 @@ class DirectoryConnectSettings(dict):
     @property
     @pulumi.getter(name="connectIps")
     def connect_ips(self) -> Optional[List[str]]:
-        """
-        The IP addresses of the AD Connector servers.
-        """
         return pulumi.get(self, "connect_ips")
 
     def _translate_property(self, prop):
@@ -95,10 +73,6 @@ class DirectoryVpcSettings(dict):
                  subnet_ids: List[str],
                  vpc_id: str,
                  availability_zones: Optional[List[str]] = None):
-        """
-        :param List[str] subnet_ids: The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
-        :param str vpc_id: The identifier of the VPC that the directory is in.
-        """
         pulumi.set(__self__, "subnet_ids", subnet_ids)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if availability_zones is not None:
@@ -107,17 +81,11 @@ class DirectoryVpcSettings(dict):
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> List[str]:
-        """
-        The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The identifier of the VPC that the directory is in.
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
@@ -138,13 +106,6 @@ class GetDirectoryConnectSettingResult(dict):
                  customer_username: str,
                  subnet_ids: List[str],
                  vpc_id: str):
-        """
-        :param List[str] connect_ips: The IP addresses of the AD Connector servers.
-        :param List[str] customer_dns_ips: The DNS IP addresses of the domain to connect to.
-        :param str customer_username: The username corresponding to the password provided.
-        :param List[str] subnet_ids: The identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
-        :param str vpc_id: The ID of the VPC that the connector is in.
-        """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "connect_ips", connect_ips)
         pulumi.set(__self__, "customer_dns_ips", customer_dns_ips)
@@ -160,41 +121,26 @@ class GetDirectoryConnectSettingResult(dict):
     @property
     @pulumi.getter(name="connectIps")
     def connect_ips(self) -> List[str]:
-        """
-        The IP addresses of the AD Connector servers.
-        """
         return pulumi.get(self, "connect_ips")
 
     @property
     @pulumi.getter(name="customerDnsIps")
     def customer_dns_ips(self) -> List[str]:
-        """
-        The DNS IP addresses of the domain to connect to.
-        """
         return pulumi.get(self, "customer_dns_ips")
 
     @property
     @pulumi.getter(name="customerUsername")
     def customer_username(self) -> str:
-        """
-        The username corresponding to the password provided.
-        """
         return pulumi.get(self, "customer_username")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> List[str]:
-        """
-        The identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The ID of the VPC that the connector is in.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -204,10 +150,6 @@ class GetDirectoryVpcSettingResult(dict):
                  availability_zones: List[str],
                  subnet_ids: List[str],
                  vpc_id: str):
-        """
-        :param List[str] subnet_ids: The identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
-        :param str vpc_id: The ID of the VPC that the connector is in.
-        """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -220,17 +162,11 @@ class GetDirectoryVpcSettingResult(dict):
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> List[str]:
-        """
-        The identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The ID of the VPC that the connector is in.
-        """
         return pulumi.get(self, "vpc_id")
 
 

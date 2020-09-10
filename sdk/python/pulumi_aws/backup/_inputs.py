@@ -27,16 +27,6 @@ class PlanRuleArgs:
                  recovery_point_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  start_window: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] rule_name: An display name for a backup rule.
-        :param pulumi.Input[str] target_vault_name: The name of a logical container where backups are stored.
-        :param pulumi.Input[float] completion_window: The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
-        :param pulumi.Input[List[pulumi.Input['PlanRuleCopyActionArgs']]] copy_actions: Configuration block(s) with copy operation settings. Detailed below.
-        :param pulumi.Input['PlanRuleLifecycleArgs'] lifecycle: The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] recovery_point_tags: Metadata that you can assign to help organize the resources that you create.
-        :param pulumi.Input[str] schedule: A CRON expression specifying when AWS Backup initiates a backup job.
-        :param pulumi.Input[float] start_window: The amount of time in minutes before beginning a backup.
-        """
         pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "target_vault_name", target_vault_name)
         if completion_window is not None:
@@ -55,9 +45,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Input[str]:
-        """
-        An display name for a backup rule.
-        """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
@@ -67,9 +54,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter(name="targetVaultName")
     def target_vault_name(self) -> pulumi.Input[str]:
-        """
-        The name of a logical container where backups are stored.
-        """
         return pulumi.get(self, "target_vault_name")
 
     @target_vault_name.setter
@@ -79,9 +63,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter(name="completionWindow")
     def completion_window(self) -> Optional[pulumi.Input[float]]:
-        """
-        The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
-        """
         return pulumi.get(self, "completion_window")
 
     @completion_window.setter
@@ -91,9 +72,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter(name="copyActions")
     def copy_actions(self) -> Optional[pulumi.Input[List[pulumi.Input['PlanRuleCopyActionArgs']]]]:
-        """
-        Configuration block(s) with copy operation settings. Detailed below.
-        """
         return pulumi.get(self, "copy_actions")
 
     @copy_actions.setter
@@ -103,9 +81,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter
     def lifecycle(self) -> Optional[pulumi.Input['PlanRuleLifecycleArgs']]:
-        """
-        The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-        """
         return pulumi.get(self, "lifecycle")
 
     @lifecycle.setter
@@ -115,9 +90,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter(name="recoveryPointTags")
     def recovery_point_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Metadata that you can assign to help organize the resources that you create.
-        """
         return pulumi.get(self, "recovery_point_tags")
 
     @recovery_point_tags.setter
@@ -127,9 +99,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
-        """
-        A CRON expression specifying when AWS Backup initiates a backup job.
-        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -139,9 +108,6 @@ class PlanRuleArgs:
     @property
     @pulumi.getter(name="startWindow")
     def start_window(self) -> Optional[pulumi.Input[float]]:
-        """
-        The amount of time in minutes before beginning a backup.
-        """
         return pulumi.get(self, "start_window")
 
     @start_window.setter
@@ -154,10 +120,6 @@ class PlanRuleCopyActionArgs:
     def __init__(__self__, *,
                  destination_vault_arn: pulumi.Input[str],
                  lifecycle: Optional[pulumi.Input['PlanRuleCopyActionLifecycleArgs']] = None):
-        """
-        :param pulumi.Input[str] destination_vault_arn: An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
-        :param pulumi.Input['PlanRuleCopyActionLifecycleArgs'] lifecycle: The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-        """
         pulumi.set(__self__, "destination_vault_arn", destination_vault_arn)
         if lifecycle is not None:
             pulumi.set(__self__, "lifecycle", lifecycle)
@@ -165,9 +127,6 @@ class PlanRuleCopyActionArgs:
     @property
     @pulumi.getter(name="destinationVaultArn")
     def destination_vault_arn(self) -> pulumi.Input[str]:
-        """
-        An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
-        """
         return pulumi.get(self, "destination_vault_arn")
 
     @destination_vault_arn.setter
@@ -177,9 +136,6 @@ class PlanRuleCopyActionArgs:
     @property
     @pulumi.getter
     def lifecycle(self) -> Optional[pulumi.Input['PlanRuleCopyActionLifecycleArgs']]:
-        """
-        The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-        """
         return pulumi.get(self, "lifecycle")
 
     @lifecycle.setter
@@ -192,10 +148,6 @@ class PlanRuleCopyActionLifecycleArgs:
     def __init__(__self__, *,
                  cold_storage_after: Optional[pulumi.Input[float]] = None,
                  delete_after: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[float] cold_storage_after: Specifies the number of days after creation that a recovery point is moved to cold storage.
-        :param pulumi.Input[float] delete_after: Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
-        """
         if cold_storage_after is not None:
             pulumi.set(__self__, "cold_storage_after", cold_storage_after)
         if delete_after is not None:
@@ -204,9 +156,6 @@ class PlanRuleCopyActionLifecycleArgs:
     @property
     @pulumi.getter(name="coldStorageAfter")
     def cold_storage_after(self) -> Optional[pulumi.Input[float]]:
-        """
-        Specifies the number of days after creation that a recovery point is moved to cold storage.
-        """
         return pulumi.get(self, "cold_storage_after")
 
     @cold_storage_after.setter
@@ -216,9 +165,6 @@ class PlanRuleCopyActionLifecycleArgs:
     @property
     @pulumi.getter(name="deleteAfter")
     def delete_after(self) -> Optional[pulumi.Input[float]]:
-        """
-        Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
-        """
         return pulumi.get(self, "delete_after")
 
     @delete_after.setter
@@ -231,10 +177,6 @@ class PlanRuleLifecycleArgs:
     def __init__(__self__, *,
                  cold_storage_after: Optional[pulumi.Input[float]] = None,
                  delete_after: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[float] cold_storage_after: Specifies the number of days after creation that a recovery point is moved to cold storage.
-        :param pulumi.Input[float] delete_after: Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
-        """
         if cold_storage_after is not None:
             pulumi.set(__self__, "cold_storage_after", cold_storage_after)
         if delete_after is not None:
@@ -243,9 +185,6 @@ class PlanRuleLifecycleArgs:
     @property
     @pulumi.getter(name="coldStorageAfter")
     def cold_storage_after(self) -> Optional[pulumi.Input[float]]:
-        """
-        Specifies the number of days after creation that a recovery point is moved to cold storage.
-        """
         return pulumi.get(self, "cold_storage_after")
 
     @cold_storage_after.setter
@@ -255,9 +194,6 @@ class PlanRuleLifecycleArgs:
     @property
     @pulumi.getter(name="deleteAfter")
     def delete_after(self) -> Optional[pulumi.Input[float]]:
-        """
-        Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
-        """
         return pulumi.get(self, "delete_after")
 
     @delete_after.setter
@@ -271,11 +207,6 @@ class SelectionSelectionTagArgs:
                  key: pulumi.Input[str],
                  type: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] key: The key in a key-value pair.
-        :param pulumi.Input[str] type: An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-        :param pulumi.Input[str] value: The value in a key-value pair.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
@@ -283,9 +214,6 @@ class SelectionSelectionTagArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        The key in a key-value pair.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -295,9 +223,6 @@ class SelectionSelectionTagArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -307,9 +232,6 @@ class SelectionSelectionTagArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        The value in a key-value pair.
-        """
         return pulumi.get(self, "value")
 
     @value.setter

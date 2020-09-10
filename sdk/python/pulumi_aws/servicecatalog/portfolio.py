@@ -23,25 +23,9 @@ class Portfolio(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to create a Service Catalog Portfolio.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        portfolio = aws.servicecatalog.Portfolio("portfolio",
-            description="List of my organizations apps",
-            provider_name="Brett")
-        ```
-
+        Create a Portfolio resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the portfolio
-        :param pulumi.Input[str] name: The name of the portfolio.
-        :param pulumi.Input[str] provider_name: Name of the person or organization who owns the portfolio.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags to apply to the connection.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,10 +73,6 @@ class Portfolio(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the portfolio
-        :param pulumi.Input[str] name: The name of the portfolio.
-        :param pulumi.Input[str] provider_name: Name of the person or organization who owns the portfolio.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags to apply to the connection.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,33 +99,21 @@ class Portfolio(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        Description of the portfolio
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the portfolio.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="providerName")
     def provider_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of the person or organization who owns the portfolio.
-        """
         return pulumi.get(self, "provider_name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Tags to apply to the connection.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

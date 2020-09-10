@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages Cost and Usage Report Definitions.
- *
- * > *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
- *
- * > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleCurReportDefinition = new aws.cur.ReportDefinition("example_cur_report_definition", {
- *     additionalArtifacts: [
- *         "REDSHIFT",
- *         "QUICKSIGHT",
- *     ],
- *     additionalSchemaElements: ["RESOURCES"],
- *     compression: "GZIP",
- *     format: "textORcsv",
- *     reportName: "example-cur-report-definition",
- *     s3Bucket: "example-bucket-name",
- *     s3Region: "us-east-1",
- *     timeUnit: "HOURLY",
- * });
- * ```
- */
 export class ReportDefinition extends pulumi.CustomResource {
     /**
      * Get an existing ReportDefinition resource's state with the given name, ID, and optional extra
@@ -60,41 +32,14 @@ export class ReportDefinition extends pulumi.CustomResource {
         return obj['__pulumiType'] === ReportDefinition.__pulumiType;
     }
 
-    /**
-     * A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-     */
     public readonly additionalArtifacts!: pulumi.Output<string[] | undefined>;
-    /**
-     * A list of schema elements. Valid values are: RESOURCES.
-     */
     public readonly additionalSchemaElements!: pulumi.Output<string[]>;
-    /**
-     * Compression format for report. Valid values are: GZIP, ZIP.
-     */
     public readonly compression!: pulumi.Output<string>;
-    /**
-     * Format for report. Valid values are: textORcsv.
-     */
     public readonly format!: pulumi.Output<string>;
-    /**
-     * Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-     */
     public readonly reportName!: pulumi.Output<string>;
-    /**
-     * Name of the existing S3 bucket to hold generated reports.
-     */
     public readonly s3Bucket!: pulumi.Output<string>;
-    /**
-     * Report path prefix. Limited to 256 characters.
-     */
     public readonly s3Prefix!: pulumi.Output<string | undefined>;
-    /**
-     * Region of the existing S3 bucket to hold generated reports.
-     */
     public readonly s3Region!: pulumi.Output<string>;
-    /**
-     * The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-     */
     public readonly timeUnit!: pulumi.Output<string>;
 
     /**
@@ -166,41 +111,14 @@ export class ReportDefinition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ReportDefinition resources.
  */
 export interface ReportDefinitionState {
-    /**
-     * A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-     */
     readonly additionalArtifacts?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of schema elements. Valid values are: RESOURCES.
-     */
     readonly additionalSchemaElements?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Compression format for report. Valid values are: GZIP, ZIP.
-     */
     readonly compression?: pulumi.Input<string>;
-    /**
-     * Format for report. Valid values are: textORcsv.
-     */
     readonly format?: pulumi.Input<string>;
-    /**
-     * Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-     */
     readonly reportName?: pulumi.Input<string>;
-    /**
-     * Name of the existing S3 bucket to hold generated reports.
-     */
     readonly s3Bucket?: pulumi.Input<string>;
-    /**
-     * Report path prefix. Limited to 256 characters.
-     */
     readonly s3Prefix?: pulumi.Input<string>;
-    /**
-     * Region of the existing S3 bucket to hold generated reports.
-     */
     readonly s3Region?: pulumi.Input<string>;
-    /**
-     * The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-     */
     readonly timeUnit?: pulumi.Input<string>;
 }
 
@@ -208,40 +126,13 @@ export interface ReportDefinitionState {
  * The set of arguments for constructing a ReportDefinition resource.
  */
 export interface ReportDefinitionArgs {
-    /**
-     * A list of additional artifacts. Valid values are: REDSHIFT, QUICKSIGHT.
-     */
     readonly additionalArtifacts?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of schema elements. Valid values are: RESOURCES.
-     */
     readonly additionalSchemaElements: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Compression format for report. Valid values are: GZIP, ZIP.
-     */
     readonly compression: pulumi.Input<string>;
-    /**
-     * Format for report. Valid values are: textORcsv.
-     */
     readonly format: pulumi.Input<string>;
-    /**
-     * Unique name for the report. Must start with a number/letter and is case sensitive. Limited to 256 characters.
-     */
     readonly reportName: pulumi.Input<string>;
-    /**
-     * Name of the existing S3 bucket to hold generated reports.
-     */
     readonly s3Bucket: pulumi.Input<string>;
-    /**
-     * Report path prefix. Limited to 256 characters.
-     */
     readonly s3Prefix?: pulumi.Input<string>;
-    /**
-     * Region of the existing S3 bucket to hold generated reports.
-     */
     readonly s3Region: pulumi.Input<string>;
-    /**
-     * The frequency on which report data are measured and displayed.  Valid values are: HOURLY, DAILY.
-     */
     readonly timeUnit: pulumi.Input<string>;
 }

@@ -29,36 +29,9 @@ class Volume(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a single EBS volume.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ebs.Volume("example",
-            availability_zone="us-west-2a",
-            size=40,
-            tags={
-                "Name": "HelloWorld",
-            })
-        ```
-
-        > **NOTE**: One of `size` or `snapshot_id` is required when specifying an EBS volume
-
+        Create a Volume resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The AZ where the EBS volume will exist.
-        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted.
-        :param pulumi.Input[float] iops: The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-        :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
-        :param pulumi.Input[bool] multi_attach_enabled: Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
-        :param pulumi.Input[str] outpost_arn: The Amazon Resource Name (ARN) of the Outpost.
-        :param pulumi.Input[float] size: The size of the drive in GiBs.
-        :param pulumi.Input[str] snapshot_id: A snapshot to base the EBS volume off of.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] type: The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,17 +91,6 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-        :param pulumi.Input[str] availability_zone: The AZ where the EBS volume will exist.
-        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted.
-        :param pulumi.Input[float] iops: The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-        :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
-        :param pulumi.Input[bool] multi_attach_enabled: Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
-        :param pulumi.Input[str] outpost_arn: The Amazon Resource Name (ARN) of the Outpost.
-        :param pulumi.Input[float] size: The size of the drive in GiBs.
-        :param pulumi.Input[str] snapshot_id: A snapshot to base the EBS volume off of.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] type: The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,89 +112,56 @@ class Volume(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
-        """
-        The AZ where the EBS volume will exist.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[bool]:
-        """
-        If true, the disk will be encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> pulumi.Output[float]:
-        """
-        The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[str]:
-        """
-        The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="multiAttachEnabled")
     def multi_attach_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
-        """
         return pulumi.get(self, "multi_attach_enabled")
 
     @property
     @pulumi.getter(name="outpostArn")
     def outpost_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Amazon Resource Name (ARN) of the Outpost.
-        """
         return pulumi.get(self, "outpost_arn")
 
     @property
     @pulumi.getter
     def size(self) -> pulumi.Output[float]:
-        """
-        The size of the drive in GiBs.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[str]:
-        """
-        A snapshot to base the EBS volume off of.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
-        """
         return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):

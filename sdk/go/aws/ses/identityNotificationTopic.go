@@ -10,44 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Resource for managing SES Identity Notification Topics
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ses"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ses.NewIdentityNotificationTopic(ctx, "test", &ses.IdentityNotificationTopicArgs{
-// 			Identity:               pulumi.Any(aws_ses_domain_identity.Example.Domain),
-// 			IncludeOriginalHeaders: pulumi.Bool(true),
-// 			NotificationType:       pulumi.String("Bounce"),
-// 			TopicArn:               pulumi.Any(aws_sns_topic.Example.Arn),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type IdentityNotificationTopic struct {
 	pulumi.CustomResourceState
 
-	// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
-	Identity pulumi.StringOutput `pulumi:"identity"`
-	// Whether SES should include original email headers in SNS notifications of this type. *false* by default.
-	IncludeOriginalHeaders pulumi.BoolPtrOutput `pulumi:"includeOriginalHeaders"`
-	// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: *Bounce*, *Complaint* or *Delivery*.
-	NotificationType pulumi.StringOutput `pulumi:"notificationType"`
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to "" (an empty string) to disable publishing.
-	TopicArn pulumi.StringPtrOutput `pulumi:"topicArn"`
+	Identity               pulumi.StringOutput    `pulumi:"identity"`
+	IncludeOriginalHeaders pulumi.BoolPtrOutput   `pulumi:"includeOriginalHeaders"`
+	NotificationType       pulumi.StringOutput    `pulumi:"notificationType"`
+	TopicArn               pulumi.StringPtrOutput `pulumi:"topicArn"`
 }
 
 // NewIdentityNotificationTopic registers a new resource with the given unique name, arguments, and options.
@@ -84,25 +53,17 @@ func GetIdentityNotificationTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityNotificationTopic resources.
 type identityNotificationTopicState struct {
-	// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
-	Identity *string `pulumi:"identity"`
-	// Whether SES should include original email headers in SNS notifications of this type. *false* by default.
-	IncludeOriginalHeaders *bool `pulumi:"includeOriginalHeaders"`
-	// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: *Bounce*, *Complaint* or *Delivery*.
-	NotificationType *string `pulumi:"notificationType"`
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to "" (an empty string) to disable publishing.
-	TopicArn *string `pulumi:"topicArn"`
+	Identity               *string `pulumi:"identity"`
+	IncludeOriginalHeaders *bool   `pulumi:"includeOriginalHeaders"`
+	NotificationType       *string `pulumi:"notificationType"`
+	TopicArn               *string `pulumi:"topicArn"`
 }
 
 type IdentityNotificationTopicState struct {
-	// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
-	Identity pulumi.StringPtrInput
-	// Whether SES should include original email headers in SNS notifications of this type. *false* by default.
+	Identity               pulumi.StringPtrInput
 	IncludeOriginalHeaders pulumi.BoolPtrInput
-	// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: *Bounce*, *Complaint* or *Delivery*.
-	NotificationType pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to "" (an empty string) to disable publishing.
-	TopicArn pulumi.StringPtrInput
+	NotificationType       pulumi.StringPtrInput
+	TopicArn               pulumi.StringPtrInput
 }
 
 func (IdentityNotificationTopicState) ElementType() reflect.Type {
@@ -110,26 +71,18 @@ func (IdentityNotificationTopicState) ElementType() reflect.Type {
 }
 
 type identityNotificationTopicArgs struct {
-	// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
-	Identity string `pulumi:"identity"`
-	// Whether SES should include original email headers in SNS notifications of this type. *false* by default.
-	IncludeOriginalHeaders *bool `pulumi:"includeOriginalHeaders"`
-	// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: *Bounce*, *Complaint* or *Delivery*.
-	NotificationType string `pulumi:"notificationType"`
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to "" (an empty string) to disable publishing.
-	TopicArn *string `pulumi:"topicArn"`
+	Identity               string  `pulumi:"identity"`
+	IncludeOriginalHeaders *bool   `pulumi:"includeOriginalHeaders"`
+	NotificationType       string  `pulumi:"notificationType"`
+	TopicArn               *string `pulumi:"topicArn"`
 }
 
 // The set of arguments for constructing a IdentityNotificationTopic resource.
 type IdentityNotificationTopicArgs struct {
-	// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
-	Identity pulumi.StringInput
-	// Whether SES should include original email headers in SNS notifications of this type. *false* by default.
+	Identity               pulumi.StringInput
 	IncludeOriginalHeaders pulumi.BoolPtrInput
-	// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: *Bounce*, *Complaint* or *Delivery*.
-	NotificationType pulumi.StringInput
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to "" (an empty string) to disable publishing.
-	TopicArn pulumi.StringPtrInput
+	NotificationType       pulumi.StringInput
+	TopicArn               pulumi.StringPtrInput
 }
 
 func (IdentityNotificationTopicArgs) ElementType() reflect.Type {

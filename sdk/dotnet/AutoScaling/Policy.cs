@@ -9,121 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AutoScaling
 {
-    /// <summary>
-    /// Provides an AutoScaling Scaling Policy resource.
-    /// 
-    /// &gt; **NOTE:** You may want to omit `desired_capacity` attribute from attached `aws.autoscaling.Group`
-    /// when using autoscaling policies. It's good practice to pick either
-    /// [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
-    /// or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
-    /// (policy-based) scaling.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bar = new Aws.AutoScaling.Group("bar", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///             AvailabilityZones = 
-    ///             {
-    ///                 "us-east-1a",
-    ///             },
-    ///             MaxSize = 5,
-    ///             MinSize = 2,
-    ///             HealthCheckGracePeriod = 300,
-    ///             HealthCheckType = "ELB",
-    ///             ForceDelete = true,
-    ///             LaunchConfiguration = aws_launch_configuration.Foo.Name,
-    ///         });
-    ///         var bat = new Aws.AutoScaling.Policy("bat", new Aws.AutoScaling.PolicyArgs
-    ///         {
-    ///             ScalingAdjustment = 4,
-    ///             AdjustmentType = "ChangeInCapacity",
-    ///             Cooldown = 300,
-    ///             AutoscalingGroupName = bar.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
-        /// </summary>
         [Output("adjustmentType")]
         public Output<string?> AdjustmentType { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN assigned by AWS to the scaling policy.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the autoscaling group.
-        /// </summary>
         [Output("autoscalingGroupName")]
         public Output<string> AutoscalingGroupName { get; private set; } = null!;
 
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        /// </summary>
         [Output("cooldown")]
         public Output<int?> Cooldown { get; private set; } = null!;
 
-        /// <summary>
-        /// The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
-        /// </summary>
         [Output("estimatedInstanceWarmup")]
         public Output<int?> EstimatedInstanceWarmup { get; private set; } = null!;
 
-        /// <summary>
-        /// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
-        /// </summary>
         [Output("metricAggregationType")]
         public Output<string> MetricAggregationType { get; private set; } = null!;
 
         [Output("minAdjustmentMagnitude")]
         public Output<int?> MinAdjustmentMagnitude { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the dimension.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
-        /// </summary>
         [Output("policyType")]
         public Output<string?> PolicyType { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
-        /// </summary>
         [Output("scalingAdjustment")]
         public Output<int?> ScalingAdjustment { get; private set; } = null!;
 
-        /// <summary>
-        /// A set of adjustments that manage
-        /// group scaling. These have the following structure:
-        /// </summary>
         [Output("stepAdjustments")]
         public Output<ImmutableArray<Outputs.PolicyStepAdjustment>> StepAdjustments { get; private set; } = null!;
 
-        /// <summary>
-        /// A target tracking policy. These have the following structure:
-        /// </summary>
         [Output("targetTrackingConfiguration")]
         public Output<Outputs.PolicyTargetTrackingConfiguration?> TargetTrackingConfiguration { get; private set; } = null!;
 
@@ -173,75 +93,41 @@ namespace Pulumi.Aws.AutoScaling
 
     public sealed class PolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
-        /// </summary>
         [Input("adjustmentType")]
         public Input<string>? AdjustmentType { get; set; }
 
-        /// <summary>
-        /// The name of the autoscaling group.
-        /// </summary>
         [Input("autoscalingGroupName", required: true)]
         public Input<string> AutoscalingGroupName { get; set; } = null!;
 
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        /// </summary>
         [Input("cooldown")]
         public Input<int>? Cooldown { get; set; }
 
-        /// <summary>
-        /// The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
-        /// </summary>
         [Input("estimatedInstanceWarmup")]
         public Input<int>? EstimatedInstanceWarmup { get; set; }
 
-        /// <summary>
-        /// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
-        /// </summary>
         [Input("metricAggregationType")]
         public Input<string>? MetricAggregationType { get; set; }
 
         [Input("minAdjustmentMagnitude")]
         public Input<int>? MinAdjustmentMagnitude { get; set; }
 
-        /// <summary>
-        /// The name of the dimension.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
-        /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
-        /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
-        /// </summary>
         [Input("scalingAdjustment")]
         public Input<int>? ScalingAdjustment { get; set; }
 
         [Input("stepAdjustments")]
         private InputList<Inputs.PolicyStepAdjustmentArgs>? _stepAdjustments;
-
-        /// <summary>
-        /// A set of adjustments that manage
-        /// group scaling. These have the following structure:
-        /// </summary>
         public InputList<Inputs.PolicyStepAdjustmentArgs> StepAdjustments
         {
             get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.PolicyStepAdjustmentArgs>());
             set => _stepAdjustments = value;
         }
 
-        /// <summary>
-        /// A target tracking policy. These have the following structure:
-        /// </summary>
         [Input("targetTrackingConfiguration")]
         public Input<Inputs.PolicyTargetTrackingConfigurationArgs>? TargetTrackingConfiguration { get; set; }
 
@@ -252,81 +138,44 @@ namespace Pulumi.Aws.AutoScaling
 
     public sealed class PolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
-        /// </summary>
         [Input("adjustmentType")]
         public Input<string>? AdjustmentType { get; set; }
 
-        /// <summary>
-        /// The ARN assigned by AWS to the scaling policy.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the autoscaling group.
-        /// </summary>
         [Input("autoscalingGroupName")]
         public Input<string>? AutoscalingGroupName { get; set; }
 
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        /// </summary>
         [Input("cooldown")]
         public Input<int>? Cooldown { get; set; }
 
-        /// <summary>
-        /// The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
-        /// </summary>
         [Input("estimatedInstanceWarmup")]
         public Input<int>? EstimatedInstanceWarmup { get; set; }
 
-        /// <summary>
-        /// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
-        /// </summary>
         [Input("metricAggregationType")]
         public Input<string>? MetricAggregationType { get; set; }
 
         [Input("minAdjustmentMagnitude")]
         public Input<int>? MinAdjustmentMagnitude { get; set; }
 
-        /// <summary>
-        /// The name of the dimension.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
-        /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
-        /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
-        /// </summary>
         [Input("scalingAdjustment")]
         public Input<int>? ScalingAdjustment { get; set; }
 
         [Input("stepAdjustments")]
         private InputList<Inputs.PolicyStepAdjustmentGetArgs>? _stepAdjustments;
-
-        /// <summary>
-        /// A set of adjustments that manage
-        /// group scaling. These have the following structure:
-        /// </summary>
         public InputList<Inputs.PolicyStepAdjustmentGetArgs> StepAdjustments
         {
             get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.PolicyStepAdjustmentGetArgs>());
             set => _stepAdjustments = value;
         }
 
-        /// <summary>
-        /// A target tracking policy. These have the following structure:
-        /// </summary>
         [Input("targetTrackingConfiguration")]
         public Input<Inputs.PolicyTargetTrackingConfigurationGetArgs>? TargetTrackingConfiguration { get; set; }
 

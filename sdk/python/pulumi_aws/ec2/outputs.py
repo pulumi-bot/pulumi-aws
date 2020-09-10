@@ -158,22 +158,6 @@ class AmiCopyEbsBlockDevice(dict):
                  snapshot_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param bool delete_on_termination: Boolean controlling whether the EBS volumes created to
-               support each created instance will be deleted once that instance is terminated.
-        :param str device_name: The path at which the device is exposed to created instances.
-        :param bool encrypted: Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
-        :param float iops: Number of I/O operations per second the
-               created volumes will support.
-        :param str snapshot_id: The id of an EBS snapshot that will be used to initialize the created
-               EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
-               snapshot.
-        :param float volume_size: The size of created volumes in GiB.
-               If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
-               as the selected snapshot.
-        :param str volume_type: The type of EBS volume to create. Can be one of "standard" (the
-               default), "io1" or "gp2".
-        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if device_name is not None:
@@ -192,64 +176,36 @@ class AmiCopyEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Boolean controlling whether the EBS volumes created to
-        support each created instance will be deleted once that instance is terminated.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The path at which the device is exposed to created instances.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        Number of I/O operations per second the
-        created volumes will support.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
-        """
-        The id of an EBS snapshot that will be used to initialize the created
-        EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
-        snapshot.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of created volumes in GiB.
-        If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
-        as the selected snapshot.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of EBS volume to create. Can be one of "standard" (the
-        default), "io1" or "gp2".
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -261,11 +217,6 @@ class AmiCopyEphemeralBlockDevice(dict):
     def __init__(__self__, *,
                  device_name: Optional[str] = None,
                  virtual_name: Optional[str] = None):
-        """
-        :param str device_name: The path at which the device is exposed to created instances.
-        :param str virtual_name: A name for the ephemeral device, of the form "ephemeralN" where
-               *N* is a volume number starting from zero.
-        """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
         if virtual_name is not None:
@@ -274,18 +225,11 @@ class AmiCopyEphemeralBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The path at which the device is exposed to created instances.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> Optional[str]:
-        """
-        A name for the ephemeral device, of the form "ephemeralN" where
-        *N* is a volume number starting from zero.
-        """
         return pulumi.get(self, "virtual_name")
 
     def _translate_property(self, prop):
@@ -302,22 +246,6 @@ class AmiEbsBlockDevice(dict):
                  snapshot_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param str device_name: The path at which the device is exposed to created instances.
-        :param bool delete_on_termination: Boolean controlling whether the EBS volumes created to
-               support each created instance will be deleted once that instance is terminated.
-        :param bool encrypted: Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
-        :param float iops: Number of I/O operations per second the
-               created volumes will support.
-        :param str snapshot_id: The id of an EBS snapshot that will be used to initialize the created
-               EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
-               snapshot.
-        :param float volume_size: The size of created volumes in GiB.
-               If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
-               as the selected snapshot.
-        :param str volume_type: The type of EBS volume to create. Can be one of "standard" (the
-               default), "io1" or "gp2".
-        """
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
@@ -335,64 +263,36 @@ class AmiEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The path at which the device is exposed to created instances.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Boolean controlling whether the EBS volumes created to
-        support each created instance will be deleted once that instance is terminated.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        Number of I/O operations per second the
-        created volumes will support.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
-        """
-        The id of an EBS snapshot that will be used to initialize the created
-        EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
-        snapshot.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of created volumes in GiB.
-        If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
-        as the selected snapshot.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of EBS volume to create. Can be one of "standard" (the
-        default), "io1" or "gp2".
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -404,29 +304,17 @@ class AmiEphemeralBlockDevice(dict):
     def __init__(__self__, *,
                  device_name: str,
                  virtual_name: str):
-        """
-        :param str device_name: The path at which the device is exposed to created instances.
-        :param str virtual_name: A name for the ephemeral device, of the form "ephemeralN" where
-               *N* is a volume number starting from zero.
-        """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "virtual_name", virtual_name)
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The path at which the device is exposed to created instances.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> str:
-        """
-        A name for the ephemeral device, of the form "ephemeralN" where
-        *N* is a volume number starting from zero.
-        """
         return pulumi.get(self, "virtual_name")
 
     def _translate_property(self, prop):
@@ -443,22 +331,6 @@ class AmiFromInstanceEbsBlockDevice(dict):
                  snapshot_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param bool delete_on_termination: Boolean controlling whether the EBS volumes created to
-               support each created instance will be deleted once that instance is terminated.
-        :param str device_name: The path at which the device is exposed to created instances.
-        :param bool encrypted: Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
-        :param float iops: Number of I/O operations per second the
-               created volumes will support.
-        :param str snapshot_id: The id of an EBS snapshot that will be used to initialize the created
-               EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
-               snapshot.
-        :param float volume_size: The size of created volumes in GiB.
-               If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
-               as the selected snapshot.
-        :param str volume_type: The type of EBS volume to create. Can be one of "standard" (the
-               default), "io1" or "gp2".
-        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if device_name is not None:
@@ -477,64 +349,36 @@ class AmiFromInstanceEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Boolean controlling whether the EBS volumes created to
-        support each created instance will be deleted once that instance is terminated.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The path at which the device is exposed to created instances.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        Number of I/O operations per second the
-        created volumes will support.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
-        """
-        The id of an EBS snapshot that will be used to initialize the created
-        EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
-        snapshot.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of created volumes in GiB.
-        If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
-        as the selected snapshot.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of EBS volume to create. Can be one of "standard" (the
-        default), "io1" or "gp2".
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -546,11 +390,6 @@ class AmiFromInstanceEphemeralBlockDevice(dict):
     def __init__(__self__, *,
                  device_name: Optional[str] = None,
                  virtual_name: Optional[str] = None):
-        """
-        :param str device_name: The path at which the device is exposed to created instances.
-        :param str virtual_name: A name for the ephemeral device, of the form "ephemeralN" where
-               *N* is a volume number starting from zero.
-        """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
         if virtual_name is not None:
@@ -559,18 +398,11 @@ class AmiFromInstanceEphemeralBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The path at which the device is exposed to created instances.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> Optional[str]:
-        """
-        A name for the ephemeral device, of the form "ephemeralN" where
-        *N* is a volume number starting from zero.
-        """
         return pulumi.get(self, "virtual_name")
 
     def _translate_property(self, prop):
@@ -589,19 +421,6 @@ class DefaultNetworkAclEgress(dict):
                  icmp_code: Optional[float] = None,
                  icmp_type: Optional[float] = None,
                  ipv6_cidr_block: Optional[str] = None):
-        """
-        :param str action: The action to take.
-        :param float from_port: The from port to match.
-        :param str protocol: The protocol to match. If using the -1 'all'
-               protocol, you must specify a from and to port of 0.
-        :param float rule_no: The rule number. Used for ordering.
-        :param float to_port: The to port to match.
-        :param str cidr_block: The CIDR block to match. This must be a
-               valid network mask.
-        :param float icmp_code: The ICMP type code to be used. Default 0.
-        :param float icmp_type: The ICMP type to be used. Default 0.
-        :param str ipv6_cidr_block: The IPv6 CIDR block.
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -619,75 +438,46 @@ class DefaultNetworkAclEgress(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        The action to take.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> float:
-        """
-        The from port to match.
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
-        """
-        The protocol to match. If using the -1 'all'
-        protocol, you must specify a from and to port of 0.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="ruleNo")
     def rule_no(self) -> float:
-        """
-        The rule number. Used for ordering.
-        """
         return pulumi.get(self, "rule_no")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> float:
-        """
-        The to port to match.
-        """
         return pulumi.get(self, "to_port")
 
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block to match. This must be a
-        valid network mask.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="icmpCode")
     def icmp_code(self) -> Optional[float]:
-        """
-        The ICMP type code to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_code")
 
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[float]:
-        """
-        The ICMP type to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_type")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
-        """
-        The IPv6 CIDR block.
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     def _translate_property(self, prop):
@@ -706,19 +496,6 @@ class DefaultNetworkAclIngress(dict):
                  icmp_code: Optional[float] = None,
                  icmp_type: Optional[float] = None,
                  ipv6_cidr_block: Optional[str] = None):
-        """
-        :param str action: The action to take.
-        :param float from_port: The from port to match.
-        :param str protocol: The protocol to match. If using the -1 'all'
-               protocol, you must specify a from and to port of 0.
-        :param float rule_no: The rule number. Used for ordering.
-        :param float to_port: The to port to match.
-        :param str cidr_block: The CIDR block to match. This must be a
-               valid network mask.
-        :param float icmp_code: The ICMP type code to be used. Default 0.
-        :param float icmp_type: The ICMP type to be used. Default 0.
-        :param str ipv6_cidr_block: The IPv6 CIDR block.
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -736,75 +513,46 @@ class DefaultNetworkAclIngress(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        The action to take.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> float:
-        """
-        The from port to match.
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
-        """
-        The protocol to match. If using the -1 'all'
-        protocol, you must specify a from and to port of 0.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="ruleNo")
     def rule_no(self) -> float:
-        """
-        The rule number. Used for ordering.
-        """
         return pulumi.get(self, "rule_no")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> float:
-        """
-        The to port to match.
-        """
         return pulumi.get(self, "to_port")
 
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block to match. This must be a
-        valid network mask.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="icmpCode")
     def icmp_code(self) -> Optional[float]:
-        """
-        The ICMP type code to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_code")
 
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[float]:
-        """
-        The ICMP type to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_type")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
-        """
-        The IPv6 CIDR block.
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     def _translate_property(self, prop):
@@ -823,17 +571,6 @@ class DefaultRouteTableRoute(dict):
                  network_interface_id: Optional[str] = None,
                  transit_gateway_id: Optional[str] = None,
                  vpc_peering_connection_id: Optional[str] = None):
-        """
-        :param str cidr_block: The CIDR block of the route.
-        :param str egress_only_gateway_id: Identifier of a VPC Egress Only Internet Gateway.
-        :param str gateway_id: Identifier of a VPC internet gateway or a virtual private gateway.
-        :param str instance_id: Identifier of an EC2 instance.
-        :param str ipv6_cidr_block: The Ipv6 CIDR block of the route
-        :param str nat_gateway_id: Identifier of a VPC NAT gateway.
-        :param str network_interface_id: Identifier of an EC2 network interface.
-        :param str transit_gateway_id: Identifier of an EC2 Transit Gateway.
-        :param str vpc_peering_connection_id: Identifier of a VPC peering connection.
-        """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if egress_only_gateway_id is not None:
@@ -856,73 +593,46 @@ class DefaultRouteTableRoute(dict):
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block of the route.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="egressOnlyGatewayId")
     def egress_only_gateway_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC Egress Only Internet Gateway.
-        """
         return pulumi.get(self, "egress_only_gateway_id")
 
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC internet gateway or a virtual private gateway.
-        """
         return pulumi.get(self, "gateway_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
-        """
-        Identifier of an EC2 instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
-        """
-        The Ipv6 CIDR block of the route
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     @property
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC NAT gateway.
-        """
         return pulumi.get(self, "nat_gateway_id")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[str]:
-        """
-        Identifier of an EC2 network interface.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="transitGatewayId")
     def transit_gateway_id(self) -> Optional[str]:
-        """
-        Identifier of an EC2 Transit Gateway.
-        """
         return pulumi.get(self, "transit_gateway_id")
 
     @property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC peering connection.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 
     def _translate_property(self, prop):
@@ -941,9 +651,6 @@ class DefaultSecurityGroupEgress(dict):
                  prefix_list_ids: Optional[List[str]] = None,
                  security_groups: Optional[List[str]] = None,
                  self: Optional[bool] = None):
-        """
-        :param str description: The description of the security group
-        """
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "to_port", to_port)
@@ -983,9 +690,6 @@ class DefaultSecurityGroupEgress(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        The description of the security group
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -1024,9 +728,6 @@ class DefaultSecurityGroupIngress(dict):
                  prefix_list_ids: Optional[List[str]] = None,
                  security_groups: Optional[List[str]] = None,
                  self: Optional[bool] = None):
-        """
-        :param str description: The description of the security group
-        """
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "to_port", to_port)
@@ -1066,9 +767,6 @@ class DefaultSecurityGroupIngress(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        The description of the security group
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -1100,10 +798,6 @@ class FleetLaunchTemplateConfig(dict):
     def __init__(__self__, *,
                  launch_template_specification: 'outputs.FleetLaunchTemplateConfigLaunchTemplateSpecification',
                  overrides: Optional[List['outputs.FleetLaunchTemplateConfigOverride']] = None):
-        """
-        :param 'FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs' launch_template_specification: Nested argument containing EC2 Launch Template to use. Defined below.
-        :param List['FleetLaunchTemplateConfigOverrideArgs'] overrides: Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
-        """
         pulumi.set(__self__, "launch_template_specification", launch_template_specification)
         if overrides is not None:
             pulumi.set(__self__, "overrides", overrides)
@@ -1111,17 +805,11 @@ class FleetLaunchTemplateConfig(dict):
     @property
     @pulumi.getter(name="launchTemplateSpecification")
     def launch_template_specification(self) -> 'outputs.FleetLaunchTemplateConfigLaunchTemplateSpecification':
-        """
-        Nested argument containing EC2 Launch Template to use. Defined below.
-        """
         return pulumi.get(self, "launch_template_specification")
 
     @property
     @pulumi.getter
     def overrides(self) -> Optional[List['outputs.FleetLaunchTemplateConfigOverride']]:
-        """
-        Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
-        """
         return pulumi.get(self, "overrides")
 
     def _translate_property(self, prop):
@@ -1134,11 +822,6 @@ class FleetLaunchTemplateConfigLaunchTemplateSpecification(dict):
                  version: str,
                  launch_template_id: Optional[str] = None,
                  launch_template_name: Optional[str] = None):
-        """
-        :param str version: Version number of the launch template.
-        :param str launch_template_id: ID of the launch template.
-        :param str launch_template_name: Name of the launch template.
-        """
         pulumi.set(__self__, "version", version)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
@@ -1148,25 +831,16 @@ class FleetLaunchTemplateConfigLaunchTemplateSpecification(dict):
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        Version number of the launch template.
-        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="launchTemplateId")
     def launch_template_id(self) -> Optional[str]:
-        """
-        ID of the launch template.
-        """
         return pulumi.get(self, "launch_template_id")
 
     @property
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> Optional[str]:
-        """
-        Name of the launch template.
-        """
         return pulumi.get(self, "launch_template_name")
 
     def _translate_property(self, prop):
@@ -1182,14 +856,6 @@ class FleetLaunchTemplateConfigOverride(dict):
                  priority: Optional[float] = None,
                  subnet_id: Optional[str] = None,
                  weighted_capacity: Optional[float] = None):
-        """
-        :param str availability_zone: Availability Zone in which to launch the instances.
-        :param str instance_type: Instance type.
-        :param str max_price: Maximum price per unit hour that you are willing to pay for a Spot Instance.
-        :param float priority: Priority for the launch template override. If `on_demand_options` `allocation_strategy` is set to `prioritized`, EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity. The highest priority is launched first. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. Valid values are whole numbers starting at 0.
-        :param str subnet_id: ID of the subnet in which to launch the instances.
-        :param float weighted_capacity: Number of units provided by the specified instance type.
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if instance_type is not None:
@@ -1206,49 +872,31 @@ class FleetLaunchTemplateConfigOverride(dict):
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[str]:
-        """
-        Availability Zone in which to launch the instances.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
-        """
-        Instance type.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> Optional[str]:
-        """
-        Maximum price per unit hour that you are willing to pay for a Spot Instance.
-        """
         return pulumi.get(self, "max_price")
 
     @property
     @pulumi.getter
     def priority(self) -> Optional[float]:
-        """
-        Priority for the launch template override. If `on_demand_options` `allocation_strategy` is set to `prioritized`, EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity. The highest priority is launched first. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. Valid values are whole numbers starting at 0.
-        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
-        """
-        ID of the subnet in which to launch the instances.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> Optional[float]:
-        """
-        Number of units provided by the specified instance type.
-        """
         return pulumi.get(self, "weighted_capacity")
 
     def _translate_property(self, prop):
@@ -1259,18 +907,12 @@ class FleetLaunchTemplateConfigOverride(dict):
 class FleetOnDemandOptions(dict):
     def __init__(__self__, *,
                  allocation_strategy: Optional[str] = None):
-        """
-        :param str allocation_strategy: How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
-        """
         if allocation_strategy is not None:
             pulumi.set(__self__, "allocation_strategy", allocation_strategy)
 
     @property
     @pulumi.getter(name="allocationStrategy")
     def allocation_strategy(self) -> Optional[str]:
-        """
-        How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
-        """
         return pulumi.get(self, "allocation_strategy")
 
     def _translate_property(self, prop):
@@ -1283,11 +925,6 @@ class FleetSpotOptions(dict):
                  allocation_strategy: Optional[str] = None,
                  instance_interruption_behavior: Optional[str] = None,
                  instance_pools_to_use_count: Optional[float] = None):
-        """
-        :param str allocation_strategy: How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
-        :param str instance_interruption_behavior: Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
-        :param float instance_pools_to_use_count: Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
-        """
         if allocation_strategy is not None:
             pulumi.set(__self__, "allocation_strategy", allocation_strategy)
         if instance_interruption_behavior is not None:
@@ -1298,25 +935,16 @@ class FleetSpotOptions(dict):
     @property
     @pulumi.getter(name="allocationStrategy")
     def allocation_strategy(self) -> Optional[str]:
-        """
-        How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
-        """
         return pulumi.get(self, "allocation_strategy")
 
     @property
     @pulumi.getter(name="instanceInterruptionBehavior")
     def instance_interruption_behavior(self) -> Optional[str]:
-        """
-        Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
-        """
         return pulumi.get(self, "instance_interruption_behavior")
 
     @property
     @pulumi.getter(name="instancePoolsToUseCount")
     def instance_pools_to_use_count(self) -> Optional[float]:
-        """
-        Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
-        """
         return pulumi.get(self, "instance_pools_to_use_count")
 
     def _translate_property(self, prop):
@@ -1330,12 +958,6 @@ class FleetTargetCapacitySpecification(dict):
                  total_target_capacity: float,
                  on_demand_target_capacity: Optional[float] = None,
                  spot_target_capacity: Optional[float] = None):
-        """
-        :param str default_target_capacity_type: Default target capacity type. Valid values: `on-demand`, `spot`.
-        :param float total_target_capacity: The number of units to request, filled using `default_target_capacity_type`.
-        :param float on_demand_target_capacity: The number of On-Demand units to request.
-        :param float spot_target_capacity: The number of Spot units to request.
-        """
         pulumi.set(__self__, "default_target_capacity_type", default_target_capacity_type)
         pulumi.set(__self__, "total_target_capacity", total_target_capacity)
         if on_demand_target_capacity is not None:
@@ -1346,33 +968,21 @@ class FleetTargetCapacitySpecification(dict):
     @property
     @pulumi.getter(name="defaultTargetCapacityType")
     def default_target_capacity_type(self) -> str:
-        """
-        Default target capacity type. Valid values: `on-demand`, `spot`.
-        """
         return pulumi.get(self, "default_target_capacity_type")
 
     @property
     @pulumi.getter(name="totalTargetCapacity")
     def total_target_capacity(self) -> float:
-        """
-        The number of units to request, filled using `default_target_capacity_type`.
-        """
         return pulumi.get(self, "total_target_capacity")
 
     @property
     @pulumi.getter(name="onDemandTargetCapacity")
     def on_demand_target_capacity(self) -> Optional[float]:
-        """
-        The number of On-Demand units to request.
-        """
         return pulumi.get(self, "on_demand_target_capacity")
 
     @property
     @pulumi.getter(name="spotTargetCapacity")
     def spot_target_capacity(self) -> Optional[float]:
-        """
-        The number of Spot units to request.
-        """
         return pulumi.get(self, "spot_target_capacity")
 
     def _translate_property(self, prop):
@@ -1383,18 +993,12 @@ class FleetTargetCapacitySpecification(dict):
 class InstanceCreditSpecification(dict):
     def __init__(__self__, *,
                  cpu_credits: Optional[str] = None):
-        """
-        :param str cpu_credits: The credit option for CPU usage. Can be `"standard"` or `"unlimited"`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-        """
         if cpu_credits is not None:
             pulumi.set(__self__, "cpu_credits", cpu_credits)
 
     @property
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> Optional[str]:
-        """
-        The credit option for CPU usage. Can be `"standard"` or `"unlimited"`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-        """
         return pulumi.get(self, "cpu_credits")
 
     def _translate_property(self, prop):
@@ -1413,22 +1017,6 @@ class InstanceEbsBlockDevice(dict):
                  volume_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param str device_name: The name of the device to mount.
-        :param bool delete_on_termination: Whether the volume should be destroyed
-               on instance termination (Default: `true`).
-        :param bool encrypted: Enables [EBS
-               encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-               on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
-        :param float iops: The amount of provisioned
-               [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-               This must be set with a `volume_type` of `"io1"`.
-        :param str kms_key_id: Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        :param str snapshot_id: The Snapshot ID to mount.
-        :param float volume_size: The size of the volume in gibibytes (GiB).
-        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`,
-               or `"io1"`. (Default: `"gp2"`).
-        """
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
@@ -1450,54 +1038,31 @@ class InstanceEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The name of the device to mount.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Whether the volume should be destroyed
-        on instance termination (Default: `true`).
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Enables [EBS
-        encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-        on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        The amount of provisioned
-        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-        This must be set with a `volume_type` of `"io1"`.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
-        """
-        Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
-        """
-        The Snapshot ID to mount.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
@@ -1508,18 +1073,11 @@ class InstanceEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of the volume in gibibytes (GiB).
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of volume. Can be `"standard"`, `"gp2"`,
-        or `"io1"`. (Default: `"gp2"`).
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -1532,13 +1090,6 @@ class InstanceEphemeralBlockDevice(dict):
                  device_name: str,
                  no_device: Optional[bool] = None,
                  virtual_name: Optional[str] = None):
-        """
-        :param str device_name: The name of the block device to mount on the instance.
-        :param bool no_device: Suppresses the specified device included in the AMI's block device mapping.
-        :param str virtual_name: The [Instance Store Device
-               Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
-               (e.g. `"ephemeral0"`).
-        """
         pulumi.set(__self__, "device_name", device_name)
         if no_device is not None:
             pulumi.set(__self__, "no_device", no_device)
@@ -1548,27 +1099,16 @@ class InstanceEphemeralBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The name of the block device to mount on the instance.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[bool]:
-        """
-        Suppresses the specified device included in the AMI's block device mapping.
-        """
         return pulumi.get(self, "no_device")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> Optional[str]:
-        """
-        The [Instance Store Device
-        Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
-        (e.g. `"ephemeral0"`).
-        """
         return pulumi.get(self, "virtual_name")
 
     def _translate_property(self, prop):
@@ -1581,11 +1121,6 @@ class InstanceMetadataOptions(dict):
                  http_endpoint: Optional[str] = None,
                  http_put_response_hop_limit: Optional[float] = None,
                  http_tokens: Optional[str] = None):
-        """
-        :param str http_endpoint: Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        :param float http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        :param str http_tokens: Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        """
         if http_endpoint is not None:
             pulumi.set(__self__, "http_endpoint", http_endpoint)
         if http_put_response_hop_limit is not None:
@@ -1596,25 +1131,16 @@ class InstanceMetadataOptions(dict):
     @property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> Optional[str]:
-        """
-        Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        """
         return pulumi.get(self, "http_endpoint")
 
     @property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> Optional[float]:
-        """
-        The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> Optional[str]:
-        """
-        Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        """
         return pulumi.get(self, "http_tokens")
 
     def _translate_property(self, prop):
@@ -1627,11 +1153,6 @@ class InstanceNetworkInterface(dict):
                  device_index: float,
                  network_interface_id: str,
                  delete_on_termination: Optional[bool] = None):
-        """
-        :param float device_index: The integer index of the network interface attachment. Limited by instance type.
-        :param str network_interface_id: The ID of the network interface to attach.
-        :param bool delete_on_termination: Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
-        """
         pulumi.set(__self__, "device_index", device_index)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
         if delete_on_termination is not None:
@@ -1640,25 +1161,16 @@ class InstanceNetworkInterface(dict):
     @property
     @pulumi.getter(name="deviceIndex")
     def device_index(self) -> float:
-        """
-        The integer index of the network interface attachment. Limited by instance type.
-        """
         return pulumi.get(self, "device_index")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> str:
-        """
-        The ID of the network interface to attach.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     def _translate_property(self, prop):
@@ -1676,19 +1188,6 @@ class InstanceRootBlockDevice(dict):
                  volume_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param bool delete_on_termination: Whether the volume should be destroyed
-               on instance termination (Default: `true`).
-        :param str device_name: The name of the device to mount.
-        :param bool encrypted: Enable volume encryption. (Default: `false`). Must be configured to perform drift detection.
-        :param float iops: The amount of provisioned
-               [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-               This is only valid for `volume_type` of `"io1"`, and must be specified if
-               using that type
-        :param str kms_key_id: Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        :param float volume_size: The size of the volume in gibibytes (GiB).
-        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"sc1"`, or `"st1"`. (Default: `"standard"`).
-        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if device_name is not None:
@@ -1709,45 +1208,26 @@ class InstanceRootBlockDevice(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Whether the volume should be destroyed
-        on instance termination (Default: `true`).
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The name of the device to mount.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Enable volume encryption. (Default: `false`). Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        The amount of provisioned
-        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-        This is only valid for `volume_type` of `"io1"`, and must be specified if
-        using that type
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
-        """
-        Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
@@ -1758,17 +1238,11 @@ class InstanceRootBlockDevice(dict):
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of the volume in gibibytes (GiB).
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"sc1"`, or `"st1"`. (Default: `"standard"`).
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -1923,14 +1397,6 @@ class LaunchTemplateBlockDeviceMapping(dict):
                  ebs: Optional['outputs.LaunchTemplateBlockDeviceMappingEbs'] = None,
                  no_device: Optional[str] = None,
                  virtual_name: Optional[str] = None):
-        """
-        :param str device_name: The name of the device to mount.
-        :param 'LaunchTemplateBlockDeviceMappingEbsArgs' ebs: Configure EBS volume properties.
-        :param str no_device: Suppresses the specified device included in the AMI's block device mapping.
-        :param str virtual_name: The [Instance Store Device
-               Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
-               (e.g. `"ephemeral0"`).
-        """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
@@ -1943,35 +1409,21 @@ class LaunchTemplateBlockDeviceMapping(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The name of the device to mount.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def ebs(self) -> Optional['outputs.LaunchTemplateBlockDeviceMappingEbs']:
-        """
-        Configure EBS volume properties.
-        """
         return pulumi.get(self, "ebs")
 
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[str]:
-        """
-        Suppresses the specified device included in the AMI's block device mapping.
-        """
         return pulumi.get(self, "no_device")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> Optional[str]:
-        """
-        The [Instance Store Device
-        Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
-        (e.g. `"ephemeral0"`).
-        """
         return pulumi.get(self, "virtual_name")
 
     def _translate_property(self, prop):
@@ -1988,19 +1440,6 @@ class LaunchTemplateBlockDeviceMappingEbs(dict):
                  snapshot_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param str delete_on_termination: Whether the volume should be destroyed on instance termination. Defaults to `false` if not set. See [Preserving Amazon EBS Volumes on Instance Termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination) for more information.
-        :param str encrypted: Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-               on the volume (Default: `false`). Cannot be used with `snapshot_id`.
-        :param float iops: The amount of provisioned
-               [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-               This must be set with a `volume_type` of `"io1"`.
-        :param str kms_key_id: The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume.
-               `encrypted` must be set to `true` when this is set.
-        :param str snapshot_id: The Snapshot ID to mount.
-        :param float volume_size: The size of the volume in gigabytes.
-        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, or `"io1"`. (Default: `"standard"`).
-        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if encrypted is not None:
@@ -2019,61 +1458,36 @@ class LaunchTemplateBlockDeviceMappingEbs(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[str]:
-        """
-        Whether the volume should be destroyed on instance termination. Defaults to `false` if not set. See [Preserving Amazon EBS Volumes on Instance Termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination) for more information.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
-        """
-        Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-        on the volume (Default: `false`). Cannot be used with `snapshot_id`.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        The amount of provisioned
-        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-        This must be set with a `volume_type` of `"io1"`.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
-        """
-        The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted volume.
-        `encrypted` must be set to `true` when this is set.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
-        """
-        The Snapshot ID to mount.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of the volume in gigabytes.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of volume. Can be `"standard"`, `"gp2"`, or `"io1"`. (Default: `"standard"`).
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -2085,10 +1499,6 @@ class LaunchTemplateCapacityReservationSpecification(dict):
     def __init__(__self__, *,
                  capacity_reservation_preference: Optional[str] = None,
                  capacity_reservation_target: Optional['outputs.LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget'] = None):
-        """
-        :param str capacity_reservation_preference: Indicates the instance's Capacity Reservation preferences. Can be `open` or `none`. (Default `none`).
-        :param 'LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetArgs' capacity_reservation_target: Used to target a specific Capacity Reservation:
-        """
         if capacity_reservation_preference is not None:
             pulumi.set(__self__, "capacity_reservation_preference", capacity_reservation_preference)
         if capacity_reservation_target is not None:
@@ -2097,17 +1507,11 @@ class LaunchTemplateCapacityReservationSpecification(dict):
     @property
     @pulumi.getter(name="capacityReservationPreference")
     def capacity_reservation_preference(self) -> Optional[str]:
-        """
-        Indicates the instance's Capacity Reservation preferences. Can be `open` or `none`. (Default `none`).
-        """
         return pulumi.get(self, "capacity_reservation_preference")
 
     @property
     @pulumi.getter(name="capacityReservationTarget")
     def capacity_reservation_target(self) -> Optional['outputs.LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget']:
-        """
-        Used to target a specific Capacity Reservation:
-        """
         return pulumi.get(self, "capacity_reservation_target")
 
     def _translate_property(self, prop):
@@ -2118,18 +1522,12 @@ class LaunchTemplateCapacityReservationSpecification(dict):
 class LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget(dict):
     def __init__(__self__, *,
                  capacity_reservation_id: Optional[str] = None):
-        """
-        :param str capacity_reservation_id: The ID of the Capacity Reservation to target.
-        """
         if capacity_reservation_id is not None:
             pulumi.set(__self__, "capacity_reservation_id", capacity_reservation_id)
 
     @property
     @pulumi.getter(name="capacityReservationId")
     def capacity_reservation_id(self) -> Optional[str]:
-        """
-        The ID of the Capacity Reservation to target.
-        """
         return pulumi.get(self, "capacity_reservation_id")
 
     def _translate_property(self, prop):
@@ -2141,11 +1539,6 @@ class LaunchTemplateCpuOptions(dict):
     def __init__(__self__, *,
                  core_count: Optional[float] = None,
                  threads_per_core: Optional[float] = None):
-        """
-        :param float core_count: The number of CPU cores for the instance.
-        :param float threads_per_core: The number of threads per CPU core. To disable Intel Hyper-Threading Technology for the instance, specify a value of 1.
-               Otherwise, specify the default value of 2.
-        """
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
         if threads_per_core is not None:
@@ -2154,18 +1547,11 @@ class LaunchTemplateCpuOptions(dict):
     @property
     @pulumi.getter(name="coreCount")
     def core_count(self) -> Optional[float]:
-        """
-        The number of CPU cores for the instance.
-        """
         return pulumi.get(self, "core_count")
 
     @property
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[float]:
-        """
-        The number of threads per CPU core. To disable Intel Hyper-Threading Technology for the instance, specify a value of 1.
-        Otherwise, specify the default value of 2.
-        """
         return pulumi.get(self, "threads_per_core")
 
     def _translate_property(self, prop):
@@ -2176,18 +1562,12 @@ class LaunchTemplateCpuOptions(dict):
 class LaunchTemplateCreditSpecification(dict):
     def __init__(__self__, *,
                  cpu_credits: Optional[str] = None):
-        """
-        :param str cpu_credits: The credit option for CPU usage. Can be `"standard"` or `"unlimited"`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-        """
         if cpu_credits is not None:
             pulumi.set(__self__, "cpu_credits", cpu_credits)
 
     @property
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> Optional[str]:
-        """
-        The credit option for CPU usage. Can be `"standard"` or `"unlimited"`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-        """
         return pulumi.get(self, "cpu_credits")
 
     def _translate_property(self, prop):
@@ -2198,17 +1578,11 @@ class LaunchTemplateCreditSpecification(dict):
 class LaunchTemplateElasticGpuSpecification(dict):
     def __init__(__self__, *,
                  type: str):
-        """
-        :param str type: The [Elastic GPU Type](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html#elastic-gpus-basics)
-        """
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The [Elastic GPU Type](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-gpus.html#elastic-gpus-basics)
-        """
         return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
@@ -2219,17 +1593,11 @@ class LaunchTemplateElasticGpuSpecification(dict):
 class LaunchTemplateElasticInferenceAccelerator(dict):
     def __init__(__self__, *,
                  type: str):
-        """
-        :param str type: Accelerator type.
-        """
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Accelerator type.
-        """
         return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
@@ -2240,17 +1608,11 @@ class LaunchTemplateElasticInferenceAccelerator(dict):
 class LaunchTemplateHibernationOptions(dict):
     def __init__(__self__, *,
                  configured: bool):
-        """
-        :param bool configured: If set to `true`, the launched EC2 instance will hibernation enabled.
-        """
         pulumi.set(__self__, "configured", configured)
 
     @property
     @pulumi.getter
     def configured(self) -> bool:
-        """
-        If set to `true`, the launched EC2 instance will hibernation enabled.
-        """
         return pulumi.get(self, "configured")
 
     def _translate_property(self, prop):
@@ -2262,10 +1624,6 @@ class LaunchTemplateIamInstanceProfile(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  name: Optional[str] = None):
-        """
-        :param str arn: The Amazon Resource Name (ARN) of the instance profile.
-        :param str name: The name of the instance profile.
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if name is not None:
@@ -2274,17 +1632,11 @@ class LaunchTemplateIamInstanceProfile(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
-        """
-        The Amazon Resource Name (ARN) of the instance profile.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the instance profile.
-        """
         return pulumi.get(self, "name")
 
     def _translate_property(self, prop):
@@ -2296,10 +1648,6 @@ class LaunchTemplateInstanceMarketOptions(dict):
     def __init__(__self__, *,
                  market_type: Optional[str] = None,
                  spot_options: Optional['outputs.LaunchTemplateInstanceMarketOptionsSpotOptions'] = None):
-        """
-        :param str market_type: The market type. Can be `spot`.
-        :param 'LaunchTemplateInstanceMarketOptionsSpotOptionsArgs' spot_options: The options for [Spot Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
-        """
         if market_type is not None:
             pulumi.set(__self__, "market_type", market_type)
         if spot_options is not None:
@@ -2308,17 +1656,11 @@ class LaunchTemplateInstanceMarketOptions(dict):
     @property
     @pulumi.getter(name="marketType")
     def market_type(self) -> Optional[str]:
-        """
-        The market type. Can be `spot`.
-        """
         return pulumi.get(self, "market_type")
 
     @property
     @pulumi.getter(name="spotOptions")
     def spot_options(self) -> Optional['outputs.LaunchTemplateInstanceMarketOptionsSpotOptions']:
-        """
-        The options for [Spot Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
-        """
         return pulumi.get(self, "spot_options")
 
     def _translate_property(self, prop):
@@ -2333,14 +1675,6 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions(dict):
                  max_price: Optional[str] = None,
                  spot_instance_type: Optional[str] = None,
                  valid_until: Optional[str] = None):
-        """
-        :param float block_duration_minutes: The required duration in minutes. This value must be a multiple of 60.
-        :param str instance_interruption_behavior: The behavior when a Spot Instance is interrupted. Can be `hibernate`,
-               `stop`, or `terminate`. (Default: `terminate`).
-        :param str max_price: The maximum hourly price you're willing to pay for the Spot Instances.
-        :param str spot_instance_type: The Spot Instance request type. Can be `one-time`, or `persistent`.
-        :param str valid_until: The end date of the request.
-        """
         if block_duration_minutes is not None:
             pulumi.set(__self__, "block_duration_minutes", block_duration_minutes)
         if instance_interruption_behavior is not None:
@@ -2355,42 +1689,26 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions(dict):
     @property
     @pulumi.getter(name="blockDurationMinutes")
     def block_duration_minutes(self) -> Optional[float]:
-        """
-        The required duration in minutes. This value must be a multiple of 60.
-        """
         return pulumi.get(self, "block_duration_minutes")
 
     @property
     @pulumi.getter(name="instanceInterruptionBehavior")
     def instance_interruption_behavior(self) -> Optional[str]:
-        """
-        The behavior when a Spot Instance is interrupted. Can be `hibernate`,
-        `stop`, or `terminate`. (Default: `terminate`).
-        """
         return pulumi.get(self, "instance_interruption_behavior")
 
     @property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> Optional[str]:
-        """
-        The maximum hourly price you're willing to pay for the Spot Instances.
-        """
         return pulumi.get(self, "max_price")
 
     @property
     @pulumi.getter(name="spotInstanceType")
     def spot_instance_type(self) -> Optional[str]:
-        """
-        The Spot Instance request type. Can be `one-time`, or `persistent`.
-        """
         return pulumi.get(self, "spot_instance_type")
 
     @property
     @pulumi.getter(name="validUntil")
     def valid_until(self) -> Optional[str]:
-        """
-        The end date of the request.
-        """
         return pulumi.get(self, "valid_until")
 
     def _translate_property(self, prop):
@@ -2401,17 +1719,11 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions(dict):
 class LaunchTemplateLicenseSpecification(dict):
     def __init__(__self__, *,
                  license_configuration_arn: str):
-        """
-        :param str license_configuration_arn: ARN of the license configuration.
-        """
         pulumi.set(__self__, "license_configuration_arn", license_configuration_arn)
 
     @property
     @pulumi.getter(name="licenseConfigurationArn")
     def license_configuration_arn(self) -> str:
-        """
-        ARN of the license configuration.
-        """
         return pulumi.get(self, "license_configuration_arn")
 
     def _translate_property(self, prop):
@@ -2424,11 +1736,6 @@ class LaunchTemplateMetadataOptions(dict):
                  http_endpoint: Optional[str] = None,
                  http_put_response_hop_limit: Optional[float] = None,
                  http_tokens: Optional[str] = None):
-        """
-        :param str http_endpoint: Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        :param float http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        :param str http_tokens: Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        """
         if http_endpoint is not None:
             pulumi.set(__self__, "http_endpoint", http_endpoint)
         if http_put_response_hop_limit is not None:
@@ -2439,25 +1746,16 @@ class LaunchTemplateMetadataOptions(dict):
     @property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> Optional[str]:
-        """
-        Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        """
         return pulumi.get(self, "http_endpoint")
 
     @property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> Optional[float]:
-        """
-        The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> Optional[str]:
-        """
-        Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        """
         return pulumi.get(self, "http_tokens")
 
     def _translate_property(self, prop):
@@ -2468,18 +1766,12 @@ class LaunchTemplateMetadataOptions(dict):
 class LaunchTemplateMonitoring(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
-        """
-        :param bool enabled: If `true`, the launched EC2 instance will have detailed monitoring enabled.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        If `true`, the launched EC2 instance will have detailed monitoring enabled.
-        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -2501,20 +1793,6 @@ class LaunchTemplateNetworkInterface(dict):
                  private_ip_address: Optional[str] = None,
                  security_groups: Optional[List[str]] = None,
                  subnet_id: Optional[str] = None):
-        """
-        :param str associate_public_ip_address: Associate a public ip address with the network interface.  Boolean value.
-        :param str delete_on_termination: Whether the network interface should be destroyed on instance termination. Defaults to `false` if not set.
-        :param str description: Description of the network interface.
-        :param float device_index: The integer index of the network interface attachment.
-        :param float ipv4_address_count: The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4_addresses`
-        :param List[str] ipv4_addresses: One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
-        :param float ipv6_address_count: The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6_addresses`
-        :param List[str] ipv6_addresses: One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
-        :param str network_interface_id: The ID of the network interface to attach.
-        :param str private_ip_address: The primary private IPv4 address.
-        :param List[str] security_groups: A list of security group IDs to associate.
-        :param str subnet_id: The VPC Subnet ID to associate.
-        """
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
         if delete_on_termination is not None:
@@ -2543,97 +1821,61 @@ class LaunchTemplateNetworkInterface(dict):
     @property
     @pulumi.getter(name="associatePublicIpAddress")
     def associate_public_ip_address(self) -> Optional[str]:
-        """
-        Associate a public ip address with the network interface.  Boolean value.
-        """
         return pulumi.get(self, "associate_public_ip_address")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[str]:
-        """
-        Whether the network interface should be destroyed on instance termination. Defaults to `false` if not set.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        Description of the network interface.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceIndex")
     def device_index(self) -> Optional[float]:
-        """
-        The integer index of the network interface attachment.
-        """
         return pulumi.get(self, "device_index")
 
     @property
     @pulumi.getter(name="ipv4AddressCount")
     def ipv4_address_count(self) -> Optional[float]:
-        """
-        The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4_addresses`
-        """
         return pulumi.get(self, "ipv4_address_count")
 
     @property
     @pulumi.getter(name="ipv4Addresses")
     def ipv4_addresses(self) -> Optional[List[str]]:
-        """
-        One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
-        """
         return pulumi.get(self, "ipv4_addresses")
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> Optional[float]:
-        """
-        The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6_addresses`
-        """
         return pulumi.get(self, "ipv6_address_count")
 
     @property
     @pulumi.getter(name="ipv6Addresses")
     def ipv6_addresses(self) -> Optional[List[str]]:
-        """
-        One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
-        """
         return pulumi.get(self, "ipv6_addresses")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[str]:
-        """
-        The ID of the network interface to attach.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[str]:
-        """
-        The primary private IPv4 address.
-        """
         return pulumi.get(self, "private_ip_address")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[List[str]]:
-        """
-        A list of security group IDs to associate.
-        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
-        """
-        The VPC Subnet ID to associate.
-        """
         return pulumi.get(self, "subnet_id")
 
     def _translate_property(self, prop):
@@ -2650,15 +1892,6 @@ class LaunchTemplatePlacement(dict):
                  partition_number: Optional[float] = None,
                  spread_domain: Optional[str] = None,
                  tenancy: Optional[str] = None):
-        """
-        :param str affinity: The affinity setting for an instance on a Dedicated Host.
-        :param str availability_zone: The Availability Zone for the instance.
-        :param str group_name: The name of the placement group for the instance.
-        :param str host_id: The ID of the Dedicated Host for the instance.
-        :param float partition_number: The number of the partition the instance should launch in. Valid only if the placement group strategy is set to partition.
-        :param str spread_domain: Reserved for future use.
-        :param str tenancy: The tenancy of the instance (if the instance is running in a VPC). Can be `default`, `dedicated`, or `host`.
-        """
         if affinity is not None:
             pulumi.set(__self__, "affinity", affinity)
         if availability_zone is not None:
@@ -2677,57 +1910,36 @@ class LaunchTemplatePlacement(dict):
     @property
     @pulumi.getter
     def affinity(self) -> Optional[str]:
-        """
-        The affinity setting for an instance on a Dedicated Host.
-        """
         return pulumi.get(self, "affinity")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[str]:
-        """
-        The Availability Zone for the instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[str]:
-        """
-        The name of the placement group for the instance.
-        """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="hostId")
     def host_id(self) -> Optional[str]:
-        """
-        The ID of the Dedicated Host for the instance.
-        """
         return pulumi.get(self, "host_id")
 
     @property
     @pulumi.getter(name="partitionNumber")
     def partition_number(self) -> Optional[float]:
-        """
-        The number of the partition the instance should launch in. Valid only if the placement group strategy is set to partition.
-        """
         return pulumi.get(self, "partition_number")
 
     @property
     @pulumi.getter(name="spreadDomain")
     def spread_domain(self) -> Optional[str]:
-        """
-        Reserved for future use.
-        """
         return pulumi.get(self, "spread_domain")
 
     @property
     @pulumi.getter
     def tenancy(self) -> Optional[str]:
-        """
-        The tenancy of the instance (if the instance is running in a VPC). Can be `default`, `dedicated`, or `host`.
-        """
         return pulumi.get(self, "tenancy")
 
     def _translate_property(self, prop):
@@ -2739,10 +1951,6 @@ class LaunchTemplateTagSpecification(dict):
     def __init__(__self__, *,
                  resource_type: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
-        """
-        :param str resource_type: The type of resource to tag. Valid values are `instance` and `volume`.
-        :param Mapping[str, str] tags: A map of tags to assign to the resource.
-        """
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if tags is not None:
@@ -2751,17 +1959,11 @@ class LaunchTemplateTagSpecification(dict):
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[str]:
-        """
-        The type of resource to tag. Valid values are `instance` and `volume`.
-        """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def _translate_property(self, prop):
@@ -2780,19 +1982,6 @@ class NetworkAclEgress(dict):
                  icmp_code: Optional[float] = None,
                  icmp_type: Optional[float] = None,
                  ipv6_cidr_block: Optional[str] = None):
-        """
-        :param str action: The action to take.
-        :param float from_port: The from port to match.
-        :param str protocol: The protocol to match. If using the -1 'all'
-               protocol, you must specify a from and to port of 0.
-        :param float rule_no: The rule number. Used for ordering.
-        :param float to_port: The to port to match.
-        :param str cidr_block: The CIDR block to match. This must be a
-               valid network mask.
-        :param float icmp_code: The ICMP type code to be used. Default 0.
-        :param float icmp_type: The ICMP type to be used. Default 0.
-        :param str ipv6_cidr_block: The IPv6 CIDR block.
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -2810,75 +1999,46 @@ class NetworkAclEgress(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        The action to take.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> float:
-        """
-        The from port to match.
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
-        """
-        The protocol to match. If using the -1 'all'
-        protocol, you must specify a from and to port of 0.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="ruleNo")
     def rule_no(self) -> float:
-        """
-        The rule number. Used for ordering.
-        """
         return pulumi.get(self, "rule_no")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> float:
-        """
-        The to port to match.
-        """
         return pulumi.get(self, "to_port")
 
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block to match. This must be a
-        valid network mask.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="icmpCode")
     def icmp_code(self) -> Optional[float]:
-        """
-        The ICMP type code to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_code")
 
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[float]:
-        """
-        The ICMP type to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_type")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
-        """
-        The IPv6 CIDR block.
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     def _translate_property(self, prop):
@@ -2897,19 +2057,6 @@ class NetworkAclIngress(dict):
                  icmp_code: Optional[float] = None,
                  icmp_type: Optional[float] = None,
                  ipv6_cidr_block: Optional[str] = None):
-        """
-        :param str action: The action to take.
-        :param float from_port: The from port to match.
-        :param str protocol: The protocol to match. If using the -1 'all'
-               protocol, you must specify a from and to port of 0.
-        :param float rule_no: The rule number. Used for ordering.
-        :param float to_port: The to port to match.
-        :param str cidr_block: The CIDR block to match. This must be a
-               valid network mask.
-        :param float icmp_code: The ICMP type code to be used. Default 0.
-        :param float icmp_type: The ICMP type to be used. Default 0.
-        :param str ipv6_cidr_block: The IPv6 CIDR block.
-        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -2927,75 +2074,46 @@ class NetworkAclIngress(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
-        """
-        The action to take.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> float:
-        """
-        The from port to match.
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
-        """
-        The protocol to match. If using the -1 'all'
-        protocol, you must specify a from and to port of 0.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="ruleNo")
     def rule_no(self) -> float:
-        """
-        The rule number. Used for ordering.
-        """
         return pulumi.get(self, "rule_no")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> float:
-        """
-        The to port to match.
-        """
         return pulumi.get(self, "to_port")
 
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block to match. This must be a
-        valid network mask.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="icmpCode")
     def icmp_code(self) -> Optional[float]:
-        """
-        The ICMP type code to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_code")
 
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[float]:
-        """
-        The ICMP type to be used. Default 0.
-        """
         return pulumi.get(self, "icmp_type")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
-        """
-        The IPv6 CIDR block.
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     def _translate_property(self, prop):
@@ -3008,10 +2126,6 @@ class NetworkInterfaceAttachment(dict):
                  device_index: float,
                  instance: str,
                  attachment_id: Optional[str] = None):
-        """
-        :param float device_index: Integer to define the devices index.
-        :param str instance: ID of the instance to attach to.
-        """
         pulumi.set(__self__, "device_index", device_index)
         pulumi.set(__self__, "instance", instance)
         if attachment_id is not None:
@@ -3020,17 +2134,11 @@ class NetworkInterfaceAttachment(dict):
     @property
     @pulumi.getter(name="deviceIndex")
     def device_index(self) -> float:
-        """
-        Integer to define the devices index.
-        """
         return pulumi.get(self, "device_index")
 
     @property
     @pulumi.getter
     def instance(self) -> str:
-        """
-        ID of the instance to attach to.
-        """
         return pulumi.get(self, "instance")
 
     @property
@@ -3048,16 +2156,6 @@ class PeeringConnectionOptionsAccepter(dict):
                  allow_classic_link_to_remote_vpc: Optional[bool] = None,
                  allow_remote_vpc_dns_resolution: Optional[bool] = None,
                  allow_vpc_to_remote_classic_link: Optional[bool] = None):
-        """
-        :param bool allow_classic_link_to_remote_vpc: Allow a local linked EC2-Classic instance to communicate
-               with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-               to the remote VPC. This option is not supported for inter-region VPC peering.
-        :param bool allow_remote_vpc_dns_resolution: Allow a local VPC to resolve public DNS hostnames to
-               private IP addresses when queried from instances in the peer VPC.
-        :param bool allow_vpc_to_remote_classic_link: Allow a local VPC to communicate with a linked EC2-Classic
-               instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-               connection. This option is not supported for inter-region VPC peering.
-        """
         if allow_classic_link_to_remote_vpc is not None:
             pulumi.set(__self__, "allow_classic_link_to_remote_vpc", allow_classic_link_to_remote_vpc)
         if allow_remote_vpc_dns_resolution is not None:
@@ -3068,30 +2166,16 @@ class PeeringConnectionOptionsAccepter(dict):
     @property
     @pulumi.getter(name="allowClassicLinkToRemoteVpc")
     def allow_classic_link_to_remote_vpc(self) -> Optional[bool]:
-        """
-        Allow a local linked EC2-Classic instance to communicate
-        with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-        to the remote VPC. This option is not supported for inter-region VPC peering.
-        """
         return pulumi.get(self, "allow_classic_link_to_remote_vpc")
 
     @property
     @pulumi.getter(name="allowRemoteVpcDnsResolution")
     def allow_remote_vpc_dns_resolution(self) -> Optional[bool]:
-        """
-        Allow a local VPC to resolve public DNS hostnames to
-        private IP addresses when queried from instances in the peer VPC.
-        """
         return pulumi.get(self, "allow_remote_vpc_dns_resolution")
 
     @property
     @pulumi.getter(name="allowVpcToRemoteClassicLink")
     def allow_vpc_to_remote_classic_link(self) -> Optional[bool]:
-        """
-        Allow a local VPC to communicate with a linked EC2-Classic
-        instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-        connection. This option is not supported for inter-region VPC peering.
-        """
         return pulumi.get(self, "allow_vpc_to_remote_classic_link")
 
     def _translate_property(self, prop):
@@ -3104,16 +2188,6 @@ class PeeringConnectionOptionsRequester(dict):
                  allow_classic_link_to_remote_vpc: Optional[bool] = None,
                  allow_remote_vpc_dns_resolution: Optional[bool] = None,
                  allow_vpc_to_remote_classic_link: Optional[bool] = None):
-        """
-        :param bool allow_classic_link_to_remote_vpc: Allow a local linked EC2-Classic instance to communicate
-               with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-               to the remote VPC. This option is not supported for inter-region VPC peering.
-        :param bool allow_remote_vpc_dns_resolution: Allow a local VPC to resolve public DNS hostnames to
-               private IP addresses when queried from instances in the peer VPC.
-        :param bool allow_vpc_to_remote_classic_link: Allow a local VPC to communicate with a linked EC2-Classic
-               instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-               connection. This option is not supported for inter-region VPC peering.
-        """
         if allow_classic_link_to_remote_vpc is not None:
             pulumi.set(__self__, "allow_classic_link_to_remote_vpc", allow_classic_link_to_remote_vpc)
         if allow_remote_vpc_dns_resolution is not None:
@@ -3124,30 +2198,16 @@ class PeeringConnectionOptionsRequester(dict):
     @property
     @pulumi.getter(name="allowClassicLinkToRemoteVpc")
     def allow_classic_link_to_remote_vpc(self) -> Optional[bool]:
-        """
-        Allow a local linked EC2-Classic instance to communicate
-        with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-        to the remote VPC. This option is not supported for inter-region VPC peering.
-        """
         return pulumi.get(self, "allow_classic_link_to_remote_vpc")
 
     @property
     @pulumi.getter(name="allowRemoteVpcDnsResolution")
     def allow_remote_vpc_dns_resolution(self) -> Optional[bool]:
-        """
-        Allow a local VPC to resolve public DNS hostnames to
-        private IP addresses when queried from instances in the peer VPC.
-        """
         return pulumi.get(self, "allow_remote_vpc_dns_resolution")
 
     @property
     @pulumi.getter(name="allowVpcToRemoteClassicLink")
     def allow_vpc_to_remote_classic_link(self) -> Optional[bool]:
-        """
-        Allow a local VPC to communicate with a linked EC2-Classic
-        instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-        connection. This option is not supported for inter-region VPC peering.
-        """
         return pulumi.get(self, "allow_vpc_to_remote_classic_link")
 
     def _translate_property(self, prop):
@@ -3166,17 +2226,6 @@ class RouteTableRoute(dict):
                  network_interface_id: Optional[str] = None,
                  transit_gateway_id: Optional[str] = None,
                  vpc_peering_connection_id: Optional[str] = None):
-        """
-        :param str cidr_block: The CIDR block of the route.
-        :param str egress_only_gateway_id: Identifier of a VPC Egress Only Internet Gateway.
-        :param str gateway_id: Identifier of a VPC internet gateway or a virtual private gateway.
-        :param str instance_id: Identifier of an EC2 instance.
-        :param str ipv6_cidr_block: The Ipv6 CIDR block of the route.
-        :param str nat_gateway_id: Identifier of a VPC NAT gateway.
-        :param str network_interface_id: Identifier of an EC2 network interface.
-        :param str transit_gateway_id: Identifier of an EC2 Transit Gateway.
-        :param str vpc_peering_connection_id: Identifier of a VPC peering connection.
-        """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if egress_only_gateway_id is not None:
@@ -3199,73 +2248,46 @@ class RouteTableRoute(dict):
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block of the route.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="egressOnlyGatewayId")
     def egress_only_gateway_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC Egress Only Internet Gateway.
-        """
         return pulumi.get(self, "egress_only_gateway_id")
 
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC internet gateway or a virtual private gateway.
-        """
         return pulumi.get(self, "gateway_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
-        """
-        Identifier of an EC2 instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
-        """
-        The Ipv6 CIDR block of the route.
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     @property
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC NAT gateway.
-        """
         return pulumi.get(self, "nat_gateway_id")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[str]:
-        """
-        Identifier of an EC2 network interface.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="transitGatewayId")
     def transit_gateway_id(self) -> Optional[str]:
-        """
-        Identifier of an EC2 Transit Gateway.
-        """
         return pulumi.get(self, "transit_gateway_id")
 
     @property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> Optional[str]:
-        """
-        Identifier of a VPC peering connection.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 
     def _translate_property(self, prop):
@@ -3284,20 +2306,6 @@ class SecurityGroupEgress(dict):
                  prefix_list_ids: Optional[List[str]] = None,
                  security_groups: Optional[List[str]] = None,
                  self: Optional[bool] = None):
-        """
-        :param float from_port: The start port (or ICMP type number if protocol is "icmp")
-        :param str protocol: The protocol. If you select a protocol of
-               "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "from_port" and "to_port" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-        :param float to_port: The end range port (or ICMP code if protocol is "icmp").
-        :param List[str] cidr_blocks: List of CIDR blocks.
-        :param str description: Description of this egress rule.
-        :param List[str] ipv6_cidr_blocks: List of IPv6 CIDR blocks.
-        :param List[str] prefix_list_ids: List of prefix list IDs (for allowing access to VPC endpoints)
-        :param List[str] security_groups: List of security group Group Names if using
-               EC2-Classic, or Group IDs if using a VPC.
-        :param bool self: If true, the security group itself will be added as
-               a source to this egress rule.
-        """
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "to_port", to_port)
@@ -3317,76 +2325,46 @@ class SecurityGroupEgress(dict):
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> float:
-        """
-        The start port (or ICMP type number if protocol is "icmp")
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
-        """
-        The protocol. If you select a protocol of
-        "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "from_port" and "to_port" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> float:
-        """
-        The end range port (or ICMP code if protocol is "icmp").
-        """
         return pulumi.get(self, "to_port")
 
     @property
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Optional[List[str]]:
-        """
-        List of CIDR blocks.
-        """
         return pulumi.get(self, "cidr_blocks")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        Description of this egress rule.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
     def ipv6_cidr_blocks(self) -> Optional[List[str]]:
-        """
-        List of IPv6 CIDR blocks.
-        """
         return pulumi.get(self, "ipv6_cidr_blocks")
 
     @property
     @pulumi.getter(name="prefixListIds")
     def prefix_list_ids(self) -> Optional[List[str]]:
-        """
-        List of prefix list IDs (for allowing access to VPC endpoints)
-        """
         return pulumi.get(self, "prefix_list_ids")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[List[str]]:
-        """
-        List of security group Group Names if using
-        EC2-Classic, or Group IDs if using a VPC.
-        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter
     def self(self) -> Optional[bool]:
-        """
-        If true, the security group itself will be added as
-        a source to this egress rule.
-        """
         return pulumi.get(self, "self")
 
     def _translate_property(self, prop):
@@ -3405,20 +2383,6 @@ class SecurityGroupIngress(dict):
                  prefix_list_ids: Optional[List[str]] = None,
                  security_groups: Optional[List[str]] = None,
                  self: Optional[bool] = None):
-        """
-        :param float from_port: The start port (or ICMP type number if protocol is "icmp")
-        :param str protocol: The protocol. If you select a protocol of
-               "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "from_port" and "to_port" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-        :param float to_port: The end range port (or ICMP code if protocol is "icmp").
-        :param List[str] cidr_blocks: List of CIDR blocks.
-        :param str description: Description of this egress rule.
-        :param List[str] ipv6_cidr_blocks: List of IPv6 CIDR blocks.
-        :param List[str] prefix_list_ids: List of prefix list IDs (for allowing access to VPC endpoints)
-        :param List[str] security_groups: List of security group Group Names if using
-               EC2-Classic, or Group IDs if using a VPC.
-        :param bool self: If true, the security group itself will be added as
-               a source to this egress rule.
-        """
         pulumi.set(__self__, "from_port", from_port)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "to_port", to_port)
@@ -3438,76 +2402,46 @@ class SecurityGroupIngress(dict):
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> float:
-        """
-        The start port (or ICMP type number if protocol is "icmp")
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
-        """
-        The protocol. If you select a protocol of
-        "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "from_port" and "to_port" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> float:
-        """
-        The end range port (or ICMP code if protocol is "icmp").
-        """
         return pulumi.get(self, "to_port")
 
     @property
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Optional[List[str]]:
-        """
-        List of CIDR blocks.
-        """
         return pulumi.get(self, "cidr_blocks")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        Description of this egress rule.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
     def ipv6_cidr_blocks(self) -> Optional[List[str]]:
-        """
-        List of IPv6 CIDR blocks.
-        """
         return pulumi.get(self, "ipv6_cidr_blocks")
 
     @property
     @pulumi.getter(name="prefixListIds")
     def prefix_list_ids(self) -> Optional[List[str]]:
-        """
-        List of prefix list IDs (for allowing access to VPC endpoints)
-        """
         return pulumi.get(self, "prefix_list_ids")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[List[str]]:
-        """
-        List of security group Group Names if using
-        EC2-Classic, or Group IDs if using a VPC.
-        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter
     def self(self) -> Optional[bool]:
-        """
-        If true, the security group itself will be added as
-        a source to this egress rule.
-        """
         return pulumi.get(self, "self")
 
     def _translate_property(self, prop):
@@ -3537,14 +2471,6 @@ class SpotFleetRequestLaunchSpecification(dict):
                  user_data: Optional[str] = None,
                  vpc_security_group_ids: Optional[List[str]] = None,
                  weighted_capacity: Optional[str] = None):
-        """
-        :param str instance_type: The type of instance to request.
-        :param str availability_zone: The availability zone in which to place the request.
-        :param str spot_price: The maximum spot bid for this override request.
-        :param str subnet_id: The subnet in which to launch the requested instance.
-        :param Mapping[str, str] tags: A map of tags to assign to the resource.
-        :param str weighted_capacity: The capacity added to the fleet by a fulfilled request.
-        """
         pulumi.set(__self__, "ami", ami)
         pulumi.set(__self__, "instance_type", instance_type)
         if associate_public_ip_address is not None:
@@ -3592,9 +2518,6 @@ class SpotFleetRequestLaunchSpecification(dict):
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
-        """
-        The type of instance to request.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
@@ -3605,9 +2528,6 @@ class SpotFleetRequestLaunchSpecification(dict):
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[str]:
-        """
-        The availability zone in which to place the request.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -3663,25 +2583,16 @@ class SpotFleetRequestLaunchSpecification(dict):
     @property
     @pulumi.getter(name="spotPrice")
     def spot_price(self) -> Optional[str]:
-        """
-        The maximum spot bid for this override request.
-        """
         return pulumi.get(self, "spot_price")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
-        """
-        The subnet in which to launch the requested instance.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
@@ -3697,9 +2608,6 @@ class SpotFleetRequestLaunchSpecification(dict):
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> Optional[str]:
-        """
-        The capacity added to the fleet by a fulfilled request.
-        """
         return pulumi.get(self, "weighted_capacity")
 
     def _translate_property(self, prop):
@@ -3860,10 +2768,6 @@ class SpotFleetRequestLaunchTemplateConfig(dict):
     def __init__(__self__, *,
                  launch_template_specification: 'outputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification',
                  overrides: Optional[List['outputs.SpotFleetRequestLaunchTemplateConfigOverride']] = None):
-        """
-        :param 'SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs' launch_template_specification: Launch template specification. See Launch Template Specification below for more details.
-        :param List['SpotFleetRequestLaunchTemplateConfigOverrideArgs'] overrides: One or more override configurations. See Overrides below for more details.
-        """
         pulumi.set(__self__, "launch_template_specification", launch_template_specification)
         if overrides is not None:
             pulumi.set(__self__, "overrides", overrides)
@@ -3871,17 +2775,11 @@ class SpotFleetRequestLaunchTemplateConfig(dict):
     @property
     @pulumi.getter(name="launchTemplateSpecification")
     def launch_template_specification(self) -> 'outputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification':
-        """
-        Launch template specification. See Launch Template Specification below for more details.
-        """
         return pulumi.get(self, "launch_template_specification")
 
     @property
     @pulumi.getter
     def overrides(self) -> Optional[List['outputs.SpotFleetRequestLaunchTemplateConfigOverride']]:
-        """
-        One or more override configurations. See Overrides below for more details.
-        """
         return pulumi.get(self, "overrides")
 
     def _translate_property(self, prop):
@@ -3894,11 +2792,6 @@ class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  version: Optional[str] = None):
-        """
-        :param str id: The ID of the launch template. Conflicts with `name`.
-        :param str name: The name of the launch template. Conflicts with `id`.
-        :param str version: Template version. Unlike the autoscaling equivalent, does not support `$Latest` or `$Default`, so use the launch_template resource's attribute, e.g. `"${aws_launch_template.foo.latest_version}"`. It will use the default version if omitted.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -3909,25 +2802,16 @@ class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of the launch template. Conflicts with `name`.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the launch template. Conflicts with `id`.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
-        """
-        Template version. Unlike the autoscaling equivalent, does not support `$Latest` or `$Default`, so use the launch_template resource's attribute, e.g. `"${aws_launch_template.foo.latest_version}"`. It will use the default version if omitted.
-        """
         return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
@@ -3943,14 +2827,6 @@ class SpotFleetRequestLaunchTemplateConfigOverride(dict):
                  spot_price: Optional[str] = None,
                  subnet_id: Optional[str] = None,
                  weighted_capacity: Optional[float] = None):
-        """
-        :param str availability_zone: The availability zone in which to place the request.
-        :param str instance_type: The type of instance to request.
-        :param float priority: The priority for the launch template override. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority.
-        :param str spot_price: The maximum spot bid for this override request.
-        :param str subnet_id: The subnet in which to launch the requested instance.
-        :param float weighted_capacity: The capacity added to the fleet by a fulfilled request.
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if instance_type is not None:
@@ -3967,49 +2843,31 @@ class SpotFleetRequestLaunchTemplateConfigOverride(dict):
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[str]:
-        """
-        The availability zone in which to place the request.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
-        """
-        The type of instance to request.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def priority(self) -> Optional[float]:
-        """
-        The priority for the launch template override. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority.
-        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter(name="spotPrice")
     def spot_price(self) -> Optional[str]:
-        """
-        The maximum spot bid for this override request.
-        """
         return pulumi.get(self, "spot_price")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
-        """
-        The subnet in which to launch the requested instance.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> Optional[float]:
-        """
-        The capacity added to the fleet by a fulfilled request.
-        """
         return pulumi.get(self, "weighted_capacity")
 
     def _translate_property(self, prop):
@@ -4020,18 +2878,12 @@ class SpotFleetRequestLaunchTemplateConfigOverride(dict):
 class SpotInstanceRequestCreditSpecification(dict):
     def __init__(__self__, *,
                  cpu_credits: Optional[str] = None):
-        """
-        :param str cpu_credits: The credit option for CPU usage. Can be `"standard"` or `"unlimited"`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-        """
         if cpu_credits is not None:
             pulumi.set(__self__, "cpu_credits", cpu_credits)
 
     @property
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> Optional[str]:
-        """
-        The credit option for CPU usage. Can be `"standard"` or `"unlimited"`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-        """
         return pulumi.get(self, "cpu_credits")
 
     def _translate_property(self, prop):
@@ -4050,22 +2902,6 @@ class SpotInstanceRequestEbsBlockDevice(dict):
                  volume_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param str device_name: The name of the device to mount.
-        :param bool delete_on_termination: Whether the volume should be destroyed
-               on instance termination (Default: `true`).
-        :param bool encrypted: Enables [EBS
-               encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-               on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
-        :param float iops: The amount of provisioned
-               [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-               This must be set with a `volume_type` of `"io1"`.
-        :param str kms_key_id: Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        :param str snapshot_id: The Snapshot ID to mount.
-        :param float volume_size: The size of the volume in gibibytes (GiB).
-        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`,
-               or `"io1"`. (Default: `"gp2"`).
-        """
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
@@ -4087,54 +2923,31 @@ class SpotInstanceRequestEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The name of the device to mount.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Whether the volume should be destroyed
-        on instance termination (Default: `true`).
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Enables [EBS
-        encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-        on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        The amount of provisioned
-        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-        This must be set with a `volume_type` of `"io1"`.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
-        """
-        Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
-        """
-        The Snapshot ID to mount.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
@@ -4145,18 +2958,11 @@ class SpotInstanceRequestEbsBlockDevice(dict):
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of the volume in gibibytes (GiB).
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of volume. Can be `"standard"`, `"gp2"`,
-        or `"io1"`. (Default: `"gp2"`).
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -4169,13 +2975,6 @@ class SpotInstanceRequestEphemeralBlockDevice(dict):
                  device_name: str,
                  no_device: Optional[bool] = None,
                  virtual_name: Optional[str] = None):
-        """
-        :param str device_name: The name of the block device to mount on the instance.
-        :param bool no_device: Suppresses the specified device included in the AMI's block device mapping.
-        :param str virtual_name: The [Instance Store Device
-               Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
-               (e.g. `"ephemeral0"`).
-        """
         pulumi.set(__self__, "device_name", device_name)
         if no_device is not None:
             pulumi.set(__self__, "no_device", no_device)
@@ -4185,27 +2984,16 @@ class SpotInstanceRequestEphemeralBlockDevice(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The name of the block device to mount on the instance.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[bool]:
-        """
-        Suppresses the specified device included in the AMI's block device mapping.
-        """
         return pulumi.get(self, "no_device")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> Optional[str]:
-        """
-        The [Instance Store Device
-        Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
-        (e.g. `"ephemeral0"`).
-        """
         return pulumi.get(self, "virtual_name")
 
     def _translate_property(self, prop):
@@ -4218,11 +3006,6 @@ class SpotInstanceRequestMetadataOptions(dict):
                  http_endpoint: Optional[str] = None,
                  http_put_response_hop_limit: Optional[float] = None,
                  http_tokens: Optional[str] = None):
-        """
-        :param str http_endpoint: Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        :param float http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        :param str http_tokens: Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        """
         if http_endpoint is not None:
             pulumi.set(__self__, "http_endpoint", http_endpoint)
         if http_put_response_hop_limit is not None:
@@ -4233,25 +3016,16 @@ class SpotInstanceRequestMetadataOptions(dict):
     @property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> Optional[str]:
-        """
-        Whether the metadata service is available. Can be `"enabled"` or `"disabled"`. (Default: `"enabled"`).
-        """
         return pulumi.get(self, "http_endpoint")
 
     @property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> Optional[float]:
-        """
-        The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
-        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> Optional[str]:
-        """
-        Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
-        """
         return pulumi.get(self, "http_tokens")
 
     def _translate_property(self, prop):
@@ -4264,11 +3038,6 @@ class SpotInstanceRequestNetworkInterface(dict):
                  device_index: float,
                  network_interface_id: str,
                  delete_on_termination: Optional[bool] = None):
-        """
-        :param float device_index: The integer index of the network interface attachment. Limited by instance type.
-        :param str network_interface_id: The ID of the network interface to attach.
-        :param bool delete_on_termination: Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
-        """
         pulumi.set(__self__, "device_index", device_index)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
         if delete_on_termination is not None:
@@ -4277,25 +3046,16 @@ class SpotInstanceRequestNetworkInterface(dict):
     @property
     @pulumi.getter(name="deviceIndex")
     def device_index(self) -> float:
-        """
-        The integer index of the network interface attachment. Limited by instance type.
-        """
         return pulumi.get(self, "device_index")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> str:
-        """
-        The ID of the network interface to attach.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     def _translate_property(self, prop):
@@ -4313,19 +3073,6 @@ class SpotInstanceRequestRootBlockDevice(dict):
                  volume_id: Optional[str] = None,
                  volume_size: Optional[float] = None,
                  volume_type: Optional[str] = None):
-        """
-        :param bool delete_on_termination: Whether the volume should be destroyed
-               on instance termination (Default: `true`).
-        :param str device_name: The name of the device to mount.
-        :param bool encrypted: Enable volume encryption. (Default: `false`). Must be configured to perform drift detection.
-        :param float iops: The amount of provisioned
-               [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-               This is only valid for `volume_type` of `"io1"`, and must be specified if
-               using that type
-        :param str kms_key_id: Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        :param float volume_size: The size of the volume in gibibytes (GiB).
-        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"sc1"`, or `"st1"`. (Default: `"standard"`).
-        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if device_name is not None:
@@ -4346,45 +3093,26 @@ class SpotInstanceRequestRootBlockDevice(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
-        """
-        Whether the volume should be destroyed
-        on instance termination (Default: `true`).
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        The name of the device to mount.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Enable volume encryption. (Default: `false`). Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> Optional[float]:
-        """
-        The amount of provisioned
-        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-        This is only valid for `volume_type` of `"io1"`, and must be specified if
-        using that type
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
-        """
-        Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
@@ -4395,17 +3123,11 @@ class SpotInstanceRequestRootBlockDevice(dict):
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[float]:
-        """
-        The size of the volume in gibibytes (GiB).
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
-        """
-        The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"sc1"`, or `"st1"`. (Default: `"standard"`).
-        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -4417,10 +3139,6 @@ class TrafficMirrorFilterRuleDestinationPortRange(dict):
     def __init__(__self__, *,
                  from_port: Optional[float] = None,
                  to_port: Optional[float] = None):
-        """
-        :param float from_port: Starting port of the range
-        :param float to_port: Ending port of the range
-        """
         if from_port is not None:
             pulumi.set(__self__, "from_port", from_port)
         if to_port is not None:
@@ -4429,17 +3147,11 @@ class TrafficMirrorFilterRuleDestinationPortRange(dict):
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> Optional[float]:
-        """
-        Starting port of the range
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> Optional[float]:
-        """
-        Ending port of the range
-        """
         return pulumi.get(self, "to_port")
 
     def _translate_property(self, prop):
@@ -4451,10 +3163,6 @@ class TrafficMirrorFilterRuleSourcePortRange(dict):
     def __init__(__self__, *,
                  from_port: Optional[float] = None,
                  to_port: Optional[float] = None):
-        """
-        :param float from_port: Starting port of the range
-        :param float to_port: Ending port of the range
-        """
         if from_port is not None:
             pulumi.set(__self__, "from_port", from_port)
         if to_port is not None:
@@ -4463,17 +3171,11 @@ class TrafficMirrorFilterRuleSourcePortRange(dict):
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> Optional[float]:
-        """
-        Starting port of the range
-        """
         return pulumi.get(self, "from_port")
 
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> Optional[float]:
-        """
-        Ending port of the range
-        """
         return pulumi.get(self, "to_port")
 
     def _translate_property(self, prop):
@@ -4485,10 +3187,6 @@ class VpcEndpointDnsEntry(dict):
     def __init__(__self__, *,
                  dns_name: Optional[str] = None,
                  hosted_zone_id: Optional[str] = None):
-        """
-        :param str dns_name: The DNS name.
-        :param str hosted_zone_id: The ID of the private hosted zone.
-        """
         if dns_name is not None:
             pulumi.set(__self__, "dns_name", dns_name)
         if hosted_zone_id is not None:
@@ -4497,17 +3195,11 @@ class VpcEndpointDnsEntry(dict):
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[str]:
-        """
-        The DNS name.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="hostedZoneId")
     def hosted_zone_id(self) -> Optional[str]:
-        """
-        The ID of the private hosted zone.
-        """
         return pulumi.get(self, "hosted_zone_id")
 
     def _translate_property(self, prop):
@@ -4520,18 +3212,6 @@ class VpcPeeringConnectionAccepter(dict):
                  allow_classic_link_to_remote_vpc: Optional[bool] = None,
                  allow_remote_vpc_dns_resolution: Optional[bool] = None,
                  allow_vpc_to_remote_classic_link: Optional[bool] = None):
-        """
-        :param bool allow_classic_link_to_remote_vpc: Allow a local linked EC2-Classic instance to communicate
-               with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-               to the remote VPC.
-        :param bool allow_remote_vpc_dns_resolution: Allow a local VPC to resolve public DNS hostnames to
-               private IP addresses when queried from instances in the peer VPC. This is
-               [not supported](https://docs.aws.amazon.com/vpc/latest/peering/modify-peering-connections.html) for
-               inter-region VPC peering.
-        :param bool allow_vpc_to_remote_classic_link: Allow a local VPC to communicate with a linked EC2-Classic
-               instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-               connection.
-        """
         if allow_classic_link_to_remote_vpc is not None:
             pulumi.set(__self__, "allow_classic_link_to_remote_vpc", allow_classic_link_to_remote_vpc)
         if allow_remote_vpc_dns_resolution is not None:
@@ -4542,32 +3222,16 @@ class VpcPeeringConnectionAccepter(dict):
     @property
     @pulumi.getter(name="allowClassicLinkToRemoteVpc")
     def allow_classic_link_to_remote_vpc(self) -> Optional[bool]:
-        """
-        Allow a local linked EC2-Classic instance to communicate
-        with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-        to the remote VPC.
-        """
         return pulumi.get(self, "allow_classic_link_to_remote_vpc")
 
     @property
     @pulumi.getter(name="allowRemoteVpcDnsResolution")
     def allow_remote_vpc_dns_resolution(self) -> Optional[bool]:
-        """
-        Allow a local VPC to resolve public DNS hostnames to
-        private IP addresses when queried from instances in the peer VPC. This is
-        [not supported](https://docs.aws.amazon.com/vpc/latest/peering/modify-peering-connections.html) for
-        inter-region VPC peering.
-        """
         return pulumi.get(self, "allow_remote_vpc_dns_resolution")
 
     @property
     @pulumi.getter(name="allowVpcToRemoteClassicLink")
     def allow_vpc_to_remote_classic_link(self) -> Optional[bool]:
-        """
-        Allow a local VPC to communicate with a linked EC2-Classic
-        instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-        connection.
-        """
         return pulumi.get(self, "allow_vpc_to_remote_classic_link")
 
     def _translate_property(self, prop):
@@ -4580,14 +3244,6 @@ class VpcPeeringConnectionAccepterAccepter(dict):
                  allow_classic_link_to_remote_vpc: Optional[bool] = None,
                  allow_remote_vpc_dns_resolution: Optional[bool] = None,
                  allow_vpc_to_remote_classic_link: Optional[bool] = None):
-        """
-        :param bool allow_classic_link_to_remote_vpc: Indicates whether a local ClassicLink connection can communicate
-               with the peer VPC over the VPC Peering Connection.
-        :param bool allow_remote_vpc_dns_resolution: Indicates whether a local VPC can resolve public DNS hostnames to
-               private IP addresses when queried from instances in a peer VPC.
-        :param bool allow_vpc_to_remote_classic_link: Indicates whether a local VPC can communicate with a ClassicLink
-               connection in the peer VPC over the VPC Peering Connection.
-        """
         if allow_classic_link_to_remote_vpc is not None:
             pulumi.set(__self__, "allow_classic_link_to_remote_vpc", allow_classic_link_to_remote_vpc)
         if allow_remote_vpc_dns_resolution is not None:
@@ -4598,28 +3254,16 @@ class VpcPeeringConnectionAccepterAccepter(dict):
     @property
     @pulumi.getter(name="allowClassicLinkToRemoteVpc")
     def allow_classic_link_to_remote_vpc(self) -> Optional[bool]:
-        """
-        Indicates whether a local ClassicLink connection can communicate
-        with the peer VPC over the VPC Peering Connection.
-        """
         return pulumi.get(self, "allow_classic_link_to_remote_vpc")
 
     @property
     @pulumi.getter(name="allowRemoteVpcDnsResolution")
     def allow_remote_vpc_dns_resolution(self) -> Optional[bool]:
-        """
-        Indicates whether a local VPC can resolve public DNS hostnames to
-        private IP addresses when queried from instances in a peer VPC.
-        """
         return pulumi.get(self, "allow_remote_vpc_dns_resolution")
 
     @property
     @pulumi.getter(name="allowVpcToRemoteClassicLink")
     def allow_vpc_to_remote_classic_link(self) -> Optional[bool]:
-        """
-        Indicates whether a local VPC can communicate with a ClassicLink
-        connection in the peer VPC over the VPC Peering Connection.
-        """
         return pulumi.get(self, "allow_vpc_to_remote_classic_link")
 
     def _translate_property(self, prop):
@@ -4632,14 +3276,6 @@ class VpcPeeringConnectionAccepterRequester(dict):
                  allow_classic_link_to_remote_vpc: Optional[bool] = None,
                  allow_remote_vpc_dns_resolution: Optional[bool] = None,
                  allow_vpc_to_remote_classic_link: Optional[bool] = None):
-        """
-        :param bool allow_classic_link_to_remote_vpc: Indicates whether a local ClassicLink connection can communicate
-               with the peer VPC over the VPC Peering Connection.
-        :param bool allow_remote_vpc_dns_resolution: Indicates whether a local VPC can resolve public DNS hostnames to
-               private IP addresses when queried from instances in a peer VPC.
-        :param bool allow_vpc_to_remote_classic_link: Indicates whether a local VPC can communicate with a ClassicLink
-               connection in the peer VPC over the VPC Peering Connection.
-        """
         if allow_classic_link_to_remote_vpc is not None:
             pulumi.set(__self__, "allow_classic_link_to_remote_vpc", allow_classic_link_to_remote_vpc)
         if allow_remote_vpc_dns_resolution is not None:
@@ -4650,28 +3286,16 @@ class VpcPeeringConnectionAccepterRequester(dict):
     @property
     @pulumi.getter(name="allowClassicLinkToRemoteVpc")
     def allow_classic_link_to_remote_vpc(self) -> Optional[bool]:
-        """
-        Indicates whether a local ClassicLink connection can communicate
-        with the peer VPC over the VPC Peering Connection.
-        """
         return pulumi.get(self, "allow_classic_link_to_remote_vpc")
 
     @property
     @pulumi.getter(name="allowRemoteVpcDnsResolution")
     def allow_remote_vpc_dns_resolution(self) -> Optional[bool]:
-        """
-        Indicates whether a local VPC can resolve public DNS hostnames to
-        private IP addresses when queried from instances in a peer VPC.
-        """
         return pulumi.get(self, "allow_remote_vpc_dns_resolution")
 
     @property
     @pulumi.getter(name="allowVpcToRemoteClassicLink")
     def allow_vpc_to_remote_classic_link(self) -> Optional[bool]:
-        """
-        Indicates whether a local VPC can communicate with a ClassicLink
-        connection in the peer VPC over the VPC Peering Connection.
-        """
         return pulumi.get(self, "allow_vpc_to_remote_classic_link")
 
     def _translate_property(self, prop):
@@ -4684,18 +3308,6 @@ class VpcPeeringConnectionRequester(dict):
                  allow_classic_link_to_remote_vpc: Optional[bool] = None,
                  allow_remote_vpc_dns_resolution: Optional[bool] = None,
                  allow_vpc_to_remote_classic_link: Optional[bool] = None):
-        """
-        :param bool allow_classic_link_to_remote_vpc: Allow a local linked EC2-Classic instance to communicate
-               with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-               to the remote VPC.
-        :param bool allow_remote_vpc_dns_resolution: Allow a local VPC to resolve public DNS hostnames to
-               private IP addresses when queried from instances in the peer VPC. This is
-               [not supported](https://docs.aws.amazon.com/vpc/latest/peering/modify-peering-connections.html) for
-               inter-region VPC peering.
-        :param bool allow_vpc_to_remote_classic_link: Allow a local VPC to communicate with a linked EC2-Classic
-               instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-               connection.
-        """
         if allow_classic_link_to_remote_vpc is not None:
             pulumi.set(__self__, "allow_classic_link_to_remote_vpc", allow_classic_link_to_remote_vpc)
         if allow_remote_vpc_dns_resolution is not None:
@@ -4706,32 +3318,16 @@ class VpcPeeringConnectionRequester(dict):
     @property
     @pulumi.getter(name="allowClassicLinkToRemoteVpc")
     def allow_classic_link_to_remote_vpc(self) -> Optional[bool]:
-        """
-        Allow a local linked EC2-Classic instance to communicate
-        with instances in a peer VPC. This enables an outbound communication from the local ClassicLink connection
-        to the remote VPC.
-        """
         return pulumi.get(self, "allow_classic_link_to_remote_vpc")
 
     @property
     @pulumi.getter(name="allowRemoteVpcDnsResolution")
     def allow_remote_vpc_dns_resolution(self) -> Optional[bool]:
-        """
-        Allow a local VPC to resolve public DNS hostnames to
-        private IP addresses when queried from instances in the peer VPC. This is
-        [not supported](https://docs.aws.amazon.com/vpc/latest/peering/modify-peering-connections.html) for
-        inter-region VPC peering.
-        """
         return pulumi.get(self, "allow_remote_vpc_dns_resolution")
 
     @property
     @pulumi.getter(name="allowVpcToRemoteClassicLink")
     def allow_vpc_to_remote_classic_link(self) -> Optional[bool]:
-        """
-        Allow a local VPC to communicate with a linked EC2-Classic
-        instance in a peer VPC. This enables an outbound communication from the local VPC to the remote ClassicLink
-        connection.
-        """
         return pulumi.get(self, "allow_vpc_to_remote_classic_link")
 
     def _translate_property(self, prop):
@@ -4823,31 +3419,17 @@ class GetCoipPoolFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A COIP Pool will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A COIP Pool will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -4856,31 +3438,17 @@ class GetCoipPoolsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A COIP Pool will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A COIP Pool will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -4927,15 +3495,6 @@ class GetInstanceEbsBlockDeviceResult(dict):
                  volume_id: str,
                  volume_size: float,
                  volume_type: str):
-        """
-        :param bool delete_on_termination: If the root block device will be deleted on termination.
-        :param str device_name: The physical name of the device.
-        :param bool encrypted: If the EBS volume is encrypted.
-        :param float iops: `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
-        :param str snapshot_id: The ID of the snapshot.
-        :param float volume_size: The size of the volume, in GiB.
-        :param str volume_type: The type of the volume.
-        """
         pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "encrypted", encrypted)
@@ -4949,33 +3508,21 @@ class GetInstanceEbsBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> bool:
-        """
-        If the root block device will be deleted on termination.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The physical name of the device.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        If the EBS volume is encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> float:
-        """
-        `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
-        """
         return pulumi.get(self, "iops")
 
     @property
@@ -4986,9 +3533,6 @@ class GetInstanceEbsBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
-        """
-        The ID of the snapshot.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
@@ -4999,17 +3543,11 @@ class GetInstanceEbsBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> float:
-        """
-        The size of the volume, in GiB.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The type of the volume.
-        """
         return pulumi.get(self, "volume_type")
 
 
@@ -5019,11 +3557,6 @@ class GetInstanceEphemeralBlockDeviceResult(dict):
                  device_name: str,
                  no_device: Optional[bool] = None,
                  virtual_name: Optional[str] = None):
-        """
-        :param str device_name: The physical name of the device.
-        :param bool no_device: Whether the specified device included in the device mapping was suppressed or not (Boolean).
-        :param str virtual_name: The virtual device name.
-        """
         pulumi.set(__self__, "device_name", device_name)
         if no_device is not None:
             pulumi.set(__self__, "no_device", no_device)
@@ -5033,25 +3566,16 @@ class GetInstanceEphemeralBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The physical name of the device.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[bool]:
-        """
-        Whether the specified device included in the device mapping was suppressed or not (Boolean).
-        """
         return pulumi.get(self, "no_device")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> Optional[str]:
-        """
-        The virtual device name.
-        """
         return pulumi.get(self, "virtual_name")
 
 
@@ -5080,11 +3604,6 @@ class GetInstanceMetadataOptionResult(dict):
                  http_endpoint: str,
                  http_put_response_hop_limit: float,
                  http_tokens: str):
-        """
-        :param str http_endpoint: The state of the metadata service: `enabled`, `disabled`.
-        :param float http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests.
-        :param str http_tokens: If session tokens are required: `optional`, `required`.
-        """
         pulumi.set(__self__, "http_endpoint", http_endpoint)
         pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
         pulumi.set(__self__, "http_tokens", http_tokens)
@@ -5092,25 +3611,16 @@ class GetInstanceMetadataOptionResult(dict):
     @property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> str:
-        """
-        The state of the metadata service: `enabled`, `disabled`.
-        """
         return pulumi.get(self, "http_endpoint")
 
     @property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> float:
-        """
-        The desired HTTP PUT response hop limit for instance metadata requests.
-        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> str:
-        """
-        If session tokens are required: `optional`, `required`.
-        """
         return pulumi.get(self, "http_tokens")
 
 
@@ -5125,14 +3635,6 @@ class GetInstanceRootBlockDeviceResult(dict):
                  volume_id: str,
                  volume_size: float,
                  volume_type: str):
-        """
-        :param bool delete_on_termination: If the root block device will be deleted on termination.
-        :param str device_name: The physical name of the device.
-        :param bool encrypted: If the EBS volume is encrypted.
-        :param float iops: `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
-        :param float volume_size: The size of the volume, in GiB.
-        :param str volume_type: The type of the volume.
-        """
         pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "encrypted", encrypted)
@@ -5145,33 +3647,21 @@ class GetInstanceRootBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> bool:
-        """
-        If the root block device will be deleted on termination.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The physical name of the device.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        If the EBS volume is encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> float:
-        """
-        `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
-        """
         return pulumi.get(self, "iops")
 
     @property
@@ -5187,17 +3677,11 @@ class GetInstanceRootBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> float:
-        """
-        The size of the volume, in GiB.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The type of the volume.
-        """
         return pulumi.get(self, "volume_type")
 
 
@@ -5206,27 +3690,17 @@ class GetInstanceTypeOfferingFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        :param List[str] values: List of one or more values for the filter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        List of one or more values for the filter.
-        """
         return pulumi.get(self, "values")
 
 
@@ -5235,27 +3709,17 @@ class GetInstanceTypeOfferingsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        :param List[str] values: List of one or more values for the filter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        List of one or more values for the filter.
-        """
         return pulumi.get(self, "values")
 
 
@@ -5283,27 +3747,17 @@ class GetInternetGatewayAttachmentResult(dict):
     def __init__(__self__, *,
                  state: str,
                  vpc_id: str):
-        """
-        :param str state: The current state of the attachment between the gateway and the VPC. Present only if a VPC is attached
-        :param str vpc_id: The ID of an attached VPC.
-        """
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        The current state of the attachment between the gateway and the VPC. Present only if a VPC is attached
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The ID of an attached VPC.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -5312,31 +3766,17 @@ class GetInternetGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               An Internet Gateway will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        An Internet Gateway will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -5350,15 +3790,6 @@ class GetLaunchConfigurationEbsBlockDeviceResult(dict):
                  snapshot_id: str,
                  volume_size: float,
                  volume_type: str):
-        """
-        :param bool delete_on_termination: Whether the EBS Volume will be deleted on instance termination.
-        :param str device_name: The Name of the device.
-        :param bool encrypted: Whether the volume is Encrypted.
-        :param float iops: The provisioned IOPs of the volume.
-        :param str snapshot_id: The Snapshot ID of the mount.
-        :param float volume_size: The Size of the volume.
-        :param str volume_type: The Type of the volume.
-        """
         pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "encrypted", encrypted)
@@ -5370,57 +3801,36 @@ class GetLaunchConfigurationEbsBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> bool:
-        """
-        Whether the EBS Volume will be deleted on instance termination.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The Name of the device.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        Whether the volume is Encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> float:
-        """
-        The provisioned IOPs of the volume.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
-        """
-        The Snapshot ID of the mount.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> float:
-        """
-        The Size of the volume.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The Type of the volume.
-        """
         return pulumi.get(self, "volume_type")
 
 
@@ -5429,27 +3839,17 @@ class GetLaunchConfigurationEphemeralBlockDeviceResult(dict):
     def __init__(__self__, *,
                  device_name: str,
                  virtual_name: str):
-        """
-        :param str device_name: The Name of the device.
-        :param str virtual_name: The Virtual Name of the device.
-        """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "virtual_name", virtual_name)
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The Name of the device.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="virtualName")
     def virtual_name(self) -> str:
-        """
-        The Virtual Name of the device.
-        """
         return pulumi.get(self, "virtual_name")
 
 
@@ -5461,13 +3861,6 @@ class GetLaunchConfigurationRootBlockDeviceResult(dict):
                  iops: float,
                  volume_size: float,
                  volume_type: str):
-        """
-        :param bool delete_on_termination: Whether the EBS Volume will be deleted on instance termination.
-        :param bool encrypted: Whether the volume is Encrypted.
-        :param float iops: The provisioned IOPs of the volume.
-        :param float volume_size: The Size of the volume.
-        :param str volume_type: The Type of the volume.
-        """
         pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "encrypted", encrypted)
         pulumi.set(__self__, "iops", iops)
@@ -5477,41 +3870,26 @@ class GetLaunchConfigurationRootBlockDeviceResult(dict):
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> bool:
-        """
-        Whether the EBS Volume will be deleted on instance termination.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        Whether the volume is Encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def iops(self) -> float:
-        """
-        The provisioned IOPs of the volume.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> float:
-        """
-        The Size of the volume.
-        """
         return pulumi.get(self, "volume_size")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The Type of the volume.
-        """
         return pulumi.get(self, "volume_type")
 
 
@@ -5631,27 +4009,17 @@ class GetLaunchTemplateFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        :param List[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -5672,27 +4040,17 @@ class GetLaunchTemplateIamInstanceProfileResult(dict):
     def __init__(__self__, *,
                  arn: str,
                  name: str):
-        """
-        :param str arn: Amazon Resource Name (ARN) of the launch template.
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name (ARN) of the launch template.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        """
         return pulumi.get(self, "name")
 
 
@@ -5761,11 +4119,6 @@ class GetLaunchTemplateMetadataOptionResult(dict):
                  http_endpoint: str,
                  http_put_response_hop_limit: float,
                  http_tokens: str):
-        """
-        :param str http_endpoint: The state of the metadata service: `enabled`, `disabled`.
-        :param float http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests.
-        :param str http_tokens: If session tokens are required: `optional`, `required`.
-        """
         pulumi.set(__self__, "http_endpoint", http_endpoint)
         pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
         pulumi.set(__self__, "http_tokens", http_tokens)
@@ -5773,25 +4126,16 @@ class GetLaunchTemplateMetadataOptionResult(dict):
     @property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> str:
-        """
-        The state of the metadata service: `enabled`, `disabled`.
-        """
         return pulumi.get(self, "http_endpoint")
 
     @property
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> float:
-        """
-        The desired HTTP PUT response hop limit for instance metadata requests.
-        """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @property
     @pulumi.getter(name="httpTokens")
     def http_tokens(self) -> str:
-        """
-        If session tokens are required: `optional`, `required`.
-        """
         return pulumi.get(self, "http_tokens")
 
 
@@ -5822,9 +4166,6 @@ class GetLaunchTemplateNetworkInterfaceResult(dict):
                  security_groups: List[str],
                  subnet_id: str,
                  associate_public_ip_address: Optional[bool] = None):
-        """
-        :param str description: Description of the launch template.
-        """
         pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "device_index", device_index)
@@ -5847,9 +4188,6 @@ class GetLaunchTemplateNetworkInterfaceResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description of the launch template.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -5962,9 +4300,6 @@ class GetLaunchTemplateTagSpecificationResult(dict):
     def __init__(__self__, *,
                  resource_type: str,
                  tags: Mapping[str, str]):
-        """
-        :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match a pair on the desired Launch Template.
-        """
         pulumi.set(__self__, "resource_type", resource_type)
         pulumi.set(__self__, "tags", tags)
 
@@ -5976,9 +4311,6 @@ class GetLaunchTemplateTagSpecificationResult(dict):
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        A map of tags, each pair of which must exactly match a pair on the desired Launch Template.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -5987,31 +4319,17 @@ class GetLocalGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A Local Gateway will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A Local Gateway will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6020,31 +4338,17 @@ class GetLocalGatewayRouteTableFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A local gateway route table will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A local gateway route table will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6053,31 +4357,17 @@ class GetLocalGatewayRouteTablesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A Local Gateway Route Table will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A Local Gateway Route Table will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6086,27 +4376,17 @@ class GetLocalGatewayVirtualInterfaceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the filter.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        List of one or more values for the filter.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6115,27 +4395,17 @@ class GetLocalGatewayVirtualInterfaceGroupFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the filter.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        List of one or more values for the filter.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6144,27 +4414,17 @@ class GetLocalGatewayVirtualInterfaceGroupsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the filter.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        List of one or more values for the filter.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6173,31 +4433,17 @@ class GetLocalGatewaysFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A Local Gateway will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A Local Gateway will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6206,31 +4452,17 @@ class GetNatGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               An Nat Gateway will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        An Nat Gateway will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6239,31 +4471,17 @@ class GetNetworkAclsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A VPC will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A VPC will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6275,13 +4493,6 @@ class GetNetworkInterfaceAssociationResult(dict):
                  ip_owner_id: str,
                  public_dns_name: str,
                  public_ip: str):
-        """
-        :param str allocation_id: The allocation ID.
-        :param str association_id: The association ID.
-        :param str ip_owner_id: The ID of the Elastic IP address owner.
-        :param str public_dns_name: The public DNS name.
-        :param str public_ip: The address of the Elastic IP address bound to the network interface.
-        """
         pulumi.set(__self__, "allocation_id", allocation_id)
         pulumi.set(__self__, "association_id", association_id)
         pulumi.set(__self__, "ip_owner_id", ip_owner_id)
@@ -6291,41 +4502,26 @@ class GetNetworkInterfaceAssociationResult(dict):
     @property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> str:
-        """
-        The allocation ID.
-        """
         return pulumi.get(self, "allocation_id")
 
     @property
     @pulumi.getter(name="associationId")
     def association_id(self) -> str:
-        """
-        The association ID.
-        """
         return pulumi.get(self, "association_id")
 
     @property
     @pulumi.getter(name="ipOwnerId")
     def ip_owner_id(self) -> str:
-        """
-        The ID of the Elastic IP address owner.
-        """
         return pulumi.get(self, "ip_owner_id")
 
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> str:
-        """
-        The public DNS name.
-        """
         return pulumi.get(self, "public_dns_name")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
-        """
-        The address of the Elastic IP address bound to the network interface.
-        """
         return pulumi.get(self, "public_ip")
 
 
@@ -6386,29 +4582,17 @@ class GetNetworkInterfacesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaces.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaces.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6420,13 +4604,6 @@ class GetRouteTableAssociationResult(dict):
                  route_table_association_id: str,
                  route_table_id: str,
                  subnet_id: str):
-        """
-        :param str gateway_id: The id of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-        :param bool main: If the Association due to the Main Route Table.
-        :param str route_table_association_id: The Association ID.
-        :param str route_table_id: The id of the specific Route Table to retrieve.
-        :param str subnet_id: The id of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
-        """
         pulumi.set(__self__, "gateway_id", gateway_id)
         pulumi.set(__self__, "main", main)
         pulumi.set(__self__, "route_table_association_id", route_table_association_id)
@@ -6436,41 +4613,26 @@ class GetRouteTableAssociationResult(dict):
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> str:
-        """
-        The id of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-        """
         return pulumi.get(self, "gateway_id")
 
     @property
     @pulumi.getter
     def main(self) -> bool:
-        """
-        If the Association due to the Main Route Table.
-        """
         return pulumi.get(self, "main")
 
     @property
     @pulumi.getter(name="routeTableAssociationId")
     def route_table_association_id(self) -> str:
-        """
-        The Association ID.
-        """
         return pulumi.get(self, "route_table_association_id")
 
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> str:
-        """
-        The id of the specific Route Table to retrieve.
-        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
-        """
-        The id of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
-        """
         return pulumi.get(self, "subnet_id")
 
 
@@ -6479,31 +4641,17 @@ class GetRouteTableFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A Route Table will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A Route Table will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6519,17 +4667,6 @@ class GetRouteTableRouteResult(dict):
                  network_interface_id: str,
                  transit_gateway_id: str,
                  vpc_peering_connection_id: str):
-        """
-        :param str cidr_block: The CIDR block of the route.
-        :param str egress_only_gateway_id: The ID of the Egress Only Internet Gateway.
-        :param str gateway_id: The id of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-        :param str instance_id: The EC2 instance ID.
-        :param str ipv6_cidr_block: The IPv6 CIDR block of the route.
-        :param str nat_gateway_id: The NAT Gateway ID.
-        :param str network_interface_id: The ID of the elastic network interface (eni) to use.
-        :param str transit_gateway_id: The EC2 Transit Gateway ID.
-        :param str vpc_peering_connection_id: The VPC Peering ID.
-        """
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "egress_only_gateway_id", egress_only_gateway_id)
         pulumi.set(__self__, "gateway_id", gateway_id)
@@ -6543,73 +4680,46 @@ class GetRouteTableRouteResult(dict):
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> str:
-        """
-        The CIDR block of the route.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter(name="egressOnlyGatewayId")
     def egress_only_gateway_id(self) -> str:
-        """
-        The ID of the Egress Only Internet Gateway.
-        """
         return pulumi.get(self, "egress_only_gateway_id")
 
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> str:
-        """
-        The id of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-        """
         return pulumi.get(self, "gateway_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
-        """
-        The EC2 instance ID.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> str:
-        """
-        The IPv6 CIDR block of the route.
-        """
         return pulumi.get(self, "ipv6_cidr_block")
 
     @property
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> str:
-        """
-        The NAT Gateway ID.
-        """
         return pulumi.get(self, "nat_gateway_id")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> str:
-        """
-        The ID of the elastic network interface (eni) to use.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="transitGatewayId")
     def transit_gateway_id(self) -> str:
-        """
-        The EC2 Transit Gateway ID.
-        """
         return pulumi.get(self, "transit_gateway_id")
 
     @property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> str:
-        """
-        The VPC Peering ID.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 
 
@@ -6618,31 +4728,17 @@ class GetRouteTablesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A Route Table will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A Route Table will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6651,31 +4747,17 @@ class GetSecurityGroupFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A Security Group will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A Security Group will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6703,27 +4785,17 @@ class GetSpotPriceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: Name of the filter.
-        :param List[str] values: List of one or more values for the filter.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the filter.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        List of one or more values for the filter.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6732,33 +4804,17 @@ class GetSubnetFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
-               For example, if matching against tag `Name`, use:
-        :param List[str] values: Set of values that are accepted for the given field.
-               A subnet will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
-        For example, if matching against tag `Name`, use:
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A subnet will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6767,33 +4823,17 @@ class GetSubnetIdsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
-               For example, if matching against tag `Name`, use:
-        :param List[str] values: Set of values that are accepted for the given field.
-               Subnet IDs will be selected if any one of the given values match.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
-        For example, if matching against tag `Name`, use:
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        Subnet IDs will be selected if any one of the given values match.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6803,12 +4843,6 @@ class GetVpcCidrBlockAssociationResult(dict):
                  association_id: str,
                  cidr_block: str,
                  state: str):
-        """
-        :param str association_id: The association ID for the the IPv4 CIDR block.
-        :param str cidr_block: The cidr block of the desired VPC.
-        :param str state: The current state of the desired VPC.
-               Can be either `"pending"` or `"available"`.
-        """
         pulumi.set(__self__, "association_id", association_id)
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "state", state)
@@ -6816,26 +4850,16 @@ class GetVpcCidrBlockAssociationResult(dict):
     @property
     @pulumi.getter(name="associationId")
     def association_id(self) -> str:
-        """
-        The association ID for the the IPv4 CIDR block.
-        """
         return pulumi.get(self, "association_id")
 
     @property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> str:
-        """
-        The cidr block of the desired VPC.
-        """
         return pulumi.get(self, "cidr_block")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        The current state of the desired VPC.
-        Can be either `"pending"` or `"available"`.
-        """
         return pulumi.get(self, "state")
 
 
@@ -6844,27 +4868,17 @@ class GetVpcDhcpOptionsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter.
-        :param List[str] values: Set of values for filtering.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values for filtering.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6873,27 +4887,17 @@ class GetVpcEndpointDnsEntryResult(dict):
     def __init__(__self__, *,
                  dns_name: str,
                  hosted_zone_id: str):
-        """
-        :param str dns_name: The DNS name.
-        :param str hosted_zone_id: The ID of the private hosted zone.
-        """
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
-        """
-        The DNS name.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="hostedZoneId")
     def hosted_zone_id(self) -> str:
-        """
-        The ID of the private hosted zone.
-        """
         return pulumi.get(self, "hosted_zone_id")
 
 
@@ -6902,31 +4906,17 @@ class GetVpcEndpointFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A VPC Endpoint will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A VPC Endpoint will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6935,27 +4925,17 @@ class GetVpcEndpointServiceFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
-        :param List[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6964,31 +4944,17 @@ class GetVpcFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A VPC will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A VPC will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -6997,31 +4963,17 @@ class GetVpcPeeringConnectionFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A VPC Peering Connection will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A VPC Peering Connection will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -7030,31 +4982,17 @@ class GetVpcsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A VPC will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A VPC will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 
@@ -7063,31 +5001,17 @@ class GetVpnGatewayFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: List[str]):
-        """
-        :param str name: The name of the field to filter by, as defined by
-               [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html).
-        :param List[str] values: Set of values that are accepted for the given field.
-               A VPN Gateway will be selected if any one of the given values matches.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html).
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> List[str]:
-        """
-        Set of values that are accepted for the given field.
-        A VPN Gateway will be selected if any one of the given values matches.
-        """
         return pulumi.get(self, "values")
 
 

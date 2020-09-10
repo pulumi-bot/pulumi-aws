@@ -13,9 +13,6 @@ namespace Pulumi.Aws.ElasticSearch.Outputs
     [OutputType]
     public sealed class DomainNodeToNodeEncryption
     {
-        /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
-        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

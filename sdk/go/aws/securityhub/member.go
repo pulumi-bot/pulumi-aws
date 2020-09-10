@@ -10,51 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Security Hub member resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/securityhub"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccount, err := securityhub.NewAccount(ctx, "exampleAccount", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = securityhub.NewMember(ctx, "exampleMember", &securityhub.MemberArgs{
-// 			AccountId: pulumi.String("123456789012"),
-// 			Email:     pulumi.String("example@example.com"),
-// 			Invite:    pulumi.Bool(true),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleAccount,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Member struct {
 	pulumi.CustomResourceState
 
-	// The ID of the member AWS account.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The email of the member AWS account.
-	Email pulumi.StringOutput `pulumi:"email"`
-	// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-	Invite pulumi.BoolPtrOutput `pulumi:"invite"`
-	// The ID of the master Security Hub AWS account.
-	MasterId pulumi.StringOutput `pulumi:"masterId"`
-	// The status of the member account relationship.
-	MemberStatus pulumi.StringOutput `pulumi:"memberStatus"`
+	AccountId    pulumi.StringOutput  `pulumi:"accountId"`
+	Email        pulumi.StringOutput  `pulumi:"email"`
+	Invite       pulumi.BoolPtrOutput `pulumi:"invite"`
+	MasterId     pulumi.StringOutput  `pulumi:"masterId"`
+	MemberStatus pulumi.StringOutput  `pulumi:"memberStatus"`
 }
 
 // NewMember registers a new resource with the given unique name, arguments, and options.
@@ -91,28 +54,18 @@ func GetMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Member resources.
 type memberState struct {
-	// The ID of the member AWS account.
-	AccountId *string `pulumi:"accountId"`
-	// The email of the member AWS account.
-	Email *string `pulumi:"email"`
-	// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-	Invite *bool `pulumi:"invite"`
-	// The ID of the master Security Hub AWS account.
-	MasterId *string `pulumi:"masterId"`
-	// The status of the member account relationship.
+	AccountId    *string `pulumi:"accountId"`
+	Email        *string `pulumi:"email"`
+	Invite       *bool   `pulumi:"invite"`
+	MasterId     *string `pulumi:"masterId"`
 	MemberStatus *string `pulumi:"memberStatus"`
 }
 
 type MemberState struct {
-	// The ID of the member AWS account.
-	AccountId pulumi.StringPtrInput
-	// The email of the member AWS account.
-	Email pulumi.StringPtrInput
-	// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-	Invite pulumi.BoolPtrInput
-	// The ID of the master Security Hub AWS account.
-	MasterId pulumi.StringPtrInput
-	// The status of the member account relationship.
+	AccountId    pulumi.StringPtrInput
+	Email        pulumi.StringPtrInput
+	Invite       pulumi.BoolPtrInput
+	MasterId     pulumi.StringPtrInput
 	MemberStatus pulumi.StringPtrInput
 }
 
@@ -121,22 +74,16 @@ func (MemberState) ElementType() reflect.Type {
 }
 
 type memberArgs struct {
-	// The ID of the member AWS account.
 	AccountId string `pulumi:"accountId"`
-	// The email of the member AWS account.
-	Email string `pulumi:"email"`
-	// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-	Invite *bool `pulumi:"invite"`
+	Email     string `pulumi:"email"`
+	Invite    *bool  `pulumi:"invite"`
 }
 
 // The set of arguments for constructing a Member resource.
 type MemberArgs struct {
-	// The ID of the member AWS account.
 	AccountId pulumi.StringInput
-	// The email of the member AWS account.
-	Email pulumi.StringInput
-	// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-	Invite pulumi.BoolPtrInput
+	Email     pulumi.StringInput
+	Invite    pulumi.BoolPtrInput
 }
 
 func (MemberArgs) ElementType() reflect.Type {

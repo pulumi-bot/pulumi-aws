@@ -13,35 +13,14 @@ namespace Pulumi.Aws.Ec2.Outputs
     [OutputType]
     public sealed class GetInstanceEbsBlockDeviceResult
     {
-        /// <summary>
-        /// If the root block device will be deleted on termination.
-        /// </summary>
         public readonly bool DeleteOnTermination;
-        /// <summary>
-        /// The physical name of the device.
-        /// </summary>
         public readonly string DeviceName;
-        /// <summary>
-        /// If the EBS volume is encrypted.
-        /// </summary>
         public readonly bool Encrypted;
-        /// <summary>
-        /// `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
-        /// </summary>
         public readonly int Iops;
         public readonly string KmsKeyId;
-        /// <summary>
-        /// The ID of the snapshot.
-        /// </summary>
         public readonly string SnapshotId;
         public readonly string VolumeId;
-        /// <summary>
-        /// The size of the volume, in GiB.
-        /// </summary>
         public readonly int VolumeSize;
-        /// <summary>
-        /// The type of the volume.
-        /// </summary>
         public readonly string VolumeType;
 
         [OutputConstructor]

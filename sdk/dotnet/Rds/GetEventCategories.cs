@@ -11,54 +11,6 @@ namespace Pulumi.Aws.Rds
 {
     public static class GetEventCategories
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// List the event categories of all the RDS resources. 
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleEventCategories = Output.Create(Aws.Rds.GetEventCategories.InvokeAsync());
-        ///         this.Example = exampleEventCategories.Apply(exampleEventCategories =&gt; exampleEventCategories.EventCategories);
-        ///     }
-        /// 
-        ///     [Output("example")]
-        ///     public Output&lt;string&gt; Example { get; set; }
-        /// }
-        /// ```
-        /// 
-        /// List the event categories specific to the RDS resource `db-snapshot`.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleEventCategories = Output.Create(Aws.Rds.GetEventCategories.InvokeAsync(new Aws.Rds.GetEventCategoriesArgs
-        ///         {
-        ///             SourceType = "db-snapshot",
-        ///         }));
-        ///         this.Example = exampleEventCategories.Apply(exampleEventCategories =&gt; exampleEventCategories.EventCategories);
-        ///     }
-        /// 
-        ///     [Output("example")]
-        ///     public Output&lt;string&gt; Example { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetEventCategoriesResult> InvokeAsync(GetEventCategoriesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEventCategoriesResult>("aws:rds/getEventCategories:getEventCategories", args ?? new GetEventCategoriesArgs(), options.WithVersion());
     }
@@ -66,9 +18,6 @@ namespace Pulumi.Aws.Rds
 
     public sealed class GetEventCategoriesArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The type of source that will be generating the events. Valid options are db-instance, db-security-group, db-parameter-group, db-snapshot, db-cluster or db-cluster-snapshot.
-        /// </summary>
         [Input("sourceType")]
         public string? SourceType { get; set; }
 
@@ -81,9 +30,6 @@ namespace Pulumi.Aws.Rds
     [OutputType]
     public sealed class GetEventCategoriesResult
     {
-        /// <summary>
-        /// A list of the event categories.
-        /// </summary>
         public readonly ImmutableArray<string> EventCategories;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -6,58 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an RDS Global Cluster, which is an Aurora global database spread across multiple regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
- *
- * More information about Aurora global databases can be found in the [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database-creating).
- *
- * ## Example Usage
- * ### New Global Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const primary = new aws.Provider("primary", {region: "us-east-2"});
- * const secondary = new aws.Provider("secondary", {region: "us-west-2"});
- * const example = new aws.rds.GlobalCluster("example", {globalClusterIdentifier: "example"}, {
- *     provider: aws.primary,
- * });
- * const primaryCluster = new aws.rds.Cluster("primaryCluster", {
- *     engineMode: "global",
- *     globalClusterIdentifier: example.id,
- * }, {
- *     provider: aws.primary,
- * });
- * const primaryClusterInstance = new aws.rds.ClusterInstance("primaryClusterInstance", {clusterIdentifier: primaryCluster.id}, {
- *     provider: aws.primary,
- * });
- * const secondaryCluster = new aws.rds.Cluster("secondaryCluster", {
- *     engineMode: "global",
- *     globalClusterIdentifier: example.id,
- * }, {
- *     provider: aws.secondary,
- *     dependsOn: [primaryClusterInstance],
- * });
- * const secondaryClusterInstance = new aws.rds.ClusterInstance("secondaryClusterInstance", {clusterIdentifier: secondaryCluster.id}, {
- *     provider: aws.secondary,
- * });
- * ```
- * ### New Global Cluster From Existing DB Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // ... other configuration ...
- * const exampleCluster = new aws.rds.Cluster("exampleCluster", {});
- * const exampleGlobalCluster = new aws.rds.GlobalCluster("exampleGlobalCluster", {
- *     forceDestroy: true,
- *     globalClusterIdentifier: "example",
- *     sourceDbClusterIdentifier: exampleCluster.arn,
- * });
- * ```
- */
 export class GlobalCluster extends pulumi.CustomResource {
     /**
      * Get an existing GlobalCluster resource's state with the given name, ID, and optional extra
@@ -86,44 +34,16 @@ export class GlobalCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalCluster.__pulumiType;
     }
 
-    /**
-     * RDS Global Cluster Amazon Resource Name (ARN)
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Name for an automatically created database on cluster creation.
-     */
     public readonly databaseName!: pulumi.Output<string | undefined>;
-    /**
-     * If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     public readonly engine!: pulumi.Output<string>;
-    /**
-     * Engine version of the Aurora global database.
-     * * **NOTE:** When the engine is set to `aurora-mysql`, an engine version compatible with global database is required. The earliest available version is `5.7.mysql_aurora.2.06.0`.
-     */
     public readonly engineVersion!: pulumi.Output<string>;
-    /**
-     * Enable to remove DB Cluster members from Global Cluster on destroy. Required with `sourceDbClusterIdentifier`.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * The global cluster identifier.
-     */
     public readonly globalClusterIdentifier!: pulumi.Output<string>;
-    /**
-     * Set of objects containing Global Cluster members.
-     */
     public /*out*/ readonly globalClusterMembers!: pulumi.Output<outputs.rds.GlobalClusterGlobalClusterMember[]>;
-    /**
-     * AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed
-     */
     public /*out*/ readonly globalClusterResourceId!: pulumi.Output<string>;
     public readonly sourceDbClusterIdentifier!: pulumi.Output<string>;
-    /**
-     * Specifies whether the DB cluster is encrypted. The default is `false`.
-     */
     public readonly storageEncrypted!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -181,44 +101,16 @@ export class GlobalCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalCluster resources.
  */
 export interface GlobalClusterState {
-    /**
-     * RDS Global Cluster Amazon Resource Name (ARN)
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Name for an automatically created database on cluster creation.
-     */
     readonly databaseName?: pulumi.Input<string>;
-    /**
-     * If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-     */
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly engine?: pulumi.Input<string>;
-    /**
-     * Engine version of the Aurora global database.
-     * * **NOTE:** When the engine is set to `aurora-mysql`, an engine version compatible with global database is required. The earliest available version is `5.7.mysql_aurora.2.06.0`.
-     */
     readonly engineVersion?: pulumi.Input<string>;
-    /**
-     * Enable to remove DB Cluster members from Global Cluster on destroy. Required with `sourceDbClusterIdentifier`.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * The global cluster identifier.
-     */
     readonly globalClusterIdentifier?: pulumi.Input<string>;
-    /**
-     * Set of objects containing Global Cluster members.
-     */
     readonly globalClusterMembers?: pulumi.Input<pulumi.Input<inputs.rds.GlobalClusterGlobalClusterMember>[]>;
-    /**
-     * AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed
-     */
     readonly globalClusterResourceId?: pulumi.Input<string>;
     readonly sourceDbClusterIdentifier?: pulumi.Input<string>;
-    /**
-     * Specifies whether the DB cluster is encrypted. The default is `false`.
-     */
     readonly storageEncrypted?: pulumi.Input<boolean>;
 }
 
@@ -226,31 +118,12 @@ export interface GlobalClusterState {
  * The set of arguments for constructing a GlobalCluster resource.
  */
 export interface GlobalClusterArgs {
-    /**
-     * Name for an automatically created database on cluster creation.
-     */
     readonly databaseName?: pulumi.Input<string>;
-    /**
-     * If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-     */
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly engine?: pulumi.Input<string>;
-    /**
-     * Engine version of the Aurora global database.
-     * * **NOTE:** When the engine is set to `aurora-mysql`, an engine version compatible with global database is required. The earliest available version is `5.7.mysql_aurora.2.06.0`.
-     */
     readonly engineVersion?: pulumi.Input<string>;
-    /**
-     * Enable to remove DB Cluster members from Global Cluster on destroy. Required with `sourceDbClusterIdentifier`.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * The global cluster identifier.
-     */
     readonly globalClusterIdentifier: pulumi.Input<string>;
     readonly sourceDbClusterIdentifier?: pulumi.Input<string>;
-    /**
-     * Specifies whether the DB cluster is encrypted. The default is `false`.
-     */
     readonly storageEncrypted?: pulumi.Input<boolean>;
 }

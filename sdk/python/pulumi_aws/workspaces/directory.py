@@ -25,47 +25,9 @@ class Directory(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a directory registration in AWS WorkSpaces Service
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main_vpc = aws.ec2.Vpc("mainVpc", cidr_block="10.0.0.0/16")
-        private_a = aws.ec2.Subnet("private-a",
-            vpc_id=main_vpc.id,
-            availability_zone="us-east-1a",
-            cidr_block="10.0.0.0/24")
-        private_b = aws.ec2.Subnet("private-b",
-            vpc_id=main_vpc.id,
-            availability_zone="us-east-1b",
-            cidr_block="10.0.1.0/24")
-        main_directory = aws.directoryservice.Directory("mainDirectory",
-            password="#S1ncerely",
-            size="Small",
-            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
-                vpc_id=main_vpc.id,
-                subnet_ids=[
-                    private_a.id,
-                    private_b.id,
-                ],
-            ))
-        main_workspaces_directory_directory = aws.workspaces.Directory("mainWorkspaces/directoryDirectory",
-            directory_id=main_directory.id,
-            self_service_permissions=aws.workspaces.DirectorySelfServicePermissionsArgs(
-                increase_volume_size=True,
-                rebuild_workspace=True,
-            ))
-        ```
-
+        Create a Directory resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] directory_id: The directory identifier for registration in WorkSpaces service.
-        :param pulumi.Input[pulumi.InputType['DirectorySelfServicePermissionsArgs']] self_service_permissions: The permissions to enable or disable self-service capabilities.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: The identifiers of the subnets where the directory resides.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags assigned to the WorkSpaces directory.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -129,19 +91,6 @@ class Directory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alias: The directory alias.
-        :param pulumi.Input[str] customer_user_name: The user name for the service account.
-        :param pulumi.Input[str] directory_id: The directory identifier for registration in WorkSpaces service.
-        :param pulumi.Input[str] directory_name: The name of the directory.
-        :param pulumi.Input[str] directory_type: The directory type.
-        :param pulumi.Input[List[pulumi.Input[str]]] dns_ip_addresses: The IP addresses of the DNS servers for the directory.
-        :param pulumi.Input[str] iam_role_id: The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.
-        :param pulumi.Input[List[pulumi.Input[str]]] ip_group_ids: The identifiers of the IP access control groups associated with the directory.
-        :param pulumi.Input[str] registration_code: The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
-        :param pulumi.Input[pulumi.InputType['DirectorySelfServicePermissionsArgs']] self_service_permissions: The permissions to enable or disable self-service capabilities.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: The identifiers of the subnets where the directory resides.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags assigned to the WorkSpaces directory.
-        :param pulumi.Input[str] workspace_security_group_id: The identifier of the security group that is assigned to new WorkSpaces.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -165,105 +114,66 @@ class Directory(pulumi.CustomResource):
     @property
     @pulumi.getter
     def alias(self) -> pulumi.Output[str]:
-        """
-        The directory alias.
-        """
         return pulumi.get(self, "alias")
 
     @property
     @pulumi.getter(name="customerUserName")
     def customer_user_name(self) -> pulumi.Output[str]:
-        """
-        The user name for the service account.
-        """
         return pulumi.get(self, "customer_user_name")
 
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[str]:
-        """
-        The directory identifier for registration in WorkSpaces service.
-        """
         return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter(name="directoryName")
     def directory_name(self) -> pulumi.Output[str]:
-        """
-        The name of the directory.
-        """
         return pulumi.get(self, "directory_name")
 
     @property
     @pulumi.getter(name="directoryType")
     def directory_type(self) -> pulumi.Output[str]:
-        """
-        The directory type.
-        """
         return pulumi.get(self, "directory_type")
 
     @property
     @pulumi.getter(name="dnsIpAddresses")
     def dns_ip_addresses(self) -> pulumi.Output[List[str]]:
-        """
-        The IP addresses of the DNS servers for the directory.
-        """
         return pulumi.get(self, "dns_ip_addresses")
 
     @property
     @pulumi.getter(name="iamRoleId")
     def iam_role_id(self) -> pulumi.Output[str]:
-        """
-        The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.
-        """
         return pulumi.get(self, "iam_role_id")
 
     @property
     @pulumi.getter(name="ipGroupIds")
     def ip_group_ids(self) -> pulumi.Output[List[str]]:
-        """
-        The identifiers of the IP access control groups associated with the directory.
-        """
         return pulumi.get(self, "ip_group_ids")
 
     @property
     @pulumi.getter(name="registrationCode")
     def registration_code(self) -> pulumi.Output[str]:
-        """
-        The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.
-        """
         return pulumi.get(self, "registration_code")
 
     @property
     @pulumi.getter(name="selfServicePermissions")
     def self_service_permissions(self) -> pulumi.Output['outputs.DirectorySelfServicePermissions']:
-        """
-        The permissions to enable or disable self-service capabilities.
-        """
         return pulumi.get(self, "self_service_permissions")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[List[str]]:
-        """
-        The identifiers of the subnets where the directory resides.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags assigned to the WorkSpaces directory.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="workspaceSecurityGroupId")
     def workspace_security_group_id(self) -> pulumi.Output[str]:
-        """
-        The identifier of the security group that is assigned to new WorkSpaces.
-        """
         return pulumi.get(self, "workspace_security_group_id")
 
     def translate_output_property(self, prop):

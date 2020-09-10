@@ -11,35 +11,6 @@ namespace Pulumi.Aws.Kms
 {
     public static class GetKey
     {
-        /// <summary>
-        /// Use this data source to get detailed information about
-        /// the specified KMS Key with flexible key id input.
-        /// This can be useful to reference key alias
-        /// without having to hard code the ARN as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Aws.Kms.GetKey.InvokeAsync(new Aws.Kms.GetKeyArgs
-        ///         {
-        ///             KeyId = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:kms/getKey:getKey", args ?? new GetKeyArgs(), options.WithVersion());
     }
@@ -49,23 +20,12 @@ namespace Pulumi.Aws.Kms
     {
         [Input("grantTokens")]
         private List<string>? _grantTokens;
-
-        /// <summary>
-        /// List of grant tokens
-        /// </summary>
         public List<string> GrantTokens
         {
             get => _grantTokens ?? (_grantTokens = new List<string>());
             set => _grantTokens = value;
         }
 
-        /// <summary>
-        /// Key identifier which can be one of the following format:
-        /// * Key ID. E.g: `1234abcd-12ab-34cd-56ef-1234567890ab`
-        /// * Key ARN. E.g.: `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
-        /// * Alias name. E.g.: `alias/my-key`
-        /// * Alias ARN: E.g.: `arn:aws:kms:us-east-1:111122223333:alias/my-key`
-        /// </summary>
         [Input("keyId", required: true)]
         public string KeyId { get; set; } = null!;
 

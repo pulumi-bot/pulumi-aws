@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Athena.Outputs
     [OutputType]
     public sealed class DatabaseEncryptionConfiguration
     {
-        /// <summary>
-        /// The type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
-        /// </summary>
         public readonly string EncryptionOption;
-        /// <summary>
-        /// The KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
-        /// </summary>
         public readonly string? KmsKey;
 
         [OutputConstructor]

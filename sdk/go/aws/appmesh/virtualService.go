@@ -10,84 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS App Mesh virtual service resource.
-//
-// ## Example Usage
-// ### Virtual Node Provider
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appmesh"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
-// 			MeshName: pulumi.Any(aws_appmesh_mesh.Simple.Id),
-// 			Spec: &appmesh.VirtualServiceSpecArgs{
-// 				Provider: &appmesh.VirtualServiceSpecProviderArgs{
-// 					VirtualNode: &appmesh.VirtualServiceSpecProviderVirtualNodeArgs{
-// 						VirtualNodeName: pulumi.Any(aws_appmesh_virtual_node.Serviceb1.Name),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Virtual Router Provider
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appmesh"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
-// 			MeshName: pulumi.Any(aws_appmesh_mesh.Simple.Id),
-// 			Spec: &appmesh.VirtualServiceSpecArgs{
-// 				Provider: &appmesh.VirtualServiceSpecProviderArgs{
-// 					VirtualRouter: &appmesh.VirtualServiceSpecProviderVirtualRouterArgs{
-// 						VirtualRouterName: pulumi.Any(aws_appmesh_virtual_router.Serviceb.Name),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VirtualService struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the virtual service.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The creation date of the virtual service.
-	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
-	// The last update date of the virtual service.
-	LastUpdatedDate pulumi.StringOutput `pulumi:"lastUpdatedDate"`
-	// The name of the service mesh in which to create the virtual service.
-	MeshName pulumi.StringOutput `pulumi:"meshName"`
-	// The name to use for the virtual service.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The virtual service specification to apply.
-	Spec VirtualServiceSpecOutput `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn             pulumi.StringOutput      `pulumi:"arn"`
+	CreatedDate     pulumi.StringOutput      `pulumi:"createdDate"`
+	LastUpdatedDate pulumi.StringOutput      `pulumi:"lastUpdatedDate"`
+	MeshName        pulumi.StringOutput      `pulumi:"meshName"`
+	Name            pulumi.StringOutput      `pulumi:"name"`
+	Spec            VirtualServiceSpecOutput `pulumi:"spec"`
+	Tags            pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewVirtualService registers a new resource with the given unique name, arguments, and options.
@@ -124,37 +56,23 @@ func GetVirtualService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VirtualService resources.
 type virtualServiceState struct {
-	// The ARN of the virtual service.
-	Arn *string `pulumi:"arn"`
-	// The creation date of the virtual service.
-	CreatedDate *string `pulumi:"createdDate"`
-	// The last update date of the virtual service.
-	LastUpdatedDate *string `pulumi:"lastUpdatedDate"`
-	// The name of the service mesh in which to create the virtual service.
-	MeshName *string `pulumi:"meshName"`
-	// The name to use for the virtual service.
-	Name *string `pulumi:"name"`
-	// The virtual service specification to apply.
-	Spec *VirtualServiceSpec `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn             *string             `pulumi:"arn"`
+	CreatedDate     *string             `pulumi:"createdDate"`
+	LastUpdatedDate *string             `pulumi:"lastUpdatedDate"`
+	MeshName        *string             `pulumi:"meshName"`
+	Name            *string             `pulumi:"name"`
+	Spec            *VirtualServiceSpec `pulumi:"spec"`
+	Tags            map[string]string   `pulumi:"tags"`
 }
 
 type VirtualServiceState struct {
-	// The ARN of the virtual service.
-	Arn pulumi.StringPtrInput
-	// The creation date of the virtual service.
-	CreatedDate pulumi.StringPtrInput
-	// The last update date of the virtual service.
+	Arn             pulumi.StringPtrInput
+	CreatedDate     pulumi.StringPtrInput
 	LastUpdatedDate pulumi.StringPtrInput
-	// The name of the service mesh in which to create the virtual service.
-	MeshName pulumi.StringPtrInput
-	// The name to use for the virtual service.
-	Name pulumi.StringPtrInput
-	// The virtual service specification to apply.
-	Spec VirtualServiceSpecPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	MeshName        pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	Spec            VirtualServiceSpecPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (VirtualServiceState) ElementType() reflect.Type {
@@ -162,26 +80,18 @@ func (VirtualServiceState) ElementType() reflect.Type {
 }
 
 type virtualServiceArgs struct {
-	// The name of the service mesh in which to create the virtual service.
-	MeshName string `pulumi:"meshName"`
-	// The name to use for the virtual service.
-	Name *string `pulumi:"name"`
-	// The virtual service specification to apply.
-	Spec VirtualServiceSpec `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	MeshName string             `pulumi:"meshName"`
+	Name     *string            `pulumi:"name"`
+	Spec     VirtualServiceSpec `pulumi:"spec"`
+	Tags     map[string]string  `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a VirtualService resource.
 type VirtualServiceArgs struct {
-	// The name of the service mesh in which to create the virtual service.
 	MeshName pulumi.StringInput
-	// The name to use for the virtual service.
-	Name pulumi.StringPtrInput
-	// The virtual service specification to apply.
-	Spec VirtualServiceSpecInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Name     pulumi.StringPtrInput
+	Spec     VirtualServiceSpecInput
+	Tags     pulumi.StringMapInput
 }
 
 func (VirtualServiceArgs) ElementType() reflect.Type {

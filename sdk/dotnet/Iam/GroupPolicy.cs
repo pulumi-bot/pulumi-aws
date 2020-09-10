@@ -9,70 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// Provides an IAM policy attached to a group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDevelopers = new Aws.Iam.Group("myDevelopers", new Aws.Iam.GroupArgs
-    ///         {
-    ///             Path = "/users/",
-    ///         });
-    ///         var myDeveloperPolicy = new Aws.Iam.GroupPolicy("myDeveloperPolicy", new Aws.Iam.GroupPolicyArgs
-    ///         {
-    ///             Group = myDevelopers.Id,
-    ///             Policy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": [
-    ///         ""ec2:Describe*""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": ""*""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class GroupPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The IAM group to attach to the policy.
-        /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the policy. If omitted, this provider will
-        /// assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
@@ -122,29 +69,15 @@ namespace Pulumi.Aws.Iam
 
     public sealed class GroupPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IAM group to attach to the policy.
-        /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the policy. If omitted, this provider will
-        /// assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
@@ -155,29 +88,15 @@ namespace Pulumi.Aws.Iam
 
     public sealed class GroupPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IAM group to attach to the policy.
-        /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
-        /// <summary>
-        /// The name of the policy. If omitted, this provider will
-        /// assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

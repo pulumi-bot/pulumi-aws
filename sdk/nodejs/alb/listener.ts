@@ -6,148 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Load Balancer Listener resource.
- *
- * > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
- *
- * ## Example Usage
- * ### Forward Action
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEndLoadBalancer", {});
- * // ...
- * const frontEndTargetGroup = new aws.lb.TargetGroup("frontEndTargetGroup", {});
- * // ...
- * const frontEndListener = new aws.lb.Listener("frontEndListener", {
- *     loadBalancerArn: frontEndLoadBalancer.arn,
- *     port: "443",
- *     protocol: "HTTPS",
- *     sslPolicy: "ELBSecurityPolicy-2016-08",
- *     certificateArn: "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4",
- *     defaultActions: [{
- *         type: "forward",
- *         targetGroupArn: frontEndTargetGroup.arn,
- *     }],
- * });
- * ```
- * ### Redirect Action
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEndLoadBalancer", {});
- * // ...
- * const frontEndListener = new aws.lb.Listener("frontEndListener", {
- *     loadBalancerArn: frontEndLoadBalancer.arn,
- *     port: "80",
- *     protocol: "HTTP",
- *     defaultActions: [{
- *         type: "redirect",
- *         redirect: {
- *             port: "443",
- *             protocol: "HTTPS",
- *             statusCode: "HTTP_301",
- *         },
- *     }],
- * });
- * ```
- * ### Fixed-response Action
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEndLoadBalancer", {});
- * // ...
- * const frontEndListener = new aws.lb.Listener("frontEndListener", {
- *     loadBalancerArn: frontEndLoadBalancer.arn,
- *     port: "80",
- *     protocol: "HTTP",
- *     defaultActions: [{
- *         type: "fixed-response",
- *         fixedResponse: {
- *             contentType: "text/plain",
- *             messageBody: "Fixed response content",
- *             statusCode: "200",
- *         },
- *     }],
- * });
- * ```
- * ### Authenticate-cognito Action
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEndLoadBalancer", {});
- * // ...
- * const frontEndTargetGroup = new aws.lb.TargetGroup("frontEndTargetGroup", {});
- * // ...
- * const pool = new aws.cognito.UserPool("pool", {});
- * // ...
- * const client = new aws.cognito.UserPoolClient("client", {});
- * // ...
- * const domain = new aws.cognito.UserPoolDomain("domain", {});
- * // ...
- * const frontEndListener = new aws.lb.Listener("frontEndListener", {
- *     loadBalancerArn: frontEndLoadBalancer.arn,
- *     port: "80",
- *     protocol: "HTTP",
- *     defaultActions: [
- *         {
- *             type: "authenticate-cognito",
- *             authenticateCognito: {
- *                 userPoolArn: pool.arn,
- *                 userPoolClientId: client.id,
- *                 userPoolDomain: domain.domain,
- *             },
- *         },
- *         {
- *             type: "forward",
- *             targetGroupArn: frontEndTargetGroup.arn,
- *         },
- *     ],
- * });
- * ```
- * ### Authenticate-oidc Action
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEndLoadBalancer", {});
- * // ...
- * const frontEndTargetGroup = new aws.lb.TargetGroup("frontEndTargetGroup", {});
- * // ...
- * const frontEndListener = new aws.lb.Listener("frontEndListener", {
- *     loadBalancerArn: frontEndLoadBalancer.arn,
- *     port: "80",
- *     protocol: "HTTP",
- *     defaultActions: [
- *         {
- *             type: "authenticate-oidc",
- *             authenticateOidc: {
- *                 authorizationEndpoint: "https://example.com/authorization_endpoint",
- *                 clientId: "client_id",
- *                 clientSecret: "client_secret",
- *                 issuer: "https://example.com",
- *                 tokenEndpoint: "https://example.com/token_endpoint",
- *                 userInfoEndpoint: "https://example.com/user_info_endpoint",
- *             },
- *         },
- *         {
- *             type: "forward",
- *             targetGroupArn: frontEndTargetGroup.arn,
- *         },
- *     ],
- * });
- * ```
- */
 export class Listener extends pulumi.CustomResource {
     /**
      * Get an existing Listener resource's state with the given name, ID, and optional extra
@@ -176,33 +34,12 @@ export class Listener extends pulumi.CustomResource {
         return obj['__pulumiType'] === Listener.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the target group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
-     */
     public readonly certificateArn!: pulumi.Output<string | undefined>;
-    /**
-     * An Action block. Action blocks are documented below.
-     */
     public readonly defaultActions!: pulumi.Output<outputs.alb.ListenerDefaultAction[]>;
-    /**
-     * The ARN of the load balancer.
-     */
     public readonly loadBalancerArn!: pulumi.Output<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     public readonly port!: pulumi.Output<number>;
-    /**
-     * The protocol for connections from clients to the load balancer. Valid values are `TCP`, `TLS`, `UDP`, `TCP_UDP`, `HTTP` and `HTTPS`. Defaults to `HTTP`.
-     */
     public readonly protocol!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
-     */
     public readonly sslPolicy!: pulumi.Output<string>;
 
     /**
@@ -260,33 +97,12 @@ export class Listener extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Listener resources.
  */
 export interface ListenerState {
-    /**
-     * The Amazon Resource Name (ARN) of the target group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
-     */
     readonly certificateArn?: pulumi.Input<string>;
-    /**
-     * An Action block. Action blocks are documented below.
-     */
     readonly defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
-    /**
-     * The ARN of the load balancer.
-     */
     readonly loadBalancerArn?: pulumi.Input<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * The protocol for connections from clients to the load balancer. Valid values are `TCP`, `TLS`, `UDP`, `TCP_UDP`, `HTTP` and `HTTPS`. Defaults to `HTTP`.
-     */
     readonly protocol?: pulumi.Input<string>;
-    /**
-     * The name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
-     */
     readonly sslPolicy?: pulumi.Input<string>;
 }
 
@@ -294,28 +110,10 @@ export interface ListenerState {
  * The set of arguments for constructing a Listener resource.
  */
 export interface ListenerArgs {
-    /**
-     * The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
-     */
     readonly certificateArn?: pulumi.Input<string>;
-    /**
-     * An Action block. Action blocks are documented below.
-     */
     readonly defaultActions: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
-    /**
-     * The ARN of the load balancer.
-     */
     readonly loadBalancerArn: pulumi.Input<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     readonly port: pulumi.Input<number>;
-    /**
-     * The protocol for connections from clients to the load balancer. Valid values are `TCP`, `TLS`, `UDP`, `TCP_UDP`, `HTTP` and `HTTPS`. Defaults to `HTTP`.
-     */
     readonly protocol?: pulumi.Input<string>;
-    /**
-     * The name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
-     */
     readonly sslPolicy?: pulumi.Input<string>;
 }

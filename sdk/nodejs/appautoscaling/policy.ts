@@ -6,106 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Application AutoScaling Policy resource.
- *
- * ## Example Usage
- * ### DynamoDB Table Autoscaling
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const dynamodbTableReadTarget = new aws.appautoscaling.Target("dynamodbTableReadTarget", {
- *     maxCapacity: 100,
- *     minCapacity: 5,
- *     resourceId: "table/tableName",
- *     scalableDimension: "dynamodb:table:ReadCapacityUnits",
- *     serviceNamespace: "dynamodb",
- * });
- * const dynamodbTableReadPolicy = new aws.appautoscaling.Policy("dynamodbTableReadPolicy", {
- *     policyType: "TargetTrackingScaling",
- *     resourceId: dynamodbTableReadTarget.resourceId,
- *     scalableDimension: dynamodbTableReadTarget.scalableDimension,
- *     serviceNamespace: dynamodbTableReadTarget.serviceNamespace,
- *     targetTrackingScalingPolicyConfiguration: {
- *         predefinedMetricSpecification: {
- *             predefinedMetricType: "DynamoDBReadCapacityUtilization",
- *         },
- *         targetValue: 70,
- *     },
- * });
- * ```
- * ### ECS Service Autoscaling
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ecsTarget = new aws.appautoscaling.Target("ecsTarget", {
- *     maxCapacity: 4,
- *     minCapacity: 1,
- *     resourceId: "service/clusterName/serviceName",
- *     scalableDimension: "ecs:service:DesiredCount",
- *     serviceNamespace: "ecs",
- * });
- * const ecsPolicy = new aws.appautoscaling.Policy("ecsPolicy", {
- *     policyType: "StepScaling",
- *     resourceId: ecsTarget.resourceId,
- *     scalableDimension: ecsTarget.scalableDimension,
- *     serviceNamespace: ecsTarget.serviceNamespace,
- *     stepScalingPolicyConfiguration: {
- *         adjustmentType: "ChangeInCapacity",
- *         cooldown: 60,
- *         metricAggregationType: "Maximum",
- *         stepAdjustments: [{
- *             metricIntervalUpperBound: 0,
- *             scalingAdjustment: -1,
- *         }],
- *     },
- * });
- * ```
- * ### Preserve desired count when updating an autoscaled ECS Service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ecsService = new aws.ecs.Service("ecsService", {
- *     cluster: "clusterName",
- *     taskDefinition: "taskDefinitionFamily:1",
- *     desiredCount: 2,
- * });
- * ```
- * ### Aurora Read Replica Autoscaling
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const replicasTarget = new aws.appautoscaling.Target("replicasTarget", {
- *     serviceNamespace: "rds",
- *     scalableDimension: "rds:cluster:ReadReplicaCount",
- *     resourceId: `cluster:${aws_rds_cluster.example.id}`,
- *     minCapacity: 1,
- *     maxCapacity: 15,
- * });
- * const replicasPolicy = new aws.appautoscaling.Policy("replicasPolicy", {
- *     serviceNamespace: replicasTarget.serviceNamespace,
- *     scalableDimension: replicasTarget.scalableDimension,
- *     resourceId: replicasTarget.resourceId,
- *     policyType: "TargetTrackingScaling",
- *     targetTrackingScalingPolicyConfiguration: {
- *         predefinedMetricSpecification: {
- *             predefinedMetricType: "RDSReaderAverageCPUUtilization",
- *         },
- *         targetValue: 75,
- *         scaleInCooldown: 300,
- *         scaleOutCooldown: 300,
- *     },
- * });
- * ```
- */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -134,37 +34,13 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
-    /**
-     * The ARN assigned by AWS to the scaling policy.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the policy.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The policy type. Valid values are `StepScaling` and `TargetTrackingScaling`. Defaults to `StepScaling`. Certain services only support only one policy type. For more information see the [Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html) and [Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html) documentation.
-     */
     public readonly policyType!: pulumi.Output<string | undefined>;
-    /**
-     * The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     public readonly resourceId!: pulumi.Output<string>;
-    /**
-     * The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     public readonly scalableDimension!: pulumi.Output<string>;
-    /**
-     * The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     public readonly serviceNamespace!: pulumi.Output<string>;
-    /**
-     * Step scaling policy configuration, requires `policyType = "StepScaling"` (default). See supported fields below.
-     */
     public readonly stepScalingPolicyConfiguration!: pulumi.Output<outputs.appautoscaling.PolicyStepScalingPolicyConfiguration | undefined>;
-    /**
-     * A target tracking policy, requires `policyType = "TargetTrackingScaling"`. See supported fields below.
-     */
     public readonly targetTrackingScalingPolicyConfiguration!: pulumi.Output<outputs.appautoscaling.PolicyTargetTrackingScalingPolicyConfiguration | undefined>;
 
     /**
@@ -222,37 +98,13 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
-    /**
-     * The ARN assigned by AWS to the scaling policy.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the policy.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The policy type. Valid values are `StepScaling` and `TargetTrackingScaling`. Defaults to `StepScaling`. Certain services only support only one policy type. For more information see the [Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html) and [Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html) documentation.
-     */
     readonly policyType?: pulumi.Input<string>;
-    /**
-     * The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     readonly resourceId?: pulumi.Input<string>;
-    /**
-     * The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     readonly scalableDimension?: pulumi.Input<string>;
-    /**
-     * The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     readonly serviceNamespace?: pulumi.Input<string>;
-    /**
-     * Step scaling policy configuration, requires `policyType = "StepScaling"` (default). See supported fields below.
-     */
     readonly stepScalingPolicyConfiguration?: pulumi.Input<inputs.appautoscaling.PolicyStepScalingPolicyConfiguration>;
-    /**
-     * A target tracking policy, requires `policyType = "TargetTrackingScaling"`. See supported fields below.
-     */
     readonly targetTrackingScalingPolicyConfiguration?: pulumi.Input<inputs.appautoscaling.PolicyTargetTrackingScalingPolicyConfiguration>;
 }
 
@@ -260,32 +112,11 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
-    /**
-     * The name of the policy.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The policy type. Valid values are `StepScaling` and `TargetTrackingScaling`. Defaults to `StepScaling`. Certain services only support only one policy type. For more information see the [Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html) and [Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html) documentation.
-     */
     readonly policyType?: pulumi.Input<string>;
-    /**
-     * The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     readonly resourceId: pulumi.Input<string>;
-    /**
-     * The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     readonly scalableDimension: pulumi.Input<string>;
-    /**
-     * The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-     */
     readonly serviceNamespace: pulumi.Input<string>;
-    /**
-     * Step scaling policy configuration, requires `policyType = "StepScaling"` (default). See supported fields below.
-     */
     readonly stepScalingPolicyConfiguration?: pulumi.Input<inputs.appautoscaling.PolicyStepScalingPolicyConfiguration>;
-    /**
-     * A target tracking policy, requires `policyType = "TargetTrackingScaling"`. See supported fields below.
-     */
     readonly targetTrackingScalingPolicyConfiguration?: pulumi.Input<inputs.appautoscaling.PolicyTargetTrackingScalingPolicyConfiguration>;
 }

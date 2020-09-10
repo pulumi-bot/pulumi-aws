@@ -6,94 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS App Mesh route resource.
- *
- * ## Example Usage
- * ### HTTP Routing
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const serviceb = new aws.appmesh.Route("serviceb", {
- *     meshName: aws_appmesh_mesh.simple.id,
- *     virtualRouterName: aws_appmesh_virtual_router.serviceb.name,
- *     spec: {
- *         httpRoute: {
- *             match: {
- *                 prefix: "/",
- *             },
- *             action: {
- *                 weightedTargets: [
- *                     {
- *                         virtualNode: aws_appmesh_virtual_node.serviceb1.name,
- *                         weight: 90,
- *                     },
- *                     {
- *                         virtualNode: aws_appmesh_virtual_node.serviceb2.name,
- *                         weight: 10,
- *                     },
- *                 ],
- *             },
- *         },
- *     },
- * });
- * ```
- * ### HTTP Header Routing
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const serviceb = new aws.appmesh.Route("serviceb", {
- *     meshName: aws_appmesh_mesh.simple.id,
- *     virtualRouterName: aws_appmesh_virtual_router.serviceb.name,
- *     spec: {
- *         httpRoute: {
- *             match: {
- *                 method: "POST",
- *                 prefix: "/",
- *                 scheme: "https",
- *                 headers: [{
- *                     name: "clientRequestId",
- *                     match: {
- *                         prefix: "123",
- *                     },
- *                 }],
- *             },
- *             action: {
- *                 weightedTargets: [{
- *                     virtualNode: aws_appmesh_virtual_node.serviceb.name,
- *                     weight: 100,
- *                 }],
- *             },
- *         },
- *     },
- * });
- * ```
- * ### TCP Routing
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const serviceb = new aws.appmesh.Route("serviceb", {
- *     meshName: aws_appmesh_mesh.simple.id,
- *     virtualRouterName: aws_appmesh_virtual_router.serviceb.name,
- *     spec: {
- *         tcpRoute: {
- *             action: {
- *                 weightedTargets: [{
- *                     virtualNode: aws_appmesh_virtual_node.serviceb1.name,
- *                     weight: 100,
- *                 }],
- *             },
- *         },
- *     },
- * });
- * ```
- */
 export class Route extends pulumi.CustomResource {
     /**
      * Get an existing Route resource's state with the given name, ID, and optional extra
@@ -122,37 +34,13 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
-    /**
-     * The ARN of the route.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The creation date of the route.
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * The last update date of the route.
-     */
     public /*out*/ readonly lastUpdatedDate!: pulumi.Output<string>;
-    /**
-     * The name of the service mesh in which to create the route.
-     */
     public readonly meshName!: pulumi.Output<string>;
-    /**
-     * The name to use for the route.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The route specification to apply.
-     */
     public readonly spec!: pulumi.Output<outputs.appmesh.RouteSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The name of the virtual router in which to create the route.
-     */
     public readonly virtualRouterName!: pulumi.Output<string>;
 
     /**
@@ -210,37 +98,13 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
-    /**
-     * The ARN of the route.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The creation date of the route.
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * The last update date of the route.
-     */
     readonly lastUpdatedDate?: pulumi.Input<string>;
-    /**
-     * The name of the service mesh in which to create the route.
-     */
     readonly meshName?: pulumi.Input<string>;
-    /**
-     * The name to use for the route.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The route specification to apply.
-     */
     readonly spec?: pulumi.Input<inputs.appmesh.RouteSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name of the virtual router in which to create the route.
-     */
     readonly virtualRouterName?: pulumi.Input<string>;
 }
 
@@ -248,24 +112,9 @@ export interface RouteState {
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
-    /**
-     * The name of the service mesh in which to create the route.
-     */
     readonly meshName: pulumi.Input<string>;
-    /**
-     * The name to use for the route.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The route specification to apply.
-     */
     readonly spec: pulumi.Input<inputs.appmesh.RouteSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name of the virtual router in which to create the route.
-     */
     readonly virtualRouterName: pulumi.Input<string>;
 }

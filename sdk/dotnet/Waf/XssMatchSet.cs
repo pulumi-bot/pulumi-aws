@@ -9,63 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Waf
 {
-    /// <summary>
-    /// Provides a WAF XSS Match Set Resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var xssMatchSet = new Aws.Waf.XssMatchSet("xssMatchSet", new Aws.Waf.XssMatchSetArgs
-    ///         {
-    ///             XssMatchTuples = 
-    ///             {
-    ///                 new Aws.Waf.Inputs.XssMatchSetXssMatchTupleArgs
-    ///                 {
-    ///                     FieldToMatch = new Aws.Waf.Inputs.XssMatchSetXssMatchTupleFieldToMatchArgs
-    ///                     {
-    ///                         Type = "URI",
-    ///                     },
-    ///                     TextTransformation = "NONE",
-    ///                 },
-    ///                 new Aws.Waf.Inputs.XssMatchSetXssMatchTupleArgs
-    ///                 {
-    ///                     FieldToMatch = new Aws.Waf.Inputs.XssMatchSetXssMatchTupleFieldToMatchArgs
-    ///                     {
-    ///                         Type = "QUERY_STRING",
-    ///                     },
-    ///                     TextTransformation = "NONE",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class XssMatchSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or description of the SizeConstraintSet.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-        /// </summary>
         [Output("xssMatchTuples")]
         public Output<ImmutableArray<Outputs.XssMatchSetXssMatchTuple>> XssMatchTuples { get; private set; } = null!;
 
@@ -115,18 +66,11 @@ namespace Pulumi.Aws.Waf
 
     public sealed class XssMatchSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name or description of the SizeConstraintSet.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("xssMatchTuples")]
         private InputList<Inputs.XssMatchSetXssMatchTupleArgs>? _xssMatchTuples;
-
-        /// <summary>
-        /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-        /// </summary>
         public InputList<Inputs.XssMatchSetXssMatchTupleArgs> XssMatchTuples
         {
             get => _xssMatchTuples ?? (_xssMatchTuples = new InputList<Inputs.XssMatchSetXssMatchTupleArgs>());
@@ -140,24 +84,14 @@ namespace Pulumi.Aws.Waf
 
     public sealed class XssMatchSetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name or description of the SizeConstraintSet.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("xssMatchTuples")]
         private InputList<Inputs.XssMatchSetXssMatchTupleGetArgs>? _xssMatchTuples;
-
-        /// <summary>
-        /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-        /// </summary>
         public InputList<Inputs.XssMatchSetXssMatchTupleGetArgs> XssMatchTuples
         {
             get => _xssMatchTuples ?? (_xssMatchTuples = new InputList<Inputs.XssMatchSetXssMatchTupleGetArgs>());

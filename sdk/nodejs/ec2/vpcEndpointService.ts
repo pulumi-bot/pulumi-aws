@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a VPC Endpoint Service resource.
- * Service consumers can create an _Interface_ VPC Endpoint to connect to the service.
- *
- * > **NOTE on VPC Endpoint Services and VPC Endpoint Service Allowed Principals:** This provider provides
- * both a standalone VPC Endpoint Service Allowed Principal resource
- * and a VPC Endpoint Service resource with an `allowedPrincipals` attribute. Do not use the same principal ARN in both
- * a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
- * and will overwrite the association.
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.VpcEndpointService("example", {
- *     acceptanceRequired: false,
- *     networkLoadBalancerArns: [aws_lb.example.arn],
- * });
- * ```
- * ### Basic w/ Tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.VpcEndpointService("example", {
- *     acceptanceRequired: false,
- *     networkLoadBalancerArns: [aws_lb.example.arn],
- *     tags: {
- *         Environment: "test",
- *     },
- * });
- * ```
- */
 export class VpcEndpointService extends pulumi.CustomResource {
     /**
      * Get an existing VpcEndpointService resource's state with the given name, ID, and optional extra
@@ -69,53 +32,17 @@ export class VpcEndpointService extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpcEndpointService.__pulumiType;
     }
 
-    /**
-     * Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-     */
     public readonly acceptanceRequired!: pulumi.Output<boolean>;
-    /**
-     * The ARNs of one or more principals allowed to discover the endpoint service.
-     */
     public readonly allowedPrincipals!: pulumi.Output<string[]>;
-    /**
-     * The Amazon Resource Name (ARN) of the VPC endpoint service.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The Availability Zones in which the service is available.
-     */
     public /*out*/ readonly availabilityZones!: pulumi.Output<string[]>;
-    /**
-     * The DNS names for the service.
-     */
     public /*out*/ readonly baseEndpointDnsNames!: pulumi.Output<string[]>;
-    /**
-     * Whether or not the service manages its VPC endpoints - `true` or `false`.
-     */
     public /*out*/ readonly managesVpcEndpoints!: pulumi.Output<boolean>;
-    /**
-     * The ARNs of one or more Network Load Balancers for the endpoint service.
-     */
     public readonly networkLoadBalancerArns!: pulumi.Output<string[]>;
-    /**
-     * The private DNS name for the service.
-     */
     public /*out*/ readonly privateDnsName!: pulumi.Output<string>;
-    /**
-     * The service name.
-     */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
-    /**
-     * The service type, `Gateway` or `Interface`.
-     */
     public /*out*/ readonly serviceType!: pulumi.Output<string>;
-    /**
-     * The state of the VPC endpoint service.
-     */
     public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -178,53 +105,17 @@ export class VpcEndpointService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcEndpointService resources.
  */
 export interface VpcEndpointServiceState {
-    /**
-     * Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-     */
     readonly acceptanceRequired?: pulumi.Input<boolean>;
-    /**
-     * The ARNs of one or more principals allowed to discover the endpoint service.
-     */
     readonly allowedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The Amazon Resource Name (ARN) of the VPC endpoint service.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The Availability Zones in which the service is available.
-     */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The DNS names for the service.
-     */
     readonly baseEndpointDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether or not the service manages its VPC endpoints - `true` or `false`.
-     */
     readonly managesVpcEndpoints?: pulumi.Input<boolean>;
-    /**
-     * The ARNs of one or more Network Load Balancers for the endpoint service.
-     */
     readonly networkLoadBalancerArns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The private DNS name for the service.
-     */
     readonly privateDnsName?: pulumi.Input<string>;
-    /**
-     * The service name.
-     */
     readonly serviceName?: pulumi.Input<string>;
-    /**
-     * The service type, `Gateway` or `Interface`.
-     */
     readonly serviceType?: pulumi.Input<string>;
-    /**
-     * The state of the VPC endpoint service.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -232,20 +123,8 @@ export interface VpcEndpointServiceState {
  * The set of arguments for constructing a VpcEndpointService resource.
  */
 export interface VpcEndpointServiceArgs {
-    /**
-     * Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-     */
     readonly acceptanceRequired: pulumi.Input<boolean>;
-    /**
-     * The ARNs of one or more principals allowed to discover the endpoint service.
-     */
     readonly allowedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ARNs of one or more Network Load Balancers for the endpoint service.
-     */
     readonly networkLoadBalancerArns: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

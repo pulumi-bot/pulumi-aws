@@ -9,94 +9,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an AWS Config Configuration Aggregator
-//
-// ## Example Usage
-// ### Account Based Aggregation
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cfg.NewConfigurationAggregator(ctx, "account", &cfg.ConfigurationAggregatorArgs{
-// 			AccountAggregationSource: &cfg.ConfigurationAggregatorAccountAggregationSourceArgs{
-// 				AccountIds: pulumi.StringArray{
-// 					pulumi.String("123456789012"),
-// 				},
-// 				Regions: pulumi.StringArray{
-// 					pulumi.String("us-west-2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Organization Based Aggregation
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cfg"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		organizationRole, err := iam.NewRole(ctx, "organizationRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Sid\": \"\",\n", "      \"Effect\": \"Allow\",\n", "      \"Principal\": {\n", "        \"Service\": \"config.amazonaws.com\"\n", "      },\n", "      \"Action\": \"sts:AssumeRole\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		organizationRolePolicyAttachment, err := iam.NewRolePolicyAttachment(ctx, "organizationRolePolicyAttachment", &iam.RolePolicyAttachmentArgs{
-// 			Role:      organizationRole.Name,
-// 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewConfigurationAggregator(ctx, "organizationConfigurationAggregator", &cfg.ConfigurationAggregatorArgs{
-// 			OrganizationAggregationSource: &cfg.ConfigurationAggregatorOrganizationAggregationSourceArgs{
-// 				AllRegions: pulumi.Bool(true),
-// 				RoleArn:    organizationRole.Arn,
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			organizationRolePolicyAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ConfigurationAggregator struct {
 	pulumi.CustomResourceState
 
-	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource ConfigurationAggregatorAccountAggregationSourcePtrOutput `pulumi:"accountAggregationSource"`
-	// The ARN of the aggregator
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the configuration aggregator.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The organization to aggregate config data from as documented below.
+	AccountAggregationSource      ConfigurationAggregatorAccountAggregationSourcePtrOutput      `pulumi:"accountAggregationSource"`
+	Arn                           pulumi.StringOutput                                           `pulumi:"arn"`
+	Name                          pulumi.StringOutput                                           `pulumi:"name"`
 	OrganizationAggregationSource ConfigurationAggregatorOrganizationAggregationSourcePtrOutput `pulumi:"organizationAggregationSource"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags                          pulumi.StringMapOutput                                        `pulumi:"tags"`
 }
 
 // NewConfigurationAggregator registers a new resource with the given unique name, arguments, and options.
@@ -127,29 +47,19 @@ func GetConfigurationAggregator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigurationAggregator resources.
 type configurationAggregatorState struct {
-	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource *ConfigurationAggregatorAccountAggregationSource `pulumi:"accountAggregationSource"`
-	// The ARN of the aggregator
-	Arn *string `pulumi:"arn"`
-	// The name of the configuration aggregator.
-	Name *string `pulumi:"name"`
-	// The organization to aggregate config data from as documented below.
+	AccountAggregationSource      *ConfigurationAggregatorAccountAggregationSource      `pulumi:"accountAggregationSource"`
+	Arn                           *string                                               `pulumi:"arn"`
+	Name                          *string                                               `pulumi:"name"`
 	OrganizationAggregationSource *ConfigurationAggregatorOrganizationAggregationSource `pulumi:"organizationAggregationSource"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Tags                          map[string]string                                     `pulumi:"tags"`
 }
 
 type ConfigurationAggregatorState struct {
-	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource ConfigurationAggregatorAccountAggregationSourcePtrInput
-	// The ARN of the aggregator
-	Arn pulumi.StringPtrInput
-	// The name of the configuration aggregator.
-	Name pulumi.StringPtrInput
-	// The organization to aggregate config data from as documented below.
+	AccountAggregationSource      ConfigurationAggregatorAccountAggregationSourcePtrInput
+	Arn                           pulumi.StringPtrInput
+	Name                          pulumi.StringPtrInput
 	OrganizationAggregationSource ConfigurationAggregatorOrganizationAggregationSourcePtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags                          pulumi.StringMapInput
 }
 
 func (ConfigurationAggregatorState) ElementType() reflect.Type {
@@ -157,26 +67,18 @@ func (ConfigurationAggregatorState) ElementType() reflect.Type {
 }
 
 type configurationAggregatorArgs struct {
-	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource *ConfigurationAggregatorAccountAggregationSource `pulumi:"accountAggregationSource"`
-	// The name of the configuration aggregator.
-	Name *string `pulumi:"name"`
-	// The organization to aggregate config data from as documented below.
+	AccountAggregationSource      *ConfigurationAggregatorAccountAggregationSource      `pulumi:"accountAggregationSource"`
+	Name                          *string                                               `pulumi:"name"`
 	OrganizationAggregationSource *ConfigurationAggregatorOrganizationAggregationSource `pulumi:"organizationAggregationSource"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Tags                          map[string]string                                     `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ConfigurationAggregator resource.
 type ConfigurationAggregatorArgs struct {
-	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource ConfigurationAggregatorAccountAggregationSourcePtrInput
-	// The name of the configuration aggregator.
-	Name pulumi.StringPtrInput
-	// The organization to aggregate config data from as documented below.
+	AccountAggregationSource      ConfigurationAggregatorAccountAggregationSourcePtrInput
+	Name                          pulumi.StringPtrInput
 	OrganizationAggregationSource ConfigurationAggregatorOrganizationAggregationSourcePtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags                          pulumi.StringMapInput
 }
 
 func (ConfigurationAggregatorArgs) ElementType() reflect.Type {

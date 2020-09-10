@@ -10,47 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Athena database.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/athena"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		hogeBucket, err := s3.NewBucket(ctx, "hogeBucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = athena.NewDatabase(ctx, "hogeDatabase", &athena.DatabaseArgs{
-// 			Name:   pulumi.String("database_name"),
-// 			Bucket: hogeBucket.Bucket,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Database struct {
 	pulumi.CustomResourceState
 
-	// Name of s3 bucket to save the results of the query execution.
-	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryptionConfiguration` block is documented below.
+	Bucket                  pulumi.StringOutput                      `pulumi:"bucket"`
 	EncryptionConfiguration DatabaseEncryptionConfigurationPtrOutput `pulumi:"encryptionConfiguration"`
-	// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// Name of the database to create.
-	Name pulumi.StringOutput `pulumi:"name"`
+	ForceDestroy            pulumi.BoolPtrOutput                     `pulumi:"forceDestroy"`
+	Name                    pulumi.StringOutput                      `pulumi:"name"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -84,25 +50,17 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// Name of s3 bucket to save the results of the query execution.
-	Bucket *string `pulumi:"bucket"`
-	// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryptionConfiguration` block is documented below.
+	Bucket                  *string                          `pulumi:"bucket"`
 	EncryptionConfiguration *DatabaseEncryptionConfiguration `pulumi:"encryptionConfiguration"`
-	// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Name of the database to create.
-	Name *string `pulumi:"name"`
+	ForceDestroy            *bool                            `pulumi:"forceDestroy"`
+	Name                    *string                          `pulumi:"name"`
 }
 
 type DatabaseState struct {
-	// Name of s3 bucket to save the results of the query execution.
-	Bucket pulumi.StringPtrInput
-	// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryptionConfiguration` block is documented below.
+	Bucket                  pulumi.StringPtrInput
 	EncryptionConfiguration DatabaseEncryptionConfigurationPtrInput
-	// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-	ForceDestroy pulumi.BoolPtrInput
-	// Name of the database to create.
-	Name pulumi.StringPtrInput
+	ForceDestroy            pulumi.BoolPtrInput
+	Name                    pulumi.StringPtrInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {
@@ -110,26 +68,18 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// Name of s3 bucket to save the results of the query execution.
-	Bucket string `pulumi:"bucket"`
-	// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryptionConfiguration` block is documented below.
+	Bucket                  string                           `pulumi:"bucket"`
 	EncryptionConfiguration *DatabaseEncryptionConfiguration `pulumi:"encryptionConfiguration"`
-	// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Name of the database to create.
-	Name *string `pulumi:"name"`
+	ForceDestroy            *bool                            `pulumi:"forceDestroy"`
+	Name                    *string                          `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// Name of s3 bucket to save the results of the query execution.
-	Bucket pulumi.StringInput
-	// The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryptionConfiguration` block is documented below.
+	Bucket                  pulumi.StringInput
 	EncryptionConfiguration DatabaseEncryptionConfigurationPtrInput
-	// A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-	ForceDestroy pulumi.BoolPtrInput
-	// Name of the database to create.
-	Name pulumi.StringPtrInput
+	ForceDestroy            pulumi.BoolPtrInput
+	Name                    pulumi.StringPtrInput
 }
 
 func (DatabaseArgs) ElementType() reflect.Type {

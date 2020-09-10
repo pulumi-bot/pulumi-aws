@@ -22,64 +22,9 @@ class SshKey(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a AWS Transfer User SSH Key resource.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo_server = aws.transfer.Server("fooServer",
-            identity_provider_type="SERVICE_MANAGED",
-            tags={
-                "NAME": "tf-acc-test-transfer-server",
-            })
-        foo_role = aws.iam.Role("fooRole", assume_role_policy=\"\"\"{
-        	"Version": "2012-10-17",
-        	"Statement": [
-        		{
-        		"Effect": "Allow",
-        		"Principal": {
-        			"Service": "transfer.amazonaws.com"
-        		},
-        		"Action": "sts:AssumeRole"
-        		}
-        	]
-        }
-        \"\"\")
-        foo_role_policy = aws.iam.RolePolicy("fooRolePolicy",
-            role=foo_role.id,
-            policy=\"\"\"{
-        	"Version": "2012-10-17",
-        	"Statement": [
-        		{
-        			"Sid": "AllowFullAccesstoS3",
-        			"Effect": "Allow",
-        			"Action": [
-        				"s3:*"
-        			],
-        			"Resource": "*"
-        		}
-        	]
-        }
-        \"\"\")
-        foo_user = aws.transfer.User("fooUser",
-            server_id=foo_server.id,
-            user_name="tftestuser",
-            role=foo_role.arn,
-            tags={
-                "NAME": "tftestuser",
-            })
-        foo_ssh_key = aws.transfer.SshKey("fooSshKey",
-            server_id=foo_server.id,
-            user_name=foo_user.user_name,
-            body="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 example@example.com")
-        ```
-
+        Create a SshKey resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] body: The public key portion of an SSH key pair.
-        :param pulumi.Input[str] server_id: The Server ID of the Transfer Server (e.g. `s-12345678`)
-        :param pulumi.Input[str] user_name: The name of the user account that is assigned to one or more servers.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,9 +72,6 @@ class SshKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] body: The public key portion of an SSH key pair.
-        :param pulumi.Input[str] server_id: The Server ID of the Transfer Server (e.g. `s-12345678`)
-        :param pulumi.Input[str] user_name: The name of the user account that is assigned to one or more servers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -143,25 +85,16 @@ class SshKey(pulumi.CustomResource):
     @property
     @pulumi.getter
     def body(self) -> pulumi.Output[str]:
-        """
-        The public key portion of an SSH key pair.
-        """
         return pulumi.get(self, "body")
 
     @property
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Output[str]:
-        """
-        The Server ID of the Transfer Server (e.g. `s-12345678`)
-        """
         return pulumi.get(self, "server_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
-        """
-        The name of the user account that is assigned to one or more servers.
-        """
         return pulumi.get(self, "user_name")
 
     def translate_output_property(self, prop):

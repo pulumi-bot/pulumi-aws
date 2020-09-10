@@ -18,10 +18,6 @@ class RepositoryEncryptionConfigurationArgs:
     def __init__(__self__, *,
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] encryption_type: The encryption type to use for the repository. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
-        :param pulumi.Input[str] kms_key: The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
-        """
         if encryption_type is not None:
             pulumi.set(__self__, "encryption_type", encryption_type)
         if kms_key is not None:
@@ -30,9 +26,6 @@ class RepositoryEncryptionConfigurationArgs:
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The encryption type to use for the repository. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
-        """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
@@ -42,9 +35,6 @@ class RepositoryEncryptionConfigurationArgs:
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
-        """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
@@ -56,17 +46,11 @@ class RepositoryEncryptionConfigurationArgs:
 class RepositoryImageScanningConfigurationArgs:
     def __init__(__self__, *,
                  scan_on_push: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] scan_on_push: Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
-        """
         pulumi.set(__self__, "scan_on_push", scan_on_push)
 
     @property
     @pulumi.getter(name="scanOnPush")
     def scan_on_push(self) -> pulumi.Input[bool]:
-        """
-        Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
-        """
         return pulumi.get(self, "scan_on_push")
 
     @scan_on_push.setter

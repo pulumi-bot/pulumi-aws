@@ -13,13 +13,7 @@ namespace Pulumi.Aws.CloudTrail.Outputs
     [OutputType]
     public sealed class TrailEventSelectorDataResource
     {
-        /// <summary>
-        /// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// A list of ARN for the specified S3 buckets and object prefixes..
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

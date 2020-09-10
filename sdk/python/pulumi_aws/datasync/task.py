@@ -27,16 +27,9 @@ class Task(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an AWS DataSync Task, which represents a configuration for synchronization. Starting an execution of these DataSync Tasks (actually synchronizing files) is performed outside of this resource.
-
+        Create a Task resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloudwatch_log_group_arn: Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-        :param pulumi.Input[str] destination_location_arn: Amazon Resource Name (ARN) of destination DataSync Location.
-        :param pulumi.Input[str] name: Name of the DataSync Task.
-        :param pulumi.Input[pulumi.InputType['TaskOptionsArgs']] options: Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-        :param pulumi.Input[str] source_location_arn: Amazon Resource Name (ARN) of source DataSync Location.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value pairs of resource tags to assign to the DataSync Task.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,13 +83,6 @@ class Task(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the DataSync Task.
-        :param pulumi.Input[str] cloudwatch_log_group_arn: Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-        :param pulumi.Input[str] destination_location_arn: Amazon Resource Name (ARN) of destination DataSync Location.
-        :param pulumi.Input[str] name: Name of the DataSync Task.
-        :param pulumi.Input[pulumi.InputType['TaskOptionsArgs']] options: Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-        :param pulumi.Input[str] source_location_arn: Amazon Resource Name (ARN) of source DataSync Location.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value pairs of resource tags to assign to the DataSync Task.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -114,57 +100,36 @@ class Task(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the DataSync Task.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="cloudwatchLogGroupArn")
     def cloudwatch_log_group_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
-        """
         return pulumi.get(self, "cloudwatch_log_group_arn")
 
     @property
     @pulumi.getter(name="destinationLocationArn")
     def destination_location_arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of destination DataSync Location.
-        """
         return pulumi.get(self, "destination_location_arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the DataSync Task.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional['outputs.TaskOptions']]:
-        """
-        Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter(name="sourceLocationArn")
     def source_location_arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of source DataSync Location.
-        """
         return pulumi.get(self, "source_location_arn")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value pairs of resource tags to assign to the DataSync Task.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

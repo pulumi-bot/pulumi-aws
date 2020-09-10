@@ -33,14 +33,6 @@ class GetEndpointResult:
     @property
     @pulumi.getter(name="endpointAddress")
     def endpoint_address(self) -> str:
-        """
-        The endpoint based on `endpoint_type`:
-        * No `endpoint_type`: Either `iot:Data` or `iot:Data-ATS` [depending on region](https://aws.amazon.com/blogs/iot/aws-iot-core-ats-endpoints/)
-        * `iot:CredentialsProvider`: `IDENTIFIER.credentials.iot.REGION.amazonaws.com`
-        * `iot:Data`: `IDENTIFIER.iot.REGION.amazonaws.com`
-        * `iot:Data-ATS`: `IDENTIFIER-ats.iot.REGION.amazonaws.com`
-        * `iot:Job`: `IDENTIFIER.jobs.iot.REGION.amazonaws.com`
-        """
         return pulumi.get(self, "endpoint_address")
 
     @property
@@ -71,10 +63,7 @@ class AwaitableGetEndpointResult(GetEndpointResult):
 def get_endpoint(endpoint_type: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointResult:
     """
-    Returns a unique endpoint specific to the AWS account making the call.
-
-
-    :param str endpoint_type: Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Job`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['endpointType'] = endpoint_type

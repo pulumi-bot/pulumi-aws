@@ -11,12 +11,10 @@ import (
 )
 
 type ClusterCacheNode struct {
-	Address *string `pulumi:"address"`
-	// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
+	Address          *string `pulumi:"address"`
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	Id               *string `pulumi:"id"`
-	// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
-	Port *int `pulumi:"port"`
+	Port             *int    `pulumi:"port"`
 }
 
 // ClusterCacheNodeInput is an input type that accepts ClusterCacheNodeArgs and ClusterCacheNodeOutput values.
@@ -31,12 +29,10 @@ type ClusterCacheNodeInput interface {
 }
 
 type ClusterCacheNodeArgs struct {
-	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
+	Address          pulumi.StringPtrInput `pulumi:"address"`
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
 	Id               pulumi.StringPtrInput `pulumi:"id"`
-	// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
 }
 
 func (ClusterCacheNodeArgs) ElementType() reflect.Type {
@@ -94,7 +90,6 @@ func (o ClusterCacheNodeOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCacheNode) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
 func (o ClusterCacheNodeOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCacheNode) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -103,7 +98,6 @@ func (o ClusterCacheNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCacheNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
 func (o ClusterCacheNodeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterCacheNode) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -129,9 +123,7 @@ func (o ClusterCacheNodeArrayOutput) Index(i pulumi.IntInput) ClusterCacheNodeOu
 }
 
 type ParameterGroupParameter struct {
-	// The name of the ElastiCache parameter.
-	Name string `pulumi:"name"`
-	// The value of the ElastiCache parameter.
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -147,9 +139,7 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// The name of the ElastiCache parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the ElastiCache parameter.
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -204,12 +194,10 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// The name of the ElastiCache parameter.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the ElastiCache parameter.
 func (o ParameterGroupParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -235,9 +223,7 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 }
 
 type ReplicationGroupClusterMode struct {
-	// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
-	NumNodeGroups int `pulumi:"numNodeGroups"`
-	// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+	NumNodeGroups        int `pulumi:"numNodeGroups"`
 	ReplicasPerNodeGroup int `pulumi:"replicasPerNodeGroup"`
 }
 
@@ -253,9 +239,7 @@ type ReplicationGroupClusterModeInput interface {
 }
 
 type ReplicationGroupClusterModeArgs struct {
-	// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
-	NumNodeGroups pulumi.IntInput `pulumi:"numNodeGroups"`
-	// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+	NumNodeGroups        pulumi.IntInput `pulumi:"numNodeGroups"`
 	ReplicasPerNodeGroup pulumi.IntInput `pulumi:"replicasPerNodeGroup"`
 }
 
@@ -335,13 +319,10 @@ func (o ReplicationGroupClusterModeOutput) ToReplicationGroupClusterModePtrOutpu
 		return &v
 	}).(ReplicationGroupClusterModePtrOutput)
 }
-
-// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
 func (o ReplicationGroupClusterModeOutput) NumNodeGroups() pulumi.IntOutput {
 	return o.ApplyT(func(v ReplicationGroupClusterMode) int { return v.NumNodeGroups }).(pulumi.IntOutput)
 }
 
-// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
 func (o ReplicationGroupClusterModeOutput) ReplicasPerNodeGroup() pulumi.IntOutput {
 	return o.ApplyT(func(v ReplicationGroupClusterMode) int { return v.ReplicasPerNodeGroup }).(pulumi.IntOutput)
 }
@@ -364,7 +345,6 @@ func (o ReplicationGroupClusterModePtrOutput) Elem() ReplicationGroupClusterMode
 	return o.ApplyT(func(v *ReplicationGroupClusterMode) ReplicationGroupClusterMode { return *v }).(ReplicationGroupClusterModeOutput)
 }
 
-// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
 func (o ReplicationGroupClusterModePtrOutput) NumNodeGroups() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReplicationGroupClusterMode) *int {
 		if v == nil {
@@ -374,7 +354,6 @@ func (o ReplicationGroupClusterModePtrOutput) NumNodeGroups() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
 func (o ReplicationGroupClusterModePtrOutput) ReplicasPerNodeGroup() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReplicationGroupClusterMode) *int {
 		if v == nil {
@@ -385,13 +364,10 @@ func (o ReplicationGroupClusterModePtrOutput) ReplicasPerNodeGroup() pulumi.IntP
 }
 
 type GetClusterCacheNode struct {
-	Address string `pulumi:"address"`
-	// The Availability Zone for the cache cluster.
+	Address          string `pulumi:"address"`
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	Id               string `pulumi:"id"`
-	// The port number on which each of the cache nodes will
-	// accept connections.
-	Port int `pulumi:"port"`
+	Port             int    `pulumi:"port"`
 }
 
 // GetClusterCacheNodeInput is an input type that accepts GetClusterCacheNodeArgs and GetClusterCacheNodeOutput values.
@@ -406,13 +382,10 @@ type GetClusterCacheNodeInput interface {
 }
 
 type GetClusterCacheNodeArgs struct {
-	Address pulumi.StringInput `pulumi:"address"`
-	// The Availability Zone for the cache cluster.
+	Address          pulumi.StringInput `pulumi:"address"`
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	Id               pulumi.StringInput `pulumi:"id"`
-	// The port number on which each of the cache nodes will
-	// accept connections.
-	Port pulumi.IntInput `pulumi:"port"`
+	Port             pulumi.IntInput    `pulumi:"port"`
 }
 
 func (GetClusterCacheNodeArgs) ElementType() reflect.Type {
@@ -470,7 +443,6 @@ func (o GetClusterCacheNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCacheNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// The Availability Zone for the cache cluster.
 func (o GetClusterCacheNodeOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCacheNode) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -479,8 +451,6 @@ func (o GetClusterCacheNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCacheNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The port number on which each of the cache nodes will
-// accept connections.
 func (o GetClusterCacheNodeOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterCacheNode) int { return v.Port }).(pulumi.IntOutput)
 }

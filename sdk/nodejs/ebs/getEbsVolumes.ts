@@ -6,33 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * `aws.ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
- *
- * This data source can be useful for getting a list of volume IDs with (for example) matching tags.
- *
- * ## Example Usage
- *
- * The following demonstrates obtaining a map of availability zone to EBS volume ID for volumes with a given tag value.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleEbsVolumes = aws.ebs.getEbsVolumes({
- *     tags: {
- *         VolumeSet: "TestVolumeSet",
- *     },
- * });
- * const exampleVolume = exampleEbsVolumes.then(exampleEbsVolumes => exampleEbsVolumes.ids.map((v, k) => [k, v]).map(([, ]) => aws.ebs.getVolume({
- *     filters: [{
- *         name: "volume-id",
- *         values: [each.value],
- *     }],
- * })));
- * export const availabilityZoneToVolumeId = exampleVolume.reduce((__obj, s) => { ...__obj, [s.id]: s.availabilityZone });
- * ```
- */
 export function getEbsVolumes(args?: GetEbsVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetEbsVolumesResult> {
     args = args || {};
     if (!opts) {
@@ -52,14 +25,7 @@ export function getEbsVolumes(args?: GetEbsVolumesArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getEbsVolumes.
  */
 export interface GetEbsVolumesArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: inputs.ebs.GetEbsVolumesFilter[];
-    /**
-     * A map of tags, each pair of which must exactly match
-     * a pair on the desired volumes.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -72,10 +38,6 @@ export interface GetEbsVolumesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A set of all the EBS Volume IDs found. This data source will fail if
-     * no volumes match the provided criteria.
-     */
     readonly ids: string[];
     readonly tags?: {[key: string]: string};
 }

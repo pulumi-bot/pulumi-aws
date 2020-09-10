@@ -9,310 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CloudWatch
 {
-    /// <summary>
-    /// Provides a CloudWatch Event Target resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var console = new Aws.CloudWatch.EventRule("console", new Aws.CloudWatch.EventRuleArgs
-    ///         {
-    ///             Description = "Capture all EC2 scaling events",
-    ///             EventPattern = @"{
-    ///   ""source"": [
-    ///     ""aws.autoscaling""
-    ///   ],
-    ///   ""detail-type"": [
-    ///     ""EC2 Instance Launch Successful"",
-    ///     ""EC2 Instance Terminate Successful"",
-    ///     ""EC2 Instance Launch Unsuccessful"",
-    ///     ""EC2 Instance Terminate Unsuccessful""
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var testStream = new Aws.Kinesis.Stream("testStream", new Aws.Kinesis.StreamArgs
-    ///         {
-    ///             ShardCount = 1,
-    ///         });
-    ///         var yada = new Aws.CloudWatch.EventTarget("yada", new Aws.CloudWatch.EventTargetArgs
-    ///         {
-    ///             Rule = console.Name,
-    ///             Arn = testStream.Arn,
-    ///             RunCommandTargets = 
-    ///             {
-    ///                 new Aws.CloudWatch.Inputs.EventTargetRunCommandTargetArgs
-    ///                 {
-    ///                     Key = "tag:Name",
-    ///                     Values = 
-    ///                     {
-    ///                         "FooBar",
-    ///                     },
-    ///                 },
-    ///                 new Aws.CloudWatch.Inputs.EventTargetRunCommandTargetArgs
-    ///                 {
-    ///                     Key = "InstanceIds",
-    ///                     Values = 
-    ///                     {
-    ///                         "i-162058cd308bffec2",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Example SSM Document Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ssmLifecycleTrust = Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "sts:AssumeRole",
-    ///                     },
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
-    ///                         {
-    ///                             Type = "Service",
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 "events.amazonaws.com",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var stopInstance = new Aws.Ssm.Document("stopInstance", new Aws.Ssm.DocumentArgs
-    ///         {
-    ///             DocumentType = "Command",
-    ///             Content = @"  {
-    ///     ""schemaVersion"": ""1.2"",
-    ///     ""description"": ""Stop an instance"",
-    ///     ""parameters"": {
-    /// 
-    ///     },
-    ///     ""runtimeConfig"": {
-    ///       ""aws:runShellScript"": {
-    ///         ""properties"": [
-    ///           {
-    ///             ""id"": ""0.aws:runShellScript"",
-    ///             ""runCommand"": [""halt""]
-    ///           }
-    ///         ]
-    ///       }
-    ///     }
-    ///   }
-    /// ",
-    ///         });
-    ///         var ssmLifecyclePolicyDocument = stopInstance.Arn.Apply(arn =&gt; Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Effect = "Allow",
-    ///                     Actions = 
-    ///                     {
-    ///                         "ssm:SendCommand",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         "arn:aws:ec2:eu-west-1:1234567890:instance/*",
-    ///                     },
-    ///                     Conditions = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
-    ///                         {
-    ///                             Test = "StringEquals",
-    ///                             Variable = "ec2:ResourceTag/Terminate",
-    ///                             Values = 
-    ///                             {
-    ///                                 "*",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Effect = "Allow",
-    ///                     Actions = 
-    ///                     {
-    ///                         "ssm:SendCommand",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         arn,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var ssmLifecycleRole = new Aws.Iam.Role("ssmLifecycleRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = ssmLifecycleTrust.Apply(ssmLifecycleTrust =&gt; ssmLifecycleTrust.Json),
-    ///         });
-    ///         var ssmLifecyclePolicy = new Aws.Iam.Policy("ssmLifecyclePolicy", new Aws.Iam.PolicyArgs
-    ///         {
-    ///             Policy = ssmLifecyclePolicyDocument.Apply(ssmLifecyclePolicyDocument =&gt; ssmLifecyclePolicyDocument.Json),
-    ///         });
-    ///         var stopInstancesEventRule = new Aws.CloudWatch.EventRule("stopInstancesEventRule", new Aws.CloudWatch.EventRuleArgs
-    ///         {
-    ///             Description = "Stop instances nightly",
-    ///             ScheduleExpression = "cron(0 0 * * ? *)",
-    ///         });
-    ///         var stopInstancesEventTarget = new Aws.CloudWatch.EventTarget("stopInstancesEventTarget", new Aws.CloudWatch.EventTargetArgs
-    ///         {
-    ///             Arn = stopInstance.Arn,
-    ///             Rule = stopInstancesEventRule.Name,
-    ///             RoleArn = ssmLifecycleRole.Arn,
-    ///             RunCommandTargets = 
-    ///             {
-    ///                 new Aws.CloudWatch.Inputs.EventTargetRunCommandTargetArgs
-    ///                 {
-    ///                     Key = "tag:Terminate",
-    ///                     Values = 
-    ///                     {
-    ///                         "midnight",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Example RunCommand Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var stopInstancesEventRule = new Aws.CloudWatch.EventRule("stopInstancesEventRule", new Aws.CloudWatch.EventRuleArgs
-    ///         {
-    ///             Description = "Stop instances nightly",
-    ///             ScheduleExpression = "cron(0 0 * * ? *)",
-    ///         });
-    ///         var stopInstancesEventTarget = new Aws.CloudWatch.EventTarget("stopInstancesEventTarget", new Aws.CloudWatch.EventTargetArgs
-    ///         {
-    ///             Arn = $"arn:aws:ssm:{@var.Aws_region}::document/AWS-RunShellScript",
-    ///             Input = "{\"commands\":[\"halt\"]}",
-    ///             Rule = stopInstancesEventRule.Name,
-    ///             RoleArn = aws_iam_role.Ssm_lifecycle.Arn,
-    ///             RunCommandTargets = 
-    ///             {
-    ///                 new Aws.CloudWatch.Inputs.EventTargetRunCommandTargetArgs
-    ///                 {
-    ///                     Key = "tag:Terminate",
-    ///                     Values = 
-    ///                     {
-    ///                         "midnight",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EventTarget : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) associated of the target.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Output("batchTarget")]
         public Output<Outputs.EventTargetBatchTarget?> BatchTarget { get; private set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Output("ecsTarget")]
         public Output<Outputs.EventTargetEcsTarget?> EcsTarget { get; private set; } = null!;
 
-        /// <summary>
-        /// Valid JSON text passed to the target.
-        /// </summary>
         [Output("input")]
         public Output<string?> Input { get; private set; } = null!;
 
-        /// <summary>
-        /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-        /// that is used for extracting part of the matched event when passing it to the target.
-        /// </summary>
         [Output("inputPath")]
         public Output<string?> InputPath { get; private set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are providing a custom input to a target based on certain event data.
-        /// </summary>
         [Output("inputTransformer")]
         public Output<Outputs.EventTargetInputTransformer?> InputTransformer { get; private set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Output("kinesisTarget")]
         public Output<Outputs.EventTargetKinesisTarget?> KinesisTarget { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used.
-        /// </summary>
         [Output("roleArn")]
         public Output<string?> RoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the rule you want to add targets to.
-        /// </summary>
         [Output("rule")]
         public Output<string> Rule { get; private set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-        /// </summary>
         [Output("runCommandTargets")]
         public Output<ImmutableArray<Outputs.EventTargetRunCommandTarget>> RunCommandTargets { get; private set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Output("sqsTarget")]
         public Output<Outputs.EventTargetSqsTarget?> SqsTarget { get; private set; } = null!;
 
-        /// <summary>
-        /// The unique target assignment ID.  If missing, will generate a random, unique id.
-        /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
 
@@ -362,82 +93,44 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class EventTargetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) associated of the target.
-        /// </summary>
         [Input("arn", required: true)]
         public Input<string> Arn { get; set; } = null!;
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("batchTarget")]
         public Input<Inputs.EventTargetBatchTargetArgs>? BatchTarget { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("ecsTarget")]
         public Input<Inputs.EventTargetEcsTargetArgs>? EcsTarget { get; set; }
 
-        /// <summary>
-        /// Valid JSON text passed to the target.
-        /// </summary>
         [Input("input")]
         public Input<string>? Input { get; set; }
 
-        /// <summary>
-        /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-        /// that is used for extracting part of the matched event when passing it to the target.
-        /// </summary>
         [Input("inputPath")]
         public Input<string>? InputPath { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are providing a custom input to a target based on certain event data.
-        /// </summary>
         [Input("inputTransformer")]
         public Input<Inputs.EventTargetInputTransformerArgs>? InputTransformer { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("kinesisTarget")]
         public Input<Inputs.EventTargetKinesisTargetArgs>? KinesisTarget { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// The name of the rule you want to add targets to.
-        /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
 
         [Input("runCommandTargets")]
         private InputList<Inputs.EventTargetRunCommandTargetArgs>? _runCommandTargets;
-
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-        /// </summary>
         public InputList<Inputs.EventTargetRunCommandTargetArgs> RunCommandTargets
         {
             get => _runCommandTargets ?? (_runCommandTargets = new InputList<Inputs.EventTargetRunCommandTargetArgs>());
             set => _runCommandTargets = value;
         }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("sqsTarget")]
         public Input<Inputs.EventTargetSqsTargetArgs>? SqsTarget { get; set; }
 
-        /// <summary>
-        /// The unique target assignment ID.  If missing, will generate a random, unique id.
-        /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
 
@@ -448,82 +141,44 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class EventTargetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) associated of the target.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("batchTarget")]
         public Input<Inputs.EventTargetBatchTargetGetArgs>? BatchTarget { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("ecsTarget")]
         public Input<Inputs.EventTargetEcsTargetGetArgs>? EcsTarget { get; set; }
 
-        /// <summary>
-        /// Valid JSON text passed to the target.
-        /// </summary>
         [Input("input")]
         public Input<string>? Input { get; set; }
 
-        /// <summary>
-        /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
-        /// that is used for extracting part of the matched event when passing it to the target.
-        /// </summary>
         [Input("inputPath")]
         public Input<string>? InputPath { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are providing a custom input to a target based on certain event data.
-        /// </summary>
         [Input("inputTransformer")]
         public Input<Inputs.EventTargetInputTransformerGetArgs>? InputTransformer { get; set; }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("kinesisTarget")]
         public Input<Inputs.EventTargetKinesisTargetGetArgs>? KinesisTarget { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// The name of the rule you want to add targets to.
-        /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         [Input("runCommandTargets")]
         private InputList<Inputs.EventTargetRunCommandTargetGetArgs>? _runCommandTargets;
-
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-        /// </summary>
         public InputList<Inputs.EventTargetRunCommandTargetGetArgs> RunCommandTargets
         {
             get => _runCommandTargets ?? (_runCommandTargets = new InputList<Inputs.EventTargetRunCommandTargetGetArgs>());
             set => _runCommandTargets = value;
         }
 
-        /// <summary>
-        /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-        /// </summary>
         [Input("sqsTarget")]
         public Input<Inputs.EventTargetSqsTargetGetArgs>? SqsTarget { get; set; }
 
-        /// <summary>
-        /// The unique target assignment ID.  If missing, will generate a random, unique id.
-        /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
 

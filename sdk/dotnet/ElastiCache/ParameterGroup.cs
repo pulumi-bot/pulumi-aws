@@ -9,66 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElastiCache
 {
-    /// <summary>
-    /// Provides an ElastiCache parameter group resource.
-    /// 
-    /// &gt; **NOTE:** Attempting to remove the `reserved-memory` parameter when `family` is set to `redis2.6` or `redis2.8` may show a perpetual difference in this provider due to an Elasticache API limitation. Leave that parameter configured with any value to workaround the issue.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.ElastiCache.ParameterGroup("default", new Aws.ElastiCache.ParameterGroupArgs
-    ///         {
-    ///             Family = "redis2.8",
-    ///             Parameters = 
-    ///             {
-    ///                 new Aws.ElastiCache.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "activerehashing",
-    ///                     Value = "yes",
-    ///                 },
-    ///                 new Aws.ElastiCache.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "min-slaves-to-write",
-    ///                     Value = "2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ParameterGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The family of the ElastiCache parameter group.
-        /// </summary>
         [Output("family")]
         public Output<string> Family { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the ElastiCache parameter.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of ElastiCache parameters to apply.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ParameterGroupParameter>> Parameters { get; private set; } = null!;
 
@@ -118,30 +69,17 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class ParameterGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the ElastiCache parameter group.
-        /// </summary>
         [Input("family", required: true)]
         public Input<string> Family { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the ElastiCache parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterArgs>? _parameters;
-
-        /// <summary>
-        /// A list of ElastiCache parameters to apply.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterArgs>());
@@ -156,30 +94,17 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class ParameterGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the ElastiCache parameter group.
-        /// </summary>
         [Input("family")]
         public Input<string>? Family { get; set; }
 
-        /// <summary>
-        /// The name of the ElastiCache parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// A list of ElastiCache parameters to apply.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterGetArgs>());

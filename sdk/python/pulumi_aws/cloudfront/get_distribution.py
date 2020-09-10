@@ -54,18 +54,11 @@ class GetDistributionResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN (Amazon Resource Name) for the distribution. For example: arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012 is your AWS account ID.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
-        """
-        The domain name corresponding to the distribution. For
-        example: `d604721fxaaqy9.cloudfront.net`.
-        """
         return pulumi.get(self, "domain_name")
 
     @property
@@ -76,55 +69,31 @@ class GetDistributionResult:
     @property
     @pulumi.getter
     def etag(self) -> str:
-        """
-        The current version of the distribution's information. For example:
-        `E2QWRUHAPOMQZL`.
-        """
         return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="hostedZoneId")
     def hosted_zone_id(self) -> str:
-        """
-        The CloudFront Route 53 zone ID that can be used to
-        route an [Alias Resource Record Set][7] to. This attribute is simply an
-        alias for the zone ID `Z2FDTNDATAQYW2`.
-        """
         return pulumi.get(self, "hosted_zone_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="inProgressValidationBatches")
     def in_progress_validation_batches(self) -> float:
-        """
-        The number of invalidation batches
-        currently in progress.
-        """
         return pulumi.get(self, "in_progress_validation_batches")
 
     @property
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> str:
-        """
-        The date and time the distribution was last modified.
-        """
         return pulumi.get(self, "last_modified_time")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The current status of the distribution. `Deployed` if the
-        distribution's information is fully propagated throughout the Amazon
-        CloudFront system.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -155,19 +124,7 @@ def get_distribution(id: Optional[str] = None,
                      tags: Optional[Mapping[str, str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDistributionResult:
     """
-    Use this data source to retrieve information about a CloudFront distribution.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.cloudfront.get_distribution(id="EDFDVBD632BHDS5")
-    ```
-
-
-    :param str id: The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

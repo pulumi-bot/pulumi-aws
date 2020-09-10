@@ -10,41 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to create an organizational unit.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewOrganizationalUnit(ctx, "example", &organizations.OrganizationalUnitArgs{
-// 			ParentId: pulumi.Any(aws_organizations_organization.Example.Roots[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type OrganizationalUnit struct {
 	pulumi.CustomResourceState
 
-	// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
 	Accounts OrganizationalUnitAccountArrayOutput `pulumi:"accounts"`
-	// ARN of the organizational unit
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name for the organizational unit
-	Name pulumi.StringOutput `pulumi:"name"`
-	// ID of the parent organizational unit, which may be the root
-	ParentId pulumi.StringOutput `pulumi:"parentId"`
+	Arn      pulumi.StringOutput                  `pulumi:"arn"`
+	Name     pulumi.StringOutput                  `pulumi:"name"`
+	ParentId pulumi.StringOutput                  `pulumi:"parentId"`
 }
 
 // NewOrganizationalUnit registers a new resource with the given unique name, arguments, and options.
@@ -78,24 +50,16 @@ func GetOrganizationalUnit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationalUnit resources.
 type organizationalUnitState struct {
-	// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
 	Accounts []OrganizationalUnitAccount `pulumi:"accounts"`
-	// ARN of the organizational unit
-	Arn *string `pulumi:"arn"`
-	// The name for the organizational unit
-	Name *string `pulumi:"name"`
-	// ID of the parent organizational unit, which may be the root
-	ParentId *string `pulumi:"parentId"`
+	Arn      *string                     `pulumi:"arn"`
+	Name     *string                     `pulumi:"name"`
+	ParentId *string                     `pulumi:"parentId"`
 }
 
 type OrganizationalUnitState struct {
-	// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
 	Accounts OrganizationalUnitAccountArrayInput
-	// ARN of the organizational unit
-	Arn pulumi.StringPtrInput
-	// The name for the organizational unit
-	Name pulumi.StringPtrInput
-	// ID of the parent organizational unit, which may be the root
+	Arn      pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
 	ParentId pulumi.StringPtrInput
 }
 
@@ -104,17 +68,13 @@ func (OrganizationalUnitState) ElementType() reflect.Type {
 }
 
 type organizationalUnitArgs struct {
-	// The name for the organizational unit
-	Name *string `pulumi:"name"`
-	// ID of the parent organizational unit, which may be the root
-	ParentId string `pulumi:"parentId"`
+	Name     *string `pulumi:"name"`
+	ParentId string  `pulumi:"parentId"`
 }
 
 // The set of arguments for constructing a OrganizationalUnit resource.
 type OrganizationalUnitArgs struct {
-	// The name for the organizational unit
-	Name pulumi.StringPtrInput
-	// ID of the parent organizational unit, which may be the root
+	Name     pulumi.StringPtrInput
 	ParentId pulumi.StringInput
 }
 

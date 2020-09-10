@@ -10,52 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Batch Job Queue resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/batch"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := batch.NewJobQueue(ctx, "testQueue", &batch.JobQueueArgs{
-// 			State:    pulumi.String("ENABLED"),
-// 			Priority: pulumi.Int(1),
-// 			ComputeEnvironments: pulumi.StringArray{
-// 				pulumi.Any(aws_batch_compute_environment.Test_environment_1.Arn),
-// 				pulumi.Any(aws_batch_compute_environment.Test_environment_2.Arn),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type JobQueue struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name of the job queue.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Specifies the set of compute environments
-	// mapped to a job queue and their order.  The position of the compute environments
-	// in the list will dictate the order. You can associate up to 3 compute environments
-	// with a job queue.
+	Arn                 pulumi.StringOutput      `pulumi:"arn"`
 	ComputeEnvironments pulumi.StringArrayOutput `pulumi:"computeEnvironments"`
-	// Specifies the name of the job queue.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The priority of the job queue. Job queues with a higher priority
-	// are evaluated first when associated with the same compute environment.
-	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
-	State pulumi.StringOutput `pulumi:"state"`
+	Name                pulumi.StringOutput      `pulumi:"name"`
+	Priority            pulumi.IntOutput         `pulumi:"priority"`
+	State               pulumi.StringOutput      `pulumi:"state"`
 }
 
 // NewJobQueue registers a new resource with the given unique name, arguments, and options.
@@ -95,37 +57,19 @@ func GetJobQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering JobQueue resources.
 type jobQueueState struct {
-	// The Amazon Resource Name of the job queue.
-	Arn *string `pulumi:"arn"`
-	// Specifies the set of compute environments
-	// mapped to a job queue and their order.  The position of the compute environments
-	// in the list will dictate the order. You can associate up to 3 compute environments
-	// with a job queue.
+	Arn                 *string  `pulumi:"arn"`
 	ComputeEnvironments []string `pulumi:"computeEnvironments"`
-	// Specifies the name of the job queue.
-	Name *string `pulumi:"name"`
-	// The priority of the job queue. Job queues with a higher priority
-	// are evaluated first when associated with the same compute environment.
-	Priority *int `pulumi:"priority"`
-	// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
-	State *string `pulumi:"state"`
+	Name                *string  `pulumi:"name"`
+	Priority            *int     `pulumi:"priority"`
+	State               *string  `pulumi:"state"`
 }
 
 type JobQueueState struct {
-	// The Amazon Resource Name of the job queue.
-	Arn pulumi.StringPtrInput
-	// Specifies the set of compute environments
-	// mapped to a job queue and their order.  The position of the compute environments
-	// in the list will dictate the order. You can associate up to 3 compute environments
-	// with a job queue.
+	Arn                 pulumi.StringPtrInput
 	ComputeEnvironments pulumi.StringArrayInput
-	// Specifies the name of the job queue.
-	Name pulumi.StringPtrInput
-	// The priority of the job queue. Job queues with a higher priority
-	// are evaluated first when associated with the same compute environment.
-	Priority pulumi.IntPtrInput
-	// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
-	State pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Priority            pulumi.IntPtrInput
+	State               pulumi.StringPtrInput
 }
 
 func (JobQueueState) ElementType() reflect.Type {
@@ -133,34 +77,18 @@ func (JobQueueState) ElementType() reflect.Type {
 }
 
 type jobQueueArgs struct {
-	// Specifies the set of compute environments
-	// mapped to a job queue and their order.  The position of the compute environments
-	// in the list will dictate the order. You can associate up to 3 compute environments
-	// with a job queue.
 	ComputeEnvironments []string `pulumi:"computeEnvironments"`
-	// Specifies the name of the job queue.
-	Name *string `pulumi:"name"`
-	// The priority of the job queue. Job queues with a higher priority
-	// are evaluated first when associated with the same compute environment.
-	Priority int `pulumi:"priority"`
-	// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
-	State string `pulumi:"state"`
+	Name                *string  `pulumi:"name"`
+	Priority            int      `pulumi:"priority"`
+	State               string   `pulumi:"state"`
 }
 
 // The set of arguments for constructing a JobQueue resource.
 type JobQueueArgs struct {
-	// Specifies the set of compute environments
-	// mapped to a job queue and their order.  The position of the compute environments
-	// in the list will dictate the order. You can associate up to 3 compute environments
-	// with a job queue.
 	ComputeEnvironments pulumi.StringArrayInput
-	// Specifies the name of the job queue.
-	Name pulumi.StringPtrInput
-	// The priority of the job queue. Job queues with a higher priority
-	// are evaluated first when associated with the same compute environment.
-	Priority pulumi.IntInput
-	// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
-	State pulumi.StringInput
+	Name                pulumi.StringPtrInput
+	Priority            pulumi.IntInput
+	State               pulumi.StringInput
 }
 
 func (JobQueueArgs) ElementType() reflect.Type {

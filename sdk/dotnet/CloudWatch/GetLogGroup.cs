@@ -11,32 +11,6 @@ namespace Pulumi.Aws.CloudWatch
 {
     public static class GetLogGroup
     {
-        /// <summary>
-        /// Use this data source to get information about an AWS Cloudwatch Log Group
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.CloudWatch.GetLogGroup.InvokeAsync(new Aws.CloudWatch.GetLogGroupArgs
-        ///         {
-        ///             Name = "MyImportantLogs",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLogGroupResult> InvokeAsync(GetLogGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLogGroupResult>("aws:cloudwatch/getLogGroup:getLogGroup", args ?? new GetLogGroupArgs(), options.WithVersion());
     }
@@ -44,18 +18,11 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class GetLogGroupArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the Cloudwatch log group
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -71,30 +38,15 @@ namespace Pulumi.Aws.CloudWatch
     [OutputType]
     public sealed class GetLogGroupResult
     {
-        /// <summary>
-        /// The ARN of the Cloudwatch log group
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The creation time of the log group, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
-        /// </summary>
         public readonly int CreationTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The ARN of the KMS Key to use when encrypting log data.
-        /// </summary>
         public readonly string KmsKeyId;
         public readonly string Name;
-        /// <summary>
-        /// The number of days log events retained in the specified log group.
-        /// </summary>
         public readonly int RetentionInDays;
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]

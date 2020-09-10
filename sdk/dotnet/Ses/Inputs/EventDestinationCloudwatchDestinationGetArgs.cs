@@ -12,21 +12,12 @@ namespace Pulumi.Aws.Ses.Inputs
 
     public sealed class EventDestinationCloudwatchDestinationGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The default value for the event
-        /// </summary>
         [Input("defaultValue", required: true)]
         public Input<string> DefaultValue { get; set; } = null!;
 
-        /// <summary>
-        /// The name for the dimension
-        /// </summary>
         [Input("dimensionName", required: true)]
         public Input<string> DimensionName { get; set; } = null!;
 
-        /// <summary>
-        /// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
-        /// </summary>
         [Input("valueSource", required: true)]
         public Input<string> ValueSource { get; set; } = null!;
 

@@ -11,12 +11,9 @@ import (
 )
 
 type EndpointAuthenticationOption struct {
-	// The ID of the Active Directory to be used for authentication if type is `directory-service-authentication`.
-	ActiveDirectoryId *string `pulumi:"activeDirectoryId"`
-	// The ARN of the client certificate. The certificate must be signed by a certificate authority (CA) and it must be provisioned in AWS Certificate Manager (ACM). Only necessary when type is set to `certificate-authentication`.
+	ActiveDirectoryId       *string `pulumi:"activeDirectoryId"`
 	RootCertificateChainArn *string `pulumi:"rootCertificateChainArn"`
-	// The type of client authentication to be used. Specify `certificate-authentication` to use certificate-based authentication, or `directory-service-authentication` to use Active Directory authentication.
-	Type string `pulumi:"type"`
+	Type                    string  `pulumi:"type"`
 }
 
 // EndpointAuthenticationOptionInput is an input type that accepts EndpointAuthenticationOptionArgs and EndpointAuthenticationOptionOutput values.
@@ -31,12 +28,9 @@ type EndpointAuthenticationOptionInput interface {
 }
 
 type EndpointAuthenticationOptionArgs struct {
-	// The ID of the Active Directory to be used for authentication if type is `directory-service-authentication`.
-	ActiveDirectoryId pulumi.StringPtrInput `pulumi:"activeDirectoryId"`
-	// The ARN of the client certificate. The certificate must be signed by a certificate authority (CA) and it must be provisioned in AWS Certificate Manager (ACM). Only necessary when type is set to `certificate-authentication`.
+	ActiveDirectoryId       pulumi.StringPtrInput `pulumi:"activeDirectoryId"`
 	RootCertificateChainArn pulumi.StringPtrInput `pulumi:"rootCertificateChainArn"`
-	// The type of client authentication to be used. Specify `certificate-authentication` to use certificate-based authentication, or `directory-service-authentication` to use Active Directory authentication.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type                    pulumi.StringInput    `pulumi:"type"`
 }
 
 func (EndpointAuthenticationOptionArgs) ElementType() reflect.Type {
@@ -90,17 +84,14 @@ func (o EndpointAuthenticationOptionOutput) ToEndpointAuthenticationOptionOutput
 	return o
 }
 
-// The ID of the Active Directory to be used for authentication if type is `directory-service-authentication`.
 func (o EndpointAuthenticationOptionOutput) ActiveDirectoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointAuthenticationOption) *string { return v.ActiveDirectoryId }).(pulumi.StringPtrOutput)
 }
 
-// The ARN of the client certificate. The certificate must be signed by a certificate authority (CA) and it must be provisioned in AWS Certificate Manager (ACM). Only necessary when type is set to `certificate-authentication`.
 func (o EndpointAuthenticationOptionOutput) RootCertificateChainArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointAuthenticationOption) *string { return v.RootCertificateChainArn }).(pulumi.StringPtrOutput)
 }
 
-// The type of client authentication to be used. Specify `certificate-authentication` to use certificate-based authentication, or `directory-service-authentication` to use Active Directory authentication.
 func (o EndpointAuthenticationOptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointAuthenticationOption) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -126,12 +117,9 @@ func (o EndpointAuthenticationOptionArrayOutput) Index(i pulumi.IntInput) Endpoi
 }
 
 type EndpointConnectionLogOptions struct {
-	// The name of the CloudWatch Logs log group.
-	CloudwatchLogGroup *string `pulumi:"cloudwatchLogGroup"`
-	// The name of the CloudWatch Logs log stream to which the connection data is published.
+	CloudwatchLogGroup  *string `pulumi:"cloudwatchLogGroup"`
 	CloudwatchLogStream *string `pulumi:"cloudwatchLogStream"`
-	// Indicates whether connection logging is enabled.
-	Enabled bool `pulumi:"enabled"`
+	Enabled             bool    `pulumi:"enabled"`
 }
 
 // EndpointConnectionLogOptionsInput is an input type that accepts EndpointConnectionLogOptionsArgs and EndpointConnectionLogOptionsOutput values.
@@ -146,12 +134,9 @@ type EndpointConnectionLogOptionsInput interface {
 }
 
 type EndpointConnectionLogOptionsArgs struct {
-	// The name of the CloudWatch Logs log group.
-	CloudwatchLogGroup pulumi.StringPtrInput `pulumi:"cloudwatchLogGroup"`
-	// The name of the CloudWatch Logs log stream to which the connection data is published.
+	CloudwatchLogGroup  pulumi.StringPtrInput `pulumi:"cloudwatchLogGroup"`
 	CloudwatchLogStream pulumi.StringPtrInput `pulumi:"cloudwatchLogStream"`
-	// Indicates whether connection logging is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	Enabled             pulumi.BoolInput      `pulumi:"enabled"`
 }
 
 func (EndpointConnectionLogOptionsArgs) ElementType() reflect.Type {
@@ -230,18 +215,14 @@ func (o EndpointConnectionLogOptionsOutput) ToEndpointConnectionLogOptionsPtrOut
 		return &v
 	}).(EndpointConnectionLogOptionsPtrOutput)
 }
-
-// The name of the CloudWatch Logs log group.
 func (o EndpointConnectionLogOptionsOutput) CloudwatchLogGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointConnectionLogOptions) *string { return v.CloudwatchLogGroup }).(pulumi.StringPtrOutput)
 }
 
-// The name of the CloudWatch Logs log stream to which the connection data is published.
 func (o EndpointConnectionLogOptionsOutput) CloudwatchLogStream() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointConnectionLogOptions) *string { return v.CloudwatchLogStream }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether connection logging is enabled.
 func (o EndpointConnectionLogOptionsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EndpointConnectionLogOptions) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -264,7 +245,6 @@ func (o EndpointConnectionLogOptionsPtrOutput) Elem() EndpointConnectionLogOptio
 	return o.ApplyT(func(v *EndpointConnectionLogOptions) EndpointConnectionLogOptions { return *v }).(EndpointConnectionLogOptionsOutput)
 }
 
-// The name of the CloudWatch Logs log group.
 func (o EndpointConnectionLogOptionsPtrOutput) CloudwatchLogGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointConnectionLogOptions) *string {
 		if v == nil {
@@ -274,7 +254,6 @@ func (o EndpointConnectionLogOptionsPtrOutput) CloudwatchLogGroup() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the CloudWatch Logs log stream to which the connection data is published.
 func (o EndpointConnectionLogOptionsPtrOutput) CloudwatchLogStream() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointConnectionLogOptions) *string {
 		if v == nil {
@@ -284,7 +263,6 @@ func (o EndpointConnectionLogOptionsPtrOutput) CloudwatchLogStream() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether connection logging is enabled.
 func (o EndpointConnectionLogOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EndpointConnectionLogOptions) *bool {
 		if v == nil {

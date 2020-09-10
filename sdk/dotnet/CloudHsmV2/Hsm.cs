@@ -9,76 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CloudHsmV2
 {
-    /// <summary>
-    /// Creates an HSM module in Amazon CloudHSM v2 cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// The following example below creates an HSM module in CloudHSM cluster.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var cluster = Output.Create(Aws.CloudHsmV2.GetCluster.InvokeAsync(new Aws.CloudHsmV2.GetClusterArgs
-    ///         {
-    ///             ClusterId = @var.Cloudhsm_cluster_id,
-    ///         }));
-    ///         var cloudhsmV2Hsm = new Aws.CloudHsmV2.Hsm("cloudhsmV2Hsm", new Aws.CloudHsmV2.HsmArgs
-    ///         {
-    ///             SubnetId = cluster.Apply(cluster =&gt; cluster.SubnetIds[0]),
-    ///             ClusterId = cluster.Apply(cluster =&gt; cluster.ClusterId),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Hsm : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
-        /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of Cloud HSM v2 cluster to which HSM will be added.
-        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the ENI interface allocated for HSM module.
-        /// </summary>
         [Output("hsmEniId")]
         public Output<string> HsmEniId { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the HSM module.
-        /// </summary>
         [Output("hsmId")]
         public Output<string> HsmId { get; private set; } = null!;
 
-        /// <summary>
-        /// The state of the HSM module.
-        /// </summary>
         [Output("hsmState")]
         public Output<string> State { get; private set; } = null!;
 
-        /// <summary>
-        /// The IP address of HSM module. Must be within the CIDR of selected subnet.
-        /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of subnet in which HSM module will be located.
-        /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
 
@@ -128,27 +78,15 @@ namespace Pulumi.Aws.CloudHsmV2
 
     public sealed class HsmArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The ID of Cloud HSM v2 cluster to which HSM will be added.
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The IP address of HSM module. Must be within the CIDR of selected subnet.
-        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
-        /// <summary>
-        /// The ID of subnet in which HSM module will be located.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
@@ -159,45 +97,24 @@ namespace Pulumi.Aws.CloudHsmV2
 
     public sealed class HsmState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The ID of Cloud HSM v2 cluster to which HSM will be added.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// The id of the ENI interface allocated for HSM module.
-        /// </summary>
         [Input("hsmEniId")]
         public Input<string>? HsmEniId { get; set; }
 
-        /// <summary>
-        /// The id of the HSM module.
-        /// </summary>
         [Input("hsmId")]
         public Input<string>? HsmId { get; set; }
 
-        /// <summary>
-        /// The state of the HSM module.
-        /// </summary>
         [Input("hsmState")]
         public Input<string>? State { get; set; }
 
-        /// <summary>
-        /// The IP address of HSM module. Must be within the CIDR of selected subnet.
-        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
-        /// <summary>
-        /// The ID of subnet in which HSM module will be located.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 

@@ -9,168 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// Provides an IAM Server Certificate resource to upload Server Certificates.
-    /// Certs uploaded to IAM can easily work with other AWS services such as:
-    /// 
-    /// - AWS Elastic Beanstalk
-    /// - Elastic Load Balancing
-    /// - CloudFront
-    /// - AWS OpsWorks
-    /// 
-    /// For information about server certificates in IAM, see [Managing Server
-    /// Certificates][2] in AWS Documentation.
-    /// 
-    /// &gt; **Note:** All arguments including the private key will be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// **Using certs on file:**
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testCert = new Aws.Iam.ServerCertificate("testCert", new Aws.Iam.ServerCertificateArgs
-    ///         {
-    ///             CertificateBody = File.ReadAllText("self-ca-cert.pem"),
-    ///             PrivateKey = File.ReadAllText("test-key.pem"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// **Example with cert in-line:**
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testCertAlt = new Aws.Iam.ServerCertificate("testCertAlt", new Aws.Iam.ServerCertificateArgs
-    ///         {
-    ///             CertificateBody = @"-----BEGIN CERTIFICATE-----
-    /// [......] # cert contents
-    /// -----END CERTIFICATE-----
-    /// 
-    /// ",
-    ///             PrivateKey = @"-----BEGIN RSA PRIVATE KEY-----
-    /// [......] # cert contents
-    /// -----END RSA PRIVATE KEY-----
-    /// 
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// **Use in combination with an AWS ELB resource:**
-    /// 
-    /// Some properties of an IAM Server Certificates cannot be updated while they are
-    /// in use. In order for this provider to effectively manage a Certificate in this situation, it is
-    /// recommended you utilize the `name_prefix` attribute and enable the
-    /// `create_before_destroy` [lifecycle block][lifecycle]. This will allow this provider
-    /// to create a new, updated `aws.iam.ServerCertificate` resource and replace it in
-    /// dependant resources before attempting to destroy the old version.
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testCert = new Aws.Iam.ServerCertificate("testCert", new Aws.Iam.ServerCertificateArgs
-    ///         {
-    ///             NamePrefix = "example-cert",
-    ///             CertificateBody = File.ReadAllText("self-ca-cert.pem"),
-    ///             PrivateKey = File.ReadAllText("test-key.pem"),
-    ///         });
-    ///         var ourapp = new Aws.Elb.LoadBalancer("ourapp", new Aws.Elb.LoadBalancerArgs
-    ///         {
-    ///             AvailabilityZones = 
-    ///             {
-    ///                 "us-west-2a",
-    ///             },
-    ///             CrossZoneLoadBalancing = true,
-    ///             Listeners = 
-    ///             {
-    ///                 new Aws.Elb.Inputs.LoadBalancerListenerArgs
-    ///                 {
-    ///                     InstancePort = 8000,
-    ///                     InstanceProtocol = "http",
-    ///                     LbPort = 443,
-    ///                     LbProtocol = "https",
-    ///                     SslCertificateId = testCert.Arn,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ServerCertificate : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the server certificate.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The contents of the public key certificate in
-        /// PEM-encoded format.
-        /// </summary>
         [Output("certificateBody")]
         public Output<string> CertificateBody { get; private set; } = null!;
 
-        /// <summary>
-        /// The contents of the certificate chain.
-        /// This is typically a concatenation of the PEM-encoded public key certificates
-        /// of the chain.
-        /// </summary>
         [Output("certificateChain")]
         public Output<string?> CertificateChain { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Server Certificate. Do not include the
-        /// path in this value. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM path for the server certificate.  If it is not
-        /// included, it defaults to a slash (/). If this certificate is for use with
-        /// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-        /// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-        /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
 
-        /// <summary>
-        /// The contents of the private key in PEM-encoded format.
-        /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
 
@@ -220,53 +78,24 @@ namespace Pulumi.Aws.Iam
 
     public sealed class ServerCertificateArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the server certificate.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The contents of the public key certificate in
-        /// PEM-encoded format.
-        /// </summary>
         [Input("certificateBody", required: true)]
         public Input<string> CertificateBody { get; set; } = null!;
 
-        /// <summary>
-        /// The contents of the certificate chain.
-        /// This is typically a concatenation of the PEM-encoded public key certificates
-        /// of the chain.
-        /// </summary>
         [Input("certificateChain")]
         public Input<string>? CertificateChain { get; set; }
 
-        /// <summary>
-        /// The name of the Server Certificate. Do not include the
-        /// path in this value. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The IAM path for the server certificate.  If it is not
-        /// included, it defaults to a slash (/). If this certificate is for use with
-        /// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-        /// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// The contents of the private key in PEM-encoded format.
-        /// </summary>
         [Input("privateKey", required: true)]
         public Input<string> PrivateKey { get; set; } = null!;
 
@@ -277,53 +106,24 @@ namespace Pulumi.Aws.Iam
 
     public sealed class ServerCertificateState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the server certificate.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The contents of the public key certificate in
-        /// PEM-encoded format.
-        /// </summary>
         [Input("certificateBody")]
         public Input<string>? CertificateBody { get; set; }
 
-        /// <summary>
-        /// The contents of the certificate chain.
-        /// This is typically a concatenation of the PEM-encoded public key certificates
-        /// of the chain.
-        /// </summary>
         [Input("certificateChain")]
         public Input<string>? CertificateChain { get; set; }
 
-        /// <summary>
-        /// The name of the Server Certificate. Do not include the
-        /// path in this value. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The IAM path for the server certificate.  If it is not
-        /// included, it defaults to a slash (/). If this certificate is for use with
-        /// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-        /// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// The contents of the private key in PEM-encoded format.
-        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 

@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Outputs
     [OutputType]
     public sealed class GetAutoscalingGroupsFilterResult
     {
-        /// <summary>
-        /// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The value of the filter.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

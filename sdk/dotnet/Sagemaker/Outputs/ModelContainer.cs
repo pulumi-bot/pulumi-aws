@@ -13,22 +13,9 @@ namespace Pulumi.Aws.Sagemaker.Outputs
     [OutputType]
     public sealed class ModelContainer
     {
-        /// <summary>
-        /// The DNS host name for the container.
-        /// </summary>
         public readonly string? ContainerHostname;
-        /// <summary>
-        /// Environment variables for the Docker container.
-        /// A list of key value pairs.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Environment;
-        /// <summary>
-        /// The registry path where the inference code image is stored in Amazon ECR.
-        /// </summary>
         public readonly string Image;
-        /// <summary>
-        /// The URL for the S3 location where model artifacts are stored.
-        /// </summary>
         public readonly string? ModelDataUrl;
 
         [OutputConstructor]

@@ -10,46 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an OpsWorks RDS DB Instance resource.
-//
-// > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/opsworks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := opsworks.NewRdsDbInstance(ctx, "myInstance", &opsworks.RdsDbInstanceArgs{
-// 			StackId:          pulumi.Any(aws_opsworks_stack.My_stack.Id),
-// 			RdsDbInstanceArn: pulumi.Any(aws_db_instance.My_instance.Arn),
-// 			DbUser:           pulumi.String("someUser"),
-// 			DbPassword:       pulumi.String("somePass"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RdsDbInstance struct {
 	pulumi.CustomResourceState
 
-	// A db password
-	DbPassword pulumi.StringOutput `pulumi:"dbPassword"`
-	// A db username
-	DbUser pulumi.StringOutput `pulumi:"dbUser"`
-	// The db instance to register for this stack. Changing this will force a new resource.
+	DbPassword       pulumi.StringOutput `pulumi:"dbPassword"`
+	DbUser           pulumi.StringOutput `pulumi:"dbUser"`
 	RdsDbInstanceArn pulumi.StringOutput `pulumi:"rdsDbInstanceArn"`
-	// The stack to register a db instance for. Changing this will force a new resource.
-	StackId pulumi.StringOutput `pulumi:"stackId"`
+	StackId          pulumi.StringOutput `pulumi:"stackId"`
 }
 
 // NewRdsDbInstance registers a new resource with the given unique name, arguments, and options.
@@ -92,25 +59,17 @@ func GetRdsDbInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RdsDbInstance resources.
 type rdsDbInstanceState struct {
-	// A db password
-	DbPassword *string `pulumi:"dbPassword"`
-	// A db username
-	DbUser *string `pulumi:"dbUser"`
-	// The db instance to register for this stack. Changing this will force a new resource.
+	DbPassword       *string `pulumi:"dbPassword"`
+	DbUser           *string `pulumi:"dbUser"`
 	RdsDbInstanceArn *string `pulumi:"rdsDbInstanceArn"`
-	// The stack to register a db instance for. Changing this will force a new resource.
-	StackId *string `pulumi:"stackId"`
+	StackId          *string `pulumi:"stackId"`
 }
 
 type RdsDbInstanceState struct {
-	// A db password
-	DbPassword pulumi.StringPtrInput
-	// A db username
-	DbUser pulumi.StringPtrInput
-	// The db instance to register for this stack. Changing this will force a new resource.
+	DbPassword       pulumi.StringPtrInput
+	DbUser           pulumi.StringPtrInput
 	RdsDbInstanceArn pulumi.StringPtrInput
-	// The stack to register a db instance for. Changing this will force a new resource.
-	StackId pulumi.StringPtrInput
+	StackId          pulumi.StringPtrInput
 }
 
 func (RdsDbInstanceState) ElementType() reflect.Type {
@@ -118,26 +77,18 @@ func (RdsDbInstanceState) ElementType() reflect.Type {
 }
 
 type rdsDbInstanceArgs struct {
-	// A db password
-	DbPassword string `pulumi:"dbPassword"`
-	// A db username
-	DbUser string `pulumi:"dbUser"`
-	// The db instance to register for this stack. Changing this will force a new resource.
+	DbPassword       string `pulumi:"dbPassword"`
+	DbUser           string `pulumi:"dbUser"`
 	RdsDbInstanceArn string `pulumi:"rdsDbInstanceArn"`
-	// The stack to register a db instance for. Changing this will force a new resource.
-	StackId string `pulumi:"stackId"`
+	StackId          string `pulumi:"stackId"`
 }
 
 // The set of arguments for constructing a RdsDbInstance resource.
 type RdsDbInstanceArgs struct {
-	// A db password
-	DbPassword pulumi.StringInput
-	// A db username
-	DbUser pulumi.StringInput
-	// The db instance to register for this stack. Changing this will force a new resource.
+	DbPassword       pulumi.StringInput
+	DbUser           pulumi.StringInput
 	RdsDbInstanceArn pulumi.StringInput
-	// The stack to register a db instance for. Changing this will force a new resource.
-	StackId pulumi.StringInput
+	StackId          pulumi.StringInput
 }
 
 func (RdsDbInstanceArgs) ElementType() reflect.Type {

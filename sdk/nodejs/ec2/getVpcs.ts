@@ -6,11 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * This resource can be useful for getting back a list of VPC Ids for a region.
- *
- * The following example retrieves a list of VPC Ids with a custom tag of `service` set to a value of "production".
- */
 export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcsResult> {
     args = args || {};
     if (!opts) {
@@ -30,14 +25,7 @@ export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getVpcs.
  */
 export interface GetVpcsArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: inputs.ec2.GetVpcsFilter[];
-    /**
-     * A map of tags, each pair of which must exactly match
-     * a pair on the desired vpcs.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -50,9 +38,6 @@ export interface GetVpcsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of all the VPC Ids found. This data source will fail if none are found.
-     */
     readonly ids: string[];
     readonly tags: {[key: string]: string};
 }

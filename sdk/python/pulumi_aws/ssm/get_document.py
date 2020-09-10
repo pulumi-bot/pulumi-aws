@@ -45,17 +45,11 @@ class GetDocumentResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the document.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def content(self) -> str:
-        """
-        The contents of the document.
-        """
         return pulumi.get(self, "content")
 
     @property
@@ -66,9 +60,6 @@ class GetDocumentResult:
     @property
     @pulumi.getter(name="documentType")
     def document_type(self) -> str:
-        """
-        The type of the document.
-        """
         return pulumi.get(self, "document_type")
 
     @property
@@ -110,35 +101,7 @@ def get_document(document_format: Optional[str] = None,
                  name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDocumentResult:
     """
-    Gets the contents of the specified Systems Manager document.
-
-    ## Example Usage
-
-    To get the contents of the document owned by AWS.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    foo = aws.ssm.get_document(name="AWS-GatherSoftwareInventory",
-        document_format="YAML")
-    pulumi.export("content", foo.content)
-    ```
-
-    To get the contents of the custom document.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.ssm.get_document(name=aws_ssm_document["test"]["name"],
-        document_format="JSON")
-    ```
-
-
-    :param str document_format: Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
-    :param str document_version: The document version for which you want information.
-    :param str name: The name of the Systems Manager document.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['documentFormat'] = document_format

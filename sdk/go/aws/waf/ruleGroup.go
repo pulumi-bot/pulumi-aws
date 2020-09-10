@@ -10,58 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a WAF Rule Group Resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/waf"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRule, err := waf.NewRule(ctx, "exampleRule", &waf.RuleArgs{
-// 			MetricName: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = waf.NewRuleGroup(ctx, "exampleRuleGroup", &waf.RuleGroupArgs{
-// 			MetricName: pulumi.String("example"),
-// 			ActivatedRules: waf.RuleGroupActivatedRuleArray{
-// 				&waf.RuleGroupActivatedRuleArgs{
-// 					Action: &waf.RuleGroupActivatedRuleActionArgs{
-// 						Type: pulumi.String("COUNT"),
-// 					},
-// 					Priority: pulumi.Int(50),
-// 					RuleId:   exampleRule.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RuleGroup struct {
 	pulumi.CustomResourceState
 
-	// A list of activated rules, see below
 	ActivatedRules RuleGroupActivatedRuleArrayOutput `pulumi:"activatedRules"`
-	// The ARN of the WAF rule group.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// A friendly name for the metrics from the rule group
-	MetricName pulumi.StringOutput `pulumi:"metricName"`
-	// A friendly name of the rule group
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn            pulumi.StringOutput               `pulumi:"arn"`
+	MetricName     pulumi.StringOutput               `pulumi:"metricName"`
+	Name           pulumi.StringOutput               `pulumi:"name"`
+	Tags           pulumi.StringMapOutput            `pulumi:"tags"`
 }
 
 // NewRuleGroup registers a new resource with the given unique name, arguments, and options.
@@ -95,29 +51,19 @@ func GetRuleGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RuleGroup resources.
 type ruleGroupState struct {
-	// A list of activated rules, see below
 	ActivatedRules []RuleGroupActivatedRule `pulumi:"activatedRules"`
-	// The ARN of the WAF rule group.
-	Arn *string `pulumi:"arn"`
-	// A friendly name for the metrics from the rule group
-	MetricName *string `pulumi:"metricName"`
-	// A friendly name of the rule group
-	Name *string `pulumi:"name"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Arn            *string                  `pulumi:"arn"`
+	MetricName     *string                  `pulumi:"metricName"`
+	Name           *string                  `pulumi:"name"`
+	Tags           map[string]string        `pulumi:"tags"`
 }
 
 type RuleGroupState struct {
-	// A list of activated rules, see below
 	ActivatedRules RuleGroupActivatedRuleArrayInput
-	// The ARN of the WAF rule group.
-	Arn pulumi.StringPtrInput
-	// A friendly name for the metrics from the rule group
-	MetricName pulumi.StringPtrInput
-	// A friendly name of the rule group
-	Name pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Arn            pulumi.StringPtrInput
+	MetricName     pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	Tags           pulumi.StringMapInput
 }
 
 func (RuleGroupState) ElementType() reflect.Type {
@@ -125,26 +71,18 @@ func (RuleGroupState) ElementType() reflect.Type {
 }
 
 type ruleGroupArgs struct {
-	// A list of activated rules, see below
 	ActivatedRules []RuleGroupActivatedRule `pulumi:"activatedRules"`
-	// A friendly name for the metrics from the rule group
-	MetricName string `pulumi:"metricName"`
-	// A friendly name of the rule group
-	Name *string `pulumi:"name"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	MetricName     string                   `pulumi:"metricName"`
+	Name           *string                  `pulumi:"name"`
+	Tags           map[string]string        `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RuleGroup resource.
 type RuleGroupArgs struct {
-	// A list of activated rules, see below
 	ActivatedRules RuleGroupActivatedRuleArrayInput
-	// A friendly name for the metrics from the rule group
-	MetricName pulumi.StringInput
-	// A friendly name of the rule group
-	Name pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	MetricName     pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	Tags           pulumi.StringMapInput
 }
 
 func (RuleGroupArgs) ElementType() reflect.Type {

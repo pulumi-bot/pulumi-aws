@@ -10,63 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an RDS DB parameter group resource .Documentation of the available parameters for various RDS engines can be found at:
-//
-// * [Aurora MySQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Reference.html)
-// * [Aurora PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraPostgreSQL.Reference.html)
-// * [MariaDB Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MariaDB.Parameters.html)
-// * [Oracle Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ModifyInstance.Oracle.html#USER_ModifyInstance.Oracle.sqlnet)
-// * [PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.Parameters)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/rds"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.NewParameterGroup(ctx, "_default", &rds.ParameterGroupArgs{
-// 			Family: pulumi.String("mysql5.6"),
-// 			Parameters: rds.ParameterGroupParameterArray{
-// 				&rds.ParameterGroupParameterArgs{
-// 					Name:  pulumi.String("character_set_server"),
-// 					Value: pulumi.String("utf8"),
-// 				},
-// 				&rds.ParameterGroupParameterArgs{
-// 					Name:  pulumi.String("character_set_client"),
-// 					Value: pulumi.String("utf8"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ParameterGroup struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the db parameter group.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The description of the DB parameter group. Defaults to "Managed by Pulumi".
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The family of the DB parameter group.
-	Family pulumi.StringOutput `pulumi:"family"`
-	// The name of the DB parameter.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
-	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-	Parameters ParameterGroupParameterArrayOutput `pulumi:"parameters"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn         pulumi.StringOutput                `pulumi:"arn"`
+	Description pulumi.StringOutput                `pulumi:"description"`
+	Family      pulumi.StringOutput                `pulumi:"family"`
+	Name        pulumi.StringOutput                `pulumi:"name"`
+	NamePrefix  pulumi.StringOutput                `pulumi:"namePrefix"`
+	Parameters  ParameterGroupParameterArrayOutput `pulumi:"parameters"`
+	Tags        pulumi.StringMapOutput             `pulumi:"tags"`
 }
 
 // NewParameterGroup registers a new resource with the given unique name, arguments, and options.
@@ -103,37 +56,23 @@ func GetParameterGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ParameterGroup resources.
 type parameterGroupState struct {
-	// The ARN of the db parameter group.
-	Arn *string `pulumi:"arn"`
-	// The description of the DB parameter group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// The family of the DB parameter group.
-	Family *string `pulumi:"family"`
-	// The name of the DB parameter.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn         *string                   `pulumi:"arn"`
+	Description *string                   `pulumi:"description"`
+	Family      *string                   `pulumi:"family"`
+	Name        *string                   `pulumi:"name"`
+	NamePrefix  *string                   `pulumi:"namePrefix"`
+	Parameters  []ParameterGroupParameter `pulumi:"parameters"`
+	Tags        map[string]string         `pulumi:"tags"`
 }
 
 type ParameterGroupState struct {
-	// The ARN of the db parameter group.
-	Arn pulumi.StringPtrInput
-	// The description of the DB parameter group. Defaults to "Managed by Pulumi".
+	Arn         pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// The family of the DB parameter group.
-	Family pulumi.StringPtrInput
-	// The name of the DB parameter.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-	Parameters ParameterGroupParameterArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Family      pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	NamePrefix  pulumi.StringPtrInput
+	Parameters  ParameterGroupParameterArrayInput
+	Tags        pulumi.StringMapInput
 }
 
 func (ParameterGroupState) ElementType() reflect.Type {
@@ -141,34 +80,22 @@ func (ParameterGroupState) ElementType() reflect.Type {
 }
 
 type parameterGroupArgs struct {
-	// The description of the DB parameter group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// The family of the DB parameter group.
-	Family string `pulumi:"family"`
-	// The name of the DB parameter.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Description *string                   `pulumi:"description"`
+	Family      string                    `pulumi:"family"`
+	Name        *string                   `pulumi:"name"`
+	NamePrefix  *string                   `pulumi:"namePrefix"`
+	Parameters  []ParameterGroupParameter `pulumi:"parameters"`
+	Tags        map[string]string         `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ParameterGroup resource.
 type ParameterGroupArgs struct {
-	// The description of the DB parameter group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// The family of the DB parameter group.
-	Family pulumi.StringInput
-	// The name of the DB parameter.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-	Parameters ParameterGroupParameterArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Family      pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	NamePrefix  pulumi.StringPtrInput
+	Parameters  ParameterGroupParameterArrayInput
+	Tags        pulumi.StringMapInput
 }
 
 func (ParameterGroupArgs) ElementType() reflect.Type {

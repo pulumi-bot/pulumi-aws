@@ -10,87 +10,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an RDS database instance snapshot. For managing RDS database cluster snapshots, see the `rds.ClusterSnapshot` resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/rds"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := rds.NewInstance(ctx, "bar", &rds.InstanceArgs{
-// 			AllocatedStorage:      pulumi.Int(10),
-// 			Engine:                pulumi.String("MySQL"),
-// 			EngineVersion:         pulumi.String("5.6.21"),
-// 			InstanceClass:         pulumi.String("db.t2.micro"),
-// 			Name:                  pulumi.String("baz"),
-// 			Password:              pulumi.String("barbarbarbar"),
-// 			Username:              pulumi.String("foo"),
-// 			MaintenanceWindow:     pulumi.String("Fri:09:00-Fri:09:30"),
-// 			BackupRetentionPeriod: pulumi.Int(0),
-// 			ParameterGroupName:    pulumi.String("default.mysql5.6"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewSnapshot(ctx, "test", &rds.SnapshotArgs{
-// 			DbInstanceIdentifier: bar.ID(),
-// 			DbSnapshotIdentifier: pulumi.String("testsnapshot1234"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 
-	// Specifies the allocated storage size in gigabytes (GB).
-	AllocatedStorage pulumi.IntOutput `pulumi:"allocatedStorage"`
-	// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// The DB Instance Identifier from which to take the snapshot.
-	DbInstanceIdentifier pulumi.StringOutput `pulumi:"dbInstanceIdentifier"`
-	// The Amazon Resource Name (ARN) for the DB snapshot.
-	DbSnapshotArn pulumi.StringOutput `pulumi:"dbSnapshotArn"`
-	// The Identifier for the snapshot.
-	DbSnapshotIdentifier pulumi.StringOutput `pulumi:"dbSnapshotIdentifier"`
-	// Specifies whether the DB snapshot is encrypted.
-	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
-	// Specifies the name of the database engine.
-	Engine pulumi.StringOutput `pulumi:"engine"`
-	// Specifies the version of the database engine.
-	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
-	// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
-	Iops pulumi.IntOutput `pulumi:"iops"`
-	// The ARN for the KMS encryption key.
-	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
-	// License model information for the restored DB instance.
-	LicenseModel pulumi.StringOutput `pulumi:"licenseModel"`
-	// Provides the option group name for the DB snapshot.
-	OptionGroupName pulumi.StringOutput `pulumi:"optionGroupName"`
-	Port            pulumi.IntOutput    `pulumi:"port"`
-	SnapshotType    pulumi.StringOutput `pulumi:"snapshotType"`
-	// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
-	SourceDbSnapshotIdentifier pulumi.StringOutput `pulumi:"sourceDbSnapshotIdentifier"`
-	// The region that the DB snapshot was created in or copied from.
-	SourceRegion pulumi.StringOutput `pulumi:"sourceRegion"`
-	// Specifies the status of this DB snapshot.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the storage type associated with DB snapshot.
-	StorageType pulumi.StringOutput `pulumi:"storageType"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the storage type associated with DB snapshot.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	AllocatedStorage           pulumi.IntOutput       `pulumi:"allocatedStorage"`
+	AvailabilityZone           pulumi.StringOutput    `pulumi:"availabilityZone"`
+	DbInstanceIdentifier       pulumi.StringOutput    `pulumi:"dbInstanceIdentifier"`
+	DbSnapshotArn              pulumi.StringOutput    `pulumi:"dbSnapshotArn"`
+	DbSnapshotIdentifier       pulumi.StringOutput    `pulumi:"dbSnapshotIdentifier"`
+	Encrypted                  pulumi.BoolOutput      `pulumi:"encrypted"`
+	Engine                     pulumi.StringOutput    `pulumi:"engine"`
+	EngineVersion              pulumi.StringOutput    `pulumi:"engineVersion"`
+	Iops                       pulumi.IntOutput       `pulumi:"iops"`
+	KmsKeyId                   pulumi.StringOutput    `pulumi:"kmsKeyId"`
+	LicenseModel               pulumi.StringOutput    `pulumi:"licenseModel"`
+	OptionGroupName            pulumi.StringOutput    `pulumi:"optionGroupName"`
+	Port                       pulumi.IntOutput       `pulumi:"port"`
+	SnapshotType               pulumi.StringOutput    `pulumi:"snapshotType"`
+	SourceDbSnapshotIdentifier pulumi.StringOutput    `pulumi:"sourceDbSnapshotIdentifier"`
+	SourceRegion               pulumi.StringOutput    `pulumi:"sourceRegion"`
+	Status                     pulumi.StringOutput    `pulumi:"status"`
+	StorageType                pulumi.StringOutput    `pulumi:"storageType"`
+	Tags                       pulumi.StringMapOutput `pulumi:"tags"`
+	VpcId                      pulumi.StringOutput    `pulumi:"vpcId"`
 }
 
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -127,85 +69,49 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
-	// Specifies the allocated storage size in gigabytes (GB).
-	AllocatedStorage *int `pulumi:"allocatedStorage"`
-	// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The DB Instance Identifier from which to take the snapshot.
-	DbInstanceIdentifier *string `pulumi:"dbInstanceIdentifier"`
-	// The Amazon Resource Name (ARN) for the DB snapshot.
-	DbSnapshotArn *string `pulumi:"dbSnapshotArn"`
-	// The Identifier for the snapshot.
-	DbSnapshotIdentifier *string `pulumi:"dbSnapshotIdentifier"`
-	// Specifies whether the DB snapshot is encrypted.
-	Encrypted *bool `pulumi:"encrypted"`
-	// Specifies the name of the database engine.
-	Engine *string `pulumi:"engine"`
-	// Specifies the version of the database engine.
-	EngineVersion *string `pulumi:"engineVersion"`
-	// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
-	Iops *int `pulumi:"iops"`
-	// The ARN for the KMS encryption key.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// License model information for the restored DB instance.
-	LicenseModel *string `pulumi:"licenseModel"`
-	// Provides the option group name for the DB snapshot.
-	OptionGroupName *string `pulumi:"optionGroupName"`
-	Port            *int    `pulumi:"port"`
-	SnapshotType    *string `pulumi:"snapshotType"`
-	// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
-	SourceDbSnapshotIdentifier *string `pulumi:"sourceDbSnapshotIdentifier"`
-	// The region that the DB snapshot was created in or copied from.
-	SourceRegion *string `pulumi:"sourceRegion"`
-	// Specifies the status of this DB snapshot.
-	Status *string `pulumi:"status"`
-	// Specifies the storage type associated with DB snapshot.
-	StorageType *string `pulumi:"storageType"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the storage type associated with DB snapshot.
-	VpcId *string `pulumi:"vpcId"`
+	AllocatedStorage           *int              `pulumi:"allocatedStorage"`
+	AvailabilityZone           *string           `pulumi:"availabilityZone"`
+	DbInstanceIdentifier       *string           `pulumi:"dbInstanceIdentifier"`
+	DbSnapshotArn              *string           `pulumi:"dbSnapshotArn"`
+	DbSnapshotIdentifier       *string           `pulumi:"dbSnapshotIdentifier"`
+	Encrypted                  *bool             `pulumi:"encrypted"`
+	Engine                     *string           `pulumi:"engine"`
+	EngineVersion              *string           `pulumi:"engineVersion"`
+	Iops                       *int              `pulumi:"iops"`
+	KmsKeyId                   *string           `pulumi:"kmsKeyId"`
+	LicenseModel               *string           `pulumi:"licenseModel"`
+	OptionGroupName            *string           `pulumi:"optionGroupName"`
+	Port                       *int              `pulumi:"port"`
+	SnapshotType               *string           `pulumi:"snapshotType"`
+	SourceDbSnapshotIdentifier *string           `pulumi:"sourceDbSnapshotIdentifier"`
+	SourceRegion               *string           `pulumi:"sourceRegion"`
+	Status                     *string           `pulumi:"status"`
+	StorageType                *string           `pulumi:"storageType"`
+	Tags                       map[string]string `pulumi:"tags"`
+	VpcId                      *string           `pulumi:"vpcId"`
 }
 
 type SnapshotState struct {
-	// Specifies the allocated storage size in gigabytes (GB).
-	AllocatedStorage pulumi.IntPtrInput
-	// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
-	AvailabilityZone pulumi.StringPtrInput
-	// The DB Instance Identifier from which to take the snapshot.
-	DbInstanceIdentifier pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) for the DB snapshot.
-	DbSnapshotArn pulumi.StringPtrInput
-	// The Identifier for the snapshot.
-	DbSnapshotIdentifier pulumi.StringPtrInput
-	// Specifies whether the DB snapshot is encrypted.
-	Encrypted pulumi.BoolPtrInput
-	// Specifies the name of the database engine.
-	Engine pulumi.StringPtrInput
-	// Specifies the version of the database engine.
-	EngineVersion pulumi.StringPtrInput
-	// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
-	Iops pulumi.IntPtrInput
-	// The ARN for the KMS encryption key.
-	KmsKeyId pulumi.StringPtrInput
-	// License model information for the restored DB instance.
-	LicenseModel pulumi.StringPtrInput
-	// Provides the option group name for the DB snapshot.
-	OptionGroupName pulumi.StringPtrInput
-	Port            pulumi.IntPtrInput
-	SnapshotType    pulumi.StringPtrInput
-	// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
+	AllocatedStorage           pulumi.IntPtrInput
+	AvailabilityZone           pulumi.StringPtrInput
+	DbInstanceIdentifier       pulumi.StringPtrInput
+	DbSnapshotArn              pulumi.StringPtrInput
+	DbSnapshotIdentifier       pulumi.StringPtrInput
+	Encrypted                  pulumi.BoolPtrInput
+	Engine                     pulumi.StringPtrInput
+	EngineVersion              pulumi.StringPtrInput
+	Iops                       pulumi.IntPtrInput
+	KmsKeyId                   pulumi.StringPtrInput
+	LicenseModel               pulumi.StringPtrInput
+	OptionGroupName            pulumi.StringPtrInput
+	Port                       pulumi.IntPtrInput
+	SnapshotType               pulumi.StringPtrInput
 	SourceDbSnapshotIdentifier pulumi.StringPtrInput
-	// The region that the DB snapshot was created in or copied from.
-	SourceRegion pulumi.StringPtrInput
-	// Specifies the status of this DB snapshot.
-	Status pulumi.StringPtrInput
-	// Specifies the storage type associated with DB snapshot.
-	StorageType pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// Specifies the storage type associated with DB snapshot.
-	VpcId pulumi.StringPtrInput
+	SourceRegion               pulumi.StringPtrInput
+	Status                     pulumi.StringPtrInput
+	StorageType                pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
+	VpcId                      pulumi.StringPtrInput
 }
 
 func (SnapshotState) ElementType() reflect.Type {
@@ -213,22 +119,16 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// The DB Instance Identifier from which to take the snapshot.
-	DbInstanceIdentifier string `pulumi:"dbInstanceIdentifier"`
-	// The Identifier for the snapshot.
-	DbSnapshotIdentifier string `pulumi:"dbSnapshotIdentifier"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	DbInstanceIdentifier string            `pulumi:"dbInstanceIdentifier"`
+	DbSnapshotIdentifier string            `pulumi:"dbSnapshotIdentifier"`
+	Tags                 map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// The DB Instance Identifier from which to take the snapshot.
 	DbInstanceIdentifier pulumi.StringInput
-	// The Identifier for the snapshot.
 	DbSnapshotIdentifier pulumi.StringInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags                 pulumi.StringMapInput
 }
 
 func (SnapshotArgs) ElementType() reflect.Type {

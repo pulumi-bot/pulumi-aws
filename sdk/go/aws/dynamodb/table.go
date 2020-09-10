@@ -10,164 +10,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DynamoDB table resource
-//
-// > **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `readCapacity` and/or `writeCapacity` if there's `autoscaling policy` attached to the table.
-//
-// ## Example Usage
-//
-// The following dynamodb table description models the table and GSI shown
-// in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/dynamodb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dynamodb.NewTable(ctx, "basic_dynamodb_table", &dynamodb.TableArgs{
-// 			Attributes: dynamodb.TableAttributeArray{
-// 				&dynamodb.TableAttributeArgs{
-// 					Name: pulumi.String("UserId"),
-// 					Type: pulumi.String("S"),
-// 				},
-// 				&dynamodb.TableAttributeArgs{
-// 					Name: pulumi.String("GameTitle"),
-// 					Type: pulumi.String("S"),
-// 				},
-// 				&dynamodb.TableAttributeArgs{
-// 					Name: pulumi.String("TopScore"),
-// 					Type: pulumi.String("N"),
-// 				},
-// 			},
-// 			BillingMode: pulumi.String("PROVISIONED"),
-// 			GlobalSecondaryIndexes: dynamodb.TableGlobalSecondaryIndexArray{
-// 				&dynamodb.TableGlobalSecondaryIndexArgs{
-// 					HashKey: pulumi.String("GameTitle"),
-// 					Name:    pulumi.String("GameTitleIndex"),
-// 					NonKeyAttributes: pulumi.StringArray{
-// 						pulumi.String("UserId"),
-// 					},
-// 					ProjectionType: pulumi.String("INCLUDE"),
-// 					RangeKey:       pulumi.String("TopScore"),
-// 					ReadCapacity:   pulumi.Int(10),
-// 					WriteCapacity:  pulumi.Int(10),
-// 				},
-// 			},
-// 			HashKey:      pulumi.String("UserId"),
-// 			RangeKey:     pulumi.String("GameTitle"),
-// 			ReadCapacity: pulumi.Int(20),
-// 			Tags: pulumi.StringMap{
-// 				"Environment": pulumi.String("production"),
-// 				"Name":        pulumi.String("dynamodb-table-1"),
-// 			},
-// 			Ttl: &dynamodb.TableTtlArgs{
-// 				AttributeName: pulumi.String("TimeToExist"),
-// 				Enabled:       pulumi.Bool(false),
-// 			},
-// 			WriteCapacity: pulumi.Int(20),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Global Tables
-//
-// This resource implements support for [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) via `replica` configuration blocks. For working with [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html), see the `dynamodb.GlobalTable` resource.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/dynamodb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-// 			Attributes: dynamodb.TableAttributeArray{
-// 				&dynamodb.TableAttributeArgs{
-// 					Name: pulumi.String("TestTableHashKey"),
-// 					Type: pulumi.String("S"),
-// 				},
-// 			},
-// 			BillingMode: pulumi.String("PAY_PER_REQUEST"),
-// 			HashKey:     pulumi.String("TestTableHashKey"),
-// 			Replicas: dynamodb.TableReplicaArray{
-// 				&dynamodb.TableReplicaArgs{
-// 					RegionName: pulumi.String("us-east-2"),
-// 				},
-// 				&dynamodb.TableReplicaArgs{
-// 					RegionName: pulumi.String("us-west-2"),
-// 				},
-// 			},
-// 			StreamEnabled:  pulumi.Bool(true),
-// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Table struct {
 	pulumi.CustomResourceState
 
-	// The arn of the table
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// List of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. Each attribute has two properties:
-	Attributes TableAttributeArrayOutput `pulumi:"attributes"`
-	// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-	BillingMode pulumi.StringPtrOutput `pulumi:"billingMode"`
-	// Describe a GSI for the table;
-	// subject to the normal limits on the number of GSIs, projected
-	// attributes, etc.
+	Arn                    pulumi.StringOutput                  `pulumi:"arn"`
+	Attributes             TableAttributeArrayOutput            `pulumi:"attributes"`
+	BillingMode            pulumi.StringPtrOutput               `pulumi:"billingMode"`
 	GlobalSecondaryIndexes TableGlobalSecondaryIndexArrayOutput `pulumi:"globalSecondaryIndexes"`
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey pulumi.StringOutput `pulumi:"hashKey"`
-	// Describe an LSI on the table;
-	// these can only be allocated *at creation* so you cannot change this
-	// definition after you have created the resource.
-	LocalSecondaryIndexes TableLocalSecondaryIndexArrayOutput `pulumi:"localSecondaryIndexes"`
-	// The name of the index
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Point-in-time recovery options.
-	PointInTimeRecovery TablePointInTimeRecoveryOutput `pulumi:"pointInTimeRecovery"`
-	// The name of the range key; must be defined
-	RangeKey pulumi.StringPtrOutput `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity pulumi.IntPtrOutput `pulumi:"readCapacity"`
-	// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. Detailed below.
-	Replicas TableReplicaArrayOutput `pulumi:"replicas"`
-	// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
-	ServerSideEncryption TableServerSideEncryptionOutput `pulumi:"serverSideEncryption"`
-	// The ARN of the Table Stream. Only available when `streamEnabled = true`
-	StreamArn pulumi.StringOutput `pulumi:"streamArn"`
-	// Indicates whether Streams are to be enabled (true) or disabled (false).
-	StreamEnabled pulumi.BoolPtrOutput `pulumi:"streamEnabled"`
-	// A timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not
-	// a unique identifier for the stream on its own. However, the combination of AWS customer ID,
-	// table name and this field is guaranteed to be unique.
-	// It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`
-	StreamLabel pulumi.StringOutput `pulumi:"streamLabel"`
-	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType pulumi.StringOutput `pulumi:"streamViewType"`
-	// A map of tags to populate on the created table.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Defines ttl, has two properties, and can only be specified once:
-	Ttl TableTtlPtrOutput `pulumi:"ttl"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity pulumi.IntPtrOutput `pulumi:"writeCapacity"`
+	HashKey                pulumi.StringOutput                  `pulumi:"hashKey"`
+	LocalSecondaryIndexes  TableLocalSecondaryIndexArrayOutput  `pulumi:"localSecondaryIndexes"`
+	Name                   pulumi.StringOutput                  `pulumi:"name"`
+	PointInTimeRecovery    TablePointInTimeRecoveryOutput       `pulumi:"pointInTimeRecovery"`
+	RangeKey               pulumi.StringPtrOutput               `pulumi:"rangeKey"`
+	ReadCapacity           pulumi.IntPtrOutput                  `pulumi:"readCapacity"`
+	Replicas               TableReplicaArrayOutput              `pulumi:"replicas"`
+	ServerSideEncryption   TableServerSideEncryptionOutput      `pulumi:"serverSideEncryption"`
+	StreamArn              pulumi.StringOutput                  `pulumi:"streamArn"`
+	StreamEnabled          pulumi.BoolPtrOutput                 `pulumi:"streamEnabled"`
+	StreamLabel            pulumi.StringOutput                  `pulumi:"streamLabel"`
+	StreamViewType         pulumi.StringOutput                  `pulumi:"streamViewType"`
+	Tags                   pulumi.StringMapOutput               `pulumi:"tags"`
+	Ttl                    TableTtlPtrOutput                    `pulumi:"ttl"`
+	WriteCapacity          pulumi.IntPtrOutput                  `pulumi:"writeCapacity"`
 }
 
 // NewTable registers a new resource with the given unique name, arguments, and options.
@@ -204,101 +68,47 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// The arn of the table
-	Arn *string `pulumi:"arn"`
-	// List of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. Each attribute has two properties:
-	Attributes []TableAttribute `pulumi:"attributes"`
-	// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-	BillingMode *string `pulumi:"billingMode"`
-	// Describe a GSI for the table;
-	// subject to the normal limits on the number of GSIs, projected
-	// attributes, etc.
+	Arn                    *string                     `pulumi:"arn"`
+	Attributes             []TableAttribute            `pulumi:"attributes"`
+	BillingMode            *string                     `pulumi:"billingMode"`
 	GlobalSecondaryIndexes []TableGlobalSecondaryIndex `pulumi:"globalSecondaryIndexes"`
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey *string `pulumi:"hashKey"`
-	// Describe an LSI on the table;
-	// these can only be allocated *at creation* so you cannot change this
-	// definition after you have created the resource.
-	LocalSecondaryIndexes []TableLocalSecondaryIndex `pulumi:"localSecondaryIndexes"`
-	// The name of the index
-	Name *string `pulumi:"name"`
-	// Point-in-time recovery options.
-	PointInTimeRecovery *TablePointInTimeRecovery `pulumi:"pointInTimeRecovery"`
-	// The name of the range key; must be defined
-	RangeKey *string `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity *int `pulumi:"readCapacity"`
-	// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. Detailed below.
-	Replicas []TableReplica `pulumi:"replicas"`
-	// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
-	ServerSideEncryption *TableServerSideEncryption `pulumi:"serverSideEncryption"`
-	// The ARN of the Table Stream. Only available when `streamEnabled = true`
-	StreamArn *string `pulumi:"streamArn"`
-	// Indicates whether Streams are to be enabled (true) or disabled (false).
-	StreamEnabled *bool `pulumi:"streamEnabled"`
-	// A timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not
-	// a unique identifier for the stream on its own. However, the combination of AWS customer ID,
-	// table name and this field is guaranteed to be unique.
-	// It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`
-	StreamLabel *string `pulumi:"streamLabel"`
-	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType *string `pulumi:"streamViewType"`
-	// A map of tags to populate on the created table.
-	Tags map[string]string `pulumi:"tags"`
-	// Defines ttl, has two properties, and can only be specified once:
-	Ttl *TableTtl `pulumi:"ttl"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity *int `pulumi:"writeCapacity"`
+	HashKey                *string                     `pulumi:"hashKey"`
+	LocalSecondaryIndexes  []TableLocalSecondaryIndex  `pulumi:"localSecondaryIndexes"`
+	Name                   *string                     `pulumi:"name"`
+	PointInTimeRecovery    *TablePointInTimeRecovery   `pulumi:"pointInTimeRecovery"`
+	RangeKey               *string                     `pulumi:"rangeKey"`
+	ReadCapacity           *int                        `pulumi:"readCapacity"`
+	Replicas               []TableReplica              `pulumi:"replicas"`
+	ServerSideEncryption   *TableServerSideEncryption  `pulumi:"serverSideEncryption"`
+	StreamArn              *string                     `pulumi:"streamArn"`
+	StreamEnabled          *bool                       `pulumi:"streamEnabled"`
+	StreamLabel            *string                     `pulumi:"streamLabel"`
+	StreamViewType         *string                     `pulumi:"streamViewType"`
+	Tags                   map[string]string           `pulumi:"tags"`
+	Ttl                    *TableTtl                   `pulumi:"ttl"`
+	WriteCapacity          *int                        `pulumi:"writeCapacity"`
 }
 
 type TableState struct {
-	// The arn of the table
-	Arn pulumi.StringPtrInput
-	// List of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. Each attribute has two properties:
-	Attributes TableAttributeArrayInput
-	// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-	BillingMode pulumi.StringPtrInput
-	// Describe a GSI for the table;
-	// subject to the normal limits on the number of GSIs, projected
-	// attributes, etc.
+	Arn                    pulumi.StringPtrInput
+	Attributes             TableAttributeArrayInput
+	BillingMode            pulumi.StringPtrInput
 	GlobalSecondaryIndexes TableGlobalSecondaryIndexArrayInput
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey pulumi.StringPtrInput
-	// Describe an LSI on the table;
-	// these can only be allocated *at creation* so you cannot change this
-	// definition after you have created the resource.
-	LocalSecondaryIndexes TableLocalSecondaryIndexArrayInput
-	// The name of the index
-	Name pulumi.StringPtrInput
-	// Point-in-time recovery options.
-	PointInTimeRecovery TablePointInTimeRecoveryPtrInput
-	// The name of the range key; must be defined
-	RangeKey pulumi.StringPtrInput
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity pulumi.IntPtrInput
-	// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. Detailed below.
-	Replicas TableReplicaArrayInput
-	// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
-	ServerSideEncryption TableServerSideEncryptionPtrInput
-	// The ARN of the Table Stream. Only available when `streamEnabled = true`
-	StreamArn pulumi.StringPtrInput
-	// Indicates whether Streams are to be enabled (true) or disabled (false).
-	StreamEnabled pulumi.BoolPtrInput
-	// A timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not
-	// a unique identifier for the stream on its own. However, the combination of AWS customer ID,
-	// table name and this field is guaranteed to be unique.
-	// It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`
-	StreamLabel pulumi.StringPtrInput
-	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType pulumi.StringPtrInput
-	// A map of tags to populate on the created table.
-	Tags pulumi.StringMapInput
-	// Defines ttl, has two properties, and can only be specified once:
-	Ttl TableTtlPtrInput
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity pulumi.IntPtrInput
+	HashKey                pulumi.StringPtrInput
+	LocalSecondaryIndexes  TableLocalSecondaryIndexArrayInput
+	Name                   pulumi.StringPtrInput
+	PointInTimeRecovery    TablePointInTimeRecoveryPtrInput
+	RangeKey               pulumi.StringPtrInput
+	ReadCapacity           pulumi.IntPtrInput
+	Replicas               TableReplicaArrayInput
+	ServerSideEncryption   TableServerSideEncryptionPtrInput
+	StreamArn              pulumi.StringPtrInput
+	StreamEnabled          pulumi.BoolPtrInput
+	StreamLabel            pulumi.StringPtrInput
+	StreamViewType         pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
+	Ttl                    TableTtlPtrInput
+	WriteCapacity          pulumi.IntPtrInput
 }
 
 func (TableState) ElementType() reflect.Type {
@@ -306,84 +116,42 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// List of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. Each attribute has two properties:
-	Attributes []TableAttribute `pulumi:"attributes"`
-	// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-	BillingMode *string `pulumi:"billingMode"`
-	// Describe a GSI for the table;
-	// subject to the normal limits on the number of GSIs, projected
-	// attributes, etc.
+	Attributes             []TableAttribute            `pulumi:"attributes"`
+	BillingMode            *string                     `pulumi:"billingMode"`
 	GlobalSecondaryIndexes []TableGlobalSecondaryIndex `pulumi:"globalSecondaryIndexes"`
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey string `pulumi:"hashKey"`
-	// Describe an LSI on the table;
-	// these can only be allocated *at creation* so you cannot change this
-	// definition after you have created the resource.
-	LocalSecondaryIndexes []TableLocalSecondaryIndex `pulumi:"localSecondaryIndexes"`
-	// The name of the index
-	Name *string `pulumi:"name"`
-	// Point-in-time recovery options.
-	PointInTimeRecovery *TablePointInTimeRecovery `pulumi:"pointInTimeRecovery"`
-	// The name of the range key; must be defined
-	RangeKey *string `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity *int `pulumi:"readCapacity"`
-	// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. Detailed below.
-	Replicas []TableReplica `pulumi:"replicas"`
-	// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
-	ServerSideEncryption *TableServerSideEncryption `pulumi:"serverSideEncryption"`
-	// Indicates whether Streams are to be enabled (true) or disabled (false).
-	StreamEnabled *bool `pulumi:"streamEnabled"`
-	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType *string `pulumi:"streamViewType"`
-	// A map of tags to populate on the created table.
-	Tags map[string]string `pulumi:"tags"`
-	// Defines ttl, has two properties, and can only be specified once:
-	Ttl *TableTtl `pulumi:"ttl"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity *int `pulumi:"writeCapacity"`
+	HashKey                string                      `pulumi:"hashKey"`
+	LocalSecondaryIndexes  []TableLocalSecondaryIndex  `pulumi:"localSecondaryIndexes"`
+	Name                   *string                     `pulumi:"name"`
+	PointInTimeRecovery    *TablePointInTimeRecovery   `pulumi:"pointInTimeRecovery"`
+	RangeKey               *string                     `pulumi:"rangeKey"`
+	ReadCapacity           *int                        `pulumi:"readCapacity"`
+	Replicas               []TableReplica              `pulumi:"replicas"`
+	ServerSideEncryption   *TableServerSideEncryption  `pulumi:"serverSideEncryption"`
+	StreamEnabled          *bool                       `pulumi:"streamEnabled"`
+	StreamViewType         *string                     `pulumi:"streamViewType"`
+	Tags                   map[string]string           `pulumi:"tags"`
+	Ttl                    *TableTtl                   `pulumi:"ttl"`
+	WriteCapacity          *int                        `pulumi:"writeCapacity"`
 }
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// List of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. Each attribute has two properties:
-	Attributes TableAttributeArrayInput
-	// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-	BillingMode pulumi.StringPtrInput
-	// Describe a GSI for the table;
-	// subject to the normal limits on the number of GSIs, projected
-	// attributes, etc.
+	Attributes             TableAttributeArrayInput
+	BillingMode            pulumi.StringPtrInput
 	GlobalSecondaryIndexes TableGlobalSecondaryIndexArrayInput
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey pulumi.StringInput
-	// Describe an LSI on the table;
-	// these can only be allocated *at creation* so you cannot change this
-	// definition after you have created the resource.
-	LocalSecondaryIndexes TableLocalSecondaryIndexArrayInput
-	// The name of the index
-	Name pulumi.StringPtrInput
-	// Point-in-time recovery options.
-	PointInTimeRecovery TablePointInTimeRecoveryPtrInput
-	// The name of the range key; must be defined
-	RangeKey pulumi.StringPtrInput
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity pulumi.IntPtrInput
-	// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. Detailed below.
-	Replicas TableReplicaArrayInput
-	// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS owned Customer Master Key if this argument isn't specified.
-	ServerSideEncryption TableServerSideEncryptionPtrInput
-	// Indicates whether Streams are to be enabled (true) or disabled (false).
-	StreamEnabled pulumi.BoolPtrInput
-	// When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-	StreamViewType pulumi.StringPtrInput
-	// A map of tags to populate on the created table.
-	Tags pulumi.StringMapInput
-	// Defines ttl, has two properties, and can only be specified once:
-	Ttl TableTtlPtrInput
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity pulumi.IntPtrInput
+	HashKey                pulumi.StringInput
+	LocalSecondaryIndexes  TableLocalSecondaryIndexArrayInput
+	Name                   pulumi.StringPtrInput
+	PointInTimeRecovery    TablePointInTimeRecoveryPtrInput
+	RangeKey               pulumi.StringPtrInput
+	ReadCapacity           pulumi.IntPtrInput
+	Replicas               TableReplicaArrayInput
+	ServerSideEncryption   TableServerSideEncryptionPtrInput
+	StreamEnabled          pulumi.BoolPtrInput
+	StreamViewType         pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
+	Ttl                    TableTtlPtrInput
+	WriteCapacity          pulumi.IntPtrInput
 }
 
 func (TableArgs) ElementType() reflect.Type {

@@ -6,25 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an RDS security group resource. This is only for DB instances in the
- * EC2-Classic Platform. For instances inside a VPC, use the
- * `aws_db_instance.vpc_security_group_ids`
- * attribute instead.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const defaultSecurityGroup = new aws.rds.SecurityGroup("default", {
- *     ingress: [{
- *         cidr: "10.0.0.0/24",
- *     }],
- * });
- * ```
- */
 export class SecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroup resource's state with the given name, ID, and optional extra
@@ -53,25 +34,10 @@ export class SecurityGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityGroup.__pulumiType;
     }
 
-    /**
-     * The arn of the DB security group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The description of the DB security group. Defaults to "Managed by Pulumi".
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * A list of ingress rules.
-     */
     public readonly ingress!: pulumi.Output<outputs.rds.SecurityGroupIngress[]>;
-    /**
-     * The name of the DB security group.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -117,25 +83,10 @@ export class SecurityGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityGroup resources.
  */
 export interface SecurityGroupState {
-    /**
-     * The arn of the DB security group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description of the DB security group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A list of ingress rules.
-     */
     readonly ingress?: pulumi.Input<pulumi.Input<inputs.rds.SecurityGroupIngress>[]>;
-    /**
-     * The name of the DB security group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -143,20 +94,8 @@ export interface SecurityGroupState {
  * The set of arguments for constructing a SecurityGroup resource.
  */
 export interface SecurityGroupArgs {
-    /**
-     * The description of the DB security group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A list of ingress rules.
-     */
     readonly ingress: pulumi.Input<pulumi.Input<inputs.rds.SecurityGroupIngress>[]>;
-    /**
-     * The name of the DB security group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

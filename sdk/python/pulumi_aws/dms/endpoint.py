@@ -40,56 +40,9 @@ class Endpoint(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a DMS (Data Migration Service) endpoint resource. DMS endpoints can be created, updated, deleted, and imported.
-
-        > **Note:** All arguments including the password will be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new endpoint
-        test = aws.dms.Endpoint("test",
-            certificate_arn="arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012",
-            database_name="test",
-            endpoint_id="test-dms-endpoint-tf",
-            endpoint_type="source",
-            engine_name="aurora",
-            extra_connection_attributes="",
-            kms_key_arn="arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
-            password="test",
-            port=3306,
-            server_name="test",
-            ssl_mode="none",
-            tags={
-                "Name": "test",
-            },
-            username="test")
-        ```
-
+        Create a Endpoint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_arn: The Amazon Resource Name (ARN) for the certificate.
-        :param pulumi.Input[str] database_name: The name of the endpoint database.
-        :param pulumi.Input[pulumi.InputType['EndpointElasticsearchSettingsArgs']] elasticsearch_settings: Configuration block with Elasticsearch settings. Detailed below.
-        :param pulumi.Input[str] endpoint_id: The database endpoint identifier.
-        :param pulumi.Input[str] endpoint_type: The type of endpoint. Can be one of `source | target`.
-        :param pulumi.Input[str] engine_name: The type of engine for the endpoint. Can be one of `aurora | aurora-postgresql| azuredb | db2 | docdb | dynamodb | elasticsearch | kafka | kinesis | mariadb | mongodb | mysql | oracle | postgres | redshift | s3 | sqlserver | sybase`.
-        :param pulumi.Input[str] extra_connection_attributes: Additional attributes associated with the connection. For available attributes see [Using Extra Connection Attributes with AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.ConnectionAttributes.html).
-        :param pulumi.Input[pulumi.InputType['EndpointKafkaSettingsArgs']] kafka_settings: Configuration block with Kafka settings. Detailed below.
-        :param pulumi.Input[pulumi.InputType['EndpointKinesisSettingsArgs']] kinesis_settings: Configuration block with Kinesis settings. Detailed below.
-        :param pulumi.Input[str] kms_key_arn: The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
-        :param pulumi.Input[pulumi.InputType['EndpointMongodbSettingsArgs']] mongodb_settings: Configuration block with MongoDB settings. Detailed below.
-        :param pulumi.Input[str] password: The password to be used to login to the endpoint database.
-        :param pulumi.Input[float] port: The port used by the endpoint database.
-        :param pulumi.Input[pulumi.InputType['EndpointS3SettingsArgs']] s3_settings: Configuration block with S3 settings. Detailed below.
-        :param pulumi.Input[str] server_name: The host name of the server.
-        :param pulumi.Input[str] service_access_role: The Amazon Resource Name (ARN) used by the service access IAM role for dynamodb endpoints.
-        :param pulumi.Input[str] ssl_mode: The SSL mode to use for the connection. Can be one of `none | require | verify-ca | verify-full`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] username: The user name to be used to login to the endpoint database.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -171,26 +124,6 @@ class Endpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_arn: The Amazon Resource Name (ARN) for the certificate.
-        :param pulumi.Input[str] database_name: The name of the endpoint database.
-        :param pulumi.Input[pulumi.InputType['EndpointElasticsearchSettingsArgs']] elasticsearch_settings: Configuration block with Elasticsearch settings. Detailed below.
-        :param pulumi.Input[str] endpoint_arn: The Amazon Resource Name (ARN) for the endpoint.
-        :param pulumi.Input[str] endpoint_id: The database endpoint identifier.
-        :param pulumi.Input[str] endpoint_type: The type of endpoint. Can be one of `source | target`.
-        :param pulumi.Input[str] engine_name: The type of engine for the endpoint. Can be one of `aurora | aurora-postgresql| azuredb | db2 | docdb | dynamodb | elasticsearch | kafka | kinesis | mariadb | mongodb | mysql | oracle | postgres | redshift | s3 | sqlserver | sybase`.
-        :param pulumi.Input[str] extra_connection_attributes: Additional attributes associated with the connection. For available attributes see [Using Extra Connection Attributes with AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.ConnectionAttributes.html).
-        :param pulumi.Input[pulumi.InputType['EndpointKafkaSettingsArgs']] kafka_settings: Configuration block with Kafka settings. Detailed below.
-        :param pulumi.Input[pulumi.InputType['EndpointKinesisSettingsArgs']] kinesis_settings: Configuration block with Kinesis settings. Detailed below.
-        :param pulumi.Input[str] kms_key_arn: The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
-        :param pulumi.Input[pulumi.InputType['EndpointMongodbSettingsArgs']] mongodb_settings: Configuration block with MongoDB settings. Detailed below.
-        :param pulumi.Input[str] password: The password to be used to login to the endpoint database.
-        :param pulumi.Input[float] port: The port used by the endpoint database.
-        :param pulumi.Input[pulumi.InputType['EndpointS3SettingsArgs']] s3_settings: Configuration block with S3 settings. Detailed below.
-        :param pulumi.Input[str] server_name: The host name of the server.
-        :param pulumi.Input[str] service_access_role: The Amazon Resource Name (ARN) used by the service access IAM role for dynamodb endpoints.
-        :param pulumi.Input[str] ssl_mode: The SSL mode to use for the connection. Can be one of `none | require | verify-ca | verify-full`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[str] username: The user name to be used to login to the endpoint database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -221,161 +154,101 @@ class Endpoint(pulumi.CustomResource):
     @property
     @pulumi.getter(name="certificateArn")
     def certificate_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) for the certificate.
-        """
         return pulumi.get(self, "certificate_arn")
 
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the endpoint database.
-        """
         return pulumi.get(self, "database_name")
 
     @property
     @pulumi.getter(name="elasticsearchSettings")
     def elasticsearch_settings(self) -> pulumi.Output[Optional['outputs.EndpointElasticsearchSettings']]:
-        """
-        Configuration block with Elasticsearch settings. Detailed below.
-        """
         return pulumi.get(self, "elasticsearch_settings")
 
     @property
     @pulumi.getter(name="endpointArn")
     def endpoint_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) for the endpoint.
-        """
         return pulumi.get(self, "endpoint_arn")
 
     @property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Output[str]:
-        """
-        The database endpoint identifier.
-        """
         return pulumi.get(self, "endpoint_id")
 
     @property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[str]:
-        """
-        The type of endpoint. Can be one of `source | target`.
-        """
         return pulumi.get(self, "endpoint_type")
 
     @property
     @pulumi.getter(name="engineName")
     def engine_name(self) -> pulumi.Output[str]:
-        """
-        The type of engine for the endpoint. Can be one of `aurora | aurora-postgresql| azuredb | db2 | docdb | dynamodb | elasticsearch | kafka | kinesis | mariadb | mongodb | mysql | oracle | postgres | redshift | s3 | sqlserver | sybase`.
-        """
         return pulumi.get(self, "engine_name")
 
     @property
     @pulumi.getter(name="extraConnectionAttributes")
     def extra_connection_attributes(self) -> pulumi.Output[str]:
-        """
-        Additional attributes associated with the connection. For available attributes see [Using Extra Connection Attributes with AWS Database Migration Service](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.ConnectionAttributes.html).
-        """
         return pulumi.get(self, "extra_connection_attributes")
 
     @property
     @pulumi.getter(name="kafkaSettings")
     def kafka_settings(self) -> pulumi.Output[Optional['outputs.EndpointKafkaSettings']]:
-        """
-        Configuration block with Kafka settings. Detailed below.
-        """
         return pulumi.get(self, "kafka_settings")
 
     @property
     @pulumi.getter(name="kinesisSettings")
     def kinesis_settings(self) -> pulumi.Output[Optional['outputs.EndpointKinesisSettings']]:
-        """
-        Configuration block with Kinesis settings. Detailed below.
-        """
         return pulumi.get(self, "kinesis_settings")
 
     @property
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
-        """
         return pulumi.get(self, "kms_key_arn")
 
     @property
     @pulumi.getter(name="mongodbSettings")
     def mongodb_settings(self) -> pulumi.Output[Optional['outputs.EndpointMongodbSettings']]:
-        """
-        Configuration block with MongoDB settings. Detailed below.
-        """
         return pulumi.get(self, "mongodb_settings")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
-        """
-        The password to be used to login to the endpoint database.
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[float]]:
-        """
-        The port used by the endpoint database.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="s3Settings")
     def s3_settings(self) -> pulumi.Output[Optional['outputs.EndpointS3Settings']]:
-        """
-        Configuration block with S3 settings. Detailed below.
-        """
         return pulumi.get(self, "s3_settings")
 
     @property
     @pulumi.getter(name="serverName")
     def server_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The host name of the server.
-        """
         return pulumi.get(self, "server_name")
 
     @property
     @pulumi.getter(name="serviceAccessRole")
     def service_access_role(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Amazon Resource Name (ARN) used by the service access IAM role for dynamodb endpoints.
-        """
         return pulumi.get(self, "service_access_role")
 
     @property
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> pulumi.Output[str]:
-        """
-        The SSL mode to use for the connection. Can be one of `none | require | verify-ca | verify-full`
-        """
         return pulumi.get(self, "ssl_mode")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user name to be used to login to the endpoint database.
-        """
         return pulumi.get(self, "username")
 
     def translate_output_property(self, prop):

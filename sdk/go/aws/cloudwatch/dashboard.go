@@ -10,41 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a CloudWatch Dashboard resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudwatch"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudwatch.NewDashboard(ctx, "main", &cloudwatch.DashboardArgs{
-// 			DashboardBody: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"widgets\": [\n", "    {\n", "      \"type\": \"metric\",\n", "      \"x\": 0,\n", "      \"y\": 0,\n", "      \"width\": 12,\n", "      \"height\": 6,\n", "      \"properties\": {\n", "        \"metrics\": [\n", "          [\n", "            \"AWS/EC2\",\n", "            \"CPUUtilization\",\n", "            \"InstanceId\",\n", "            \"i-012345\"\n", "          ]\n", "        ],\n", "        \"period\": 300,\n", "        \"stat\": \"Average\",\n", "        \"region\": \"us-east-1\",\n", "        \"title\": \"EC2 Instance CPU\"\n", "      }\n", "    },\n", "    {\n", "      \"type\": \"text\",\n", "      \"x\": 0,\n", "      \"y\": 7,\n", "      \"width\": 3,\n", "      \"height\": 3,\n", "      \"properties\": {\n", "        \"markdown\": \"Hello world\"\n", "      }\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 			DashboardName: pulumi.String("my-dashboard"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) of the dashboard.
-	DashboardArn pulumi.StringOutput `pulumi:"dashboardArn"`
-	// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
+	DashboardArn  pulumi.StringOutput `pulumi:"dashboardArn"`
 	DashboardBody pulumi.StringOutput `pulumi:"dashboardBody"`
-	// The name of the dashboard.
 	DashboardName pulumi.StringOutput `pulumi:"dashboardName"`
 }
 
@@ -82,20 +52,14 @@ func GetDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dashboard resources.
 type dashboardState struct {
-	// The Amazon Resource Name (ARN) of the dashboard.
-	DashboardArn *string `pulumi:"dashboardArn"`
-	// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
+	DashboardArn  *string `pulumi:"dashboardArn"`
 	DashboardBody *string `pulumi:"dashboardBody"`
-	// The name of the dashboard.
 	DashboardName *string `pulumi:"dashboardName"`
 }
 
 type DashboardState struct {
-	// The Amazon Resource Name (ARN) of the dashboard.
-	DashboardArn pulumi.StringPtrInput
-	// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
+	DashboardArn  pulumi.StringPtrInput
 	DashboardBody pulumi.StringPtrInput
-	// The name of the dashboard.
 	DashboardName pulumi.StringPtrInput
 }
 
@@ -104,17 +68,13 @@ func (DashboardState) ElementType() reflect.Type {
 }
 
 type dashboardArgs struct {
-	// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
 	DashboardBody string `pulumi:"dashboardBody"`
-	// The name of the dashboard.
 	DashboardName string `pulumi:"dashboardName"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
-	// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
 	DashboardBody pulumi.StringInput
-	// The name of the dashboard.
 	DashboardName pulumi.StringInput
 }
 

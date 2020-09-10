@@ -6,60 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Service Discovery Service resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleVpc = new aws.ec2.Vpc("exampleVpc", {
- *     cidrBlock: "10.0.0.0/16",
- *     enableDnsSupport: true,
- *     enableDnsHostnames: true,
- * });
- * const examplePrivateDnsNamespace = new aws.servicediscovery.PrivateDnsNamespace("examplePrivateDnsNamespace", {
- *     description: "example",
- *     vpc: exampleVpc.id,
- * });
- * const exampleService = new aws.servicediscovery.Service("exampleService", {
- *     dnsConfig: {
- *         namespaceId: examplePrivateDnsNamespace.id,
- *         dnsRecords: [{
- *             ttl: 10,
- *             type: "A",
- *         }],
- *         routingPolicy: "MULTIVALUE",
- *     },
- *     healthCheckCustomConfig: {
- *         failureThreshold: 1,
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const examplePublicDnsNamespace = new aws.servicediscovery.PublicDnsNamespace("examplePublicDnsNamespace", {description: "example"});
- * const exampleService = new aws.servicediscovery.Service("exampleService", {
- *     dnsConfig: {
- *         namespaceId: examplePublicDnsNamespace.id,
- *         dnsRecords: [{
- *             ttl: 10,
- *             type: "A",
- *         }],
- *     },
- *     healthCheckConfig: {
- *         failureThreshold: 10,
- *         resourcePath: "path",
- *         type: "HTTP",
- *     },
- * });
- * ```
- */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra
@@ -88,37 +34,13 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
-    /**
-     * The ARN of the service.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The description of the service.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance.
-     */
     public readonly dnsConfig!: pulumi.Output<outputs.servicediscovery.ServiceDnsConfig | undefined>;
-    /**
-     * A complex type that contains settings for an optional health check. Only for Public DNS namespaces.
-     */
     public readonly healthCheckConfig!: pulumi.Output<outputs.servicediscovery.ServiceHealthCheckConfig | undefined>;
-    /**
-     * A complex type that contains settings for ECS managed health checks.
-     */
     public readonly healthCheckCustomConfig!: pulumi.Output<outputs.servicediscovery.ServiceHealthCheckCustomConfig | undefined>;
-    /**
-     * The name of the service.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the namespace to use for DNS configuration.
-     */
     public readonly namespaceId!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the service.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -167,37 +89,13 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
-    /**
-     * The ARN of the service.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description of the service.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance.
-     */
     readonly dnsConfig?: pulumi.Input<inputs.servicediscovery.ServiceDnsConfig>;
-    /**
-     * A complex type that contains settings for an optional health check. Only for Public DNS namespaces.
-     */
     readonly healthCheckConfig?: pulumi.Input<inputs.servicediscovery.ServiceHealthCheckConfig>;
-    /**
-     * A complex type that contains settings for ECS managed health checks.
-     */
     readonly healthCheckCustomConfig?: pulumi.Input<inputs.servicediscovery.ServiceHealthCheckCustomConfig>;
-    /**
-     * The name of the service.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the namespace to use for DNS configuration.
-     */
     readonly namespaceId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the service.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -205,32 +103,11 @@ export interface ServiceState {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
-    /**
-     * The description of the service.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance.
-     */
     readonly dnsConfig?: pulumi.Input<inputs.servicediscovery.ServiceDnsConfig>;
-    /**
-     * A complex type that contains settings for an optional health check. Only for Public DNS namespaces.
-     */
     readonly healthCheckConfig?: pulumi.Input<inputs.servicediscovery.ServiceHealthCheckConfig>;
-    /**
-     * A complex type that contains settings for ECS managed health checks.
-     */
     readonly healthCheckCustomConfig?: pulumi.Input<inputs.servicediscovery.ServiceHealthCheckCustomConfig>;
-    /**
-     * The name of the service.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the namespace to use for DNS configuration.
-     */
     readonly namespaceId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the service.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

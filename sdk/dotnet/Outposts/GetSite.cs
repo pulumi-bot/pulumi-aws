@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Outposts
 {
     public static class GetSite
     {
-        /// <summary>
-        /// Provides details about an Outposts Site.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Outposts.GetSite.InvokeAsync(new Aws.Outposts.GetSiteArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetSiteResult> InvokeAsync(GetSiteArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSiteResult>("aws:outposts/getSite:getSite", args ?? new GetSiteArgs(), options.WithVersion());
     }
@@ -44,15 +18,9 @@ namespace Pulumi.Aws.Outposts
 
     public sealed class GetSiteArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifier of the Site.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// Name of the Site.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -65,13 +33,7 @@ namespace Pulumi.Aws.Outposts
     [OutputType]
     public sealed class GetSiteResult
     {
-        /// <summary>
-        /// AWS Account identifier.
-        /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// Description.
-        /// </summary>
         public readonly string Description;
         public readonly string Id;
         public readonly string Name;

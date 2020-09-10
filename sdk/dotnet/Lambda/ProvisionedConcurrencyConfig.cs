@@ -9,68 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Lambda
 {
-    /// <summary>
-    /// Manages a Lambda Provisioned Concurrency Configuration.
-    /// 
-    /// ## Example Usage
-    /// ### Alias Name
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Lambda.ProvisionedConcurrencyConfig("example", new Aws.Lambda.ProvisionedConcurrencyConfigArgs
-    ///         {
-    ///             FunctionName = aws_lambda_alias.Example.Function_name,
-    ///             ProvisionedConcurrentExecutions = 1,
-    ///             Qualifier = aws_lambda_alias.Example.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Function Version
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Lambda.ProvisionedConcurrencyConfig("example", new Aws.Lambda.ProvisionedConcurrencyConfigArgs
-    ///         {
-    ///             FunctionName = aws_lambda_function.Example.Function_name,
-    ///             ProvisionedConcurrentExecutions = 1,
-    ///             Qualifier = aws_lambda_function.Example.Version,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ProvisionedConcurrencyConfig : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Name or Amazon Resource Name (ARN) of the Lambda Function.
-        /// </summary>
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
 
-        /// <summary>
-        /// Amount of capacity to allocate. Must be greater than or equal to `1`.
-        /// </summary>
         [Output("provisionedConcurrentExecutions")]
         public Output<int> ProvisionedConcurrentExecutions { get; private set; } = null!;
 
-        /// <summary>
-        /// Lambda Function version or Lambda Alias name.
-        /// </summary>
         [Output("qualifier")]
         public Output<string> Qualifier { get; private set; } = null!;
 
@@ -120,21 +66,12 @@ namespace Pulumi.Aws.Lambda
 
     public sealed class ProvisionedConcurrencyConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name or Amazon Resource Name (ARN) of the Lambda Function.
-        /// </summary>
         [Input("functionName", required: true)]
         public Input<string> FunctionName { get; set; } = null!;
 
-        /// <summary>
-        /// Amount of capacity to allocate. Must be greater than or equal to `1`.
-        /// </summary>
         [Input("provisionedConcurrentExecutions", required: true)]
         public Input<int> ProvisionedConcurrentExecutions { get; set; } = null!;
 
-        /// <summary>
-        /// Lambda Function version or Lambda Alias name.
-        /// </summary>
         [Input("qualifier", required: true)]
         public Input<string> Qualifier { get; set; } = null!;
 
@@ -145,21 +82,12 @@ namespace Pulumi.Aws.Lambda
 
     public sealed class ProvisionedConcurrencyConfigState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name or Amazon Resource Name (ARN) of the Lambda Function.
-        /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
 
-        /// <summary>
-        /// Amount of capacity to allocate. Must be greater than or equal to `1`.
-        /// </summary>
         [Input("provisionedConcurrentExecutions")]
         public Input<int>? ProvisionedConcurrentExecutions { get; set; }
 
-        /// <summary>
-        /// Lambda Function version or Lambda Alias name.
-        /// </summary>
         [Input("qualifier")]
         public Input<string>? Qualifier { get; set; }
 

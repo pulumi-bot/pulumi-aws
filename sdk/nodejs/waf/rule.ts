@@ -6,31 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Rule Resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ipset = new aws.waf.IpSet("ipset", {ipSetDescriptors: [{
- *     type: "IPV4",
- *     value: "192.0.7.0/24",
- * }]});
- * const wafrule = new aws.waf.Rule("wafrule", {
- *     metricName: "tfWAFRule",
- *     predicates: [{
- *         dataId: ipset.id,
- *         negated: false,
- *         type: "IPMatch",
- *     }],
- * }, {
- *     dependsOn: [ipset],
- * });
- * ```
- */
 export class Rule extends pulumi.CustomResource {
     /**
      * Get an existing Rule resource's state with the given name, ID, and optional extra
@@ -59,25 +34,10 @@ export class Rule extends pulumi.CustomResource {
         return obj['__pulumiType'] === Rule.__pulumiType;
     }
 
-    /**
-     * The ARN of the WAF rule.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.
-     */
     public readonly metricName!: pulumi.Output<string>;
-    /**
-     * The name or description of the rule.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     public readonly predicates!: pulumi.Output<outputs.waf.RulePredicate[] | undefined>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -123,25 +83,10 @@ export class Rule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Rule resources.
  */
 export interface RuleState {
-    /**
-     * The ARN of the WAF rule.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.
-     */
     readonly metricName?: pulumi.Input<string>;
-    /**
-     * The name or description of the rule.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     readonly predicates?: pulumi.Input<pulumi.Input<inputs.waf.RulePredicate>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -149,20 +94,8 @@ export interface RuleState {
  * The set of arguments for constructing a Rule resource.
  */
 export interface RuleArgs {
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.
-     */
     readonly metricName: pulumi.Input<string>;
-    /**
-     * The name or description of the rule.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     readonly predicates?: pulumi.Input<pulumi.Input<inputs.waf.RulePredicate>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

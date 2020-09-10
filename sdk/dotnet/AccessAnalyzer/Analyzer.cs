@@ -9,48 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AccessAnalyzer
 {
-    /// <summary>
-    /// Manages an Access Analyzer Analyzer. More information can be found in the [Access Analyzer User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AccessAnalyzer.Analyzer("example", new Aws.AccessAnalyzer.AnalyzerArgs
-    ///         {
-    ///             AnalyzerName = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Analyzer : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Name of the Analyzer.
-        /// </summary>
         [Output("analyzerName")]
         public Output<string> AnalyzerName { get; private set; } = null!;
 
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
@@ -100,27 +69,17 @@ namespace Pulumi.Aws.AccessAnalyzer
 
     public sealed class AnalyzerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the Analyzer.
-        /// </summary>
         [Input("analyzerName", required: true)]
         public Input<string> AnalyzerName { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -131,9 +90,6 @@ namespace Pulumi.Aws.AccessAnalyzer
 
     public sealed class AnalyzerState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the Analyzer.
-        /// </summary>
         [Input("analyzerName")]
         public Input<string>? AnalyzerName { get; set; }
 
@@ -142,19 +98,12 @@ namespace Pulumi.Aws.AccessAnalyzer
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Type of Analyzer. Valid value is currently only `ACCOUNT`. Defaults to `ACCOUNT`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Sfn
 {
     public static class GetActivity
     {
-        /// <summary>
-        /// Provides a Step Functions Activity data source
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sfnActivity = Output.Create(Aws.Sfn.GetActivity.InvokeAsync(new Aws.Sfn.GetActivityArgs
-        ///         {
-        ///             Name = "my-activity",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetActivityResult> InvokeAsync(GetActivityArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActivityResult>("aws:sfn/getActivity:getActivity", args ?? new GetActivityArgs(), options.WithVersion());
     }
@@ -44,15 +18,9 @@ namespace Pulumi.Aws.Sfn
 
     public sealed class GetActivityArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the activity.
-        /// </summary>
         [Input("arn")]
         public string? Arn { get; set; }
 
-        /// <summary>
-        /// The name that identifies the activity.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -66,9 +34,6 @@ namespace Pulumi.Aws.Sfn
     public sealed class GetActivityResult
     {
         public readonly string Arn;
-        /// <summary>
-        /// The date the activity was created.
-        /// </summary>
         public readonly string CreationDate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

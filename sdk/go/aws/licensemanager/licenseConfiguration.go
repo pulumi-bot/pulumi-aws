@@ -10,69 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a License Manager license configuration resource.
-//
-// > **Note:** Removing the `licenseCount` attribute is not supported by the License Manager API - recreate the resource instead.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/licensemanager"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := licensemanager.NewLicenseConfiguration(ctx, "example", &licensemanager.LicenseConfigurationArgs{
-// 			Description:           pulumi.String("Example"),
-// 			LicenseCount:          pulumi.Int(10),
-// 			LicenseCountHardLimit: pulumi.Bool(true),
-// 			LicenseCountingType:   pulumi.String("Socket"),
-// 			LicenseRules: pulumi.StringArray{
-// 				pulumi.String("#minimumSockets=2"),
-// 			},
-// 			Tags: pulumi.StringMap{
-// 				"foo": pulumi.String("barr"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Rules
-//
-// License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:
-//
-// * `minimumVcpus` - Resource must have minimum vCPU count in order to use the license. Default: 1
-// * `maximumVcpus` - Resource must have maximum vCPU count in order to use the license. Default: unbounded, limit: 10000
-// * `minimumCores` - Resource must have minimum core count in order to use the license. Default: 1
-// * `maximumCores` - Resource must have maximum core count in order to use the license. Default: unbounded, limit: 10000
-// * `minimumSockets` - Resource must have minimum socket count in order to use the license. Default: 1
-// * `maximumSockets` - Resource must have maximum socket count in order to use the license. Default: unbounded, limit: 10000
-// * `allowedTenancy` - Defines where the license can be used. If set, restricts license usage to selected tenancies. Specify a comma delimited list of `EC2-Default`, `EC2-DedicatedHost`, `EC2-DedicatedInstance`
 type LicenseConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Description of the license configuration.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Number of licenses managed by the license configuration.
-	LicenseCount pulumi.IntPtrOutput `pulumi:"licenseCount"`
-	// Sets the number of available licenses as a hard limit.
-	LicenseCountHardLimit pulumi.BoolPtrOutput `pulumi:"licenseCountHardLimit"`
-	// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-	LicenseCountingType pulumi.StringOutput `pulumi:"licenseCountingType"`
-	// Array of configured License Manager rules.
-	LicenseRules pulumi.StringArrayOutput `pulumi:"licenseRules"`
-	// Name of the license configuration.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Description           pulumi.StringPtrOutput   `pulumi:"description"`
+	LicenseCount          pulumi.IntPtrOutput      `pulumi:"licenseCount"`
+	LicenseCountHardLimit pulumi.BoolPtrOutput     `pulumi:"licenseCountHardLimit"`
+	LicenseCountingType   pulumi.StringOutput      `pulumi:"licenseCountingType"`
+	LicenseRules          pulumi.StringArrayOutput `pulumi:"licenseRules"`
+	Name                  pulumi.StringOutput      `pulumi:"name"`
+	Tags                  pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewLicenseConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -106,37 +53,23 @@ func GetLicenseConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LicenseConfiguration resources.
 type licenseConfigurationState struct {
-	// Description of the license configuration.
-	Description *string `pulumi:"description"`
-	// Number of licenses managed by the license configuration.
-	LicenseCount *int `pulumi:"licenseCount"`
-	// Sets the number of available licenses as a hard limit.
-	LicenseCountHardLimit *bool `pulumi:"licenseCountHardLimit"`
-	// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-	LicenseCountingType *string `pulumi:"licenseCountingType"`
-	// Array of configured License Manager rules.
-	LicenseRules []string `pulumi:"licenseRules"`
-	// Name of the license configuration.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Description           *string           `pulumi:"description"`
+	LicenseCount          *int              `pulumi:"licenseCount"`
+	LicenseCountHardLimit *bool             `pulumi:"licenseCountHardLimit"`
+	LicenseCountingType   *string           `pulumi:"licenseCountingType"`
+	LicenseRules          []string          `pulumi:"licenseRules"`
+	Name                  *string           `pulumi:"name"`
+	Tags                  map[string]string `pulumi:"tags"`
 }
 
 type LicenseConfigurationState struct {
-	// Description of the license configuration.
-	Description pulumi.StringPtrInput
-	// Number of licenses managed by the license configuration.
-	LicenseCount pulumi.IntPtrInput
-	// Sets the number of available licenses as a hard limit.
+	Description           pulumi.StringPtrInput
+	LicenseCount          pulumi.IntPtrInput
 	LicenseCountHardLimit pulumi.BoolPtrInput
-	// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-	LicenseCountingType pulumi.StringPtrInput
-	// Array of configured License Manager rules.
-	LicenseRules pulumi.StringArrayInput
-	// Name of the license configuration.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	LicenseCountingType   pulumi.StringPtrInput
+	LicenseRules          pulumi.StringArrayInput
+	Name                  pulumi.StringPtrInput
+	Tags                  pulumi.StringMapInput
 }
 
 func (LicenseConfigurationState) ElementType() reflect.Type {
@@ -144,38 +77,24 @@ func (LicenseConfigurationState) ElementType() reflect.Type {
 }
 
 type licenseConfigurationArgs struct {
-	// Description of the license configuration.
-	Description *string `pulumi:"description"`
-	// Number of licenses managed by the license configuration.
-	LicenseCount *int `pulumi:"licenseCount"`
-	// Sets the number of available licenses as a hard limit.
-	LicenseCountHardLimit *bool `pulumi:"licenseCountHardLimit"`
-	// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-	LicenseCountingType string `pulumi:"licenseCountingType"`
-	// Array of configured License Manager rules.
-	LicenseRules []string `pulumi:"licenseRules"`
-	// Name of the license configuration.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Description           *string           `pulumi:"description"`
+	LicenseCount          *int              `pulumi:"licenseCount"`
+	LicenseCountHardLimit *bool             `pulumi:"licenseCountHardLimit"`
+	LicenseCountingType   string            `pulumi:"licenseCountingType"`
+	LicenseRules          []string          `pulumi:"licenseRules"`
+	Name                  *string           `pulumi:"name"`
+	Tags                  map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a LicenseConfiguration resource.
 type LicenseConfigurationArgs struct {
-	// Description of the license configuration.
-	Description pulumi.StringPtrInput
-	// Number of licenses managed by the license configuration.
-	LicenseCount pulumi.IntPtrInput
-	// Sets the number of available licenses as a hard limit.
+	Description           pulumi.StringPtrInput
+	LicenseCount          pulumi.IntPtrInput
 	LicenseCountHardLimit pulumi.BoolPtrInput
-	// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-	LicenseCountingType pulumi.StringInput
-	// Array of configured License Manager rules.
-	LicenseRules pulumi.StringArrayInput
-	// Name of the license configuration.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	LicenseCountingType   pulumi.StringInput
+	LicenseRules          pulumi.StringArrayInput
+	Name                  pulumi.StringPtrInput
+	Tags                  pulumi.StringMapInput
 }
 
 func (LicenseConfigurationArgs) ElementType() reflect.Type {

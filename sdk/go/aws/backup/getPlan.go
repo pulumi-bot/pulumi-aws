@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get information on an existing backup plan.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/backup"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := backup.LookupPlan(ctx, &backup.LookupPlanArgs{
-// 			PlanId: "tf_example_backup_plan_id",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupPlan(ctx *pulumi.Context, args *LookupPlanArgs, opts ...pulumi.InvokeOption) (*LookupPlanResult, error) {
 	var rv LookupPlanResult
 	err := ctx.Invoke("aws:backup/getPlan:getPlan", args, &rv, opts...)
@@ -42,23 +18,17 @@ func LookupPlan(ctx *pulumi.Context, args *LookupPlanArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getPlan.
 type LookupPlanArgs struct {
-	// The backup plan ID.
-	PlanId string `pulumi:"planId"`
-	// Metadata that you can assign to help organize the plans you create.
-	Tags map[string]string `pulumi:"tags"`
+	PlanId string            `pulumi:"planId"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getPlan.
 type LookupPlanResult struct {
-	// The ARN of the backup plan.
 	Arn string `pulumi:"arn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The display name of a backup plan.
-	Name   string `pulumi:"name"`
-	PlanId string `pulumi:"planId"`
-	// Metadata that you can assign to help organize the plans you create.
-	Tags map[string]string `pulumi:"tags"`
-	// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-	Version string `pulumi:"version"`
+	Id      string            `pulumi:"id"`
+	Name    string            `pulumi:"name"`
+	PlanId  string            `pulumi:"planId"`
+	Tags    map[string]string `pulumi:"tags"`
+	Version string            `pulumi:"version"`
 }

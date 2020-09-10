@@ -14,25 +14,15 @@ namespace Pulumi.Aws.WafV2.Inputs
     {
         [Input("excludedRules")]
         private InputList<Inputs.WebAclRuleStatementManagedRuleGroupStatementExcludedRuleGetArgs>? _excludedRules;
-
-        /// <summary>
-        /// The `rules` whose actions are set to `COUNT` by the web ACL, regardless of the action that is set on the rule. See Excluded Rule below for details.
-        /// </summary>
         public InputList<Inputs.WebAclRuleStatementManagedRuleGroupStatementExcludedRuleGetArgs> ExcludedRules
         {
             get => _excludedRules ?? (_excludedRules = new InputList<Inputs.WebAclRuleStatementManagedRuleGroupStatementExcludedRuleGetArgs>());
             set => _excludedRules = value;
         }
 
-        /// <summary>
-        /// The name of the managed rule group.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the managed rule group vendor.
-        /// </summary>
         [Input("vendorName", required: true)]
         public Input<string> VendorName { get; set; } = null!;
 

@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const defaultSnapshotSchedule = new aws.redshift.SnapshotSchedule("default", {
- *     definitions: ["rate(12 hours)"],
- *     identifier: "tf-redshift-snapshot-schedule",
- * });
- * ```
- */
 export class SnapshotSchedule extends pulumi.CustomResource {
     /**
      * Get an existing SnapshotSchedule resource's state with the given name, ID, and optional extra
@@ -46,30 +33,11 @@ export class SnapshotSchedule extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-     */
     public readonly definitions!: pulumi.Output<string[]>;
-    /**
-     * The description of the snapshot schedule.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-     */
     public readonly identifier!: pulumi.Output<string>;
-    /**
-     * Creates a unique
-     * identifier beginning with the specified prefix. Conflicts with `identifier`.
-     */
     public readonly identifierPrefix!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -120,30 +88,11 @@ export class SnapshotSchedule extends pulumi.CustomResource {
  */
 export interface SnapshotScheduleState {
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-     */
     readonly definitions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The description of the snapshot schedule.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-     */
     readonly identifier?: pulumi.Input<string>;
-    /**
-     * Creates a unique
-     * identifier beginning with the specified prefix. Conflicts with `identifier`.
-     */
     readonly identifierPrefix?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -151,29 +100,10 @@ export interface SnapshotScheduleState {
  * The set of arguments for constructing a SnapshotSchedule resource.
  */
 export interface SnapshotScheduleArgs {
-    /**
-     * The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-     */
     readonly definitions: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The description of the snapshot schedule.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-     */
     readonly identifier?: pulumi.Input<string>;
-    /**
-     * Creates a unique
-     * identifier beginning with the specified prefix. Conflicts with `identifier`.
-     */
     readonly identifierPrefix?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

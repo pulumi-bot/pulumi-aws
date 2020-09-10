@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the name and value of a pre-existing API Key, for
-// example to supply credentials for a dependency microservice.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.GetKey(ctx, &apigateway.GetKeyArgs{
-// 			Id: "ru3mpjgse6",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetKey(ctx *pulumi.Context, args *GetKeyArgs, opts ...pulumi.InvokeOption) (*GetKeyResult, error) {
 	var rv GetKeyResult
 	err := ctx.Invoke("aws:apigateway/getKey:getKey", args, &rv, opts...)
@@ -43,28 +18,18 @@ func GetKey(ctx *pulumi.Context, args *GetKeyArgs, opts ...pulumi.InvokeOption) 
 
 // A collection of arguments for invoking getKey.
 type GetKeyArgs struct {
-	// The ID of the API Key to look up.
-	Id string `pulumi:"id"`
-	// A map of tags for the resource.
+	Id   string            `pulumi:"id"`
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getKey.
 type GetKeyResult struct {
-	// The date and time when the API Key was created.
-	CreatedDate string `pulumi:"createdDate"`
-	// The description of the API Key.
-	Description string `pulumi:"description"`
-	// Specifies whether the API Key is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// Set to the ID of the API Key.
-	Id string `pulumi:"id"`
-	// The date and time when the API Key was last updated.
-	LastUpdatedDate string `pulumi:"lastUpdatedDate"`
-	// Set to the name of the API Key.
-	Name string `pulumi:"name"`
-	// A map of tags for the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// Set to the value of the API Key.
-	Value string `pulumi:"value"`
+	CreatedDate     string            `pulumi:"createdDate"`
+	Description     string            `pulumi:"description"`
+	Enabled         bool              `pulumi:"enabled"`
+	Id              string            `pulumi:"id"`
+	LastUpdatedDate string            `pulumi:"lastUpdatedDate"`
+	Name            string            `pulumi:"name"`
+	Tags            map[string]string `pulumi:"tags"`
+	Value           string            `pulumi:"value"`
 }

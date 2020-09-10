@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an IP access control group in AWS WorkSpaces Service
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const contractors = new aws.workspaces.IpGroup("contractors", {
- *     description: "Contractors IP access control group",
- * });
- * ```
- */
 export class IpGroup extends pulumi.CustomResource {
     /**
      * Get an existing IpGroup resource's state with the given name, ID, and optional extra
@@ -48,17 +34,8 @@ export class IpGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === IpGroup.__pulumiType;
     }
 
-    /**
-     * The description.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the IP group.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-     */
     public readonly rules!: pulumi.Output<outputs.workspaces.IpGroupRule[] | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -100,17 +77,8 @@ export class IpGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IpGroup resources.
  */
 export interface IpGroupState {
-    /**
-     * The description.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the IP group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-     */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.workspaces.IpGroupRule>[]>;
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -119,17 +87,8 @@ export interface IpGroupState {
  * The set of arguments for constructing a IpGroup resource.
  */
 export interface IpGroupArgs {
-    /**
-     * The description.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the IP group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-     */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.workspaces.IpGroupRule>[]>;
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -10,53 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Direct Connect LAG. Connections can be added to the LAG via the `directconnect.Connection` and `directconnect.ConnectionAssociation` resources.
-//
-// > *NOTE:* When creating a LAG, Direct Connect requires creating a Connection. This provider will remove this unmanaged connection during resource creation.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directconnect"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directconnect.NewLinkAggregationGroup(ctx, "hoge", &directconnect.LinkAggregationGroupArgs{
-// 			ConnectionsBandwidth: pulumi.String("1Gbps"),
-// 			ForceDestroy:         pulumi.Bool(true),
-// 			Location:             pulumi.String("EqDC2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LinkAggregationGroup struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the LAG.
-	// * `jumboFrameCapable` -Indicates whether jumbo frames (9001 MTU) are supported.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The bandwidth of the individual physical connections bundled by the LAG. Valid values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	ConnectionsBandwidth pulumi.StringOutput `pulumi:"connectionsBandwidth"`
-	// A boolean that indicates all connections associated with the LAG should be deleted so that the LAG can be destroyed without error. These objects are *not* recoverable.
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// Indicates whether the LAG supports a secondary BGP peer in the same address family (IPv4/IPv6).
-	HasLogicalRedundancy pulumi.StringOutput `pulumi:"hasLogicalRedundancy"`
-	JumboFrameCapable    pulumi.BoolOutput   `pulumi:"jumboFrameCapable"`
-	// The AWS Direct Connect location in which the LAG should be allocated. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the LAG.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                  pulumi.StringOutput    `pulumi:"arn"`
+	ConnectionsBandwidth pulumi.StringOutput    `pulumi:"connectionsBandwidth"`
+	ForceDestroy         pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
+	HasLogicalRedundancy pulumi.StringOutput    `pulumi:"hasLogicalRedundancy"`
+	JumboFrameCapable    pulumi.BoolOutput      `pulumi:"jumboFrameCapable"`
+	Location             pulumi.StringOutput    `pulumi:"location"`
+	Name                 pulumi.StringOutput    `pulumi:"name"`
+	Tags                 pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewLinkAggregationGroup registers a new resource with the given unique name, arguments, and options.
@@ -93,41 +57,25 @@ func GetLinkAggregationGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LinkAggregationGroup resources.
 type linkAggregationGroupState struct {
-	// The ARN of the LAG.
-	// * `jumboFrameCapable` -Indicates whether jumbo frames (9001 MTU) are supported.
-	Arn *string `pulumi:"arn"`
-	// The bandwidth of the individual physical connections bundled by the LAG. Valid values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	ConnectionsBandwidth *string `pulumi:"connectionsBandwidth"`
-	// A boolean that indicates all connections associated with the LAG should be deleted so that the LAG can be destroyed without error. These objects are *not* recoverable.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Indicates whether the LAG supports a secondary BGP peer in the same address family (IPv4/IPv6).
-	HasLogicalRedundancy *string `pulumi:"hasLogicalRedundancy"`
-	JumboFrameCapable    *bool   `pulumi:"jumboFrameCapable"`
-	// The AWS Direct Connect location in which the LAG should be allocated. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location *string `pulumi:"location"`
-	// The name of the LAG.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                  *string           `pulumi:"arn"`
+	ConnectionsBandwidth *string           `pulumi:"connectionsBandwidth"`
+	ForceDestroy         *bool             `pulumi:"forceDestroy"`
+	HasLogicalRedundancy *string           `pulumi:"hasLogicalRedundancy"`
+	JumboFrameCapable    *bool             `pulumi:"jumboFrameCapable"`
+	Location             *string           `pulumi:"location"`
+	Name                 *string           `pulumi:"name"`
+	Tags                 map[string]string `pulumi:"tags"`
 }
 
 type LinkAggregationGroupState struct {
-	// The ARN of the LAG.
-	// * `jumboFrameCapable` -Indicates whether jumbo frames (9001 MTU) are supported.
-	Arn pulumi.StringPtrInput
-	// The bandwidth of the individual physical connections bundled by the LAG. Valid values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
+	Arn                  pulumi.StringPtrInput
 	ConnectionsBandwidth pulumi.StringPtrInput
-	// A boolean that indicates all connections associated with the LAG should be deleted so that the LAG can be destroyed without error. These objects are *not* recoverable.
-	ForceDestroy pulumi.BoolPtrInput
-	// Indicates whether the LAG supports a secondary BGP peer in the same address family (IPv4/IPv6).
+	ForceDestroy         pulumi.BoolPtrInput
 	HasLogicalRedundancy pulumi.StringPtrInput
 	JumboFrameCapable    pulumi.BoolPtrInput
-	// The AWS Direct Connect location in which the LAG should be allocated. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location pulumi.StringPtrInput
-	// The name of the LAG.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Location             pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	Tags                 pulumi.StringMapInput
 }
 
 func (LinkAggregationGroupState) ElementType() reflect.Type {
@@ -135,30 +83,20 @@ func (LinkAggregationGroupState) ElementType() reflect.Type {
 }
 
 type linkAggregationGroupArgs struct {
-	// The bandwidth of the individual physical connections bundled by the LAG. Valid values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
-	ConnectionsBandwidth string `pulumi:"connectionsBandwidth"`
-	// A boolean that indicates all connections associated with the LAG should be deleted so that the LAG can be destroyed without error. These objects are *not* recoverable.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// The AWS Direct Connect location in which the LAG should be allocated. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location string `pulumi:"location"`
-	// The name of the LAG.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	ConnectionsBandwidth string            `pulumi:"connectionsBandwidth"`
+	ForceDestroy         *bool             `pulumi:"forceDestroy"`
+	Location             string            `pulumi:"location"`
+	Name                 *string           `pulumi:"name"`
+	Tags                 map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a LinkAggregationGroup resource.
 type LinkAggregationGroupArgs struct {
-	// The bandwidth of the individual physical connections bundled by the LAG. Valid values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
 	ConnectionsBandwidth pulumi.StringInput
-	// A boolean that indicates all connections associated with the LAG should be deleted so that the LAG can be destroyed without error. These objects are *not* recoverable.
-	ForceDestroy pulumi.BoolPtrInput
-	// The AWS Direct Connect location in which the LAG should be allocated. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-	Location pulumi.StringInput
-	// The name of the LAG.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	ForceDestroy         pulumi.BoolPtrInput
+	Location             pulumi.StringInput
+	Name                 pulumi.StringPtrInput
+	Tags                 pulumi.StringMapInput
 }
 
 func (LinkAggregationGroupArgs) ElementType() reflect.Type {
