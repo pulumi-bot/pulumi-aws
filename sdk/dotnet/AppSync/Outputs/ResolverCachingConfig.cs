@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppSync.Outputs
     [OutputType]
     public sealed class ResolverCachingConfig
     {
-        /// <summary>
-        /// The list of caching key.
-        /// </summary>
         public readonly ImmutableArray<string> CachingKeys;
-        /// <summary>
-        /// The TTL in seconds.
-        /// </summary>
         public readonly int? Ttl;
 
         [OutputConstructor]

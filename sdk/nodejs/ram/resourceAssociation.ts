@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Resource Access Manager (RAM) Resource Association.
- *
- * > *NOTE:* Certain AWS resources (e.g. EC2 Subnets) can only be shared in an AWS account that is a member of an AWS Organizations organization with organization-wide Resource Access Manager functionality enabled. See the [Resource Access Manager User Guide](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) and AWS service specific documentation for additional information.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ram.ResourceAssociation("example", {
- *     resourceArn: aws_subnet.example.arn,
- *     resourceShareArn: aws_ram_resource_share.example.arn,
- * });
- * ```
- */
 export class ResourceAssociation extends pulumi.CustomResource {
     /**
      * Get an existing ResourceAssociation resource's state with the given name, ID, and optional extra
@@ -49,13 +32,7 @@ export class ResourceAssociation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceAssociation.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-     */
     public readonly resourceArn!: pulumi.Output<string>;
-    /**
-     * Amazon Resource Name (ARN) of the RAM Resource Share.
-     */
     public readonly resourceShareArn!: pulumi.Output<string>;
 
     /**
@@ -98,13 +75,7 @@ export class ResourceAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourceAssociation resources.
  */
 export interface ResourceAssociationState {
-    /**
-     * Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-     */
     readonly resourceArn?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN) of the RAM Resource Share.
-     */
     readonly resourceShareArn?: pulumi.Input<string>;
 }
 
@@ -112,12 +83,6 @@ export interface ResourceAssociationState {
  * The set of arguments for constructing a ResourceAssociation resource.
  */
 export interface ResourceAssociationArgs {
-    /**
-     * Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-     */
     readonly resourceArn: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN) of the RAM Resource Share.
-     */
     readonly resourceShareArn: pulumi.Input<string>;
 }

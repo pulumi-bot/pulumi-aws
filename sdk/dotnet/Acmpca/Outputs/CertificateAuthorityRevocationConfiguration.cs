@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Acmpca.Outputs
     [OutputType]
     public sealed class CertificateAuthorityRevocationConfiguration
     {
-        /// <summary>
-        /// Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.
-        /// </summary>
         public readonly Outputs.CertificateAuthorityRevocationConfigurationCrlConfiguration? CrlConfiguration;
 
         [OutputConstructor]

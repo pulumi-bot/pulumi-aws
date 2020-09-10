@@ -21,11 +21,6 @@ class AcceleratorAttributesArgs:
                  flow_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  flow_logs_s3_bucket: Optional[pulumi.Input[str]] = None,
                  flow_logs_s3_prefix: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[bool] flow_logs_enabled: Indicates whether flow logs are enabled.
-        :param pulumi.Input[str] flow_logs_s3_bucket: The name of the Amazon S3 bucket for the flow logs.
-        :param pulumi.Input[str] flow_logs_s3_prefix: The prefix for the location in the Amazon S3 bucket for the flow logs.
-        """
         if flow_logs_enabled is not None:
             pulumi.set(__self__, "flow_logs_enabled", flow_logs_enabled)
         if flow_logs_s3_bucket is not None:
@@ -36,9 +31,6 @@ class AcceleratorAttributesArgs:
     @property
     @pulumi.getter(name="flowLogsEnabled")
     def flow_logs_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether flow logs are enabled.
-        """
         return pulumi.get(self, "flow_logs_enabled")
 
     @flow_logs_enabled.setter
@@ -48,9 +40,6 @@ class AcceleratorAttributesArgs:
     @property
     @pulumi.getter(name="flowLogsS3Bucket")
     def flow_logs_s3_bucket(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Amazon S3 bucket for the flow logs.
-        """
         return pulumi.get(self, "flow_logs_s3_bucket")
 
     @flow_logs_s3_bucket.setter
@@ -60,9 +49,6 @@ class AcceleratorAttributesArgs:
     @property
     @pulumi.getter(name="flowLogsS3Prefix")
     def flow_logs_s3_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        The prefix for the location in the Amazon S3 bucket for the flow logs.
-        """
         return pulumi.get(self, "flow_logs_s3_prefix")
 
     @flow_logs_s3_prefix.setter
@@ -75,10 +61,6 @@ class AcceleratorIpSetArgs:
     def __init__(__self__, *,
                  ip_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  ip_family: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[List[pulumi.Input[str]]] ip_addresses: A list of IP addresses in the IP address set.
-        :param pulumi.Input[str] ip_family: The types of IP addresses included in this IP set.
-        """
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
         if ip_family is not None:
@@ -87,9 +69,6 @@ class AcceleratorIpSetArgs:
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
-        """
-        A list of IP addresses in the IP address set.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
@@ -99,9 +78,6 @@ class AcceleratorIpSetArgs:
     @property
     @pulumi.getter(name="ipFamily")
     def ip_family(self) -> Optional[pulumi.Input[str]]:
-        """
-        The types of IP addresses included in this IP set.
-        """
         return pulumi.get(self, "ip_family")
 
     @ip_family.setter
@@ -114,10 +90,6 @@ class EndpointGroupEndpointConfigurationArgs:
     def __init__(__self__, *,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[str] endpoint_id: An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
-        :param pulumi.Input[float] weight: The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
-        """
         if endpoint_id is not None:
             pulumi.set(__self__, "endpoint_id", endpoint_id)
         if weight is not None:
@@ -126,9 +98,6 @@ class EndpointGroupEndpointConfigurationArgs:
     @property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
-        """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
@@ -138,9 +107,6 @@ class EndpointGroupEndpointConfigurationArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[float]]:
-        """
-        The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -153,10 +119,6 @@ class ListenerPortRangeArgs:
     def __init__(__self__, *,
                  from_port: Optional[pulumi.Input[float]] = None,
                  to_port: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[float] from_port: The first port in the range of ports, inclusive.
-        :param pulumi.Input[float] to_port: The last port in the range of ports, inclusive.
-        """
         if from_port is not None:
             pulumi.set(__self__, "from_port", from_port)
         if to_port is not None:
@@ -165,9 +127,6 @@ class ListenerPortRangeArgs:
     @property
     @pulumi.getter(name="fromPort")
     def from_port(self) -> Optional[pulumi.Input[float]]:
-        """
-        The first port in the range of ports, inclusive.
-        """
         return pulumi.get(self, "from_port")
 
     @from_port.setter
@@ -177,9 +136,6 @@ class ListenerPortRangeArgs:
     @property
     @pulumi.getter(name="toPort")
     def to_port(self) -> Optional[pulumi.Input[float]]:
-        """
-        The last port in the range of ports, inclusive.
-        """
         return pulumi.get(self, "to_port")
 
     @to_port.setter

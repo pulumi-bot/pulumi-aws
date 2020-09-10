@@ -22,59 +22,9 @@ class EventStream(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Pinpoint Event Stream resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        test_stream = aws.kinesis.Stream("testStream", shard_count=1)
-        test_role = aws.iam.Role("testRole", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "pinpoint.us-east-1.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-
-        \"\"\")
-        stream = aws.pinpoint.EventStream("stream",
-            application_id=app.application_id,
-            destination_stream_arn=test_stream.arn,
-            role_arn=test_role.arn)
-        test_role_policy = aws.iam.RolePolicy("testRolePolicy",
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": {
-            "Action": [
-              "kinesis:PutRecords",
-              "kinesis:DescribeStream"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-              "arn:aws:kinesis:us-east-1:*:*/*"
-            ]
-          }
-        }
-
-        \"\"\",
-            role=test_role.id)
-        ```
-
+        Create a EventStream resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[str] destination_stream_arn: The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
-        :param pulumi.Input[str] role_arn: The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,9 +72,6 @@ class EventStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[str] destination_stream_arn: The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
-        :param pulumi.Input[str] role_arn: The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -138,25 +85,16 @@ class EventStream(pulumi.CustomResource):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
-        """
-        The application ID.
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="destinationStreamArn")
     def destination_stream_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
-        """
         return pulumi.get(self, "destination_stream_arn")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
-        """
-        The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
-        """
         return pulumi.get(self, "role_arn")
 
     def translate_output_property(self, prop):

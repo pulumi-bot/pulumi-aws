@@ -30,33 +30,9 @@ class EndpointGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Global Accelerator endpoint group.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.globalaccelerator.EndpointGroup("example",
-            listener_arn=aws_globalaccelerator_listener["example"]["id"],
-            endpoint_configurations=[aws.globalaccelerator.EndpointGroupEndpointConfigurationArgs(
-                endpoint_id=aws_lb["example"]["arn"],
-                weight=100,
-            )])
-        ```
-
+        Create a EndpointGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.
-        :param pulumi.Input[str] endpoint_group_region: The name of the AWS Region where the endpoint group is located.
-        :param pulumi.Input[float] health_check_interval_seconds: The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
-        :param pulumi.Input[str] health_check_path: If the protocol is HTTP/S, then this specifies the path that is the destination for health check targets. The default value is slash (/).
-        :param pulumi.Input[float] health_check_port: The port that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default port is the listener port that this endpoint group is associated with. If listener port is a list of ports, Global Accelerator uses the first port in the list.
-        :param pulumi.Input[str] health_check_protocol: The protocol that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default value is TCP.
-        :param pulumi.Input[str] listener_arn: The Amazon Resource Name (ARN) of the listener.
-        :param pulumi.Input[float] threshold_count: The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
-        :param pulumi.Input[float] traffic_dial_percentage: The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -112,15 +88,6 @@ class EndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.
-        :param pulumi.Input[str] endpoint_group_region: The name of the AWS Region where the endpoint group is located.
-        :param pulumi.Input[float] health_check_interval_seconds: The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
-        :param pulumi.Input[str] health_check_path: If the protocol is HTTP/S, then this specifies the path that is the destination for health check targets. The default value is slash (/).
-        :param pulumi.Input[float] health_check_port: The port that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default port is the listener port that this endpoint group is associated with. If listener port is a list of ports, Global Accelerator uses the first port in the list.
-        :param pulumi.Input[str] health_check_protocol: The protocol that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default value is TCP.
-        :param pulumi.Input[str] listener_arn: The Amazon Resource Name (ARN) of the listener.
-        :param pulumi.Input[float] threshold_count: The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
-        :param pulumi.Input[float] traffic_dial_percentage: The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,73 +107,46 @@ class EndpointGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> pulumi.Output[Optional[List['outputs.EndpointGroupEndpointConfiguration']]]:
-        """
-        The list of endpoint objects. Fields documented below.
-        """
         return pulumi.get(self, "endpoint_configurations")
 
     @property
     @pulumi.getter(name="endpointGroupRegion")
     def endpoint_group_region(self) -> pulumi.Output[str]:
-        """
-        The name of the AWS Region where the endpoint group is located.
-        """
         return pulumi.get(self, "endpoint_group_region")
 
     @property
     @pulumi.getter(name="healthCheckIntervalSeconds")
     def health_check_interval_seconds(self) -> pulumi.Output[Optional[float]]:
-        """
-        The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
-        """
         return pulumi.get(self, "health_check_interval_seconds")
 
     @property
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        If the protocol is HTTP/S, then this specifies the path that is the destination for health check targets. The default value is slash (/).
-        """
         return pulumi.get(self, "health_check_path")
 
     @property
     @pulumi.getter(name="healthCheckPort")
     def health_check_port(self) -> pulumi.Output[Optional[float]]:
-        """
-        The port that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default port is the listener port that this endpoint group is associated with. If listener port is a list of ports, Global Accelerator uses the first port in the list.
-        """
         return pulumi.get(self, "health_check_port")
 
     @property
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> pulumi.Output[Optional[str]]:
-        """
-        The protocol that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default value is TCP.
-        """
         return pulumi.get(self, "health_check_protocol")
 
     @property
     @pulumi.getter(name="listenerArn")
     def listener_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the listener.
-        """
         return pulumi.get(self, "listener_arn")
 
     @property
     @pulumi.getter(name="thresholdCount")
     def threshold_count(self) -> pulumi.Output[Optional[float]]:
-        """
-        The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
-        """
         return pulumi.get(self, "threshold_count")
 
     @property
     @pulumi.getter(name="trafficDialPercentage")
     def traffic_dial_percentage(self) -> pulumi.Output[Optional[float]]:
-        """
-        The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
-        """
         return pulumi.get(self, "traffic_dial_percentage")
 
     def translate_output_property(self, prop):

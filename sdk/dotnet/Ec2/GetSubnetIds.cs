@@ -11,11 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetSubnetIds
     {
-        /// <summary>
-        /// `aws.ec2.getSubnetIds` provides a set of ids for a vpc_id
-        /// 
-        /// This resource can be useful for getting back a set of subnet ids for a vpc.
-        /// </summary>
         public static Task<GetSubnetIdsResult> InvokeAsync(GetSubnetIdsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetIdsResult>("aws:ec2/getSubnetIds:getSubnetIds", args ?? new GetSubnetIdsArgs(), options.WithVersion());
     }
@@ -25,10 +20,6 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetSubnetIdsFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetSubnetIdsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetSubnetIdsFilterArgs>());
@@ -37,20 +28,12 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the desired subnets.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID that you want to filter from.
-        /// </summary>
         [Input("vpcId", required: true)]
         public string VpcId { get; set; } = null!;
 
@@ -68,9 +51,6 @@ namespace Pulumi.Aws.Ec2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A set of all the subnet ids found. This data source will fail if none are found.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableDictionary<string, string> Tags;
         public readonly string VpcId;

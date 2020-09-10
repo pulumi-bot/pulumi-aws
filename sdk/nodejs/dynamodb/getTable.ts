@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides information about a DynamoDB table.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const tableName = pulumi.output(aws.dynamodb.getTable({
- *     name: "tableName",
- * }, { async: true }));
- * ```
- */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
     if (!opts) {
         opts = {}
@@ -39,9 +25,6 @@ export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getTable.
  */
 export interface GetTableArgs {
-    /**
-     * The name of the DynamoDB table.
-     */
     readonly name: string;
     readonly serverSideEncryption?: inputs.dynamodb.GetTableServerSideEncryption;
     readonly tags?: {[key: string]: string};

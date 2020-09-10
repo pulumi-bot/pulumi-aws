@@ -22,30 +22,9 @@ class RoleAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an RDS DB Instance association with an IAM Role. Example use cases:
-
-        * [Amazon RDS Oracle integration with Amazon S3](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-s3-integration.html)
-        * [Importing Amazon S3 Data into an RDS PostgreSQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PostgreSQL.S3Import.html)
-
-        > To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the `rds.Instance` resource `monitoring_role_arn` argument instead.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.rds.RoleAssociation("example",
-            db_instance_identifier=aws_db_instance["example"]["id"],
-            feature_name="S3_INTEGRATION",
-            role_arn=aws_iam_role["example"]["id"])
-        ```
-
+        Create a RoleAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] db_instance_identifier: DB Instance Identifier to associate with the IAM Role.
-        :param pulumi.Input[str] feature_name: Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
-        :param pulumi.Input[str] role_arn: Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,9 +72,6 @@ class RoleAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] db_instance_identifier: DB Instance Identifier to associate with the IAM Role.
-        :param pulumi.Input[str] feature_name: Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
-        :param pulumi.Input[str] role_arn: Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -109,25 +85,16 @@ class RoleAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dbInstanceIdentifier")
     def db_instance_identifier(self) -> pulumi.Output[str]:
-        """
-        DB Instance Identifier to associate with the IAM Role.
-        """
         return pulumi.get(self, "db_instance_identifier")
 
     @property
     @pulumi.getter(name="featureName")
     def feature_name(self) -> pulumi.Output[str]:
-        """
-        Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
-        """
         return pulumi.get(self, "feature_name")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
-        """
         return pulumi.get(self, "role_arn")
 
     def translate_output_property(self, prop):

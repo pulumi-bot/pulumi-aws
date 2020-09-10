@@ -9,45 +9,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS Elemental MediaConvert Queue.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/mediaconvert"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mediaconvert.NewQueue(ctx, "test", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Queue struct {
 	pulumi.CustomResourceState
 
-	// The Arn of the queue
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// A description of the queue
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A unique identifier describing the queue
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-	PricingPlan pulumi.StringPtrOutput `pulumi:"pricingPlan"`
-	// A detail pricing plan of the  reserved queue. See below.
+	Arn                     pulumi.StringOutput                `pulumi:"arn"`
+	Description             pulumi.StringPtrOutput             `pulumi:"description"`
+	Name                    pulumi.StringOutput                `pulumi:"name"`
+	PricingPlan             pulumi.StringPtrOutput             `pulumi:"pricingPlan"`
 	ReservationPlanSettings QueueReservationPlanSettingsOutput `pulumi:"reservationPlanSettings"`
-	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Status                  pulumi.StringPtrOutput             `pulumi:"status"`
+	Tags                    pulumi.StringMapOutput             `pulumi:"tags"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -78,37 +49,23 @@ func GetQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Queue resources.
 type queueState struct {
-	// The Arn of the queue
-	Arn *string `pulumi:"arn"`
-	// A description of the queue
-	Description *string `pulumi:"description"`
-	// A unique identifier describing the queue
-	Name *string `pulumi:"name"`
-	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-	PricingPlan *string `pulumi:"pricingPlan"`
-	// A detail pricing plan of the  reserved queue. See below.
+	Arn                     *string                       `pulumi:"arn"`
+	Description             *string                       `pulumi:"description"`
+	Name                    *string                       `pulumi:"name"`
+	PricingPlan             *string                       `pulumi:"pricingPlan"`
 	ReservationPlanSettings *QueueReservationPlanSettings `pulumi:"reservationPlanSettings"`
-	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-	Status *string `pulumi:"status"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Status                  *string                       `pulumi:"status"`
+	Tags                    map[string]string             `pulumi:"tags"`
 }
 
 type QueueState struct {
-	// The Arn of the queue
-	Arn pulumi.StringPtrInput
-	// A description of the queue
-	Description pulumi.StringPtrInput
-	// A unique identifier describing the queue
-	Name pulumi.StringPtrInput
-	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-	PricingPlan pulumi.StringPtrInput
-	// A detail pricing plan of the  reserved queue. See below.
+	Arn                     pulumi.StringPtrInput
+	Description             pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	PricingPlan             pulumi.StringPtrInput
 	ReservationPlanSettings QueueReservationPlanSettingsPtrInput
-	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-	Status pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Status                  pulumi.StringPtrInput
+	Tags                    pulumi.StringMapInput
 }
 
 func (QueueState) ElementType() reflect.Type {
@@ -116,34 +73,22 @@ func (QueueState) ElementType() reflect.Type {
 }
 
 type queueArgs struct {
-	// A description of the queue
-	Description *string `pulumi:"description"`
-	// A unique identifier describing the queue
-	Name *string `pulumi:"name"`
-	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-	PricingPlan *string `pulumi:"pricingPlan"`
-	// A detail pricing plan of the  reserved queue. See below.
+	Description             *string                       `pulumi:"description"`
+	Name                    *string                       `pulumi:"name"`
+	PricingPlan             *string                       `pulumi:"pricingPlan"`
 	ReservationPlanSettings *QueueReservationPlanSettings `pulumi:"reservationPlanSettings"`
-	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-	Status *string `pulumi:"status"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Status                  *string                       `pulumi:"status"`
+	Tags                    map[string]string             `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
-	// A description of the queue
-	Description pulumi.StringPtrInput
-	// A unique identifier describing the queue
-	Name pulumi.StringPtrInput
-	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
-	PricingPlan pulumi.StringPtrInput
-	// A detail pricing plan of the  reserved queue. See below.
+	Description             pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	PricingPlan             pulumi.StringPtrInput
 	ReservationPlanSettings QueueReservationPlanSettingsPtrInput
-	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-	Status pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Status                  pulumi.StringPtrInput
+	Tags                    pulumi.StringMapInput
 }
 
 func (QueueArgs) ElementType() reflect.Type {

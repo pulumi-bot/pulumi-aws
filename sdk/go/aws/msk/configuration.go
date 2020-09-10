@@ -10,52 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon Managed Streaming for Kafka configuration. More information can be found on the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration.html).
-//
-// > **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/msk"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := msk.NewConfiguration(ctx, "example", &msk.ConfigurationArgs{
-// 			KafkaVersions: pulumi.StringArray{
-// 				pulumi.String("2.1.0"),
-// 			},
-// 			ServerProperties: pulumi.String(fmt.Sprintf("%v%v%v", "auto.create.topics.enable = true\n", "delete.topic.enable = true\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Configuration struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of the configuration.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Description of the configuration.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of Apache Kafka versions which can use this configuration.
-	KafkaVersions pulumi.StringArrayOutput `pulumi:"kafkaVersions"`
-	// Latest revision of the configuration.
-	LatestRevision pulumi.IntOutput `pulumi:"latestRevision"`
-	// Name of the configuration.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-	ServerProperties pulumi.StringOutput `pulumi:"serverProperties"`
+	Arn              pulumi.StringOutput      `pulumi:"arn"`
+	Description      pulumi.StringPtrOutput   `pulumi:"description"`
+	KafkaVersions    pulumi.StringArrayOutput `pulumi:"kafkaVersions"`
+	LatestRevision   pulumi.IntOutput         `pulumi:"latestRevision"`
+	Name             pulumi.StringOutput      `pulumi:"name"`
+	ServerProperties pulumi.StringOutput      `pulumi:"serverProperties"`
 }
 
 // NewConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -92,32 +55,20 @@ func GetConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Configuration resources.
 type configurationState struct {
-	// Amazon Resource Name (ARN) of the configuration.
-	Arn *string `pulumi:"arn"`
-	// Description of the configuration.
-	Description *string `pulumi:"description"`
-	// List of Apache Kafka versions which can use this configuration.
-	KafkaVersions []string `pulumi:"kafkaVersions"`
-	// Latest revision of the configuration.
-	LatestRevision *int `pulumi:"latestRevision"`
-	// Name of the configuration.
-	Name *string `pulumi:"name"`
-	// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-	ServerProperties *string `pulumi:"serverProperties"`
+	Arn              *string  `pulumi:"arn"`
+	Description      *string  `pulumi:"description"`
+	KafkaVersions    []string `pulumi:"kafkaVersions"`
+	LatestRevision   *int     `pulumi:"latestRevision"`
+	Name             *string  `pulumi:"name"`
+	ServerProperties *string  `pulumi:"serverProperties"`
 }
 
 type ConfigurationState struct {
-	// Amazon Resource Name (ARN) of the configuration.
-	Arn pulumi.StringPtrInput
-	// Description of the configuration.
-	Description pulumi.StringPtrInput
-	// List of Apache Kafka versions which can use this configuration.
-	KafkaVersions pulumi.StringArrayInput
-	// Latest revision of the configuration.
-	LatestRevision pulumi.IntPtrInput
-	// Name of the configuration.
-	Name pulumi.StringPtrInput
-	// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
+	Arn              pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	KafkaVersions    pulumi.StringArrayInput
+	LatestRevision   pulumi.IntPtrInput
+	Name             pulumi.StringPtrInput
 	ServerProperties pulumi.StringPtrInput
 }
 
@@ -126,25 +77,17 @@ func (ConfigurationState) ElementType() reflect.Type {
 }
 
 type configurationArgs struct {
-	// Description of the configuration.
-	Description *string `pulumi:"description"`
-	// List of Apache Kafka versions which can use this configuration.
-	KafkaVersions []string `pulumi:"kafkaVersions"`
-	// Name of the configuration.
-	Name *string `pulumi:"name"`
-	// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-	ServerProperties string `pulumi:"serverProperties"`
+	Description      *string  `pulumi:"description"`
+	KafkaVersions    []string `pulumi:"kafkaVersions"`
+	Name             *string  `pulumi:"name"`
+	ServerProperties string   `pulumi:"serverProperties"`
 }
 
 // The set of arguments for constructing a Configuration resource.
 type ConfigurationArgs struct {
-	// Description of the configuration.
-	Description pulumi.StringPtrInput
-	// List of Apache Kafka versions which can use this configuration.
-	KafkaVersions pulumi.StringArrayInput
-	// Name of the configuration.
-	Name pulumi.StringPtrInput
-	// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
+	Description      pulumi.StringPtrInput
+	KafkaVersions    pulumi.StringArrayInput
+	Name             pulumi.StringPtrInput
 	ServerProperties pulumi.StringInput
 }
 

@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Inputs
 
     public sealed class GetAmiFilterArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the AMI that was provided during image creation.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

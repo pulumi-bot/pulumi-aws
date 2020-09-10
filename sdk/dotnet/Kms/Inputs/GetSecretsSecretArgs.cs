@@ -14,10 +14,6 @@ namespace Pulumi.Aws.Kms.Inputs
     {
         [Input("context")]
         private Dictionary<string, string>? _context;
-
-        /// <summary>
-        /// An optional mapping that makes up the Encryption Context for the secret.
-        /// </summary>
         public Dictionary<string, string> Context
         {
             get => _context ?? (_context = new Dictionary<string, string>());
@@ -26,25 +22,15 @@ namespace Pulumi.Aws.Kms.Inputs
 
         [Input("grantTokens")]
         private List<string>? _grantTokens;
-
-        /// <summary>
-        /// An optional list of Grant Tokens for the secret.
-        /// </summary>
         public List<string> GrantTokens
         {
             get => _grantTokens ?? (_grantTokens = new List<string>());
             set => _grantTokens = value;
         }
 
-        /// <summary>
-        /// The name to export this secret under in the attributes.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// Base64 encoded payload, as returned from a KMS encrypt operation.
-        /// </summary>
         [Input("payload", required: true)]
         public string Payload { get; set; } = null!;
 

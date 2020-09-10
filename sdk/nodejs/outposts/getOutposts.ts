@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about multiple Outposts.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = aws.outposts.getOutposts({
- *     siteId: data.aws_outposts_site.id,
- * });
- * ```
- */
 export function getOutposts(args?: GetOutpostsArgs, opts?: pulumi.InvokeOptions): Promise<GetOutpostsResult> {
     args = args || {};
     if (!opts) {
@@ -40,17 +26,8 @@ export function getOutposts(args?: GetOutpostsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getOutposts.
  */
 export interface GetOutpostsArgs {
-    /**
-     * Availability Zone name.
-     */
     readonly availabilityZone?: string;
-    /**
-     * Availability Zone identifier.
-     */
     readonly availabilityZoneId?: string;
-    /**
-     * Site identifier.
-     */
     readonly siteId?: string;
 }
 
@@ -58,9 +35,6 @@ export interface GetOutpostsArgs {
  * A collection of values returned by getOutposts.
  */
 export interface GetOutpostsResult {
-    /**
-     * Set of Amazon Resource Names (ARNs).
-     */
     readonly arns: string[];
     readonly availabilityZone: string;
     readonly availabilityZoneId: string;
@@ -68,9 +42,6 @@ export interface GetOutpostsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set of identifiers.
-     */
     readonly ids: string[];
     readonly siteId: string;
 }

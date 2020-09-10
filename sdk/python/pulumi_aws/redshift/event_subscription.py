@@ -27,52 +27,9 @@ class EventSubscription(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Redshift event subscription resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_cluster = aws.redshift.Cluster("defaultCluster",
-            cluster_identifier="default",
-            database_name="default")
-        # ...
-        default_topic = aws.sns.Topic("defaultTopic")
-        default_event_subscription = aws.redshift.EventSubscription("defaultEventSubscription",
-            sns_topic_arn=default_topic.arn,
-            source_type="cluster",
-            source_ids=[default_cluster.id],
-            severity="INFO",
-            event_categories=[
-                "configuration",
-                "management",
-                "monitoring",
-                "security",
-            ],
-            tags={
-                "Name": "default",
-            })
-        ```
-        ## Attributes
-
-        The following additional atttributes are provided:
-
-        * `arn` - Amazon Resource Name (ARN) of the Redshift event notification subscription
-        * `id` - The name of the Redshift event notification subscription
-        * `customer_aws_id` - The AWS customer account associated with the Redshift event notification subscription
-
+        Create a EventSubscription resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: A boolean flag to enable/disable the subscription. Defaults to true.
-        :param pulumi.Input[List[pulumi.Input[str]]] event_categories: A list of event categories for a SourceType that you want to subscribe to. See https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html or run `aws redshift describe-event-categories`.
-        :param pulumi.Input[str] name: The name of the Redshift event subscription.
-        :param pulumi.Input[str] severity: The event severity to be published by the notification subscription. Valid options are `INFO` or `ERROR`.
-        :param pulumi.Input[str] sns_topic_arn: The ARN of the SNS topic to send events to.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_ids: A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a source_type must also be specified.
-        :param pulumi.Input[str] source_type: The type of source that will be generating the events. Valid options are `cluster`, `cluster-parameter-group`, `cluster-security-group`, or `cluster-snapshot`. If not set, all sources will be subscribed to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,14 +89,6 @@ class EventSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: A boolean flag to enable/disable the subscription. Defaults to true.
-        :param pulumi.Input[List[pulumi.Input[str]]] event_categories: A list of event categories for a SourceType that you want to subscribe to. See https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html or run `aws redshift describe-event-categories`.
-        :param pulumi.Input[str] name: The name of the Redshift event subscription.
-        :param pulumi.Input[str] severity: The event severity to be published by the notification subscription. Valid options are `INFO` or `ERROR`.
-        :param pulumi.Input[str] sns_topic_arn: The ARN of the SNS topic to send events to.
-        :param pulumi.Input[List[pulumi.Input[str]]] source_ids: A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a source_type must also be specified.
-        :param pulumi.Input[str] source_type: The type of source that will be generating the events. Valid options are `cluster`, `cluster-parameter-group`, `cluster-security-group`, or `cluster-snapshot`. If not set, all sources will be subscribed to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -171,57 +120,36 @@ class EventSubscription(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        A boolean flag to enable/disable the subscription. Defaults to true.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="eventCategories")
     def event_categories(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        A list of event categories for a SourceType that you want to subscribe to. See https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html or run `aws redshift describe-event-categories`.
-        """
         return pulumi.get(self, "event_categories")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the Redshift event subscription.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def severity(self) -> pulumi.Output[Optional[str]]:
-        """
-        The event severity to be published by the notification subscription. Valid options are `INFO` or `ERROR`.
-        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="snsTopicArn")
     def sns_topic_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the SNS topic to send events to.
-        """
         return pulumi.get(self, "sns_topic_arn")
 
     @property
     @pulumi.getter(name="sourceIds")
     def source_ids(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a source_type must also be specified.
-        """
         return pulumi.get(self, "source_ids")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The type of source that will be generating the events. Valid options are `cluster`, `cluster-parameter-group`, `cluster-security-group`, or `cluster-snapshot`. If not set, all sources will be subscribed to.
-        """
         return pulumi.get(self, "source_type")
 
     @property
@@ -232,9 +160,6 @@ class EventSubscription(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

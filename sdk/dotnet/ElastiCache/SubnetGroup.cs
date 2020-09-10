@@ -9,70 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElastiCache
 {
-    /// <summary>
-    /// Provides an ElastiCache Subnet Group resource.
-    /// 
-    /// &gt; **NOTE:** ElastiCache Subnet Groups are only for use when working with an
-    /// ElastiCache cluster **inside** of a VPC. If you are on EC2 Classic, see the
-    /// ElastiCache Security Group resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var fooVpc = new Aws.Ec2.Vpc("fooVpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "tf-test" },
-    ///             },
-    ///         });
-    ///         var fooSubnet = new Aws.Ec2.Subnet("fooSubnet", new Aws.Ec2.SubnetArgs
-    ///         {
-    ///             VpcId = fooVpc.Id,
-    ///             CidrBlock = "10.0.0.0/24",
-    ///             AvailabilityZone = "us-west-2a",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "tf-test" },
-    ///             },
-    ///         });
-    ///         var bar = new Aws.ElastiCache.SubnetGroup("bar", new Aws.ElastiCache.SubnetGroupArgs
-    ///         {
-    ///             SubnetIds = 
-    ///             {
-    ///                 fooSubnet.Id,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SubnetGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Description for the cache subnet group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Name for the cache subnet group. Elasticache converts this name to lowercase.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// List of VPC Subnet IDs for the cache subnet group
-        /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
@@ -122,24 +66,14 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class SubnetGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description for the cache subnet group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name for the cache subnet group. Elasticache converts this name to lowercase.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("subnetIds", required: true)]
         private InputList<string>? _subnetIds;
-
-        /// <summary>
-        /// List of VPC Subnet IDs for the cache subnet group
-        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -154,24 +88,14 @@ namespace Pulumi.Aws.ElastiCache
 
     public sealed class SubnetGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description for the cache subnet group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name for the cache subnet group. Elasticache converts this name to lowercase.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
-
-        /// <summary>
-        /// List of VPC Subnet IDs for the cache subnet group
-        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());

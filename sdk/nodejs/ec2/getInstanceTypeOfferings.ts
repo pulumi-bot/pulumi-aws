@@ -6,33 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Information about EC2 Instance Type Offerings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.ec2.getInstanceTypeOfferings({
- *     filters: [
- *         {
- *             name: "instance-type",
- *             values: [
- *                 "t2.micro",
- *                 "t3.micro",
- *             ],
- *         },
- *         {
- *             name: "location",
- *             values: ["usw2-az4"],
- *         },
- *     ],
- *     locationType: "availability-zone-id",
- * }, { async: true }));
- * ```
- */
 export function getInstanceTypeOfferings(args?: GetInstanceTypeOfferingsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeOfferingsResult> {
     args = args || {};
     if (!opts) {
@@ -52,13 +25,7 @@ export function getInstanceTypeOfferings(args?: GetInstanceTypeOfferingsArgs, op
  * A collection of arguments for invoking getInstanceTypeOfferings.
  */
 export interface GetInstanceTypeOfferingsArgs {
-    /**
-     * One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
-     */
     readonly filters?: inputs.ec2.GetInstanceTypeOfferingsFilter[];
-    /**
-     * Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
-     */
     readonly locationType?: string;
 }
 
@@ -71,9 +38,6 @@ export interface GetInstanceTypeOfferingsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set of EC2 Instance Types.
-     */
     readonly instanceTypes: string[];
     readonly locationType?: string;
 }

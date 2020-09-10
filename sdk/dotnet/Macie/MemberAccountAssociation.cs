@@ -9,37 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Macie
 {
-    /// <summary>
-    /// &gt; **NOTE:** This resource interacts with [Amazon Macie Classic](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html). Macie Classic cannot be activated in new accounts. See the [FAQ](https://aws.amazon.com/macie/classic-faqs/) for more details.
-    /// 
-    /// Associates an AWS account with Amazon Macie as a member account.
-    /// 
-    /// &gt; **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Macie.MemberAccountAssociation("example", new Aws.Macie.MemberAccountAssociationArgs
-    ///         {
-    ///             MemberAccountId = "123456789012",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class MemberAccountAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the AWS account that you want to associate with Amazon Macie as a member account.
-        /// </summary>
         [Output("memberAccountId")]
         public Output<string> MemberAccountId { get; private set; } = null!;
 
@@ -89,9 +60,6 @@ namespace Pulumi.Aws.Macie
 
     public sealed class MemberAccountAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the AWS account that you want to associate with Amazon Macie as a member account.
-        /// </summary>
         [Input("memberAccountId", required: true)]
         public Input<string> MemberAccountId { get; set; } = null!;
 
@@ -102,9 +70,6 @@ namespace Pulumi.Aws.Macie
 
     public sealed class MemberAccountAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the AWS account that you want to associate with Amazon Macie as a member account.
-        /// </summary>
         [Input("memberAccountId")]
         public Input<string>? MemberAccountId { get; set; }
 

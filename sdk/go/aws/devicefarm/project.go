@@ -9,39 +9,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to manage AWS Device Farm Projects.
-// Please keep in mind that this feature is only supported on the "us-west-2" region.
-// This resource will error if you try to create a project in another region.
-//
-// For more information about Device Farm Projects, see the AWS Documentation on
-// [Device Farm Projects][aws-get-project].
-//
-// ## Basic Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/devicefarm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := devicefarm.NewProject(ctx, "awesomeDevices", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Project struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name of this project
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the project
+	Arn  pulumi.StringOutput `pulumi:"arn"`
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -73,16 +44,12 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// The Amazon Resource Name of this project
-	Arn *string `pulumi:"arn"`
-	// The name of the project
+	Arn  *string `pulumi:"arn"`
 	Name *string `pulumi:"name"`
 }
 
 type ProjectState struct {
-	// The Amazon Resource Name of this project
-	Arn pulumi.StringPtrInput
-	// The name of the project
+	Arn  pulumi.StringPtrInput
 	Name pulumi.StringPtrInput
 }
 
@@ -91,13 +58,11 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// The name of the project
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// The name of the project
 	Name pulumi.StringPtrInput
 }
 

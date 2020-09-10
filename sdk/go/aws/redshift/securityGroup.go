@@ -10,43 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/redshift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := redshift.NewSecurityGroup(ctx, "_default", &redshift.SecurityGroupArgs{
-// 			Ingress: redshift.SecurityGroupIngressArray{
-// 				&redshift.SecurityGroupIngressArgs{
-// 					Cidr: pulumi.String("10.0.0.0/24"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
-	Description pulumi.StringOutput `pulumi:"description"`
-	// A list of ingress rules.
-	Ingress SecurityGroupIngressArrayOutput `pulumi:"ingress"`
-	// The name of the Redshift security group.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Description pulumi.StringOutput             `pulumi:"description"`
+	Ingress     SecurityGroupIngressArrayOutput `pulumi:"ingress"`
+	Name        pulumi.StringOutput             `pulumi:"name"`
 }
 
 // NewSecurityGroup registers a new resource with the given unique name, arguments, and options.
@@ -83,21 +52,15 @@ func GetSecurityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroup resources.
 type securityGroupState struct {
-	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// A list of ingress rules.
-	Ingress []SecurityGroupIngress `pulumi:"ingress"`
-	// The name of the Redshift security group.
-	Name *string `pulumi:"name"`
+	Description *string                `pulumi:"description"`
+	Ingress     []SecurityGroupIngress `pulumi:"ingress"`
+	Name        *string                `pulumi:"name"`
 }
 
 type SecurityGroupState struct {
-	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// A list of ingress rules.
-	Ingress SecurityGroupIngressArrayInput
-	// The name of the Redshift security group.
-	Name pulumi.StringPtrInput
+	Ingress     SecurityGroupIngressArrayInput
+	Name        pulumi.StringPtrInput
 }
 
 func (SecurityGroupState) ElementType() reflect.Type {
@@ -105,22 +68,16 @@ func (SecurityGroupState) ElementType() reflect.Type {
 }
 
 type securityGroupArgs struct {
-	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// A list of ingress rules.
-	Ingress []SecurityGroupIngress `pulumi:"ingress"`
-	// The name of the Redshift security group.
-	Name *string `pulumi:"name"`
+	Description *string                `pulumi:"description"`
+	Ingress     []SecurityGroupIngress `pulumi:"ingress"`
+	Name        *string                `pulumi:"name"`
 }
 
 // The set of arguments for constructing a SecurityGroup resource.
 type SecurityGroupArgs struct {
-	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// A list of ingress rules.
-	Ingress SecurityGroupIngressArrayInput
-	// The name of the Redshift security group.
-	Name pulumi.StringPtrInput
+	Ingress     SecurityGroupIngressArrayInput
+	Name        pulumi.StringPtrInput
 }
 
 func (SecurityGroupArgs) ElementType() reflect.Type {

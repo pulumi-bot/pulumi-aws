@@ -4,44 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to manage the accepter's side of a Direct Connect hosted private virtual interface.
- * This resource accepts ownership of a private virtual interface created by another AWS account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const accepter = new aws.Provider("accepter", {});
- * // Accepter's credentials.
- * const accepterCallerIdentity = aws.getCallerIdentity({});
- * // Accepter's side of the VIF.
- * const vpnGw = new aws.ec2.VpnGateway("vpnGw", {}, {
- *     provider: aws.accepter,
- * });
- * // Creator's side of the VIF
- * const creator = new aws.directconnect.HostedPrivateVirtualInterface("creator", {
- *     connectionId: "dxcon-zzzzzzzz",
- *     ownerAccountId: accepterCallerIdentity.then(accepterCallerIdentity => accepterCallerIdentity.accountId),
- *     vlan: 4094,
- *     addressFamily: "ipv4",
- *     bgpAsn: 65352,
- * }, {
- *     dependsOn: [vpnGw],
- * });
- * const accepterHostedPrivateVirtualInterfaceAccepter = new aws.directconnect.HostedPrivateVirtualInterfaceAccepter("accepterHostedPrivateVirtualInterfaceAccepter", {
- *     virtualInterfaceId: creator.id,
- *     vpnGatewayId: vpnGw.id,
- *     tags: {
- *         Side: "Accepter",
- *     },
- * }, {
- *     provider: aws.accepter,
- * });
- * ```
- */
 export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
     /**
      * Get an existing HostedPrivateVirtualInterfaceAccepter resource's state with the given name, ID, and optional extra
@@ -70,25 +32,10 @@ export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource
         return obj['__pulumiType'] === HostedPrivateVirtualInterfaceAccepter.__pulumiType;
     }
 
-    /**
-     * The ARN of the virtual interface.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The ID of the Direct Connect gateway to which to connect the virtual interface.
-     */
     public readonly dxGatewayId!: pulumi.Output<string | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The ID of the Direct Connect virtual interface to accept.
-     */
     public readonly virtualInterfaceId!: pulumi.Output<string>;
-    /**
-     * The ID of the virtual private gateway to which to connect the virtual interface.
-     */
     public readonly vpnGatewayId!: pulumi.Output<string | undefined>;
 
     /**
@@ -134,25 +81,10 @@ export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource
  * Input properties used for looking up and filtering HostedPrivateVirtualInterfaceAccepter resources.
  */
 export interface HostedPrivateVirtualInterfaceAccepterState {
-    /**
-     * The ARN of the virtual interface.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The ID of the Direct Connect gateway to which to connect the virtual interface.
-     */
     readonly dxGatewayId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The ID of the Direct Connect virtual interface to accept.
-     */
     readonly virtualInterfaceId?: pulumi.Input<string>;
-    /**
-     * The ID of the virtual private gateway to which to connect the virtual interface.
-     */
     readonly vpnGatewayId?: pulumi.Input<string>;
 }
 
@@ -160,20 +92,8 @@ export interface HostedPrivateVirtualInterfaceAccepterState {
  * The set of arguments for constructing a HostedPrivateVirtualInterfaceAccepter resource.
  */
 export interface HostedPrivateVirtualInterfaceAccepterArgs {
-    /**
-     * The ID of the Direct Connect gateway to which to connect the virtual interface.
-     */
     readonly dxGatewayId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The ID of the Direct Connect virtual interface to accept.
-     */
     readonly virtualInterfaceId: pulumi.Input<string>;
-    /**
-     * The ID of the virtual private gateway to which to connect the virtual interface.
-     */
     readonly vpnGatewayId?: pulumi.Input<string>;
 }

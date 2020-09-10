@@ -123,7 +123,6 @@ func (o GetAmiBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) GetAmiBloc
 }
 
 type GetAmiFilter struct {
-	// The name of the AMI that was provided during image creation.
 	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
@@ -140,7 +139,6 @@ type GetAmiFilterInput interface {
 }
 
 type GetAmiFilterArgs struct {
-	// The name of the AMI that was provided during image creation.
 	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -196,7 +194,6 @@ func (o GetAmiFilterOutput) ToGetAmiFilterOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The name of the AMI that was provided during image creation.
 func (o GetAmiFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAmiFilter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -426,9 +423,7 @@ func (o GetAmiProductCodeArrayOutput) Index(i pulumi.IntInput) GetAmiProductCode
 }
 
 type GetAutoscalingGroupsFilter struct {
-	// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
-	Name string `pulumi:"name"`
-	// The value of the filter.
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -444,9 +439,7 @@ type GetAutoscalingGroupsFilterInput interface {
 }
 
 type GetAutoscalingGroupsFilterArgs struct {
-	// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the filter.
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -501,12 +494,10 @@ func (o GetAutoscalingGroupsFilterOutput) ToGetAutoscalingGroupsFilterOutputWith
 	return o
 }
 
-// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
 func (o GetAutoscalingGroupsFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutoscalingGroupsFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the filter.
 func (o GetAutoscalingGroupsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAutoscalingGroupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -532,9 +523,7 @@ func (o GetAutoscalingGroupsFilterArrayOutput) Index(i pulumi.IntInput) GetAutos
 }
 
 type GetAvailabilityZoneFilter struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
-	Name string `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -550,9 +539,7 @@ type GetAvailabilityZoneFilterInput interface {
 }
 
 type GetAvailabilityZoneFilterArgs struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -607,12 +594,10 @@ func (o GetAvailabilityZoneFilterOutput) ToGetAvailabilityZoneFilterOutputWithCo
 	return o
 }
 
-// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
 func (o GetAvailabilityZoneFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailabilityZoneFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
 func (o GetAvailabilityZoneFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAvailabilityZoneFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -638,9 +623,7 @@ func (o GetAvailabilityZoneFilterArrayOutput) Index(i pulumi.IntInput) GetAvaila
 }
 
 type GetAvailabilityZonesFilter struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
-	Name string `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -656,9 +639,7 @@ type GetAvailabilityZonesFilterInput interface {
 }
 
 type GetAvailabilityZonesFilterArgs struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -713,12 +694,10 @@ func (o GetAvailabilityZonesFilterOutput) ToGetAvailabilityZonesFilterOutputWith
 	return o
 }
 
-// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
 func (o GetAvailabilityZonesFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailabilityZonesFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
 func (o GetAvailabilityZonesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAvailabilityZonesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -844,9 +823,7 @@ func (o GetElasticIpFilterArrayOutput) Index(i pulumi.IntInput) GetElasticIpFilt
 }
 
 type GetPrefixListFilter struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
-	Name string `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -862,9 +839,7 @@ type GetPrefixListFilterInput interface {
 }
 
 type GetPrefixListFilterArgs struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -919,12 +894,10 @@ func (o GetPrefixListFilterOutput) ToGetPrefixListFilterOutputWithContext(ctx co
 	return o
 }
 
-// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
 func (o GetPrefixListFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrefixListFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
 func (o GetPrefixListFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrefixListFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -950,9 +923,7 @@ func (o GetPrefixListFilterArrayOutput) Index(i pulumi.IntInput) GetPrefixListFi
 }
 
 type GetRegionsFilter struct {
-	// The name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference][1].
-	Name string `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -968,9 +939,7 @@ type GetRegionsFilterInput interface {
 }
 
 type GetRegionsFilterArgs struct {
-	// The name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference][1].
-	Name pulumi.StringInput `pulumi:"name"`
-	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1025,12 +994,10 @@ func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.
 	return o
 }
 
-// The name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference][1].
 func (o GetRegionsFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
 func (o GetRegionsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

@@ -9,227 +9,86 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an EC2 Spot Instance Request resource. This allows instances to be
-    /// requested on the spot market.
-    /// 
-    /// By default this provider creates Spot Instance Requests with a `persistent` type,
-    /// which means that for the duration of their lifetime, AWS will launch an
-    /// instance with the configured details if and when the spot market will accept
-    /// the requested price.
-    /// 
-    /// On destruction, this provider will make an attempt to terminate the associated Spot
-    /// Instance if there is one present.
-    /// 
-    /// Spot Instances requests with a `one-time` type will close the spot request
-    /// when the instance is terminated either by the request being below the current spot
-    /// price availability or by a user.
-    /// 
-    /// &gt; **NOTE:** Because their behavior depends on the live status of the spot
-    /// market, Spot Instance Requests have a unique lifecycle that makes them behave
-    /// differently than other resources. Most importantly: there is __no
-    /// guarantee__ that a Spot Instance exists to fulfill the request at any given
-    /// point in time. See the [AWS Spot Instance
-    /// documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
-    /// for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Request a spot instance at $0.03
-    ///         var cheapWorker = new Aws.Ec2.SpotInstanceRequest("cheapWorker", new Aws.Ec2.SpotInstanceRequestArgs
-    ///         {
-    ///             Ami = "ami-1234",
-    ///             InstanceType = "c4.xlarge",
-    ///             SpotPrice = "0.03",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "CheapWorker" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SpotInstanceRequest : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The AMI to use for the instance.
-        /// </summary>
         [Output("ami")]
         public Output<string> Ami { get; private set; } = null!;
 
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Associate a public ip address with an instance in a VPC.  Boolean value.
-        /// </summary>
         [Output("associatePublicIpAddress")]
         public Output<bool> AssociatePublicIpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// The AZ to start the instance in.
-        /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
-        /// <summary>
-        /// The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
-        /// The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
-        /// Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
-        /// </summary>
         [Output("blockDurationMinutes")]
         public Output<int?> BlockDurationMinutes { get; private set; } = null!;
 
-        /// <summary>
-        /// Sets the number of CPU cores for an instance. This option is
-        /// only supported on creation of instance type that support CPU Options
-        /// [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        /// </summary>
         [Output("cpuCoreCount")]
         public Output<int> CpuCoreCount { get; private set; } = null!;
 
-        /// <summary>
-        /// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
-        /// </summary>
         [Output("cpuThreadsPerCore")]
         public Output<int> CpuThreadsPerCore { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit Specification below for more details.
-        /// </summary>
         [Output("creditSpecification")]
         public Output<Outputs.SpotInstanceRequestCreditSpecification?> CreditSpecification { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         [Output("disableApiTermination")]
         public Output<bool?> DisableApiTermination { get; private set; } = null!;
 
-        /// <summary>
-        /// Additional EBS block devices to attach to the
-        /// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-        /// </summary>
         [Output("ebsBlockDevices")]
         public Output<ImmutableArray<Outputs.SpotInstanceRequestEbsBlockDevice>> EbsBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the launched EC2 instance will be EBS-optimized.
-        /// Note that if this is not set on an instance type that is optimized by default then
-        /// this will show as disabled but if the instance type is optimized by default then
-        /// there is no need to set this and there is no effect to disabling it.
-        /// See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
-        /// </summary>
         [Output("ebsOptimized")]
         public Output<bool?> EbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize Ephemeral (also known as
-        /// "Instance Store") volumes on the instance. See Block Devices below for details.
-        /// </summary>
         [Output("ephemeralBlockDevices")]
         public Output<ImmutableArray<Outputs.SpotInstanceRequestEphemeralBlockDevice>> EphemeralBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Output("getPasswordData")]
         public Output<bool?> GetPasswordData { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the launched EC2 instance will support hibernation.
-        /// </summary>
         [Output("hibernation")]
         public Output<bool?> Hibernation { get; private set; } = null!;
 
-        /// <summary>
-        /// The Id of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
-        /// </summary>
         [Output("hostId")]
         public Output<string> HostId { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM Instance Profile to
-        /// launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
-        /// </summary>
         [Output("iamInstanceProfile")]
         public Output<string?> IamInstanceProfile { get; private set; } = null!;
 
-        /// <summary>
-        /// Shutdown behavior for the
-        /// instance. Amazon defaults this to `stop` for EBS-backed instances and
-        /// `terminate` for instance-store instances. Cannot be set on instance-store
-        /// instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
-        /// </summary>
         [Output("instanceInitiatedShutdownBehavior")]
         public Output<string?> InstanceInitiatedShutdownBehavior { get; private set; } = null!;
 
-        /// <summary>
-        /// Indicates whether a Spot instance stops or terminates when it is interrupted. Default is `terminate` as this is the current AWS behaviour.
-        /// </summary>
         [Output("instanceInterruptionBehaviour")]
         public Output<string?> InstanceInterruptionBehaviour { get; private set; } = null!;
 
         [Output("instanceState")]
         public Output<string> InstanceState { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
-        /// <summary>
-        /// A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
-        /// </summary>
         [Output("ipv6AddressCount")]
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
-        /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
-        /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
-        /// <summary>
-        /// A launch group is a group of spot instances that launch together and terminate together.
-        /// If left empty instances are launched and terminated individually.
-        /// </summary>
         [Output("launchGroup")]
         public Output<string?> LaunchGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize the metadata options of the instance. See Metadata Options below for more details.
-        /// </summary>
         [Output("metadataOptions")]
         public Output<Outputs.SpotInstanceRequestMetadataOptions> MetadataOptions { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
-        /// </summary>
         [Output("monitoring")]
         public Output<bool?> Monitoring { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-        /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.SpotInstanceRequestNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
@@ -239,162 +98,78 @@ namespace Pulumi.Aws.Ec2
         [Output("passwordData")]
         public Output<string> PasswordData { get; private set; } = null!;
 
-        /// <summary>
-        /// The Placement Group to start the instance in.
-        /// </summary>
         [Output("placementGroup")]
         public Output<string> PlacementGroup { get; private set; } = null!;
 
         [Output("primaryNetworkInterfaceId")]
         public Output<string> PrimaryNetworkInterfaceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The private DNS name assigned to the instance. Can only be
-        /// used inside the Amazon EC2, and only available if you've enabled DNS hostnames
-        /// for your VPC
-        /// </summary>
         [Output("privateDns")]
         public Output<string> PrivateDns { get; private set; } = null!;
 
-        /// <summary>
-        /// Private IP address to associate with the
-        /// instance in a VPC.
-        /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
 
-        /// <summary>
-        /// The public DNS name assigned to the instance. For EC2-VPC, this
-        /// is only available if you've enabled DNS hostnames for your VPC
-        /// </summary>
         [Output("publicDns")]
         public Output<string> PublicDns { get; private set; } = null!;
 
-        /// <summary>
-        /// The public IP address assigned to the instance, if applicable.
-        /// </summary>
         [Output("publicIp")]
         public Output<string> PublicIp { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize details about the root block
-        /// device of the instance. See Block Devices below for details.
-        /// </summary>
         [Output("rootBlockDevice")]
         public Output<Outputs.SpotInstanceRequestRootBlockDevice> RootBlockDevice { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e. referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
-        /// </summary>
         [Output("secondaryPrivateIps")]
         public Output<ImmutableArray<string>> SecondaryPrivateIps { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
-        /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// Controls if traffic is routed to the instance when
-        /// the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
-        /// </summary>
         [Output("sourceDestCheck")]
         public Output<bool?> SourceDestCheck { get; private set; } = null!;
 
-        /// <summary>
-        /// The current [bid
-        /// status](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
-        /// of the Spot Instance Request.
-        /// * `spot_request_state` The current [request
-        /// state](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html#creating-spot-request-status)
-        /// of the Spot Instance Request.
-        /// </summary>
         [Output("spotBidStatus")]
         public Output<string> SpotBidStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// The Instance ID (if any) that is currently fulfilling
-        /// the Spot Instance request.
-        /// </summary>
         [Output("spotInstanceId")]
         public Output<string> SpotInstanceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum price to request on the spot market.
-        /// </summary>
         [Output("spotPrice")]
         public Output<string?> SpotPrice { get; private set; } = null!;
 
         [Output("spotRequestState")]
         public Output<string> SpotRequestState { get; private set; } = null!;
 
-        /// <summary>
-        /// If set to `one-time`, after
-        /// the instance is terminated, the spot request will be closed.
-        /// </summary>
         [Output("spotType")]
         public Output<string?> SpotType { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC Subnet ID to launch in.
-        /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
-        /// </summary>
         [Output("tenancy")]
         public Output<string> Tenancy { get; private set; } = null!;
 
-        /// <summary>
-        /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-        /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
-        /// <summary>
-        /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-        /// </summary>
         [Output("userDataBase64")]
         public Output<string?> UserDataBase64 { get; private set; } = null!;
 
-        /// <summary>
-        /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
-        /// </summary>
         [Output("validFrom")]
         public Output<string> ValidFrom { get; private set; } = null!;
 
-        /// <summary>
-        /// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. The default end date is 7 days from the current date.
-        /// </summary>
         [Output("validUntil")]
         public Output<string> ValidUntil { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the devices created by the instance at launch time.
-        /// </summary>
         [Output("volumeTags")]
         public Output<ImmutableDictionary<string, string>?> VolumeTags { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         [Output("vpcSecurityGroupIds")]
         public Output<ImmutableArray<string>> VpcSecurityGroupIds { get; private set; } = null!;
 
-        /// <summary>
-        /// If set, this provider will
-        /// wait for the Spot Request to be fulfilled, and will throw an error if the
-        /// timeout of 10m is reached.
-        /// </summary>
         [Output("waitForFulfillment")]
         public Output<bool?> WaitForFulfillment { get; private set; } = null!;
 
@@ -444,222 +219,112 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class SpotInstanceRequestArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AMI to use for the instance.
-        /// </summary>
         [Input("ami", required: true)]
         public Input<string> Ami { get; set; } = null!;
 
-        /// <summary>
-        /// Associate a public ip address with an instance in a VPC.  Boolean value.
-        /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// The AZ to start the instance in.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
-        /// The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
-        /// Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
-        /// </summary>
         [Input("blockDurationMinutes")]
         public Input<int>? BlockDurationMinutes { get; set; }
 
-        /// <summary>
-        /// Sets the number of CPU cores for an instance. This option is
-        /// only supported on creation of instance type that support CPU Options
-        /// [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        /// </summary>
         [Input("cpuCoreCount")]
         public Input<int>? CpuCoreCount { get; set; }
 
-        /// <summary>
-        /// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
-        /// </summary>
         [Input("cpuThreadsPerCore")]
         public Input<int>? CpuThreadsPerCore { get; set; }
 
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit Specification below for more details.
-        /// </summary>
         [Input("creditSpecification")]
         public Input<Inputs.SpotInstanceRequestCreditSpecificationArgs>? CreditSpecification { get; set; }
 
-        /// <summary>
-        /// If true, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         [Input("disableApiTermination")]
         public Input<bool>? DisableApiTermination { get; set; }
 
         [Input("ebsBlockDevices")]
         private InputList<Inputs.SpotInstanceRequestEbsBlockDeviceArgs>? _ebsBlockDevices;
-
-        /// <summary>
-        /// Additional EBS block devices to attach to the
-        /// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-        /// </summary>
         public InputList<Inputs.SpotInstanceRequestEbsBlockDeviceArgs> EbsBlockDevices
         {
             get => _ebsBlockDevices ?? (_ebsBlockDevices = new InputList<Inputs.SpotInstanceRequestEbsBlockDeviceArgs>());
             set => _ebsBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will be EBS-optimized.
-        /// Note that if this is not set on an instance type that is optimized by default then
-        /// this will show as disabled but if the instance type is optimized by default then
-        /// there is no need to set this and there is no effect to disabling it.
-        /// See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
-        /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
         [Input("ephemeralBlockDevices")]
         private InputList<Inputs.SpotInstanceRequestEphemeralBlockDeviceArgs>? _ephemeralBlockDevices;
-
-        /// <summary>
-        /// Customize Ephemeral (also known as
-        /// "Instance Store") volumes on the instance. See Block Devices below for details.
-        /// </summary>
         public InputList<Inputs.SpotInstanceRequestEphemeralBlockDeviceArgs> EphemeralBlockDevices
         {
             get => _ephemeralBlockDevices ?? (_ephemeralBlockDevices = new InputList<Inputs.SpotInstanceRequestEphemeralBlockDeviceArgs>());
             set => _ephemeralBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Input("getPasswordData")]
         public Input<bool>? GetPasswordData { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will support hibernation.
-        /// </summary>
         [Input("hibernation")]
         public Input<bool>? Hibernation { get; set; }
 
-        /// <summary>
-        /// The Id of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
-        /// </summary>
         [Input("hostId")]
         public Input<string>? HostId { get; set; }
 
-        /// <summary>
-        /// The IAM Instance Profile to
-        /// launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
-        /// </summary>
         [Input("iamInstanceProfile")]
         public Input<string>? IamInstanceProfile { get; set; }
 
-        /// <summary>
-        /// Shutdown behavior for the
-        /// instance. Amazon defaults this to `stop` for EBS-backed instances and
-        /// `terminate` for instance-store instances. Cannot be set on instance-store
-        /// instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
-        /// </summary>
         [Input("instanceInitiatedShutdownBehavior")]
         public Input<string>? InstanceInitiatedShutdownBehavior { get; set; }
 
-        /// <summary>
-        /// Indicates whether a Spot instance stops or terminates when it is interrupted. Default is `terminate` as this is the current AWS behaviour.
-        /// </summary>
         [Input("instanceInterruptionBehaviour")]
         public Input<string>? InstanceInterruptionBehaviour { get; set; }
 
-        /// <summary>
-        /// The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
-        /// <summary>
-        /// A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
-        /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
         [Input("ipv6Addresses")]
         private InputList<string>? _ipv6Addresses;
-
-        /// <summary>
-        /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        /// </summary>
         public InputList<string> Ipv6Addresses
         {
             get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
             set => _ipv6Addresses = value;
         }
 
-        /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
-        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
-        /// <summary>
-        /// A launch group is a group of spot instances that launch together and terminate together.
-        /// If left empty instances are launched and terminated individually.
-        /// </summary>
         [Input("launchGroup")]
         public Input<string>? LaunchGroup { get; set; }
 
-        /// <summary>
-        /// Customize the metadata options of the instance. See Metadata Options below for more details.
-        /// </summary>
         [Input("metadataOptions")]
         public Input<Inputs.SpotInstanceRequestMetadataOptionsArgs>? MetadataOptions { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
-        /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.SpotInstanceRequestNetworkInterfaceArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-        /// </summary>
         public InputList<Inputs.SpotInstanceRequestNetworkInterfaceArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.SpotInstanceRequestNetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
 
-        /// <summary>
-        /// The Placement Group to start the instance in.
-        /// </summary>
         [Input("placementGroup")]
         public Input<string>? PlacementGroup { get; set; }
 
-        /// <summary>
-        /// Private IP address to associate with the
-        /// instance in a VPC.
-        /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
-        /// <summary>
-        /// Customize details about the root block
-        /// device of the instance. See Block Devices below for details.
-        /// </summary>
         [Input("rootBlockDevice")]
         public Input<Inputs.SpotInstanceRequestRootBlockDeviceArgs>? RootBlockDevice { get; set; }
 
         [Input("secondaryPrivateIps")]
         private InputList<string>? _secondaryPrivateIps;
-
-        /// <summary>
-        /// A list of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e. referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
-        /// </summary>
         public InputList<string> SecondaryPrivateIps
         {
             get => _secondaryPrivateIps ?? (_secondaryPrivateIps = new InputList<string>());
@@ -668,90 +333,49 @@ namespace Pulumi.Aws.Ec2
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
-
-        /// <summary>
-        /// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
-        /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// Controls if traffic is routed to the instance when
-        /// the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
-        /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
 
-        /// <summary>
-        /// The maximum price to request on the spot market.
-        /// </summary>
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
 
-        /// <summary>
-        /// If set to `one-time`, after
-        /// the instance is terminated, the spot request will be closed.
-        /// </summary>
         [Input("spotType")]
         public Input<string>? SpotType { get; set; }
 
-        /// <summary>
-        /// The VPC Subnet ID to launch in.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
-        /// </summary>
         [Input("tenancy")]
         public Input<string>? Tenancy { get; set; }
 
-        /// <summary>
-        /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
-        /// <summary>
-        /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-        /// </summary>
         [Input("userDataBase64")]
         public Input<string>? UserDataBase64 { get; set; }
 
-        /// <summary>
-        /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
-        /// </summary>
         [Input("validFrom")]
         public Input<string>? ValidFrom { get; set; }
 
-        /// <summary>
-        /// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. The default end date is 7 days from the current date.
-        /// </summary>
         [Input("validUntil")]
         public Input<string>? ValidUntil { get; set; }
 
         [Input("volumeTags")]
         private InputMap<string>? _volumeTags;
-
-        /// <summary>
-        /// A map of tags to assign to the devices created by the instance at launch time.
-        /// </summary>
         public InputMap<string> VolumeTags
         {
             get => _volumeTags ?? (_volumeTags = new InputMap<string>());
@@ -760,21 +384,12 @@ namespace Pulumi.Aws.Ec2
 
         [Input("vpcSecurityGroupIds")]
         private InputList<string>? _vpcSecurityGroupIds;
-
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         public InputList<string> VpcSecurityGroupIds
         {
             get => _vpcSecurityGroupIds ?? (_vpcSecurityGroupIds = new InputList<string>());
             set => _vpcSecurityGroupIds = value;
         }
 
-        /// <summary>
-        /// If set, this provider will
-        /// wait for the Spot Request to be fulfilled, and will throw an error if the
-        /// timeout of 10m is reached.
-        /// </summary>
         [Input("waitForFulfillment")]
         public Input<bool>? WaitForFulfillment { get; set; }
 
@@ -785,196 +400,101 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class SpotInstanceRequestState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AMI to use for the instance.
-        /// </summary>
         [Input("ami")]
         public Input<string>? Ami { get; set; }
 
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Associate a public ip address with an instance in a VPC.  Boolean value.
-        /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// The AZ to start the instance in.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
-        /// The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
-        /// Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
-        /// </summary>
         [Input("blockDurationMinutes")]
         public Input<int>? BlockDurationMinutes { get; set; }
 
-        /// <summary>
-        /// Sets the number of CPU cores for an instance. This option is
-        /// only supported on creation of instance type that support CPU Options
-        /// [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        /// </summary>
         [Input("cpuCoreCount")]
         public Input<int>? CpuCoreCount { get; set; }
 
-        /// <summary>
-        /// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
-        /// </summary>
         [Input("cpuThreadsPerCore")]
         public Input<int>? CpuThreadsPerCore { get; set; }
 
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit Specification below for more details.
-        /// </summary>
         [Input("creditSpecification")]
         public Input<Inputs.SpotInstanceRequestCreditSpecificationGetArgs>? CreditSpecification { get; set; }
 
-        /// <summary>
-        /// If true, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         [Input("disableApiTermination")]
         public Input<bool>? DisableApiTermination { get; set; }
 
         [Input("ebsBlockDevices")]
         private InputList<Inputs.SpotInstanceRequestEbsBlockDeviceGetArgs>? _ebsBlockDevices;
-
-        /// <summary>
-        /// Additional EBS block devices to attach to the
-        /// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-        /// </summary>
         public InputList<Inputs.SpotInstanceRequestEbsBlockDeviceGetArgs> EbsBlockDevices
         {
             get => _ebsBlockDevices ?? (_ebsBlockDevices = new InputList<Inputs.SpotInstanceRequestEbsBlockDeviceGetArgs>());
             set => _ebsBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will be EBS-optimized.
-        /// Note that if this is not set on an instance type that is optimized by default then
-        /// this will show as disabled but if the instance type is optimized by default then
-        /// there is no need to set this and there is no effect to disabling it.
-        /// See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
-        /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
         [Input("ephemeralBlockDevices")]
         private InputList<Inputs.SpotInstanceRequestEphemeralBlockDeviceGetArgs>? _ephemeralBlockDevices;
-
-        /// <summary>
-        /// Customize Ephemeral (also known as
-        /// "Instance Store") volumes on the instance. See Block Devices below for details.
-        /// </summary>
         public InputList<Inputs.SpotInstanceRequestEphemeralBlockDeviceGetArgs> EphemeralBlockDevices
         {
             get => _ephemeralBlockDevices ?? (_ephemeralBlockDevices = new InputList<Inputs.SpotInstanceRequestEphemeralBlockDeviceGetArgs>());
             set => _ephemeralBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Input("getPasswordData")]
         public Input<bool>? GetPasswordData { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will support hibernation.
-        /// </summary>
         [Input("hibernation")]
         public Input<bool>? Hibernation { get; set; }
 
-        /// <summary>
-        /// The Id of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
-        /// </summary>
         [Input("hostId")]
         public Input<string>? HostId { get; set; }
 
-        /// <summary>
-        /// The IAM Instance Profile to
-        /// launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
-        /// </summary>
         [Input("iamInstanceProfile")]
         public Input<string>? IamInstanceProfile { get; set; }
 
-        /// <summary>
-        /// Shutdown behavior for the
-        /// instance. Amazon defaults this to `stop` for EBS-backed instances and
-        /// `terminate` for instance-store instances. Cannot be set on instance-store
-        /// instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
-        /// </summary>
         [Input("instanceInitiatedShutdownBehavior")]
         public Input<string>? InstanceInitiatedShutdownBehavior { get; set; }
 
-        /// <summary>
-        /// Indicates whether a Spot instance stops or terminates when it is interrupted. Default is `terminate` as this is the current AWS behaviour.
-        /// </summary>
         [Input("instanceInterruptionBehaviour")]
         public Input<string>? InstanceInterruptionBehaviour { get; set; }
 
         [Input("instanceState")]
         public Input<string>? InstanceState { get; set; }
 
-        /// <summary>
-        /// The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
-        /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
         [Input("ipv6Addresses")]
         private InputList<string>? _ipv6Addresses;
-
-        /// <summary>
-        /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        /// </summary>
         public InputList<string> Ipv6Addresses
         {
             get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
             set => _ipv6Addresses = value;
         }
 
-        /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
-        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
-        /// <summary>
-        /// A launch group is a group of spot instances that launch together and terminate together.
-        /// If left empty instances are launched and terminated individually.
-        /// </summary>
         [Input("launchGroup")]
         public Input<string>? LaunchGroup { get; set; }
 
-        /// <summary>
-        /// Customize the metadata options of the instance. See Metadata Options below for more details.
-        /// </summary>
         [Input("metadataOptions")]
         public Input<Inputs.SpotInstanceRequestMetadataOptionsGetArgs>? MetadataOptions { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
-        /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.SpotInstanceRequestNetworkInterfaceGetArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-        /// </summary>
         public InputList<Inputs.SpotInstanceRequestNetworkInterfaceGetArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.SpotInstanceRequestNetworkInterfaceGetArgs>());
@@ -987,56 +507,29 @@ namespace Pulumi.Aws.Ec2
         [Input("passwordData")]
         public Input<string>? PasswordData { get; set; }
 
-        /// <summary>
-        /// The Placement Group to start the instance in.
-        /// </summary>
         [Input("placementGroup")]
         public Input<string>? PlacementGroup { get; set; }
 
         [Input("primaryNetworkInterfaceId")]
         public Input<string>? PrimaryNetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The private DNS name assigned to the instance. Can only be
-        /// used inside the Amazon EC2, and only available if you've enabled DNS hostnames
-        /// for your VPC
-        /// </summary>
         [Input("privateDns")]
         public Input<string>? PrivateDns { get; set; }
 
-        /// <summary>
-        /// Private IP address to associate with the
-        /// instance in a VPC.
-        /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
-        /// <summary>
-        /// The public DNS name assigned to the instance. For EC2-VPC, this
-        /// is only available if you've enabled DNS hostnames for your VPC
-        /// </summary>
         [Input("publicDns")]
         public Input<string>? PublicDns { get; set; }
 
-        /// <summary>
-        /// The public IP address assigned to the instance, if applicable.
-        /// </summary>
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }
 
-        /// <summary>
-        /// Customize details about the root block
-        /// device of the instance. See Block Devices below for details.
-        /// </summary>
         [Input("rootBlockDevice")]
         public Input<Inputs.SpotInstanceRequestRootBlockDeviceGetArgs>? RootBlockDevice { get; set; }
 
         [Input("secondaryPrivateIps")]
         private InputList<string>? _secondaryPrivateIps;
-
-        /// <summary>
-        /// A list of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e. referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
-        /// </summary>
         public InputList<string> SecondaryPrivateIps
         {
             get => _secondaryPrivateIps ?? (_secondaryPrivateIps = new InputList<string>());
@@ -1045,111 +538,58 @@ namespace Pulumi.Aws.Ec2
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
-
-        /// <summary>
-        /// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
-        /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// Controls if traffic is routed to the instance when
-        /// the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
-        /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
 
-        /// <summary>
-        /// The current [bid
-        /// status](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
-        /// of the Spot Instance Request.
-        /// * `spot_request_state` The current [request
-        /// state](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html#creating-spot-request-status)
-        /// of the Spot Instance Request.
-        /// </summary>
         [Input("spotBidStatus")]
         public Input<string>? SpotBidStatus { get; set; }
 
-        /// <summary>
-        /// The Instance ID (if any) that is currently fulfilling
-        /// the Spot Instance request.
-        /// </summary>
         [Input("spotInstanceId")]
         public Input<string>? SpotInstanceId { get; set; }
 
-        /// <summary>
-        /// The maximum price to request on the spot market.
-        /// </summary>
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
 
         [Input("spotRequestState")]
         public Input<string>? SpotRequestState { get; set; }
 
-        /// <summary>
-        /// If set to `one-time`, after
-        /// the instance is terminated, the spot request will be closed.
-        /// </summary>
         [Input("spotType")]
         public Input<string>? SpotType { get; set; }
 
-        /// <summary>
-        /// The VPC Subnet ID to launch in.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
-        /// </summary>
         [Input("tenancy")]
         public Input<string>? Tenancy { get; set; }
 
-        /// <summary>
-        /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
-        /// <summary>
-        /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-        /// </summary>
         [Input("userDataBase64")]
         public Input<string>? UserDataBase64 { get; set; }
 
-        /// <summary>
-        /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
-        /// </summary>
         [Input("validFrom")]
         public Input<string>? ValidFrom { get; set; }
 
-        /// <summary>
-        /// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. The default end date is 7 days from the current date.
-        /// </summary>
         [Input("validUntil")]
         public Input<string>? ValidUntil { get; set; }
 
         [Input("volumeTags")]
         private InputMap<string>? _volumeTags;
-
-        /// <summary>
-        /// A map of tags to assign to the devices created by the instance at launch time.
-        /// </summary>
         public InputMap<string> VolumeTags
         {
             get => _volumeTags ?? (_volumeTags = new InputMap<string>());
@@ -1158,21 +598,12 @@ namespace Pulumi.Aws.Ec2
 
         [Input("vpcSecurityGroupIds")]
         private InputList<string>? _vpcSecurityGroupIds;
-
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         public InputList<string> VpcSecurityGroupIds
         {
             get => _vpcSecurityGroupIds ?? (_vpcSecurityGroupIds = new InputList<string>());
             set => _vpcSecurityGroupIds = value;
         }
 
-        /// <summary>
-        /// If set, this provider will
-        /// wait for the Spot Request to be fulfilled, and will throw an error if the
-        /// timeout of 10m is reached.
-        /// </summary>
         [Input("waitForFulfillment")]
         public Input<bool>? WaitForFulfillment { get; set; }
 

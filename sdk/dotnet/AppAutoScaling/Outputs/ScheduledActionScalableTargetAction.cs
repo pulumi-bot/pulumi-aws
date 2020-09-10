@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppAutoScaling.Outputs
     [OutputType]
     public sealed class ScheduledActionScalableTargetAction
     {
-        /// <summary>
-        /// The maximum capacity.
-        /// </summary>
         public readonly int? MaxCapacity;
-        /// <summary>
-        /// The minimum capacity.
-        /// </summary>
         public readonly int? MinCapacity;
 
         [OutputConstructor]

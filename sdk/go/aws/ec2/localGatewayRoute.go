@@ -10,40 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an EC2 Local Gateway Route. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewLocalGatewayRoute(ctx, "example", &ec2.LocalGatewayRouteArgs{
-// 			DestinationCidrBlock:                pulumi.String("172.16.0.0/16"),
-// 			LocalGatewayRouteTableId:            pulumi.Any(data.Aws_ec2_local_gateway_route_table.Example.Id),
-// 			LocalGatewayVirtualInterfaceGroupId: pulumi.Any(data.Aws_ec2_local_gateway_virtual_interface_group.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LocalGatewayRoute struct {
 	pulumi.CustomResourceState
 
-	// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-	DestinationCidrBlock pulumi.StringOutput `pulumi:"destinationCidrBlock"`
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId pulumi.StringOutput `pulumi:"localGatewayRouteTableId"`
-	// Identifier of EC2 Local Gateway Virtual Interface Group.
+	DestinationCidrBlock                pulumi.StringOutput `pulumi:"destinationCidrBlock"`
+	LocalGatewayRouteTableId            pulumi.StringOutput `pulumi:"localGatewayRouteTableId"`
 	LocalGatewayVirtualInterfaceGroupId pulumi.StringOutput `pulumi:"localGatewayVirtualInterfaceGroupId"`
 }
 
@@ -84,20 +55,14 @@ func GetLocalGatewayRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LocalGatewayRoute resources.
 type localGatewayRouteState struct {
-	// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId *string `pulumi:"localGatewayRouteTableId"`
-	// Identifier of EC2 Local Gateway Virtual Interface Group.
+	DestinationCidrBlock                *string `pulumi:"destinationCidrBlock"`
+	LocalGatewayRouteTableId            *string `pulumi:"localGatewayRouteTableId"`
 	LocalGatewayVirtualInterfaceGroupId *string `pulumi:"localGatewayVirtualInterfaceGroupId"`
 }
 
 type LocalGatewayRouteState struct {
-	// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-	DestinationCidrBlock pulumi.StringPtrInput
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId pulumi.StringPtrInput
-	// Identifier of EC2 Local Gateway Virtual Interface Group.
+	DestinationCidrBlock                pulumi.StringPtrInput
+	LocalGatewayRouteTableId            pulumi.StringPtrInput
 	LocalGatewayVirtualInterfaceGroupId pulumi.StringPtrInput
 }
 
@@ -106,21 +71,15 @@ func (LocalGatewayRouteState) ElementType() reflect.Type {
 }
 
 type localGatewayRouteArgs struct {
-	// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-	DestinationCidrBlock string `pulumi:"destinationCidrBlock"`
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId string `pulumi:"localGatewayRouteTableId"`
-	// Identifier of EC2 Local Gateway Virtual Interface Group.
+	DestinationCidrBlock                string `pulumi:"destinationCidrBlock"`
+	LocalGatewayRouteTableId            string `pulumi:"localGatewayRouteTableId"`
 	LocalGatewayVirtualInterfaceGroupId string `pulumi:"localGatewayVirtualInterfaceGroupId"`
 }
 
 // The set of arguments for constructing a LocalGatewayRoute resource.
 type LocalGatewayRouteArgs struct {
-	// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-	DestinationCidrBlock pulumi.StringInput
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId pulumi.StringInput
-	// Identifier of EC2 Local Gateway Virtual Interface Group.
+	DestinationCidrBlock                pulumi.StringInput
+	LocalGatewayRouteTableId            pulumi.StringInput
 	LocalGatewayVirtualInterfaceGroupId pulumi.StringInput
 }
 

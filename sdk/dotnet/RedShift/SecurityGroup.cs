@@ -9,51 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.RedShift
 {
-    /// <summary>
-    /// Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.RedShift.SecurityGroup("default", new Aws.RedShift.SecurityGroupArgs
-    ///         {
-    ///             Ingress = 
-    ///             {
-    ///                 new Aws.RedShift.Inputs.SecurityGroupIngressArgs
-    ///                 {
-    ///                     Cidr = "10.0.0.0/24",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description of the Redshift security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of ingress rules.
-        /// </summary>
         [Output("ingress")]
         public Output<ImmutableArray<Outputs.SecurityGroupIngress>> Ingress { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Redshift security group.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -103,27 +66,17 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class SecurityGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the Redshift security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("ingress", required: true)]
         private InputList<Inputs.SecurityGroupIngressArgs>? _ingress;
-
-        /// <summary>
-        /// A list of ingress rules.
-        /// </summary>
         public InputList<Inputs.SecurityGroupIngressArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.SecurityGroupIngressArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The name of the Redshift security group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -135,27 +88,17 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class SecurityGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the Redshift security group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("ingress")]
         private InputList<Inputs.SecurityGroupIngressGetArgs>? _ingress;
-
-        /// <summary>
-        /// A list of ingress rules.
-        /// </summary>
         public InputList<Inputs.SecurityGroupIngressGetArgs> Ingress
         {
             get => _ingress ?? (_ingress = new InputList<Inputs.SecurityGroupIngressGetArgs>());
             set => _ingress = value;
         }
 
-        /// <summary>
-        /// The name of the Redshift security group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

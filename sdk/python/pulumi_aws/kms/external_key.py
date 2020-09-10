@@ -26,28 +26,9 @@ class ExternalKey(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a KMS Customer Master Key that uses external key material. To instead manage a KMS Customer Master Key where AWS automatically generates and potentially rotates key material, see the `kms.Key` resource.
-
-        > **Note:** All arguments including the key material will be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.kms.ExternalKey("example", description="KMS EXTERNAL for AMI encryption")
-        ```
-
+        Create a ExternalKey resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] deletion_window_in_days: Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
-        :param pulumi.Input[str] description: Description of the key.
-        :param pulumi.Input[bool] enabled: Specifies whether the key is enabled. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
-        :param pulumi.Input[str] key_material_base64: Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material. The same key material can be reimported, but you cannot import different key material.
-        :param pulumi.Input[str] policy: A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A key-value map of tags to assign to the key.
-        :param pulumi.Input[str] valid_to: Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,17 +86,6 @@ class ExternalKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the key.
-        :param pulumi.Input[float] deletion_window_in_days: Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
-        :param pulumi.Input[str] description: Description of the key.
-        :param pulumi.Input[bool] enabled: Specifies whether the key is enabled. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
-        :param pulumi.Input[str] expiration_model: Whether the key material expires. Empty when pending key material import, otherwise `KEY_MATERIAL_EXPIRES` or `KEY_MATERIAL_DOES_NOT_EXPIRE`.
-        :param pulumi.Input[str] key_material_base64: Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material. The same key material can be reimported, but you cannot import different key material.
-        :param pulumi.Input[str] key_state: The state of the CMK.
-        :param pulumi.Input[str] key_usage: The cryptographic operations for which you can use the CMK.
-        :param pulumi.Input[str] policy: A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A key-value map of tags to assign to the key.
-        :param pulumi.Input[str] valid_to: Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -137,89 +107,56 @@ class ExternalKey(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the key.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
     def deletion_window_in_days(self) -> pulumi.Output[Optional[float]]:
-        """
-        Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
-        """
         return pulumi.get(self, "deletion_window_in_days")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the key.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
-        """
-        Specifies whether the key is enabled. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="expirationModel")
     def expiration_model(self) -> pulumi.Output[str]:
-        """
-        Whether the key material expires. Empty when pending key material import, otherwise `KEY_MATERIAL_EXPIRES` or `KEY_MATERIAL_DOES_NOT_EXPIRE`.
-        """
         return pulumi.get(self, "expiration_model")
 
     @property
     @pulumi.getter(name="keyMaterialBase64")
     def key_material_base64(self) -> pulumi.Output[Optional[str]]:
-        """
-        Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material. The same key material can be reimported, but you cannot import different key material.
-        """
         return pulumi.get(self, "key_material_base64")
 
     @property
     @pulumi.getter(name="keyState")
     def key_state(self) -> pulumi.Output[str]:
-        """
-        The state of the CMK.
-        """
         return pulumi.get(self, "key_state")
 
     @property
     @pulumi.getter(name="keyUsage")
     def key_usage(self) -> pulumi.Output[str]:
-        """
-        The cryptographic operations for which you can use the CMK.
-        """
         return pulumi.get(self, "key_usage")
 
     @property
     @pulumi.getter
     def policy(self) -> pulumi.Output[str]:
-        """
-        A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK.
-        """
         return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A key-value map of tags to assign to the key.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="validTo")
     def valid_to(self) -> pulumi.Output[Optional[str]]:
-        """
-        Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-        """
         return pulumi.get(self, "valid_to")
 
     def translate_output_property(self, prop):

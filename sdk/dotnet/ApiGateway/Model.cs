@@ -9,67 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides a Model for a REST API Gateway.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDemoAPI = new Aws.ApiGateway.RestApi("myDemoAPI", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///             Description = "This is my API for demonstration purposes",
-    ///         });
-    ///         var myDemoModel = new Aws.ApiGateway.Model("myDemoModel", new Aws.ApiGateway.ModelArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             Description = "a JSON schema",
-    ///             ContentType = "application/json",
-    ///             Schema = @"{
-    ///   ""type"": ""object""
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Model : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The content type of the model
-        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the model
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the model
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Output("restApi")]
         public Output<string> RestApi { get; private set; } = null!;
 
-        /// <summary>
-        /// The schema of the model in a JSON form
-        /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
@@ -119,33 +72,18 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class ModelArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The content type of the model
-        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
-        /// <summary>
-        /// The description of the model
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the model
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Input("restApi", required: true)]
         public Input<string> RestApi { get; set; } = null!;
 
-        /// <summary>
-        /// The schema of the model in a JSON form
-        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
@@ -156,33 +94,18 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class ModelState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The content type of the model
-        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
-        /// <summary>
-        /// The description of the model
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the model
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Input("restApi")]
         public Input<string>? RestApi { get; set; }
 
-        /// <summary>
-        /// The schema of the model in a JSON form
-        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 

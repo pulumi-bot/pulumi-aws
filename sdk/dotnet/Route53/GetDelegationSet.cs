@@ -11,36 +11,6 @@ namespace Pulumi.Aws.Route53
 {
     public static class GetDelegationSet
     {
-        /// <summary>
-        /// `aws.route53.DelegationSet` provides details about a specific Route 53 Delegation Set.
-        /// 
-        /// This data source allows to find a list of name servers associated with a specific delegation set.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how to get a delegation set from its id.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var dset = Output.Create(Aws.Route53.GetDelegationSet.InvokeAsync(new Aws.Route53.GetDelegationSetArgs
-        ///         {
-        ///             Id = "MQWGHCBFAKEID",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDelegationSetResult> InvokeAsync(GetDelegationSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDelegationSetResult>("aws:route53/getDelegationSet:getDelegationSet", args ?? new GetDelegationSetArgs(), options.WithVersion());
     }
@@ -48,9 +18,6 @@ namespace Pulumi.Aws.Route53
 
     public sealed class GetDelegationSetArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The Hosted Zone id of the desired delegation set.
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 

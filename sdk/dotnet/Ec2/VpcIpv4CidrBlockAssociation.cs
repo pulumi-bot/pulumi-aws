@@ -9,47 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a resource to associate additional IPv4 CIDR blocks with a VPC.
-    /// 
-    /// When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
-    /// The `aws.ec2.VpcIpv4CidrBlockAssociation` resource allows further IPv4 CIDR blocks to be added to the VPC.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var main = new Aws.Ec2.Vpc("main", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.0.0.0/16",
-    ///         });
-    ///         var secondaryCidr = new Aws.Ec2.VpcIpv4CidrBlockAssociation("secondaryCidr", new Aws.Ec2.VpcIpv4CidrBlockAssociationArgs
-    ///         {
-    ///             VpcId = main.Id,
-    ///             CidrBlock = "172.2.0.0/16",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VpcIpv4CidrBlockAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The additional IPv4 CIDR block to associate with the VPC.
-        /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC to make the association with.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -99,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcIpv4CidrBlockAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The additional IPv4 CIDR block to associate with the VPC.
-        /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC to make the association with.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -118,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcIpv4CidrBlockAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The additional IPv4 CIDR block to associate with the VPC.
-        /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
-        /// <summary>
-        /// The ID of the VPC to make the association with.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

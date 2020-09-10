@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an EC2 Availability Zone Group, such as updating its opt-in status.
- *
- * > **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.AvailabilityZoneGroup("example", {
- *     groupName: "us-west-2-lax-1",
- *     optInStatus: "opted-in",
- * });
- * ```
- */
 export class AvailabilityZoneGroup extends pulumi.CustomResource {
     /**
      * Get an existing AvailabilityZoneGroup resource's state with the given name, ID, and optional extra
@@ -49,13 +32,7 @@ export class AvailabilityZoneGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === AvailabilityZoneGroup.__pulumiType;
     }
 
-    /**
-     * Name of the Availability Zone Group.
-     */
     public readonly groupName!: pulumi.Output<string>;
-    /**
-     * Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-     */
     public readonly optInStatus!: pulumi.Output<string>;
 
     /**
@@ -98,13 +75,7 @@ export class AvailabilityZoneGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AvailabilityZoneGroup resources.
  */
 export interface AvailabilityZoneGroupState {
-    /**
-     * Name of the Availability Zone Group.
-     */
     readonly groupName?: pulumi.Input<string>;
-    /**
-     * Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-     */
     readonly optInStatus?: pulumi.Input<string>;
 }
 
@@ -112,12 +83,6 @@ export interface AvailabilityZoneGroupState {
  * The set of arguments for constructing a AvailabilityZoneGroup resource.
  */
 export interface AvailabilityZoneGroupArgs {
-    /**
-     * Name of the Availability Zone Group.
-     */
     readonly groupName: pulumi.Input<string>;
-    /**
-     * Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-     */
     readonly optInStatus: pulumi.Input<string>;
 }

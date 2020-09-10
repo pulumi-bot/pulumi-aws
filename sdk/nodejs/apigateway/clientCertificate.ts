@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an API Gateway Client Certificate.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const demo = new aws.apigateway.ClientCertificate("demo", {
- *     description: "My client certificate",
- * });
- * ```
- */
 export class ClientCertificate extends pulumi.CustomResource {
     /**
      * Get an existing ClientCertificate resource's state with the given name, ID, and optional extra
@@ -46,29 +32,11 @@ export class ClientCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClientCertificate.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN)
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The date when the client certificate was created.
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * The description of the client certificate.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The date when the client certificate will expire.
-     */
     public /*out*/ readonly expirationDate!: pulumi.Output<string>;
-    /**
-     * The PEM-encoded public key of the client certificate.
-     */
     public /*out*/ readonly pemEncodedCertificate!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -113,29 +81,11 @@ export class ClientCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClientCertificate resources.
  */
 export interface ClientCertificateState {
-    /**
-     * Amazon Resource Name (ARN)
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The date when the client certificate was created.
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * The description of the client certificate.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The date when the client certificate will expire.
-     */
     readonly expirationDate?: pulumi.Input<string>;
-    /**
-     * The PEM-encoded public key of the client certificate.
-     */
     readonly pemEncodedCertificate?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -143,12 +93,6 @@ export interface ClientCertificateState {
  * The set of arguments for constructing a ClientCertificate resource.
  */
 export interface ClientCertificateArgs {
-    /**
-     * The description of the client certificate.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

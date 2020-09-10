@@ -11,7 +11,6 @@ import (
 )
 
 type SecretRotationRotationRules struct {
-	// Specifies the number of days between automatic scheduled rotations of the secret.
 	AutomaticallyAfterDays int `pulumi:"automaticallyAfterDays"`
 }
 
@@ -27,7 +26,6 @@ type SecretRotationRotationRulesInput interface {
 }
 
 type SecretRotationRotationRulesArgs struct {
-	// Specifies the number of days between automatic scheduled rotations of the secret.
 	AutomaticallyAfterDays pulumi.IntInput `pulumi:"automaticallyAfterDays"`
 }
 
@@ -107,8 +105,6 @@ func (o SecretRotationRotationRulesOutput) ToSecretRotationRotationRulesPtrOutpu
 		return &v
 	}).(SecretRotationRotationRulesPtrOutput)
 }
-
-// Specifies the number of days between automatic scheduled rotations of the secret.
 func (o SecretRotationRotationRulesOutput) AutomaticallyAfterDays() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretRotationRotationRules) int { return v.AutomaticallyAfterDays }).(pulumi.IntOutput)
 }
@@ -131,7 +127,6 @@ func (o SecretRotationRotationRulesPtrOutput) Elem() SecretRotationRotationRules
 	return o.ApplyT(func(v *SecretRotationRotationRules) SecretRotationRotationRules { return *v }).(SecretRotationRotationRulesOutput)
 }
 
-// Specifies the number of days between automatic scheduled rotations of the secret.
 func (o SecretRotationRotationRulesPtrOutput) AutomaticallyAfterDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretRotationRotationRules) *int {
 		if v == nil {
@@ -142,7 +137,6 @@ func (o SecretRotationRotationRulesPtrOutput) AutomaticallyAfterDays() pulumi.In
 }
 
 type SecretRotationRules struct {
-	// Specifies the number of days between automatic scheduled rotations of the secret.
 	AutomaticallyAfterDays int `pulumi:"automaticallyAfterDays"`
 }
 
@@ -158,7 +152,6 @@ type SecretRotationRulesInput interface {
 }
 
 type SecretRotationRulesArgs struct {
-	// Specifies the number of days between automatic scheduled rotations of the secret.
 	AutomaticallyAfterDays pulumi.IntInput `pulumi:"automaticallyAfterDays"`
 }
 
@@ -238,8 +231,6 @@ func (o SecretRotationRulesOutput) ToSecretRotationRulesPtrOutputWithContext(ctx
 		return &v
 	}).(SecretRotationRulesPtrOutput)
 }
-
-// Specifies the number of days between automatic scheduled rotations of the secret.
 func (o SecretRotationRulesOutput) AutomaticallyAfterDays() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretRotationRules) int { return v.AutomaticallyAfterDays }).(pulumi.IntOutput)
 }
@@ -262,7 +253,6 @@ func (o SecretRotationRulesPtrOutput) Elem() SecretRotationRulesOutput {
 	return o.ApplyT(func(v *SecretRotationRules) SecretRotationRules { return *v }).(SecretRotationRulesOutput)
 }
 
-// Specifies the number of days between automatic scheduled rotations of the secret.
 func (o SecretRotationRulesPtrOutput) AutomaticallyAfterDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretRotationRules) *int {
 		if v == nil {

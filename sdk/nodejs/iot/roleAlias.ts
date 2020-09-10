@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an IoT role alias.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const role = new aws.iam.Role("role", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Effect": "Allow",
- *       "Principal": {"Service": "credentials.iot.amazonaws.com",
- *       "Action": "sts:AssumeRole"
- *     }
- *   ]
- * }
- * `});
- * const alias = new aws.iot.RoleAlias("alias", {
- *     alias: "Thermostat-dynamodb-access-role-alias",
- *     roleArn: role.arn,
- * });
- * ```
- */
 export class RoleAlias extends pulumi.CustomResource {
     /**
      * Get an existing RoleAlias resource's state with the given name, ID, and optional extra
@@ -58,21 +32,9 @@ export class RoleAlias extends pulumi.CustomResource {
         return obj['__pulumiType'] === RoleAlias.__pulumiType;
     }
 
-    /**
-     * The name of the role alias.
-     */
     public readonly alias!: pulumi.Output<string>;
-    /**
-     * The ARN assigned by AWS to this role alias.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-     */
     public readonly credentialDuration!: pulumi.Output<number | undefined>;
-    /**
-     * The identity of the role to which the alias refers.
-     */
     public readonly roleArn!: pulumi.Output<string>;
 
     /**
@@ -119,21 +81,9 @@ export class RoleAlias extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoleAlias resources.
  */
 export interface RoleAliasState {
-    /**
-     * The name of the role alias.
-     */
     readonly alias?: pulumi.Input<string>;
-    /**
-     * The ARN assigned by AWS to this role alias.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-     */
     readonly credentialDuration?: pulumi.Input<number>;
-    /**
-     * The identity of the role to which the alias refers.
-     */
     readonly roleArn?: pulumi.Input<string>;
 }
 
@@ -141,16 +91,7 @@ export interface RoleAliasState {
  * The set of arguments for constructing a RoleAlias resource.
  */
 export interface RoleAliasArgs {
-    /**
-     * The name of the role alias.
-     */
     readonly alias: pulumi.Input<string>;
-    /**
-     * The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-     */
     readonly credentialDuration?: pulumi.Input<number>;
-    /**
-     * The identity of the role to which the alias refers.
-     */
     readonly roleArn: pulumi.Input<string>;
 }

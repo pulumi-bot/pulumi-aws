@@ -11,95 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetVpcEndpointService
     {
-        /// <summary>
-        /// The VPC Endpoint Service data source details about a specific service that
-        /// can be specified when creating a VPC endpoint within the region configured in the provider.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// ### AWS Service
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var s3 = Output.Create(Aws.Ec2.GetVpcEndpointService.InvokeAsync(new Aws.Ec2.GetVpcEndpointServiceArgs
-        ///         {
-        ///             Service = "s3",
-        ///         }));
-        ///         // Create a VPC
-        ///         var foo = new Aws.Ec2.Vpc("foo", new Aws.Ec2.VpcArgs
-        ///         {
-        ///             CidrBlock = "10.0.0.0/16",
-        ///         });
-        ///         // Create a VPC endpoint
-        ///         var ep = new Aws.Ec2.VpcEndpoint("ep", new Aws.Ec2.VpcEndpointArgs
-        ///         {
-        ///             VpcId = foo.Id,
-        ///             ServiceName = s3.Apply(s3 =&gt; s3.ServiceName),
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Non-AWS Service
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var custome = Output.Create(Aws.Ec2.GetVpcEndpointService.InvokeAsync(new Aws.Ec2.GetVpcEndpointServiceArgs
-        ///         {
-        ///             ServiceName = "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Filter
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Ec2.GetVpcEndpointService.InvokeAsync(new Aws.Ec2.GetVpcEndpointServiceArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetVpcEndpointServiceFilterArgs
-        ///                 {
-        ///                     Name = "service-name",
-        ///                     Values = 
-        ///                     {
-        ///                         "some-service",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVpcEndpointServiceResult> InvokeAsync(GetVpcEndpointServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServiceResult>("aws:ec2/getVpcEndpointService:getVpcEndpointService", args ?? new GetVpcEndpointServiceArgs(), options.WithVersion());
     }
@@ -109,34 +20,20 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetVpcEndpointServiceFilterArgs>? _filters;
-
-        /// <summary>
-        /// Configuration block(s) for filtering. Detailed below.
-        /// </summary>
         public List<Inputs.GetVpcEndpointServiceFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVpcEndpointServiceFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The common name of an AWS service (e.g. `s3`).
-        /// </summary>
         [Input("service")]
         public string? Service { get; set; }
 
-        /// <summary>
-        /// The service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
-        /// </summary>
         [Input("serviceName")]
         public string? ServiceName { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -152,56 +49,23 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetVpcEndpointServiceResult
     {
-        /// <summary>
-        /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-        /// </summary>
         public readonly bool AcceptanceRequired;
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the VPC endpoint service.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The Availability Zones in which the service is available.
-        /// </summary>
         public readonly ImmutableArray<string> AvailabilityZones;
-        /// <summary>
-        /// The DNS names for the service.
-        /// </summary>
         public readonly ImmutableArray<string> BaseEndpointDnsNames;
         public readonly ImmutableArray<Outputs.GetVpcEndpointServiceFilterResult> Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Whether or not the service manages its VPC endpoints - `true` or `false`.
-        /// </summary>
         public readonly bool ManagesVpcEndpoints;
-        /// <summary>
-        /// The AWS account ID of the service owner or `amazon`.
-        /// </summary>
         public readonly string Owner;
-        /// <summary>
-        /// The private DNS name for the service.
-        /// </summary>
         public readonly string PrivateDnsName;
         public readonly string? Service;
-        /// <summary>
-        /// The ID of the endpoint service.
-        /// </summary>
         public readonly string ServiceId;
         public readonly string ServiceName;
-        /// <summary>
-        /// The service type, `Gateway` or `Interface`.
-        /// </summary>
         public readonly string ServiceType;
-        /// <summary>
-        /// A map of tags assigned to the resource.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// Whether or not the service supports endpoint policies - `true` or `false`.
-        /// </summary>
         public readonly bool VpcEndpointPolicySupported;
 
         [OutputConstructor]

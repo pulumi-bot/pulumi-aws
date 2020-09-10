@@ -11,46 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetVpnGateway
     {
-        /// <summary>
-        /// The VPN Gateway data source provides details about
-        /// a specific VPN gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var selected = Output.Create(Aws.Ec2.GetVpnGateway.InvokeAsync(new Aws.Ec2.GetVpnGatewayArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetVpnGatewayFilterArgs
-        ///                 {
-        ///                     Name = "tag:Name",
-        ///                     Values = 
-        ///                     {
-        ///                         "vpn-gw",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///         this.VpnGatewayId = selected.Apply(selected =&gt; selected.Id);
-        ///     }
-        /// 
-        ///     [Output("vpnGatewayId")]
-        ///     public Output&lt;string&gt; VpnGatewayId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVpnGatewayResult> InvokeAsync(GetVpnGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpnGatewayResult>("aws:ec2/getVpnGateway:getVpnGateway", args ?? new GetVpnGatewayArgs(), options.WithVersion());
     }
@@ -58,55 +18,31 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class GetVpnGatewayArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.
-        /// </summary>
         [Input("amazonSideAsn")]
         public string? AmazonSideAsn { get; set; }
 
-        /// <summary>
-        /// The ID of a VPC attached to the specific VPN Gateway to retrieve.
-        /// </summary>
         [Input("attachedVpcId")]
         public string? AttachedVpcId { get; set; }
 
-        /// <summary>
-        /// The Availability Zone of the specific VPN Gateway to retrieve.
-        /// </summary>
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
         [Input("filters")]
         private List<Inputs.GetVpnGatewayFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetVpnGatewayFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetVpnGatewayFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The ID of the specific VPN Gateway to retrieve.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The state of the specific VPN Gateway to retrieve.
-        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the desired VPN Gateway.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());

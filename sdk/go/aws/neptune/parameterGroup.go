@@ -10,51 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a Neptune Parameter Group
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/neptune"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := neptune.NewParameterGroup(ctx, "example", &neptune.ParameterGroupArgs{
-// 			Family: pulumi.String("neptune1"),
-// 			Parameters: neptune.ParameterGroupParameterArray{
-// 				&neptune.ParameterGroupParameterArgs{
-// 					Name:  pulumi.String("neptune_query_timeout"),
-// 					Value: pulumi.String("25"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ParameterGroup struct {
 	pulumi.CustomResourceState
 
-	// The Neptune parameter group Amazon Resource Name (ARN).
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The family of the Neptune parameter group.
-	Family pulumi.StringOutput `pulumi:"family"`
-	// The name of the Neptune parameter.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of Neptune parameters to apply.
-	Parameters ParameterGroupParameterArrayOutput `pulumi:"parameters"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn         pulumi.StringOutput                `pulumi:"arn"`
+	Description pulumi.StringPtrOutput             `pulumi:"description"`
+	Family      pulumi.StringOutput                `pulumi:"family"`
+	Name        pulumi.StringOutput                `pulumi:"name"`
+	Parameters  ParameterGroupParameterArrayOutput `pulumi:"parameters"`
+	Tags        pulumi.StringMapOutput             `pulumi:"tags"`
 }
 
 // NewParameterGroup registers a new resource with the given unique name, arguments, and options.
@@ -88,33 +52,21 @@ func GetParameterGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ParameterGroup resources.
 type parameterGroupState struct {
-	// The Neptune parameter group Amazon Resource Name (ARN).
-	Arn *string `pulumi:"arn"`
-	// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// The family of the Neptune parameter group.
-	Family *string `pulumi:"family"`
-	// The name of the Neptune parameter.
-	Name *string `pulumi:"name"`
-	// A list of Neptune parameters to apply.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn         *string                   `pulumi:"arn"`
+	Description *string                   `pulumi:"description"`
+	Family      *string                   `pulumi:"family"`
+	Name        *string                   `pulumi:"name"`
+	Parameters  []ParameterGroupParameter `pulumi:"parameters"`
+	Tags        map[string]string         `pulumi:"tags"`
 }
 
 type ParameterGroupState struct {
-	// The Neptune parameter group Amazon Resource Name (ARN).
-	Arn pulumi.StringPtrInput
-	// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
+	Arn         pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// The family of the Neptune parameter group.
-	Family pulumi.StringPtrInput
-	// The name of the Neptune parameter.
-	Name pulumi.StringPtrInput
-	// A list of Neptune parameters to apply.
-	Parameters ParameterGroupParameterArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Family      pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Parameters  ParameterGroupParameterArrayInput
+	Tags        pulumi.StringMapInput
 }
 
 func (ParameterGroupState) ElementType() reflect.Type {
@@ -122,30 +74,20 @@ func (ParameterGroupState) ElementType() reflect.Type {
 }
 
 type parameterGroupArgs struct {
-	// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-	Description *string `pulumi:"description"`
-	// The family of the Neptune parameter group.
-	Family string `pulumi:"family"`
-	// The name of the Neptune parameter.
-	Name *string `pulumi:"name"`
-	// A list of Neptune parameters to apply.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Description *string                   `pulumi:"description"`
+	Family      string                    `pulumi:"family"`
+	Name        *string                   `pulumi:"name"`
+	Parameters  []ParameterGroupParameter `pulumi:"parameters"`
+	Tags        map[string]string         `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ParameterGroup resource.
 type ParameterGroupArgs struct {
-	// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
-	// The family of the Neptune parameter group.
-	Family pulumi.StringInput
-	// The name of the Neptune parameter.
-	Name pulumi.StringPtrInput
-	// A list of Neptune parameters to apply.
-	Parameters ParameterGroupParameterArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Family      pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Parameters  ParameterGroupParameterArrayInput
+	Tags        pulumi.StringMapInput
 }
 
 func (ParameterGroupArgs) ElementType() reflect.Type {

@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Neptune subnet group resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const _default = new aws.neptune.SubnetGroup("default", {
- *     subnetIds: [
- *         aws_subnet.frontend.id,
- *         aws_subnet.backend.id,
- *     ],
- *     tags: {
- *         Name: "My neptune subnet group",
- *     },
- * });
- * ```
- */
 export class SubnetGroup extends pulumi.CustomResource {
     /**
      * Get an existing SubnetGroup resource's state with the given name, ID, and optional extra
@@ -52,29 +32,11 @@ export class SubnetGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubnetGroup.__pulumiType;
     }
 
-    /**
-     * The ARN of the neptune subnet group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The description of the neptune subnet group. Defaults to "Managed by Pulumi".
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * The name of the neptune subnet group. If omitted, this provider will assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string>;
-    /**
-     * A list of VPC subnet IDs.
-     */
     public readonly subnetIds!: pulumi.Output<string[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -122,29 +84,11 @@ export class SubnetGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubnetGroup resources.
  */
 export interface SubnetGroupState {
-    /**
-     * The ARN of the neptune subnet group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description of the neptune subnet group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the neptune subnet group. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * A list of VPC subnet IDs.
-     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -152,24 +96,9 @@ export interface SubnetGroupState {
  * The set of arguments for constructing a SubnetGroup resource.
  */
 export interface SubnetGroupArgs {
-    /**
-     * The description of the neptune subnet group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the neptune subnet group. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * A list of VPC subnet IDs.
-     */
     readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

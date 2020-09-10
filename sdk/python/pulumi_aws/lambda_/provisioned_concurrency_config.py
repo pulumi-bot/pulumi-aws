@@ -22,37 +22,9 @@ class ProvisionedConcurrencyConfig(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a Lambda Provisioned Concurrency Configuration.
-
-        ## Example Usage
-        ### Alias Name
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.ProvisionedConcurrencyConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            provisioned_concurrent_executions=1,
-            qualifier=aws_lambda_alias["example"]["name"])
-        ```
-        ### Function Version
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.ProvisionedConcurrencyConfig("example",
-            function_name=aws_lambda_function["example"]["function_name"],
-            provisioned_concurrent_executions=1,
-            qualifier=aws_lambda_function["example"]["version"])
-        ```
-
+        Create a ProvisionedConcurrencyConfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] function_name: Name or Amazon Resource Name (ARN) of the Lambda Function.
-        :param pulumi.Input[float] provisioned_concurrent_executions: Amount of capacity to allocate. Must be greater than or equal to `1`.
-        :param pulumi.Input[str] qualifier: Lambda Function version or Lambda Alias name.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -100,9 +72,6 @@ class ProvisionedConcurrencyConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] function_name: Name or Amazon Resource Name (ARN) of the Lambda Function.
-        :param pulumi.Input[float] provisioned_concurrent_executions: Amount of capacity to allocate. Must be greater than or equal to `1`.
-        :param pulumi.Input[str] qualifier: Lambda Function version or Lambda Alias name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -116,25 +85,16 @@ class ProvisionedConcurrencyConfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[str]:
-        """
-        Name or Amazon Resource Name (ARN) of the Lambda Function.
-        """
         return pulumi.get(self, "function_name")
 
     @property
     @pulumi.getter(name="provisionedConcurrentExecutions")
     def provisioned_concurrent_executions(self) -> pulumi.Output[float]:
-        """
-        Amount of capacity to allocate. Must be greater than or equal to `1`.
-        """
         return pulumi.get(self, "provisioned_concurrent_executions")
 
     @property
     @pulumi.getter
     def qualifier(self) -> pulumi.Output[str]:
-        """
-        Lambda Function version or Lambda Alias name.
-        """
         return pulumi.get(self, "qualifier")
 
     def translate_output_property(self, prop):

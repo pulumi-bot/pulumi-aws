@@ -9,130 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AppSync
 {
-    /// <summary>
-    /// Provides an AppSync Function.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testGraphQLApi = new Aws.AppSync.GraphQLApi("testGraphQLApi", new Aws.AppSync.GraphQLApiArgs
-    ///         {
-    ///             AuthenticationType = "API_KEY",
-    ///             Schema = @"type Mutation {
-    ///   putPost(id: ID!, title: String!): Post
-    /// }
-    /// 
-    /// type Post {
-    ///   id: ID!
-    ///   title: String!
-    /// }
-    /// 
-    /// type Query {
-    ///   singlePost(id: ID!): Post
-    /// }
-    /// 
-    /// schema {
-    ///   query: Query
-    ///   mutation: Mutation
-    /// }
-    /// ",
-    ///         });
-    ///         var testDataSource = new Aws.AppSync.DataSource("testDataSource", new Aws.AppSync.DataSourceArgs
-    ///         {
-    ///             ApiId = testGraphQLApi.Id,
-    ///             Name = "tf-example",
-    ///             Type = "HTTP",
-    ///             HttpConfig = new Aws.AppSync.Inputs.DataSourceHttpConfigArgs
-    ///             {
-    ///                 Endpoint = "http://example.com",
-    ///             },
-    ///         });
-    ///         var testFunction = new Aws.AppSync.Function("testFunction", new Aws.AppSync.FunctionArgs
-    ///         {
-    ///             ApiId = testGraphQLApi.Id,
-    ///             DataSource = testDataSource.Name,
-    ///             Name = "tf_example",
-    ///             RequestMappingTemplate = @"{
-    ///     ""version"": ""2018-05-29"",
-    ///     ""method"": ""GET"",
-    ///     ""resourcePath"": ""/"",
-    ///     ""params"":{
-    ///         ""headers"": $utils.http.copyheaders($ctx.request.headers)
-    ///     }
-    /// }
-    /// ",
-    ///             ResponseMappingTemplate = @"#if($ctx.result.statusCode == 200)
-    ///     $ctx.result.body
-    /// #else
-    ///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
-    /// #end
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Function : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the associated AppSync API.
-        /// </summary>
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the Function object.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function DataSource name.
-        /// </summary>
         [Output("dataSource")]
         public Output<string> DataSource { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function description.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// A unique ID representing the Function object.
-        /// </summary>
         [Output("functionId")]
         public Output<string> FunctionId { get; private set; } = null!;
 
-        /// <summary>
-        /// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-        /// </summary>
         [Output("functionVersion")]
         public Output<string?> FunctionVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function name. The function name does not have to be unique.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-        /// </summary>
         [Output("requestMappingTemplate")]
         public Output<string> RequestMappingTemplate { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function response mapping template.
-        /// </summary>
         [Output("responseMappingTemplate")]
         public Output<string> ResponseMappingTemplate { get; private set; } = null!;
 
@@ -182,45 +84,24 @@ namespace Pulumi.Aws.AppSync
 
     public sealed class FunctionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the associated AppSync API.
-        /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
 
-        /// <summary>
-        /// The Function DataSource name.
-        /// </summary>
         [Input("dataSource", required: true)]
         public Input<string> DataSource { get; set; } = null!;
 
-        /// <summary>
-        /// The Function description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-        /// </summary>
         [Input("functionVersion")]
         public Input<string>? FunctionVersion { get; set; }
 
-        /// <summary>
-        /// The Function name. The function name does not have to be unique.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-        /// </summary>
         [Input("requestMappingTemplate", required: true)]
         public Input<string> RequestMappingTemplate { get; set; } = null!;
 
-        /// <summary>
-        /// The Function response mapping template.
-        /// </summary>
         [Input("responseMappingTemplate", required: true)]
         public Input<string> ResponseMappingTemplate { get; set; } = null!;
 
@@ -231,57 +112,30 @@ namespace Pulumi.Aws.AppSync
 
     public sealed class FunctionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the associated AppSync API.
-        /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }
 
-        /// <summary>
-        /// The ARN of the Function object.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The Function DataSource name.
-        /// </summary>
         [Input("dataSource")]
         public Input<string>? DataSource { get; set; }
 
-        /// <summary>
-        /// The Function description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// A unique ID representing the Function object.
-        /// </summary>
         [Input("functionId")]
         public Input<string>? FunctionId { get; set; }
 
-        /// <summary>
-        /// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-        /// </summary>
         [Input("functionVersion")]
         public Input<string>? FunctionVersion { get; set; }
 
-        /// <summary>
-        /// The Function name. The function name does not have to be unique.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-        /// </summary>
         [Input("requestMappingTemplate")]
         public Input<string>? RequestMappingTemplate { get; set; }
 
-        /// <summary>
-        /// The Function response mapping template.
-        /// </summary>
         [Input("responseMappingTemplate")]
         public Input<string>? ResponseMappingTemplate { get; set; }
 

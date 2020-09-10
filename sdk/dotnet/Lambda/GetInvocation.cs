@@ -11,11 +11,6 @@ namespace Pulumi.Aws.Lambda
 {
     public static class GetInvocation
     {
-        /// <summary>
-        /// Use this data source to invoke custom lambda functions as data source.
-        /// The lambda function is invoked with [RequestResponse](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax)
-        /// invocation type.
-        /// </summary>
         public static Task<GetInvocationResult> InvokeAsync(GetInvocationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInvocationResult>("aws:lambda/getInvocation:getInvocation", args ?? new GetInvocationArgs(), options.WithVersion());
     }
@@ -23,22 +18,12 @@ namespace Pulumi.Aws.Lambda
 
     public sealed class GetInvocationArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the lambda function.
-        /// </summary>
         [Input("functionName", required: true)]
         public string FunctionName { get; set; } = null!;
 
-        /// <summary>
-        /// A string in JSON format that is passed as payload to the lambda function.
-        /// </summary>
         [Input("input", required: true)]
         public string Input { get; set; } = null!;
 
-        /// <summary>
-        /// The qualifier (a.k.a version) of the lambda function. Defaults
-        /// to `$LATEST`.
-        /// </summary>
         [Input("qualifier")]
         public string? Qualifier { get; set; }
 
@@ -58,9 +43,6 @@ namespace Pulumi.Aws.Lambda
         public readonly string Id;
         public readonly string Input;
         public readonly string? Qualifier;
-        /// <summary>
-        /// String result of the lambda function invocation.
-        /// </summary>
         public readonly string Result;
 
         [OutputConstructor]

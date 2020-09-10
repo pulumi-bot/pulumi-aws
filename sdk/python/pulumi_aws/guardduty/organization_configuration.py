@@ -21,26 +21,9 @@ class OrganizationConfiguration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages the GuardDuty Organization Configuration in the current AWS Region. The AWS account utilizing this resource must have been assigned as a delegated Organization administrator account, e.g. via the `guardduty.OrganizationAdminAccount` resource. More information about Organizations support in GuardDuty can be found in the [GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
-
-        > **NOTE:** This is an advanced resource. The provider will automatically assume management of the GuardDuty Organization Configuration without import and perform no actions on removal from the resource configuration.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_detector = aws.guardduty.Detector("exampleDetector", enable=True)
-        example_organization_configuration = aws.guardduty.OrganizationConfiguration("exampleOrganizationConfiguration",
-            auto_enable=True,
-            detector_id=example_detector.id)
-        ```
-
+        Create a OrganizationConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_enable: When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
-        :param pulumi.Input[str] detector_id: The detector ID of the GuardDuty account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,8 +67,6 @@ class OrganizationConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_enable: When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
-        :param pulumi.Input[str] detector_id: The detector ID of the GuardDuty account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -98,17 +79,11 @@ class OrganizationConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="autoEnable")
     def auto_enable(self) -> pulumi.Output[bool]:
-        """
-        When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
-        """
         return pulumi.get(self, "auto_enable")
 
     @property
     @pulumi.getter(name="detectorId")
     def detector_id(self) -> pulumi.Output[str]:
-        """
-        The detector ID of the GuardDuty account.
-        """
         return pulumi.get(self, "detector_id")
 
     def translate_output_property(self, prop):

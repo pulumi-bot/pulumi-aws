@@ -11,9 +11,7 @@ import (
 )
 
 type GrantConstraint struct {
-	// A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryptionContextSubset`.
 	EncryptionContextEquals map[string]string `pulumi:"encryptionContextEquals"`
-	// A list of key-value pairs that must be included in the encryption context of subsequent cryptographic operation requests. The grant allows the cryptographic operation only when the encryption context in the request includes the key-value pairs specified in this constraint, although it can include additional key-value pairs. Conflicts with `encryptionContextEquals`.
 	EncryptionContextSubset map[string]string `pulumi:"encryptionContextSubset"`
 }
 
@@ -29,9 +27,7 @@ type GrantConstraintInput interface {
 }
 
 type GrantConstraintArgs struct {
-	// A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryptionContextSubset`.
 	EncryptionContextEquals pulumi.StringMapInput `pulumi:"encryptionContextEquals"`
-	// A list of key-value pairs that must be included in the encryption context of subsequent cryptographic operation requests. The grant allows the cryptographic operation only when the encryption context in the request includes the key-value pairs specified in this constraint, although it can include additional key-value pairs. Conflicts with `encryptionContextEquals`.
 	EncryptionContextSubset pulumi.StringMapInput `pulumi:"encryptionContextSubset"`
 }
 
@@ -86,12 +82,10 @@ func (o GrantConstraintOutput) ToGrantConstraintOutputWithContext(ctx context.Co
 	return o
 }
 
-// A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryptionContextSubset`.
 func (o GrantConstraintOutput) EncryptionContextEquals() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GrantConstraint) map[string]string { return v.EncryptionContextEquals }).(pulumi.StringMapOutput)
 }
 
-// A list of key-value pairs that must be included in the encryption context of subsequent cryptographic operation requests. The grant allows the cryptographic operation only when the encryption context in the request includes the key-value pairs specified in this constraint, although it can include additional key-value pairs. Conflicts with `encryptionContextEquals`.
 func (o GrantConstraintOutput) EncryptionContextSubset() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GrantConstraint) map[string]string { return v.EncryptionContextSubset }).(pulumi.StringMapOutput)
 }
@@ -229,14 +223,10 @@ func (o GetSecretSecretArrayOutput) Index(i pulumi.IntInput) GetSecretSecretOutp
 }
 
 type GetSecretsSecret struct {
-	// An optional mapping that makes up the Encryption Context for the secret.
-	Context map[string]string `pulumi:"context"`
-	// An optional list of Grant Tokens for the secret.
-	GrantTokens []string `pulumi:"grantTokens"`
-	// The name to export this secret under in the attributes.
-	Name string `pulumi:"name"`
-	// Base64 encoded payload, as returned from a KMS encrypt operation.
-	Payload string `pulumi:"payload"`
+	Context     map[string]string `pulumi:"context"`
+	GrantTokens []string          `pulumi:"grantTokens"`
+	Name        string            `pulumi:"name"`
+	Payload     string            `pulumi:"payload"`
 }
 
 // GetSecretsSecretInput is an input type that accepts GetSecretsSecretArgs and GetSecretsSecretOutput values.
@@ -251,14 +241,10 @@ type GetSecretsSecretInput interface {
 }
 
 type GetSecretsSecretArgs struct {
-	// An optional mapping that makes up the Encryption Context for the secret.
-	Context pulumi.StringMapInput `pulumi:"context"`
-	// An optional list of Grant Tokens for the secret.
+	Context     pulumi.StringMapInput   `pulumi:"context"`
 	GrantTokens pulumi.StringArrayInput `pulumi:"grantTokens"`
-	// The name to export this secret under in the attributes.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Base64 encoded payload, as returned from a KMS encrypt operation.
-	Payload pulumi.StringInput `pulumi:"payload"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	Payload     pulumi.StringInput      `pulumi:"payload"`
 }
 
 func (GetSecretsSecretArgs) ElementType() reflect.Type {
@@ -312,22 +298,18 @@ func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.
 	return o
 }
 
-// An optional mapping that makes up the Encryption Context for the secret.
 func (o GetSecretsSecretOutput) Context() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.Context }).(pulumi.StringMapOutput)
 }
 
-// An optional list of Grant Tokens for the secret.
 func (o GetSecretsSecretOutput) GrantTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecretsSecret) []string { return v.GrantTokens }).(pulumi.StringArrayOutput)
 }
 
-// The name to export this secret under in the attributes.
 func (o GetSecretsSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Base64 encoded payload, as returned from a KMS encrypt operation.
 func (o GetSecretsSecretOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Payload }).(pulumi.StringOutput)
 }

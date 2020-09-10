@@ -9,129 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// This resource attaches a security group to an Elastic Network Interface (ENI).
-    /// It can be used to attach a security group to any existing ENI, be it a
-    /// secondary ENI or one attached as the primary interface on an instance.
-    /// 
-    /// &gt; **NOTE on instances, interfaces, and security groups:** This provider currently
-    /// provides the capability to assign security groups via the [`aws.ec2.Instance`][1]
-    /// and the [`aws.ec2.NetworkInterface`][2] resources. Using this resource in
-    /// conjunction with security groups provided in-line in those resources will cause
-    /// conflicts, and will lead to spurious diffs and undefined behavior - please use
-    /// one or the other.
-    /// 
-    /// [1]: https://www.terraform.io/docs/providers/aws/d/instance.html
-    /// [2]: https://www.terraform.io/docs/providers/aws/r/network_interface.html
-    /// 
-    /// ## Example Usage
-    /// 
-    /// The following provides a very basic example of setting up an instance (provided
-    /// by `instance`) in the default security group, creating a security group
-    /// (provided by `sg`) and then attaching the security group to the instance's
-    /// primary network interface via the `aws.ec2.NetworkInterfaceSecurityGroupAttachment` resource,
-    /// named `sg_attachment`:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ami = Output.Create(Aws.GetAmi.InvokeAsync(new Aws.GetAmiArgs
-    ///         {
-    ///             MostRecent = true,
-    ///             Filters = 
-    ///             {
-    ///                 new Aws.Inputs.GetAmiFilterArgs
-    ///                 {
-    ///                     Name = "name",
-    ///                     Values = 
-    ///                     {
-    ///                         "amzn-ami-hvm-*",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Owners = 
-    ///             {
-    ///                 "amazon",
-    ///             },
-    ///         }));
-    ///         var instance = new Aws.Ec2.Instance("instance", new Aws.Ec2.InstanceArgs
-    ///         {
-    ///             InstanceType = "t2.micro",
-    ///             Ami = ami.Apply(ami =&gt; ami.Id),
-    ///             Tags = 
-    ///             {
-    ///                 { "type", "test-instance" },
-    ///             },
-    ///         });
-    ///         var sg = new Aws.Ec2.SecurityGroup("sg", new Aws.Ec2.SecurityGroupArgs
-    ///         {
-    ///             Tags = 
-    ///             {
-    ///                 { "type", "test-security-group" },
-    ///             },
-    ///         });
-    ///         var sgAttachment = new Aws.Ec2.NetworkInterfaceSecurityGroupAttachment("sgAttachment", new Aws.Ec2.NetworkInterfaceSecurityGroupAttachmentArgs
-    ///         {
-    ///             SecurityGroupId = sg.Id,
-    ///             NetworkInterfaceId = instance.PrimaryNetworkInterfaceId,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// In this example, `instance` is provided by the `aws.ec2.Instance` data source,
-    /// fetching an external instance, possibly not managed by this provider.
-    /// `sg_attachment` then attaches to the output instance's `network_interface_id`:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var instance = Output.Create(Aws.Ec2.GetInstance.InvokeAsync(new Aws.Ec2.GetInstanceArgs
-    ///         {
-    ///             InstanceId = "i-1234567890abcdef0",
-    ///         }));
-    ///         var sg = new Aws.Ec2.SecurityGroup("sg", new Aws.Ec2.SecurityGroupArgs
-    ///         {
-    ///             Tags = 
-    ///             {
-    ///                 { "type", "test-security-group" },
-    ///             },
-    ///         });
-    ///         var sgAttachment = new Aws.Ec2.NetworkInterfaceSecurityGroupAttachment("sgAttachment", new Aws.Ec2.NetworkInterfaceSecurityGroupAttachmentArgs
-    ///         {
-    ///             SecurityGroupId = sg.Id,
-    ///             NetworkInterfaceId = instance.Apply(instance =&gt; instance.NetworkInterfaceId),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Output Reference
-    /// 
-    /// There are no outputs for this resource.
-    /// </summary>
     public partial class NetworkInterfaceSecurityGroupAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the network interface to attach to.
-        /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the security group.
-        /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
@@ -181,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class NetworkInterfaceSecurityGroupAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the network interface to attach to.
-        /// </summary>
         [Input("networkInterfaceId", required: true)]
         public Input<string> NetworkInterfaceId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the security group.
-        /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
 
@@ -200,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class NetworkInterfaceSecurityGroupAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the network interface to attach to.
-        /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The ID of the security group.
-        /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 

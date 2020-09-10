@@ -9,44 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sfn
 {
-    /// <summary>
-    /// Provides a Step Function Activity resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var sfnActivity = new Aws.Sfn.Activity("sfnActivity", new Aws.Sfn.ActivityArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Activity : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The date the activity was created.
-        /// </summary>
         [Output("creationDate")]
         public Output<string> CreationDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the activity to create.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -96,18 +66,11 @@ namespace Pulumi.Aws.Sfn
 
     public sealed class ActivityArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the activity to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -121,24 +84,14 @@ namespace Pulumi.Aws.Sfn
 
     public sealed class ActivityState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The date the activity was created.
-        /// </summary>
         [Input("creationDate")]
         public Input<string>? CreationDate { get; set; }
 
-        /// <summary>
-        /// The name of the activity to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

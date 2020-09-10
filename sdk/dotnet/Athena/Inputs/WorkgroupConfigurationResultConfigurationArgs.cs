@@ -12,15 +12,9 @@ namespace Pulumi.Aws.Athena.Inputs
 
     public sealed class WorkgroupConfigurationResultConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block with encryption settings. Documented below.
-        /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
 
-        /// <summary>
-        /// The location in Amazon S3 where your query results are stored, such as `s3://path/to/query/bucket/`. For more information, see [Queries and Query Result Files](https://docs.aws.amazon.com/athena/latest/ug/querying.html).
-        /// </summary>
         [Input("outputLocation")]
         public Input<string>? OutputLocation { get; set; }
 

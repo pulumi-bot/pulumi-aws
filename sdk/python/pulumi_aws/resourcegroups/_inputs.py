@@ -17,10 +17,6 @@ class GroupResourceQueryArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] query: The resource query as a JSON string.
-        :param pulumi.Input[str] type: The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
-        """
         pulumi.set(__self__, "query", query)
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -28,9 +24,6 @@ class GroupResourceQueryArgs:
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
-        """
-        The resource query as a JSON string.
-        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -40,9 +33,6 @@ class GroupResourceQueryArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter

@@ -11,33 +11,6 @@ namespace Pulumi.Aws.Ecs
 {
     public static class GetCluster
     {
-        /// <summary>
-        /// The ECS Cluster data source allows access to details of a specific
-        /// cluster within an AWS ECS service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ecs_mongo = Output.Create(Aws.Ecs.GetCluster.InvokeAsync(new Aws.Ecs.GetClusterArgs
-        ///         {
-        ///             ClusterName = "ecs-mongo-production",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:ecs/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
     }
@@ -45,9 +18,6 @@ namespace Pulumi.Aws.Ecs
 
     public sealed class GetClusterArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the ECS Cluster
-        /// </summary>
         [Input("clusterName", required: true)]
         public string ClusterName { get; set; } = null!;
 
@@ -60,34 +30,16 @@ namespace Pulumi.Aws.Ecs
     [OutputType]
     public sealed class GetClusterResult
     {
-        /// <summary>
-        /// The ARN of the ECS Cluster
-        /// </summary>
         public readonly string Arn;
         public readonly string ClusterName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The number of pending tasks for the ECS Cluster
-        /// </summary>
         public readonly int PendingTasksCount;
-        /// <summary>
-        /// The number of registered container instances for the ECS Cluster
-        /// </summary>
         public readonly int RegisteredContainerInstancesCount;
-        /// <summary>
-        /// The number of running tasks for the ECS Cluster
-        /// </summary>
         public readonly int RunningTasksCount;
-        /// <summary>
-        /// The settings associated with the ECS Cluster.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterSettingResult> Settings;
-        /// <summary>
-        /// The status of the ECS Cluster
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

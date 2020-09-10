@@ -23,27 +23,9 @@ class Trigger(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a CodeCommit Trigger Resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_repository = aws.codecommit.Repository("testRepository", repository_name="test")
-        test_trigger = aws.codecommit.Trigger("testTrigger",
-            repository_name=test_repository.repository_name,
-            triggers=[aws.codecommit.TriggerTriggerArgs(
-                name="all",
-                events=["all"],
-                destination_arn=aws_sns_topic["test"]["arn"],
-            )])
-        ```
-
+        Create a Trigger resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] repository_name: The name for the repository. This needs to be less than 100 characters.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +71,6 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] repository_name: The name for the repository. This needs to be less than 100 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -108,9 +89,6 @@ class Trigger(pulumi.CustomResource):
     @property
     @pulumi.getter(name="repositoryName")
     def repository_name(self) -> pulumi.Output[str]:
-        """
-        The name for the repository. This needs to be less than 100 characters.
-        """
         return pulumi.get(self, "repository_name")
 
     @property

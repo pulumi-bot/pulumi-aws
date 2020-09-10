@@ -7,9 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
-//
-// This data source can be useful for getting a list of volume IDs with (for example) matching tags.
 func GetEbsVolumes(ctx *pulumi.Context, args *GetEbsVolumesArgs, opts ...pulumi.InvokeOption) (*GetEbsVolumesResult, error) {
 	var rv GetEbsVolumesResult
 	err := ctx.Invoke("aws:ebs/getEbsVolumes:getEbsVolumes", args, &rv, opts...)
@@ -21,20 +18,15 @@ func GetEbsVolumes(ctx *pulumi.Context, args *GetEbsVolumesArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getEbsVolumes.
 type GetEbsVolumesArgs struct {
-	// Custom filter block as described below.
 	Filters []GetEbsVolumesFilter `pulumi:"filters"`
-	// A map of tags, each pair of which must exactly match
-	// a pair on the desired volumes.
-	Tags map[string]string `pulumi:"tags"`
+	Tags    map[string]string     `pulumi:"tags"`
 }
 
 // A collection of values returned by getEbsVolumes.
 type GetEbsVolumesResult struct {
 	Filters []GetEbsVolumesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A set of all the EBS Volume IDs found. This data source will fail if
-	// no volumes match the provided criteria.
+	Id   string            `pulumi:"id"`
 	Ids  []string          `pulumi:"ids"`
 	Tags map[string]string `pulumi:"tags"`
 }

@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * `aws.waf.IpSet` Retrieves a WAF IP Set Resource Id.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.waf.getIpset({
- *     name: "tfWAFIPSet",
- * }, { async: true }));
- * ```
- */
 export function getIpset(args: GetIpsetArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsetResult> {
     if (!opts) {
         opts = {}
@@ -37,9 +23,6 @@ export function getIpset(args: GetIpsetArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getIpset.
  */
 export interface GetIpsetArgs {
-    /**
-     * The name of the WAF IP set.
-     */
     readonly name: string;
 }
 

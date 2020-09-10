@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.directoryservice.ConditionalForwader("example", {
- *     directoryId: aws_directory_service_directory.ad.id,
- *     remoteDomainName: "example.com",
- *     dnsIps: [
- *         "8.8.8.8",
- *         "8.8.4.4",
- *     ],
- * });
- * ```
- */
 export class ConditionalForwader extends pulumi.CustomResource {
     /**
      * Get an existing ConditionalForwader resource's state with the given name, ID, and optional extra
@@ -51,17 +32,8 @@ export class ConditionalForwader extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConditionalForwader.__pulumiType;
     }
 
-    /**
-     * The id of directory.
-     */
     public readonly directoryId!: pulumi.Output<string>;
-    /**
-     * A list of forwarder IP addresses.
-     */
     public readonly dnsIps!: pulumi.Output<string[]>;
-    /**
-     * The fully qualified domain name of the remote domain for which forwarders will be used.
-     */
     public readonly remoteDomainName!: pulumi.Output<string>;
 
     /**
@@ -109,17 +81,8 @@ export class ConditionalForwader extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConditionalForwader resources.
  */
 export interface ConditionalForwaderState {
-    /**
-     * The id of directory.
-     */
     readonly directoryId?: pulumi.Input<string>;
-    /**
-     * A list of forwarder IP addresses.
-     */
     readonly dnsIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The fully qualified domain name of the remote domain for which forwarders will be used.
-     */
     readonly remoteDomainName?: pulumi.Input<string>;
 }
 
@@ -127,16 +90,7 @@ export interface ConditionalForwaderState {
  * The set of arguments for constructing a ConditionalForwader resource.
  */
 export interface ConditionalForwaderArgs {
-    /**
-     * The id of directory.
-     */
     readonly directoryId: pulumi.Input<string>;
-    /**
-     * A list of forwarder IP addresses.
-     */
     readonly dnsIps: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The fully qualified domain name of the remote domain for which forwarders will be used.
-     */
     readonly remoteDomainName: pulumi.Input<string>;
 }

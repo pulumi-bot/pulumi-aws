@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an OpsWorks MySQL layer resource.
- *
- * > **Note:** All arguments including the root password will be stored in the raw state as plain-text.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const db = new aws.opsworks.MysqlLayer("db", {stackId: aws_opsworks_stack.main.id});
- * ```
- */
 export class MysqlLayer extends pulumi.CustomResource {
     /**
      * Get an existing MysqlLayer resource's state with the given name, ID, and optional extra
@@ -48,86 +34,29 @@ export class MysqlLayer extends pulumi.CustomResource {
         return obj['__pulumiType'] === MysqlLayer.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name(ARN) of the layer.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Whether to automatically assign an elastic IP address to the layer's instances.
-     */
     public readonly autoAssignElasticIps!: pulumi.Output<boolean | undefined>;
-    /**
-     * For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-     */
     public readonly autoAssignPublicIps!: pulumi.Output<boolean | undefined>;
-    /**
-     * Whether to enable auto-healing for the layer.
-     */
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     public readonly customConfigureRecipes!: pulumi.Output<string[] | undefined>;
     public readonly customDeployRecipes!: pulumi.Output<string[] | undefined>;
-    /**
-     * The ARN of an IAM profile that will be used for the layer's instances.
-     */
     public readonly customInstanceProfileArn!: pulumi.Output<string | undefined>;
-    /**
-     * Custom JSON attributes to apply to the layer.
-     */
     public readonly customJson!: pulumi.Output<string | undefined>;
-    /**
-     * Ids for a set of security groups to apply to the layer's instances.
-     */
     public readonly customSecurityGroupIds!: pulumi.Output<string[] | undefined>;
     public readonly customSetupRecipes!: pulumi.Output<string[] | undefined>;
     public readonly customShutdownRecipes!: pulumi.Output<string[] | undefined>;
     public readonly customUndeployRecipes!: pulumi.Output<string[] | undefined>;
-    /**
-     * Whether to enable Elastic Load Balancing connection draining.
-     */
     public readonly drainElbOnShutdown!: pulumi.Output<boolean | undefined>;
-    /**
-     * `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-     */
     public readonly ebsVolumes!: pulumi.Output<outputs.opsworks.MysqlLayerEbsVolume[] | undefined>;
-    /**
-     * Name of an Elastic Load Balancer to attach to this layer
-     */
     public readonly elasticLoadBalancer!: pulumi.Output<string | undefined>;
-    /**
-     * Whether to install OS and package updates on each instance when it boots.
-     */
     public readonly installUpdatesOnBoot!: pulumi.Output<boolean | undefined>;
-    /**
-     * The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-     */
     public readonly instanceShutdownTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * A human-readable name for the layer.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Root password to use for MySQL.
-     */
     public readonly rootPassword!: pulumi.Output<string | undefined>;
-    /**
-     * Whether to set the root user password to all instances in the stack so they can access the instances in this layer.
-     */
     public readonly rootPasswordOnAllInstances!: pulumi.Output<boolean | undefined>;
-    /**
-     * The id of the stack the layer will belong to.
-     */
     public readonly stackId!: pulumi.Output<string>;
-    /**
-     * Names of a set of system packages to install on the layer's instances.
-     */
     public readonly systemPackages!: pulumi.Output<string[] | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Whether to use EBS-optimized instances.
-     */
     public readonly useEbsOptimizedInstances!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -211,86 +140,29 @@ export class MysqlLayer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MysqlLayer resources.
  */
 export interface MysqlLayerState {
-    /**
-     * The Amazon Resource Name(ARN) of the layer.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Whether to automatically assign an elastic IP address to the layer's instances.
-     */
     readonly autoAssignElasticIps?: pulumi.Input<boolean>;
-    /**
-     * For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-     */
     readonly autoAssignPublicIps?: pulumi.Input<boolean>;
-    /**
-     * Whether to enable auto-healing for the layer.
-     */
     readonly autoHealing?: pulumi.Input<boolean>;
     readonly customConfigureRecipes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customDeployRecipes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ARN of an IAM profile that will be used for the layer's instances.
-     */
     readonly customInstanceProfileArn?: pulumi.Input<string>;
-    /**
-     * Custom JSON attributes to apply to the layer.
-     */
     readonly customJson?: pulumi.Input<string>;
-    /**
-     * Ids for a set of security groups to apply to the layer's instances.
-     */
     readonly customSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customSetupRecipes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customShutdownRecipes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customUndeployRecipes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to enable Elastic Load Balancing connection draining.
-     */
     readonly drainElbOnShutdown?: pulumi.Input<boolean>;
-    /**
-     * `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-     */
     readonly ebsVolumes?: pulumi.Input<pulumi.Input<inputs.opsworks.MysqlLayerEbsVolume>[]>;
-    /**
-     * Name of an Elastic Load Balancer to attach to this layer
-     */
     readonly elasticLoadBalancer?: pulumi.Input<string>;
-    /**
-     * Whether to install OS and package updates on each instance when it boots.
-     */
     readonly installUpdatesOnBoot?: pulumi.Input<boolean>;
-    /**
-     * The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-     */
     readonly instanceShutdownTimeout?: pulumi.Input<number>;
-    /**
-     * A human-readable name for the layer.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Root password to use for MySQL.
-     */
     readonly rootPassword?: pulumi.Input<string>;
-    /**
-     * Whether to set the root user password to all instances in the stack so they can access the instances in this layer.
-     */
     readonly rootPasswordOnAllInstances?: pulumi.Input<boolean>;
-    /**
-     * The id of the stack the layer will belong to.
-     */
     readonly stackId?: pulumi.Input<string>;
-    /**
-     * Names of a set of system packages to install on the layer's instances.
-     */
     readonly systemPackages?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Whether to use EBS-optimized instances.
-     */
     readonly useEbsOptimizedInstances?: pulumi.Input<boolean>;
 }
 
@@ -298,81 +170,27 @@ export interface MysqlLayerState {
  * The set of arguments for constructing a MysqlLayer resource.
  */
 export interface MysqlLayerArgs {
-    /**
-     * Whether to automatically assign an elastic IP address to the layer's instances.
-     */
     readonly autoAssignElasticIps?: pulumi.Input<boolean>;
-    /**
-     * For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-     */
     readonly autoAssignPublicIps?: pulumi.Input<boolean>;
-    /**
-     * Whether to enable auto-healing for the layer.
-     */
     readonly autoHealing?: pulumi.Input<boolean>;
     readonly customConfigureRecipes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customDeployRecipes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ARN of an IAM profile that will be used for the layer's instances.
-     */
     readonly customInstanceProfileArn?: pulumi.Input<string>;
-    /**
-     * Custom JSON attributes to apply to the layer.
-     */
     readonly customJson?: pulumi.Input<string>;
-    /**
-     * Ids for a set of security groups to apply to the layer's instances.
-     */
     readonly customSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customSetupRecipes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customShutdownRecipes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly customUndeployRecipes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to enable Elastic Load Balancing connection draining.
-     */
     readonly drainElbOnShutdown?: pulumi.Input<boolean>;
-    /**
-     * `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-     */
     readonly ebsVolumes?: pulumi.Input<pulumi.Input<inputs.opsworks.MysqlLayerEbsVolume>[]>;
-    /**
-     * Name of an Elastic Load Balancer to attach to this layer
-     */
     readonly elasticLoadBalancer?: pulumi.Input<string>;
-    /**
-     * Whether to install OS and package updates on each instance when it boots.
-     */
     readonly installUpdatesOnBoot?: pulumi.Input<boolean>;
-    /**
-     * The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-     */
     readonly instanceShutdownTimeout?: pulumi.Input<number>;
-    /**
-     * A human-readable name for the layer.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Root password to use for MySQL.
-     */
     readonly rootPassword?: pulumi.Input<string>;
-    /**
-     * Whether to set the root user password to all instances in the stack so they can access the instances in this layer.
-     */
     readonly rootPasswordOnAllInstances?: pulumi.Input<boolean>;
-    /**
-     * The id of the stack the layer will belong to.
-     */
     readonly stackId: pulumi.Input<string>;
-    /**
-     * Names of a set of system packages to install on the layer's instances.
-     */
     readonly systemPackages?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Whether to use EBS-optimized instances.
-     */
     readonly useEbsOptimizedInstances?: pulumi.Input<boolean>;
 }

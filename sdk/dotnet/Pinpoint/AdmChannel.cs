@@ -9,59 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Pinpoint
 {
-    /// <summary>
-    /// Provides a Pinpoint ADM (Amazon Device Messaging) Channel resource.
-    /// 
-    /// &gt; **Note:** All arguments including the Client ID and Client Secret will be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new Aws.Pinpoint.App("app", new Aws.Pinpoint.AppArgs
-    ///         {
-    ///         });
-    ///         var channel = new Aws.Pinpoint.AdmChannel("channel", new Aws.Pinpoint.AdmChannelArgs
-    ///         {
-    ///             ApplicationId = app.ApplicationId,
-    ///             ClientId = "",
-    ///             ClientSecret = "",
-    ///             Enabled = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AdmChannel : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The application ID.
-        /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
-        /// <summary>
-        /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-        /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
-        /// <summary>
-        /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-        /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable the channel. Defaults to `true`.
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
@@ -111,27 +69,15 @@ namespace Pulumi.Aws.Pinpoint
 
     public sealed class AdmChannelArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The application ID.
-        /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
-        /// <summary>
-        /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
-        /// <summary>
-        /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable the channel. Defaults to `true`.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -142,27 +88,15 @@ namespace Pulumi.Aws.Pinpoint
 
     public sealed class AdmChannelState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The application ID.
-        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
-        /// <summary>
-        /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable the channel. Defaults to `true`.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

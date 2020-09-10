@@ -9,76 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ecs
 {
-    /// <summary>
-    /// Provides an ECS cluster capacity provider. More information can be found on the [ECS Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html).
-    /// 
-    /// &gt; **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling Group will automatically add the `AmazonECSManaged` tag to the Auto Scaling Group. This tag should be included in the `aws.autoscaling.Group` resource configuration to prevent the provider from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling Group if `min_size` is above 0 on creation. Any EC2 Instances in the Auto Scaling Group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // ... other configuration, including potentially other tags ...
-    ///         var testGroup = new Aws.AutoScaling.Group("testGroup", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///             Tags = 
-    ///             {
-    ///                 new Aws.AutoScaling.Inputs.GroupTagArgs
-    ///                 {
-    ///                     Key = "AmazonECSManaged",
-    ///                     PropagateAtLaunch = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var testCapacityProvider = new Aws.Ecs.CapacityProvider("testCapacityProvider", new Aws.Ecs.CapacityProviderArgs
-    ///         {
-    ///             AutoScalingGroupProvider = new Aws.Ecs.Inputs.CapacityProviderAutoScalingGroupProviderArgs
-    ///             {
-    ///                 AutoScalingGroupArn = testGroup.Arn,
-    ///                 ManagedTerminationProtection = "ENABLED",
-    ///                 ManagedScaling = new Aws.Ecs.Inputs.CapacityProviderAutoScalingGroupProviderManagedScalingArgs
-    ///                 {
-    ///                     MaximumScalingStepSize = 1000,
-    ///                     MinimumScalingStepSize = 1,
-    ///                     Status = "ENABLED",
-    ///                     TargetCapacity = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class CapacityProvider : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the capacity provider.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested argument defining the provider for the ECS auto scaling group. Defined below.
-        /// </summary>
         [Output("autoScalingGroupProvider")]
         public Output<Outputs.CapacityProviderAutoScalingGroupProvider> AutoScalingGroupProvider { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the capacity provider.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -128,24 +69,14 @@ namespace Pulumi.Aws.Ecs
 
     public sealed class CapacityProviderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Nested argument defining the provider for the ECS auto scaling group. Defined below.
-        /// </summary>
         [Input("autoScalingGroupProvider", required: true)]
         public Input<Inputs.CapacityProviderAutoScalingGroupProviderArgs> AutoScalingGroupProvider { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the capacity provider.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -159,30 +90,17 @@ namespace Pulumi.Aws.Ecs
 
     public sealed class CapacityProviderState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) that identifies the capacity provider.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Nested argument defining the provider for the ECS auto scaling group. Defined below.
-        /// </summary>
         [Input("autoScalingGroupProvider")]
         public Input<Inputs.CapacityProviderAutoScalingGroupProviderGetArgs>? AutoScalingGroupProvider { get; set; }
 
-        /// <summary>
-        /// The name of the capacity provider.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -9,92 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides an HTTP Method Response for an API Gateway Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDemoAPI = new Aws.ApiGateway.RestApi("myDemoAPI", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///             Description = "This is my API for demonstration purposes",
-    ///         });
-    ///         var myDemoResource = new Aws.ApiGateway.Resource("myDemoResource", new Aws.ApiGateway.ResourceArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             ParentId = myDemoAPI.RootResourceId,
-    ///             PathPart = "mydemoresource",
-    ///         });
-    ///         var myDemoMethod = new Aws.ApiGateway.Method("myDemoMethod", new Aws.ApiGateway.MethodArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             ResourceId = myDemoResource.Id,
-    ///             HttpMethod = "GET",
-    ///             Authorization = "NONE",
-    ///         });
-    ///         var myDemoIntegration = new Aws.ApiGateway.Integration("myDemoIntegration", new Aws.ApiGateway.IntegrationArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             ResourceId = myDemoResource.Id,
-    ///             HttpMethod = myDemoMethod.HttpMethod,
-    ///             Type = "MOCK",
-    ///         });
-    ///         var response200 = new Aws.ApiGateway.MethodResponse("response200", new Aws.ApiGateway.MethodResponseArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             ResourceId = myDemoResource.Id,
-    ///             HttpMethod = myDemoMethod.HttpMethod,
-    ///             StatusCode = "200",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class MethodResponse : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-        /// </summary>
         [Output("httpMethod")]
         public Output<string> HttpMethod { get; private set; } = null!;
 
-        /// <summary>
-        /// The API resource ID
-        /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of the API models used for the response's content type
-        /// </summary>
         [Output("responseModels")]
         public Output<ImmutableDictionary<string, string>?> ResponseModels { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of response parameters that can be sent to the caller.
-        /// For example: `response_parameters = { "method.response.header.X-Some-Header" = true }`
-        /// would define that the header `X-Some-Header` can be provided on the response.
-        /// </summary>
         [Output("responseParameters")]
         public Output<ImmutableDictionary<string, bool>?> ResponseParameters { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Output("restApi")]
         public Output<string> RestApi { get; private set; } = null!;
 
-        /// <summary>
-        /// The HTTP status code
-        /// </summary>
         [Output("statusCode")]
         public Output<string> StatusCode { get; private set; } = null!;
 
@@ -144,24 +75,14 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class MethodResponseArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-        /// </summary>
         [Input("httpMethod", required: true)]
         public Input<string> HttpMethod { get; set; } = null!;
 
-        /// <summary>
-        /// The API resource ID
-        /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
 
         [Input("responseModels")]
         private InputMap<string>? _responseModels;
-
-        /// <summary>
-        /// A map of the API models used for the response's content type
-        /// </summary>
         public InputMap<string> ResponseModels
         {
             get => _responseModels ?? (_responseModels = new InputMap<string>());
@@ -170,27 +91,15 @@ namespace Pulumi.Aws.ApiGateway
 
         [Input("responseParameters")]
         private InputMap<bool>? _responseParameters;
-
-        /// <summary>
-        /// A map of response parameters that can be sent to the caller.
-        /// For example: `response_parameters = { "method.response.header.X-Some-Header" = true }`
-        /// would define that the header `X-Some-Header` can be provided on the response.
-        /// </summary>
         public InputMap<bool> ResponseParameters
         {
             get => _responseParameters ?? (_responseParameters = new InputMap<bool>());
             set => _responseParameters = value;
         }
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Input("restApi", required: true)]
         public Input<string> RestApi { get; set; } = null!;
 
-        /// <summary>
-        /// The HTTP status code
-        /// </summary>
         [Input("statusCode", required: true)]
         public Input<string> StatusCode { get; set; } = null!;
 
@@ -201,24 +110,14 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class MethodResponseState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-        /// </summary>
         [Input("httpMethod")]
         public Input<string>? HttpMethod { get; set; }
 
-        /// <summary>
-        /// The API resource ID
-        /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
         [Input("responseModels")]
         private InputMap<string>? _responseModels;
-
-        /// <summary>
-        /// A map of the API models used for the response's content type
-        /// </summary>
         public InputMap<string> ResponseModels
         {
             get => _responseModels ?? (_responseModels = new InputMap<string>());
@@ -227,27 +126,15 @@ namespace Pulumi.Aws.ApiGateway
 
         [Input("responseParameters")]
         private InputMap<bool>? _responseParameters;
-
-        /// <summary>
-        /// A map of response parameters that can be sent to the caller.
-        /// For example: `response_parameters = { "method.response.header.X-Some-Header" = true }`
-        /// would define that the header `X-Some-Header` can be provided on the response.
-        /// </summary>
         public InputMap<bool> ResponseParameters
         {
             get => _responseParameters ?? (_responseParameters = new InputMap<bool>());
             set => _responseParameters = value;
         }
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Input("restApi")]
         public Input<string>? RestApi { get; set; }
 
-        /// <summary>
-        /// The HTTP status code
-        /// </summary>
         [Input("statusCode")]
         public Input<string>? StatusCode { get; set; }
 

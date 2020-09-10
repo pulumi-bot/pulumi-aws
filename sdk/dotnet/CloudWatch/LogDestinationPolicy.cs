@@ -9,74 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CloudWatch
 {
-    /// <summary>
-    /// Provides a CloudWatch Logs destination policy resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testDestination = new Aws.CloudWatch.LogDestination("testDestination", new Aws.CloudWatch.LogDestinationArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Iam_for_cloudwatch.Arn,
-    ///             TargetArn = aws_kinesis_stream.Kinesis_for_cloudwatch.Arn,
-    ///         });
-    ///         var testDestinationPolicyPolicyDocument = testDestination.Arn.Apply(arn =&gt; Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Effect = "Allow",
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
-    ///                         {
-    ///                             Type = "AWS",
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 "123456789012",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Actions = 
-    ///                     {
-    ///                         "logs:PutSubscriptionFilter",
-    ///                     },
-    ///                     Resources = 
-    ///                     {
-    ///                         arn,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var testDestinationPolicyLogDestinationPolicy = new Aws.CloudWatch.LogDestinationPolicy("testDestinationPolicyLogDestinationPolicy", new Aws.CloudWatch.LogDestinationPolicyArgs
-    ///         {
-    ///             DestinationName = testDestination.Name,
-    ///             AccessPolicy = testDestinationPolicyPolicyDocument.Apply(testDestinationPolicyPolicyDocument =&gt; testDestinationPolicyPolicyDocument.Json),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class LogDestinationPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Output("accessPolicy")]
         public Output<string> AccessPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// A name for the subscription filter
-        /// </summary>
         [Output("destinationName")]
         public Output<string> DestinationName { get; private set; } = null!;
 
@@ -126,15 +63,9 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class LogDestinationPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Input("accessPolicy", required: true)]
         public Input<string> AccessPolicy { get; set; } = null!;
 
-        /// <summary>
-        /// A name for the subscription filter
-        /// </summary>
         [Input("destinationName", required: true)]
         public Input<string> DestinationName { get; set; } = null!;
 
@@ -145,15 +76,9 @@ namespace Pulumi.Aws.CloudWatch
 
     public sealed class LogDestinationPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The policy document. This is a JSON formatted string.
-        /// </summary>
         [Input("accessPolicy")]
         public Input<string>? AccessPolicy { get; set; }
 
-        /// <summary>
-        /// A name for the subscription filter
-        /// </summary>
         [Input("destinationName")]
         public Input<string>? DestinationName { get; set; }
 

@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Cognito.Outputs
     [OutputType]
     public sealed class UserPoolSchemaStringAttributeConstraints
     {
-        /// <summary>
-        /// The maximum length of an attribute value of the string type.
-        /// </summary>
         public readonly string? MaxLength;
-        /// <summary>
-        /// The minimum length of an attribute value of the string type.
-        /// </summary>
         public readonly string? MinLength;
 
         [OutputConstructor]

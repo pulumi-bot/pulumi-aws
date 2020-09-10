@@ -24,35 +24,9 @@ class Mesh(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS App Mesh service mesh resource.
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        simple = aws.appmesh.Mesh("simple")
-        ```
-        ### Egress Filter
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        simple = aws.appmesh.Mesh("simple", spec=aws.appmesh.MeshSpecArgs(
-            egress_filter=aws.appmesh.MeshSpecEgressFilterArgs(
-                type="ALLOW_ALL",
-            ),
-        ))
-        ```
-
+        Create a Mesh resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name to use for the service mesh.
-        :param pulumi.Input[pulumi.InputType['MeshSpecArgs']] spec: The service mesh specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -100,12 +74,6 @@ class Mesh(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the service mesh.
-        :param pulumi.Input[str] created_date: The creation date of the service mesh.
-        :param pulumi.Input[str] last_updated_date: The last update date of the service mesh.
-        :param pulumi.Input[str] name: The name to use for the service mesh.
-        :param pulumi.Input[pulumi.InputType['MeshSpecArgs']] spec: The service mesh specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -122,49 +90,31 @@ class Mesh(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the service mesh.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="createdDate")
     def created_date(self) -> pulumi.Output[str]:
-        """
-        The creation date of the service mesh.
-        """
         return pulumi.get(self, "created_date")
 
     @property
     @pulumi.getter(name="lastUpdatedDate")
     def last_updated_date(self) -> pulumi.Output[str]:
-        """
-        The last update date of the service mesh.
-        """
         return pulumi.get(self, "last_updated_date")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name to use for the service mesh.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def spec(self) -> pulumi.Output[Optional['outputs.MeshSpec']]:
-        """
-        The service mesh specification to apply.
-        """
         return pulumi.get(self, "spec")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

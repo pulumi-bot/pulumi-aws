@@ -9,91 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Mq
 {
-    /// <summary>
-    /// Provides an MQ Configuration Resource.
-    /// 
-    /// For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Mq.Configuration("example", new Aws.Mq.ConfigurationArgs
-    ///         {
-    ///             Data = @"&lt;?xml version=""1.0"" encoding=""UTF-8"" standalone=""yes""?&gt;
-    /// &lt;broker xmlns=""http://activemq.apache.org/schema/core""&gt;
-    ///   &lt;plugins&gt;
-    ///     &lt;forcePersistencyModeBrokerPlugin persistenceFlag=""true""/&gt;
-    ///     &lt;statisticsBrokerPlugin/&gt;
-    ///     &lt;timeStampingBrokerPlugin ttlCeiling=""86400000"" zeroExpirationOverride=""86400000""/&gt;
-    ///   &lt;/plugins&gt;
-    /// &lt;/broker&gt;
-    /// 
-    /// ",
-    ///             Description = "Example Configuration",
-    ///             EngineType = "ActiveMQ",
-    ///             EngineVersion = "5.15.0",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the configuration.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The broker configuration in XML format.
-        /// See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-        /// for supported parameters and format of the XML.
-        /// </summary>
         [Output("data")]
         public Output<string> Data { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the configuration.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of broker engine.
-        /// </summary>
         [Output("engineType")]
         public Output<string> EngineType { get; private set; } = null!;
 
-        /// <summary>
-        /// The version of the broker engine.
-        /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The latest revision of the configuration.
-        /// </summary>
         [Output("latestRevision")]
         public Output<int> LatestRevision { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the configuration
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -143,44 +81,23 @@ namespace Pulumi.Aws.Mq
 
     public sealed class ConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The broker configuration in XML format.
-        /// See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-        /// for supported parameters and format of the XML.
-        /// </summary>
         [Input("data", required: true)]
         public Input<string> Data { get; set; } = null!;
 
-        /// <summary>
-        /// The description of the configuration.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The type of broker engine.
-        /// </summary>
         [Input("engineType", required: true)]
         public Input<string> EngineType { get; set; } = null!;
 
-        /// <summary>
-        /// The version of the broker engine.
-        /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the configuration
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -194,56 +111,29 @@ namespace Pulumi.Aws.Mq
 
     public sealed class ConfigurationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the configuration.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The broker configuration in XML format.
-        /// See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
-        /// for supported parameters and format of the XML.
-        /// </summary>
         [Input("data")]
         public Input<string>? Data { get; set; }
 
-        /// <summary>
-        /// The description of the configuration.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The type of broker engine.
-        /// </summary>
         [Input("engineType")]
         public Input<string>? EngineType { get; set; }
 
-        /// <summary>
-        /// The version of the broker engine.
-        /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
-        /// <summary>
-        /// The latest revision of the configuration.
-        /// </summary>
         [Input("latestRevision")]
         public Input<int>? LatestRevision { get; set; }
 
-        /// <summary>
-        /// The name of the configuration
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

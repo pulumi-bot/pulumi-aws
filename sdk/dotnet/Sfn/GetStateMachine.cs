@@ -11,34 +11,6 @@ namespace Pulumi.Aws.Sfn
 {
     public static class GetStateMachine
     {
-        /// <summary>
-        /// Use this data source to get the ARN of a State Machine in AWS Step
-        /// Function (SFN). By using this data source, you can reference a
-        /// state machine without having to hard code the ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Sfn.GetStateMachine.InvokeAsync(new Aws.Sfn.GetStateMachineArgs
-        ///         {
-        ///             Name = "an_example_sfn_name",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetStateMachineResult> InvokeAsync(GetStateMachineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStateMachineResult>("aws:sfn/getStateMachine:getStateMachine", args ?? new GetStateMachineArgs(), options.WithVersion());
     }
@@ -46,9 +18,6 @@ namespace Pulumi.Aws.Sfn
 
     public sealed class GetStateMachineArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The friendly name of the state machine to match.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -61,30 +30,15 @@ namespace Pulumi.Aws.Sfn
     [OutputType]
     public sealed class GetStateMachineResult
     {
-        /// <summary>
-        /// Set to the arn of the state function.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The date the state machine was created.
-        /// </summary>
         public readonly string CreationDate;
-        /// <summary>
-        /// Set to the state machine definition.
-        /// </summary>
         public readonly string Definition;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        /// <summary>
-        /// Set to the role_arn used by the state function.
-        /// </summary>
         public readonly string RoleArn;
-        /// <summary>
-        /// Set to the current status of the state machine.
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

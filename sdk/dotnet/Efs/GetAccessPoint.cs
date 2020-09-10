@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Efs
 {
     public static class GetAccessPoint
     {
-        /// <summary>
-        /// Provides information about an Elastic File System (EFS) Access Point.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Efs.GetAccessPoint.InvokeAsync(new Aws.Efs.GetAccessPointArgs
-        ///         {
-        ///             AccessPointId = "fsap-12345678",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAccessPointResult> InvokeAsync(GetAccessPointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointResult>("aws:efs/getAccessPoint:getAccessPoint", args ?? new GetAccessPointArgs(), options.WithVersion());
     }
@@ -44,18 +18,11 @@ namespace Pulumi.Aws.Efs
 
     public sealed class GetAccessPointArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID that identifies the file system.
-        /// </summary>
         [Input("accessPointId", required: true)]
         public string AccessPointId { get; set; } = null!;
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// Key-value mapping of resource tags.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -72,31 +39,16 @@ namespace Pulumi.Aws.Efs
     public sealed class GetAccessPointResult
     {
         public readonly string AccessPointId;
-        /// <summary>
-        /// Amazon Resource Name of the file system.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// Amazon Resource Name of the file system.
-        /// </summary>
         public readonly string FileSystemArn;
-        /// <summary>
-        /// The ID of the file system for which the access point is intended.
-        /// </summary>
         public readonly string FileSystemId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string OwnerId;
-        /// <summary>
-        /// Single element list containing operating system user and group applied to all file system requests made using the access point.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccessPointPosixUserResult> PosixUsers;
         public readonly ImmutableArray<Outputs.GetAccessPointRootDirectoryResult> RootDirectories;
-        /// <summary>
-        /// Key-value mapping of resource tags.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

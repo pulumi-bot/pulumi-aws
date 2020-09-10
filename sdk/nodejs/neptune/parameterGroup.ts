@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Neptune Parameter Group
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.neptune.ParameterGroup("example", {
- *     family: "neptune1",
- *     parameters: [{
- *         name: "neptune_query_timeout",
- *         value: "25",
- *     }],
- * });
- * ```
- */
 export class ParameterGroup extends pulumi.CustomResource {
     /**
      * Get an existing ParameterGroup resource's state with the given name, ID, and optional extra
@@ -52,29 +34,11 @@ export class ParameterGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ParameterGroup.__pulumiType;
     }
 
-    /**
-     * The Neptune parameter group Amazon Resource Name (ARN).
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The family of the Neptune parameter group.
-     */
     public readonly family!: pulumi.Output<string>;
-    /**
-     * The name of the Neptune parameter.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A list of Neptune parameters to apply.
-     */
     public readonly parameters!: pulumi.Output<outputs.neptune.ParameterGroupParameter[] | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -122,29 +86,11 @@ export class ParameterGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ParameterGroup resources.
  */
 export interface ParameterGroupState {
-    /**
-     * The Neptune parameter group Amazon Resource Name (ARN).
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The family of the Neptune parameter group.
-     */
     readonly family?: pulumi.Input<string>;
-    /**
-     * The name of the Neptune parameter.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of Neptune parameters to apply.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.neptune.ParameterGroupParameter>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -152,24 +98,9 @@ export interface ParameterGroupState {
  * The set of arguments for constructing a ParameterGroup resource.
  */
 export interface ParameterGroupArgs {
-    /**
-     * The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The family of the Neptune parameter group.
-     */
     readonly family: pulumi.Input<string>;
-    /**
-     * The name of the Neptune parameter.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of Neptune parameters to apply.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.neptune.ParameterGroupParameter>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

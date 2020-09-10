@@ -10,49 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Subscribes to a Security Hub product.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/securityhub"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccount, err := securityhub.NewAccount(ctx, "exampleAccount", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		current, err := aws.GetRegion(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = securityhub.NewProductSubscription(ctx, "exampleProductSubscription", &securityhub.ProductSubscriptionArgs{
-// 			ProductArn: pulumi.String(fmt.Sprintf("%v%v%v", "arn:aws:securityhub:", current.Name, ":733251395267:product/alertlogic/althreatmanagement")),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleAccount,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ProductSubscription struct {
 	pulumi.CustomResourceState
 
-	// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The ARN of the product that generates findings that you want to import into Security Hub - see below.
+	Arn        pulumi.StringOutput `pulumi:"arn"`
 	ProductArn pulumi.StringOutput `pulumi:"productArn"`
 }
 
@@ -87,16 +48,12 @@ func GetProductSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProductSubscription resources.
 type productSubscriptionState struct {
-	// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-	Arn *string `pulumi:"arn"`
-	// The ARN of the product that generates findings that you want to import into Security Hub - see below.
+	Arn        *string `pulumi:"arn"`
 	ProductArn *string `pulumi:"productArn"`
 }
 
 type ProductSubscriptionState struct {
-	// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-	Arn pulumi.StringPtrInput
-	// The ARN of the product that generates findings that you want to import into Security Hub - see below.
+	Arn        pulumi.StringPtrInput
 	ProductArn pulumi.StringPtrInput
 }
 
@@ -105,13 +62,11 @@ func (ProductSubscriptionState) ElementType() reflect.Type {
 }
 
 type productSubscriptionArgs struct {
-	// The ARN of the product that generates findings that you want to import into Security Hub - see below.
 	ProductArn string `pulumi:"productArn"`
 }
 
 // The set of arguments for constructing a ProductSubscription resource.
 type ProductSubscriptionArgs struct {
-	// The ARN of the product that generates findings that you want to import into Security Hub - see below.
 	ProductArn pulumi.StringInput
 }
 

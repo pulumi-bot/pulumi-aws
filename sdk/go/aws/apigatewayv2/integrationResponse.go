@@ -10,48 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 integration response.
-// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-//
-// ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewIntegrationResponse(ctx, "example", &apigatewayv2.IntegrationResponseArgs{
-// 			ApiId:                  pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			IntegrationId:          pulumi.Any(aws_apigatewayv2_integration.Example.Id),
-// 			IntegrationResponseKey: pulumi.String("/200/"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type IntegrationResponse struct {
 	pulumi.CustomResourceState
 
-	// The API identifier.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
-	ContentHandlingStrategy pulumi.StringPtrOutput `pulumi:"contentHandlingStrategy"`
-	// The identifier of the `apigatewayv2.Integration`.
-	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
-	// The integration response key.
-	IntegrationResponseKey pulumi.StringOutput `pulumi:"integrationResponseKey"`
-	// A map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
-	ResponseTemplates pulumi.StringMapOutput `pulumi:"responseTemplates"`
-	// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+	ApiId                       pulumi.StringOutput    `pulumi:"apiId"`
+	ContentHandlingStrategy     pulumi.StringPtrOutput `pulumi:"contentHandlingStrategy"`
+	IntegrationId               pulumi.StringOutput    `pulumi:"integrationId"`
+	IntegrationResponseKey      pulumi.StringOutput    `pulumi:"integrationResponseKey"`
+	ResponseTemplates           pulumi.StringMapOutput `pulumi:"responseTemplates"`
 	TemplateSelectionExpression pulumi.StringPtrOutput `pulumi:"templateSelectionExpression"`
 }
 
@@ -92,32 +58,20 @@ func GetIntegrationResponse(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IntegrationResponse resources.
 type integrationResponseState struct {
-	// The API identifier.
-	ApiId *string `pulumi:"apiId"`
-	// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
-	ContentHandlingStrategy *string `pulumi:"contentHandlingStrategy"`
-	// The identifier of the `apigatewayv2.Integration`.
-	IntegrationId *string `pulumi:"integrationId"`
-	// The integration response key.
-	IntegrationResponseKey *string `pulumi:"integrationResponseKey"`
-	// A map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
-	ResponseTemplates map[string]string `pulumi:"responseTemplates"`
-	// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
-	TemplateSelectionExpression *string `pulumi:"templateSelectionExpression"`
+	ApiId                       *string           `pulumi:"apiId"`
+	ContentHandlingStrategy     *string           `pulumi:"contentHandlingStrategy"`
+	IntegrationId               *string           `pulumi:"integrationId"`
+	IntegrationResponseKey      *string           `pulumi:"integrationResponseKey"`
+	ResponseTemplates           map[string]string `pulumi:"responseTemplates"`
+	TemplateSelectionExpression *string           `pulumi:"templateSelectionExpression"`
 }
 
 type IntegrationResponseState struct {
-	// The API identifier.
-	ApiId pulumi.StringPtrInput
-	// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
-	ContentHandlingStrategy pulumi.StringPtrInput
-	// The identifier of the `apigatewayv2.Integration`.
-	IntegrationId pulumi.StringPtrInput
-	// The integration response key.
-	IntegrationResponseKey pulumi.StringPtrInput
-	// A map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
-	ResponseTemplates pulumi.StringMapInput
-	// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+	ApiId                       pulumi.StringPtrInput
+	ContentHandlingStrategy     pulumi.StringPtrInput
+	IntegrationId               pulumi.StringPtrInput
+	IntegrationResponseKey      pulumi.StringPtrInput
+	ResponseTemplates           pulumi.StringMapInput
 	TemplateSelectionExpression pulumi.StringPtrInput
 }
 
@@ -126,33 +80,21 @@ func (IntegrationResponseState) ElementType() reflect.Type {
 }
 
 type integrationResponseArgs struct {
-	// The API identifier.
-	ApiId string `pulumi:"apiId"`
-	// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
-	ContentHandlingStrategy *string `pulumi:"contentHandlingStrategy"`
-	// The identifier of the `apigatewayv2.Integration`.
-	IntegrationId string `pulumi:"integrationId"`
-	// The integration response key.
-	IntegrationResponseKey string `pulumi:"integrationResponseKey"`
-	// A map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
-	ResponseTemplates map[string]string `pulumi:"responseTemplates"`
-	// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
-	TemplateSelectionExpression *string `pulumi:"templateSelectionExpression"`
+	ApiId                       string            `pulumi:"apiId"`
+	ContentHandlingStrategy     *string           `pulumi:"contentHandlingStrategy"`
+	IntegrationId               string            `pulumi:"integrationId"`
+	IntegrationResponseKey      string            `pulumi:"integrationResponseKey"`
+	ResponseTemplates           map[string]string `pulumi:"responseTemplates"`
+	TemplateSelectionExpression *string           `pulumi:"templateSelectionExpression"`
 }
 
 // The set of arguments for constructing a IntegrationResponse resource.
 type IntegrationResponseArgs struct {
-	// The API identifier.
-	ApiId pulumi.StringInput
-	// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
-	ContentHandlingStrategy pulumi.StringPtrInput
-	// The identifier of the `apigatewayv2.Integration`.
-	IntegrationId pulumi.StringInput
-	// The integration response key.
-	IntegrationResponseKey pulumi.StringInput
-	// A map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
-	ResponseTemplates pulumi.StringMapInput
-	// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+	ApiId                       pulumi.StringInput
+	ContentHandlingStrategy     pulumi.StringPtrInput
+	IntegrationId               pulumi.StringInput
+	IntegrationResponseKey      pulumi.StringInput
+	ResponseTemplates           pulumi.StringMapInput
 	TemplateSelectionExpression pulumi.StringPtrInput
 }
 

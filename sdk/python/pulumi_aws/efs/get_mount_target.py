@@ -63,41 +63,26 @@ class GetMountTargetResult:
     @property
     @pulumi.getter(name="availabilityZoneId")
     def availability_zone_id(self) -> str:
-        """
-        The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
-        """
         return pulumi.get(self, "availability_zone_id")
 
     @property
     @pulumi.getter(name="availabilityZoneName")
     def availability_zone_name(self) -> str:
-        """
-        The name of the Availability Zone (AZ) that the mount target resides in.
-        """
         return pulumi.get(self, "availability_zone_name")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
-        """
-        The DNS name for the EFS file system.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="fileSystemArn")
     def file_system_arn(self) -> str:
-        """
-        Amazon Resource Name of the file system for which the mount target is intended.
-        """
         return pulumi.get(self, "file_system_arn")
 
     @property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> str:
-        """
-        ID of the file system for which the mount target is intended.
-        """
         return pulumi.get(self, "file_system_id")
 
     @property
@@ -111,17 +96,11 @@ class GetMountTargetResult:
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
-        """
-        Address at which the file system may be mounted via the mount target.
-        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="mountTargetDnsName")
     def mount_target_dns_name(self) -> str:
-        """
-        The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
-        """
         return pulumi.get(self, "mount_target_dns_name")
 
     @property
@@ -132,33 +111,21 @@ class GetMountTargetResult:
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> str:
-        """
-        The ID of the network interface that Amazon EFS created when it created the mount target.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> str:
-        """
-        AWS account ID that owns the resource.
-        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> List[str]:
-        """
-        List of VPC security group IDs attached to the mount target.
-        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
-        """
-        ID of the mount target's subnet.
-        """
         return pulumi.get(self, "subnet_id")
 
 
@@ -186,23 +153,7 @@ class AwaitableGetMountTargetResult(GetMountTargetResult):
 def get_mount_target(mount_target_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMountTargetResult:
     """
-    Provides information about an Elastic File System Mount Target (EFS).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    mount_target_id = config.get("mountTargetId")
-    if mount_target_id is None:
-        mount_target_id = ""
-    by_id = aws.efs.get_mount_target(mount_target_id=mount_target_id)
-    ```
-
-
-    :param str mount_target_id: ID of the mount target that you want to have described
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['mountTargetId'] = mount_target_id

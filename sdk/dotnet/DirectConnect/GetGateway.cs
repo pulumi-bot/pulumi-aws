@@ -11,32 +11,6 @@ namespace Pulumi.Aws.DirectConnect
 {
     public static class GetGateway
     {
-        /// <summary>
-        /// Retrieve information about a Direct Connect Gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.DirectConnect.GetGateway.InvokeAsync(new Aws.DirectConnect.GetGatewayArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetGatewayResult> InvokeAsync(GetGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayResult>("aws:directconnect/getGateway:getGateway", args ?? new GetGatewayArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.DirectConnect
 
     public sealed class GetGatewayArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the gateway to retrieve.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -59,18 +30,12 @@ namespace Pulumi.Aws.DirectConnect
     [OutputType]
     public sealed class GetGatewayResult
     {
-        /// <summary>
-        /// The ASN on the Amazon side of the connection.
-        /// </summary>
         public readonly string AmazonSideAsn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        /// <summary>
-        /// AWS Account ID of the gateway.
-        /// </summary>
         public readonly string OwnerAccountId;
 
         [OutputConstructor]

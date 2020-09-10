@@ -12,15 +12,9 @@ namespace Pulumi.Aws.AppAutoScaling.Inputs
 
     public sealed class ScheduledActionScalableTargetActionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The maximum capacity.
-        /// </summary>
         [Input("maxCapacity")]
         public Input<int>? MaxCapacity { get; set; }
 
-        /// <summary>
-        /// The minimum capacity.
-        /// </summary>
         [Input("minCapacity")]
         public Input<int>? MinCapacity { get; set; }
 

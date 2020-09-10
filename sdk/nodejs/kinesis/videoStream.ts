@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Kinesis Video Stream resource. Amazon Kinesis Video Streams makes it easy to securely stream video from connected devices to AWS for analytics, machine learning (ML), playback, and other processing.
- *
- * For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const defaultVideoStream = new aws.kinesis.VideoStream("default", {
- *     dataRetentionInHours: 1,
- *     deviceName: "kinesis-video-device-name",
- *     mediaType: "video/h264",
- *     tags: {
- *         Name: "kinesis-video-stream",
- *     },
- * });
- * ```
- */
 export class VideoStream extends pulumi.CustomResource {
     /**
      * Get an existing VideoStream resource's state with the given name, ID, and optional extra
@@ -53,42 +32,14 @@ export class VideoStream extends pulumi.CustomResource {
         return obj['__pulumiType'] === VideoStream.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A time stamp that indicates when the stream was created.
-     */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
-    /**
-     * The number of hours that you want to retain the data in the stream. Kinesis Video Streams retains the data in a data store that is associated with the stream. The default value is `0`, indicating that the stream does not persist data.
-     */
     public readonly dataRetentionInHours!: pulumi.Output<number | undefined>;
-    /**
-     * The name of the device that is writing to the stream. **In the current implementation, Kinesis Video Streams does not use this name.**
-     */
     public readonly deviceName!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data. If no key ID is specified, the default, Kinesis Video-managed key (`aws/kinesisvideo`) is used.
-     */
     public readonly kmsKeyId!: pulumi.Output<string>;
-    /**
-     * The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see [Media Types](http://www.iana.org/assignments/media-types/media-types.xhtml). If you choose to specify the MediaType, see [Naming Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
-     */
     public readonly mediaType!: pulumi.Output<string | undefined>;
-    /**
-     * A name to identify the stream. This is unique to the
-     * AWS account and region the Stream is created in.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The version of the stream.
-     */
     public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
@@ -139,42 +90,14 @@ export class VideoStream extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VideoStream resources.
  */
 export interface VideoStreamState {
-    /**
-     * The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A time stamp that indicates when the stream was created.
-     */
     readonly creationTime?: pulumi.Input<string>;
-    /**
-     * The number of hours that you want to retain the data in the stream. Kinesis Video Streams retains the data in a data store that is associated with the stream. The default value is `0`, indicating that the stream does not persist data.
-     */
     readonly dataRetentionInHours?: pulumi.Input<number>;
-    /**
-     * The name of the device that is writing to the stream. **In the current implementation, Kinesis Video Streams does not use this name.**
-     */
     readonly deviceName?: pulumi.Input<string>;
-    /**
-     * The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data. If no key ID is specified, the default, Kinesis Video-managed key (`aws/kinesisvideo`) is used.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see [Media Types](http://www.iana.org/assignments/media-types/media-types.xhtml). If you choose to specify the MediaType, see [Naming Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
-     */
     readonly mediaType?: pulumi.Input<string>;
-    /**
-     * A name to identify the stream. This is unique to the
-     * AWS account and region the Stream is created in.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The version of the stream.
-     */
     readonly version?: pulumi.Input<string>;
 }
 
@@ -182,29 +105,10 @@ export interface VideoStreamState {
  * The set of arguments for constructing a VideoStream resource.
  */
 export interface VideoStreamArgs {
-    /**
-     * The number of hours that you want to retain the data in the stream. Kinesis Video Streams retains the data in a data store that is associated with the stream. The default value is `0`, indicating that the stream does not persist data.
-     */
     readonly dataRetentionInHours?: pulumi.Input<number>;
-    /**
-     * The name of the device that is writing to the stream. **In the current implementation, Kinesis Video Streams does not use this name.**
-     */
     readonly deviceName?: pulumi.Input<string>;
-    /**
-     * The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data. If no key ID is specified, the default, Kinesis Video-managed key (`aws/kinesisvideo`) is used.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see [Media Types](http://www.iana.org/assignments/media-types/media-types.xhtml). If you choose to specify the MediaType, see [Naming Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
-     */
     readonly mediaType?: pulumi.Input<string>;
-    /**
-     * A name to identify the stream. This is unique to the
-     * AWS account and region the Stream is created in.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

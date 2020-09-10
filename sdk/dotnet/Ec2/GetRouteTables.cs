@@ -11,69 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetRouteTables
     {
-        /// <summary>
-        /// This resource can be useful for getting back a list of route table ids to be referenced elsewhere.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following adds a route for a particular cidr block to every (private
-        /// kops) route table in a specified vpc to use a particular vpc peering
-        /// connection.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Threading.Tasks;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var dict = Output.Create(Initialize());
-        ///     }
-        /// 
-        ///     private async Task&lt;IDictionary&lt;string, Output&lt;string&gt;&gt;&gt; Initialize()
-        ///     {
-        ///         var rts = await Aws.Ec2.GetRouteTables.InvokeAsync(new Aws.Ec2.GetRouteTablesArgs
-        ///         {
-        ///             VpcId = @var.Vpc_id,
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetRouteTablesFilterArgs
-        ///                 {
-        ///                     Name = "tag:kubernetes.io/kops/role",
-        ///                     Values = 
-        ///                     {
-        ///                         "private*",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         });
-        ///         var route = new List&lt;Aws.Ec2.Route&gt;();
-        ///         for (var rangeIndex = 0; rangeIndex &lt; rts.Ids.Length; rangeIndex++)
-        ///         {
-        ///             var range = new { Value = rangeIndex };
-        ///             route.Add(new Aws.Ec2.Route($"route-{range.Value}", new Aws.Ec2.RouteArgs
-        ///             {
-        ///                 RouteTableId = rts.Ids[range.Value],
-        ///                 DestinationCidrBlock = "10.0.1.0/22",
-        ///                 VpcPeeringConnectionId = "pcx-0e9a7a9ecd137dc54",
-        ///             }));
-        ///         }
-        /// 
-        ///         return new Dictionary&lt;string, Output&lt;string&gt;&gt;
-        ///         {
-        ///         };
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("aws:ec2/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithVersion());
     }
@@ -83,10 +20,6 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetRouteTablesFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetRouteTablesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetRouteTablesFilterArgs>());
@@ -95,20 +28,12 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the desired route tables.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The VPC ID that you want to filter from.
-        /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
@@ -126,9 +51,6 @@ namespace Pulumi.Aws.Ec2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A set of all the route table ids found. This data source will fail if none are found.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableDictionary<string, string> Tags;
         public readonly string? VpcId;

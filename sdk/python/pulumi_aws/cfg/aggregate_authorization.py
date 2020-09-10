@@ -22,24 +22,9 @@ class AggregateAuthorization(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an AWS Config Aggregate Authorization
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.cfg.AggregateAuthorization("example",
-            account_id="123456789012",
-            region="eu-west-2")
-        ```
-
+        Create a AggregateAuthorization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID
-        :param pulumi.Input[str] region: Region
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,10 +72,6 @@ class AggregateAuthorization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID
-        :param pulumi.Input[str] arn: The ARN of the authorization
-        :param pulumi.Input[str] region: Region
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -105,33 +86,21 @@ class AggregateAuthorization(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        Account ID
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the authorization
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        Region
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

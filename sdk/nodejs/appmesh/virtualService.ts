@@ -6,45 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS App Mesh virtual service resource.
- *
- * ## Example Usage
- * ### Virtual Node Provider
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const servicea = new aws.appmesh.VirtualService("servicea", {
- *     meshName: aws_appmesh_mesh.simple.id,
- *     spec: {
- *         provider: {
- *             virtualNode: {
- *                 virtualNodeName: aws_appmesh_virtual_node.serviceb1.name,
- *             },
- *         },
- *     },
- * });
- * ```
- * ### Virtual Router Provider
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const servicea = new aws.appmesh.VirtualService("servicea", {
- *     meshName: aws_appmesh_mesh.simple.id,
- *     spec: {
- *         provider: {
- *             virtualRouter: {
- *                 virtualRouterName: aws_appmesh_virtual_router.serviceb.name,
- *             },
- *         },
- *     },
- * });
- * ```
- */
 export class VirtualService extends pulumi.CustomResource {
     /**
      * Get an existing VirtualService resource's state with the given name, ID, and optional extra
@@ -73,33 +34,12 @@ export class VirtualService extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualService.__pulumiType;
     }
 
-    /**
-     * The ARN of the virtual service.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The creation date of the virtual service.
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * The last update date of the virtual service.
-     */
     public /*out*/ readonly lastUpdatedDate!: pulumi.Output<string>;
-    /**
-     * The name of the service mesh in which to create the virtual service.
-     */
     public readonly meshName!: pulumi.Output<string>;
-    /**
-     * The name to use for the virtual service.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The virtual service specification to apply.
-     */
     public readonly spec!: pulumi.Output<outputs.appmesh.VirtualServiceSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -152,33 +92,12 @@ export class VirtualService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VirtualService resources.
  */
 export interface VirtualServiceState {
-    /**
-     * The ARN of the virtual service.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The creation date of the virtual service.
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * The last update date of the virtual service.
-     */
     readonly lastUpdatedDate?: pulumi.Input<string>;
-    /**
-     * The name of the service mesh in which to create the virtual service.
-     */
     readonly meshName?: pulumi.Input<string>;
-    /**
-     * The name to use for the virtual service.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The virtual service specification to apply.
-     */
     readonly spec?: pulumi.Input<inputs.appmesh.VirtualServiceSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -186,20 +105,8 @@ export interface VirtualServiceState {
  * The set of arguments for constructing a VirtualService resource.
  */
 export interface VirtualServiceArgs {
-    /**
-     * The name of the service mesh in which to create the virtual service.
-     */
     readonly meshName: pulumi.Input<string>;
-    /**
-     * The name to use for the virtual service.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The virtual service specification to apply.
-     */
     readonly spec: pulumi.Input<inputs.appmesh.VirtualServiceSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

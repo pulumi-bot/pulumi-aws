@@ -54,33 +54,21 @@ class GetServiceQuotaResult:
     @property
     @pulumi.getter
     def adjustable(self) -> bool:
-        """
-        Whether the service quota is adjustable.
-        """
         return pulumi.get(self, "adjustable")
 
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name (ARN) of the service quota.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="defaultValue")
     def default_value(self) -> float:
-        """
-        Default value of the service quota.
-        """
         return pulumi.get(self, "default_value")
 
     @property
     @pulumi.getter(name="globalQuota")
     def global_quota(self) -> bool:
-        """
-        Whether the service quota is global for the AWS account.
-        """
         return pulumi.get(self, "global_quota")
 
     @property
@@ -109,17 +97,11 @@ class GetServiceQuotaResult:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Name of the service.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def value(self) -> float:
-        """
-        Current value of the service quota.
-        """
         return pulumi.get(self, "value")
 
 
@@ -146,24 +128,7 @@ def get_service_quota(quota_code: Optional[str] = None,
                       service_code: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceQuotaResult:
     """
-    Retrieve information about a Service Quota.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    by_quota_code = aws.servicequotas.get_service_quota(quota_code="L-F678F1CE",
-        service_code="vpc")
-    by_quota_name = aws.servicequotas.get_service_quota(quota_name="VPCs per Region",
-        service_code="vpc")
-    ```
-
-
-    :param str quota_code: Quota code within the service. When configured, the data source directly looks up the service quota. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-    :param str quota_name: Quota name within the service. When configured, the data source searches through all service quotas to find the matching quota name. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-    :param str service_code: Service code for the quota. Available values can be found with the `servicequotas.getService` data source or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['quotaCode'] = quota_code

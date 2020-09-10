@@ -10,55 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a MediaStore Container Policy.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/mediastore"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		currentRegion, err := aws.GetRegion(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		currentCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleContainer, err := mediastore.NewContainer(ctx, "exampleContainer", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mediastore.NewContainerPolicy(ctx, "exampleContainerPolicy", &mediastore.ContainerPolicyArgs{
-// 			ContainerName: exampleContainer.Name,
-// 			Policy: exampleContainer.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [{\n", "		\"Sid\": \"MediaStoreFullAccess\",\n", "		\"Action\": [ \"mediastore:*\" ],\n", "		\"Principal\": {\"AWS\" : \"arn:aws:iam::", currentCallerIdentity.AccountId, ":root\"},\n", "		\"Effect\": \"Allow\",\n", "		\"Resource\": \"arn:aws:mediastore:", currentRegion.Name, ":", currentCallerIdentity.AccountId, ":container/", name, "/*\",\n", "		\"Condition\": {\n", "			\"Bool\": { \"aws:SecureTransport\": \"true\" }\n", "		}\n", "	}]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ContainerPolicy struct {
 	pulumi.CustomResourceState
 
-	// The name of the container.
 	ContainerName pulumi.StringOutput `pulumi:"containerName"`
-	// The contents of the policy.
-	Policy pulumi.StringOutput `pulumi:"policy"`
+	Policy        pulumi.StringOutput `pulumi:"policy"`
 }
 
 // NewContainerPolicy registers a new resource with the given unique name, arguments, and options.
@@ -95,17 +51,13 @@ func GetContainerPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerPolicy resources.
 type containerPolicyState struct {
-	// The name of the container.
 	ContainerName *string `pulumi:"containerName"`
-	// The contents of the policy.
-	Policy *string `pulumi:"policy"`
+	Policy        *string `pulumi:"policy"`
 }
 
 type ContainerPolicyState struct {
-	// The name of the container.
 	ContainerName pulumi.StringPtrInput
-	// The contents of the policy.
-	Policy pulumi.StringPtrInput
+	Policy        pulumi.StringPtrInput
 }
 
 func (ContainerPolicyState) ElementType() reflect.Type {
@@ -113,18 +65,14 @@ func (ContainerPolicyState) ElementType() reflect.Type {
 }
 
 type containerPolicyArgs struct {
-	// The name of the container.
 	ContainerName string `pulumi:"containerName"`
-	// The contents of the policy.
-	Policy string `pulumi:"policy"`
+	Policy        string `pulumi:"policy"`
 }
 
 // The set of arguments for constructing a ContainerPolicy resource.
 type ContainerPolicyArgs struct {
-	// The name of the container.
 	ContainerName pulumi.StringInput
-	// The contents of the policy.
-	Policy pulumi.StringInput
+	Policy        pulumi.StringInput
 }
 
 func (ContainerPolicyArgs) ElementType() reflect.Type {

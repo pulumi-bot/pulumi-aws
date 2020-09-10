@@ -10,46 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Pinpoint GCM Channel resource.
-//
-// > **Note:** Api Key argument will be stored in the raw state as plain-text.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/pinpoint"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		app, err := pinpoint.NewApp(ctx, "app", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pinpoint.NewGcmChannel(ctx, "gcm", &pinpoint.GcmChannelArgs{
-// 			ApiKey:        pulumi.String("api_key"),
-// 			ApplicationId: app.ApplicationId,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type GcmChannel struct {
 	pulumi.CustomResourceState
 
-	// Platform credential API key from Google.
-	ApiKey pulumi.StringOutput `pulumi:"apiKey"`
-	// The application ID.
-	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// Whether the channel is enabled or disabled. Defaults to `true`.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	ApiKey        pulumi.StringOutput  `pulumi:"apiKey"`
+	ApplicationId pulumi.StringOutput  `pulumi:"applicationId"`
+	Enabled       pulumi.BoolPtrOutput `pulumi:"enabled"`
 }
 
 // NewGcmChannel registers a new resource with the given unique name, arguments, and options.
@@ -86,21 +52,15 @@ func GetGcmChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcmChannel resources.
 type gcmChannelState struct {
-	// Platform credential API key from Google.
-	ApiKey *string `pulumi:"apiKey"`
-	// The application ID.
+	ApiKey        *string `pulumi:"apiKey"`
 	ApplicationId *string `pulumi:"applicationId"`
-	// Whether the channel is enabled or disabled. Defaults to `true`.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled       *bool   `pulumi:"enabled"`
 }
 
 type GcmChannelState struct {
-	// Platform credential API key from Google.
-	ApiKey pulumi.StringPtrInput
-	// The application ID.
+	ApiKey        pulumi.StringPtrInput
 	ApplicationId pulumi.StringPtrInput
-	// Whether the channel is enabled or disabled. Defaults to `true`.
-	Enabled pulumi.BoolPtrInput
+	Enabled       pulumi.BoolPtrInput
 }
 
 func (GcmChannelState) ElementType() reflect.Type {
@@ -108,22 +68,16 @@ func (GcmChannelState) ElementType() reflect.Type {
 }
 
 type gcmChannelArgs struct {
-	// Platform credential API key from Google.
-	ApiKey string `pulumi:"apiKey"`
-	// The application ID.
+	ApiKey        string `pulumi:"apiKey"`
 	ApplicationId string `pulumi:"applicationId"`
-	// Whether the channel is enabled or disabled. Defaults to `true`.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled       *bool  `pulumi:"enabled"`
 }
 
 // The set of arguments for constructing a GcmChannel resource.
 type GcmChannelArgs struct {
-	// Platform credential API key from Google.
-	ApiKey pulumi.StringInput
-	// The application ID.
+	ApiKey        pulumi.StringInput
 	ApplicationId pulumi.StringInput
-	// Whether the channel is enabled or disabled. Defaults to `true`.
-	Enabled pulumi.BoolPtrInput
+	Enabled       pulumi.BoolPtrInput
 }
 
 func (GcmChannelArgs) ElementType() reflect.Type {

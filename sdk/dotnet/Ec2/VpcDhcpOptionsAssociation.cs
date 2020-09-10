@@ -9,44 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a VPC DHCP Options Association resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dnsResolver = new Aws.Ec2.VpcDhcpOptionsAssociation("dnsResolver", new Aws.Ec2.VpcDhcpOptionsAssociationArgs
-    ///         {
-    ///             VpcId = aws_vpc.Foo.Id,
-    ///             DhcpOptionsId = aws_vpc_dhcp_options.Foo.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Remarks
-    /// 
-    /// * You can only associate one DHCP Options Set to a given VPC ID.
-    /// * Removing the DHCP Options Association automatically sets AWS's `default` DHCP Options Set to the VPC.
-    /// </summary>
     public partial class VpcDhcpOptionsAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the DHCP Options Set to associate to the VPC.
-        /// </summary>
         [Output("dhcpOptionsId")]
         public Output<string> DhcpOptionsId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC to which we would like to associate a DHCP Options Set.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -96,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcDhcpOptionsAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the DHCP Options Set to associate to the VPC.
-        /// </summary>
         [Input("dhcpOptionsId", required: true)]
         public Input<string> DhcpOptionsId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the VPC to which we would like to associate a DHCP Options Set.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -115,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class VpcDhcpOptionsAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the DHCP Options Set to associate to the VPC.
-        /// </summary>
         [Input("dhcpOptionsId")]
         public Input<string>? DhcpOptionsId { get; set; }
 
-        /// <summary>
-        /// The ID of the VPC to which we would like to associate a DHCP Options Set.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const serviceImage = pulumi.output(aws.ecr.getImage({
- *     imageTag: "latest",
- *     repositoryName: "my/service",
- * }, { async: true }));
- * ```
- */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     if (!opts) {
         opts = {}
@@ -41,21 +26,9 @@ export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageArgs {
-    /**
-     * The sha256 digest of the image manifest. At least one of `imageDigest` or `imageTag` must be specified.
-     */
     readonly imageDigest?: string;
-    /**
-     * The tag associated with this image. At least one of `imageDigest` or `imageTag` must be specified.
-     */
     readonly imageTag?: string;
-    /**
-     * The ID of the Registry where the repository resides.
-     */
     readonly registryId?: string;
-    /**
-     * The name of the ECR Repository.
-     */
     readonly repositoryName: string;
 }
 
@@ -68,18 +41,9 @@ export interface GetImageResult {
      */
     readonly id: string;
     readonly imageDigest: string;
-    /**
-     * The date and time, expressed as a unix timestamp, at which the current image was pushed to the repository.
-     */
     readonly imagePushedAt: number;
-    /**
-     * The size, in bytes, of the image in the repository.
-     */
     readonly imageSizeInBytes: number;
     readonly imageTag?: string;
-    /**
-     * The list of tags associated with this image.
-     */
     readonly imageTags: string[];
     readonly registryId: string;
     readonly repositoryName: string;

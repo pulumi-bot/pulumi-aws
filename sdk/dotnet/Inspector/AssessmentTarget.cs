@@ -9,53 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Inspector
 {
-    /// <summary>
-    /// Provides a Inspector assessment target
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bar = new Aws.Inspector.ResourceGroup("bar", new Aws.Inspector.ResourceGroupArgs
-    ///         {
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "foo" },
-    ///                 { "Env", "bar" },
-    ///             },
-    ///         });
-    ///         var foo = new Aws.Inspector.AssessmentTarget("foo", new Aws.Inspector.AssessmentTargetArgs
-    ///         {
-    ///             ResourceGroupArn = bar.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AssessmentTarget : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The target assessment ARN.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the assessment target.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-        /// </summary>
         [Output("resourceGroupArn")]
         public Output<string?> ResourceGroupArn { get; private set; } = null!;
 
@@ -105,15 +66,9 @@ namespace Pulumi.Aws.Inspector
 
     public sealed class AssessmentTargetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the assessment target.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-        /// </summary>
         [Input("resourceGroupArn")]
         public Input<string>? ResourceGroupArn { get; set; }
 
@@ -124,21 +79,12 @@ namespace Pulumi.Aws.Inspector
 
     public sealed class AssessmentTargetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The target assessment ARN.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the assessment target.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-        /// </summary>
         [Input("resourceGroupArn")]
         public Input<string>? ResourceGroupArn { get; set; }
 

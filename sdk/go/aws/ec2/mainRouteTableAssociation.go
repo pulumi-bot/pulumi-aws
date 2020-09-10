@@ -10,49 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource for managing the main routing table of a VPC.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewMainRouteTableAssociation(ctx, "mainRouteTableAssociation", &ec2.MainRouteTableAssociationArgs{
-// 			VpcId:        pulumi.Any(aws_vpc.Foo.Id),
-// 			RouteTableId: pulumi.Any(aws_route_table.Bar.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Notes
-//
-// On VPC creation, the AWS API always creates an initial Main Route Table. This
-// resource records the ID of that Route Table under `originalRouteTableId`.
-// The "Delete" action for a `mainRouteTableAssociation` consists of resetting
-// this original table as the Main Route Table for the VPC. You'll see this
-// additional Route Table in the AWS console; it must remain intact in order for
-// the `mainRouteTableAssociation` delete to work properly.
 type MainRouteTableAssociation struct {
 	pulumi.CustomResourceState
 
-	// Used internally, see __Notes__ below
 	OriginalRouteTableId pulumi.StringOutput `pulumi:"originalRouteTableId"`
-	// The ID of the Route Table to set as the new
-	// main route table for the target VPC
-	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
-	// The ID of the VPC whose main route table should be set
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	RouteTableId         pulumi.StringOutput `pulumi:"routeTableId"`
+	VpcId                pulumi.StringOutput `pulumi:"vpcId"`
 }
 
 // NewMainRouteTableAssociation registers a new resource with the given unique name, arguments, and options.
@@ -89,23 +52,15 @@ func GetMainRouteTableAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MainRouteTableAssociation resources.
 type mainRouteTableAssociationState struct {
-	// Used internally, see __Notes__ below
 	OriginalRouteTableId *string `pulumi:"originalRouteTableId"`
-	// The ID of the Route Table to set as the new
-	// main route table for the target VPC
-	RouteTableId *string `pulumi:"routeTableId"`
-	// The ID of the VPC whose main route table should be set
-	VpcId *string `pulumi:"vpcId"`
+	RouteTableId         *string `pulumi:"routeTableId"`
+	VpcId                *string `pulumi:"vpcId"`
 }
 
 type MainRouteTableAssociationState struct {
-	// Used internally, see __Notes__ below
 	OriginalRouteTableId pulumi.StringPtrInput
-	// The ID of the Route Table to set as the new
-	// main route table for the target VPC
-	RouteTableId pulumi.StringPtrInput
-	// The ID of the VPC whose main route table should be set
-	VpcId pulumi.StringPtrInput
+	RouteTableId         pulumi.StringPtrInput
+	VpcId                pulumi.StringPtrInput
 }
 
 func (MainRouteTableAssociationState) ElementType() reflect.Type {
@@ -113,20 +68,14 @@ func (MainRouteTableAssociationState) ElementType() reflect.Type {
 }
 
 type mainRouteTableAssociationArgs struct {
-	// The ID of the Route Table to set as the new
-	// main route table for the target VPC
 	RouteTableId string `pulumi:"routeTableId"`
-	// The ID of the VPC whose main route table should be set
-	VpcId string `pulumi:"vpcId"`
+	VpcId        string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a MainRouteTableAssociation resource.
 type MainRouteTableAssociationArgs struct {
-	// The ID of the Route Table to set as the new
-	// main route table for the target VPC
 	RouteTableId pulumi.StringInput
-	// The ID of the VPC whose main route table should be set
-	VpcId pulumi.StringInput
+	VpcId        pulumi.StringInput
 }
 
 func (MainRouteTableAssociationArgs) ElementType() reflect.Type {

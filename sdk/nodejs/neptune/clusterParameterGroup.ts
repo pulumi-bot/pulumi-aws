@@ -6,25 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Neptune Cluster Parameter Group
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.neptune.ClusterParameterGroup("example", {
- *     description: "neptune cluster parameter group",
- *     family: "neptune1",
- *     parameters: [{
- *         name: "neptune_enable_audit_log",
- *         value: "1",
- *     }],
- * });
- * ```
- */
 export class ClusterParameterGroup extends pulumi.CustomResource {
     /**
      * Get an existing ClusterParameterGroup resource's state with the given name, ID, and optional extra
@@ -53,33 +34,12 @@ export class ClusterParameterGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClusterParameterGroup.__pulumiType;
     }
 
-    /**
-     * The ARN of the neptune cluster parameter group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The family of the neptune cluster parameter group.
-     */
     public readonly family!: pulumi.Output<string>;
-    /**
-     * The name of the neptune parameter.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string>;
-    /**
-     * A list of neptune parameters to apply.
-     */
     public readonly parameters!: pulumi.Output<outputs.neptune.ClusterParameterGroupParameter[] | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -129,33 +89,12 @@ export class ClusterParameterGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClusterParameterGroup resources.
  */
 export interface ClusterParameterGroupState {
-    /**
-     * The ARN of the neptune cluster parameter group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The family of the neptune cluster parameter group.
-     */
     readonly family?: pulumi.Input<string>;
-    /**
-     * The name of the neptune parameter.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * A list of neptune parameters to apply.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.neptune.ClusterParameterGroupParameter>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -163,28 +102,10 @@ export interface ClusterParameterGroupState {
  * The set of arguments for constructing a ClusterParameterGroup resource.
  */
 export interface ClusterParameterGroupArgs {
-    /**
-     * The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The family of the neptune cluster parameter group.
-     */
     readonly family: pulumi.Input<string>;
-    /**
-     * The name of the neptune parameter.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * A list of neptune parameters to apply.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.neptune.ClusterParameterGroupParameter>[]>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

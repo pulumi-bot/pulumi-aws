@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Regional Regex Pattern Set Resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.wafregional.RegexPatternSet("example", {
- *     regexPatternStrings: [
- *         "one",
- *         "two",
- *     ],
- * });
- * ```
- */
 export class RegexPatternSet extends pulumi.CustomResource {
     /**
      * Get an existing RegexPatternSet resource's state with the given name, ID, and optional extra
@@ -49,13 +32,7 @@ export class RegexPatternSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegexPatternSet.__pulumiType;
     }
 
-    /**
-     * The name or description of the Regex Pattern Set.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-     */
     public readonly regexPatternStrings!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -92,13 +69,7 @@ export class RegexPatternSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegexPatternSet resources.
  */
 export interface RegexPatternSetState {
-    /**
-     * The name or description of the Regex Pattern Set.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-     */
     readonly regexPatternStrings?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -106,12 +77,6 @@ export interface RegexPatternSetState {
  * The set of arguments for constructing a RegexPatternSet resource.
  */
 export interface RegexPatternSetArgs {
-    /**
-     * The name or description of the Regex Pattern Set.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-     */
     readonly regexPatternStrings?: pulumi.Input<pulumi.Input<string>[]>;
 }

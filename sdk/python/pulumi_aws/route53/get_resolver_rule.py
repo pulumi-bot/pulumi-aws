@@ -54,9 +54,6 @@ class GetResolverRuleResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN (Amazon Resource Name) for the resolver rule.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -80,9 +77,6 @@ class GetResolverRuleResult:
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> str:
-        """
-        When a rule is shared with another AWS account, the account ID of the account that the rule is shared with.
-        """
         return pulumi.get(self, "owner_id")
 
     @property
@@ -103,18 +97,11 @@ class GetResolverRuleResult:
     @property
     @pulumi.getter(name="shareStatus")
     def share_status(self) -> str:
-        """
-        Whether the rules is shared and, if so, whether the current account is sharing the rule with another account, or another account is sharing the rule with the current account.
-        Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
-        """
         return pulumi.get(self, "share_status")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        A map of tags assigned to the resolver rule.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -144,27 +131,7 @@ def get_resolver_rule(domain_name: Optional[str] = None,
                       tags: Optional[Mapping[str, str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResolverRuleResult:
     """
-    `route53.ResolverRule` provides details about a specific Route53 Resolver rule.
-
-    ## Example Usage
-
-    The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.route53.get_resolver_rule(domain_name="subdomain.example.com",
-        rule_type="SYSTEM")
-    ```
-
-
-    :param str domain_name: The domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolver_rule_id`.
-    :param str name: The friendly name of the desired resolver rule. Conflicts with `resolver_rule_id`.
-    :param str resolver_endpoint_id: The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolver_rule_id`.
-    :param str resolver_rule_id: The ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
-    :param str rule_type: The rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolver_rule_id`.
-    :param Mapping[str, str] tags: A map of tags assigned to the resolver rule.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['domainName'] = domain_name

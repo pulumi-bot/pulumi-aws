@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Retrieve information about a Secrets Manager secret rotation. To retrieve secret metadata, see the [`secretsmanager.Secret` data source](https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret.html). To retrieve a secret value, see the [`secretsmanager.SecretVersion` data source](https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_version.html).
-//
-// ## Example Usage
-// ### Retrieve Secret Rotation Configuration
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/secretsmanager"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := secretsmanager.LookupSecretRotation(ctx, &secretsmanager.LookupSecretRotationArgs{
-// 			SecretId: data.Aws_secretsmanager_secret.Example.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupSecretRotation(ctx *pulumi.Context, args *LookupSecretRotationArgs, opts ...pulumi.InvokeOption) (*LookupSecretRotationResult, error) {
 	var rv LookupSecretRotationResult
 	err := ctx.Invoke("aws:secretsmanager/getSecretRotation:getSecretRotation", args, &rv, opts...)
@@ -43,19 +18,15 @@ func LookupSecretRotation(ctx *pulumi.Context, args *LookupSecretRotationArgs, o
 
 // A collection of arguments for invoking getSecretRotation.
 type LookupSecretRotationArgs struct {
-	// Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 	SecretId string `pulumi:"secretId"`
 }
 
 // A collection of values returned by getSecretRotation.
 type LookupSecretRotationResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The ARN of the secret.
-	RotationEnabled bool `pulumi:"rotationEnabled"`
-	// The decrypted part of the protected secret information that was originally provided as a string.
-	RotationLambdaArn string `pulumi:"rotationLambdaArn"`
-	// The decrypted part of the protected secret information that was originally provided as a binary. Base64 encoded.
-	RotationRules []GetSecretRotationRotationRule `pulumi:"rotationRules"`
-	SecretId      string                          `pulumi:"secretId"`
+	Id                string                          `pulumi:"id"`
+	RotationEnabled   bool                            `pulumi:"rotationEnabled"`
+	RotationLambdaArn string                          `pulumi:"rotationLambdaArn"`
+	RotationRules     []GetSecretRotationRotationRule `pulumi:"rotationRules"`
+	SecretId          string                          `pulumi:"secretId"`
 }

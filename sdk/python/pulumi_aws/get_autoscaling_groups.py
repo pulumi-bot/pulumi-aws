@@ -38,9 +38,6 @@ class GetAutoscalingGroupsResult:
     @property
     @pulumi.getter
     def arns(self) -> List[str]:
-        """
-        A list of the Autoscaling Groups Arns in the current region.
-        """
         return pulumi.get(self, "arns")
 
     @property
@@ -59,9 +56,6 @@ class GetAutoscalingGroupsResult:
     @property
     @pulumi.getter
     def names(self) -> List[str]:
-        """
-        A list of the Autoscaling Groups in the current region.
-        """
         return pulumi.get(self, "names")
 
 
@@ -80,38 +74,7 @@ class AwaitableGetAutoscalingGroupsResult(GetAutoscalingGroupsResult):
 def get_autoscaling_groups(filters: Optional[List[pulumi.InputType['GetAutoscalingGroupsFilterArgs']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAutoscalingGroupsResult:
     """
-    The Autoscaling Groups data source allows access to the list of AWS
-    ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    groups = aws.get_autoscaling_groups(filters=[
-        aws.GetAutoscalingGroupsFilterArgs(
-            name="key",
-            values=["Team"],
-        ),
-        aws.GetAutoscalingGroupsFilterArgs(
-            name="value",
-            values=["Pets"],
-        ),
-    ])
-    slack_notifications = aws.autoscaling.Notification("slackNotifications",
-        group_names=groups.names,
-        notifications=[
-            "autoscaling:EC2_INSTANCE_LAUNCH",
-            "autoscaling:EC2_INSTANCE_TERMINATE",
-            "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
-            "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
-        ],
-        topic_arn="TOPIC ARN")
-    ```
-
-
-    :param List[pulumi.InputType['GetAutoscalingGroupsFilterArgs']] filters: A filter used to scope the list e.g. by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

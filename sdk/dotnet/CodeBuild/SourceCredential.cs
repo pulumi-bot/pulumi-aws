@@ -9,80 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CodeBuild
 {
-    /// <summary>
-    /// Provides a CodeBuild Source Credentials Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeBuild.SourceCredential("example", new Aws.CodeBuild.SourceCredentialArgs
-    ///         {
-    ///             AuthType = "PERSONAL_ACCESS_TOKEN",
-    ///             ServerType = "GITHUB",
-    ///             Token = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Bitbucket Server Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeBuild.SourceCredential("example", new Aws.CodeBuild.SourceCredentialArgs
-    ///         {
-    ///             AuthType = "BASIC_AUTH",
-    ///             ServerType = "BITBUCKET",
-    ///             Token = "example",
-    ///             UserName = "test-user",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SourceCredential : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of Source Credential.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket repository. An OAUTH connection is not supported by the API.
-        /// </summary>
         [Output("authType")]
         public Output<string> AuthType { get; private set; } = null!;
 
-        /// <summary>
-        /// The source provider used for this project.
-        /// </summary>
         [Output("serverType")]
         public Output<string> ServerType { get; private set; } = null!;
 
-        /// <summary>
-        /// For `GitHub` or `GitHub Enterprise`, this is the personal access token. For `Bitbucket`, this is the app password.
-        /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
-        /// <summary>
-        /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for other types of source providers or connections.
-        /// </summary>
         [Output("userName")]
         public Output<string?> UserName { get; private set; } = null!;
 
@@ -132,27 +72,15 @@ namespace Pulumi.Aws.CodeBuild
 
     public sealed class SourceCredentialArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket repository. An OAUTH connection is not supported by the API.
-        /// </summary>
         [Input("authType", required: true)]
         public Input<string> AuthType { get; set; } = null!;
 
-        /// <summary>
-        /// The source provider used for this project.
-        /// </summary>
         [Input("serverType", required: true)]
         public Input<string> ServerType { get; set; } = null!;
 
-        /// <summary>
-        /// For `GitHub` or `GitHub Enterprise`, this is the personal access token. For `Bitbucket`, this is the app password.
-        /// </summary>
         [Input("token", required: true)]
         public Input<string> Token { get; set; } = null!;
 
-        /// <summary>
-        /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for other types of source providers or connections.
-        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 
@@ -163,33 +91,18 @@ namespace Pulumi.Aws.CodeBuild
 
     public sealed class SourceCredentialState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of Source Credential.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket repository. An OAUTH connection is not supported by the API.
-        /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
-        /// <summary>
-        /// The source provider used for this project.
-        /// </summary>
         [Input("serverType")]
         public Input<string>? ServerType { get; set; }
 
-        /// <summary>
-        /// For `GitHub` or `GitHub Enterprise`, this is the personal access token. For `Bitbucket`, this is the app password.
-        /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 
-        /// <summary>
-        /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for other types of source providers or connections.
-        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

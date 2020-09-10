@@ -25,22 +25,9 @@ class IpGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an IP access control group in AWS WorkSpaces Service
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        contractors = aws.workspaces.IpGroup("contractors", description="Contractors IP access control group")
-        ```
-
+        Create a IpGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description.
-        :param pulumi.Input[str] name: The name of the IP group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IpGroupRuleArgs']]]] rules: One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,9 +71,6 @@ class IpGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description.
-        :param pulumi.Input[str] name: The name of the IP group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IpGroupRuleArgs']]]] rules: One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -101,25 +85,16 @@ class IpGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the IP group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[List['outputs.IpGroupRule']]]:
-        """
-        One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-        """
         return pulumi.get(self, "rules")
 
     @property

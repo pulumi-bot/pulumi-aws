@@ -13,17 +13,8 @@ namespace Pulumi.Aws.Glue.Outputs
     [OutputType]
     public sealed class GetScriptDagEdgeResult
     {
-        /// <summary>
-        /// The ID of the node at which the edge starts.
-        /// </summary>
         public readonly string Source;
-        /// <summary>
-        /// The ID of the node at which the edge ends.
-        /// </summary>
         public readonly string Target;
-        /// <summary>
-        /// The target of the edge.
-        /// </summary>
         public readonly string? TargetParameter;
 
         [OutputConstructor]

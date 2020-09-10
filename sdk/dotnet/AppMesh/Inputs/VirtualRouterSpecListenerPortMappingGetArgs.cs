@@ -12,15 +12,9 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class VirtualRouterSpecListenerPortMappingGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The port used for the port mapping.
-        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
-        /// <summary>
-        /// The protocol used for the port mapping. Valid values are `http` and `tcp`.
-        /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 

@@ -9,62 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sqs
 {
-    /// <summary>
-    /// Allows you to set a policy of an SQS Queue
-    /// while referencing ARN of the queue within the policy.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var queue = new Aws.Sqs.Queue("queue", new Aws.Sqs.QueueArgs
-    ///         {
-    ///         });
-    ///         var test = new Aws.Sqs.QueuePolicy("test", new Aws.Sqs.QueuePolicyArgs
-    ///         {
-    ///             QueueUrl = queue.Id,
-    ///             Policy = queue.Arn.Apply(arn =&gt; @$"{{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Id"": ""sqspolicy"",
-    ///   ""Statement"": [
-    ///     {{
-    ///       ""Sid"": ""First"",
-    ///       ""Effect"": ""Allow"",
-    ///       ""Principal"": ""*"",
-    ///       ""Action"": ""sqs:SendMessage"",
-    ///       ""Resource"": ""{arn}"",
-    ///       ""Condition"": {{
-    ///         ""ArnEquals"": {{
-    ///           ""aws:SourceArn"": ""{aws_sns_topic.Example.Arn}""
-    ///         }}
-    ///       }}
-    ///     }}
-    ///   ]
-    /// }}
-    /// "),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class QueuePolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The JSON policy for the SQS queue.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
-        /// <summary>
-        /// The URL of the SQS Queue to which to attach the policy
-        /// </summary>
         [Output("queueUrl")]
         public Output<string> QueueUrl { get; private set; } = null!;
 
@@ -114,15 +63,9 @@ namespace Pulumi.Aws.Sqs
 
     public sealed class QueuePolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The JSON policy for the SQS queue.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
-        /// <summary>
-        /// The URL of the SQS Queue to which to attach the policy
-        /// </summary>
         [Input("queueUrl", required: true)]
         public Input<string> QueueUrl { get; set; } = null!;
 
@@ -133,15 +76,9 @@ namespace Pulumi.Aws.Sqs
 
     public sealed class QueuePolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The JSON policy for the SQS queue.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        /// <summary>
-        /// The URL of the SQS Queue to which to attach the policy
-        /// </summary>
         [Input("queueUrl")]
         public Input<string>? QueueUrl { get; set; }
 

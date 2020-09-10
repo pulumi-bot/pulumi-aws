@@ -9,70 +9,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS App Mesh service mesh resource.
-//
-// ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appmesh"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appmesh.NewMesh(ctx, "simple", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Egress Filter
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appmesh"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appmesh.NewMesh(ctx, "simple", &appmesh.MeshArgs{
-// 			Spec: &appmesh.MeshSpecArgs{
-// 				EgressFilter: &appmesh.MeshSpecEgressFilterArgs{
-// 					Type: pulumi.String("ALLOW_ALL"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Mesh struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the service mesh.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The creation date of the service mesh.
-	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
-	// The last update date of the service mesh.
-	LastUpdatedDate pulumi.StringOutput `pulumi:"lastUpdatedDate"`
-	// The name to use for the service mesh.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The service mesh specification to apply.
-	Spec MeshSpecPtrOutput `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn             pulumi.StringOutput    `pulumi:"arn"`
+	CreatedDate     pulumi.StringOutput    `pulumi:"createdDate"`
+	LastUpdatedDate pulumi.StringOutput    `pulumi:"lastUpdatedDate"`
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	Spec            MeshSpecPtrOutput      `pulumi:"spec"`
+	Tags            pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewMesh registers a new resource with the given unique name, arguments, and options.
@@ -103,33 +48,21 @@ func GetMesh(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Mesh resources.
 type meshState struct {
-	// The ARN of the service mesh.
-	Arn *string `pulumi:"arn"`
-	// The creation date of the service mesh.
-	CreatedDate *string `pulumi:"createdDate"`
-	// The last update date of the service mesh.
-	LastUpdatedDate *string `pulumi:"lastUpdatedDate"`
-	// The name to use for the service mesh.
-	Name *string `pulumi:"name"`
-	// The service mesh specification to apply.
-	Spec *MeshSpec `pulumi:"spec"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn             *string           `pulumi:"arn"`
+	CreatedDate     *string           `pulumi:"createdDate"`
+	LastUpdatedDate *string           `pulumi:"lastUpdatedDate"`
+	Name            *string           `pulumi:"name"`
+	Spec            *MeshSpec         `pulumi:"spec"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 type MeshState struct {
-	// The ARN of the service mesh.
-	Arn pulumi.StringPtrInput
-	// The creation date of the service mesh.
-	CreatedDate pulumi.StringPtrInput
-	// The last update date of the service mesh.
+	Arn             pulumi.StringPtrInput
+	CreatedDate     pulumi.StringPtrInput
 	LastUpdatedDate pulumi.StringPtrInput
-	// The name to use for the service mesh.
-	Name pulumi.StringPtrInput
-	// The service mesh specification to apply.
-	Spec MeshSpecPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Name            pulumi.StringPtrInput
+	Spec            MeshSpecPtrInput
+	Tags            pulumi.StringMapInput
 }
 
 func (MeshState) ElementType() reflect.Type {
@@ -137,21 +70,15 @@ func (MeshState) ElementType() reflect.Type {
 }
 
 type meshArgs struct {
-	// The name to use for the service mesh.
-	Name *string `pulumi:"name"`
-	// The service mesh specification to apply.
-	Spec *MeshSpec `pulumi:"spec"`
-	// A map of tags to assign to the resource.
+	Name *string           `pulumi:"name"`
+	Spec *MeshSpec         `pulumi:"spec"`
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Mesh resource.
 type MeshArgs struct {
-	// The name to use for the service mesh.
 	Name pulumi.StringPtrInput
-	// The service mesh specification to apply.
 	Spec MeshSpecPtrInput
-	// A map of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 }
 

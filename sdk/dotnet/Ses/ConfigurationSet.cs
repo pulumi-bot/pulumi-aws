@@ -9,32 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Provides an SES configuration set resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.Ses.ConfigurationSet("test", new Aws.Ses.ConfigurationSetArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ConfigurationSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the configuration set
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -63,7 +39,7 @@ namespace Pulumi.Aws.Ses
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "aws:ses/confgurationSet:ConfgurationSet"},
+                    new Pulumi.Alias { Type = "aws:ses/confgurationSet:ConfgurationSet"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -88,9 +64,6 @@ namespace Pulumi.Aws.Ses
 
     public sealed class ConfigurationSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the configuration set
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -101,9 +74,6 @@ namespace Pulumi.Aws.Ses
 
     public sealed class ConfigurationSetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the configuration set
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -11,7 +11,6 @@ import (
 )
 
 type GlobalTableReplica struct {
-	// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
 	RegionName string `pulumi:"regionName"`
 }
 
@@ -27,7 +26,6 @@ type GlobalTableReplicaInput interface {
 }
 
 type GlobalTableReplicaArgs struct {
-	// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
 	RegionName pulumi.StringInput `pulumi:"regionName"`
 }
 
@@ -82,7 +80,6 @@ func (o GlobalTableReplicaOutput) ToGlobalTableReplicaOutputWithContext(ctx cont
 	return o
 }
 
-// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
 func (o GlobalTableReplicaOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GlobalTableReplica) string { return v.RegionName }).(pulumi.StringOutput)
 }
@@ -108,9 +105,7 @@ func (o GlobalTableReplicaArrayOutput) Index(i pulumi.IntInput) GlobalTableRepli
 }
 
 type TableAttribute struct {
-	// The name of the index
 	Name string `pulumi:"name"`
-	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
 	Type string `pulumi:"type"`
 }
 
@@ -126,9 +121,7 @@ type TableAttributeInput interface {
 }
 
 type TableAttributeArgs struct {
-	// The name of the index
 	Name pulumi.StringInput `pulumi:"name"`
-	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -183,12 +176,10 @@ func (o TableAttributeOutput) ToTableAttributeOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The name of the index
 func (o TableAttributeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableAttribute) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
 func (o TableAttributeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TableAttribute) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -214,27 +205,13 @@ func (o TableAttributeArrayOutput) Index(i pulumi.IntInput) TableAttributeOutput
 }
 
 type TableGlobalSecondaryIndex struct {
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey string `pulumi:"hashKey"`
-	// The name of the index
-	Name string `pulumi:"name"`
-	// Only required with `INCLUDE` as a
-	// projection type; a list of attributes to project into the index. These
-	// do not need to be defined as attributes on the table.
+	HashKey          string   `pulumi:"hashKey"`
+	Name             string   `pulumi:"name"`
 	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
-	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
-	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
-	// projects just the hash and range key into the index, and `INCLUDE`
-	// projects only the keys specified in the _non_key_attributes_
-	// parameter.
-	ProjectionType string `pulumi:"projectionType"`
-	// The name of the range key; must be defined
-	RangeKey *string `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity *int `pulumi:"readCapacity"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity *int `pulumi:"writeCapacity"`
+	ProjectionType   string   `pulumi:"projectionType"`
+	RangeKey         *string  `pulumi:"rangeKey"`
+	ReadCapacity     *int     `pulumi:"readCapacity"`
+	WriteCapacity    *int     `pulumi:"writeCapacity"`
 }
 
 // TableGlobalSecondaryIndexInput is an input type that accepts TableGlobalSecondaryIndexArgs and TableGlobalSecondaryIndexOutput values.
@@ -249,27 +226,13 @@ type TableGlobalSecondaryIndexInput interface {
 }
 
 type TableGlobalSecondaryIndexArgs struct {
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
-	HashKey pulumi.StringInput `pulumi:"hashKey"`
-	// The name of the index
-	Name pulumi.StringInput `pulumi:"name"`
-	// Only required with `INCLUDE` as a
-	// projection type; a list of attributes to project into the index. These
-	// do not need to be defined as attributes on the table.
+	HashKey          pulumi.StringInput      `pulumi:"hashKey"`
+	Name             pulumi.StringInput      `pulumi:"name"`
 	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
-	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
-	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
-	// projects just the hash and range key into the index, and `INCLUDE`
-	// projects only the keys specified in the _non_key_attributes_
-	// parameter.
-	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
-	// The name of the range key; must be defined
-	RangeKey pulumi.StringPtrInput `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-	ReadCapacity pulumi.IntPtrInput `pulumi:"readCapacity"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-	WriteCapacity pulumi.IntPtrInput `pulumi:"writeCapacity"`
+	ProjectionType   pulumi.StringInput      `pulumi:"projectionType"`
+	RangeKey         pulumi.StringPtrInput   `pulumi:"rangeKey"`
+	ReadCapacity     pulumi.IntPtrInput      `pulumi:"readCapacity"`
+	WriteCapacity    pulumi.IntPtrInput      `pulumi:"writeCapacity"`
 }
 
 func (TableGlobalSecondaryIndexArgs) ElementType() reflect.Type {
@@ -323,44 +286,30 @@ func (o TableGlobalSecondaryIndexOutput) ToTableGlobalSecondaryIndexOutputWithCo
 	return o
 }
 
-// The name of the hash key in the index; must be
-// defined as an attribute in the resource.
 func (o TableGlobalSecondaryIndexOutput) HashKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) string { return v.HashKey }).(pulumi.StringOutput)
 }
 
-// The name of the index
 func (o TableGlobalSecondaryIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Only required with `INCLUDE` as a
-// projection type; a list of attributes to project into the index. These
-// do not need to be defined as attributes on the table.
 func (o TableGlobalSecondaryIndexOutput) NonKeyAttributes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
 }
 
-// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
-// where `ALL` projects every attribute into the index, `KEYS_ONLY`
-// projects just the hash and range key into the index, and `INCLUDE`
-// projects only the keys specified in the _non_key_attributes_
-// parameter.
 func (o TableGlobalSecondaryIndexOutput) ProjectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) string { return v.ProjectionType }).(pulumi.StringOutput)
 }
 
-// The name of the range key; must be defined
 func (o TableGlobalSecondaryIndexOutput) RangeKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) *string { return v.RangeKey }).(pulumi.StringPtrOutput)
 }
 
-// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
 func (o TableGlobalSecondaryIndexOutput) ReadCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) *int { return v.ReadCapacity }).(pulumi.IntPtrOutput)
 }
 
-// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
 func (o TableGlobalSecondaryIndexOutput) WriteCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) *int { return v.WriteCapacity }).(pulumi.IntPtrOutput)
 }
@@ -386,20 +335,10 @@ func (o TableGlobalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) TableGlob
 }
 
 type TableLocalSecondaryIndex struct {
-	// The name of the index
-	Name string `pulumi:"name"`
-	// Only required with `INCLUDE` as a
-	// projection type; a list of attributes to project into the index. These
-	// do not need to be defined as attributes on the table.
+	Name             string   `pulumi:"name"`
 	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
-	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
-	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
-	// projects just the hash and range key into the index, and `INCLUDE`
-	// projects only the keys specified in the _non_key_attributes_
-	// parameter.
-	ProjectionType string `pulumi:"projectionType"`
-	// The name of the range key; must be defined
-	RangeKey string `pulumi:"rangeKey"`
+	ProjectionType   string   `pulumi:"projectionType"`
+	RangeKey         string   `pulumi:"rangeKey"`
 }
 
 // TableLocalSecondaryIndexInput is an input type that accepts TableLocalSecondaryIndexArgs and TableLocalSecondaryIndexOutput values.
@@ -414,20 +353,10 @@ type TableLocalSecondaryIndexInput interface {
 }
 
 type TableLocalSecondaryIndexArgs struct {
-	// The name of the index
-	Name pulumi.StringInput `pulumi:"name"`
-	// Only required with `INCLUDE` as a
-	// projection type; a list of attributes to project into the index. These
-	// do not need to be defined as attributes on the table.
+	Name             pulumi.StringInput      `pulumi:"name"`
 	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
-	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
-	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
-	// projects just the hash and range key into the index, and `INCLUDE`
-	// projects only the keys specified in the _non_key_attributes_
-	// parameter.
-	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
-	// The name of the range key; must be defined
-	RangeKey pulumi.StringInput `pulumi:"rangeKey"`
+	ProjectionType   pulumi.StringInput      `pulumi:"projectionType"`
+	RangeKey         pulumi.StringInput      `pulumi:"rangeKey"`
 }
 
 func (TableLocalSecondaryIndexArgs) ElementType() reflect.Type {
@@ -481,28 +410,18 @@ func (o TableLocalSecondaryIndexOutput) ToTableLocalSecondaryIndexOutputWithCont
 	return o
 }
 
-// The name of the index
 func (o TableLocalSecondaryIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Only required with `INCLUDE` as a
-// projection type; a list of attributes to project into the index. These
-// do not need to be defined as attributes on the table.
 func (o TableLocalSecondaryIndexOutput) NonKeyAttributes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
 }
 
-// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
-// where `ALL` projects every attribute into the index, `KEYS_ONLY`
-// projects just the hash and range key into the index, and `INCLUDE`
-// projects only the keys specified in the _non_key_attributes_
-// parameter.
 func (o TableLocalSecondaryIndexOutput) ProjectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) string { return v.ProjectionType }).(pulumi.StringOutput)
 }
 
-// The name of the range key; must be defined
 func (o TableLocalSecondaryIndexOutput) RangeKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) string { return v.RangeKey }).(pulumi.StringOutput)
 }
@@ -528,7 +447,6 @@ func (o TableLocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) TableLocal
 }
 
 type TablePointInTimeRecovery struct {
-	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -544,7 +462,6 @@ type TablePointInTimeRecoveryInput interface {
 }
 
 type TablePointInTimeRecoveryArgs struct {
-	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -624,8 +541,6 @@ func (o TablePointInTimeRecoveryOutput) ToTablePointInTimeRecoveryPtrOutputWithC
 		return &v
 	}).(TablePointInTimeRecoveryPtrOutput)
 }
-
-// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TablePointInTimeRecoveryOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TablePointInTimeRecovery) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -648,7 +563,6 @@ func (o TablePointInTimeRecoveryPtrOutput) Elem() TablePointInTimeRecoveryOutput
 	return o.ApplyT(func(v *TablePointInTimeRecovery) TablePointInTimeRecovery { return *v }).(TablePointInTimeRecoveryOutput)
 }
 
-// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TablePointInTimeRecoveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TablePointInTimeRecovery) *bool {
 		if v == nil {
@@ -659,7 +573,6 @@ func (o TablePointInTimeRecoveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type TableReplica struct {
-	// Region name of the replica.
 	RegionName string `pulumi:"regionName"`
 }
 
@@ -675,7 +588,6 @@ type TableReplicaInput interface {
 }
 
 type TableReplicaArgs struct {
-	// Region name of the replica.
 	RegionName pulumi.StringInput `pulumi:"regionName"`
 }
 
@@ -730,7 +642,6 @@ func (o TableReplicaOutput) ToTableReplicaOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Region name of the replica.
 func (o TableReplicaOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v TableReplica) string { return v.RegionName }).(pulumi.StringOutput)
 }
@@ -756,10 +667,7 @@ func (o TableReplicaArrayOutput) Index(i pulumi.IntInput) TableReplicaOutput {
 }
 
 type TableServerSideEncryption struct {
-	// Indicates whether ttl is enabled (true) or disabled (false).
-	Enabled bool `pulumi:"enabled"`
-	// The ARN of the CMK that should be used for the AWS KMS encryption.
-	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+	Enabled   bool    `pulumi:"enabled"`
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 }
 
@@ -775,10 +683,7 @@ type TableServerSideEncryptionInput interface {
 }
 
 type TableServerSideEncryptionArgs struct {
-	// Indicates whether ttl is enabled (true) or disabled (false).
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The ARN of the CMK that should be used for the AWS KMS encryption.
-	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+	Enabled   pulumi.BoolInput      `pulumi:"enabled"`
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 }
 
@@ -858,14 +763,10 @@ func (o TableServerSideEncryptionOutput) ToTableServerSideEncryptionPtrOutputWit
 		return &v
 	}).(TableServerSideEncryptionPtrOutput)
 }
-
-// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableServerSideEncryptionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TableServerSideEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The ARN of the CMK that should be used for the AWS KMS encryption.
-// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
 func (o TableServerSideEncryptionOutput) KmsKeyArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableServerSideEncryption) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
 }
@@ -888,7 +789,6 @@ func (o TableServerSideEncryptionPtrOutput) Elem() TableServerSideEncryptionOutp
 	return o.ApplyT(func(v *TableServerSideEncryption) TableServerSideEncryption { return *v }).(TableServerSideEncryptionOutput)
 }
 
-// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableServerSideEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TableServerSideEncryption) *bool {
 		if v == nil {
@@ -898,8 +798,6 @@ func (o TableServerSideEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The ARN of the CMK that should be used for the AWS KMS encryption.
-// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
 func (o TableServerSideEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableServerSideEncryption) *string {
 		if v == nil {
@@ -910,10 +808,8 @@ func (o TableServerSideEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
 }
 
 type TableTtl struct {
-	// The name of the table attribute to store the TTL timestamp in.
 	AttributeName string `pulumi:"attributeName"`
-	// Indicates whether ttl is enabled (true) or disabled (false).
-	Enabled *bool `pulumi:"enabled"`
+	Enabled       *bool  `pulumi:"enabled"`
 }
 
 // TableTtlInput is an input type that accepts TableTtlArgs and TableTtlOutput values.
@@ -928,10 +824,8 @@ type TableTtlInput interface {
 }
 
 type TableTtlArgs struct {
-	// The name of the table attribute to store the TTL timestamp in.
-	AttributeName pulumi.StringInput `pulumi:"attributeName"`
-	// Indicates whether ttl is enabled (true) or disabled (false).
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	AttributeName pulumi.StringInput  `pulumi:"attributeName"`
+	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (TableTtlArgs) ElementType() reflect.Type {
@@ -1010,13 +904,10 @@ func (o TableTtlOutput) ToTableTtlPtrOutputWithContext(ctx context.Context) Tabl
 		return &v
 	}).(TableTtlPtrOutput)
 }
-
-// The name of the table attribute to store the TTL timestamp in.
 func (o TableTtlOutput) AttributeName() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTtl) string { return v.AttributeName }).(pulumi.StringOutput)
 }
 
-// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableTtlOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TableTtl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1039,7 +930,6 @@ func (o TableTtlPtrOutput) Elem() TableTtlOutput {
 	return o.ApplyT(func(v *TableTtl) TableTtl { return *v }).(TableTtlOutput)
 }
 
-// The name of the table attribute to store the TTL timestamp in.
 func (o TableTtlPtrOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableTtl) *string {
 		if v == nil {
@@ -1049,7 +939,6 @@ func (o TableTtlPtrOutput) AttributeName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableTtlPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TableTtl) *bool {
 		if v == nil {
@@ -1060,7 +949,6 @@ func (o TableTtlPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type GetTableAttribute struct {
-	// The name of the DynamoDB table.
 	Name string `pulumi:"name"`
 	Type string `pulumi:"type"`
 }
@@ -1077,7 +965,6 @@ type GetTableAttributeInput interface {
 }
 
 type GetTableAttributeArgs struct {
-	// The name of the DynamoDB table.
 	Name pulumi.StringInput `pulumi:"name"`
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -1133,7 +1020,6 @@ func (o GetTableAttributeOutput) ToGetTableAttributeOutputWithContext(ctx contex
 	return o
 }
 
-// The name of the DynamoDB table.
 func (o GetTableAttributeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableAttribute) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1163,8 +1049,7 @@ func (o GetTableAttributeArrayOutput) Index(i pulumi.IntInput) GetTableAttribute
 }
 
 type GetTableGlobalSecondaryIndex struct {
-	HashKey string `pulumi:"hashKey"`
-	// The name of the DynamoDB table.
+	HashKey          string   `pulumi:"hashKey"`
 	Name             string   `pulumi:"name"`
 	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
 	ProjectionType   string   `pulumi:"projectionType"`
@@ -1185,8 +1070,7 @@ type GetTableGlobalSecondaryIndexInput interface {
 }
 
 type GetTableGlobalSecondaryIndexArgs struct {
-	HashKey pulumi.StringInput `pulumi:"hashKey"`
-	// The name of the DynamoDB table.
+	HashKey          pulumi.StringInput      `pulumi:"hashKey"`
 	Name             pulumi.StringInput      `pulumi:"name"`
 	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
 	ProjectionType   pulumi.StringInput      `pulumi:"projectionType"`
@@ -1250,7 +1134,6 @@ func (o GetTableGlobalSecondaryIndexOutput) HashKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableGlobalSecondaryIndex) string { return v.HashKey }).(pulumi.StringOutput)
 }
 
-// The name of the DynamoDB table.
 func (o GetTableGlobalSecondaryIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableGlobalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1296,7 +1179,6 @@ func (o GetTableGlobalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) GetTab
 }
 
 type GetTableLocalSecondaryIndex struct {
-	// The name of the DynamoDB table.
 	Name             string   `pulumi:"name"`
 	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
 	ProjectionType   string   `pulumi:"projectionType"`
@@ -1315,7 +1197,6 @@ type GetTableLocalSecondaryIndexInput interface {
 }
 
 type GetTableLocalSecondaryIndexArgs struct {
-	// The name of the DynamoDB table.
 	Name             pulumi.StringInput      `pulumi:"name"`
 	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
 	ProjectionType   pulumi.StringInput      `pulumi:"projectionType"`
@@ -1373,7 +1254,6 @@ func (o GetTableLocalSecondaryIndexOutput) ToGetTableLocalSecondaryIndexOutputWi
 	return o
 }
 
-// The name of the DynamoDB table.
 func (o GetTableLocalSecondaryIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableLocalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
 }

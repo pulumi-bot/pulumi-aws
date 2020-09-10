@@ -9,135 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.StorageGateway
 {
-    /// <summary>
-    /// Manages an AWS Storage Gateway NFS File Share.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.StorageGateway.NfsFileShare("example", new Aws.StorageGateway.NfsFileShareArgs
-    ///         {
-    ///             ClientLists = 
-    ///             {
-    ///                 "0.0.0.0/0",
-    ///             },
-    ///             GatewayArn = aws_storagegateway_gateway.Example.Arn,
-    ///             LocationArn = aws_s3_bucket.Example.Arn,
-    ///             RoleArn = aws_iam_role.Example.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class NfsFileShare : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the NFS File Share.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. Set to `["0.0.0.0/0"]` to not limit access. Minimum 1 item. Maximum 100 items.
-        /// </summary>
         [Output("clientLists")]
         public Output<ImmutableArray<string>> ClientLists { get; private set; } = null!;
 
-        /// <summary>
-        /// The default storage class for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`. Valid values: `S3_STANDARD`, `S3_STANDARD_IA`, `S3_ONEZONE_IA`.
-        /// </summary>
         [Output("defaultStorageClass")]
         public Output<string?> DefaultStorageClass { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the NFS File Share.
-        /// </summary>
         [Output("fileshareId")]
         public Output<string> FileshareId { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the file gateway.
-        /// </summary>
         [Output("gatewayArn")]
         public Output<string> GatewayArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
-        /// </summary>
         [Output("guessMimeTypeEnabled")]
         public Output<bool?> GuessMimeTypeEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
-        /// </summary>
         [Output("kmsEncrypted")]
         public Output<bool?> KmsEncrypted { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
-        /// </summary>
         [Output("kmsKeyArn")]
         public Output<string?> KmsKeyArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the backed storage used for storing file data.
-        /// </summary>
         [Output("locationArn")]
         public Output<string> LocationArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested argument with file share default values. More information below.
-        /// </summary>
         [Output("nfsFileShareDefaults")]
         public Output<Outputs.NfsFileShareNfsFileShareDefaults?> NfsFileShareDefaults { get; private set; } = null!;
 
-        /// <summary>
-        /// Access Control List permission for S3 bucket objects. Defaults to `private`.
-        /// </summary>
         [Output("objectAcl")]
         public Output<string?> ObjectAcl { get; private set; } = null!;
 
-        /// <summary>
-        /// File share path used by the NFS client to identify the mount point.
-        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.
-        /// </summary>
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
-        /// </summary>
         [Output("requesterPays")]
         public Output<bool?> RequesterPays { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
-        /// </summary>
         [Output("squash")]
         public Output<string?> Squash { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -189,94 +110,50 @@ namespace Pulumi.Aws.StorageGateway
     {
         [Input("clientLists", required: true)]
         private InputList<string>? _clientLists;
-
-        /// <summary>
-        /// The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. Set to `["0.0.0.0/0"]` to not limit access. Minimum 1 item. Maximum 100 items.
-        /// </summary>
         public InputList<string> ClientLists
         {
             get => _clientLists ?? (_clientLists = new InputList<string>());
             set => _clientLists = value;
         }
 
-        /// <summary>
-        /// The default storage class for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`. Valid values: `S3_STANDARD`, `S3_STANDARD_IA`, `S3_ONEZONE_IA`.
-        /// </summary>
         [Input("defaultStorageClass")]
         public Input<string>? DefaultStorageClass { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the file gateway.
-        /// </summary>
         [Input("gatewayArn", required: true)]
         public Input<string> GatewayArn { get; set; } = null!;
 
-        /// <summary>
-        /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
-        /// </summary>
         [Input("guessMimeTypeEnabled")]
         public Input<bool>? GuessMimeTypeEnabled { get; set; }
 
-        /// <summary>
-        /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
-        /// </summary>
         [Input("kmsEncrypted")]
         public Input<bool>? KmsEncrypted { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
-        /// </summary>
         [Input("kmsKeyArn")]
         public Input<string>? KmsKeyArn { get; set; }
 
-        /// <summary>
-        /// The ARN of the backed storage used for storing file data.
-        /// </summary>
         [Input("locationArn", required: true)]
         public Input<string> LocationArn { get; set; } = null!;
 
-        /// <summary>
-        /// Nested argument with file share default values. More information below.
-        /// </summary>
         [Input("nfsFileShareDefaults")]
         public Input<Inputs.NfsFileShareNfsFileShareDefaultsArgs>? NfsFileShareDefaults { get; set; }
 
-        /// <summary>
-        /// Access Control List permission for S3 bucket objects. Defaults to `private`.
-        /// </summary>
         [Input("objectAcl")]
         public Input<string>? ObjectAcl { get; set; }
 
-        /// <summary>
-        /// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.
-        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        /// <summary>
-        /// Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
-        /// </summary>
         [Input("requesterPays")]
         public Input<bool>? RequesterPays { get; set; }
 
-        /// <summary>
-        /// The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
-        /// <summary>
-        /// Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
-        /// </summary>
         [Input("squash")]
         public Input<string>? Squash { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -290,114 +167,61 @@ namespace Pulumi.Aws.StorageGateway
 
     public sealed class NfsFileShareState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the NFS File Share.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         [Input("clientLists")]
         private InputList<string>? _clientLists;
-
-        /// <summary>
-        /// The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. Set to `["0.0.0.0/0"]` to not limit access. Minimum 1 item. Maximum 100 items.
-        /// </summary>
         public InputList<string> ClientLists
         {
             get => _clientLists ?? (_clientLists = new InputList<string>());
             set => _clientLists = value;
         }
 
-        /// <summary>
-        /// The default storage class for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`. Valid values: `S3_STANDARD`, `S3_STANDARD_IA`, `S3_ONEZONE_IA`.
-        /// </summary>
         [Input("defaultStorageClass")]
         public Input<string>? DefaultStorageClass { get; set; }
 
-        /// <summary>
-        /// ID of the NFS File Share.
-        /// </summary>
         [Input("fileshareId")]
         public Input<string>? FileshareId { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the file gateway.
-        /// </summary>
         [Input("gatewayArn")]
         public Input<string>? GatewayArn { get; set; }
 
-        /// <summary>
-        /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
-        /// </summary>
         [Input("guessMimeTypeEnabled")]
         public Input<bool>? GuessMimeTypeEnabled { get; set; }
 
-        /// <summary>
-        /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
-        /// </summary>
         [Input("kmsEncrypted")]
         public Input<bool>? KmsEncrypted { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
-        /// </summary>
         [Input("kmsKeyArn")]
         public Input<string>? KmsKeyArn { get; set; }
 
-        /// <summary>
-        /// The ARN of the backed storage used for storing file data.
-        /// </summary>
         [Input("locationArn")]
         public Input<string>? LocationArn { get; set; }
 
-        /// <summary>
-        /// Nested argument with file share default values. More information below.
-        /// </summary>
         [Input("nfsFileShareDefaults")]
         public Input<Inputs.NfsFileShareNfsFileShareDefaultsGetArgs>? NfsFileShareDefaults { get; set; }
 
-        /// <summary>
-        /// Access Control List permission for S3 bucket objects. Defaults to `private`.
-        /// </summary>
         [Input("objectAcl")]
         public Input<string>? ObjectAcl { get; set; }
 
-        /// <summary>
-        /// File share path used by the NFS client to identify the mount point.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.
-        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        /// <summary>
-        /// Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
-        /// </summary>
         [Input("requesterPays")]
         public Input<bool>? RequesterPays { get; set; }
 
-        /// <summary>
-        /// The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
-        /// </summary>
         [Input("squash")]
         public Input<string>? Squash { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

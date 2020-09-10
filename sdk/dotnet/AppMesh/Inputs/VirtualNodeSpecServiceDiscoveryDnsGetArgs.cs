@@ -12,9 +12,6 @@ namespace Pulumi.Aws.AppMesh.Inputs
 
     public sealed class VirtualNodeSpecServiceDiscoveryDnsGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The DNS host name for your virtual node.
-        /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 

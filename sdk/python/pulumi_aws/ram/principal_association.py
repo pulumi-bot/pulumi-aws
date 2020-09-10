@@ -21,45 +21,9 @@ class PrincipalAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Resource Access Manager (RAM) principal association. Depending if [RAM Sharing with AWS Organizations is enabled](https://docs.aws.amazon.com/ram/latest/userguide/getting-started-sharing.html#getting-started-sharing-orgs), the RAM behavior with different principal types changes.
-
-        When RAM Sharing with AWS Organizations is enabled:
-
-        - For AWS Account ID, Organization, and Organizational Unit principals within the same AWS Organization, no resource share invitation is sent and resources become available automatically after creating the association.
-        - For AWS Account ID principals outside the AWS Organization, a resource share invitation is sent and must be accepted before resources become available. See the `ram.ResourceShareAccepter` resource to accept these invitations.
-
-        When RAM Sharing with AWS Organizations is not enabled:
-
-        - Organization and Organizational Unit principals cannot be used.
-        - For AWS Account ID principals, a resource share invitation is sent and must be accepted before resources become available. See the `ram.ResourceShareAccepter` resource to accept these invitations.
-
-        ## Example Usage
-        ### AWS Account ID
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_resource_share = aws.ram.ResourceShare("exampleResourceShare", allow_external_principals=True)
-        example_principal_association = aws.ram.PrincipalAssociation("examplePrincipalAssociation",
-            principal="111111111111",
-            resource_share_arn=example_resource_share.arn)
-        ```
-        ### AWS Organization
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ram.PrincipalAssociation("example",
-            principal=aws_organizations_organization["example"]["arn"],
-            resource_share_arn=aws_ram_resource_share["example"]["arn"])
-        ```
-
+        Create a PrincipalAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] principal: The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
-        :param pulumi.Input[str] resource_share_arn: The Amazon Resource Name (ARN) of the resource share.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,8 +67,6 @@ class PrincipalAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] principal: The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
-        :param pulumi.Input[str] resource_share_arn: The Amazon Resource Name (ARN) of the resource share.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -117,17 +79,11 @@ class PrincipalAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def principal(self) -> pulumi.Output[str]:
-        """
-        The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
-        """
         return pulumi.get(self, "principal")
 
     @property
     @pulumi.getter(name="resourceShareArn")
     def resource_share_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the resource share.
-        """
         return pulumi.get(self, "resource_share_arn")
 
     def translate_output_property(self, prop):

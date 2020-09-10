@@ -11,19 +11,6 @@ namespace Pulumi.Aws
 {
     public static class GetAvailabilityZone
     {
-        /// <summary>
-        /// `aws.getAvailabilityZone` provides details about a specific availability zone (AZ)
-        /// in the current region.
-        /// 
-        /// This can be used both to validate an availability zone given in a variable
-        /// and to split the AZ name into its component parts of an AWS region and an
-        /// AZ identifier letter. The latter may be useful e.g. for implementing a
-        /// consistent subnet numbering scheme across several regions by mapping both
-        /// the region and the subnet letter to network numbers.
-        /// 
-        /// This is different from the `aws.getAvailabilityZones` (plural) data source,
-        /// which provides a list of the available zones.
-        /// </summary>
         public static Task<GetAvailabilityZoneResult> InvokeAsync(GetAvailabilityZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZoneResult>("aws:index/getAvailabilityZone:getAvailabilityZone", args ?? new GetAvailabilityZoneArgs(), options.WithVersion());
     }
@@ -31,39 +18,23 @@ namespace Pulumi.Aws
 
     public sealed class GetAvailabilityZoneArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
-        /// </summary>
         [Input("allAvailabilityZones")]
         public bool? AllAvailabilityZones { get; set; }
 
         [Input("filters")]
         private List<Inputs.GetAvailabilityZoneFilterArgs>? _filters;
-
-        /// <summary>
-        /// Configuration block(s) for filtering. Detailed below.
-        /// </summary>
         public List<Inputs.GetAvailabilityZoneFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetAvailabilityZoneFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
-        /// <summary>
-        /// A specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
-        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
-        /// <summary>
-        /// The zone ID of the availability zone to select.
-        /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
 
@@ -78,30 +49,15 @@ namespace Pulumi.Aws
     {
         public readonly bool? AllAvailabilityZones;
         public readonly ImmutableArray<Outputs.GetAvailabilityZoneFilterResult> Filters;
-        /// <summary>
-        /// For Availability Zones, this is the same value as the Region name. For Local Zones, the name of the associated group, for example `us-west-2-lax-1`.
-        /// </summary>
         public readonly string GroupName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        /// <summary>
-        /// The part of the AZ name that appears after the region name, uniquely identifying the AZ within its region.
-        /// </summary>
         public readonly string NameSuffix;
-        /// <summary>
-        /// The name of the location from which the address is advertised.
-        /// </summary>
         public readonly string NetworkBorderGroup;
-        /// <summary>
-        /// For Availability Zones, this always has the value of `opt-in-not-required`. For Local Zones, this is the opt in status. The possible values are `opted-in` and `not-opted-in`.
-        /// </summary>
         public readonly string OptInStatus;
-        /// <summary>
-        /// The region where the selected availability zone resides. This is always the region selected on the provider, since this data source searches only within that region.
-        /// </summary>
         public readonly string Region;
         public readonly string State;
         public readonly string ZoneId;

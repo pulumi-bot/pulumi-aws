@@ -9,32 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.SimpleDB
 {
-    /// <summary>
-    /// Provides a SimpleDB domain resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var users = new Aws.SimpleDB.Domain("users", new Aws.SimpleDB.DomainArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the SimpleDB domain
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -84,9 +60,6 @@ namespace Pulumi.Aws.SimpleDB
 
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the SimpleDB domain
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -97,9 +70,6 @@ namespace Pulumi.Aws.SimpleDB
 
     public sealed class DomainState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the SimpleDB domain
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

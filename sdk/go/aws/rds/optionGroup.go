@@ -10,81 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an RDS DB option group resource. Documentation of the available options for various RDS engines can be found at:
-//
-// * [MariaDB Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MariaDB.Options.html)
-// * [Microsoft SQL Server Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.html)
-// * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
-// * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/rds"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.NewOptionGroup(ctx, "example", &rds.OptionGroupArgs{
-// 			OptionGroupDescription: pulumi.String("Option Group"),
-// 			EngineName:             pulumi.String("sqlserver-ee"),
-// 			MajorEngineVersion:     pulumi.String("11.00"),
-// 			Options: rds.OptionGroupOptionArray{
-// 				&rds.OptionGroupOptionArgs{
-// 					OptionName: pulumi.String("Timezone"),
-// 					OptionSettings: rds.OptionGroupOptionOptionSettingArray{
-// 						&rds.OptionGroupOptionOptionSettingArgs{
-// 							Name:  pulumi.String("TIME_ZONE"),
-// 							Value: pulumi.String("UTC"),
-// 						},
-// 					},
-// 				},
-// 				&rds.OptionGroupOptionArgs{
-// 					OptionName: pulumi.String("SQLSERVER_BACKUP_RESTORE"),
-// 					OptionSettings: rds.OptionGroupOptionOptionSettingArray{
-// 						&rds.OptionGroupOptionOptionSettingArgs{
-// 							Name:  pulumi.String("IAM_ROLE_ARN"),
-// 							Value: pulumi.Any(aws_iam_role.Example.Arn),
-// 						},
-// 					},
-// 				},
-// 				&rds.OptionGroupOptionArgs{
-// 					OptionName: pulumi.String("TDE"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// > **Note**: Any modifications to the `dbOptionGroup` are set to happen immediately as we default to applying immediately.
 type OptionGroup struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the db option group.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Specifies the name of the engine that this option group should be associated with.
-	EngineName pulumi.StringOutput `pulumi:"engineName"`
-	// Specifies the major version of the engine that this option group should be associated with.
-	MajorEngineVersion pulumi.StringOutput `pulumi:"majorEngineVersion"`
-	// The Name of the setting.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
-	// The description of the option group. Defaults to "Managed by Pulumi".
-	OptionGroupDescription pulumi.StringOutput `pulumi:"optionGroupDescription"`
-	// A list of Options to apply.
-	Options OptionGroupOptionArrayOutput `pulumi:"options"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                    pulumi.StringOutput          `pulumi:"arn"`
+	EngineName             pulumi.StringOutput          `pulumi:"engineName"`
+	MajorEngineVersion     pulumi.StringOutput          `pulumi:"majorEngineVersion"`
+	Name                   pulumi.StringOutput          `pulumi:"name"`
+	NamePrefix             pulumi.StringOutput          `pulumi:"namePrefix"`
+	OptionGroupDescription pulumi.StringOutput          `pulumi:"optionGroupDescription"`
+	Options                OptionGroupOptionArrayOutput `pulumi:"options"`
+	Tags                   pulumi.StringMapOutput       `pulumi:"tags"`
 }
 
 // NewOptionGroup registers a new resource with the given unique name, arguments, and options.
@@ -124,41 +60,25 @@ func GetOptionGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OptionGroup resources.
 type optionGroupState struct {
-	// The ARN of the db option group.
-	Arn *string `pulumi:"arn"`
-	// Specifies the name of the engine that this option group should be associated with.
-	EngineName *string `pulumi:"engineName"`
-	// Specifies the major version of the engine that this option group should be associated with.
-	MajorEngineVersion *string `pulumi:"majorEngineVersion"`
-	// The Name of the setting.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The description of the option group. Defaults to "Managed by Pulumi".
-	OptionGroupDescription *string `pulumi:"optionGroupDescription"`
-	// A list of Options to apply.
-	Options []OptionGroupOption `pulumi:"options"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                    *string             `pulumi:"arn"`
+	EngineName             *string             `pulumi:"engineName"`
+	MajorEngineVersion     *string             `pulumi:"majorEngineVersion"`
+	Name                   *string             `pulumi:"name"`
+	NamePrefix             *string             `pulumi:"namePrefix"`
+	OptionGroupDescription *string             `pulumi:"optionGroupDescription"`
+	Options                []OptionGroupOption `pulumi:"options"`
+	Tags                   map[string]string   `pulumi:"tags"`
 }
 
 type OptionGroupState struct {
-	// The ARN of the db option group.
-	Arn pulumi.StringPtrInput
-	// Specifies the name of the engine that this option group should be associated with.
-	EngineName pulumi.StringPtrInput
-	// Specifies the major version of the engine that this option group should be associated with.
-	MajorEngineVersion pulumi.StringPtrInput
-	// The Name of the setting.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-	NamePrefix pulumi.StringPtrInput
-	// The description of the option group. Defaults to "Managed by Pulumi".
+	Arn                    pulumi.StringPtrInput
+	EngineName             pulumi.StringPtrInput
+	MajorEngineVersion     pulumi.StringPtrInput
+	Name                   pulumi.StringPtrInput
+	NamePrefix             pulumi.StringPtrInput
 	OptionGroupDescription pulumi.StringPtrInput
-	// A list of Options to apply.
-	Options OptionGroupOptionArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Options                OptionGroupOptionArrayInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (OptionGroupState) ElementType() reflect.Type {
@@ -166,38 +86,24 @@ func (OptionGroupState) ElementType() reflect.Type {
 }
 
 type optionGroupArgs struct {
-	// Specifies the name of the engine that this option group should be associated with.
-	EngineName string `pulumi:"engineName"`
-	// Specifies the major version of the engine that this option group should be associated with.
-	MajorEngineVersion string `pulumi:"majorEngineVersion"`
-	// The Name of the setting.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The description of the option group. Defaults to "Managed by Pulumi".
-	OptionGroupDescription *string `pulumi:"optionGroupDescription"`
-	// A list of Options to apply.
-	Options []OptionGroupOption `pulumi:"options"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	EngineName             string              `pulumi:"engineName"`
+	MajorEngineVersion     string              `pulumi:"majorEngineVersion"`
+	Name                   *string             `pulumi:"name"`
+	NamePrefix             *string             `pulumi:"namePrefix"`
+	OptionGroupDescription *string             `pulumi:"optionGroupDescription"`
+	Options                []OptionGroupOption `pulumi:"options"`
+	Tags                   map[string]string   `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a OptionGroup resource.
 type OptionGroupArgs struct {
-	// Specifies the name of the engine that this option group should be associated with.
-	EngineName pulumi.StringInput
-	// Specifies the major version of the engine that this option group should be associated with.
-	MajorEngineVersion pulumi.StringInput
-	// The Name of the setting.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-	NamePrefix pulumi.StringPtrInput
-	// The description of the option group. Defaults to "Managed by Pulumi".
+	EngineName             pulumi.StringInput
+	MajorEngineVersion     pulumi.StringInput
+	Name                   pulumi.StringPtrInput
+	NamePrefix             pulumi.StringPtrInput
 	OptionGroupDescription pulumi.StringPtrInput
-	// A list of Options to apply.
-	Options OptionGroupOptionArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Options                OptionGroupOptionArrayInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (OptionGroupArgs) ElementType() reflect.Type {

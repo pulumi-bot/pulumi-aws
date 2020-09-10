@@ -56,9 +56,6 @@ class GetRegionsResult:
     @property
     @pulumi.getter
     def names(self) -> List[str]:
-        """
-        Names of regions that meets the criteria.
-        """
         return pulumi.get(self, "names")
 
 
@@ -78,44 +75,7 @@ def get_regions(all_regions: Optional[bool] = None,
                 filters: Optional[List[pulumi.InputType['GetRegionsFilterArgs']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
-    Provides information about AWS Regions. Can be used to filter regions i.e. by Opt-In status or only regions enabled for current account. To get details like endpoint and description of each region the data source can be combined with the `getRegion` data source.
-
-    ## Example Usage
-
-    Enabled AWS Regions:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    current = aws.get_regions()
-    ```
-
-    All the regions regardless of the availability
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    current = aws.get_regions(all_regions=True)
-    ```
-
-    To see regions that are filtered by `"not-opted-in"`, the `all_regions` argument needs to be set to `true` or no results will be returned.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    current = aws.get_regions(all_regions=True,
-        filters=[aws.GetRegionsFilterArgs(
-            name="opt-in-status",
-            values=["not-opted-in"],
-        )])
-    ```
-
-
-    :param bool all_regions: If true the source will query all regions regardless of availability.
-    :param List[pulumi.InputType['GetRegionsFilterArgs']] filters: Configuration block(s) to use as filters. Detailed below.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['allRegions'] = all_regions

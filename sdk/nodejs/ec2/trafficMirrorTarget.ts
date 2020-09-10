@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Traffic mirror target.\
- * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
- *
- * ## Example Usage
- *
- * To create a basic traffic mirror session
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const nlb = new aws.ec2.TrafficMirrorTarget("nlb", {
- *     description: "NLB target",
- *     networkLoadBalancerArn: aws_lb.lb.arn,
- * });
- * const eni = new aws.ec2.TrafficMirrorTarget("eni", {
- *     description: "ENI target",
- *     networkInterfaceId: aws_instance.test.primary_network_interface_id,
- * });
- * ```
- */
 export class TrafficMirrorTarget extends pulumi.CustomResource {
     /**
      * Get an existing TrafficMirrorTarget resource's state with the given name, ID, and optional extra
@@ -54,25 +32,10 @@ export class TrafficMirrorTarget extends pulumi.CustomResource {
         return obj['__pulumiType'] === TrafficMirrorTarget.__pulumiType;
     }
 
-    /**
-     * The ARN of the traffic mirror target.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A description of the traffic mirror session.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The network interface ID that is associated with the target.
-     */
     public readonly networkInterfaceId!: pulumi.Output<string | undefined>;
-    /**
-     * The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
-     */
     public readonly networkLoadBalancerArn!: pulumi.Output<string | undefined>;
-    /**
-     * Key-value map of resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -115,25 +78,10 @@ export class TrafficMirrorTarget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TrafficMirrorTarget resources.
  */
 export interface TrafficMirrorTargetState {
-    /**
-     * The ARN of the traffic mirror target.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A description of the traffic mirror session.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The network interface ID that is associated with the target.
-     */
     readonly networkInterfaceId?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
-     */
     readonly networkLoadBalancerArn?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -141,20 +89,8 @@ export interface TrafficMirrorTargetState {
  * The set of arguments for constructing a TrafficMirrorTarget resource.
  */
 export interface TrafficMirrorTargetArgs {
-    /**
-     * A description of the traffic mirror session.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The network interface ID that is associated with the target.
-     */
     readonly networkInterfaceId?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
-     */
     readonly networkLoadBalancerArn?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

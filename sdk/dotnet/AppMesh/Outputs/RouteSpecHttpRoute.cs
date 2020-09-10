@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class RouteSpecHttpRoute
     {
-        /// <summary>
-        /// The action to take if a match is determined.
-        /// </summary>
         public readonly Outputs.RouteSpecHttpRouteAction Action;
-        /// <summary>
-        /// The criteria for determining an HTTP request match.
-        /// </summary>
         public readonly Outputs.RouteSpecHttpRouteMatch Match;
 
         [OutputConstructor]

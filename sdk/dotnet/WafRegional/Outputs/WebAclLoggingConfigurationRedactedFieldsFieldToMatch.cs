@@ -13,13 +13,7 @@ namespace Pulumi.Aws.WafRegional.Outputs
     [OutputType]
     public sealed class WebAclLoggingConfigurationRedactedFieldsFieldToMatch
     {
-        /// <summary>
-        /// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
-        /// </summary>
         public readonly string? Data;
-        /// <summary>
-        /// Specifies how you want AWS WAF Regional to respond to requests that match the settings in a rule. e.g. `ALLOW`, `BLOCK` or `COUNT`
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

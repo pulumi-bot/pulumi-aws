@@ -6,85 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a [Data Lifecycle Manager (DLM) lifecycle policy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) for managing snapshots.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const dlmLifecycleRole = new aws.iam.Role("dlm_lifecycle_role", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "dlm.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- * });
- * const dlmLifecycle = new aws.iam.RolePolicy("dlm_lifecycle", {
- *     policy: `{
- *    "Version": "2012-10-17",
- *    "Statement": [
- *       {
- *          "Effect": "Allow",
- *          "Action": [
- *             "ec2:CreateSnapshot",
- *             "ec2:DeleteSnapshot",
- *             "ec2:DescribeVolumes",
- *             "ec2:DescribeSnapshots"
- *          ],
- *          "Resource": "*"
- *       },
- *       {
- *          "Effect": "Allow",
- *          "Action": [
- *             "ec2:CreateTags"
- *          ],
- *          "Resource": "arn:aws:ec2:*::snapshot/*"
- *       }
- *    ]
- * }
- * `,
- *     role: dlmLifecycleRole.id,
- * });
- * const example = new aws.dlm.LifecyclePolicy("example", {
- *     description: "example DLM lifecycle policy",
- *     executionRoleArn: dlmLifecycleRole.arn,
- *     policyDetails: {
- *         resourceTypes: ["VOLUME"],
- *         schedules: [{
- *             copyTags: false,
- *             createRule: {
- *                 interval: 24,
- *                 intervalUnit: "HOURS",
- *                 times: "23:45",
- *             },
- *             name: "2 weeks of daily snapshots",
- *             retainRule: {
- *                 count: 14,
- *             },
- *             tagsToAdd: {
- *                 SnapshotCreator: "DLM",
- *             },
- *         }],
- *         targetTags: {
- *             Snapshot: "true",
- *         },
- *     },
- *     state: "ENABLED",
- * });
- * ```
- */
 export class LifecyclePolicy extends pulumi.CustomResource {
     /**
      * Get an existing LifecyclePolicy resource's state with the given name, ID, and optional extra
@@ -113,29 +34,11 @@ export class LifecyclePolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === LifecyclePolicy.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A description for the DLM lifecycle policy.
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * The ARN of an IAM role that is able to be assumed by the DLM service.
-     */
     public readonly executionRoleArn!: pulumi.Output<string>;
-    /**
-     * See the `policyDetails` configuration block. Max of 1.
-     */
     public readonly policyDetails!: pulumi.Output<outputs.dlm.LifecyclePolicyPolicyDetails>;
-    /**
-     * Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-     */
     public readonly state!: pulumi.Output<string | undefined>;
-    /**
-     * Key-value map of resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -189,29 +92,11 @@ export class LifecyclePolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LifecyclePolicy resources.
  */
 export interface LifecyclePolicyState {
-    /**
-     * Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A description for the DLM lifecycle policy.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The ARN of an IAM role that is able to be assumed by the DLM service.
-     */
     readonly executionRoleArn?: pulumi.Input<string>;
-    /**
-     * See the `policyDetails` configuration block. Max of 1.
-     */
     readonly policyDetails?: pulumi.Input<inputs.dlm.LifecyclePolicyPolicyDetails>;
-    /**
-     * Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -219,24 +104,9 @@ export interface LifecyclePolicyState {
  * The set of arguments for constructing a LifecyclePolicy resource.
  */
 export interface LifecyclePolicyArgs {
-    /**
-     * A description for the DLM lifecycle policy.
-     */
     readonly description: pulumi.Input<string>;
-    /**
-     * The ARN of an IAM role that is able to be assumed by the DLM service.
-     */
     readonly executionRoleArn: pulumi.Input<string>;
-    /**
-     * See the `policyDetails` configuration block. Max of 1.
-     */
     readonly policyDetails: pulumi.Input<inputs.dlm.LifecyclePolicyPolicyDetails>;
-    /**
-     * Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

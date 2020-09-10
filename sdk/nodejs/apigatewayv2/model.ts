@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 [model](https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-models).
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Model("example", {
- *     apiId: aws_apigatewayv2_api.example.id,
- *     contentType: "application/json",
- *     schema: `{
- *   "$schema": "http://json-schema.org/draft-04/schema#",
- *   "title": "ExampleModel",
- *   "type": "object",
- *   "properties": {
- *     "id": { "type": "string" }
- *   }
- * }
- * `,
- * });
- * ```
- */
 export class Model extends pulumi.CustomResource {
     /**
      * Get an existing Model resource's state with the given name, ID, and optional extra
@@ -57,25 +32,10 @@ export class Model extends pulumi.CustomResource {
         return obj['__pulumiType'] === Model.__pulumiType;
     }
 
-    /**
-     * The API identifier.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * The content-type for the model, for example, `application/json`.
-     */
     public readonly contentType!: pulumi.Output<string>;
-    /**
-     * The description of the model.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the model. Must be alphanumeric.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-     */
     public readonly schema!: pulumi.Output<string>;
 
     /**
@@ -127,25 +87,10 @@ export class Model extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Model resources.
  */
 export interface ModelState {
-    /**
-     * The API identifier.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * The content-type for the model, for example, `application/json`.
-     */
     readonly contentType?: pulumi.Input<string>;
-    /**
-     * The description of the model.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the model. Must be alphanumeric.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-     */
     readonly schema?: pulumi.Input<string>;
 }
 
@@ -153,24 +98,9 @@ export interface ModelState {
  * The set of arguments for constructing a Model resource.
  */
 export interface ModelArgs {
-    /**
-     * The API identifier.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * The content-type for the model, for example, `application/json`.
-     */
     readonly contentType: pulumi.Input<string>;
-    /**
-     * The description of the model.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the model. Must be alphanumeric.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
-     */
     readonly schema: pulumi.Input<string>;
 }

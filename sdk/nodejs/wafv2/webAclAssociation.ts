@@ -4,58 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a WAFv2 Web ACL Association.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleRestApi = new aws.apigateway.RestApi("exampleRestApi", {});
- * const exampleResource = new aws.apigateway.Resource("exampleResource", {
- *     restApi: exampleRestApi.id,
- *     parentId: exampleRestApi.rootResourceId,
- *     pathPart: "mytestresource",
- * });
- * const exampleMethod = new aws.apigateway.Method("exampleMethod", {
- *     restApi: exampleRestApi.id,
- *     resourceId: exampleResource.id,
- *     httpMethod: "GET",
- *     authorization: "NONE",
- * });
- * const exampleIntegration = new aws.apigateway.Integration("exampleIntegration", {
- *     restApi: exampleRestApi.id,
- *     resourceId: exampleResource.id,
- *     httpMethod: exampleMethod.httpMethod,
- *     type: "MOCK",
- * });
- * const exampleDeployment = new aws.apigateway.Deployment("exampleDeployment", {restApi: exampleRestApi.id}, {
- *     dependsOn: [exampleIntegration],
- * });
- * const exampleStage = new aws.apigateway.Stage("exampleStage", {
- *     stageName: "test",
- *     restApi: exampleRestApi.id,
- *     deployment: exampleDeployment.id,
- * });
- * const exampleWebAcl = new aws.wafv2.WebAcl("exampleWebAcl", {
- *     scope: "REGIONAL",
- *     defaultAction: {
- *         allow: {},
- *     },
- *     visibilityConfig: {
- *         cloudwatchMetricsEnabled: false,
- *         metricName: "friendly-metric-name",
- *         sampledRequestsEnabled: false,
- *     },
- * });
- * const exampleWebAclAssociation = new aws.wafv2.WebAclAssociation("exampleWebAclAssociation", {
- *     resourceArn: exampleStage.arn,
- *     webAclArn: exampleWebAcl.arn,
- * });
- * ```
- */
 export class WebAclAssociation extends pulumi.CustomResource {
     /**
      * Get an existing WebAclAssociation resource's state with the given name, ID, and optional extra
@@ -84,13 +32,7 @@ export class WebAclAssociation extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebAclAssociation.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-     */
     public readonly resourceArn!: pulumi.Output<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-     */
     public readonly webAclArn!: pulumi.Output<string>;
 
     /**
@@ -133,13 +75,7 @@ export class WebAclAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebAclAssociation resources.
  */
 export interface WebAclAssociationState {
-    /**
-     * The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-     */
     readonly resourceArn?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-     */
     readonly webAclArn?: pulumi.Input<string>;
 }
 
@@ -147,12 +83,6 @@ export interface WebAclAssociationState {
  * The set of arguments for constructing a WebAclAssociation resource.
  */
 export interface WebAclAssociationArgs {
-    /**
-     * The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-     */
     readonly resourceArn: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-     */
     readonly webAclArn: pulumi.Input<string>;
 }

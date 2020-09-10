@@ -6,47 +6,6 @@ import * as utilities from "../utilities";
 
 import {PolicyDocument, Role} from "./index";
 
-/**
- * Provides an IAM role inline policy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testRole = new aws.iam.Role("testRole", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "ec2.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `});
- * const testPolicy = new aws.iam.RolePolicy("testPolicy", {
- *     role: testRole.id,
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "ec2:Describe*"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- */
 export class RolePolicy extends pulumi.CustomResource {
     /**
      * Get an existing RolePolicy resource's state with the given name, ID, and optional extra
@@ -75,23 +34,9 @@ export class RolePolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === RolePolicy.__pulumiType;
     }
 
-    /**
-     * The name of the role policy. If omitted, this provider will
-     * assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     public readonly policy!: pulumi.Output<string>;
-    /**
-     * The IAM role to attach to the policy.
-     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -138,23 +83,9 @@ export class RolePolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RolePolicy resources.
  */
 export interface RolePolicyState {
-    /**
-     * The name of the role policy. If omitted, this provider will
-     * assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     readonly policy?: pulumi.Input<string | PolicyDocument>;
-    /**
-     * The IAM role to attach to the policy.
-     */
     readonly role?: pulumi.Input<string | Role>;
 }
 
@@ -162,22 +93,8 @@ export interface RolePolicyState {
  * The set of arguments for constructing a RolePolicy resource.
  */
 export interface RolePolicyArgs {
-    /**
-     * The name of the role policy. If omitted, this provider will
-     * assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     readonly policy: pulumi.Input<string | PolicyDocument>;
-    /**
-     * The IAM role to attach to the policy.
-     */
     readonly role: pulumi.Input<string | Role>;
 }

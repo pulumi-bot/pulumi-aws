@@ -7,7 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides information for multiple EC2 Local Gateway Route Tables, such as their identifiers.
 func GetLocalGatewayRouteTables(ctx *pulumi.Context, args *GetLocalGatewayRouteTablesArgs, opts ...pulumi.InvokeOption) (*GetLocalGatewayRouteTablesResult, error) {
 	var rv GetLocalGatewayRouteTablesResult
 	err := ctx.Invoke("aws:ec2/getLocalGatewayRouteTables:getLocalGatewayRouteTables", args, &rv, opts...)
@@ -19,19 +18,15 @@ func GetLocalGatewayRouteTables(ctx *pulumi.Context, args *GetLocalGatewayRouteT
 
 // A collection of arguments for invoking getLocalGatewayRouteTables.
 type GetLocalGatewayRouteTablesArgs struct {
-	// Custom filter block as described below.
 	Filters []GetLocalGatewayRouteTablesFilter `pulumi:"filters"`
-	// A mapping of tags, each pair of which must exactly match
-	// a pair on the desired local gateway route table.
-	Tags map[string]string `pulumi:"tags"`
+	Tags    map[string]string                  `pulumi:"tags"`
 }
 
 // A collection of values returned by getLocalGatewayRouteTables.
 type GetLocalGatewayRouteTablesResult struct {
 	Filters []GetLocalGatewayRouteTablesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Set of Local Gateway Route Table identifiers
+	Id   string            `pulumi:"id"`
 	Ids  []string          `pulumi:"ids"`
 	Tags map[string]string `pulumi:"tags"`
 }

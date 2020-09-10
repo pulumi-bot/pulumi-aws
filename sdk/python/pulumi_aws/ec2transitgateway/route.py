@@ -23,38 +23,9 @@ class Route(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an EC2 Transit Gateway Route.
-
-        ## Example Usage
-        ### Standard usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2transitgateway.Route("example",
-            destination_cidr_block="0.0.0.0/0",
-            transit_gateway_attachment_id=aws_ec2_transit_gateway_vpc_attachment["example"]["id"],
-            transit_gateway_route_table_id=aws_ec2_transit_gateway["example"]["association_default_route_table_id"])
-        ```
-        ### Blackhole route
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2transitgateway.Route("example",
-            destination_cidr_block="0.0.0.0/0",
-            blackhole=True,
-            transit_gateway_route_table_id=aws_ec2_transit_gateway["example"]["association_default_route_table_id"])
-        ```
-
+        Create a Route resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] blackhole: Indicates whether to drop traffic that matches this route (default to `false`).
-        :param pulumi.Input[str] destination_cidr_block: IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-        :param pulumi.Input[str] transit_gateway_attachment_id: Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-        :param pulumi.Input[str] transit_gateway_route_table_id: Identifier of EC2 Transit Gateway Route Table.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,10 +73,6 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] blackhole: Indicates whether to drop traffic that matches this route (default to `false`).
-        :param pulumi.Input[str] destination_cidr_block: IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-        :param pulumi.Input[str] transit_gateway_attachment_id: Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-        :param pulumi.Input[str] transit_gateway_route_table_id: Identifier of EC2 Transit Gateway Route Table.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,33 +87,21 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter
     def blackhole(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether to drop traffic that matches this route (default to `false`).
-        """
         return pulumi.get(self, "blackhole")
 
     @property
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> pulumi.Output[str]:
-        """
-        IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-        """
         return pulumi.get(self, "destination_cidr_block")
 
     @property
     @pulumi.getter(name="transitGatewayAttachmentId")
     def transit_gateway_attachment_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
-        """
         return pulumi.get(self, "transit_gateway_attachment_id")
 
     @property
     @pulumi.getter(name="transitGatewayRouteTableId")
     def transit_gateway_route_table_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of EC2 Transit Gateway Route Table.
-        """
         return pulumi.get(self, "transit_gateway_route_table_id")
 
     def translate_output_property(self, prop):

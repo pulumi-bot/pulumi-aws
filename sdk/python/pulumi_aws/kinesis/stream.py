@@ -28,41 +28,9 @@ class Stream(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Kinesis Stream resource. Amazon Kinesis is a managed service that
-        scales elastically for real-time processing of streaming big data.
-
-        For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_stream = aws.kinesis.Stream("testStream",
-            retention_period=48,
-            shard_count=1,
-            shard_level_metrics=[
-                "IncomingBytes",
-                "OutgoingBytes",
-            ],
-            tags={
-                "Environment": "test",
-            })
-        ```
-
+        Create a Stream resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
-        :param pulumi.Input[str] encryption_type: The encryption type to use. The only acceptable values are `NONE` or `KMS`. The default value is `NONE`.
-        :param pulumi.Input[bool] enforce_consumer_deletion: A boolean that indicates all registered consumers should be deregistered from the stream so that the stream can be destroyed without error. The default value is `false`.
-        :param pulumi.Input[str] kms_key_id: The GUID for the customer-managed KMS key to use for encryption. You can also use a Kinesis-owned master key by specifying the alias `alias/aws/kinesis`.
-        :param pulumi.Input[str] name: A name to identify the stream. This is unique to the AWS account and region the Stream is created in.
-        :param pulumi.Input[float] retention_period: Length of time data records are accessible after they are added to the stream. The maximum value of a stream's retention period is 168 hours. Minimum value is 24. Default is 24.
-        :param pulumi.Input[float] shard_count: The number of shards that the stream will use.
-               Amazon has guidelines for specifying the Stream size that should be referenced when creating a Kinesis stream. See [Amazon Kinesis Streams](https://docs.aws.amazon.com/kinesis/latest/dev/amazon-kinesis-streams.html) for more.
-        :param pulumi.Input[List[pulumi.Input[str]]] shard_level_metrics: A list of shard-level CloudWatch metrics which can be enabled for the stream. See [Monitoring with CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html) for more. Note that the value ALL should not be used; instead you should provide an explicit list of metrics you wish to enable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,16 +86,6 @@ class Stream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
-        :param pulumi.Input[str] encryption_type: The encryption type to use. The only acceptable values are `NONE` or `KMS`. The default value is `NONE`.
-        :param pulumi.Input[bool] enforce_consumer_deletion: A boolean that indicates all registered consumers should be deregistered from the stream so that the stream can be destroyed without error. The default value is `false`.
-        :param pulumi.Input[str] kms_key_id: The GUID for the customer-managed KMS key to use for encryption. You can also use a Kinesis-owned master key by specifying the alias `alias/aws/kinesis`.
-        :param pulumi.Input[str] name: A name to identify the stream. This is unique to the AWS account and region the Stream is created in.
-        :param pulumi.Input[float] retention_period: Length of time data records are accessible after they are added to the stream. The maximum value of a stream's retention period is 168 hours. Minimum value is 24. Default is 24.
-        :param pulumi.Input[float] shard_count: The number of shards that the stream will use.
-               Amazon has guidelines for specifying the Stream size that should be referenced when creating a Kinesis stream. See [Amazon Kinesis Streams](https://docs.aws.amazon.com/kinesis/latest/dev/amazon-kinesis-streams.html) for more.
-        :param pulumi.Input[List[pulumi.Input[str]]] shard_level_metrics: A list of shard-level CloudWatch metrics which can be enabled for the stream. See [Monitoring with CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html) for more. Note that the value ALL should not be used; instead you should provide an explicit list of metrics you wish to enable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -147,74 +105,46 @@ class Stream(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The encryption type to use. The only acceptable values are `NONE` or `KMS`. The default value is `NONE`.
-        """
         return pulumi.get(self, "encryption_type")
 
     @property
     @pulumi.getter(name="enforceConsumerDeletion")
     def enforce_consumer_deletion(self) -> pulumi.Output[Optional[bool]]:
-        """
-        A boolean that indicates all registered consumers should be deregistered from the stream so that the stream can be destroyed without error. The default value is `false`.
-        """
         return pulumi.get(self, "enforce_consumer_deletion")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The GUID for the customer-managed KMS key to use for encryption. You can also use a Kinesis-owned master key by specifying the alias `alias/aws/kinesis`.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A name to identify the stream. This is unique to the AWS account and region the Stream is created in.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[Optional[float]]:
-        """
-        Length of time data records are accessible after they are added to the stream. The maximum value of a stream's retention period is 168 hours. Minimum value is 24. Default is 24.
-        """
         return pulumi.get(self, "retention_period")
 
     @property
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> pulumi.Output[float]:
-        """
-        The number of shards that the stream will use.
-        Amazon has guidelines for specifying the Stream size that should be referenced when creating a Kinesis stream. See [Amazon Kinesis Streams](https://docs.aws.amazon.com/kinesis/latest/dev/amazon-kinesis-streams.html) for more.
-        """
         return pulumi.get(self, "shard_count")
 
     @property
     @pulumi.getter(name="shardLevelMetrics")
     def shard_level_metrics(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        A list of shard-level CloudWatch metrics which can be enabled for the stream. See [Monitoring with CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html) for more. Note that the value ALL should not be used; instead you should provide an explicit list of metrics you wish to enable.
-        """
         return pulumi.get(self, "shard_level_metrics")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

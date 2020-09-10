@@ -22,36 +22,9 @@ class Ciphertext(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        The KMS ciphertext resource allows you to encrypt plaintext into ciphertext
-        by using an AWS KMS customer master key. The value returned by this resource
-        is stable across every apply. For a changing ciphertext value each apply, see
-        the `kms.Ciphertext` data source.
-
-        > **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        oauth_config = aws.kms.Key("oauthConfig",
-            description="oauth config",
-            is_enabled=True)
-        oauth = aws.kms.Ciphertext("oauth",
-            key_id=oauth_config.key_id,
-            plaintext=\"\"\"{
-          "client_id": "e587dbae22222f55da22",
-          "client_secret": "8289575d00000ace55e1815ec13673955721b8a5"
-        }
-        \"\"\")
-        ```
-
+        Create a Ciphertext resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] context: An optional mapping that makes up the encryption context.
-        :param pulumi.Input[str] key_id: Globally unique key ID for the customer master key.
-        :param pulumi.Input[str] plaintext: Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,10 +72,6 @@ class Ciphertext(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ciphertext_blob: Base64 encoded ciphertext
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] context: An optional mapping that makes up the encryption context.
-        :param pulumi.Input[str] key_id: Globally unique key ID for the customer master key.
-        :param pulumi.Input[str] plaintext: Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -117,33 +86,21 @@ class Ciphertext(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ciphertextBlob")
     def ciphertext_blob(self) -> pulumi.Output[str]:
-        """
-        Base64 encoded ciphertext
-        """
         return pulumi.get(self, "ciphertext_blob")
 
     @property
     @pulumi.getter
     def context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        An optional mapping that makes up the encryption context.
-        """
         return pulumi.get(self, "context")
 
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> pulumi.Output[str]:
-        """
-        Globally unique key ID for the customer master key.
-        """
         return pulumi.get(self, "key_id")
 
     @property
     @pulumi.getter
     def plaintext(self) -> pulumi.Output[str]:
-        """
-        Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
-        """
         return pulumi.get(self, "plaintext")
 
     def translate_output_property(self, prop):

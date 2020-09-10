@@ -17,18 +17,12 @@ __all__ = [
 class ChannelHlsIngestArgs:
     def __init__(__self__, *,
                  ingest_endpoints: Optional[pulumi.Input[List[pulumi.Input['ChannelHlsIngestIngestEndpointArgs']]]] = None):
-        """
-        :param pulumi.Input[List[pulumi.Input['ChannelHlsIngestIngestEndpointArgs']]] ingest_endpoints: A list of the ingest endpoints
-        """
         if ingest_endpoints is not None:
             pulumi.set(__self__, "ingest_endpoints", ingest_endpoints)
 
     @property
     @pulumi.getter(name="ingestEndpoints")
     def ingest_endpoints(self) -> Optional[pulumi.Input[List[pulumi.Input['ChannelHlsIngestIngestEndpointArgs']]]]:
-        """
-        A list of the ingest endpoints
-        """
         return pulumi.get(self, "ingest_endpoints")
 
     @ingest_endpoints.setter
@@ -42,11 +36,6 @@ class ChannelHlsIngestIngestEndpointArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] password: The password
-        :param pulumi.Input[str] url: The URL
-        :param pulumi.Input[str] username: The username
-        """
         if password is not None:
             pulumi.set(__self__, "password", password)
         if url is not None:
@@ -57,9 +46,6 @@ class ChannelHlsIngestIngestEndpointArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        The password
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -69,9 +55,6 @@ class ChannelHlsIngestIngestEndpointArgs:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL
-        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -81,9 +64,6 @@ class ChannelHlsIngestIngestEndpointArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username
-        """
         return pulumi.get(self, "username")
 
     @username.setter

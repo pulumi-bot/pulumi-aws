@@ -6,14 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Get an authentication token to communicate with an EKS cluster.
- *
- * Uses IAM credentials from the AWS provider to generate a temporary token that is compatible with
- * [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) authentication.
- * This can be used to authenticate to an EKS cluster or to a cluster that has the AWS IAM Authenticator
- * server configured.
- */
 export function getClusterAuth(args: GetClusterAuthArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAuthResult> {
     if (!opts) {
         opts = {}
@@ -31,9 +23,6 @@ export function getClusterAuth(args: GetClusterAuthArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getClusterAuth.
  */
 export interface GetClusterAuthArgs {
-    /**
-     * The name of the cluster
-     */
     readonly name: string;
 }
 
@@ -46,8 +35,5 @@ export interface GetClusterAuthResult {
      */
     readonly id: string;
     readonly name: string;
-    /**
-     * The token to use to authenticate with the cluster.
-     */
     readonly token: string;
 }

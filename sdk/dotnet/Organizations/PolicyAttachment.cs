@@ -9,79 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Organizations
 {
-    /// <summary>
-    /// Provides a resource to attach an AWS Organizations policy to an organization account, root, or unit.
-    /// 
-    /// ## Example Usage
-    /// ### Organization Account
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var account = new Aws.Organizations.PolicyAttachment("account", new Aws.Organizations.PolicyAttachmentArgs
-    ///         {
-    ///             PolicyId = aws_organizations_policy.Example.Id,
-    ///             TargetId = "123456789012",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Organization Root
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var root = new Aws.Organizations.PolicyAttachment("root", new Aws.Organizations.PolicyAttachmentArgs
-    ///         {
-    ///             PolicyId = aws_organizations_policy.Example.Id,
-    ///             TargetId = aws_organizations_organization.Example.Roots[0].Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Organization Unit
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var unit = new Aws.Organizations.PolicyAttachment("unit", new Aws.Organizations.PolicyAttachmentArgs
-    ///         {
-    ///             PolicyId = aws_organizations_policy.Example.Id,
-    ///             TargetId = aws_organizations_organizational_unit.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PolicyAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The unique identifier (ID) of the policy that you want to attach to the target.
-        /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
-        /// <summary>
-        /// The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
-        /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
 
@@ -131,15 +63,9 @@ namespace Pulumi.Aws.Organizations
 
     public sealed class PolicyAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The unique identifier (ID) of the policy that you want to attach to the target.
-        /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
 
-        /// <summary>
-        /// The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
-        /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
 
@@ -150,15 +76,9 @@ namespace Pulumi.Aws.Organizations
 
     public sealed class PolicyAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The unique identifier (ID) of the policy that you want to attach to the target.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
-        /// <summary>
-        /// The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
-        /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
 

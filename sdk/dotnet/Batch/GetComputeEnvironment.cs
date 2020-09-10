@@ -11,33 +11,6 @@ namespace Pulumi.Aws.Batch
 {
     public static class GetComputeEnvironment
     {
-        /// <summary>
-        /// The Batch Compute Environment data source allows access to details of a specific
-        /// compute environment within AWS Batch.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var batch_mongo = Output.Create(Aws.Batch.GetComputeEnvironment.InvokeAsync(new Aws.Batch.GetComputeEnvironmentArgs
-        ///         {
-        ///             ComputeEnvironmentName = "batch-mongo-production",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetComputeEnvironmentResult> InvokeAsync(GetComputeEnvironmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeEnvironmentResult>("aws:batch/getComputeEnvironment:getComputeEnvironment", args ?? new GetComputeEnvironmentArgs(), options.WithVersion());
     }
@@ -45,9 +18,6 @@ namespace Pulumi.Aws.Batch
 
     public sealed class GetComputeEnvironmentArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the Batch Compute Environment
-        /// </summary>
         [Input("computeEnvironmentName", required: true)]
         public string ComputeEnvironmentName { get; set; } = null!;
 
@@ -60,38 +30,17 @@ namespace Pulumi.Aws.Batch
     [OutputType]
     public sealed class GetComputeEnvironmentResult
     {
-        /// <summary>
-        /// The ARN of the compute environment.
-        /// </summary>
         public readonly string Arn;
         public readonly string ComputeEnvironmentName;
-        /// <summary>
-        /// The ARN of the underlying Amazon ECS cluster used by the compute environment.
-        /// </summary>
         public readonly string EcsClusterArn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-        /// </summary>
         public readonly string ServiceRole;
-        /// <summary>
-        /// The state of the compute environment (for example, `ENABLED` or `DISABLED`). If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// The current status of the compute environment (for example, `CREATING` or `VALID`).
-        /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// A short, human-readable string to provide additional details about the current status of the compute environment.
-        /// </summary>
         public readonly string StatusReason;
-        /// <summary>
-        /// The type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

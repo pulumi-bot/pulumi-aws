@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Ec2.Inputs
 
     public sealed class LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the Capacity Reservation to target.
-        /// </summary>
         [Input("capacityReservationId")]
         public Input<string>? CapacityReservationId { get; set; }
 

@@ -9,55 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Dms
 {
-    /// <summary>
-    /// Provides a DMS (Data Migration Service) certificate resource. DMS certificates can be created, deleted, and imported.
-    /// 
-    /// &gt; **Note:** All arguments including the PEM encoded certificate will be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new certificate
-    ///         var test = new Aws.Dms.Certificate("test", new Aws.Dms.CertificateArgs
-    ///         {
-    ///             CertificateId = "test-dms-certificate-tf",
-    ///             CertificatePem = "...",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) for the certificate.
-        /// </summary>
         [Output("certificateArn")]
         public Output<string> CertificateArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate identifier.
-        /// </summary>
         [Output("certificateId")]
         public Output<string> CertificateId { get; private set; } = null!;
 
-        /// <summary>
-        /// The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
-        /// </summary>
         [Output("certificatePem")]
         public Output<string?> CertificatePem { get; private set; } = null!;
 
-        /// <summary>
-        /// The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
-        /// </summary>
         [Output("certificateWallet")]
         public Output<string?> CertificateWallet { get; private set; } = null!;
 
@@ -107,21 +69,12 @@ namespace Pulumi.Aws.Dms
 
     public sealed class CertificateArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The certificate identifier.
-        /// </summary>
         [Input("certificateId", required: true)]
         public Input<string> CertificateId { get; set; } = null!;
 
-        /// <summary>
-        /// The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
-        /// </summary>
         [Input("certificatePem")]
         public Input<string>? CertificatePem { get; set; }
 
-        /// <summary>
-        /// The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
-        /// </summary>
         [Input("certificateWallet")]
         public Input<string>? CertificateWallet { get; set; }
 
@@ -132,27 +85,15 @@ namespace Pulumi.Aws.Dms
 
     public sealed class CertificateState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) for the certificate.
-        /// </summary>
         [Input("certificateArn")]
         public Input<string>? CertificateArn { get; set; }
 
-        /// <summary>
-        /// The certificate identifier.
-        /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 
-        /// <summary>
-        /// The contents of the .pem X.509 certificate file for the certificate. Either `certificate_pem` or `certificate_wallet` must be set.
-        /// </summary>
         [Input("certificatePem")]
         public Input<string>? CertificatePem { get; set; }
 
-        /// <summary>
-        /// The contents of the Oracle Wallet certificate for use with SSL. Either `certificate_pem` or `certificate_wallet` must be set.
-        /// </summary>
         [Input("certificateWallet")]
         public Input<string>? CertificateWallet { get; set; }
 

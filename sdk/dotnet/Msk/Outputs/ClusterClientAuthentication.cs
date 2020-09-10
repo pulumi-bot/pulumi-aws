@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Msk.Outputs
     [OutputType]
     public sealed class ClusterClientAuthentication
     {
-        /// <summary>
-        /// Configuration block for specifying TLS client authentication. See below.
-        /// </summary>
         public readonly Outputs.ClusterClientAuthenticationTls? Tls;
 
         [OutputConstructor]

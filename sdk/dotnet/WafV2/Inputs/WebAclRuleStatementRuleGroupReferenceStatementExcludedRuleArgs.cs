@@ -12,9 +12,6 @@ namespace Pulumi.Aws.WafV2.Inputs
 
     public sealed class WebAclRuleStatementRuleGroupReferenceStatementExcludedRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the rule to exclude.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

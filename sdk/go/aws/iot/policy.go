@@ -10,43 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IoT policy.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iot.NewPolicy(ctx, "pubsub", &iot.PolicyArgs{
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": [\n", "        \"iot:*\"\n", "      ],\n", "      \"Effect\": \"Allow\",\n", "      \"Resource\": \"*\"\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// The ARN assigned by AWS to this policy.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The default version of this policy.
+	Arn              pulumi.StringOutput `pulumi:"arn"`
 	DefaultVersionId pulumi.StringOutput `pulumi:"defaultVersionId"`
-	// The name of the policy.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-	Policy pulumi.StringOutput `pulumi:"policy"`
+	Name             pulumi.StringOutput `pulumi:"name"`
+	Policy           pulumi.StringOutput `pulumi:"policy"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -80,25 +50,17 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// The ARN assigned by AWS to this policy.
-	Arn *string `pulumi:"arn"`
-	// The default version of this policy.
+	Arn              *string `pulumi:"arn"`
 	DefaultVersionId *string `pulumi:"defaultVersionId"`
-	// The name of the policy.
-	Name *string `pulumi:"name"`
-	// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-	Policy *string `pulumi:"policy"`
+	Name             *string `pulumi:"name"`
+	Policy           *string `pulumi:"policy"`
 }
 
 type PolicyState struct {
-	// The ARN assigned by AWS to this policy.
-	Arn pulumi.StringPtrInput
-	// The default version of this policy.
+	Arn              pulumi.StringPtrInput
 	DefaultVersionId pulumi.StringPtrInput
-	// The name of the policy.
-	Name pulumi.StringPtrInput
-	// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-	Policy pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	Policy           pulumi.StringPtrInput
 }
 
 func (PolicyState) ElementType() reflect.Type {
@@ -106,17 +68,13 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// The name of the policy.
-	Name *string `pulumi:"name"`
-	// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
-	Policy string `pulumi:"policy"`
+	Name   *string `pulumi:"name"`
+	Policy string  `pulumi:"policy"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// The name of the policy.
-	Name pulumi.StringPtrInput
-	// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
+	Name   pulumi.StringPtrInput
 	Policy pulumi.StringInput
 }
 

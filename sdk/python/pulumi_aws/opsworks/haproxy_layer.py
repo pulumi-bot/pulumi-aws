@@ -48,43 +48,9 @@ class HaproxyLayer(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an OpsWorks haproxy layer resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        lb = aws.opsworks.HaproxyLayer("lb",
-            stack_id=aws_opsworks_stack["main"]["id"],
-            stats_password="foobarbaz")
-        ```
-
+        Create a HaproxyLayer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_assign_elastic_ips: Whether to automatically assign an elastic IP address to the layer's instances.
-        :param pulumi.Input[bool] auto_assign_public_ips: For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-        :param pulumi.Input[bool] auto_healing: Whether to enable auto-healing for the layer.
-        :param pulumi.Input[str] custom_instance_profile_arn: The ARN of an IAM profile that will be used for the layer's instances.
-        :param pulumi.Input[str] custom_json: Custom JSON attributes to apply to the layer.
-        :param pulumi.Input[List[pulumi.Input[str]]] custom_security_group_ids: Ids for a set of security groups to apply to the layer's instances.
-        :param pulumi.Input[bool] drain_elb_on_shutdown: Whether to enable Elastic Load Balancing connection draining.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['HaproxyLayerEbsVolumeArgs']]]] ebs_volumes: `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-        :param pulumi.Input[str] elastic_load_balancer: Name of an Elastic Load Balancer to attach to this layer
-        :param pulumi.Input[str] healthcheck_method: HTTP method to use for instance healthchecks. Defaults to "OPTIONS".
-        :param pulumi.Input[str] healthcheck_url: URL path to use for instance healthchecks. Defaults to "/".
-        :param pulumi.Input[bool] install_updates_on_boot: Whether to install OS and package updates on each instance when it boots.
-        :param pulumi.Input[float] instance_shutdown_timeout: The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-        :param pulumi.Input[str] name: A human-readable name for the layer.
-        :param pulumi.Input[str] stack_id: The id of the stack the layer will belong to.
-        :param pulumi.Input[bool] stats_enabled: Whether to enable HAProxy stats.
-        :param pulumi.Input[str] stats_password: The password to use for HAProxy stats.
-        :param pulumi.Input[str] stats_url: The HAProxy stats URL. Defaults to "/haproxy?stats".
-        :param pulumi.Input[str] stats_user: The username for HAProxy stats. Defaults to "opsworks".
-        :param pulumi.Input[List[pulumi.Input[str]]] system_packages: Names of a set of system packages to install on the layer's instances.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[bool] use_ebs_optimized_instances: Whether to use EBS-optimized instances.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -180,29 +146,6 @@ class HaproxyLayer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name(ARN) of the layer.
-        :param pulumi.Input[bool] auto_assign_elastic_ips: Whether to automatically assign an elastic IP address to the layer's instances.
-        :param pulumi.Input[bool] auto_assign_public_ips: For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-        :param pulumi.Input[bool] auto_healing: Whether to enable auto-healing for the layer.
-        :param pulumi.Input[str] custom_instance_profile_arn: The ARN of an IAM profile that will be used for the layer's instances.
-        :param pulumi.Input[str] custom_json: Custom JSON attributes to apply to the layer.
-        :param pulumi.Input[List[pulumi.Input[str]]] custom_security_group_ids: Ids for a set of security groups to apply to the layer's instances.
-        :param pulumi.Input[bool] drain_elb_on_shutdown: Whether to enable Elastic Load Balancing connection draining.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['HaproxyLayerEbsVolumeArgs']]]] ebs_volumes: `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-        :param pulumi.Input[str] elastic_load_balancer: Name of an Elastic Load Balancer to attach to this layer
-        :param pulumi.Input[str] healthcheck_method: HTTP method to use for instance healthchecks. Defaults to "OPTIONS".
-        :param pulumi.Input[str] healthcheck_url: URL path to use for instance healthchecks. Defaults to "/".
-        :param pulumi.Input[bool] install_updates_on_boot: Whether to install OS and package updates on each instance when it boots.
-        :param pulumi.Input[float] instance_shutdown_timeout: The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-        :param pulumi.Input[str] name: A human-readable name for the layer.
-        :param pulumi.Input[str] stack_id: The id of the stack the layer will belong to.
-        :param pulumi.Input[bool] stats_enabled: Whether to enable HAProxy stats.
-        :param pulumi.Input[str] stats_password: The password to use for HAProxy stats.
-        :param pulumi.Input[str] stats_url: The HAProxy stats URL. Defaults to "/haproxy?stats".
-        :param pulumi.Input[str] stats_user: The username for HAProxy stats. Defaults to "opsworks".
-        :param pulumi.Input[List[pulumi.Input[str]]] system_packages: Names of a set of system packages to install on the layer's instances.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[bool] use_ebs_optimized_instances: Whether to use EBS-optimized instances.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -241,33 +184,21 @@ class HaproxyLayer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name(ARN) of the layer.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="autoAssignElasticIps")
     def auto_assign_elastic_ips(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to automatically assign an elastic IP address to the layer's instances.
-        """
         return pulumi.get(self, "auto_assign_elastic_ips")
 
     @property
     @pulumi.getter(name="autoAssignPublicIps")
     def auto_assign_public_ips(self) -> pulumi.Output[Optional[bool]]:
-        """
-        For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-        """
         return pulumi.get(self, "auto_assign_public_ips")
 
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to enable auto-healing for the layer.
-        """
         return pulumi.get(self, "auto_healing")
 
     @property
@@ -283,25 +214,16 @@ class HaproxyLayer(pulumi.CustomResource):
     @property
     @pulumi.getter(name="customInstanceProfileArn")
     def custom_instance_profile_arn(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ARN of an IAM profile that will be used for the layer's instances.
-        """
         return pulumi.get(self, "custom_instance_profile_arn")
 
     @property
     @pulumi.getter(name="customJson")
     def custom_json(self) -> pulumi.Output[Optional[str]]:
-        """
-        Custom JSON attributes to apply to the layer.
-        """
         return pulumi.get(self, "custom_json")
 
     @property
     @pulumi.getter(name="customSecurityGroupIds")
     def custom_security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        Ids for a set of security groups to apply to the layer's instances.
-        """
         return pulumi.get(self, "custom_security_group_ids")
 
     @property
@@ -322,129 +244,81 @@ class HaproxyLayer(pulumi.CustomResource):
     @property
     @pulumi.getter(name="drainElbOnShutdown")
     def drain_elb_on_shutdown(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to enable Elastic Load Balancing connection draining.
-        """
         return pulumi.get(self, "drain_elb_on_shutdown")
 
     @property
     @pulumi.getter(name="ebsVolumes")
     def ebs_volumes(self) -> pulumi.Output[Optional[List['outputs.HaproxyLayerEbsVolume']]]:
-        """
-        `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-        """
         return pulumi.get(self, "ebs_volumes")
 
     @property
     @pulumi.getter(name="elasticLoadBalancer")
     def elastic_load_balancer(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of an Elastic Load Balancer to attach to this layer
-        """
         return pulumi.get(self, "elastic_load_balancer")
 
     @property
     @pulumi.getter(name="healthcheckMethod")
     def healthcheck_method(self) -> pulumi.Output[Optional[str]]:
-        """
-        HTTP method to use for instance healthchecks. Defaults to "OPTIONS".
-        """
         return pulumi.get(self, "healthcheck_method")
 
     @property
     @pulumi.getter(name="healthcheckUrl")
     def healthcheck_url(self) -> pulumi.Output[Optional[str]]:
-        """
-        URL path to use for instance healthchecks. Defaults to "/".
-        """
         return pulumi.get(self, "healthcheck_url")
 
     @property
     @pulumi.getter(name="installUpdatesOnBoot")
     def install_updates_on_boot(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to install OS and package updates on each instance when it boots.
-        """
         return pulumi.get(self, "install_updates_on_boot")
 
     @property
     @pulumi.getter(name="instanceShutdownTimeout")
     def instance_shutdown_timeout(self) -> pulumi.Output[Optional[float]]:
-        """
-        The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-        """
         return pulumi.get(self, "instance_shutdown_timeout")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A human-readable name for the layer.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="stackId")
     def stack_id(self) -> pulumi.Output[str]:
-        """
-        The id of the stack the layer will belong to.
-        """
         return pulumi.get(self, "stack_id")
 
     @property
     @pulumi.getter(name="statsEnabled")
     def stats_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to enable HAProxy stats.
-        """
         return pulumi.get(self, "stats_enabled")
 
     @property
     @pulumi.getter(name="statsPassword")
     def stats_password(self) -> pulumi.Output[str]:
-        """
-        The password to use for HAProxy stats.
-        """
         return pulumi.get(self, "stats_password")
 
     @property
     @pulumi.getter(name="statsUrl")
     def stats_url(self) -> pulumi.Output[Optional[str]]:
-        """
-        The HAProxy stats URL. Defaults to "/haproxy?stats".
-        """
         return pulumi.get(self, "stats_url")
 
     @property
     @pulumi.getter(name="statsUser")
     def stats_user(self) -> pulumi.Output[Optional[str]]:
-        """
-        The username for HAProxy stats. Defaults to "opsworks".
-        """
         return pulumi.get(self, "stats_user")
 
     @property
     @pulumi.getter(name="systemPackages")
     def system_packages(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        Names of a set of system packages to install on the layer's instances.
-        """
         return pulumi.get(self, "system_packages")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="useEbsOptimizedInstances")
     def use_ebs_optimized_instances(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to use EBS-optimized instances.
-        """
         return pulumi.get(self, "use_ebs_optimized_instances")
 
     def translate_output_property(self, prop):

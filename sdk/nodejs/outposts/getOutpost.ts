@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about an Outposts Outpost.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.outposts.getOutpost({
- *     name: "example",
- * }, { async: true }));
- * ```
- */
 export function getOutpost(args?: GetOutpostArgs, opts?: pulumi.InvokeOptions): Promise<GetOutpostResult> {
     args = args || {};
     if (!opts) {
@@ -39,13 +25,7 @@ export function getOutpost(args?: GetOutpostArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getOutpost.
  */
 export interface GetOutpostArgs {
-    /**
-     * Identifier of the Outpost.
-     */
     readonly id?: string;
-    /**
-     * Name of the Outpost.
-     */
     readonly name?: string;
 }
 
@@ -53,30 +33,12 @@ export interface GetOutpostArgs {
  * A collection of values returned by getOutpost.
  */
 export interface GetOutpostResult {
-    /**
-     * Amazon Resource Name (ARN).
-     */
     readonly arn: string;
-    /**
-     * Availability Zone name.
-     */
     readonly availabilityZone: string;
-    /**
-     * Availability Zone identifier.
-     */
     readonly availabilityZoneId: string;
-    /**
-     * Description.
-     */
     readonly description: string;
     readonly id: string;
     readonly name: string;
-    /**
-     * AWS Account identifier of the Outpost owner.
-     */
     readonly ownerId: string;
-    /**
-     * Site identifier.
-     */
     readonly siteId: string;
 }

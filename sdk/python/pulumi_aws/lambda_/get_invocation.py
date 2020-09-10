@@ -62,9 +62,6 @@ class GetInvocationResult:
     @property
     @pulumi.getter
     def result(self) -> str:
-        """
-        String result of the lambda function invocation.
-        """
         return pulumi.get(self, "result")
 
 
@@ -86,15 +83,7 @@ def get_invocation(function_name: Optional[str] = None,
                    qualifier: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInvocationResult:
     """
-    Use this data source to invoke custom lambda functions as data source.
-    The lambda function is invoked with [RequestResponse](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax)
-    invocation type.
-
-
-    :param str function_name: The name of the lambda function.
-    :param str input: A string in JSON format that is passed as payload to the lambda function.
-    :param str qualifier: The qualifier (a.k.a version) of the lambda function. Defaults
-           to `$LATEST`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['functionName'] = function_name

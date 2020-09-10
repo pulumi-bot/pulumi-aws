@@ -13,17 +13,8 @@ namespace Pulumi.Aws.ApiGateway.Outputs
     [OutputType]
     public sealed class UsagePlanQuotaSettings
     {
-        /// <summary>
-        /// The maximum number of requests that can be made in a given time period.
-        /// </summary>
         public readonly int Limit;
-        /// <summary>
-        /// The number of requests subtracted from the given limit in the initial time period.
-        /// </summary>
         public readonly int? Offset;
-        /// <summary>
-        /// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-        /// </summary>
         public readonly string Period;
 
         [OutputConstructor]

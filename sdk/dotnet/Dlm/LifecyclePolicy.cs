@@ -9,144 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Dlm
 {
-    /// <summary>
-    /// Provides a [Data Lifecycle Manager (DLM) lifecycle policy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) for managing snapshots.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dlmLifecycleRole = new Aws.Iam.Role("dlmLifecycleRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": ""sts:AssumeRole"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""dlm.amazonaws.com""
-    ///       },
-    ///       ""Effect"": ""Allow"",
-    ///       ""Sid"": """"
-    ///     }
-    ///   ]
-    /// }
-    /// 
-    /// ",
-    ///         });
-    ///         var dlmLifecycle = new Aws.Iam.RolePolicy("dlmLifecycle", new Aws.Iam.RolePolicyArgs
-    ///         {
-    ///             Policy = @"{
-    ///    ""Version"": ""2012-10-17"",
-    ///    ""Statement"": [
-    ///       {
-    ///          ""Effect"": ""Allow"",
-    ///          ""Action"": [
-    ///             ""ec2:CreateSnapshot"",
-    ///             ""ec2:DeleteSnapshot"",
-    ///             ""ec2:DescribeVolumes"",
-    ///             ""ec2:DescribeSnapshots""
-    ///          ],
-    ///          ""Resource"": ""*""
-    ///       },
-    ///       {
-    ///          ""Effect"": ""Allow"",
-    ///          ""Action"": [
-    ///             ""ec2:CreateTags""
-    ///          ],
-    ///          ""Resource"": ""arn:aws:ec2:*::snapshot/*""
-    ///       }
-    ///    ]
-    /// }
-    /// 
-    /// ",
-    ///             Role = dlmLifecycleRole.Id,
-    ///         });
-    ///         var example = new Aws.Dlm.LifecyclePolicy("example", new Aws.Dlm.LifecyclePolicyArgs
-    ///         {
-    ///             Description = "example DLM lifecycle policy",
-    ///             ExecutionRoleArn = dlmLifecycleRole.Arn,
-    ///             PolicyDetails = new Aws.Dlm.Inputs.LifecyclePolicyPolicyDetailsArgs
-    ///             {
-    ///                 ResourceTypes = 
-    ///                 {
-    ///                     "VOLUME",
-    ///                 },
-    ///                 Schedules = 
-    ///                 {
-    ///                     new Aws.Dlm.Inputs.LifecyclePolicyPolicyDetailsScheduleArgs
-    ///                     {
-    ///                         CopyTags = false,
-    ///                         CreateRule = new Aws.Dlm.Inputs.LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs
-    ///                         {
-    ///                             Interval = 24,
-    ///                             IntervalUnit = "HOURS",
-    ///                             Times = "23:45",
-    ///                         },
-    ///                         Name = "2 weeks of daily snapshots",
-    ///                         RetainRule = new Aws.Dlm.Inputs.LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs
-    ///                         {
-    ///                             Count = 14,
-    ///                         },
-    ///                         TagsToAdd = 
-    ///                         {
-    ///                             { "SnapshotCreator", "DLM" },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 TargetTags = 
-    ///                 {
-    ///                     { "Snapshot", "true" },
-    ///                 },
-    ///             },
-    ///             State = "ENABLED",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class LifecyclePolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// A description for the DLM lifecycle policy.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of an IAM role that is able to be assumed by the DLM service.
-        /// </summary>
         [Output("executionRoleArn")]
         public Output<string> ExecutionRoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// See the `policy_details` configuration block. Max of 1.
-        /// </summary>
         [Output("policyDetails")]
         public Output<Outputs.LifecyclePolicyPolicyDetails> PolicyDetails { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-        /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -196,36 +75,20 @@ namespace Pulumi.Aws.Dlm
 
     public sealed class LifecyclePolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description for the DLM lifecycle policy.
-        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
-        /// <summary>
-        /// The ARN of an IAM role that is able to be assumed by the DLM service.
-        /// </summary>
         [Input("executionRoleArn", required: true)]
         public Input<string> ExecutionRoleArn { get; set; } = null!;
 
-        /// <summary>
-        /// See the `policy_details` configuration block. Max of 1.
-        /// </summary>
         [Input("policyDetails", required: true)]
         public Input<Inputs.LifecyclePolicyPolicyDetailsArgs> PolicyDetails { get; set; } = null!;
 
-        /// <summary>
-        /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -239,42 +102,23 @@ namespace Pulumi.Aws.Dlm
 
     public sealed class LifecyclePolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the DLM Lifecycle Policy.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// A description for the DLM lifecycle policy.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The ARN of an IAM role that is able to be assumed by the DLM service.
-        /// </summary>
         [Input("executionRoleArn")]
         public Input<string>? ExecutionRoleArn { get; set; }
 
-        /// <summary>
-        /// See the `policy_details` configuration block. Max of 1.
-        /// </summary>
         [Input("policyDetails")]
         public Input<Inputs.LifecyclePolicyPolicyDetailsGetArgs>? PolicyDetails { get; set; }
 
-        /// <summary>
-        /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

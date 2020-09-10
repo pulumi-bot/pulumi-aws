@@ -10,49 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a SES Identity Policy. More information about SES Sending Authorization Policies can be found in the [SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ses"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleDomainIdentity, err := ses.NewDomainIdentity(ctx, "exampleDomainIdentity", &ses.DomainIdentityArgs{
-// 			Domain: pulumi.String("example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ses.NewIdentityPolicy(ctx, "exampleIdentityPolicy", &ses.IdentityPolicyArgs{
-// 			Identity: exampleDomainIdentity.Arn,
-// 			Policy: examplePolicyDocument.ApplyT(func(examplePolicyDocument iam.GetPolicyDocumentResult) (string, error) {
-// 				return examplePolicyDocument.Json, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type IdentityPolicy struct {
 	pulumi.CustomResourceState
 
-	// Name or Amazon Resource Name (ARN) of the SES Identity.
 	Identity pulumi.StringOutput `pulumi:"identity"`
-	// Name of the policy.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// JSON string of the policy.
-	Policy pulumi.StringOutput `pulumi:"policy"`
+	Name     pulumi.StringOutput `pulumi:"name"`
+	Policy   pulumi.StringOutput `pulumi:"policy"`
 }
 
 // NewIdentityPolicy registers a new resource with the given unique name, arguments, and options.
@@ -89,21 +52,15 @@ func GetIdentityPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityPolicy resources.
 type identityPolicyState struct {
-	// Name or Amazon Resource Name (ARN) of the SES Identity.
 	Identity *string `pulumi:"identity"`
-	// Name of the policy.
-	Name *string `pulumi:"name"`
-	// JSON string of the policy.
-	Policy *string `pulumi:"policy"`
+	Name     *string `pulumi:"name"`
+	Policy   *string `pulumi:"policy"`
 }
 
 type IdentityPolicyState struct {
-	// Name or Amazon Resource Name (ARN) of the SES Identity.
 	Identity pulumi.StringPtrInput
-	// Name of the policy.
-	Name pulumi.StringPtrInput
-	// JSON string of the policy.
-	Policy pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
+	Policy   pulumi.StringPtrInput
 }
 
 func (IdentityPolicyState) ElementType() reflect.Type {
@@ -111,22 +68,16 @@ func (IdentityPolicyState) ElementType() reflect.Type {
 }
 
 type identityPolicyArgs struct {
-	// Name or Amazon Resource Name (ARN) of the SES Identity.
-	Identity string `pulumi:"identity"`
-	// Name of the policy.
-	Name *string `pulumi:"name"`
-	// JSON string of the policy.
-	Policy string `pulumi:"policy"`
+	Identity string  `pulumi:"identity"`
+	Name     *string `pulumi:"name"`
+	Policy   string  `pulumi:"policy"`
 }
 
 // The set of arguments for constructing a IdentityPolicy resource.
 type IdentityPolicyArgs struct {
-	// Name or Amazon Resource Name (ARN) of the SES Identity.
 	Identity pulumi.StringInput
-	// Name of the policy.
-	Name pulumi.StringPtrInput
-	// JSON string of the policy.
-	Policy pulumi.StringInput
+	Name     pulumi.StringPtrInput
+	Policy   pulumi.StringInput
 }
 
 func (IdentityPolicyArgs) ElementType() reflect.Type {

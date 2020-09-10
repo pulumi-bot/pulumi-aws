@@ -12,33 +12,20 @@ namespace Pulumi.Aws.Mq.Inputs
 
     public sealed class BrokerUserGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user.
-        /// </summary>
         [Input("consoleAccess")]
         public Input<bool>? ConsoleAccess { get; set; }
 
         [Input("groups")]
         private InputList<string>? _groups;
-
-        /// <summary>
-        /// The list of groups (20 maximum) to which the ActiveMQ user belongs.
-        /// </summary>
         public InputList<string> Groups
         {
             get => _groups ?? (_groups = new InputList<string>());
             set => _groups = value;
         }
 
-        /// <summary>
-        /// The password of the user. It must be 12 to 250 characters long, at least 4 unique characters, and must not contain commas.
-        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 

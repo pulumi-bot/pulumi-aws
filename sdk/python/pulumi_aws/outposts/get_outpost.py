@@ -48,33 +48,21 @@ class GetOutpostResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name (ARN).
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        Availability Zone name.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="availabilityZoneId")
     def availability_zone_id(self) -> str:
-        """
-        Availability Zone identifier.
-        """
         return pulumi.get(self, "availability_zone_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -90,17 +78,11 @@ class GetOutpostResult:
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> str:
-        """
-        AWS Account identifier of the Outpost owner.
-        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="siteId")
     def site_id(self) -> str:
-        """
-        Site identifier.
-        """
         return pulumi.get(self, "site_id")
 
 
@@ -124,20 +106,7 @@ def get_outpost(id: Optional[str] = None,
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOutpostResult:
     """
-    Provides details about an Outposts Outpost.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.outposts.get_outpost(name="example")
-    ```
-
-
-    :param str id: Identifier of the Outpost.
-    :param str name: Name of the Outpost.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

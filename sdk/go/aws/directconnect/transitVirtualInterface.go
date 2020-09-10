@@ -10,74 +10,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Direct Connect transit virtual interface resource.
-// A transit virtual interface is a VLAN that transports traffic from a Direct Connect gateway to one or more transit gateways.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directconnect"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleGateway, err := directconnect.NewGateway(ctx, "exampleGateway", &directconnect.GatewayArgs{
-// 			AmazonSideAsn: pulumi.String("64512"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = directconnect.NewTransitVirtualInterface(ctx, "exampleTransitVirtualInterface", &directconnect.TransitVirtualInterfaceArgs{
-// 			ConnectionId:  pulumi.Any(aws_dx_connection.Example.Id),
-// 			DxGatewayId:   exampleGateway.ID(),
-// 			Vlan:          pulumi.Int(4094),
-// 			AddressFamily: pulumi.String("ipv4"),
-// 			BgpAsn:        pulumi.Int(65352),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TransitVirtualInterface struct {
 	pulumi.CustomResourceState
 
-	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
-	AddressFamily pulumi.StringOutput `pulumi:"addressFamily"`
-	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-	AmazonAddress pulumi.StringOutput `pulumi:"amazonAddress"`
-	AmazonSideAsn pulumi.StringOutput `pulumi:"amazonSideAsn"`
-	// The ARN of the virtual interface.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The Direct Connect endpoint on which the virtual interface terminates.
-	AwsDevice pulumi.StringOutput `pulumi:"awsDevice"`
-	// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	BgpAsn pulumi.IntOutput `pulumi:"bgpAsn"`
-	// The authentication key for BGP configuration.
-	BgpAuthKey pulumi.StringOutput `pulumi:"bgpAuthKey"`
-	// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
-	// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-	CustomerAddress pulumi.StringOutput `pulumi:"customerAddress"`
-	// The ID of the Direct Connect gateway to which to connect the virtual interface.
-	DxGatewayId pulumi.StringOutput `pulumi:"dxGatewayId"`
-	// Indicates whether jumbo frames (8500 MTU) are supported.
-	JumboFrameCapable pulumi.BoolOutput `pulumi:"jumboFrameCapable"`
-	// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-	// The MTU of a virtual transit interface can be either `1500` or `8500` (jumbo frames). Default is `1500`.
-	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
-	// The name for the virtual interface.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The VLAN ID.
-	Vlan pulumi.IntOutput `pulumi:"vlan"`
+	AddressFamily     pulumi.StringOutput    `pulumi:"addressFamily"`
+	AmazonAddress     pulumi.StringOutput    `pulumi:"amazonAddress"`
+	AmazonSideAsn     pulumi.StringOutput    `pulumi:"amazonSideAsn"`
+	Arn               pulumi.StringOutput    `pulumi:"arn"`
+	AwsDevice         pulumi.StringOutput    `pulumi:"awsDevice"`
+	BgpAsn            pulumi.IntOutput       `pulumi:"bgpAsn"`
+	BgpAuthKey        pulumi.StringOutput    `pulumi:"bgpAuthKey"`
+	ConnectionId      pulumi.StringOutput    `pulumi:"connectionId"`
+	CustomerAddress   pulumi.StringOutput    `pulumi:"customerAddress"`
+	DxGatewayId       pulumi.StringOutput    `pulumi:"dxGatewayId"`
+	JumboFrameCapable pulumi.BoolOutput      `pulumi:"jumboFrameCapable"`
+	Mtu               pulumi.IntPtrOutput    `pulumi:"mtu"`
+	Name              pulumi.StringOutput    `pulumi:"name"`
+	Tags              pulumi.StringMapOutput `pulumi:"tags"`
+	Vlan              pulumi.IntOutput       `pulumi:"vlan"`
 }
 
 // NewTransitVirtualInterface registers a new resource with the given unique name, arguments, and options.
@@ -123,69 +73,39 @@ func GetTransitVirtualInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitVirtualInterface resources.
 type transitVirtualInterfaceState struct {
-	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
-	AddressFamily *string `pulumi:"addressFamily"`
-	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-	AmazonAddress *string `pulumi:"amazonAddress"`
-	AmazonSideAsn *string `pulumi:"amazonSideAsn"`
-	// The ARN of the virtual interface.
-	Arn *string `pulumi:"arn"`
-	// The Direct Connect endpoint on which the virtual interface terminates.
-	AwsDevice *string `pulumi:"awsDevice"`
-	// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	BgpAsn *int `pulumi:"bgpAsn"`
-	// The authentication key for BGP configuration.
-	BgpAuthKey *string `pulumi:"bgpAuthKey"`
-	// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-	ConnectionId *string `pulumi:"connectionId"`
-	// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-	CustomerAddress *string `pulumi:"customerAddress"`
-	// The ID of the Direct Connect gateway to which to connect the virtual interface.
-	DxGatewayId *string `pulumi:"dxGatewayId"`
-	// Indicates whether jumbo frames (8500 MTU) are supported.
-	JumboFrameCapable *bool `pulumi:"jumboFrameCapable"`
-	// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-	// The MTU of a virtual transit interface can be either `1500` or `8500` (jumbo frames). Default is `1500`.
-	Mtu *int `pulumi:"mtu"`
-	// The name for the virtual interface.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The VLAN ID.
-	Vlan *int `pulumi:"vlan"`
+	AddressFamily     *string           `pulumi:"addressFamily"`
+	AmazonAddress     *string           `pulumi:"amazonAddress"`
+	AmazonSideAsn     *string           `pulumi:"amazonSideAsn"`
+	Arn               *string           `pulumi:"arn"`
+	AwsDevice         *string           `pulumi:"awsDevice"`
+	BgpAsn            *int              `pulumi:"bgpAsn"`
+	BgpAuthKey        *string           `pulumi:"bgpAuthKey"`
+	ConnectionId      *string           `pulumi:"connectionId"`
+	CustomerAddress   *string           `pulumi:"customerAddress"`
+	DxGatewayId       *string           `pulumi:"dxGatewayId"`
+	JumboFrameCapable *bool             `pulumi:"jumboFrameCapable"`
+	Mtu               *int              `pulumi:"mtu"`
+	Name              *string           `pulumi:"name"`
+	Tags              map[string]string `pulumi:"tags"`
+	Vlan              *int              `pulumi:"vlan"`
 }
 
 type TransitVirtualInterfaceState struct {
-	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
-	AddressFamily pulumi.StringPtrInput
-	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-	AmazonAddress pulumi.StringPtrInput
-	AmazonSideAsn pulumi.StringPtrInput
-	// The ARN of the virtual interface.
-	Arn pulumi.StringPtrInput
-	// The Direct Connect endpoint on which the virtual interface terminates.
-	AwsDevice pulumi.StringPtrInput
-	// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	BgpAsn pulumi.IntPtrInput
-	// The authentication key for BGP configuration.
-	BgpAuthKey pulumi.StringPtrInput
-	// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-	ConnectionId pulumi.StringPtrInput
-	// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-	CustomerAddress pulumi.StringPtrInput
-	// The ID of the Direct Connect gateway to which to connect the virtual interface.
-	DxGatewayId pulumi.StringPtrInput
-	// Indicates whether jumbo frames (8500 MTU) are supported.
+	AddressFamily     pulumi.StringPtrInput
+	AmazonAddress     pulumi.StringPtrInput
+	AmazonSideAsn     pulumi.StringPtrInput
+	Arn               pulumi.StringPtrInput
+	AwsDevice         pulumi.StringPtrInput
+	BgpAsn            pulumi.IntPtrInput
+	BgpAuthKey        pulumi.StringPtrInput
+	ConnectionId      pulumi.StringPtrInput
+	CustomerAddress   pulumi.StringPtrInput
+	DxGatewayId       pulumi.StringPtrInput
 	JumboFrameCapable pulumi.BoolPtrInput
-	// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-	// The MTU of a virtual transit interface can be either `1500` or `8500` (jumbo frames). Default is `1500`.
-	Mtu pulumi.IntPtrInput
-	// The name for the virtual interface.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The VLAN ID.
-	Vlan pulumi.IntPtrInput
+	Mtu               pulumi.IntPtrInput
+	Name              pulumi.StringPtrInput
+	Tags              pulumi.StringMapInput
+	Vlan              pulumi.IntPtrInput
 }
 
 func (TransitVirtualInterfaceState) ElementType() reflect.Type {
@@ -193,56 +113,32 @@ func (TransitVirtualInterfaceState) ElementType() reflect.Type {
 }
 
 type transitVirtualInterfaceArgs struct {
-	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
-	AddressFamily string `pulumi:"addressFamily"`
-	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-	AmazonAddress *string `pulumi:"amazonAddress"`
-	// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	BgpAsn int `pulumi:"bgpAsn"`
-	// The authentication key for BGP configuration.
-	BgpAuthKey *string `pulumi:"bgpAuthKey"`
-	// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-	ConnectionId string `pulumi:"connectionId"`
-	// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-	CustomerAddress *string `pulumi:"customerAddress"`
-	// The ID of the Direct Connect gateway to which to connect the virtual interface.
-	DxGatewayId string `pulumi:"dxGatewayId"`
-	// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-	// The MTU of a virtual transit interface can be either `1500` or `8500` (jumbo frames). Default is `1500`.
-	Mtu *int `pulumi:"mtu"`
-	// The name for the virtual interface.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The VLAN ID.
-	Vlan int `pulumi:"vlan"`
+	AddressFamily   string            `pulumi:"addressFamily"`
+	AmazonAddress   *string           `pulumi:"amazonAddress"`
+	BgpAsn          int               `pulumi:"bgpAsn"`
+	BgpAuthKey      *string           `pulumi:"bgpAuthKey"`
+	ConnectionId    string            `pulumi:"connectionId"`
+	CustomerAddress *string           `pulumi:"customerAddress"`
+	DxGatewayId     string            `pulumi:"dxGatewayId"`
+	Mtu             *int              `pulumi:"mtu"`
+	Name            *string           `pulumi:"name"`
+	Tags            map[string]string `pulumi:"tags"`
+	Vlan            int               `pulumi:"vlan"`
 }
 
 // The set of arguments for constructing a TransitVirtualInterface resource.
 type TransitVirtualInterfaceArgs struct {
-	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
-	AddressFamily pulumi.StringInput
-	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-	AmazonAddress pulumi.StringPtrInput
-	// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	BgpAsn pulumi.IntInput
-	// The authentication key for BGP configuration.
-	BgpAuthKey pulumi.StringPtrInput
-	// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-	ConnectionId pulumi.StringInput
-	// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
+	AddressFamily   pulumi.StringInput
+	AmazonAddress   pulumi.StringPtrInput
+	BgpAsn          pulumi.IntInput
+	BgpAuthKey      pulumi.StringPtrInput
+	ConnectionId    pulumi.StringInput
 	CustomerAddress pulumi.StringPtrInput
-	// The ID of the Direct Connect gateway to which to connect the virtual interface.
-	DxGatewayId pulumi.StringInput
-	// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-	// The MTU of a virtual transit interface can be either `1500` or `8500` (jumbo frames). Default is `1500`.
-	Mtu pulumi.IntPtrInput
-	// The name for the virtual interface.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The VLAN ID.
-	Vlan pulumi.IntInput
+	DxGatewayId     pulumi.StringInput
+	Mtu             pulumi.IntPtrInput
+	Name            pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
+	Vlan            pulumi.IntInput
 }
 
 func (TransitVirtualInterfaceArgs) ElementType() reflect.Type {

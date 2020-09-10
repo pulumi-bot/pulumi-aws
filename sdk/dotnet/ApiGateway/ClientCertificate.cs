@@ -9,63 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides an API Gateway Client Certificate.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var demo = new Aws.ApiGateway.ClientCertificate("demo", new Aws.ApiGateway.ClientCertificateArgs
-    ///         {
-    ///             Description = "My client certificate",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ClientCertificate : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The date when the client certificate was created.
-        /// </summary>
         [Output("createdDate")]
         public Output<string> CreatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the client certificate.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The date when the client certificate will expire.
-        /// </summary>
         [Output("expirationDate")]
         public Output<string> ExpirationDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The PEM-encoded public key of the client certificate.
-        /// </summary>
         [Output("pemEncodedCertificate")]
         public Output<string> PemEncodedCertificate { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -115,18 +75,11 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class ClientCertificateArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the client certificate.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -140,42 +93,23 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class ClientCertificateState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The date when the client certificate was created.
-        /// </summary>
         [Input("createdDate")]
         public Input<string>? CreatedDate { get; set; }
 
-        /// <summary>
-        /// The description of the client certificate.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The date when the client certificate will expire.
-        /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
 
-        /// <summary>
-        /// The PEM-encoded public key of the client certificate.
-        /// </summary>
         [Input("pemEncodedCertificate")]
         public Input<string>? PemEncodedCertificate { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

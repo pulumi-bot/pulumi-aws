@@ -24,14 +24,6 @@ class EndpointConfigurationProductionVariantArgs:
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  initial_variant_weight: Optional[pulumi.Input[float]] = None,
                  variant_name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[float] initial_instance_count: Initial number of instances used for auto-scaling.
-        :param pulumi.Input[str] instance_type: The type of instance to start.
-        :param pulumi.Input[str] model_name: The name of the model to use.
-        :param pulumi.Input[str] accelerator_type: The size of the Elastic Inference (EI) instance to use for the production variant.
-        :param pulumi.Input[float] initial_variant_weight: Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
-        :param pulumi.Input[str] variant_name: The name of the variant. If omitted, this provider will assign a random, unique name.
-        """
         pulumi.set(__self__, "initial_instance_count", initial_instance_count)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "model_name", model_name)
@@ -45,9 +37,6 @@ class EndpointConfigurationProductionVariantArgs:
     @property
     @pulumi.getter(name="initialInstanceCount")
     def initial_instance_count(self) -> pulumi.Input[float]:
-        """
-        Initial number of instances used for auto-scaling.
-        """
         return pulumi.get(self, "initial_instance_count")
 
     @initial_instance_count.setter
@@ -57,9 +46,6 @@ class EndpointConfigurationProductionVariantArgs:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
-        """
-        The type of instance to start.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -69,9 +55,6 @@ class EndpointConfigurationProductionVariantArgs:
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> pulumi.Input[str]:
-        """
-        The name of the model to use.
-        """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
@@ -81,9 +64,6 @@ class EndpointConfigurationProductionVariantArgs:
     @property
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The size of the Elastic Inference (EI) instance to use for the production variant.
-        """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
@@ -93,9 +73,6 @@ class EndpointConfigurationProductionVariantArgs:
     @property
     @pulumi.getter(name="initialVariantWeight")
     def initial_variant_weight(self) -> Optional[pulumi.Input[float]]:
-        """
-        Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
-        """
         return pulumi.get(self, "initial_variant_weight")
 
     @initial_variant_weight.setter
@@ -105,9 +82,6 @@ class EndpointConfigurationProductionVariantArgs:
     @property
     @pulumi.getter(name="variantName")
     def variant_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the variant. If omitted, this provider will assign a random, unique name.
-        """
         return pulumi.get(self, "variant_name")
 
     @variant_name.setter
@@ -122,13 +96,6 @@ class ModelContainerArgs:
                  container_hostname: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  model_data_url: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] image: The registry path where the inference code image is stored in Amazon ECR.
-        :param pulumi.Input[str] container_hostname: The DNS host name for the container.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: Environment variables for the Docker container.
-               A list of key value pairs.
-        :param pulumi.Input[str] model_data_url: The URL for the S3 location where model artifacts are stored.
-        """
         pulumi.set(__self__, "image", image)
         if container_hostname is not None:
             pulumi.set(__self__, "container_hostname", container_hostname)
@@ -140,9 +107,6 @@ class ModelContainerArgs:
     @property
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
-        """
-        The registry path where the inference code image is stored in Amazon ECR.
-        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -152,9 +116,6 @@ class ModelContainerArgs:
     @property
     @pulumi.getter(name="containerHostname")
     def container_hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The DNS host name for the container.
-        """
         return pulumi.get(self, "container_hostname")
 
     @container_hostname.setter
@@ -164,10 +125,6 @@ class ModelContainerArgs:
     @property
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Environment variables for the Docker container.
-        A list of key value pairs.
-        """
         return pulumi.get(self, "environment")
 
     @environment.setter
@@ -177,9 +134,6 @@ class ModelContainerArgs:
     @property
     @pulumi.getter(name="modelDataUrl")
     def model_data_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL for the S3 location where model artifacts are stored.
-        """
         return pulumi.get(self, "model_data_url")
 
     @model_data_url.setter
@@ -194,13 +148,6 @@ class ModelPrimaryContainerArgs:
                  container_hostname: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  model_data_url: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] image: The registry path where the inference code image is stored in Amazon ECR.
-        :param pulumi.Input[str] container_hostname: The DNS host name for the container.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: Environment variables for the Docker container.
-               A list of key value pairs.
-        :param pulumi.Input[str] model_data_url: The URL for the S3 location where model artifacts are stored.
-        """
         pulumi.set(__self__, "image", image)
         if container_hostname is not None:
             pulumi.set(__self__, "container_hostname", container_hostname)
@@ -212,9 +159,6 @@ class ModelPrimaryContainerArgs:
     @property
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
-        """
-        The registry path where the inference code image is stored in Amazon ECR.
-        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -224,9 +168,6 @@ class ModelPrimaryContainerArgs:
     @property
     @pulumi.getter(name="containerHostname")
     def container_hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The DNS host name for the container.
-        """
         return pulumi.get(self, "container_hostname")
 
     @container_hostname.setter
@@ -236,10 +177,6 @@ class ModelPrimaryContainerArgs:
     @property
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Environment variables for the Docker container.
-        A list of key value pairs.
-        """
         return pulumi.get(self, "environment")
 
     @environment.setter
@@ -249,9 +186,6 @@ class ModelPrimaryContainerArgs:
     @property
     @pulumi.getter(name="modelDataUrl")
     def model_data_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL for the S3 location where model artifacts are stored.
-        """
         return pulumi.get(self, "model_data_url")
 
     @model_data_url.setter

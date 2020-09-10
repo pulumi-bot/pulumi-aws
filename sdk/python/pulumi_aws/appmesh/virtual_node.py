@@ -25,155 +25,9 @@ class VirtualNode(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS App Mesh virtual node resource.
-
-        ## Breaking Changes
-
-        Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92)), `appmesh.VirtualNode` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
-
-        * Rename the `service_name` attribute of the `dns` object to `hostname`.
-
-        * Replace the `backends` attribute of the `spec` object with one or more `backend` configuration blocks,
-        setting `virtual_service_name` to the name of the service.
-
-        The state associated with existing resources will automatically be migrated.
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    dns=aws.appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs(
-                        hostname="serviceb.simpleapp.local",
-                    ),
-                ),
-            ))
-        ```
-        ### AWS Cloud Map Service Discovery
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.servicediscovery.HttpNamespace("example")
-        serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    aws_cloud_map=aws.appmesh.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs(
-                        attributes={
-                            "stack": "blue",
-                        },
-                        service_name="serviceb1",
-                        namespace_name=example.name,
-                    ),
-                ),
-            ))
-        ```
-        ### Listener Health Check
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                    health_check={
-                        "protocol": "http",
-                        "path": "/ping",
-                        "healthyThreshold": 2,
-                        "unhealthyThreshold": 2,
-                        "timeoutMillis": 2000,
-                        "intervalMillis": 5000,
-                    },
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    dns=aws.appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs(
-                        hostname="serviceb.simpleapp.local",
-                    ),
-                ),
-            ))
-        ```
-        ### Logging
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb1 = aws.appmesh.VirtualNode("serviceb1",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    dns=aws.appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs(
-                        hostname="serviceb.simpleapp.local",
-                    ),
-                ),
-                logging=aws.appmesh.VirtualNodeSpecLoggingArgs(
-                    access_log=aws.appmesh.VirtualNodeSpecLoggingAccessLogArgs(
-                        file=aws.appmesh.VirtualNodeSpecLoggingAccessLogFileArgs(
-                            path="/dev/stdout",
-                        ),
-                    ),
-                ),
-            ))
-        ```
-
+        Create a VirtualNode resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual node.
-        :param pulumi.Input[str] name: The name to use for the virtual node.
-        :param pulumi.Input[pulumi.InputType['VirtualNodeSpecArgs']] spec: The virtual node specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -227,13 +81,6 @@ class VirtualNode(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the virtual node.
-        :param pulumi.Input[str] created_date: The creation date of the virtual node.
-        :param pulumi.Input[str] last_updated_date: The last update date of the virtual node.
-        :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual node.
-        :param pulumi.Input[str] name: The name to use for the virtual node.
-        :param pulumi.Input[pulumi.InputType['VirtualNodeSpecArgs']] spec: The virtual node specification to apply.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -251,57 +98,36 @@ class VirtualNode(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the virtual node.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="createdDate")
     def created_date(self) -> pulumi.Output[str]:
-        """
-        The creation date of the virtual node.
-        """
         return pulumi.get(self, "created_date")
 
     @property
     @pulumi.getter(name="lastUpdatedDate")
     def last_updated_date(self) -> pulumi.Output[str]:
-        """
-        The last update date of the virtual node.
-        """
         return pulumi.get(self, "last_updated_date")
 
     @property
     @pulumi.getter(name="meshName")
     def mesh_name(self) -> pulumi.Output[str]:
-        """
-        The name of the service mesh in which to create the virtual node.
-        """
         return pulumi.get(self, "mesh_name")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name to use for the virtual node.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.VirtualNodeSpec']:
-        """
-        The virtual node specification to apply.
-        """
         return pulumi.get(self, "spec")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

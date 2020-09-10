@@ -19,11 +19,6 @@ class EndpointAuthenticationOptionArgs:
                  type: pulumi.Input[str],
                  active_directory_id: Optional[pulumi.Input[str]] = None,
                  root_certificate_chain_arn: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: The type of client authentication to be used. Specify `certificate-authentication` to use certificate-based authentication, or `directory-service-authentication` to use Active Directory authentication.
-        :param pulumi.Input[str] active_directory_id: The ID of the Active Directory to be used for authentication if type is `directory-service-authentication`.
-        :param pulumi.Input[str] root_certificate_chain_arn: The ARN of the client certificate. The certificate must be signed by a certificate authority (CA) and it must be provisioned in AWS Certificate Manager (ACM). Only necessary when type is set to `certificate-authentication`.
-        """
         pulumi.set(__self__, "type", type)
         if active_directory_id is not None:
             pulumi.set(__self__, "active_directory_id", active_directory_id)
@@ -33,9 +28,6 @@ class EndpointAuthenticationOptionArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The type of client authentication to be used. Specify `certificate-authentication` to use certificate-based authentication, or `directory-service-authentication` to use Active Directory authentication.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -45,9 +37,6 @@ class EndpointAuthenticationOptionArgs:
     @property
     @pulumi.getter(name="activeDirectoryId")
     def active_directory_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the Active Directory to be used for authentication if type is `directory-service-authentication`.
-        """
         return pulumi.get(self, "active_directory_id")
 
     @active_directory_id.setter
@@ -57,9 +46,6 @@ class EndpointAuthenticationOptionArgs:
     @property
     @pulumi.getter(name="rootCertificateChainArn")
     def root_certificate_chain_arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ARN of the client certificate. The certificate must be signed by a certificate authority (CA) and it must be provisioned in AWS Certificate Manager (ACM). Only necessary when type is set to `certificate-authentication`.
-        """
         return pulumi.get(self, "root_certificate_chain_arn")
 
     @root_certificate_chain_arn.setter
@@ -73,11 +59,6 @@ class EndpointConnectionLogOptionsArgs:
                  enabled: pulumi.Input[bool],
                  cloudwatch_log_group: Optional[pulumi.Input[str]] = None,
                  cloudwatch_log_stream: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[bool] enabled: Indicates whether connection logging is enabled.
-        :param pulumi.Input[str] cloudwatch_log_group: The name of the CloudWatch Logs log group.
-        :param pulumi.Input[str] cloudwatch_log_stream: The name of the CloudWatch Logs log stream to which the connection data is published.
-        """
         pulumi.set(__self__, "enabled", enabled)
         if cloudwatch_log_group is not None:
             pulumi.set(__self__, "cloudwatch_log_group", cloudwatch_log_group)
@@ -87,9 +68,6 @@ class EndpointConnectionLogOptionsArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Indicates whether connection logging is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -99,9 +77,6 @@ class EndpointConnectionLogOptionsArgs:
     @property
     @pulumi.getter(name="cloudwatchLogGroup")
     def cloudwatch_log_group(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CloudWatch Logs log group.
-        """
         return pulumi.get(self, "cloudwatch_log_group")
 
     @cloudwatch_log_group.setter
@@ -111,9 +86,6 @@ class EndpointConnectionLogOptionsArgs:
     @property
     @pulumi.getter(name="cloudwatchLogStream")
     def cloudwatch_log_stream(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the CloudWatch Logs log stream to which the connection data is published.
-        """
         return pulumi.get(self, "cloudwatch_log_stream")
 
     @cloudwatch_log_stream.setter

@@ -96,17 +96,11 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="allocatedStorage")
     def allocated_storage(self) -> float:
-        """
-        Specifies the allocated storage size in gigabytes (GB).
-        """
         return pulumi.get(self, "allocated_storage")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -117,9 +111,6 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="dbSnapshotArn")
     def db_snapshot_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) for the DB snapshot.
-        """
         return pulumi.get(self, "db_snapshot_arn")
 
     @property
@@ -130,25 +121,16 @@ class GetSnapshotResult:
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        Specifies whether the DB snapshot is encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
-        """
-        Specifies the name of the database engine.
-        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
-        """
-        Specifies the version of the database engine.
-        """
         return pulumi.get(self, "engine_version")
 
     @property
@@ -172,25 +154,16 @@ class GetSnapshotResult:
     @property
     @pulumi.getter
     def iops(self) -> float:
-        """
-        Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
-        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> str:
-        """
-        The ARN for the KMS encryption key.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="licenseModel")
     def license_model(self) -> str:
-        """
-        License model information for the restored DB instance.
-        """
         return pulumi.get(self, "license_model")
 
     @property
@@ -201,9 +174,6 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="optionGroupName")
     def option_group_name(self) -> str:
-        """
-        Provides the option group name for the DB snapshot.
-        """
         return pulumi.get(self, "option_group_name")
 
     @property
@@ -214,9 +184,6 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="snapshotCreateTime")
     def snapshot_create_time(self) -> str:
-        """
-        Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).
-        """
         return pulumi.get(self, "snapshot_create_time")
 
     @property
@@ -227,41 +194,26 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="sourceDbSnapshotIdentifier")
     def source_db_snapshot_identifier(self) -> str:
-        """
-        The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
-        """
         return pulumi.get(self, "source_db_snapshot_identifier")
 
     @property
     @pulumi.getter(name="sourceRegion")
     def source_region(self) -> str:
-        """
-        The region that the DB snapshot was created in or copied from.
-        """
         return pulumi.get(self, "source_region")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Specifies the status of this DB snapshot.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> str:
-        """
-        Specifies the storage type associated with DB snapshot.
-        """
         return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        Specifies the ID of the VPC associated with the DB snapshot.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -305,49 +257,7 @@ def get_snapshot(db_instance_identifier: Optional[str] = None,
                  snapshot_type: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
-    Use this data source to get information about a DB Snapshot for use when provisioning DB instances
-
-    > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
-    See the `rds.ClusterSnapshot` data source for DB Cluster snapshots.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    prod = aws.rds.Instance("prod",
-        allocated_storage=10,
-        engine="mysql",
-        engine_version="5.6.17",
-        instance_class="db.t2.micro",
-        name="mydb",
-        username="foo",
-        password="bar",
-        db_subnet_group_name="my_database_subnet_group",
-        parameter_group_name="default.mysql5.6")
-    latest_prod_snapshot = prod.id.apply(lambda id: aws.rds.get_snapshot(db_instance_identifier=id,
-        most_recent=True))
-    # Use the latest production snapshot to create a dev instance.
-    dev = aws.rds.Instance("dev",
-        instance_class="db.t2.micro",
-        name="mydbdev",
-        snapshot_identifier=latest_prod_snapshot.id)
-    ```
-
-
-    :param str db_instance_identifier: Returns the list of snapshots created by the specific db_instance
-    :param str db_snapshot_identifier: Returns information on a specific snapshot_id.
-    :param bool include_public: Set this value to true to include manual DB snapshots that are public and can be
-           copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
-    :param bool include_shared: Set this value to true to include shared manual DB snapshots from other
-           AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
-           The default is `false`.
-    :param bool most_recent: If more than one result is returned, use the most
-           recent Snapshot.
-    :param str snapshot_type: The type of snapshots to be returned. If you don't specify a SnapshotType
-           value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not
-           included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dbInstanceIdentifier'] = db_instance_identifier

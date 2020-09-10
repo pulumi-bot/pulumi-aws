@@ -21,36 +21,9 @@ class InviteAccepter(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct primary account on read, and disassociate with the primary account upon removal.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        primary = pulumi.providers.Aws("primary")
-        member = pulumi.providers.Aws("member")
-        primary_detector = aws.guardduty.Detector("primaryDetector", opts=ResourceOptions(provider=aws["primary"]))
-        member_detector = aws.guardduty.Detector("memberDetector", opts=ResourceOptions(provider=aws["member"]))
-        member_member = aws.guardduty.Member("memberMember",
-            account_id=member_detector.account_id,
-            detector_id=primary_detector.id,
-            email="required@example.com",
-            invite=True,
-            opts=ResourceOptions(provider=aws["primary"]))
-        member_invite_accepter = aws.guardduty.InviteAccepter("memberInviteAccepter",
-            detector_id=member_detector.id,
-            master_account_id=primary_detector.account_id,
-            opts=ResourceOptions(provider=aws["member"],
-                depends_on=[member_member]))
-        ```
-
+        Create a InviteAccepter resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] detector_id: The detector ID of the member GuardDuty account.
-        :param pulumi.Input[str] master_account_id: AWS account ID for primary account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,8 +67,6 @@ class InviteAccepter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] detector_id: The detector ID of the member GuardDuty account.
-        :param pulumi.Input[str] master_account_id: AWS account ID for primary account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -108,17 +79,11 @@ class InviteAccepter(pulumi.CustomResource):
     @property
     @pulumi.getter(name="detectorId")
     def detector_id(self) -> pulumi.Output[str]:
-        """
-        The detector ID of the member GuardDuty account.
-        """
         return pulumi.get(self, "detector_id")
 
     @property
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> pulumi.Output[str]:
-        """
-        AWS account ID for primary account.
-        """
         return pulumi.get(self, "master_account_id")
 
     def translate_output_property(self, prop):

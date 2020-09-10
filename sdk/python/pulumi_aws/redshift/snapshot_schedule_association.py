@@ -21,31 +21,9 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_cluster = aws.redshift.Cluster("defaultCluster",
-            cluster_identifier="tf-redshift-cluster",
-            database_name="mydb",
-            master_username="foo",
-            master_password="Mustbe8characters",
-            node_type="dc1.large",
-            cluster_type="single-node")
-        default_snapshot_schedule = aws.redshift.SnapshotSchedule("defaultSnapshotSchedule",
-            identifier="tf-redshift-snapshot-schedule",
-            definitions=["rate(12 hours)"])
-        default_snapshot_schedule_association = aws.redshift.SnapshotScheduleAssociation("defaultSnapshotScheduleAssociation",
-            cluster_identifier=default_cluster.id,
-            schedule_identifier=default_snapshot_schedule.id)
-        ```
-
+        Create a SnapshotScheduleAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_identifier: The cluster identifier.
-        :param pulumi.Input[str] schedule_identifier: The snapshot schedule identifier.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,8 +67,6 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_identifier: The cluster identifier.
-        :param pulumi.Input[str] schedule_identifier: The snapshot schedule identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -103,17 +79,11 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> pulumi.Output[str]:
-        """
-        The cluster identifier.
-        """
         return pulumi.get(self, "cluster_identifier")
 
     @property
     @pulumi.getter(name="scheduleIdentifier")
     def schedule_identifier(self) -> pulumi.Output[str]:
-        """
-        The snapshot schedule identifier.
-        """
         return pulumi.get(self, "schedule_identifier")
 
     def translate_output_property(self, prop):

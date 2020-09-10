@@ -11,46 +11,6 @@ namespace Pulumi.Aws
 {
     public static class GetAmiIds
     {
-        /// <summary>
-        /// Use this data source to get a list of AMI IDs matching the specified criteria.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ubuntu = Output.Create(Aws.GetAmiIds.InvokeAsync(new Aws.GetAmiIdsArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Inputs.GetAmiIdsFilterArgs
-        ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "ubuntu/images/ubuntu-*-*-amd64-server-*",
-        ///                     },
-        ///                 },
-        ///             },
-        ///             Owners = 
-        ///             {
-        ///                 "099720109477",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAmiIdsResult> InvokeAsync(GetAmiIdsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAmiIdsResult>("aws:index/getAmiIds:getAmiIds", args ?? new GetAmiIdsArgs(), options.WithVersion());
     }
@@ -60,11 +20,6 @@ namespace Pulumi.Aws
     {
         [Input("executableUsers")]
         private List<string>? _executableUsers;
-
-        /// <summary>
-        /// Limit search to users with *explicit* launch
-        /// permission on  the image. Valid items are the numeric account ID or `self`.
-        /// </summary>
         public List<string> ExecutableUsers
         {
             get => _executableUsers ?? (_executableUsers = new List<string>());
@@ -73,43 +28,23 @@ namespace Pulumi.Aws
 
         [Input("filters")]
         private List<Inputs.GetAmiIdsFilterArgs>? _filters;
-
-        /// <summary>
-        /// One or more name/value pairs to filter off of. There
-        /// are several valid keys, for a full reference, check out
-        /// [describe-images in the AWS CLI reference][1].
-        /// </summary>
         public List<Inputs.GetAmiIdsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetAmiIdsFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// A regex string to apply to the AMI list returned
-        /// by AWS. This allows more advanced filtering not supported from the AWS API.
-        /// This filtering is done locally on what AWS returns, and could have a performance
-        /// impact if the result is large. It is recommended to combine this with other
-        /// options to narrow down the list AWS returns.
-        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         [Input("owners", required: true)]
         private List<string>? _owners;
-
-        /// <summary>
-        /// List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g. `amazon`, `aws-marketplace`, `microsoft`).
-        /// </summary>
         public List<string> Owners
         {
             get => _owners ?? (_owners = new List<string>());
             set => _owners = value;
         }
 
-        /// <summary>
-        /// Used to sort AMIs by creation time.
-        /// </summary>
         [Input("sortAscending")]
         public bool? SortAscending { get; set; }
 

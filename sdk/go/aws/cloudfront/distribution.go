@@ -10,110 +10,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates an Amazon CloudFront web distribution.
-//
-// For information about CloudFront distributions, see the
-// [Amazon CloudFront Developer Guide](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html). For specific information about creating
-// CloudFront web distributions, see the [POST Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) page in the Amazon
-// CloudFront API Reference.
-//
-// > **NOTE:** CloudFront distributions take about 15 minutes to a deployed state
-// after creation or modification. During this time, deletes to resources will be
-// blocked. If you need to delete a distribution that is enabled and you do not
-// want to wait, you need to use the `retainOnDelete` flag.
 type Distribution struct {
 	pulumi.CustomResourceState
 
-	// Extra CNAMEs (alternate domain names), if any, for
-	// this distribution.
-	Aliases pulumi.StringArrayOutput `pulumi:"aliases"`
-	// The ARN (Amazon Resource Name) for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Internal value used by CloudFront to allow future
-	// updates to the distribution configuration.
-	CallerReference pulumi.StringOutput `pulumi:"callerReference"`
-	// Any comments you want to include about the
-	// distribution.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses DistributionCustomErrorResponseArrayOutput `pulumi:"customErrorResponses"`
-	// The default cache behavior for this distribution (maximum
-	// one).
-	DefaultCacheBehavior DistributionDefaultCacheBehaviorOutput `pulumi:"defaultCacheBehavior"`
-	// The object that you want CloudFront to
-	// return (for example, index.html) when an end user requests the root URL.
-	DefaultRootObject pulumi.StringPtrOutput `pulumi:"defaultRootObject"`
-	// The DNS domain name of either the S3 bucket, or
-	// web site of your custom origin.
-	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// Whether the distribution is enabled to accept end
-	// user requests for content.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The current version of the distribution's information. For example:
-	// `E2QWRUHAPOMQZL`.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The CloudFront Route 53 zone ID that can be used to
-	// route an [Alias Resource Record Set](http://docs.aws.amazon.com/Route53/latest/APIReference/CreateAliasRRSAPI.html) to. This attribute is simply an
-	// alias for the zone ID `Z2FDTNDATAQYW2`.
-	HostedZoneId pulumi.StringOutput `pulumi:"hostedZoneId"`
-	// The maximum HTTP version to support on the
-	// distribution. Allowed values are `http1.1` and `http2`. The default is
-	// `http2`.
-	HttpVersion pulumi.StringPtrOutput `pulumi:"httpVersion"`
-	// The number of invalidation batches
-	// currently in progress.
-	InProgressValidationBatches pulumi.IntOutput `pulumi:"inProgressValidationBatches"`
-	// Whether the IPv6 is enabled for the distribution.
-	IsIpv6Enabled pulumi.BoolPtrOutput `pulumi:"isIpv6Enabled"`
-	// The date and time the distribution was last modified.
-	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
-	// The logging
-	// configuration that controls how logs are written
-	// to your distribution (maximum one).
-	LoggingConfig DistributionLoggingConfigPtrOutput `pulumi:"loggingConfig"`
-	// An ordered list of cache behaviors
-	// resource for this distribution. List from top to bottom
-	// in order of precedence. The topmost cache behavior will have precedence 0.
-	OrderedCacheBehaviors DistributionOrderedCacheBehaviorArrayOutput `pulumi:"orderedCacheBehaviors"`
-	// One or more originGroup for this
-	// distribution (multiples allowed).
-	OriginGroups DistributionOriginGroupArrayOutput `pulumi:"originGroups"`
-	// One or more origins for this
-	// distribution (multiples allowed).
-	Origins DistributionOriginArrayOutput `pulumi:"origins"`
-	// The price class for this distribution. One of
-	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
-	PriceClass pulumi.StringPtrOutput `pulumi:"priceClass"`
-	// The restriction
-	// configuration for this distribution (maximum one).
-	Restrictions DistributionRestrictionsOutput `pulumi:"restrictions"`
-	// Disables the distribution instead of
-	// deleting it when destroying the resource. If this is set,
-	// the distribution needs to be deleted manually afterwards. Default: `false`.
-	RetainOnDelete pulumi.BoolPtrOutput `pulumi:"retainOnDelete"`
-	// The current status of the distribution. `Deployed` if the
-	// distribution's information is fully propagated throughout the Amazon
-	// CloudFront system.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// List of AWS account IDs (or `self`) that you want to allow to create signed URLs for private content.
-	// See the [CloudFront User Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-trusted-signers.html) for more information about this feature.
-	TrustedSigners DistributionTrustedSignerArrayOutput `pulumi:"trustedSigners"`
-	// The SSL
-	// configuration for this distribution (maximum
-	// one).
-	ViewerCertificate DistributionViewerCertificateOutput `pulumi:"viewerCertificate"`
-	// If enabled, the resource will wait for
-	// the distribution status to change from `InProgress` to `Deployed`. Setting
-	// this to`false` will skip the process. Default: `true`.
-	WaitForDeployment pulumi.BoolPtrOutput `pulumi:"waitForDeployment"`
-	// If you're using AWS WAF to filter CloudFront
-	// requests, the Id of the AWS WAF web ACL that is associated with the
-	// distribution. The WAF Web ACL must exist in the WAF Global (CloudFront)
-	// region and the credentials configuring this argument must have
-	// `waf:GetWebACL` permissions assigned. If using WAFv2, provide the ARN of the web ACL.
-	WebAclId pulumi.StringPtrOutput `pulumi:"webAclId"`
+	Aliases                     pulumi.StringArrayOutput                    `pulumi:"aliases"`
+	Arn                         pulumi.StringOutput                         `pulumi:"arn"`
+	CallerReference             pulumi.StringOutput                         `pulumi:"callerReference"`
+	Comment                     pulumi.StringPtrOutput                      `pulumi:"comment"`
+	CustomErrorResponses        DistributionCustomErrorResponseArrayOutput  `pulumi:"customErrorResponses"`
+	DefaultCacheBehavior        DistributionDefaultCacheBehaviorOutput      `pulumi:"defaultCacheBehavior"`
+	DefaultRootObject           pulumi.StringPtrOutput                      `pulumi:"defaultRootObject"`
+	DomainName                  pulumi.StringOutput                         `pulumi:"domainName"`
+	Enabled                     pulumi.BoolOutput                           `pulumi:"enabled"`
+	Etag                        pulumi.StringOutput                         `pulumi:"etag"`
+	HostedZoneId                pulumi.StringOutput                         `pulumi:"hostedZoneId"`
+	HttpVersion                 pulumi.StringPtrOutput                      `pulumi:"httpVersion"`
+	InProgressValidationBatches pulumi.IntOutput                            `pulumi:"inProgressValidationBatches"`
+	IsIpv6Enabled               pulumi.BoolPtrOutput                        `pulumi:"isIpv6Enabled"`
+	LastModifiedTime            pulumi.StringOutput                         `pulumi:"lastModifiedTime"`
+	LoggingConfig               DistributionLoggingConfigPtrOutput          `pulumi:"loggingConfig"`
+	OrderedCacheBehaviors       DistributionOrderedCacheBehaviorArrayOutput `pulumi:"orderedCacheBehaviors"`
+	OriginGroups                DistributionOriginGroupArrayOutput          `pulumi:"originGroups"`
+	Origins                     DistributionOriginArrayOutput               `pulumi:"origins"`
+	PriceClass                  pulumi.StringPtrOutput                      `pulumi:"priceClass"`
+	Restrictions                DistributionRestrictionsOutput              `pulumi:"restrictions"`
+	RetainOnDelete              pulumi.BoolPtrOutput                        `pulumi:"retainOnDelete"`
+	Status                      pulumi.StringOutput                         `pulumi:"status"`
+	Tags                        pulumi.StringMapOutput                      `pulumi:"tags"`
+	TrustedSigners              DistributionTrustedSignerArrayOutput        `pulumi:"trustedSigners"`
+	ViewerCertificate           DistributionViewerCertificateOutput         `pulumi:"viewerCertificate"`
+	WaitForDeployment           pulumi.BoolPtrOutput                        `pulumi:"waitForDeployment"`
+	WebAclId                    pulumi.StringPtrOutput                      `pulumi:"webAclId"`
 }
 
 // NewDistribution registers a new resource with the given unique name, arguments, and options.
@@ -159,189 +86,65 @@ func GetDistribution(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Distribution resources.
 type distributionState struct {
-	// Extra CNAMEs (alternate domain names), if any, for
-	// this distribution.
-	Aliases []string `pulumi:"aliases"`
-	// The ARN (Amazon Resource Name) for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
-	Arn *string `pulumi:"arn"`
-	// Internal value used by CloudFront to allow future
-	// updates to the distribution configuration.
-	CallerReference *string `pulumi:"callerReference"`
-	// Any comments you want to include about the
-	// distribution.
-	Comment *string `pulumi:"comment"`
-	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses []DistributionCustomErrorResponse `pulumi:"customErrorResponses"`
-	// The default cache behavior for this distribution (maximum
-	// one).
-	DefaultCacheBehavior *DistributionDefaultCacheBehavior `pulumi:"defaultCacheBehavior"`
-	// The object that you want CloudFront to
-	// return (for example, index.html) when an end user requests the root URL.
-	DefaultRootObject *string `pulumi:"defaultRootObject"`
-	// The DNS domain name of either the S3 bucket, or
-	// web site of your custom origin.
-	DomainName *string `pulumi:"domainName"`
-	// Whether the distribution is enabled to accept end
-	// user requests for content.
-	Enabled *bool `pulumi:"enabled"`
-	// The current version of the distribution's information. For example:
-	// `E2QWRUHAPOMQZL`.
-	Etag *string `pulumi:"etag"`
-	// The CloudFront Route 53 zone ID that can be used to
-	// route an [Alias Resource Record Set](http://docs.aws.amazon.com/Route53/latest/APIReference/CreateAliasRRSAPI.html) to. This attribute is simply an
-	// alias for the zone ID `Z2FDTNDATAQYW2`.
-	HostedZoneId *string `pulumi:"hostedZoneId"`
-	// The maximum HTTP version to support on the
-	// distribution. Allowed values are `http1.1` and `http2`. The default is
-	// `http2`.
-	HttpVersion *string `pulumi:"httpVersion"`
-	// The number of invalidation batches
-	// currently in progress.
-	InProgressValidationBatches *int `pulumi:"inProgressValidationBatches"`
-	// Whether the IPv6 is enabled for the distribution.
-	IsIpv6Enabled *bool `pulumi:"isIpv6Enabled"`
-	// The date and time the distribution was last modified.
-	LastModifiedTime *string `pulumi:"lastModifiedTime"`
-	// The logging
-	// configuration that controls how logs are written
-	// to your distribution (maximum one).
-	LoggingConfig *DistributionLoggingConfig `pulumi:"loggingConfig"`
-	// An ordered list of cache behaviors
-	// resource for this distribution. List from top to bottom
-	// in order of precedence. The topmost cache behavior will have precedence 0.
-	OrderedCacheBehaviors []DistributionOrderedCacheBehavior `pulumi:"orderedCacheBehaviors"`
-	// One or more originGroup for this
-	// distribution (multiples allowed).
-	OriginGroups []DistributionOriginGroup `pulumi:"originGroups"`
-	// One or more origins for this
-	// distribution (multiples allowed).
-	Origins []DistributionOrigin `pulumi:"origins"`
-	// The price class for this distribution. One of
-	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
-	PriceClass *string `pulumi:"priceClass"`
-	// The restriction
-	// configuration for this distribution (maximum one).
-	Restrictions *DistributionRestrictions `pulumi:"restrictions"`
-	// Disables the distribution instead of
-	// deleting it when destroying the resource. If this is set,
-	// the distribution needs to be deleted manually afterwards. Default: `false`.
-	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// The current status of the distribution. `Deployed` if the
-	// distribution's information is fully propagated throughout the Amazon
-	// CloudFront system.
-	Status *string `pulumi:"status"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// List of AWS account IDs (or `self`) that you want to allow to create signed URLs for private content.
-	// See the [CloudFront User Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-trusted-signers.html) for more information about this feature.
-	TrustedSigners []DistributionTrustedSigner `pulumi:"trustedSigners"`
-	// The SSL
-	// configuration for this distribution (maximum
-	// one).
-	ViewerCertificate *DistributionViewerCertificate `pulumi:"viewerCertificate"`
-	// If enabled, the resource will wait for
-	// the distribution status to change from `InProgress` to `Deployed`. Setting
-	// this to`false` will skip the process. Default: `true`.
-	WaitForDeployment *bool `pulumi:"waitForDeployment"`
-	// If you're using AWS WAF to filter CloudFront
-	// requests, the Id of the AWS WAF web ACL that is associated with the
-	// distribution. The WAF Web ACL must exist in the WAF Global (CloudFront)
-	// region and the credentials configuring this argument must have
-	// `waf:GetWebACL` permissions assigned. If using WAFv2, provide the ARN of the web ACL.
-	WebAclId *string `pulumi:"webAclId"`
+	Aliases                     []string                           `pulumi:"aliases"`
+	Arn                         *string                            `pulumi:"arn"`
+	CallerReference             *string                            `pulumi:"callerReference"`
+	Comment                     *string                            `pulumi:"comment"`
+	CustomErrorResponses        []DistributionCustomErrorResponse  `pulumi:"customErrorResponses"`
+	DefaultCacheBehavior        *DistributionDefaultCacheBehavior  `pulumi:"defaultCacheBehavior"`
+	DefaultRootObject           *string                            `pulumi:"defaultRootObject"`
+	DomainName                  *string                            `pulumi:"domainName"`
+	Enabled                     *bool                              `pulumi:"enabled"`
+	Etag                        *string                            `pulumi:"etag"`
+	HostedZoneId                *string                            `pulumi:"hostedZoneId"`
+	HttpVersion                 *string                            `pulumi:"httpVersion"`
+	InProgressValidationBatches *int                               `pulumi:"inProgressValidationBatches"`
+	IsIpv6Enabled               *bool                              `pulumi:"isIpv6Enabled"`
+	LastModifiedTime            *string                            `pulumi:"lastModifiedTime"`
+	LoggingConfig               *DistributionLoggingConfig         `pulumi:"loggingConfig"`
+	OrderedCacheBehaviors       []DistributionOrderedCacheBehavior `pulumi:"orderedCacheBehaviors"`
+	OriginGroups                []DistributionOriginGroup          `pulumi:"originGroups"`
+	Origins                     []DistributionOrigin               `pulumi:"origins"`
+	PriceClass                  *string                            `pulumi:"priceClass"`
+	Restrictions                *DistributionRestrictions          `pulumi:"restrictions"`
+	RetainOnDelete              *bool                              `pulumi:"retainOnDelete"`
+	Status                      *string                            `pulumi:"status"`
+	Tags                        map[string]string                  `pulumi:"tags"`
+	TrustedSigners              []DistributionTrustedSigner        `pulumi:"trustedSigners"`
+	ViewerCertificate           *DistributionViewerCertificate     `pulumi:"viewerCertificate"`
+	WaitForDeployment           *bool                              `pulumi:"waitForDeployment"`
+	WebAclId                    *string                            `pulumi:"webAclId"`
 }
 
 type DistributionState struct {
-	// Extra CNAMEs (alternate domain names), if any, for
-	// this distribution.
-	Aliases pulumi.StringArrayInput
-	// The ARN (Amazon Resource Name) for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
-	Arn pulumi.StringPtrInput
-	// Internal value used by CloudFront to allow future
-	// updates to the distribution configuration.
-	CallerReference pulumi.StringPtrInput
-	// Any comments you want to include about the
-	// distribution.
-	Comment pulumi.StringPtrInput
-	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses DistributionCustomErrorResponseArrayInput
-	// The default cache behavior for this distribution (maximum
-	// one).
-	DefaultCacheBehavior DistributionDefaultCacheBehaviorPtrInput
-	// The object that you want CloudFront to
-	// return (for example, index.html) when an end user requests the root URL.
-	DefaultRootObject pulumi.StringPtrInput
-	// The DNS domain name of either the S3 bucket, or
-	// web site of your custom origin.
-	DomainName pulumi.StringPtrInput
-	// Whether the distribution is enabled to accept end
-	// user requests for content.
-	Enabled pulumi.BoolPtrInput
-	// The current version of the distribution's information. For example:
-	// `E2QWRUHAPOMQZL`.
-	Etag pulumi.StringPtrInput
-	// The CloudFront Route 53 zone ID that can be used to
-	// route an [Alias Resource Record Set](http://docs.aws.amazon.com/Route53/latest/APIReference/CreateAliasRRSAPI.html) to. This attribute is simply an
-	// alias for the zone ID `Z2FDTNDATAQYW2`.
-	HostedZoneId pulumi.StringPtrInput
-	// The maximum HTTP version to support on the
-	// distribution. Allowed values are `http1.1` and `http2`. The default is
-	// `http2`.
-	HttpVersion pulumi.StringPtrInput
-	// The number of invalidation batches
-	// currently in progress.
+	Aliases                     pulumi.StringArrayInput
+	Arn                         pulumi.StringPtrInput
+	CallerReference             pulumi.StringPtrInput
+	Comment                     pulumi.StringPtrInput
+	CustomErrorResponses        DistributionCustomErrorResponseArrayInput
+	DefaultCacheBehavior        DistributionDefaultCacheBehaviorPtrInput
+	DefaultRootObject           pulumi.StringPtrInput
+	DomainName                  pulumi.StringPtrInput
+	Enabled                     pulumi.BoolPtrInput
+	Etag                        pulumi.StringPtrInput
+	HostedZoneId                pulumi.StringPtrInput
+	HttpVersion                 pulumi.StringPtrInput
 	InProgressValidationBatches pulumi.IntPtrInput
-	// Whether the IPv6 is enabled for the distribution.
-	IsIpv6Enabled pulumi.BoolPtrInput
-	// The date and time the distribution was last modified.
-	LastModifiedTime pulumi.StringPtrInput
-	// The logging
-	// configuration that controls how logs are written
-	// to your distribution (maximum one).
-	LoggingConfig DistributionLoggingConfigPtrInput
-	// An ordered list of cache behaviors
-	// resource for this distribution. List from top to bottom
-	// in order of precedence. The topmost cache behavior will have precedence 0.
-	OrderedCacheBehaviors DistributionOrderedCacheBehaviorArrayInput
-	// One or more originGroup for this
-	// distribution (multiples allowed).
-	OriginGroups DistributionOriginGroupArrayInput
-	// One or more origins for this
-	// distribution (multiples allowed).
-	Origins DistributionOriginArrayInput
-	// The price class for this distribution. One of
-	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
-	PriceClass pulumi.StringPtrInput
-	// The restriction
-	// configuration for this distribution (maximum one).
-	Restrictions DistributionRestrictionsPtrInput
-	// Disables the distribution instead of
-	// deleting it when destroying the resource. If this is set,
-	// the distribution needs to be deleted manually afterwards. Default: `false`.
-	RetainOnDelete pulumi.BoolPtrInput
-	// The current status of the distribution. `Deployed` if the
-	// distribution's information is fully propagated throughout the Amazon
-	// CloudFront system.
-	Status pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// List of AWS account IDs (or `self`) that you want to allow to create signed URLs for private content.
-	// See the [CloudFront User Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-trusted-signers.html) for more information about this feature.
-	TrustedSigners DistributionTrustedSignerArrayInput
-	// The SSL
-	// configuration for this distribution (maximum
-	// one).
-	ViewerCertificate DistributionViewerCertificatePtrInput
-	// If enabled, the resource will wait for
-	// the distribution status to change from `InProgress` to `Deployed`. Setting
-	// this to`false` will skip the process. Default: `true`.
-	WaitForDeployment pulumi.BoolPtrInput
-	// If you're using AWS WAF to filter CloudFront
-	// requests, the Id of the AWS WAF web ACL that is associated with the
-	// distribution. The WAF Web ACL must exist in the WAF Global (CloudFront)
-	// region and the credentials configuring this argument must have
-	// `waf:GetWebACL` permissions assigned. If using WAFv2, provide the ARN of the web ACL.
-	WebAclId pulumi.StringPtrInput
+	IsIpv6Enabled               pulumi.BoolPtrInput
+	LastModifiedTime            pulumi.StringPtrInput
+	LoggingConfig               DistributionLoggingConfigPtrInput
+	OrderedCacheBehaviors       DistributionOrderedCacheBehaviorArrayInput
+	OriginGroups                DistributionOriginGroupArrayInput
+	Origins                     DistributionOriginArrayInput
+	PriceClass                  pulumi.StringPtrInput
+	Restrictions                DistributionRestrictionsPtrInput
+	RetainOnDelete              pulumi.BoolPtrInput
+	Status                      pulumi.StringPtrInput
+	Tags                        pulumi.StringMapInput
+	TrustedSigners              DistributionTrustedSignerArrayInput
+	ViewerCertificate           DistributionViewerCertificatePtrInput
+	WaitForDeployment           pulumi.BoolPtrInput
+	WebAclId                    pulumi.StringPtrInput
 }
 
 func (DistributionState) ElementType() reflect.Type {
@@ -349,136 +152,48 @@ func (DistributionState) ElementType() reflect.Type {
 }
 
 type distributionArgs struct {
-	// Extra CNAMEs (alternate domain names), if any, for
-	// this distribution.
-	Aliases []string `pulumi:"aliases"`
-	// Any comments you want to include about the
-	// distribution.
-	Comment *string `pulumi:"comment"`
-	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses []DistributionCustomErrorResponse `pulumi:"customErrorResponses"`
-	// The default cache behavior for this distribution (maximum
-	// one).
-	DefaultCacheBehavior DistributionDefaultCacheBehavior `pulumi:"defaultCacheBehavior"`
-	// The object that you want CloudFront to
-	// return (for example, index.html) when an end user requests the root URL.
-	DefaultRootObject *string `pulumi:"defaultRootObject"`
-	// Whether the distribution is enabled to accept end
-	// user requests for content.
-	Enabled bool `pulumi:"enabled"`
-	// The maximum HTTP version to support on the
-	// distribution. Allowed values are `http1.1` and `http2`. The default is
-	// `http2`.
-	HttpVersion *string `pulumi:"httpVersion"`
-	// Whether the IPv6 is enabled for the distribution.
-	IsIpv6Enabled *bool `pulumi:"isIpv6Enabled"`
-	// The logging
-	// configuration that controls how logs are written
-	// to your distribution (maximum one).
-	LoggingConfig *DistributionLoggingConfig `pulumi:"loggingConfig"`
-	// An ordered list of cache behaviors
-	// resource for this distribution. List from top to bottom
-	// in order of precedence. The topmost cache behavior will have precedence 0.
+	Aliases               []string                           `pulumi:"aliases"`
+	Comment               *string                            `pulumi:"comment"`
+	CustomErrorResponses  []DistributionCustomErrorResponse  `pulumi:"customErrorResponses"`
+	DefaultCacheBehavior  DistributionDefaultCacheBehavior   `pulumi:"defaultCacheBehavior"`
+	DefaultRootObject     *string                            `pulumi:"defaultRootObject"`
+	Enabled               bool                               `pulumi:"enabled"`
+	HttpVersion           *string                            `pulumi:"httpVersion"`
+	IsIpv6Enabled         *bool                              `pulumi:"isIpv6Enabled"`
+	LoggingConfig         *DistributionLoggingConfig         `pulumi:"loggingConfig"`
 	OrderedCacheBehaviors []DistributionOrderedCacheBehavior `pulumi:"orderedCacheBehaviors"`
-	// One or more originGroup for this
-	// distribution (multiples allowed).
-	OriginGroups []DistributionOriginGroup `pulumi:"originGroups"`
-	// One or more origins for this
-	// distribution (multiples allowed).
-	Origins []DistributionOrigin `pulumi:"origins"`
-	// The price class for this distribution. One of
-	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
-	PriceClass *string `pulumi:"priceClass"`
-	// The restriction
-	// configuration for this distribution (maximum one).
-	Restrictions DistributionRestrictions `pulumi:"restrictions"`
-	// Disables the distribution instead of
-	// deleting it when destroying the resource. If this is set,
-	// the distribution needs to be deleted manually afterwards. Default: `false`.
-	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The SSL
-	// configuration for this distribution (maximum
-	// one).
-	ViewerCertificate DistributionViewerCertificate `pulumi:"viewerCertificate"`
-	// If enabled, the resource will wait for
-	// the distribution status to change from `InProgress` to `Deployed`. Setting
-	// this to`false` will skip the process. Default: `true`.
-	WaitForDeployment *bool `pulumi:"waitForDeployment"`
-	// If you're using AWS WAF to filter CloudFront
-	// requests, the Id of the AWS WAF web ACL that is associated with the
-	// distribution. The WAF Web ACL must exist in the WAF Global (CloudFront)
-	// region and the credentials configuring this argument must have
-	// `waf:GetWebACL` permissions assigned. If using WAFv2, provide the ARN of the web ACL.
-	WebAclId *string `pulumi:"webAclId"`
+	OriginGroups          []DistributionOriginGroup          `pulumi:"originGroups"`
+	Origins               []DistributionOrigin               `pulumi:"origins"`
+	PriceClass            *string                            `pulumi:"priceClass"`
+	Restrictions          DistributionRestrictions           `pulumi:"restrictions"`
+	RetainOnDelete        *bool                              `pulumi:"retainOnDelete"`
+	Tags                  map[string]string                  `pulumi:"tags"`
+	ViewerCertificate     DistributionViewerCertificate      `pulumi:"viewerCertificate"`
+	WaitForDeployment     *bool                              `pulumi:"waitForDeployment"`
+	WebAclId              *string                            `pulumi:"webAclId"`
 }
 
 // The set of arguments for constructing a Distribution resource.
 type DistributionArgs struct {
-	// Extra CNAMEs (alternate domain names), if any, for
-	// this distribution.
-	Aliases pulumi.StringArrayInput
-	// Any comments you want to include about the
-	// distribution.
-	Comment pulumi.StringPtrInput
-	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses DistributionCustomErrorResponseArrayInput
-	// The default cache behavior for this distribution (maximum
-	// one).
-	DefaultCacheBehavior DistributionDefaultCacheBehaviorInput
-	// The object that you want CloudFront to
-	// return (for example, index.html) when an end user requests the root URL.
-	DefaultRootObject pulumi.StringPtrInput
-	// Whether the distribution is enabled to accept end
-	// user requests for content.
-	Enabled pulumi.BoolInput
-	// The maximum HTTP version to support on the
-	// distribution. Allowed values are `http1.1` and `http2`. The default is
-	// `http2`.
-	HttpVersion pulumi.StringPtrInput
-	// Whether the IPv6 is enabled for the distribution.
-	IsIpv6Enabled pulumi.BoolPtrInput
-	// The logging
-	// configuration that controls how logs are written
-	// to your distribution (maximum one).
-	LoggingConfig DistributionLoggingConfigPtrInput
-	// An ordered list of cache behaviors
-	// resource for this distribution. List from top to bottom
-	// in order of precedence. The topmost cache behavior will have precedence 0.
+	Aliases               pulumi.StringArrayInput
+	Comment               pulumi.StringPtrInput
+	CustomErrorResponses  DistributionCustomErrorResponseArrayInput
+	DefaultCacheBehavior  DistributionDefaultCacheBehaviorInput
+	DefaultRootObject     pulumi.StringPtrInput
+	Enabled               pulumi.BoolInput
+	HttpVersion           pulumi.StringPtrInput
+	IsIpv6Enabled         pulumi.BoolPtrInput
+	LoggingConfig         DistributionLoggingConfigPtrInput
 	OrderedCacheBehaviors DistributionOrderedCacheBehaviorArrayInput
-	// One or more originGroup for this
-	// distribution (multiples allowed).
-	OriginGroups DistributionOriginGroupArrayInput
-	// One or more origins for this
-	// distribution (multiples allowed).
-	Origins DistributionOriginArrayInput
-	// The price class for this distribution. One of
-	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
-	PriceClass pulumi.StringPtrInput
-	// The restriction
-	// configuration for this distribution (maximum one).
-	Restrictions DistributionRestrictionsInput
-	// Disables the distribution instead of
-	// deleting it when destroying the resource. If this is set,
-	// the distribution needs to be deleted manually afterwards. Default: `false`.
-	RetainOnDelete pulumi.BoolPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The SSL
-	// configuration for this distribution (maximum
-	// one).
-	ViewerCertificate DistributionViewerCertificateInput
-	// If enabled, the resource will wait for
-	// the distribution status to change from `InProgress` to `Deployed`. Setting
-	// this to`false` will skip the process. Default: `true`.
-	WaitForDeployment pulumi.BoolPtrInput
-	// If you're using AWS WAF to filter CloudFront
-	// requests, the Id of the AWS WAF web ACL that is associated with the
-	// distribution. The WAF Web ACL must exist in the WAF Global (CloudFront)
-	// region and the credentials configuring this argument must have
-	// `waf:GetWebACL` permissions assigned. If using WAFv2, provide the ARN of the web ACL.
-	WebAclId pulumi.StringPtrInput
+	OriginGroups          DistributionOriginGroupArrayInput
+	Origins               DistributionOriginArrayInput
+	PriceClass            pulumi.StringPtrInput
+	Restrictions          DistributionRestrictionsInput
+	RetainOnDelete        pulumi.BoolPtrInput
+	Tags                  pulumi.StringMapInput
+	ViewerCertificate     DistributionViewerCertificateInput
+	WaitForDeployment     pulumi.BoolPtrInput
+	WebAclId              pulumi.StringPtrInput
 }
 
 func (DistributionArgs) ElementType() reflect.Type {

@@ -29,59 +29,9 @@ class GlobalCluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an RDS Global Cluster, which is an Aurora global database spread across multiple regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
-
-        More information about Aurora global databases can be found in the [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database-creating).
-
-        ## Example Usage
-        ### New Global Cluster
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        primary = pulumi.providers.Aws("primary", region="us-east-2")
-        secondary = pulumi.providers.Aws("secondary", region="us-west-2")
-        example = aws.rds.GlobalCluster("example", global_cluster_identifier="example",
-        opts=ResourceOptions(provider=aws["primary"]))
-        primary_cluster = aws.rds.Cluster("primaryCluster",
-            engine_mode="global",
-            global_cluster_identifier=example.id,
-            opts=ResourceOptions(provider=aws["primary"]))
-        primary_cluster_instance = aws.rds.ClusterInstance("primaryClusterInstance", cluster_identifier=primary_cluster.id,
-        opts=ResourceOptions(provider=aws["primary"]))
-        secondary_cluster = aws.rds.Cluster("secondaryCluster",
-            engine_mode="global",
-            global_cluster_identifier=example.id,
-            opts=ResourceOptions(provider=aws["secondary"],
-                depends_on=[primary_cluster_instance]))
-        secondary_cluster_instance = aws.rds.ClusterInstance("secondaryClusterInstance", cluster_identifier=secondary_cluster.id,
-        opts=ResourceOptions(provider=aws["secondary"]))
-        ```
-        ### New Global Cluster From Existing DB Cluster
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configuration ...
-        example_cluster = aws.rds.Cluster("exampleCluster")
-        example_global_cluster = aws.rds.GlobalCluster("exampleGlobalCluster",
-            force_destroy=True,
-            global_cluster_identifier="example",
-            source_db_cluster_identifier=example_cluster.arn)
-        ```
-
+        Create a GlobalCluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: Name for an automatically created database on cluster creation.
-        :param pulumi.Input[bool] deletion_protection: If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-        :param pulumi.Input[str] engine_version: Engine version of the Aurora global database.
-               * **NOTE:** When the engine is set to `aurora-mysql`, an engine version compatible with global database is required. The earliest available version is `5.7.mysql_aurora.2.06.0`.
-        :param pulumi.Input[bool] force_destroy: Enable to remove DB Cluster members from Global Cluster on destroy. Required with `source_db_cluster_identifier`.
-        :param pulumi.Input[str] global_cluster_identifier: The global cluster identifier.
-        :param pulumi.Input[bool] storage_encrypted: Specifies whether the DB cluster is encrypted. The default is `false`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -141,16 +91,6 @@ class GlobalCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: RDS Global Cluster Amazon Resource Name (ARN)
-        :param pulumi.Input[str] database_name: Name for an automatically created database on cluster creation.
-        :param pulumi.Input[bool] deletion_protection: If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-        :param pulumi.Input[str] engine_version: Engine version of the Aurora global database.
-               * **NOTE:** When the engine is set to `aurora-mysql`, an engine version compatible with global database is required. The earliest available version is `5.7.mysql_aurora.2.06.0`.
-        :param pulumi.Input[bool] force_destroy: Enable to remove DB Cluster members from Global Cluster on destroy. Required with `source_db_cluster_identifier`.
-        :param pulumi.Input[str] global_cluster_identifier: The global cluster identifier.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GlobalClusterGlobalClusterMemberArgs']]]] global_cluster_members: Set of objects containing Global Cluster members.
-        :param pulumi.Input[str] global_cluster_resource_id: AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed
-        :param pulumi.Input[bool] storage_encrypted: Specifies whether the DB cluster is encrypted. The default is `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,25 +112,16 @@ class GlobalCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        RDS Global Cluster Amazon Resource Name (ARN)
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name for an automatically created database on cluster creation.
-        """
         return pulumi.get(self, "database_name")
 
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-        """
         return pulumi.get(self, "deletion_protection")
 
     @property
@@ -201,42 +132,26 @@ class GlobalCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
-        """
-        Engine version of the Aurora global database.
-        * **NOTE:** When the engine is set to `aurora-mysql`, an engine version compatible with global database is required. The earliest available version is `5.7.mysql_aurora.2.06.0`.
-        """
         return pulumi.get(self, "engine_version")
 
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable to remove DB Cluster members from Global Cluster on destroy. Required with `source_db_cluster_identifier`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="globalClusterIdentifier")
     def global_cluster_identifier(self) -> pulumi.Output[str]:
-        """
-        The global cluster identifier.
-        """
         return pulumi.get(self, "global_cluster_identifier")
 
     @property
     @pulumi.getter(name="globalClusterMembers")
     def global_cluster_members(self) -> pulumi.Output[List['outputs.GlobalClusterGlobalClusterMember']]:
-        """
-        Set of objects containing Global Cluster members.
-        """
         return pulumi.get(self, "global_cluster_members")
 
     @property
     @pulumi.getter(name="globalClusterResourceId")
     def global_cluster_resource_id(self) -> pulumi.Output[str]:
-        """
-        AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed
-        """
         return pulumi.get(self, "global_cluster_resource_id")
 
     @property
@@ -247,9 +162,6 @@ class GlobalCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="storageEncrypted")
     def storage_encrypted(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Specifies whether the DB cluster is encrypted. The default is `false`.
-        """
         return pulumi.get(self, "storage_encrypted")
 
     def translate_output_property(self, prop):

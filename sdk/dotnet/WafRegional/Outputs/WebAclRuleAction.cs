@@ -13,9 +13,6 @@ namespace Pulumi.Aws.WafRegional.Outputs
     [OutputType]
     public sealed class WebAclRuleAction
     {
-        /// <summary>
-        /// Specifies how you want AWS WAF Regional to respond to requests that match the settings in a rule. e.g. `ALLOW`, `BLOCK` or `COUNT`
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -11,12 +11,9 @@ import (
 )
 
 type ClusterParameterGroupParameter struct {
-	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the neptune parameter.
-	Name string `pulumi:"name"`
-	// The value of the neptune parameter.
-	Value string `pulumi:"value"`
+	Name        string  `pulumi:"name"`
+	Value       string  `pulumi:"value"`
 }
 
 // ClusterParameterGroupParameterInput is an input type that accepts ClusterParameterGroupParameterArgs and ClusterParameterGroupParameterOutput values.
@@ -31,12 +28,9 @@ type ClusterParameterGroupParameterInput interface {
 }
 
 type ClusterParameterGroupParameterArgs struct {
-	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the neptune parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the neptune parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Value       pulumi.StringInput    `pulumi:"value"`
 }
 
 func (ClusterParameterGroupParameterArgs) ElementType() reflect.Type {
@@ -90,17 +84,14 @@ func (o ClusterParameterGroupParameterOutput) ToClusterParameterGroupParameterOu
 	return o
 }
 
-// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 func (o ClusterParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the neptune parameter.
 func (o ClusterParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the neptune parameter.
 func (o ClusterParameterGroupParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -126,12 +117,9 @@ func (o ClusterParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) Clus
 }
 
 type ParameterGroupParameter struct {
-	// The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the Neptune parameter.
-	Name string `pulumi:"name"`
-	// The value of the Neptune parameter.
-	Value string `pulumi:"value"`
+	Name        string  `pulumi:"name"`
+	Value       string  `pulumi:"value"`
 }
 
 // ParameterGroupParameterInput is an input type that accepts ParameterGroupParameterArgs and ParameterGroupParameterOutput values.
@@ -146,12 +134,9 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the Neptune parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the Neptune parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Value       pulumi.StringInput    `pulumi:"value"`
 }
 
 func (ParameterGroupParameterArgs) ElementType() reflect.Type {
@@ -205,17 +190,14 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 func (o ParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Neptune parameter.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the Neptune parameter.
 func (o ParameterGroupParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Value }).(pulumi.StringOutput)
 }

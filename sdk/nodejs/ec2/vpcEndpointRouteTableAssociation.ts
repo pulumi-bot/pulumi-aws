@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a VPC Endpoint Route Table Association
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.VpcEndpointRouteTableAssociation("example", {
- *     routeTableId: aws_route_table.example.id,
- *     vpcEndpointId: aws_vpc_endpoint.example.id,
- * });
- * ```
- */
 export class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
     /**
      * Get an existing VpcEndpointRouteTableAssociation resource's state with the given name, ID, and optional extra
@@ -47,13 +32,7 @@ export class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpcEndpointRouteTableAssociation.__pulumiType;
     }
 
-    /**
-     * Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-     */
     public readonly routeTableId!: pulumi.Output<string>;
-    /**
-     * Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-     */
     public readonly vpcEndpointId!: pulumi.Output<string>;
 
     /**
@@ -96,13 +75,7 @@ export class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcEndpointRouteTableAssociation resources.
  */
 export interface VpcEndpointRouteTableAssociationState {
-    /**
-     * Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-     */
     readonly routeTableId?: pulumi.Input<string>;
-    /**
-     * Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-     */
     readonly vpcEndpointId?: pulumi.Input<string>;
 }
 
@@ -110,12 +83,6 @@ export interface VpcEndpointRouteTableAssociationState {
  * The set of arguments for constructing a VpcEndpointRouteTableAssociation resource.
  */
 export interface VpcEndpointRouteTableAssociationArgs {
-    /**
-     * Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-     */
     readonly routeTableId: pulumi.Input<string>;
-    /**
-     * Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-     */
     readonly vpcEndpointId: pulumi.Input<string>;
 }

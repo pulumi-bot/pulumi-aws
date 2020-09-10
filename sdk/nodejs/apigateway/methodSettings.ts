@@ -8,61 +8,6 @@ import * as utilities from "../utilities";
 
 import {RestApi} from "./index";
 
-/**
- * Provides an API Gateway Method Settings, e.g. logging or monitoring.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testRestApi = new aws.apigateway.RestApi("testRestApi", {description: "This is my API for demonstration purposes"});
- * const testResource = new aws.apigateway.Resource("testResource", {
- *     restApi: testRestApi.id,
- *     parentId: testRestApi.rootResourceId,
- *     pathPart: "mytestresource",
- * });
- * const testMethod = new aws.apigateway.Method("testMethod", {
- *     restApi: testRestApi.id,
- *     resourceId: testResource.id,
- *     httpMethod: "GET",
- *     authorization: "NONE",
- * });
- * const testIntegration = new aws.apigateway.Integration("testIntegration", {
- *     restApi: testRestApi.id,
- *     resourceId: testResource.id,
- *     httpMethod: testMethod.httpMethod,
- *     type: "MOCK",
- *     requestTemplates: {
- *         "application/xml": `{
- *    "body" : $input.json('$')
- * }
- * `,
- *     },
- * });
- * const testDeployment = new aws.apigateway.Deployment("testDeployment", {
- *     restApi: testRestApi.id,
- *     stageName: "dev",
- * }, {
- *     dependsOn: [testIntegration],
- * });
- * const testStage = new aws.apigateway.Stage("testStage", {
- *     stageName: "prod",
- *     restApi: testRestApi.id,
- *     deployment: testDeployment.id,
- * });
- * const methodSettings = new aws.apigateway.MethodSettings("methodSettings", {
- *     restApi: testRestApi.id,
- *     stageName: testStage.stageName,
- *     methodPath: pulumi.interpolate`${testResource.pathPart}/${testMethod.httpMethod}`,
- *     settings: {
- *         metricsEnabled: true,
- *         loggingLevel: "INFO",
- *     },
- * });
- * ```
- */
 export class MethodSettings extends pulumi.CustomResource {
     /**
      * Get an existing MethodSettings resource's state with the given name, ID, and optional extra
@@ -91,21 +36,9 @@ export class MethodSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === MethodSettings.__pulumiType;
     }
 
-    /**
-     * Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*&#47;*` for overriding all methods in the stage.
-     */
     public readonly methodPath!: pulumi.Output<string>;
-    /**
-     * The ID of the REST API
-     */
     public readonly restApi!: pulumi.Output<string>;
-    /**
-     * The settings block, see below.
-     */
     public readonly settings!: pulumi.Output<outputs.apigateway.MethodSettingsSettings>;
-    /**
-     * The name of the stage
-     */
     public readonly stageName!: pulumi.Output<string>;
 
     /**
@@ -158,21 +91,9 @@ export class MethodSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MethodSettings resources.
  */
 export interface MethodSettingsState {
-    /**
-     * Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*&#47;*` for overriding all methods in the stage.
-     */
     readonly methodPath?: pulumi.Input<string>;
-    /**
-     * The ID of the REST API
-     */
     readonly restApi?: pulumi.Input<string | RestApi>;
-    /**
-     * The settings block, see below.
-     */
     readonly settings?: pulumi.Input<inputs.apigateway.MethodSettingsSettings>;
-    /**
-     * The name of the stage
-     */
     readonly stageName?: pulumi.Input<string>;
 }
 
@@ -180,20 +101,8 @@ export interface MethodSettingsState {
  * The set of arguments for constructing a MethodSettings resource.
  */
 export interface MethodSettingsArgs {
-    /**
-     * Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*&#47;*` for overriding all methods in the stage.
-     */
     readonly methodPath: pulumi.Input<string>;
-    /**
-     * The ID of the REST API
-     */
     readonly restApi: pulumi.Input<string | RestApi>;
-    /**
-     * The settings block, see below.
-     */
     readonly settings: pulumi.Input<inputs.apigateway.MethodSettingsSettings>;
-    /**
-     * The name of the stage
-     */
     readonly stageName: pulumi.Input<string>;
 }

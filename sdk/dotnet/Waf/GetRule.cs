@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Waf
 {
     public static class GetRule
     {
-        /// <summary>
-        /// `aws.waf.Rule` Retrieves a WAF Rule Resource Id.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Waf.GetRule.InvokeAsync(new Aws.Waf.GetRuleArgs
-        ///         {
-        ///             Name = "tfWAFRule",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("aws:waf/getRule:getRule", args ?? new GetRuleArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.Waf
 
     public sealed class GetRuleArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the WAF rule.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

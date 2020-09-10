@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CloudWatch Logs destination policy resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testDestination = new aws.cloudwatch.LogDestination("testDestination", {
- *     roleArn: aws_iam_role.iam_for_cloudwatch.arn,
- *     targetArn: aws_kinesis_stream.kinesis_for_cloudwatch.arn,
- * });
- * const testDestinationPolicyPolicyDocument = testDestination.arn.apply(arn => aws.iam.getPolicyDocument({
- *     statements: [{
- *         effect: "Allow",
- *         principals: [{
- *             type: "AWS",
- *             identifiers: ["123456789012"],
- *         }],
- *         actions: ["logs:PutSubscriptionFilter"],
- *         resources: [arn],
- *     }],
- * }));
- * const testDestinationPolicyLogDestinationPolicy = new aws.cloudwatch.LogDestinationPolicy("testDestinationPolicyLogDestinationPolicy", {
- *     destinationName: testDestination.name,
- *     accessPolicy: testDestinationPolicyPolicyDocument.json,
- * });
- * ```
- */
 export class LogDestinationPolicy extends pulumi.CustomResource {
     /**
      * Get an existing LogDestinationPolicy resource's state with the given name, ID, and optional extra
@@ -62,13 +32,7 @@ export class LogDestinationPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === LogDestinationPolicy.__pulumiType;
     }
 
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     public readonly accessPolicy!: pulumi.Output<string>;
-    /**
-     * A name for the subscription filter
-     */
     public readonly destinationName!: pulumi.Output<string>;
 
     /**
@@ -111,13 +75,7 @@ export class LogDestinationPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogDestinationPolicy resources.
  */
 export interface LogDestinationPolicyState {
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     readonly accessPolicy?: pulumi.Input<string>;
-    /**
-     * A name for the subscription filter
-     */
     readonly destinationName?: pulumi.Input<string>;
 }
 
@@ -125,12 +83,6 @@ export interface LogDestinationPolicyState {
  * The set of arguments for constructing a LogDestinationPolicy resource.
  */
 export interface LogDestinationPolicyArgs {
-    /**
-     * The policy document. This is a JSON formatted string.
-     */
     readonly accessPolicy: pulumi.Input<string>;
-    /**
-     * A name for the subscription filter
-     */
     readonly destinationName: pulumi.Input<string>;
 }

@@ -9,81 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Glue
 {
-    /// <summary>
-    /// Provides a Glue Workflow resource.
-    /// The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource.
-    /// See the example below for creating a graph with four nodes (two triggers and two jobs).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Glue.Workflow("example", new Aws.Glue.WorkflowArgs
-    ///         {
-    ///         });
-    ///         var example_start = new Aws.Glue.Trigger("example-start", new Aws.Glue.TriggerArgs
-    ///         {
-    ///             Type = "ON_DEMAND",
-    ///             WorkflowName = example.Name,
-    ///             Actions = 
-    ///             {
-    ///                 new Aws.Glue.Inputs.TriggerActionArgs
-    ///                 {
-    ///                     JobName = "example-job",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var example_inner = new Aws.Glue.Trigger("example-inner", new Aws.Glue.TriggerArgs
-    ///         {
-    ///             Type = "CONDITIONAL",
-    ///             WorkflowName = example.Name,
-    ///             Predicate = new Aws.Glue.Inputs.TriggerPredicateArgs
-    ///             {
-    ///                 Conditions = 
-    ///                 {
-    ///                     new Aws.Glue.Inputs.TriggerPredicateConditionArgs
-    ///                     {
-    ///                         JobName = "example-job",
-    ///                         State = "SUCCEEDED",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Actions = 
-    ///             {
-    ///                 new Aws.Glue.Inputs.TriggerActionArgs
-    ///                 {
-    ///                     JobName = "another-example-job",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Workflow : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-        /// </summary>
         [Output("defaultRunProperties")]
         public Output<ImmutableDictionary<string, object>?> DefaultRunProperties { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the workflow.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name you assign to this workflow.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -135,25 +68,15 @@ namespace Pulumi.Aws.Glue
     {
         [Input("defaultRunProperties")]
         private InputMap<object>? _defaultRunProperties;
-
-        /// <summary>
-        /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-        /// </summary>
         public InputMap<object> DefaultRunProperties
         {
             get => _defaultRunProperties ?? (_defaultRunProperties = new InputMap<object>());
             set => _defaultRunProperties = value;
         }
 
-        /// <summary>
-        /// Description of the workflow.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name you assign to this workflow.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -166,25 +89,15 @@ namespace Pulumi.Aws.Glue
     {
         [Input("defaultRunProperties")]
         private InputMap<object>? _defaultRunProperties;
-
-        /// <summary>
-        /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-        /// </summary>
         public InputMap<object> DefaultRunProperties
         {
             get => _defaultRunProperties ?? (_defaultRunProperties = new InputMap<object>());
             set => _defaultRunProperties = value;
         }
 
-        /// <summary>
-        /// Description of the workflow.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name you assign to this workflow.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

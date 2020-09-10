@@ -22,23 +22,9 @@ class PlacementGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an EC2 placement group. Read more about placement groups
-        in [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        web = aws.ec2.PlacementGroup("web", strategy="cluster")
-        ```
-
+        Create a PlacementGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the placement group.
-        :param pulumi.Input[str] strategy: The placement strategy. Can be `"cluster"`, `"partition"` or `"spread"`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,11 +72,6 @@ class PlacementGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the placement group.
-        :param pulumi.Input[str] name: The name of the placement group.
-        :param pulumi.Input[str] placement_group_id: The ID of the placement group.
-        :param pulumi.Input[str] strategy: The placement strategy. Can be `"cluster"`, `"partition"` or `"spread"`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -106,41 +87,26 @@ class PlacementGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the placement group.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the placement group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="placementGroupId")
     def placement_group_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the placement group.
-        """
         return pulumi.get(self, "placement_group_id")
 
     @property
     @pulumi.getter
     def strategy(self) -> pulumi.Output[str]:
-        """
-        The placement strategy. Can be `"cluster"`, `"partition"` or `"spread"`.
-        """
         return pulumi.get(self, "strategy")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

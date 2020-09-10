@@ -23,30 +23,9 @@ class Configuration(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Amazon Managed Streaming for Kafka configuration. More information can be found on the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration.html).
-
-        > **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.msk.Configuration("example",
-            kafka_versions=["2.1.0"],
-            server_properties=\"\"\"auto.create.topics.enable = true
-        delete.topic.enable = true
-
-        \"\"\")
-        ```
-
+        Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the configuration.
-        :param pulumi.Input[List[pulumi.Input[str]]] kafka_versions: List of Apache Kafka versions which can use this configuration.
-        :param pulumi.Input[str] name: Name of the configuration.
-        :param pulumi.Input[str] server_properties: Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,12 +77,6 @@ class Configuration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the configuration.
-        :param pulumi.Input[str] description: Description of the configuration.
-        :param pulumi.Input[List[pulumi.Input[str]]] kafka_versions: List of Apache Kafka versions which can use this configuration.
-        :param pulumi.Input[float] latest_revision: Latest revision of the configuration.
-        :param pulumi.Input[str] name: Name of the configuration.
-        :param pulumi.Input[str] server_properties: Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,49 +93,31 @@ class Configuration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the configuration.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the configuration.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="kafkaVersions")
     def kafka_versions(self) -> pulumi.Output[List[str]]:
-        """
-        List of Apache Kafka versions which can use this configuration.
-        """
         return pulumi.get(self, "kafka_versions")
 
     @property
     @pulumi.getter(name="latestRevision")
     def latest_revision(self) -> pulumi.Output[float]:
-        """
-        Latest revision of the configuration.
-        """
         return pulumi.get(self, "latest_revision")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the configuration.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="serverProperties")
     def server_properties(self) -> pulumi.Output[str]:
-        """
-        Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-        """
         return pulumi.get(self, "server_properties")
 
     def translate_output_property(self, prop):

@@ -13,13 +13,7 @@ namespace Pulumi.Aws.CodeBuild.Outputs
     [OutputType]
     public sealed class ProjectEnvironmentRegistryCredential
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) or name of credentials created using AWS Secrets Manager.
-        /// </summary>
         public readonly string Credential;
-        /// <summary>
-        /// The service that created the credentials to access a private Docker registry. The valid value, SECRETS_MANAGER, is for AWS Secrets Manager.
-        /// </summary>
         public readonly string CredentialProvider;
 
         [OutputConstructor]

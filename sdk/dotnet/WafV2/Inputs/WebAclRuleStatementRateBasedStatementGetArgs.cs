@@ -12,21 +12,12 @@ namespace Pulumi.Aws.WafV2.Inputs
 
     public sealed class WebAclRuleStatementRateBasedStatementGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Setting that indicates how to aggregate the request counts. Currently the only supported value is `IP` which is set as the default.
-        /// </summary>
         [Input("aggregateKeyType")]
         public Input<string>? AggregateKeyType { get; set; }
 
-        /// <summary>
-        /// The limit on requests per 5-minute period for a single originating IP address.
-        /// </summary>
         [Input("limit", required: true)]
         public Input<int> Limit { get; set; } = null!;
 
-        /// <summary>
-        /// An optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See Statement above for details.
-        /// </summary>
         [Input("scopeDownStatement")]
         public Input<Inputs.WebAclRuleStatementRateBasedStatementScopeDownStatementGetArgs>? ScopeDownStatement { get; set; }
 

@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides information about a Lambda Layer Version.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lambda"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := lambda.LookupLayerVersion(ctx, &lambda.LookupLayerVersionArgs{
-// 			LayerName: layerName,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupLayerVersion(ctx *pulumi.Context, args *LookupLayerVersionArgs, opts ...pulumi.InvokeOption) (*LookupLayerVersionResult, error) {
 	var rv LookupLayerVersionResult
 	err := ctx.Invoke("aws:lambda/getLayerVersion:getLayerVersion", args, &rv, opts...)
@@ -42,36 +18,24 @@ func LookupLayerVersion(ctx *pulumi.Context, args *LookupLayerVersionArgs, opts 
 
 // A collection of arguments for invoking getLayerVersion.
 type LookupLayerVersionArgs struct {
-	// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
 	CompatibleRuntime *string `pulumi:"compatibleRuntime"`
-	// Name of the lambda layer.
-	LayerName string `pulumi:"layerName"`
-	// Specific layer version. Conflicts with `compatibleRuntime`. If omitted, the latest available layer version will be used.
-	Version *int `pulumi:"version"`
+	LayerName         string  `pulumi:"layerName"`
+	Version           *int    `pulumi:"version"`
 }
 
 // A collection of values returned by getLayerVersion.
 type LookupLayerVersionResult struct {
-	// The Amazon Resource Name (ARN) of the Lambda Layer with version.
-	Arn               string  `pulumi:"arn"`
-	CompatibleRuntime *string `pulumi:"compatibleRuntime"`
-	// A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleRuntimes) the specific Lambda Layer version is compatible with.
+	Arn                string   `pulumi:"arn"`
+	CompatibleRuntime  *string  `pulumi:"compatibleRuntime"`
 	CompatibleRuntimes []string `pulumi:"compatibleRuntimes"`
-	// The date this resource was created.
-	CreatedDate string `pulumi:"createdDate"`
-	// Description of the specific Lambda Layer version.
-	Description string `pulumi:"description"`
+	CreatedDate        string   `pulumi:"createdDate"`
+	Description        string   `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The Amazon Resource Name (ARN) of the Lambda Layer without version.
-	LayerArn  string `pulumi:"layerArn"`
-	LayerName string `pulumi:"layerName"`
-	// License info associated with the specific Lambda Layer version.
-	LicenseInfo string `pulumi:"licenseInfo"`
-	// Base64-encoded representation of raw SHA-256 sum of the zip file.
+	Id             string `pulumi:"id"`
+	LayerArn       string `pulumi:"layerArn"`
+	LayerName      string `pulumi:"layerName"`
+	LicenseInfo    string `pulumi:"licenseInfo"`
 	SourceCodeHash string `pulumi:"sourceCodeHash"`
-	// The size in bytes of the function .zip file.
-	SourceCodeSize int `pulumi:"sourceCodeSize"`
-	// This Lamba Layer version.
-	Version int `pulumi:"version"`
+	SourceCodeSize int    `pulumi:"sourceCodeSize"`
+	Version        int    `pulumi:"version"`
 }

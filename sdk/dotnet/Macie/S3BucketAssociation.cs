@@ -9,60 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Macie
 {
-    /// <summary>
-    /// &gt; **NOTE:** This resource interacts with [Amazon Macie Classic](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html). Macie Classic cannot be activated in new accounts. See the [FAQ](https://aws.amazon.com/macie/classic-faqs/) for more details.
-    /// 
-    /// Associates an S3 resource with Amazon Macie for monitoring and data classification.
-    /// 
-    /// &gt; **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Macie.S3BucketAssociation("example", new Aws.Macie.S3BucketAssociationArgs
-    ///         {
-    ///             BucketName = "tf-macie-example",
-    ///             ClassificationType = new Aws.Macie.Inputs.S3BucketAssociationClassificationTypeArgs
-    ///             {
-    ///                 OneTime = "FULL",
-    ///             },
-    ///             Prefix = "data",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class S3BucketAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the S3 bucket that you want to associate with Amazon Macie.
-        /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
-        /// <summary>
-        /// The configuration of how Amazon Macie classifies the S3 objects.
-        /// </summary>
         [Output("classificationType")]
         public Output<Outputs.S3BucketAssociationClassificationType> ClassificationType { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Amazon Macie member account whose S3 resources you want to associate with Macie. If `member_account_id` isn't specified, the action associates specified S3 resources with Macie for the current master account.
-        /// </summary>
         [Output("memberAccountId")]
         public Output<string?> MemberAccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// Object key prefix identifying one or more S3 objects to which the association applies.
-        /// </summary>
         [Output("prefix")]
         public Output<string?> Prefix { get; private set; } = null!;
 
@@ -112,27 +69,15 @@ namespace Pulumi.Aws.Macie
 
     public sealed class S3BucketAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the S3 bucket that you want to associate with Amazon Macie.
-        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
-        /// <summary>
-        /// The configuration of how Amazon Macie classifies the S3 objects.
-        /// </summary>
         [Input("classificationType")]
         public Input<Inputs.S3BucketAssociationClassificationTypeArgs>? ClassificationType { get; set; }
 
-        /// <summary>
-        /// The ID of the Amazon Macie member account whose S3 resources you want to associate with Macie. If `member_account_id` isn't specified, the action associates specified S3 resources with Macie for the current master account.
-        /// </summary>
         [Input("memberAccountId")]
         public Input<string>? MemberAccountId { get; set; }
 
-        /// <summary>
-        /// Object key prefix identifying one or more S3 objects to which the association applies.
-        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
@@ -143,27 +88,15 @@ namespace Pulumi.Aws.Macie
 
     public sealed class S3BucketAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the S3 bucket that you want to associate with Amazon Macie.
-        /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
-        /// <summary>
-        /// The configuration of how Amazon Macie classifies the S3 objects.
-        /// </summary>
         [Input("classificationType")]
         public Input<Inputs.S3BucketAssociationClassificationTypeGetArgs>? ClassificationType { get; set; }
 
-        /// <summary>
-        /// The ID of the Amazon Macie member account whose S3 resources you want to associate with Macie. If `member_account_id` isn't specified, the action associates specified S3 resources with Macie for the current master account.
-        /// </summary>
         [Input("memberAccountId")]
         public Input<string>? MemberAccountId { get; set; }
 
-        /// <summary>
-        /// Object key prefix identifying one or more S3 objects to which the association applies.
-        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 

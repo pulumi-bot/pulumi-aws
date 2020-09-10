@@ -29,170 +29,9 @@ class ListenerRule(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Load Balancer Listener Rule resource.
-
-        > **Note:** `alb.ListenerRule` is known as `lb.ListenerRule`. The functionality is identical.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        front_end_load_balancer = aws.lb.LoadBalancer("frontEndLoadBalancer")
-        # ...
-        front_end_listener = aws.lb.Listener("frontEndListener")
-        # Other parameters
-        static = aws.lb.ListenerRule("static",
-            listener_arn=front_end_listener.arn,
-            priority=100,
-            actions=[aws.lb.ListenerRuleActionArgs(
-                type="forward",
-                target_group_arn=aws_lb_target_group["static"]["arn"],
-            )],
-            conditions=[
-                aws.lb.ListenerRuleConditionArgs(
-                    path_pattern=aws.lb.ListenerRuleConditionPathPatternArgs(
-                        values=["/static/*"],
-                    ),
-                ),
-                aws.lb.ListenerRuleConditionArgs(
-                    host_header=aws.lb.ListenerRuleConditionHostHeaderArgs(
-                        values=["example.com"],
-                    ),
-                ),
-            ])
-        # Forward action
-        host_based_weighted_routing = aws.lb.ListenerRule("hostBasedWeightedRouting",
-            listener_arn=front_end_listener.arn,
-            priority=99,
-            actions=[aws.lb.ListenerRuleActionArgs(
-                type="forward",
-                target_group_arn=aws_lb_target_group["static"]["arn"],
-            )],
-            conditions=[aws.lb.ListenerRuleConditionArgs(
-                host_header=aws.lb.ListenerRuleConditionHostHeaderArgs(
-                    values=["my-service.*.mycompany.io"],
-                ),
-            )])
-        # Weighted Forward action
-        host_based_routing = aws.lb.ListenerRule("hostBasedRouting",
-            listener_arn=front_end_listener.arn,
-            priority=99,
-            actions=[aws.lb.ListenerRuleActionArgs(
-                type="forward",
-                forward=aws.lb.ListenerRuleActionForwardArgs(
-                    target_groups=[
-                        aws.lb.ListenerRuleActionForwardTargetGroupArgs(
-                            arn=aws_lb_target_group["main"]["arn"],
-                            weight=80,
-                        ),
-                        aws.lb.ListenerRuleActionForwardTargetGroupArgs(
-                            arn=aws_lb_target_group["canary"]["arn"],
-                            weight=20,
-                        ),
-                    ],
-                    stickiness=aws.lb.ListenerRuleActionForwardStickinessArgs(
-                        enabled=True,
-                        duration=600,
-                    ),
-                ),
-            )],
-            conditions=[aws.lb.ListenerRuleConditionArgs(
-                host_header=aws.lb.ListenerRuleConditionHostHeaderArgs(
-                    values=["my-service.*.mycompany.io"],
-                ),
-            )])
-        # Redirect action
-        redirect_http_to_https = aws.lb.ListenerRule("redirectHttpToHttps",
-            listener_arn=front_end_listener.arn,
-            actions=[aws.lb.ListenerRuleActionArgs(
-                type="redirect",
-                redirect=aws.lb.ListenerRuleActionRedirectArgs(
-                    port="443",
-                    protocol="HTTPS",
-                    status_code="HTTP_301",
-                ),
-            )],
-            conditions=[aws.lb.ListenerRuleConditionArgs(
-                http_header=aws.lb.ListenerRuleConditionHttpHeaderArgs(
-                    http_header_name="X-Forwarded-For",
-                    values=["192.168.1.*"],
-                ),
-            )])
-        # Fixed-response action
-        health_check = aws.lb.ListenerRule("healthCheck",
-            listener_arn=front_end_listener.arn,
-            actions=[aws.lb.ListenerRuleActionArgs(
-                type="fixed-response",
-                fixed_response=aws.lb.ListenerRuleActionFixedResponseArgs(
-                    content_type="text/plain",
-                    message_body="HEALTHY",
-                    status_code="200",
-                ),
-            )],
-            conditions=[aws.lb.ListenerRuleConditionArgs(
-                query_strings=[
-                    aws.lb.ListenerRuleConditionQueryStringArgs(
-                        key="health",
-                        value="check",
-                    ),
-                    aws.lb.ListenerRuleConditionQueryStringArgs(
-                        value="bar",
-                    ),
-                ],
-            )])
-        # Authenticate-cognito Action
-        pool = aws.cognito.UserPool("pool")
-        # ...
-        client = aws.cognito.UserPoolClient("client")
-        # ...
-        domain = aws.cognito.UserPoolDomain("domain")
-        # ...
-        admin_listener_rule = aws.lb.ListenerRule("adminListenerRule",
-            listener_arn=front_end_listener.arn,
-            actions=[
-                aws.lb.ListenerRuleActionArgs(
-                    type="authenticate-cognito",
-                    authenticate_cognito=aws.lb.ListenerRuleActionAuthenticateCognitoArgs(
-                        user_pool_arn=pool.arn,
-                        user_pool_client_id=client.id,
-                        user_pool_domain=domain.domain,
-                    ),
-                ),
-                aws.lb.ListenerRuleActionArgs(
-                    type="forward",
-                    target_group_arn=aws_lb_target_group["static"]["arn"],
-                ),
-            ])
-        # Authenticate-oidc Action
-        admin_lb_listener_rule_listener_rule = aws.lb.ListenerRule("adminLb/listenerRuleListenerRule",
-            listener_arn=front_end_listener.arn,
-            actions=[
-                aws.lb.ListenerRuleActionArgs(
-                    type="authenticate-oidc",
-                    authenticate_oidc=aws.lb.ListenerRuleActionAuthenticateOidcArgs(
-                        authorization_endpoint="https://example.com/authorization_endpoint",
-                        client_id="client_id",
-                        client_secret="client_secret",
-                        issuer="https://example.com",
-                        token_endpoint="https://example.com/token_endpoint",
-                        user_info_endpoint="https://example.com/user_info_endpoint",
-                    ),
-                ),
-                aws.lb.ListenerRuleActionArgs(
-                    type="forward",
-                    target_group_arn=aws_lb_target_group["static"]["arn"],
-                ),
-            ])
-        ```
-
+        Create a ListenerRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleActionArgs']]]] actions: An Action block. Action blocks are documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]] conditions: A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
-        :param pulumi.Input[str] listener_arn: The ARN of the listener to which to attach the rule.
-        :param pulumi.Input[float] priority: The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
         """
         pulumi.log.warn("ListenerRule is deprecated: aws.elasticloadbalancingv2.ListenerRule has been deprecated in favor of aws.lb.ListenerRule")
         if __name__ is not None:
@@ -245,11 +84,6 @@ class ListenerRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleActionArgs']]]] actions: An Action block. Action blocks are documented below.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the target group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]] conditions: A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
-        :param pulumi.Input[str] listener_arn: The ARN of the listener to which to attach the rule.
-        :param pulumi.Input[float] priority: The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -265,41 +99,26 @@ class ListenerRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Output[List['outputs.ListenerRuleAction']]:
-        """
-        An Action block. Action blocks are documented below.
-        """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the target group.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def conditions(self) -> pulumi.Output[List['outputs.ListenerRuleCondition']]:
-        """
-        A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
-        """
         return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter(name="listenerArn")
     def listener_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the listener to which to attach the rule.
-        """
         return pulumi.get(self, "listener_arn")
 
     @property
     @pulumi.getter
     def priority(self) -> pulumi.Output[float]:
-        """
-        The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
-        """
         return pulumi.get(self, "priority")
 
     def translate_output_property(self, prop):

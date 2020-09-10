@@ -10,39 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an AWS Storage Gateway working storage.
-//
-// > **NOTE:** The Storage Gateway API provides no method to remove a working storage disk. Destroying this resource does not perform any Storage Gateway actions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/storagegateway"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storagegateway.NewWorkingStorage(ctx, "example", &storagegateway.WorkingStorageArgs{
-// 			DiskId:     pulumi.Any(data.Aws_storagegateway_local_disk.Example.Id),
-// 			GatewayArn: pulumi.Any(aws_storagegateway_gateway.Example.Arn),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type WorkingStorage struct {
 	pulumi.CustomResourceState
 
-	// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-	DiskId pulumi.StringOutput `pulumi:"diskId"`
-	// The Amazon Resource Name (ARN) of the gateway.
+	DiskId     pulumi.StringOutput `pulumi:"diskId"`
 	GatewayArn pulumi.StringOutput `pulumi:"gatewayArn"`
 }
 
@@ -80,16 +51,12 @@ func GetWorkingStorage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkingStorage resources.
 type workingStorageState struct {
-	// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-	DiskId *string `pulumi:"diskId"`
-	// The Amazon Resource Name (ARN) of the gateway.
+	DiskId     *string `pulumi:"diskId"`
 	GatewayArn *string `pulumi:"gatewayArn"`
 }
 
 type WorkingStorageState struct {
-	// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-	DiskId pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) of the gateway.
+	DiskId     pulumi.StringPtrInput
 	GatewayArn pulumi.StringPtrInput
 }
 
@@ -98,17 +65,13 @@ func (WorkingStorageState) ElementType() reflect.Type {
 }
 
 type workingStorageArgs struct {
-	// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-	DiskId string `pulumi:"diskId"`
-	// The Amazon Resource Name (ARN) of the gateway.
+	DiskId     string `pulumi:"diskId"`
 	GatewayArn string `pulumi:"gatewayArn"`
 }
 
 // The set of arguments for constructing a WorkingStorage resource.
 type WorkingStorageArgs struct {
-	// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-	DiskId pulumi.StringInput
-	// The Amazon Resource Name (ARN) of the gateway.
+	DiskId     pulumi.StringInput
 	GatewayArn pulumi.StringInput
 }
 

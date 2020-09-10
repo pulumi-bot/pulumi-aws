@@ -6,25 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Information about most recent Spot Price for a given EC2 instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.Ec2InstanceSpotPrice({
- *     availabilityZone: "us-west-2a",
- *     filter: [{
- *         name: "product-description",
- *         values: ["Linux/UNIX"],
- *     }],
- *     instanceType: "t3.medium",
- * }, { async: true }));
- * ```
- */
 export function getSpotPrice(args?: GetSpotPriceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotPriceResult> {
     args = args || {};
     if (!opts) {
@@ -45,17 +26,8 @@ export function getSpotPrice(args?: GetSpotPriceArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSpotPrice.
  */
 export interface GetSpotPriceArgs {
-    /**
-     * The availability zone in which to query Spot price information.
-     */
     readonly availabilityZone?: string;
-    /**
-     * One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
-     */
     readonly filters?: inputs.ec2.GetSpotPriceFilter[];
-    /**
-     * The type of instance for which to query Spot Price information.
-     */
     readonly instanceType?: string;
 }
 
@@ -70,12 +42,6 @@ export interface GetSpotPriceResult {
      */
     readonly id: string;
     readonly instanceType?: string;
-    /**
-     * The most recent Spot Price value for the given instance type and AZ.
-     */
     readonly spotPrice: string;
-    /**
-     * The timestamp at which the Spot Price value was published.
-     */
     readonly spotPriceTimestamp: string;
 }

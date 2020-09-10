@@ -21,31 +21,9 @@ class StaticIpAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a static IP address attachment - relationship between a Lightsail static IP & Lightsail instance.
-
-        > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_static_ip = aws.lightsail.StaticIp("testStaticIp")
-        test_instance = aws.lightsail.Instance("testInstance",
-            availability_zone="us-east-1b",
-            blueprint_id="string",
-            bundle_id="string",
-            key_pair_name="some_key_name")
-        test_static_ip_attachment = aws.lightsail.StaticIpAttachment("testStaticIpAttachment",
-            static_ip_name=test_static_ip.id,
-            instance_name=test_instance.id)
-        ```
-
+        Create a StaticIpAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_name: The name of the Lightsail instance to attach the IP to
-        :param pulumi.Input[str] static_ip_name: The name of the allocated static IP
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,9 +69,6 @@ class StaticIpAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_name: The name of the Lightsail instance to attach the IP to
-        :param pulumi.Input[str] ip_address: The allocated static IP address
-        :param pulumi.Input[str] static_ip_name: The name of the allocated static IP
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -107,25 +82,16 @@ class StaticIpAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
-        """
-        The name of the Lightsail instance to attach the IP to
-        """
         return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
-        """
-        The allocated static IP address
-        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="staticIpName")
     def static_ip_name(self) -> pulumi.Output[str]:
-        """
-        The name of the allocated static IP
-        """
         return pulumi.get(self, "static_ip_name")
 
     def translate_output_property(self, prop):

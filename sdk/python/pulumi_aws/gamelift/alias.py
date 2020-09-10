@@ -25,28 +25,9 @@ class Alias(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Gamelift Alias resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.gamelift.Alias("example",
-            description="Example Description",
-            routing_strategy=aws.gamelift.AliasRoutingStrategyArgs(
-                message="Example Message",
-                type="TERMINAL",
-            ))
-        ```
-
+        Create a Alias resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input[str] name: Name of the alias.
-        :param pulumi.Input[pulumi.InputType['AliasRoutingStrategyArgs']] routing_strategy: Specifies the fleet and/or routing type to use for the alias.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,11 +75,6 @@ class Alias(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Alias ARN.
-        :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input[str] name: Name of the alias.
-        :param pulumi.Input[pulumi.InputType['AliasRoutingStrategyArgs']] routing_strategy: Specifies the fleet and/or routing type to use for the alias.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -114,41 +90,26 @@ class Alias(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Alias ARN.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the alias.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the alias.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="routingStrategy")
     def routing_strategy(self) -> pulumi.Output['outputs.AliasRoutingStrategy']:
-        """
-        Specifies the fleet and/or routing type to use for the alias.
-        """
         return pulumi.get(self, "routing_strategy")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

@@ -9,121 +9,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a Route53 Hosted Zone.
-//
-// ## Example Usage
-// ### Public Zone
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := route53.NewZone(ctx, "primary", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Public Subdomain Zone
-//
-// For use in subdomains, note that you need to create a
-// `route53.Record` of type `NS` as well as the subdomain
-// zone.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := route53.NewZone(ctx, "main", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		dev, err := route53.NewZone(ctx, "dev", &route53.ZoneArgs{
-// 			Tags: pulumi.StringMap{
-// 				"Environment": pulumi.String("dev"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewRecord(ctx, "dev_ns", &route53.RecordArgs{
-// 			ZoneId:  main.ZoneId,
-// 			Name:    pulumi.String("dev.example.com"),
-// 			Type:    pulumi.String("NS"),
-// 			Ttl:     pulumi.Int(30),
-// 			Records: dev.NameServers,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Private Zone
-//
-// > **NOTE:** This provider provides both exclusive VPC associations defined in-line in this resource via `vpc` configuration blocks and a separate ` Zone VPC Association resource. At this time, you cannot use in-line VPC associations in conjunction with any  `route53.ZoneAssociation`  resources with the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use [ `ignoreChanges` ](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to manage additional associations via the  `route53.ZoneAssociation` resource.
-//
-// > **NOTE:** Private zones require at least one VPC association at all times.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := route53.NewZone(ctx, "private", &route53.ZoneArgs{
-// 			Vpcs: route53.ZoneVpcArray{
-// 				&route53.ZoneVpcArgs{
-// 					VpcId: pulumi.Any(aws_vpc.Example.Id),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Zone struct {
 	pulumi.CustomResourceState
 
-	// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-	Comment pulumi.StringOutput `pulumi:"comment"`
-	// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
-	DelegationSetId pulumi.StringPtrOutput `pulumi:"delegationSetId"`
-	// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// This is the name of the hosted zone.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of name servers in associated (or default) delegation set.
-	// Find more about delegation sets in [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html).
-	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
-	// A mapping of tags to assign to the zone.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-	Vpcs ZoneVpcArrayOutput `pulumi:"vpcs"`
-	// The Hosted Zone ID. This can be referenced by zone records.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	Comment         pulumi.StringOutput      `pulumi:"comment"`
+	DelegationSetId pulumi.StringPtrOutput   `pulumi:"delegationSetId"`
+	ForceDestroy    pulumi.BoolPtrOutput     `pulumi:"forceDestroy"`
+	Name            pulumi.StringOutput      `pulumi:"name"`
+	NameServers     pulumi.StringArrayOutput `pulumi:"nameServers"`
+	Tags            pulumi.StringMapOutput   `pulumi:"tags"`
+	Vpcs            ZoneVpcArrayOutput       `pulumi:"vpcs"`
+	ZoneId          pulumi.StringOutput      `pulumi:"zoneId"`
 }
 
 // NewZone registers a new resource with the given unique name, arguments, and options.
@@ -157,43 +53,25 @@ func GetZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
-	// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-	Comment *string `pulumi:"comment"`
-	// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
-	DelegationSetId *string `pulumi:"delegationSetId"`
-	// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// This is the name of the hosted zone.
-	Name *string `pulumi:"name"`
-	// A list of name servers in associated (or default) delegation set.
-	// Find more about delegation sets in [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html).
-	NameServers []string `pulumi:"nameServers"`
-	// A mapping of tags to assign to the zone.
-	Tags map[string]string `pulumi:"tags"`
-	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-	Vpcs []ZoneVpc `pulumi:"vpcs"`
-	// The Hosted Zone ID. This can be referenced by zone records.
-	ZoneId *string `pulumi:"zoneId"`
+	Comment         *string           `pulumi:"comment"`
+	DelegationSetId *string           `pulumi:"delegationSetId"`
+	ForceDestroy    *bool             `pulumi:"forceDestroy"`
+	Name            *string           `pulumi:"name"`
+	NameServers     []string          `pulumi:"nameServers"`
+	Tags            map[string]string `pulumi:"tags"`
+	Vpcs            []ZoneVpc         `pulumi:"vpcs"`
+	ZoneId          *string           `pulumi:"zoneId"`
 }
 
 type ZoneState struct {
-	// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-	Comment pulumi.StringPtrInput
-	// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
+	Comment         pulumi.StringPtrInput
 	DelegationSetId pulumi.StringPtrInput
-	// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-	ForceDestroy pulumi.BoolPtrInput
-	// This is the name of the hosted zone.
-	Name pulumi.StringPtrInput
-	// A list of name servers in associated (or default) delegation set.
-	// Find more about delegation sets in [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html).
-	NameServers pulumi.StringArrayInput
-	// A mapping of tags to assign to the zone.
-	Tags pulumi.StringMapInput
-	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-	Vpcs ZoneVpcArrayInput
-	// The Hosted Zone ID. This can be referenced by zone records.
-	ZoneId pulumi.StringPtrInput
+	ForceDestroy    pulumi.BoolPtrInput
+	Name            pulumi.StringPtrInput
+	NameServers     pulumi.StringArrayInput
+	Tags            pulumi.StringMapInput
+	Vpcs            ZoneVpcArrayInput
+	ZoneId          pulumi.StringPtrInput
 }
 
 func (ZoneState) ElementType() reflect.Type {
@@ -201,34 +79,22 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
-	// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-	Comment *string `pulumi:"comment"`
-	// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
-	DelegationSetId *string `pulumi:"delegationSetId"`
-	// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// This is the name of the hosted zone.
-	Name *string `pulumi:"name"`
-	// A mapping of tags to assign to the zone.
-	Tags map[string]string `pulumi:"tags"`
-	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-	Vpcs []ZoneVpc `pulumi:"vpcs"`
+	Comment         *string           `pulumi:"comment"`
+	DelegationSetId *string           `pulumi:"delegationSetId"`
+	ForceDestroy    *bool             `pulumi:"forceDestroy"`
+	Name            *string           `pulumi:"name"`
+	Tags            map[string]string `pulumi:"tags"`
+	Vpcs            []ZoneVpc         `pulumi:"vpcs"`
 }
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
-	// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-	Comment pulumi.StringPtrInput
-	// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
+	Comment         pulumi.StringPtrInput
 	DelegationSetId pulumi.StringPtrInput
-	// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-	ForceDestroy pulumi.BoolPtrInput
-	// This is the name of the hosted zone.
-	Name pulumi.StringPtrInput
-	// A mapping of tags to assign to the zone.
-	Tags pulumi.StringMapInput
-	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-	Vpcs ZoneVpcArrayInput
+	ForceDestroy    pulumi.BoolPtrInput
+	Name            pulumi.StringPtrInput
+	Tags            pulumi.StringMapInput
+	Vpcs            ZoneVpcArrayInput
 }
 
 func (ZoneArgs) ElementType() reflect.Type {

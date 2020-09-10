@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > **Note:** There is only a single account alias per AWS account.
- *
- * Manages the account alias for the AWS Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const alias = new aws.iam.AccountAlias("alias", {
- *     accountAlias: "my-account-alias",
- * });
- * ```
- */
 export class AccountAlias extends pulumi.CustomResource {
     /**
      * Get an existing AccountAlias resource's state with the given name, ID, and optional extra
@@ -48,9 +32,6 @@ export class AccountAlias extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountAlias.__pulumiType;
     }
 
-    /**
-     * The account alias
-     */
     public readonly accountAlias!: pulumi.Output<string>;
 
     /**
@@ -88,9 +69,6 @@ export class AccountAlias extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountAlias resources.
  */
 export interface AccountAliasState {
-    /**
-     * The account alias
-     */
     readonly accountAlias?: pulumi.Input<string>;
 }
 
@@ -98,8 +76,5 @@ export interface AccountAliasState {
  * The set of arguments for constructing a AccountAlias resource.
  */
 export interface AccountAliasArgs {
-    /**
-     * The account alias
-     */
     readonly accountAlias: pulumi.Input<string>;
 }

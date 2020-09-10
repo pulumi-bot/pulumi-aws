@@ -9,130 +9,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Glue Classifier resource.
-//
-// > **NOTE:** It is only valid to create one type of classifier (csv, grok, JSON, or XML). Changing classifier types will recreate the classifier.
-//
-// ## Example Usage
-// ### Csv Classifier
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glue"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-// 			CsvClassifier: &glue.ClassifierCsvClassifierArgs{
-// 				AllowSingleColumn:    pulumi.Bool(false),
-// 				ContainsHeader:       pulumi.String("PRESENT"),
-// 				Delimiter:            pulumi.String(","),
-// 				DisableValueTrimming: pulumi.Bool(false),
-// 				Headers: pulumi.StringArray{
-// 					pulumi.String("example1"),
-// 					pulumi.String("example2"),
-// 				},
-// 				QuoteSymbol: pulumi.String("'"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Grok Classifier
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glue"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-// 			GrokClassifier: &glue.ClassifierGrokClassifierArgs{
-// 				Classification: pulumi.String("example"),
-// 				GrokPattern:    pulumi.String("example"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### JSON Classifier
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glue"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-// 			JsonClassifier: &glue.ClassifierJsonClassifierArgs{
-// 				JsonPath: pulumi.String("example"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### XML Classifier
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/glue"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := glue.NewClassifier(ctx, "example", &glue.ClassifierArgs{
-// 			XmlClassifier: &glue.ClassifierXmlClassifierArgs{
-// 				Classification: pulumi.String("example"),
-// 				RowTag:         pulumi.String("example"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Classifier struct {
 	pulumi.CustomResourceState
 
-	// A classifier for Csv content. Defined below.
-	CsvClassifier ClassifierCsvClassifierPtrOutput `pulumi:"csvClassifier"`
-	// A classifier that uses grok patterns. Defined below.
+	CsvClassifier  ClassifierCsvClassifierPtrOutput  `pulumi:"csvClassifier"`
 	GrokClassifier ClassifierGrokClassifierPtrOutput `pulumi:"grokClassifier"`
-	// A classifier for JSON content. Defined below.
 	JsonClassifier ClassifierJsonClassifierPtrOutput `pulumi:"jsonClassifier"`
-	// The name of the classifier.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A classifier for XML content. Defined below.
-	XmlClassifier ClassifierXmlClassifierPtrOutput `pulumi:"xmlClassifier"`
+	Name           pulumi.StringOutput               `pulumi:"name"`
+	XmlClassifier  ClassifierXmlClassifierPtrOutput  `pulumi:"xmlClassifier"`
 }
 
 // NewClassifier registers a new resource with the given unique name, arguments, and options.
@@ -163,29 +47,19 @@ func GetClassifier(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Classifier resources.
 type classifierState struct {
-	// A classifier for Csv content. Defined below.
-	CsvClassifier *ClassifierCsvClassifier `pulumi:"csvClassifier"`
-	// A classifier that uses grok patterns. Defined below.
+	CsvClassifier  *ClassifierCsvClassifier  `pulumi:"csvClassifier"`
 	GrokClassifier *ClassifierGrokClassifier `pulumi:"grokClassifier"`
-	// A classifier for JSON content. Defined below.
 	JsonClassifier *ClassifierJsonClassifier `pulumi:"jsonClassifier"`
-	// The name of the classifier.
-	Name *string `pulumi:"name"`
-	// A classifier for XML content. Defined below.
-	XmlClassifier *ClassifierXmlClassifier `pulumi:"xmlClassifier"`
+	Name           *string                   `pulumi:"name"`
+	XmlClassifier  *ClassifierXmlClassifier  `pulumi:"xmlClassifier"`
 }
 
 type ClassifierState struct {
-	// A classifier for Csv content. Defined below.
-	CsvClassifier ClassifierCsvClassifierPtrInput
-	// A classifier that uses grok patterns. Defined below.
+	CsvClassifier  ClassifierCsvClassifierPtrInput
 	GrokClassifier ClassifierGrokClassifierPtrInput
-	// A classifier for JSON content. Defined below.
 	JsonClassifier ClassifierJsonClassifierPtrInput
-	// The name of the classifier.
-	Name pulumi.StringPtrInput
-	// A classifier for XML content. Defined below.
-	XmlClassifier ClassifierXmlClassifierPtrInput
+	Name           pulumi.StringPtrInput
+	XmlClassifier  ClassifierXmlClassifierPtrInput
 }
 
 func (ClassifierState) ElementType() reflect.Type {
@@ -193,30 +67,20 @@ func (ClassifierState) ElementType() reflect.Type {
 }
 
 type classifierArgs struct {
-	// A classifier for Csv content. Defined below.
-	CsvClassifier *ClassifierCsvClassifier `pulumi:"csvClassifier"`
-	// A classifier that uses grok patterns. Defined below.
+	CsvClassifier  *ClassifierCsvClassifier  `pulumi:"csvClassifier"`
 	GrokClassifier *ClassifierGrokClassifier `pulumi:"grokClassifier"`
-	// A classifier for JSON content. Defined below.
 	JsonClassifier *ClassifierJsonClassifier `pulumi:"jsonClassifier"`
-	// The name of the classifier.
-	Name *string `pulumi:"name"`
-	// A classifier for XML content. Defined below.
-	XmlClassifier *ClassifierXmlClassifier `pulumi:"xmlClassifier"`
+	Name           *string                   `pulumi:"name"`
+	XmlClassifier  *ClassifierXmlClassifier  `pulumi:"xmlClassifier"`
 }
 
 // The set of arguments for constructing a Classifier resource.
 type ClassifierArgs struct {
-	// A classifier for Csv content. Defined below.
-	CsvClassifier ClassifierCsvClassifierPtrInput
-	// A classifier that uses grok patterns. Defined below.
+	CsvClassifier  ClassifierCsvClassifierPtrInput
 	GrokClassifier ClassifierGrokClassifierPtrInput
-	// A classifier for JSON content. Defined below.
 	JsonClassifier ClassifierJsonClassifierPtrInput
-	// The name of the classifier.
-	Name pulumi.StringPtrInput
-	// A classifier for XML content. Defined below.
-	XmlClassifier ClassifierXmlClassifierPtrInput
+	Name           pulumi.StringPtrInput
+	XmlClassifier  ClassifierXmlClassifierPtrInput
 }
 
 func (ClassifierArgs) ElementType() reflect.Type {

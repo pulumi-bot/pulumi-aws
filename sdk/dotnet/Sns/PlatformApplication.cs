@@ -9,121 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sns
 {
-    /// <summary>
-    /// Provides an SNS platform application resource
-    /// 
-    /// ## Example Usage
-    /// ### Apple Push Notification Service (APNS)
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var apnsApplication = new Aws.Sns.PlatformApplication("apnsApplication", new Aws.Sns.PlatformApplicationArgs
-    ///         {
-    ///             Platform = "APNS",
-    ///             PlatformCredential = "&lt;APNS PRIVATE KEY&gt;",
-    ///             PlatformPrincipal = "&lt;APNS CERTIFICATE&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Google Cloud Messaging (GCM)
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var gcmApplication = new Aws.Sns.PlatformApplication("gcmApplication", new Aws.Sns.PlatformApplicationArgs
-    ///         {
-    ///             Platform = "GCM",
-    ///             PlatformCredential = "&lt;GCM API KEY&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PlatformApplication : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the SNS platform application
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
-        /// </summary>
         [Output("eventDeliveryFailureTopicArn")]
         public Output<string?> EventDeliveryFailureTopicArn { get; private set; } = null!;
 
-        /// <summary>
-        /// SNS Topic triggered when a new platform endpoint is added to your platform application.
-        /// </summary>
         [Output("eventEndpointCreatedTopicArn")]
         public Output<string?> EventEndpointCreatedTopicArn { get; private set; } = null!;
 
-        /// <summary>
-        /// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
-        /// </summary>
         [Output("eventEndpointDeletedTopicArn")]
         public Output<string?> EventEndpointDeletedTopicArn { get; private set; } = null!;
 
-        /// <summary>
-        /// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
-        /// </summary>
         [Output("eventEndpointUpdatedTopicArn")]
         public Output<string?> EventEndpointUpdatedTopicArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM role permitted to receive failure feedback for this application.
-        /// </summary>
         [Output("failureFeedbackRoleArn")]
         public Output<string?> FailureFeedbackRoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The friendly name for the SNS platform application
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-        /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
 
-        /// <summary>
-        /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-        /// </summary>
         [Output("platformCredential")]
         public Output<string> PlatformCredential { get; private set; } = null!;
 
-        /// <summary>
-        /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-        /// </summary>
         [Output("platformPrincipal")]
         public Output<string?> PlatformPrincipal { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM role permitted to receive success feedback for this application.
-        /// </summary>
         [Output("successFeedbackRoleArn")]
         public Output<string?> SuccessFeedbackRoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The percentage of success to sample (0-100)
-        /// </summary>
         [Output("successFeedbackSampleRate")]
         public Output<string?> SuccessFeedbackSampleRate { get; private set; } = null!;
 
@@ -173,69 +93,36 @@ namespace Pulumi.Aws.Sns
 
     public sealed class PlatformApplicationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
-        /// </summary>
         [Input("eventDeliveryFailureTopicArn")]
         public Input<string>? EventDeliveryFailureTopicArn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when a new platform endpoint is added to your platform application.
-        /// </summary>
         [Input("eventEndpointCreatedTopicArn")]
         public Input<string>? EventEndpointCreatedTopicArn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
-        /// </summary>
         [Input("eventEndpointDeletedTopicArn")]
         public Input<string>? EventEndpointDeletedTopicArn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
-        /// </summary>
         [Input("eventEndpointUpdatedTopicArn")]
         public Input<string>? EventEndpointUpdatedTopicArn { get; set; }
 
-        /// <summary>
-        /// The IAM role permitted to receive failure feedback for this application.
-        /// </summary>
         [Input("failureFeedbackRoleArn")]
         public Input<string>? FailureFeedbackRoleArn { get; set; }
 
-        /// <summary>
-        /// The friendly name for the SNS platform application
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-        /// </summary>
         [Input("platform", required: true)]
         public Input<string> Platform { get; set; } = null!;
 
-        /// <summary>
-        /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-        /// </summary>
         [Input("platformCredential", required: true)]
         public Input<string> PlatformCredential { get; set; } = null!;
 
-        /// <summary>
-        /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-        /// </summary>
         [Input("platformPrincipal")]
         public Input<string>? PlatformPrincipal { get; set; }
 
-        /// <summary>
-        /// The IAM role permitted to receive success feedback for this application.
-        /// </summary>
         [Input("successFeedbackRoleArn")]
         public Input<string>? SuccessFeedbackRoleArn { get; set; }
 
-        /// <summary>
-        /// The percentage of success to sample (0-100)
-        /// </summary>
         [Input("successFeedbackSampleRate")]
         public Input<string>? SuccessFeedbackSampleRate { get; set; }
 
@@ -246,75 +133,39 @@ namespace Pulumi.Aws.Sns
 
     public sealed class PlatformApplicationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the SNS platform application
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
-        /// </summary>
         [Input("eventDeliveryFailureTopicArn")]
         public Input<string>? EventDeliveryFailureTopicArn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when a new platform endpoint is added to your platform application.
-        /// </summary>
         [Input("eventEndpointCreatedTopicArn")]
         public Input<string>? EventEndpointCreatedTopicArn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
-        /// </summary>
         [Input("eventEndpointDeletedTopicArn")]
         public Input<string>? EventEndpointDeletedTopicArn { get; set; }
 
-        /// <summary>
-        /// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
-        /// </summary>
         [Input("eventEndpointUpdatedTopicArn")]
         public Input<string>? EventEndpointUpdatedTopicArn { get; set; }
 
-        /// <summary>
-        /// The IAM role permitted to receive failure feedback for this application.
-        /// </summary>
         [Input("failureFeedbackRoleArn")]
         public Input<string>? FailureFeedbackRoleArn { get; set; }
 
-        /// <summary>
-        /// The friendly name for the SNS platform application
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-        /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
 
-        /// <summary>
-        /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-        /// </summary>
         [Input("platformCredential")]
         public Input<string>? PlatformCredential { get; set; }
 
-        /// <summary>
-        /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-        /// </summary>
         [Input("platformPrincipal")]
         public Input<string>? PlatformPrincipal { get; set; }
 
-        /// <summary>
-        /// The IAM role permitted to receive success feedback for this application.
-        /// </summary>
         [Input("successFeedbackRoleArn")]
         public Input<string>? SuccessFeedbackRoleArn { get; set; }
 
-        /// <summary>
-        /// The percentage of success to sample (0-100)
-        /// </summary>
         [Input("successFeedbackSampleRate")]
         public Input<string>? SuccessFeedbackSampleRate { get; set; }
 

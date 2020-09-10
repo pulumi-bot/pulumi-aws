@@ -7,48 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ebs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		_, err := ebs.LookupSnapshot(ctx, &ebs.LookupSnapshotArgs{
-// 			Filters: []ebs.GetSnapshotFilter{
-// 				ebs.GetSnapshotFilter{
-// 					Name: "volume-size",
-// 					Values: []string{
-// 						"40",
-// 					},
-// 				},
-// 				ebs.GetSnapshotFilter{
-// 					Name: "tag:Name",
-// 					Values: []string{
-// 						"Example",
-// 					},
-// 				},
-// 			},
-// 			MostRecent: &opt0,
-// 			Owners: []string{
-// 				"self",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("aws:ebs/getSnapshot:getSnapshot", args, &rv, opts...)
@@ -60,53 +18,33 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 
 // A collection of arguments for invoking getSnapshot.
 type LookupSnapshotArgs struct {
-	// One or more name/value pairs to filter off of. There are
-	// several valid keys, for a full reference, check out
-	// [describe-snapshots in the AWS CLI reference][1].
-	Filters []GetSnapshotFilter `pulumi:"filters"`
-	// If more than one result is returned, use the most recent snapshot.
-	MostRecent *bool `pulumi:"mostRecent"`
-	// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
-	Owners []string `pulumi:"owners"`
-	// One or more AWS accounts IDs that can create volumes from the snapshot.
-	RestorableByUserIds []string `pulumi:"restorableByUserIds"`
-	// Returns information on a specific snapshot_id.
-	SnapshotIds []string `pulumi:"snapshotIds"`
-	// A map of tags for the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Filters             []GetSnapshotFilter `pulumi:"filters"`
+	MostRecent          *bool               `pulumi:"mostRecent"`
+	Owners              []string            `pulumi:"owners"`
+	RestorableByUserIds []string            `pulumi:"restorableByUserIds"`
+	SnapshotIds         []string            `pulumi:"snapshotIds"`
+	Tags                map[string]string   `pulumi:"tags"`
 }
 
 // A collection of values returned by getSnapshot.
 type LookupSnapshotResult struct {
-	// Amazon Resource Name (ARN) of the EBS Snapshot.
-	Arn string `pulumi:"arn"`
-	// The data encryption key identifier for the snapshot.
-	DataEncryptionKeyId string `pulumi:"dataEncryptionKeyId"`
-	// A description for the snapshot
-	Description string `pulumi:"description"`
-	// Whether the snapshot is encrypted.
-	Encrypted bool                `pulumi:"encrypted"`
-	Filters   []GetSnapshotFilter `pulumi:"filters"`
+	Arn                 string              `pulumi:"arn"`
+	DataEncryptionKeyId string              `pulumi:"dataEncryptionKeyId"`
+	Description         string              `pulumi:"description"`
+	Encrypted           bool                `pulumi:"encrypted"`
+	Filters             []GetSnapshotFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The ARN for the KMS encryption key.
-	KmsKeyId   string `pulumi:"kmsKeyId"`
-	MostRecent *bool  `pulumi:"mostRecent"`
-	// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
-	OwnerAlias string `pulumi:"ownerAlias"`
-	// The AWS account ID of the EBS snapshot owner.
-	OwnerId             string   `pulumi:"ownerId"`
-	Owners              []string `pulumi:"owners"`
-	RestorableByUserIds []string `pulumi:"restorableByUserIds"`
-	// The snapshot ID (e.g. snap-59fcb34e).
-	SnapshotId  string   `pulumi:"snapshotId"`
-	SnapshotIds []string `pulumi:"snapshotIds"`
-	// The snapshot state.
-	State string `pulumi:"state"`
-	// A map of tags for the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The volume ID (e.g. vol-59fcb34e).
-	VolumeId string `pulumi:"volumeId"`
-	// The size of the drive in GiBs.
-	VolumeSize int `pulumi:"volumeSize"`
+	Id                  string            `pulumi:"id"`
+	KmsKeyId            string            `pulumi:"kmsKeyId"`
+	MostRecent          *bool             `pulumi:"mostRecent"`
+	OwnerAlias          string            `pulumi:"ownerAlias"`
+	OwnerId             string            `pulumi:"ownerId"`
+	Owners              []string          `pulumi:"owners"`
+	RestorableByUserIds []string          `pulumi:"restorableByUserIds"`
+	SnapshotId          string            `pulumi:"snapshotId"`
+	SnapshotIds         []string          `pulumi:"snapshotIds"`
+	State               string            `pulumi:"state"`
+	Tags                map[string]string `pulumi:"tags"`
+	VolumeId            string            `pulumi:"volumeId"`
+	VolumeSize          int               `pulumi:"volumeSize"`
 }

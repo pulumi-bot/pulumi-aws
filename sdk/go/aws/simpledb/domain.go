@@ -9,32 +9,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a SimpleDB domain resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/simpledb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := simpledb.NewDomain(ctx, "users", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The name of the SimpleDB domain
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -66,12 +43,10 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The name of the SimpleDB domain
 	Name *string `pulumi:"name"`
 }
 
 type DomainState struct {
-	// The name of the SimpleDB domain
 	Name pulumi.StringPtrInput
 }
 
@@ -80,13 +55,11 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The name of the SimpleDB domain
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The name of the SimpleDB domain
 	Name pulumi.StringPtrInput
 }
 

@@ -13,17 +13,8 @@ namespace Pulumi.Aws.StorageGateway.Outputs
     [OutputType]
     public sealed class GatewaySmbActiveDirectorySettings
     {
-        /// <summary>
-        /// The name of the domain that you want the gateway to join.
-        /// </summary>
         public readonly string DomainName;
-        /// <summary>
-        /// The password of the user who has permission to add the gateway to the Active Directory domain.
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// The user name of user who has permission to add the gateway to the Active Directory domain.
-        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

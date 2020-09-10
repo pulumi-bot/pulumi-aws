@@ -20,12 +20,6 @@ class CertificateDomainValidationOptionArgs:
                  resource_record_name: Optional[pulumi.Input[str]] = None,
                  resource_record_type: Optional[pulumi.Input[str]] = None,
                  resource_record_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] domain_name: A domain name for which the certificate should be issued
-        :param pulumi.Input[str] resource_record_name: The name of the DNS record to create to validate the certificate
-        :param pulumi.Input[str] resource_record_type: The type of DNS record to create
-        :param pulumi.Input[str] resource_record_value: The value the DNS record needs to have
-        """
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
         if resource_record_name is not None:
@@ -38,9 +32,6 @@ class CertificateDomainValidationOptionArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A domain name for which the certificate should be issued
-        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -50,9 +41,6 @@ class CertificateDomainValidationOptionArgs:
     @property
     @pulumi.getter(name="resourceRecordName")
     def resource_record_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the DNS record to create to validate the certificate
-        """
         return pulumi.get(self, "resource_record_name")
 
     @resource_record_name.setter
@@ -62,9 +50,6 @@ class CertificateDomainValidationOptionArgs:
     @property
     @pulumi.getter(name="resourceRecordType")
     def resource_record_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of DNS record to create
-        """
         return pulumi.get(self, "resource_record_type")
 
     @resource_record_type.setter
@@ -74,9 +59,6 @@ class CertificateDomainValidationOptionArgs:
     @property
     @pulumi.getter(name="resourceRecordValue")
     def resource_record_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value the DNS record needs to have
-        """
         return pulumi.get(self, "resource_record_value")
 
     @resource_record_value.setter
@@ -88,18 +70,12 @@ class CertificateDomainValidationOptionArgs:
 class CertificateOptionsArgs:
     def __init__(__self__, *,
                  certificate_transparency_logging_preference: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] certificate_transparency_logging_preference: Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
-        """
         if certificate_transparency_logging_preference is not None:
             pulumi.set(__self__, "certificate_transparency_logging_preference", certificate_transparency_logging_preference)
 
     @property
     @pulumi.getter(name="certificateTransparencyLoggingPreference")
     def certificate_transparency_logging_preference(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
-        """
         return pulumi.get(self, "certificate_transparency_logging_preference")
 
     @certificate_transparency_logging_preference.setter

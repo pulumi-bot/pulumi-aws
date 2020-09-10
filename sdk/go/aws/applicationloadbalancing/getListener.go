@@ -7,54 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
-//
-// Provides information about a Load Balancer Listener.
-//
-// This data source can prove useful when a module accepts an LB Listener as an
-// input variable and needs to know the LB it is attached to, or other
-// information specific to the listener in question.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := listenerArn
-// 		_, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
-// 			Arn: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := "default-public"
-// 		selected, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
-// 			Name: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt2 := selected.Arn
-// 		opt3 := 443
-// 		_, err = lb.LookupListener(ctx, &lb.LookupListenerArgs{
-// 			LoadBalancerArn: &opt2,
-// 			Port:            &opt3,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // Deprecated: aws.applicationloadbalancing.getListener has been deprecated in favor of aws.alb.getListener
 func LookupListener(ctx *pulumi.Context, args *LookupListenerArgs, opts ...pulumi.InvokeOption) (*LookupListenerResult, error) {
 	var rv LookupListenerResult
@@ -67,12 +19,9 @@ func LookupListener(ctx *pulumi.Context, args *LookupListenerArgs, opts ...pulum
 
 // A collection of arguments for invoking getListener.
 type LookupListenerArgs struct {
-	// The arn of the listener. Required if `loadBalancerArn` and `port` is not set.
-	Arn *string `pulumi:"arn"`
-	// The arn of the load balancer. Required if `arn` is not set.
+	Arn             *string `pulumi:"arn"`
 	LoadBalancerArn *string `pulumi:"loadBalancerArn"`
-	// The port of the listener. Required if `arn` is not set.
-	Port *int `pulumi:"port"`
+	Port            *int    `pulumi:"port"`
 }
 
 // A collection of values returned by getListener.

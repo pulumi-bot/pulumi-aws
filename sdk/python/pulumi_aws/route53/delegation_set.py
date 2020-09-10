@@ -20,23 +20,9 @@ class DelegationSet(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API-actions-by-function.html#actions-by-function-reusable-delegation-sets) resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.route53.DelegationSet("main", reference_name="DynDNS")
-        primary = aws.route53.Zone("primary", delegation_set_id=main.id)
-        secondary = aws.route53.Zone("secondary", delegation_set_id=main.id)
-        ```
-
+        Create a DelegationSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] reference_name: This is a reference name used in Caller Reference
-               (helpful for identifying single delegation set amongst others)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,10 +62,6 @@ class DelegationSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] name_servers: A list of authoritative name servers for the hosted zone
-               (effectively a list of NS records).
-        :param pulumi.Input[str] reference_name: This is a reference name used in Caller Reference
-               (helpful for identifying single delegation set amongst others)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -92,19 +74,11 @@ class DelegationSet(pulumi.CustomResource):
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> pulumi.Output[List[str]]:
-        """
-        A list of authoritative name servers for the hosted zone
-        (effectively a list of NS records).
-        """
         return pulumi.get(self, "name_servers")
 
     @property
     @pulumi.getter(name="referenceName")
     def reference_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        This is a reference name used in Caller Reference
-        (helpful for identifying single delegation set amongst others)
-        """
         return pulumi.get(self, "reference_name")
 
     def translate_output_property(self, prop):

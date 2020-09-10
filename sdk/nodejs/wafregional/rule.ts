@@ -6,40 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an WAF Regional Rule Resource for use with Application Load Balancer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ipset = new aws.wafregional.IpSet("ipset", {ipSetDescriptors: [{
- *     type: "IPV4",
- *     value: "192.0.7.0/24",
- * }]});
- * const wafrule = new aws.wafregional.Rule("wafrule", {
- *     metricName: "tfWAFRule",
- *     predicates: [{
- *         type: "IPMatch",
- *         dataId: ipset.id,
- *         negated: false,
- *     }],
- * });
- * ```
- * ## Nested Fields
- *
- * ### `predicate`
- *
- * See the [WAF Documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_Predicate.html) for more information.
- *
- * #### Arguments
- *
- * * `type` - (Required) The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
- * * `dataId` - (Required) The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
- * * `negated` - (Required) Whether to use the settings or the negated settings that you specified in the objects.
- */
 export class Rule extends pulumi.CustomResource {
     /**
      * Get an existing Rule resource's state with the given name, ID, and optional extra
@@ -68,25 +34,10 @@ export class Rule extends pulumi.CustomResource {
         return obj['__pulumiType'] === Rule.__pulumiType;
     }
 
-    /**
-     * The ARN of the WAF Regional Rule.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule.
-     */
     public readonly metricName!: pulumi.Output<string>;
-    /**
-     * The name or description of the rule.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     public readonly predicates!: pulumi.Output<outputs.wafregional.RulePredicate[] | undefined>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -132,25 +83,10 @@ export class Rule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Rule resources.
  */
 export interface RuleState {
-    /**
-     * The ARN of the WAF Regional Rule.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule.
-     */
     readonly metricName?: pulumi.Input<string>;
-    /**
-     * The name or description of the rule.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     readonly predicates?: pulumi.Input<pulumi.Input<inputs.wafregional.RulePredicate>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -158,20 +94,8 @@ export interface RuleState {
  * The set of arguments for constructing a Rule resource.
  */
 export interface RuleArgs {
-    /**
-     * The name or description for the Amazon CloudWatch metric of this rule.
-     */
     readonly metricName: pulumi.Input<string>;
-    /**
-     * The name or description of the rule.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The objects to include in a rule (documented below).
-     */
     readonly predicates?: pulumi.Input<pulumi.Input<inputs.wafregional.RulePredicate>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

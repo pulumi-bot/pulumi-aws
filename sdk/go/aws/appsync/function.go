@@ -10,75 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AppSync Function.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appsync"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testGraphQLApi, err := appsync.NewGraphQLApi(ctx, "testGraphQLApi", &appsync.GraphQLApiArgs{
-// 			AuthenticationType: pulumi.String("API_KEY"),
-// 			Schema:             pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "type Mutation {\n", "  putPost(id: ID!, title: String!): Post\n", "}\n", "\n", "type Post {\n", "  id: ID!\n", "  title: String!\n", "}\n", "\n", "type Query {\n", "  singlePost(id: ID!): Post\n", "}\n", "\n", "schema {\n", "  query: Query\n", "  mutation: Mutation\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testDataSource, err := appsync.NewDataSource(ctx, "testDataSource", &appsync.DataSourceArgs{
-// 			ApiId: testGraphQLApi.ID(),
-// 			Name:  pulumi.String("tf-example"),
-// 			Type:  pulumi.String("HTTP"),
-// 			HttpConfig: &appsync.DataSourceHttpConfigArgs{
-// 				Endpoint: pulumi.String("http://example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = appsync.NewFunction(ctx, "testFunction", &appsync.FunctionArgs{
-// 			ApiId:                   testGraphQLApi.ID(),
-// 			DataSource:              testDataSource.Name,
-// 			Name:                    pulumi.String("tf_example"),
-// 			RequestMappingTemplate:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"version\": \"2018-05-29\",\n", "    \"method\": \"GET\",\n", "    \"resourcePath\": \"/\",\n", "    \"params\":{\n", "        \"headers\": ", "$", "utils.http.copyheaders(", "$", "ctx.request.headers)\n", "    }\n", "}\n")),
-// 			ResponseMappingTemplate: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#if(", "$", "ctx.result.statusCode == 200)\n", "    ", "$", "ctx.result.body\n", "#else\n", "    ", "$", "utils.appendError(", "$", "ctx.result.body, ", "$", "ctx.result.statusCode)\n", "#end\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Function struct {
 	pulumi.CustomResourceState
 
-	// The ID of the associated AppSync API.
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
-	// The ARN of the Function object.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The Function DataSource name.
-	DataSource pulumi.StringOutput `pulumi:"dataSource"`
-	// The Function description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A unique ID representing the Function object.
-	FunctionId pulumi.StringOutput `pulumi:"functionId"`
-	// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-	FunctionVersion pulumi.StringPtrOutput `pulumi:"functionVersion"`
-	// The Function name. The function name does not have to be unique.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-	RequestMappingTemplate pulumi.StringOutput `pulumi:"requestMappingTemplate"`
-	// The Function response mapping template.
-	ResponseMappingTemplate pulumi.StringOutput `pulumi:"responseMappingTemplate"`
+	ApiId                   pulumi.StringOutput    `pulumi:"apiId"`
+	Arn                     pulumi.StringOutput    `pulumi:"arn"`
+	DataSource              pulumi.StringOutput    `pulumi:"dataSource"`
+	Description             pulumi.StringPtrOutput `pulumi:"description"`
+	FunctionId              pulumi.StringOutput    `pulumi:"functionId"`
+	FunctionVersion         pulumi.StringPtrOutput `pulumi:"functionVersion"`
+	Name                    pulumi.StringOutput    `pulumi:"name"`
+	RequestMappingTemplate  pulumi.StringOutput    `pulumi:"requestMappingTemplate"`
+	ResponseMappingTemplate pulumi.StringOutput    `pulumi:"responseMappingTemplate"`
 }
 
 // NewFunction registers a new resource with the given unique name, arguments, and options.
@@ -121,44 +64,26 @@ func GetFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Function resources.
 type functionState struct {
-	// The ID of the associated AppSync API.
-	ApiId *string `pulumi:"apiId"`
-	// The ARN of the Function object.
-	Arn *string `pulumi:"arn"`
-	// The Function DataSource name.
-	DataSource *string `pulumi:"dataSource"`
-	// The Function description.
-	Description *string `pulumi:"description"`
-	// A unique ID representing the Function object.
-	FunctionId *string `pulumi:"functionId"`
-	// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-	FunctionVersion *string `pulumi:"functionVersion"`
-	// The Function name. The function name does not have to be unique.
-	Name *string `pulumi:"name"`
-	// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-	RequestMappingTemplate *string `pulumi:"requestMappingTemplate"`
-	// The Function response mapping template.
+	ApiId                   *string `pulumi:"apiId"`
+	Arn                     *string `pulumi:"arn"`
+	DataSource              *string `pulumi:"dataSource"`
+	Description             *string `pulumi:"description"`
+	FunctionId              *string `pulumi:"functionId"`
+	FunctionVersion         *string `pulumi:"functionVersion"`
+	Name                    *string `pulumi:"name"`
+	RequestMappingTemplate  *string `pulumi:"requestMappingTemplate"`
 	ResponseMappingTemplate *string `pulumi:"responseMappingTemplate"`
 }
 
 type FunctionState struct {
-	// The ID of the associated AppSync API.
-	ApiId pulumi.StringPtrInput
-	// The ARN of the Function object.
-	Arn pulumi.StringPtrInput
-	// The Function DataSource name.
-	DataSource pulumi.StringPtrInput
-	// The Function description.
-	Description pulumi.StringPtrInput
-	// A unique ID representing the Function object.
-	FunctionId pulumi.StringPtrInput
-	// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-	FunctionVersion pulumi.StringPtrInput
-	// The Function name. The function name does not have to be unique.
-	Name pulumi.StringPtrInput
-	// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-	RequestMappingTemplate pulumi.StringPtrInput
-	// The Function response mapping template.
+	ApiId                   pulumi.StringPtrInput
+	Arn                     pulumi.StringPtrInput
+	DataSource              pulumi.StringPtrInput
+	Description             pulumi.StringPtrInput
+	FunctionId              pulumi.StringPtrInput
+	FunctionVersion         pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	RequestMappingTemplate  pulumi.StringPtrInput
 	ResponseMappingTemplate pulumi.StringPtrInput
 }
 
@@ -167,37 +92,23 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
-	// The ID of the associated AppSync API.
-	ApiId string `pulumi:"apiId"`
-	// The Function DataSource name.
-	DataSource string `pulumi:"dataSource"`
-	// The Function description.
-	Description *string `pulumi:"description"`
-	// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-	FunctionVersion *string `pulumi:"functionVersion"`
-	// The Function name. The function name does not have to be unique.
-	Name *string `pulumi:"name"`
-	// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-	RequestMappingTemplate string `pulumi:"requestMappingTemplate"`
-	// The Function response mapping template.
-	ResponseMappingTemplate string `pulumi:"responseMappingTemplate"`
+	ApiId                   string  `pulumi:"apiId"`
+	DataSource              string  `pulumi:"dataSource"`
+	Description             *string `pulumi:"description"`
+	FunctionVersion         *string `pulumi:"functionVersion"`
+	Name                    *string `pulumi:"name"`
+	RequestMappingTemplate  string  `pulumi:"requestMappingTemplate"`
+	ResponseMappingTemplate string  `pulumi:"responseMappingTemplate"`
 }
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
-	// The ID of the associated AppSync API.
-	ApiId pulumi.StringInput
-	// The Function DataSource name.
-	DataSource pulumi.StringInput
-	// The Function description.
-	Description pulumi.StringPtrInput
-	// The version of the request mapping template. Currently the supported value is `2018-05-29`.
-	FunctionVersion pulumi.StringPtrInput
-	// The Function name. The function name does not have to be unique.
-	Name pulumi.StringPtrInput
-	// The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
-	RequestMappingTemplate pulumi.StringInput
-	// The Function response mapping template.
+	ApiId                   pulumi.StringInput
+	DataSource              pulumi.StringInput
+	Description             pulumi.StringPtrInput
+	FunctionVersion         pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	RequestMappingTemplate  pulumi.StringInput
 	ResponseMappingTemplate pulumi.StringInput
 }
 

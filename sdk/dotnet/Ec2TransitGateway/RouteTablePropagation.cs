@@ -9,52 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2TransitGateway
 {
-    /// <summary>
-    /// Manages an EC2 Transit Gateway Route Table propagation.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2TransitGateway.RouteTablePropagation("example", new Aws.Ec2TransitGateway.RouteTablePropagationArgs
-    ///         {
-    ///             TransitGatewayAttachmentId = aws_ec2_transit_gateway_vpc_attachment.Example.Id,
-    ///             TransitGatewayRouteTableId = aws_ec2_transit_gateway_route_table.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RouteTablePropagation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Identifier of the resource
-        /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
 
-        /// <summary>
-        /// Type of the resource
-        /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway Attachment.
-        /// </summary>
         [Output("transitGatewayAttachmentId")]
         public Output<string> TransitGatewayAttachmentId { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway Route Table.
-        /// </summary>
         [Output("transitGatewayRouteTableId")]
         public Output<string> TransitGatewayRouteTableId { get; private set; } = null!;
 
@@ -104,15 +69,9 @@ namespace Pulumi.Aws.Ec2TransitGateway
 
     public sealed class RouteTablePropagationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway Attachment.
-        /// </summary>
         [Input("transitGatewayAttachmentId", required: true)]
         public Input<string> TransitGatewayAttachmentId { get; set; } = null!;
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway Route Table.
-        /// </summary>
         [Input("transitGatewayRouteTableId", required: true)]
         public Input<string> TransitGatewayRouteTableId { get; set; } = null!;
 
@@ -123,27 +82,15 @@ namespace Pulumi.Aws.Ec2TransitGateway
 
     public sealed class RouteTablePropagationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Identifier of the resource
-        /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
-        /// <summary>
-        /// Type of the resource
-        /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway Attachment.
-        /// </summary>
         [Input("transitGatewayAttachmentId")]
         public Input<string>? TransitGatewayAttachmentId { get; set; }
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway Route Table.
-        /// </summary>
         [Input("transitGatewayRouteTableId")]
         public Input<string>? TransitGatewayRouteTableId { get; set; }
 

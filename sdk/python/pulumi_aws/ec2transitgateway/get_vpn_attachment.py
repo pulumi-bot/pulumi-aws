@@ -54,9 +54,6 @@ class GetVpnAttachmentResult:
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Key-value tags for the EC2 Transit Gateway VPN Attachment
-        """
         return pulumi.get(self, "tags")
 
     @property
@@ -89,35 +86,7 @@ def get_vpn_attachment(filters: Optional[List[pulumi.InputType['GetVpnAttachment
                        vpn_connection_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnAttachmentResult:
     """
-    Get information on an EC2 Transit Gateway VPN Attachment.
-
-    ## Example Usage
-    ### By Transit Gateway and VPN Connection Identifiers
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2transitgateway.get_vpn_attachment(transit_gateway_id=aws_ec2_transit_gateway["example"]["id"],
-        vpn_connection_id=aws_vpn_connection["example"]["id"])
-    ```
-    ### Filter
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.ec2transitgateway.get_vpn_attachment(filters=[aws.ec2transitgateway.GetVpnAttachmentFilterArgs(
-        name="resource-id",
-        values=["some-resource"],
-    )])
-    ```
-
-
-    :param List[pulumi.InputType['GetVpnAttachmentFilterArgs']] filters: Configuration block(s) for filtering. Detailed below.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
-    :param str transit_gateway_id: Identifier of the EC2 Transit Gateway.
-    :param str vpn_connection_id: Identifier of the EC2 VPN Connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

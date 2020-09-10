@@ -64,9 +64,6 @@ class GetFileSystemResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        Amazon Resource Name of the file system.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -77,17 +74,11 @@ class GetFileSystemResult:
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
-        """
-        The DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        Whether EFS is encrypted.
-        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -106,42 +97,26 @@ class GetFileSystemResult:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> str:
-        """
-        The ARN for the KMS encryption key.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="lifecyclePolicy")
     def lifecycle_policy(self) -> 'outputs.GetFileSystemLifecyclePolicyResult':
-        """
-        A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object.
-        """
         return pulumi.get(self, "lifecycle_policy")
 
     @property
     @pulumi.getter(name="performanceMode")
     def performance_mode(self) -> str:
-        """
-        The file system performance mode.
-        """
         return pulumi.get(self, "performance_mode")
 
     @property
     @pulumi.getter(name="provisionedThroughputInMibps")
     def provisioned_throughput_in_mibps(self) -> float:
-        """
-        The throughput, measured in MiB/s, that you want to provision for the file system.
-        * `tags` -A map of tags to assign to the file system.
-        """
         return pulumi.get(self, "provisioned_throughput_in_mibps")
 
     @property
     @pulumi.getter(name="sizeInBytes")
     def size_in_bytes(self) -> float:
-        """
-        The current byte count used by the file system.
-        """
         return pulumi.get(self, "size_in_bytes")
 
     @property
@@ -152,9 +127,6 @@ class GetFileSystemResult:
     @property
     @pulumi.getter(name="throughputMode")
     def throughput_mode(self) -> str:
-        """
-        Throughput mode for the file system.
-        """
         return pulumi.get(self, "throughput_mode")
 
 
@@ -184,24 +156,7 @@ def get_file_system(creation_token: Optional[str] = None,
                     tags: Optional[Mapping[str, str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFileSystemResult:
     """
-    Provides information about an Elastic File System (EFS) File System.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    file_system_id = config.get("fileSystemId")
-    if file_system_id is None:
-        file_system_id = ""
-    by_id = aws.efs.get_file_system(file_system_id=file_system_id)
-    ```
-
-
-    :param str creation_token: Restricts the list to the file system with this creation token.
-    :param str file_system_id: The ID that identifies the file system (e.g. fs-ccfc0d65).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['creationToken'] = creation_token

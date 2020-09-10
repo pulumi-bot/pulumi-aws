@@ -22,35 +22,9 @@ class RoleAlias(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an IoT role alias.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {"Service": "credentials.iot.amazonaws.com",
-              "Action": "sts:AssumeRole"
-            }
-          ]
-        }
-        \"\"\")
-        alias = aws.iot.RoleAlias("alias",
-            alias="Thermostat-dynamodb-access-role-alias",
-            role_arn=role.arn)
-        ```
-
+        Create a RoleAlias resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alias: The name of the role alias.
-        :param pulumi.Input[float] credential_duration: The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-        :param pulumi.Input[str] role_arn: The identity of the role to which the alias refers.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,10 +72,6 @@ class RoleAlias(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alias: The name of the role alias.
-        :param pulumi.Input[str] arn: The ARN assigned by AWS to this role alias.
-        :param pulumi.Input[float] credential_duration: The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-        :param pulumi.Input[str] role_arn: The identity of the role to which the alias refers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -116,33 +86,21 @@ class RoleAlias(pulumi.CustomResource):
     @property
     @pulumi.getter
     def alias(self) -> pulumi.Output[str]:
-        """
-        The name of the role alias.
-        """
         return pulumi.get(self, "alias")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN assigned by AWS to this role alias.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="credentialDuration")
     def credential_duration(self) -> pulumi.Output[Optional[float]]:
-        """
-        The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 3600 seconds (60 minutes).
-        """
         return pulumi.get(self, "credential_duration")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
-        """
-        The identity of the role to which the alias refers.
-        """
         return pulumi.get(self, "role_arn")
 
     def translate_output_property(self, prop):

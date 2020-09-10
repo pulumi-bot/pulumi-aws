@@ -9,76 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CodeDeploy
 {
-    /// <summary>
-    /// Provides a CodeDeploy application to be used as a basis for deployments
-    /// 
-    /// ## Example Usage
-    /// ### ECS Application
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeDeploy.Application("example", new Aws.CodeDeploy.ApplicationArgs
-    ///         {
-    ///             ComputePlatform = "ECS",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Lambda Application
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeDeploy.Application("example", new Aws.CodeDeploy.ApplicationArgs
-    ///         {
-    ///             ComputePlatform = "Lambda",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Server Application
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeDeploy.Application("example", new Aws.CodeDeploy.ApplicationArgs
-    ///         {
-    ///             ComputePlatform = "Server",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Application : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
-        /// </summary>
         [Output("computePlatform")]
         public Output<string?> ComputePlatform { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the application.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -131,15 +66,9 @@ namespace Pulumi.Aws.CodeDeploy
 
     public sealed class ApplicationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
-        /// </summary>
         [Input("computePlatform")]
         public Input<string>? ComputePlatform { get; set; }
 
-        /// <summary>
-        /// The name of the application.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -153,15 +82,9 @@ namespace Pulumi.Aws.CodeDeploy
 
     public sealed class ApplicationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
-        /// </summary>
         [Input("computePlatform")]
         public Input<string>? ComputePlatform { get; set; }
 
-        /// <summary>
-        /// The name of the application.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

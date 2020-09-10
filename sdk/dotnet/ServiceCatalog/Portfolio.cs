@@ -9,29 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ServiceCatalog
 {
-    /// <summary>
-    /// Provides a resource to create a Service Catalog Portfolio.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var portfolio = new Aws.ServiceCatalog.Portfolio("portfolio", new Aws.ServiceCatalog.PortfolioArgs
-    ///         {
-    ///             Description = "List of my organizations apps",
-    ///             ProviderName = "Brett",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Portfolio : Pulumi.CustomResource
     {
         [Output("arn")]
@@ -40,27 +17,15 @@ namespace Pulumi.Aws.ServiceCatalog
         [Output("createdTime")]
         public Output<string> CreatedTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the portfolio
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the portfolio.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the person or organization who owns the portfolio.
-        /// </summary>
         [Output("providerName")]
         public Output<string?> ProviderName { get; private set; } = null!;
 
-        /// <summary>
-        /// Tags to apply to the connection.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -110,30 +75,17 @@ namespace Pulumi.Aws.ServiceCatalog
 
     public sealed class PortfolioArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description of the portfolio
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the portfolio.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Name of the person or organization who owns the portfolio.
-        /// </summary>
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Tags to apply to the connection.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -153,30 +105,17 @@ namespace Pulumi.Aws.ServiceCatalog
         [Input("createdTime")]
         public Input<string>? CreatedTime { get; set; }
 
-        /// <summary>
-        /// Description of the portfolio
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the portfolio.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Name of the person or organization who owns the portfolio.
-        /// </summary>
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Tags to apply to the connection.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

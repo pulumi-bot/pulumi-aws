@@ -10,69 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to manage the accepter's side of a Direct Connect hosted public virtual interface.
-// This resource accepts ownership of a public virtual interface created by another AWS account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directconnect"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/providers"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newaws(ctx, "accepter", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		accepterCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		creator, err := directconnect.NewHostedPublicVirtualInterface(ctx, "creator", &directconnect.HostedPublicVirtualInterfaceArgs{
-// 			ConnectionId:    pulumi.String("dxcon-zzzzzzzz"),
-// 			OwnerAccountId:  pulumi.String(accepterCallerIdentity.AccountId),
-// 			Vlan:            pulumi.Int(4094),
-// 			AddressFamily:   pulumi.String("ipv4"),
-// 			BgpAsn:          pulumi.Int(65352),
-// 			CustomerAddress: pulumi.String("175.45.176.1/30"),
-// 			AmazonAddress:   pulumi.String("175.45.176.2/30"),
-// 			RouteFilterPrefixes: pulumi.StringArray{
-// 				pulumi.String("210.52.109.0/24"),
-// 				pulumi.String("175.45.176.0/22"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = directconnect.NewHostedPublicVirtualInterfaceAccepter(ctx, "accepterHostedPublicVirtualInterfaceAccepter", &directconnect.HostedPublicVirtualInterfaceAccepterArgs{
-// 			VirtualInterfaceId: creator.ID(),
-// 			Tags: pulumi.StringMap{
-// 				"Side": pulumi.String("Accepter"),
-// 			},
-// 		}, pulumi.Provider(aws.Accepter))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type HostedPublicVirtualInterfaceAccepter struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the virtual interface.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the Direct Connect virtual interface to accept.
-	VirtualInterfaceId pulumi.StringOutput `pulumi:"virtualInterfaceId"`
+	Arn                pulumi.StringOutput    `pulumi:"arn"`
+	Tags               pulumi.StringMapOutput `pulumi:"tags"`
+	VirtualInterfaceId pulumi.StringOutput    `pulumi:"virtualInterfaceId"`
 }
 
 // NewHostedPublicVirtualInterfaceAccepter registers a new resource with the given unique name, arguments, and options.
@@ -106,20 +49,14 @@ func GetHostedPublicVirtualInterfaceAccepter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HostedPublicVirtualInterfaceAccepter resources.
 type hostedPublicVirtualInterfaceAccepterState struct {
-	// The ARN of the virtual interface.
-	Arn *string `pulumi:"arn"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The ID of the Direct Connect virtual interface to accept.
-	VirtualInterfaceId *string `pulumi:"virtualInterfaceId"`
+	Arn                *string           `pulumi:"arn"`
+	Tags               map[string]string `pulumi:"tags"`
+	VirtualInterfaceId *string           `pulumi:"virtualInterfaceId"`
 }
 
 type HostedPublicVirtualInterfaceAccepterState struct {
-	// The ARN of the virtual interface.
-	Arn pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The ID of the Direct Connect virtual interface to accept.
+	Arn                pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
 	VirtualInterfaceId pulumi.StringPtrInput
 }
 
@@ -128,17 +65,13 @@ func (HostedPublicVirtualInterfaceAccepterState) ElementType() reflect.Type {
 }
 
 type hostedPublicVirtualInterfaceAccepterArgs struct {
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The ID of the Direct Connect virtual interface to accept.
-	VirtualInterfaceId string `pulumi:"virtualInterfaceId"`
+	Tags               map[string]string `pulumi:"tags"`
+	VirtualInterfaceId string            `pulumi:"virtualInterfaceId"`
 }
 
 // The set of arguments for constructing a HostedPublicVirtualInterfaceAccepter resource.
 type HostedPublicVirtualInterfaceAccepterArgs struct {
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The ID of the Direct Connect virtual interface to accept.
+	Tags               pulumi.StringMapInput
 	VirtualInterfaceId pulumi.StringInput
 }
 

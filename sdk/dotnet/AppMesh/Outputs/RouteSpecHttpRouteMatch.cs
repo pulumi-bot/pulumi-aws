@@ -13,22 +13,9 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class RouteSpecHttpRouteMatch
     {
-        /// <summary>
-        /// The client request headers to match on.
-        /// </summary>
         public readonly ImmutableArray<Outputs.RouteSpecHttpRouteMatchHeader> Headers;
-        /// <summary>
-        /// The client request header method to match on. Valid values: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
-        /// </summary>
         public readonly string? Method;
-        /// <summary>
-        /// Specifies the path with which to match requests.
-        /// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-        /// </summary>
         public readonly string Prefix;
-        /// <summary>
-        /// The client request header scheme to match on. Valid values: `http`, `https`.
-        /// </summary>
         public readonly string? Scheme;
 
         [OutputConstructor]

@@ -14,10 +14,6 @@ namespace Pulumi.Aws.Dlm.Inputs
     {
         [Input("resourceTypes", required: true)]
         private InputList<string>? _resourceTypes;
-
-        /// <summary>
-        /// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
-        /// </summary>
         public InputList<string> ResourceTypes
         {
             get => _resourceTypes ?? (_resourceTypes = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.Aws.Dlm.Inputs
 
         [Input("schedules", required: true)]
         private InputList<Inputs.LifecyclePolicyPolicyDetailsScheduleArgs>? _schedules;
-
-        /// <summary>
-        /// See the `schedule` configuration block.
-        /// </summary>
         public InputList<Inputs.LifecyclePolicyPolicyDetailsScheduleArgs> Schedules
         {
             get => _schedules ?? (_schedules = new InputList<Inputs.LifecyclePolicyPolicyDetailsScheduleArgs>());
@@ -38,10 +30,6 @@ namespace Pulumi.Aws.Dlm.Inputs
 
         [Input("targetTags", required: true)]
         private InputMap<string>? _targetTags;
-
-        /// <summary>
-        /// A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
-        /// </summary>
         public InputMap<string> TargetTags
         {
             get => _targetTags ?? (_targetTags = new InputMap<string>());

@@ -42,9 +42,6 @@ class GetSelectionResult:
     @property
     @pulumi.getter(name="iamRoleArn")
     def iam_role_arn(self) -> str:
-        """
-        The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
-        """
         return pulumi.get(self, "iam_role_arn")
 
     @property
@@ -58,9 +55,6 @@ class GetSelectionResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The display name of a resource selection document.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -71,9 +65,6 @@ class GetSelectionResult:
     @property
     @pulumi.getter
     def resources(self) -> List[str]:
-        """
-        An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
-        """
         return pulumi.get(self, "resources")
 
     @property
@@ -100,21 +91,7 @@ def get_selection(plan_id: Optional[str] = None,
                   selection_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSelectionResult:
     """
-    Use this data source to get information on an existing backup selection.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.backup.get_selection(plan_id=data["aws_backup_plan"]["example"]["id"],
-        selection_id="selection-id-example")
-    ```
-
-
-    :param str plan_id: The backup plan ID associated with the selection of resources.
-    :param str selection_id: The backup selection ID.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['planId'] = plan_id

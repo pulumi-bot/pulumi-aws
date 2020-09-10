@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about multiple Outposts Sites.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const all = pulumi.output(aws.outposts.getSites({ async: true }));
- * ```
- */
 export function getSites(opts?: pulumi.InvokeOptions): Promise<GetSitesResult> {
     if (!opts) {
         opts = {}
@@ -38,8 +26,5 @@ export interface GetSitesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set of Outposts Site identifiers.
-     */
     readonly ids: string[];
 }

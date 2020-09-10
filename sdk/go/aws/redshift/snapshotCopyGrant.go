@@ -10,52 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a snapshot copy grant that allows AWS Redshift to encrypt copied snapshots with a customer master key from AWS KMS in a destination region.
-//
-// Note that the grant must exist in the destination region, and not in the region of the cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/redshift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testSnapshotCopyGrant, err := redshift.NewSnapshotCopyGrant(ctx, "testSnapshotCopyGrant", &redshift.SnapshotCopyGrantArgs{
-// 			SnapshotCopyGrantName: pulumi.String("my-grant"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = redshift.NewCluster(ctx, "testCluster", &redshift.ClusterArgs{
-// 			SnapshotCopy: &redshift.ClusterSnapshotCopyArgs{
-// 				DestinationRegion: pulumi.String("us-east-2"),
-// 				GrantName:         testSnapshotCopyGrant.SnapshotCopyGrantName,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SnapshotCopyGrant struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN) of snapshot copy grant
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
-	// A friendly name for identifying the grant.
-	SnapshotCopyGrantName pulumi.StringOutput `pulumi:"snapshotCopyGrantName"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn                   pulumi.StringOutput    `pulumi:"arn"`
+	KmsKeyId              pulumi.StringOutput    `pulumi:"kmsKeyId"`
+	SnapshotCopyGrantName pulumi.StringOutput    `pulumi:"snapshotCopyGrantName"`
+	Tags                  pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewSnapshotCopyGrant registers a new resource with the given unique name, arguments, and options.
@@ -89,25 +50,17 @@ func GetSnapshotCopyGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnapshotCopyGrant resources.
 type snapshotCopyGrantState struct {
-	// Amazon Resource Name (ARN) of snapshot copy grant
-	Arn *string `pulumi:"arn"`
-	// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// A friendly name for identifying the grant.
-	SnapshotCopyGrantName *string `pulumi:"snapshotCopyGrantName"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                   *string           `pulumi:"arn"`
+	KmsKeyId              *string           `pulumi:"kmsKeyId"`
+	SnapshotCopyGrantName *string           `pulumi:"snapshotCopyGrantName"`
+	Tags                  map[string]string `pulumi:"tags"`
 }
 
 type SnapshotCopyGrantState struct {
-	// Amazon Resource Name (ARN) of snapshot copy grant
-	Arn pulumi.StringPtrInput
-	// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-	KmsKeyId pulumi.StringPtrInput
-	// A friendly name for identifying the grant.
+	Arn                   pulumi.StringPtrInput
+	KmsKeyId              pulumi.StringPtrInput
 	SnapshotCopyGrantName pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags                  pulumi.StringMapInput
 }
 
 func (SnapshotCopyGrantState) ElementType() reflect.Type {
@@ -115,22 +68,16 @@ func (SnapshotCopyGrantState) ElementType() reflect.Type {
 }
 
 type snapshotCopyGrantArgs struct {
-	// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// A friendly name for identifying the grant.
-	SnapshotCopyGrantName string `pulumi:"snapshotCopyGrantName"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	KmsKeyId              *string           `pulumi:"kmsKeyId"`
+	SnapshotCopyGrantName string            `pulumi:"snapshotCopyGrantName"`
+	Tags                  map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a SnapshotCopyGrant resource.
 type SnapshotCopyGrantArgs struct {
-	// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-	KmsKeyId pulumi.StringPtrInput
-	// A friendly name for identifying the grant.
+	KmsKeyId              pulumi.StringPtrInput
 	SnapshotCopyGrantName pulumi.StringInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags                  pulumi.StringMapInput
 }
 
 func (SnapshotCopyGrantArgs) ElementType() reflect.Type {

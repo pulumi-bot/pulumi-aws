@@ -11,12 +11,7 @@ import (
 )
 
 type GetEbsVolumesFilter struct {
-	// The name of the field to filter by, as defined by
-	// [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumes.html).
-	// For example, if matching against the `size` filter, use:
-	Name string `pulumi:"name"`
-	// Set of values that are accepted for the given field.
-	// EBS Volume IDs will be selected if any one of the given values match.
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -32,12 +27,7 @@ type GetEbsVolumesFilterInput interface {
 }
 
 type GetEbsVolumesFilterArgs struct {
-	// The name of the field to filter by, as defined by
-	// [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumes.html).
-	// For example, if matching against the `size` filter, use:
-	Name pulumi.StringInput `pulumi:"name"`
-	// Set of values that are accepted for the given field.
-	// EBS Volume IDs will be selected if any one of the given values match.
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -92,15 +82,10 @@ func (o GetEbsVolumesFilterOutput) ToGetEbsVolumesFilterOutputWithContext(ctx co
 	return o
 }
 
-// The name of the field to filter by, as defined by
-// [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumes.html).
-// For example, if matching against the `size` filter, use:
 func (o GetEbsVolumesFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEbsVolumesFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set of values that are accepted for the given field.
-// EBS Volume IDs will be selected if any one of the given values match.
 func (o GetEbsVolumesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEbsVolumesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

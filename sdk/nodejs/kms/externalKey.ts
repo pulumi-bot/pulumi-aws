@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a KMS Customer Master Key that uses external key material. To instead manage a KMS Customer Master Key where AWS automatically generates and potentially rotates key material, see the `aws.kms.Key` resource.
- *
- * > **Note:** All arguments including the key material will be stored in the raw state as plain-text.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.kms.ExternalKey("example", {
- *     description: "KMS EXTERNAL for AMI encryption",
- * });
- * ```
- */
 export class ExternalKey extends pulumi.CustomResource {
     /**
      * Get an existing ExternalKey resource's state with the given name, ID, and optional extra
@@ -48,49 +32,16 @@ export class ExternalKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === ExternalKey.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the key.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
-     */
     public readonly deletionWindowInDays!: pulumi.Output<number | undefined>;
-    /**
-     * Description of the key.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether the key is enabled. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
-     */
     public readonly enabled!: pulumi.Output<boolean>;
-    /**
-     * Whether the key material expires. Empty when pending key material import, otherwise `KEY_MATERIAL_EXPIRES` or `KEY_MATERIAL_DOES_NOT_EXPIRE`.
-     */
     public /*out*/ readonly expirationModel!: pulumi.Output<string>;
-    /**
-     * Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material. The same key material can be reimported, but you cannot import different key material.
-     */
     public readonly keyMaterialBase64!: pulumi.Output<string | undefined>;
-    /**
-     * The state of the CMK.
-     */
     public /*out*/ readonly keyState!: pulumi.Output<string>;
-    /**
-     * The cryptographic operations for which you can use the CMK.
-     */
     public /*out*/ readonly keyUsage!: pulumi.Output<string>;
-    /**
-     * A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK.
-     */
     public readonly policy!: pulumi.Output<string>;
-    /**
-     * A key-value map of tags to assign to the key.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-     */
     public readonly validTo!: pulumi.Output<string | undefined>;
 
     /**
@@ -145,49 +96,16 @@ export class ExternalKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ExternalKey resources.
  */
 export interface ExternalKeyState {
-    /**
-     * The Amazon Resource Name (ARN) of the key.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
-     */
     readonly deletionWindowInDays?: pulumi.Input<number>;
-    /**
-     * Description of the key.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Specifies whether the key is enabled. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Whether the key material expires. Empty when pending key material import, otherwise `KEY_MATERIAL_EXPIRES` or `KEY_MATERIAL_DOES_NOT_EXPIRE`.
-     */
     readonly expirationModel?: pulumi.Input<string>;
-    /**
-     * Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material. The same key material can be reimported, but you cannot import different key material.
-     */
     readonly keyMaterialBase64?: pulumi.Input<string>;
-    /**
-     * The state of the CMK.
-     */
     readonly keyState?: pulumi.Input<string>;
-    /**
-     * The cryptographic operations for which you can use the CMK.
-     */
     readonly keyUsage?: pulumi.Input<string>;
-    /**
-     * A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK.
-     */
     readonly policy?: pulumi.Input<string>;
-    /**
-     * A key-value map of tags to assign to the key.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-     */
     readonly validTo?: pulumi.Input<string>;
 }
 
@@ -195,32 +113,11 @@ export interface ExternalKeyState {
  * The set of arguments for constructing a ExternalKey resource.
  */
 export interface ExternalKeyArgs {
-    /**
-     * Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
-     */
     readonly deletionWindowInDays?: pulumi.Input<number>;
-    /**
-     * Description of the key.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Specifies whether the key is enabled. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material. The same key material can be reimported, but you cannot import different key material.
-     */
     readonly keyMaterialBase64?: pulumi.Input<string>;
-    /**
-     * A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK.
-     */
     readonly policy?: pulumi.Input<string>;
-    /**
-     * A key-value map of tags to assign to the key.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-     */
     readonly validTo?: pulumi.Input<string>;
 }

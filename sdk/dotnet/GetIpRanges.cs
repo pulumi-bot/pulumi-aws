@@ -11,59 +11,6 @@ namespace Pulumi.Aws
 {
     public static class GetIpRanges
     {
-        /// <summary>
-        /// Use this data source to get the IP ranges of various AWS products and services. For more information about the contents of this data source and required JSON syntax if referencing a custom URL, see the [AWS IP Address Ranges documention](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var europeanEc2 = Output.Create(Aws.GetIpRanges.InvokeAsync(new Aws.GetIpRangesArgs
-        ///         {
-        ///             Regions = 
-        ///             {
-        ///                 "eu-west-1",
-        ///                 "eu-central-1",
-        ///             },
-        ///             Services = 
-        ///             {
-        ///                 "ec2",
-        ///             },
-        ///         }));
-        ///         var fromEurope = new Aws.Ec2.SecurityGroup("fromEurope", new Aws.Ec2.SecurityGroupArgs
-        ///         {
-        ///             Ingress = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.SecurityGroupIngressArgs
-        ///                 {
-        ///                     FromPort = 443,
-        ///                     ToPort = 443,
-        ///                     Protocol = "tcp",
-        ///                     CidrBlocks = europeanEc2.Apply(europeanEc2 =&gt; europeanEc2.CidrBlocks),
-        ///                     Ipv6CidrBlocks = europeanEc2.Apply(europeanEc2 =&gt; europeanEc2.Ipv6CidrBlocks),
-        ///                 },
-        ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "CreateDate", europeanEc2.Apply(europeanEc2 =&gt; europeanEc2.CreateDate) },
-        ///                 { "SyncToken", europeanEc2.Apply(europeanEc2 =&gt; europeanEc2.SyncToken) },
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetIpRangesResult> InvokeAsync(GetIpRangesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("aws:index/getIpRanges:getIpRanges", args ?? new GetIpRangesArgs(), options.WithVersion());
     }
@@ -73,12 +20,6 @@ namespace Pulumi.Aws
     {
         [Input("regions")]
         private List<string>? _regions;
-
-        /// <summary>
-        /// Filter IP ranges by regions (or include all regions, if
-        /// omitted). Valid items are `global` (for `cloudfront`) as well as all AWS regions
-        /// (e.g. `eu-central-1`)
-        /// </summary>
         public List<string> Regions
         {
             get => _regions ?? (_regions = new List<string>());
@@ -87,23 +28,12 @@ namespace Pulumi.Aws
 
         [Input("services", required: true)]
         private List<string>? _services;
-
-        /// <summary>
-        /// Filter IP ranges by services. Valid items are `amazon`
-        /// (for amazon.com), `amazon_connect`, `api_gateway`, `cloud9`, `cloudfront`,
-        /// `codebuild`, `dynamodb`, `ec2`, `ec2_instance_connect`, `globalaccelerator`,
-        /// `route53`, `route53_healthchecks`, `s3` and `workspaces_gateways`. See the
-        /// [`service` attribute][2] documentation for other possible values.
-        /// </summary>
         public List<string> Services
         {
             get => _services ?? (_services = new List<string>());
             set => _services = value;
         }
 
-        /// <summary>
-        /// Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documention](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
-        /// </summary>
         [Input("url")]
         public string? Url { get; set; }
 
@@ -116,28 +46,15 @@ namespace Pulumi.Aws
     [OutputType]
     public sealed class GetIpRangesResult
     {
-        /// <summary>
-        /// The lexically ordered list of CIDR blocks.
-        /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
-        /// <summary>
-        /// The publication time of the IP ranges (e.g. `2016-08-03-23-46-05`).
-        /// </summary>
         public readonly string CreateDate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The lexically ordered list of IPv6 CIDR blocks.
-        /// </summary>
         public readonly ImmutableArray<string> Ipv6CidrBlocks;
         public readonly ImmutableArray<string> Regions;
         public readonly ImmutableArray<string> Services;
-        /// <summary>
-        /// The publication time of the IP ranges, in Unix epoch time format
-        /// (e.g. `1470267965`).
-        /// </summary>
         public readonly int SyncToken;
         public readonly string? Url;
 

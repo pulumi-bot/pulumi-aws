@@ -11,11 +11,8 @@ import (
 )
 
 type AcceleratorAttributes struct {
-	// Indicates whether flow logs are enabled.
-	FlowLogsEnabled *bool `pulumi:"flowLogsEnabled"`
-	// The name of the Amazon S3 bucket for the flow logs.
+	FlowLogsEnabled  *bool   `pulumi:"flowLogsEnabled"`
 	FlowLogsS3Bucket *string `pulumi:"flowLogsS3Bucket"`
-	// The prefix for the location in the Amazon S3 bucket for the flow logs.
 	FlowLogsS3Prefix *string `pulumi:"flowLogsS3Prefix"`
 }
 
@@ -31,11 +28,8 @@ type AcceleratorAttributesInput interface {
 }
 
 type AcceleratorAttributesArgs struct {
-	// Indicates whether flow logs are enabled.
-	FlowLogsEnabled pulumi.BoolPtrInput `pulumi:"flowLogsEnabled"`
-	// The name of the Amazon S3 bucket for the flow logs.
+	FlowLogsEnabled  pulumi.BoolPtrInput   `pulumi:"flowLogsEnabled"`
 	FlowLogsS3Bucket pulumi.StringPtrInput `pulumi:"flowLogsS3Bucket"`
-	// The prefix for the location in the Amazon S3 bucket for the flow logs.
 	FlowLogsS3Prefix pulumi.StringPtrInput `pulumi:"flowLogsS3Prefix"`
 }
 
@@ -115,18 +109,14 @@ func (o AcceleratorAttributesOutput) ToAcceleratorAttributesPtrOutputWithContext
 		return &v
 	}).(AcceleratorAttributesPtrOutput)
 }
-
-// Indicates whether flow logs are enabled.
 func (o AcceleratorAttributesOutput) FlowLogsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AcceleratorAttributes) *bool { return v.FlowLogsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the Amazon S3 bucket for the flow logs.
 func (o AcceleratorAttributesOutput) FlowLogsS3Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorAttributes) *string { return v.FlowLogsS3Bucket }).(pulumi.StringPtrOutput)
 }
 
-// The prefix for the location in the Amazon S3 bucket for the flow logs.
 func (o AcceleratorAttributesOutput) FlowLogsS3Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorAttributes) *string { return v.FlowLogsS3Prefix }).(pulumi.StringPtrOutput)
 }
@@ -149,7 +139,6 @@ func (o AcceleratorAttributesPtrOutput) Elem() AcceleratorAttributesOutput {
 	return o.ApplyT(func(v *AcceleratorAttributes) AcceleratorAttributes { return *v }).(AcceleratorAttributesOutput)
 }
 
-// Indicates whether flow logs are enabled.
 func (o AcceleratorAttributesPtrOutput) FlowLogsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AcceleratorAttributes) *bool {
 		if v == nil {
@@ -159,7 +148,6 @@ func (o AcceleratorAttributesPtrOutput) FlowLogsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name of the Amazon S3 bucket for the flow logs.
 func (o AcceleratorAttributesPtrOutput) FlowLogsS3Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AcceleratorAttributes) *string {
 		if v == nil {
@@ -169,7 +157,6 @@ func (o AcceleratorAttributesPtrOutput) FlowLogsS3Bucket() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The prefix for the location in the Amazon S3 bucket for the flow logs.
 func (o AcceleratorAttributesPtrOutput) FlowLogsS3Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AcceleratorAttributes) *string {
 		if v == nil {
@@ -180,10 +167,8 @@ func (o AcceleratorAttributesPtrOutput) FlowLogsS3Prefix() pulumi.StringPtrOutpu
 }
 
 type AcceleratorIpSet struct {
-	// A list of IP addresses in the IP address set.
 	IpAddresses []string `pulumi:"ipAddresses"`
-	// The types of IP addresses included in this IP set.
-	IpFamily *string `pulumi:"ipFamily"`
+	IpFamily    *string  `pulumi:"ipFamily"`
 }
 
 // AcceleratorIpSetInput is an input type that accepts AcceleratorIpSetArgs and AcceleratorIpSetOutput values.
@@ -198,10 +183,8 @@ type AcceleratorIpSetInput interface {
 }
 
 type AcceleratorIpSetArgs struct {
-	// A list of IP addresses in the IP address set.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	// The types of IP addresses included in this IP set.
-	IpFamily pulumi.StringPtrInput `pulumi:"ipFamily"`
+	IpFamily    pulumi.StringPtrInput   `pulumi:"ipFamily"`
 }
 
 func (AcceleratorIpSetArgs) ElementType() reflect.Type {
@@ -255,12 +238,10 @@ func (o AcceleratorIpSetOutput) ToAcceleratorIpSetOutputWithContext(ctx context.
 	return o
 }
 
-// A list of IP addresses in the IP address set.
 func (o AcceleratorIpSetOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AcceleratorIpSet) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The types of IP addresses included in this IP set.
 func (o AcceleratorIpSetOutput) IpFamily() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorIpSet) *string { return v.IpFamily }).(pulumi.StringPtrOutput)
 }
@@ -286,10 +267,8 @@ func (o AcceleratorIpSetArrayOutput) Index(i pulumi.IntInput) AcceleratorIpSetOu
 }
 
 type EndpointGroupEndpointConfiguration struct {
-	// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
 	EndpointId *string `pulumi:"endpointId"`
-	// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
-	Weight *int `pulumi:"weight"`
+	Weight     *int    `pulumi:"weight"`
 }
 
 // EndpointGroupEndpointConfigurationInput is an input type that accepts EndpointGroupEndpointConfigurationArgs and EndpointGroupEndpointConfigurationOutput values.
@@ -304,10 +283,8 @@ type EndpointGroupEndpointConfigurationInput interface {
 }
 
 type EndpointGroupEndpointConfigurationArgs struct {
-	// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
 	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
-	// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	Weight     pulumi.IntPtrInput    `pulumi:"weight"`
 }
 
 func (EndpointGroupEndpointConfigurationArgs) ElementType() reflect.Type {
@@ -361,12 +338,10 @@ func (o EndpointGroupEndpointConfigurationOutput) ToEndpointGroupEndpointConfigu
 	return o
 }
 
-// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
 func (o EndpointGroupEndpointConfigurationOutput) EndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
 }
 
-// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
 func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -392,10 +367,8 @@ func (o EndpointGroupEndpointConfigurationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ListenerPortRange struct {
-	// The first port in the range of ports, inclusive.
 	FromPort *int `pulumi:"fromPort"`
-	// The last port in the range of ports, inclusive.
-	ToPort *int `pulumi:"toPort"`
+	ToPort   *int `pulumi:"toPort"`
 }
 
 // ListenerPortRangeInput is an input type that accepts ListenerPortRangeArgs and ListenerPortRangeOutput values.
@@ -410,10 +383,8 @@ type ListenerPortRangeInput interface {
 }
 
 type ListenerPortRangeArgs struct {
-	// The first port in the range of ports, inclusive.
 	FromPort pulumi.IntPtrInput `pulumi:"fromPort"`
-	// The last port in the range of ports, inclusive.
-	ToPort pulumi.IntPtrInput `pulumi:"toPort"`
+	ToPort   pulumi.IntPtrInput `pulumi:"toPort"`
 }
 
 func (ListenerPortRangeArgs) ElementType() reflect.Type {
@@ -467,12 +438,10 @@ func (o ListenerPortRangeOutput) ToListenerPortRangeOutputWithContext(ctx contex
 	return o
 }
 
-// The first port in the range of ports, inclusive.
 func (o ListenerPortRangeOutput) FromPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListenerPortRange) *int { return v.FromPort }).(pulumi.IntPtrOutput)
 }
 
-// The last port in the range of ports, inclusive.
 func (o ListenerPortRangeOutput) ToPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListenerPortRange) *int { return v.ToPort }).(pulumi.IntPtrOutput)
 }

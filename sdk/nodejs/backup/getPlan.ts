@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information on an existing backup plan.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.backup.getPlan({
- *     planId: "tf_example_backup_plan_id",
- * }, { async: true }));
- * ```
- */
 export function getPlan(args: GetPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetPlanResult> {
     if (!opts) {
         opts = {}
@@ -38,13 +24,7 @@ export function getPlan(args: GetPlanArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getPlan.
  */
 export interface GetPlanArgs {
-    /**
-     * The backup plan ID.
-     */
     readonly planId: string;
-    /**
-     * Metadata that you can assign to help organize the plans you create.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -52,25 +32,13 @@ export interface GetPlanArgs {
  * A collection of values returned by getPlan.
  */
 export interface GetPlanResult {
-    /**
-     * The ARN of the backup plan.
-     */
     readonly arn: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The display name of a backup plan.
-     */
     readonly name: string;
     readonly planId: string;
-    /**
-     * Metadata that you can assign to help organize the plans you create.
-     */
     readonly tags: {[key: string]: string};
-    /**
-     * Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-     */
     readonly version: string;
 }

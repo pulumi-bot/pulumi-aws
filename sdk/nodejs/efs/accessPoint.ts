@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Elastic File System (EFS) access point.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const test = new aws.efs.AccessPoint("test", {fileSystemId: aws_efs_file_system.foo.id});
- * ```
- */
 export class AccessPoint extends pulumi.CustomResource {
     /**
      * Get an existing AccessPoint resource's state with the given name, ID, and optional extra
@@ -46,30 +34,12 @@ export class AccessPoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPoint.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name of the access point.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Amazon Resource Name of the file system.
-     */
     public /*out*/ readonly fileSystemArn!: pulumi.Output<string>;
-    /**
-     * The ID of the file system for which the access point is intended.
-     */
     public readonly fileSystemId!: pulumi.Output<string>;
     public /*out*/ readonly ownerId!: pulumi.Output<string>;
-    /**
-     * The operating system user and group applied to all file system requests made using the access point. See Posix User below.
-     */
     public readonly posixUser!: pulumi.Output<outputs.efs.AccessPointPosixUser | undefined>;
-    /**
-     * Specifies the directory on the Amazon EFS file system that the access point provides access to. See Root Directory below.
-     */
     public readonly rootDirectory!: pulumi.Output<outputs.efs.AccessPointRootDirectory>;
-    /**
-     * Key-value mapping of resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -119,30 +89,12 @@ export class AccessPoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessPoint resources.
  */
 export interface AccessPointState {
-    /**
-     * Amazon Resource Name of the access point.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name of the file system.
-     */
     readonly fileSystemArn?: pulumi.Input<string>;
-    /**
-     * The ID of the file system for which the access point is intended.
-     */
     readonly fileSystemId?: pulumi.Input<string>;
     readonly ownerId?: pulumi.Input<string>;
-    /**
-     * The operating system user and group applied to all file system requests made using the access point. See Posix User below.
-     */
     readonly posixUser?: pulumi.Input<inputs.efs.AccessPointPosixUser>;
-    /**
-     * Specifies the directory on the Amazon EFS file system that the access point provides access to. See Root Directory below.
-     */
     readonly rootDirectory?: pulumi.Input<inputs.efs.AccessPointRootDirectory>;
-    /**
-     * Key-value mapping of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -150,20 +102,8 @@ export interface AccessPointState {
  * The set of arguments for constructing a AccessPoint resource.
  */
 export interface AccessPointArgs {
-    /**
-     * The ID of the file system for which the access point is intended.
-     */
     readonly fileSystemId: pulumi.Input<string>;
-    /**
-     * The operating system user and group applied to all file system requests made using the access point. See Posix User below.
-     */
     readonly posixUser?: pulumi.Input<inputs.efs.AccessPointPosixUser>;
-    /**
-     * Specifies the directory on the Amazon EFS file system that the access point provides access to. See Root Directory below.
-     */
     readonly rootDirectory?: pulumi.Input<inputs.efs.AccessPointRootDirectory>;
-    /**
-     * Key-value mapping of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

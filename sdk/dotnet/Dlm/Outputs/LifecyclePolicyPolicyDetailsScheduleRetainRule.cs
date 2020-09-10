@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Dlm.Outputs
     [OutputType]
     public sealed class LifecyclePolicyPolicyDetailsScheduleRetainRule
     {
-        /// <summary>
-        /// How many snapshots to keep. Must be an integer between 1 and 1000.
-        /// </summary>
         public readonly int Count;
 
         [OutputConstructor]

@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Step Function Activity resource
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const sfnActivity = new aws.sfn.Activity("sfn_activity", {});
- * ```
- */
 export class Activity extends pulumi.CustomResource {
     /**
      * Get an existing Activity resource's state with the given name, ID, and optional extra
@@ -44,17 +32,8 @@ export class Activity extends pulumi.CustomResource {
         return obj['__pulumiType'] === Activity.__pulumiType;
     }
 
-    /**
-     * The date the activity was created.
-     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
-    /**
-     * The name of the activity to create.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -93,17 +72,8 @@ export class Activity extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Activity resources.
  */
 export interface ActivityState {
-    /**
-     * The date the activity was created.
-     */
     readonly creationDate?: pulumi.Input<string>;
-    /**
-     * The name of the activity to create.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -111,12 +81,6 @@ export interface ActivityState {
  * The set of arguments for constructing a Activity resource.
  */
 export interface ActivityArgs {
-    /**
-     * The name of the activity to create.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

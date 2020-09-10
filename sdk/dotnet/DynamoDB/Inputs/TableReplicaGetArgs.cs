@@ -12,9 +12,6 @@ namespace Pulumi.Aws.DynamoDB.Inputs
 
     public sealed class TableReplicaGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Region name of the replica.
-        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 

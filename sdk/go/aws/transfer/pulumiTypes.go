@@ -11,7 +11,6 @@ import (
 )
 
 type ServerEndpointDetails struct {
-	// The ID of the VPC endpoint.
 	VpcEndpointId string `pulumi:"vpcEndpointId"`
 }
 
@@ -27,7 +26,6 @@ type ServerEndpointDetailsInput interface {
 }
 
 type ServerEndpointDetailsArgs struct {
-	// The ID of the VPC endpoint.
 	VpcEndpointId pulumi.StringInput `pulumi:"vpcEndpointId"`
 }
 
@@ -107,8 +105,6 @@ func (o ServerEndpointDetailsOutput) ToServerEndpointDetailsPtrOutputWithContext
 		return &v
 	}).(ServerEndpointDetailsPtrOutput)
 }
-
-// The ID of the VPC endpoint.
 func (o ServerEndpointDetailsOutput) VpcEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerEndpointDetails) string { return v.VpcEndpointId }).(pulumi.StringOutput)
 }
@@ -131,7 +127,6 @@ func (o ServerEndpointDetailsPtrOutput) Elem() ServerEndpointDetailsOutput {
 	return o.ApplyT(func(v *ServerEndpointDetails) ServerEndpointDetails { return *v }).(ServerEndpointDetailsOutput)
 }
 
-// The ID of the VPC endpoint.
 func (o ServerEndpointDetailsPtrOutput) VpcEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerEndpointDetails) *string {
 		if v == nil {

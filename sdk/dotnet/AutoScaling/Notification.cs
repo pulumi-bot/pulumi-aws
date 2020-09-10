@@ -9,74 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AutoScaling
 {
-    /// <summary>
-    /// Provides an AutoScaling Group with Notification support, via SNS Topics. Each of
-    /// the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
-    /// Services, and are applied to each AutoScaling Group you supply.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Sns.Topic("example", new Aws.Sns.TopicArgs
-    ///         {
-    ///         });
-    ///         // arn is an exported attribute
-    ///         var bar = new Aws.AutoScaling.Group("bar", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///         });
-    ///         // ...
-    ///         var foo = new Aws.AutoScaling.Group("foo", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///         });
-    ///         // ...
-    ///         var exampleNotifications = new Aws.AutoScaling.Notification("exampleNotifications", new Aws.AutoScaling.NotificationArgs
-    ///         {
-    ///             GroupNames = 
-    ///             {
-    ///                 bar.Name,
-    ///                 foo.Name,
-    ///             },
-    ///             Notifications = 
-    ///             {
-    ///                 "autoscaling:EC2_INSTANCE_LAUNCH",
-    ///                 "autoscaling:EC2_INSTANCE_TERMINATE",
-    ///                 "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
-    ///                 "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
-    ///             },
-    ///             TopicArn = example.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A list of AutoScaling Group Names
-        /// </summary>
         [Output("groupNames")]
         public Output<ImmutableArray<string>> GroupNames { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of Notification Types that trigger
-        /// notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-        /// </summary>
         [Output("notifications")]
         public Output<ImmutableArray<string>> Notifications { get; private set; } = null!;
 
-        /// <summary>
-        /// The Topic ARN for notifications to be sent through
-        /// </summary>
         [Output("topicArn")]
         public Output<string> TopicArn { get; private set; } = null!;
 
@@ -128,10 +68,6 @@ namespace Pulumi.Aws.AutoScaling
     {
         [Input("groupNames", required: true)]
         private InputList<string>? _groupNames;
-
-        /// <summary>
-        /// A list of AutoScaling Group Names
-        /// </summary>
         public InputList<string> GroupNames
         {
             get => _groupNames ?? (_groupNames = new InputList<string>());
@@ -140,20 +76,12 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("notifications", required: true)]
         private InputList<string>? _notifications;
-
-        /// <summary>
-        /// A list of Notification Types that trigger
-        /// notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-        /// </summary>
         public InputList<string> Notifications
         {
             get => _notifications ?? (_notifications = new InputList<string>());
             set => _notifications = value;
         }
 
-        /// <summary>
-        /// The Topic ARN for notifications to be sent through
-        /// </summary>
         [Input("topicArn", required: true)]
         public Input<string> TopicArn { get; set; } = null!;
 
@@ -166,10 +94,6 @@ namespace Pulumi.Aws.AutoScaling
     {
         [Input("groupNames")]
         private InputList<string>? _groupNames;
-
-        /// <summary>
-        /// A list of AutoScaling Group Names
-        /// </summary>
         public InputList<string> GroupNames
         {
             get => _groupNames ?? (_groupNames = new InputList<string>());
@@ -178,20 +102,12 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("notifications")]
         private InputList<string>? _notifications;
-
-        /// <summary>
-        /// A list of Notification Types that trigger
-        /// notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-        /// </summary>
         public InputList<string> Notifications
         {
             get => _notifications ?? (_notifications = new InputList<string>());
             set => _notifications = value;
         }
 
-        /// <summary>
-        /// The Topic ARN for notifications to be sent through
-        /// </summary>
         [Input("topicArn")]
         public Input<string>? TopicArn { get; set; }
 

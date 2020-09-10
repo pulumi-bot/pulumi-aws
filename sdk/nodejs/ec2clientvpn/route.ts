@@ -4,46 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides additional routes for AWS Client VPN endpoints. For more information on usage, please see the
- * [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleEndpoint = new aws.ec2clientvpn.Endpoint("exampleEndpoint", {
- *     description: "Example Client VPN endpoint",
- *     serverCertificateArn: aws_acm_certificate.example.arn,
- *     clientCidrBlock: "10.0.0.0/16",
- *     authenticationOptions: [{
- *         type: "certificate-authentication",
- *         rootCertificateChainArn: aws_acm_certificate.example.arn,
- *     }],
- *     connectionLogOptions: {
- *         enabled: false,
- *     },
- * });
- * const exampleNetworkAssociation = new aws.ec2clientvpn.NetworkAssociation("exampleNetworkAssociation", {
- *     clientVpnEndpointId: exampleEndpoint.id,
- *     subnetId: aws_subnet.example.id,
- * });
- * const exampleRoute = new aws.ec2clientvpn.Route("exampleRoute", {
- *     clientVpnEndpointId: exampleEndpoint.id,
- *     destinationCidrBlock: "0.0.0.0/0",
- *     targetVpcSubnetId: exampleNetworkAssociation.subnetId,
- * });
- * ```
- * ## Attribute Reference
- *
- * In addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the Client VPN endpoint.
- * * `origin` - Indicates how the Client VPN route was added. Will be `add-route` for routes created by this resource.
- * * `type` - The type of the route.
- */
 export class Route extends pulumi.CustomResource {
     /**
      * Get an existing Route resource's state with the given name, ID, and optional extra
@@ -72,22 +32,10 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
-    /**
-     * The ID of the Client VPN endpoint.
-     */
     public readonly clientVpnEndpointId!: pulumi.Output<string>;
-    /**
-     * A brief description of the authorization rule.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The IPv4 address range, in CIDR notation, of the route destination.
-     */
     public readonly destinationCidrBlock!: pulumi.Output<string>;
     public /*out*/ readonly origin!: pulumi.Output<string>;
-    /**
-     * The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
-     */
     public readonly targetVpcSubnetId!: pulumi.Output<string>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -142,22 +90,10 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
-    /**
-     * The ID of the Client VPN endpoint.
-     */
     readonly clientVpnEndpointId?: pulumi.Input<string>;
-    /**
-     * A brief description of the authorization rule.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The IPv4 address range, in CIDR notation, of the route destination.
-     */
     readonly destinationCidrBlock?: pulumi.Input<string>;
     readonly origin?: pulumi.Input<string>;
-    /**
-     * The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
-     */
     readonly targetVpcSubnetId?: pulumi.Input<string>;
     readonly type?: pulumi.Input<string>;
 }
@@ -166,20 +102,8 @@ export interface RouteState {
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
-    /**
-     * The ID of the Client VPN endpoint.
-     */
     readonly clientVpnEndpointId: pulumi.Input<string>;
-    /**
-     * A brief description of the authorization rule.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The IPv4 address range, in CIDR notation, of the route destination.
-     */
     readonly destinationCidrBlock: pulumi.Input<string>;
-    /**
-     * The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
-     */
     readonly targetVpcSubnetId: pulumi.Input<string>;
 }

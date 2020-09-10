@@ -22,26 +22,9 @@ class ResourceShare(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `ram.PrincipalAssociation` resource. To associate resources with the share, see the `ram.ResourceAssociation` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ram.ResourceShare("example",
-            allow_external_principals=True,
-            tags={
-                "Environment": "Production",
-            })
-        ```
-
+        Create a ResourceShare resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_external_principals: Indicates whether principals outside your organization can be associated with a resource share.
-        :param pulumi.Input[str] name: The name of the resource share.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource share.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,10 +68,6 @@ class ResourceShare(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_external_principals: Indicates whether principals outside your organization can be associated with a resource share.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the resource share.
-        :param pulumi.Input[str] name: The name of the resource share.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource share.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -103,33 +82,21 @@ class ResourceShare(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowExternalPrincipals")
     def allow_external_principals(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether principals outside your organization can be associated with a resource share.
-        """
         return pulumi.get(self, "allow_external_principals")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the resource share.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the resource share.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource share.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

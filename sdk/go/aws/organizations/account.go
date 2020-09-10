@@ -10,54 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to create a member account in the current organization.
-//
-// > **Note:** Account management must be done from the organization's master account.
-//
-// !> **WARNING:** Deleting this resource will only remove an AWS account from an organization. This provider will not close the account. The member account must be prepared to be a standalone account beforehand. See the [AWS Organizations documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html) for more information.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewAccount(ctx, "account", &organizations.AccountArgs{
-// 			Email: pulumi.String("john@doe.org"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Account struct {
 	pulumi.CustomResourceState
 
-	// The ARN for this account.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-	Email pulumi.StringOutput `pulumi:"email"`
-	// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
+	Arn                    pulumi.StringOutput    `pulumi:"arn"`
+	Email                  pulumi.StringOutput    `pulumi:"email"`
 	IamUserAccessToBilling pulumi.StringPtrOutput `pulumi:"iamUserAccessToBilling"`
 	JoinedMethod           pulumi.StringOutput    `pulumi:"joinedMethod"`
 	JoinedTimestamp        pulumi.StringOutput    `pulumi:"joinedTimestamp"`
-	// A friendly name for the member account.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
-	Status   pulumi.StringOutput    `pulumi:"status"`
-	// Key-value mapping of resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Name                   pulumi.StringOutput    `pulumi:"name"`
+	ParentId               pulumi.StringOutput    `pulumi:"parentId"`
+	RoleName               pulumi.StringPtrOutput `pulumi:"roleName"`
+	Status                 pulumi.StringOutput    `pulumi:"status"`
+	Tags                   pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -91,43 +56,29 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// The ARN for this account.
-	Arn *string `pulumi:"arn"`
-	// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-	Email *string `pulumi:"email"`
-	// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
-	IamUserAccessToBilling *string `pulumi:"iamUserAccessToBilling"`
-	JoinedMethod           *string `pulumi:"joinedMethod"`
-	JoinedTimestamp        *string `pulumi:"joinedTimestamp"`
-	// A friendly name for the member account.
-	Name *string `pulumi:"name"`
-	// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-	ParentId *string `pulumi:"parentId"`
-	// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-	RoleName *string `pulumi:"roleName"`
-	Status   *string `pulumi:"status"`
-	// Key-value mapping of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Arn                    *string           `pulumi:"arn"`
+	Email                  *string           `pulumi:"email"`
+	IamUserAccessToBilling *string           `pulumi:"iamUserAccessToBilling"`
+	JoinedMethod           *string           `pulumi:"joinedMethod"`
+	JoinedTimestamp        *string           `pulumi:"joinedTimestamp"`
+	Name                   *string           `pulumi:"name"`
+	ParentId               *string           `pulumi:"parentId"`
+	RoleName               *string           `pulumi:"roleName"`
+	Status                 *string           `pulumi:"status"`
+	Tags                   map[string]string `pulumi:"tags"`
 }
 
 type AccountState struct {
-	// The ARN for this account.
-	Arn pulumi.StringPtrInput
-	// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-	Email pulumi.StringPtrInput
-	// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
+	Arn                    pulumi.StringPtrInput
+	Email                  pulumi.StringPtrInput
 	IamUserAccessToBilling pulumi.StringPtrInput
 	JoinedMethod           pulumi.StringPtrInput
 	JoinedTimestamp        pulumi.StringPtrInput
-	// A friendly name for the member account.
-	Name pulumi.StringPtrInput
-	// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-	ParentId pulumi.StringPtrInput
-	// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-	RoleName pulumi.StringPtrInput
-	Status   pulumi.StringPtrInput
-	// Key-value mapping of resource tags.
-	Tags pulumi.StringMapInput
+	Name                   pulumi.StringPtrInput
+	ParentId               pulumi.StringPtrInput
+	RoleName               pulumi.StringPtrInput
+	Status                 pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (AccountState) ElementType() reflect.Type {
@@ -135,34 +86,22 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-	Email string `pulumi:"email"`
-	// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
-	IamUserAccessToBilling *string `pulumi:"iamUserAccessToBilling"`
-	// A friendly name for the member account.
-	Name *string `pulumi:"name"`
-	// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-	ParentId *string `pulumi:"parentId"`
-	// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-	RoleName *string `pulumi:"roleName"`
-	// Key-value mapping of resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	Email                  string            `pulumi:"email"`
+	IamUserAccessToBilling *string           `pulumi:"iamUserAccessToBilling"`
+	Name                   *string           `pulumi:"name"`
+	ParentId               *string           `pulumi:"parentId"`
+	RoleName               *string           `pulumi:"roleName"`
+	Tags                   map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
-	Email pulumi.StringInput
-	// If set to `ALLOW`, the new account enables IAM users to access account billing information if they have the required permissions. If set to `DENY`, then only the root user of the new account can access account billing information.
+	Email                  pulumi.StringInput
 	IamUserAccessToBilling pulumi.StringPtrInput
-	// A friendly name for the member account.
-	Name pulumi.StringPtrInput
-	// Parent Organizational Unit ID or Root ID for the account. Defaults to the Organization default Root ID. A configuration must be present for this argument to perform drift detection.
-	ParentId pulumi.StringPtrInput
-	// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so this provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) is used.
-	RoleName pulumi.StringPtrInput
-	// Key-value mapping of resource tags.
-	Tags pulumi.StringMapInput
+	Name                   pulumi.StringPtrInput
+	ParentId               pulumi.StringPtrInput
+	RoleName               pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {

@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Rds
 {
     public static class GetCluster
     {
-        /// <summary>
-        /// Provides information about an RDS cluster.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var clusterName = Output.Create(Aws.Rds.GetCluster.InvokeAsync(new Aws.Rds.GetClusterArgs
-        ///         {
-        ///             ClusterIdentifier = "clusterName",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:rds/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Aws.Rds
 
     public sealed class GetClusterArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The cluster identifier of the RDS cluster.
-        /// </summary>
         [Input("clusterIdentifier", required: true)]
         public string ClusterIdentifier { get; set; } = null!;
 

@@ -25,56 +25,9 @@ class RouteTable(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to create a VPC routing table.
-
-        > **NOTE on Route Tables and Routes:** This provider currently
-        provides both a standalone Route resource and a Route Table resource with routes
-        defined in-line. At this time you cannot use a Route Table with in-line routes
-        in conjunction with any Route resources. Doing so will cause
-        a conflict of rule settings and will overwrite rules.
-
-        > **NOTE on `gateway_id` and `nat_gateway_id`:** The AWS API is very forgiving with these two
-        attributes and the `ec2.RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
-        This _will_ lead to a permanent diff between your configuration and statefile, as the API returns the correct
-        parameters in the returned route table. If you're experiencing constant diffs in your `ec2.RouteTable` resources,
-        the first thing to check is whether or not you're specifying a NAT ID instead of a Gateway ID, or vice-versa.
-
-        > **NOTE on `propagating_vgws` and the `ec2.VpnGatewayRoutePropagation` resource:**
-        If the `propagating_vgws` argument is present, it's not supported to _also_
-        define route propagations using `ec2.VpnGatewayRoutePropagation`, since
-        this resource will delete any propagating gateways not explicitly listed in
-        `propagating_vgws`. Omit this argument when defining route propagation using
-        the separate resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        route_table = aws.ec2.RouteTable("routeTable",
-            vpc_id=aws_vpc["default"]["id"],
-            routes=[
-                aws.ec2.RouteTableRouteArgs(
-                    cidr_block="10.0.1.0/24",
-                    gateway_id=aws_internet_gateway["main"]["id"],
-                ),
-                aws.ec2.RouteTableRouteArgs(
-                    ipv6_cidr_block="::/0",
-                    egress_only_gateway_id=aws_egress_only_internet_gateway["foo"]["id"],
-                ),
-            ],
-            tags={
-                "Name": "main",
-            })
-        ```
-
+        Create a RouteTable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] propagating_vgws: A list of virtual gateways for propagation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]] routes: A list of route objects. Their keys are documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,11 +75,6 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] owner_id: The ID of the AWS account that owns the route table.
-        :param pulumi.Input[List[pulumi.Input[str]]] propagating_vgws: A list of virtual gateways for propagation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]] routes: A list of route objects. Their keys are documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -142,41 +90,26 @@ class RouteTable(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the AWS account that owns the route table.
-        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="propagatingVgws")
     def propagating_vgws(self) -> pulumi.Output[List[str]]:
-        """
-        A list of virtual gateways for propagation.
-        """
         return pulumi.get(self, "propagating_vgws")
 
     @property
     @pulumi.getter
     def routes(self) -> pulumi.Output[List['outputs.RouteTableRoute']]:
-        """
-        A list of route objects. Their keys are documented below.
-        """
         return pulumi.get(self, "routes")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        The VPC ID.
-        """
         return pulumi.get(self, "vpc_id")
 
     def translate_output_property(self, prop):

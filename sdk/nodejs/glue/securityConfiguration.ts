@@ -6,29 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Glue Security Configuration.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.glue.SecurityConfiguration("example", {encryptionConfiguration: {
- *     cloudwatchEncryption: {
- *         cloudwatchEncryptionMode: "DISABLED",
- *     },
- *     jobBookmarksEncryption: {
- *         jobBookmarksEncryptionMode: "DISABLED",
- *     },
- *     s3Encryption: {
- *         kmsKeyArn: data.aws_kms_key.example.arn,
- *         s3EncryptionMode: "SSE-KMS",
- *     },
- * }});
- * ```
- */
 export class SecurityConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing SecurityConfiguration resource's state with the given name, ID, and optional extra
@@ -57,13 +34,7 @@ export class SecurityConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityConfiguration.__pulumiType;
     }
 
-    /**
-     * Configuration block containing encryption configuration. Detailed below.
-     */
     public readonly encryptionConfiguration!: pulumi.Output<outputs.glue.SecurityConfigurationEncryptionConfiguration>;
-    /**
-     * Name of the security configuration.
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -103,13 +74,7 @@ export class SecurityConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityConfiguration resources.
  */
 export interface SecurityConfigurationState {
-    /**
-     * Configuration block containing encryption configuration. Detailed below.
-     */
     readonly encryptionConfiguration?: pulumi.Input<inputs.glue.SecurityConfigurationEncryptionConfiguration>;
-    /**
-     * Name of the security configuration.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -117,12 +82,6 @@ export interface SecurityConfigurationState {
  * The set of arguments for constructing a SecurityConfiguration resource.
  */
 export interface SecurityConfigurationArgs {
-    /**
-     * Configuration block containing encryption configuration. Detailed below.
-     */
     readonly encryptionConfiguration: pulumi.Input<inputs.glue.SecurityConfigurationEncryptionConfiguration>;
-    /**
-     * Name of the security configuration.
-     */
     readonly name?: pulumi.Input<string>;
 }

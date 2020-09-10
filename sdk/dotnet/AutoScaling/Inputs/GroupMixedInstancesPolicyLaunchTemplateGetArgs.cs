@@ -12,18 +12,11 @@ namespace Pulumi.Aws.AutoScaling.Inputs
 
     public sealed class GroupMixedInstancesPolicyLaunchTemplateGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Nested argument defines the Launch Template. Defined below.
-        /// </summary>
         [Input("launchTemplateSpecification", required: true)]
         public Input<Inputs.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationGetArgs> LaunchTemplateSpecification { get; set; } = null!;
 
         [Input("overrides")]
         private InputList<Inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideGetArgs>? _overrides;
-
-        /// <summary>
-        /// List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
-        /// </summary>
         public InputList<Inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideGetArgs> Overrides
         {
             get => _overrides ?? (_overrides = new InputList<Inputs.GroupMixedInstancesPolicyLaunchTemplateOverrideGetArgs>());

@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class RouteSpecTcpRouteActionWeightedTarget
     {
-        /// <summary>
-        /// The virtual node to associate with the weighted target.
-        /// </summary>
         public readonly string VirtualNode;
-        /// <summary>
-        /// The relative weight of the weighted target. An integer between 0 and 100.
-        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

@@ -10,57 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Load Balancer Listener Certificate resource.
-//
-// This resource is for additional certificates and does not replace the default certificate on the listener.
-//
-// > **Note:** `alb.ListenerCertificate` is known as `lb.ListenerCertificate`. The functionality is identical.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/acm"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleCertificate, err := acm.NewCertificate(ctx, "exampleCertificate", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = lb.NewListenerCertificate(ctx, "exampleListenerCertificate", &lb.ListenerCertificateArgs{
-// 			ListenerArn:    frontEndListener.Arn,
-// 			CertificateArn: exampleCertificate.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // Deprecated: aws.elasticloadbalancingv2.ListenerCertificate has been deprecated in favor of aws.lb.ListenerCertificate
 type ListenerCertificate struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the certificate to attach to the listener.
 	CertificateArn pulumi.StringOutput `pulumi:"certificateArn"`
-	// The ARN of the listener to which to attach the certificate.
-	ListenerArn pulumi.StringOutput `pulumi:"listenerArn"`
+	ListenerArn    pulumi.StringOutput `pulumi:"listenerArn"`
 }
 
 // NewListenerCertificate registers a new resource with the given unique name, arguments, and options.
@@ -97,17 +52,13 @@ func GetListenerCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListenerCertificate resources.
 type listenerCertificateState struct {
-	// The ARN of the certificate to attach to the listener.
 	CertificateArn *string `pulumi:"certificateArn"`
-	// The ARN of the listener to which to attach the certificate.
-	ListenerArn *string `pulumi:"listenerArn"`
+	ListenerArn    *string `pulumi:"listenerArn"`
 }
 
 type ListenerCertificateState struct {
-	// The ARN of the certificate to attach to the listener.
 	CertificateArn pulumi.StringPtrInput
-	// The ARN of the listener to which to attach the certificate.
-	ListenerArn pulumi.StringPtrInput
+	ListenerArn    pulumi.StringPtrInput
 }
 
 func (ListenerCertificateState) ElementType() reflect.Type {
@@ -115,18 +66,14 @@ func (ListenerCertificateState) ElementType() reflect.Type {
 }
 
 type listenerCertificateArgs struct {
-	// The ARN of the certificate to attach to the listener.
 	CertificateArn string `pulumi:"certificateArn"`
-	// The ARN of the listener to which to attach the certificate.
-	ListenerArn string `pulumi:"listenerArn"`
+	ListenerArn    string `pulumi:"listenerArn"`
 }
 
 // The set of arguments for constructing a ListenerCertificate resource.
 type ListenerCertificateArgs struct {
-	// The ARN of the certificate to attach to the listener.
 	CertificateArn pulumi.StringInput
-	// The ARN of the listener to which to attach the certificate.
-	ListenerArn pulumi.StringInput
+	ListenerArn    pulumi.StringInput
 }
 
 func (ListenerCertificateArgs) ElementType() reflect.Type {
