@@ -9,97 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AutoScaling
 {
-    /// <summary>
-    /// Provides an AutoScaling Attachment resource.
-    /// 
-    /// &gt; **NOTE on AutoScaling Groups and ASG Attachments:** This provider currently provides
-    /// both a standalone ASG Attachment resource (describing an ASG attached to
-    /// an ELB or ALB), and an AutoScaling Group resource with
-    /// `load_balancers` and `target_group_arns` defined in-line. At this time you can use an ASG with in-line
-    /// `load balancers` or `target_group_arns` in conjunction with an ASG Attachment resource, however, to prevent
-    /// unintended resource updates, the `aws.autoscaling.Group` resource must be configured
-    /// to ignore changes to the `load_balancers` and `target_group_arns` arguments within a [`lifecycle` configuration block](https://www.terraform.io/docs/configuration/resources.html#lifecycle-lifecycle-customizations).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new load balancer attachment
-    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
-    ///         {
-    ///             AutoscalingGroupName = aws_autoscaling_group.Asg.Id,
-    ///             Elb = aws_elb.Bar.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new ALB Target Group attachment
-    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
-    ///         {
-    ///             AutoscalingGroupName = aws_autoscaling_group.Asg.Id,
-    ///             AlbTargetGroupArn = aws_alb_target_group.Test.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## With An AutoScaling Group Resource
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // ... other configuration ...
-    ///         var asg = new Aws.AutoScaling.Group("asg", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///         });
-    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
-    ///         {
-    ///             AutoscalingGroupName = asg.Id,
-    ///             Elb = aws_elb.Test.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of an ALB Target Group.
-        /// </summary>
         [Output("albTargetGroupArn")]
         public Output<string?> AlbTargetGroupArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of ASG to associate with the ELB.
-        /// </summary>
         [Output("autoscalingGroupName")]
         public Output<string> AutoscalingGroupName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the ELB.
-        /// </summary>
         [Output("elb")]
         public Output<string?> Elb { get; private set; } = null!;
 
@@ -149,21 +66,12 @@ namespace Pulumi.Aws.AutoScaling
 
     public sealed class AttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of an ALB Target Group.
-        /// </summary>
         [Input("albTargetGroupArn")]
         public Input<string>? AlbTargetGroupArn { get; set; }
 
-        /// <summary>
-        /// Name of ASG to associate with the ELB.
-        /// </summary>
         [Input("autoscalingGroupName", required: true)]
         public Input<string> AutoscalingGroupName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the ELB.
-        /// </summary>
         [Input("elb")]
         public Input<string>? Elb { get; set; }
 
@@ -174,21 +82,12 @@ namespace Pulumi.Aws.AutoScaling
 
     public sealed class AttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of an ALB Target Group.
-        /// </summary>
         [Input("albTargetGroupArn")]
         public Input<string>? AlbTargetGroupArn { get; set; }
 
-        /// <summary>
-        /// Name of ASG to associate with the ELB.
-        /// </summary>
         [Input("autoscalingGroupName")]
         public Input<string>? AutoscalingGroupName { get; set; }
 
-        /// <summary>
-        /// The name of the ELB.
-        /// </summary>
         [Input("elb")]
         public Input<string>? Elb { get; set; }
 

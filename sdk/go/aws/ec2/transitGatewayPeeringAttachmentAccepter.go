@@ -10,47 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages the accepter's side of an EC2 Transit Gateway Peering Attachment.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewTransitGatewayPeeringAttachmentAccepter(ctx, "example", &ec2.TransitGatewayPeeringAttachmentAccepterArgs{
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("Example cross-account attachment"),
-// 			},
-// 			TransitGatewayAttachmentId: pulumi.Any(aws_ec2_transit_gateway_peering_attachment.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TransitGatewayPeeringAttachmentAccepter struct {
 	pulumi.CustomResourceState
 
-	// Identifier of the AWS account that owns the EC2 TGW peering.
-	PeerAccountId pulumi.StringOutput `pulumi:"peerAccountId"`
-	PeerRegion    pulumi.StringOutput `pulumi:"peerRegion"`
-	// Identifier of EC2 Transit Gateway to peer with.
-	PeerTransitGatewayId pulumi.StringOutput `pulumi:"peerTransitGatewayId"`
-	// Key-value tags for the EC2 Transit Gateway Peering Attachment.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the EC2 Transit Gateway Peering Attachment to manage.
-	TransitGatewayAttachmentId pulumi.StringOutput `pulumi:"transitGatewayAttachmentId"`
-	// Identifier of EC2 Transit Gateway.
-	TransitGatewayId pulumi.StringOutput `pulumi:"transitGatewayId"`
+	PeerAccountId              pulumi.StringOutput    `pulumi:"peerAccountId"`
+	PeerRegion                 pulumi.StringOutput    `pulumi:"peerRegion"`
+	PeerTransitGatewayId       pulumi.StringOutput    `pulumi:"peerTransitGatewayId"`
+	Tags                       pulumi.StringMapOutput `pulumi:"tags"`
+	TransitGatewayAttachmentId pulumi.StringOutput    `pulumi:"transitGatewayAttachmentId"`
+	TransitGatewayId           pulumi.StringOutput    `pulumi:"transitGatewayId"`
 }
 
 // NewTransitGatewayPeeringAttachmentAccepter registers a new resource with the given unique name, arguments, and options.
@@ -84,31 +52,21 @@ func GetTransitGatewayPeeringAttachmentAccepter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitGatewayPeeringAttachmentAccepter resources.
 type transitGatewayPeeringAttachmentAccepterState struct {
-	// Identifier of the AWS account that owns the EC2 TGW peering.
-	PeerAccountId *string `pulumi:"peerAccountId"`
-	PeerRegion    *string `pulumi:"peerRegion"`
-	// Identifier of EC2 Transit Gateway to peer with.
-	PeerTransitGatewayId *string `pulumi:"peerTransitGatewayId"`
-	// Key-value tags for the EC2 Transit Gateway Peering Attachment.
-	Tags map[string]string `pulumi:"tags"`
-	// The ID of the EC2 Transit Gateway Peering Attachment to manage.
-	TransitGatewayAttachmentId *string `pulumi:"transitGatewayAttachmentId"`
-	// Identifier of EC2 Transit Gateway.
-	TransitGatewayId *string `pulumi:"transitGatewayId"`
+	PeerAccountId              *string           `pulumi:"peerAccountId"`
+	PeerRegion                 *string           `pulumi:"peerRegion"`
+	PeerTransitGatewayId       *string           `pulumi:"peerTransitGatewayId"`
+	Tags                       map[string]string `pulumi:"tags"`
+	TransitGatewayAttachmentId *string           `pulumi:"transitGatewayAttachmentId"`
+	TransitGatewayId           *string           `pulumi:"transitGatewayId"`
 }
 
 type TransitGatewayPeeringAttachmentAccepterState struct {
-	// Identifier of the AWS account that owns the EC2 TGW peering.
-	PeerAccountId pulumi.StringPtrInput
-	PeerRegion    pulumi.StringPtrInput
-	// Identifier of EC2 Transit Gateway to peer with.
-	PeerTransitGatewayId pulumi.StringPtrInput
-	// Key-value tags for the EC2 Transit Gateway Peering Attachment.
-	Tags pulumi.StringMapInput
-	// The ID of the EC2 Transit Gateway Peering Attachment to manage.
+	PeerAccountId              pulumi.StringPtrInput
+	PeerRegion                 pulumi.StringPtrInput
+	PeerTransitGatewayId       pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
 	TransitGatewayAttachmentId pulumi.StringPtrInput
-	// Identifier of EC2 Transit Gateway.
-	TransitGatewayId pulumi.StringPtrInput
+	TransitGatewayId           pulumi.StringPtrInput
 }
 
 func (TransitGatewayPeeringAttachmentAccepterState) ElementType() reflect.Type {
@@ -116,17 +74,13 @@ func (TransitGatewayPeeringAttachmentAccepterState) ElementType() reflect.Type {
 }
 
 type transitGatewayPeeringAttachmentAccepterArgs struct {
-	// Key-value tags for the EC2 Transit Gateway Peering Attachment.
-	Tags map[string]string `pulumi:"tags"`
-	// The ID of the EC2 Transit Gateway Peering Attachment to manage.
-	TransitGatewayAttachmentId string `pulumi:"transitGatewayAttachmentId"`
+	Tags                       map[string]string `pulumi:"tags"`
+	TransitGatewayAttachmentId string            `pulumi:"transitGatewayAttachmentId"`
 }
 
 // The set of arguments for constructing a TransitGatewayPeeringAttachmentAccepter resource.
 type TransitGatewayPeeringAttachmentAccepterArgs struct {
-	// Key-value tags for the EC2 Transit Gateway Peering Attachment.
-	Tags pulumi.StringMapInput
-	// The ID of the EC2 Transit Gateway Peering Attachment to manage.
+	Tags                       pulumi.StringMapInput
 	TransitGatewayAttachmentId pulumi.StringInput
 }
 

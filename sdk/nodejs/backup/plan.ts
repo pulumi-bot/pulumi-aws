@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS Backup plan resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.backup.Plan("example", {rules: [{
- *     ruleName: "tf_example_backup_rule",
- *     targetVaultName: aws_backup_vault.test.name,
- *     schedule: "cron(0 12 * * ? *)",
- * }]});
- * ```
- */
 export class Plan extends pulumi.CustomResource {
     /**
      * Get an existing Plan resource's state with the given name, ID, and optional extra
@@ -50,25 +34,10 @@ export class Plan extends pulumi.CustomResource {
         return obj['__pulumiType'] === Plan.__pulumiType;
     }
 
-    /**
-     * The ARN of the backup plan.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The display name of a backup plan.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A rule object that specifies a scheduled task that is used to back up a selection of resources.
-     */
     public readonly rules!: pulumi.Output<outputs.backup.PlanRule[]>;
-    /**
-     * Metadata that you can assign to help organize the plans you create.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-     */
     public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
@@ -114,25 +83,10 @@ export class Plan extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Plan resources.
  */
 export interface PlanState {
-    /**
-     * The ARN of the backup plan.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The display name of a backup plan.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A rule object that specifies a scheduled task that is used to back up a selection of resources.
-     */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.backup.PlanRule>[]>;
-    /**
-     * Metadata that you can assign to help organize the plans you create.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-     */
     readonly version?: pulumi.Input<string>;
 }
 
@@ -140,16 +94,7 @@ export interface PlanState {
  * The set of arguments for constructing a Plan resource.
  */
 export interface PlanArgs {
-    /**
-     * The display name of a backup plan.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A rule object that specifies a scheduled task that is used to back up a selection of resources.
-     */
     readonly rules: pulumi.Input<pulumi.Input<inputs.backup.PlanRule>[]>;
-    /**
-     * Metadata that you can assign to help organize the plans you create.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

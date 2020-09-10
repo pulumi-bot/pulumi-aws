@@ -9,72 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Msk
 {
-    /// <summary>
-    /// Manages an Amazon Managed Streaming for Kafka configuration. More information can be found on the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration.html).
-    /// 
-    /// &gt; **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Msk.Configuration("example", new Aws.Msk.ConfigurationArgs
-    ///         {
-    ///             KafkaVersions = 
-    ///             {
-    ///                 "2.1.0",
-    ///             },
-    ///             ServerProperties = @"auto.create.topics.enable = true
-    /// delete.topic.enable = true
-    /// 
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the configuration.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the configuration.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// List of Apache Kafka versions which can use this configuration.
-        /// </summary>
         [Output("kafkaVersions")]
         public Output<ImmutableArray<string>> KafkaVersions { get; private set; } = null!;
 
-        /// <summary>
-        /// Latest revision of the configuration.
-        /// </summary>
         [Output("latestRevision")]
         public Output<int> LatestRevision { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the configuration.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-        /// </summary>
         [Output("serverProperties")]
         public Output<string> ServerProperties { get; private set; } = null!;
 
@@ -124,33 +75,20 @@ namespace Pulumi.Aws.Msk
 
     public sealed class ConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description of the configuration.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("kafkaVersions", required: true)]
         private InputList<string>? _kafkaVersions;
-
-        /// <summary>
-        /// List of Apache Kafka versions which can use this configuration.
-        /// </summary>
         public InputList<string> KafkaVersions
         {
             get => _kafkaVersions ?? (_kafkaVersions = new InputList<string>());
             set => _kafkaVersions = value;
         }
 
-        /// <summary>
-        /// Name of the configuration.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-        /// </summary>
         [Input("serverProperties", required: true)]
         public Input<string> ServerProperties { get; set; } = null!;
 
@@ -161,45 +99,26 @@ namespace Pulumi.Aws.Msk
 
     public sealed class ConfigurationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the configuration.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Description of the configuration.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("kafkaVersions")]
         private InputList<string>? _kafkaVersions;
-
-        /// <summary>
-        /// List of Apache Kafka versions which can use this configuration.
-        /// </summary>
         public InputList<string> KafkaVersions
         {
             get => _kafkaVersions ?? (_kafkaVersions = new InputList<string>());
             set => _kafkaVersions = value;
         }
 
-        /// <summary>
-        /// Latest revision of the configuration.
-        /// </summary>
         [Input("latestRevision")]
         public Input<int>? LatestRevision { get; set; }
 
-        /// <summary>
-        /// Name of the configuration.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
-        /// </summary>
         [Input("serverProperties")]
         public Input<string>? ServerProperties { get; set; }
 

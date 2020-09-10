@@ -10,47 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a CloudWatch Logs destination policy resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudwatch"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testDestination, err := cloudwatch.NewLogDestination(ctx, "testDestination", &cloudwatch.LogDestinationArgs{
-// 			RoleArn:   pulumi.Any(aws_iam_role.Iam_for_cloudwatch.Arn),
-// 			TargetArn: pulumi.Any(aws_kinesis_stream.Kinesis_for_cloudwatch.Arn),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudwatch.NewLogDestinationPolicy(ctx, "testDestinationPolicyLogDestinationPolicy", &cloudwatch.LogDestinationPolicyArgs{
-// 			DestinationName: testDestination.Name,
-// 			AccessPolicy: testDestinationPolicyPolicyDocument.ApplyT(func(testDestinationPolicyPolicyDocument iam.GetPolicyDocumentResult) (string, error) {
-// 				return testDestinationPolicyPolicyDocument.Json, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LogDestinationPolicy struct {
 	pulumi.CustomResourceState
 
-	// The policy document. This is a JSON formatted string.
-	AccessPolicy pulumi.StringOutput `pulumi:"accessPolicy"`
-	// A name for the subscription filter
+	AccessPolicy    pulumi.StringOutput `pulumi:"accessPolicy"`
 	DestinationName pulumi.StringOutput `pulumi:"destinationName"`
 }
 
@@ -88,16 +51,12 @@ func GetLogDestinationPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogDestinationPolicy resources.
 type logDestinationPolicyState struct {
-	// The policy document. This is a JSON formatted string.
-	AccessPolicy *string `pulumi:"accessPolicy"`
-	// A name for the subscription filter
+	AccessPolicy    *string `pulumi:"accessPolicy"`
 	DestinationName *string `pulumi:"destinationName"`
 }
 
 type LogDestinationPolicyState struct {
-	// The policy document. This is a JSON formatted string.
-	AccessPolicy pulumi.StringPtrInput
-	// A name for the subscription filter
+	AccessPolicy    pulumi.StringPtrInput
 	DestinationName pulumi.StringPtrInput
 }
 
@@ -106,17 +65,13 @@ func (LogDestinationPolicyState) ElementType() reflect.Type {
 }
 
 type logDestinationPolicyArgs struct {
-	// The policy document. This is a JSON formatted string.
-	AccessPolicy string `pulumi:"accessPolicy"`
-	// A name for the subscription filter
+	AccessPolicy    string `pulumi:"accessPolicy"`
 	DestinationName string `pulumi:"destinationName"`
 }
 
 // The set of arguments for constructing a LogDestinationPolicy resource.
 type LogDestinationPolicyArgs struct {
-	// The policy document. This is a JSON formatted string.
-	AccessPolicy pulumi.StringInput
-	// A name for the subscription filter
+	AccessPolicy    pulumi.StringInput
 	DestinationName pulumi.StringInput
 }
 

@@ -7,60 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Gets the contents of the specified Systems Manager document.
-//
-// ## Example Usage
-//
-// To get the contents of the document owned by AWS.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "YAML"
-// 		foo, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
-// 			Name:           "AWS-GatherSoftwareInventory",
-// 			DocumentFormat: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("content", foo.Content)
-// 		return nil
-// 	})
-// }
-// ```
-//
-// To get the contents of the custom document.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "JSON"
-// 		_, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
-// 			Name:           aws_ssm_document.Test.Name,
-// 			DocumentFormat: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupDocument(ctx *pulumi.Context, args *LookupDocumentArgs, opts ...pulumi.InvokeOption) (*LookupDocumentResult, error) {
 	var rv LookupDocumentResult
 	err := ctx.Invoke("aws:ssm/getDocument:getDocument", args, &rv, opts...)
@@ -72,22 +18,16 @@ func LookupDocument(ctx *pulumi.Context, args *LookupDocumentArgs, opts ...pulum
 
 // A collection of arguments for invoking getDocument.
 type LookupDocumentArgs struct {
-	// Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
-	DocumentFormat *string `pulumi:"documentFormat"`
-	// The document version for which you want information.
+	DocumentFormat  *string `pulumi:"documentFormat"`
 	DocumentVersion *string `pulumi:"documentVersion"`
-	// The name of the Systems Manager document.
-	Name string `pulumi:"name"`
+	Name            string  `pulumi:"name"`
 }
 
 // A collection of values returned by getDocument.
 type LookupDocumentResult struct {
-	// The ARN of the document.
-	Arn string `pulumi:"arn"`
-	// The contents of the document.
-	Content        string  `pulumi:"content"`
-	DocumentFormat *string `pulumi:"documentFormat"`
-	// The type of the document.
+	Arn             string  `pulumi:"arn"`
+	Content         string  `pulumi:"content"`
+	DocumentFormat  *string `pulumi:"documentFormat"`
 	DocumentType    string  `pulumi:"documentType"`
 	DocumentVersion *string `pulumi:"documentVersion"`
 	// The provider-assigned unique ID for this managed resource.

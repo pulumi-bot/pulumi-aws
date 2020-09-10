@@ -6,33 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Resource Group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const test = new aws.resourcegroups.Group("test", {
- *     resourceQuery: {
- *         query: `{
- *   "ResourceTypeFilters": [
- *     "AWS::EC2::Instance"
- *   ],
- *   "TagFilters": [
- *     {
- *       "Key": "Stage",
- *       "Values": ["Test"]
- *     }
- *   ]
- * }
- * `,
- *     },
- * });
- * ```
- */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -61,25 +34,10 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
-    /**
-     * The ARN assigned by AWS for this resource group.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A description of the resource group.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A `resourceQuery` block. Resource queries are documented below.
-     */
     public readonly resourceQuery!: pulumi.Output<outputs.resourcegroups.GroupResourceQuery>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -125,25 +83,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
-    /**
-     * The ARN assigned by AWS for this resource group.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A description of the resource group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A `resourceQuery` block. Resource queries are documented below.
-     */
     readonly resourceQuery?: pulumi.Input<inputs.resourcegroups.GroupResourceQuery>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -151,20 +94,8 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
-    /**
-     * A description of the resource group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A `resourceQuery` block. Resource queries are documented below.
-     */
     readonly resourceQuery: pulumi.Input<inputs.resourcegroups.GroupResourceQuery>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

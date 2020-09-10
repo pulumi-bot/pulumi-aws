@@ -13,12 +13,9 @@ import (
 type Tag struct {
 	pulumi.CustomResourceState
 
-	// The tag name.
-	Key pulumi.StringOutput `pulumi:"key"`
-	// The ID of the EC2 resource to manage the tag for.
+	Key        pulumi.StringOutput `pulumi:"key"`
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// The value of the tag.
-	Value pulumi.StringOutput `pulumi:"value"`
+	Value      pulumi.StringOutput `pulumi:"value"`
 }
 
 // NewTag registers a new resource with the given unique name, arguments, and options.
@@ -58,21 +55,15 @@ func GetTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tag resources.
 type tagState struct {
-	// The tag name.
-	Key *string `pulumi:"key"`
-	// The ID of the EC2 resource to manage the tag for.
+	Key        *string `pulumi:"key"`
 	ResourceId *string `pulumi:"resourceId"`
-	// The value of the tag.
-	Value *string `pulumi:"value"`
+	Value      *string `pulumi:"value"`
 }
 
 type TagState struct {
-	// The tag name.
-	Key pulumi.StringPtrInput
-	// The ID of the EC2 resource to manage the tag for.
+	Key        pulumi.StringPtrInput
 	ResourceId pulumi.StringPtrInput
-	// The value of the tag.
-	Value pulumi.StringPtrInput
+	Value      pulumi.StringPtrInput
 }
 
 func (TagState) ElementType() reflect.Type {
@@ -80,22 +71,16 @@ func (TagState) ElementType() reflect.Type {
 }
 
 type tagArgs struct {
-	// The tag name.
-	Key string `pulumi:"key"`
-	// The ID of the EC2 resource to manage the tag for.
+	Key        string `pulumi:"key"`
 	ResourceId string `pulumi:"resourceId"`
-	// The value of the tag.
-	Value string `pulumi:"value"`
+	Value      string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a Tag resource.
 type TagArgs struct {
-	// The tag name.
-	Key pulumi.StringInput
-	// The ID of the EC2 resource to manage the tag for.
+	Key        pulumi.StringInput
 	ResourceId pulumi.StringInput
-	// The value of the tag.
-	Value pulumi.StringInput
+	Value      pulumi.StringInput
 }
 
 func (TagArgs) ElementType() reflect.Type {

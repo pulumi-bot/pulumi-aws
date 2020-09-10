@@ -10,83 +10,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SNS platform application resource
-//
-// ## Example Usage
-// ### Apple Push Notification Service (APNS)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sns.NewPlatformApplication(ctx, "apnsApplication", &sns.PlatformApplicationArgs{
-// 			Platform:           pulumi.String("APNS"),
-// 			PlatformCredential: pulumi.String("<APNS PRIVATE KEY>"),
-// 			PlatformPrincipal:  pulumi.String("<APNS CERTIFICATE>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Google Cloud Messaging (GCM)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sns.NewPlatformApplication(ctx, "gcmApplication", &sns.PlatformApplicationArgs{
-// 			Platform:           pulumi.String("GCM"),
-// 			PlatformCredential: pulumi.String("<GCM API KEY>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type PlatformApplication struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the SNS platform application
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
+	Arn                          pulumi.StringOutput    `pulumi:"arn"`
 	EventDeliveryFailureTopicArn pulumi.StringPtrOutput `pulumi:"eventDeliveryFailureTopicArn"`
-	// SNS Topic triggered when a new platform endpoint is added to your platform application.
 	EventEndpointCreatedTopicArn pulumi.StringPtrOutput `pulumi:"eventEndpointCreatedTopicArn"`
-	// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
 	EventEndpointDeletedTopicArn pulumi.StringPtrOutput `pulumi:"eventEndpointDeletedTopicArn"`
-	// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
 	EventEndpointUpdatedTopicArn pulumi.StringPtrOutput `pulumi:"eventEndpointUpdatedTopicArn"`
-	// The IAM role permitted to receive failure feedback for this application.
-	FailureFeedbackRoleArn pulumi.StringPtrOutput `pulumi:"failureFeedbackRoleArn"`
-	// The friendly name for the SNS platform application
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-	Platform pulumi.StringOutput `pulumi:"platform"`
-	// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformCredential pulumi.StringOutput `pulumi:"platformCredential"`
-	// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformPrincipal pulumi.StringPtrOutput `pulumi:"platformPrincipal"`
-	// The IAM role permitted to receive success feedback for this application.
-	SuccessFeedbackRoleArn pulumi.StringPtrOutput `pulumi:"successFeedbackRoleArn"`
-	// The percentage of success to sample (0-100)
-	SuccessFeedbackSampleRate pulumi.StringPtrOutput `pulumi:"successFeedbackSampleRate"`
+	FailureFeedbackRoleArn       pulumi.StringPtrOutput `pulumi:"failureFeedbackRoleArn"`
+	Name                         pulumi.StringOutput    `pulumi:"name"`
+	Platform                     pulumi.StringOutput    `pulumi:"platform"`
+	PlatformCredential           pulumi.StringOutput    `pulumi:"platformCredential"`
+	PlatformPrincipal            pulumi.StringPtrOutput `pulumi:"platformPrincipal"`
+	SuccessFeedbackRoleArn       pulumi.StringPtrOutput `pulumi:"successFeedbackRoleArn"`
+	SuccessFeedbackSampleRate    pulumi.StringPtrOutput `pulumi:"successFeedbackSampleRate"`
 }
 
 // NewPlatformApplication registers a new resource with the given unique name, arguments, and options.
@@ -123,57 +61,33 @@ func GetPlatformApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PlatformApplication resources.
 type platformApplicationState struct {
-	// The ARN of the SNS platform application
-	Arn *string `pulumi:"arn"`
-	// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
+	Arn                          *string `pulumi:"arn"`
 	EventDeliveryFailureTopicArn *string `pulumi:"eventDeliveryFailureTopicArn"`
-	// SNS Topic triggered when a new platform endpoint is added to your platform application.
 	EventEndpointCreatedTopicArn *string `pulumi:"eventEndpointCreatedTopicArn"`
-	// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
 	EventEndpointDeletedTopicArn *string `pulumi:"eventEndpointDeletedTopicArn"`
-	// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
 	EventEndpointUpdatedTopicArn *string `pulumi:"eventEndpointUpdatedTopicArn"`
-	// The IAM role permitted to receive failure feedback for this application.
-	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
-	// The friendly name for the SNS platform application
-	Name *string `pulumi:"name"`
-	// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-	Platform *string `pulumi:"platform"`
-	// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformCredential *string `pulumi:"platformCredential"`
-	// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformPrincipal *string `pulumi:"platformPrincipal"`
-	// The IAM role permitted to receive success feedback for this application.
-	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
-	// The percentage of success to sample (0-100)
-	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
+	FailureFeedbackRoleArn       *string `pulumi:"failureFeedbackRoleArn"`
+	Name                         *string `pulumi:"name"`
+	Platform                     *string `pulumi:"platform"`
+	PlatformCredential           *string `pulumi:"platformCredential"`
+	PlatformPrincipal            *string `pulumi:"platformPrincipal"`
+	SuccessFeedbackRoleArn       *string `pulumi:"successFeedbackRoleArn"`
+	SuccessFeedbackSampleRate    *string `pulumi:"successFeedbackSampleRate"`
 }
 
 type PlatformApplicationState struct {
-	// The ARN of the SNS platform application
-	Arn pulumi.StringPtrInput
-	// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
+	Arn                          pulumi.StringPtrInput
 	EventDeliveryFailureTopicArn pulumi.StringPtrInput
-	// SNS Topic triggered when a new platform endpoint is added to your platform application.
 	EventEndpointCreatedTopicArn pulumi.StringPtrInput
-	// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
 	EventEndpointDeletedTopicArn pulumi.StringPtrInput
-	// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
 	EventEndpointUpdatedTopicArn pulumi.StringPtrInput
-	// The IAM role permitted to receive failure feedback for this application.
-	FailureFeedbackRoleArn pulumi.StringPtrInput
-	// The friendly name for the SNS platform application
-	Name pulumi.StringPtrInput
-	// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-	Platform pulumi.StringPtrInput
-	// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformCredential pulumi.StringPtrInput
-	// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformPrincipal pulumi.StringPtrInput
-	// The IAM role permitted to receive success feedback for this application.
-	SuccessFeedbackRoleArn pulumi.StringPtrInput
-	// The percentage of success to sample (0-100)
-	SuccessFeedbackSampleRate pulumi.StringPtrInput
+	FailureFeedbackRoleArn       pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Platform                     pulumi.StringPtrInput
+	PlatformCredential           pulumi.StringPtrInput
+	PlatformPrincipal            pulumi.StringPtrInput
+	SuccessFeedbackRoleArn       pulumi.StringPtrInput
+	SuccessFeedbackSampleRate    pulumi.StringPtrInput
 }
 
 func (PlatformApplicationState) ElementType() reflect.Type {
@@ -181,54 +95,32 @@ func (PlatformApplicationState) ElementType() reflect.Type {
 }
 
 type platformApplicationArgs struct {
-	// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
 	EventDeliveryFailureTopicArn *string `pulumi:"eventDeliveryFailureTopicArn"`
-	// SNS Topic triggered when a new platform endpoint is added to your platform application.
 	EventEndpointCreatedTopicArn *string `pulumi:"eventEndpointCreatedTopicArn"`
-	// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
 	EventEndpointDeletedTopicArn *string `pulumi:"eventEndpointDeletedTopicArn"`
-	// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
 	EventEndpointUpdatedTopicArn *string `pulumi:"eventEndpointUpdatedTopicArn"`
-	// The IAM role permitted to receive failure feedback for this application.
-	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
-	// The friendly name for the SNS platform application
-	Name *string `pulumi:"name"`
-	// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-	Platform string `pulumi:"platform"`
-	// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformCredential string `pulumi:"platformCredential"`
-	// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformPrincipal *string `pulumi:"platformPrincipal"`
-	// The IAM role permitted to receive success feedback for this application.
-	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
-	// The percentage of success to sample (0-100)
-	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
+	FailureFeedbackRoleArn       *string `pulumi:"failureFeedbackRoleArn"`
+	Name                         *string `pulumi:"name"`
+	Platform                     string  `pulumi:"platform"`
+	PlatformCredential           string  `pulumi:"platformCredential"`
+	PlatformPrincipal            *string `pulumi:"platformPrincipal"`
+	SuccessFeedbackRoleArn       *string `pulumi:"successFeedbackRoleArn"`
+	SuccessFeedbackSampleRate    *string `pulumi:"successFeedbackSampleRate"`
 }
 
 // The set of arguments for constructing a PlatformApplication resource.
 type PlatformApplicationArgs struct {
-	// SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
 	EventDeliveryFailureTopicArn pulumi.StringPtrInput
-	// SNS Topic triggered when a new platform endpoint is added to your platform application.
 	EventEndpointCreatedTopicArn pulumi.StringPtrInput
-	// SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
 	EventEndpointDeletedTopicArn pulumi.StringPtrInput
-	// SNS Topic triggered when an existing platform endpoint is changed from your platform application.
 	EventEndpointUpdatedTopicArn pulumi.StringPtrInput
-	// The IAM role permitted to receive failure feedback for this application.
-	FailureFeedbackRoleArn pulumi.StringPtrInput
-	// The friendly name for the SNS platform application
-	Name pulumi.StringPtrInput
-	// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
-	Platform pulumi.StringInput
-	// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformCredential pulumi.StringInput
-	// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-	PlatformPrincipal pulumi.StringPtrInput
-	// The IAM role permitted to receive success feedback for this application.
-	SuccessFeedbackRoleArn pulumi.StringPtrInput
-	// The percentage of success to sample (0-100)
-	SuccessFeedbackSampleRate pulumi.StringPtrInput
+	FailureFeedbackRoleArn       pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Platform                     pulumi.StringInput
+	PlatformCredential           pulumi.StringInput
+	PlatformPrincipal            pulumi.StringPtrInput
+	SuccessFeedbackRoleArn       pulumi.StringPtrInput
+	SuccessFeedbackSampleRate    pulumi.StringPtrInput
 }
 
 func (PlatformApplicationArgs) ElementType() reflect.Type {

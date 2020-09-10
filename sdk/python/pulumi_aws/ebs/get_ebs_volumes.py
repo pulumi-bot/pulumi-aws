@@ -51,10 +51,6 @@ class GetEbsVolumesResult:
     @property
     @pulumi.getter
     def ids(self) -> List[str]:
-        """
-        A set of all the EBS Volume IDs found. This data source will fail if
-        no volumes match the provided criteria.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -79,32 +75,7 @@ def get_ebs_volumes(filters: Optional[List[pulumi.InputType['GetEbsVolumesFilter
                     tags: Optional[Mapping[str, str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEbsVolumesResult:
     """
-    `ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
-
-    This data source can be useful for getting a list of volume IDs with (for example) matching tags.
-
-    ## Example Usage
-
-    The following demonstrates obtaining a map of availability zone to EBS volume ID for volumes with a given tag value.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example_ebs_volumes = aws.ebs.get_ebs_volumes(tags={
-        "VolumeSet": "TestVolumeSet",
-    })
-    example_volume = [aws.ebs.get_volume(filters=[aws.ebs.GetVolumeFilterArgs(
-        name="volume-id",
-        values=[each["value"]],
-    )]) for __key, __value in example_ebs_volumes.ids]
-    pulumi.export("availabilityZoneToVolumeId", {s.id: s.availability_zone for s in example_volume})
-    ```
-
-
-    :param List[pulumi.InputType['GetEbsVolumesFilterArgs']] filters: Custom filter block as described below.
-    :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match
-           a pair on the desired volumes.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

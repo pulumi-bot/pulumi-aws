@@ -27,93 +27,9 @@ class WebAcl(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a WAF Regional Web ACL Resource for use with Application Load Balancer.
-
-        ## Example Usage
-        ### Regular Rule
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
-        wafrule = aws.wafregional.Rule("wafrule",
-            metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )])
-        wafacl = aws.wafregional.WebAcl("wafacl",
-            metric_name="tfWebACL",
-            default_action=aws.wafregional.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.wafregional.WebAclRuleArgs(
-                action=aws.wafregional.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=wafrule.id,
-                type="REGULAR",
-            )])
-        ```
-        ### Group Rule
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafregional.WebAcl("example",
-            metric_name="example",
-            default_action=aws.wafregional.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.wafregional.WebAclRuleArgs(
-                priority=1,
-                rule_id=aws_wafregional_rule_group["example"]["id"],
-                type="GROUP",
-                override_action=aws.wafregional.WebAclRuleOverrideActionArgs(
-                    type="NONE",
-                ),
-            )])
-        ```
-        ### Logging
-
-        > *NOTE:* The Kinesis Firehose Delivery Stream name must begin with `aws-waf-logs-`. See the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) for more information about enabling WAF logging.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configuration ...
-        example = aws.wafregional.WebAcl("example", logging_configuration=aws.wafregional.WebAclLoggingConfigurationArgs(
-            log_destination=aws_kinesis_firehose_delivery_stream["example"]["arn"],
-            redacted_fields={
-                "fieldToMatches": [
-                    {
-                        "type": "URI",
-                    },
-                    {
-                        "data": "referer",
-                        "type": "HEADER",
-                    },
-                ],
-            },
-        ))
-        ```
-
+        Create a WebAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WebAclDefaultActionArgs']] default_action: The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
-        :param pulumi.Input[pulumi.InputType['WebAclLoggingConfigurationArgs']] logging_configuration: Configuration block to enable WAF logging. Detailed below.
-        :param pulumi.Input[str] metric_name: The name or description for the Amazon CloudWatch metric of this web ACL.
-        :param pulumi.Input[str] name: The name or description of the web ACL.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebAclRuleArgs']]]] rules: Set of configuration blocks containing rules for the web ACL. Detailed below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -167,13 +83,6 @@ class WebAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the WAF Regional WebACL.
-        :param pulumi.Input[pulumi.InputType['WebAclDefaultActionArgs']] default_action: The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
-        :param pulumi.Input[pulumi.InputType['WebAclLoggingConfigurationArgs']] logging_configuration: Configuration block to enable WAF logging. Detailed below.
-        :param pulumi.Input[str] metric_name: The name or description for the Amazon CloudWatch metric of this web ACL.
-        :param pulumi.Input[str] name: The name or description of the web ACL.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebAclRuleArgs']]]] rules: Set of configuration blocks containing rules for the web ACL. Detailed below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -191,57 +100,36 @@ class WebAcl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the WAF Regional WebACL.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> pulumi.Output['outputs.WebAclDefaultAction']:
-        """
-        The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
-        """
         return pulumi.get(self, "default_action")
 
     @property
     @pulumi.getter(name="loggingConfiguration")
     def logging_configuration(self) -> pulumi.Output[Optional['outputs.WebAclLoggingConfiguration']]:
-        """
-        Configuration block to enable WAF logging. Detailed below.
-        """
         return pulumi.get(self, "logging_configuration")
 
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Output[str]:
-        """
-        The name or description for the Amazon CloudWatch metric of this web ACL.
-        """
         return pulumi.get(self, "metric_name")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name or description of the web ACL.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[List['outputs.WebAclRule']]]:
-        """
-        Set of configuration blocks containing rules for the web ACL. Detailed below.
-        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

@@ -10,51 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Cloud9 EC2 Development Environment.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloud9"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloud9.NewEnvironmentEC2(ctx, "example", &cloud9.EnvironmentEC2Args{
-// 			InstanceType: pulumi.String("t2.micro"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type EnvironmentEC2 struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the environment.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The number of minutes until the running instance is shut down after the environment has last been used.
-	AutomaticStopTimeMinutes pulumi.IntPtrOutput `pulumi:"automaticStopTimeMinutes"`
-	// The description of the environment.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The type of instance to connect to the environment, e.g. `t2.micro`.
-	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The name of the environment.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-	OwnerArn pulumi.StringOutput `pulumi:"ownerArn"`
-	// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the environment (e.g. `ssh` or `ec2`)
-	Type pulumi.StringOutput `pulumi:"type"`
+	Arn                      pulumi.StringOutput    `pulumi:"arn"`
+	AutomaticStopTimeMinutes pulumi.IntPtrOutput    `pulumi:"automaticStopTimeMinutes"`
+	Description              pulumi.StringPtrOutput `pulumi:"description"`
+	InstanceType             pulumi.StringOutput    `pulumi:"instanceType"`
+	Name                     pulumi.StringOutput    `pulumi:"name"`
+	OwnerArn                 pulumi.StringOutput    `pulumi:"ownerArn"`
+	SubnetId                 pulumi.StringPtrOutput `pulumi:"subnetId"`
+	Tags                     pulumi.StringMapOutput `pulumi:"tags"`
+	Type                     pulumi.StringOutput    `pulumi:"type"`
 }
 
 // NewEnvironmentEC2 registers a new resource with the given unique name, arguments, and options.
@@ -88,45 +55,27 @@ func GetEnvironmentEC2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvironmentEC2 resources.
 type environmentEC2State struct {
-	// The ARN of the environment.
-	Arn *string `pulumi:"arn"`
-	// The number of minutes until the running instance is shut down after the environment has last been used.
-	AutomaticStopTimeMinutes *int `pulumi:"automaticStopTimeMinutes"`
-	// The description of the environment.
-	Description *string `pulumi:"description"`
-	// The type of instance to connect to the environment, e.g. `t2.micro`.
-	InstanceType *string `pulumi:"instanceType"`
-	// The name of the environment.
-	Name *string `pulumi:"name"`
-	// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-	OwnerArn *string `pulumi:"ownerArn"`
-	// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-	SubnetId *string `pulumi:"subnetId"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// The type of the environment (e.g. `ssh` or `ec2`)
-	Type *string `pulumi:"type"`
+	Arn                      *string           `pulumi:"arn"`
+	AutomaticStopTimeMinutes *int              `pulumi:"automaticStopTimeMinutes"`
+	Description              *string           `pulumi:"description"`
+	InstanceType             *string           `pulumi:"instanceType"`
+	Name                     *string           `pulumi:"name"`
+	OwnerArn                 *string           `pulumi:"ownerArn"`
+	SubnetId                 *string           `pulumi:"subnetId"`
+	Tags                     map[string]string `pulumi:"tags"`
+	Type                     *string           `pulumi:"type"`
 }
 
 type EnvironmentEC2State struct {
-	// The ARN of the environment.
-	Arn pulumi.StringPtrInput
-	// The number of minutes until the running instance is shut down after the environment has last been used.
+	Arn                      pulumi.StringPtrInput
 	AutomaticStopTimeMinutes pulumi.IntPtrInput
-	// The description of the environment.
-	Description pulumi.StringPtrInput
-	// The type of instance to connect to the environment, e.g. `t2.micro`.
-	InstanceType pulumi.StringPtrInput
-	// The name of the environment.
-	Name pulumi.StringPtrInput
-	// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-	OwnerArn pulumi.StringPtrInput
-	// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-	SubnetId pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
-	// The type of the environment (e.g. `ssh` or `ec2`)
-	Type pulumi.StringPtrInput
+	Description              pulumi.StringPtrInput
+	InstanceType             pulumi.StringPtrInput
+	Name                     pulumi.StringPtrInput
+	OwnerArn                 pulumi.StringPtrInput
+	SubnetId                 pulumi.StringPtrInput
+	Tags                     pulumi.StringMapInput
+	Type                     pulumi.StringPtrInput
 }
 
 func (EnvironmentEC2State) ElementType() reflect.Type {
@@ -134,38 +83,24 @@ func (EnvironmentEC2State) ElementType() reflect.Type {
 }
 
 type environmentEC2Args struct {
-	// The number of minutes until the running instance is shut down after the environment has last been used.
-	AutomaticStopTimeMinutes *int `pulumi:"automaticStopTimeMinutes"`
-	// The description of the environment.
-	Description *string `pulumi:"description"`
-	// The type of instance to connect to the environment, e.g. `t2.micro`.
-	InstanceType string `pulumi:"instanceType"`
-	// The name of the environment.
-	Name *string `pulumi:"name"`
-	// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-	OwnerArn *string `pulumi:"ownerArn"`
-	// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-	SubnetId *string `pulumi:"subnetId"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	AutomaticStopTimeMinutes *int              `pulumi:"automaticStopTimeMinutes"`
+	Description              *string           `pulumi:"description"`
+	InstanceType             string            `pulumi:"instanceType"`
+	Name                     *string           `pulumi:"name"`
+	OwnerArn                 *string           `pulumi:"ownerArn"`
+	SubnetId                 *string           `pulumi:"subnetId"`
+	Tags                     map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EnvironmentEC2 resource.
 type EnvironmentEC2Args struct {
-	// The number of minutes until the running instance is shut down after the environment has last been used.
 	AutomaticStopTimeMinutes pulumi.IntPtrInput
-	// The description of the environment.
-	Description pulumi.StringPtrInput
-	// The type of instance to connect to the environment, e.g. `t2.micro`.
-	InstanceType pulumi.StringInput
-	// The name of the environment.
-	Name pulumi.StringPtrInput
-	// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
-	OwnerArn pulumi.StringPtrInput
-	// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
-	SubnetId pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Description              pulumi.StringPtrInput
+	InstanceType             pulumi.StringInput
+	Name                     pulumi.StringPtrInput
+	OwnerArn                 pulumi.StringPtrInput
+	SubnetId                 pulumi.StringPtrInput
+	Tags                     pulumi.StringMapInput
 }
 
 func (EnvironmentEC2Args) ElementType() reflect.Type {

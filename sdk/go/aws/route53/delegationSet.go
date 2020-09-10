@@ -9,51 +9,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API-actions-by-function.html#actions-by-function-reusable-delegation-sets) resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := route53.NewDelegationSet(ctx, "main", &route53.DelegationSetArgs{
-// 			ReferenceName: pulumi.String("DynDNS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewZone(ctx, "primary", &route53.ZoneArgs{
-// 			DelegationSetId: main.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewZone(ctx, "secondary", &route53.ZoneArgs{
-// 			DelegationSetId: main.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DelegationSet struct {
 	pulumi.CustomResourceState
 
-	// A list of authoritative name servers for the hosted zone
-	// (effectively a list of NS records).
-	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
-	// This is a reference name used in Caller Reference
-	// (helpful for identifying single delegation set amongst others)
-	ReferenceName pulumi.StringPtrOutput `pulumi:"referenceName"`
+	NameServers   pulumi.StringArrayOutput `pulumi:"nameServers"`
+	ReferenceName pulumi.StringPtrOutput   `pulumi:"referenceName"`
 }
 
 // NewDelegationSet registers a new resource with the given unique name, arguments, and options.
@@ -84,20 +44,12 @@ func GetDelegationSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DelegationSet resources.
 type delegationSetState struct {
-	// A list of authoritative name servers for the hosted zone
-	// (effectively a list of NS records).
-	NameServers []string `pulumi:"nameServers"`
-	// This is a reference name used in Caller Reference
-	// (helpful for identifying single delegation set amongst others)
-	ReferenceName *string `pulumi:"referenceName"`
+	NameServers   []string `pulumi:"nameServers"`
+	ReferenceName *string  `pulumi:"referenceName"`
 }
 
 type DelegationSetState struct {
-	// A list of authoritative name servers for the hosted zone
-	// (effectively a list of NS records).
-	NameServers pulumi.StringArrayInput
-	// This is a reference name used in Caller Reference
-	// (helpful for identifying single delegation set amongst others)
+	NameServers   pulumi.StringArrayInput
 	ReferenceName pulumi.StringPtrInput
 }
 
@@ -106,15 +58,11 @@ func (DelegationSetState) ElementType() reflect.Type {
 }
 
 type delegationSetArgs struct {
-	// This is a reference name used in Caller Reference
-	// (helpful for identifying single delegation set amongst others)
 	ReferenceName *string `pulumi:"referenceName"`
 }
 
 // The set of arguments for constructing a DelegationSet resource.
 type DelegationSetArgs struct {
-	// This is a reference name used in Caller Reference
-	// (helpful for identifying single delegation set amongst others)
 	ReferenceName pulumi.StringPtrInput
 }
 

@@ -36,9 +36,6 @@ class GetDetectorResult:
     @property
     @pulumi.getter(name="findingPublishingFrequency")
     def finding_publishing_frequency(self) -> str:
-        """
-        The frequency of notifications sent about subsequent finding occurrences.
-        """
         return pulumi.get(self, "finding_publishing_frequency")
 
     @property
@@ -49,17 +46,11 @@ class GetDetectorResult:
     @property
     @pulumi.getter(name="serviceRoleArn")
     def service_role_arn(self) -> str:
-        """
-        The service-linked role that grants GuardDuty access to the resources in the AWS account.
-        """
         return pulumi.get(self, "service_role_arn")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The current status of the detector.
-        """
         return pulumi.get(self, "status")
 
 
@@ -78,19 +69,7 @@ class AwaitableGetDetectorResult(GetDetectorResult):
 def get_detector(id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDetectorResult:
     """
-    Retrieve information about a GuardDuty detector.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.guardduty.get_detector()
-    ```
-
-
-    :param str id: The ID of the detector.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

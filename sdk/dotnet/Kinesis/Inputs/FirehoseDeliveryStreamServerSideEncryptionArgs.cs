@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Kinesis.Inputs
 
     public sealed class FirehoseDeliveryStreamServerSideEncryptionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to enable encryption at rest. Default is `false`.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

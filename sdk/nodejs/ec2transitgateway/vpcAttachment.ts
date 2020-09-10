@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an EC2 Transit Gateway VPC Attachment. For examples of custom route table association and propagation, see the EC2 Transit Gateway Networking Examples Guide.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2transitgateway.VpcAttachment("example", {
- *     subnetIds: [aws_subnet.example.id],
- *     transitGatewayId: aws_ec2_transit_gateway.example.id,
- *     vpcId: aws_vpc.example.id,
- * });
- * ```
- *
- * A full example of how to create a Transit Gateway in one AWS account, share it with a second AWS account, and attach a VPC in the second account to the Transit Gateway via the `aws.ec2transitgateway.VpcAttachment` and `aws.ec2transitgateway.VpcAttachmentAccepter` resources can be found in [the `./examples/transit-gateway-cross-account-vpc-attachment` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/transit-gateway-cross-account-vpc-attachment).
- */
 export class VpcAttachment extends pulumi.CustomResource {
     /**
      * Get an existing VpcAttachment resource's state with the given name, ID, and optional extra
@@ -50,41 +32,14 @@ export class VpcAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpcAttachment.__pulumiType;
     }
 
-    /**
-     * Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-     */
     public readonly dnsSupport!: pulumi.Output<string | undefined>;
-    /**
-     * Whether IPv6 support is enabled. Valid values: `disable`, `enable`. Default value: `disable`.
-     */
     public readonly ipv6Support!: pulumi.Output<string | undefined>;
-    /**
-     * Identifiers of EC2 Subnets.
-     */
     public readonly subnetIds!: pulumi.Output<string[]>;
-    /**
-     * Key-value tags for the EC2 Transit Gateway VPC Attachment.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
-     */
     public readonly transitGatewayDefaultRouteTableAssociation!: pulumi.Output<boolean | undefined>;
-    /**
-     * Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
-     */
     public readonly transitGatewayDefaultRouteTablePropagation!: pulumi.Output<boolean | undefined>;
-    /**
-     * Identifier of EC2 Transit Gateway.
-     */
     public readonly transitGatewayId!: pulumi.Output<string>;
-    /**
-     * Identifier of EC2 VPC.
-     */
     public readonly vpcId!: pulumi.Output<string>;
-    /**
-     * Identifier of the AWS account that owns the EC2 VPC.
-     */
     public /*out*/ readonly vpcOwnerId!: pulumi.Output<string>;
 
     /**
@@ -144,41 +99,14 @@ export class VpcAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcAttachment resources.
  */
 export interface VpcAttachmentState {
-    /**
-     * Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-     */
     readonly dnsSupport?: pulumi.Input<string>;
-    /**
-     * Whether IPv6 support is enabled. Valid values: `disable`, `enable`. Default value: `disable`.
-     */
     readonly ipv6Support?: pulumi.Input<string>;
-    /**
-     * Identifiers of EC2 Subnets.
-     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Key-value tags for the EC2 Transit Gateway VPC Attachment.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
-     */
     readonly transitGatewayDefaultRouteTableAssociation?: pulumi.Input<boolean>;
-    /**
-     * Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
-     */
     readonly transitGatewayDefaultRouteTablePropagation?: pulumi.Input<boolean>;
-    /**
-     * Identifier of EC2 Transit Gateway.
-     */
     readonly transitGatewayId?: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 VPC.
-     */
     readonly vpcId?: pulumi.Input<string>;
-    /**
-     * Identifier of the AWS account that owns the EC2 VPC.
-     */
     readonly vpcOwnerId?: pulumi.Input<string>;
 }
 
@@ -186,36 +114,12 @@ export interface VpcAttachmentState {
  * The set of arguments for constructing a VpcAttachment resource.
  */
 export interface VpcAttachmentArgs {
-    /**
-     * Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-     */
     readonly dnsSupport?: pulumi.Input<string>;
-    /**
-     * Whether IPv6 support is enabled. Valid values: `disable`, `enable`. Default value: `disable`.
-     */
     readonly ipv6Support?: pulumi.Input<string>;
-    /**
-     * Identifiers of EC2 Subnets.
-     */
     readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Key-value tags for the EC2 Transit Gateway VPC Attachment.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
-     */
     readonly transitGatewayDefaultRouteTableAssociation?: pulumi.Input<boolean>;
-    /**
-     * Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
-     */
     readonly transitGatewayDefaultRouteTablePropagation?: pulumi.Input<boolean>;
-    /**
-     * Identifier of EC2 Transit Gateway.
-     */
     readonly transitGatewayId: pulumi.Input<string>;
-    /**
-     * Identifier of EC2 VPC.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

@@ -21,41 +21,9 @@ class BucketPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Attaches a policy to an S3 bucket resource.
-
-        ## Example Usage
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bucket = aws.s3.Bucket("bucket")
-        bucket_policy = aws.s3.BucketPolicy("bucketPolicy",
-            bucket=bucket.id,
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Id": "MYBUCKETPOLICY",
-          "Statement": [
-            {
-              "Sid": "IPAllow",
-              "Effect": "Deny",
-              "Principal": "*",
-              "Action": "s3:*",
-              "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
-              "Condition": {
-                 "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
+        Create a BucketPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket to which to apply the policy.
-        :param pulumi.Input[str] policy: The text of the policy.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,8 +67,6 @@ class BucketPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket to which to apply the policy.
-        :param pulumi.Input[str] policy: The text of the policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -113,17 +79,11 @@ class BucketPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        The name of the bucket to which to apply the policy.
-        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter
     def policy(self) -> pulumi.Output[str]:
-        """
-        The text of the policy.
-        """
         return pulumi.get(self, "policy")
 
     def translate_output_property(self, prop):

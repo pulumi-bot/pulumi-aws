@@ -117,89 +117,56 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="allowVersionUpgrade")
     def allow_version_upgrade(self) -> bool:
-        """
-        Whether major version upgrades can be applied during maintenance period
-        """
         return pulumi.get(self, "allow_version_upgrade")
 
     @property
     @pulumi.getter(name="automatedSnapshotRetentionPeriod")
     def automated_snapshot_retention_period(self) -> float:
-        """
-        The backup retention period
-        """
         return pulumi.get(self, "automated_snapshot_retention_period")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        The availability zone of the cluster
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
-        """
-        The name of the S3 bucket where the log files are to be stored
-        """
         return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> str:
-        """
-        The cluster identifier
-        """
         return pulumi.get(self, "cluster_identifier")
 
     @property
     @pulumi.getter(name="clusterParameterGroupName")
     def cluster_parameter_group_name(self) -> str:
-        """
-        The name of the parameter group to be associated with this cluster
-        """
         return pulumi.get(self, "cluster_parameter_group_name")
 
     @property
     @pulumi.getter(name="clusterPublicKey")
     def cluster_public_key(self) -> str:
-        """
-        The public key for the cluster
-        """
         return pulumi.get(self, "cluster_public_key")
 
     @property
     @pulumi.getter(name="clusterRevisionNumber")
     def cluster_revision_number(self) -> str:
-        """
-        The cluster revision number
-        """
         return pulumi.get(self, "cluster_revision_number")
 
     @property
     @pulumi.getter(name="clusterSecurityGroups")
     def cluster_security_groups(self) -> List[str]:
-        """
-        The security groups associated with the cluster
-        """
         return pulumi.get(self, "cluster_security_groups")
 
     @property
     @pulumi.getter(name="clusterSubnetGroupName")
     def cluster_subnet_group_name(self) -> str:
-        """
-        The name of a cluster subnet group to be associated with this cluster
-        """
         return pulumi.get(self, "cluster_subnet_group_name")
 
     @property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> str:
-        """
-        The cluster type
-        """
         return pulumi.get(self, "cluster_type")
 
     @property
@@ -210,57 +177,36 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
-        """
-        The name of the default database in the cluster
-        """
         return pulumi.get(self, "database_name")
 
     @property
     @pulumi.getter(name="elasticIp")
     def elastic_ip(self) -> str:
-        """
-        The Elastic IP of the cluster
-        """
         return pulumi.get(self, "elastic_ip")
 
     @property
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> bool:
-        """
-        Whether cluster logging is enabled
-        """
         return pulumi.get(self, "enable_logging")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
-        """
-        Whether the cluster data is encrypted
-        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
-        """
-        The cluster endpoint
-        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="enhancedVpcRouting")
     def enhanced_vpc_routing(self) -> bool:
-        """
-        Whether enhanced VPC routing is enabled
-        """
         return pulumi.get(self, "enhanced_vpc_routing")
 
     @property
     @pulumi.getter(name="iamRoles")
     def iam_roles(self) -> List[str]:
-        """
-        The IAM roles associated to the cluster
-        """
         return pulumi.get(self, "iam_roles")
 
     @property
@@ -274,89 +220,56 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> str:
-        """
-        The KMS encryption key associated to the cluster
-        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="masterUsername")
     def master_username(self) -> str:
-        """
-        Username for the master DB user
-        """
         return pulumi.get(self, "master_username")
 
     @property
     @pulumi.getter(name="nodeType")
     def node_type(self) -> str:
-        """
-        The cluster node type
-        """
         return pulumi.get(self, "node_type")
 
     @property
     @pulumi.getter(name="numberOfNodes")
     def number_of_nodes(self) -> float:
-        """
-        The number of nodes in the cluster
-        """
         return pulumi.get(self, "number_of_nodes")
 
     @property
     @pulumi.getter
     def port(self) -> float:
-        """
-        The port the cluster responds on
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="preferredMaintenanceWindow")
     def preferred_maintenance_window(self) -> str:
-        """
-        The maintenance window
-        """
         return pulumi.get(self, "preferred_maintenance_window")
 
     @property
     @pulumi.getter(name="publiclyAccessible")
     def publicly_accessible(self) -> bool:
-        """
-        Whether the cluster is publicly accessible
-        """
         return pulumi.get(self, "publicly_accessible")
 
     @property
     @pulumi.getter(name="s3KeyPrefix")
     def s3_key_prefix(self) -> str:
-        """
-        The folder inside the S3 bucket where the log files are stored
-        """
         return pulumi.get(self, "s3_key_prefix")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
-        """
-        The tags associated to the cluster
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The VPC Id associated with the cluster
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
     def vpc_security_group_ids(self) -> List[str]:
-        """
-        The VPC security group Ids associated with the cluster
-        """
         return pulumi.get(self, "vpc_security_group_ids")
 
 
@@ -403,38 +316,7 @@ def get_cluster(cluster_identifier: Optional[str] = None,
                 tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Provides details about a specific redshift cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test_cluster = aws.redshift.get_cluster(cluster_identifier="test-cluster")
-    test_stream = aws.kinesis.FirehoseDeliveryStream("testStream",
-        destination="redshift",
-        s3_configuration=aws.kinesis.FirehoseDeliveryStreamS3ConfigurationArgs(
-            role_arn=aws_iam_role["firehose_role"]["arn"],
-            bucket_arn=aws_s3_bucket["bucket"]["arn"],
-            buffer_size=10,
-            buffer_interval=400,
-            compression_format="GZIP",
-        ),
-        redshift_configuration=aws.kinesis.FirehoseDeliveryStreamRedshiftConfigurationArgs(
-            role_arn=aws_iam_role["firehose_role"]["arn"],
-            cluster_jdbcurl=f"jdbc:redshift://{test_cluster.endpoint}/{test_cluster.database_name}",
-            username="testuser",
-            password="T3stPass",
-            data_table_name="test-table",
-            copy_options="delimiter '|'",
-            data_table_columns="test-col",
-        ))
-    ```
-
-
-    :param str cluster_identifier: The cluster identifier
-    :param Mapping[str, str] tags: The tags associated to the cluster
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterIdentifier'] = cluster_identifier

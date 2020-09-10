@@ -57,33 +57,21 @@ class GetRoleResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) specifying the role.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="assumeRolePolicy")
     def assume_role_policy(self) -> str:
-        """
-        The policy document associated with the role.
-        """
         return pulumi.get(self, "assume_role_policy")
 
     @property
     @pulumi.getter(name="createDate")
     def create_date(self) -> str:
-        """
-        Creation date of the role in RFC 3339 format.
-        """
         return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description for the role.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -97,9 +85,6 @@ class GetRoleResult:
     @property
     @pulumi.getter(name="maxSessionDuration")
     def max_session_duration(self) -> float:
-        """
-        Maximum session duration.
-        """
         return pulumi.get(self, "max_session_duration")
 
     @property
@@ -110,33 +95,21 @@ class GetRoleResult:
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        The path to the role.
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="permissionsBoundary")
     def permissions_boundary(self) -> str:
-        """
-        The ARN of the policy that is used to set the permissions boundary for the role.
-        """
         return pulumi.get(self, "permissions_boundary")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        The tags attached to the role.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> str:
-        """
-        The stable and unique string identifying the role.
-        """
         return pulumi.get(self, "unique_id")
 
 
@@ -163,22 +136,7 @@ def get_role(name: Optional[str] = None,
              tags: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
-    This data source can be used to fetch information about a specific
-    IAM role. By using this data source, you can reference IAM role
-    properties without having to hard code ARNs as input.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.iam.get_role(name="an_example_role_name")
-    ```
-
-
-    :param str name: The friendly IAM role name to match.
-    :param Mapping[str, str] tags: The tags attached to the role.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

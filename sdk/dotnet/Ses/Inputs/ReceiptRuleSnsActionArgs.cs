@@ -12,15 +12,9 @@ namespace Pulumi.Aws.Ses.Inputs
 
     public sealed class ReceiptRuleSnsActionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The position of the action in the receipt rule
-        /// </summary>
         [Input("position", required: true)]
         public Input<int> Position { get; set; } = null!;
 
-        /// <summary>
-        /// The ARN of an SNS topic to notify
-        /// </summary>
         [Input("topicArn", required: true)]
         public Input<string> TopicArn { get; set; } = null!;
 

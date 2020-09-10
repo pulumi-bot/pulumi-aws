@@ -25,58 +25,9 @@ class DefaultRouteTable(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to manage a Default VPC Routing Table.
-
-        Each VPC created in AWS comes with a Default Route Table that can be managed, but not
-        destroyed. **This is an advanced resource**, and has special caveats to be aware
-        of when using it. Please read this document in its entirety before using this
-        resource. It is recommended you **do not** use both `ec2.DefaultRouteTable` to
-        manage the default route table **and** use the `ec2.MainRouteTableAssociation`,
-        due to possible conflict in routes.
-
-        The `ec2.DefaultRouteTable` behaves differently from normal resources, in that
-        this provider does not _create_ this resource, but instead attempts to "adopt" it
-        into management. We can do this because each VPC created has a Default Route
-        Table that cannot be destroyed, and is created with a single route.
-
-        When this provider first adopts the Default Route Table, it **immediately removes all
-        defined routes**. It then proceeds to create any routes specified in the
-        configuration. This step is required so that only the routes specified in the
-        configuration present in the Default Route Table.
-
-        For more information about Route Tables, see the AWS Documentation on
-        [Route Tables][aws-route-tables].
-
-        For more information about managing normal Route Tables in this provider, see our
-        documentation on [ec2.RouteTable][tf-route-tables].
-
-        > **NOTE on Route Tables and Routes:** This provider currently
-        provides both a standalone Route resource and a Route Table resource with routes
-        defined in-line. At this time you cannot use a Route Table with in-line routes
-        in conjunction with any Route resources. Doing so will cause
-        a conflict of rule settings and will overwrite routes.
-
-        ## Example Usage
-        ### With Tags
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_route_table = aws.ec2.DefaultRouteTable("defaultRouteTable",
-            default_route_table_id=aws_vpc["foo"]["default_route_table_id"],
-            routes=[aws.ec2.DefaultRouteTableRouteArgs()],
-            tags={
-                "Name": "default table",
-            })
-        ```
-
+        Create a DefaultRouteTable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_route_table_id: The ID of the Default Routing Table.
-        :param pulumi.Input[List[pulumi.Input[str]]] propagating_vgws: A list of virtual gateways for propagation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DefaultRouteTableRouteArgs']]]] routes: A list of route objects. Their keys are documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,11 +77,6 @@ class DefaultRouteTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_route_table_id: The ID of the Default Routing Table.
-        :param pulumi.Input[str] owner_id: The ID of the AWS account that owns the route table
-        :param pulumi.Input[List[pulumi.Input[str]]] propagating_vgws: A list of virtual gateways for propagation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DefaultRouteTableRouteArgs']]]] routes: A list of route objects. Their keys are documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -147,41 +93,26 @@ class DefaultRouteTable(pulumi.CustomResource):
     @property
     @pulumi.getter(name="defaultRouteTableId")
     def default_route_table_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the Default Routing Table.
-        """
         return pulumi.get(self, "default_route_table_id")
 
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the AWS account that owns the route table
-        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="propagatingVgws")
     def propagating_vgws(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        A list of virtual gateways for propagation.
-        """
         return pulumi.get(self, "propagating_vgws")
 
     @property
     @pulumi.getter
     def routes(self) -> pulumi.Output[List['outputs.DefaultRouteTableRoute']]:
-        """
-        A list of route objects. Their keys are documented below.
-        """
         return pulumi.get(self, "routes")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property

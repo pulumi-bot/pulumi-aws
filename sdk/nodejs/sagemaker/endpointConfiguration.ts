@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a SageMaker endpoint configuration resource.
- *
- * ## Example Usage
- *
- * Basic usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ec = new aws.sagemaker.EndpointConfiguration("ec", {
- *     productionVariants: [{
- *         variantName: "variant-1",
- *         modelName: aws_sagemaker_model.m.name,
- *         initialInstanceCount: 1,
- *         instanceType: "ml.t2.medium",
- *     }],
- *     tags: {
- *         Name: "foo",
- *     },
- * });
- * ```
- */
 export class EndpointConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing EndpointConfiguration resource's state with the given name, ID, and optional extra
@@ -58,25 +34,10 @@ export class EndpointConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === EndpointConfiguration.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS to this endpoint configuration.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-     */
     public readonly kmsKeyArn!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Fields are documented below.
-     */
     public readonly productionVariants!: pulumi.Output<outputs.sagemaker.EndpointConfigurationProductionVariant[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -122,25 +83,10 @@ export class EndpointConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointConfiguration resources.
  */
 export interface EndpointConfigurationState {
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS to this endpoint configuration.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-     */
     readonly kmsKeyArn?: pulumi.Input<string>;
-    /**
-     * The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Fields are documented below.
-     */
     readonly productionVariants?: pulumi.Input<pulumi.Input<inputs.sagemaker.EndpointConfigurationProductionVariant>[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -148,20 +94,8 @@ export interface EndpointConfigurationState {
  * The set of arguments for constructing a EndpointConfiguration resource.
  */
 export interface EndpointConfigurationArgs {
-    /**
-     * Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-     */
     readonly kmsKeyArn?: pulumi.Input<string>;
-    /**
-     * The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Fields are documented below.
-     */
     readonly productionVariants: pulumi.Input<pulumi.Input<inputs.sagemaker.EndpointConfigurationProductionVariant>[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

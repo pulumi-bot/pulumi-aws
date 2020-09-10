@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Enables AWS Shield Advanced for a specific AWS resource.
- * The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
- *
- * ## Example Usage
- * ### Create protection
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const available = aws.getAvailabilityZones({});
- * const currentRegion = aws.getRegion({});
- * const currentCallerIdentity = aws.getCallerIdentity({});
- * const fooEip = new aws.ec2.Eip("fooEip", {vpc: true});
- * const fooProtection = new aws.shield.Protection("fooProtection", {resourceArn: pulumi.all([currentRegion, currentCallerIdentity, fooEip.id]).apply(([currentRegion, currentCallerIdentity, id]) => `arn:aws:ec2:${currentRegion.name}:${currentCallerIdentity.accountId}:eip-allocation/${id}`)});
- * ```
- */
 export class Protection extends pulumi.CustomResource {
     /**
      * Get an existing Protection resource's state with the given name, ID, and optional extra
@@ -50,13 +32,7 @@ export class Protection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Protection.__pulumiType;
     }
 
-    /**
-     * A friendly name for the Protection you are creating.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ARN (Amazon Resource Name) of the resource to be protected.
-     */
     public readonly resourceArn!: pulumi.Output<string>;
 
     /**
@@ -96,13 +72,7 @@ export class Protection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Protection resources.
  */
 export interface ProtectionState {
-    /**
-     * A friendly name for the Protection you are creating.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ARN (Amazon Resource Name) of the resource to be protected.
-     */
     readonly resourceArn?: pulumi.Input<string>;
 }
 
@@ -110,12 +80,6 @@ export interface ProtectionState {
  * The set of arguments for constructing a Protection resource.
  */
 export interface ProtectionArgs {
-    /**
-     * A friendly name for the Protection you are creating.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ARN (Amazon Resource Name) of the resource to be protected.
-     */
     readonly resourceArn: pulumi.Input<string>;
 }

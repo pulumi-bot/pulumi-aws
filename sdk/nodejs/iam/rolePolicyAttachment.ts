@@ -7,55 +7,6 @@ import * as utilities from "../utilities";
 import {ARN} from "..";
 import {Role} from "./index";
 
-/**
- * Attaches a Managed IAM Policy to an IAM role
- *
- * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const role = new aws.iam.Role("role", {
- *     assumeRolePolicy: `    {
- *       "Version": "2012-10-17",
- *       "Statement": [
- *         {
- *           "Action": "sts:AssumeRole",
- *           "Principal": {
- *             "Service": "ec2.amazonaws.com"
- *           },
- *           "Effect": "Allow",
- *           "Sid": ""
- *         }
- *       ]
- *     }
- * `,
- * });
- * const policy = new aws.iam.Policy("policy", {
- *     description: "A test policy",
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "ec2:Describe*"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * const test_attach = new aws.iam.RolePolicyAttachment("test-attach", {
- *     policyArn: policy.arn,
- *     role: role.name,
- * });
- * ```
- */
 export class RolePolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing RolePolicyAttachment resource's state with the given name, ID, and optional extra
@@ -84,13 +35,7 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === RolePolicyAttachment.__pulumiType;
     }
 
-    /**
-     * The ARN of the policy you want to apply
-     */
     public readonly policyArn!: pulumi.Output<ARN>;
-    /**
-     * The role the policy should be applied to
-     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -133,13 +78,7 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RolePolicyAttachment resources.
  */
 export interface RolePolicyAttachmentState {
-    /**
-     * The ARN of the policy you want to apply
-     */
     readonly policyArn?: pulumi.Input<ARN>;
-    /**
-     * The role the policy should be applied to
-     */
     readonly role?: pulumi.Input<string | Role>;
 }
 
@@ -147,12 +86,6 @@ export interface RolePolicyAttachmentState {
  * The set of arguments for constructing a RolePolicyAttachment resource.
  */
 export interface RolePolicyAttachmentArgs {
-    /**
-     * The ARN of the policy you want to apply
-     */
     readonly policyArn: pulumi.Input<ARN>;
-    /**
-     * The role the policy should be applied to
-     */
     readonly role: pulumi.Input<string | Role>;
 }

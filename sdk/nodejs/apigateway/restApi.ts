@@ -6,35 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an API Gateway REST API.
- *
- * > **Note:** Amazon API Gateway Version 1 resources are used for creating and deploying REST APIs. To create and deploy WebSocket and HTTP APIs, use Amazon API Gateway Version 2.
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
- *     description: "This is my API for demonstration purposes",
- * });
- * ```
- * ### Regional Endpoint Type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigateway.RestApi("example", {
- *     endpointConfiguration: {
- *         types: "REGIONAL",
- *     },
- * });
- * ```
- */
 export class RestApi extends pulumi.CustomResource {
     /**
      * Get an existing RestApi resource's state with the given name, ID, and optional extra
@@ -63,59 +34,18 @@ export class RestApi extends pulumi.CustomResource {
         return obj['__pulumiType'] === RestApi.__pulumiType;
     }
 
-    /**
-     * The source of the API key for requests. Valid values are HEADER (default) and AUTHORIZER.
-     */
     public readonly apiKeySource!: pulumi.Output<string | undefined>;
-    /**
-     * Amazon Resource Name (ARN)
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
-     */
     public readonly binaryMediaTypes!: pulumi.Output<string[] | undefined>;
-    /**
-     * An OpenAPI specification that defines the set of routes and integrations to create as part of the REST API.
-     */
     public readonly body!: pulumi.Output<string | undefined>;
-    /**
-     * The creation date of the REST API
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * The description of the REST API
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Nested argument defining API endpoint configuration including endpoint type. Defined below.
-     */
     public readonly endpointConfiguration!: pulumi.Output<outputs.apigateway.RestApiEndpointConfiguration>;
-    /**
-     * The execution ARN part to be used in `lambdaPermission`'s `sourceArn`
-     * when allowing API Gateway to invoke a Lambda function,
-     * e.g. `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
-     */
     public /*out*/ readonly executionArn!: pulumi.Output<string>;
-    /**
-     * Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
-     */
     public readonly minimumCompressionSize!: pulumi.Output<number | undefined>;
-    /**
-     * The name of the REST API
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * JSON formatted policy document that controls access to the API Gateway.
-     */
     public readonly policy!: pulumi.Output<string | undefined>;
-    /**
-     * The resource ID of the REST API's root
-     */
     public /*out*/ readonly rootResourceId!: pulumi.Output<string>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -174,59 +104,18 @@ export class RestApi extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RestApi resources.
  */
 export interface RestApiState {
-    /**
-     * The source of the API key for requests. Valid values are HEADER (default) and AUTHORIZER.
-     */
     readonly apiKeySource?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN)
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
-     */
     readonly binaryMediaTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An OpenAPI specification that defines the set of routes and integrations to create as part of the REST API.
-     */
     readonly body?: pulumi.Input<string>;
-    /**
-     * The creation date of the REST API
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * The description of the REST API
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Nested argument defining API endpoint configuration including endpoint type. Defined below.
-     */
     readonly endpointConfiguration?: pulumi.Input<inputs.apigateway.RestApiEndpointConfiguration>;
-    /**
-     * The execution ARN part to be used in `lambdaPermission`'s `sourceArn`
-     * when allowing API Gateway to invoke a Lambda function,
-     * e.g. `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
-     */
     readonly executionArn?: pulumi.Input<string>;
-    /**
-     * Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
-     */
     readonly minimumCompressionSize?: pulumi.Input<number>;
-    /**
-     * The name of the REST API
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * JSON formatted policy document that controls access to the API Gateway.
-     */
     readonly policy?: pulumi.Input<string>;
-    /**
-     * The resource ID of the REST API's root
-     */
     readonly rootResourceId?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -234,40 +123,13 @@ export interface RestApiState {
  * The set of arguments for constructing a RestApi resource.
  */
 export interface RestApiArgs {
-    /**
-     * The source of the API key for requests. Valid values are HEADER (default) and AUTHORIZER.
-     */
     readonly apiKeySource?: pulumi.Input<string>;
-    /**
-     * The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
-     */
     readonly binaryMediaTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An OpenAPI specification that defines the set of routes and integrations to create as part of the REST API.
-     */
     readonly body?: pulumi.Input<string>;
-    /**
-     * The description of the REST API
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Nested argument defining API endpoint configuration including endpoint type. Defined below.
-     */
     readonly endpointConfiguration?: pulumi.Input<inputs.apigateway.RestApiEndpointConfiguration>;
-    /**
-     * Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
-     */
     readonly minimumCompressionSize?: pulumi.Input<number>;
-    /**
-     * The name of the REST API
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * JSON formatted policy document that controls access to the API Gateway.
-     */
     readonly policy?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information on an existing backup vault.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.backup.getVault({
- *     name: "example_backup_vault",
- * }, { async: true }));
- * ```
- */
 export function getVault(args: GetVaultArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultResult> {
     if (!opts) {
         opts = {}
@@ -38,13 +24,7 @@ export function getVault(args: GetVaultArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getVault.
  */
 export interface GetVaultArgs {
-    /**
-     * The name of the backup vault.
-     */
     readonly name: string;
-    /**
-     * Metadata that you can assign to help organize the resources that you create.
-     */
     readonly tags?: {[key: string]: string};
 }
 
@@ -52,25 +32,13 @@ export interface GetVaultArgs {
  * A collection of values returned by getVault.
  */
 export interface GetVaultResult {
-    /**
-     * The ARN of the vault.
-     */
     readonly arn: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The server-side encryption key that is used to protect your backups.
-     */
     readonly kmsKeyArn: string;
     readonly name: string;
-    /**
-     * The number of recovery points that are stored in a backup vault.
-     */
     readonly recoveryPoints: number;
-    /**
-     * Metadata that you can assign to help organize the resources that you create.
-     */
     readonly tags: {[key: string]: string};
 }

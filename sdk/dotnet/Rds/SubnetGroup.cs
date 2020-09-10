@@ -9,71 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Rds
 {
-    /// <summary>
-    /// Provides an RDS DB subnet group resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.Rds.SubnetGroup("default", new Aws.Rds.SubnetGroupArgs
-    ///         {
-    ///             SubnetIds = 
-    ///             {
-    ///                 aws_subnet.Frontend.Id,
-    ///                 aws_subnet.Backend.Id,
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "My DB subnet group" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SubnetGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the db subnet group.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the DB subnet group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the DB subnet group. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of VPC subnet IDs.
-        /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -123,30 +75,17 @@ namespace Pulumi.Aws.Rds
 
     public sealed class SubnetGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the DB subnet group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the DB subnet group. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("subnetIds", required: true)]
         private InputList<string>? _subnetIds;
-
-        /// <summary>
-        /// A list of VPC subnet IDs.
-        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -155,10 +94,6 @@ namespace Pulumi.Aws.Rds
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -173,36 +108,20 @@ namespace Pulumi.Aws.Rds
 
     public sealed class SubnetGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the db subnet group.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of the DB subnet group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the DB subnet group. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
-
-        /// <summary>
-        /// A list of VPC subnet IDs.
-        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -211,10 +130,6 @@ namespace Pulumi.Aws.Rds
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

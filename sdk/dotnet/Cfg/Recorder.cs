@@ -9,66 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cfg
 {
-    /// <summary>
-    /// Provides an AWS Config Configuration Recorder. Please note that this resource **does not start** the created recorder automatically.
-    /// 
-    /// &gt; **Note:** _Starting_ the Configuration Recorder requires a `delivery channel` (while delivery channel creation requires Configuration Recorder). This is why `aws.cfg.RecorderStatus` is a separate resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var role = new Aws.Iam.Role("role", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": ""sts:AssumeRole"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""config.amazonaws.com""
-    ///       },
-    ///       ""Effect"": ""Allow"",
-    ///       ""Sid"": """"
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var foo = new Aws.Cfg.Recorder("foo", new Aws.Cfg.RecorderArgs
-    ///         {
-    ///             RoleArn = role.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Recorder : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Recording group - see below.
-        /// </summary>
         [Output("recordingGroup")]
         public Output<Outputs.RecorderRecordingGroup> RecordingGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the IAM role.
-        /// used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account.
-        /// See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
@@ -118,23 +66,12 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class RecorderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Recording group - see below.
-        /// </summary>
         [Input("recordingGroup")]
         public Input<Inputs.RecorderRecordingGroupArgs>? RecordingGroup { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the IAM role.
-        /// used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account.
-        /// See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
@@ -145,23 +82,12 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class RecorderState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Recording group - see below.
-        /// </summary>
         [Input("recordingGroup")]
         public Input<Inputs.RecorderRecordingGroupGetArgs>? RecordingGroup { get; set; }
 
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the IAM role.
-        /// used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account.
-        /// See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

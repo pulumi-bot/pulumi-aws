@@ -13,21 +13,9 @@ namespace Pulumi.Aws.Glue.Outputs
     [OutputType]
     public sealed class TriggerAction
     {
-        /// <summary>
-        /// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Arguments;
-        /// <summary>
-        /// The name of the crawler to be executed. Conflicts with `job_name`.
-        /// </summary>
         public readonly string? CrawlerName;
-        /// <summary>
-        /// The name of a job to be executed. Conflicts with `crawler_name`.
-        /// </summary>
         public readonly string? JobName;
-        /// <summary>
-        /// The job run timeout in minutes. It overrides the timeout value of the job.
-        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

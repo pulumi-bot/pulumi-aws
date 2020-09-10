@@ -25,33 +25,9 @@ class Application(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Elastic Beanstalk Application Resource. Elastic Beanstalk allows
-        you to deploy and manage applications in the AWS cloud without worrying about
-        the infrastructure that runs those applications.
-
-        This resource creates an application that has one configuration template named
-        `default`, and no application versions
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        tftest = aws.elasticbeanstalk.Application("tftest",
-            description="tf-test-desc",
-            appversion_lifecycle=aws.elasticbeanstalk.ApplicationAppversionLifecycleArgs(
-                service_role=aws_iam_role["beanstalk_service"]["arn"],
-                max_count=128,
-                delete_source_from_s3=True,
-            ))
-        ```
-
+        Create a Application resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Short description of the application
-        :param pulumi.Input[str] name: The name of the application, must be unique within your account
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Elastic Beanstalk Application.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,10 +73,6 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN assigned by AWS for this Elastic Beanstalk Application.
-        :param pulumi.Input[str] description: Short description of the application
-        :param pulumi.Input[str] name: The name of the application, must be unique within your account
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Elastic Beanstalk Application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,33 +93,21 @@ class Application(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN assigned by AWS for this Elastic Beanstalk Application.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Short description of the application
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the application, must be unique within your account
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of tags for the Elastic Beanstalk Application.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

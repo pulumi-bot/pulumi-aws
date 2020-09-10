@@ -24,32 +24,9 @@ class Model(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Model for a REST API Gateway.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_demo_api = aws.apigateway.RestApi("myDemoAPI", description="This is my API for demonstration purposes")
-        my_demo_model = aws.apigateway.Model("myDemoModel",
-            rest_api=my_demo_api.id,
-            description="a JSON schema",
-            content_type="application/json",
-            schema=\"\"\"{
-          "type": "object"
-        }
-        \"\"\")
-        ```
-
+        Create a Model resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The content type of the model
-        :param pulumi.Input[str] description: The description of the model
-        :param pulumi.Input[str] name: The name of the model
-        :param pulumi.Input[str] rest_api: The ID of the associated REST API
-        :param pulumi.Input[str] schema: The schema of the model in a JSON form
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,11 +76,6 @@ class Model(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The content type of the model
-        :param pulumi.Input[str] description: The description of the model
-        :param pulumi.Input[str] name: The name of the model
-        :param pulumi.Input[str] rest_api: The ID of the associated REST API
-        :param pulumi.Input[str] schema: The schema of the model in a JSON form
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,41 +91,26 @@ class Model(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
-        """
-        The content type of the model
-        """
         return pulumi.get(self, "content_type")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the model
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the model
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="restApi")
     def rest_api(self) -> pulumi.Output[str]:
-        """
-        The ID of the associated REST API
-        """
         return pulumi.get(self, "rest_api")
 
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[str]]:
-        """
-        The schema of the model in a JSON form
-        """
         return pulumi.get(self, "schema")
 
     def translate_output_property(self, prop):

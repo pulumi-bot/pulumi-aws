@@ -13,17 +13,8 @@ namespace Pulumi.Aws.WafV2.Outputs
     [OutputType]
     public sealed class WebAclRuleAction
     {
-        /// <summary>
-        /// Instructs AWS WAF to allow the web request. Configure as an empty block `{}`.
-        /// </summary>
         public readonly Outputs.WebAclRuleActionAllow? Allow;
-        /// <summary>
-        /// Instructs AWS WAF to block the web request. Configure as an empty block `{}`.
-        /// </summary>
         public readonly Outputs.WebAclRuleActionBlock? Block;
-        /// <summary>
-        /// Instructs AWS WAF to count the web request and allow it. Configure as an empty block `{}`.
-        /// </summary>
         public readonly Outputs.WebAclRuleActionCount? Count;
 
         [OutputConstructor]

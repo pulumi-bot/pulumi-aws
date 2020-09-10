@@ -9,341 +9,134 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides an EC2 instance resource. This allows instances to be created, updated,
-    /// and deleted.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ubuntu = Output.Create(Aws.GetAmi.InvokeAsync(new Aws.GetAmiArgs
-    ///         {
-    ///             MostRecent = true,
-    ///             Filters = 
-    ///             {
-    ///                 new Aws.Inputs.GetAmiFilterArgs
-    ///                 {
-    ///                     Name = "name",
-    ///                     Values = 
-    ///                     {
-    ///                         "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*",
-    ///                     },
-    ///                 },
-    ///                 new Aws.Inputs.GetAmiFilterArgs
-    ///                 {
-    ///                     Name = "virtualization-type",
-    ///                     Values = 
-    ///                     {
-    ///                         "hvm",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Owners = 
-    ///             {
-    ///                 "099720109477",
-    ///             },
-    ///         }));
-    ///         var web = new Aws.Ec2.Instance("web", new Aws.Ec2.InstanceArgs
-    ///         {
-    ///             Ami = ubuntu.Apply(ubuntu =&gt; ubuntu.Id),
-    ///             InstanceType = "t3.micro",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "HelloWorld" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The AMI to use for the instance.
-        /// </summary>
         [Output("ami")]
         public Output<string> Ami { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the instance.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Associate a public ip address with an instance in a VPC.  Boolean value.
-        /// </summary>
         [Output("associatePublicIpAddress")]
         public Output<bool> AssociatePublicIpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// The AZ to start the instance in.
-        /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
-        /// <summary>
-        /// Sets the number of CPU cores for an instance. This option is
-        /// only supported on creation of instance type that support CPU Options
-        /// [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        /// </summary>
         [Output("cpuCoreCount")]
         public Output<int> CpuCoreCount { get; private set; } = null!;
 
-        /// <summary>
-        /// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
-        /// </summary>
         [Output("cpuThreadsPerCore")]
         public Output<int> CpuThreadsPerCore { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit Specification below for more details.
-        /// </summary>
         [Output("creditSpecification")]
         public Output<Outputs.InstanceCreditSpecification?> CreditSpecification { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         [Output("disableApiTermination")]
         public Output<bool?> DisableApiTermination { get; private set; } = null!;
 
-        /// <summary>
-        /// Additional EBS block devices to attach to the
-        /// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-        /// </summary>
         [Output("ebsBlockDevices")]
         public Output<ImmutableArray<Outputs.InstanceEbsBlockDevice>> EbsBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the launched EC2 instance will be EBS-optimized.
-        /// Note that if this is not set on an instance type that is optimized by default then
-        /// this will show as disabled but if the instance type is optimized by default then
-        /// there is no need to set this and there is no effect to disabling it.
-        /// See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
-        /// </summary>
         [Output("ebsOptimized")]
         public Output<bool?> EbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize Ephemeral (also known as
-        /// "Instance Store") volumes on the instance. See Block Devices below for details.
-        /// </summary>
         [Output("ephemeralBlockDevices")]
         public Output<ImmutableArray<Outputs.InstanceEphemeralBlockDevice>> EphemeralBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Output("getPasswordData")]
         public Output<bool?> GetPasswordData { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the launched EC2 instance will support hibernation.
-        /// </summary>
         [Output("hibernation")]
         public Output<bool?> Hibernation { get; private set; } = null!;
 
-        /// <summary>
-        /// The Id of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
-        /// </summary>
         [Output("hostId")]
         public Output<string> HostId { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM Instance Profile to
-        /// launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
-        /// </summary>
         [Output("iamInstanceProfile")]
         public Output<string?> IamInstanceProfile { get; private set; } = null!;
 
-        /// <summary>
-        /// Shutdown behavior for the
-        /// instance. Amazon defaults this to `stop` for EBS-backed instances and
-        /// `terminate` for instance-store instances. Cannot be set on instance-store
-        /// instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
-        /// </summary>
         [Output("instanceInitiatedShutdownBehavior")]
         public Output<string?> InstanceInitiatedShutdownBehavior { get; private set; } = null!;
 
-        /// <summary>
-        /// The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
-        /// </summary>
         [Output("instanceState")]
         public Output<string> State { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
-        /// <summary>
-        /// A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
-        /// </summary>
         [Output("ipv6AddressCount")]
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
-        /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
-        /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize the metadata options of the instance. See Metadata Options below for more details.
-        /// </summary>
         [Output("metadataOptions")]
         public Output<Outputs.InstanceMetadataOptions> MetadataOptions { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
-        /// </summary>
         [Output("monitoring")]
         public Output<bool?> Monitoring { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-        /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.InstanceNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the Outpost the instance is assigned to.
-        /// </summary>
         [Output("outpostArn")]
         public Output<string> OutpostArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Base-64 encoded encrypted password data for the instance.
-        /// Useful for getting the administrator password for instances running Microsoft Windows.
-        /// This attribute is only exported if `get_password_data` is true.
-        /// Note that this encrypted value will be stored in the state file, as with all exported attributes.
-        /// See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Output("passwordData")]
         public Output<string> PasswordData { get; private set; } = null!;
 
-        /// <summary>
-        /// The Placement Group to start the instance in.
-        /// </summary>
         [Output("placementGroup")]
         public Output<string> PlacementGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the instance's primary network interface.
-        /// </summary>
         [Output("primaryNetworkInterfaceId")]
         public Output<string> PrimaryNetworkInterfaceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The private DNS name assigned to the instance. Can only be
-        /// used inside the Amazon EC2, and only available if you've enabled DNS hostnames
-        /// for your VPC
-        /// </summary>
         [Output("privateDns")]
         public Output<string> PrivateDns { get; private set; } = null!;
 
-        /// <summary>
-        /// Private IP address to associate with the
-        /// instance in a VPC.
-        /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
 
-        /// <summary>
-        /// The public DNS name assigned to the instance. For EC2-VPC, this
-        /// is only available if you've enabled DNS hostnames for your VPC
-        /// </summary>
         [Output("publicDns")]
         public Output<string> PublicDns { get; private set; } = null!;
 
-        /// <summary>
-        /// The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
-        /// </summary>
         [Output("publicIp")]
         public Output<string> PublicIp { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize details about the root block
-        /// device of the instance. See Block Devices below for details.
-        /// </summary>
         [Output("rootBlockDevice")]
         public Output<Outputs.InstanceRootBlockDevice> RootBlockDevice { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e. referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
-        /// </summary>
         [Output("secondaryPrivateIps")]
         public Output<ImmutableArray<string>> SecondaryPrivateIps { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
-        /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// Controls if traffic is routed to the instance when
-        /// the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
-        /// </summary>
         [Output("sourceDestCheck")]
         public Output<bool?> SourceDestCheck { get; private set; } = null!;
 
-        /// <summary>
-        /// The VPC Subnet ID to launch in.
-        /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
-        /// </summary>
         [Output("tenancy")]
         public Output<string> Tenancy { get; private set; } = null!;
 
-        /// <summary>
-        /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-        /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
-        /// <summary>
-        /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-        /// </summary>
         [Output("userDataBase64")]
         public Output<string?> UserDataBase64 { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the devices created by the instance at launch time.
-        /// </summary>
         [Output("volumeTags")]
         public Output<ImmutableDictionary<string, string>> VolumeTags { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         [Output("vpcSecurityGroupIds")]
         public Output<ImmutableArray<string>> VpcSecurityGroupIds { get; private set; } = null!;
 
@@ -393,201 +186,103 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AMI to use for the instance.
-        /// </summary>
         [Input("ami", required: true)]
         public Input<string> Ami { get; set; } = null!;
 
-        /// <summary>
-        /// Associate a public ip address with an instance in a VPC.  Boolean value.
-        /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// The AZ to start the instance in.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// Sets the number of CPU cores for an instance. This option is
-        /// only supported on creation of instance type that support CPU Options
-        /// [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        /// </summary>
         [Input("cpuCoreCount")]
         public Input<int>? CpuCoreCount { get; set; }
 
-        /// <summary>
-        /// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
-        /// </summary>
         [Input("cpuThreadsPerCore")]
         public Input<int>? CpuThreadsPerCore { get; set; }
 
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit Specification below for more details.
-        /// </summary>
         [Input("creditSpecification")]
         public Input<Inputs.InstanceCreditSpecificationArgs>? CreditSpecification { get; set; }
 
-        /// <summary>
-        /// If true, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         [Input("disableApiTermination")]
         public Input<bool>? DisableApiTermination { get; set; }
 
         [Input("ebsBlockDevices")]
         private InputList<Inputs.InstanceEbsBlockDeviceArgs>? _ebsBlockDevices;
-
-        /// <summary>
-        /// Additional EBS block devices to attach to the
-        /// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-        /// </summary>
         public InputList<Inputs.InstanceEbsBlockDeviceArgs> EbsBlockDevices
         {
             get => _ebsBlockDevices ?? (_ebsBlockDevices = new InputList<Inputs.InstanceEbsBlockDeviceArgs>());
             set => _ebsBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will be EBS-optimized.
-        /// Note that if this is not set on an instance type that is optimized by default then
-        /// this will show as disabled but if the instance type is optimized by default then
-        /// there is no need to set this and there is no effect to disabling it.
-        /// See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
-        /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
         [Input("ephemeralBlockDevices")]
         private InputList<Inputs.InstanceEphemeralBlockDeviceArgs>? _ephemeralBlockDevices;
-
-        /// <summary>
-        /// Customize Ephemeral (also known as
-        /// "Instance Store") volumes on the instance. See Block Devices below for details.
-        /// </summary>
         public InputList<Inputs.InstanceEphemeralBlockDeviceArgs> EphemeralBlockDevices
         {
             get => _ephemeralBlockDevices ?? (_ephemeralBlockDevices = new InputList<Inputs.InstanceEphemeralBlockDeviceArgs>());
             set => _ephemeralBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Input("getPasswordData")]
         public Input<bool>? GetPasswordData { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will support hibernation.
-        /// </summary>
         [Input("hibernation")]
         public Input<bool>? Hibernation { get; set; }
 
-        /// <summary>
-        /// The Id of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
-        /// </summary>
         [Input("hostId")]
         public Input<string>? HostId { get; set; }
 
-        /// <summary>
-        /// The IAM Instance Profile to
-        /// launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
-        /// </summary>
         [Input("iamInstanceProfile")]
         public Input<string>? IamInstanceProfile { get; set; }
 
-        /// <summary>
-        /// Shutdown behavior for the
-        /// instance. Amazon defaults this to `stop` for EBS-backed instances and
-        /// `terminate` for instance-store instances. Cannot be set on instance-store
-        /// instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
-        /// </summary>
         [Input("instanceInitiatedShutdownBehavior")]
         public Input<string>? InstanceInitiatedShutdownBehavior { get; set; }
 
-        /// <summary>
-        /// The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
-        /// <summary>
-        /// A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
-        /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
         [Input("ipv6Addresses")]
         private InputList<string>? _ipv6Addresses;
-
-        /// <summary>
-        /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        /// </summary>
         public InputList<string> Ipv6Addresses
         {
             get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
             set => _ipv6Addresses = value;
         }
 
-        /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
-        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
-        /// <summary>
-        /// Customize the metadata options of the instance. See Metadata Options below for more details.
-        /// </summary>
         [Input("metadataOptions")]
         public Input<Inputs.InstanceMetadataOptionsArgs>? MetadataOptions { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
-        /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.InstanceNetworkInterfaceArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-        /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceNetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
 
-        /// <summary>
-        /// The Placement Group to start the instance in.
-        /// </summary>
         [Input("placementGroup")]
         public Input<string>? PlacementGroup { get; set; }
 
-        /// <summary>
-        /// Private IP address to associate with the
-        /// instance in a VPC.
-        /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
-        /// <summary>
-        /// Customize details about the root block
-        /// device of the instance. See Block Devices below for details.
-        /// </summary>
         [Input("rootBlockDevice")]
         public Input<Inputs.InstanceRootBlockDeviceArgs>? RootBlockDevice { get; set; }
 
         [Input("secondaryPrivateIps")]
         private InputList<string>? _secondaryPrivateIps;
-
-        /// <summary>
-        /// A list of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e. referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
-        /// </summary>
         public InputList<string> SecondaryPrivateIps
         {
             get => _secondaryPrivateIps ?? (_secondaryPrivateIps = new InputList<string>());
@@ -596,10 +291,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
-
-        /// <summary>
-        /// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
-        /// </summary>
         [Obsolete(@"Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.")]
         public InputList<string> SecurityGroups
         {
@@ -607,55 +298,31 @@ namespace Pulumi.Aws.Ec2
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// Controls if traffic is routed to the instance when
-        /// the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
-        /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
 
-        /// <summary>
-        /// The VPC Subnet ID to launch in.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
-        /// </summary>
         [Input("tenancy")]
         public Input<string>? Tenancy { get; set; }
 
-        /// <summary>
-        /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
-        /// <summary>
-        /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-        /// </summary>
         [Input("userDataBase64")]
         public Input<string>? UserDataBase64 { get; set; }
 
         [Input("volumeTags")]
         private InputMap<string>? _volumeTags;
-
-        /// <summary>
-        /// A map of tags to assign to the devices created by the instance at launch time.
-        /// </summary>
         public InputMap<string> VolumeTags
         {
             get => _volumeTags ?? (_volumeTags = new InputMap<string>());
@@ -664,10 +331,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("vpcSecurityGroupIds")]
         private InputList<string>? _vpcSecurityGroupIds;
-
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         public InputList<string> VpcSecurityGroupIds
         {
             get => _vpcSecurityGroupIds ?? (_vpcSecurityGroupIds = new InputList<string>());
@@ -681,256 +344,127 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AMI to use for the instance.
-        /// </summary>
         [Input("ami")]
         public Input<string>? Ami { get; set; }
 
-        /// <summary>
-        /// The ARN of the instance.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Associate a public ip address with an instance in a VPC.  Boolean value.
-        /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// The AZ to start the instance in.
-        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// Sets the number of CPU cores for an instance. This option is
-        /// only supported on creation of instance type that support CPU Options
-        /// [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        /// </summary>
         [Input("cpuCoreCount")]
         public Input<int>? CpuCoreCount { get; set; }
 
-        /// <summary>
-        /// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
-        /// </summary>
         [Input("cpuThreadsPerCore")]
         public Input<int>? CpuThreadsPerCore { get; set; }
 
-        /// <summary>
-        /// Customize the credit specification of the instance. See Credit Specification below for more details.
-        /// </summary>
         [Input("creditSpecification")]
         public Input<Inputs.InstanceCreditSpecificationGetArgs>? CreditSpecification { get; set; }
 
-        /// <summary>
-        /// If true, enables [EC2 Instance
-        /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
-        /// </summary>
         [Input("disableApiTermination")]
         public Input<bool>? DisableApiTermination { get; set; }
 
         [Input("ebsBlockDevices")]
         private InputList<Inputs.InstanceEbsBlockDeviceGetArgs>? _ebsBlockDevices;
-
-        /// <summary>
-        /// Additional EBS block devices to attach to the
-        /// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-        /// </summary>
         public InputList<Inputs.InstanceEbsBlockDeviceGetArgs> EbsBlockDevices
         {
             get => _ebsBlockDevices ?? (_ebsBlockDevices = new InputList<Inputs.InstanceEbsBlockDeviceGetArgs>());
             set => _ebsBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will be EBS-optimized.
-        /// Note that if this is not set on an instance type that is optimized by default then
-        /// this will show as disabled but if the instance type is optimized by default then
-        /// there is no need to set this and there is no effect to disabling it.
-        /// See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
-        /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
         [Input("ephemeralBlockDevices")]
         private InputList<Inputs.InstanceEphemeralBlockDeviceGetArgs>? _ephemeralBlockDevices;
-
-        /// <summary>
-        /// Customize Ephemeral (also known as
-        /// "Instance Store") volumes on the instance. See Block Devices below for details.
-        /// </summary>
         public InputList<Inputs.InstanceEphemeralBlockDeviceGetArgs> EphemeralBlockDevices
         {
             get => _ephemeralBlockDevices ?? (_ephemeralBlockDevices = new InputList<Inputs.InstanceEphemeralBlockDeviceGetArgs>());
             set => _ephemeralBlockDevices = value;
         }
 
-        /// <summary>
-        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Input("getPasswordData")]
         public Input<bool>? GetPasswordData { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will support hibernation.
-        /// </summary>
         [Input("hibernation")]
         public Input<bool>? Hibernation { get; set; }
 
-        /// <summary>
-        /// The Id of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
-        /// </summary>
         [Input("hostId")]
         public Input<string>? HostId { get; set; }
 
-        /// <summary>
-        /// The IAM Instance Profile to
-        /// launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
-        /// </summary>
         [Input("iamInstanceProfile")]
         public Input<string>? IamInstanceProfile { get; set; }
 
-        /// <summary>
-        /// Shutdown behavior for the
-        /// instance. Amazon defaults this to `stop` for EBS-backed instances and
-        /// `terminate` for instance-store instances. Cannot be set on instance-store
-        /// instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
-        /// </summary>
         [Input("instanceInitiatedShutdownBehavior")]
         public Input<string>? InstanceInitiatedShutdownBehavior { get; set; }
 
-        /// <summary>
-        /// The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
-        /// </summary>
         [Input("instanceState")]
         public Input<string>? State { get; set; }
 
-        /// <summary>
-        /// The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
-        /// </summary>
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
         [Input("ipv6Addresses")]
         private InputList<string>? _ipv6Addresses;
-
-        /// <summary>
-        /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        /// </summary>
         public InputList<string> Ipv6Addresses
         {
             get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
             set => _ipv6Addresses = value;
         }
 
-        /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
-        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
-        /// <summary>
-        /// Customize the metadata options of the instance. See Metadata Options below for more details.
-        /// </summary>
         [Input("metadataOptions")]
         public Input<Inputs.InstanceMetadataOptionsGetArgs>? MetadataOptions { get; set; }
 
-        /// <summary>
-        /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
-        /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.InstanceNetworkInterfaceGetArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-        /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceGetArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
 
-        /// <summary>
-        /// The ARN of the Outpost the instance is assigned to.
-        /// </summary>
         [Input("outpostArn")]
         public Input<string>? OutpostArn { get; set; }
 
-        /// <summary>
-        /// Base-64 encoded encrypted password data for the instance.
-        /// Useful for getting the administrator password for instances running Microsoft Windows.
-        /// This attribute is only exported if `get_password_data` is true.
-        /// Note that this encrypted value will be stored in the state file, as with all exported attributes.
-        /// See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-        /// </summary>
         [Input("passwordData")]
         public Input<string>? PasswordData { get; set; }
 
-        /// <summary>
-        /// The Placement Group to start the instance in.
-        /// </summary>
         [Input("placementGroup")]
         public Input<string>? PlacementGroup { get; set; }
 
-        /// <summary>
-        /// The ID of the instance's primary network interface.
-        /// </summary>
         [Input("primaryNetworkInterfaceId")]
         public Input<string>? PrimaryNetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The private DNS name assigned to the instance. Can only be
-        /// used inside the Amazon EC2, and only available if you've enabled DNS hostnames
-        /// for your VPC
-        /// </summary>
         [Input("privateDns")]
         public Input<string>? PrivateDns { get; set; }
 
-        /// <summary>
-        /// Private IP address to associate with the
-        /// instance in a VPC.
-        /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
-        /// <summary>
-        /// The public DNS name assigned to the instance. For EC2-VPC, this
-        /// is only available if you've enabled DNS hostnames for your VPC
-        /// </summary>
         [Input("publicDns")]
         public Input<string>? PublicDns { get; set; }
 
-        /// <summary>
-        /// The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
-        /// </summary>
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }
 
-        /// <summary>
-        /// Customize details about the root block
-        /// device of the instance. See Block Devices below for details.
-        /// </summary>
         [Input("rootBlockDevice")]
         public Input<Inputs.InstanceRootBlockDeviceGetArgs>? RootBlockDevice { get; set; }
 
         [Input("secondaryPrivateIps")]
         private InputList<string>? _secondaryPrivateIps;
-
-        /// <summary>
-        /// A list of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e. referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
-        /// </summary>
         public InputList<string> SecondaryPrivateIps
         {
             get => _secondaryPrivateIps ?? (_secondaryPrivateIps = new InputList<string>());
@@ -939,10 +473,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
-
-        /// <summary>
-        /// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
-        /// </summary>
         [Obsolete(@"Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.")]
         public InputList<string> SecurityGroups
         {
@@ -950,55 +480,31 @@ namespace Pulumi.Aws.Ec2
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// Controls if traffic is routed to the instance when
-        /// the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
-        /// </summary>
         [Input("sourceDestCheck")]
         public Input<bool>? SourceDestCheck { get; set; }
 
-        /// <summary>
-        /// The VPC Subnet ID to launch in.
-        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
-        /// </summary>
         [Input("tenancy")]
         public Input<string>? Tenancy { get; set; }
 
-        /// <summary>
-        /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead.
-        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
-        /// <summary>
-        /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-        /// </summary>
         [Input("userDataBase64")]
         public Input<string>? UserDataBase64 { get; set; }
 
         [Input("volumeTags")]
         private InputMap<string>? _volumeTags;
-
-        /// <summary>
-        /// A map of tags to assign to the devices created by the instance at launch time.
-        /// </summary>
         public InputMap<string> VolumeTags
         {
             get => _volumeTags ?? (_volumeTags = new InputMap<string>());
@@ -1007,10 +513,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("vpcSecurityGroupIds")]
         private InputList<string>? _vpcSecurityGroupIds;
-
-        /// <summary>
-        /// A list of security group IDs to associate with.
-        /// </summary>
         public InputList<string> VpcSecurityGroupIds
         {
             get => _vpcSecurityGroupIds ?? (_vpcSecurityGroupIds = new InputList<string>());

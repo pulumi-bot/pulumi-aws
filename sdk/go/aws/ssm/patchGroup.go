@@ -10,45 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an SSM Patch Group resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		production, err := ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
-// 			ApprovedPatches: pulumi.StringArray{
-// 				pulumi.String("KB123456"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ssm.NewPatchGroup(ctx, "patchgroup", &ssm.PatchGroupArgs{
-// 			BaselineId: production.ID(),
-// 			PatchGroup: pulumi.String("patch-group-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type PatchGroup struct {
 	pulumi.CustomResourceState
 
-	// The ID of the patch baseline to register the patch group with.
 	BaselineId pulumi.StringOutput `pulumi:"baselineId"`
-	// The name of the patch group that should be registered with the patch baseline.
 	PatchGroup pulumi.StringOutput `pulumi:"patchGroup"`
 }
 
@@ -86,16 +51,12 @@ func GetPatchGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PatchGroup resources.
 type patchGroupState struct {
-	// The ID of the patch baseline to register the patch group with.
 	BaselineId *string `pulumi:"baselineId"`
-	// The name of the patch group that should be registered with the patch baseline.
 	PatchGroup *string `pulumi:"patchGroup"`
 }
 
 type PatchGroupState struct {
-	// The ID of the patch baseline to register the patch group with.
 	BaselineId pulumi.StringPtrInput
-	// The name of the patch group that should be registered with the patch baseline.
 	PatchGroup pulumi.StringPtrInput
 }
 
@@ -104,17 +65,13 @@ func (PatchGroupState) ElementType() reflect.Type {
 }
 
 type patchGroupArgs struct {
-	// The ID of the patch baseline to register the patch group with.
 	BaselineId string `pulumi:"baselineId"`
-	// The name of the patch group that should be registered with the patch baseline.
 	PatchGroup string `pulumi:"patchGroup"`
 }
 
 // The set of arguments for constructing a PatchGroup resource.
 type PatchGroupArgs struct {
-	// The ID of the patch baseline to register the patch group with.
 	BaselineId pulumi.StringInput
-	// The name of the patch group that should be registered with the patch baseline.
 	PatchGroup pulumi.StringInput
 }
 

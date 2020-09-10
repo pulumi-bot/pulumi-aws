@@ -11,59 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetSubnet
     {
-        /// <summary>
-        /// `aws.ec2.Subnet` provides details about a specific VPC subnet.
-        /// 
-        /// This resource can prove useful when a module accepts a subnet id as
-        /// an input variable and needs to, for example, determine the id of the
-        /// VPC that the subnet belongs to.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might accept a subnet id as a variable
-        /// and use this data source to obtain the data necessary to create a security
-        /// group that allows connections from hosts in that subnet.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var subnetId = config.RequireObject&lt;dynamic&gt;("subnetId");
-        ///         var selected = Output.Create(Aws.Ec2.GetSubnet.InvokeAsync(new Aws.Ec2.GetSubnetArgs
-        ///         {
-        ///             Id = subnetId,
-        ///         }));
-        ///         var subnet = new Aws.Ec2.SecurityGroup("subnet", new Aws.Ec2.SecurityGroupArgs
-        ///         {
-        ///             VpcId = selected.Apply(selected =&gt; selected.VpcId),
-        ///             Ingress = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.SecurityGroupIngressArgs
-        ///                 {
-        ///                     CidrBlocks = 
-        ///                     {
-        ///                         selected.Apply(selected =&gt; selected.CidrBlock),
-        ///                     },
-        ///                     FromPort = 80,
-        ///                     ToPort = 80,
-        ///                     Protocol = "tcp",
-        ///                 },
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("aws:ec2/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());
     }
@@ -71,78 +18,43 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class GetSubnetArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The availability zone where the
-        /// subnet must reside.
-        /// </summary>
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
-        /// <summary>
-        /// The ID of the Availability Zone for the subnet.
-        /// </summary>
         [Input("availabilityZoneId")]
         public string? AvailabilityZoneId { get; set; }
 
-        /// <summary>
-        /// The cidr block of the desired subnet.
-        /// </summary>
         [Input("cidrBlock")]
         public string? CidrBlock { get; set; }
 
-        /// <summary>
-        /// Boolean constraint for whether the desired
-        /// subnet must be the default subnet for its associated availability zone.
-        /// </summary>
         [Input("defaultForAz")]
         public bool? DefaultForAz { get; set; }
 
         [Input("filters")]
         private List<Inputs.GetSubnetFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetSubnetFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetSubnetFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The id of the specific subnet to retrieve.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The Ipv6 cidr block of the desired subnet
-        /// </summary>
         [Input("ipv6CidrBlock")]
         public string? Ipv6CidrBlock { get; set; }
 
-        /// <summary>
-        /// The state that the desired subnet must have.
-        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the desired subnet.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The id of the VPC that the desired subnet belongs to.
-        /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
@@ -155,9 +67,6 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetSubnetResult
     {
-        /// <summary>
-        /// The ARN of the subnet.
-        /// </summary>
         public readonly string Arn;
         public readonly bool AssignIpv6AddressOnCreation;
         public readonly string AvailabilityZone;
@@ -169,13 +78,7 @@ namespace Pulumi.Aws.Ec2
         public readonly string Ipv6CidrBlock;
         public readonly string Ipv6CidrBlockAssociationId;
         public readonly bool MapPublicIpOnLaunch;
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the Outpost.
-        /// </summary>
         public readonly string OutpostArn;
-        /// <summary>
-        /// The ID of the AWS account that owns the subnet.
-        /// </summary>
         public readonly string OwnerId;
         public readonly string State;
         public readonly ImmutableDictionary<string, string> Tags;

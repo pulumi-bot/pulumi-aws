@@ -13,14 +13,10 @@ import (
 type WebsiteCertificateAuthorityAssociation struct {
 	pulumi.CustomResourceState
 
-	// The root certificate of the Certificate Authority.
-	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// The certificate name to display.
+	Certificate pulumi.StringOutput    `pulumi:"certificate"`
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The ARN of the fleet.
-	FleetArn pulumi.StringOutput `pulumi:"fleetArn"`
-	// A unique identifier for the Certificate Authority.
-	WebsiteCaId pulumi.StringOutput `pulumi:"websiteCaId"`
+	FleetArn    pulumi.StringOutput    `pulumi:"fleetArn"`
+	WebsiteCaId pulumi.StringOutput    `pulumi:"websiteCaId"`
 }
 
 // NewWebsiteCertificateAuthorityAssociation registers a new resource with the given unique name, arguments, and options.
@@ -57,24 +53,16 @@ func GetWebsiteCertificateAuthorityAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebsiteCertificateAuthorityAssociation resources.
 type websiteCertificateAuthorityAssociationState struct {
-	// The root certificate of the Certificate Authority.
 	Certificate *string `pulumi:"certificate"`
-	// The certificate name to display.
 	DisplayName *string `pulumi:"displayName"`
-	// The ARN of the fleet.
-	FleetArn *string `pulumi:"fleetArn"`
-	// A unique identifier for the Certificate Authority.
+	FleetArn    *string `pulumi:"fleetArn"`
 	WebsiteCaId *string `pulumi:"websiteCaId"`
 }
 
 type WebsiteCertificateAuthorityAssociationState struct {
-	// The root certificate of the Certificate Authority.
 	Certificate pulumi.StringPtrInput
-	// The certificate name to display.
 	DisplayName pulumi.StringPtrInput
-	// The ARN of the fleet.
-	FleetArn pulumi.StringPtrInput
-	// A unique identifier for the Certificate Authority.
+	FleetArn    pulumi.StringPtrInput
 	WebsiteCaId pulumi.StringPtrInput
 }
 
@@ -83,22 +71,16 @@ func (WebsiteCertificateAuthorityAssociationState) ElementType() reflect.Type {
 }
 
 type websiteCertificateAuthorityAssociationArgs struct {
-	// The root certificate of the Certificate Authority.
-	Certificate string `pulumi:"certificate"`
-	// The certificate name to display.
+	Certificate string  `pulumi:"certificate"`
 	DisplayName *string `pulumi:"displayName"`
-	// The ARN of the fleet.
-	FleetArn string `pulumi:"fleetArn"`
+	FleetArn    string  `pulumi:"fleetArn"`
 }
 
 // The set of arguments for constructing a WebsiteCertificateAuthorityAssociation resource.
 type WebsiteCertificateAuthorityAssociationArgs struct {
-	// The root certificate of the Certificate Authority.
 	Certificate pulumi.StringInput
-	// The certificate name to display.
 	DisplayName pulumi.StringPtrInput
-	// The ARN of the fleet.
-	FleetArn pulumi.StringInput
+	FleetArn    pulumi.StringInput
 }
 
 func (WebsiteCertificateAuthorityAssociationArgs) ElementType() reflect.Type {

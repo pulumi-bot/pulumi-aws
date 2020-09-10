@@ -13,13 +13,7 @@ namespace Pulumi.Aws.CloudWatch.Outputs
     [OutputType]
     public sealed class EventTargetInputTransformer
     {
-        /// <summary>
-        /// Key value pairs specified in the form of JSONPath (for example, time = $.time)
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? InputPaths;
-        /// <summary>
-        /// Structure containing the template body.
-        /// </summary>
         public readonly string InputTemplate;
 
         [OutputConstructor]

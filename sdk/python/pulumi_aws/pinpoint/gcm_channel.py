@@ -22,27 +22,9 @@ class GcmChannel(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Pinpoint GCM Channel resource.
-
-        > **Note:** Api Key argument will be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        gcm = aws.pinpoint.GcmChannel("gcm",
-            api_key="api_key",
-            application_id=app.application_id)
-        ```
-
+        Create a GcmChannel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_key: Platform credential API key from Google.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,9 +70,6 @@ class GcmChannel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_key: Platform credential API key from Google.
-        :param pulumi.Input[str] application_id: The application ID.
-        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -104,25 +83,16 @@ class GcmChannel(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[str]:
-        """
-        Platform credential API key from Google.
-        """
         return pulumi.get(self, "api_key")
 
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
-        """
-        The application ID.
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether the channel is enabled or disabled. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     def translate_output_property(self, prop):

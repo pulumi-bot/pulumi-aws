@@ -13,21 +13,9 @@ namespace Pulumi.Aws.Iam.Outputs
     [OutputType]
     public sealed class GetGroupUserResult
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) specifying the iam user.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The path to the iam user.
-        /// </summary>
         public readonly string Path;
-        /// <summary>
-        /// The stable and unique string identifying the iam user.
-        /// </summary>
         public readonly string UserId;
-        /// <summary>
-        /// The name of the iam user.
-        /// </summary>
         public readonly string UserName;
 
         [OutputConstructor]

@@ -9,43 +9,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an ECS cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewCluster(ctx, "foo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) that identifies the cluster
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
-	CapacityProviders pulumi.StringArrayOutput `pulumi:"capacityProviders"`
-	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
+	Arn                               pulumi.StringOutput                               `pulumi:"arn"`
+	CapacityProviders                 pulumi.StringArrayOutput                          `pulumi:"capacityProviders"`
 	DefaultCapacityProviderStrategies ClusterDefaultCapacityProviderStrategyArrayOutput `pulumi:"defaultCapacityProviderStrategies"`
-	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings ClusterSettingArrayOutput `pulumi:"settings"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Name                              pulumi.StringOutput                               `pulumi:"name"`
+	Settings                          ClusterSettingArrayOutput                         `pulumi:"settings"`
+	Tags                              pulumi.StringMapOutput                            `pulumi:"tags"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -76,33 +48,21 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// The Amazon Resource Name (ARN) that identifies the cluster
-	Arn *string `pulumi:"arn"`
-	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
-	CapacityProviders []string `pulumi:"capacityProviders"`
-	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
+	Arn                               *string                                  `pulumi:"arn"`
+	CapacityProviders                 []string                                 `pulumi:"capacityProviders"`
 	DefaultCapacityProviderStrategies []ClusterDefaultCapacityProviderStrategy `pulumi:"defaultCapacityProviderStrategies"`
-	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-	Name *string `pulumi:"name"`
-	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings []ClusterSetting `pulumi:"settings"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Name                              *string                                  `pulumi:"name"`
+	Settings                          []ClusterSetting                         `pulumi:"settings"`
+	Tags                              map[string]string                        `pulumi:"tags"`
 }
 
 type ClusterState struct {
-	// The Amazon Resource Name (ARN) that identifies the cluster
-	Arn pulumi.StringPtrInput
-	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
-	CapacityProviders pulumi.StringArrayInput
-	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
+	Arn                               pulumi.StringPtrInput
+	CapacityProviders                 pulumi.StringArrayInput
 	DefaultCapacityProviderStrategies ClusterDefaultCapacityProviderStrategyArrayInput
-	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-	Name pulumi.StringPtrInput
-	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings ClusterSettingArrayInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Name                              pulumi.StringPtrInput
+	Settings                          ClusterSettingArrayInput
+	Tags                              pulumi.StringMapInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -110,30 +70,20 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
-	CapacityProviders []string `pulumi:"capacityProviders"`
-	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
+	CapacityProviders                 []string                                 `pulumi:"capacityProviders"`
 	DefaultCapacityProviderStrategies []ClusterDefaultCapacityProviderStrategy `pulumi:"defaultCapacityProviderStrategies"`
-	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-	Name *string `pulumi:"name"`
-	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings []ClusterSetting `pulumi:"settings"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Name                              *string                                  `pulumi:"name"`
+	Settings                          []ClusterSetting                         `pulumi:"settings"`
+	Tags                              map[string]string                        `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
-	CapacityProviders pulumi.StringArrayInput
-	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
+	CapacityProviders                 pulumi.StringArrayInput
 	DefaultCapacityProviderStrategies ClusterDefaultCapacityProviderStrategyArrayInput
-	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-	Name pulumi.StringPtrInput
-	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings ClusterSettingArrayInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Name                              pulumi.StringPtrInput
+	Settings                          ClusterSettingArrayInput
+	Tags                              pulumi.StringMapInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

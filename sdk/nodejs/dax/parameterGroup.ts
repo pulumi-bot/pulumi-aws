@@ -6,29 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a DAX Parameter Group resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.dax.ParameterGroup("example", {
- *     parameters: [
- *         {
- *             name: "query-ttl-millis",
- *             value: "100000",
- *         },
- *         {
- *             name: "record-ttl-millis",
- *             value: "100000",
- *         },
- *     ],
- * });
- * ```
- */
 export class ParameterGroup extends pulumi.CustomResource {
     /**
      * Get an existing ParameterGroup resource's state with the given name, ID, and optional extra
@@ -57,17 +34,8 @@ export class ParameterGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ParameterGroup.__pulumiType;
     }
 
-    /**
-     * A description of the parameter group.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the parameter group.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The parameters of the parameter group.
-     */
     public readonly parameters!: pulumi.Output<outputs.dax.ParameterGroupParameter[]>;
 
     /**
@@ -106,17 +74,8 @@ export class ParameterGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ParameterGroup resources.
  */
 export interface ParameterGroupState {
-    /**
-     * A description of the parameter group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the parameter group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The parameters of the parameter group.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.dax.ParameterGroupParameter>[]>;
 }
 
@@ -124,16 +83,7 @@ export interface ParameterGroupState {
  * The set of arguments for constructing a ParameterGroup resource.
  */
 export interface ParameterGroupArgs {
-    /**
-     * A description of the parameter group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the parameter group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The parameters of the parameter group.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.dax.ParameterGroupParameter>[]>;
 }

@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class VirtualNodeSpecListener
     {
-        /// <summary>
-        /// The health check information for the listener.
-        /// </summary>
         public readonly Outputs.VirtualNodeSpecListenerHealthCheck? HealthCheck;
-        /// <summary>
-        /// The port mapping information for the listener.
-        /// </summary>
         public readonly Outputs.VirtualNodeSpecListenerPortMapping PortMapping;
 
         [OutputConstructor]

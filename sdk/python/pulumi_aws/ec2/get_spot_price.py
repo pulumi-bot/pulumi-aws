@@ -67,17 +67,11 @@ class GetSpotPriceResult:
     @property
     @pulumi.getter(name="spotPrice")
     def spot_price(self) -> str:
-        """
-        The most recent Spot Price value for the given instance type and AZ.
-        """
         return pulumi.get(self, "spot_price")
 
     @property
     @pulumi.getter(name="spotPriceTimestamp")
     def spot_price_timestamp(self) -> str:
-        """
-        The timestamp at which the Spot Price value was published.
-        """
         return pulumi.get(self, "spot_price_timestamp")
 
 
@@ -100,12 +94,7 @@ def get_spot_price(availability_zone: Optional[str] = None,
                    instance_type: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpotPriceResult:
     """
-    Information about most recent Spot Price for a given EC2 instance.
-
-
-    :param str availability_zone: The availability zone in which to query Spot price information.
-    :param List[pulumi.InputType['GetSpotPriceFilterArgs']] filters: One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
-    :param str instance_type: The type of instance for which to query Spot Price information.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

@@ -9,115 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cfg
 {
-    /// <summary>
-    /// Provides an AWS Config Delivery Channel.
-    /// 
-    /// &gt; **Note:** Delivery Channel requires a `Configuration Recorder` to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             ForceDestroy = true,
-    ///         });
-    ///         var role = new Aws.Iam.Role("role", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": ""sts:AssumeRole"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""config.amazonaws.com""
-    ///       },
-    ///       ""Effect"": ""Allow"",
-    ///       ""Sid"": """"
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var fooRecorder = new Aws.Cfg.Recorder("fooRecorder", new Aws.Cfg.RecorderArgs
-    ///         {
-    ///             RoleArn = role.Arn,
-    ///         });
-    ///         var fooDeliveryChannel = new Aws.Cfg.DeliveryChannel("fooDeliveryChannel", new Aws.Cfg.DeliveryChannelArgs
-    ///         {
-    ///             S3BucketName = bucket.BucketName,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 fooRecorder,
-    ///             },
-    ///         });
-    ///         var rolePolicy = new Aws.Iam.RolePolicy("rolePolicy", new Aws.Iam.RolePolicyArgs
-    ///         {
-    ///             Role = role.Id,
-    ///             Policy = Output.Tuple(bucket.Arn, bucket.Arn).Apply(values =&gt;
-    ///             {
-    ///                 var bucketArn = values.Item1;
-    ///                 var bucketArn1 = values.Item2;
-    ///                 return @$"{{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {{
-    ///       ""Action"": [
-    ///         ""s3:*""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": [
-    ///         ""{bucketArn}"",
-    ///         ""{bucketArn1}/*""
-    ///       ]
-    ///     }}
-    ///   ]
-    /// }}
-    /// ";
-    ///             }),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DeliveryChannel : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the S3 bucket used to store the configuration history.
-        /// </summary>
         [Output("s3BucketName")]
         public Output<string> S3BucketName { get; private set; } = null!;
 
-        /// <summary>
-        /// The prefix for the specified S3 bucket.
-        /// </summary>
         [Output("s3KeyPrefix")]
         public Output<string?> S3KeyPrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// Options for how AWS Config delivers configuration snapshots. See below
-        /// </summary>
         [Output("snapshotDeliveryProperties")]
         public Output<Outputs.DeliveryChannelSnapshotDeliveryProperties?> SnapshotDeliveryProperties { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the SNS topic that AWS Config delivers notifications to.
-        /// </summary>
         [Output("snsTopicArn")]
         public Output<string?> SnsTopicArn { get; private set; } = null!;
 
@@ -167,33 +72,18 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class DeliveryChannelArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The name of the S3 bucket used to store the configuration history.
-        /// </summary>
         [Input("s3BucketName", required: true)]
         public Input<string> S3BucketName { get; set; } = null!;
 
-        /// <summary>
-        /// The prefix for the specified S3 bucket.
-        /// </summary>
         [Input("s3KeyPrefix")]
         public Input<string>? S3KeyPrefix { get; set; }
 
-        /// <summary>
-        /// Options for how AWS Config delivers configuration snapshots. See below
-        /// </summary>
         [Input("snapshotDeliveryProperties")]
         public Input<Inputs.DeliveryChannelSnapshotDeliveryPropertiesArgs>? SnapshotDeliveryProperties { get; set; }
 
-        /// <summary>
-        /// The ARN of the SNS topic that AWS Config delivers notifications to.
-        /// </summary>
         [Input("snsTopicArn")]
         public Input<string>? SnsTopicArn { get; set; }
 
@@ -204,33 +94,18 @@ namespace Pulumi.Aws.Cfg
 
     public sealed class DeliveryChannelState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The name of the S3 bucket used to store the configuration history.
-        /// </summary>
         [Input("s3BucketName")]
         public Input<string>? S3BucketName { get; set; }
 
-        /// <summary>
-        /// The prefix for the specified S3 bucket.
-        /// </summary>
         [Input("s3KeyPrefix")]
         public Input<string>? S3KeyPrefix { get; set; }
 
-        /// <summary>
-        /// Options for how AWS Config delivers configuration snapshots. See below
-        /// </summary>
         [Input("snapshotDeliveryProperties")]
         public Input<Inputs.DeliveryChannelSnapshotDeliveryPropertiesGetArgs>? SnapshotDeliveryProperties { get; set; }
 
-        /// <summary>
-        /// The ARN of the SNS topic that AWS Config delivers notifications to.
-        /// </summary>
         [Input("snsTopicArn")]
         public Input<string>? SnsTopicArn { get; set; }
 

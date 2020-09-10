@@ -23,12 +23,6 @@ class ApplicationAppversionLifecycle(dict):
                  delete_source_from_s3: Optional[bool] = None,
                  max_age_in_days: Optional[float] = None,
                  max_count: Optional[float] = None):
-        """
-        :param str service_role: The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
-        :param bool delete_source_from_s3: Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
-        :param float max_age_in_days: The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
-        :param float max_count: The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
-        """
         pulumi.set(__self__, "service_role", service_role)
         if delete_source_from_s3 is not None:
             pulumi.set(__self__, "delete_source_from_s3", delete_source_from_s3)
@@ -40,33 +34,21 @@ class ApplicationAppversionLifecycle(dict):
     @property
     @pulumi.getter(name="serviceRole")
     def service_role(self) -> str:
-        """
-        The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
-        """
         return pulumi.get(self, "service_role")
 
     @property
     @pulumi.getter(name="deleteSourceFromS3")
     def delete_source_from_s3(self) -> Optional[bool]:
-        """
-        Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
-        """
         return pulumi.get(self, "delete_source_from_s3")
 
     @property
     @pulumi.getter(name="maxAgeInDays")
     def max_age_in_days(self) -> Optional[float]:
-        """
-        The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
-        """
         return pulumi.get(self, "max_age_in_days")
 
     @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[float]:
-        """
-        The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
-        """
         return pulumi.get(self, "max_count")
 
     def _translate_property(self, prop):
@@ -80,9 +62,6 @@ class ConfigurationTemplateSetting(dict):
                  namespace: str,
                  value: str,
                  resource: Optional[str] = None):
-        """
-        :param str name: A unique name for this Template.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "value", value)
@@ -92,9 +71,6 @@ class ConfigurationTemplateSetting(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        A unique name for this Template.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -123,10 +99,6 @@ class EnvironmentAllSetting(dict):
                  namespace: str,
                  value: str,
                  resource: Optional[str] = None):
-        """
-        :param str name: A unique name for this Environment. This name is used
-               in the application URL
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "value", value)
@@ -136,10 +108,6 @@ class EnvironmentAllSetting(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        A unique name for this Environment. This name is used
-        in the application URL
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -168,10 +136,6 @@ class EnvironmentSetting(dict):
                  namespace: str,
                  value: str,
                  resource: Optional[str] = None):
-        """
-        :param str name: A unique name for this Environment. This name is used
-               in the application URL
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "value", value)
@@ -181,10 +145,6 @@ class EnvironmentSetting(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        A unique name for this Environment. This name is used
-        in the application URL
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -213,12 +173,6 @@ class GetApplicationAppversionLifecycleResult(dict):
                  max_age_in_days: float,
                  max_count: float,
                  service_role: str):
-        """
-        :param bool delete_source_from_s3: Specifies whether delete a version's source bundle from S3 when the application version is deleted.
-        :param float max_age_in_days: The number of days to retain an application version.
-        :param float max_count: The maximum number of application versions to retain.
-        :param str service_role: The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
-        """
         pulumi.set(__self__, "delete_source_from_s3", delete_source_from_s3)
         pulumi.set(__self__, "max_age_in_days", max_age_in_days)
         pulumi.set(__self__, "max_count", max_count)
@@ -227,33 +181,21 @@ class GetApplicationAppversionLifecycleResult(dict):
     @property
     @pulumi.getter(name="deleteSourceFromS3")
     def delete_source_from_s3(self) -> bool:
-        """
-        Specifies whether delete a version's source bundle from S3 when the application version is deleted.
-        """
         return pulumi.get(self, "delete_source_from_s3")
 
     @property
     @pulumi.getter(name="maxAgeInDays")
     def max_age_in_days(self) -> float:
-        """
-        The number of days to retain an application version.
-        """
         return pulumi.get(self, "max_age_in_days")
 
     @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> float:
-        """
-        The maximum number of application versions to retain.
-        """
         return pulumi.get(self, "max_count")
 
     @property
     @pulumi.getter(name="serviceRole")
     def service_role(self) -> str:
-        """
-        The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
-        """
         return pulumi.get(self, "service_role")
 
 

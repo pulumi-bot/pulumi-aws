@@ -14,19 +14,12 @@ namespace Pulumi.Aws.CloudWatch.Inputs
     {
         [Input("inputPaths")]
         private InputMap<string>? _inputPaths;
-
-        /// <summary>
-        /// Key value pairs specified in the form of JSONPath (for example, time = $.time)
-        /// </summary>
         public InputMap<string> InputPaths
         {
             get => _inputPaths ?? (_inputPaths = new InputMap<string>());
             set => _inputPaths = value;
         }
 
-        /// <summary>
-        /// Structure containing the template body.
-        /// </summary>
         [Input("inputTemplate", required: true)]
         public Input<string> InputTemplate { get; set; } = null!;
 

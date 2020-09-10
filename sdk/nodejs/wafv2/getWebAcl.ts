@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Retrieves the summary of a WAFv2 Web ACL.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.wafv2.getWebAcl({
- *     name: "some-web-acl",
- *     scope: "REGIONAL",
- * }, { async: true }));
- * ```
- */
 export function getWebAcl(args: GetWebAclArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAclResult> {
     if (!opts) {
         opts = {}
@@ -39,13 +24,7 @@ export function getWebAcl(args: GetWebAclArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getWebAcl.
  */
 export interface GetWebAclArgs {
-    /**
-     * The name of the WAFv2 Web ACL.
-     */
     readonly name: string;
-    /**
-     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-     */
     readonly scope: string;
 }
 
@@ -53,13 +32,7 @@ export interface GetWebAclArgs {
  * A collection of values returned by getWebAcl.
  */
 export interface GetWebAclResult {
-    /**
-     * The Amazon Resource Name (ARN) of the entity.
-     */
     readonly arn: string;
-    /**
-     * The description of the WebACL that helps with identification.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.

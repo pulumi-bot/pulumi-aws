@@ -13,25 +13,10 @@ namespace Pulumi.Aws.Dlm.Outputs
     [OutputType]
     public sealed class LifecyclePolicyPolicyDetailsSchedule
     {
-        /// <summary>
-        /// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
-        /// </summary>
         public readonly bool? CopyTags;
-        /// <summary>
-        /// See the `create_rule` block. Max of 1 per schedule.
-        /// </summary>
         public readonly Outputs.LifecyclePolicyPolicyDetailsScheduleCreateRule CreateRule;
-        /// <summary>
-        /// A name for the schedule.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// See the `retain_rule` block. Max of 1 per schedule.
-        /// </summary>
         public readonly Outputs.LifecyclePolicyPolicyDetailsScheduleRetainRule RetainRule;
-        /// <summary>
-        /// A map of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? TagsToAdd;
 
         [OutputConstructor]

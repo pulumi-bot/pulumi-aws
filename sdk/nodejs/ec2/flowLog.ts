@@ -4,74 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a VPC/Subnet/ENI Flow Log to capture IP traffic for a specific network
- * interface, subnet, or VPC. Logs are sent to a CloudWatch Log Group or a S3 Bucket.
- *
- * ## Example Usage
- * ### CloudWatch Logging
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleLogGroup = new aws.cloudwatch.LogGroup("exampleLogGroup", {});
- * const exampleRole = new aws.iam.Role("exampleRole", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Sid": "",
- *       "Effect": "Allow",
- *       "Principal": {
- *         "Service": "vpc-flow-logs.amazonaws.com"
- *       },
- *       "Action": "sts:AssumeRole"
- *     }
- *   ]
- * }
- * `});
- * const exampleFlowLog = new aws.ec2.FlowLog("exampleFlowLog", {
- *     iamRoleArn: exampleRole.arn,
- *     logDestination: exampleLogGroup.arn,
- *     trafficType: "ALL",
- *     vpcId: aws_vpc.example.id,
- * });
- * const exampleRolePolicy = new aws.iam.RolePolicy("exampleRolePolicy", {
- *     role: exampleRole.id,
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "logs:CreateLogGroup",
- *         "logs:CreateLogStream",
- *         "logs:PutLogEvents",
- *         "logs:DescribeLogGroups",
- *         "logs:DescribeLogStreams"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- * ### S3 Logging
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleBucket = new aws.s3.Bucket("exampleBucket", {});
- * const exampleFlowLog = new aws.ec2.FlowLog("exampleFlowLog", {
- *     logDestination: exampleBucket.arn,
- *     logDestinationType: "s3",
- *     trafficType: "ALL",
- *     vpcId: aws_vpc.example.id,
- * });
- * ```
- */
 export class FlowLog extends pulumi.CustomResource {
     /**
      * Get an existing FlowLog resource's state with the given name, ID, and optional extra
@@ -100,58 +32,20 @@ export class FlowLog extends pulumi.CustomResource {
         return obj['__pulumiType'] === FlowLog.__pulumiType;
     }
 
-    /**
-     * The ARN of the Flow Log.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Elastic Network Interface ID to attach to
-     */
     public readonly eniId!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN for the IAM role that's used to post flow logs to a CloudWatch Logs log group
-     */
     public readonly iamRoleArn!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN of the logging destination.
-     */
     public readonly logDestination!: pulumi.Output<string>;
-    /**
-     * The type of the logging destination. Valid values: `cloud-watch-logs`, `s3`. Default: `cloud-watch-logs`.
-     */
     public readonly logDestinationType!: pulumi.Output<string | undefined>;
-    /**
-     * The fields to include in the flow log record, in the order in which they should appear.
-     */
     public readonly logFormat!: pulumi.Output<string>;
     /**
-     * *Deprecated:* Use `logDestination` instead. The name of the CloudWatch log group.
-     *
      * @deprecated use 'log_destination' argument instead
      */
     public readonly logGroupName!: pulumi.Output<string>;
-    /**
-     * The maximum interval of time
-     * during which a flow of packets is captured and aggregated into a flow
-     * log record. Valid Values: `60` seconds (1 minute) or `600` seconds (10
-     * minutes). Default: `600`.
-     */
     public readonly maxAggregationInterval!: pulumi.Output<number | undefined>;
-    /**
-     * Subnet ID to attach to
-     */
     public readonly subnetId!: pulumi.Output<string | undefined>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`.
-     */
     public readonly trafficType!: pulumi.Output<string>;
-    /**
-     * VPC ID to attach to
-     */
     public readonly vpcId!: pulumi.Output<string | undefined>;
 
     /**
@@ -211,58 +105,20 @@ export class FlowLog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FlowLog resources.
  */
 export interface FlowLogState {
-    /**
-     * The ARN of the Flow Log.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Elastic Network Interface ID to attach to
-     */
     readonly eniId?: pulumi.Input<string>;
-    /**
-     * The ARN for the IAM role that's used to post flow logs to a CloudWatch Logs log group
-     */
     readonly iamRoleArn?: pulumi.Input<string>;
-    /**
-     * The ARN of the logging destination.
-     */
     readonly logDestination?: pulumi.Input<string>;
-    /**
-     * The type of the logging destination. Valid values: `cloud-watch-logs`, `s3`. Default: `cloud-watch-logs`.
-     */
     readonly logDestinationType?: pulumi.Input<string>;
-    /**
-     * The fields to include in the flow log record, in the order in which they should appear.
-     */
     readonly logFormat?: pulumi.Input<string>;
     /**
-     * *Deprecated:* Use `logDestination` instead. The name of the CloudWatch log group.
-     *
      * @deprecated use 'log_destination' argument instead
      */
     readonly logGroupName?: pulumi.Input<string>;
-    /**
-     * The maximum interval of time
-     * during which a flow of packets is captured and aggregated into a flow
-     * log record. Valid Values: `60` seconds (1 minute) or `600` seconds (10
-     * minutes). Default: `600`.
-     */
     readonly maxAggregationInterval?: pulumi.Input<number>;
-    /**
-     * Subnet ID to attach to
-     */
     readonly subnetId?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`.
-     */
     readonly trafficType?: pulumi.Input<string>;
-    /**
-     * VPC ID to attach to
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -270,53 +126,18 @@ export interface FlowLogState {
  * The set of arguments for constructing a FlowLog resource.
  */
 export interface FlowLogArgs {
-    /**
-     * Elastic Network Interface ID to attach to
-     */
     readonly eniId?: pulumi.Input<string>;
-    /**
-     * The ARN for the IAM role that's used to post flow logs to a CloudWatch Logs log group
-     */
     readonly iamRoleArn?: pulumi.Input<string>;
-    /**
-     * The ARN of the logging destination.
-     */
     readonly logDestination?: pulumi.Input<string>;
-    /**
-     * The type of the logging destination. Valid values: `cloud-watch-logs`, `s3`. Default: `cloud-watch-logs`.
-     */
     readonly logDestinationType?: pulumi.Input<string>;
-    /**
-     * The fields to include in the flow log record, in the order in which they should appear.
-     */
     readonly logFormat?: pulumi.Input<string>;
     /**
-     * *Deprecated:* Use `logDestination` instead. The name of the CloudWatch log group.
-     *
      * @deprecated use 'log_destination' argument instead
      */
     readonly logGroupName?: pulumi.Input<string>;
-    /**
-     * The maximum interval of time
-     * during which a flow of packets is captured and aggregated into a flow
-     * log record. Valid Values: `60` seconds (1 minute) or `600` seconds (10
-     * minutes). Default: `600`.
-     */
     readonly maxAggregationInterval?: pulumi.Input<number>;
-    /**
-     * Subnet ID to attach to
-     */
     readonly subnetId?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`.
-     */
     readonly trafficType: pulumi.Input<string>;
-    /**
-     * VPC ID to attach to
-     */
     readonly vpcId?: pulumi.Input<string>;
 }

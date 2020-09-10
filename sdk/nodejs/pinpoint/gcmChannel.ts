@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Pinpoint GCM Channel resource.
- *
- * > **Note:** Api Key argument will be stored in the raw state as plain-text.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const app = new aws.pinpoint.App("app", {});
- * const gcm = new aws.pinpoint.GcmChannel("gcm", {
- *     apiKey: "api_key",
- *     applicationId: app.applicationId,
- * });
- * ```
- */
 export class GcmChannel extends pulumi.CustomResource {
     /**
      * Get an existing GcmChannel resource's state with the given name, ID, and optional extra
@@ -50,17 +32,8 @@ export class GcmChannel extends pulumi.CustomResource {
         return obj['__pulumiType'] === GcmChannel.__pulumiType;
     }
 
-    /**
-     * Platform credential API key from Google.
-     */
     public readonly apiKey!: pulumi.Output<string>;
-    /**
-     * The application ID.
-     */
     public readonly applicationId!: pulumi.Output<string>;
-    /**
-     * Whether the channel is enabled or disabled. Defaults to `true`.
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -105,17 +78,8 @@ export class GcmChannel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GcmChannel resources.
  */
 export interface GcmChannelState {
-    /**
-     * Platform credential API key from Google.
-     */
     readonly apiKey?: pulumi.Input<string>;
-    /**
-     * The application ID.
-     */
     readonly applicationId?: pulumi.Input<string>;
-    /**
-     * Whether the channel is enabled or disabled. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
 }
 
@@ -123,16 +87,7 @@ export interface GcmChannelState {
  * The set of arguments for constructing a GcmChannel resource.
  */
 export interface GcmChannelArgs {
-    /**
-     * Platform credential API key from Google.
-     */
     readonly apiKey: pulumi.Input<string>;
-    /**
-     * The application ID.
-     */
     readonly applicationId: pulumi.Input<string>;
-    /**
-     * Whether the channel is enabled or disabled. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
 }

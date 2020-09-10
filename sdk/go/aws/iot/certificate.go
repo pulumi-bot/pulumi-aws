@@ -10,50 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates and manages an AWS IoT certificate.
-//
-// ## Example Usage
-// ### Without CSR
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iot.NewCertificate(ctx, "cert", &iot.CertificateArgs{
-// 			Active: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// Boolean flag to indicate if the certificate should be active
-	Active pulumi.BoolOutput `pulumi:"active"`
-	// The ARN of the created certificate.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The certificate data, in PEM format.
-	CertificatePem pulumi.StringOutput `pulumi:"certificatePem"`
-	// The certificate signing request. Review
-	// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-	// for more information on generating a certificate from a certificate signing request (CSR).
-	// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-	// for more information on generating keys and a certificate.
-	Csr pulumi.StringPtrOutput `pulumi:"csr"`
-	// When no CSR is provided, the private key.
-	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
-	// When no CSR is provided, the public key.
-	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
+	Active         pulumi.BoolOutput      `pulumi:"active"`
+	Arn            pulumi.StringOutput    `pulumi:"arn"`
+	CertificatePem pulumi.StringOutput    `pulumi:"certificatePem"`
+	Csr            pulumi.StringPtrOutput `pulumi:"csr"`
+	PrivateKey     pulumi.StringOutput    `pulumi:"privateKey"`
+	PublicKey      pulumi.StringOutput    `pulumi:"publicKey"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
@@ -87,41 +52,21 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// Boolean flag to indicate if the certificate should be active
-	Active *bool `pulumi:"active"`
-	// The ARN of the created certificate.
-	Arn *string `pulumi:"arn"`
-	// The certificate data, in PEM format.
+	Active         *bool   `pulumi:"active"`
+	Arn            *string `pulumi:"arn"`
 	CertificatePem *string `pulumi:"certificatePem"`
-	// The certificate signing request. Review
-	// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-	// for more information on generating a certificate from a certificate signing request (CSR).
-	// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-	// for more information on generating keys and a certificate.
-	Csr *string `pulumi:"csr"`
-	// When no CSR is provided, the private key.
-	PrivateKey *string `pulumi:"privateKey"`
-	// When no CSR is provided, the public key.
-	PublicKey *string `pulumi:"publicKey"`
+	Csr            *string `pulumi:"csr"`
+	PrivateKey     *string `pulumi:"privateKey"`
+	PublicKey      *string `pulumi:"publicKey"`
 }
 
 type CertificateState struct {
-	// Boolean flag to indicate if the certificate should be active
-	Active pulumi.BoolPtrInput
-	// The ARN of the created certificate.
-	Arn pulumi.StringPtrInput
-	// The certificate data, in PEM format.
+	Active         pulumi.BoolPtrInput
+	Arn            pulumi.StringPtrInput
 	CertificatePem pulumi.StringPtrInput
-	// The certificate signing request. Review
-	// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-	// for more information on generating a certificate from a certificate signing request (CSR).
-	// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-	// for more information on generating keys and a certificate.
-	Csr pulumi.StringPtrInput
-	// When no CSR is provided, the private key.
-	PrivateKey pulumi.StringPtrInput
-	// When no CSR is provided, the public key.
-	PublicKey pulumi.StringPtrInput
+	Csr            pulumi.StringPtrInput
+	PrivateKey     pulumi.StringPtrInput
+	PublicKey      pulumi.StringPtrInput
 }
 
 func (CertificateState) ElementType() reflect.Type {
@@ -129,26 +74,14 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
-	// Boolean flag to indicate if the certificate should be active
-	Active bool `pulumi:"active"`
-	// The certificate signing request. Review
-	// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-	// for more information on generating a certificate from a certificate signing request (CSR).
-	// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-	// for more information on generating keys and a certificate.
-	Csr *string `pulumi:"csr"`
+	Active bool    `pulumi:"active"`
+	Csr    *string `pulumi:"csr"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
-	// Boolean flag to indicate if the certificate should be active
 	Active pulumi.BoolInput
-	// The certificate signing request. Review
-	// [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
-	// for more information on generating a certificate from a certificate signing request (CSR).
-	// If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
-	// for more information on generating keys and a certificate.
-	Csr pulumi.StringPtrInput
+	Csr    pulumi.StringPtrInput
 }
 
 func (CertificateArgs) ElementType() reflect.Type {

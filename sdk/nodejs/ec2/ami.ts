@@ -6,36 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * The AMI resource allows the creation and management of a completely-custom
- * *Amazon Machine Image* (AMI).
- *
- * If you just want to duplicate an existing AMI, possibly copying it to another
- * region, it's better to use `aws.ec2.AmiCopy` instead.
- *
- * If you just want to share an existing AMI with another AWS account,
- * it's better to use `aws.ec2.AmiLaunchPermission` instead.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // Create an AMI that will start a machine whose root device is backed by
- * // an EBS volume populated from a snapshot. It is assumed that such a snapshot
- * // already exists with the id "snap-xxxxxxxx".
- * const example = new aws.ec2.Ami("example", {
- *     ebsBlockDevices: [{
- *         deviceName: "/dev/xvda",
- *         snapshotId: "snap-xxxxxxxx",
- *         volumeSize: 8,
- *     }],
- *     rootDeviceName: "/dev/xvda",
- *     virtualizationType: "hvm",
- * });
- * ```
- */
 export class Ami extends pulumi.CustomResource {
     /**
      * Get an existing Ami resource's state with the given name, ID, and optional extra
@@ -64,74 +34,21 @@ export class Ami extends pulumi.CustomResource {
         return obj['__pulumiType'] === Ami.__pulumiType;
     }
 
-    /**
-     * Machine architecture for created instances. Defaults to "x8664".
-     */
     public readonly architecture!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN of the AMI.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A longer, human-readable description for the AMI.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Nested block describing an EBS block device that should be
-     * attached to created instances. The structure of this block is described below.
-     */
     public readonly ebsBlockDevices!: pulumi.Output<outputs.ec2.AmiEbsBlockDevice[]>;
-    /**
-     * Specifies whether enhanced networking with ENA is enabled. Defaults to `false`.
-     */
     public readonly enaSupport!: pulumi.Output<boolean | undefined>;
-    /**
-     * Nested block describing an ephemeral block device that
-     * should be attached to created instances. The structure of this block is described below.
-     */
     public readonly ephemeralBlockDevices!: pulumi.Output<outputs.ec2.AmiEphemeralBlockDevice[]>;
-    /**
-     * Path to an S3 object containing an image manifest, e.g. created
-     * by the `ec2-upload-bundle` command in the EC2 command line tools.
-     */
     public readonly imageLocation!: pulumi.Output<string>;
-    /**
-     * The id of the kernel image (AKI) that will be used as the paravirtual
-     * kernel in created instances.
-     */
     public readonly kernelId!: pulumi.Output<string | undefined>;
     public /*out*/ readonly manageEbsSnapshots!: pulumi.Output<boolean>;
-    /**
-     * A region-unique name for the AMI.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The id of an initrd image (ARI) that will be used when booting the
-     * created instances.
-     */
     public readonly ramdiskId!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
-     */
     public readonly rootDeviceName!: pulumi.Output<string | undefined>;
-    /**
-     * The Snapshot ID for the root volume (for EBS-backed AMIs)
-     */
     public /*out*/ readonly rootSnapshotId!: pulumi.Output<string>;
-    /**
-     * When set to "simple" (the default), enables enhanced networking
-     * for created instances. No other value is supported at this time.
-     */
     public readonly sriovNetSupport!: pulumi.Output<string | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Keyword to choose what virtualization mode created instances
-     * will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
-     * changes the set of further arguments that are required, as described below.
-     */
     public readonly virtualizationType!: pulumi.Output<string | undefined>;
 
     /**
@@ -196,74 +113,21 @@ export class Ami extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Ami resources.
  */
 export interface AmiState {
-    /**
-     * Machine architecture for created instances. Defaults to "x8664".
-     */
     readonly architecture?: pulumi.Input<string>;
-    /**
-     * The ARN of the AMI.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A longer, human-readable description for the AMI.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Nested block describing an EBS block device that should be
-     * attached to created instances. The structure of this block is described below.
-     */
     readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiEbsBlockDevice>[]>;
-    /**
-     * Specifies whether enhanced networking with ENA is enabled. Defaults to `false`.
-     */
     readonly enaSupport?: pulumi.Input<boolean>;
-    /**
-     * Nested block describing an ephemeral block device that
-     * should be attached to created instances. The structure of this block is described below.
-     */
     readonly ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiEphemeralBlockDevice>[]>;
-    /**
-     * Path to an S3 object containing an image manifest, e.g. created
-     * by the `ec2-upload-bundle` command in the EC2 command line tools.
-     */
     readonly imageLocation?: pulumi.Input<string>;
-    /**
-     * The id of the kernel image (AKI) that will be used as the paravirtual
-     * kernel in created instances.
-     */
     readonly kernelId?: pulumi.Input<string>;
     readonly manageEbsSnapshots?: pulumi.Input<boolean>;
-    /**
-     * A region-unique name for the AMI.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The id of an initrd image (ARI) that will be used when booting the
-     * created instances.
-     */
     readonly ramdiskId?: pulumi.Input<string>;
-    /**
-     * The name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
-     */
     readonly rootDeviceName?: pulumi.Input<string>;
-    /**
-     * The Snapshot ID for the root volume (for EBS-backed AMIs)
-     */
     readonly rootSnapshotId?: pulumi.Input<string>;
-    /**
-     * When set to "simple" (the default), enables enhanced networking
-     * for created instances. No other value is supported at this time.
-     */
     readonly sriovNetSupport?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Keyword to choose what virtualization mode created instances
-     * will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
-     * changes the set of further arguments that are required, as described below.
-     */
     readonly virtualizationType?: pulumi.Input<string>;
 }
 
@@ -271,64 +135,17 @@ export interface AmiState {
  * The set of arguments for constructing a Ami resource.
  */
 export interface AmiArgs {
-    /**
-     * Machine architecture for created instances. Defaults to "x8664".
-     */
     readonly architecture?: pulumi.Input<string>;
-    /**
-     * A longer, human-readable description for the AMI.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Nested block describing an EBS block device that should be
-     * attached to created instances. The structure of this block is described below.
-     */
     readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiEbsBlockDevice>[]>;
-    /**
-     * Specifies whether enhanced networking with ENA is enabled. Defaults to `false`.
-     */
     readonly enaSupport?: pulumi.Input<boolean>;
-    /**
-     * Nested block describing an ephemeral block device that
-     * should be attached to created instances. The structure of this block is described below.
-     */
     readonly ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiEphemeralBlockDevice>[]>;
-    /**
-     * Path to an S3 object containing an image manifest, e.g. created
-     * by the `ec2-upload-bundle` command in the EC2 command line tools.
-     */
     readonly imageLocation?: pulumi.Input<string>;
-    /**
-     * The id of the kernel image (AKI) that will be used as the paravirtual
-     * kernel in created instances.
-     */
     readonly kernelId?: pulumi.Input<string>;
-    /**
-     * A region-unique name for the AMI.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The id of an initrd image (ARI) that will be used when booting the
-     * created instances.
-     */
     readonly ramdiskId?: pulumi.Input<string>;
-    /**
-     * The name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
-     */
     readonly rootDeviceName?: pulumi.Input<string>;
-    /**
-     * When set to "simple" (the default), enables enhanced networking
-     * for created instances. No other value is supported at this time.
-     */
     readonly sriovNetSupport?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Keyword to choose what virtualization mode created instances
-     * will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
-     * changes the set of further arguments that are required, as described below.
-     */
     readonly virtualizationType?: pulumi.Input<string>;
 }

@@ -9,55 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.RedShift
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultCluster = new Aws.RedShift.Cluster("defaultCluster", new Aws.RedShift.ClusterArgs
-    ///         {
-    ///             ClusterIdentifier = "tf-redshift-cluster",
-    ///             DatabaseName = "mydb",
-    ///             MasterUsername = "foo",
-    ///             MasterPassword = "Mustbe8characters",
-    ///             NodeType = "dc1.large",
-    ///             ClusterType = "single-node",
-    ///         });
-    ///         var defaultSnapshotSchedule = new Aws.RedShift.SnapshotSchedule("defaultSnapshotSchedule", new Aws.RedShift.SnapshotScheduleArgs
-    ///         {
-    ///             Identifier = "tf-redshift-snapshot-schedule",
-    ///             Definitions = 
-    ///             {
-    ///                 "rate(12 hours)",
-    ///             },
-    ///         });
-    ///         var defaultSnapshotScheduleAssociation = new Aws.RedShift.SnapshotScheduleAssociation("defaultSnapshotScheduleAssociation", new Aws.RedShift.SnapshotScheduleAssociationArgs
-    ///         {
-    ///             ClusterIdentifier = defaultCluster.Id,
-    ///             ScheduleIdentifier = defaultSnapshotSchedule.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SnapshotScheduleAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The cluster identifier.
-        /// </summary>
         [Output("clusterIdentifier")]
         public Output<string> ClusterIdentifier { get; private set; } = null!;
 
-        /// <summary>
-        /// The snapshot schedule identifier.
-        /// </summary>
         [Output("scheduleIdentifier")]
         public Output<string> ScheduleIdentifier { get; private set; } = null!;
 
@@ -107,15 +63,9 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class SnapshotScheduleAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The cluster identifier.
-        /// </summary>
         [Input("clusterIdentifier", required: true)]
         public Input<string> ClusterIdentifier { get; set; } = null!;
 
-        /// <summary>
-        /// The snapshot schedule identifier.
-        /// </summary>
         [Input("scheduleIdentifier", required: true)]
         public Input<string> ScheduleIdentifier { get; set; } = null!;
 
@@ -126,15 +76,9 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class SnapshotScheduleAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The cluster identifier.
-        /// </summary>
         [Input("clusterIdentifier")]
         public Input<string>? ClusterIdentifier { get; set; }
 
-        /// <summary>
-        /// The snapshot schedule identifier.
-        /// </summary>
         [Input("scheduleIdentifier")]
         public Input<string>? ScheduleIdentifier { get; set; }
 

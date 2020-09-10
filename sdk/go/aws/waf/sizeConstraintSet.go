@@ -9,47 +9,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a WAF Size Constraint Set Resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/waf"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := waf.NewSizeConstraintSet(ctx, "sizeConstraintSet", &waf.SizeConstraintSetArgs{
-// 			SizeConstraints: waf.SizeConstraintSetSizeConstraintArray{
-// 				&waf.SizeConstraintSetSizeConstraintArgs{
-// 					ComparisonOperator: pulumi.String("EQ"),
-// 					FieldToMatch: &waf.SizeConstraintSetSizeConstraintFieldToMatchArgs{
-// 						Type: pulumi.String("BODY"),
-// 					},
-// 					Size:               pulumi.Int(4096),
-// 					TextTransformation: pulumi.String("NONE"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SizeConstraintSet struct {
 	pulumi.CustomResourceState
 
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name or description of the Size Constraint Set.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the parts of web requests that you want to inspect the size of.
+	Arn             pulumi.StringOutput                        `pulumi:"arn"`
+	Name            pulumi.StringOutput                        `pulumi:"name"`
 	SizeConstraints SizeConstraintSetSizeConstraintArrayOutput `pulumi:"sizeConstraints"`
 }
 
@@ -81,20 +45,14 @@ func GetSizeConstraintSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SizeConstraintSet resources.
 type sizeConstraintSetState struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// The name or description of the Size Constraint Set.
-	Name *string `pulumi:"name"`
-	// Specifies the parts of web requests that you want to inspect the size of.
+	Arn             *string                           `pulumi:"arn"`
+	Name            *string                           `pulumi:"name"`
 	SizeConstraints []SizeConstraintSetSizeConstraint `pulumi:"sizeConstraints"`
 }
 
 type SizeConstraintSetState struct {
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringPtrInput
-	// The name or description of the Size Constraint Set.
-	Name pulumi.StringPtrInput
-	// Specifies the parts of web requests that you want to inspect the size of.
+	Arn             pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
 	SizeConstraints SizeConstraintSetSizeConstraintArrayInput
 }
 
@@ -103,17 +61,13 @@ func (SizeConstraintSetState) ElementType() reflect.Type {
 }
 
 type sizeConstraintSetArgs struct {
-	// The name or description of the Size Constraint Set.
-	Name *string `pulumi:"name"`
-	// Specifies the parts of web requests that you want to inspect the size of.
+	Name            *string                           `pulumi:"name"`
 	SizeConstraints []SizeConstraintSetSizeConstraint `pulumi:"sizeConstraints"`
 }
 
 // The set of arguments for constructing a SizeConstraintSet resource.
 type SizeConstraintSetArgs struct {
-	// The name or description of the Size Constraint Set.
-	Name pulumi.StringPtrInput
-	// Specifies the parts of web requests that you want to inspect the size of.
+	Name            pulumi.StringPtrInput
 	SizeConstraints SizeConstraintSetSizeConstraintArrayInput
 }
 

@@ -9,115 +9,44 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ssm
 {
-    /// <summary>
-    /// Associates an SSM Document to an instance or EC2 tag.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ssm.Association("example", new Aws.Ssm.AssociationArgs
-    ///         {
-    ///             Targets = 
-    ///             {
-    ///                 new Aws.Ssm.Inputs.AssociationTargetArgs
-    ///                 {
-    ///                     Key = "InstanceIds",
-    ///                     Values = 
-    ///                     {
-    ///                         aws_instance.Example.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Association : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the SSM association.
-        /// </summary>
         [Output("associationId")]
         public Output<string> AssociationId { get; private set; } = null!;
 
-        /// <summary>
-        /// The descriptive name for the association.
-        /// </summary>
         [Output("associationName")]
         public Output<string?> AssociationName { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls.
-        /// </summary>
         [Output("automationTargetParameterName")]
         public Output<string?> AutomationTargetParameterName { get; private set; } = null!;
 
-        /// <summary>
-        /// The compliance severity for the association. Can be one of the following: `UNSPECIFIED`, `LOW`, `MEDIUM`, `HIGH` or `CRITICAL`
-        /// </summary>
         [Output("complianceSeverity")]
         public Output<string?> ComplianceSeverity { get; private set; } = null!;
 
-        /// <summary>
-        /// The document version you want to associate with the target(s). Can be a specific version or the default version.
-        /// </summary>
         [Output("documentVersion")]
         public Output<string> DocumentVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The instance ID to apply an SSM document to. Use `targets` with key `InstanceIds` for document schema versions 2.0 and above.
-        /// </summary>
         [Output("instanceId")]
         public Output<string?> InstanceId { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-        /// </summary>
         [Output("maxConcurrency")]
         public Output<string?> MaxConcurrency { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-        /// </summary>
         [Output("maxErrors")]
         public Output<string?> MaxErrors { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the SSM document to apply.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// An output location block. Output Location is documented below.
-        /// </summary>
         [Output("outputLocation")]
         public Output<Outputs.AssociationOutputLocation?> OutputLocation { get; private set; } = null!;
 
-        /// <summary>
-        /// A block of arbitrary string parameters to pass to the SSM document.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableDictionary<string, string>> Parameters { get; private set; } = null!;
 
-        /// <summary>
-        /// A cron expression when the association will be applied to the target(s).
-        /// </summary>
         [Output("scheduleExpression")]
         public Output<string?> ScheduleExpression { get; private set; } = null!;
 
-        /// <summary>
-        /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-        /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.AssociationTarget>> Targets { get; private set; } = null!;
 
@@ -167,84 +96,46 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class AssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The descriptive name for the association.
-        /// </summary>
         [Input("associationName")]
         public Input<string>? AssociationName { get; set; }
 
-        /// <summary>
-        /// Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls.
-        /// </summary>
         [Input("automationTargetParameterName")]
         public Input<string>? AutomationTargetParameterName { get; set; }
 
-        /// <summary>
-        /// The compliance severity for the association. Can be one of the following: `UNSPECIFIED`, `LOW`, `MEDIUM`, `HIGH` or `CRITICAL`
-        /// </summary>
         [Input("complianceSeverity")]
         public Input<string>? ComplianceSeverity { get; set; }
 
-        /// <summary>
-        /// The document version you want to associate with the target(s). Can be a specific version or the default version.
-        /// </summary>
         [Input("documentVersion")]
         public Input<string>? DocumentVersion { get; set; }
 
-        /// <summary>
-        /// The instance ID to apply an SSM document to. Use `targets` with key `InstanceIds` for document schema versions 2.0 and above.
-        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
-        /// <summary>
-        /// The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-        /// </summary>
         [Input("maxConcurrency")]
         public Input<string>? MaxConcurrency { get; set; }
 
-        /// <summary>
-        /// The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-        /// </summary>
         [Input("maxErrors")]
         public Input<string>? MaxErrors { get; set; }
 
-        /// <summary>
-        /// The name of the SSM document to apply.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// An output location block. Output Location is documented below.
-        /// </summary>
         [Input("outputLocation")]
         public Input<Inputs.AssociationOutputLocationArgs>? OutputLocation { get; set; }
 
         [Input("parameters")]
         private InputMap<string>? _parameters;
-
-        /// <summary>
-        /// A block of arbitrary string parameters to pass to the SSM document.
-        /// </summary>
         public InputMap<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// A cron expression when the association will be applied to the target(s).
-        /// </summary>
         [Input("scheduleExpression")]
         public Input<string>? ScheduleExpression { get; set; }
 
         [Input("targets")]
         private InputList<Inputs.AssociationTargetArgs>? _targets;
-
-        /// <summary>
-        /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-        /// </summary>
         public InputList<Inputs.AssociationTargetArgs> Targets
         {
             get => _targets ?? (_targets = new InputList<Inputs.AssociationTargetArgs>());
@@ -258,90 +149,49 @@ namespace Pulumi.Aws.Ssm
 
     public sealed class AssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the SSM association.
-        /// </summary>
         [Input("associationId")]
         public Input<string>? AssociationId { get; set; }
 
-        /// <summary>
-        /// The descriptive name for the association.
-        /// </summary>
         [Input("associationName")]
         public Input<string>? AssociationName { get; set; }
 
-        /// <summary>
-        /// Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls.
-        /// </summary>
         [Input("automationTargetParameterName")]
         public Input<string>? AutomationTargetParameterName { get; set; }
 
-        /// <summary>
-        /// The compliance severity for the association. Can be one of the following: `UNSPECIFIED`, `LOW`, `MEDIUM`, `HIGH` or `CRITICAL`
-        /// </summary>
         [Input("complianceSeverity")]
         public Input<string>? ComplianceSeverity { get; set; }
 
-        /// <summary>
-        /// The document version you want to associate with the target(s). Can be a specific version or the default version.
-        /// </summary>
         [Input("documentVersion")]
         public Input<string>? DocumentVersion { get; set; }
 
-        /// <summary>
-        /// The instance ID to apply an SSM document to. Use `targets` with key `InstanceIds` for document schema versions 2.0 and above.
-        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
-        /// <summary>
-        /// The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-        /// </summary>
         [Input("maxConcurrency")]
         public Input<string>? MaxConcurrency { get; set; }
 
-        /// <summary>
-        /// The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify a number, for example 10, or a percentage of the target set, for example 10%.
-        /// </summary>
         [Input("maxErrors")]
         public Input<string>? MaxErrors { get; set; }
 
-        /// <summary>
-        /// The name of the SSM document to apply.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// An output location block. Output Location is documented below.
-        /// </summary>
         [Input("outputLocation")]
         public Input<Inputs.AssociationOutputLocationGetArgs>? OutputLocation { get; set; }
 
         [Input("parameters")]
         private InputMap<string>? _parameters;
-
-        /// <summary>
-        /// A block of arbitrary string parameters to pass to the SSM document.
-        /// </summary>
         public InputMap<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// A cron expression when the association will be applied to the target(s).
-        /// </summary>
         [Input("scheduleExpression")]
         public Input<string>? ScheduleExpression { get; set; }
 
         [Input("targets")]
         private InputList<Inputs.AssociationTargetGetArgs>? _targets;
-
-        /// <summary>
-        /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-        /// </summary>
         public InputList<Inputs.AssociationTargetGetArgs> Targets
         {
             get => _targets ?? (_targets = new InputList<Inputs.AssociationTargetGetArgs>());

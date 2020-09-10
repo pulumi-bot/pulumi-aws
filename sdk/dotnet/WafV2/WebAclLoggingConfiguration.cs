@@ -9,62 +9,22 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafV2
 {
-    /// <summary>
-    /// Creates a WAFv2 Web ACL Logging Configuration resource.
-    /// 
-    /// &gt; **Note:** To start logging from a WAFv2 Web ACL, an Amazon Kinesis Data Firehose (e.g. [`aws.kinesis.FirehoseDeliveryStream` resource](https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html) must also be created with a PUT source (not a stream) and in the region that you are operating.
-    /// If you are capturing logs for Amazon CloudFront, always create the firehose in US East (N. Virginia).
-    /// Be sure to give the data firehose a name that starts with the prefix `aws-waf-logs-`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.WafV2.WebAclLoggingConfiguration("example", new Aws.WafV2.WebAclLoggingConfigurationArgs
-    ///         {
-    ///             LogDestinationConfigs = 
-    ///             {
-    ///                 aws_kinesis_firehose_delivery_stream.Example.Arn,
-    ///             },
-    ///             ResourceArn = aws_wafv2_web_acl.Example.Arn,
-    ///             RedactedFields = 
-    ///             {
-    ///                 new Aws.WafV2.Inputs.WebAclLoggingConfigurationRedactedFieldArgs
-    ///                 {
-    ///                     SingleHeader = new Aws.WafV2.Inputs.WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs
-    ///                     {
-    ///                         Name = "user-agent",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class WebAclLoggingConfiguration : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
+        /// AWS Kinesis Firehose Delivery Stream ARNs
         /// </summary>
         [Output("logDestinationConfigs")]
         public Output<ImmutableArray<string>> LogDestinationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// The parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported.
+        /// Parts of the request to exclude from logs
         /// </summary>
         [Output("redactedFields")]
         public Output<ImmutableArray<Outputs.WebAclLoggingConfigurationRedactedField>> RedactedFields { get; private set; } = null!;
 
         /// <summary>
-        /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
+        /// AWS WebACL ARN
         /// </summary>
         [Output("resourceArn")]
         public Output<string> ResourceArn { get; private set; } = null!;
@@ -119,7 +79,7 @@ namespace Pulumi.Aws.WafV2
         private InputList<string>? _logDestinationConfigs;
 
         /// <summary>
-        /// The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
+        /// AWS Kinesis Firehose Delivery Stream ARNs
         /// </summary>
         public InputList<string> LogDestinationConfigs
         {
@@ -131,7 +91,7 @@ namespace Pulumi.Aws.WafV2
         private InputList<Inputs.WebAclLoggingConfigurationRedactedFieldArgs>? _redactedFields;
 
         /// <summary>
-        /// The parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported.
+        /// Parts of the request to exclude from logs
         /// </summary>
         public InputList<Inputs.WebAclLoggingConfigurationRedactedFieldArgs> RedactedFields
         {
@@ -140,7 +100,7 @@ namespace Pulumi.Aws.WafV2
         }
 
         /// <summary>
-        /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
+        /// AWS WebACL ARN
         /// </summary>
         [Input("resourceArn", required: true)]
         public Input<string> ResourceArn { get; set; } = null!;
@@ -156,7 +116,7 @@ namespace Pulumi.Aws.WafV2
         private InputList<string>? _logDestinationConfigs;
 
         /// <summary>
-        /// The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
+        /// AWS Kinesis Firehose Delivery Stream ARNs
         /// </summary>
         public InputList<string> LogDestinationConfigs
         {
@@ -168,7 +128,7 @@ namespace Pulumi.Aws.WafV2
         private InputList<Inputs.WebAclLoggingConfigurationRedactedFieldGetArgs>? _redactedFields;
 
         /// <summary>
-        /// The parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported.
+        /// Parts of the request to exclude from logs
         /// </summary>
         public InputList<Inputs.WebAclLoggingConfigurationRedactedFieldGetArgs> RedactedFields
         {
@@ -177,7 +137,7 @@ namespace Pulumi.Aws.WafV2
         }
 
         /// <summary>
-        /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
+        /// AWS WebACL ARN
         /// </summary>
         [Input("resourceArn")]
         public Input<string>? ResourceArn { get; set; }

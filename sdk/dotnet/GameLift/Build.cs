@@ -9,75 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.GameLift
 {
-    /// <summary>
-    /// Provides an Gamelift Build resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.GameLift.Build("test", new Aws.GameLift.BuildArgs
-    ///         {
-    ///             OperatingSystem = "WINDOWS_2012",
-    ///             StorageLocation = new Aws.GameLift.Inputs.BuildStorageLocationArgs
-    ///             {
-    ///                 Bucket = aws_s3_bucket.Test.Bucket,
-    ///                 Key = aws_s3_bucket_object.Test.Key,
-    ///                 RoleArn = aws_iam_role.Test.Arn,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 aws_iam_role_policy.Test,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Build : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Gamelift Build ARN.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the build
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
-        /// </summary>
         [Output("operatingSystem")]
         public Output<string> OperatingSystem { get; private set; } = null!;
 
-        /// <summary>
-        /// Information indicating where your game build files are stored. See below.
-        /// </summary>
         [Output("storageLocation")]
         public Output<Outputs.BuildStorageLocation> StorageLocation { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Version that is associated with this build.
-        /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
 
@@ -127,39 +75,23 @@ namespace Pulumi.Aws.GameLift
 
     public sealed class BuildArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the build
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
-        /// </summary>
         [Input("operatingSystem", required: true)]
         public Input<string> OperatingSystem { get; set; } = null!;
 
-        /// <summary>
-        /// Information indicating where your game build files are stored. See below.
-        /// </summary>
         [Input("storageLocation", required: true)]
         public Input<Inputs.BuildStorageLocationArgs> StorageLocation { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Version that is associated with this build.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -170,45 +102,26 @@ namespace Pulumi.Aws.GameLift
 
     public sealed class BuildState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Gamelift Build ARN.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Name of the build
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
-        /// </summary>
         [Input("operatingSystem")]
         public Input<string>? OperatingSystem { get; set; }
 
-        /// <summary>
-        /// Information indicating where your game build files are stored. See below.
-        /// </summary>
         [Input("storageLocation")]
         public Input<Inputs.BuildStorageLocationGetArgs>? StorageLocation { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Version that is associated with this build.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

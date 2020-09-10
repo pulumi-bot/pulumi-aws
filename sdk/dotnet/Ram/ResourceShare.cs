@@ -9,55 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ram
 {
-    /// <summary>
-    /// Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `aws.ram.PrincipalAssociation` resource. To associate resources with the share, see the `aws.ram.ResourceAssociation` resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ram.ResourceShare("example", new Aws.Ram.ResourceShareArgs
-    ///         {
-    ///             AllowExternalPrincipals = true,
-    ///             Tags = 
-    ///             {
-    ///                 { "Environment", "Production" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ResourceShare : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Indicates whether principals outside your organization can be associated with a resource share.
-        /// </summary>
         [Output("allowExternalPrincipals")]
         public Output<bool?> AllowExternalPrincipals { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the resource share.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the resource share.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource share.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -107,24 +69,14 @@ namespace Pulumi.Aws.Ram
 
     public sealed class ResourceShareArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Indicates whether principals outside your organization can be associated with a resource share.
-        /// </summary>
         [Input("allowExternalPrincipals")]
         public Input<bool>? AllowExternalPrincipals { get; set; }
 
-        /// <summary>
-        /// The name of the resource share.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource share.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -138,30 +90,17 @@ namespace Pulumi.Aws.Ram
 
     public sealed class ResourceShareState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Indicates whether principals outside your organization can be associated with a resource share.
-        /// </summary>
         [Input("allowExternalPrincipals")]
         public Input<bool>? AllowExternalPrincipals { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the resource share.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the resource share.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource share.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -30,13 +30,6 @@ class OrganizationAccount(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  status: Optional[str] = None):
-        """
-        :param str arn: ARN of the root
-        :param str email: Email of the account
-        :param str id: Identifier of the root
-        :param str name: The name of the policy type
-        :param str status: The status of the policy type as it relates to the associated root
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if email is not None:
@@ -51,41 +44,26 @@ class OrganizationAccount(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def email(self) -> Optional[str]:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     def _translate_property(self, prop):
@@ -100,13 +78,6 @@ class OrganizationNonMasterAccount(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  status: Optional[str] = None):
-        """
-        :param str arn: ARN of the root
-        :param str email: Email of the account
-        :param str id: Identifier of the root
-        :param str name: The name of the policy type
-        :param str status: The status of the policy type as it relates to the associated root
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if email is not None:
@@ -121,41 +92,26 @@ class OrganizationNonMasterAccount(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def email(self) -> Optional[str]:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     def _translate_property(self, prop):
@@ -169,12 +125,6 @@ class OrganizationRoot(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  policy_types: Optional[List['outputs.OrganizationRootPolicyType']] = None):
-        """
-        :param str arn: ARN of the root
-        :param str id: Identifier of the root
-        :param str name: The name of the policy type
-        :param List['OrganizationRootPolicyTypeArgs'] policy_types: List of policy types enabled for this root. All elements have these attributes:
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if id is not None:
@@ -187,33 +137,21 @@ class OrganizationRoot(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="policyTypes")
     def policy_types(self) -> Optional[List['outputs.OrganizationRootPolicyType']]:
-        """
-        List of policy types enabled for this root. All elements have these attributes:
-        """
         return pulumi.get(self, "policy_types")
 
     def _translate_property(self, prop):
@@ -225,9 +163,6 @@ class OrganizationRootPolicyType(dict):
     def __init__(__self__, *,
                  status: Optional[str] = None,
                  type: Optional[str] = None):
-        """
-        :param str status: The status of the policy type as it relates to the associated root
-        """
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -236,9 +171,6 @@ class OrganizationRootPolicyType(dict):
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -257,12 +189,6 @@ class OrganizationalUnitAccount(dict):
                  email: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
-        """
-        :param str arn: ARN of the organizational unit
-        :param str email: Email of the account
-        :param str id: Identifier of the organization unit
-        :param str name: The name for the organizational unit
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if email is not None:
@@ -275,33 +201,21 @@ class OrganizationalUnitAccount(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
-        """
-        ARN of the organizational unit
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def email(self) -> Optional[str]:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Identifier of the organization unit
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name for the organizational unit
-        """
         return pulumi.get(self, "name")
 
     def _translate_property(self, prop):
@@ -316,13 +230,6 @@ class GetOrganizationAccountResult(dict):
                  id: str,
                  name: str,
                  status: str):
-        """
-        :param str arn: ARN of the root
-        :param str email: Email of the account
-        :param str id: Identifier of the root
-        :param str name: The name of the policy type
-        :param str status: The status of the policy type as it relates to the associated root
-        """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "id", id)
@@ -332,41 +239,26 @@ class GetOrganizationAccountResult(dict):
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def email(self) -> str:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
 
@@ -378,13 +270,6 @@ class GetOrganizationNonMasterAccountResult(dict):
                  id: str,
                  name: str,
                  status: str):
-        """
-        :param str arn: ARN of the root
-        :param str email: Email of the account
-        :param str id: Identifier of the root
-        :param str name: The name of the policy type
-        :param str status: The status of the policy type as it relates to the associated root
-        """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "id", id)
@@ -394,41 +279,26 @@ class GetOrganizationNonMasterAccountResult(dict):
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def email(self) -> str:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
 
@@ -439,12 +309,6 @@ class GetOrganizationRootResult(dict):
                  id: str,
                  name: str,
                  policy_types: List['outputs.GetOrganizationRootPolicyTypeResult']):
-        """
-        :param str arn: ARN of the root
-        :param str id: Identifier of the root
-        :param str name: The name of the policy type
-        :param List['GetOrganizationRootPolicyTypeArgs'] policy_types: List of policy types enabled for this root. All elements have these attributes:
-        """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -453,33 +317,21 @@ class GetOrganizationRootResult(dict):
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="policyTypes")
     def policy_types(self) -> List['outputs.GetOrganizationRootPolicyTypeResult']:
-        """
-        List of policy types enabled for this root. All elements have these attributes:
-        """
         return pulumi.get(self, "policy_types")
 
 
@@ -488,18 +340,12 @@ class GetOrganizationRootPolicyTypeResult(dict):
     def __init__(__self__, *,
                  status: str,
                  type: str):
-        """
-        :param str status: The status of the policy type as it relates to the associated root
-        """
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -514,11 +360,6 @@ class GetOrganizationalUnitsChildrenResult(dict):
                  arn: str,
                  id: str,
                  name: str):
-        """
-        :param str arn: ARN of the organizational unit
-        :param str id: ID of the organizational unit
-        :param str name: Name of the organizational unit
-        """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -526,25 +367,16 @@ class GetOrganizationalUnitsChildrenResult(dict):
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        ARN of the organizational unit
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        ID of the organizational unit
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the organizational unit
-        """
         return pulumi.get(self, "name")
 
 

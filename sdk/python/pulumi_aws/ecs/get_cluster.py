@@ -49,9 +49,6 @@ class GetClusterResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the ECS Cluster
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -70,41 +67,26 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="pendingTasksCount")
     def pending_tasks_count(self) -> float:
-        """
-        The number of pending tasks for the ECS Cluster
-        """
         return pulumi.get(self, "pending_tasks_count")
 
     @property
     @pulumi.getter(name="registeredContainerInstancesCount")
     def registered_container_instances_count(self) -> float:
-        """
-        The number of registered container instances for the ECS Cluster
-        """
         return pulumi.get(self, "registered_container_instances_count")
 
     @property
     @pulumi.getter(name="runningTasksCount")
     def running_tasks_count(self) -> float:
-        """
-        The number of running tasks for the ECS Cluster
-        """
         return pulumi.get(self, "running_tasks_count")
 
     @property
     @pulumi.getter
     def settings(self) -> List['outputs.GetClusterSettingResult']:
-        """
-        The settings associated with the ECS Cluster.
-        """
         return pulumi.get(self, "settings")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the ECS Cluster
-        """
         return pulumi.get(self, "status")
 
 
@@ -127,20 +109,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    The ECS Cluster data source allows access to details of a specific
-    cluster within an AWS ECS service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    ecs_mongo = aws.ecs.get_cluster(cluster_name="ecs-mongo-production")
-    ```
-
-
-    :param str cluster_name: The name of the ECS Cluster
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterName'] = cluster_name

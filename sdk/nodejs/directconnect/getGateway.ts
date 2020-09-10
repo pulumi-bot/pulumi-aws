@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Retrieve information about a Direct Connect Gateway.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.directconnect.getGateway({
- *     name: "example",
- * }, { async: true }));
- * ```
- */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
     if (!opts) {
         opts = {}
@@ -37,9 +23,6 @@ export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getGateway.
  */
 export interface GetGatewayArgs {
-    /**
-     * The name of the gateway to retrieve.
-     */
     readonly name: string;
 }
 
@@ -47,17 +30,11 @@ export interface GetGatewayArgs {
  * A collection of values returned by getGateway.
  */
 export interface GetGatewayResult {
-    /**
-     * The ASN on the Amazon side of the connection.
-     */
     readonly amazonSideAsn: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
-    /**
-     * AWS Account ID of the gateway.
-     */
     readonly ownerAccountId: string;
 }

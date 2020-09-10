@@ -9,57 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApiGateway
 {
-    /// <summary>
-    /// Provides an API Gateway Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDemoAPI = new Aws.ApiGateway.RestApi("myDemoAPI", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///             Description = "This is my API for demonstration purposes",
-    ///         });
-    ///         var myDemoResource = new Aws.ApiGateway.Resource("myDemoResource", new Aws.ApiGateway.ResourceArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             ParentId = myDemoAPI.RootResourceId,
-    ///             PathPart = "mydemoresource",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Resource : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the parent API resource
-        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
-        /// <summary>
-        /// The complete path for this API resource, including all parent paths.
-        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
-        /// <summary>
-        /// The last path segment of this API resource.
-        /// </summary>
         [Output("pathPart")]
         public Output<string> PathPart { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Output("restApi")]
         public Output<string> RestApi { get; private set; } = null!;
 
@@ -109,21 +69,12 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class ResourceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the parent API resource
-        /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
 
-        /// <summary>
-        /// The last path segment of this API resource.
-        /// </summary>
         [Input("pathPart", required: true)]
         public Input<string> PathPart { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Input("restApi", required: true)]
         public Input<string> RestApi { get; set; } = null!;
 
@@ -134,27 +85,15 @@ namespace Pulumi.Aws.ApiGateway
 
     public sealed class ResourceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the parent API resource
-        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
-        /// <summary>
-        /// The complete path for this API resource, including all parent paths.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// The last path segment of this API resource.
-        /// </summary>
         [Input("pathPart")]
         public Input<string>? PathPart { get; set; }
 
-        /// <summary>
-        /// The ID of the associated REST API
-        /// </summary>
         [Input("restApi")]
         public Input<string>? RestApi { get; set; }
 

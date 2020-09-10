@@ -49,20 +49,11 @@ class GetJobQueueResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the job queue.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="computeEnvironmentOrders")
     def compute_environment_orders(self) -> List['outputs.GetJobQueueComputeEnvironmentOrderResult']:
-        """
-        The compute environments that are attached to the job queue and the order in
-        which job placement is preferred. Compute environments are selected for job placement in ascending order.
-        * `compute_environment_order.#.order` - The order of the compute environment.
-        * `compute_environment_order.#.compute_environment` - The ARN of the compute environment.
-        """
         return pulumi.get(self, "compute_environment_orders")
 
     @property
@@ -81,35 +72,21 @@ class GetJobQueueResult:
     @property
     @pulumi.getter
     def priority(self) -> float:
-        """
-        The priority of the job queue. Job queues with a higher priority are evaluated first when
-        associated with the same compute environment.
-        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The current status of the job queue (for example, `CREATING` or `VALID`).
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="statusReason")
     def status_reason(self) -> str:
-        """
-        A short, human-readable string to provide additional details about the current status
-        of the job queue.
-        """
         return pulumi.get(self, "status_reason")
 
 
@@ -132,20 +109,7 @@ class AwaitableGetJobQueueResult(GetJobQueueResult):
 def get_job_queue(name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobQueueResult:
     """
-    The Batch Job Queue data source allows access to details of a specific
-    job queue within AWS Batch.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test_queue = aws.batch.get_job_queue(name="tf-test-batch-job-queue")
-    ```
-
-
-    :param str name: The name of the job queue.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

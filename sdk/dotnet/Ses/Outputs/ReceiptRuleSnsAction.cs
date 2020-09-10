@@ -13,13 +13,7 @@ namespace Pulumi.Aws.Ses.Outputs
     [OutputType]
     public sealed class ReceiptRuleSnsAction
     {
-        /// <summary>
-        /// The position of the action in the receipt rule
-        /// </summary>
         public readonly int Position;
-        /// <summary>
-        /// The ARN of an SNS topic to notify
-        /// </summary>
         public readonly string TopicArn;
 
         [OutputConstructor]

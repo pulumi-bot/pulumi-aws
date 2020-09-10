@@ -9,49 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Adds permission to create volumes off of a given EBS Snapshot.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ebs.Volume("example", new Aws.Ebs.VolumeArgs
-    ///         {
-    ///             AvailabilityZone = "us-west-2a",
-    ///             Size = 40,
-    ///         });
-    ///         var exampleSnapshot = new Aws.Ebs.Snapshot("exampleSnapshot", new Aws.Ebs.SnapshotArgs
-    ///         {
-    ///             VolumeId = example.Id,
-    ///         });
-    ///         var examplePerm = new Aws.Ec2.SnapshotCreateVolumePermission("examplePerm", new Aws.Ec2.SnapshotCreateVolumePermissionArgs
-    ///         {
-    ///             SnapshotId = exampleSnapshot.Id,
-    ///             AccountId = "12345678",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class SnapshotCreateVolumePermission : Pulumi.CustomResource
     {
-        /// <summary>
-        /// An AWS Account ID to add create volume permissions
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// A snapshot ID
-        /// </summary>
         [Output("snapshotId")]
         public Output<string> SnapshotId { get; private set; } = null!;
 
@@ -101,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class SnapshotCreateVolumePermissionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An AWS Account ID to add create volume permissions
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// A snapshot ID
-        /// </summary>
         [Input("snapshotId", required: true)]
         public Input<string> SnapshotId { get; set; } = null!;
 
@@ -120,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class SnapshotCreateVolumePermissionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An AWS Account ID to add create volume permissions
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// A snapshot ID
-        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 

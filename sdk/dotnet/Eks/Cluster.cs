@@ -9,171 +9,47 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Eks
 {
-    /// <summary>
-    /// Manages an EKS Cluster.
-    /// 
-    /// ## Example Usage
-    /// ### Example IAM Role for EKS Cluster
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Iam.Role("example", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Effect"": ""Allow"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""eks.amazonaws.com""
-    ///       },
-    ///       ""Action"": ""sts:AssumeRole""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var example_AmazonEKSClusterPolicy = new Aws.Iam.RolePolicyAttachment("example-AmazonEKSClusterPolicy", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             PolicyArn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
-    ///             Role = example.Name,
-    ///         });
-    ///         var example_AmazonEKSServicePolicy = new Aws.Iam.RolePolicyAttachment("example-AmazonEKSServicePolicy", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             PolicyArn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy",
-    ///             Role = example.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Enabling Control Plane Logging
-    /// 
-    /// [EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) can be enabled via the `enabled_cluster_log_types` argument. To manage the CloudWatch Log Group retention period, the `aws.cloudwatch.LogGroup` resource can be used.
-    /// 
-    /// &gt; The below configuration uses [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) to prevent ordering issues with EKS automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var clusterName = config.Get("clusterName") ?? "example";
-    ///         var exampleLogGroup = new Aws.CloudWatch.LogGroup("exampleLogGroup", new Aws.CloudWatch.LogGroupArgs
-    ///         {
-    ///             RetentionInDays = 7,
-    ///         });
-    ///         // ... potentially other configuration ...
-    ///         var exampleCluster = new Aws.Eks.Cluster("exampleCluster", new Aws.Eks.ClusterArgs
-    ///         {
-    ///             EnabledClusterLogTypes = 
-    ///             {
-    ///                 "api",
-    ///                 "audit",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleLogGroup,
-    ///             },
-    ///         });
-    ///         // ... other configuration ...
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the cluster.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested attribute containing `certificate-authority-data` for your cluster.
-        /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.ClusterCertificateAuthority> CertificateAuthority { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-        /// </summary>
         [Output("enabledClusterLogTypes")]
         public Output<ImmutableArray<string>> EnabledClusterLogTypes { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block with encryption configuration for the cluster. Only available on Kubernetes 1.13 and above clusters created after March 6, 2020. Detailed below.
-        /// </summary>
         [Output("encryptionConfig")]
         public Output<Outputs.ClusterEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The endpoint for your Kubernetes API server.
-        /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019.
-        /// </summary>
         [Output("identities")]
         public Output<ImmutableArray<Outputs.ClusterIdentity>> Identities { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the cluster.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The platform version for the cluster.
-        /// </summary>
         [Output("platformVersion")]
         public Output<string> PlatformVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) if using the `aws.iam.RolePolicy` resource) or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
-        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The status of the EKS cluster. One of `CREATING`, `ACTIVE`, `DELETING`, `FAILED`.
-        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
-        /// <summary>
-        /// Nested argument for the VPC associated with your cluster. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the Amazon EKS User Guide. Configuration detailed below.
-        /// </summary>
         [Output("vpcConfig")]
         public Output<Outputs.ClusterVpcConfig> VpcConfig { get; private set; } = null!;
 
@@ -225,55 +101,32 @@ namespace Pulumi.Aws.Eks
     {
         [Input("enabledClusterLogTypes")]
         private InputList<string>? _enabledClusterLogTypes;
-
-        /// <summary>
-        /// A list of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-        /// </summary>
         public InputList<string> EnabledClusterLogTypes
         {
             get => _enabledClusterLogTypes ?? (_enabledClusterLogTypes = new InputList<string>());
             set => _enabledClusterLogTypes = value;
         }
 
-        /// <summary>
-        /// Configuration block with encryption configuration for the cluster. Only available on Kubernetes 1.13 and above clusters created after March 6, 2020. Detailed below.
-        /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.ClusterEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
-        /// <summary>
-        /// Name of the cluster.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) if using the `aws.iam.RolePolicy` resource) or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        /// <summary>
-        /// Nested argument for the VPC associated with your cluster. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the Amazon EKS User Guide. Configuration detailed below.
-        /// </summary>
         [Input("vpcConfig", required: true)]
         public Input<Inputs.ClusterVpcConfigArgs> VpcConfig { get; set; } = null!;
 
@@ -284,15 +137,9 @@ namespace Pulumi.Aws.Eks
 
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the cluster.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Nested attribute containing `certificate-authority-data` for your cluster.
-        /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.ClusterCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
 
@@ -301,85 +148,49 @@ namespace Pulumi.Aws.Eks
 
         [Input("enabledClusterLogTypes")]
         private InputList<string>? _enabledClusterLogTypes;
-
-        /// <summary>
-        /// A list of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-        /// </summary>
         public InputList<string> EnabledClusterLogTypes
         {
             get => _enabledClusterLogTypes ?? (_enabledClusterLogTypes = new InputList<string>());
             set => _enabledClusterLogTypes = value;
         }
 
-        /// <summary>
-        /// Configuration block with encryption configuration for the cluster. Only available on Kubernetes 1.13 and above clusters created after March 6, 2020. Detailed below.
-        /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.ClusterEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
-        /// <summary>
-        /// The endpoint for your Kubernetes API server.
-        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
         [Input("identities")]
         private InputList<Inputs.ClusterIdentityGetArgs>? _identities;
-
-        /// <summary>
-        /// Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019.
-        /// </summary>
         public InputList<Inputs.ClusterIdentityGetArgs> Identities
         {
             get => _identities ?? (_identities = new InputList<Inputs.ClusterIdentityGetArgs>());
             set => _identities = value;
         }
 
-        /// <summary>
-        /// Name of the cluster.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The platform version for the cluster.
-        /// </summary>
         [Input("platformVersion")]
         public Input<string>? PlatformVersion { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) if using the `aws.iam.RolePolicy` resource) or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// The status of the EKS cluster. One of `CREATING`, `ACTIVE`, `DELETING`, `FAILED`.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        /// <summary>
-        /// Nested argument for the VPC associated with your cluster. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the Amazon EKS User Guide. Configuration detailed below.
-        /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ClusterVpcConfigGetArgs>? VpcConfig { get; set; }
 

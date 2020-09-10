@@ -12,9 +12,6 @@ namespace Pulumi.Aws.Msk.Inputs
 
     public sealed class ClusterOpenMonitoringGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration block for Prometheus settings for open monitoring. See below.
-        /// </summary>
         [Input("prometheus", required: true)]
         public Input<Inputs.ClusterOpenMonitoringPrometheusGetArgs> Prometheus { get; set; } = null!;
 

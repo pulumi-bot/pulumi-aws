@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides details about multiple Outposts.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/outposts"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := data.Aws_outposts_site.Id
-// 		_, err := outposts.GetOutposts(ctx, &outposts.GetOutpostsArgs{
-// 			SiteId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetOutposts(ctx *pulumi.Context, args *GetOutpostsArgs, opts ...pulumi.InvokeOption) (*GetOutpostsResult, error) {
 	var rv GetOutpostsResult
 	err := ctx.Invoke("aws:outposts/getOutposts:getOutposts", args, &rv, opts...)
@@ -43,23 +18,18 @@ func GetOutposts(ctx *pulumi.Context, args *GetOutpostsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getOutposts.
 type GetOutpostsArgs struct {
-	// Availability Zone name.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Availability Zone identifier.
+	AvailabilityZone   *string `pulumi:"availabilityZone"`
 	AvailabilityZoneId *string `pulumi:"availabilityZoneId"`
-	// Site identifier.
-	SiteId *string `pulumi:"siteId"`
+	SiteId             *string `pulumi:"siteId"`
 }
 
 // A collection of values returned by getOutposts.
 type GetOutpostsResult struct {
-	// Set of Amazon Resource Names (ARNs).
 	Arns               []string `pulumi:"arns"`
 	AvailabilityZone   string   `pulumi:"availabilityZone"`
 	AvailabilityZoneId string   `pulumi:"availabilityZoneId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Set of identifiers.
+	Id     string   `pulumi:"id"`
 	Ids    []string `pulumi:"ids"`
 	SiteId string   `pulumi:"siteId"`
 }

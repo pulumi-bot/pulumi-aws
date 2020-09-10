@@ -47,17 +47,11 @@ class GetCustomerGatewayResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the customer gateway.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="bgpAsn")
     def bgp_asn(self) -> float:
-        """
-        (Optional) The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-        """
         return pulumi.get(self, "bgp_asn")
 
     @property
@@ -73,25 +67,16 @@ class GetCustomerGatewayResult:
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
-        """
-        (Optional) The IP address of the gateway's Internet-routable external interface.
-        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        Map of key-value pairs assigned to the gateway.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
-        """
         return pulumi.get(self, "type")
 
 
@@ -115,32 +100,7 @@ def get_customer_gateway(filters: Optional[List[pulumi.InputType['GetCustomerGat
                          tags: Optional[Mapping[str, str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomerGatewayResult:
     """
-    Get an existing AWS Customer Gateway.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    foo = aws.ec2.get_customer_gateway(filters=[aws.ec2.GetCustomerGatewayFilterArgs(
-        name="tag:Name",
-        values=["foo-prod"],
-    )])
-    main = aws.ec2.VpnGateway("main",
-        vpc_id=aws_vpc["main"]["id"],
-        amazon_side_asn="7224")
-    transit = aws.ec2.VpnConnection("transit",
-        vpn_gateway_id=main.id,
-        customer_gateway_id=foo.id,
-        type=foo.type,
-        static_routes_only=False)
-    ```
-
-
-    :param List[pulumi.InputType['GetCustomerGatewayFilterArgs']] filters: One or more [name-value pairs][dcg-filters] to filter by.
-    :param str id: The ID of the gateway.
-    :param Mapping[str, str] tags: Map of key-value pairs assigned to the gateway.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['filters'] = filters

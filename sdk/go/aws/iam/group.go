@@ -9,41 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IAM group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iam.NewGroup(ctx, "developers", &iam.GroupArgs{
-// 			Path: pulumi.String("/users/"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Group struct {
 	pulumi.CustomResourceState
 
-	// The ARN assigned by AWS for this group.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Path in which to create the group.
-	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// The [unique ID][1] assigned by AWS.
-	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
+	Arn      pulumi.StringOutput    `pulumi:"arn"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
+	Path     pulumi.StringPtrOutput `pulumi:"path"`
+	UniqueId pulumi.StringOutput    `pulumi:"uniqueId"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -74,24 +46,16 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// The ARN assigned by AWS for this group.
-	Arn *string `pulumi:"arn"`
-	// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
-	Name *string `pulumi:"name"`
-	// Path in which to create the group.
-	Path *string `pulumi:"path"`
-	// The [unique ID][1] assigned by AWS.
+	Arn      *string `pulumi:"arn"`
+	Name     *string `pulumi:"name"`
+	Path     *string `pulumi:"path"`
 	UniqueId *string `pulumi:"uniqueId"`
 }
 
 type GroupState struct {
-	// The ARN assigned by AWS for this group.
-	Arn pulumi.StringPtrInput
-	// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
-	Name pulumi.StringPtrInput
-	// Path in which to create the group.
-	Path pulumi.StringPtrInput
-	// The [unique ID][1] assigned by AWS.
+	Arn      pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
+	Path     pulumi.StringPtrInput
 	UniqueId pulumi.StringPtrInput
 }
 
@@ -100,17 +64,13 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
 	Name *string `pulumi:"name"`
-	// Path in which to create the group.
 	Path *string `pulumi:"path"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
 	Name pulumi.StringPtrInput
-	// Path in which to create the group.
 	Path pulumi.StringPtrInput
 }
 

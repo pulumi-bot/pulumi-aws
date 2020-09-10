@@ -9,45 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Workspaces
 {
-    /// <summary>
-    /// Provides an IP access control group in AWS WorkSpaces Service
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var contractors = new Aws.Workspaces.IpGroup("contractors", new Aws.Workspaces.IpGroupArgs
-    ///         {
-    ///             Description = "Contractors IP access control group",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class IpGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the IP group.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-        /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.IpGroupRule>> Rules { get; private set; } = null!;
 
@@ -100,24 +69,14 @@ namespace Pulumi.Aws.Workspaces
 
     public sealed class IpGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the IP group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.IpGroupRuleArgs>? _rules;
-
-        /// <summary>
-        /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-        /// </summary>
         public InputList<Inputs.IpGroupRuleArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.IpGroupRuleArgs>());
@@ -139,24 +98,14 @@ namespace Pulumi.Aws.Workspaces
 
     public sealed class IpGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the IP group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.IpGroupRuleGetArgs>? _rules;
-
-        /// <summary>
-        /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-        /// </summary>
         public InputList<Inputs.IpGroupRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.IpGroupRuleGetArgs>());

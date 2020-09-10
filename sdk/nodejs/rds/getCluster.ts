@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides information about an RDS cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const clusterName = pulumi.output(aws.rds.getCluster({
- *     clusterIdentifier: "clusterName",
- * }, { async: true }));
- * ```
- */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     if (!opts) {
         opts = {}
@@ -38,9 +24,6 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterArgs {
-    /**
-     * The cluster identifier of the RDS cluster.
-     */
     readonly clusterIdentifier: string;
     readonly tags?: {[key: string]: string};
 }

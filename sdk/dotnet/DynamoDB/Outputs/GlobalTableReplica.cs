@@ -13,9 +13,6 @@ namespace Pulumi.Aws.DynamoDB.Outputs
     [OutputType]
     public sealed class GlobalTableReplica
     {
-        /// <summary>
-        /// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
-        /// </summary>
         public readonly string RegionName;
 
         [OutputConstructor]

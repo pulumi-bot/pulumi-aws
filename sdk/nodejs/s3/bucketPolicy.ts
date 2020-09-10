@@ -6,39 +6,6 @@ import * as utilities from "../utilities";
 
 import {PolicyDocument} from "../iam";
 
-/**
- * Attaches a policy to an S3 bucket resource.
- *
- * ## Example Usage
- * ### Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const bucket = new aws.s3.Bucket("bucket", {});
- * const bucketPolicy = new aws.s3.BucketPolicy("bucketPolicy", {
- *     bucket: bucket.id,
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Id": "MYBUCKETPOLICY",
- *   "Statement": [
- *     {
- *       "Sid": "IPAllow",
- *       "Effect": "Deny",
- *       "Principal": "*",
- *       "Action": "s3:*",
- *       "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
- *       "Condition": {
- *          "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
- *       }
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- */
 export class BucketPolicy extends pulumi.CustomResource {
     /**
      * Get an existing BucketPolicy resource's state with the given name, ID, and optional extra
@@ -67,13 +34,7 @@ export class BucketPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === BucketPolicy.__pulumiType;
     }
 
-    /**
-     * The name of the bucket to which to apply the policy.
-     */
     public readonly bucket!: pulumi.Output<string>;
-    /**
-     * The text of the policy.
-     */
     public readonly policy!: pulumi.Output<string>;
 
     /**
@@ -116,13 +77,7 @@ export class BucketPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BucketPolicy resources.
  */
 export interface BucketPolicyState {
-    /**
-     * The name of the bucket to which to apply the policy.
-     */
     readonly bucket?: pulumi.Input<string>;
-    /**
-     * The text of the policy.
-     */
     readonly policy?: pulumi.Input<string | PolicyDocument>;
 }
 
@@ -130,12 +85,6 @@ export interface BucketPolicyState {
  * The set of arguments for constructing a BucketPolicy resource.
  */
 export interface BucketPolicyArgs {
-    /**
-     * The name of the bucket to which to apply the policy.
-     */
     readonly bucket: pulumi.Input<string>;
-    /**
-     * The text of the policy.
-     */
     readonly policy: pulumi.Input<string | PolicyDocument>;
 }

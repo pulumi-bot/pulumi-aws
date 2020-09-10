@@ -9,43 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DeviceFarm
 {
-    /// <summary>
-    /// Provides a resource to manage AWS Device Farm Projects.
-    /// Please keep in mind that this feature is only supported on the "us-west-2" region.
-    /// This resource will error if you try to create a project in another region.
-    /// 
-    /// For more information about Device Farm Projects, see the AWS Documentation on
-    /// [Device Farm Projects][aws-get-project].
-    /// 
-    /// ## Basic Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var awesomeDevices = new Aws.DeviceFarm.Project("awesomeDevices", new Aws.DeviceFarm.ProjectArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name of this project
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the project
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -95,9 +63,6 @@ namespace Pulumi.Aws.DeviceFarm
 
     public sealed class ProjectArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the project
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -108,15 +73,9 @@ namespace Pulumi.Aws.DeviceFarm
 
     public sealed class ProjectState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name of this project
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the project
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

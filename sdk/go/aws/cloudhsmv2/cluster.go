@@ -10,42 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates an Amazon CloudHSM v2 cluster.
-//
-// For information about CloudHSM v2, see the
-// [AWS CloudHSM User Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html) and the [Amazon
-// CloudHSM API Reference][2].
-//
-// > **NOTE:** A CloudHSM Cluster can take several minutes to set up.
-// Practically no single attribute can be updated, except for `tags`.
-// If you need to delete a cluster, you have to remove its HSM modules first.
-// To initialize cluster, you have to add an HSM instance to the cluster, then sign CSR and upload it.
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// The list of cluster certificates.
-	// * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-	// * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-	// * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-	// * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-	// * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
-	ClusterCertificates ClusterClusterCertificateArrayOutput `pulumi:"clusterCertificates"`
-	// The id of the CloudHSM cluster.
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The state of the CloudHSM cluster.
-	ClusterState pulumi.StringOutput `pulumi:"clusterState"`
-	// The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-	HsmType pulumi.StringOutput `pulumi:"hsmType"`
-	// The ID of the security group associated with the CloudHSM cluster.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// The id of Cloud HSM v2 cluster backup to be restored.
-	SourceBackupIdentifier pulumi.StringPtrOutput `pulumi:"sourceBackupIdentifier"`
-	// The IDs of subnets in which cluster will operate.
-	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The id of the VPC that the CloudHSM cluster resides in.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	ClusterCertificates    ClusterClusterCertificateArrayOutput `pulumi:"clusterCertificates"`
+	ClusterId              pulumi.StringOutput                  `pulumi:"clusterId"`
+	ClusterState           pulumi.StringOutput                  `pulumi:"clusterState"`
+	HsmType                pulumi.StringOutput                  `pulumi:"hsmType"`
+	SecurityGroupId        pulumi.StringOutput                  `pulumi:"securityGroupId"`
+	SourceBackupIdentifier pulumi.StringPtrOutput               `pulumi:"sourceBackupIdentifier"`
+	SubnetIds              pulumi.StringArrayOutput             `pulumi:"subnetIds"`
+	Tags                   pulumi.StringMapOutput               `pulumi:"tags"`
+	VpcId                  pulumi.StringOutput                  `pulumi:"vpcId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -82,55 +58,27 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// The list of cluster certificates.
-	// * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-	// * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-	// * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-	// * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-	// * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
-	ClusterCertificates []ClusterClusterCertificate `pulumi:"clusterCertificates"`
-	// The id of the CloudHSM cluster.
-	ClusterId *string `pulumi:"clusterId"`
-	// The state of the CloudHSM cluster.
-	ClusterState *string `pulumi:"clusterState"`
-	// The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-	HsmType *string `pulumi:"hsmType"`
-	// The ID of the security group associated with the CloudHSM cluster.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The id of Cloud HSM v2 cluster backup to be restored.
-	SourceBackupIdentifier *string `pulumi:"sourceBackupIdentifier"`
-	// The IDs of subnets in which cluster will operate.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The id of the VPC that the CloudHSM cluster resides in.
-	VpcId *string `pulumi:"vpcId"`
+	ClusterCertificates    []ClusterClusterCertificate `pulumi:"clusterCertificates"`
+	ClusterId              *string                     `pulumi:"clusterId"`
+	ClusterState           *string                     `pulumi:"clusterState"`
+	HsmType                *string                     `pulumi:"hsmType"`
+	SecurityGroupId        *string                     `pulumi:"securityGroupId"`
+	SourceBackupIdentifier *string                     `pulumi:"sourceBackupIdentifier"`
+	SubnetIds              []string                    `pulumi:"subnetIds"`
+	Tags                   map[string]string           `pulumi:"tags"`
+	VpcId                  *string                     `pulumi:"vpcId"`
 }
 
 type ClusterState struct {
-	// The list of cluster certificates.
-	// * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-	// * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-	// * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-	// * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-	// * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
-	ClusterCertificates ClusterClusterCertificateArrayInput
-	// The id of the CloudHSM cluster.
-	ClusterId pulumi.StringPtrInput
-	// The state of the CloudHSM cluster.
-	ClusterState pulumi.StringPtrInput
-	// The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-	HsmType pulumi.StringPtrInput
-	// The ID of the security group associated with the CloudHSM cluster.
-	SecurityGroupId pulumi.StringPtrInput
-	// The id of Cloud HSM v2 cluster backup to be restored.
+	ClusterCertificates    ClusterClusterCertificateArrayInput
+	ClusterId              pulumi.StringPtrInput
+	ClusterState           pulumi.StringPtrInput
+	HsmType                pulumi.StringPtrInput
+	SecurityGroupId        pulumi.StringPtrInput
 	SourceBackupIdentifier pulumi.StringPtrInput
-	// The IDs of subnets in which cluster will operate.
-	SubnetIds pulumi.StringArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The id of the VPC that the CloudHSM cluster resides in.
-	VpcId pulumi.StringPtrInput
+	SubnetIds              pulumi.StringArrayInput
+	Tags                   pulumi.StringMapInput
+	VpcId                  pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -138,26 +86,18 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-	HsmType string `pulumi:"hsmType"`
-	// The id of Cloud HSM v2 cluster backup to be restored.
-	SourceBackupIdentifier *string `pulumi:"sourceBackupIdentifier"`
-	// The IDs of subnets in which cluster will operate.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	HsmType                string            `pulumi:"hsmType"`
+	SourceBackupIdentifier *string           `pulumi:"sourceBackupIdentifier"`
+	SubnetIds              []string          `pulumi:"subnetIds"`
+	Tags                   map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The type of HSM module in the cluster. Currently, only `hsm1.medium` is supported.
-	HsmType pulumi.StringInput
-	// The id of Cloud HSM v2 cluster backup to be restored.
+	HsmType                pulumi.StringInput
 	SourceBackupIdentifier pulumi.StringPtrInput
-	// The IDs of subnets in which cluster will operate.
-	SubnetIds pulumi.StringArrayInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	SubnetIds              pulumi.StringArrayInput
+	Tags                   pulumi.StringMapInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

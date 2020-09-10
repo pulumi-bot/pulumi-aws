@@ -10,54 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an EC2 Local Gateway Route Table VPC Association. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-local-gateways.html#vpc-associations).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef"
-// 		exampleLocalGatewayRouteTable, err := ec2.GetLocalGatewayRouteTable(ctx, &ec2.GetLocalGatewayRouteTableArgs{
-// 			OutpostArn: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleVpc, err := ec2.NewVpc(ctx, "exampleVpc", &ec2.VpcArgs{
-// 			CidrBlock: pulumi.String("10.0.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewLocalGatewayRouteTableVpcAssociation(ctx, "exampleLocalGatewayRouteTableVpcAssociation", &ec2.LocalGatewayRouteTableVpcAssociationArgs{
-// 			LocalGatewayRouteTableId: pulumi.String(exampleLocalGatewayRouteTable.Id),
-// 			VpcId:                    exampleVpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LocalGatewayRouteTableVpcAssociation struct {
 	pulumi.CustomResourceState
 
-	LocalGatewayId pulumi.StringOutput `pulumi:"localGatewayId"`
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId pulumi.StringOutput `pulumi:"localGatewayRouteTableId"`
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Identifier of EC2 VPC.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	LocalGatewayId           pulumi.StringOutput    `pulumi:"localGatewayId"`
+	LocalGatewayRouteTableId pulumi.StringOutput    `pulumi:"localGatewayRouteTableId"`
+	Tags                     pulumi.StringMapOutput `pulumi:"tags"`
+	VpcId                    pulumi.StringOutput    `pulumi:"vpcId"`
 }
 
 // NewLocalGatewayRouteTableVpcAssociation registers a new resource with the given unique name, arguments, and options.
@@ -94,23 +53,17 @@ func GetLocalGatewayRouteTableVpcAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LocalGatewayRouteTableVpcAssociation resources.
 type localGatewayRouteTableVpcAssociationState struct {
-	LocalGatewayId *string `pulumi:"localGatewayId"`
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId *string `pulumi:"localGatewayRouteTableId"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
-	// Identifier of EC2 VPC.
-	VpcId *string `pulumi:"vpcId"`
+	LocalGatewayId           *string           `pulumi:"localGatewayId"`
+	LocalGatewayRouteTableId *string           `pulumi:"localGatewayRouteTableId"`
+	Tags                     map[string]string `pulumi:"tags"`
+	VpcId                    *string           `pulumi:"vpcId"`
 }
 
 type LocalGatewayRouteTableVpcAssociationState struct {
-	LocalGatewayId pulumi.StringPtrInput
-	// Identifier of EC2 Local Gateway Route Table.
+	LocalGatewayId           pulumi.StringPtrInput
 	LocalGatewayRouteTableId pulumi.StringPtrInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
-	// Identifier of EC2 VPC.
-	VpcId pulumi.StringPtrInput
+	Tags                     pulumi.StringMapInput
+	VpcId                    pulumi.StringPtrInput
 }
 
 func (LocalGatewayRouteTableVpcAssociationState) ElementType() reflect.Type {
@@ -118,22 +71,16 @@ func (LocalGatewayRouteTableVpcAssociationState) ElementType() reflect.Type {
 }
 
 type localGatewayRouteTableVpcAssociationArgs struct {
-	// Identifier of EC2 Local Gateway Route Table.
-	LocalGatewayRouteTableId string `pulumi:"localGatewayRouteTableId"`
-	// Key-value map of resource tags.
-	Tags map[string]string `pulumi:"tags"`
-	// Identifier of EC2 VPC.
-	VpcId string `pulumi:"vpcId"`
+	LocalGatewayRouteTableId string            `pulumi:"localGatewayRouteTableId"`
+	Tags                     map[string]string `pulumi:"tags"`
+	VpcId                    string            `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a LocalGatewayRouteTableVpcAssociation resource.
 type LocalGatewayRouteTableVpcAssociationArgs struct {
-	// Identifier of EC2 Local Gateway Route Table.
 	LocalGatewayRouteTableId pulumi.StringInput
-	// Key-value map of resource tags.
-	Tags pulumi.StringMapInput
-	// Identifier of EC2 VPC.
-	VpcId pulumi.StringInput
+	Tags                     pulumi.StringMapInput
+	VpcId                    pulumi.StringInput
 }
 
 func (LocalGatewayRouteTableVpcAssociationArgs) ElementType() reflect.Type {

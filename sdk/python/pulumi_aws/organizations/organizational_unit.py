@@ -23,21 +23,9 @@ class OrganizationalUnit(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to create an organizational unit.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.organizations.OrganizationalUnit("example", parent_id=aws_organizations_organization["example"]["roots"][0]["id"])
-        ```
-
+        Create a OrganizationalUnit resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name for the organizational unit
-        :param pulumi.Input[str] parent_id: ID of the parent organizational unit, which may be the root
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,10 +71,6 @@ class OrganizationalUnit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OrganizationalUnitAccountArgs']]]] accounts: List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-        :param pulumi.Input[str] arn: ARN of the organizational unit
-        :param pulumi.Input[str] name: The name for the organizational unit
-        :param pulumi.Input[str] parent_id: ID of the parent organizational unit, which may be the root
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -101,33 +85,21 @@ class OrganizationalUnit(pulumi.CustomResource):
     @property
     @pulumi.getter
     def accounts(self) -> pulumi.Output[List['outputs.OrganizationalUnitAccount']]:
-        """
-        List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-        """
         return pulumi.get(self, "accounts")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        ARN of the organizational unit
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name for the organizational unit
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
-        """
-        ID of the parent organizational unit, which may be the root
-        """
         return pulumi.get(self, "parent_id")
 
     def translate_output_property(self, prop):

@@ -13,29 +13,11 @@ namespace Pulumi.Aws.Sagemaker.Outputs
     [OutputType]
     public sealed class EndpointConfigurationProductionVariant
     {
-        /// <summary>
-        /// The size of the Elastic Inference (EI) instance to use for the production variant.
-        /// </summary>
         public readonly string? AcceleratorType;
-        /// <summary>
-        /// Initial number of instances used for auto-scaling.
-        /// </summary>
         public readonly int InitialInstanceCount;
-        /// <summary>
-        /// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
-        /// </summary>
         public readonly double? InitialVariantWeight;
-        /// <summary>
-        /// The type of instance to start.
-        /// </summary>
         public readonly string InstanceType;
-        /// <summary>
-        /// The name of the model to use.
-        /// </summary>
         public readonly string ModelName;
-        /// <summary>
-        /// The name of the variant. If omitted, this provider will assign a random, unique name.
-        /// </summary>
         public readonly string? VariantName;
 
         [OutputConstructor]

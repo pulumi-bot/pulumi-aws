@@ -10,44 +10,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an OpsWorks application resource.
 type Application struct {
 	pulumi.CustomResourceState
 
-	// SCM configuration of the app as described below.
-	AppSources ApplicationAppSourceArrayOutput `pulumi:"appSources"`
-	// Run bundle install when deploying for application of type `rails`.
-	AutoBundleOnDeploy pulumi.StringPtrOutput `pulumi:"autoBundleOnDeploy"`
-	// Specify activity and workflow workers for your app using the aws-flow gem.
-	AwsFlowRubySettings pulumi.StringPtrOutput `pulumi:"awsFlowRubySettings"`
-	// The data source's ARN.
-	DataSourceArn pulumi.StringPtrOutput `pulumi:"dataSourceArn"`
-	// The database name.
-	DataSourceDatabaseName pulumi.StringPtrOutput `pulumi:"dataSourceDatabaseName"`
-	// The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-	DataSourceType pulumi.StringPtrOutput `pulumi:"dataSourceType"`
-	// A description of the app.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Subfolder for the document root for application of type `rails`.
-	DocumentRoot pulumi.StringPtrOutput `pulumi:"documentRoot"`
-	// A list of virtual host alias.
-	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
-	// Object to define environment variables.  Object is described below.
-	Environments ApplicationEnvironmentArrayOutput `pulumi:"environments"`
-	// A human-readable name for the application.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the Rails environment for application of type `rails`.
-	RailsEnv pulumi.StringPtrOutput `pulumi:"railsEnv"`
-	// A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-	ShortName pulumi.StringOutput `pulumi:"shortName"`
-	// The SSL configuration of the app. Object is described below.
-	SslConfigurations ApplicationSslConfigurationArrayOutput `pulumi:"sslConfigurations"`
-	// The id of the stack the application will belong to.
-	StackId pulumi.StringOutput `pulumi:"stackId"`
-	// Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-	Type pulumi.StringOutput `pulumi:"type"`
+	AppSources             ApplicationAppSourceArrayOutput        `pulumi:"appSources"`
+	AutoBundleOnDeploy     pulumi.StringPtrOutput                 `pulumi:"autoBundleOnDeploy"`
+	AwsFlowRubySettings    pulumi.StringPtrOutput                 `pulumi:"awsFlowRubySettings"`
+	DataSourceArn          pulumi.StringPtrOutput                 `pulumi:"dataSourceArn"`
+	DataSourceDatabaseName pulumi.StringPtrOutput                 `pulumi:"dataSourceDatabaseName"`
+	DataSourceType         pulumi.StringPtrOutput                 `pulumi:"dataSourceType"`
+	Description            pulumi.StringPtrOutput                 `pulumi:"description"`
+	DocumentRoot           pulumi.StringPtrOutput                 `pulumi:"documentRoot"`
+	Domains                pulumi.StringArrayOutput               `pulumi:"domains"`
+	EnableSsl              pulumi.BoolPtrOutput                   `pulumi:"enableSsl"`
+	Environments           ApplicationEnvironmentArrayOutput      `pulumi:"environments"`
+	Name                   pulumi.StringOutput                    `pulumi:"name"`
+	RailsEnv               pulumi.StringPtrOutput                 `pulumi:"railsEnv"`
+	ShortName              pulumi.StringOutput                    `pulumi:"shortName"`
+	SslConfigurations      ApplicationSslConfigurationArrayOutput `pulumi:"sslConfigurations"`
+	StackId                pulumi.StringOutput                    `pulumi:"stackId"`
+	Type                   pulumi.StringOutput                    `pulumi:"type"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -84,77 +66,43 @@ func GetApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
-	// SCM configuration of the app as described below.
-	AppSources []ApplicationAppSource `pulumi:"appSources"`
-	// Run bundle install when deploying for application of type `rails`.
-	AutoBundleOnDeploy *string `pulumi:"autoBundleOnDeploy"`
-	// Specify activity and workflow workers for your app using the aws-flow gem.
-	AwsFlowRubySettings *string `pulumi:"awsFlowRubySettings"`
-	// The data source's ARN.
-	DataSourceArn *string `pulumi:"dataSourceArn"`
-	// The database name.
-	DataSourceDatabaseName *string `pulumi:"dataSourceDatabaseName"`
-	// The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-	DataSourceType *string `pulumi:"dataSourceType"`
-	// A description of the app.
-	Description *string `pulumi:"description"`
-	// Subfolder for the document root for application of type `rails`.
-	DocumentRoot *string `pulumi:"documentRoot"`
-	// A list of virtual host alias.
-	Domains []string `pulumi:"domains"`
-	// Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-	EnableSsl *bool `pulumi:"enableSsl"`
-	// Object to define environment variables.  Object is described below.
-	Environments []ApplicationEnvironment `pulumi:"environments"`
-	// A human-readable name for the application.
-	Name *string `pulumi:"name"`
-	// The name of the Rails environment for application of type `rails`.
-	RailsEnv *string `pulumi:"railsEnv"`
-	// A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-	ShortName *string `pulumi:"shortName"`
-	// The SSL configuration of the app. Object is described below.
-	SslConfigurations []ApplicationSslConfiguration `pulumi:"sslConfigurations"`
-	// The id of the stack the application will belong to.
-	StackId *string `pulumi:"stackId"`
-	// Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-	Type *string `pulumi:"type"`
+	AppSources             []ApplicationAppSource        `pulumi:"appSources"`
+	AutoBundleOnDeploy     *string                       `pulumi:"autoBundleOnDeploy"`
+	AwsFlowRubySettings    *string                       `pulumi:"awsFlowRubySettings"`
+	DataSourceArn          *string                       `pulumi:"dataSourceArn"`
+	DataSourceDatabaseName *string                       `pulumi:"dataSourceDatabaseName"`
+	DataSourceType         *string                       `pulumi:"dataSourceType"`
+	Description            *string                       `pulumi:"description"`
+	DocumentRoot           *string                       `pulumi:"documentRoot"`
+	Domains                []string                      `pulumi:"domains"`
+	EnableSsl              *bool                         `pulumi:"enableSsl"`
+	Environments           []ApplicationEnvironment      `pulumi:"environments"`
+	Name                   *string                       `pulumi:"name"`
+	RailsEnv               *string                       `pulumi:"railsEnv"`
+	ShortName              *string                       `pulumi:"shortName"`
+	SslConfigurations      []ApplicationSslConfiguration `pulumi:"sslConfigurations"`
+	StackId                *string                       `pulumi:"stackId"`
+	Type                   *string                       `pulumi:"type"`
 }
 
 type ApplicationState struct {
-	// SCM configuration of the app as described below.
-	AppSources ApplicationAppSourceArrayInput
-	// Run bundle install when deploying for application of type `rails`.
-	AutoBundleOnDeploy pulumi.StringPtrInput
-	// Specify activity and workflow workers for your app using the aws-flow gem.
-	AwsFlowRubySettings pulumi.StringPtrInput
-	// The data source's ARN.
-	DataSourceArn pulumi.StringPtrInput
-	// The database name.
+	AppSources             ApplicationAppSourceArrayInput
+	AutoBundleOnDeploy     pulumi.StringPtrInput
+	AwsFlowRubySettings    pulumi.StringPtrInput
+	DataSourceArn          pulumi.StringPtrInput
 	DataSourceDatabaseName pulumi.StringPtrInput
-	// The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-	DataSourceType pulumi.StringPtrInput
-	// A description of the app.
-	Description pulumi.StringPtrInput
-	// Subfolder for the document root for application of type `rails`.
-	DocumentRoot pulumi.StringPtrInput
-	// A list of virtual host alias.
-	Domains pulumi.StringArrayInput
-	// Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-	EnableSsl pulumi.BoolPtrInput
-	// Object to define environment variables.  Object is described below.
-	Environments ApplicationEnvironmentArrayInput
-	// A human-readable name for the application.
-	Name pulumi.StringPtrInput
-	// The name of the Rails environment for application of type `rails`.
-	RailsEnv pulumi.StringPtrInput
-	// A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-	ShortName pulumi.StringPtrInput
-	// The SSL configuration of the app. Object is described below.
-	SslConfigurations ApplicationSslConfigurationArrayInput
-	// The id of the stack the application will belong to.
-	StackId pulumi.StringPtrInput
-	// Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-	Type pulumi.StringPtrInput
+	DataSourceType         pulumi.StringPtrInput
+	Description            pulumi.StringPtrInput
+	DocumentRoot           pulumi.StringPtrInput
+	Domains                pulumi.StringArrayInput
+	EnableSsl              pulumi.BoolPtrInput
+	Environments           ApplicationEnvironmentArrayInput
+	Name                   pulumi.StringPtrInput
+	RailsEnv               pulumi.StringPtrInput
+	ShortName              pulumi.StringPtrInput
+	SslConfigurations      ApplicationSslConfigurationArrayInput
+	StackId                pulumi.StringPtrInput
+	Type                   pulumi.StringPtrInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -162,78 +110,44 @@ func (ApplicationState) ElementType() reflect.Type {
 }
 
 type applicationArgs struct {
-	// SCM configuration of the app as described below.
-	AppSources []ApplicationAppSource `pulumi:"appSources"`
-	// Run bundle install when deploying for application of type `rails`.
-	AutoBundleOnDeploy *string `pulumi:"autoBundleOnDeploy"`
-	// Specify activity and workflow workers for your app using the aws-flow gem.
-	AwsFlowRubySettings *string `pulumi:"awsFlowRubySettings"`
-	// The data source's ARN.
-	DataSourceArn *string `pulumi:"dataSourceArn"`
-	// The database name.
-	DataSourceDatabaseName *string `pulumi:"dataSourceDatabaseName"`
-	// The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-	DataSourceType *string `pulumi:"dataSourceType"`
-	// A description of the app.
-	Description *string `pulumi:"description"`
-	// Subfolder for the document root for application of type `rails`.
-	DocumentRoot *string `pulumi:"documentRoot"`
-	// A list of virtual host alias.
-	Domains []string `pulumi:"domains"`
-	// Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-	EnableSsl *bool `pulumi:"enableSsl"`
-	// Object to define environment variables.  Object is described below.
-	Environments []ApplicationEnvironment `pulumi:"environments"`
-	// A human-readable name for the application.
-	Name *string `pulumi:"name"`
-	// The name of the Rails environment for application of type `rails`.
-	RailsEnv *string `pulumi:"railsEnv"`
-	// A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-	ShortName *string `pulumi:"shortName"`
-	// The SSL configuration of the app. Object is described below.
-	SslConfigurations []ApplicationSslConfiguration `pulumi:"sslConfigurations"`
-	// The id of the stack the application will belong to.
-	StackId string `pulumi:"stackId"`
-	// Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-	Type string `pulumi:"type"`
+	AppSources             []ApplicationAppSource        `pulumi:"appSources"`
+	AutoBundleOnDeploy     *string                       `pulumi:"autoBundleOnDeploy"`
+	AwsFlowRubySettings    *string                       `pulumi:"awsFlowRubySettings"`
+	DataSourceArn          *string                       `pulumi:"dataSourceArn"`
+	DataSourceDatabaseName *string                       `pulumi:"dataSourceDatabaseName"`
+	DataSourceType         *string                       `pulumi:"dataSourceType"`
+	Description            *string                       `pulumi:"description"`
+	DocumentRoot           *string                       `pulumi:"documentRoot"`
+	Domains                []string                      `pulumi:"domains"`
+	EnableSsl              *bool                         `pulumi:"enableSsl"`
+	Environments           []ApplicationEnvironment      `pulumi:"environments"`
+	Name                   *string                       `pulumi:"name"`
+	RailsEnv               *string                       `pulumi:"railsEnv"`
+	ShortName              *string                       `pulumi:"shortName"`
+	SslConfigurations      []ApplicationSslConfiguration `pulumi:"sslConfigurations"`
+	StackId                string                        `pulumi:"stackId"`
+	Type                   string                        `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
-	// SCM configuration of the app as described below.
-	AppSources ApplicationAppSourceArrayInput
-	// Run bundle install when deploying for application of type `rails`.
-	AutoBundleOnDeploy pulumi.StringPtrInput
-	// Specify activity and workflow workers for your app using the aws-flow gem.
-	AwsFlowRubySettings pulumi.StringPtrInput
-	// The data source's ARN.
-	DataSourceArn pulumi.StringPtrInput
-	// The database name.
+	AppSources             ApplicationAppSourceArrayInput
+	AutoBundleOnDeploy     pulumi.StringPtrInput
+	AwsFlowRubySettings    pulumi.StringPtrInput
+	DataSourceArn          pulumi.StringPtrInput
 	DataSourceDatabaseName pulumi.StringPtrInput
-	// The data source's type one of `AutoSelectOpsworksMysqlInstance`, `OpsworksMysqlInstance`, or `RdsDbInstance`.
-	DataSourceType pulumi.StringPtrInput
-	// A description of the app.
-	Description pulumi.StringPtrInput
-	// Subfolder for the document root for application of type `rails`.
-	DocumentRoot pulumi.StringPtrInput
-	// A list of virtual host alias.
-	Domains pulumi.StringArrayInput
-	// Whether to enable SSL for the app. This must be set in order to let `ssl_configuration.private_key`, `ssl_configuration.certificate` and `ssl_configuration.chain` take effect.
-	EnableSsl pulumi.BoolPtrInput
-	// Object to define environment variables.  Object is described below.
-	Environments ApplicationEnvironmentArrayInput
-	// A human-readable name for the application.
-	Name pulumi.StringPtrInput
-	// The name of the Rails environment for application of type `rails`.
-	RailsEnv pulumi.StringPtrInput
-	// A short, machine-readable name for the application. This can only be defined on resource creation and ignored on resource update.
-	ShortName pulumi.StringPtrInput
-	// The SSL configuration of the app. Object is described below.
-	SslConfigurations ApplicationSslConfigurationArrayInput
-	// The id of the stack the application will belong to.
-	StackId pulumi.StringInput
-	// Opsworks application type. One of `aws-flow-ruby`, `java`, `rails`, `php`, `nodejs`, `static` or `other`.
-	Type pulumi.StringInput
+	DataSourceType         pulumi.StringPtrInput
+	Description            pulumi.StringPtrInput
+	DocumentRoot           pulumi.StringPtrInput
+	Domains                pulumi.StringArrayInput
+	EnableSsl              pulumi.BoolPtrInput
+	Environments           ApplicationEnvironmentArrayInput
+	Name                   pulumi.StringPtrInput
+	RailsEnv               pulumi.StringPtrInput
+	ShortName              pulumi.StringPtrInput
+	SslConfigurations      ApplicationSslConfigurationArrayInput
+	StackId                pulumi.StringInput
+	Type                   pulumi.StringInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {

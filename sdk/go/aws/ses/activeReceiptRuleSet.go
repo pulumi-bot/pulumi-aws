@@ -10,34 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource to designate the active SES receipt rule set
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ses"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ses.NewActiveReceiptRuleSet(ctx, "main", &ses.ActiveReceiptRuleSetArgs{
-// 			RuleSetName: pulumi.String("primary-rules"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ActiveReceiptRuleSet struct {
 	pulumi.CustomResourceState
 
-	// The name of the rule set
 	RuleSetName pulumi.StringOutput `pulumi:"ruleSetName"`
 }
 
@@ -72,12 +47,10 @@ func GetActiveReceiptRuleSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ActiveReceiptRuleSet resources.
 type activeReceiptRuleSetState struct {
-	// The name of the rule set
 	RuleSetName *string `pulumi:"ruleSetName"`
 }
 
 type ActiveReceiptRuleSetState struct {
-	// The name of the rule set
 	RuleSetName pulumi.StringPtrInput
 }
 
@@ -86,13 +59,11 @@ func (ActiveReceiptRuleSetState) ElementType() reflect.Type {
 }
 
 type activeReceiptRuleSetArgs struct {
-	// The name of the rule set
 	RuleSetName string `pulumi:"ruleSetName"`
 }
 
 // The set of arguments for constructing a ActiveReceiptRuleSet resource.
 type ActiveReceiptRuleSetArgs struct {
-	// The name of the rule set
 	RuleSetName pulumi.StringInput
 }
 

@@ -22,24 +22,9 @@ class ResolverRuleAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Route53 Resolver rule association.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.route53.ResolverRuleAssociation("example",
-            resolver_rule_id=aws_route53_resolver_rule["sys"]["id"],
-            vpc_id=aws_vpc["foo"]["id"])
-        ```
-
+        Create a ResolverRuleAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A name for the association that you're creating between a resolver rule and a VPC.
-        :param pulumi.Input[str] resolver_rule_id: The ID of the resolver rule that you want to associate with the VPC.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to associate the resolver rule with.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,9 +70,6 @@ class ResolverRuleAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A name for the association that you're creating between a resolver rule and a VPC.
-        :param pulumi.Input[str] resolver_rule_id: The ID of the resolver rule that you want to associate with the VPC.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to associate the resolver rule with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -101,25 +83,16 @@ class ResolverRuleAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A name for the association that you're creating between a resolver rule and a VPC.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="resolverRuleId")
     def resolver_rule_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the resolver rule that you want to associate with the VPC.
-        """
         return pulumi.get(self, "resolver_rule_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the VPC that you want to associate the resolver rule with.
-        """
         return pulumi.get(self, "vpc_id")
 
     def translate_output_property(self, prop):

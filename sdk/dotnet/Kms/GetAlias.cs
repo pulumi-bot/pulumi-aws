@@ -11,34 +11,6 @@ namespace Pulumi.Aws.Kms
 {
     public static class GetAlias
     {
-        /// <summary>
-        /// Use this data source to get the ARN of a KMS key alias.
-        /// By using this data source, you can reference key alias
-        /// without having to hard code the ARN as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var s3 = Output.Create(Aws.Kms.GetAlias.InvokeAsync(new Aws.Kms.GetAliasArgs
-        ///         {
-        ///             Name = "alias/aws/s3",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAliasResult> InvokeAsync(GetAliasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAliasResult>("aws:kms/getAlias:getAlias", args ?? new GetAliasArgs(), options.WithVersion());
     }
@@ -46,9 +18,6 @@ namespace Pulumi.Aws.Kms
 
     public sealed class GetAliasArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -61,22 +30,13 @@ namespace Pulumi.Aws.Kms
     [OutputType]
     public sealed class GetAliasResult
     {
-        /// <summary>
-        /// The Amazon Resource Name(ARN) of the key alias.
-        /// </summary>
         public readonly string Arn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        /// <summary>
-        /// ARN pointed to by the alias.
-        /// </summary>
         public readonly string TargetKeyArn;
-        /// <summary>
-        /// Key identifier pointed to by the alias.
-        /// </summary>
         public readonly string TargetKeyId;
 
         [OutputConstructor]

@@ -9,81 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.RedShift
 {
-    /// <summary>
-    /// Provides a Redshift Cluster parameter group resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bar = new Aws.RedShift.ParameterGroup("bar", new Aws.RedShift.ParameterGroupArgs
-    ///         {
-    ///             Family = "redshift-1.0",
-    ///             Parameters = 
-    ///             {
-    ///                 new Aws.RedShift.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "require_ssl",
-    ///                     Value = "true",
-    ///                 },
-    ///                 new Aws.RedShift.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "query_group",
-    ///                     Value = "example",
-    ///                 },
-    ///                 new Aws.RedShift.Inputs.ParameterGroupParameterArgs
-    ///                 {
-    ///                     Name = "enable_user_activity_logging",
-    ///                     Value = "true",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ParameterGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of parameter group
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the Redshift parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The family of the Redshift parameter group.
-        /// </summary>
         [Output("family")]
         public Output<string> Family { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Redshift parameter.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of Redshift parameters to apply.
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ParameterGroupParameter>> Parameters { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -133,30 +75,17 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class ParameterGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the Redshift parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the Redshift parameter group.
-        /// </summary>
         [Input("family", required: true)]
         public Input<string> Family { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the Redshift parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterArgs>? _parameters;
-
-        /// <summary>
-        /// A list of Redshift parameters to apply.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterArgs>());
@@ -165,10 +94,6 @@ namespace Pulumi.Aws.RedShift
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -183,36 +108,20 @@ namespace Pulumi.Aws.RedShift
 
     public sealed class ParameterGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of parameter group
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The description of the Redshift parameter group. Defaults to "Managed by Pulumi".
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The family of the Redshift parameter group.
-        /// </summary>
         [Input("family")]
         public Input<string>? Family { get; set; }
 
-        /// <summary>
-        /// The name of the Redshift parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// A list of Redshift parameters to apply.
-        /// </summary>
         public InputList<Inputs.ParameterGroupParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ParameterGroupParameterGetArgs>());
@@ -221,10 +130,6 @@ namespace Pulumi.Aws.RedShift
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

@@ -13,25 +13,10 @@ namespace Pulumi.Aws.Ec2.Outputs
     [OutputType]
     public sealed class GetLaunchConfigurationRootBlockDeviceResult
     {
-        /// <summary>
-        /// Whether the EBS Volume will be deleted on instance termination.
-        /// </summary>
         public readonly bool DeleteOnTermination;
-        /// <summary>
-        /// Whether the volume is Encrypted.
-        /// </summary>
         public readonly bool Encrypted;
-        /// <summary>
-        /// The provisioned IOPs of the volume.
-        /// </summary>
         public readonly int Iops;
-        /// <summary>
-        /// The Size of the volume.
-        /// </summary>
         public readonly int VolumeSize;
-        /// <summary>
-        /// The Type of the volume.
-        /// </summary>
         public readonly string VolumeType;
 
         [OutputConstructor]

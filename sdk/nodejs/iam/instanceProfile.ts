@@ -6,35 +6,6 @@ import * as utilities from "../utilities";
 
 import {Role} from "./index";
 
-/**
- * Provides an IAM instance profile.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const role = new aws.iam.Role("role", {
- *     path: "/",
- *     assumeRolePolicy: `{
- *     "Version": "2012-10-17",
- *     "Statement": [
- *         {
- *             "Action": "sts:AssumeRole",
- *             "Principal": {
- *                "Service": "ec2.amazonaws.com"
- *             },
- *             "Effect": "Allow",
- *             "Sid": ""
- *         }
- *     ]
- * }
- * `,
- * });
- * const testProfile = new aws.iam.InstanceProfile("testProfile", {role: role.name});
- * ```
- */
 export class InstanceProfile extends pulumi.CustomResource {
     /**
      * Get an existing InstanceProfile resource's state with the given name, ID, and optional extra
@@ -63,33 +34,12 @@ export class InstanceProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceProfile.__pulumiType;
     }
 
-    /**
-     * The ARN assigned by AWS to the instance profile.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The creation timestamp of the instance profile.
-     */
     public /*out*/ readonly createDate!: pulumi.Output<string>;
-    /**
-     * The profile's name. If omitted, this provider will assign a random, unique name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
-    /**
-     * Path in which to create the profile.
-     */
     public readonly path!: pulumi.Output<string | undefined>;
-    /**
-     * The role name to include in the profile.
-     */
     public readonly role!: pulumi.Output<string | undefined>;
-    /**
-     * The [unique ID][1] assigned by AWS.
-     */
     public /*out*/ readonly uniqueId!: pulumi.Output<string>;
 
     /**
@@ -136,33 +86,12 @@ export class InstanceProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceProfile resources.
  */
 export interface InstanceProfileState {
-    /**
-     * The ARN assigned by AWS to the instance profile.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The creation timestamp of the instance profile.
-     */
     readonly createDate?: pulumi.Input<string>;
-    /**
-     * The profile's name. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Path in which to create the profile.
-     */
     readonly path?: pulumi.Input<string>;
-    /**
-     * The role name to include in the profile.
-     */
     readonly role?: pulumi.Input<string | Role>;
-    /**
-     * The [unique ID][1] assigned by AWS.
-     */
     readonly uniqueId?: pulumi.Input<string>;
 }
 
@@ -170,20 +99,8 @@ export interface InstanceProfileState {
  * The set of arguments for constructing a InstanceProfile resource.
  */
 export interface InstanceProfileArgs {
-    /**
-     * The profile's name. If omitted, this provider will assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Path in which to create the profile.
-     */
     readonly path?: pulumi.Input<string>;
-    /**
-     * The role name to include in the profile.
-     */
     readonly role?: pulumi.Input<string | Role>;
 }

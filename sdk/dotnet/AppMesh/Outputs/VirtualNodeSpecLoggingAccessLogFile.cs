@@ -13,9 +13,6 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class VirtualNodeSpecLoggingAccessLogFile
     {
-        /// <summary>
-        /// The file path to write access logs to. You can use `/dev/stdout` to send access logs to standard out.
-        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

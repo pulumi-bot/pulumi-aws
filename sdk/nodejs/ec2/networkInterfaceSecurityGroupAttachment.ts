@@ -4,80 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * This resource attaches a security group to an Elastic Network Interface (ENI).
- * It can be used to attach a security group to any existing ENI, be it a
- * secondary ENI or one attached as the primary interface on an instance.
- *
- * > **NOTE on instances, interfaces, and security groups:** This provider currently
- * provides the capability to assign security groups via the [`aws.ec2.Instance`][1]
- * and the [`aws.ec2.NetworkInterface`][2] resources. Using this resource in
- * conjunction with security groups provided in-line in those resources will cause
- * conflicts, and will lead to spurious diffs and undefined behavior - please use
- * one or the other.
- *
- * [1]: https://www.terraform.io/docs/providers/aws/d/instance.html
- * [2]: https://www.terraform.io/docs/providers/aws/r/network_interface.html
- *
- * ## Example Usage
- *
- * The following provides a very basic example of setting up an instance (provided
- * by `instance`) in the default security group, creating a security group
- * (provided by `sg`) and then attaching the security group to the instance's
- * primary network interface via the `aws.ec2.NetworkInterfaceSecurityGroupAttachment` resource,
- * named `sgAttachment`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ami = aws.getAmi({
- *     mostRecent: true,
- *     filters: [{
- *         name: "name",
- *         values: ["amzn-ami-hvm-*"],
- *     }],
- *     owners: ["amazon"],
- * });
- * const instance = new aws.ec2.Instance("instance", {
- *     instanceType: "t2.micro",
- *     ami: ami.then(ami => ami.id),
- *     tags: {
- *         type: "test-instance",
- *     },
- * });
- * const sg = new aws.ec2.SecurityGroup("sg", {tags: {
- *     type: "test-security-group",
- * }});
- * const sgAttachment = new aws.ec2.NetworkInterfaceSecurityGroupAttachment("sgAttachment", {
- *     securityGroupId: sg.id,
- *     networkInterfaceId: instance.primaryNetworkInterfaceId,
- * });
- * ```
- *
- * In this example, `instance` is provided by the `aws.ec2.Instance` data source,
- * fetching an external instance, possibly not managed by this provider.
- * `sgAttachment` then attaches to the output instance's `networkInterfaceId`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const instance = aws.ec2.getInstance({
- *     instanceId: "i-1234567890abcdef0",
- * });
- * const sg = new aws.ec2.SecurityGroup("sg", {tags: {
- *     type: "test-security-group",
- * }});
- * const sgAttachment = new aws.ec2.NetworkInterfaceSecurityGroupAttachment("sgAttachment", {
- *     securityGroupId: sg.id,
- *     networkInterfaceId: instance.then(instance => instance.networkInterfaceId),
- * });
- * ```
- * ## Output Reference
- *
- * There are no outputs for this resource.
- */
 export class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
     /**
      * Get an existing NetworkInterfaceSecurityGroupAttachment resource's state with the given name, ID, and optional extra
@@ -106,13 +32,7 @@ export class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResour
         return obj['__pulumiType'] === NetworkInterfaceSecurityGroupAttachment.__pulumiType;
     }
 
-    /**
-     * The ID of the network interface to attach to.
-     */
     public readonly networkInterfaceId!: pulumi.Output<string>;
-    /**
-     * The ID of the security group.
-     */
     public readonly securityGroupId!: pulumi.Output<string>;
 
     /**
@@ -155,13 +75,7 @@ export class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResour
  * Input properties used for looking up and filtering NetworkInterfaceSecurityGroupAttachment resources.
  */
 export interface NetworkInterfaceSecurityGroupAttachmentState {
-    /**
-     * The ID of the network interface to attach to.
-     */
     readonly networkInterfaceId?: pulumi.Input<string>;
-    /**
-     * The ID of the security group.
-     */
     readonly securityGroupId?: pulumi.Input<string>;
 }
 
@@ -169,12 +83,6 @@ export interface NetworkInterfaceSecurityGroupAttachmentState {
  * The set of arguments for constructing a NetworkInterfaceSecurityGroupAttachment resource.
  */
 export interface NetworkInterfaceSecurityGroupAttachmentArgs {
-    /**
-     * The ID of the network interface to attach to.
-     */
     readonly networkInterfaceId: pulumi.Input<string>;
-    /**
-     * The ID of the security group.
-     */
     readonly securityGroupId: pulumi.Input<string>;
 }

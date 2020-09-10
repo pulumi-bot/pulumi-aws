@@ -9,40 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.AmiLaunchPermission("example", new Aws.Ec2.AmiLaunchPermissionArgs
-    ///         {
-    ///             AccountId = "123456789012",
-    ///             ImageId = "ami-12345678",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AmiLaunchPermission : Pulumi.CustomResource
     {
-        /// <summary>
-        /// An AWS Account ID to add launch permissions.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// A region-unique name for the AMI.
-        /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
 
@@ -92,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class AmiLaunchPermissionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An AWS Account ID to add launch permissions.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// A region-unique name for the AMI.
-        /// </summary>
         [Input("imageId", required: true)]
         public Input<string> ImageId { get; set; } = null!;
 
@@ -111,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class AmiLaunchPermissionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An AWS Account ID to add launch permissions.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// A region-unique name for the AMI.
-        /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 

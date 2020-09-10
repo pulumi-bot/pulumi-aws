@@ -10,53 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 domain name.
-// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
-//
-// > **Note:** This resource establishes ownership of and the TLS settings for
-// a particular domain name. An API stage can be associated with the domain name using the `apigatewayv2.ApiMapping` resource.
-//
-// ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewDomainName(ctx, "example", &apigatewayv2.DomainNameArgs{
-// 			DomainName: pulumi.String("ws-api.example.com"),
-// 			DomainNameConfiguration: &apigatewayv2.DomainNameDomainNameConfigurationArgs{
-// 				CertificateArn: pulumi.Any(aws_acm_certificate.Example.Arn),
-// 				EndpointType:   pulumi.String("REGIONAL"),
-// 				SecurityPolicy: pulumi.String("TLS_1_2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DomainName struct {
 	pulumi.CustomResourceState
 
-	// The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-	ApiMappingSelectionExpression pulumi.StringOutput `pulumi:"apiMappingSelectionExpression"`
-	// The ARN of the domain name.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The domain name.
-	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The domain name configuration.
-	DomainNameConfiguration DomainNameDomainNameConfigurationOutput `pulumi:"domainNameConfiguration"`
-	// A map of tags to assign to the domain name.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	ApiMappingSelectionExpression pulumi.StringOutput                     `pulumi:"apiMappingSelectionExpression"`
+	Arn                           pulumi.StringOutput                     `pulumi:"arn"`
+	DomainName                    pulumi.StringOutput                     `pulumi:"domainName"`
+	DomainNameConfiguration       DomainNameDomainNameConfigurationOutput `pulumi:"domainNameConfiguration"`
+	Tags                          pulumi.StringMapOutput                  `pulumi:"tags"`
 }
 
 // NewDomainName registers a new resource with the given unique name, arguments, and options.
@@ -93,29 +54,19 @@ func GetDomainName(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainName resources.
 type domainNameState struct {
-	// The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-	ApiMappingSelectionExpression *string `pulumi:"apiMappingSelectionExpression"`
-	// The ARN of the domain name.
-	Arn *string `pulumi:"arn"`
-	// The domain name.
-	DomainName *string `pulumi:"domainName"`
-	// The domain name configuration.
-	DomainNameConfiguration *DomainNameDomainNameConfiguration `pulumi:"domainNameConfiguration"`
-	// A map of tags to assign to the domain name.
-	Tags map[string]string `pulumi:"tags"`
+	ApiMappingSelectionExpression *string                            `pulumi:"apiMappingSelectionExpression"`
+	Arn                           *string                            `pulumi:"arn"`
+	DomainName                    *string                            `pulumi:"domainName"`
+	DomainNameConfiguration       *DomainNameDomainNameConfiguration `pulumi:"domainNameConfiguration"`
+	Tags                          map[string]string                  `pulumi:"tags"`
 }
 
 type DomainNameState struct {
-	// The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
 	ApiMappingSelectionExpression pulumi.StringPtrInput
-	// The ARN of the domain name.
-	Arn pulumi.StringPtrInput
-	// The domain name.
-	DomainName pulumi.StringPtrInput
-	// The domain name configuration.
-	DomainNameConfiguration DomainNameDomainNameConfigurationPtrInput
-	// A map of tags to assign to the domain name.
-	Tags pulumi.StringMapInput
+	Arn                           pulumi.StringPtrInput
+	DomainName                    pulumi.StringPtrInput
+	DomainNameConfiguration       DomainNameDomainNameConfigurationPtrInput
+	Tags                          pulumi.StringMapInput
 }
 
 func (DomainNameState) ElementType() reflect.Type {
@@ -123,22 +74,16 @@ func (DomainNameState) ElementType() reflect.Type {
 }
 
 type domainNameArgs struct {
-	// The domain name.
-	DomainName string `pulumi:"domainName"`
-	// The domain name configuration.
+	DomainName              string                            `pulumi:"domainName"`
 	DomainNameConfiguration DomainNameDomainNameConfiguration `pulumi:"domainNameConfiguration"`
-	// A map of tags to assign to the domain name.
-	Tags map[string]string `pulumi:"tags"`
+	Tags                    map[string]string                 `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DomainName resource.
 type DomainNameArgs struct {
-	// The domain name.
-	DomainName pulumi.StringInput
-	// The domain name configuration.
+	DomainName              pulumi.StringInput
 	DomainNameConfiguration DomainNameDomainNameConfigurationInput
-	// A map of tags to assign to the domain name.
-	Tags pulumi.StringMapInput
+	Tags                    pulumi.StringMapInput
 }
 
 func (DomainNameArgs) ElementType() reflect.Type {

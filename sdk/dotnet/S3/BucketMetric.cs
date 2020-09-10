@@ -9,79 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.S3
 {
-    /// <summary>
-    /// Provides a S3 bucket [metrics configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html) resource.
-    /// 
-    /// ## Example Usage
-    /// ### Add metrics configuration for entire S3 bucket
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.S3.Bucket("example", new Aws.S3.BucketArgs
-    ///         {
-    ///         });
-    ///         var example_entire_bucket = new Aws.S3.BucketMetric("example-entire-bucket", new Aws.S3.BucketMetricArgs
-    ///         {
-    ///             Bucket = example.BucketName,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Add metrics configuration with S3 bucket object filter
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.S3.Bucket("example", new Aws.S3.BucketArgs
-    ///         {
-    ///         });
-    ///         var example_filtered = new Aws.S3.BucketMetric("example-filtered", new Aws.S3.BucketMetricArgs
-    ///         {
-    ///             Bucket = example.BucketName,
-    ///             Filter = new Aws.S3.Inputs.BucketMetricFilterArgs
-    ///             {
-    ///                 Prefix = "documents/",
-    ///                 Tags = 
-    ///                 {
-    ///                     { "priority", "high" },
-    ///                     { "class", "blue" },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class BucketMetric : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the bucket to put metric configuration.
-        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
-        /// <summary>
-        /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-        /// </summary>
         [Output("filter")]
         public Output<Outputs.BucketMetricFilter?> Filter { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique identifier of the metrics configuration for the bucket.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -131,21 +66,12 @@ namespace Pulumi.Aws.S3
 
     public sealed class BucketMetricArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the bucket to put metric configuration.
-        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
-        /// <summary>
-        /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-        /// </summary>
         [Input("filter")]
         public Input<Inputs.BucketMetricFilterArgs>? Filter { get; set; }
 
-        /// <summary>
-        /// Unique identifier of the metrics configuration for the bucket.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -156,21 +82,12 @@ namespace Pulumi.Aws.S3
 
     public sealed class BucketMetricState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the bucket to put metric configuration.
-        /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
-        /// <summary>
-        /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-        /// </summary>
         [Input("filter")]
         public Input<Inputs.BucketMetricFilterGetArgs>? Filter { get; set; }
 
-        /// <summary>
-        /// Unique identifier of the metrics configuration for the bucket.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

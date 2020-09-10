@@ -32,17 +32,8 @@ export class Tag extends pulumi.CustomResource {
         return obj['__pulumiType'] === Tag.__pulumiType;
     }
 
-    /**
-     * The tag name.
-     */
     public readonly key!: pulumi.Output<string>;
-    /**
-     * The ID of the EC2 resource to manage the tag for.
-     */
     public readonly resourceId!: pulumi.Output<string>;
-    /**
-     * The value of the tag.
-     */
     public readonly value!: pulumi.Output<string>;
 
     /**
@@ -90,17 +81,8 @@ export class Tag extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Tag resources.
  */
 export interface TagState {
-    /**
-     * The tag name.
-     */
     readonly key?: pulumi.Input<string>;
-    /**
-     * The ID of the EC2 resource to manage the tag for.
-     */
     readonly resourceId?: pulumi.Input<string>;
-    /**
-     * The value of the tag.
-     */
     readonly value?: pulumi.Input<string>;
 }
 
@@ -108,16 +90,7 @@ export interface TagState {
  * The set of arguments for constructing a Tag resource.
  */
 export interface TagArgs {
-    /**
-     * The tag name.
-     */
     readonly key: pulumi.Input<string>;
-    /**
-     * The ID of the EC2 resource to manage the tag for.
-     */
     readonly resourceId: pulumi.Input<string>;
-    /**
-     * The value of the tag.
-     */
     readonly value: pulumi.Input<string>;
 }

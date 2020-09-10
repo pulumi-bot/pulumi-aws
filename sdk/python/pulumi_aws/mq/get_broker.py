@@ -212,28 +212,7 @@ def get_broker(broker_id: Optional[str] = None,
                tags: Optional[Mapping[str, str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBrokerResult:
     """
-    Provides information about a MQ Broker.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    broker_id = config.get("brokerId")
-    if broker_id is None:
-        broker_id = ""
-    broker_name = config.get("brokerName")
-    if broker_name is None:
-        broker_name = ""
-    by_id = aws.mq.get_broker(broker_id=broker_id)
-    by_name = aws.mq.get_broker(broker_name=broker_name)
-    ```
-
-
-    :param str broker_id: The unique id of the mq broker.
-    :param str broker_name: The unique name of the mq broker.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['brokerId'] = broker_id

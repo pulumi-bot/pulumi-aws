@@ -9,95 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Provides a resource to manage a Default VPC Routing Table.
-    /// 
-    /// Each VPC created in AWS comes with a Default Route Table that can be managed, but not
-    /// destroyed. **This is an advanced resource**, and has special caveats to be aware
-    /// of when using it. Please read this document in its entirety before using this
-    /// resource. It is recommended you **do not** use both `aws.ec2.DefaultRouteTable` to
-    /// manage the default route table **and** use the `aws.ec2.MainRouteTableAssociation`,
-    /// due to possible conflict in routes.
-    /// 
-    /// The `aws.ec2.DefaultRouteTable` behaves differently from normal resources, in that
-    /// this provider does not _create_ this resource, but instead attempts to "adopt" it
-    /// into management. We can do this because each VPC created has a Default Route
-    /// Table that cannot be destroyed, and is created with a single route.
-    /// 
-    /// When this provider first adopts the Default Route Table, it **immediately removes all
-    /// defined routes**. It then proceeds to create any routes specified in the
-    /// configuration. This step is required so that only the routes specified in the
-    /// configuration present in the Default Route Table.
-    /// 
-    /// For more information about Route Tables, see the AWS Documentation on
-    /// [Route Tables][aws-route-tables].
-    /// 
-    /// For more information about managing normal Route Tables in this provider, see our
-    /// documentation on [aws.ec2.RouteTable][tf-route-tables].
-    /// 
-    /// &gt; **NOTE on Route Tables and Routes:** This provider currently
-    /// provides both a standalone Route resource and a Route Table resource with routes
-    /// defined in-line. At this time you cannot use a Route Table with in-line routes
-    /// in conjunction with any Route resources. Doing so will cause
-    /// a conflict of rule settings and will overwrite routes.
-    /// 
-    /// ## Example Usage
-    /// ### With Tags
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultRouteTable = new Aws.Ec2.DefaultRouteTable("defaultRouteTable", new Aws.Ec2.DefaultRouteTableArgs
-    ///         {
-    ///             DefaultRouteTableId = aws_vpc.Foo.Default_route_table_id,
-    ///             Routes = 
-    ///             {
-    ///                 ,
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "default table" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class DefaultRouteTable : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the Default Routing Table.
-        /// </summary>
         [Output("defaultRouteTableId")]
         public Output<string> DefaultRouteTableId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the AWS account that owns the route table
-        /// </summary>
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of virtual gateways for propagation.
-        /// </summary>
         [Output("propagatingVgws")]
         public Output<ImmutableArray<string>> PropagatingVgws { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of route objects. Their keys are documented below.
-        /// </summary>
         [Output("routes")]
         public Output<ImmutableArray<Outputs.DefaultRouteTableRoute>> Routes { get; private set; } = null!;
 
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -150,18 +75,11 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class DefaultRouteTableArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the Default Routing Table.
-        /// </summary>
         [Input("defaultRouteTableId", required: true)]
         public Input<string> DefaultRouteTableId { get; set; } = null!;
 
         [Input("propagatingVgws")]
         private InputList<string>? _propagatingVgws;
-
-        /// <summary>
-        /// A list of virtual gateways for propagation.
-        /// </summary>
         public InputList<string> PropagatingVgws
         {
             get => _propagatingVgws ?? (_propagatingVgws = new InputList<string>());
@@ -170,10 +88,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("routes")]
         private InputList<Inputs.DefaultRouteTableRouteArgs>? _routes;
-
-        /// <summary>
-        /// A list of route objects. Their keys are documented below.
-        /// </summary>
         public InputList<Inputs.DefaultRouteTableRouteArgs> Routes
         {
             get => _routes ?? (_routes = new InputList<Inputs.DefaultRouteTableRouteArgs>());
@@ -182,10 +96,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -199,24 +109,14 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class DefaultRouteTableState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the Default Routing Table.
-        /// </summary>
         [Input("defaultRouteTableId")]
         public Input<string>? DefaultRouteTableId { get; set; }
 
-        /// <summary>
-        /// The ID of the AWS account that owns the route table
-        /// </summary>
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
         [Input("propagatingVgws")]
         private InputList<string>? _propagatingVgws;
-
-        /// <summary>
-        /// A list of virtual gateways for propagation.
-        /// </summary>
         public InputList<string> PropagatingVgws
         {
             get => _propagatingVgws ?? (_propagatingVgws = new InputList<string>());
@@ -225,10 +125,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("routes")]
         private InputList<Inputs.DefaultRouteTableRouteGetArgs>? _routes;
-
-        /// <summary>
-        /// A list of route objects. Their keys are documented below.
-        /// </summary>
         public InputList<Inputs.DefaultRouteTableRouteGetArgs> Routes
         {
             get => _routes ?? (_routes = new InputList<Inputs.DefaultRouteTableRouteGetArgs>());
@@ -237,10 +133,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

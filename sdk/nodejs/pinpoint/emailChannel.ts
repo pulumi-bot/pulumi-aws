@@ -4,60 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Pinpoint Email Channel resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const app = new aws.pinpoint.App("app", {});
- * const identity = new aws.ses.DomainIdentity("identity", {
- *     domain: "example.com",
- * });
- * const role = new aws.iam.Role("role", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "pinpoint.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- * });
- * const email = new aws.pinpoint.EmailChannel("email", {
- *     applicationId: app.applicationId,
- *     fromAddress: "user@example.com",
- *     identity: identity.arn,
- *     roleArn: role.arn,
- * });
- * const rolePolicy = new aws.iam.RolePolicy("role_policy", {
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": {
- *     "Action": [
- *       "mobileanalytics:PutEvents",
- *       "mobileanalytics:PutItems"
- *     ],
- *     "Effect": "Allow",
- *     "Resource": [
- *       "*"
- *     ]
- *   }
- * }
- * `,
- *     role: role.id,
- * });
- * ```
- */
 export class EmailChannel extends pulumi.CustomResource {
     /**
      * Get an existing EmailChannel resource's state with the given name, ID, and optional extra
@@ -86,29 +32,11 @@ export class EmailChannel extends pulumi.CustomResource {
         return obj['__pulumiType'] === EmailChannel.__pulumiType;
     }
 
-    /**
-     * The application ID.
-     */
     public readonly applicationId!: pulumi.Output<string>;
-    /**
-     * Whether the channel is enabled or disabled. Defaults to `true`.
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * The email address used to send emails from.
-     */
     public readonly fromAddress!: pulumi.Output<string>;
-    /**
-     * The ARN of an identity verified with SES.
-     */
     public readonly identity!: pulumi.Output<string>;
-    /**
-     * Messages per second that can be sent.
-     */
     public /*out*/ readonly messagesPerSecond!: pulumi.Output<number>;
-    /**
-     * The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
-     */
     public readonly roleArn!: pulumi.Output<string>;
 
     /**
@@ -165,29 +93,11 @@ export class EmailChannel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EmailChannel resources.
  */
 export interface EmailChannelState {
-    /**
-     * The application ID.
-     */
     readonly applicationId?: pulumi.Input<string>;
-    /**
-     * Whether the channel is enabled or disabled. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * The email address used to send emails from.
-     */
     readonly fromAddress?: pulumi.Input<string>;
-    /**
-     * The ARN of an identity verified with SES.
-     */
     readonly identity?: pulumi.Input<string>;
-    /**
-     * Messages per second that can be sent.
-     */
     readonly messagesPerSecond?: pulumi.Input<number>;
-    /**
-     * The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
-     */
     readonly roleArn?: pulumi.Input<string>;
 }
 
@@ -195,24 +105,9 @@ export interface EmailChannelState {
  * The set of arguments for constructing a EmailChannel resource.
  */
 export interface EmailChannelArgs {
-    /**
-     * The application ID.
-     */
     readonly applicationId: pulumi.Input<string>;
-    /**
-     * Whether the channel is enabled or disabled. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * The email address used to send emails from.
-     */
     readonly fromAddress: pulumi.Input<string>;
-    /**
-     * The ARN of an identity verified with SES.
-     */
     readonly identity: pulumi.Input<string>;
-    /**
-     * The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
-     */
     readonly roleArn: pulumi.Input<string>;
 }

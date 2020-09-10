@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 VPC Link.
- *
- * > **Note:** Amazon API Gateway Version 2 VPC Links enable private integrations that connect HTTP APIs to private resources in a VPC.
- * To enable private integration for REST APIs, use the `Amazon API Gateway Version 1 VPC Link` resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.VpcLink("example", {
- *     securityGroupIds: [data.aws_security_group.example.id],
- *     subnetIds: data.aws_subnet_ids.example.ids,
- *     tags: {
- *         Usage: "example",
- *     },
- * });
- * ```
- */
 export class VpcLink extends pulumi.CustomResource {
     /**
      * Get an existing VpcLink resource's state with the given name, ID, and optional extra
@@ -53,25 +32,10 @@ export class VpcLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpcLink.__pulumiType;
     }
 
-    /**
-     * The VPC Link ARN.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the VPC Link.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Security group IDs for the VPC Link.
-     */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
-    /**
-     * Subnet IDs for the VPC Link.
-     */
     public readonly subnetIds!: pulumi.Output<string[]>;
-    /**
-     * A map of tags to assign to the VPC Link.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -120,25 +84,10 @@ export class VpcLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcLink resources.
  */
 export interface VpcLinkState {
-    /**
-     * The VPC Link ARN.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the VPC Link.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Security group IDs for the VPC Link.
-     */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Subnet IDs for the VPC Link.
-     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the VPC Link.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -146,20 +95,8 @@ export interface VpcLinkState {
  * The set of arguments for constructing a VpcLink resource.
  */
 export interface VpcLinkArgs {
-    /**
-     * The name of the VPC Link.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Security group IDs for the VPC Link.
-     */
     readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Subnet IDs for the VPC Link.
-     */
     readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A map of tags to assign to the VPC Link.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

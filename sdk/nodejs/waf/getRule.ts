@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * `aws.waf.Rule` Retrieves a WAF Rule Resource Id.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = pulumi.output(aws.waf.getRule({
- *     name: "tfWAFRule",
- * }, { async: true }));
- * ```
- */
 export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleResult> {
     if (!opts) {
         opts = {}
@@ -37,9 +23,6 @@ export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getRule.
  */
 export interface GetRuleArgs {
-    /**
-     * The name of the WAF rule.
-     */
     readonly name: string;
 }
 

@@ -10,78 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a WAFv2 Rule Group resource.
-//
-// ## Example Usage
-// ### Simple
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/wafv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := wafv2.NewRuleGroup(ctx, "example", &wafv2.RuleGroupArgs{
-// 			Capacity: pulumi.Int(2),
-// 			Rules: wafv2.RuleGroupRuleArray{
-// 				&wafv2.RuleGroupRuleArgs{
-// 					Action: &wafv2.RuleGroupRuleActionArgs{
-// 						Allow: nil,
-// 					},
-// 					Name:     pulumi.String("rule-1"),
-// 					Priority: pulumi.Int(1),
-// 					Statement: &wafv2.RuleGroupRuleStatementArgs{
-// 						GeoMatchStatement: &wafv2.RuleGroupRuleStatementGeoMatchStatementArgs{
-// 							CountryCodes: pulumi.StringArray{
-// 								pulumi.String("US"),
-// 								pulumi.String("NL"),
-// 							},
-// 						},
-// 					},
-// 					VisibilityConfig: &wafv2.RuleGroupRuleVisibilityConfigArgs{
-// 						CloudwatchMetricsEnabled: pulumi.Bool(false),
-// 						MetricName:               pulumi.String("friendly-rule-metric-name"),
-// 						SampledRequestsEnabled:   pulumi.Bool(false),
-// 					},
-// 				},
-// 			},
-// 			Scope: pulumi.String("REGIONAL"),
-// 			VisibilityConfig: &wafv2.RuleGroupVisibilityConfigArgs{
-// 				CloudwatchMetricsEnabled: pulumi.Bool(false),
-// 				MetricName:               pulumi.String("friendly-metric-name"),
-// 				SampledRequestsEnabled:   pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RuleGroup struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) of the IP Set that this statement references.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The web ACL capacity units (WCUs) required for this rule group. See [here](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html#API_CreateRuleGroup_RequestSyntax) for general information and [here](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statements-list.html) for capacity specific information.
-	Capacity pulumi.IntOutput `pulumi:"capacity"`
-	// A friendly description of the rule group.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	LockToken   pulumi.StringOutput    `pulumi:"lockToken"`
-	// A friendly name of the rule group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-	Rules RuleGroupRuleArrayOutput `pulumi:"rules"`
-	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-	Scope pulumi.StringOutput `pulumi:"scope"`
-	// An array of key:value pairs to associate with the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+	Arn              pulumi.StringOutput             `pulumi:"arn"`
+	Capacity         pulumi.IntOutput                `pulumi:"capacity"`
+	Description      pulumi.StringPtrOutput          `pulumi:"description"`
+	LockToken        pulumi.StringOutput             `pulumi:"lockToken"`
+	Name             pulumi.StringOutput             `pulumi:"name"`
+	Rules            RuleGroupRuleArrayOutput        `pulumi:"rules"`
+	Scope            pulumi.StringOutput             `pulumi:"scope"`
+	Tags             pulumi.StringMapOutput          `pulumi:"tags"`
 	VisibilityConfig RuleGroupVisibilityConfigOutput `pulumi:"visibilityConfig"`
 }
 
@@ -122,42 +61,26 @@ func GetRuleGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RuleGroup resources.
 type ruleGroupState struct {
-	// The Amazon Resource Name (ARN) of the IP Set that this statement references.
-	Arn *string `pulumi:"arn"`
-	// The web ACL capacity units (WCUs) required for this rule group. See [here](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html#API_CreateRuleGroup_RequestSyntax) for general information and [here](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statements-list.html) for capacity specific information.
-	Capacity *int `pulumi:"capacity"`
-	// A friendly description of the rule group.
-	Description *string `pulumi:"description"`
-	LockToken   *string `pulumi:"lockToken"`
-	// A friendly name of the rule group.
-	Name *string `pulumi:"name"`
-	// The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-	Rules []RuleGroupRule `pulumi:"rules"`
-	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-	Scope *string `pulumi:"scope"`
-	// An array of key:value pairs to associate with the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+	Arn              *string                    `pulumi:"arn"`
+	Capacity         *int                       `pulumi:"capacity"`
+	Description      *string                    `pulumi:"description"`
+	LockToken        *string                    `pulumi:"lockToken"`
+	Name             *string                    `pulumi:"name"`
+	Rules            []RuleGroupRule            `pulumi:"rules"`
+	Scope            *string                    `pulumi:"scope"`
+	Tags             map[string]string          `pulumi:"tags"`
 	VisibilityConfig *RuleGroupVisibilityConfig `pulumi:"visibilityConfig"`
 }
 
 type RuleGroupState struct {
-	// The Amazon Resource Name (ARN) of the IP Set that this statement references.
-	Arn pulumi.StringPtrInput
-	// The web ACL capacity units (WCUs) required for this rule group. See [here](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html#API_CreateRuleGroup_RequestSyntax) for general information and [here](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statements-list.html) for capacity specific information.
-	Capacity pulumi.IntPtrInput
-	// A friendly description of the rule group.
-	Description pulumi.StringPtrInput
-	LockToken   pulumi.StringPtrInput
-	// A friendly name of the rule group.
-	Name pulumi.StringPtrInput
-	// The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-	Rules RuleGroupRuleArrayInput
-	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-	Scope pulumi.StringPtrInput
-	// An array of key:value pairs to associate with the resource.
-	Tags pulumi.StringMapInput
-	// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+	Arn              pulumi.StringPtrInput
+	Capacity         pulumi.IntPtrInput
+	Description      pulumi.StringPtrInput
+	LockToken        pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	Rules            RuleGroupRuleArrayInput
+	Scope            pulumi.StringPtrInput
+	Tags             pulumi.StringMapInput
 	VisibilityConfig RuleGroupVisibilityConfigPtrInput
 }
 
@@ -166,37 +89,23 @@ func (RuleGroupState) ElementType() reflect.Type {
 }
 
 type ruleGroupArgs struct {
-	// The web ACL capacity units (WCUs) required for this rule group. See [here](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html#API_CreateRuleGroup_RequestSyntax) for general information and [here](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statements-list.html) for capacity specific information.
-	Capacity int `pulumi:"capacity"`
-	// A friendly description of the rule group.
-	Description *string `pulumi:"description"`
-	// A friendly name of the rule group.
-	Name *string `pulumi:"name"`
-	// The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-	Rules []RuleGroupRule `pulumi:"rules"`
-	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-	Scope string `pulumi:"scope"`
-	// An array of key:value pairs to associate with the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+	Capacity         int                       `pulumi:"capacity"`
+	Description      *string                   `pulumi:"description"`
+	Name             *string                   `pulumi:"name"`
+	Rules            []RuleGroupRule           `pulumi:"rules"`
+	Scope            string                    `pulumi:"scope"`
+	Tags             map[string]string         `pulumi:"tags"`
 	VisibilityConfig RuleGroupVisibilityConfig `pulumi:"visibilityConfig"`
 }
 
 // The set of arguments for constructing a RuleGroup resource.
 type RuleGroupArgs struct {
-	// The web ACL capacity units (WCUs) required for this rule group. See [here](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateRuleGroup.html#API_CreateRuleGroup_RequestSyntax) for general information and [here](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statements-list.html) for capacity specific information.
-	Capacity pulumi.IntInput
-	// A friendly description of the rule group.
-	Description pulumi.StringPtrInput
-	// A friendly name of the rule group.
-	Name pulumi.StringPtrInput
-	// The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-	Rules RuleGroupRuleArrayInput
-	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-	Scope pulumi.StringInput
-	// An array of key:value pairs to associate with the resource.
-	Tags pulumi.StringMapInput
-	// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+	Capacity         pulumi.IntInput
+	Description      pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	Rules            RuleGroupRuleArrayInput
+	Scope            pulumi.StringInput
+	Tags             pulumi.StringMapInput
 	VisibilityConfig RuleGroupVisibilityConfigInput
 }
 

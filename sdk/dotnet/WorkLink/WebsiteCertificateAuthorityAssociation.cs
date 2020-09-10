@@ -9,54 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WorkLink
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.WorkLink.Fleet("example", new Aws.WorkLink.FleetArgs
-    ///         {
-    ///         });
-    ///         var test = new Aws.WorkLink.WebsiteCertificateAuthorityAssociation("test", new Aws.WorkLink.WebsiteCertificateAuthorityAssociationArgs
-    ///         {
-    ///             FleetArn = aws_worklink_fleet.Test.Arn,
-    ///             Certificate = File.ReadAllText("certificate.pem"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class WebsiteCertificateAuthorityAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The root certificate of the Certificate Authority.
-        /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate name to display.
-        /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the fleet.
-        /// </summary>
         [Output("fleetArn")]
         public Output<string> FleetArn { get; private set; } = null!;
 
-        /// <summary>
-        /// A unique identifier for the Certificate Authority.
-        /// </summary>
         [Output("websiteCaId")]
         public Output<string> WebsiteCaId { get; private set; } = null!;
 
@@ -106,21 +69,12 @@ namespace Pulumi.Aws.WorkLink
 
     public sealed class WebsiteCertificateAuthorityAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The root certificate of the Certificate Authority.
-        /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
-        /// <summary>
-        /// The certificate name to display.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// The ARN of the fleet.
-        /// </summary>
         [Input("fleetArn", required: true)]
         public Input<string> FleetArn { get; set; } = null!;
 
@@ -131,27 +85,15 @@ namespace Pulumi.Aws.WorkLink
 
     public sealed class WebsiteCertificateAuthorityAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The root certificate of the Certificate Authority.
-        /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
-        /// <summary>
-        /// The certificate name to display.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// The ARN of the fleet.
-        /// </summary>
         [Input("fleetArn")]
         public Input<string>? FleetArn { get; set; }
 
-        /// <summary>
-        /// A unique identifier for the Certificate Authority.
-        /// </summary>
         [Input("websiteCaId")]
         public Input<string>? WebsiteCaId { get; set; }
 

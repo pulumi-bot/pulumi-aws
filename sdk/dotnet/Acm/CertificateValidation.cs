@@ -9,54 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Acm
 {
-    /// <summary>
-    /// This resource represents a successful validation of an ACM certificate in concert
-    /// with other resources.
-    /// 
-    /// Most commonly, this resource is used together with `aws.route53.Record` and
-    /// `aws.acm.Certificate` to request a DNS validated certificate,
-    /// deploy the required validation records and wait for validation to complete.
-    /// 
-    /// &gt; **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
-    /// 
-    /// ## Example Usage
-    /// ### Email Validation
-    /// 
-    /// In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleCertificate = new Aws.Acm.Certificate("exampleCertificate", new Aws.Acm.CertificateArgs
-    ///         {
-    ///             DomainName = "example.com",
-    ///             ValidationMethod = "EMAIL",
-    ///         });
-    ///         var exampleCertificateValidation = new Aws.Acm.CertificateValidation("exampleCertificateValidation", new Aws.Acm.CertificateValidationArgs
-    ///         {
-    ///             CertificateArn = exampleCertificate.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class CertificateValidation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the certificate that is being validated.
-        /// </summary>
         [Output("certificateArn")]
         public Output<string> CertificateArn { get; private set; } = null!;
 
-        /// <summary>
-        /// List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-        /// </summary>
         [Output("validationRecordFqdns")]
         public Output<ImmutableArray<string>> ValidationRecordFqdns { get; private set; } = null!;
 
@@ -106,18 +63,11 @@ namespace Pulumi.Aws.Acm
 
     public sealed class CertificateValidationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the certificate that is being validated.
-        /// </summary>
         [Input("certificateArn", required: true)]
         public Input<string> CertificateArn { get; set; } = null!;
 
         [Input("validationRecordFqdns")]
         private InputList<string>? _validationRecordFqdns;
-
-        /// <summary>
-        /// List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-        /// </summary>
         public InputList<string> ValidationRecordFqdns
         {
             get => _validationRecordFqdns ?? (_validationRecordFqdns = new InputList<string>());
@@ -131,18 +81,11 @@ namespace Pulumi.Aws.Acm
 
     public sealed class CertificateValidationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the certificate that is being validated.
-        /// </summary>
         [Input("certificateArn")]
         public Input<string>? CertificateArn { get; set; }
 
         [Input("validationRecordFqdns")]
         private InputList<string>? _validationRecordFqdns;
-
-        /// <summary>
-        /// List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-        /// </summary>
         public InputList<string> ValidationRecordFqdns
         {
             get => _validationRecordFqdns ?? (_validationRecordFqdns = new InputList<string>());

@@ -7,12 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Get an authentication token to communicate with an EKS cluster.
-//
-// Uses IAM credentials from the AWS provider to generate a temporary token that is compatible with
-// [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) authentication.
-// This can be used to authenticate to an EKS cluster or to a cluster that has the AWS IAM Authenticator
-// server configured.
 func GetClusterAuth(ctx *pulumi.Context, args *GetClusterAuthArgs, opts ...pulumi.InvokeOption) (*GetClusterAuthResult, error) {
 	var rv GetClusterAuthResult
 	err := ctx.Invoke("aws:eks/getClusterAuth:getClusterAuth", args, &rv, opts...)
@@ -24,15 +18,13 @@ func GetClusterAuth(ctx *pulumi.Context, args *GetClusterAuthArgs, opts ...pulum
 
 // A collection of arguments for invoking getClusterAuth.
 type GetClusterAuthArgs struct {
-	// The name of the cluster
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getClusterAuth.
 type GetClusterAuthResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	// The token to use to authenticate with the cluster.
+	Id    string `pulumi:"id"`
+	Name  string `pulumi:"name"`
 	Token string `pulumi:"token"`
 }

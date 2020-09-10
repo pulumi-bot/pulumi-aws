@@ -9,50 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.MediaStore
 {
-    /// <summary>
-    /// Provides a MediaStore Container.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.MediaStore.Container("example", new Aws.MediaStore.ContainerArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Container : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the container.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The DNS endpoint of the container.
-        /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the container. Must contain alphanumeric characters or underscores.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -102,18 +69,11 @@ namespace Pulumi.Aws.MediaStore
 
     public sealed class ContainerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the container. Must contain alphanumeric characters or underscores.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -127,30 +87,17 @@ namespace Pulumi.Aws.MediaStore
 
     public sealed class ContainerState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the container.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The DNS endpoint of the container.
-        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
-        /// <summary>
-        /// The name of the container. Must contain alphanumeric characters or underscores.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

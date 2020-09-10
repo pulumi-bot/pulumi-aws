@@ -9,42 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2
 {
-    /// <summary>
-    /// Manages an EC2 Availability Zone Group, such as updating its opt-in status.
-    /// 
-    /// &gt; **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.AvailabilityZoneGroup("example", new Aws.Ec2.AvailabilityZoneGroupArgs
-    ///         {
-    ///             GroupName = "us-west-2-lax-1",
-    ///             OptInStatus = "opted-in",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AvailabilityZoneGroup : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Name of the Availability Zone Group.
-        /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
-        /// <summary>
-        /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-        /// </summary>
         [Output("optInStatus")]
         public Output<string> OptInStatus { get; private set; } = null!;
 
@@ -94,15 +63,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class AvailabilityZoneGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the Availability Zone Group.
-        /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
-        /// <summary>
-        /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-        /// </summary>
         [Input("optInStatus", required: true)]
         public Input<string> OptInStatus { get; set; } = null!;
 
@@ -113,15 +76,9 @@ namespace Pulumi.Aws.Ec2
 
     public sealed class AvailabilityZoneGroupState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the Availability Zone Group.
-        /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
-        /// <summary>
-        /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-        /// </summary>
         [Input("optInStatus")]
         public Input<string>? OptInStatus { get; set; }
 

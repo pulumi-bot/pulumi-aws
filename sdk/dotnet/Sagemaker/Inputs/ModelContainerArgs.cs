@@ -12,34 +12,20 @@ namespace Pulumi.Aws.Sagemaker.Inputs
 
     public sealed class ModelContainerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The DNS host name for the container.
-        /// </summary>
         [Input("containerHostname")]
         public Input<string>? ContainerHostname { get; set; }
 
         [Input("environment")]
         private InputMap<string>? _environment;
-
-        /// <summary>
-        /// Environment variables for the Docker container.
-        /// A list of key value pairs.
-        /// </summary>
         public InputMap<string> Environment
         {
             get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 
-        /// <summary>
-        /// The registry path where the inference code image is stored in Amazon ECR.
-        /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 
-        /// <summary>
-        /// The URL for the S3 location where model artifacts are stored.
-        /// </summary>
         [Input("modelDataUrl")]
         public Input<string>? ModelDataUrl { get; set; }
 

@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Sagemaker Notebook Instance resource.
- *
- * ## Example Usage
- *
- * Basic usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ni = new aws.sagemaker.NotebookInstance("ni", {
- *     roleArn: aws_iam_role.role.arn,
- *     instanceType: "ml.t2.medium",
- *     tags: {
- *         Name: "foo",
- *     },
- * });
- * ```
- */
 export class NotebookInstance extends pulumi.CustomResource {
     /**
      * Get an existing NotebookInstance resource's state with the given name, ID, and optional extra
@@ -52,45 +32,15 @@ export class NotebookInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === NotebookInstance.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS to this notebook instance.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Set to `Disabled` to disable internet access to notebook. Requires `securityGroups` and `subnetId` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
-     */
     public readonly directInternetAccess!: pulumi.Output<string | undefined>;
-    /**
-     * The name of ML compute instance type.
-     */
     public readonly instanceType!: pulumi.Output<string>;
-    /**
-     * The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-     */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
-    /**
-     * The name of a lifecycle configuration to associate with the notebook instance.
-     */
     public readonly lifecycleConfigName!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the notebook instance (must be unique).
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ARN of the IAM role to be used by the notebook instance which allows SageMaker to call other services on your behalf.
-     */
     public readonly roleArn!: pulumi.Output<string>;
-    /**
-     * The associated security groups.
-     */
     public readonly securityGroups!: pulumi.Output<string[]>;
-    /**
-     * The VPC subnet ID.
-     */
     public readonly subnetId!: pulumi.Output<string | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -149,45 +99,15 @@ export class NotebookInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NotebookInstance resources.
  */
 export interface NotebookInstanceState {
-    /**
-     * The Amazon Resource Name (ARN) assigned by AWS to this notebook instance.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Set to `Disabled` to disable internet access to notebook. Requires `securityGroups` and `subnetId` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
-     */
     readonly directInternetAccess?: pulumi.Input<string>;
-    /**
-     * The name of ML compute instance type.
-     */
     readonly instanceType?: pulumi.Input<string>;
-    /**
-     * The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The name of a lifecycle configuration to associate with the notebook instance.
-     */
     readonly lifecycleConfigName?: pulumi.Input<string>;
-    /**
-     * The name of the notebook instance (must be unique).
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ARN of the IAM role to be used by the notebook instance which allows SageMaker to call other services on your behalf.
-     */
     readonly roleArn?: pulumi.Input<string>;
-    /**
-     * The associated security groups.
-     */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The VPC subnet ID.
-     */
     readonly subnetId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -195,40 +115,13 @@ export interface NotebookInstanceState {
  * The set of arguments for constructing a NotebookInstance resource.
  */
 export interface NotebookInstanceArgs {
-    /**
-     * Set to `Disabled` to disable internet access to notebook. Requires `securityGroups` and `subnetId` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC.
-     */
     readonly directInternetAccess?: pulumi.Input<string>;
-    /**
-     * The name of ML compute instance type.
-     */
     readonly instanceType: pulumi.Input<string>;
-    /**
-     * The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-     */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The name of a lifecycle configuration to associate with the notebook instance.
-     */
     readonly lifecycleConfigName?: pulumi.Input<string>;
-    /**
-     * The name of the notebook instance (must be unique).
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ARN of the IAM role to be used by the notebook instance which allows SageMaker to call other services on your behalf.
-     */
     readonly roleArn: pulumi.Input<string>;
-    /**
-     * The associated security groups.
-     */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The VPC subnet ID.
-     */
     readonly subnetId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

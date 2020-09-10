@@ -11,22 +11,14 @@ import (
 )
 
 type PlanRule struct {
-	// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
-	CompletionWindow *int `pulumi:"completionWindow"`
-	// Configuration block(s) with copy operation settings. Detailed below.
-	CopyActions []PlanRuleCopyAction `pulumi:"copyActions"`
-	// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-	Lifecycle *PlanRuleLifecycle `pulumi:"lifecycle"`
-	// Metadata that you can assign to help organize the resources that you create.
-	RecoveryPointTags map[string]string `pulumi:"recoveryPointTags"`
-	// An display name for a backup rule.
-	RuleName string `pulumi:"ruleName"`
-	// A CRON expression specifying when AWS Backup initiates a backup job.
-	Schedule *string `pulumi:"schedule"`
-	// The amount of time in minutes before beginning a backup.
-	StartWindow *int `pulumi:"startWindow"`
-	// The name of a logical container where backups are stored.
-	TargetVaultName string `pulumi:"targetVaultName"`
+	CompletionWindow  *int                 `pulumi:"completionWindow"`
+	CopyActions       []PlanRuleCopyAction `pulumi:"copyActions"`
+	Lifecycle         *PlanRuleLifecycle   `pulumi:"lifecycle"`
+	RecoveryPointTags map[string]string    `pulumi:"recoveryPointTags"`
+	RuleName          string               `pulumi:"ruleName"`
+	Schedule          *string              `pulumi:"schedule"`
+	StartWindow       *int                 `pulumi:"startWindow"`
+	TargetVaultName   string               `pulumi:"targetVaultName"`
 }
 
 // PlanRuleInput is an input type that accepts PlanRuleArgs and PlanRuleOutput values.
@@ -41,22 +33,14 @@ type PlanRuleInput interface {
 }
 
 type PlanRuleArgs struct {
-	// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
-	CompletionWindow pulumi.IntPtrInput `pulumi:"completionWindow"`
-	// Configuration block(s) with copy operation settings. Detailed below.
-	CopyActions PlanRuleCopyActionArrayInput `pulumi:"copyActions"`
-	// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-	Lifecycle PlanRuleLifecyclePtrInput `pulumi:"lifecycle"`
-	// Metadata that you can assign to help organize the resources that you create.
-	RecoveryPointTags pulumi.StringMapInput `pulumi:"recoveryPointTags"`
-	// An display name for a backup rule.
-	RuleName pulumi.StringInput `pulumi:"ruleName"`
-	// A CRON expression specifying when AWS Backup initiates a backup job.
-	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
-	// The amount of time in minutes before beginning a backup.
-	StartWindow pulumi.IntPtrInput `pulumi:"startWindow"`
-	// The name of a logical container where backups are stored.
-	TargetVaultName pulumi.StringInput `pulumi:"targetVaultName"`
+	CompletionWindow  pulumi.IntPtrInput           `pulumi:"completionWindow"`
+	CopyActions       PlanRuleCopyActionArrayInput `pulumi:"copyActions"`
+	Lifecycle         PlanRuleLifecyclePtrInput    `pulumi:"lifecycle"`
+	RecoveryPointTags pulumi.StringMapInput        `pulumi:"recoveryPointTags"`
+	RuleName          pulumi.StringInput           `pulumi:"ruleName"`
+	Schedule          pulumi.StringPtrInput        `pulumi:"schedule"`
+	StartWindow       pulumi.IntPtrInput           `pulumi:"startWindow"`
+	TargetVaultName   pulumi.StringInput           `pulumi:"targetVaultName"`
 }
 
 func (PlanRuleArgs) ElementType() reflect.Type {
@@ -110,42 +94,34 @@ func (o PlanRuleOutput) ToPlanRuleOutputWithContext(ctx context.Context) PlanRul
 	return o
 }
 
-// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
 func (o PlanRuleOutput) CompletionWindow() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRule) *int { return v.CompletionWindow }).(pulumi.IntPtrOutput)
 }
 
-// Configuration block(s) with copy operation settings. Detailed below.
 func (o PlanRuleOutput) CopyActions() PlanRuleCopyActionArrayOutput {
 	return o.ApplyT(func(v PlanRule) []PlanRuleCopyAction { return v.CopyActions }).(PlanRuleCopyActionArrayOutput)
 }
 
-// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
 func (o PlanRuleOutput) Lifecycle() PlanRuleLifecyclePtrOutput {
 	return o.ApplyT(func(v PlanRule) *PlanRuleLifecycle { return v.Lifecycle }).(PlanRuleLifecyclePtrOutput)
 }
 
-// Metadata that you can assign to help organize the resources that you create.
 func (o PlanRuleOutput) RecoveryPointTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PlanRule) map[string]string { return v.RecoveryPointTags }).(pulumi.StringMapOutput)
 }
 
-// An display name for a backup rule.
 func (o PlanRuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v PlanRule) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
-// A CRON expression specifying when AWS Backup initiates a backup job.
 func (o PlanRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PlanRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
 
-// The amount of time in minutes before beginning a backup.
 func (o PlanRuleOutput) StartWindow() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRule) *int { return v.StartWindow }).(pulumi.IntPtrOutput)
 }
 
-// The name of a logical container where backups are stored.
 func (o PlanRuleOutput) TargetVaultName() pulumi.StringOutput {
 	return o.ApplyT(func(v PlanRule) string { return v.TargetVaultName }).(pulumi.StringOutput)
 }
@@ -171,10 +147,8 @@ func (o PlanRuleArrayOutput) Index(i pulumi.IntInput) PlanRuleOutput {
 }
 
 type PlanRuleCopyAction struct {
-	// An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
-	DestinationVaultArn string `pulumi:"destinationVaultArn"`
-	// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-	Lifecycle *PlanRuleCopyActionLifecycle `pulumi:"lifecycle"`
+	DestinationVaultArn string                       `pulumi:"destinationVaultArn"`
+	Lifecycle           *PlanRuleCopyActionLifecycle `pulumi:"lifecycle"`
 }
 
 // PlanRuleCopyActionInput is an input type that accepts PlanRuleCopyActionArgs and PlanRuleCopyActionOutput values.
@@ -189,10 +163,8 @@ type PlanRuleCopyActionInput interface {
 }
 
 type PlanRuleCopyActionArgs struct {
-	// An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
-	DestinationVaultArn pulumi.StringInput `pulumi:"destinationVaultArn"`
-	// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-	Lifecycle PlanRuleCopyActionLifecyclePtrInput `pulumi:"lifecycle"`
+	DestinationVaultArn pulumi.StringInput                  `pulumi:"destinationVaultArn"`
+	Lifecycle           PlanRuleCopyActionLifecyclePtrInput `pulumi:"lifecycle"`
 }
 
 func (PlanRuleCopyActionArgs) ElementType() reflect.Type {
@@ -246,12 +218,10 @@ func (o PlanRuleCopyActionOutput) ToPlanRuleCopyActionOutputWithContext(ctx cont
 	return o
 }
 
-// An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
 func (o PlanRuleCopyActionOutput) DestinationVaultArn() pulumi.StringOutput {
 	return o.ApplyT(func(v PlanRuleCopyAction) string { return v.DestinationVaultArn }).(pulumi.StringOutput)
 }
 
-// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
 func (o PlanRuleCopyActionOutput) Lifecycle() PlanRuleCopyActionLifecyclePtrOutput {
 	return o.ApplyT(func(v PlanRuleCopyAction) *PlanRuleCopyActionLifecycle { return v.Lifecycle }).(PlanRuleCopyActionLifecyclePtrOutput)
 }
@@ -277,10 +247,8 @@ func (o PlanRuleCopyActionArrayOutput) Index(i pulumi.IntInput) PlanRuleCopyActi
 }
 
 type PlanRuleCopyActionLifecycle struct {
-	// Specifies the number of days after creation that a recovery point is moved to cold storage.
 	ColdStorageAfter *int `pulumi:"coldStorageAfter"`
-	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
-	DeleteAfter *int `pulumi:"deleteAfter"`
+	DeleteAfter      *int `pulumi:"deleteAfter"`
 }
 
 // PlanRuleCopyActionLifecycleInput is an input type that accepts PlanRuleCopyActionLifecycleArgs and PlanRuleCopyActionLifecycleOutput values.
@@ -295,10 +263,8 @@ type PlanRuleCopyActionLifecycleInput interface {
 }
 
 type PlanRuleCopyActionLifecycleArgs struct {
-	// Specifies the number of days after creation that a recovery point is moved to cold storage.
 	ColdStorageAfter pulumi.IntPtrInput `pulumi:"coldStorageAfter"`
-	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
-	DeleteAfter pulumi.IntPtrInput `pulumi:"deleteAfter"`
+	DeleteAfter      pulumi.IntPtrInput `pulumi:"deleteAfter"`
 }
 
 func (PlanRuleCopyActionLifecycleArgs) ElementType() reflect.Type {
@@ -377,13 +343,10 @@ func (o PlanRuleCopyActionLifecycleOutput) ToPlanRuleCopyActionLifecyclePtrOutpu
 		return &v
 	}).(PlanRuleCopyActionLifecyclePtrOutput)
 }
-
-// Specifies the number of days after creation that a recovery point is moved to cold storage.
 func (o PlanRuleCopyActionLifecycleOutput) ColdStorageAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRuleCopyActionLifecycle) *int { return v.ColdStorageAfter }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
 func (o PlanRuleCopyActionLifecycleOutput) DeleteAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRuleCopyActionLifecycle) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
 }
@@ -406,7 +369,6 @@ func (o PlanRuleCopyActionLifecyclePtrOutput) Elem() PlanRuleCopyActionLifecycle
 	return o.ApplyT(func(v *PlanRuleCopyActionLifecycle) PlanRuleCopyActionLifecycle { return *v }).(PlanRuleCopyActionLifecycleOutput)
 }
 
-// Specifies the number of days after creation that a recovery point is moved to cold storage.
 func (o PlanRuleCopyActionLifecyclePtrOutput) ColdStorageAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PlanRuleCopyActionLifecycle) *int {
 		if v == nil {
@@ -416,7 +378,6 @@ func (o PlanRuleCopyActionLifecyclePtrOutput) ColdStorageAfter() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
 func (o PlanRuleCopyActionLifecyclePtrOutput) DeleteAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PlanRuleCopyActionLifecycle) *int {
 		if v == nil {
@@ -427,10 +388,8 @@ func (o PlanRuleCopyActionLifecyclePtrOutput) DeleteAfter() pulumi.IntPtrOutput 
 }
 
 type PlanRuleLifecycle struct {
-	// Specifies the number of days after creation that a recovery point is moved to cold storage.
 	ColdStorageAfter *int `pulumi:"coldStorageAfter"`
-	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
-	DeleteAfter *int `pulumi:"deleteAfter"`
+	DeleteAfter      *int `pulumi:"deleteAfter"`
 }
 
 // PlanRuleLifecycleInput is an input type that accepts PlanRuleLifecycleArgs and PlanRuleLifecycleOutput values.
@@ -445,10 +404,8 @@ type PlanRuleLifecycleInput interface {
 }
 
 type PlanRuleLifecycleArgs struct {
-	// Specifies the number of days after creation that a recovery point is moved to cold storage.
 	ColdStorageAfter pulumi.IntPtrInput `pulumi:"coldStorageAfter"`
-	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
-	DeleteAfter pulumi.IntPtrInput `pulumi:"deleteAfter"`
+	DeleteAfter      pulumi.IntPtrInput `pulumi:"deleteAfter"`
 }
 
 func (PlanRuleLifecycleArgs) ElementType() reflect.Type {
@@ -527,13 +484,10 @@ func (o PlanRuleLifecycleOutput) ToPlanRuleLifecyclePtrOutputWithContext(ctx con
 		return &v
 	}).(PlanRuleLifecyclePtrOutput)
 }
-
-// Specifies the number of days after creation that a recovery point is moved to cold storage.
 func (o PlanRuleLifecycleOutput) ColdStorageAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRuleLifecycle) *int { return v.ColdStorageAfter }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
 func (o PlanRuleLifecycleOutput) DeleteAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRuleLifecycle) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
 }
@@ -556,7 +510,6 @@ func (o PlanRuleLifecyclePtrOutput) Elem() PlanRuleLifecycleOutput {
 	return o.ApplyT(func(v *PlanRuleLifecycle) PlanRuleLifecycle { return *v }).(PlanRuleLifecycleOutput)
 }
 
-// Specifies the number of days after creation that a recovery point is moved to cold storage.
 func (o PlanRuleLifecyclePtrOutput) ColdStorageAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PlanRuleLifecycle) *int {
 		if v == nil {
@@ -566,7 +519,6 @@ func (o PlanRuleLifecyclePtrOutput) ColdStorageAfter() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
 func (o PlanRuleLifecyclePtrOutput) DeleteAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PlanRuleLifecycle) *int {
 		if v == nil {
@@ -577,11 +529,8 @@ func (o PlanRuleLifecyclePtrOutput) DeleteAfter() pulumi.IntPtrOutput {
 }
 
 type SelectionSelectionTag struct {
-	// The key in a key-value pair.
-	Key string `pulumi:"key"`
-	// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-	Type string `pulumi:"type"`
-	// The value in a key-value pair.
+	Key   string `pulumi:"key"`
+	Type  string `pulumi:"type"`
 	Value string `pulumi:"value"`
 }
 
@@ -597,11 +546,8 @@ type SelectionSelectionTagInput interface {
 }
 
 type SelectionSelectionTagArgs struct {
-	// The key in a key-value pair.
-	Key pulumi.StringInput `pulumi:"key"`
-	// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The value in a key-value pair.
+	Key   pulumi.StringInput `pulumi:"key"`
+	Type  pulumi.StringInput `pulumi:"type"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -656,17 +602,14 @@ func (o SelectionSelectionTagOutput) ToSelectionSelectionTagOutputWithContext(ct
 	return o
 }
 
-// The key in a key-value pair.
 func (o SelectionSelectionTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SelectionSelectionTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
 func (o SelectionSelectionTagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SelectionSelectionTag) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value in a key-value pair.
 func (o SelectionSelectionTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SelectionSelectionTag) string { return v.Value }).(pulumi.StringOutput)
 }

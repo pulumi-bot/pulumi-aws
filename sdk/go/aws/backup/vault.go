@@ -9,43 +9,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an AWS Backup vault resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/backup"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := backup.NewVault(ctx, "example", &backup.VaultArgs{
-// 			KmsKeyArn: pulumi.Any(aws_kms_key.Example.Arn),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Vault struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the vault.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The server-side encryption key that is used to protect your backups.
-	KmsKeyArn pulumi.StringOutput `pulumi:"kmsKeyArn"`
-	// Name of the backup vault to create.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of recovery points that are stored in a backup vault.
-	RecoveryPoints pulumi.IntOutput `pulumi:"recoveryPoints"`
-	// Metadata that you can assign to help organize the resources that you create.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn            pulumi.StringOutput    `pulumi:"arn"`
+	KmsKeyArn      pulumi.StringOutput    `pulumi:"kmsKeyArn"`
+	Name           pulumi.StringOutput    `pulumi:"name"`
+	RecoveryPoints pulumi.IntOutput       `pulumi:"recoveryPoints"`
+	Tags           pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewVault registers a new resource with the given unique name, arguments, and options.
@@ -76,29 +47,19 @@ func GetVault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vault resources.
 type vaultState struct {
-	// The ARN of the vault.
-	Arn *string `pulumi:"arn"`
-	// The server-side encryption key that is used to protect your backups.
-	KmsKeyArn *string `pulumi:"kmsKeyArn"`
-	// Name of the backup vault to create.
-	Name *string `pulumi:"name"`
-	// The number of recovery points that are stored in a backup vault.
-	RecoveryPoints *int `pulumi:"recoveryPoints"`
-	// Metadata that you can assign to help organize the resources that you create.
-	Tags map[string]string `pulumi:"tags"`
+	Arn            *string           `pulumi:"arn"`
+	KmsKeyArn      *string           `pulumi:"kmsKeyArn"`
+	Name           *string           `pulumi:"name"`
+	RecoveryPoints *int              `pulumi:"recoveryPoints"`
+	Tags           map[string]string `pulumi:"tags"`
 }
 
 type VaultState struct {
-	// The ARN of the vault.
-	Arn pulumi.StringPtrInput
-	// The server-side encryption key that is used to protect your backups.
-	KmsKeyArn pulumi.StringPtrInput
-	// Name of the backup vault to create.
-	Name pulumi.StringPtrInput
-	// The number of recovery points that are stored in a backup vault.
+	Arn            pulumi.StringPtrInput
+	KmsKeyArn      pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
 	RecoveryPoints pulumi.IntPtrInput
-	// Metadata that you can assign to help organize the resources that you create.
-	Tags pulumi.StringMapInput
+	Tags           pulumi.StringMapInput
 }
 
 func (VaultState) ElementType() reflect.Type {
@@ -106,22 +67,16 @@ func (VaultState) ElementType() reflect.Type {
 }
 
 type vaultArgs struct {
-	// The server-side encryption key that is used to protect your backups.
-	KmsKeyArn *string `pulumi:"kmsKeyArn"`
-	// Name of the backup vault to create.
-	Name *string `pulumi:"name"`
-	// Metadata that you can assign to help organize the resources that you create.
-	Tags map[string]string `pulumi:"tags"`
+	KmsKeyArn *string           `pulumi:"kmsKeyArn"`
+	Name      *string           `pulumi:"name"`
+	Tags      map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Vault resource.
 type VaultArgs struct {
-	// The server-side encryption key that is used to protect your backups.
 	KmsKeyArn pulumi.StringPtrInput
-	// Name of the backup vault to create.
-	Name pulumi.StringPtrInput
-	// Metadata that you can assign to help organize the resources that you create.
-	Tags pulumi.StringMapInput
+	Name      pulumi.StringPtrInput
+	Tags      pulumi.StringMapInput
 }
 
 func (VaultArgs) ElementType() reflect.Type {

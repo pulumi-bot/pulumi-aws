@@ -9,60 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.S3
 {
-    /// <summary>
-    /// Attaches a policy to an S3 bucket resource.
-    /// 
-    /// ## Example Usage
-    /// ### Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///         });
-    ///         var bucketPolicy = new Aws.S3.BucketPolicy("bucketPolicy", new Aws.S3.BucketPolicyArgs
-    ///         {
-    ///             Bucket = bucket.Id,
-    ///             Policy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Id"": ""MYBUCKETPOLICY"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Sid"": ""IPAllow"",
-    ///       ""Effect"": ""Deny"",
-    ///       ""Principal"": ""*"",
-    ///       ""Action"": ""s3:*"",
-    ///       ""Resource"": ""arn:aws:s3:::my_tf_test_bucket/*"",
-    ///       ""Condition"": {
-    ///          ""IpAddress"": {""aws:SourceIp"": ""8.8.8.8/32""}
-    ///       }
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class BucketPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the bucket to which to apply the policy.
-        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
-        /// <summary>
-        /// The text of the policy.
-        /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
@@ -112,15 +63,9 @@ namespace Pulumi.Aws.S3
 
     public sealed class BucketPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the bucket to which to apply the policy.
-        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
-        /// <summary>
-        /// The text of the policy.
-        /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
@@ -131,15 +76,9 @@ namespace Pulumi.Aws.S3
 
     public sealed class BucketPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the bucket to which to apply the policy.
-        /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
-        /// <summary>
-        /// The text of the policy.
-        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Amazon API Gateway Version 2 domain name.
- * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
- *
- * > **Note:** This resource establishes ownership of and the TLS settings for
- * a particular domain name. An API stage can be associated with the domain name using the `aws.apigatewayv2.ApiMapping` resource.
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.DomainName("example", {
- *     domainName: "ws-api.example.com",
- *     domainNameConfiguration: {
- *         certificateArn: aws_acm_certificate.example.arn,
- *         endpointType: "REGIONAL",
- *         securityPolicy: "TLS_1_2",
- *     },
- * });
- * ```
- */
 export class DomainName extends pulumi.CustomResource {
     /**
      * Get an existing DomainName resource's state with the given name, ID, and optional extra
@@ -58,25 +34,10 @@ export class DomainName extends pulumi.CustomResource {
         return obj['__pulumiType'] === DomainName.__pulumiType;
     }
 
-    /**
-     * The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-     */
     public /*out*/ readonly apiMappingSelectionExpression!: pulumi.Output<string>;
-    /**
-     * The ARN of the domain name.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The domain name.
-     */
     public readonly domainName!: pulumi.Output<string>;
-    /**
-     * The domain name configuration.
-     */
     public readonly domainNameConfiguration!: pulumi.Output<outputs.apigatewayv2.DomainNameDomainNameConfiguration>;
-    /**
-     * A map of tags to assign to the domain name.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -125,25 +86,10 @@ export class DomainName extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DomainName resources.
  */
 export interface DomainNameState {
-    /**
-     * The [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-     */
     readonly apiMappingSelectionExpression?: pulumi.Input<string>;
-    /**
-     * The ARN of the domain name.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The domain name.
-     */
     readonly domainName?: pulumi.Input<string>;
-    /**
-     * The domain name configuration.
-     */
     readonly domainNameConfiguration?: pulumi.Input<inputs.apigatewayv2.DomainNameDomainNameConfiguration>;
-    /**
-     * A map of tags to assign to the domain name.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -151,16 +97,7 @@ export interface DomainNameState {
  * The set of arguments for constructing a DomainName resource.
  */
 export interface DomainNameArgs {
-    /**
-     * The domain name.
-     */
     readonly domainName: pulumi.Input<string>;
-    /**
-     * The domain name configuration.
-     */
     readonly domainNameConfiguration: pulumi.Input<inputs.apigatewayv2.DomainNameDomainNameConfiguration>;
-    /**
-     * A map of tags to assign to the domain name.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

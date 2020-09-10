@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to manage AWS Device Farm Projects.
- * Please keep in mind that this feature is only supported on the "us-west-2" region.
- * This resource will error if you try to create a project in another region.
- *
- * For more information about Device Farm Projects, see the AWS Documentation on
- * [Device Farm Projects][aws-get-project].
- *
- * ## Basic Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const awesomeDevices = new aws.devicefarm.Project("awesome_devices", {});
- * ```
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -49,13 +32,7 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name of this project
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The name of the project
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -92,13 +69,7 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
-    /**
-     * The Amazon Resource Name of this project
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the project
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -106,8 +77,5 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
-    /**
-     * The name of the project
-     */
     readonly name?: pulumi.Input<string>;
 }

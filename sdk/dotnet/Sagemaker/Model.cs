@@ -9,109 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sagemaker
 {
-    /// <summary>
-    /// Provides a SageMaker model resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var model = new Aws.Sagemaker.Model("model", new Aws.Sagemaker.ModelArgs
-    ///         {
-    ///             ExecutionRoleArn = aws_iam_role.Foo.Arn,
-    ///             PrimaryContainer = new Aws.Sagemaker.Inputs.ModelPrimaryContainerArgs
-    ///             {
-    ///                 Image = "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
-    ///             },
-    ///         });
-    ///         var assumeRole = Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
-    ///         {
-    ///             Statements = 
-    ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
-    ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "sts:AssumeRole",
-    ///                     },
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
-    ///                         {
-    ///                             Type = "Service",
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 "sagemaker.amazonaws.com",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var role = new Aws.Iam.Role("role", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = assumeRole.Apply(assumeRole =&gt; assumeRole.Json),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Model : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this model.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
-        /// </summary>
         [Output("containers")]
         public Output<ImmutableArray<Outputs.ModelContainer>> Containers { get; private set; } = null!;
 
-        /// <summary>
-        /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
-        /// </summary>
         [Output("enableNetworkIsolation")]
         public Output<bool?> EnableNetworkIsolation { get; private set; } = null!;
 
-        /// <summary>
-        /// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-        /// </summary>
         [Output("executionRoleArn")]
         public Output<string> ExecutionRoleArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-        /// </summary>
         [Output("primaryContainer")]
         public Output<Outputs.ModelPrimaryContainer?> PrimaryContainer { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-        /// </summary>
         [Output("vpcConfig")]
         public Output<Outputs.ModelVpcConfig?> VpcConfig { get; private set; } = null!;
 
@@ -163,55 +83,32 @@ namespace Pulumi.Aws.Sagemaker
     {
         [Input("containers")]
         private InputList<Inputs.ModelContainerArgs>? _containers;
-
-        /// <summary>
-        /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
-        /// </summary>
         public InputList<Inputs.ModelContainerArgs> Containers
         {
             get => _containers ?? (_containers = new InputList<Inputs.ModelContainerArgs>());
             set => _containers = value;
         }
 
-        /// <summary>
-        /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
-        /// </summary>
         [Input("enableNetworkIsolation")]
         public Input<bool>? EnableNetworkIsolation { get; set; }
 
-        /// <summary>
-        /// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-        /// </summary>
         [Input("executionRoleArn", required: true)]
         public Input<string> ExecutionRoleArn { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-        /// </summary>
         [Input("primaryContainer")]
         public Input<Inputs.ModelPrimaryContainerArgs>? PrimaryContainer { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-        /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ModelVpcConfigArgs>? VpcConfig { get; set; }
 
@@ -222,63 +119,37 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class ModelState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this model.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         [Input("containers")]
         private InputList<Inputs.ModelContainerGetArgs>? _containers;
-
-        /// <summary>
-        /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
-        /// </summary>
         public InputList<Inputs.ModelContainerGetArgs> Containers
         {
             get => _containers ?? (_containers = new InputList<Inputs.ModelContainerGetArgs>());
             set => _containers = value;
         }
 
-        /// <summary>
-        /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
-        /// </summary>
         [Input("enableNetworkIsolation")]
         public Input<bool>? EnableNetworkIsolation { get; set; }
 
-        /// <summary>
-        /// A role that SageMaker can assume to access model artifacts and docker images for deployment.
-        /// </summary>
         [Input("executionRoleArn")]
         public Input<string>? ExecutionRoleArn { get; set; }
 
-        /// <summary>
-        /// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-        /// </summary>
         [Input("primaryContainer")]
         public Input<Inputs.ModelPrimaryContainerGetArgs>? PrimaryContainer { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-        /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ModelVpcConfigGetArgs>? VpcConfig { get; set; }
 

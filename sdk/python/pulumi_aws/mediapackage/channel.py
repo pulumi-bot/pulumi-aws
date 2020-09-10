@@ -24,24 +24,9 @@ class Channel(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an AWS Elemental MediaPackage Channel.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        kittens = aws.mediapackage.Channel("kittens",
-            channel_id="kitten-channel",
-            description="A channel dedicated to amusing videos of kittens.")
-        ```
-
+        Create a Channel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] channel_id: A unique identifier describing the channel
-        :param pulumi.Input[str] description: A description of the channel
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,11 +76,6 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the channel
-        :param pulumi.Input[str] channel_id: A unique identifier describing the channel
-        :param pulumi.Input[str] description: A description of the channel
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ChannelHlsIngestArgs']]]] hls_ingests: A single item list of HLS ingest information
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,41 +91,26 @@ class Channel(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the channel
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="channelId")
     def channel_id(self) -> pulumi.Output[str]:
-        """
-        A unique identifier describing the channel
-        """
         return pulumi.get(self, "channel_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        A description of the channel
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="hlsIngests")
     def hls_ingests(self) -> pulumi.Output[List['outputs.ChannelHlsIngest']]:
-        """
-        A single item list of HLS ingest information
-        """
         return pulumi.get(self, "hls_ingests")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

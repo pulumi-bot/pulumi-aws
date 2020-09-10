@@ -9,85 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.DirectConnect
 {
-    /// <summary>
-    /// Provides a Direct Connect BGP peer resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var peer = new Aws.DirectConnect.BgpPeer("peer", new Aws.DirectConnect.BgpPeerArgs
-    ///         {
-    ///             VirtualInterfaceId = aws_dx_private_virtual_interface.Foo.Id,
-    ///             AddressFamily = "ipv6",
-    ///             BgpAsn = 65351,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class BgpPeer : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
-        /// </summary>
         [Output("addressFamily")]
         public Output<string> AddressFamily { get; private set; } = null!;
 
-        /// <summary>
-        /// The IPv4 CIDR address to use to send traffic to Amazon.
-        /// Required for IPv4 BGP peers on public virtual interfaces.
-        /// </summary>
         [Output("amazonAddress")]
         public Output<string> AmazonAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// The Direct Connect endpoint on which the BGP peer terminates.
-        /// </summary>
         [Output("awsDevice")]
         public Output<string> AwsDevice { get; private set; } = null!;
 
-        /// <summary>
-        /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-        /// </summary>
         [Output("bgpAsn")]
         public Output<int> BgpAsn { get; private set; } = null!;
 
-        /// <summary>
-        /// The authentication key for BGP configuration.
-        /// </summary>
         [Output("bgpAuthKey")]
         public Output<string> BgpAuthKey { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the BGP peer.
-        /// </summary>
         [Output("bgpPeerId")]
         public Output<string> BgpPeerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The Up/Down state of the BGP peer.
-        /// </summary>
         [Output("bgpStatus")]
         public Output<string> BgpStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// The IPv4 CIDR destination address to which Amazon should send traffic.
-        /// Required for IPv4 BGP peers on public virtual interfaces.
-        /// </summary>
         [Output("customerAddress")]
         public Output<string> CustomerAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Direct Connect virtual interface on which to create the BGP peer.
-        /// </summary>
         [Output("virtualInterfaceId")]
         public Output<string> VirtualInterfaceId { get; private set; } = null!;
 
@@ -137,41 +84,21 @@ namespace Pulumi.Aws.DirectConnect
 
     public sealed class BgpPeerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
-        /// </summary>
         [Input("addressFamily", required: true)]
         public Input<string> AddressFamily { get; set; } = null!;
 
-        /// <summary>
-        /// The IPv4 CIDR address to use to send traffic to Amazon.
-        /// Required for IPv4 BGP peers on public virtual interfaces.
-        /// </summary>
         [Input("amazonAddress")]
         public Input<string>? AmazonAddress { get; set; }
 
-        /// <summary>
-        /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-        /// </summary>
         [Input("bgpAsn", required: true)]
         public Input<int> BgpAsn { get; set; } = null!;
 
-        /// <summary>
-        /// The authentication key for BGP configuration.
-        /// </summary>
         [Input("bgpAuthKey")]
         public Input<string>? BgpAuthKey { get; set; }
 
-        /// <summary>
-        /// The IPv4 CIDR destination address to which Amazon should send traffic.
-        /// Required for IPv4 BGP peers on public virtual interfaces.
-        /// </summary>
         [Input("customerAddress")]
         public Input<string>? CustomerAddress { get; set; }
 
-        /// <summary>
-        /// The ID of the Direct Connect virtual interface on which to create the BGP peer.
-        /// </summary>
         [Input("virtualInterfaceId", required: true)]
         public Input<string> VirtualInterfaceId { get; set; } = null!;
 
@@ -182,59 +109,30 @@ namespace Pulumi.Aws.DirectConnect
 
     public sealed class BgpPeerState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
-        /// </summary>
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }
 
-        /// <summary>
-        /// The IPv4 CIDR address to use to send traffic to Amazon.
-        /// Required for IPv4 BGP peers on public virtual interfaces.
-        /// </summary>
         [Input("amazonAddress")]
         public Input<string>? AmazonAddress { get; set; }
 
-        /// <summary>
-        /// The Direct Connect endpoint on which the BGP peer terminates.
-        /// </summary>
         [Input("awsDevice")]
         public Input<string>? AwsDevice { get; set; }
 
-        /// <summary>
-        /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-        /// </summary>
         [Input("bgpAsn")]
         public Input<int>? BgpAsn { get; set; }
 
-        /// <summary>
-        /// The authentication key for BGP configuration.
-        /// </summary>
         [Input("bgpAuthKey")]
         public Input<string>? BgpAuthKey { get; set; }
 
-        /// <summary>
-        /// The ID of the BGP peer.
-        /// </summary>
         [Input("bgpPeerId")]
         public Input<string>? BgpPeerId { get; set; }
 
-        /// <summary>
-        /// The Up/Down state of the BGP peer.
-        /// </summary>
         [Input("bgpStatus")]
         public Input<string>? BgpStatus { get; set; }
 
-        /// <summary>
-        /// The IPv4 CIDR destination address to which Amazon should send traffic.
-        /// Required for IPv4 BGP peers on public virtual interfaces.
-        /// </summary>
         [Input("customerAddress")]
         public Input<string>? CustomerAddress { get; set; }
 
-        /// <summary>
-        /// The ID of the Direct Connect virtual interface on which to create the BGP peer.
-        /// </summary>
         [Input("virtualInterfaceId")]
         public Input<string>? VirtualInterfaceId { get; set; }
 

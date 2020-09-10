@@ -22,42 +22,9 @@ class Workflow(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Glue Workflow resource.
-        The workflow graph (DAG) can be build using the `glue.Trigger` resource.
-        See the example below for creating a graph with four nodes (two triggers and two jobs).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Workflow("example")
-        example_start = aws.glue.Trigger("example-start",
-            type="ON_DEMAND",
-            workflow_name=example.name,
-            actions=[aws.glue.TriggerActionArgs(
-                job_name="example-job",
-            )])
-        example_inner = aws.glue.Trigger("example-inner",
-            type="CONDITIONAL",
-            workflow_name=example.name,
-            predicate=aws.glue.TriggerPredicateArgs(
-                conditions=[aws.glue.TriggerPredicateConditionArgs(
-                    job_name="example-job",
-                    state="SUCCEEDED",
-                )],
-            ),
-            actions=[aws.glue.TriggerActionArgs(
-                job_name="another-example-job",
-            )])
-        ```
-
+        Create a Workflow resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] default_run_properties: A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-        :param pulumi.Input[str] description: Description of the workflow.
-        :param pulumi.Input[str] name: The name you assign to this workflow.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,9 +66,6 @@ class Workflow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] default_run_properties: A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-        :param pulumi.Input[str] description: Description of the workflow.
-        :param pulumi.Input[str] name: The name you assign to this workflow.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -115,25 +79,16 @@ class Workflow(pulumi.CustomResource):
     @property
     @pulumi.getter(name="defaultRunProperties")
     def default_run_properties(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-        """
         return pulumi.get(self, "default_run_properties")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the workflow.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name you assign to this workflow.
-        """
         return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):

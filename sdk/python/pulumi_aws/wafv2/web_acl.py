@@ -28,224 +28,9 @@ class WebAcl(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a WAFv2 Web ACL resource.
-
-        ## Example Usage
-
-        This resource is based on `wafv2.RuleGroup`, check the documentation of the `wafv2.RuleGroup` resource to see examples of the various available statements.
-        ### Managed Rule
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.WebAcl("example",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                allow=aws.wafv2.WebAclDefaultActionAllowArgs(),
-            ),
-            description="Example of a managed rule.",
-            rules=[aws.wafv2.WebAclRuleArgs(
-                name="rule-1",
-                override_action=aws.wafv2.WebAclRuleOverrideActionArgs(
-                    count=aws.wafv2.WebAclRuleOverrideActionCountArgs(),
-                ),
-                priority=1,
-                statement=aws.wafv2.WebAclRuleStatementArgs(
-                    managed_rule_group_statement=aws.wafv2.WebAclRuleStatementManagedRuleGroupStatementArgs(
-                        excluded_rule=[
-                            {
-                                "name": "SizeRestrictions_QUERYSTRING",
-                            },
-                            {
-                                "name": "NoUserAgent_HEADER",
-                            },
-                        ],
-                        name="AWSManagedRulesCommonRuleSet",
-                        vendor_name="AWS",
-                    ),
-                ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
-            )],
-            scope="REGIONAL",
-            tags={
-                "Tag1": "Value1",
-                "Tag2": "Value2",
-            },
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
-        ```
-        ### Rate Based
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.WebAcl("example",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                block=aws.wafv2.WebAclDefaultActionBlockArgs(),
-            ),
-            description="Example of a rate based statement.",
-            rules=[aws.wafv2.WebAclRuleArgs(
-                action=aws.wafv2.WebAclRuleActionArgs(
-                    count=aws.wafv2.WebAclRuleActionCountArgs(),
-                ),
-                name="rule-1",
-                priority=1,
-                statement=aws.wafv2.WebAclRuleStatementArgs(
-                    rate_based_statement=aws.wafv2.WebAclRuleStatementRateBasedStatementArgs(
-                        aggregate_key_type="IP",
-                        limit=10000,
-                        scope_down_statement=aws.wafv2.WebAclRuleStatementRateBasedStatementScopeDownStatementArgs(
-                            geo_match_statement=aws.wafv2.WebAclRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatementArgs(
-                                country_codes=[
-                                    "US",
-                                    "NL",
-                                ],
-                            ),
-                        ),
-                    ),
-                ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
-            )],
-            scope="REGIONAL",
-            tags={
-                "Tag1": "Value1",
-                "Tag2": "Value2",
-            },
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
-        ```
-        ### Rule Group Reference
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.RuleGroup("example",
-            capacity=10,
-            scope="REGIONAL",
-            rules=[
-                aws.wafv2.RuleGroupRuleArgs(
-                    name="rule-1",
-                    priority=1,
-                    action=aws.wafv2.RuleGroupRuleActionArgs(
-                        count=aws.wafv2.RuleGroupRuleActionCountArgs(),
-                    ),
-                    statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                        geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                            country_codes=["NL"],
-                        ),
-                    ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
-                ),
-                aws.wafv2.RuleGroupRuleArgs(
-                    name="rule-to-exclude-a",
-                    priority=10,
-                    action=aws.wafv2.RuleGroupRuleActionArgs(
-                        allow=aws.wafv2.RuleGroupRuleActionAllowArgs(),
-                    ),
-                    statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                        geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                            country_codes=["US"],
-                        ),
-                    ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
-                ),
-                aws.wafv2.RuleGroupRuleArgs(
-                    name="rule-to-exclude-b",
-                    priority=15,
-                    action=aws.wafv2.RuleGroupRuleActionArgs(
-                        allow=aws.wafv2.RuleGroupRuleActionAllowArgs(),
-                    ),
-                    statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                        geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                            country_codes=["GB"],
-                        ),
-                    ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
-                ),
-            ],
-            visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
-        test = aws.wafv2.WebAcl("test",
-            scope="REGIONAL",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                block=aws.wafv2.WebAclDefaultActionBlockArgs(),
-            ),
-            rules=[aws.wafv2.WebAclRuleArgs(
-                name="rule-1",
-                priority=1,
-                override_action=aws.wafv2.WebAclRuleOverrideActionArgs(
-                    count=aws.wafv2.WebAclRuleOverrideActionCountArgs(),
-                ),
-                statement=aws.wafv2.WebAclRuleStatementArgs(
-                    rule_group_reference_statement=aws.wafv2.WebAclRuleStatementRuleGroupReferenceStatementArgs(
-                        arn=example.arn,
-                        excluded_rules=[
-                            aws.wafv2.WebAclRuleStatementRuleGroupReferenceStatementExcludedRuleArgs(
-                                name="rule-to-exclude-b",
-                            ),
-                            aws.wafv2.WebAclRuleStatementRuleGroupReferenceStatementExcludedRuleArgs(
-                                name="rule-to-exclude-a",
-                            ),
-                        ],
-                    ),
-                ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
-            )],
-            tags={
-                "Tag1": "Value1",
-                "Tag2": "Value2",
-            },
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
-        ```
-
+        Create a WebAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WebAclDefaultActionArgs']] default_action: The action to perform if none of the `rules` contained in the WebACL match. See Default Action below for details.
-        :param pulumi.Input[str] description: A friendly description of the WebACL.
-        :param pulumi.Input[str] name: A friendly name of the WebACL.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebAclRuleArgs']]]] rules: The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-        :param pulumi.Input[str] scope: Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An array of key:value pairs to associate with the resource.
-        :param pulumi.Input[pulumi.InputType['WebAclVisibilityConfigArgs']] visibility_config: Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -307,15 +92,6 @@ class WebAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the IP Set that this statement references.
-        :param pulumi.Input[float] capacity: The web ACL capacity units (WCUs) currently being used by this web ACL.
-        :param pulumi.Input[pulumi.InputType['WebAclDefaultActionArgs']] default_action: The action to perform if none of the `rules` contained in the WebACL match. See Default Action below for details.
-        :param pulumi.Input[str] description: A friendly description of the WebACL.
-        :param pulumi.Input[str] name: A friendly name of the WebACL.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebAclRuleArgs']]]] rules: The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-        :param pulumi.Input[str] scope: Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An array of key:value pairs to associate with the resource.
-        :param pulumi.Input[pulumi.InputType['WebAclVisibilityConfigArgs']] visibility_config: Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -336,33 +112,21 @@ class WebAcl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the IP Set that this statement references.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[float]:
-        """
-        The web ACL capacity units (WCUs) currently being used by this web ACL.
-        """
         return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> pulumi.Output['outputs.WebAclDefaultAction']:
-        """
-        The action to perform if none of the `rules` contained in the WebACL match. See Default Action below for details.
-        """
         return pulumi.get(self, "default_action")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        A friendly description of the WebACL.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -373,41 +137,26 @@ class WebAcl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A friendly name of the WebACL.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[List['outputs.WebAclRule']]]:
-        """
-        The rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See Rules below for details.
-        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
-        """
-        Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-        """
         return pulumi.get(self, "scope")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        An array of key:value pairs to associate with the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="visibilityConfig")
     def visibility_config(self) -> pulumi.Output['outputs.WebAclVisibilityConfig']:
-        """
-        Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
-        """
         return pulumi.get(self, "visibility_config")
 
     def translate_output_property(self, prop):

@@ -24,13 +24,6 @@ class OrganizationAccountArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] arn: ARN of the root
-        :param pulumi.Input[str] email: Email of the account
-        :param pulumi.Input[str] id: Identifier of the root
-        :param pulumi.Input[str] name: The name of the policy type
-        :param pulumi.Input[str] status: The status of the policy type as it relates to the associated root
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if email is not None:
@@ -45,9 +38,6 @@ class OrganizationAccountArgs:
     @property
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @arn.setter
@@ -57,9 +47,6 @@ class OrganizationAccountArgs:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -69,9 +56,6 @@ class OrganizationAccountArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -81,9 +65,6 @@ class OrganizationAccountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -93,9 +74,6 @@ class OrganizationAccountArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -111,13 +89,6 @@ class OrganizationNonMasterAccountArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] arn: ARN of the root
-        :param pulumi.Input[str] email: Email of the account
-        :param pulumi.Input[str] id: Identifier of the root
-        :param pulumi.Input[str] name: The name of the policy type
-        :param pulumi.Input[str] status: The status of the policy type as it relates to the associated root
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if email is not None:
@@ -132,9 +103,6 @@ class OrganizationNonMasterAccountArgs:
     @property
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @arn.setter
@@ -144,9 +112,6 @@ class OrganizationNonMasterAccountArgs:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -156,9 +121,6 @@ class OrganizationNonMasterAccountArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -168,9 +130,6 @@ class OrganizationNonMasterAccountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -180,9 +139,6 @@ class OrganizationNonMasterAccountArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -197,12 +153,6 @@ class OrganizationRootArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy_types: Optional[pulumi.Input[List[pulumi.Input['OrganizationRootPolicyTypeArgs']]]] = None):
-        """
-        :param pulumi.Input[str] arn: ARN of the root
-        :param pulumi.Input[str] id: Identifier of the root
-        :param pulumi.Input[str] name: The name of the policy type
-        :param pulumi.Input[List[pulumi.Input['OrganizationRootPolicyTypeArgs']]] policy_types: List of policy types enabled for this root. All elements have these attributes:
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if id is not None:
@@ -215,9 +165,6 @@ class OrganizationRootArgs:
     @property
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        ARN of the root
-        """
         return pulumi.get(self, "arn")
 
     @arn.setter
@@ -227,9 +174,6 @@ class OrganizationRootArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of the root
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -239,9 +183,6 @@ class OrganizationRootArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the policy type
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -251,9 +192,6 @@ class OrganizationRootArgs:
     @property
     @pulumi.getter(name="policyTypes")
     def policy_types(self) -> Optional[pulumi.Input[List[pulumi.Input['OrganizationRootPolicyTypeArgs']]]]:
-        """
-        List of policy types enabled for this root. All elements have these attributes:
-        """
         return pulumi.get(self, "policy_types")
 
     @policy_types.setter
@@ -266,9 +204,6 @@ class OrganizationRootPolicyTypeArgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] status: The status of the policy type as it relates to the associated root
-        """
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -277,9 +212,6 @@ class OrganizationRootPolicyTypeArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the policy type as it relates to the associated root
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -303,12 +235,6 @@ class OrganizationalUnitAccountArgs:
                  email: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] arn: ARN of the organizational unit
-        :param pulumi.Input[str] email: Email of the account
-        :param pulumi.Input[str] id: Identifier of the organization unit
-        :param pulumi.Input[str] name: The name for the organizational unit
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if email is not None:
@@ -321,9 +247,6 @@ class OrganizationalUnitAccountArgs:
     @property
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        ARN of the organizational unit
-        """
         return pulumi.get(self, "arn")
 
     @arn.setter
@@ -333,9 +256,6 @@ class OrganizationalUnitAccountArgs:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Email of the account
-        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -345,9 +265,6 @@ class OrganizationalUnitAccountArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of the organization unit
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -357,9 +274,6 @@ class OrganizationalUnitAccountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name for the organizational unit
-        """
         return pulumi.get(self, "name")
 
     @name.setter

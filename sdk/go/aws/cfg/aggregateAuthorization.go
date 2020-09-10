@@ -10,42 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an AWS Config Aggregate Authorization
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cfg.NewAggregateAuthorization(ctx, "example", &cfg.AggregateAuthorizationArgs{
-// 			AccountId: pulumi.String("123456789012"),
-// 			Region:    pulumi.String("eu-west-2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AggregateAuthorization struct {
 	pulumi.CustomResourceState
 
-	// Account ID
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The ARN of the authorization
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Region
-	Region pulumi.StringOutput `pulumi:"region"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	AccountId pulumi.StringOutput    `pulumi:"accountId"`
+	Arn       pulumi.StringOutput    `pulumi:"arn"`
+	Region    pulumi.StringOutput    `pulumi:"region"`
+	Tags      pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewAggregateAuthorization registers a new resource with the given unique name, arguments, and options.
@@ -82,25 +53,17 @@ func GetAggregateAuthorization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AggregateAuthorization resources.
 type aggregateAuthorizationState struct {
-	// Account ID
-	AccountId *string `pulumi:"accountId"`
-	// The ARN of the authorization
-	Arn *string `pulumi:"arn"`
-	// Region
-	Region *string `pulumi:"region"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	AccountId *string           `pulumi:"accountId"`
+	Arn       *string           `pulumi:"arn"`
+	Region    *string           `pulumi:"region"`
+	Tags      map[string]string `pulumi:"tags"`
 }
 
 type AggregateAuthorizationState struct {
-	// Account ID
 	AccountId pulumi.StringPtrInput
-	// The ARN of the authorization
-	Arn pulumi.StringPtrInput
-	// Region
-	Region pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Arn       pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	Tags      pulumi.StringMapInput
 }
 
 func (AggregateAuthorizationState) ElementType() reflect.Type {
@@ -108,22 +71,16 @@ func (AggregateAuthorizationState) ElementType() reflect.Type {
 }
 
 type aggregateAuthorizationArgs struct {
-	// Account ID
-	AccountId string `pulumi:"accountId"`
-	// Region
-	Region string `pulumi:"region"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	AccountId string            `pulumi:"accountId"`
+	Region    string            `pulumi:"region"`
+	Tags      map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AggregateAuthorization resource.
 type AggregateAuthorizationArgs struct {
-	// Account ID
 	AccountId pulumi.StringInput
-	// Region
-	Region pulumi.StringInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Region    pulumi.StringInput
+	Tags      pulumi.StringMapInput
 }
 
 func (AggregateAuthorizationArgs) ElementType() reflect.Type {

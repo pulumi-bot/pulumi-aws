@@ -61,17 +61,11 @@ class GetImageResult:
     @property
     @pulumi.getter(name="imagePushedAt")
     def image_pushed_at(self) -> float:
-        """
-        The date and time, expressed as a unix timestamp, at which the current image was pushed to the repository.
-        """
         return pulumi.get(self, "image_pushed_at")
 
     @property
     @pulumi.getter(name="imageSizeInBytes")
     def image_size_in_bytes(self) -> float:
-        """
-        The size, in bytes, of the image in the repository.
-        """
         return pulumi.get(self, "image_size_in_bytes")
 
     @property
@@ -82,9 +76,6 @@ class GetImageResult:
     @property
     @pulumi.getter(name="imageTags")
     def image_tags(self) -> List[str]:
-        """
-        The list of tags associated with this image.
-        """
         return pulumi.get(self, "image_tags")
 
     @property
@@ -120,23 +111,7 @@ def get_image(image_digest: Optional[str] = None,
               repository_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    service_image = aws.ecr.get_image(image_tag="latest",
-        repository_name="my/service")
-    ```
-
-
-    :param str image_digest: The sha256 digest of the image manifest. At least one of `image_digest` or `image_tag` must be specified.
-    :param str image_tag: The tag associated with this image. At least one of `image_digest` or `image_tag` must be specified.
-    :param str registry_id: The ID of the Registry where the repository resides.
-    :param str repository_name: The name of the ECR Repository.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['imageDigest'] = image_digest

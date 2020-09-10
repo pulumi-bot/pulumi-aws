@@ -4,56 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the `aws.transfer.SshKey` resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const fooServer = new aws.transfer.Server("fooServer", {
- *     identityProviderType: "SERVICE_MANAGED",
- *     tags: {
- *         NAME: "tf-acc-test-transfer-server",
- *     },
- * });
- * const fooRole = new aws.iam.Role("fooRole", {assumeRolePolicy: `{
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 		"Effect": "Allow",
- * 		"Principal": {
- * 			"Service": "transfer.amazonaws.com"
- * 		},
- * 		"Action": "sts:AssumeRole"
- * 		}
- * 	]
- * }
- * `});
- * const fooRolePolicy = new aws.iam.RolePolicy("fooRolePolicy", {
- *     role: fooRole.id,
- *     policy: `{
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 			"Sid": "AllowFullAccesstoS3",
- * 			"Effect": "Allow",
- * 			"Action": [
- * 				"s3:*"
- * 			],
- * 			"Resource": "*"
- * 		}
- * 	]
- * }
- * `,
- * });
- * const fooUser = new aws.transfer.User("fooUser", {
- *     serverId: fooServer.id,
- *     userName: "tftestuser",
- *     role: fooRole.arn,
- * });
- * ```
- */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -82,33 +32,12 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN) of Transfer User
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-     */
     public readonly homeDirectory!: pulumi.Output<string | undefined>;
-    /**
-     * An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-     */
     public readonly policy!: pulumi.Output<string | undefined>;
-    /**
-     * Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-     */
     public readonly role!: pulumi.Output<string>;
-    /**
-     * The Server ID of the Transfer Server (e.g. `s-12345678`)
-     */
     public readonly serverId!: pulumi.Output<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The name used for log in to your SFTP server.
-     */
     public readonly userName!: pulumi.Output<string>;
 
     /**
@@ -164,33 +93,12 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
-    /**
-     * Amazon Resource Name (ARN) of Transfer User
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-     */
     readonly homeDirectory?: pulumi.Input<string>;
-    /**
-     * An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-     */
     readonly policy?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-     */
     readonly role?: pulumi.Input<string>;
-    /**
-     * The Server ID of the Transfer Server (e.g. `s-12345678`)
-     */
     readonly serverId?: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name used for log in to your SFTP server.
-     */
     readonly userName?: pulumi.Input<string>;
 }
 
@@ -198,28 +106,10 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
-    /**
-     * The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-     */
     readonly homeDirectory?: pulumi.Input<string>;
-    /**
-     * An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-     */
     readonly policy?: pulumi.Input<string>;
-    /**
-     * Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-     */
     readonly role: pulumi.Input<string>;
-    /**
-     * The Server ID of the Transfer Server (e.g. `s-12345678`)
-     */
     readonly serverId: pulumi.Input<string>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name used for log in to your SFTP server.
-     */
     readonly userName: pulumi.Input<string>;
 }

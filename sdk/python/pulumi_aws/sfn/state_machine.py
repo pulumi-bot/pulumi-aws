@@ -23,37 +23,9 @@ class StateMachine(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Step Function State Machine resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ...
-        sfn_state_machine = aws.sfn.StateMachine("sfnStateMachine",
-            role_arn=aws_iam_role["iam_for_sfn"]["arn"],
-            definition=f\"\"\"{{
-          "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
-          "StartAt": "HelloWorld",
-          "States": {{
-            "HelloWorld": {{
-              "Type": "Task",
-              "Resource": "{aws_lambda_function["lambda"]["arn"]}",
-              "End": true
-            }}
-          }}
-        }}
-        \"\"\")
-        ```
-
+        Create a StateMachine resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] definition: The Amazon States Language definition of the state machine.
-        :param pulumi.Input[str] name: The name of the state machine.
-        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,13 +79,6 @@ class StateMachine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the state machine.
-        :param pulumi.Input[str] creation_date: The date the state machine was created.
-        :param pulumi.Input[str] definition: The Amazon States Language definition of the state machine.
-        :param pulumi.Input[str] name: The name of the state machine.
-        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-        :param pulumi.Input[str] status: The current status of the state machine. Either "ACTIVE" or "DELETING".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -131,57 +96,36 @@ class StateMachine(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the state machine.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
-        """
-        The date the state machine was created.
-        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def definition(self) -> pulumi.Output[str]:
-        """
-        The Amazon States Language definition of the state machine.
-        """
         return pulumi.get(self, "definition")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the state machine.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
-        """
-        The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
-        """
-        The current status of the state machine. Either "ACTIVE" or "DELETING".
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

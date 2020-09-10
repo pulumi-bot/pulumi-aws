@@ -9,233 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Cognito
 {
-    /// <summary>
-    /// Provides a Cognito User Pool Client resource.
-    /// 
-    /// ## Example Usage
-    /// ### Create a basic user pool client
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var pool = new Aws.Cognito.UserPool("pool", new Aws.Cognito.UserPoolArgs
-    ///         {
-    ///         });
-    ///         var client = new Aws.Cognito.UserPoolClient("client", new Aws.Cognito.UserPoolClientArgs
-    ///         {
-    ///             UserPoolId = pool.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Create a user pool client with no SRP authentication
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var pool = new Aws.Cognito.UserPool("pool", new Aws.Cognito.UserPoolArgs
-    ///         {
-    ///         });
-    ///         var client = new Aws.Cognito.UserPoolClient("client", new Aws.Cognito.UserPoolClientArgs
-    ///         {
-    ///             ExplicitAuthFlows = 
-    ///             {
-    ///                 "ADMIN_NO_SRP_AUTH",
-    ///             },
-    ///             GenerateSecret = true,
-    ///             UserPoolId = pool.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Create a user pool client with pinpoint analytics
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
-    ///         var testUserPool = new Aws.Cognito.UserPool("testUserPool", new Aws.Cognito.UserPoolArgs
-    ///         {
-    ///         });
-    ///         var testApp = new Aws.Pinpoint.App("testApp", new Aws.Pinpoint.AppArgs
-    ///         {
-    ///         });
-    ///         var testRole = new Aws.Iam.Role("testRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Action"": ""sts:AssumeRole"",
-    ///       ""Principal"": {
-    ///         ""Service"": ""cognito-idp.amazonaws.com""
-    ///       },
-    ///       ""Effect"": ""Allow"",
-    ///       ""Sid"": """"
-    ///     }
-    ///   ]
-    /// }
-    /// 
-    /// ",
-    ///         });
-    ///         var testRolePolicy = new Aws.Iam.RolePolicy("testRolePolicy", new Aws.Iam.RolePolicyArgs
-    ///         {
-    ///             Policy = Output.Tuple(current, testApp.ApplicationId).Apply(values =&gt;
-    ///             {
-    ///                 var current = values.Item1;
-    ///                 var applicationId = values.Item2;
-    ///                 return @$"{{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {{
-    ///       ""Action"": [
-    ///         ""mobiletargeting:UpdateEndpoint"",
-    ///         ""mobiletargeting:PutItems""
-    ///       ],
-    ///       ""Effect"": ""Allow"",
-    ///       ""Resource"": ""arn:aws:mobiletargeting:*:{current.AccountId}:apps/{applicationId}*""
-    ///     }}
-    ///   ]
-    /// }}
-    /// 
-    /// ";
-    ///             }),
-    ///             Role = testRole.Id,
-    ///         });
-    ///         var testUserPoolClient = new Aws.Cognito.UserPoolClient("testUserPoolClient", new Aws.Cognito.UserPoolClientArgs
-    ///         {
-    ///             AnalyticsConfiguration = new Aws.Cognito.Inputs.UserPoolClientAnalyticsConfigurationArgs
-    ///             {
-    ///                 ApplicationId = testApp.ApplicationId,
-    ///                 ExternalId = "some_id",
-    ///                 RoleArn = testRole.Arn,
-    ///                 UserDataShared = true,
-    ///             },
-    ///             UserPoolId = testUserPool.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class UserPoolClient : Pulumi.CustomResource
     {
-        /// <summary>
-        /// List of allowed OAuth flows (code, implicit, client_credentials).
-        /// </summary>
         [Output("allowedOauthFlows")]
         public Output<ImmutableArray<string>> AllowedOauthFlows { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
-        /// </summary>
         [Output("allowedOauthFlowsUserPoolClient")]
         public Output<bool?> AllowedOauthFlowsUserPoolClient { get; private set; } = null!;
 
-        /// <summary>
-        /// List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
-        /// </summary>
         [Output("allowedOauthScopes")]
         public Output<ImmutableArray<string>> AllowedOauthScopes { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
-        /// </summary>
         [Output("analyticsConfiguration")]
         public Output<Outputs.UserPoolClientAnalyticsConfiguration?> AnalyticsConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// List of allowed callback URLs for the identity providers.
-        /// </summary>
         [Output("callbackUrls")]
         public Output<ImmutableArray<string>> CallbackUrls { get; private set; } = null!;
 
-        /// <summary>
-        /// The client secret of the user pool client.
-        /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
-        /// <summary>
-        /// The default redirect URI. Must be in the list of callback URLs.
-        /// </summary>
         [Output("defaultRedirectUri")]
         public Output<string?> DefaultRedirectUri { get; private set; } = null!;
 
-        /// <summary>
-        /// List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY,  USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH).
-        /// </summary>
         [Output("explicitAuthFlows")]
         public Output<ImmutableArray<string>> ExplicitAuthFlows { get; private set; } = null!;
 
-        /// <summary>
-        /// Should an application secret be generated.
-        /// </summary>
         [Output("generateSecret")]
         public Output<bool?> GenerateSecret { get; private set; } = null!;
 
-        /// <summary>
-        /// List of allowed logout URLs for the identity providers.
-        /// </summary>
         [Output("logoutUrls")]
         public Output<ImmutableArray<string>> LogoutUrls { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the application client.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
-        /// </summary>
         [Output("preventUserExistenceErrors")]
         public Output<string> PreventUserExistenceErrors { get; private set; } = null!;
 
-        /// <summary>
-        /// List of user pool attributes the application client can read from.
-        /// </summary>
         [Output("readAttributes")]
         public Output<ImmutableArray<string>> ReadAttributes { get; private set; } = null!;
 
-        /// <summary>
-        /// The time limit in days refresh tokens are valid for.
-        /// </summary>
         [Output("refreshTokenValidity")]
         public Output<int?> RefreshTokenValidity { get; private set; } = null!;
 
-        /// <summary>
-        /// List of provider names for the identity providers that are supported on this client.
-        /// </summary>
         [Output("supportedIdentityProviders")]
         public Output<ImmutableArray<string>> SupportedIdentityProviders { get; private set; } = null!;
 
-        /// <summary>
-        /// The user pool the client belongs to.
-        /// </summary>
         [Output("userPoolId")]
         public Output<string> UserPoolId { get; private set; } = null!;
 
-        /// <summary>
-        /// List of user pool attributes the application client can write to.
-        /// </summary>
         [Output("writeAttributes")]
         public Output<ImmutableArray<string>> WriteAttributes { get; private set; } = null!;
 
@@ -287,142 +110,86 @@ namespace Pulumi.Aws.Cognito
     {
         [Input("allowedOauthFlows")]
         private InputList<string>? _allowedOauthFlows;
-
-        /// <summary>
-        /// List of allowed OAuth flows (code, implicit, client_credentials).
-        /// </summary>
         public InputList<string> AllowedOauthFlows
         {
             get => _allowedOauthFlows ?? (_allowedOauthFlows = new InputList<string>());
             set => _allowedOauthFlows = value;
         }
 
-        /// <summary>
-        /// Whether the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
-        /// </summary>
         [Input("allowedOauthFlowsUserPoolClient")]
         public Input<bool>? AllowedOauthFlowsUserPoolClient { get; set; }
 
         [Input("allowedOauthScopes")]
         private InputList<string>? _allowedOauthScopes;
-
-        /// <summary>
-        /// List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
-        /// </summary>
         public InputList<string> AllowedOauthScopes
         {
             get => _allowedOauthScopes ?? (_allowedOauthScopes = new InputList<string>());
             set => _allowedOauthScopes = value;
         }
 
-        /// <summary>
-        /// The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
-        /// </summary>
         [Input("analyticsConfiguration")]
         public Input<Inputs.UserPoolClientAnalyticsConfigurationArgs>? AnalyticsConfiguration { get; set; }
 
         [Input("callbackUrls")]
         private InputList<string>? _callbackUrls;
-
-        /// <summary>
-        /// List of allowed callback URLs for the identity providers.
-        /// </summary>
         public InputList<string> CallbackUrls
         {
             get => _callbackUrls ?? (_callbackUrls = new InputList<string>());
             set => _callbackUrls = value;
         }
 
-        /// <summary>
-        /// The default redirect URI. Must be in the list of callback URLs.
-        /// </summary>
         [Input("defaultRedirectUri")]
         public Input<string>? DefaultRedirectUri { get; set; }
 
         [Input("explicitAuthFlows")]
         private InputList<string>? _explicitAuthFlows;
-
-        /// <summary>
-        /// List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY,  USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH).
-        /// </summary>
         public InputList<string> ExplicitAuthFlows
         {
             get => _explicitAuthFlows ?? (_explicitAuthFlows = new InputList<string>());
             set => _explicitAuthFlows = value;
         }
 
-        /// <summary>
-        /// Should an application secret be generated.
-        /// </summary>
         [Input("generateSecret")]
         public Input<bool>? GenerateSecret { get; set; }
 
         [Input("logoutUrls")]
         private InputList<string>? _logoutUrls;
-
-        /// <summary>
-        /// List of allowed logout URLs for the identity providers.
-        /// </summary>
         public InputList<string> LogoutUrls
         {
             get => _logoutUrls ?? (_logoutUrls = new InputList<string>());
             set => _logoutUrls = value;
         }
 
-        /// <summary>
-        /// The name of the application client.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
-        /// </summary>
         [Input("preventUserExistenceErrors")]
         public Input<string>? PreventUserExistenceErrors { get; set; }
 
         [Input("readAttributes")]
         private InputList<string>? _readAttributes;
-
-        /// <summary>
-        /// List of user pool attributes the application client can read from.
-        /// </summary>
         public InputList<string> ReadAttributes
         {
             get => _readAttributes ?? (_readAttributes = new InputList<string>());
             set => _readAttributes = value;
         }
 
-        /// <summary>
-        /// The time limit in days refresh tokens are valid for.
-        /// </summary>
         [Input("refreshTokenValidity")]
         public Input<int>? RefreshTokenValidity { get; set; }
 
         [Input("supportedIdentityProviders")]
         private InputList<string>? _supportedIdentityProviders;
-
-        /// <summary>
-        /// List of provider names for the identity providers that are supported on this client.
-        /// </summary>
         public InputList<string> SupportedIdentityProviders
         {
             get => _supportedIdentityProviders ?? (_supportedIdentityProviders = new InputList<string>());
             set => _supportedIdentityProviders = value;
         }
 
-        /// <summary>
-        /// The user pool the client belongs to.
-        /// </summary>
         [Input("userPoolId", required: true)]
         public Input<string> UserPoolId { get; set; } = null!;
 
         [Input("writeAttributes")]
         private InputList<string>? _writeAttributes;
-
-        /// <summary>
-        /// List of user pool attributes the application client can write to.
-        /// </summary>
         public InputList<string> WriteAttributes
         {
             get => _writeAttributes ?? (_writeAttributes = new InputList<string>());
@@ -438,148 +205,89 @@ namespace Pulumi.Aws.Cognito
     {
         [Input("allowedOauthFlows")]
         private InputList<string>? _allowedOauthFlows;
-
-        /// <summary>
-        /// List of allowed OAuth flows (code, implicit, client_credentials).
-        /// </summary>
         public InputList<string> AllowedOauthFlows
         {
             get => _allowedOauthFlows ?? (_allowedOauthFlows = new InputList<string>());
             set => _allowedOauthFlows = value;
         }
 
-        /// <summary>
-        /// Whether the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
-        /// </summary>
         [Input("allowedOauthFlowsUserPoolClient")]
         public Input<bool>? AllowedOauthFlowsUserPoolClient { get; set; }
 
         [Input("allowedOauthScopes")]
         private InputList<string>? _allowedOauthScopes;
-
-        /// <summary>
-        /// List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
-        /// </summary>
         public InputList<string> AllowedOauthScopes
         {
             get => _allowedOauthScopes ?? (_allowedOauthScopes = new InputList<string>());
             set => _allowedOauthScopes = value;
         }
 
-        /// <summary>
-        /// The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
-        /// </summary>
         [Input("analyticsConfiguration")]
         public Input<Inputs.UserPoolClientAnalyticsConfigurationGetArgs>? AnalyticsConfiguration { get; set; }
 
         [Input("callbackUrls")]
         private InputList<string>? _callbackUrls;
-
-        /// <summary>
-        /// List of allowed callback URLs for the identity providers.
-        /// </summary>
         public InputList<string> CallbackUrls
         {
             get => _callbackUrls ?? (_callbackUrls = new InputList<string>());
             set => _callbackUrls = value;
         }
 
-        /// <summary>
-        /// The client secret of the user pool client.
-        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
-        /// <summary>
-        /// The default redirect URI. Must be in the list of callback URLs.
-        /// </summary>
         [Input("defaultRedirectUri")]
         public Input<string>? DefaultRedirectUri { get; set; }
 
         [Input("explicitAuthFlows")]
         private InputList<string>? _explicitAuthFlows;
-
-        /// <summary>
-        /// List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY,  USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH).
-        /// </summary>
         public InputList<string> ExplicitAuthFlows
         {
             get => _explicitAuthFlows ?? (_explicitAuthFlows = new InputList<string>());
             set => _explicitAuthFlows = value;
         }
 
-        /// <summary>
-        /// Should an application secret be generated.
-        /// </summary>
         [Input("generateSecret")]
         public Input<bool>? GenerateSecret { get; set; }
 
         [Input("logoutUrls")]
         private InputList<string>? _logoutUrls;
-
-        /// <summary>
-        /// List of allowed logout URLs for the identity providers.
-        /// </summary>
         public InputList<string> LogoutUrls
         {
             get => _logoutUrls ?? (_logoutUrls = new InputList<string>());
             set => _logoutUrls = value;
         }
 
-        /// <summary>
-        /// The name of the application client.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
-        /// </summary>
         [Input("preventUserExistenceErrors")]
         public Input<string>? PreventUserExistenceErrors { get; set; }
 
         [Input("readAttributes")]
         private InputList<string>? _readAttributes;
-
-        /// <summary>
-        /// List of user pool attributes the application client can read from.
-        /// </summary>
         public InputList<string> ReadAttributes
         {
             get => _readAttributes ?? (_readAttributes = new InputList<string>());
             set => _readAttributes = value;
         }
 
-        /// <summary>
-        /// The time limit in days refresh tokens are valid for.
-        /// </summary>
         [Input("refreshTokenValidity")]
         public Input<int>? RefreshTokenValidity { get; set; }
 
         [Input("supportedIdentityProviders")]
         private InputList<string>? _supportedIdentityProviders;
-
-        /// <summary>
-        /// List of provider names for the identity providers that are supported on this client.
-        /// </summary>
         public InputList<string> SupportedIdentityProviders
         {
             get => _supportedIdentityProviders ?? (_supportedIdentityProviders = new InputList<string>());
             set => _supportedIdentityProviders = value;
         }
 
-        /// <summary>
-        /// The user pool the client belongs to.
-        /// </summary>
         [Input("userPoolId")]
         public Input<string>? UserPoolId { get; set; }
 
         [Input("writeAttributes")]
         private InputList<string>? _writeAttributes;
-
-        /// <summary>
-        /// List of user pool attributes the application client can write to.
-        /// </summary>
         public InputList<string> WriteAttributes
         {
             get => _writeAttributes ?? (_writeAttributes = new InputList<string>());

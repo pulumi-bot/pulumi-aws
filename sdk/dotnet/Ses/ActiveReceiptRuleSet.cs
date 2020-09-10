@@ -9,33 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Provides a resource to designate the active SES receipt rule set
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var main = new Aws.Ses.ActiveReceiptRuleSet("main", new Aws.Ses.ActiveReceiptRuleSetArgs
-    ///         {
-    ///             RuleSetName = "primary-rules",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ActiveReceiptRuleSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the rule set
-        /// </summary>
         [Output("ruleSetName")]
         public Output<string> RuleSetName { get; private set; } = null!;
 
@@ -85,9 +60,6 @@ namespace Pulumi.Aws.Ses
 
     public sealed class ActiveReceiptRuleSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the rule set
-        /// </summary>
         [Input("ruleSetName", required: true)]
         public Input<string> RuleSetName { get; set; } = null!;
 
@@ -98,9 +70,6 @@ namespace Pulumi.Aws.Ses
 
     public sealed class ActiveReceiptRuleSetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the rule set
-        /// </summary>
         [Input("ruleSetName")]
         public Input<string>? RuleSetName { get; set; }
 

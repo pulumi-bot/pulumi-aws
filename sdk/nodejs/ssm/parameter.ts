@@ -6,53 +6,6 @@ import * as utilities from "../utilities";
 
 import {ParameterType} from "./index";
 
-/**
- * Provides an SSM Parameter resource.
- *
- * ## Example Usage
- *
- * To store a basic string parameter:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const foo = new aws.ssm.Parameter("foo", {
- *     type: "String",
- *     value: "bar",
- * });
- * ```
- *
- * To store an encrypted string using the default SSM KMS key:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const _default = new aws.rds.Instance("default", {
- *     allocatedStorage: 10,
- *     storageType: "gp2",
- *     engine: "mysql",
- *     engineVersion: "5.7.16",
- *     instanceClass: "db.t2.micro",
- *     name: "mydb",
- *     username: "foo",
- *     password: _var.database_master_password,
- *     dbSubnetGroupName: "my_database_subnet_group",
- *     parameterGroupName: "default.mysql5.7",
- * });
- * const secret = new aws.ssm.Parameter("secret", {
- *     description: "The parameter description",
- *     type: "SecureString",
- *     value: _var.database_master_password,
- *     tags: {
- *         environment: _var.environment,
- *     },
- * });
- * ```
- *
- * > **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
- */
 export class Parameter extends pulumi.CustomResource {
     /**
      * Get an existing Parameter resource's state with the given name, ID, and optional extra
@@ -81,54 +34,17 @@ export class Parameter extends pulumi.CustomResource {
         return obj['__pulumiType'] === Parameter.__pulumiType;
     }
 
-    /**
-     * A regular expression used to validate the parameter value.
-     */
     public readonly allowedPattern!: pulumi.Output<string | undefined>;
-    /**
-     * The ARN of the parameter.
-     */
     public readonly arn!: pulumi.Output<string>;
-    /**
-     * The dataType of the parameter. Valid values: text and aws:ec2:image for AMI format, see the [Native parameter support for Amazon Machine Image IDs
-     * ](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
-     */
     public readonly dataType!: pulumi.Output<string>;
-    /**
-     * The description of the parameter.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The KMS key id or arn for encrypting a SecureString.
-     */
     public readonly keyId!: pulumi.Output<string>;
-    /**
-     * The name of the parameter. If the name contains a path (e.g. any forward slashes (`/`)), it must be fully qualified with a leading forward slash (`/`). For additional requirements and constraints, see the [AWS SSM User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html).
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Overwrite an existing parameter. If not specified, will default to `false` if the resource has not been created by this provider to avoid overwrite of existing resource and will default to `true` otherwise (lifecycle rules should then be used to manage the update behavior).
-     */
     public readonly overwrite!: pulumi.Output<boolean | undefined>;
-    /**
-     * A map of tags to assign to the object.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The tier of the parameter. If not specified, will default to `Standard`. Valid tiers are `Standard` and `Advanced`. For more information on parameter tiers, see the [AWS SSM Parameter tier comparison and guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html).
-     */
     public readonly tier!: pulumi.Output<string | undefined>;
-    /**
-     * The type of the parameter. Valid types are `String`, `StringList` and `SecureString`.
-     */
     public readonly type!: pulumi.Output<ParameterType>;
-    /**
-     * The value of the parameter.
-     */
     public readonly value!: pulumi.Output<string>;
-    /**
-     * The version of the parameter.
-     */
     public /*out*/ readonly version!: pulumi.Output<number>;
 
     /**
@@ -191,54 +107,17 @@ export class Parameter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Parameter resources.
  */
 export interface ParameterState {
-    /**
-     * A regular expression used to validate the parameter value.
-     */
     readonly allowedPattern?: pulumi.Input<string>;
-    /**
-     * The ARN of the parameter.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The dataType of the parameter. Valid values: text and aws:ec2:image for AMI format, see the [Native parameter support for Amazon Machine Image IDs
-     * ](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
-     */
     readonly dataType?: pulumi.Input<string>;
-    /**
-     * The description of the parameter.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The KMS key id or arn for encrypting a SecureString.
-     */
     readonly keyId?: pulumi.Input<string>;
-    /**
-     * The name of the parameter. If the name contains a path (e.g. any forward slashes (`/`)), it must be fully qualified with a leading forward slash (`/`). For additional requirements and constraints, see the [AWS SSM User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html).
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Overwrite an existing parameter. If not specified, will default to `false` if the resource has not been created by this provider to avoid overwrite of existing resource and will default to `true` otherwise (lifecycle rules should then be used to manage the update behavior).
-     */
     readonly overwrite?: pulumi.Input<boolean>;
-    /**
-     * A map of tags to assign to the object.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The tier of the parameter. If not specified, will default to `Standard`. Valid tiers are `Standard` and `Advanced`. For more information on parameter tiers, see the [AWS SSM Parameter tier comparison and guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html).
-     */
     readonly tier?: pulumi.Input<string>;
-    /**
-     * The type of the parameter. Valid types are `String`, `StringList` and `SecureString`.
-     */
     readonly type?: pulumi.Input<ParameterType>;
-    /**
-     * The value of the parameter.
-     */
     readonly value?: pulumi.Input<string>;
-    /**
-     * The version of the parameter.
-     */
     readonly version?: pulumi.Input<number>;
 }
 
@@ -246,49 +125,15 @@ export interface ParameterState {
  * The set of arguments for constructing a Parameter resource.
  */
 export interface ParameterArgs {
-    /**
-     * A regular expression used to validate the parameter value.
-     */
     readonly allowedPattern?: pulumi.Input<string>;
-    /**
-     * The ARN of the parameter.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The dataType of the parameter. Valid values: text and aws:ec2:image for AMI format, see the [Native parameter support for Amazon Machine Image IDs
-     * ](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
-     */
     readonly dataType?: pulumi.Input<string>;
-    /**
-     * The description of the parameter.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The KMS key id or arn for encrypting a SecureString.
-     */
     readonly keyId?: pulumi.Input<string>;
-    /**
-     * The name of the parameter. If the name contains a path (e.g. any forward slashes (`/`)), it must be fully qualified with a leading forward slash (`/`). For additional requirements and constraints, see the [AWS SSM User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html).
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Overwrite an existing parameter. If not specified, will default to `false` if the resource has not been created by this provider to avoid overwrite of existing resource and will default to `true` otherwise (lifecycle rules should then be used to manage the update behavior).
-     */
     readonly overwrite?: pulumi.Input<boolean>;
-    /**
-     * A map of tags to assign to the object.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The tier of the parameter. If not specified, will default to `Standard`. Valid tiers are `Standard` and `Advanced`. For more information on parameter tiers, see the [AWS SSM Parameter tier comparison and guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html).
-     */
     readonly tier?: pulumi.Input<string>;
-    /**
-     * The type of the parameter. Valid types are `String`, `StringList` and `SecureString`.
-     */
     readonly type: pulumi.Input<ParameterType>;
-    /**
-     * The value of the parameter.
-     */
     readonly value: pulumi.Input<string>;
 }

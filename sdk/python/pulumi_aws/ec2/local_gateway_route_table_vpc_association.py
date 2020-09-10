@@ -22,26 +22,9 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an EC2 Local Gateway Route Table VPC Association. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-local-gateways.html#vpc-associations).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_local_gateway_route_table = aws.ec2.get_local_gateway_route_table(outpost_arn="arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef")
-        example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.0.0.0/16")
-        example_local_gateway_route_table_vpc_association = aws.ec2.LocalGatewayRouteTableVpcAssociation("exampleLocalGatewayRouteTableVpcAssociation",
-            local_gateway_route_table_id=example_local_gateway_route_table.id,
-            vpc_id=example_vpc.id)
-        ```
-
+        Create a LocalGatewayRouteTableVpcAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] local_gateway_route_table_id: Identifier of EC2 Local Gateway Route Table.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
-        :param pulumi.Input[str] vpc_id: Identifier of EC2 VPC.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,9 +72,6 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] local_gateway_route_table_id: Identifier of EC2 Local Gateway Route Table.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
-        :param pulumi.Input[str] vpc_id: Identifier of EC2 VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,25 +91,16 @@ class LocalGatewayRouteTableVpcAssociation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="localGatewayRouteTableId")
     def local_gateway_route_table_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of EC2 Local Gateway Route Table.
-        """
         return pulumi.get(self, "local_gateway_route_table_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of EC2 VPC.
-        """
         return pulumi.get(self, "vpc_id")
 
     def translate_output_property(self, prop):

@@ -14,19 +14,12 @@ namespace Pulumi.Aws.Kinesis.Inputs
     {
         [Input("parameters")]
         private InputList<Inputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameterArgs>? _parameters;
-
-        /// <summary>
-        /// Array of processor parameters. More details are given below
-        /// </summary>
         public InputList<Inputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameterArgs>());
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// The type of processor. Valid Values: `Lambda`
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

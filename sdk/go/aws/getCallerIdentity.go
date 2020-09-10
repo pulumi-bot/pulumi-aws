@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the access to the effective Account ID, User ID, and ARN in
-// which this provider is authorized.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := aws.GetCallerIdentity(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("accountId", current.AccountId)
-// 		ctx.Export("callerArn", current.Arn)
-// 		ctx.Export("callerUser", current.UserId)
-// 		return nil
-// 	})
-// }
-// ```
 func GetCallerIdentity(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCallerIdentityResult, error) {
 	var rv GetCallerIdentityResult
 	err := ctx.Invoke("aws:index/getCallerIdentity:getCallerIdentity", nil, &rv, opts...)
@@ -44,12 +18,9 @@ func GetCallerIdentity(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCa
 
 // A collection of values returned by getCallerIdentity.
 type GetCallerIdentityResult struct {
-	// The AWS Account ID number of the account that owns or contains the calling entity.
 	AccountId string `pulumi:"accountId"`
-	// The AWS ARN associated with the calling entity.
-	Arn string `pulumi:"arn"`
+	Arn       string `pulumi:"arn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The unique identifier of the calling entity.
+	Id     string `pulumi:"id"`
 	UserId string `pulumi:"userId"`
 }

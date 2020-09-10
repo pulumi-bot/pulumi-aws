@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source can be used to fetch information about a specific
-// IAM role. By using this data source, you can reference IAM role
-// properties without having to hard code ARNs as input.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iam.LookupRole(ctx, &iam.LookupRoleArgs{
-// 			Name: "an_example_role_name",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	var rv LookupRoleResult
 	err := ctx.Invoke("aws:iam/getRole:getRole", args, &rv, opts...)
@@ -44,33 +18,22 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRole.
 type LookupRoleArgs struct {
-	// The friendly IAM role name to match.
-	Name string `pulumi:"name"`
-	// The tags attached to the role.
+	Name string            `pulumi:"name"`
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
-	// The Amazon Resource Name (ARN) specifying the role.
-	Arn string `pulumi:"arn"`
-	// The policy document associated with the role.
+	Arn              string `pulumi:"arn"`
 	AssumeRolePolicy string `pulumi:"assumeRolePolicy"`
-	// Creation date of the role in RFC 3339 format.
-	CreateDate string `pulumi:"createDate"`
-	// Description for the role.
-	Description string `pulumi:"description"`
+	CreateDate       string `pulumi:"createDate"`
+	Description      string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Maximum session duration.
-	MaxSessionDuration int    `pulumi:"maxSessionDuration"`
-	Name               string `pulumi:"name"`
-	// The path to the role.
-	Path string `pulumi:"path"`
-	// The ARN of the policy that is used to set the permissions boundary for the role.
-	PermissionsBoundary string `pulumi:"permissionsBoundary"`
-	// The tags attached to the role.
-	Tags map[string]string `pulumi:"tags"`
-	// The stable and unique string identifying the role.
-	UniqueId string `pulumi:"uniqueId"`
+	Id                  string            `pulumi:"id"`
+	MaxSessionDuration  int               `pulumi:"maxSessionDuration"`
+	Name                string            `pulumi:"name"`
+	Path                string            `pulumi:"path"`
+	PermissionsBoundary string            `pulumi:"permissionsBoundary"`
+	Tags                map[string]string `pulumi:"tags"`
+	UniqueId            string            `pulumi:"uniqueId"`
 }

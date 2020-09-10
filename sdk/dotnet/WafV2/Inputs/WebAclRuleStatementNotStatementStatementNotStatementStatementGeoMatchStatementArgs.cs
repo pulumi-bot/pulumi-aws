@@ -14,10 +14,6 @@ namespace Pulumi.Aws.WafV2.Inputs
     {
         [Input("countryCodes", required: true)]
         private InputList<string>? _countryCodes;
-
-        /// <summary>
-        /// An array of two-character country codes, for example, [ "US", "CN" ], from the alpha-2 country ISO codes of the `ISO 3166` international standard. See the [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchStatement.html) for valid values.
-        /// </summary>
         public InputList<string> CountryCodes
         {
             get => _countryCodes ?? (_countryCodes = new InputList<string>());

@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates and manages an AWS IoT Thing Type.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const foo = new aws.iot.ThingType("foo", {});
- * ```
- */
 export class ThingType extends pulumi.CustomResource {
     /**
      * Get an existing ThingType resource's state with the given name, ID, and optional extra
@@ -46,21 +34,9 @@ export class ThingType extends pulumi.CustomResource {
         return obj['__pulumiType'] === ThingType.__pulumiType;
     }
 
-    /**
-     * The ARN of the created AWS IoT Thing Type.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Whether the thing type is deprecated. If true, no new things could be associated with this type.
-     */
     public readonly deprecated!: pulumi.Output<boolean | undefined>;
-    /**
-     * The name of the thing type.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * , Configuration block that can contain the following properties of the thing type:
-     */
     public readonly properties!: pulumi.Output<outputs.iot.ThingTypeProperties | undefined>;
 
     /**
@@ -101,21 +77,9 @@ export class ThingType extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ThingType resources.
  */
 export interface ThingTypeState {
-    /**
-     * The ARN of the created AWS IoT Thing Type.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Whether the thing type is deprecated. If true, no new things could be associated with this type.
-     */
     readonly deprecated?: pulumi.Input<boolean>;
-    /**
-     * The name of the thing type.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * , Configuration block that can contain the following properties of the thing type:
-     */
     readonly properties?: pulumi.Input<inputs.iot.ThingTypeProperties>;
 }
 
@@ -123,16 +87,7 @@ export interface ThingTypeState {
  * The set of arguments for constructing a ThingType resource.
  */
 export interface ThingTypeArgs {
-    /**
-     * Whether the thing type is deprecated. If true, no new things could be associated with this type.
-     */
     readonly deprecated?: pulumi.Input<boolean>;
-    /**
-     * The name of the thing type.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * , Configuration block that can contain the following properties of the thing type:
-     */
     readonly properties?: pulumi.Input<inputs.iot.ThingTypeProperties>;
 }

@@ -4,73 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an RDS Aurora Cluster Endpoint.
- * You can refer to the [User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const _default = new aws.rds.Cluster("default", {
- *     clusterIdentifier: "aurora-cluster-demo",
- *     availabilityZones: [
- *         "us-west-2a",
- *         "us-west-2b",
- *         "us-west-2c",
- *     ],
- *     databaseName: "mydb",
- *     masterUsername: "foo",
- *     masterPassword: "bar",
- *     backupRetentionPeriod: 5,
- *     preferredBackupWindow: "07:00-09:00",
- * });
- * const test1 = new aws.rds.ClusterInstance("test1", {
- *     applyImmediately: true,
- *     clusterIdentifier: _default.id,
- *     identifier: "test1",
- *     instanceClass: "db.t2.small",
- *     engine: _default.engine,
- *     engineVersion: _default.engineVersion,
- * });
- * const test2 = new aws.rds.ClusterInstance("test2", {
- *     applyImmediately: true,
- *     clusterIdentifier: _default.id,
- *     identifier: "test2",
- *     instanceClass: "db.t2.small",
- *     engine: _default.engine,
- *     engineVersion: _default.engineVersion,
- * });
- * const test3 = new aws.rds.ClusterInstance("test3", {
- *     applyImmediately: true,
- *     clusterIdentifier: _default.id,
- *     identifier: "test3",
- *     instanceClass: "db.t2.small",
- *     engine: _default.engine,
- *     engineVersion: _default.engineVersion,
- * });
- * const eligible = new aws.rds.ClusterEndpoint("eligible", {
- *     clusterIdentifier: _default.id,
- *     clusterEndpointIdentifier: "reader",
- *     customEndpointType: "READER",
- *     excludedMembers: [
- *         test1.id,
- *         test2.id,
- *     ],
- * });
- * const static = new aws.rds.ClusterEndpoint("static", {
- *     clusterIdentifier: _default.id,
- *     clusterEndpointIdentifier: "static",
- *     customEndpointType: "READER",
- *     staticMembers: [
- *         test1.id,
- *         test3.id,
- *     ],
- * });
- * ```
- */
 export class ClusterEndpoint extends pulumi.CustomResource {
     /**
      * Get an existing ClusterEndpoint resource's state with the given name, ID, and optional extra
@@ -99,37 +32,13 @@ export class ClusterEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClusterEndpoint.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN) of cluster
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
-     */
     public readonly clusterEndpointIdentifier!: pulumi.Output<string>;
-    /**
-     * The cluster identifier.
-     */
     public readonly clusterIdentifier!: pulumi.Output<string>;
-    /**
-     * The type of the endpoint. One of: READER , ANY .
-     */
     public readonly customEndpointType!: pulumi.Output<string>;
-    /**
-     * A custom endpoint for the Aurora cluster
-     */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
-    /**
-     * List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `staticMembers`.
-     */
     public readonly excludedMembers!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excludedMembers`.
-     */
     public readonly staticMembers!: pulumi.Output<string[] | undefined>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -187,37 +96,13 @@ export class ClusterEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClusterEndpoint resources.
  */
 export interface ClusterEndpointState {
-    /**
-     * Amazon Resource Name (ARN) of cluster
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
-     */
     readonly clusterEndpointIdentifier?: pulumi.Input<string>;
-    /**
-     * The cluster identifier.
-     */
     readonly clusterIdentifier?: pulumi.Input<string>;
-    /**
-     * The type of the endpoint. One of: READER , ANY .
-     */
     readonly customEndpointType?: pulumi.Input<string>;
-    /**
-     * A custom endpoint for the Aurora cluster
-     */
     readonly endpoint?: pulumi.Input<string>;
-    /**
-     * List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `staticMembers`.
-     */
     readonly excludedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excludedMembers`.
-     */
     readonly staticMembers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -225,28 +110,10 @@ export interface ClusterEndpointState {
  * The set of arguments for constructing a ClusterEndpoint resource.
  */
 export interface ClusterEndpointArgs {
-    /**
-     * The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
-     */
     readonly clusterEndpointIdentifier: pulumi.Input<string>;
-    /**
-     * The cluster identifier.
-     */
     readonly clusterIdentifier: pulumi.Input<string>;
-    /**
-     * The type of the endpoint. One of: READER , ANY .
-     */
     readonly customEndpointType: pulumi.Input<string>;
-    /**
-     * List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `staticMembers`.
-     */
     readonly excludedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excludedMembers`.
-     */
     readonly staticMembers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

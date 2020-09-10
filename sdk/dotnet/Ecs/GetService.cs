@@ -11,34 +11,6 @@ namespace Pulumi.Aws.Ecs
 {
     public static class GetService
     {
-        /// <summary>
-        /// The ECS Service data source allows access to details of a specific
-        /// Service within a AWS ECS Cluster.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Ecs.GetService.InvokeAsync(new Aws.Ecs.GetServiceArgs
-        ///         {
-        ///             ServiceName = "example",
-        ///             ClusterArn = data.Aws_ecs_cluster.Example.Arn,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("aws:ecs/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
     }
@@ -46,15 +18,9 @@ namespace Pulumi.Aws.Ecs
 
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The arn of the ECS Cluster
-        /// </summary>
         [Input("clusterArn", required: true)]
         public string ClusterArn { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the ECS Service
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -67,31 +33,16 @@ namespace Pulumi.Aws.Ecs
     [OutputType]
     public sealed class GetServiceResult
     {
-        /// <summary>
-        /// The ARN of the ECS Service
-        /// </summary>
         public readonly string Arn;
         public readonly string ClusterArn;
-        /// <summary>
-        /// The number of tasks for the ECS Service
-        /// </summary>
         public readonly int DesiredCount;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The launch type for the ECS Service
-        /// </summary>
         public readonly string LaunchType;
-        /// <summary>
-        /// The scheduling strategy for the ECS Service
-        /// </summary>
         public readonly string SchedulingStrategy;
         public readonly string ServiceName;
-        /// <summary>
-        /// The family for the latest ACTIVE revision
-        /// </summary>
         public readonly string TaskDefinition;
 
         [OutputConstructor]

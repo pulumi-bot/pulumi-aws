@@ -9,93 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WafV2
 {
-    /// <summary>
-    /// Creates a WAFv2 Web ACL Association.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRestApi = new Aws.ApiGateway.RestApi("exampleRestApi", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///         });
-    ///         var exampleResource = new Aws.ApiGateway.Resource("exampleResource", new Aws.ApiGateway.ResourceArgs
-    ///         {
-    ///             RestApi = exampleRestApi.Id,
-    ///             ParentId = exampleRestApi.RootResourceId,
-    ///             PathPart = "mytestresource",
-    ///         });
-    ///         var exampleMethod = new Aws.ApiGateway.Method("exampleMethod", new Aws.ApiGateway.MethodArgs
-    ///         {
-    ///             RestApi = exampleRestApi.Id,
-    ///             ResourceId = exampleResource.Id,
-    ///             HttpMethod = "GET",
-    ///             Authorization = "NONE",
-    ///         });
-    ///         var exampleIntegration = new Aws.ApiGateway.Integration("exampleIntegration", new Aws.ApiGateway.IntegrationArgs
-    ///         {
-    ///             RestApi = exampleRestApi.Id,
-    ///             ResourceId = exampleResource.Id,
-    ///             HttpMethod = exampleMethod.HttpMethod,
-    ///             Type = "MOCK",
-    ///         });
-    ///         var exampleDeployment = new Aws.ApiGateway.Deployment("exampleDeployment", new Aws.ApiGateway.DeploymentArgs
-    ///         {
-    ///             RestApi = exampleRestApi.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleIntegration,
-    ///             },
-    ///         });
-    ///         var exampleStage = new Aws.ApiGateway.Stage("exampleStage", new Aws.ApiGateway.StageArgs
-    ///         {
-    ///             StageName = "test",
-    ///             RestApi = exampleRestApi.Id,
-    ///             Deployment = exampleDeployment.Id,
-    ///         });
-    ///         var exampleWebAcl = new Aws.WafV2.WebAcl("exampleWebAcl", new Aws.WafV2.WebAclArgs
-    ///         {
-    ///             Scope = "REGIONAL",
-    ///             DefaultAction = new Aws.WafV2.Inputs.WebAclDefaultActionArgs
-    ///             {
-    ///                 Allow = ,
-    ///             },
-    ///             VisibilityConfig = new Aws.WafV2.Inputs.WebAclVisibilityConfigArgs
-    ///             {
-    ///                 CloudwatchMetricsEnabled = false,
-    ///                 MetricName = "friendly-metric-name",
-    ///                 SampledRequestsEnabled = false,
-    ///             },
-    ///         });
-    ///         var exampleWebAclAssociation = new Aws.WafV2.WebAclAssociation("exampleWebAclAssociation", new Aws.WafV2.WebAclAssociationArgs
-    ///         {
-    ///             ResourceArn = exampleStage.Arn,
-    ///             WebAclArn = exampleWebAcl.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class WebAclAssociation : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-        /// </summary>
         [Output("resourceArn")]
         public Output<string> ResourceArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-        /// </summary>
         [Output("webAclArn")]
         public Output<string> WebAclArn { get; private set; } = null!;
 
@@ -145,15 +63,9 @@ namespace Pulumi.Aws.WafV2
 
     public sealed class WebAclAssociationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-        /// </summary>
         [Input("resourceArn", required: true)]
         public Input<string> ResourceArn { get; set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-        /// </summary>
         [Input("webAclArn", required: true)]
         public Input<string> WebAclArn { get; set; } = null!;
 
@@ -164,15 +76,9 @@ namespace Pulumi.Aws.WafV2
 
     public sealed class WebAclAssociationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer or an Amazon API Gateway stage.
-        /// </summary>
         [Input("resourceArn")]
         public Input<string>? ResourceArn { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
-        /// </summary>
         [Input("webAclArn")]
         public Input<string>? WebAclArn { get; set; }
 

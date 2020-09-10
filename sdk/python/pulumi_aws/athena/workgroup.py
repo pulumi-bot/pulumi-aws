@@ -27,35 +27,9 @@ class Workgroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Athena Workgroup.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.athena.Workgroup("example", configuration=aws.athena.WorkgroupConfigurationArgs(
-            enforce_workgroup_configuration=True,
-            publish_cloudwatch_metrics_enabled=True,
-            result_configuration=aws.athena.WorkgroupConfigurationResultConfigurationArgs(
-                output_location="s3://{aws_s3_bucket.example.bucket}/output/",
-                encryption_configuration={
-                    "encryptionOption": "SSE_KMS",
-                    "kms_key_arn": aws_kms_key["example"]["arn"],
-                },
-            ),
-        ))
-        ```
-
+        Create a Workgroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WorkgroupConfigurationArgs']] configuration: Configuration block with various settings for the workgroup. Documented below.
-        :param pulumi.Input[str] description: Description of the workgroup.
-        :param pulumi.Input[bool] force_destroy: The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-        :param pulumi.Input[str] name: Name of the workgroup.
-        :param pulumi.Input[str] state: State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags for the workgroup.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,13 +79,6 @@ class Workgroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the workgroup
-        :param pulumi.Input[pulumi.InputType['WorkgroupConfigurationArgs']] configuration: Configuration block with various settings for the workgroup. Documented below.
-        :param pulumi.Input[str] description: Description of the workgroup.
-        :param pulumi.Input[bool] force_destroy: The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-        :param pulumi.Input[str] name: Name of the workgroup.
-        :param pulumi.Input[str] state: State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags for the workgroup.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -129,57 +96,36 @@ class Workgroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the workgroup
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def configuration(self) -> pulumi.Output[Optional['outputs.WorkgroupConfiguration']]:
-        """
-        Configuration block with various settings for the workgroup. Documented below.
-        """
         return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the workgroup.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-        """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the workgroup.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[str]]:
-        """
-        State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags for the workgroup.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

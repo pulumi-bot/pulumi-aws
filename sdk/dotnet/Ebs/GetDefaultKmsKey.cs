@@ -11,35 +11,6 @@ namespace Pulumi.Aws.Ebs
 {
     public static class GetDefaultKmsKey
     {
-        /// <summary>
-        /// Use this data source to get the default EBS encryption KMS key in the current region.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Aws.Ebs.GetDefaultKmsKey.InvokeAsync());
-        ///         var example = new Aws.Ebs.Volume("example", new Aws.Ebs.VolumeArgs
-        ///         {
-        ///             AvailabilityZone = "us-west-2a",
-        ///             Encrypted = true,
-        ///             KmsKeyId = current.Apply(current =&gt; current.KeyArn),
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDefaultKmsKeyResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultKmsKeyResult>("aws:ebs/getDefaultKmsKey:getDefaultKmsKey", InvokeArgs.Empty, options.WithVersion());
     }
@@ -52,9 +23,6 @@ namespace Pulumi.Aws.Ebs
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the default KMS key uses to encrypt an EBS volume in this region when no key is specified in an API call that creates the volume and encryption by default is enabled.
-        /// </summary>
         public readonly string KeyArn;
 
         [OutputConstructor]

@@ -11,33 +11,6 @@ namespace Pulumi.Aws.Transfer
 {
     public static class GetServer
     {
-        /// <summary>
-        /// Use this data source to get the ARN of an AWS Transfer Server for use in other
-        /// resources.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Transfer.GetServer.InvokeAsync(new Aws.Transfer.GetServerArgs
-        ///         {
-        ///             ServerId = "s-1234567",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("aws:transfer/getServer:getServer", args ?? new GetServerArgs(), options.WithVersion());
     }
@@ -45,9 +18,6 @@ namespace Pulumi.Aws.Transfer
 
     public sealed class GetServerArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID for an SFTP server.
-        /// </summary>
         [Input("serverId", required: true)]
         public string ServerId { get; set; } = null!;
 
@@ -60,34 +30,16 @@ namespace Pulumi.Aws.Transfer
     [OutputType]
     public sealed class GetServerResult
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN) of Transfer Server
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// The endpoint of the Transfer Server (e.g. `s-12345678.server.transfer.REGION.amazonaws.com`)
-        /// </summary>
         public readonly string Endpoint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice.
-        /// </summary>
         public readonly string IdentityProviderType;
-        /// <summary>
-        /// Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identity_provider_type` of `API_GATEWAY`.
-        /// </summary>
         public readonly string InvocationRole;
-        /// <summary>
-        /// Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
-        /// </summary>
         public readonly string LoggingRole;
         public readonly string ServerId;
-        /// <summary>
-        /// URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
-        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

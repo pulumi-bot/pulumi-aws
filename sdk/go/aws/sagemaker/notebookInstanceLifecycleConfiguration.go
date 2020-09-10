@@ -9,18 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a lifecycle configuration for SageMaker Notebook Instances.
 type NotebookInstanceLifecycleConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
+	Arn      pulumi.StringOutput    `pulumi:"arn"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
 	OnCreate pulumi.StringPtrOutput `pulumi:"onCreate"`
-	// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-	OnStart pulumi.StringPtrOutput `pulumi:"onStart"`
+	OnStart  pulumi.StringPtrOutput `pulumi:"onStart"`
 }
 
 // NewNotebookInstanceLifecycleConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -51,25 +46,17 @@ func GetNotebookInstanceLifecycleConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NotebookInstanceLifecycleConfiguration resources.
 type notebookInstanceLifecycleConfigurationState struct {
-	// The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-	Arn *string `pulumi:"arn"`
-	// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
+	Arn      *string `pulumi:"arn"`
+	Name     *string `pulumi:"name"`
 	OnCreate *string `pulumi:"onCreate"`
-	// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-	OnStart *string `pulumi:"onStart"`
+	OnStart  *string `pulumi:"onStart"`
 }
 
 type NotebookInstanceLifecycleConfigurationState struct {
-	// The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-	Arn pulumi.StringPtrInput
-	// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
+	Arn      pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
 	OnCreate pulumi.StringPtrInput
-	// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-	OnStart pulumi.StringPtrInput
+	OnStart  pulumi.StringPtrInput
 }
 
 func (NotebookInstanceLifecycleConfigurationState) ElementType() reflect.Type {
@@ -77,22 +64,16 @@ func (NotebookInstanceLifecycleConfigurationState) ElementType() reflect.Type {
 }
 
 type notebookInstanceLifecycleConfigurationArgs struct {
-	// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
+	Name     *string `pulumi:"name"`
 	OnCreate *string `pulumi:"onCreate"`
-	// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-	OnStart *string `pulumi:"onStart"`
+	OnStart  *string `pulumi:"onStart"`
 }
 
 // The set of arguments for constructing a NotebookInstanceLifecycleConfiguration resource.
 type NotebookInstanceLifecycleConfigurationArgs struct {
-	// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
+	Name     pulumi.StringPtrInput
 	OnCreate pulumi.StringPtrInput
-	// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-	OnStart pulumi.StringPtrInput
+	OnStart  pulumi.StringPtrInput
 }
 
 func (NotebookInstanceLifecycleConfigurationArgs) ElementType() reflect.Type {

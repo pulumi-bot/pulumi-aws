@@ -9,58 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.LightSail
 {
-    /// <summary>
-    /// Provides a static IP address attachment - relationship between a Lightsail static IP &amp; Lightsail instance.
-    /// 
-    /// &gt; **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testStaticIp = new Aws.LightSail.StaticIp("testStaticIp", new Aws.LightSail.StaticIpArgs
-    ///         {
-    ///         });
-    ///         var testInstance = new Aws.LightSail.Instance("testInstance", new Aws.LightSail.InstanceArgs
-    ///         {
-    ///             AvailabilityZone = "us-east-1b",
-    ///             BlueprintId = "string",
-    ///             BundleId = "string",
-    ///             KeyPairName = "some_key_name",
-    ///         });
-    ///         var testStaticIpAttachment = new Aws.LightSail.StaticIpAttachment("testStaticIpAttachment", new Aws.LightSail.StaticIpAttachmentArgs
-    ///         {
-    ///             StaticIpName = testStaticIp.Id,
-    ///             InstanceName = testInstance.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class StaticIpAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the Lightsail instance to attach the IP to
-        /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
-        /// <summary>
-        /// The allocated static IP address
-        /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the allocated static IP
-        /// </summary>
         [Output("staticIpName")]
         public Output<string> StaticIpName { get; private set; } = null!;
 
@@ -110,15 +66,9 @@ namespace Pulumi.Aws.LightSail
 
     public sealed class StaticIpAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the Lightsail instance to attach the IP to
-        /// </summary>
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the allocated static IP
-        /// </summary>
         [Input("staticIpName", required: true)]
         public Input<string> StaticIpName { get; set; } = null!;
 
@@ -129,21 +79,12 @@ namespace Pulumi.Aws.LightSail
 
     public sealed class StaticIpAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the Lightsail instance to attach the IP to
-        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
-        /// <summary>
-        /// The allocated static IP address
-        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
-        /// <summary>
-        /// The name of the allocated static IP
-        /// </summary>
         [Input("staticIpName")]
         public Input<string>? StaticIpName { get; set; }
 

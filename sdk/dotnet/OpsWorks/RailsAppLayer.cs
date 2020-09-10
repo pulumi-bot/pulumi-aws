@@ -9,63 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.OpsWorks
 {
-    /// <summary>
-    /// Provides an OpsWorks Ruby on Rails application layer resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new Aws.OpsWorks.RailsAppLayer("app", new Aws.OpsWorks.RailsAppLayerArgs
-    ///         {
-    ///             StackId = aws_opsworks_stack.Main.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RailsAppLayer : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Keyword for the app server to use. Defaults to "apache_passenger".
-        /// </summary>
         [Output("appServer")]
         public Output<string?> AppServer { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon Resource Name(ARN) of the layer.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to automatically assign an elastic IP address to the layer's instances.
-        /// </summary>
         [Output("autoAssignElasticIps")]
         public Output<bool?> AutoAssignElasticIps { get; private set; } = null!;
 
-        /// <summary>
-        /// For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-        /// </summary>
         [Output("autoAssignPublicIps")]
         public Output<bool?> AutoAssignPublicIps { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enable auto-healing for the layer.
-        /// </summary>
         [Output("autoHealing")]
         public Output<bool?> AutoHealing { get; private set; } = null!;
 
-        /// <summary>
-        /// When OpsWorks is managing Bundler, which version to use. Defaults to "1.5.3".
-        /// </summary>
         [Output("bundlerVersion")]
         public Output<string?> BundlerVersion { get; private set; } = null!;
 
@@ -75,21 +35,12 @@ namespace Pulumi.Aws.OpsWorks
         [Output("customDeployRecipes")]
         public Output<ImmutableArray<string>> CustomDeployRecipes { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of an IAM profile that will be used for the layer's instances.
-        /// </summary>
         [Output("customInstanceProfileArn")]
         public Output<string?> CustomInstanceProfileArn { get; private set; } = null!;
 
-        /// <summary>
-        /// Custom JSON attributes to apply to the layer.
-        /// </summary>
         [Output("customJson")]
         public Output<string?> CustomJson { get; private set; } = null!;
 
-        /// <summary>
-        /// Ids for a set of security groups to apply to the layer's instances.
-        /// </summary>
         [Output("customSecurityGroupIds")]
         public Output<ImmutableArray<string>> CustomSecurityGroupIds { get; private set; } = null!;
 
@@ -102,87 +53,45 @@ namespace Pulumi.Aws.OpsWorks
         [Output("customUndeployRecipes")]
         public Output<ImmutableArray<string>> CustomUndeployRecipes { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enable Elastic Load Balancing connection draining.
-        /// </summary>
         [Output("drainElbOnShutdown")]
         public Output<bool?> DrainElbOnShutdown { get; private set; } = null!;
 
-        /// <summary>
-        /// `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-        /// </summary>
         [Output("ebsVolumes")]
         public Output<ImmutableArray<Outputs.RailsAppLayerEbsVolume>> EbsVolumes { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of an Elastic Load Balancer to attach to this layer
-        /// </summary>
         [Output("elasticLoadBalancer")]
         public Output<string?> ElasticLoadBalancer { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to install OS and package updates on each instance when it boots.
-        /// </summary>
         [Output("installUpdatesOnBoot")]
         public Output<bool?> InstallUpdatesOnBoot { get; private set; } = null!;
 
-        /// <summary>
-        /// The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-        /// </summary>
         [Output("instanceShutdownTimeout")]
         public Output<int?> InstanceShutdownTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether OpsWorks should manage bundler. On by default.
-        /// </summary>
         [Output("manageBundler")]
         public Output<bool?> ManageBundler { get; private set; } = null!;
 
-        /// <summary>
-        /// A human-readable name for the layer.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The version of Passenger to use. Defaults to "4.0.46".
-        /// </summary>
         [Output("passengerVersion")]
         public Output<string?> PassengerVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The version of Ruby to use. Defaults to "2.0.0".
-        /// </summary>
         [Output("rubyVersion")]
         public Output<string?> RubyVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The version of RubyGems to use. Defaults to "2.2.2".
-        /// </summary>
         [Output("rubygemsVersion")]
         public Output<string?> RubygemsVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the stack the layer will belong to.
-        /// </summary>
         [Output("stackId")]
         public Output<string> StackId { get; private set; } = null!;
 
-        /// <summary>
-        /// Names of a set of system packages to install on the layer's instances.
-        /// </summary>
         [Output("systemPackages")]
         public Output<ImmutableArray<string>> SystemPackages { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to use EBS-optimized instances.
-        /// </summary>
         [Output("useEbsOptimizedInstances")]
         public Output<bool?> UseEbsOptimizedInstances { get; private set; } = null!;
 
@@ -232,33 +141,18 @@ namespace Pulumi.Aws.OpsWorks
 
     public sealed class RailsAppLayerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Keyword for the app server to use. Defaults to "apache_passenger".
-        /// </summary>
         [Input("appServer")]
         public Input<string>? AppServer { get; set; }
 
-        /// <summary>
-        /// Whether to automatically assign an elastic IP address to the layer's instances.
-        /// </summary>
         [Input("autoAssignElasticIps")]
         public Input<bool>? AutoAssignElasticIps { get; set; }
 
-        /// <summary>
-        /// For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-        /// </summary>
         [Input("autoAssignPublicIps")]
         public Input<bool>? AutoAssignPublicIps { get; set; }
 
-        /// <summary>
-        /// Whether to enable auto-healing for the layer.
-        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
-        /// <summary>
-        /// When OpsWorks is managing Bundler, which version to use. Defaults to "1.5.3".
-        /// </summary>
         [Input("bundlerVersion")]
         public Input<string>? BundlerVersion { get; set; }
 
@@ -278,24 +172,14 @@ namespace Pulumi.Aws.OpsWorks
             set => _customDeployRecipes = value;
         }
 
-        /// <summary>
-        /// The ARN of an IAM profile that will be used for the layer's instances.
-        /// </summary>
         [Input("customInstanceProfileArn")]
         public Input<string>? CustomInstanceProfileArn { get; set; }
 
-        /// <summary>
-        /// Custom JSON attributes to apply to the layer.
-        /// </summary>
         [Input("customJson")]
         public Input<string>? CustomJson { get; set; }
 
         [Input("customSecurityGroupIds")]
         private InputList<string>? _customSecurityGroupIds;
-
-        /// <summary>
-        /// Ids for a set of security groups to apply to the layer's instances.
-        /// </summary>
         public InputList<string> CustomSecurityGroupIds
         {
             get => _customSecurityGroupIds ?? (_customSecurityGroupIds = new InputList<string>());
@@ -326,84 +210,46 @@ namespace Pulumi.Aws.OpsWorks
             set => _customUndeployRecipes = value;
         }
 
-        /// <summary>
-        /// Whether to enable Elastic Load Balancing connection draining.
-        /// </summary>
         [Input("drainElbOnShutdown")]
         public Input<bool>? DrainElbOnShutdown { get; set; }
 
         [Input("ebsVolumes")]
         private InputList<Inputs.RailsAppLayerEbsVolumeArgs>? _ebsVolumes;
-
-        /// <summary>
-        /// `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-        /// </summary>
         public InputList<Inputs.RailsAppLayerEbsVolumeArgs> EbsVolumes
         {
             get => _ebsVolumes ?? (_ebsVolumes = new InputList<Inputs.RailsAppLayerEbsVolumeArgs>());
             set => _ebsVolumes = value;
         }
 
-        /// <summary>
-        /// Name of an Elastic Load Balancer to attach to this layer
-        /// </summary>
         [Input("elasticLoadBalancer")]
         public Input<string>? ElasticLoadBalancer { get; set; }
 
-        /// <summary>
-        /// Whether to install OS and package updates on each instance when it boots.
-        /// </summary>
         [Input("installUpdatesOnBoot")]
         public Input<bool>? InstallUpdatesOnBoot { get; set; }
 
-        /// <summary>
-        /// The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-        /// </summary>
         [Input("instanceShutdownTimeout")]
         public Input<int>? InstanceShutdownTimeout { get; set; }
 
-        /// <summary>
-        /// Whether OpsWorks should manage bundler. On by default.
-        /// </summary>
         [Input("manageBundler")]
         public Input<bool>? ManageBundler { get; set; }
 
-        /// <summary>
-        /// A human-readable name for the layer.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The version of Passenger to use. Defaults to "4.0.46".
-        /// </summary>
         [Input("passengerVersion")]
         public Input<string>? PassengerVersion { get; set; }
 
-        /// <summary>
-        /// The version of Ruby to use. Defaults to "2.0.0".
-        /// </summary>
         [Input("rubyVersion")]
         public Input<string>? RubyVersion { get; set; }
 
-        /// <summary>
-        /// The version of RubyGems to use. Defaults to "2.2.2".
-        /// </summary>
         [Input("rubygemsVersion")]
         public Input<string>? RubygemsVersion { get; set; }
 
-        /// <summary>
-        /// The id of the stack the layer will belong to.
-        /// </summary>
         [Input("stackId", required: true)]
         public Input<string> StackId { get; set; } = null!;
 
         [Input("systemPackages")]
         private InputList<string>? _systemPackages;
-
-        /// <summary>
-        /// Names of a set of system packages to install on the layer's instances.
-        /// </summary>
         public InputList<string> SystemPackages
         {
             get => _systemPackages ?? (_systemPackages = new InputList<string>());
@@ -412,19 +258,12 @@ namespace Pulumi.Aws.OpsWorks
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Whether to use EBS-optimized instances.
-        /// </summary>
         [Input("useEbsOptimizedInstances")]
         public Input<bool>? UseEbsOptimizedInstances { get; set; }
 
@@ -435,39 +274,21 @@ namespace Pulumi.Aws.OpsWorks
 
     public sealed class RailsAppLayerState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Keyword for the app server to use. Defaults to "apache_passenger".
-        /// </summary>
         [Input("appServer")]
         public Input<string>? AppServer { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name(ARN) of the layer.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Whether to automatically assign an elastic IP address to the layer's instances.
-        /// </summary>
         [Input("autoAssignElasticIps")]
         public Input<bool>? AutoAssignElasticIps { get; set; }
 
-        /// <summary>
-        /// For stacks belonging to a VPC, whether to automatically assign a public IP address to each of the layer's instances.
-        /// </summary>
         [Input("autoAssignPublicIps")]
         public Input<bool>? AutoAssignPublicIps { get; set; }
 
-        /// <summary>
-        /// Whether to enable auto-healing for the layer.
-        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
-        /// <summary>
-        /// When OpsWorks is managing Bundler, which version to use. Defaults to "1.5.3".
-        /// </summary>
         [Input("bundlerVersion")]
         public Input<string>? BundlerVersion { get; set; }
 
@@ -487,24 +308,14 @@ namespace Pulumi.Aws.OpsWorks
             set => _customDeployRecipes = value;
         }
 
-        /// <summary>
-        /// The ARN of an IAM profile that will be used for the layer's instances.
-        /// </summary>
         [Input("customInstanceProfileArn")]
         public Input<string>? CustomInstanceProfileArn { get; set; }
 
-        /// <summary>
-        /// Custom JSON attributes to apply to the layer.
-        /// </summary>
         [Input("customJson")]
         public Input<string>? CustomJson { get; set; }
 
         [Input("customSecurityGroupIds")]
         private InputList<string>? _customSecurityGroupIds;
-
-        /// <summary>
-        /// Ids for a set of security groups to apply to the layer's instances.
-        /// </summary>
         public InputList<string> CustomSecurityGroupIds
         {
             get => _customSecurityGroupIds ?? (_customSecurityGroupIds = new InputList<string>());
@@ -535,84 +346,46 @@ namespace Pulumi.Aws.OpsWorks
             set => _customUndeployRecipes = value;
         }
 
-        /// <summary>
-        /// Whether to enable Elastic Load Balancing connection draining.
-        /// </summary>
         [Input("drainElbOnShutdown")]
         public Input<bool>? DrainElbOnShutdown { get; set; }
 
         [Input("ebsVolumes")]
         private InputList<Inputs.RailsAppLayerEbsVolumeGetArgs>? _ebsVolumes;
-
-        /// <summary>
-        /// `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-        /// </summary>
         public InputList<Inputs.RailsAppLayerEbsVolumeGetArgs> EbsVolumes
         {
             get => _ebsVolumes ?? (_ebsVolumes = new InputList<Inputs.RailsAppLayerEbsVolumeGetArgs>());
             set => _ebsVolumes = value;
         }
 
-        /// <summary>
-        /// Name of an Elastic Load Balancer to attach to this layer
-        /// </summary>
         [Input("elasticLoadBalancer")]
         public Input<string>? ElasticLoadBalancer { get; set; }
 
-        /// <summary>
-        /// Whether to install OS and package updates on each instance when it boots.
-        /// </summary>
         [Input("installUpdatesOnBoot")]
         public Input<bool>? InstallUpdatesOnBoot { get; set; }
 
-        /// <summary>
-        /// The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
-        /// </summary>
         [Input("instanceShutdownTimeout")]
         public Input<int>? InstanceShutdownTimeout { get; set; }
 
-        /// <summary>
-        /// Whether OpsWorks should manage bundler. On by default.
-        /// </summary>
         [Input("manageBundler")]
         public Input<bool>? ManageBundler { get; set; }
 
-        /// <summary>
-        /// A human-readable name for the layer.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The version of Passenger to use. Defaults to "4.0.46".
-        /// </summary>
         [Input("passengerVersion")]
         public Input<string>? PassengerVersion { get; set; }
 
-        /// <summary>
-        /// The version of Ruby to use. Defaults to "2.0.0".
-        /// </summary>
         [Input("rubyVersion")]
         public Input<string>? RubyVersion { get; set; }
 
-        /// <summary>
-        /// The version of RubyGems to use. Defaults to "2.2.2".
-        /// </summary>
         [Input("rubygemsVersion")]
         public Input<string>? RubygemsVersion { get; set; }
 
-        /// <summary>
-        /// The id of the stack the layer will belong to.
-        /// </summary>
         [Input("stackId")]
         public Input<string>? StackId { get; set; }
 
         [Input("systemPackages")]
         private InputList<string>? _systemPackages;
-
-        /// <summary>
-        /// Names of a set of system packages to install on the layer's instances.
-        /// </summary>
         public InputList<string> SystemPackages
         {
             get => _systemPackages ?? (_systemPackages = new InputList<string>());
@@ -621,19 +394,12 @@ namespace Pulumi.Aws.OpsWorks
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Whether to use EBS-optimized instances.
-        /// </summary>
         [Input("useEbsOptimizedInstances")]
         public Input<bool>? UseEbsOptimizedInstances { get; set; }
 

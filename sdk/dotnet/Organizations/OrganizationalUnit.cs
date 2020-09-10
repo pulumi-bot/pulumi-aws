@@ -9,51 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Organizations
 {
-    /// <summary>
-    /// Provides a resource to create an organizational unit.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Organizations.OrganizationalUnit("example", new Aws.Organizations.OrganizationalUnitArgs
-    ///         {
-    ///             ParentId = aws_organizations_organization.Example.Roots[0].Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class OrganizationalUnit : Pulumi.CustomResource
     {
-        /// <summary>
-        /// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-        /// </summary>
         [Output("accounts")]
         public Output<ImmutableArray<Outputs.OrganizationalUnitAccount>> Accounts { get; private set; } = null!;
 
-        /// <summary>
-        /// ARN of the organizational unit
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name for the organizational unit
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the parent organizational unit, which may be the root
-        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
@@ -103,15 +69,9 @@ namespace Pulumi.Aws.Organizations
 
     public sealed class OrganizationalUnitArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name for the organizational unit
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// ID of the parent organizational unit, which may be the root
-        /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
 
@@ -124,31 +84,18 @@ namespace Pulumi.Aws.Organizations
     {
         [Input("accounts")]
         private InputList<Inputs.OrganizationalUnitAccountGetArgs>? _accounts;
-
-        /// <summary>
-        /// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-        /// </summary>
         public InputList<Inputs.OrganizationalUnitAccountGetArgs> Accounts
         {
             get => _accounts ?? (_accounts = new InputList<Inputs.OrganizationalUnitAccountGetArgs>());
             set => _accounts = value;
         }
 
-        /// <summary>
-        /// ARN of the organizational unit
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name for the organizational unit
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// ID of the parent organizational unit, which may be the root
-        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 

@@ -9,62 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.GameLift
 {
-    /// <summary>
-    /// Provides a Gamelift Alias resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.GameLift.Alias("example", new Aws.GameLift.AliasArgs
-    ///         {
-    ///             Description = "Example Description",
-    ///             RoutingStrategy = new Aws.GameLift.Inputs.AliasRoutingStrategyArgs
-    ///             {
-    ///                 Message = "Example Message",
-    ///                 Type = "TERMINAL",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Alias ARN.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the alias.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the alias.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies the fleet and/or routing type to use for the alias.
-        /// </summary>
         [Output("routingStrategy")]
         public Output<Outputs.AliasRoutingStrategy> RoutingStrategy { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -114,30 +72,17 @@ namespace Pulumi.Aws.GameLift
 
     public sealed class AliasArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description of the alias.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name of the alias.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies the fleet and/or routing type to use for the alias.
-        /// </summary>
         [Input("routingStrategy", required: true)]
         public Input<Inputs.AliasRoutingStrategyArgs> RoutingStrategy { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -151,36 +96,20 @@ namespace Pulumi.Aws.GameLift
 
     public sealed class AliasState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Alias ARN.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// Description of the alias.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name of the alias.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies the fleet and/or routing type to use for the alias.
-        /// </summary>
         [Input("routingStrategy")]
         public Input<Inputs.AliasRoutingStrategyGetArgs>? RoutingStrategy { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

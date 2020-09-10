@@ -4,50 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Cognito User Pool Domain resource.
- *
- * ## Example Usage
- * ### Amazon Cognito domain
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.cognito.UserPool("example", {});
- * const main = new aws.cognito.UserPoolDomain("main", {
- *     domain: "example-domain",
- *     userPoolId: example.id,
- * });
- * ```
- * ### Custom Cognito domain
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleUserPool = new aws.cognito.UserPool("example", {});
- * const main = new aws.cognito.UserPoolDomain("main", {
- *     certificateArn: aws_acm_certificate_cert.arn,
- *     domain: "example-domain.example.com",
- *     userPoolId: exampleUserPool.id,
- * });
- * const exampleZone = pulumi.output(aws.route53.getZone({
- *     name: "example.com",
- * }, { async: true }));
- * const auth_cognito_A = new aws.route53.Record("auth-cognito-A", {
- *     aliases: [{
- *         evaluateTargetHealth: false,
- *         name: main.cloudfrontDistributionArn,
- *         // This zone_id is fixed
- *         zoneId: "Z2FDTNDATAQYW2",
- *     }],
- *     name: main.domain,
- *     type: "A",
- *     zoneId: exampleZone.zoneId!,
- * });
- * ```
- */
 export class UserPoolDomain extends pulumi.CustomResource {
     /**
      * Get an existing UserPoolDomain resource's state with the given name, ID, and optional extra
@@ -76,33 +32,12 @@ export class UserPoolDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserPoolDomain.__pulumiType;
     }
 
-    /**
-     * The AWS account ID for the user pool owner.
-     */
     public /*out*/ readonly awsAccountId!: pulumi.Output<string>;
-    /**
-     * The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
-     */
     public readonly certificateArn!: pulumi.Output<string | undefined>;
-    /**
-     * The URL of the CloudFront distribution. This is required to generate the ALIAS `aws.route53.Record`
-     */
     public /*out*/ readonly cloudfrontDistributionArn!: pulumi.Output<string>;
-    /**
-     * The domain string.
-     */
     public readonly domain!: pulumi.Output<string>;
-    /**
-     * The S3 bucket where the static files for this domain are stored.
-     */
     public /*out*/ readonly s3Bucket!: pulumi.Output<string>;
-    /**
-     * The user pool ID.
-     */
     public readonly userPoolId!: pulumi.Output<string>;
-    /**
-     * The app version.
-     */
     public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
@@ -155,33 +90,12 @@ export class UserPoolDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserPoolDomain resources.
  */
 export interface UserPoolDomainState {
-    /**
-     * The AWS account ID for the user pool owner.
-     */
     readonly awsAccountId?: pulumi.Input<string>;
-    /**
-     * The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
-     */
     readonly certificateArn?: pulumi.Input<string>;
-    /**
-     * The URL of the CloudFront distribution. This is required to generate the ALIAS `aws.route53.Record`
-     */
     readonly cloudfrontDistributionArn?: pulumi.Input<string>;
-    /**
-     * The domain string.
-     */
     readonly domain?: pulumi.Input<string>;
-    /**
-     * The S3 bucket where the static files for this domain are stored.
-     */
     readonly s3Bucket?: pulumi.Input<string>;
-    /**
-     * The user pool ID.
-     */
     readonly userPoolId?: pulumi.Input<string>;
-    /**
-     * The app version.
-     */
     readonly version?: pulumi.Input<string>;
 }
 
@@ -189,16 +103,7 @@ export interface UserPoolDomainState {
  * The set of arguments for constructing a UserPoolDomain resource.
  */
 export interface UserPoolDomainArgs {
-    /**
-     * The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
-     */
     readonly certificateArn?: pulumi.Input<string>;
-    /**
-     * The domain string.
-     */
     readonly domain: pulumi.Input<string>;
-    /**
-     * The user pool ID.
-     */
     readonly userPoolId: pulumi.Input<string>;
 }

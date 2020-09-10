@@ -20,34 +20,9 @@ class DomainIdentityVerification(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Represents a successful verification of an SES domain identity.
-
-        Most commonly, this resource is used together with `route53.Record` and
-        `ses.DomainIdentity` to request an SES domain identity,
-        deploy the required DNS verification records, and wait for verification to complete.
-
-        > **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ses.DomainIdentity("example", domain="example.com")
-        example_amazonses_verification_record = aws.route53.Record("exampleAmazonsesVerificationRecord",
-            zone_id=aws_route53_zone["example"]["zone_id"],
-            name=example.id.apply(lambda id: f"_amazonses.{id}"),
-            type="TXT",
-            ttl=600,
-            records=[example.verification_token])
-        example_verification = aws.ses.DomainIdentityVerification("exampleVerification", domain=example.id,
-        opts=ResourceOptions(depends_on=[example_amazonses_verification_record]))
-        ```
-
+        Create a DomainIdentityVerification resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The domain name of the SES domain identity to verify.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,8 +64,6 @@ class DomainIdentityVerification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN of the domain identity.
-        :param pulumi.Input[str] domain: The domain name of the SES domain identity to verify.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -103,17 +76,11 @@ class DomainIdentityVerification(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the domain identity.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
-        """
-        The domain name of the SES domain identity to verify.
-        """
         return pulumi.get(self, "domain")
 
     def translate_output_property(self, prop):

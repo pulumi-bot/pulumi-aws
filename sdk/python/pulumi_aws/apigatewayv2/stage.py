@@ -32,34 +32,9 @@ class Stage(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an Amazon API Gateway Version 2 stage.
-        More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-
-        ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigatewayv2.Stage("example", api_id=aws_apigatewayv2_api["example"]["id"])
-        ```
-
+        Create a Stage resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['StageAccessLogSettingsArgs']] access_log_settings: Settings for logging access in this stage.
-               Use the `apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[bool] auto_deploy: Whether updates to an API automatically trigger a new deployment. Defaults to `false`.
-        :param pulumi.Input[str] client_certificate_id: The identifier of a client certificate for the stage. Use the `apigateway.ClientCertificate` resource to configure a client certificate.
-               Supported only for WebSocket APIs.
-        :param pulumi.Input[pulumi.InputType['StageDefaultRouteSettingsArgs']] default_route_settings: The default route settings for the stage.
-        :param pulumi.Input[str] deployment_id: The deployment identifier of the stage. Use the [`apigatewayv2.Deployment`](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment.html) resource to configure a deployment.
-        :param pulumi.Input[str] description: The description for the stage.
-        :param pulumi.Input[str] name: The name of the stage.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StageRouteSettingArgs']]]] route_settings: Route settings for the stage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stage_variables: A map that defines the stage variables for the stage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the stage.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,26 +100,6 @@ class Stage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['StageAccessLogSettingsArgs']] access_log_settings: Settings for logging access in this stage.
-               Use the `apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-        :param pulumi.Input[str] api_id: The API identifier.
-        :param pulumi.Input[str] arn: The ARN of the stage.
-        :param pulumi.Input[bool] auto_deploy: Whether updates to an API automatically trigger a new deployment. Defaults to `false`.
-        :param pulumi.Input[str] client_certificate_id: The identifier of a client certificate for the stage. Use the `apigateway.ClientCertificate` resource to configure a client certificate.
-               Supported only for WebSocket APIs.
-        :param pulumi.Input[pulumi.InputType['StageDefaultRouteSettingsArgs']] default_route_settings: The default route settings for the stage.
-        :param pulumi.Input[str] deployment_id: The deployment identifier of the stage. Use the [`apigatewayv2.Deployment`](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment.html) resource to configure a deployment.
-        :param pulumi.Input[str] description: The description for the stage.
-        :param pulumi.Input[str] execution_arn: The ARN prefix to be used in an `lambda.Permission`'s `source_arn` attribute
-               or in an `iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-               See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-               Set only for WebSocket APIs.
-        :param pulumi.Input[str] invoke_url: The URL to invoke the API pointing to the stage,
-               e.g. `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
-        :param pulumi.Input[str] name: The name of the stage.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StageRouteSettingArgs']]]] route_settings: Route settings for the stage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stage_variables: A map that defines the stage variables for the stage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the stage.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -169,119 +124,71 @@ class Stage(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessLogSettings")
     def access_log_settings(self) -> pulumi.Output[Optional['outputs.StageAccessLogSettings']]:
-        """
-        Settings for logging access in this stage.
-        Use the `apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-        """
         return pulumi.get(self, "access_log_settings")
 
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
-        """
-        The API identifier.
-        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN of the stage.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="autoDeploy")
     def auto_deploy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether updates to an API automatically trigger a new deployment. Defaults to `false`.
-        """
         return pulumi.get(self, "auto_deploy")
 
     @property
     @pulumi.getter(name="clientCertificateId")
     def client_certificate_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The identifier of a client certificate for the stage. Use the `apigateway.ClientCertificate` resource to configure a client certificate.
-        Supported only for WebSocket APIs.
-        """
         return pulumi.get(self, "client_certificate_id")
 
     @property
     @pulumi.getter(name="defaultRouteSettings")
     def default_route_settings(self) -> pulumi.Output[Optional['outputs.StageDefaultRouteSettings']]:
-        """
-        The default route settings for the stage.
-        """
         return pulumi.get(self, "default_route_settings")
 
     @property
     @pulumi.getter(name="deploymentId")
     def deployment_id(self) -> pulumi.Output[str]:
-        """
-        The deployment identifier of the stage. Use the [`apigatewayv2.Deployment`](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_deployment.html) resource to configure a deployment.
-        """
         return pulumi.get(self, "deployment_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description for the stage.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="executionArn")
     def execution_arn(self) -> pulumi.Output[str]:
-        """
-        The ARN prefix to be used in an `lambda.Permission`'s `source_arn` attribute
-        or in an `iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-        See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-        Set only for WebSocket APIs.
-        """
         return pulumi.get(self, "execution_arn")
 
     @property
     @pulumi.getter(name="invokeUrl")
     def invoke_url(self) -> pulumi.Output[str]:
-        """
-        The URL to invoke the API pointing to the stage,
-        e.g. `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
-        """
         return pulumi.get(self, "invoke_url")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the stage.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="routeSettings")
     def route_settings(self) -> pulumi.Output[Optional[List['outputs.StageRouteSetting']]]:
-        """
-        Route settings for the stage.
-        """
         return pulumi.get(self, "route_settings")
 
     @property
     @pulumi.getter(name="stageVariables")
     def stage_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map that defines the stage variables for the stage.
-        """
         return pulumi.get(self, "stage_variables")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the stage.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

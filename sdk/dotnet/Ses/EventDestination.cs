@@ -9,142 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
-    /// <summary>
-    /// Provides an SES event destination
-    /// 
-    /// ## Example Usage
-    /// ### CloudWatch Destination
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var cloudwatch = new Aws.Ses.EventDestination("cloudwatch", new Aws.Ses.EventDestinationArgs
-    ///         {
-    ///             CloudwatchDestinations = 
-    ///             {
-    ///                 new Aws.Ses.Inputs.EventDestinationCloudwatchDestinationArgs
-    ///                 {
-    ///                     DefaultValue = "default",
-    ///                     DimensionName = "dimension",
-    ///                     ValueSource = "emailHeader",
-    ///                 },
-    ///             },
-    ///             ConfigurationSetName = aws_ses_configuration_set.Example.Name,
-    ///             Enabled = true,
-    ///             MatchingTypes = 
-    ///             {
-    ///                 "bounce",
-    ///                 "send",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Kinesis Destination
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var kinesis = new Aws.Ses.EventDestination("kinesis", new Aws.Ses.EventDestinationArgs
-    ///         {
-    ///             ConfigurationSetName = aws_ses_configuration_set.Example.Name,
-    ///             Enabled = true,
-    ///             KinesisDestination = new Aws.Ses.Inputs.EventDestinationKinesisDestinationArgs
-    ///             {
-    ///                 RoleArn = aws_iam_role.Example.Arn,
-    ///                 StreamArn = aws_kinesis_firehose_delivery_stream.Example.Arn,
-    ///             },
-    ///             MatchingTypes = 
-    ///             {
-    ///                 "bounce",
-    ///                 "send",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### SNS Destination
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var sns = new Aws.Ses.EventDestination("sns", new Aws.Ses.EventDestinationArgs
-    ///         {
-    ///             ConfigurationSetName = aws_ses_configuration_set.Example.Name,
-    ///             Enabled = true,
-    ///             MatchingTypes = 
-    ///             {
-    ///                 "bounce",
-    ///                 "send",
-    ///             },
-    ///             SnsDestination = new Aws.Ses.Inputs.EventDestinationSnsDestinationArgs
-    ///             {
-    ///                 TopicArn = aws_sns_topic.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class EventDestination : Pulumi.CustomResource
     {
-        /// <summary>
-        /// CloudWatch destination for the events
-        /// </summary>
         [Output("cloudwatchDestinations")]
         public Output<ImmutableArray<Outputs.EventDestinationCloudwatchDestination>> CloudwatchDestinations { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the configuration set
-        /// </summary>
         [Output("configurationSetName")]
         public Output<string> ConfigurationSetName { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the event destination will be enabled
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// Send the events to a kinesis firehose destination
-        /// </summary>
         [Output("kinesisDestination")]
         public Output<Outputs.EventDestinationKinesisDestination?> KinesisDestination { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-        /// </summary>
         [Output("matchingTypes")]
         public Output<ImmutableArray<string>> MatchingTypes { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the event destination
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Send the events to an SNS Topic destination
-        /// </summary>
         [Output("snsDestination")]
         public Output<Outputs.EventDestinationSnsDestination?> SnsDestination { get; private set; } = null!;
 
@@ -196,55 +80,32 @@ namespace Pulumi.Aws.Ses
     {
         [Input("cloudwatchDestinations")]
         private InputList<Inputs.EventDestinationCloudwatchDestinationArgs>? _cloudwatchDestinations;
-
-        /// <summary>
-        /// CloudWatch destination for the events
-        /// </summary>
         public InputList<Inputs.EventDestinationCloudwatchDestinationArgs> CloudwatchDestinations
         {
             get => _cloudwatchDestinations ?? (_cloudwatchDestinations = new InputList<Inputs.EventDestinationCloudwatchDestinationArgs>());
             set => _cloudwatchDestinations = value;
         }
 
-        /// <summary>
-        /// The name of the configuration set
-        /// </summary>
         [Input("configurationSetName", required: true)]
         public Input<string> ConfigurationSetName { get; set; } = null!;
 
-        /// <summary>
-        /// If true, the event destination will be enabled
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Send the events to a kinesis firehose destination
-        /// </summary>
         [Input("kinesisDestination")]
         public Input<Inputs.EventDestinationKinesisDestinationArgs>? KinesisDestination { get; set; }
 
         [Input("matchingTypes", required: true)]
         private InputList<string>? _matchingTypes;
-
-        /// <summary>
-        /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-        /// </summary>
         public InputList<string> MatchingTypes
         {
             get => _matchingTypes ?? (_matchingTypes = new InputList<string>());
             set => _matchingTypes = value;
         }
 
-        /// <summary>
-        /// The name of the event destination
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Send the events to an SNS Topic destination
-        /// </summary>
         [Input("snsDestination")]
         public Input<Inputs.EventDestinationSnsDestinationArgs>? SnsDestination { get; set; }
 
@@ -257,55 +118,32 @@ namespace Pulumi.Aws.Ses
     {
         [Input("cloudwatchDestinations")]
         private InputList<Inputs.EventDestinationCloudwatchDestinationGetArgs>? _cloudwatchDestinations;
-
-        /// <summary>
-        /// CloudWatch destination for the events
-        /// </summary>
         public InputList<Inputs.EventDestinationCloudwatchDestinationGetArgs> CloudwatchDestinations
         {
             get => _cloudwatchDestinations ?? (_cloudwatchDestinations = new InputList<Inputs.EventDestinationCloudwatchDestinationGetArgs>());
             set => _cloudwatchDestinations = value;
         }
 
-        /// <summary>
-        /// The name of the configuration set
-        /// </summary>
         [Input("configurationSetName")]
         public Input<string>? ConfigurationSetName { get; set; }
 
-        /// <summary>
-        /// If true, the event destination will be enabled
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Send the events to a kinesis firehose destination
-        /// </summary>
         [Input("kinesisDestination")]
         public Input<Inputs.EventDestinationKinesisDestinationGetArgs>? KinesisDestination { get; set; }
 
         [Input("matchingTypes")]
         private InputList<string>? _matchingTypes;
-
-        /// <summary>
-        /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-        /// </summary>
         public InputList<string> MatchingTypes
         {
             get => _matchingTypes ?? (_matchingTypes = new InputList<string>());
             set => _matchingTypes = value;
         }
 
-        /// <summary>
-        /// The name of the event destination
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Send the events to an SNS Topic destination
-        /// </summary>
         [Input("snsDestination")]
         public Input<Inputs.EventDestinationSnsDestinationGetArgs>? SnsDestination { get; set; }
 

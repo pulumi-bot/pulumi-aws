@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Ec2.Outputs
     [OutputType]
     public sealed class LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget
     {
-        /// <summary>
-        /// The ID of the Capacity Reservation to target.
-        /// </summary>
         public readonly string? CapacityReservationId;
 
         [OutputConstructor]

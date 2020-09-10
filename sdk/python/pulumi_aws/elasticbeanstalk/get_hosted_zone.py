@@ -38,9 +38,6 @@ class GetHostedZoneResult:
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
-        """
-        The region of the hosted zone.
-        """
         return pulumi.get(self, "region")
 
 
@@ -57,19 +54,7 @@ class AwaitableGetHostedZoneResult(GetHostedZoneResult):
 def get_hosted_zone(region: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostedZoneResult:
     """
-    Use this data source to get the ID of an [elastic beanstalk hosted zone](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    current = aws.elasticbeanstalk.get_hosted_zone()
-    ```
-
-
-    :param str region: The region you'd like the zone for. By default, fetches the current region.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

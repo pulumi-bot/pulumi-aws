@@ -10,48 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/redshift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := redshift.NewSnapshotSchedule(ctx, "_default", &redshift.SnapshotScheduleArgs{
-// 			Definitions: pulumi.StringArray{
-// 				pulumi.String("rate(12 hours)"),
-// 			},
-// 			Identifier: pulumi.String("tf-redshift-snapshot-schedule"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SnapshotSchedule struct {
 	pulumi.CustomResourceState
 
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-	Definitions pulumi.StringArrayOutput `pulumi:"definitions"`
-	// The description of the snapshot schedule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Creates a unique
-	// identifier beginning with the specified prefix. Conflicts with `identifier`.
-	IdentifierPrefix pulumi.StringOutput `pulumi:"identifierPrefix"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn              pulumi.StringOutput      `pulumi:"arn"`
+	Definitions      pulumi.StringArrayOutput `pulumi:"definitions"`
+	Description      pulumi.StringPtrOutput   `pulumi:"description"`
+	ForceDestroy     pulumi.BoolPtrOutput     `pulumi:"forceDestroy"`
+	Identifier       pulumi.StringOutput      `pulumi:"identifier"`
+	IdentifierPrefix pulumi.StringOutput      `pulumi:"identifierPrefix"`
+	Tags             pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewSnapshotSchedule registers a new resource with the given unique name, arguments, and options.
@@ -85,37 +53,23 @@ func GetSnapshotSchedule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnapshotSchedule resources.
 type snapshotScheduleState struct {
-	Arn *string `pulumi:"arn"`
-	// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-	Definitions []string `pulumi:"definitions"`
-	// The description of the snapshot schedule.
-	Description *string `pulumi:"description"`
-	// Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-	Identifier *string `pulumi:"identifier"`
-	// Creates a unique
-	// identifier beginning with the specified prefix. Conflicts with `identifier`.
-	IdentifierPrefix *string `pulumi:"identifierPrefix"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Arn              *string           `pulumi:"arn"`
+	Definitions      []string          `pulumi:"definitions"`
+	Description      *string           `pulumi:"description"`
+	ForceDestroy     *bool             `pulumi:"forceDestroy"`
+	Identifier       *string           `pulumi:"identifier"`
+	IdentifierPrefix *string           `pulumi:"identifierPrefix"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 type SnapshotScheduleState struct {
-	Arn pulumi.StringPtrInput
-	// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-	Definitions pulumi.StringArrayInput
-	// The description of the snapshot schedule.
-	Description pulumi.StringPtrInput
-	// Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-	ForceDestroy pulumi.BoolPtrInput
-	// The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-	Identifier pulumi.StringPtrInput
-	// Creates a unique
-	// identifier beginning with the specified prefix. Conflicts with `identifier`.
+	Arn              pulumi.StringPtrInput
+	Definitions      pulumi.StringArrayInput
+	Description      pulumi.StringPtrInput
+	ForceDestroy     pulumi.BoolPtrInput
+	Identifier       pulumi.StringPtrInput
 	IdentifierPrefix pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags             pulumi.StringMapInput
 }
 
 func (SnapshotScheduleState) ElementType() reflect.Type {
@@ -123,36 +77,22 @@ func (SnapshotScheduleState) ElementType() reflect.Type {
 }
 
 type snapshotScheduleArgs struct {
-	// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-	Definitions []string `pulumi:"definitions"`
-	// The description of the snapshot schedule.
-	Description *string `pulumi:"description"`
-	// Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-	Identifier *string `pulumi:"identifier"`
-	// Creates a unique
-	// identifier beginning with the specified prefix. Conflicts with `identifier`.
-	IdentifierPrefix *string `pulumi:"identifierPrefix"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
+	Definitions      []string          `pulumi:"definitions"`
+	Description      *string           `pulumi:"description"`
+	ForceDestroy     *bool             `pulumi:"forceDestroy"`
+	Identifier       *string           `pulumi:"identifier"`
+	IdentifierPrefix *string           `pulumi:"identifierPrefix"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a SnapshotSchedule resource.
 type SnapshotScheduleArgs struct {
-	// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
-	Definitions pulumi.StringArrayInput
-	// The description of the snapshot schedule.
-	Description pulumi.StringPtrInput
-	// Whether to destroy all associated clusters with this snapshot schedule on deletion. Must be enabled and applied before attempting deletion.
-	ForceDestroy pulumi.BoolPtrInput
-	// The snapshot schedule identifier. If omitted, this provider will assign a random, unique identifier.
-	Identifier pulumi.StringPtrInput
-	// Creates a unique
-	// identifier beginning with the specified prefix. Conflicts with `identifier`.
+	Definitions      pulumi.StringArrayInput
+	Description      pulumi.StringPtrInput
+	ForceDestroy     pulumi.BoolPtrInput
+	Identifier       pulumi.StringPtrInput
 	IdentifierPrefix pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
+	Tags             pulumi.StringMapInput
 }
 
 func (SnapshotScheduleArgs) ElementType() reflect.Type {

@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Athena Workgroup.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.athena.Workgroup("example", {configuration: {
- *     enforceWorkgroupConfiguration: true,
- *     publishCloudwatchMetricsEnabled: true,
- *     resultConfiguration: {
- *         outputLocation: "s3://{aws_s3_bucket.example.bucket}/output/",
- *         encryptionConfiguration: {
- *             encryptionOption: "SSE_KMS",
- *             kmsKeyArn: aws_kms_key.example.arn,
- *         },
- *     },
- * }});
- * ```
- */
 export class Workgroup extends pulumi.CustomResource {
     /**
      * Get an existing Workgroup resource's state with the given name, ID, and optional extra
@@ -56,33 +34,12 @@ export class Workgroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Workgroup.__pulumiType;
     }
 
-    /**
-     * Amazon Resource Name (ARN) of the workgroup
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Configuration block with various settings for the workgroup. Documented below.
-     */
     public readonly configuration!: pulumi.Output<outputs.athena.WorkgroupConfiguration | undefined>;
-    /**
-     * Description of the workgroup.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * Name of the workgroup.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-     */
     public readonly state!: pulumi.Output<string | undefined>;
-    /**
-     * Key-value map of resource tags for the workgroup.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -129,33 +86,12 @@ export class Workgroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workgroup resources.
  */
 export interface WorkgroupState {
-    /**
-     * Amazon Resource Name (ARN) of the workgroup
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Configuration block with various settings for the workgroup. Documented below.
-     */
     readonly configuration?: pulumi.Input<inputs.athena.WorkgroupConfiguration>;
-    /**
-     * Description of the workgroup.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * Name of the workgroup.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags for the workgroup.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -163,28 +99,10 @@ export interface WorkgroupState {
  * The set of arguments for constructing a Workgroup resource.
  */
 export interface WorkgroupArgs {
-    /**
-     * Configuration block with various settings for the workgroup. Documented below.
-     */
     readonly configuration?: pulumi.Input<inputs.athena.WorkgroupConfiguration>;
-    /**
-     * Description of the workgroup.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The option to delete the workgroup and its contents even if the workgroup contains any named queries.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * Name of the workgroup.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Key-value map of resource tags for the workgroup.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

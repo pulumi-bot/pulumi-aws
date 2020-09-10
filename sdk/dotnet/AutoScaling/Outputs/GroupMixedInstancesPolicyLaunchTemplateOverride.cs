@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AutoScaling.Outputs
     [OutputType]
     public sealed class GroupMixedInstancesPolicyLaunchTemplateOverride
     {
-        /// <summary>
-        /// Override the instance type in the Launch Template.
-        /// </summary>
         public readonly string? InstanceType;
-        /// <summary>
-        /// The number of capacity units, which gives the instance type a proportional weight to other instance types.
-        /// </summary>
         public readonly string? WeightedCapacity;
 
         [OutputConstructor]

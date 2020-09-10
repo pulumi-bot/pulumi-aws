@@ -6,59 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Application AutoScaling ScheduledAction resource.
- *
- * ## Example Usage
- * ### DynamoDB Table Autoscaling
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const dynamodbTarget = new aws.appautoscaling.Target("dynamodbTarget", {
- *     maxCapacity: 100,
- *     minCapacity: 5,
- *     resourceId: "table/tableName",
- *     scalableDimension: "dynamodb:table:ReadCapacityUnits",
- *     serviceNamespace: "dynamodb",
- * });
- * const dynamodbScheduledAction = new aws.appautoscaling.ScheduledAction("dynamodbScheduledAction", {
- *     serviceNamespace: dynamodbTarget.serviceNamespace,
- *     resourceId: dynamodbTarget.resourceId,
- *     scalableDimension: dynamodbTarget.scalableDimension,
- *     schedule: "at(2006-01-02T15:04:05)",
- *     scalableTargetAction: {
- *         minCapacity: 1,
- *         maxCapacity: 200,
- *     },
- * });
- * ```
- * ### ECS Service Autoscaling
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ecsTarget = new aws.appautoscaling.Target("ecsTarget", {
- *     maxCapacity: 4,
- *     minCapacity: 1,
- *     resourceId: "service/clusterName/serviceName",
- *     scalableDimension: "ecs:service:DesiredCount",
- *     serviceNamespace: "ecs",
- * });
- * const ecsScheduledAction = new aws.appautoscaling.ScheduledAction("ecsScheduledAction", {
- *     serviceNamespace: ecsTarget.serviceNamespace,
- *     resourceId: ecsTarget.resourceId,
- *     scalableDimension: ecsTarget.scalableDimension,
- *     schedule: "at(2006-01-02T15:04:05)",
- *     scalableTargetAction: {
- *         minCapacity: 1,
- *         maxCapacity: 10,
- *     },
- * });
- * ```
- */
 export class ScheduledAction extends pulumi.CustomResource {
     /**
      * Get an existing ScheduledAction resource's state with the given name, ID, and optional extra
@@ -87,41 +34,14 @@ export class ScheduledAction extends pulumi.CustomResource {
         return obj['__pulumiType'] === ScheduledAction.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the scheduled action.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The date and time for the scheduled action to end. Specify the following format: 2006-01-02T15:04:05Z
-     */
     public readonly endTime!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the scheduled action.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The identifier of the resource associated with the scheduled action. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ResourceId)
-     */
     public readonly resourceId!: pulumi.Output<string>;
-    /**
-     * The scalable dimension. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ScalableDimension) Example: ecs:service:DesiredCount
-     */
     public readonly scalableDimension!: pulumi.Output<string | undefined>;
-    /**
-     * The new minimum and maximum capacity. You can set both values or just one. See below
-     */
     public readonly scalableTargetAction!: pulumi.Output<outputs.appautoscaling.ScheduledActionScalableTargetAction | undefined>;
-    /**
-     * The schedule for this action. The following formats are supported: At expressions - at(yyyy-mm-ddThh:mm:ss), Rate expressions - rate(valueunit), Cron expressions - cron(fields). In UTC. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-Schedule)
-     */
     public readonly schedule!: pulumi.Output<string | undefined>;
-    /**
-     * The namespace of the AWS service. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ServiceNamespace) Example: ecs
-     */
     public readonly serviceNamespace!: pulumi.Output<string>;
-    /**
-     * The date and time for the scheduled action to start. Specify the following format: 2006-01-02T15:04:05Z
-     */
     public readonly startTime!: pulumi.Output<string | undefined>;
 
     /**
@@ -178,41 +98,14 @@ export class ScheduledAction extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ScheduledAction resources.
  */
 export interface ScheduledActionState {
-    /**
-     * The Amazon Resource Name (ARN) of the scheduled action.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The date and time for the scheduled action to end. Specify the following format: 2006-01-02T15:04:05Z
-     */
     readonly endTime?: pulumi.Input<string>;
-    /**
-     * The name of the scheduled action.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The identifier of the resource associated with the scheduled action. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ResourceId)
-     */
     readonly resourceId?: pulumi.Input<string>;
-    /**
-     * The scalable dimension. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ScalableDimension) Example: ecs:service:DesiredCount
-     */
     readonly scalableDimension?: pulumi.Input<string>;
-    /**
-     * The new minimum and maximum capacity. You can set both values or just one. See below
-     */
     readonly scalableTargetAction?: pulumi.Input<inputs.appautoscaling.ScheduledActionScalableTargetAction>;
-    /**
-     * The schedule for this action. The following formats are supported: At expressions - at(yyyy-mm-ddThh:mm:ss), Rate expressions - rate(valueunit), Cron expressions - cron(fields). In UTC. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-Schedule)
-     */
     readonly schedule?: pulumi.Input<string>;
-    /**
-     * The namespace of the AWS service. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ServiceNamespace) Example: ecs
-     */
     readonly serviceNamespace?: pulumi.Input<string>;
-    /**
-     * The date and time for the scheduled action to start. Specify the following format: 2006-01-02T15:04:05Z
-     */
     readonly startTime?: pulumi.Input<string>;
 }
 
@@ -220,36 +113,12 @@ export interface ScheduledActionState {
  * The set of arguments for constructing a ScheduledAction resource.
  */
 export interface ScheduledActionArgs {
-    /**
-     * The date and time for the scheduled action to end. Specify the following format: 2006-01-02T15:04:05Z
-     */
     readonly endTime?: pulumi.Input<string>;
-    /**
-     * The name of the scheduled action.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The identifier of the resource associated with the scheduled action. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ResourceId)
-     */
     readonly resourceId: pulumi.Input<string>;
-    /**
-     * The scalable dimension. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ScalableDimension) Example: ecs:service:DesiredCount
-     */
     readonly scalableDimension?: pulumi.Input<string>;
-    /**
-     * The new minimum and maximum capacity. You can set both values or just one. See below
-     */
     readonly scalableTargetAction?: pulumi.Input<inputs.appautoscaling.ScheduledActionScalableTargetAction>;
-    /**
-     * The schedule for this action. The following formats are supported: At expressions - at(yyyy-mm-ddThh:mm:ss), Rate expressions - rate(valueunit), Cron expressions - cron(fields). In UTC. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-Schedule)
-     */
     readonly schedule?: pulumi.Input<string>;
-    /**
-     * The namespace of the AWS service. Documentation can be found in the parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_PutScheduledAction.html#ApplicationAutoScaling-PutScheduledAction-request-ServiceNamespace) Example: ecs
-     */
     readonly serviceNamespace: pulumi.Input<string>;
-    /**
-     * The date and time for the scheduled action to start. Specify the following format: 2006-01-02T15:04:05Z
-     */
     readonly startTime?: pulumi.Input<string>;
 }

@@ -10,50 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Step Function State Machine resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sfn"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sfn.NewStateMachine(ctx, "sfnStateMachine", &sfn.StateMachineArgs{
-// 			RoleArn:    pulumi.Any(aws_iam_role.Iam_for_sfn.Arn),
-// 			Definition: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Comment\": \"A Hello World example of the Amazon States Language using an AWS Lambda Function\",\n", "  \"StartAt\": \"HelloWorld\",\n", "  \"States\": {\n", "    \"HelloWorld\": {\n", "      \"Type\": \"Task\",\n", "      \"Resource\": \"", aws_lambda_function.Lambda.Arn, "\",\n", "      \"End\": true\n", "    }\n", "  }\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type StateMachine struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the state machine.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The date the state machine was created.
-	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
-	// The Amazon States Language definition of the state machine.
-	Definition pulumi.StringOutput `pulumi:"definition"`
-	// The name of the state machine.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
-	// The current status of the state machine. Either "ACTIVE" or "DELETING".
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Arn          pulumi.StringOutput    `pulumi:"arn"`
+	CreationDate pulumi.StringOutput    `pulumi:"creationDate"`
+	Definition   pulumi.StringOutput    `pulumi:"definition"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
+	RoleArn      pulumi.StringOutput    `pulumi:"roleArn"`
+	Status       pulumi.StringOutput    `pulumi:"status"`
+	Tags         pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewStateMachine registers a new resource with the given unique name, arguments, and options.
@@ -90,37 +56,23 @@ func GetStateMachine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StateMachine resources.
 type stateMachineState struct {
-	// The ARN of the state machine.
-	Arn *string `pulumi:"arn"`
-	// The date the state machine was created.
-	CreationDate *string `pulumi:"creationDate"`
-	// The Amazon States Language definition of the state machine.
-	Definition *string `pulumi:"definition"`
-	// The name of the state machine.
-	Name *string `pulumi:"name"`
-	// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-	RoleArn *string `pulumi:"roleArn"`
-	// The current status of the state machine. Either "ACTIVE" or "DELETING".
-	Status *string `pulumi:"status"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Arn          *string           `pulumi:"arn"`
+	CreationDate *string           `pulumi:"creationDate"`
+	Definition   *string           `pulumi:"definition"`
+	Name         *string           `pulumi:"name"`
+	RoleArn      *string           `pulumi:"roleArn"`
+	Status       *string           `pulumi:"status"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 type StateMachineState struct {
-	// The ARN of the state machine.
-	Arn pulumi.StringPtrInput
-	// The date the state machine was created.
+	Arn          pulumi.StringPtrInput
 	CreationDate pulumi.StringPtrInput
-	// The Amazon States Language definition of the state machine.
-	Definition pulumi.StringPtrInput
-	// The name of the state machine.
-	Name pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-	RoleArn pulumi.StringPtrInput
-	// The current status of the state machine. Either "ACTIVE" or "DELETING".
-	Status pulumi.StringPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Definition   pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
+	RoleArn      pulumi.StringPtrInput
+	Status       pulumi.StringPtrInput
+	Tags         pulumi.StringMapInput
 }
 
 func (StateMachineState) ElementType() reflect.Type {
@@ -128,26 +80,18 @@ func (StateMachineState) ElementType() reflect.Type {
 }
 
 type stateMachineArgs struct {
-	// The Amazon States Language definition of the state machine.
-	Definition string `pulumi:"definition"`
-	// The name of the state machine.
-	Name *string `pulumi:"name"`
-	// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-	RoleArn string `pulumi:"roleArn"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Definition string            `pulumi:"definition"`
+	Name       *string           `pulumi:"name"`
+	RoleArn    string            `pulumi:"roleArn"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a StateMachine resource.
 type StateMachineArgs struct {
-	// The Amazon States Language definition of the state machine.
 	Definition pulumi.StringInput
-	// The name of the state machine.
-	Name pulumi.StringPtrInput
-	// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
-	RoleArn pulumi.StringInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Name       pulumi.StringPtrInput
+	RoleArn    pulumi.StringInput
+	Tags       pulumi.StringMapInput
 }
 
 func (StateMachineArgs) ElementType() reflect.Type {

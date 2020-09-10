@@ -24,42 +24,9 @@ class NamedQuery(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an Athena Named Query resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        hoge_bucket = aws.s3.Bucket("hogeBucket")
-        test_key = aws.kms.Key("testKey",
-            deletion_window_in_days=7,
-            description="Athena KMS Key")
-        test_workgroup = aws.athena.Workgroup("testWorkgroup", configuration=aws.athena.WorkgroupConfigurationArgs(
-            result_configuration=aws.athena.WorkgroupConfigurationResultConfigurationArgs(
-                encryption_configuration={
-                    "encryptionOption": "SSE_KMS",
-                    "kms_key_arn": test_key.arn,
-                },
-            ),
-        ))
-        hoge_database = aws.athena.Database("hogeDatabase",
-            name="users",
-            bucket=hoge_bucket.id)
-        foo = aws.athena.NamedQuery("foo",
-            workgroup=test_workgroup.id,
-            database=hoge_database.name,
-            query=hoge_database.name.apply(lambda name: f"SELECT * FROM {name} limit 10;"))
-        ```
-
+        Create a NamedQuery resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database: The database to which the query belongs.
-        :param pulumi.Input[str] description: A brief explanation of the query. Maximum length of 1024.
-        :param pulumi.Input[str] name: The plain language name for the query. Maximum length of 128.
-        :param pulumi.Input[str] query: The text of the query itself. In other words, all query statements. Maximum length of 262144.
-        :param pulumi.Input[str] workgroup: The workgroup to which the query belongs. Defaults to `primary`
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,11 +76,6 @@ class NamedQuery(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database: The database to which the query belongs.
-        :param pulumi.Input[str] description: A brief explanation of the query. Maximum length of 1024.
-        :param pulumi.Input[str] name: The plain language name for the query. Maximum length of 128.
-        :param pulumi.Input[str] query: The text of the query itself. In other words, all query statements. Maximum length of 262144.
-        :param pulumi.Input[str] workgroup: The workgroup to which the query belongs. Defaults to `primary`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -129,41 +91,26 @@ class NamedQuery(pulumi.CustomResource):
     @property
     @pulumi.getter
     def database(self) -> pulumi.Output[str]:
-        """
-        The database to which the query belongs.
-        """
         return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        A brief explanation of the query. Maximum length of 1024.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The plain language name for the query. Maximum length of 128.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def query(self) -> pulumi.Output[str]:
-        """
-        The text of the query itself. In other words, all query statements. Maximum length of 262144.
-        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter
     def workgroup(self) -> pulumi.Output[Optional[str]]:
-        """
-        The workgroup to which the query belongs. Defaults to `primary`
-        """
         return pulumi.get(self, "workgroup")
 
     def translate_output_property(self, prop):

@@ -10,43 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an IAM Server Certificate resource to upload Server Certificates.
-// Certs uploaded to IAM can easily work with other AWS services such as:
-//
-// - AWS Elastic Beanstalk
-// - Elastic Load Balancing
-// - CloudFront
-// - AWS OpsWorks
-//
-// For information about server certificates in IAM, see [Managing Server
-// Certificates][2] in AWS Documentation.
-//
-// > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
 type ServerCertificate struct {
 	pulumi.CustomResourceState
 
-	// The Amazon Resource Name (ARN) specifying the server certificate.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The contents of the public key certificate in
-	// PEM-encoded format.
-	CertificateBody pulumi.StringOutput `pulumi:"certificateBody"`
-	// The contents of the certificate chain.
-	// This is typically a concatenation of the PEM-encoded public key certificates
-	// of the chain.
+	Arn              pulumi.StringOutput    `pulumi:"arn"`
+	CertificateBody  pulumi.StringOutput    `pulumi:"certificateBody"`
 	CertificateChain pulumi.StringPtrOutput `pulumi:"certificateChain"`
-	// The name of the Server Certificate. Do not include the
-	// path in this value. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// The IAM path for the server certificate.  If it is not
-	// included, it defaults to a slash (/). If this certificate is for use with
-	// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// The contents of the private key in PEM-encoded format.
-	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+	Name             pulumi.StringOutput    `pulumi:"name"`
+	NamePrefix       pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	Path             pulumi.StringPtrOutput `pulumi:"path"`
+	PrivateKey       pulumi.StringOutput    `pulumi:"privateKey"`
 }
 
 // NewServerCertificate registers a new resource with the given unique name, arguments, and options.
@@ -83,53 +56,23 @@ func GetServerCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerCertificate resources.
 type serverCertificateState struct {
-	// The Amazon Resource Name (ARN) specifying the server certificate.
-	Arn *string `pulumi:"arn"`
-	// The contents of the public key certificate in
-	// PEM-encoded format.
-	CertificateBody *string `pulumi:"certificateBody"`
-	// The contents of the certificate chain.
-	// This is typically a concatenation of the PEM-encoded public key certificates
-	// of the chain.
+	Arn              *string `pulumi:"arn"`
+	CertificateBody  *string `pulumi:"certificateBody"`
 	CertificateChain *string `pulumi:"certificateChain"`
-	// The name of the Server Certificate. Do not include the
-	// path in this value. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The IAM path for the server certificate.  If it is not
-	// included, it defaults to a slash (/). If this certificate is for use with
-	// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-	Path *string `pulumi:"path"`
-	// The contents of the private key in PEM-encoded format.
-	PrivateKey *string `pulumi:"privateKey"`
+	Name             *string `pulumi:"name"`
+	NamePrefix       *string `pulumi:"namePrefix"`
+	Path             *string `pulumi:"path"`
+	PrivateKey       *string `pulumi:"privateKey"`
 }
 
 type ServerCertificateState struct {
-	// The Amazon Resource Name (ARN) specifying the server certificate.
-	Arn pulumi.StringPtrInput
-	// The contents of the public key certificate in
-	// PEM-encoded format.
-	CertificateBody pulumi.StringPtrInput
-	// The contents of the certificate chain.
-	// This is typically a concatenation of the PEM-encoded public key certificates
-	// of the chain.
+	Arn              pulumi.StringPtrInput
+	CertificateBody  pulumi.StringPtrInput
 	CertificateChain pulumi.StringPtrInput
-	// The name of the Server Certificate. Do not include the
-	// path in this value. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// The IAM path for the server certificate.  If it is not
-	// included, it defaults to a slash (/). If this certificate is for use with
-	// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-	Path pulumi.StringPtrInput
-	// The contents of the private key in PEM-encoded format.
-	PrivateKey pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	NamePrefix       pulumi.StringPtrInput
+	Path             pulumi.StringPtrInput
+	PrivateKey       pulumi.StringPtrInput
 }
 
 func (ServerCertificateState) ElementType() reflect.Type {
@@ -137,54 +80,24 @@ func (ServerCertificateState) ElementType() reflect.Type {
 }
 
 type serverCertificateArgs struct {
-	// The Amazon Resource Name (ARN) specifying the server certificate.
-	Arn *string `pulumi:"arn"`
-	// The contents of the public key certificate in
-	// PEM-encoded format.
-	CertificateBody string `pulumi:"certificateBody"`
-	// The contents of the certificate chain.
-	// This is typically a concatenation of the PEM-encoded public key certificates
-	// of the chain.
+	Arn              *string `pulumi:"arn"`
+	CertificateBody  string  `pulumi:"certificateBody"`
 	CertificateChain *string `pulumi:"certificateChain"`
-	// The name of the Server Certificate. Do not include the
-	// path in this value. If omitted, this provider will assign a random, unique name.
-	Name *string `pulumi:"name"`
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// The IAM path for the server certificate.  If it is not
-	// included, it defaults to a slash (/). If this certificate is for use with
-	// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-	Path *string `pulumi:"path"`
-	// The contents of the private key in PEM-encoded format.
-	PrivateKey string `pulumi:"privateKey"`
+	Name             *string `pulumi:"name"`
+	NamePrefix       *string `pulumi:"namePrefix"`
+	Path             *string `pulumi:"path"`
+	PrivateKey       string  `pulumi:"privateKey"`
 }
 
 // The set of arguments for constructing a ServerCertificate resource.
 type ServerCertificateArgs struct {
-	// The Amazon Resource Name (ARN) specifying the server certificate.
-	Arn pulumi.StringPtrInput
-	// The contents of the public key certificate in
-	// PEM-encoded format.
-	CertificateBody pulumi.StringInput
-	// The contents of the certificate chain.
-	// This is typically a concatenation of the PEM-encoded public key certificates
-	// of the chain.
+	Arn              pulumi.StringPtrInput
+	CertificateBody  pulumi.StringInput
 	CertificateChain pulumi.StringPtrInput
-	// The name of the Server Certificate. Do not include the
-	// path in this value. If omitted, this provider will assign a random, unique name.
-	Name pulumi.StringPtrInput
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
-	NamePrefix pulumi.StringPtrInput
-	// The IAM path for the server certificate.  If it is not
-	// included, it defaults to a slash (/). If this certificate is for use with
-	// AWS CloudFront, the path must be in format `/cloudfront/your_path_here`.
-	// See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more details on IAM Paths.
-	Path pulumi.StringPtrInput
-	// The contents of the private key in PEM-encoded format.
-	PrivateKey pulumi.StringInput
+	Name             pulumi.StringPtrInput
+	NamePrefix       pulumi.StringPtrInput
+	Path             pulumi.StringPtrInput
+	PrivateKey       pulumi.StringInput
 }
 
 func (ServerCertificateArgs) ElementType() reflect.Type {

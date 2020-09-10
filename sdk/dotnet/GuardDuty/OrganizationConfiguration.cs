@@ -9,46 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.GuardDuty
 {
-    /// <summary>
-    /// Manages the GuardDuty Organization Configuration in the current AWS Region. The AWS account utilizing this resource must have been assigned as a delegated Organization administrator account, e.g. via the `aws.guardduty.OrganizationAdminAccount` resource. More information about Organizations support in GuardDuty can be found in the [GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
-    /// 
-    /// &gt; **NOTE:** This is an advanced resource. The provider will automatically assume management of the GuardDuty Organization Configuration without import and perform no actions on removal from the resource configuration.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleDetector = new Aws.GuardDuty.Detector("exampleDetector", new Aws.GuardDuty.DetectorArgs
-    ///         {
-    ///             Enable = true,
-    ///         });
-    ///         var exampleOrganizationConfiguration = new Aws.GuardDuty.OrganizationConfiguration("exampleOrganizationConfiguration", new Aws.GuardDuty.OrganizationConfigurationArgs
-    ///         {
-    ///             AutoEnable = true,
-    ///             DetectorId = exampleDetector.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class OrganizationConfiguration : Pulumi.CustomResource
     {
-        /// <summary>
-        /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
-        /// </summary>
         [Output("autoEnable")]
         public Output<bool> AutoEnable { get; private set; } = null!;
 
-        /// <summary>
-        /// The detector ID of the GuardDuty account.
-        /// </summary>
         [Output("detectorId")]
         public Output<string> DetectorId { get; private set; } = null!;
 
@@ -98,15 +63,9 @@ namespace Pulumi.Aws.GuardDuty
 
     public sealed class OrganizationConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
-        /// </summary>
         [Input("autoEnable", required: true)]
         public Input<bool> AutoEnable { get; set; } = null!;
 
-        /// <summary>
-        /// The detector ID of the GuardDuty account.
-        /// </summary>
         [Input("detectorId", required: true)]
         public Input<string> DetectorId { get; set; } = null!;
 
@@ -117,15 +76,9 @@ namespace Pulumi.Aws.GuardDuty
 
     public sealed class OrganizationConfigurationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s GuardDuty delegated administrator and GuardDuty is enabled in that AWS Region.
-        /// </summary>
         [Input("autoEnable")]
         public Input<bool>? AutoEnable { get; set; }
 
-        /// <summary>
-        /// The detector ID of the GuardDuty account.
-        /// </summary>
         [Input("detectorId")]
         public Input<string>? DetectorId { get; set; }
 

@@ -10,61 +10,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a single EBS volume.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ebs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ebs.NewVolume(ctx, "example", &ebs.VolumeArgs{
-// 			AvailabilityZone: pulumi.String("us-west-2a"),
-// 			Size:             pulumi.Int(40),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("HelloWorld"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// > **NOTE**: One of `size` or `snapshotId` is required when specifying an EBS volume
 type Volume struct {
 	pulumi.CustomResourceState
 
-	// The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The AZ where the EBS volume will exist.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// If true, the disk will be encrypted.
-	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
-	// The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-	Iops pulumi.IntOutput `pulumi:"iops"`
-	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
-	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
-	// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
-	MultiAttachEnabled pulumi.BoolPtrOutput `pulumi:"multiAttachEnabled"`
-	// The Amazon Resource Name (ARN) of the Outpost.
-	OutpostArn pulumi.StringPtrOutput `pulumi:"outpostArn"`
-	// The size of the drive in GiBs.
-	Size pulumi.IntOutput `pulumi:"size"`
-	// A snapshot to base the EBS volume off of.
-	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
-	Type pulumi.StringOutput `pulumi:"type"`
+	Arn                pulumi.StringOutput    `pulumi:"arn"`
+	AvailabilityZone   pulumi.StringOutput    `pulumi:"availabilityZone"`
+	Encrypted          pulumi.BoolOutput      `pulumi:"encrypted"`
+	Iops               pulumi.IntOutput       `pulumi:"iops"`
+	KmsKeyId           pulumi.StringOutput    `pulumi:"kmsKeyId"`
+	MultiAttachEnabled pulumi.BoolPtrOutput   `pulumi:"multiAttachEnabled"`
+	OutpostArn         pulumi.StringPtrOutput `pulumi:"outpostArn"`
+	Size               pulumi.IntOutput       `pulumi:"size"`
+	SnapshotId         pulumi.StringOutput    `pulumi:"snapshotId"`
+	Tags               pulumi.StringMapOutput `pulumi:"tags"`
+	Type               pulumi.StringOutput    `pulumi:"type"`
 }
 
 // NewVolume registers a new resource with the given unique name, arguments, and options.
@@ -98,53 +57,31 @@ func GetVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Volume resources.
 type volumeState struct {
-	// The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-	Arn *string `pulumi:"arn"`
-	// The AZ where the EBS volume will exist.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// If true, the disk will be encrypted.
-	Encrypted *bool `pulumi:"encrypted"`
-	// The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-	Iops *int `pulumi:"iops"`
-	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
-	MultiAttachEnabled *bool `pulumi:"multiAttachEnabled"`
-	// The Amazon Resource Name (ARN) of the Outpost.
-	OutpostArn *string `pulumi:"outpostArn"`
-	// The size of the drive in GiBs.
-	Size *int `pulumi:"size"`
-	// A snapshot to base the EBS volume off of.
-	SnapshotId *string `pulumi:"snapshotId"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
-	Type *string `pulumi:"type"`
+	Arn                *string           `pulumi:"arn"`
+	AvailabilityZone   *string           `pulumi:"availabilityZone"`
+	Encrypted          *bool             `pulumi:"encrypted"`
+	Iops               *int              `pulumi:"iops"`
+	KmsKeyId           *string           `pulumi:"kmsKeyId"`
+	MultiAttachEnabled *bool             `pulumi:"multiAttachEnabled"`
+	OutpostArn         *string           `pulumi:"outpostArn"`
+	Size               *int              `pulumi:"size"`
+	SnapshotId         *string           `pulumi:"snapshotId"`
+	Tags               map[string]string `pulumi:"tags"`
+	Type               *string           `pulumi:"type"`
 }
 
 type VolumeState struct {
-	// The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
-	Arn pulumi.StringPtrInput
-	// The AZ where the EBS volume will exist.
-	AvailabilityZone pulumi.StringPtrInput
-	// If true, the disk will be encrypted.
-	Encrypted pulumi.BoolPtrInput
-	// The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-	Iops pulumi.IntPtrInput
-	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
-	KmsKeyId pulumi.StringPtrInput
-	// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
+	Arn                pulumi.StringPtrInput
+	AvailabilityZone   pulumi.StringPtrInput
+	Encrypted          pulumi.BoolPtrInput
+	Iops               pulumi.IntPtrInput
+	KmsKeyId           pulumi.StringPtrInput
 	MultiAttachEnabled pulumi.BoolPtrInput
-	// The Amazon Resource Name (ARN) of the Outpost.
-	OutpostArn pulumi.StringPtrInput
-	// The size of the drive in GiBs.
-	Size pulumi.IntPtrInput
-	// A snapshot to base the EBS volume off of.
-	SnapshotId pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
-	Type pulumi.StringPtrInput
+	OutpostArn         pulumi.StringPtrInput
+	Size               pulumi.IntPtrInput
+	SnapshotId         pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
+	Type               pulumi.StringPtrInput
 }
 
 func (VolumeState) ElementType() reflect.Type {
@@ -152,50 +89,30 @@ func (VolumeState) ElementType() reflect.Type {
 }
 
 type volumeArgs struct {
-	// The AZ where the EBS volume will exist.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// If true, the disk will be encrypted.
-	Encrypted *bool `pulumi:"encrypted"`
-	// The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-	Iops *int `pulumi:"iops"`
-	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
-	MultiAttachEnabled *bool `pulumi:"multiAttachEnabled"`
-	// The Amazon Resource Name (ARN) of the Outpost.
-	OutpostArn *string `pulumi:"outpostArn"`
-	// The size of the drive in GiBs.
-	Size *int `pulumi:"size"`
-	// A snapshot to base the EBS volume off of.
-	SnapshotId *string `pulumi:"snapshotId"`
-	// A map of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
-	Type *string `pulumi:"type"`
+	AvailabilityZone   string            `pulumi:"availabilityZone"`
+	Encrypted          *bool             `pulumi:"encrypted"`
+	Iops               *int              `pulumi:"iops"`
+	KmsKeyId           *string           `pulumi:"kmsKeyId"`
+	MultiAttachEnabled *bool             `pulumi:"multiAttachEnabled"`
+	OutpostArn         *string           `pulumi:"outpostArn"`
+	Size               *int              `pulumi:"size"`
+	SnapshotId         *string           `pulumi:"snapshotId"`
+	Tags               map[string]string `pulumi:"tags"`
+	Type               *string           `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Volume resource.
 type VolumeArgs struct {
-	// The AZ where the EBS volume will exist.
-	AvailabilityZone pulumi.StringInput
-	// If true, the disk will be encrypted.
-	Encrypted pulumi.BoolPtrInput
-	// The amount of IOPS to provision for the disk. Only valid for `type` of `io1`.
-	Iops pulumi.IntPtrInput
-	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
-	KmsKeyId pulumi.StringPtrInput
-	// Specifies whether to enable Amazon EBS Multi-Attach. Multi-Attach is supported exclusively on `io1` volumes.
+	AvailabilityZone   pulumi.StringInput
+	Encrypted          pulumi.BoolPtrInput
+	Iops               pulumi.IntPtrInput
+	KmsKeyId           pulumi.StringPtrInput
 	MultiAttachEnabled pulumi.BoolPtrInput
-	// The Amazon Resource Name (ARN) of the Outpost.
-	OutpostArn pulumi.StringPtrInput
-	// The size of the drive in GiBs.
-	Size pulumi.IntPtrInput
-	// A snapshot to base the EBS volume off of.
-	SnapshotId pulumi.StringPtrInput
-	// A map of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// The type of EBS volume. Can be "standard", "gp2", "io1", "sc1" or "st1" (Default: "gp2").
-	Type pulumi.StringPtrInput
+	OutpostArn         pulumi.StringPtrInput
+	Size               pulumi.IntPtrInput
+	SnapshotId         pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
+	Type               pulumi.StringPtrInput
 }
 
 func (VolumeArgs) ElementType() reflect.Type {

@@ -13,17 +13,8 @@ namespace Pulumi.Aws.Dlm.Outputs
     [OutputType]
     public sealed class LifecyclePolicyPolicyDetails
     {
-        /// <summary>
-        /// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
-        /// </summary>
         public readonly ImmutableArray<string> ResourceTypes;
-        /// <summary>
-        /// See the `schedule` configuration block.
-        /// </summary>
         public readonly ImmutableArray<Outputs.LifecyclePolicyPolicyDetailsSchedule> Schedules;
-        /// <summary>
-        /// A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> TargetTags;
 
         [OutputConstructor]

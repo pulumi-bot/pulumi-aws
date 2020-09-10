@@ -13,9 +13,6 @@ namespace Pulumi.Aws.Kinesis.Outputs
     [OutputType]
     public sealed class FirehoseDeliveryStreamServerSideEncryption
     {
-        /// <summary>
-        /// Whether to enable encryption at rest. Default is `false`.
-        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

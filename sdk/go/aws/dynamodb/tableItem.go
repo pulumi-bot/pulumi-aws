@@ -10,63 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DynamoDB table item resource
-//
-// > **Note:** This resource is not meant to be used for managing large amounts of data in your table, it is not designed to scale.
-//   You should perform **regular backups** of all data in the table, see [AWS docs for more](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/dynamodb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTable, err := dynamodb.NewTable(ctx, "exampleTable", &dynamodb.TableArgs{
-// 			ReadCapacity:  pulumi.Int(10),
-// 			WriteCapacity: pulumi.Int(10),
-// 			HashKey:       pulumi.String("exampleHashKey"),
-// 			Attributes: dynamodb.TableAttributeArray{
-// 				&dynamodb.TableAttributeArgs{
-// 					Name: pulumi.String("exampleHashKey"),
-// 					Type: pulumi.String("S"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dynamodb.NewTableItem(ctx, "exampleTableItem", &dynamodb.TableItemArgs{
-// 			TableName: exampleTable.Name,
-// 			HashKey:   exampleTable.HashKey,
-// 			Item:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "{\n", "  \"exampleHashKey\": {\"S\": \"something\"},\n", "  \"one\": {\"N\": \"11111\"},\n", "  \"two\": {\"N\": \"22222\"},\n", "  \"three\": {\"N\": \"33333\"},\n", "  \"four\": {\"N\": \"44444\"}\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TableItem struct {
 	pulumi.CustomResourceState
 
-	// Hash key to use for lookups and identification of the item
-	HashKey pulumi.StringOutput `pulumi:"hashKey"`
-	// JSON representation of a map of attribute name/value pairs, one for each attribute.
-	// Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-	Item pulumi.StringOutput `pulumi:"item"`
-	// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-	RangeKey pulumi.StringPtrOutput `pulumi:"rangeKey"`
-	// The name of the table to contain the item.
-	TableName pulumi.StringOutput `pulumi:"tableName"`
+	HashKey   pulumi.StringOutput    `pulumi:"hashKey"`
+	Item      pulumi.StringOutput    `pulumi:"item"`
+	RangeKey  pulumi.StringPtrOutput `pulumi:"rangeKey"`
+	TableName pulumi.StringOutput    `pulumi:"tableName"`
 }
 
 // NewTableItem registers a new resource with the given unique name, arguments, and options.
@@ -106,26 +56,16 @@ func GetTableItem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TableItem resources.
 type tableItemState struct {
-	// Hash key to use for lookups and identification of the item
-	HashKey *string `pulumi:"hashKey"`
-	// JSON representation of a map of attribute name/value pairs, one for each attribute.
-	// Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-	Item *string `pulumi:"item"`
-	// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-	RangeKey *string `pulumi:"rangeKey"`
-	// The name of the table to contain the item.
+	HashKey   *string `pulumi:"hashKey"`
+	Item      *string `pulumi:"item"`
+	RangeKey  *string `pulumi:"rangeKey"`
 	TableName *string `pulumi:"tableName"`
 }
 
 type TableItemState struct {
-	// Hash key to use for lookups and identification of the item
-	HashKey pulumi.StringPtrInput
-	// JSON representation of a map of attribute name/value pairs, one for each attribute.
-	// Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-	Item pulumi.StringPtrInput
-	// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-	RangeKey pulumi.StringPtrInput
-	// The name of the table to contain the item.
+	HashKey   pulumi.StringPtrInput
+	Item      pulumi.StringPtrInput
+	RangeKey  pulumi.StringPtrInput
 	TableName pulumi.StringPtrInput
 }
 
@@ -134,27 +74,17 @@ func (TableItemState) ElementType() reflect.Type {
 }
 
 type tableItemArgs struct {
-	// Hash key to use for lookups and identification of the item
-	HashKey string `pulumi:"hashKey"`
-	// JSON representation of a map of attribute name/value pairs, one for each attribute.
-	// Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-	Item string `pulumi:"item"`
-	// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-	RangeKey *string `pulumi:"rangeKey"`
-	// The name of the table to contain the item.
-	TableName string `pulumi:"tableName"`
+	HashKey   string  `pulumi:"hashKey"`
+	Item      string  `pulumi:"item"`
+	RangeKey  *string `pulumi:"rangeKey"`
+	TableName string  `pulumi:"tableName"`
 }
 
 // The set of arguments for constructing a TableItem resource.
 type TableItemArgs struct {
-	// Hash key to use for lookups and identification of the item
-	HashKey pulumi.StringInput
-	// JSON representation of a map of attribute name/value pairs, one for each attribute.
-	// Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-	Item pulumi.StringInput
-	// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-	RangeKey pulumi.StringPtrInput
-	// The name of the table to contain the item.
+	HashKey   pulumi.StringInput
+	Item      pulumi.StringInput
+	RangeKey  pulumi.StringPtrInput
 	TableName pulumi.StringInput
 }
 

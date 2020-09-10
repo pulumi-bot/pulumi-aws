@@ -13,13 +13,7 @@ namespace Pulumi.Aws.AppMesh.Outputs
     [OutputType]
     public sealed class VirtualNodeSpecServiceDiscovery
     {
-        /// <summary>
-        /// Specifies any AWS Cloud Map information for the virtual node.
-        /// </summary>
         public readonly Outputs.VirtualNodeSpecServiceDiscoveryAwsCloudMap? AwsCloudMap;
-        /// <summary>
-        /// Specifies the DNS service name for the virtual node.
-        /// </summary>
         public readonly Outputs.VirtualNodeSpecServiceDiscoveryDns? Dns;
 
         [OutputConstructor]

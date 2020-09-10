@@ -22,20 +22,9 @@ class HttpNamespace(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.servicediscovery.HttpNamespace("example", description="example")
-        ```
-
+        Create a HttpNamespace resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description that you specify for the namespace when you create it.
-        :param pulumi.Input[str] name: The name of the http namespace.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the namespace.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,10 +68,6 @@ class HttpNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The ARN that Amazon Route 53 assigns to the namespace when you create it.
-        :param pulumi.Input[str] description: The description that you specify for the namespace when you create it.
-        :param pulumi.Input[str] name: The name of the http namespace.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -97,33 +82,21 @@ class HttpNamespace(pulumi.CustomResource):
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        The ARN that Amazon Route 53 assigns to the namespace when you create it.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description that you specify for the namespace when you create it.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the http namespace.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of tags to assign to the namespace.
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

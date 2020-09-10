@@ -11,9 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetLocalGatewayRouteTables
     {
-        /// <summary>
-        /// Provides information for multiple EC2 Local Gateway Route Tables, such as their identifiers.
-        /// </summary>
         public static Task<GetLocalGatewayRouteTablesResult> InvokeAsync(GetLocalGatewayRouteTablesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewayRouteTablesResult>("aws:ec2/getLocalGatewayRouteTables:getLocalGatewayRouteTables", args ?? new GetLocalGatewayRouteTablesArgs(), options.WithVersion());
     }
@@ -23,10 +20,6 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetLocalGatewayRouteTablesFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetLocalGatewayRouteTablesFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetLocalGatewayRouteTablesFilterArgs>());
@@ -35,11 +28,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags, each pair of which must exactly match
-        /// a pair on the desired local gateway route table.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -60,9 +48,6 @@ namespace Pulumi.Aws.Ec2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Set of Local Gateway Route Table identifiers
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableDictionary<string, string> Tags;
 

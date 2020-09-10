@@ -63,25 +63,16 @@ class GetReplicationGroupResult:
     @property
     @pulumi.getter(name="authTokenEnabled")
     def auth_token_enabled(self) -> bool:
-        """
-        A flag that enables using an AuthToken (password) when issuing Redis commands.
-        """
         return pulumi.get(self, "auth_token_enabled")
 
     @property
     @pulumi.getter(name="automaticFailoverEnabled")
     def automatic_failover_enabled(self) -> bool:
-        """
-        A flag whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails.
-        """
         return pulumi.get(self, "automatic_failover_enabled")
 
     @property
     @pulumi.getter(name="configurationEndpointAddress")
     def configuration_endpoint_address(self) -> str:
-        """
-        The configuration endpoint address to allow host discovery.
-        """
         return pulumi.get(self, "configuration_endpoint_address")
 
     @property
@@ -95,73 +86,46 @@ class GetReplicationGroupResult:
     @property
     @pulumi.getter(name="memberClusters")
     def member_clusters(self) -> List[str]:
-        """
-        The identifiers of all the nodes that are part of this replication group.
-        """
         return pulumi.get(self, "member_clusters")
 
     @property
     @pulumi.getter(name="nodeType")
     def node_type(self) -> str:
-        """
-        The cluster node type.
-        """
         return pulumi.get(self, "node_type")
 
     @property
     @pulumi.getter(name="numberCacheClusters")
     def number_cache_clusters(self) -> float:
-        """
-        The number of cache clusters that the replication group has.
-        """
         return pulumi.get(self, "number_cache_clusters")
 
     @property
     @pulumi.getter
     def port(self) -> float:
-        """
-        The port number on which the configuration endpoint will accept connections.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="primaryEndpointAddress")
     def primary_endpoint_address(self) -> str:
-        """
-        The endpoint of the primary node in this node group (shard).
-        """
         return pulumi.get(self, "primary_endpoint_address")
 
     @property
     @pulumi.getter(name="replicationGroupDescription")
     def replication_group_description(self) -> str:
-        """
-        The description of the replication group.
-        """
         return pulumi.get(self, "replication_group_description")
 
     @property
     @pulumi.getter(name="replicationGroupId")
     def replication_group_id(self) -> str:
-        """
-        The identifier for the replication group.
-        """
         return pulumi.get(self, "replication_group_id")
 
     @property
     @pulumi.getter(name="snapshotRetentionLimit")
     def snapshot_retention_limit(self) -> float:
-        """
-        The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
-        """
         return pulumi.get(self, "snapshot_retention_limit")
 
     @property
     @pulumi.getter(name="snapshotWindow")
     def snapshot_window(self) -> str:
-        """
-        The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
-        """
         return pulumi.get(self, "snapshot_window")
 
 
@@ -189,19 +153,7 @@ class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
 def get_replication_group(replication_group_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReplicationGroupResult:
     """
-    Use this data source to get information about an Elasticache Replication Group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    bar = aws.elasticache.get_replication_group(replication_group_id="example")
-    ```
-
-
-    :param str replication_group_id: The identifier for the replication group.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['replicationGroupId'] = replication_group_id

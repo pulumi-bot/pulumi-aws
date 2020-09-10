@@ -29,54 +29,9 @@ class Route(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to create a routing table entry (a route) in a VPC routing table.
-
-        > **NOTE on Route Tables and Routes:** This provider currently
-        provides both a standalone Route resource and a Route Table resource with routes
-        defined in-line. At this time you cannot use a Route Table with in-line routes
-        in conjunction with any Route resources. Doing so will cause
-        a conflict of rule settings and will overwrite rules.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        route = aws.ec2.Route("route",
-            route_table_id="rtb-4fbb3ac4",
-            destination_cidr_block="10.0.1.0/22",
-            vpc_peering_connection_id="pcx-45ff3dc1",
-            opts=ResourceOptions(depends_on=[aws_route_table["testing"]]))
-        ```
-        ## Example IPv6 Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        vpc = aws.ec2.Vpc("vpc",
-            cidr_block="10.1.0.0/16",
-            assign_generated_ipv6_cidr_block=True)
-        egress = aws.ec2.EgressOnlyInternetGateway("egress", vpc_id=vpc.id)
-        route = aws.ec2.Route("route",
-            route_table_id="rtb-4fbb3ac4",
-            destination_ipv6_cidr_block="::/0",
-            egress_only_gateway_id=egress.id)
-        ```
-
+        Create a Route resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_cidr_block: The destination CIDR block.
-        :param pulumi.Input[str] destination_ipv6_cidr_block: The destination IPv6 CIDR block.
-        :param pulumi.Input[str] egress_only_gateway_id: Identifier of a VPC Egress Only Internet Gateway.
-        :param pulumi.Input[str] gateway_id: Identifier of a VPC internet gateway or a virtual private gateway.
-        :param pulumi.Input[str] instance_id: Identifier of an EC2 instance.
-        :param pulumi.Input[str] nat_gateway_id: Identifier of a VPC NAT gateway.
-        :param pulumi.Input[str] network_interface_id: Identifier of an EC2 network interface.
-        :param pulumi.Input[str] route_table_id: The ID of the routing table.
-        :param pulumi.Input[str] transit_gateway_id: Identifier of an EC2 Transit Gateway.
-        :param pulumi.Input[str] vpc_peering_connection_id: Identifier of a VPC peering connection.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -142,16 +97,6 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_cidr_block: The destination CIDR block.
-        :param pulumi.Input[str] destination_ipv6_cidr_block: The destination IPv6 CIDR block.
-        :param pulumi.Input[str] egress_only_gateway_id: Identifier of a VPC Egress Only Internet Gateway.
-        :param pulumi.Input[str] gateway_id: Identifier of a VPC internet gateway or a virtual private gateway.
-        :param pulumi.Input[str] instance_id: Identifier of an EC2 instance.
-        :param pulumi.Input[str] nat_gateway_id: Identifier of a VPC NAT gateway.
-        :param pulumi.Input[str] network_interface_id: Identifier of an EC2 network interface.
-        :param pulumi.Input[str] route_table_id: The ID of the routing table.
-        :param pulumi.Input[str] transit_gateway_id: Identifier of an EC2 Transit Gateway.
-        :param pulumi.Input[str] vpc_peering_connection_id: Identifier of a VPC peering connection.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -176,17 +121,11 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> pulumi.Output[Optional[str]]:
-        """
-        The destination CIDR block.
-        """
         return pulumi.get(self, "destination_cidr_block")
 
     @property
     @pulumi.getter(name="destinationIpv6CidrBlock")
     def destination_ipv6_cidr_block(self) -> pulumi.Output[Optional[str]]:
-        """
-        The destination IPv6 CIDR block.
-        """
         return pulumi.get(self, "destination_ipv6_cidr_block")
 
     @property
@@ -197,25 +136,16 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="egressOnlyGatewayId")
     def egress_only_gateway_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of a VPC Egress Only Internet Gateway.
-        """
         return pulumi.get(self, "egress_only_gateway_id")
 
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of a VPC internet gateway or a virtual private gateway.
-        """
         return pulumi.get(self, "gateway_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of an EC2 instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -226,17 +156,11 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of a VPC NAT gateway.
-        """
         return pulumi.get(self, "nat_gateway_id")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[str]:
-        """
-        Identifier of an EC2 network interface.
-        """
         return pulumi.get(self, "network_interface_id")
 
     @property
@@ -247,9 +171,6 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the routing table.
-        """
         return pulumi.get(self, "route_table_id")
 
     @property
@@ -260,17 +181,11 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="transitGatewayId")
     def transit_gateway_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier of an EC2 Transit Gateway.
-        """
         return pulumi.get(self, "transit_gateway_id")
 
     @property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier of a VPC peering connection.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 
     def translate_output_property(self, prop):

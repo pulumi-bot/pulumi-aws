@@ -21,21 +21,9 @@ class Activity(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Step Function Activity resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        sfn_activity = aws.sfn.Activity("sfnActivity")
-        ```
-
+        Create a Activity resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the activity to create.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,9 +65,6 @@ class Activity(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_date: The date the activity was created.
-        :param pulumi.Input[str] name: The name of the activity to create.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -93,25 +78,16 @@ class Activity(pulumi.CustomResource):
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
-        """
-        The date the activity was created.
-        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the activity to create.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of resource tags
-        """
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

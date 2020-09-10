@@ -6,33 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Gamelift Game Session Queue resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const test = new aws.gamelift.GameSessionQueue("test", {
- *     destinations: [
- *         aws_gamelift_fleet.us_west_2_fleet.arn,
- *         aws_gamelift_fleet.eu_central_1_fleet.arn,
- *     ],
- *     playerLatencyPolicies: [
- *         {
- *             maximumIndividualPlayerLatencyMilliseconds: 100,
- *             policyDurationSeconds: 5,
- *         },
- *         {
- *             maximumIndividualPlayerLatencyMilliseconds: 200,
- *         },
- *     ],
- *     timeoutInSeconds: 60,
- * });
- * ```
- */
 export class GameSessionQueue extends pulumi.CustomResource {
     /**
      * Get an existing GameSessionQueue resource's state with the given name, ID, and optional extra
@@ -61,29 +34,11 @@ export class GameSessionQueue extends pulumi.CustomResource {
         return obj['__pulumiType'] === GameSessionQueue.__pulumiType;
     }
 
-    /**
-     * Game Session Queue ARN.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * List of fleet/alias ARNs used by session queue for placing game sessions.
-     */
     public readonly destinations!: pulumi.Output<string[] | undefined>;
-    /**
-     * Name of the session queue.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * One or more policies used to choose fleet based on player latency. See below.
-     */
     public readonly playerLatencyPolicies!: pulumi.Output<outputs.gamelift.GameSessionQueuePlayerLatencyPolicy[] | undefined>;
-    /**
-     * Key-value map of resource tags
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Maximum time a game session request can remain in the queue.
-     */
     public readonly timeoutInSeconds!: pulumi.Output<number | undefined>;
 
     /**
@@ -128,29 +83,11 @@ export class GameSessionQueue extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GameSessionQueue resources.
  */
 export interface GameSessionQueueState {
-    /**
-     * Game Session Queue ARN.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * List of fleet/alias ARNs used by session queue for placing game sessions.
-     */
     readonly destinations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the session queue.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * One or more policies used to choose fleet based on player latency. See below.
-     */
     readonly playerLatencyPolicies?: pulumi.Input<pulumi.Input<inputs.gamelift.GameSessionQueuePlayerLatencyPolicy>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Maximum time a game session request can remain in the queue.
-     */
     readonly timeoutInSeconds?: pulumi.Input<number>;
 }
 
@@ -158,24 +95,9 @@ export interface GameSessionQueueState {
  * The set of arguments for constructing a GameSessionQueue resource.
  */
 export interface GameSessionQueueArgs {
-    /**
-     * List of fleet/alias ARNs used by session queue for placing game sessions.
-     */
     readonly destinations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the session queue.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * One or more policies used to choose fleet based on player latency. See below.
-     */
     readonly playerLatencyPolicies?: pulumi.Input<pulumi.Input<inputs.gamelift.GameSessionQueuePlayerLatencyPolicy>[]>;
-    /**
-     * Key-value map of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Maximum time a game session request can remain in the queue.
-     */
     readonly timeoutInSeconds?: pulumi.Input<number>;
 }

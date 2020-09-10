@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Elastic Beanstalk Application Resource. Elastic Beanstalk allows
- * you to deploy and manage applications in the AWS cloud without worrying about
- * the infrastructure that runs those applications.
- *
- * This resource creates an application that has one configuration template named
- * `default`, and no application versions
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const tftest = new aws.elasticbeanstalk.Application("tftest", {
- *     description: "tf-test-desc",
- *     appversionLifecycle: {
- *         serviceRole: aws_iam_role.beanstalk_service.arn,
- *         maxCount: 128,
- *         deleteSourceFromS3: true,
- *     },
- * });
- * ```
- */
 export class Application extends pulumi.CustomResource {
     /**
      * Get an existing Application resource's state with the given name, ID, and optional extra
@@ -59,21 +35,9 @@ export class Application extends pulumi.CustomResource {
     }
 
     public readonly appversionLifecycle!: pulumi.Output<outputs.elasticbeanstalk.ApplicationAppversionLifecycle | undefined>;
-    /**
-     * The ARN assigned by AWS for this Elastic Beanstalk Application.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * Short description of the application
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the application, must be unique within your account
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Key-value map of tags for the Elastic Beanstalk Application.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -117,21 +81,9 @@ export class Application extends pulumi.CustomResource {
  */
 export interface ApplicationState {
     readonly appversionLifecycle?: pulumi.Input<inputs.elasticbeanstalk.ApplicationAppversionLifecycle>;
-    /**
-     * The ARN assigned by AWS for this Elastic Beanstalk Application.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Short description of the application
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the application, must be unique within your account
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of tags for the Elastic Beanstalk Application.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -140,16 +92,7 @@ export interface ApplicationState {
  */
 export interface ApplicationArgs {
     readonly appversionLifecycle?: pulumi.Input<inputs.elasticbeanstalk.ApplicationAppversionLifecycle>;
-    /**
-     * Short description of the application
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the application, must be unique within your account
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value map of tags for the Elastic Beanstalk Application.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

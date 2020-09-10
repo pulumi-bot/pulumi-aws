@@ -6,52 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Batch Job Definition resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const test = new aws.batch.JobDefinition("test", {
- *     containerProperties: `{
- * 	"command": ["ls", "-la"],
- * 	"image": "busybox",
- * 	"memory": 1024,
- * 	"vcpus": 1,
- * 	"volumes": [
- *       {
- *         "host": {
- *           "sourcePath": "/tmp"
- *         },
- *         "name": "tmp"
- *       }
- *     ],
- * 	"environment": [
- * 		{"name": "VARNAME", "value": "VARVAL"}
- * 	],
- * 	"mountPoints": [
- * 		{
- *           "sourceVolume": "tmp",
- *           "containerPath": "/tmp",
- *           "readOnly": false
- *         }
- * 	],
- *     "ulimits": [
- *       {
- *         "hardLimit": 1024,
- *         "name": "nofile",
- *         "softLimit": 1024
- *       }
- *     ]
- * }
- * `,
- *     type: "container",
- * });
- * ```
- */
 export class JobDefinition extends pulumi.CustomResource {
     /**
      * Get an existing JobDefinition resource's state with the given name, ID, and optional extra
@@ -80,39 +34,13 @@ export class JobDefinition extends pulumi.CustomResource {
         return obj['__pulumiType'] === JobDefinition.__pulumiType;
     }
 
-    /**
-     * The Amazon Resource Name of the job definition.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * A valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html)
-     * provided as a single valid JSON document. This parameter is required if the `type` parameter is `container`.
-     */
     public readonly containerProperties!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the name of the job definition.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Specifies the parameter substitution placeholders to set in the job definition.
-     */
     public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the retry strategy to use for failed jobs that are submitted with this job definition.
-     * Maximum number of `retryStrategy` is `1`.  Defined below.
-     */
     public readonly retryStrategy!: pulumi.Output<outputs.batch.JobDefinitionRetryStrategy | undefined>;
-    /**
-     * The revision of the job definition.
-     */
     public /*out*/ readonly revision!: pulumi.Output<number>;
-    /**
-     * Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
-     */
     public readonly timeout!: pulumi.Output<outputs.batch.JobDefinitionTimeout | undefined>;
-    /**
-     * The type of job definition.  Must be `container`
-     */
     public readonly type!: pulumi.Output<string>;
 
     /**
@@ -164,39 +92,13 @@ export class JobDefinition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering JobDefinition resources.
  */
 export interface JobDefinitionState {
-    /**
-     * The Amazon Resource Name of the job definition.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * A valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html)
-     * provided as a single valid JSON document. This parameter is required if the `type` parameter is `container`.
-     */
     readonly containerProperties?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the job definition.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Specifies the parameter substitution placeholders to set in the job definition.
-     */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the retry strategy to use for failed jobs that are submitted with this job definition.
-     * Maximum number of `retryStrategy` is `1`.  Defined below.
-     */
     readonly retryStrategy?: pulumi.Input<inputs.batch.JobDefinitionRetryStrategy>;
-    /**
-     * The revision of the job definition.
-     */
     readonly revision?: pulumi.Input<number>;
-    /**
-     * Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
-     */
     readonly timeout?: pulumi.Input<inputs.batch.JobDefinitionTimeout>;
-    /**
-     * The type of job definition.  Must be `container`
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -204,30 +106,10 @@ export interface JobDefinitionState {
  * The set of arguments for constructing a JobDefinition resource.
  */
 export interface JobDefinitionArgs {
-    /**
-     * A valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html)
-     * provided as a single valid JSON document. This parameter is required if the `type` parameter is `container`.
-     */
     readonly containerProperties?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the job definition.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Specifies the parameter substitution placeholders to set in the job definition.
-     */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the retry strategy to use for failed jobs that are submitted with this job definition.
-     * Maximum number of `retryStrategy` is `1`.  Defined below.
-     */
     readonly retryStrategy?: pulumi.Input<inputs.batch.JobDefinitionRetryStrategy>;
-    /**
-     * Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
-     */
     readonly timeout?: pulumi.Input<inputs.batch.JobDefinitionTimeout>;
-    /**
-     * The type of job definition.  Must be `container`
-     */
     readonly type: pulumi.Input<string>;
 }

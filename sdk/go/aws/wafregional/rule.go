@@ -10,72 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an WAF Regional Rule Resource for use with Application Load Balancer.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/wafregional"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ipset, err := wafregional.NewIpSet(ctx, "ipset", &wafregional.IpSetArgs{
-// 			IpSetDescriptors: wafregional.IpSetIpSetDescriptorArray{
-// 				&wafregional.IpSetIpSetDescriptorArgs{
-// 					Type:  pulumi.String("IPV4"),
-// 					Value: pulumi.String("192.0.7.0/24"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
-// 			MetricName: pulumi.String("tfWAFRule"),
-// 			Predicates: wafregional.RulePredicateArray{
-// 				&wafregional.RulePredicateArgs{
-// 					Type:    pulumi.String("IPMatch"),
-// 					DataId:  ipset.ID(),
-// 					Negated: pulumi.Bool(false),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Nested Fields
-//
-// ### `predicate`
-//
-// See the [WAF Documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_Predicate.html) for more information.
-//
-// #### Arguments
-//
-// * `type` - (Required) The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
-// * `dataId` - (Required) The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
-// * `negated` - (Required) Whether to use the settings or the negated settings that you specified in the objects.
 type Rule struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the WAF Regional Rule.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The name or description for the Amazon CloudWatch metric of this rule.
-	MetricName pulumi.StringOutput `pulumi:"metricName"`
-	// The name or description of the rule.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The objects to include in a rule (documented below).
+	Arn        pulumi.StringOutput      `pulumi:"arn"`
+	MetricName pulumi.StringOutput      `pulumi:"metricName"`
+	Name       pulumi.StringOutput      `pulumi:"name"`
 	Predicates RulePredicateArrayOutput `pulumi:"predicates"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewRule registers a new resource with the given unique name, arguments, and options.
@@ -109,29 +51,19 @@ func GetRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rule resources.
 type ruleState struct {
-	// The ARN of the WAF Regional Rule.
-	Arn *string `pulumi:"arn"`
-	// The name or description for the Amazon CloudWatch metric of this rule.
-	MetricName *string `pulumi:"metricName"`
-	// The name or description of the rule.
-	Name *string `pulumi:"name"`
-	// The objects to include in a rule (documented below).
-	Predicates []RulePredicate `pulumi:"predicates"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Arn        *string           `pulumi:"arn"`
+	MetricName *string           `pulumi:"metricName"`
+	Name       *string           `pulumi:"name"`
+	Predicates []RulePredicate   `pulumi:"predicates"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 type RuleState struct {
-	// The ARN of the WAF Regional Rule.
-	Arn pulumi.StringPtrInput
-	// The name or description for the Amazon CloudWatch metric of this rule.
+	Arn        pulumi.StringPtrInput
 	MetricName pulumi.StringPtrInput
-	// The name or description of the rule.
-	Name pulumi.StringPtrInput
-	// The objects to include in a rule (documented below).
+	Name       pulumi.StringPtrInput
 	Predicates RulePredicateArrayInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags       pulumi.StringMapInput
 }
 
 func (RuleState) ElementType() reflect.Type {
@@ -139,26 +71,18 @@ func (RuleState) ElementType() reflect.Type {
 }
 
 type ruleArgs struct {
-	// The name or description for the Amazon CloudWatch metric of this rule.
-	MetricName string `pulumi:"metricName"`
-	// The name or description of the rule.
-	Name *string `pulumi:"name"`
-	// The objects to include in a rule (documented below).
-	Predicates []RulePredicate `pulumi:"predicates"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	MetricName string            `pulumi:"metricName"`
+	Name       *string           `pulumi:"name"`
+	Predicates []RulePredicate   `pulumi:"predicates"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
-	// The name or description for the Amazon CloudWatch metric of this rule.
 	MetricName pulumi.StringInput
-	// The name or description of the rule.
-	Name pulumi.StringPtrInput
-	// The objects to include in a rule (documented below).
+	Name       pulumi.StringPtrInput
 	Predicates RulePredicateArrayInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags       pulumi.StringMapInput
 }
 
 func (RuleArgs) ElementType() reflect.Type {

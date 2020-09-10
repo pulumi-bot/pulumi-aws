@@ -12,21 +12,12 @@ namespace Pulumi.Aws.WafV2.Inputs
 
     public sealed class RuleGroupRuleActionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Instructs AWS WAF to allow the web request.
-        /// </summary>
         [Input("allow")]
         public Input<Inputs.RuleGroupRuleActionAllowArgs>? Allow { get; set; }
 
-        /// <summary>
-        /// Instructs AWS WAF to block the web request.
-        /// </summary>
         [Input("block")]
         public Input<Inputs.RuleGroupRuleActionBlockArgs>? Block { get; set; }
 
-        /// <summary>
-        /// Instructs AWS WAF to count the web request and allow it.
-        /// </summary>
         [Input("count")]
         public Input<Inputs.RuleGroupRuleActionCountArgs>? Count { get; set; }
 

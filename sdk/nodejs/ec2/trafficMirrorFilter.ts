@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Traffic mirror filter.\
- * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
- *
- * ## Example Usage
- *
- * To create a basic traffic mirror filter
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const foo = new aws.ec2.TrafficMirrorFilter("foo", {
- *     description: "traffic mirror filter - example",
- *     networkServices: ["amazon-dns"],
- * });
- * ```
- */
 export class TrafficMirrorFilter extends pulumi.CustomResource {
     /**
      * Get an existing TrafficMirrorFilter resource's state with the given name, ID, and optional extra
@@ -50,17 +32,8 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
         return obj['__pulumiType'] === TrafficMirrorFilter.__pulumiType;
     }
 
-    /**
-     * A description of the filter.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-     */
     public readonly networkServices!: pulumi.Output<string[] | undefined>;
-    /**
-     * Key-value map of resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -99,17 +72,8 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TrafficMirrorFilter resources.
  */
 export interface TrafficMirrorFilterState {
-    /**
-     * A description of the filter.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-     */
     readonly networkServices?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -117,16 +81,7 @@ export interface TrafficMirrorFilterState {
  * The set of arguments for constructing a TrafficMirrorFilter resource.
  */
 export interface TrafficMirrorFilterArgs {
-    /**
-     * A description of the filter.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
-     */
     readonly networkServices?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Key-value map of resource tags.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

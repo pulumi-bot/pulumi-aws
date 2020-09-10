@@ -12,18 +12,11 @@ namespace Pulumi.Aws.Ec2.Inputs
 
     public sealed class LaunchTemplateTagSpecificationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of resource to tag. Valid values are `instance` and `volume`.
-        /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

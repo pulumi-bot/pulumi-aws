@@ -6,33 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS App Mesh service mesh resource.
- *
- * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const simple = new aws.appmesh.Mesh("simple", {});
- * ```
- * ### Egress Filter
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const simple = new aws.appmesh.Mesh("simple", {
- *     spec: {
- *         egressFilter: {
- *             type: "ALLOW_ALL",
- *         },
- *     },
- * });
- * ```
- */
 export class Mesh extends pulumi.CustomResource {
     /**
      * Get an existing Mesh resource's state with the given name, ID, and optional extra
@@ -61,29 +34,11 @@ export class Mesh extends pulumi.CustomResource {
         return obj['__pulumiType'] === Mesh.__pulumiType;
     }
 
-    /**
-     * The ARN of the service mesh.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The creation date of the service mesh.
-     */
     public /*out*/ readonly createdDate!: pulumi.Output<string>;
-    /**
-     * The last update date of the service mesh.
-     */
     public /*out*/ readonly lastUpdatedDate!: pulumi.Output<string>;
-    /**
-     * The name to use for the service mesh.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The service mesh specification to apply.
-     */
     public readonly spec!: pulumi.Output<outputs.appmesh.MeshSpec | undefined>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -128,29 +83,11 @@ export class Mesh extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Mesh resources.
  */
 export interface MeshState {
-    /**
-     * The ARN of the service mesh.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The creation date of the service mesh.
-     */
     readonly createdDate?: pulumi.Input<string>;
-    /**
-     * The last update date of the service mesh.
-     */
     readonly lastUpdatedDate?: pulumi.Input<string>;
-    /**
-     * The name to use for the service mesh.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The service mesh specification to apply.
-     */
     readonly spec?: pulumi.Input<inputs.appmesh.MeshSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -158,16 +95,7 @@ export interface MeshState {
  * The set of arguments for constructing a Mesh resource.
  */
 export interface MeshArgs {
-    /**
-     * The name to use for the service mesh.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The service mesh specification to apply.
-     */
     readonly spec?: pulumi.Input<inputs.appmesh.MeshSpec>;
-    /**
-     * A map of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

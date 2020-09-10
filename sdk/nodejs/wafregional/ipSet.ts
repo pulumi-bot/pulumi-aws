@@ -6,29 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Regional IPSet Resource for use with Application Load Balancer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ipset = new aws.wafregional.IpSet("ipset", {
- *     ipSetDescriptors: [
- *         {
- *             type: "IPV4",
- *             value: "192.0.7.0/24",
- *         },
- *         {
- *             type: "IPV4",
- *             value: "10.16.16.0/16",
- *         },
- *     ],
- * });
- * ```
- */
 export class IpSet extends pulumi.CustomResource {
     /**
      * Get an existing IpSet resource's state with the given name, ID, and optional extra
@@ -57,17 +34,8 @@ export class IpSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === IpSet.__pulumiType;
     }
 
-    /**
-     * The ARN of the WAF IPSet.
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
-     */
     public readonly ipSetDescriptors!: pulumi.Output<outputs.wafregional.IpSetIpSetDescriptor[] | undefined>;
-    /**
-     * The name or description of the IPSet.
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -106,17 +74,8 @@ export class IpSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IpSet resources.
  */
 export interface IpSetState {
-    /**
-     * The ARN of the WAF IPSet.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
-     */
     readonly ipSetDescriptors?: pulumi.Input<pulumi.Input<inputs.wafregional.IpSetIpSetDescriptor>[]>;
-    /**
-     * The name or description of the IPSet.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -124,12 +83,6 @@ export interface IpSetState {
  * The set of arguments for constructing a IpSet resource.
  */
 export interface IpSetArgs {
-    /**
-     * One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
-     */
     readonly ipSetDescriptors?: pulumi.Input<pulumi.Input<inputs.wafregional.IpSetIpSetDescriptor>[]>;
-    /**
-     * The name or description of the IPSet.
-     */
     readonly name?: pulumi.Input<string>;
 }

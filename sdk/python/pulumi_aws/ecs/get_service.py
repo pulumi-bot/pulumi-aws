@@ -48,9 +48,6 @@ class GetServiceResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The ARN of the ECS Service
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -61,9 +58,6 @@ class GetServiceResult:
     @property
     @pulumi.getter(name="desiredCount")
     def desired_count(self) -> float:
-        """
-        The number of tasks for the ECS Service
-        """
         return pulumi.get(self, "desired_count")
 
     @property
@@ -77,17 +71,11 @@ class GetServiceResult:
     @property
     @pulumi.getter(name="launchType")
     def launch_type(self) -> str:
-        """
-        The launch type for the ECS Service
-        """
         return pulumi.get(self, "launch_type")
 
     @property
     @pulumi.getter(name="schedulingStrategy")
     def scheduling_strategy(self) -> str:
-        """
-        The scheduling strategy for the ECS Service
-        """
         return pulumi.get(self, "scheduling_strategy")
 
     @property
@@ -98,9 +86,6 @@ class GetServiceResult:
     @property
     @pulumi.getter(name="taskDefinition")
     def task_definition(self) -> str:
-        """
-        The family for the latest ACTIVE revision
-        """
         return pulumi.get(self, "task_definition")
 
 
@@ -124,22 +109,7 @@ def get_service(cluster_arn: Optional[str] = None,
                 service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    The ECS Service data source allows access to details of a specific
-    Service within a AWS ECS Cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ecs.get_service(service_name="example",
-        cluster_arn=data["aws_ecs_cluster"]["example"]["arn"])
-    ```
-
-
-    :param str cluster_arn: The arn of the ECS Cluster
-    :param str service_name: The name of the ECS Service
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterArn'] = cluster_arn

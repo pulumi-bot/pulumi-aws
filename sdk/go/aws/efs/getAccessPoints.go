@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides information about multiple Elastic File System (EFS) Access Points.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/efs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := efs.GetAccessPoints(ctx, &efs.GetAccessPointsArgs{
-// 			FileSystemId: "fs-12345678",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetAccessPoints(ctx *pulumi.Context, args *GetAccessPointsArgs, opts ...pulumi.InvokeOption) (*GetAccessPointsResult, error) {
 	var rv GetAccessPointsResult
 	err := ctx.Invoke("aws:efs/getAccessPoints:getAccessPoints", args, &rv, opts...)
@@ -42,17 +18,14 @@ func GetAccessPoints(ctx *pulumi.Context, args *GetAccessPointsArgs, opts ...pul
 
 // A collection of arguments for invoking getAccessPoints.
 type GetAccessPointsArgs struct {
-	// EFS File System identifier.
 	FileSystemId string `pulumi:"fileSystemId"`
 }
 
 // A collection of values returned by getAccessPoints.
 type GetAccessPointsResult struct {
-	// Set of Amazon Resource Names (ARNs).
 	Arns         []string `pulumi:"arns"`
 	FileSystemId string   `pulumi:"fileSystemId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Set of identifiers.
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 }

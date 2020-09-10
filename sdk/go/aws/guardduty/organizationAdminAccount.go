@@ -10,50 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a GuardDuty Organization Admin Account. The AWS account utilizing this resource must be an Organizations primary account. More information about Organizations support in GuardDuty can be found in the [GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/guardduty"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleOrganization, err := organizations.NewOrganization(ctx, "exampleOrganization", &organizations.OrganizationArgs{
-// 			AwsServiceAccessPrincipals: pulumi.StringArray{
-// 				pulumi.String("guardduty.amazonaws.com"),
-// 			},
-// 			FeatureSet: pulumi.String("ALL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = guardduty.NewDetector(ctx, "exampleDetector", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = guardduty.NewOrganizationAdminAccount(ctx, "exampleOrganizationAdminAccount", &guardduty.OrganizationAdminAccountArgs{
-// 			AdminAccountId: pulumi.String("123456789012"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleOrganization,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type OrganizationAdminAccount struct {
 	pulumi.CustomResourceState
 
-	// AWS account identifier to designate as a delegated administrator for GuardDuty.
 	AdminAccountId pulumi.StringOutput `pulumi:"adminAccountId"`
 }
 
@@ -88,12 +47,10 @@ func GetOrganizationAdminAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationAdminAccount resources.
 type organizationAdminAccountState struct {
-	// AWS account identifier to designate as a delegated administrator for GuardDuty.
 	AdminAccountId *string `pulumi:"adminAccountId"`
 }
 
 type OrganizationAdminAccountState struct {
-	// AWS account identifier to designate as a delegated administrator for GuardDuty.
 	AdminAccountId pulumi.StringPtrInput
 }
 
@@ -102,13 +59,11 @@ func (OrganizationAdminAccountState) ElementType() reflect.Type {
 }
 
 type organizationAdminAccountArgs struct {
-	// AWS account identifier to designate as a delegated administrator for GuardDuty.
 	AdminAccountId string `pulumi:"adminAccountId"`
 }
 
 // The set of arguments for constructing a OrganizationAdminAccount resource.
 type OrganizationAdminAccountArgs struct {
-	// AWS account identifier to designate as a delegated administrator for GuardDuty.
 	AdminAccountId pulumi.StringInput
 }
 

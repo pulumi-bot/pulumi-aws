@@ -10,53 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Service Discovery Private DNS Namespace resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/servicediscovery"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleVpc, err := ec2.NewVpc(ctx, "exampleVpc", &ec2.VpcArgs{
-// 			CidrBlock: pulumi.String("10.0.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = servicediscovery.NewPrivateDnsNamespace(ctx, "examplePrivateDnsNamespace", &servicediscovery.PrivateDnsNamespaceArgs{
-// 			Description: pulumi.String("example"),
-// 			Vpc:         exampleVpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type PrivateDnsNamespace struct {
 	pulumi.CustomResourceState
 
-	// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The description that you specify for the namespace when you create it.
+	Arn         pulumi.StringOutput    `pulumi:"arn"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
-	HostedZone pulumi.StringOutput `pulumi:"hostedZone"`
-	// The name of the namespace.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A map of tags to assign to the namespace.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of VPC that you want to associate the namespace with.
-	Vpc pulumi.StringOutput `pulumi:"vpc"`
+	HostedZone  pulumi.StringOutput    `pulumi:"hostedZone"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Tags        pulumi.StringMapOutput `pulumi:"tags"`
+	Vpc         pulumi.StringOutput    `pulumi:"vpc"`
 }
 
 // NewPrivateDnsNamespace registers a new resource with the given unique name, arguments, and options.
@@ -90,33 +52,21 @@ func GetPrivateDnsNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateDnsNamespace resources.
 type privateDnsNamespaceState struct {
-	// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-	Arn *string `pulumi:"arn"`
-	// The description that you specify for the namespace when you create it.
-	Description *string `pulumi:"description"`
-	// The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
-	HostedZone *string `pulumi:"hostedZone"`
-	// The name of the namespace.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the namespace.
-	Tags map[string]string `pulumi:"tags"`
-	// The ID of VPC that you want to associate the namespace with.
-	Vpc *string `pulumi:"vpc"`
+	Arn         *string           `pulumi:"arn"`
+	Description *string           `pulumi:"description"`
+	HostedZone  *string           `pulumi:"hostedZone"`
+	Name        *string           `pulumi:"name"`
+	Tags        map[string]string `pulumi:"tags"`
+	Vpc         *string           `pulumi:"vpc"`
 }
 
 type PrivateDnsNamespaceState struct {
-	// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-	Arn pulumi.StringPtrInput
-	// The description that you specify for the namespace when you create it.
+	Arn         pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
-	HostedZone pulumi.StringPtrInput
-	// The name of the namespace.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the namespace.
-	Tags pulumi.StringMapInput
-	// The ID of VPC that you want to associate the namespace with.
-	Vpc pulumi.StringPtrInput
+	HostedZone  pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
+	Vpc         pulumi.StringPtrInput
 }
 
 func (PrivateDnsNamespaceState) ElementType() reflect.Type {
@@ -124,26 +74,18 @@ func (PrivateDnsNamespaceState) ElementType() reflect.Type {
 }
 
 type privateDnsNamespaceArgs struct {
-	// The description that you specify for the namespace when you create it.
-	Description *string `pulumi:"description"`
-	// The name of the namespace.
-	Name *string `pulumi:"name"`
-	// A map of tags to assign to the namespace.
-	Tags map[string]string `pulumi:"tags"`
-	// The ID of VPC that you want to associate the namespace with.
-	Vpc string `pulumi:"vpc"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Tags        map[string]string `pulumi:"tags"`
+	Vpc         string            `pulumi:"vpc"`
 }
 
 // The set of arguments for constructing a PrivateDnsNamespace resource.
 type PrivateDnsNamespaceArgs struct {
-	// The description that you specify for the namespace when you create it.
 	Description pulumi.StringPtrInput
-	// The name of the namespace.
-	Name pulumi.StringPtrInput
-	// A map of tags to assign to the namespace.
-	Tags pulumi.StringMapInput
-	// The ID of VPC that you want to associate the namespace with.
-	Vpc pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
+	Vpc         pulumi.StringInput
 }
 
 func (PrivateDnsNamespaceArgs) ElementType() reflect.Type {

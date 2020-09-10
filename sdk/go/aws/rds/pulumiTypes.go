@@ -11,14 +11,9 @@ import (
 )
 
 type ClusterParameterGroupParameter struct {
-	// "immediate" (default), or "pending-reboot". Some
-	// engines can't apply some parameters without a reboot, and you will need to
-	// specify "pending-reboot" here.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the DB parameter.
-	Name string `pulumi:"name"`
-	// The value of the DB parameter.
-	Value string `pulumi:"value"`
+	Name        string  `pulumi:"name"`
+	Value       string  `pulumi:"value"`
 }
 
 // ClusterParameterGroupParameterInput is an input type that accepts ClusterParameterGroupParameterArgs and ClusterParameterGroupParameterOutput values.
@@ -33,14 +28,9 @@ type ClusterParameterGroupParameterInput interface {
 }
 
 type ClusterParameterGroupParameterArgs struct {
-	// "immediate" (default), or "pending-reboot". Some
-	// engines can't apply some parameters without a reboot, and you will need to
-	// specify "pending-reboot" here.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the DB parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the DB parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Value       pulumi.StringInput    `pulumi:"value"`
 }
 
 func (ClusterParameterGroupParameterArgs) ElementType() reflect.Type {
@@ -94,19 +84,14 @@ func (o ClusterParameterGroupParameterOutput) ToClusterParameterGroupParameterOu
 	return o
 }
 
-// "immediate" (default), or "pending-reboot". Some
-// engines can't apply some parameters without a reboot, and you will need to
-// specify "pending-reboot" here.
 func (o ClusterParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the DB parameter.
 func (o ClusterParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the DB parameter.
 func (o ClusterParameterGroupParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -132,16 +117,11 @@ func (o ClusterParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) Clus
 }
 
 type ClusterS3Import struct {
-	// The bucket name where your backup is stored
-	BucketName string `pulumi:"bucketName"`
-	// Can be blank, but is the path to your backup
-	BucketPrefix *string `pulumi:"bucketPrefix"`
-	// Role applied to load the data.
-	IngestionRole string `pulumi:"ingestionRole"`
-	// Source engine for the backup
-	SourceEngine string `pulumi:"sourceEngine"`
-	// Version of the source engine used to make the backup
-	SourceEngineVersion string `pulumi:"sourceEngineVersion"`
+	BucketName          string  `pulumi:"bucketName"`
+	BucketPrefix        *string `pulumi:"bucketPrefix"`
+	IngestionRole       string  `pulumi:"ingestionRole"`
+	SourceEngine        string  `pulumi:"sourceEngine"`
+	SourceEngineVersion string  `pulumi:"sourceEngineVersion"`
 }
 
 // ClusterS3ImportInput is an input type that accepts ClusterS3ImportArgs and ClusterS3ImportOutput values.
@@ -156,16 +136,11 @@ type ClusterS3ImportInput interface {
 }
 
 type ClusterS3ImportArgs struct {
-	// The bucket name where your backup is stored
-	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Can be blank, but is the path to your backup
-	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
-	// Role applied to load the data.
-	IngestionRole pulumi.StringInput `pulumi:"ingestionRole"`
-	// Source engine for the backup
-	SourceEngine pulumi.StringInput `pulumi:"sourceEngine"`
-	// Version of the source engine used to make the backup
-	SourceEngineVersion pulumi.StringInput `pulumi:"sourceEngineVersion"`
+	BucketName          pulumi.StringInput    `pulumi:"bucketName"`
+	BucketPrefix        pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	IngestionRole       pulumi.StringInput    `pulumi:"ingestionRole"`
+	SourceEngine        pulumi.StringInput    `pulumi:"sourceEngine"`
+	SourceEngineVersion pulumi.StringInput    `pulumi:"sourceEngineVersion"`
 }
 
 func (ClusterS3ImportArgs) ElementType() reflect.Type {
@@ -244,28 +219,22 @@ func (o ClusterS3ImportOutput) ToClusterS3ImportPtrOutputWithContext(ctx context
 		return &v
 	}).(ClusterS3ImportPtrOutput)
 }
-
-// The bucket name where your backup is stored
 func (o ClusterS3ImportOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterS3Import) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Can be blank, but is the path to your backup
 func (o ClusterS3ImportOutput) BucketPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterS3Import) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
 }
 
-// Role applied to load the data.
 func (o ClusterS3ImportOutput) IngestionRole() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterS3Import) string { return v.IngestionRole }).(pulumi.StringOutput)
 }
 
-// Source engine for the backup
 func (o ClusterS3ImportOutput) SourceEngine() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterS3Import) string { return v.SourceEngine }).(pulumi.StringOutput)
 }
 
-// Version of the source engine used to make the backup
 func (o ClusterS3ImportOutput) SourceEngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterS3Import) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
 }
@@ -288,7 +257,6 @@ func (o ClusterS3ImportPtrOutput) Elem() ClusterS3ImportOutput {
 	return o.ApplyT(func(v *ClusterS3Import) ClusterS3Import { return *v }).(ClusterS3ImportOutput)
 }
 
-// The bucket name where your backup is stored
 func (o ClusterS3ImportPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterS3Import) *string {
 		if v == nil {
@@ -298,7 +266,6 @@ func (o ClusterS3ImportPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Can be blank, but is the path to your backup
 func (o ClusterS3ImportPtrOutput) BucketPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterS3Import) *string {
 		if v == nil {
@@ -308,7 +275,6 @@ func (o ClusterS3ImportPtrOutput) BucketPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Role applied to load the data.
 func (o ClusterS3ImportPtrOutput) IngestionRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterS3Import) *string {
 		if v == nil {
@@ -318,7 +284,6 @@ func (o ClusterS3ImportPtrOutput) IngestionRole() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Source engine for the backup
 func (o ClusterS3ImportPtrOutput) SourceEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterS3Import) *string {
 		if v == nil {
@@ -328,7 +293,6 @@ func (o ClusterS3ImportPtrOutput) SourceEngine() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version of the source engine used to make the backup
 func (o ClusterS3ImportPtrOutput) SourceEngineVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterS3Import) *string {
 		if v == nil {
@@ -339,16 +303,11 @@ func (o ClusterS3ImportPtrOutput) SourceEngineVersion() pulumi.StringPtrOutput {
 }
 
 type ClusterScalingConfiguration struct {
-	// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
-	AutoPause *bool `pulumi:"autoPause"`
-	// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
-	MaxCapacity *int `pulumi:"maxCapacity"`
-	// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
-	MinCapacity *int `pulumi:"minCapacity"`
-	// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
-	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
-	// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
-	TimeoutAction *string `pulumi:"timeoutAction"`
+	AutoPause             *bool   `pulumi:"autoPause"`
+	MaxCapacity           *int    `pulumi:"maxCapacity"`
+	MinCapacity           *int    `pulumi:"minCapacity"`
+	SecondsUntilAutoPause *int    `pulumi:"secondsUntilAutoPause"`
+	TimeoutAction         *string `pulumi:"timeoutAction"`
 }
 
 // ClusterScalingConfigurationInput is an input type that accepts ClusterScalingConfigurationArgs and ClusterScalingConfigurationOutput values.
@@ -363,16 +322,11 @@ type ClusterScalingConfigurationInput interface {
 }
 
 type ClusterScalingConfigurationArgs struct {
-	// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
-	AutoPause pulumi.BoolPtrInput `pulumi:"autoPause"`
-	// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
-	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
-	// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
-	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
-	// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
-	SecondsUntilAutoPause pulumi.IntPtrInput `pulumi:"secondsUntilAutoPause"`
-	// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
-	TimeoutAction pulumi.StringPtrInput `pulumi:"timeoutAction"`
+	AutoPause             pulumi.BoolPtrInput   `pulumi:"autoPause"`
+	MaxCapacity           pulumi.IntPtrInput    `pulumi:"maxCapacity"`
+	MinCapacity           pulumi.IntPtrInput    `pulumi:"minCapacity"`
+	SecondsUntilAutoPause pulumi.IntPtrInput    `pulumi:"secondsUntilAutoPause"`
+	TimeoutAction         pulumi.StringPtrInput `pulumi:"timeoutAction"`
 }
 
 func (ClusterScalingConfigurationArgs) ElementType() reflect.Type {
@@ -451,28 +405,22 @@ func (o ClusterScalingConfigurationOutput) ToClusterScalingConfigurationPtrOutpu
 		return &v
 	}).(ClusterScalingConfigurationPtrOutput)
 }
-
-// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
 func (o ClusterScalingConfigurationOutput) AutoPause() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterScalingConfiguration) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
 func (o ClusterScalingConfigurationOutput) MaxCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterScalingConfiguration) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
 }
 
-// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
 func (o ClusterScalingConfigurationOutput) MinCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterScalingConfiguration) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
 }
 
-// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
 func (o ClusterScalingConfigurationOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterScalingConfiguration) *int { return v.SecondsUntilAutoPause }).(pulumi.IntPtrOutput)
 }
 
-// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
 func (o ClusterScalingConfigurationOutput) TimeoutAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterScalingConfiguration) *string { return v.TimeoutAction }).(pulumi.StringPtrOutput)
 }
@@ -495,7 +443,6 @@ func (o ClusterScalingConfigurationPtrOutput) Elem() ClusterScalingConfiguration
 	return o.ApplyT(func(v *ClusterScalingConfiguration) ClusterScalingConfiguration { return *v }).(ClusterScalingConfigurationOutput)
 }
 
-// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
 func (o ClusterScalingConfigurationPtrOutput) AutoPause() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterScalingConfiguration) *bool {
 		if v == nil {
@@ -505,7 +452,6 @@ func (o ClusterScalingConfigurationPtrOutput) AutoPause() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
 func (o ClusterScalingConfigurationPtrOutput) MaxCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterScalingConfiguration) *int {
 		if v == nil {
@@ -515,7 +461,6 @@ func (o ClusterScalingConfigurationPtrOutput) MaxCapacity() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
 func (o ClusterScalingConfigurationPtrOutput) MinCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterScalingConfiguration) *int {
 		if v == nil {
@@ -525,7 +470,6 @@ func (o ClusterScalingConfigurationPtrOutput) MinCapacity() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
 func (o ClusterScalingConfigurationPtrOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterScalingConfiguration) *int {
 		if v == nil {
@@ -535,7 +479,6 @@ func (o ClusterScalingConfigurationPtrOutput) SecondsUntilAutoPause() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
-// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
 func (o ClusterScalingConfigurationPtrOutput) TimeoutAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterScalingConfiguration) *string {
 		if v == nil {
@@ -546,10 +489,8 @@ func (o ClusterScalingConfigurationPtrOutput) TimeoutAction() pulumi.StringPtrOu
 }
 
 type GlobalClusterGlobalClusterMember struct {
-	// Amazon Resource Name (ARN) of member DB Cluster
 	DbClusterArn *string `pulumi:"dbClusterArn"`
-	// Whether the member is the primary DB Cluster
-	IsWriter *bool `pulumi:"isWriter"`
+	IsWriter     *bool   `pulumi:"isWriter"`
 }
 
 // GlobalClusterGlobalClusterMemberInput is an input type that accepts GlobalClusterGlobalClusterMemberArgs and GlobalClusterGlobalClusterMemberOutput values.
@@ -564,10 +505,8 @@ type GlobalClusterGlobalClusterMemberInput interface {
 }
 
 type GlobalClusterGlobalClusterMemberArgs struct {
-	// Amazon Resource Name (ARN) of member DB Cluster
 	DbClusterArn pulumi.StringPtrInput `pulumi:"dbClusterArn"`
-	// Whether the member is the primary DB Cluster
-	IsWriter pulumi.BoolPtrInput `pulumi:"isWriter"`
+	IsWriter     pulumi.BoolPtrInput   `pulumi:"isWriter"`
 }
 
 func (GlobalClusterGlobalClusterMemberArgs) ElementType() reflect.Type {
@@ -621,12 +560,10 @@ func (o GlobalClusterGlobalClusterMemberOutput) ToGlobalClusterGlobalClusterMemb
 	return o
 }
 
-// Amazon Resource Name (ARN) of member DB Cluster
 func (o GlobalClusterGlobalClusterMemberOutput) DbClusterArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClusterGlobalClusterMember) *string { return v.DbClusterArn }).(pulumi.StringPtrOutput)
 }
 
-// Whether the member is the primary DB Cluster
 func (o GlobalClusterGlobalClusterMemberOutput) IsWriter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GlobalClusterGlobalClusterMember) *bool { return v.IsWriter }).(pulumi.BoolPtrOutput)
 }
@@ -652,16 +589,11 @@ func (o GlobalClusterGlobalClusterMemberArrayOutput) Index(i pulumi.IntInput) Gl
 }
 
 type InstanceS3Import struct {
-	// The bucket name where your backup is stored
-	BucketName string `pulumi:"bucketName"`
-	// Can be blank, but is the path to your backup
-	BucketPrefix *string `pulumi:"bucketPrefix"`
-	// Role applied to load the data.
-	IngestionRole string `pulumi:"ingestionRole"`
-	// Source engine for the backup
-	SourceEngine string `pulumi:"sourceEngine"`
-	// Version of the source engine used to make the backup
-	SourceEngineVersion string `pulumi:"sourceEngineVersion"`
+	BucketName          string  `pulumi:"bucketName"`
+	BucketPrefix        *string `pulumi:"bucketPrefix"`
+	IngestionRole       string  `pulumi:"ingestionRole"`
+	SourceEngine        string  `pulumi:"sourceEngine"`
+	SourceEngineVersion string  `pulumi:"sourceEngineVersion"`
 }
 
 // InstanceS3ImportInput is an input type that accepts InstanceS3ImportArgs and InstanceS3ImportOutput values.
@@ -676,16 +608,11 @@ type InstanceS3ImportInput interface {
 }
 
 type InstanceS3ImportArgs struct {
-	// The bucket name where your backup is stored
-	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Can be blank, but is the path to your backup
-	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
-	// Role applied to load the data.
-	IngestionRole pulumi.StringInput `pulumi:"ingestionRole"`
-	// Source engine for the backup
-	SourceEngine pulumi.StringInput `pulumi:"sourceEngine"`
-	// Version of the source engine used to make the backup
-	SourceEngineVersion pulumi.StringInput `pulumi:"sourceEngineVersion"`
+	BucketName          pulumi.StringInput    `pulumi:"bucketName"`
+	BucketPrefix        pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	IngestionRole       pulumi.StringInput    `pulumi:"ingestionRole"`
+	SourceEngine        pulumi.StringInput    `pulumi:"sourceEngine"`
+	SourceEngineVersion pulumi.StringInput    `pulumi:"sourceEngineVersion"`
 }
 
 func (InstanceS3ImportArgs) ElementType() reflect.Type {
@@ -764,28 +691,22 @@ func (o InstanceS3ImportOutput) ToInstanceS3ImportPtrOutputWithContext(ctx conte
 		return &v
 	}).(InstanceS3ImportPtrOutput)
 }
-
-// The bucket name where your backup is stored
 func (o InstanceS3ImportOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceS3Import) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Can be blank, but is the path to your backup
 func (o InstanceS3ImportOutput) BucketPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceS3Import) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
 }
 
-// Role applied to load the data.
 func (o InstanceS3ImportOutput) IngestionRole() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceS3Import) string { return v.IngestionRole }).(pulumi.StringOutput)
 }
 
-// Source engine for the backup
 func (o InstanceS3ImportOutput) SourceEngine() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceS3Import) string { return v.SourceEngine }).(pulumi.StringOutput)
 }
 
-// Version of the source engine used to make the backup
 func (o InstanceS3ImportOutput) SourceEngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceS3Import) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
 }
@@ -808,7 +729,6 @@ func (o InstanceS3ImportPtrOutput) Elem() InstanceS3ImportOutput {
 	return o.ApplyT(func(v *InstanceS3Import) InstanceS3Import { return *v }).(InstanceS3ImportOutput)
 }
 
-// The bucket name where your backup is stored
 func (o InstanceS3ImportPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceS3Import) *string {
 		if v == nil {
@@ -818,7 +738,6 @@ func (o InstanceS3ImportPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Can be blank, but is the path to your backup
 func (o InstanceS3ImportPtrOutput) BucketPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceS3Import) *string {
 		if v == nil {
@@ -828,7 +747,6 @@ func (o InstanceS3ImportPtrOutput) BucketPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Role applied to load the data.
 func (o InstanceS3ImportPtrOutput) IngestionRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceS3Import) *string {
 		if v == nil {
@@ -838,7 +756,6 @@ func (o InstanceS3ImportPtrOutput) IngestionRole() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Source engine for the backup
 func (o InstanceS3ImportPtrOutput) SourceEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceS3Import) *string {
 		if v == nil {
@@ -848,7 +765,6 @@ func (o InstanceS3ImportPtrOutput) SourceEngine() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version of the source engine used to make the backup
 func (o InstanceS3ImportPtrOutput) SourceEngineVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceS3Import) *string {
 		if v == nil {
@@ -859,18 +775,12 @@ func (o InstanceS3ImportPtrOutput) SourceEngineVersion() pulumi.StringPtrOutput 
 }
 
 type OptionGroupOption struct {
-	// A list of DB Security Groups for which the option is enabled.
-	DbSecurityGroupMemberships []string `pulumi:"dbSecurityGroupMemberships"`
-	// The Name of the Option (e.g. MEMCACHED).
-	OptionName string `pulumi:"optionName"`
-	// A list of option settings to apply.
-	OptionSettings []OptionGroupOptionOptionSetting `pulumi:"optionSettings"`
-	// The Port number when connecting to the Option (e.g. 11211).
-	Port *int `pulumi:"port"`
-	// The version of the option (e.g. 13.1.0.0).
-	Version *string `pulumi:"version"`
-	// A list of VPC Security Groups for which the option is enabled.
-	VpcSecurityGroupMemberships []string `pulumi:"vpcSecurityGroupMemberships"`
+	DbSecurityGroupMemberships  []string                         `pulumi:"dbSecurityGroupMemberships"`
+	OptionName                  string                           `pulumi:"optionName"`
+	OptionSettings              []OptionGroupOptionOptionSetting `pulumi:"optionSettings"`
+	Port                        *int                             `pulumi:"port"`
+	Version                     *string                          `pulumi:"version"`
+	VpcSecurityGroupMemberships []string                         `pulumi:"vpcSecurityGroupMemberships"`
 }
 
 // OptionGroupOptionInput is an input type that accepts OptionGroupOptionArgs and OptionGroupOptionOutput values.
@@ -885,18 +795,12 @@ type OptionGroupOptionInput interface {
 }
 
 type OptionGroupOptionArgs struct {
-	// A list of DB Security Groups for which the option is enabled.
-	DbSecurityGroupMemberships pulumi.StringArrayInput `pulumi:"dbSecurityGroupMemberships"`
-	// The Name of the Option (e.g. MEMCACHED).
-	OptionName pulumi.StringInput `pulumi:"optionName"`
-	// A list of option settings to apply.
-	OptionSettings OptionGroupOptionOptionSettingArrayInput `pulumi:"optionSettings"`
-	// The Port number when connecting to the Option (e.g. 11211).
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The version of the option (e.g. 13.1.0.0).
-	Version pulumi.StringPtrInput `pulumi:"version"`
-	// A list of VPC Security Groups for which the option is enabled.
-	VpcSecurityGroupMemberships pulumi.StringArrayInput `pulumi:"vpcSecurityGroupMemberships"`
+	DbSecurityGroupMemberships  pulumi.StringArrayInput                  `pulumi:"dbSecurityGroupMemberships"`
+	OptionName                  pulumi.StringInput                       `pulumi:"optionName"`
+	OptionSettings              OptionGroupOptionOptionSettingArrayInput `pulumi:"optionSettings"`
+	Port                        pulumi.IntPtrInput                       `pulumi:"port"`
+	Version                     pulumi.StringPtrInput                    `pulumi:"version"`
+	VpcSecurityGroupMemberships pulumi.StringArrayInput                  `pulumi:"vpcSecurityGroupMemberships"`
 }
 
 func (OptionGroupOptionArgs) ElementType() reflect.Type {
@@ -950,32 +854,26 @@ func (o OptionGroupOptionOutput) ToOptionGroupOptionOutputWithContext(ctx contex
 	return o
 }
 
-// A list of DB Security Groups for which the option is enabled.
 func (o OptionGroupOptionOutput) DbSecurityGroupMemberships() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OptionGroupOption) []string { return v.DbSecurityGroupMemberships }).(pulumi.StringArrayOutput)
 }
 
-// The Name of the Option (e.g. MEMCACHED).
 func (o OptionGroupOptionOutput) OptionName() pulumi.StringOutput {
 	return o.ApplyT(func(v OptionGroupOption) string { return v.OptionName }).(pulumi.StringOutput)
 }
 
-// A list of option settings to apply.
 func (o OptionGroupOptionOutput) OptionSettings() OptionGroupOptionOptionSettingArrayOutput {
 	return o.ApplyT(func(v OptionGroupOption) []OptionGroupOptionOptionSetting { return v.OptionSettings }).(OptionGroupOptionOptionSettingArrayOutput)
 }
 
-// The Port number when connecting to the Option (e.g. 11211).
 func (o OptionGroupOptionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OptionGroupOption) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The version of the option (e.g. 13.1.0.0).
 func (o OptionGroupOptionOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OptionGroupOption) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// A list of VPC Security Groups for which the option is enabled.
 func (o OptionGroupOptionOutput) VpcSecurityGroupMemberships() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OptionGroupOption) []string { return v.VpcSecurityGroupMemberships }).(pulumi.StringArrayOutput)
 }
@@ -1001,9 +899,7 @@ func (o OptionGroupOptionArrayOutput) Index(i pulumi.IntInput) OptionGroupOption
 }
 
 type OptionGroupOptionOptionSetting struct {
-	// The Name of the setting.
-	Name string `pulumi:"name"`
-	// The Value of the setting.
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -1019,9 +915,7 @@ type OptionGroupOptionOptionSettingInput interface {
 }
 
 type OptionGroupOptionOptionSettingArgs struct {
-	// The Name of the setting.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The Value of the setting.
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1076,12 +970,10 @@ func (o OptionGroupOptionOptionSettingOutput) ToOptionGroupOptionOptionSettingOu
 	return o
 }
 
-// The Name of the setting.
 func (o OptionGroupOptionOptionSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OptionGroupOptionOptionSetting) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Value of the setting.
 func (o OptionGroupOptionOptionSettingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OptionGroupOptionOptionSetting) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1107,14 +999,9 @@ func (o OptionGroupOptionOptionSettingArrayOutput) Index(i pulumi.IntInput) Opti
 }
 
 type ParameterGroupParameter struct {
-	// "immediate" (default), or "pending-reboot". Some
-	// engines can't apply some parameters without a reboot, and you will need to
-	// specify "pending-reboot" here.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the DB parameter.
-	Name string `pulumi:"name"`
-	// The value of the DB parameter.
-	Value string `pulumi:"value"`
+	Name        string  `pulumi:"name"`
+	Value       string  `pulumi:"value"`
 }
 
 // ParameterGroupParameterInput is an input type that accepts ParameterGroupParameterArgs and ParameterGroupParameterOutput values.
@@ -1129,14 +1016,9 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// "immediate" (default), or "pending-reboot". Some
-	// engines can't apply some parameters without a reboot, and you will need to
-	// specify "pending-reboot" here.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the DB parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the DB parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Value       pulumi.StringInput    `pulumi:"value"`
 }
 
 func (ParameterGroupParameterArgs) ElementType() reflect.Type {
@@ -1190,19 +1072,14 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// "immediate" (default), or "pending-reboot". Some
-// engines can't apply some parameters without a reboot, and you will need to
-// specify "pending-reboot" here.
 func (o ParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the DB parameter.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the DB parameter.
 func (o ParameterGroupParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1228,14 +1105,9 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 }
 
 type SecurityGroupIngress struct {
-	// The CIDR block to accept
-	Cidr *string `pulumi:"cidr"`
-	// The ID of the security group to authorize
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The name of the security group to authorize
-	SecurityGroupName *string `pulumi:"securityGroupName"`
-	// The owner Id of the security group provided
-	// by `securityGroupName`.
+	Cidr                 *string `pulumi:"cidr"`
+	SecurityGroupId      *string `pulumi:"securityGroupId"`
+	SecurityGroupName    *string `pulumi:"securityGroupName"`
 	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
 }
 
@@ -1251,14 +1123,9 @@ type SecurityGroupIngressInput interface {
 }
 
 type SecurityGroupIngressArgs struct {
-	// The CIDR block to accept
-	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
-	// The ID of the security group to authorize
-	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// The name of the security group to authorize
-	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
-	// The owner Id of the security group provided
-	// by `securityGroupName`.
+	Cidr                 pulumi.StringPtrInput `pulumi:"cidr"`
+	SecurityGroupId      pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	SecurityGroupName    pulumi.StringPtrInput `pulumi:"securityGroupName"`
 	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
 }
 
@@ -1313,23 +1180,18 @@ func (o SecurityGroupIngressOutput) ToSecurityGroupIngressOutputWithContext(ctx 
 	return o
 }
 
-// The CIDR block to accept
 func (o SecurityGroupIngressOutput) Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the security group to authorize
 func (o SecurityGroupIngressOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the security group to authorize
 func (o SecurityGroupIngressOutput) SecurityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The owner Id of the security group provided
-// by `securityGroupName`.
 func (o SecurityGroupIngressOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
 }

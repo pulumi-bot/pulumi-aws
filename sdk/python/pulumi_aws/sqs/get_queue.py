@@ -39,9 +39,6 @@ class GetQueueResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the queue.
-        """
         return pulumi.get(self, "arn")
 
     @property
@@ -60,17 +57,11 @@ class GetQueueResult:
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
-        """
-        A map of tags for the resource.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def url(self) -> str:
-        """
-        The URL of the queue.
-        """
         return pulumi.get(self, "url")
 
 
@@ -91,22 +82,7 @@ def get_queue(name: Optional[str] = None,
               tags: Optional[Mapping[str, str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQueueResult:
     """
-    Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
-    By using this data source, you can reference SQS queues without having to hardcode
-    the ARNs as input.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.sqs.get_queue(name="queue")
-    ```
-
-
-    :param str name: The name of the queue to match.
-    :param Mapping[str, str] tags: A map of tags for the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

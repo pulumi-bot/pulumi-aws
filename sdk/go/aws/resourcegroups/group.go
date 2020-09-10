@@ -10,47 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Resource Group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/resourcegroups"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcegroups.NewGroup(ctx, "test", &resourcegroups.GroupArgs{
-// 			ResourceQuery: &resourcegroups.GroupResourceQueryArgs{
-// 				Query: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"ResourceTypeFilters\": [\n", "    \"AWS::EC2::Instance\"\n", "  ],\n", "  \"TagFilters\": [\n", "    {\n", "      \"Key\": \"Stage\",\n", "      \"Values\": [\"Test\"]\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Group struct {
 	pulumi.CustomResourceState
 
-	// The ARN assigned by AWS for this resource group.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// A description of the resource group.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A `resourceQuery` block. Resource queries are documented below.
+	Arn           pulumi.StringOutput      `pulumi:"arn"`
+	Description   pulumi.StringPtrOutput   `pulumi:"description"`
+	Name          pulumi.StringOutput      `pulumi:"name"`
 	ResourceQuery GroupResourceQueryOutput `pulumi:"resourceQuery"`
-	// Key-value map of resource tags
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags          pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -84,29 +51,19 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// The ARN assigned by AWS for this resource group.
-	Arn *string `pulumi:"arn"`
-	// A description of the resource group.
-	Description *string `pulumi:"description"`
-	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-	Name *string `pulumi:"name"`
-	// A `resourceQuery` block. Resource queries are documented below.
+	Arn           *string             `pulumi:"arn"`
+	Description   *string             `pulumi:"description"`
+	Name          *string             `pulumi:"name"`
 	ResourceQuery *GroupResourceQuery `pulumi:"resourceQuery"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Tags          map[string]string   `pulumi:"tags"`
 }
 
 type GroupState struct {
-	// The ARN assigned by AWS for this resource group.
-	Arn pulumi.StringPtrInput
-	// A description of the resource group.
-	Description pulumi.StringPtrInput
-	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-	Name pulumi.StringPtrInput
-	// A `resourceQuery` block. Resource queries are documented below.
+	Arn           pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
 	ResourceQuery GroupResourceQueryPtrInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags          pulumi.StringMapInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -114,26 +71,18 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// A description of the resource group.
-	Description *string `pulumi:"description"`
-	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-	Name *string `pulumi:"name"`
-	// A `resourceQuery` block. Resource queries are documented below.
+	Description   *string            `pulumi:"description"`
+	Name          *string            `pulumi:"name"`
 	ResourceQuery GroupResourceQuery `pulumi:"resourceQuery"`
-	// Key-value map of resource tags
-	Tags map[string]string `pulumi:"tags"`
+	Tags          map[string]string  `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// A description of the resource group.
-	Description pulumi.StringPtrInput
-	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-	Name pulumi.StringPtrInput
-	// A `resourceQuery` block. Resource queries are documented below.
+	Description   pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
 	ResourceQuery GroupResourceQueryInput
-	// Key-value map of resource tags
-	Tags pulumi.StringMapInput
+	Tags          pulumi.StringMapInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

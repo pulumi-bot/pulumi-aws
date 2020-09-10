@@ -13,17 +13,8 @@ namespace Pulumi.Aws.ElasticSearch.Outputs
     [OutputType]
     public sealed class DomainAdvancedSecurityOptions
     {
-        /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// Whether the internal user database is enabled. If not set, defaults to `false` by the AWS API.
-        /// </summary>
         public readonly bool? InternalUserDatabaseEnabled;
-        /// <summary>
-        /// Credentials for the master user: username and password, or ARN
-        /// </summary>
         public readonly Outputs.DomainAdvancedSecurityOptionsMasterUserOptions? MasterUserOptions;
 
         [OutputConstructor]

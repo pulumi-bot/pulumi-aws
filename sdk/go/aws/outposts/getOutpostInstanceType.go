@@ -7,7 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Information about single Outpost Instance Type.
 func GetOutpostInstanceType(ctx *pulumi.Context, args *GetOutpostInstanceTypeArgs, opts ...pulumi.InvokeOption) (*GetOutpostInstanceTypeResult, error) {
 	var rv GetOutpostInstanceTypeResult
 	err := ctx.Invoke("aws:outposts/getOutpostInstanceType:getOutpostInstanceType", args, &rv, opts...)
@@ -19,11 +18,8 @@ func GetOutpostInstanceType(ctx *pulumi.Context, args *GetOutpostInstanceTypeArg
 
 // A collection of arguments for invoking getOutpostInstanceType.
 type GetOutpostInstanceTypeArgs struct {
-	// Outpost Amazon Resource Name (ARN).
-	Arn string `pulumi:"arn"`
-	// Desired instance type. Conflicts with `preferredInstanceTypes`.
-	InstanceType *string `pulumi:"instanceType"`
-	// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instanceType`.
+	Arn                    string   `pulumi:"arn"`
+	InstanceType           *string  `pulumi:"instanceType"`
 	PreferredInstanceTypes []string `pulumi:"preferredInstanceTypes"`
 }
 

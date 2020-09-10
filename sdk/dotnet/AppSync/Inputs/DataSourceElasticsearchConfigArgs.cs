@@ -12,15 +12,9 @@ namespace Pulumi.Aws.AppSync.Inputs
 
     public sealed class DataSourceElasticsearchConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// HTTP URL.
-        /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
-        /// <summary>
-        /// AWS region of Elasticsearch domain. Defaults to current region.
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

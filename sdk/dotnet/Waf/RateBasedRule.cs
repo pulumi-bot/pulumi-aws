@@ -9,97 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Waf
 {
-    /// <summary>
-    /// Provides a WAF Rate Based Rule Resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ipset = new Aws.Waf.IpSet("ipset", new Aws.Waf.IpSetArgs
-    ///         {
-    ///             IpSetDescriptors = 
-    ///             {
-    ///                 new Aws.Waf.Inputs.IpSetIpSetDescriptorArgs
-    ///                 {
-    ///                     Type = "IPV4",
-    ///                     Value = "192.0.7.0/24",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var wafrule = new Aws.Waf.RateBasedRule("wafrule", new Aws.Waf.RateBasedRuleArgs
-    ///         {
-    ///             MetricName = "tfWAFRule",
-    ///             RateKey = "IP",
-    ///             RateLimit = 100,
-    ///             Predicates = 
-    ///             {
-    ///                 new Aws.Waf.Inputs.RateBasedRulePredicateArgs
-    ///                 {
-    ///                     DataId = ipset.Id,
-    ///                     Negated = false,
-    ///                     Type = "IPMatch",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 ipset,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RateBasedRule : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or description for the Amazon CloudWatch metric of this rule.
-        /// </summary>
         [Output("metricName")]
         public Output<string> MetricName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or description of the rule.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The objects to include in a rule (documented below).
-        /// </summary>
         [Output("predicates")]
         public Output<ImmutableArray<Outputs.RateBasedRulePredicate>> Predicates { get; private set; } = null!;
 
-        /// <summary>
-        /// Valid value is IP.
-        /// </summary>
         [Output("rateKey")]
         public Output<string> RateKey { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-        /// </summary>
         [Output("rateLimit")]
         public Output<int> RateLimit { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -149,48 +78,28 @@ namespace Pulumi.Aws.Waf
 
     public sealed class RateBasedRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name or description for the Amazon CloudWatch metric of this rule.
-        /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
-        /// <summary>
-        /// The name or description of the rule.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("predicates")]
         private InputList<Inputs.RateBasedRulePredicateArgs>? _predicates;
-
-        /// <summary>
-        /// The objects to include in a rule (documented below).
-        /// </summary>
         public InputList<Inputs.RateBasedRulePredicateArgs> Predicates
         {
             get => _predicates ?? (_predicates = new InputList<Inputs.RateBasedRulePredicateArgs>());
             set => _predicates = value;
         }
 
-        /// <summary>
-        /// Valid value is IP.
-        /// </summary>
         [Input("rateKey", required: true)]
         public Input<string> RateKey { get; set; } = null!;
 
-        /// <summary>
-        /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-        /// </summary>
         [Input("rateLimit", required: true)]
         public Input<int> RateLimit { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -204,54 +113,31 @@ namespace Pulumi.Aws.Waf
 
     public sealed class RateBasedRuleState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amazon Resource Name (ARN)
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name or description for the Amazon CloudWatch metric of this rule.
-        /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
 
-        /// <summary>
-        /// The name or description of the rule.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("predicates")]
         private InputList<Inputs.RateBasedRulePredicateGetArgs>? _predicates;
-
-        /// <summary>
-        /// The objects to include in a rule (documented below).
-        /// </summary>
         public InputList<Inputs.RateBasedRulePredicateGetArgs> Predicates
         {
             get => _predicates ?? (_predicates = new InputList<Inputs.RateBasedRulePredicateGetArgs>());
             set => _predicates = value;
         }
 
-        /// <summary>
-        /// Valid value is IP.
-        /// </summary>
         [Input("rateKey")]
         public Input<string>? RateKey { get; set; }
 
-        /// <summary>
-        /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-        /// </summary>
         [Input("rateLimit")]
         public Input<int>? RateLimit { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value map of resource tags
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

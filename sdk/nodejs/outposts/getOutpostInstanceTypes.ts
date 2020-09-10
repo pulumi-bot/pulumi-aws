@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Information about Outposts Instance Types.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = aws.outposts.getOutpostInstanceTypes({
- *     arn: data.aws_outposts_outpost.example.arn,
- * });
- * ```
- */
 export function getOutpostInstanceTypes(args: GetOutpostInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetOutpostInstanceTypesResult> {
     if (!opts) {
         opts = {}
@@ -37,9 +23,6 @@ export function getOutpostInstanceTypes(args: GetOutpostInstanceTypesArgs, opts?
  * A collection of arguments for invoking getOutpostInstanceTypes.
  */
 export interface GetOutpostInstanceTypesArgs {
-    /**
-     * Outpost Amazon Resource Name (ARN).
-     */
     readonly arn: string;
 }
 
@@ -52,8 +35,5 @@ export interface GetOutpostInstanceTypesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Set of instance types.
-     */
     readonly instanceTypes: string[];
 }

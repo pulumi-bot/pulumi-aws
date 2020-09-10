@@ -27,41 +27,9 @@ class AccessPoint(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a resource to manage an S3 Access Point.
-
-        ## Example Usage
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_bucket = aws.s3.Bucket("exampleBucket")
-        example_access_point = aws.s3.AccessPoint("exampleAccessPoint", bucket=example_bucket.id)
-        ```
-        ### Access Point Restricted to a VPC
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_bucket = aws.s3.Bucket("exampleBucket")
-        example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.0.0.0/16")
-        example_access_point = aws.s3.AccessPoint("exampleAccessPoint",
-            bucket=example_bucket.id,
-            vpc_configuration=aws.s3.AccessPointVpcConfigurationArgs(
-                vpc_id=example_vpc.id,
-            ))
-        ```
-
+        Create a AccessPoint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The AWS account ID for the owner of the bucket for which you want to create an access point. Defaults to automatically determined account ID of the provider.
-        :param pulumi.Input[str] bucket: The name of the bucket that you want to associate this access point with.
-        :param pulumi.Input[str] name: The name you want to assign to this access point.
-        :param pulumi.Input[str] policy: A valid JSON document that specifies the policy that you want to apply to this access point.
-        :param pulumi.Input[pulumi.InputType['AccessPointPublicAccessBlockConfigurationArgs']] public_access_block_configuration: Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. Detailed below.
-        :param pulumi.Input[pulumi.InputType['AccessPointVpcConfigurationArgs']] vpc_configuration: Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Detailed below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,17 +87,6 @@ class AccessPoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The AWS account ID for the owner of the bucket for which you want to create an access point. Defaults to automatically determined account ID of the provider.
-        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the S3 Access Point.
-        :param pulumi.Input[str] bucket: The name of the bucket that you want to associate this access point with.
-        :param pulumi.Input[str] domain_name: The DNS domain name of the S3 Access Point in the format _`name`_-_`account_id`_.s3-accesspoint._region_.amazonaws.com.
-               Note: S3 access points only support secure access by HTTPS. HTTP isn't supported.
-        :param pulumi.Input[bool] has_public_access_policy: Indicates whether this access point currently has a policy that allows public access.
-        :param pulumi.Input[str] name: The name you want to assign to this access point.
-        :param pulumi.Input[str] network_origin: Indicates whether this access point allows access from the public Internet. Values are `VPC` (the access point doesn't allow access from the public Internet) and `Internet` (the access point allows access from the public Internet, subject to the access point and bucket access policies).
-        :param pulumi.Input[str] policy: A valid JSON document that specifies the policy that you want to apply to this access point.
-        :param pulumi.Input[pulumi.InputType['AccessPointPublicAccessBlockConfigurationArgs']] public_access_block_configuration: Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. Detailed below.
-        :param pulumi.Input[pulumi.InputType['AccessPointVpcConfigurationArgs']] vpc_configuration: Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Detailed below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,82 +107,51 @@ class AccessPoint(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The AWS account ID for the owner of the bucket for which you want to create an access point. Defaults to automatically determined account ID of the provider.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
-        """
-        Amazon Resource Name (ARN) of the S3 Access Point.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        The name of the bucket that you want to associate this access point with.
-        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
-        """
-        The DNS domain name of the S3 Access Point in the format _`name`_-_`account_id`_.s3-accesspoint._region_.amazonaws.com.
-        Note: S3 access points only support secure access by HTTPS. HTTP isn't supported.
-        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="hasPublicAccessPolicy")
     def has_public_access_policy(self) -> pulumi.Output[bool]:
-        """
-        Indicates whether this access point currently has a policy that allows public access.
-        """
         return pulumi.get(self, "has_public_access_policy")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name you want to assign to this access point.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkOrigin")
     def network_origin(self) -> pulumi.Output[str]:
-        """
-        Indicates whether this access point allows access from the public Internet. Values are `VPC` (the access point doesn't allow access from the public Internet) and `Internet` (the access point allows access from the public Internet, subject to the access point and bucket access policies).
-        """
         return pulumi.get(self, "network_origin")
 
     @property
     @pulumi.getter
     def policy(self) -> pulumi.Output[Optional[str]]:
-        """
-        A valid JSON document that specifies the policy that you want to apply to this access point.
-        """
         return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter(name="publicAccessBlockConfiguration")
     def public_access_block_configuration(self) -> pulumi.Output[Optional['outputs.AccessPointPublicAccessBlockConfiguration']]:
-        """
-        Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. Detailed below.
-        """
         return pulumi.get(self, "public_access_block_configuration")
 
     @property
     @pulumi.getter(name="vpcConfiguration")
     def vpc_configuration(self) -> pulumi.Output[Optional['outputs.AccessPointVpcConfiguration']]:
-        """
-        Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Detailed below.
-        """
         return pulumi.get(self, "vpc_configuration")
 
     def translate_output_property(self, prop):

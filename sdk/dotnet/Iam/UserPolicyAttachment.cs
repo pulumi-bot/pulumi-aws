@@ -9,51 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Iam
 {
-    /// <summary>
-    /// Attaches a Managed IAM Policy to an IAM user
-    /// 
-    /// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var user = new Aws.Iam.User("user", new Aws.Iam.UserArgs
-    ///         {
-    ///         });
-    ///         var policy = new Aws.Iam.Policy("policy", new Aws.Iam.PolicyArgs
-    ///         {
-    ///             Description = "A test policy",
-    ///             Policy = "",
-    ///         });
-    ///         // insert policy here
-    ///         var test_attach = new Aws.Iam.UserPolicyAttachment("test-attach", new Aws.Iam.UserPolicyAttachmentArgs
-    ///         {
-    ///             PolicyArn = policy.Arn,
-    ///             User = user.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class UserPolicyAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the policy you want to apply
-        /// </summary>
         [Output("policyArn")]
         public Output<string> PolicyArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The user the policy should be applied to
-        /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
 
@@ -103,15 +63,9 @@ namespace Pulumi.Aws.Iam
 
     public sealed class UserPolicyAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the policy you want to apply
-        /// </summary>
         [Input("policyArn", required: true)]
         public Input<string> PolicyArn { get; set; } = null!;
 
-        /// <summary>
-        /// The user the policy should be applied to
-        /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 
@@ -122,15 +76,9 @@ namespace Pulumi.Aws.Iam
 
     public sealed class UserPolicyAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the policy you want to apply
-        /// </summary>
         [Input("policyArn")]
         public Input<string>? PolicyArn { get; set; }
 
-        /// <summary>
-        /// The user the policy should be applied to
-        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

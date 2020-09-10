@@ -9,108 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.AppMesh
 {
-    /// <summary>
-    /// Provides an AWS App Mesh virtual service resource.
-    /// 
-    /// ## Example Usage
-    /// ### Virtual Node Provider
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var servicea = new Aws.AppMesh.VirtualService("servicea", new Aws.AppMesh.VirtualServiceArgs
-    ///         {
-    ///             MeshName = aws_appmesh_mesh.Simple.Id,
-    ///             Spec = new Aws.AppMesh.Inputs.VirtualServiceSpecArgs
-    ///             {
-    ///                 Provider = new Aws.AppMesh.Inputs.VirtualServiceSpecProviderArgs
-    ///                 {
-    ///                     VirtualNode = new Aws.AppMesh.Inputs.VirtualServiceSpecProviderVirtualNodeArgs
-    ///                     {
-    ///                         VirtualNodeName = aws_appmesh_virtual_node.Serviceb1.Name,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Virtual Router Provider
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var servicea = new Aws.AppMesh.VirtualService("servicea", new Aws.AppMesh.VirtualServiceArgs
-    ///         {
-    ///             MeshName = aws_appmesh_mesh.Simple.Id,
-    ///             Spec = new Aws.AppMesh.Inputs.VirtualServiceSpecArgs
-    ///             {
-    ///                 Provider = new Aws.AppMesh.Inputs.VirtualServiceSpecProviderArgs
-    ///                 {
-    ///                     VirtualRouter = new Aws.AppMesh.Inputs.VirtualServiceSpecProviderVirtualRouterArgs
-    ///                     {
-    ///                         VirtualRouterName = aws_appmesh_virtual_router.Serviceb.Name,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class VirtualService : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the virtual service.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The creation date of the virtual service.
-        /// </summary>
         [Output("createdDate")]
         public Output<string> CreatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The last update date of the virtual service.
-        /// </summary>
         [Output("lastUpdatedDate")]
         public Output<string> LastUpdatedDate { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the service mesh in which to create the virtual service.
-        /// </summary>
         [Output("meshName")]
         public Output<string> MeshName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name to use for the virtual service.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The virtual service specification to apply.
-        /// </summary>
         [Output("spec")]
         public Output<Outputs.VirtualServiceSpec> Spec { get; private set; } = null!;
 
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -160,30 +78,17 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class VirtualServiceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the service mesh in which to create the virtual service.
-        /// </summary>
         [Input("meshName", required: true)]
         public Input<string> MeshName { get; set; } = null!;
 
-        /// <summary>
-        /// The name to use for the virtual service.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The virtual service specification to apply.
-        /// </summary>
         [Input("spec", required: true)]
         public Input<Inputs.VirtualServiceSpecArgs> Spec { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -197,48 +102,26 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class VirtualServiceState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the virtual service.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The creation date of the virtual service.
-        /// </summary>
         [Input("createdDate")]
         public Input<string>? CreatedDate { get; set; }
 
-        /// <summary>
-        /// The last update date of the virtual service.
-        /// </summary>
         [Input("lastUpdatedDate")]
         public Input<string>? LastUpdatedDate { get; set; }
 
-        /// <summary>
-        /// The name of the service mesh in which to create the virtual service.
-        /// </summary>
         [Input("meshName")]
         public Input<string>? MeshName { get; set; }
 
-        /// <summary>
-        /// The name to use for the virtual service.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The virtual service specification to apply.
-        /// </summary>
         [Input("spec")]
         public Input<Inputs.VirtualServiceSpecGetArgs>? Spec { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A map of tags to assign to the resource.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

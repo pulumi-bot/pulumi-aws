@@ -9,68 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.SecurityHub
 {
-    /// <summary>
-    /// Provides a Security Hub member resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleAccount = new Aws.SecurityHub.Account("exampleAccount", new Aws.SecurityHub.AccountArgs
-    ///         {
-    ///         });
-    ///         var exampleMember = new Aws.SecurityHub.Member("exampleMember", new Aws.SecurityHub.MemberArgs
-    ///         {
-    ///             AccountId = "123456789012",
-    ///             Email = "example@example.com",
-    ///             Invite = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleAccount,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Member : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the member AWS account.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The email of the member AWS account.
-        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-        /// </summary>
         [Output("invite")]
         public Output<bool?> Invite { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the master Security Hub AWS account.
-        /// </summary>
         [Output("masterId")]
         public Output<string> MasterId { get; private set; } = null!;
 
-        /// <summary>
-        /// The status of the member account relationship.
-        /// </summary>
         [Output("memberStatus")]
         public Output<string> MemberStatus { get; private set; } = null!;
 
@@ -120,21 +72,12 @@ namespace Pulumi.Aws.SecurityHub
 
     public sealed class MemberArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the member AWS account.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The email of the member AWS account.
-        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
-        /// <summary>
-        /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-        /// </summary>
         [Input("invite")]
         public Input<bool>? Invite { get; set; }
 
@@ -145,33 +88,18 @@ namespace Pulumi.Aws.SecurityHub
 
     public sealed class MemberState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the member AWS account.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The email of the member AWS account.
-        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
-        /// <summary>
-        /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-        /// </summary>
         [Input("invite")]
         public Input<bool>? Invite { get; set; }
 
-        /// <summary>
-        /// The ID of the master Security Hub AWS account.
-        /// </summary>
         [Input("masterId")]
         public Input<string>? MasterId { get; set; }
 
-        /// <summary>
-        /// The status of the member account relationship.
-        /// </summary>
         [Input("memberStatus")]
         public Input<string>? MemberStatus { get; set; }
 

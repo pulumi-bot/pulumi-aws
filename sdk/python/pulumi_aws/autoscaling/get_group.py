@@ -81,17 +81,11 @@ class GetGroupResult:
     @property
     @pulumi.getter
     def arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the Auto Scaling group.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> List[str]:
-        """
-        One or more Availability Zones for the group.
-        """
         return pulumi.get(self, "availability_zones")
 
     @property
@@ -102,25 +96,16 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="desiredCapacity")
     def desired_capacity(self) -> float:
-        """
-        The desired size of the group.
-        """
         return pulumi.get(self, "desired_capacity")
 
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
     def health_check_grace_period(self) -> float:
-        """
-        The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
-        """
         return pulumi.get(self, "health_check_grace_period")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> str:
-        """
-        The service to use for the health checks. The valid values are EC2 and ELB.
-        """
         return pulumi.get(self, "health_check_type")
 
     @property
@@ -134,41 +119,26 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="launchConfiguration")
     def launch_configuration(self) -> str:
-        """
-        The name of the associated launch configuration.
-        """
         return pulumi.get(self, "launch_configuration")
 
     @property
     @pulumi.getter(name="loadBalancers")
     def load_balancers(self) -> List[str]:
-        """
-        One or more load balancers associated with the group.
-        """
         return pulumi.get(self, "load_balancers")
 
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> float:
-        """
-        The maximum size of the group.
-        """
         return pulumi.get(self, "max_size")
 
     @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> float:
-        """
-        The minimum size of the group.
-        """
         return pulumi.get(self, "min_size")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the Auto Scaling group.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -179,49 +149,31 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="placementGroup")
     def placement_group(self) -> str:
-        """
-        The name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
-        """
         return pulumi.get(self, "placement_group")
 
     @property
     @pulumi.getter(name="serviceLinkedRoleArn")
     def service_linked_role_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
-        """
         return pulumi.get(self, "service_linked_role_arn")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The current state of the group when DeleteAutoScalingGroup is in progress.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="targetGroupArns")
     def target_group_arns(self) -> List[str]:
-        """
-        The Amazon Resource Names (ARN) of the target groups for your load balancer.
-        """
         return pulumi.get(self, "target_group_arns")
 
     @property
     @pulumi.getter(name="terminationPolicies")
     def termination_policies(self) -> List[str]:
-        """
-        The termination policies for the group.
-        """
         return pulumi.get(self, "termination_policies")
 
     @property
     @pulumi.getter(name="vpcZoneIdentifier")
     def vpc_zone_identifier(self) -> str:
-        """
-        VPC ID for the group.
-        """
         return pulumi.get(self, "vpc_zone_identifier")
 
 
@@ -255,19 +207,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Use this data source to get information on an existing autoscaling group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    foo = aws.autoscaling.get_group(name="foo")
-    ```
-
-
-    :param str name: Specify the exact name of the desired autoscaling group.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

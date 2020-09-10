@@ -12,63 +12,33 @@ namespace Pulumi.Aws.Cognito.Inputs
 
     public sealed class UserPoolLambdaConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the lambda creating an authentication challenge.
-        /// </summary>
         [Input("createAuthChallenge")]
         public Input<string>? CreateAuthChallenge { get; set; }
 
-        /// <summary>
-        /// A custom Message AWS Lambda trigger.
-        /// </summary>
         [Input("customMessage")]
         public Input<string>? CustomMessage { get; set; }
 
-        /// <summary>
-        /// Defines the authentication challenge.
-        /// </summary>
         [Input("defineAuthChallenge")]
         public Input<string>? DefineAuthChallenge { get; set; }
 
-        /// <summary>
-        /// A post-authentication AWS Lambda trigger.
-        /// </summary>
         [Input("postAuthentication")]
         public Input<string>? PostAuthentication { get; set; }
 
-        /// <summary>
-        /// A post-confirmation AWS Lambda trigger.
-        /// </summary>
         [Input("postConfirmation")]
         public Input<string>? PostConfirmation { get; set; }
 
-        /// <summary>
-        /// A pre-authentication AWS Lambda trigger.
-        /// </summary>
         [Input("preAuthentication")]
         public Input<string>? PreAuthentication { get; set; }
 
-        /// <summary>
-        /// A pre-registration AWS Lambda trigger.
-        /// </summary>
         [Input("preSignUp")]
         public Input<string>? PreSignUp { get; set; }
 
-        /// <summary>
-        /// Allow to customize identity token claims before token generation.
-        /// </summary>
         [Input("preTokenGeneration")]
         public Input<string>? PreTokenGeneration { get; set; }
 
-        /// <summary>
-        /// The user migration Lambda config type.
-        /// </summary>
         [Input("userMigration")]
         public Input<string>? UserMigration { get; set; }
 
-        /// <summary>
-        /// Verifies the authentication challenge response.
-        /// </summary>
         [Input("verifyAuthChallengeResponse")]
         public Input<string>? VerifyAuthChallengeResponse { get; set; }
 

@@ -14,9 +14,6 @@ namespace Pulumi.Aws.Ec2.Outputs
     public sealed class DefaultSecurityGroupEgress
     {
         public readonly ImmutableArray<string> CidrBlocks;
-        /// <summary>
-        /// The description of the security group
-        /// </summary>
         public readonly string? Description;
         public readonly int FromPort;
         public readonly ImmutableArray<string> Ipv6CidrBlocks;

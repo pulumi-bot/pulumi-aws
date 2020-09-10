@@ -9,51 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ec2TransitGateway
 {
-    /// <summary>
-    /// Manages an EC2 Transit Gateway Route Table.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2TransitGateway.RouteTable("example", new Aws.Ec2TransitGateway.RouteTableArgs
-    ///         {
-    ///             TransitGatewayId = aws_ec2_transit_gateway.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RouteTable : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Boolean whether this is the default association route table for the EC2 Transit Gateway.
-        /// </summary>
         [Output("defaultAssociationRouteTable")]
         public Output<bool> DefaultAssociationRouteTable { get; private set; } = null!;
 
-        /// <summary>
-        /// Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
-        /// </summary>
         [Output("defaultPropagationRouteTable")]
         public Output<bool> DefaultPropagationRouteTable { get; private set; } = null!;
 
-        /// <summary>
-        /// Key-value tags for the EC2 Transit Gateway Route Table.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway.
-        /// </summary>
         [Output("transitGatewayId")]
         public Output<string> TransitGatewayId { get; private set; } = null!;
 
@@ -105,19 +71,12 @@ namespace Pulumi.Aws.Ec2TransitGateway
     {
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value tags for the EC2 Transit Gateway Route Table.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway.
-        /// </summary>
         [Input("transitGatewayId", required: true)]
         public Input<string> TransitGatewayId { get; set; } = null!;
 
@@ -128,33 +87,20 @@ namespace Pulumi.Aws.Ec2TransitGateway
 
     public sealed class RouteTableState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Boolean whether this is the default association route table for the EC2 Transit Gateway.
-        /// </summary>
         [Input("defaultAssociationRouteTable")]
         public Input<bool>? DefaultAssociationRouteTable { get; set; }
 
-        /// <summary>
-        /// Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
-        /// </summary>
         [Input("defaultPropagationRouteTable")]
         public Input<bool>? DefaultPropagationRouteTable { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Key-value tags for the EC2 Transit Gateway Route Table.
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Identifier of EC2 Transit Gateway.
-        /// </summary>
         [Input("transitGatewayId")]
         public Input<string>? TransitGatewayId { get; set; }
 

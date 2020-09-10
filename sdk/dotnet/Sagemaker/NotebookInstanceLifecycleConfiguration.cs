@@ -9,32 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Sagemaker
 {
-    /// <summary>
-    /// Provides a lifecycle configuration for SageMaker Notebook Instances.
-    /// </summary>
     public partial class NotebookInstanceLifecycleConfiguration : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-        /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
-        /// </summary>
         [Output("onCreate")]
         public Output<string?> OnCreate { get; private set; } = null!;
 
-        /// <summary>
-        /// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-        /// </summary>
         [Output("onStart")]
         public Output<string?> OnStart { get; private set; } = null!;
 
@@ -84,21 +69,12 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class NotebookInstanceLifecycleConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
-        /// </summary>
         [Input("onCreate")]
         public Input<string>? OnCreate { get; set; }
 
-        /// <summary>
-        /// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-        /// </summary>
         [Input("onStart")]
         public Input<string>? OnStart { get; set; }
 
@@ -109,27 +85,15 @@ namespace Pulumi.Aws.Sagemaker
 
     public sealed class NotebookInstanceLifecycleConfigurationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Amazon Resource Name (ARN) assigned by AWS to this lifecycle configuration.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
-        /// </summary>
         [Input("onCreate")]
         public Input<string>? OnCreate { get; set; }
 
-        /// <summary>
-        /// A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
-        /// </summary>
         [Input("onStart")]
         public Input<string>? OnStart { get; set; }
 

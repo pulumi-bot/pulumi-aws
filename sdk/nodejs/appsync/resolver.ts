@@ -6,91 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AppSync Resolver.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testGraphQLApi = new aws.appsync.GraphQLApi("testGraphQLApi", {
- *     authenticationType: "API_KEY",
- *     schema: `type Mutation {
- * 	putPost(id: ID!, title: String!): Post
- * }
- *
- * type Post {
- * 	id: ID!
- * 	title: String!
- * }
- *
- * type Query {
- * 	singlePost(id: ID!): Post
- * }
- *
- * schema {
- * 	query: Query
- * 	mutation: Mutation
- * }
- * `,
- * });
- * const testDataSource = new aws.appsync.DataSource("testDataSource", {
- *     apiId: testGraphQLApi.id,
- *     name: "tf_example",
- *     type: "HTTP",
- *     httpConfig: {
- *         endpoint: "http://example.com",
- *     },
- * });
- * // UNIT type resolver (default)
- * const testResolver = new aws.appsync.Resolver("testResolver", {
- *     apiId: testGraphQLApi.id,
- *     field: "singlePost",
- *     type: "Query",
- *     dataSource: testDataSource.name,
- *     requestTemplate: `{
- *     "version": "2018-05-29",
- *     "method": "GET",
- *     "resourcePath": "/",
- *     "params":{
- *         "headers": $utils.http.copyheaders($ctx.request.headers)
- *     }
- * }
- * `,
- *     responseTemplate: `#if($ctx.result.statusCode == 200)
- *     $ctx.result.body
- * #else
- *     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
- * #end
- * `,
- *     cachingConfig: {
- *         cachingKeys: [
- *             `$context.identity.sub`,
- *             `$context.arguments.id`,
- *         ],
- *         ttl: 60,
- *     },
- * });
- * // PIPELINE type resolver
- * const mutationPipelineTest = new aws.appsync.Resolver("mutationPipelineTest", {
- *     type: "Mutation",
- *     apiId: testGraphQLApi.id,
- *     field: "pipelineTest",
- *     requestTemplate: "{}",
- *     responseTemplate: `$util.toJson($ctx.result)`,
- *     kind: "PIPELINE",
- *     pipelineConfig: {
- *         functions: [
- *             aws_appsync_function.test1.function_id,
- *             aws_appsync_function.test2.function_id,
- *             aws_appsync_function.test3.function_id,
- *         ],
- *     },
- * });
- * ```
- */
 export class Resolver extends pulumi.CustomResource {
     /**
      * Get an existing Resolver resource's state with the given name, ID, and optional extra
@@ -119,45 +34,15 @@ export class Resolver extends pulumi.CustomResource {
         return obj['__pulumiType'] === Resolver.__pulumiType;
     }
 
-    /**
-     * The API ID for the GraphQL API.
-     */
     public readonly apiId!: pulumi.Output<string>;
-    /**
-     * The ARN
-     */
     public /*out*/ readonly arn!: pulumi.Output<string>;
-    /**
-     * The CachingConfig.
-     */
     public readonly cachingConfig!: pulumi.Output<outputs.appsync.ResolverCachingConfig | undefined>;
-    /**
-     * The DataSource name.
-     */
     public readonly dataSource!: pulumi.Output<string | undefined>;
-    /**
-     * The field name from the schema defined in the GraphQL API.
-     */
     public readonly field!: pulumi.Output<string>;
-    /**
-     * The resolver type. Valid values are `UNIT` and `PIPELINE`.
-     */
     public readonly kind!: pulumi.Output<string | undefined>;
-    /**
-     * The PipelineConfig.
-     */
     public readonly pipelineConfig!: pulumi.Output<outputs.appsync.ResolverPipelineConfig | undefined>;
-    /**
-     * The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-     */
     public readonly requestTemplate!: pulumi.Output<string>;
-    /**
-     * The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
-     */
     public readonly responseTemplate!: pulumi.Output<string>;
-    /**
-     * The type name from the schema defined in the GraphQL API.
-     */
     public readonly type!: pulumi.Output<string>;
 
     /**
@@ -225,45 +110,15 @@ export class Resolver extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Resolver resources.
  */
 export interface ResolverState {
-    /**
-     * The API ID for the GraphQL API.
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * The ARN
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The CachingConfig.
-     */
     readonly cachingConfig?: pulumi.Input<inputs.appsync.ResolverCachingConfig>;
-    /**
-     * The DataSource name.
-     */
     readonly dataSource?: pulumi.Input<string>;
-    /**
-     * The field name from the schema defined in the GraphQL API.
-     */
     readonly field?: pulumi.Input<string>;
-    /**
-     * The resolver type. Valid values are `UNIT` and `PIPELINE`.
-     */
     readonly kind?: pulumi.Input<string>;
-    /**
-     * The PipelineConfig.
-     */
     readonly pipelineConfig?: pulumi.Input<inputs.appsync.ResolverPipelineConfig>;
-    /**
-     * The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-     */
     readonly requestTemplate?: pulumi.Input<string>;
-    /**
-     * The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
-     */
     readonly responseTemplate?: pulumi.Input<string>;
-    /**
-     * The type name from the schema defined in the GraphQL API.
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -271,40 +126,13 @@ export interface ResolverState {
  * The set of arguments for constructing a Resolver resource.
  */
 export interface ResolverArgs {
-    /**
-     * The API ID for the GraphQL API.
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * The CachingConfig.
-     */
     readonly cachingConfig?: pulumi.Input<inputs.appsync.ResolverCachingConfig>;
-    /**
-     * The DataSource name.
-     */
     readonly dataSource?: pulumi.Input<string>;
-    /**
-     * The field name from the schema defined in the GraphQL API.
-     */
     readonly field: pulumi.Input<string>;
-    /**
-     * The resolver type. Valid values are `UNIT` and `PIPELINE`.
-     */
     readonly kind?: pulumi.Input<string>;
-    /**
-     * The PipelineConfig.
-     */
     readonly pipelineConfig?: pulumi.Input<inputs.appsync.ResolverPipelineConfig>;
-    /**
-     * The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
-     */
     readonly requestTemplate: pulumi.Input<string>;
-    /**
-     * The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
-     */
     readonly responseTemplate: pulumi.Input<string>;
-    /**
-     * The type name from the schema defined in the GraphQL API.
-     */
     readonly type: pulumi.Input<string>;
 }

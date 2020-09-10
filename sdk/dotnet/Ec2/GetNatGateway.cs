@@ -11,57 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     public static class GetNatGateway
     {
-        /// <summary>
-        /// Provides details about a specific Nat Gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var subnetId = config.RequireObject&lt;dynamic&gt;("subnetId");
-        ///         var @default = Output.Create(Aws.Ec2.GetNatGateway.InvokeAsync(new Aws.Ec2.GetNatGatewayArgs
-        ///         {
-        ///             SubnetId = aws_subnet.Public.Id,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// Usage with tags:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Aws.Ec2.GetNatGateway.InvokeAsync(new Aws.Ec2.GetNatGatewayArgs
-        ///         {
-        ///             SubnetId = aws_subnet.Public.Id,
-        ///             Tags = 
-        ///             {
-        ///                 { "Name", "gw NAT" },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetNatGatewayResult> InvokeAsync(GetNatGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewayResult>("aws:ec2/getNatGateway:getNatGateway", args ?? new GetNatGatewayArgs(), options.WithVersion());
     }
@@ -71,50 +20,29 @@ namespace Pulumi.Aws.Ec2
     {
         [Input("filters")]
         private List<Inputs.GetNatGatewayFilterArgs>? _filters;
-
-        /// <summary>
-        /// Custom filter block as described below.
-        /// </summary>
         public List<Inputs.GetNatGatewayFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetNatGatewayFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The id of the specific Nat Gateway to retrieve.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The state of the NAT gateway (pending | failed | available | deleting | deleted ).
-        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
-        /// <summary>
-        /// The id of subnet that the Nat Gateway resides in.
-        /// </summary>
         [Input("subnetId")]
         public string? SubnetId { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// A map of tags, each pair of which must exactly match
-        /// a pair on the desired Nat Gateway.
-        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The id of the VPC that the Nat Gateway resides in.
-        /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
@@ -127,23 +55,11 @@ namespace Pulumi.Aws.Ec2
     [OutputType]
     public sealed class GetNatGatewayResult
     {
-        /// <summary>
-        /// The Id of the EIP allocated to the selected Nat Gateway.
-        /// </summary>
         public readonly string AllocationId;
         public readonly ImmutableArray<Outputs.GetNatGatewayFilterResult> Filters;
         public readonly string Id;
-        /// <summary>
-        /// The Id of the ENI allocated to the selected Nat Gateway.
-        /// </summary>
         public readonly string NetworkInterfaceId;
-        /// <summary>
-        /// The private Ip address of the selected Nat Gateway.
-        /// </summary>
         public readonly string PrivateIp;
-        /// <summary>
-        /// The public Ip (EIP) address of the selected Nat Gateway.
-        /// </summary>
         public readonly string PublicIp;
         public readonly string State;
         public readonly string SubnetId;

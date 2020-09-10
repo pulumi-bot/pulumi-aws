@@ -10,96 +10,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages an Amazon API Gateway Version 2 API.
-//
-// > **Note:** Amazon API Gateway Version 2 resources are used for creating and deploying WebSocket and HTTP APIs. To create and deploy REST APIs, use Amazon API Gateway Version 1.
-//
-// ## Example Usage
-// ### Basic WebSocket API
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewApi(ctx, "example", &apigatewayv2.ApiArgs{
-// 			ProtocolType:             pulumi.String("WEBSOCKET"),
-// 			RouteSelectionExpression: pulumi.String(fmt.Sprintf("%v%v", "$", "request.body.action")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Basic HTTP API
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewApi(ctx, "example", &apigatewayv2.ApiArgs{
-// 			ProtocolType: pulumi.String("HTTP"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Api struct {
 	pulumi.CustomResourceState
 
-	// The URI of the API, of the form `{api-id}.execute-api.{region}.amazonaws.com`.
-	ApiEndpoint pulumi.StringOutput `pulumi:"apiEndpoint"`
-	// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-	// Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-	// Applicable for WebSocket APIs.
-	ApiKeySelectionExpression pulumi.StringPtrOutput `pulumi:"apiKeySelectionExpression"`
-	// The ARN of the API.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-	CorsConfiguration ApiCorsConfigurationPtrOutput `pulumi:"corsConfiguration"`
-	// Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-	CredentialsArn pulumi.StringPtrOutput `pulumi:"credentialsArn"`
-	// The description of the API.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ARN prefix to be used in an `lambda.Permission`'s `sourceArn` attribute
-	// or in an `iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-	// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-	ExecutionArn pulumi.StringOutput `pulumi:"executionArn"`
-	// The name of the API.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
-	// Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-	RouteKey pulumi.StringPtrOutput `pulumi:"routeKey"`
-	// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-	// Defaults to `$request.method $request.path`.
-	RouteSelectionExpression pulumi.StringPtrOutput `pulumi:"routeSelectionExpression"`
-	// A map of tags to assign to the API.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-	// For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-	// The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-	Target pulumi.StringPtrOutput `pulumi:"target"`
-	// A version identifier for the API.
-	Version pulumi.StringPtrOutput `pulumi:"version"`
+	ApiEndpoint               pulumi.StringOutput           `pulumi:"apiEndpoint"`
+	ApiKeySelectionExpression pulumi.StringPtrOutput        `pulumi:"apiKeySelectionExpression"`
+	Arn                       pulumi.StringOutput           `pulumi:"arn"`
+	CorsConfiguration         ApiCorsConfigurationPtrOutput `pulumi:"corsConfiguration"`
+	CredentialsArn            pulumi.StringPtrOutput        `pulumi:"credentialsArn"`
+	Description               pulumi.StringPtrOutput        `pulumi:"description"`
+	ExecutionArn              pulumi.StringOutput           `pulumi:"executionArn"`
+	Name                      pulumi.StringOutput           `pulumi:"name"`
+	ProtocolType              pulumi.StringOutput           `pulumi:"protocolType"`
+	RouteKey                  pulumi.StringPtrOutput        `pulumi:"routeKey"`
+	RouteSelectionExpression  pulumi.StringPtrOutput        `pulumi:"routeSelectionExpression"`
+	Tags                      pulumi.StringMapOutput        `pulumi:"tags"`
+	Target                    pulumi.StringPtrOutput        `pulumi:"target"`
+	Version                   pulumi.StringPtrOutput        `pulumi:"version"`
 }
 
 // NewApi registers a new resource with the given unique name, arguments, and options.
@@ -133,79 +60,37 @@ func GetApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
-	// The URI of the API, of the form `{api-id}.execute-api.{region}.amazonaws.com`.
-	ApiEndpoint *string `pulumi:"apiEndpoint"`
-	// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-	// Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-	// Applicable for WebSocket APIs.
-	ApiKeySelectionExpression *string `pulumi:"apiKeySelectionExpression"`
-	// The ARN of the API.
-	Arn *string `pulumi:"arn"`
-	// The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-	CorsConfiguration *ApiCorsConfiguration `pulumi:"corsConfiguration"`
-	// Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-	CredentialsArn *string `pulumi:"credentialsArn"`
-	// The description of the API.
-	Description *string `pulumi:"description"`
-	// The ARN prefix to be used in an `lambda.Permission`'s `sourceArn` attribute
-	// or in an `iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-	// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-	ExecutionArn *string `pulumi:"executionArn"`
-	// The name of the API.
-	Name *string `pulumi:"name"`
-	// The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-	ProtocolType *string `pulumi:"protocolType"`
-	// Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-	RouteKey *string `pulumi:"routeKey"`
-	// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-	// Defaults to `$request.method $request.path`.
-	RouteSelectionExpression *string `pulumi:"routeSelectionExpression"`
-	// A map of tags to assign to the API.
-	Tags map[string]string `pulumi:"tags"`
-	// Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-	// For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-	// The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-	Target *string `pulumi:"target"`
-	// A version identifier for the API.
-	Version *string `pulumi:"version"`
+	ApiEndpoint               *string               `pulumi:"apiEndpoint"`
+	ApiKeySelectionExpression *string               `pulumi:"apiKeySelectionExpression"`
+	Arn                       *string               `pulumi:"arn"`
+	CorsConfiguration         *ApiCorsConfiguration `pulumi:"corsConfiguration"`
+	CredentialsArn            *string               `pulumi:"credentialsArn"`
+	Description               *string               `pulumi:"description"`
+	ExecutionArn              *string               `pulumi:"executionArn"`
+	Name                      *string               `pulumi:"name"`
+	ProtocolType              *string               `pulumi:"protocolType"`
+	RouteKey                  *string               `pulumi:"routeKey"`
+	RouteSelectionExpression  *string               `pulumi:"routeSelectionExpression"`
+	Tags                      map[string]string     `pulumi:"tags"`
+	Target                    *string               `pulumi:"target"`
+	Version                   *string               `pulumi:"version"`
 }
 
 type ApiState struct {
-	// The URI of the API, of the form `{api-id}.execute-api.{region}.amazonaws.com`.
-	ApiEndpoint pulumi.StringPtrInput
-	// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-	// Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-	// Applicable for WebSocket APIs.
+	ApiEndpoint               pulumi.StringPtrInput
 	ApiKeySelectionExpression pulumi.StringPtrInput
-	// The ARN of the API.
-	Arn pulumi.StringPtrInput
-	// The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-	CorsConfiguration ApiCorsConfigurationPtrInput
-	// Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-	CredentialsArn pulumi.StringPtrInput
-	// The description of the API.
-	Description pulumi.StringPtrInput
-	// The ARN prefix to be used in an `lambda.Permission`'s `sourceArn` attribute
-	// or in an `iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-	// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-	ExecutionArn pulumi.StringPtrInput
-	// The name of the API.
-	Name pulumi.StringPtrInput
-	// The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-	ProtocolType pulumi.StringPtrInput
-	// Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-	RouteKey pulumi.StringPtrInput
-	// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-	// Defaults to `$request.method $request.path`.
-	RouteSelectionExpression pulumi.StringPtrInput
-	// A map of tags to assign to the API.
-	Tags pulumi.StringMapInput
-	// Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-	// For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-	// The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-	Target pulumi.StringPtrInput
-	// A version identifier for the API.
-	Version pulumi.StringPtrInput
+	Arn                       pulumi.StringPtrInput
+	CorsConfiguration         ApiCorsConfigurationPtrInput
+	CredentialsArn            pulumi.StringPtrInput
+	Description               pulumi.StringPtrInput
+	ExecutionArn              pulumi.StringPtrInput
+	Name                      pulumi.StringPtrInput
+	ProtocolType              pulumi.StringPtrInput
+	RouteKey                  pulumi.StringPtrInput
+	RouteSelectionExpression  pulumi.StringPtrInput
+	Tags                      pulumi.StringMapInput
+	Target                    pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
 }
 
 func (ApiState) ElementType() reflect.Type {
@@ -213,64 +98,32 @@ func (ApiState) ElementType() reflect.Type {
 }
 
 type apiArgs struct {
-	// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-	// Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-	// Applicable for WebSocket APIs.
-	ApiKeySelectionExpression *string `pulumi:"apiKeySelectionExpression"`
-	// The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-	CorsConfiguration *ApiCorsConfiguration `pulumi:"corsConfiguration"`
-	// Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-	CredentialsArn *string `pulumi:"credentialsArn"`
-	// The description of the API.
-	Description *string `pulumi:"description"`
-	// The name of the API.
-	Name *string `pulumi:"name"`
-	// The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-	ProtocolType string `pulumi:"protocolType"`
-	// Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-	RouteKey *string `pulumi:"routeKey"`
-	// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-	// Defaults to `$request.method $request.path`.
-	RouteSelectionExpression *string `pulumi:"routeSelectionExpression"`
-	// A map of tags to assign to the API.
-	Tags map[string]string `pulumi:"tags"`
-	// Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-	// For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-	// The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-	Target *string `pulumi:"target"`
-	// A version identifier for the API.
-	Version *string `pulumi:"version"`
+	ApiKeySelectionExpression *string               `pulumi:"apiKeySelectionExpression"`
+	CorsConfiguration         *ApiCorsConfiguration `pulumi:"corsConfiguration"`
+	CredentialsArn            *string               `pulumi:"credentialsArn"`
+	Description               *string               `pulumi:"description"`
+	Name                      *string               `pulumi:"name"`
+	ProtocolType              string                `pulumi:"protocolType"`
+	RouteKey                  *string               `pulumi:"routeKey"`
+	RouteSelectionExpression  *string               `pulumi:"routeSelectionExpression"`
+	Tags                      map[string]string     `pulumi:"tags"`
+	Target                    *string               `pulumi:"target"`
+	Version                   *string               `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
-	// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-	// Valid values: `$context.authorizer.usageIdentifierKey`, `$request.header.x-api-key`. Defaults to `$request.header.x-api-key`.
-	// Applicable for WebSocket APIs.
 	ApiKeySelectionExpression pulumi.StringPtrInput
-	// The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs.
-	CorsConfiguration ApiCorsConfigurationPtrInput
-	// Part of _quick create_. Specifies any credentials required for the integration. Applicable for HTTP APIs.
-	CredentialsArn pulumi.StringPtrInput
-	// The description of the API.
-	Description pulumi.StringPtrInput
-	// The name of the API.
-	Name pulumi.StringPtrInput
-	// The API protocol. Valid values: `HTTP`, `WEBSOCKET`.
-	ProtocolType pulumi.StringInput
-	// Part of _quick create_. Specifies any [route key](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html). Applicable for HTTP APIs.
-	RouteKey pulumi.StringPtrInput
-	// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
-	// Defaults to `$request.method $request.path`.
-	RouteSelectionExpression pulumi.StringPtrInput
-	// A map of tags to assign to the API.
-	Tags pulumi.StringMapInput
-	// Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
-	// For HTTP integrations, specify a fully qualified URL. For Lambda integrations, specify a function ARN.
-	// The type of the integration will be `HTTP_PROXY` or `AWS_PROXY`, respectively. Applicable for HTTP APIs.
-	Target pulumi.StringPtrInput
-	// A version identifier for the API.
-	Version pulumi.StringPtrInput
+	CorsConfiguration         ApiCorsConfigurationPtrInput
+	CredentialsArn            pulumi.StringPtrInput
+	Description               pulumi.StringPtrInput
+	Name                      pulumi.StringPtrInput
+	ProtocolType              pulumi.StringInput
+	RouteKey                  pulumi.StringPtrInput
+	RouteSelectionExpression  pulumi.StringPtrInput
+	Tags                      pulumi.StringMapInput
+	Target                    pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
 }
 
 func (ApiArgs) ElementType() reflect.Type {
