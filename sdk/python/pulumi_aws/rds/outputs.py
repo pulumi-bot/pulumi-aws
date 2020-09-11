@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -309,18 +309,18 @@ class InstanceS3Import(dict):
 class OptionGroupOption(dict):
     def __init__(__self__, *,
                  option_name: str,
-                 db_security_group_memberships: Optional[List[str]] = None,
-                 option_settings: Optional[List['outputs.OptionGroupOptionOptionSetting']] = None,
+                 db_security_group_memberships: Optional[Sequence[str]] = None,
+                 option_settings: Optional[Sequence['outputs.OptionGroupOptionOptionSetting']] = None,
                  port: Optional[float] = None,
                  version: Optional[str] = None,
-                 vpc_security_group_memberships: Optional[List[str]] = None):
+                 vpc_security_group_memberships: Optional[Sequence[str]] = None):
         """
         :param str option_name: The Name of the Option (e.g. MEMCACHED).
-        :param List[str] db_security_group_memberships: A list of DB Security Groups for which the option is enabled.
-        :param List['OptionGroupOptionOptionSettingArgs'] option_settings: A list of option settings to apply.
+        :param Sequence[str] db_security_group_memberships: A list of DB Security Groups for which the option is enabled.
+        :param Sequence['OptionGroupOptionOptionSettingArgs'] option_settings: A list of option settings to apply.
         :param float port: The Port number when connecting to the Option (e.g. 11211).
         :param str version: The version of the option (e.g. 13.1.0.0).
-        :param List[str] vpc_security_group_memberships: A list of VPC Security Groups for which the option is enabled.
+        :param Sequence[str] vpc_security_group_memberships: A list of VPC Security Groups for which the option is enabled.
         """
         pulumi.set(__self__, "option_name", option_name)
         if db_security_group_memberships is not None:
@@ -344,7 +344,7 @@ class OptionGroupOption(dict):
 
     @property
     @pulumi.getter(name="dbSecurityGroupMemberships")
-    def db_security_group_memberships(self) -> Optional[List[str]]:
+    def db_security_group_memberships(self) -> Optional[Sequence[str]]:
         """
         A list of DB Security Groups for which the option is enabled.
         """
@@ -352,7 +352,7 @@ class OptionGroupOption(dict):
 
     @property
     @pulumi.getter(name="optionSettings")
-    def option_settings(self) -> Optional[List['outputs.OptionGroupOptionOptionSetting']]:
+    def option_settings(self) -> Optional[Sequence['outputs.OptionGroupOptionOptionSetting']]:
         """
         A list of option settings to apply.
         """
@@ -376,7 +376,7 @@ class OptionGroupOption(dict):
 
     @property
     @pulumi.getter(name="vpcSecurityGroupMemberships")
-    def vpc_security_group_memberships(self) -> Optional[List[str]]:
+    def vpc_security_group_memberships(self) -> Optional[Sequence[str]]:
         """
         A list of VPC Security Groups for which the option is enabled.
         """

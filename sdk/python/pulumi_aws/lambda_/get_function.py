@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -131,7 +131,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter(name="fileSystemConfigs")
-    def file_system_configs(self) -> List['outputs.GetFunctionFileSystemConfigResult']:
+    def file_system_configs(self) -> Sequence['outputs.GetFunctionFileSystemConfigResult']:
         """
         The connection settings for an Amazon EFS file system.
         """
@@ -184,7 +184,7 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter
-    def layers(self) -> List[str]:
+    def layers(self) -> Sequence[str]:
         """
         A list of Lambda Layer ARNs attached to your Lambda Function.
         """

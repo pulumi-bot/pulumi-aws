@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,9 +18,9 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_info: Optional[pulumi.Input[str]] = None,
-                 applications: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autoscaling_role: Optional[pulumi.Input[str]] = None,
-                 bootstrap_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
+                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
                  configurations: Optional[pulumi.Input[str]] = None,
                  configurations_json: Optional[pulumi.Input[str]] = None,
                  core_instance_group: Optional[pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']]] = None,
@@ -37,7 +37,7 @@ class Cluster(pulumi.CustomResource):
                  security_configuration: Optional[pulumi.Input[str]] = None,
                  service_role: Optional[pulumi.Input[str]] = None,
                  step_concurrency_level: Optional[pulumi.Input[float]] = None,
-                 steps: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  visible_to_all_users: Optional[pulumi.Input[bool]] = None,
@@ -462,9 +462,9 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_info: A JSON string for selecting additional features such as adding proxy information. Note: Currently there is no API to retrieve the value of this argument after EMR cluster creation from provider, therefore this provider cannot detect drift from the actual EMR cluster if its value is changed outside this provider.
-        :param pulumi.Input[List[pulumi.Input[str]]] applications: A list of applications for the cluster. Valid values are: `Flink`, `Hadoop`, `Hive`, `Mahout`, `Pig`, `Spark`, and `JupyterHub` (as of EMR 5.14.0). Case insensitive
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: A list of applications for the cluster. Valid values are: `Flink`, `Hadoop`, `Hive`, `Mahout`, `Pig`, `Spark`, and `JupyterHub` (as of EMR 5.14.0). Case insensitive
         :param pulumi.Input[str] autoscaling_role: An IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
         :param pulumi.Input[str] configurations: List of configurations supplied for the EMR cluster you are creating
         :param pulumi.Input[str] configurations_json: A JSON string for supplying list of configurations for the EMR cluster.
         :param pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']] core_instance_group: Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
@@ -481,7 +481,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] security_configuration: The security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater
         :param pulumi.Input[str] service_role: IAM role that will be assumed by the Amazon EMR service to access AWS resources
         :param pulumi.Input[float] step_concurrency_level: The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]] steps: List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]] steps: List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: list of tags to apply to the EMR Cluster
         :param pulumi.Input[bool] termination_protection: Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
         :param pulumi.Input[bool] visible_to_all_users: Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default `true`
@@ -545,10 +545,10 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_info: Optional[pulumi.Input[str]] = None,
-            applications: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             arn: Optional[pulumi.Input[str]] = None,
             autoscaling_role: Optional[pulumi.Input[str]] = None,
-            bootstrap_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
+            bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]]] = None,
             cluster_state: Optional[pulumi.Input[str]] = None,
             configurations: Optional[pulumi.Input[str]] = None,
             configurations_json: Optional[pulumi.Input[str]] = None,
@@ -567,7 +567,7 @@ class Cluster(pulumi.CustomResource):
             security_configuration: Optional[pulumi.Input[str]] = None,
             service_role: Optional[pulumi.Input[str]] = None,
             step_concurrency_level: Optional[pulumi.Input[float]] = None,
-            steps: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]]] = None,
+            steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None,
             visible_to_all_users: Optional[pulumi.Input[bool]] = None) -> 'Cluster':
@@ -579,9 +579,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_info: A JSON string for selecting additional features such as adding proxy information. Note: Currently there is no API to retrieve the value of this argument after EMR cluster creation from provider, therefore this provider cannot detect drift from the actual EMR cluster if its value is changed outside this provider.
-        :param pulumi.Input[List[pulumi.Input[str]]] applications: A list of applications for the cluster. Valid values are: `Flink`, `Hadoop`, `Hive`, `Mahout`, `Pig`, `Spark`, and `JupyterHub` (as of EMR 5.14.0). Case insensitive
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: A list of applications for the cluster. Valid values are: `Flink`, `Hadoop`, `Hive`, `Mahout`, `Pig`, `Spark`, and `JupyterHub` (as of EMR 5.14.0). Case insensitive
         :param pulumi.Input[str] autoscaling_role: An IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
         :param pulumi.Input[str] configurations: List of configurations supplied for the EMR cluster you are creating
         :param pulumi.Input[str] configurations_json: A JSON string for supplying list of configurations for the EMR cluster.
         :param pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']] core_instance_group: Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
@@ -600,7 +600,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] security_configuration: The security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater
         :param pulumi.Input[str] service_role: IAM role that will be assumed by the Amazon EMR service to access AWS resources
         :param pulumi.Input[float] step_concurrency_level: The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]] steps: List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]] steps: List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: list of tags to apply to the EMR Cluster
         :param pulumi.Input[bool] termination_protection: Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
         :param pulumi.Input[bool] visible_to_all_users: Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default `true`
@@ -648,7 +648,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def applications(self) -> pulumi.Output[Optional[List[str]]]:
+    def applications(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of applications for the cluster. Valid values are: `Flink`, `Hadoop`, `Hive`, `Mahout`, `Pig`, `Spark`, and `JupyterHub` (as of EMR 5.14.0). Case insensitive
         """
@@ -669,7 +669,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootstrapActions")
-    def bootstrap_actions(self) -> pulumi.Output[Optional[List['outputs.ClusterBootstrapAction']]]:
+    def bootstrap_actions(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapAction']]]:
         """
         Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
         """
@@ -819,7 +819,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def steps(self) -> pulumi.Output[List['outputs.ClusterStep']]:
+    def steps(self) -> pulumi.Output[Sequence['outputs.ClusterStep']]:
         """
         List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
         """

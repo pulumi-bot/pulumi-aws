@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -258,10 +258,10 @@ class GroupMixedInstancesPolicyInstancesDistribution(dict):
 class GroupMixedInstancesPolicyLaunchTemplate(dict):
     def __init__(__self__, *,
                  launch_template_specification: 'outputs.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification',
-                 overrides: Optional[List['outputs.GroupMixedInstancesPolicyLaunchTemplateOverride']] = None):
+                 overrides: Optional[Sequence['outputs.GroupMixedInstancesPolicyLaunchTemplateOverride']] = None):
         """
         :param 'GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs' launch_template_specification: Nested argument defines the Launch Template. Defined below.
-        :param List['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs'] overrides: List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
+        :param Sequence['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs'] overrides: List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
         """
         pulumi.set(__self__, "launch_template_specification", launch_template_specification)
         if overrides is not None:
@@ -277,7 +277,7 @@ class GroupMixedInstancesPolicyLaunchTemplate(dict):
 
     @property
     @pulumi.getter
-    def overrides(self) -> Optional[List['outputs.GroupMixedInstancesPolicyLaunchTemplateOverride']]:
+    def overrides(self) -> Optional[Sequence['outputs.GroupMixedInstancesPolicyLaunchTemplateOverride']]:
         """
         List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
         """
@@ -534,13 +534,13 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification(dict):
                  metric_name: str,
                  namespace: str,
                  statistic: str,
-                 metric_dimensions: Optional[List['outputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension']] = None,
+                 metric_dimensions: Optional[Sequence['outputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension']] = None,
                  unit: Optional[str] = None):
         """
         :param str metric_name: The name of the metric.
         :param str namespace: The namespace of the metric.
         :param str statistic: The statistic of the metric.
-        :param List['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs'] metric_dimensions: The dimensions of the metric.
+        :param Sequence['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs'] metric_dimensions: The dimensions of the metric.
         :param str unit: The unit of the metric.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -577,7 +577,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification(dict):
 
     @property
     @pulumi.getter(name="metricDimensions")
-    def metric_dimensions(self) -> Optional[List['outputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension']]:
+    def metric_dimensions(self) -> Optional[Sequence['outputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension']]:
         """
         The dimensions of the metric.
         """

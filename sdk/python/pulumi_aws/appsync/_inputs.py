@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -532,10 +532,10 @@ class GraphQLApiUserPoolConfigArgs:
 @pulumi.input_type
 class ResolverCachingConfigArgs:
     def __init__(__self__, *,
-                 caching_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 caching_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] caching_keys: The list of caching key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] caching_keys: The list of caching key.
         :param pulumi.Input[float] ttl: The TTL in seconds.
         """
         if caching_keys is not None:
@@ -545,14 +545,14 @@ class ResolverCachingConfigArgs:
 
     @property
     @pulumi.getter(name="cachingKeys")
-    def caching_keys(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def caching_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of caching key.
         """
         return pulumi.get(self, "caching_keys")
 
     @caching_keys.setter
-    def caching_keys(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def caching_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "caching_keys", value)
 
     @property
@@ -571,23 +571,23 @@ class ResolverCachingConfigArgs:
 @pulumi.input_type
 class ResolverPipelineConfigArgs:
     def __init__(__self__, *,
-                 functions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 functions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] functions: The list of Function ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] functions: The list of Function ID.
         """
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
 
     @property
     @pulumi.getter
-    def functions(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def functions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of Function ID.
         """
         return pulumi.get(self, "functions")
 
     @functions.setter
-    def functions(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def functions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "functions", value)
 
 

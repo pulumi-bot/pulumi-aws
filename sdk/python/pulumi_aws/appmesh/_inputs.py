@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -188,16 +188,16 @@ class RouteSpecHttpRouteArgs:
 @pulumi.input_type
 class RouteSpecHttpRouteActionArgs:
     def __init__(__self__, *,
-                 weighted_targets: pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]]):
+                 weighted_targets: pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]] weighted_targets: The targets that traffic is routed to when a request matches the route.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]] weighted_targets: The targets that traffic is routed to when a request matches the route.
                You can specify one or more targets and their relative weights with which to distribute traffic.
         """
         pulumi.set(__self__, "weighted_targets", weighted_targets)
 
     @property
     @pulumi.getter(name="weightedTargets")
-    def weighted_targets(self) -> pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]]:
+    def weighted_targets(self) -> pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]]:
         """
         The targets that traffic is routed to when a request matches the route.
         You can specify one or more targets and their relative weights with which to distribute traffic.
@@ -205,7 +205,7 @@ class RouteSpecHttpRouteActionArgs:
         return pulumi.get(self, "weighted_targets")
 
     @weighted_targets.setter
-    def weighted_targets(self, value: pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]]):
+    def weighted_targets(self, value: pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteActionWeightedTargetArgs']]]):
         pulumi.set(self, "weighted_targets", value)
 
 
@@ -250,13 +250,13 @@ class RouteSpecHttpRouteActionWeightedTargetArgs:
 class RouteSpecHttpRouteMatchArgs:
     def __init__(__self__, *,
                  prefix: pulumi.Input[str],
-                 headers: Optional[pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  scheme: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] prefix: Specifies the path with which to match requests.
                This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-        :param pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]] headers: The client request headers to match on.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]] headers: The client request headers to match on.
         :param pulumi.Input[str] method: The client request header method to match on. Valid values: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
         :param pulumi.Input[str] scheme: The client request header scheme to match on. Valid values: `http`, `https`.
         """
@@ -283,14 +283,14 @@ class RouteSpecHttpRouteMatchArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]]]:
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]]]:
         """
         The client request headers to match on.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[List[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]]]):
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteSpecHttpRouteMatchHeaderArgs']]]]):
         pulumi.set(self, "headers", value)
 
     @property
@@ -523,16 +523,16 @@ class RouteSpecTcpRouteArgs:
 @pulumi.input_type
 class RouteSpecTcpRouteActionArgs:
     def __init__(__self__, *,
-                 weighted_targets: pulumi.Input[List[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]]):
+                 weighted_targets: pulumi.Input[Sequence[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]] weighted_targets: The targets that traffic is routed to when a request matches the route.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]] weighted_targets: The targets that traffic is routed to when a request matches the route.
                You can specify one or more targets and their relative weights with which to distribute traffic.
         """
         pulumi.set(__self__, "weighted_targets", weighted_targets)
 
     @property
     @pulumi.getter(name="weightedTargets")
-    def weighted_targets(self) -> pulumi.Input[List[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]]:
+    def weighted_targets(self) -> pulumi.Input[Sequence[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]]:
         """
         The targets that traffic is routed to when a request matches the route.
         You can specify one or more targets and their relative weights with which to distribute traffic.
@@ -540,7 +540,7 @@ class RouteSpecTcpRouteActionArgs:
         return pulumi.get(self, "weighted_targets")
 
     @weighted_targets.setter
-    def weighted_targets(self, value: pulumi.Input[List[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]]):
+    def weighted_targets(self, value: pulumi.Input[Sequence[pulumi.Input['RouteSpecTcpRouteActionWeightedTargetArgs']]]):
         pulumi.set(self, "weighted_targets", value)
 
 
@@ -584,12 +584,12 @@ class RouteSpecTcpRouteActionWeightedTargetArgs:
 @pulumi.input_type
 class VirtualNodeSpecArgs:
     def __init__(__self__, *,
-                 backends: Optional[pulumi.Input[List[pulumi.Input['VirtualNodeSpecBackendArgs']]]] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeSpecBackendArgs']]]] = None,
                  listener: Optional[pulumi.Input['VirtualNodeSpecListenerArgs']] = None,
                  logging: Optional[pulumi.Input['VirtualNodeSpecLoggingArgs']] = None,
                  service_discovery: Optional[pulumi.Input['VirtualNodeSpecServiceDiscoveryArgs']] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['VirtualNodeSpecBackendArgs']]] backends: The backends to which the virtual node is expected to send outbound traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeSpecBackendArgs']]] backends: The backends to which the virtual node is expected to send outbound traffic.
         :param pulumi.Input['VirtualNodeSpecListenerArgs'] listener: The listeners from which the virtual node is expected to receive inbound traffic.
         :param pulumi.Input['VirtualNodeSpecLoggingArgs'] logging: The inbound and outbound access logging information for the virtual node.
         :param pulumi.Input['VirtualNodeSpecServiceDiscoveryArgs'] service_discovery: The service discovery information for the virtual node.
@@ -605,14 +605,14 @@ class VirtualNodeSpecArgs:
 
     @property
     @pulumi.getter
-    def backends(self) -> Optional[pulumi.Input[List[pulumi.Input['VirtualNodeSpecBackendArgs']]]]:
+    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeSpecBackendArgs']]]]:
         """
         The backends to which the virtual node is expected to send outbound traffic.
         """
         return pulumi.get(self, "backends")
 
     @backends.setter
-    def backends(self, value: Optional[pulumi.Input[List[pulumi.Input['VirtualNodeSpecBackendArgs']]]]):
+    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeSpecBackendArgs']]]]):
         pulumi.set(self, "backends", value)
 
     @property

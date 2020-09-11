@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -94,7 +94,7 @@ class GetReplicationGroupResult:
 
     @property
     @pulumi.getter(name="memberClusters")
-    def member_clusters(self) -> List[str]:
+    def member_clusters(self) -> Sequence[str]:
         """
         The identifiers of all the nodes that are part of this replication group.
         """

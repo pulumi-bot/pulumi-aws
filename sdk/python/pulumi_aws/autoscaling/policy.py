@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -26,7 +26,7 @@ class Policy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  policy_type: Optional[pulumi.Input[str]] = None,
                  scaling_adjustment: Optional[pulumi.Input[float]] = None,
-                 step_adjustments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]]] = None,
+                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]]] = None,
                  target_tracking_configuration: Optional[pulumi.Input[pulumi.InputType['PolicyTargetTrackingConfigurationArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -73,7 +73,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[float] scaling_adjustment: The number of members by which to
                scale, when the adjustment bounds are breached. A positive value scales
                up. A negative value scales down.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]] step_adjustments: A set of adjustments that manage
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]] step_adjustments: A set of adjustments that manage
                group scaling. These have the following structure:
         :param pulumi.Input[pulumi.InputType['PolicyTargetTrackingConfigurationArgs']] target_tracking_configuration: A target tracking policy. These have the following structure:
         """
@@ -128,7 +128,7 @@ class Policy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             policy_type: Optional[pulumi.Input[str]] = None,
             scaling_adjustment: Optional[pulumi.Input[float]] = None,
-            step_adjustments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]]] = None,
+            step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]]] = None,
             target_tracking_configuration: Optional[pulumi.Input[pulumi.InputType['PolicyTargetTrackingConfigurationArgs']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
@@ -148,7 +148,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[float] scaling_adjustment: The number of members by which to
                scale, when the adjustment bounds are breached. A positive value scales
                up. A negative value scales down.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]] step_adjustments: A set of adjustments that manage
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStepAdjustmentArgs']]]] step_adjustments: A set of adjustments that manage
                group scaling. These have the following structure:
         :param pulumi.Input[pulumi.InputType['PolicyTargetTrackingConfigurationArgs']] target_tracking_configuration: A target tracking policy. These have the following structure:
         """
@@ -251,7 +251,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stepAdjustments")
-    def step_adjustments(self) -> pulumi.Output[Optional[List['outputs.PolicyStepAdjustment']]]:
+    def step_adjustments(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyStepAdjustment']]]:
         """
         A set of adjustments that manage
         group scaling. These have the following structure:

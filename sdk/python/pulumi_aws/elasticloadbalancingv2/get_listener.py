@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,7 +60,7 @@ class GetListenerResult:
 
     @property
     @pulumi.getter(name="defaultActions")
-    def default_actions(self) -> List['outputs.GetListenerDefaultActionResult']:
+    def default_actions(self) -> Sequence['outputs.GetListenerDefaultActionResult']:
         return pulumi.get(self, "default_actions")
 
     @property

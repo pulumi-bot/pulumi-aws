@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['JobQueue']
@@ -15,7 +15,7 @@ class JobQueue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_environments: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 compute_environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[float]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -42,7 +42,7 @@ class JobQueue(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] compute_environments: Specifies the set of compute environments
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compute_environments: Specifies the set of compute environments
                mapped to a job queue and their order.  The position of the compute environments
                in the list will dictate the order. You can associate up to 3 compute environments
                with a job queue.
@@ -90,7 +90,7 @@ class JobQueue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
-            compute_environments: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            compute_environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[float]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'JobQueue':
@@ -102,7 +102,7 @@ class JobQueue(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name of the job queue.
-        :param pulumi.Input[List[pulumi.Input[str]]] compute_environments: Specifies the set of compute environments
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compute_environments: Specifies the set of compute environments
                mapped to a job queue and their order.  The position of the compute environments
                in the list will dictate the order. You can associate up to 3 compute environments
                with a job queue.
@@ -132,7 +132,7 @@ class JobQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeEnvironments")
-    def compute_environments(self) -> pulumi.Output[List[str]]:
+    def compute_environments(self) -> pulumi.Output[Sequence[str]]:
         """
         Specifies the set of compute environments
         mapped to a job queue and their order.  The position of the compute environments

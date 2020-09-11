@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -103,7 +103,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="cacheNodes")
-    def cache_nodes(self) -> List['outputs.GetClusterCacheNodeResult']:
+    def cache_nodes(self) -> Sequence['outputs.GetClusterCacheNodeResult']:
         """
         List of node objects including `id`, `address`, `port` and `availability_zone`.
         Referenceable e.g. as `${data.aws_elasticache_cluster.bar.cache_nodes.0.address}`
@@ -216,7 +216,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> Sequence[str]:
         """
         List VPC security groups associated with the cache cluster.
         """
@@ -224,7 +224,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="securityGroupNames")
-    def security_group_names(self) -> List[str]:
+    def security_group_names(self) -> Sequence[str]:
         """
         List of security group names associated with this cache cluster.
         """

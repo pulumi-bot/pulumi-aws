@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -115,7 +115,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> List[str]:
+    def availability_zones(self) -> Sequence[str]:
         return pulumi.get(self, "availability_zones")
 
     @property
@@ -135,7 +135,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="clusterMembers")
-    def cluster_members(self) -> List[str]:
+    def cluster_members(self) -> Sequence[str]:
         return pulumi.get(self, "cluster_members")
 
     @property
@@ -160,7 +160,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="enabledCloudwatchLogsExports")
-    def enabled_cloudwatch_logs_exports(self) -> List[str]:
+    def enabled_cloudwatch_logs_exports(self) -> Sequence[str]:
         return pulumi.get(self, "enabled_cloudwatch_logs_exports")
 
     @property
@@ -195,7 +195,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="iamRoles")
-    def iam_roles(self) -> List[str]:
+    def iam_roles(self) -> Sequence[str]:
         return pulumi.get(self, "iam_roles")
 
     @property
@@ -253,7 +253,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
-    def vpc_security_group_ids(self) -> List[str]:
+    def vpc_security_group_ids(self) -> Sequence[str]:
         return pulumi.get(self, "vpc_security_group_ids")
 
 

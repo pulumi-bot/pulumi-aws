@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -73,10 +73,10 @@ class AcceleratorAttributesArgs:
 @pulumi.input_type
 class AcceleratorIpSetArgs:
     def __init__(__self__, *,
-                 ip_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_family: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] ip_addresses: A list of IP addresses in the IP address set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A list of IP addresses in the IP address set.
         :param pulumi.Input[str] ip_family: The types of IP addresses included in this IP set.
         """
         if ip_addresses is not None:
@@ -86,14 +86,14 @@ class AcceleratorIpSetArgs:
 
     @property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of IP addresses in the IP address set.
         """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
-    def ip_addresses(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ip_addresses", value)
 
     @property

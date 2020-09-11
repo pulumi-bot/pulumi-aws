@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,7 +22,7 @@ class PlanRuleArgs:
                  rule_name: pulumi.Input[str],
                  target_vault_name: pulumi.Input[str],
                  completion_window: Optional[pulumi.Input[float]] = None,
-                 copy_actions: Optional[pulumi.Input[List[pulumi.Input['PlanRuleCopyActionArgs']]]] = None,
+                 copy_actions: Optional[pulumi.Input[Sequence[pulumi.Input['PlanRuleCopyActionArgs']]]] = None,
                  lifecycle: Optional[pulumi.Input['PlanRuleLifecycleArgs']] = None,
                  recovery_point_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,7 @@ class PlanRuleArgs:
         :param pulumi.Input[str] rule_name: An display name for a backup rule.
         :param pulumi.Input[str] target_vault_name: The name of a logical container where backups are stored.
         :param pulumi.Input[float] completion_window: The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
-        :param pulumi.Input[List[pulumi.Input['PlanRuleCopyActionArgs']]] copy_actions: Configuration block(s) with copy operation settings. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['PlanRuleCopyActionArgs']]] copy_actions: Configuration block(s) with copy operation settings. Detailed below.
         :param pulumi.Input['PlanRuleLifecycleArgs'] lifecycle: The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] recovery_point_tags: Metadata that you can assign to help organize the resources that you create.
         :param pulumi.Input[str] schedule: A CRON expression specifying when AWS Backup initiates a backup job.
@@ -90,14 +90,14 @@ class PlanRuleArgs:
 
     @property
     @pulumi.getter(name="copyActions")
-    def copy_actions(self) -> Optional[pulumi.Input[List[pulumi.Input['PlanRuleCopyActionArgs']]]]:
+    def copy_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PlanRuleCopyActionArgs']]]]:
         """
         Configuration block(s) with copy operation settings. Detailed below.
         """
         return pulumi.get(self, "copy_actions")
 
     @copy_actions.setter
-    def copy_actions(self, value: Optional[pulumi.Input[List[pulumi.Input['PlanRuleCopyActionArgs']]]]):
+    def copy_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PlanRuleCopyActionArgs']]]]):
         pulumi.set(self, "copy_actions", value)
 
     @property

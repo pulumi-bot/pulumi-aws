@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -215,19 +215,19 @@ class ModelPrimaryContainer(dict):
 @pulumi.output_type
 class ModelVpcConfig(dict):
     def __init__(__self__, *,
-                 security_group_ids: List[str],
-                 subnets: List[str]):
+                 security_group_ids: Sequence[str],
+                 subnets: Sequence[str]):
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "subnets", subnets)
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> Sequence[str]:
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter
-    def subnets(self) -> List[str]:
+    def subnets(self) -> Sequence[str]:
         return pulumi.get(self, "subnets")
 
     def _translate_property(self, prop):

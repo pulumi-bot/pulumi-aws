@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -309,12 +309,12 @@ class CertificateAuthorityRevocationConfigurationCrlConfiguration(dict):
 @pulumi.output_type
 class GetCertificateAuthorityRevocationConfigurationResult(dict):
     def __init__(__self__, *,
-                 crl_configurations: List['outputs.GetCertificateAuthorityRevocationConfigurationCrlConfigurationResult']):
+                 crl_configurations: Sequence['outputs.GetCertificateAuthorityRevocationConfigurationCrlConfigurationResult']):
         pulumi.set(__self__, "crl_configurations", crl_configurations)
 
     @property
     @pulumi.getter(name="crlConfigurations")
-    def crl_configurations(self) -> List['outputs.GetCertificateAuthorityRevocationConfigurationCrlConfigurationResult']:
+    def crl_configurations(self) -> Sequence['outputs.GetCertificateAuthorityRevocationConfigurationCrlConfigurationResult']:
         return pulumi.get(self, "crl_configurations")
 
 

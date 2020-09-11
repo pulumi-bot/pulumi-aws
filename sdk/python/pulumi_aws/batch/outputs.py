@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -21,11 +21,11 @@ __all__ = [
 class ComputeEnvironmentComputeResources(dict):
     def __init__(__self__, *,
                  instance_role: str,
-                 instance_types: List[str],
+                 instance_types: Sequence[str],
                  max_vcpus: float,
                  min_vcpus: float,
-                 security_group_ids: List[str],
-                 subnets: List[str],
+                 security_group_ids: Sequence[str],
+                 subnets: Sequence[str],
                  type: str,
                  allocation_strategy: Optional[str] = None,
                  bid_percentage: Optional[float] = None,
@@ -37,11 +37,11 @@ class ComputeEnvironmentComputeResources(dict):
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str instance_role: The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
-        :param List[str] instance_types: A list of instance types that may be launched.
+        :param Sequence[str] instance_types: A list of instance types that may be launched.
         :param float max_vcpus: The maximum number of EC2 vCPUs that an environment can reach.
         :param float min_vcpus: The minimum number of EC2 vCPUs that an environment should maintain.
-        :param List[str] security_group_ids: A list of EC2 security group that are associated with instances launched in the compute environment.
-        :param List[str] subnets: A list of VPC subnets into which the compute resources are launched.
+        :param Sequence[str] security_group_ids: A list of EC2 security group that are associated with instances launched in the compute environment.
+        :param Sequence[str] subnets: A list of VPC subnets into which the compute resources are launched.
         :param str type: The type of compute environment. Valid items are `EC2` or `SPOT`.
         :param str allocation_strategy: The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
         :param float bid_percentage: Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
@@ -86,7 +86,7 @@ class ComputeEnvironmentComputeResources(dict):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> List[str]:
+    def instance_types(self) -> Sequence[str]:
         """
         A list of instance types that may be launched.
         """
@@ -110,7 +110,7 @@ class ComputeEnvironmentComputeResources(dict):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> Sequence[str]:
         """
         A list of EC2 security group that are associated with instances launched in the compute environment.
         """
@@ -118,7 +118,7 @@ class ComputeEnvironmentComputeResources(dict):
 
     @property
     @pulumi.getter
-    def subnets(self) -> List[str]:
+    def subnets(self) -> Sequence[str]:
         """
         A list of VPC subnets into which the compute resources are launched.
         """

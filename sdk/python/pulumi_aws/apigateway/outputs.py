@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -279,10 +279,10 @@ class MethodSettingsSettings(dict):
 class RestApiEndpointConfiguration(dict):
     def __init__(__self__, *,
                  types: str,
-                 vpc_endpoint_ids: Optional[List[str]] = None):
+                 vpc_endpoint_ids: Optional[Sequence[str]] = None):
         """
         :param str types: A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
-        :param List[str] vpc_endpoint_ids: A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+        :param Sequence[str] vpc_endpoint_ids: A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
         """
         pulumi.set(__self__, "types", types)
         if vpc_endpoint_ids is not None:
@@ -298,7 +298,7 @@ class RestApiEndpointConfiguration(dict):
 
     @property
     @pulumi.getter(name="vpcEndpointIds")
-    def vpc_endpoint_ids(self) -> Optional[List[str]]:
+    def vpc_endpoint_ids(self) -> Optional[Sequence[str]]:
         """
         A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
         """
@@ -455,19 +455,19 @@ class UsagePlanThrottleSettings(dict):
 @pulumi.output_type
 class GetRestApiEndpointConfigurationResult(dict):
     def __init__(__self__, *,
-                 types: List[str],
-                 vpc_endpoint_ids: List[str]):
+                 types: Sequence[str],
+                 vpc_endpoint_ids: Sequence[str]):
         pulumi.set(__self__, "types", types)
         pulumi.set(__self__, "vpc_endpoint_ids", vpc_endpoint_ids)
 
     @property
     @pulumi.getter
-    def types(self) -> List[str]:
+    def types(self) -> Sequence[str]:
         return pulumi.get(self, "types")
 
     @property
     @pulumi.getter(name="vpcEndpointIds")
-    def vpc_endpoint_ids(self) -> List[str]:
+    def vpc_endpoint_ids(self) -> Sequence[str]:
         return pulumi.get(self, "vpc_endpoint_ids")
 
 

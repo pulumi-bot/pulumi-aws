@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['PublicVirtualInterface']
@@ -22,7 +22,7 @@ class PublicVirtualInterface(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  customer_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 route_filter_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 route_filter_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vlan: Optional[pulumi.Input[float]] = None,
                  __props__=None,
@@ -59,7 +59,7 @@ class PublicVirtualInterface(pulumi.CustomResource):
         :param pulumi.Input[str] connection_id: The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
         :param pulumi.Input[str] customer_address: The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
         :param pulumi.Input[str] name: The name for the virtual interface.
-        :param pulumi.Input[List[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[float] vlan: The VLAN ID.
         """
@@ -123,7 +123,7 @@ class PublicVirtualInterface(pulumi.CustomResource):
             connection_id: Optional[pulumi.Input[str]] = None,
             customer_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            route_filter_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            route_filter_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vlan: Optional[pulumi.Input[float]] = None) -> 'PublicVirtualInterface':
         """
@@ -142,7 +142,7 @@ class PublicVirtualInterface(pulumi.CustomResource):
         :param pulumi.Input[str] connection_id: The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
         :param pulumi.Input[str] customer_address: The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
         :param pulumi.Input[str] name: The name for the virtual interface.
-        :param pulumi.Input[List[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[float] vlan: The VLAN ID.
         """
@@ -244,7 +244,7 @@ class PublicVirtualInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeFilterPrefixes")
-    def route_filter_prefixes(self) -> pulumi.Output[List[str]]:
+    def route_filter_prefixes(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of routes to be advertised to the AWS network in this region.
         """
