@@ -145,7 +145,7 @@ class TaskDefinition(pulumi.CustomResource):
             placement_constraints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TaskDefinitionPlacementConstraintArgs']]]]] = None,
             proxy_configuration: Optional[pulumi.Input[pulumi.InputType['TaskDefinitionProxyConfigurationArgs']]] = None,
             requires_compatibilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            revision: Optional[pulumi.Input[float]] = None,
+            revision: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             task_role_arn: Optional[pulumi.Input[str]] = None,
             volumes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TaskDefinitionVolumeArgs']]]]] = None) -> 'TaskDefinition':
@@ -174,7 +174,7 @@ class TaskDefinition(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TaskDefinitionPlacementConstraintArgs']]]] placement_constraints: A set of placement constraints rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`.
         :param pulumi.Input[pulumi.InputType['TaskDefinitionProxyConfigurationArgs']] proxy_configuration: The proxy configuration details for the App Mesh proxy.
         :param pulumi.Input[List[pulumi.Input[str]]] requires_compatibilities: A set of launch types required by the task. The valid values are `EC2` and `FARGATE`.
-        :param pulumi.Input[float] revision: The revision of the task in a particular family.
+        :param pulumi.Input[int] revision: The revision of the task in a particular family.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         :param pulumi.Input[str] task_role_arn: The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TaskDefinitionVolumeArgs']]]] volumes: A set of volume blocks that containers in your task may use.
@@ -313,7 +313,7 @@ class TaskDefinition(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def revision(self) -> pulumi.Output[float]:
+    def revision(self) -> pulumi.Output[int]:
         """
         The revision of the task in a particular family.
         """

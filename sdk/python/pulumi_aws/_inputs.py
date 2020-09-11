@@ -297,7 +297,7 @@ class GetRegionsFilterArgs:
 @pulumi.input_type
 class ProviderAssumeRoleArgs:
     def __init__(__self__, *,
-                 duration_seconds: Optional[pulumi.Input[float]] = None,
+                 duration_seconds: Optional[pulumi.Input[int]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  policy_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -324,11 +324,11 @@ class ProviderAssumeRoleArgs:
 
     @property
     @pulumi.getter(name="durationSeconds")
-    def duration_seconds(self) -> Optional[pulumi.Input[float]]:
+    def duration_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "duration_seconds")
 
     @duration_seconds.setter
-    def duration_seconds(self, value: Optional[pulumi.Input[float]]):
+    def duration_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "duration_seconds", value)
 
     @property

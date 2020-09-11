@@ -122,7 +122,7 @@ class LayerVersion(pulumi.CustomResource):
             s3_key: Optional[pulumi.Input[str]] = None,
             s3_object_version: Optional[pulumi.Input[str]] = None,
             source_code_hash: Optional[pulumi.Input[str]] = None,
-            source_code_size: Optional[pulumi.Input[float]] = None,
+            source_code_size: Optional[pulumi.Input[int]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'LayerVersion':
         """
         Get an existing LayerVersion resource's state with the given name, id, and optional extra
@@ -143,7 +143,7 @@ class LayerVersion(pulumi.CustomResource):
         :param pulumi.Input[str] s3_key: The S3 key of an object containing the function's deployment package. Conflicts with `filename`.
         :param pulumi.Input[str] s3_object_version: The object version containing the function's deployment package. Conflicts with `filename`.
         :param pulumi.Input[str] source_code_hash: Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `${filebase64sha256("file.zip")}` (this provider 0.11.12 or later) or `${base64sha256(file("file.zip"))}` (this provider 0.11.11 and earlier), where "file.zip" is the local filename of the lambda layer source archive.
-        :param pulumi.Input[float] source_code_size: The size in bytes of the function .zip file.
+        :param pulumi.Input[int] source_code_size: The size in bytes of the function .zip file.
         :param pulumi.Input[str] version: This Lamba Layer version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -264,7 +264,7 @@ class LayerVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCodeSize")
-    def source_code_size(self) -> pulumi.Output[float]:
+    def source_code_size(self) -> pulumi.Output[int]:
         """
         The size in bytes of the function .zip file.
         """

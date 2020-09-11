@@ -364,12 +364,12 @@ class RegexMatchSetRegexMatchTupleFieldToMatch(dict):
 class RuleGroupActivatedRule(dict):
     def __init__(__self__, *,
                  action: 'outputs.RuleGroupActivatedRuleAction',
-                 priority: float,
+                 priority: int,
                  rule_id: str,
                  type: Optional[str] = None):
         """
         :param 'RuleGroupActivatedRuleActionArgs' action: Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
-        :param float priority: Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+        :param int priority: Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
         :param str rule_id: The ID of a `waf_rule`
         :param str type: The rule type, either `REGULAR`, `RATE_BASED`, or `GROUP`. Defaults to `REGULAR`.
         """
@@ -389,7 +389,7 @@ class RuleGroupActivatedRule(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
         """
@@ -490,14 +490,14 @@ class SizeConstraintSetSizeConstraint(dict):
     def __init__(__self__, *,
                  comparison_operator: str,
                  field_to_match: 'outputs.SizeConstraintSetSizeConstraintFieldToMatch',
-                 size: float,
+                 size: int,
                  text_transformation: str):
         """
         :param str comparison_operator: The type of comparison you want to perform.
                e.g. `EQ`, `NE`, `LT`, `GT`.
                See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_wafRegional_SizeConstraint.html) for all supported values.
         :param 'SizeConstraintSetSizeConstraintFieldToMatchArgs' field_to_match: Specifies where in a web request to look for the size constraint.
-        :param float size: The size in bytes that you want to compare against the size of the specified `field_to_match`.
+        :param int size: The size in bytes that you want to compare against the size of the specified `field_to_match`.
                Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
         :param str text_transformation: Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
                If you specify a transformation, AWS WAF performs the transformation on `field_to_match` before inspecting a request for a match.
@@ -531,7 +531,7 @@ class SizeConstraintSetSizeConstraint(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The size in bytes that you want to compare against the size of the specified `field_to_match`.
         Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
@@ -788,13 +788,13 @@ class WebAclLoggingConfigurationRedactedFieldsFieldToMatch(dict):
 @pulumi.output_type
 class WebAclRule(dict):
     def __init__(__self__, *,
-                 priority: float,
+                 priority: int,
                  rule_id: str,
                  action: Optional['outputs.WebAclRuleAction'] = None,
                  override_action: Optional['outputs.WebAclRuleOverrideAction'] = None,
                  type: Optional[str] = None):
         """
-        :param float priority: Specifies the order in which the rules in a WebACL are evaluated.
+        :param int priority: Specifies the order in which the rules in a WebACL are evaluated.
                Rules with a lower value are evaluated before rules with a higher value.
         :param str rule_id: ID of the associated WAF (Global) rule (e.g. `waf.Rule`). WAF (Regional) rules cannot be used.
         :param 'WebAclRuleActionArgs' action: The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
@@ -812,7 +812,7 @@ class WebAclRule(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Specifies the order in which the rules in a WebACL are evaluated.
         Rules with a lower value are evaluated before rules with a higher value.

@@ -45,8 +45,8 @@ class GetLoadBalancerResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if idle_timeout and not isinstance(idle_timeout, float):
-            raise TypeError("Expected argument 'idle_timeout' to be a float")
+        if idle_timeout and not isinstance(idle_timeout, int):
+            raise TypeError("Expected argument 'idle_timeout' to be a int")
         pulumi.set(__self__, "idle_timeout", idle_timeout)
         if internal and not isinstance(internal, bool):
             raise TypeError("Expected argument 'internal' to be a bool")
@@ -124,7 +124,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> float:
+    def idle_timeout(self) -> int:
         return pulumi.get(self, "idle_timeout")
 
     @property

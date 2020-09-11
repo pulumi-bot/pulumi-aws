@@ -22,10 +22,10 @@ __all__ = [
 class BrokerConfigurationArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
-                 revision: Optional[pulumi.Input[float]] = None):
+                 revision: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] id: The Configuration ID.
-        :param pulumi.Input[float] revision: Revision of the Configuration.
+        :param pulumi.Input[int] revision: Revision of the Configuration.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -46,14 +46,14 @@ class BrokerConfigurationArgs:
 
     @property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[float]]:
+    def revision(self) -> Optional[pulumi.Input[int]]:
         """
         Revision of the Configuration.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[float]]):
+    def revision(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "revision", value)
 
 

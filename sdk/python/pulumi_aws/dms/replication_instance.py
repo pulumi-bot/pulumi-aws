@@ -15,7 +15,7 @@ class ReplicationInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocated_storage: Optional[pulumi.Input[float]] = None,
+                 allocated_storage: Optional[pulumi.Input[int]] = None,
                  apply_immediately: Optional[pulumi.Input[bool]] = None,
                  auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class ReplicationInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] allocated_storage: The amount of storage (in gigabytes) to be initially allocated for the replication instance.
+        :param pulumi.Input[int] allocated_storage: The amount of storage (in gigabytes) to be initially allocated for the replication instance.
         :param pulumi.Input[bool] apply_immediately: Indicates whether the changes should be applied immediately or during the next maintenance window. Only used when updating an existing resource.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.
         :param pulumi.Input[str] availability_zone: The EC2 Availability Zone that the replication instance will be created in.
@@ -145,7 +145,7 @@ class ReplicationInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocated_storage: Optional[pulumi.Input[float]] = None,
+            allocated_storage: Optional[pulumi.Input[int]] = None,
             apply_immediately: Optional[pulumi.Input[bool]] = None,
             auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
@@ -169,7 +169,7 @@ class ReplicationInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] allocated_storage: The amount of storage (in gigabytes) to be initially allocated for the replication instance.
+        :param pulumi.Input[int] allocated_storage: The amount of storage (in gigabytes) to be initially allocated for the replication instance.
         :param pulumi.Input[bool] apply_immediately: Indicates whether the changes should be applied immediately or during the next maintenance window. Only used when updating an existing resource.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.
         :param pulumi.Input[str] availability_zone: The EC2 Availability Zone that the replication instance will be created in.
@@ -212,7 +212,7 @@ class ReplicationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocatedStorage")
-    def allocated_storage(self) -> pulumi.Output[float]:
+    def allocated_storage(self) -> pulumi.Output[int]:
         """
         The amount of storage (in gigabytes) to be initially allocated for the replication instance.
         """

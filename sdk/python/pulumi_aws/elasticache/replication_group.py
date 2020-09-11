@@ -30,16 +30,16 @@ class ReplicationGroup(pulumi.CustomResource):
                  maintenance_window: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  notification_topic_arn: Optional[pulumi.Input[str]] = None,
-                 number_cache_clusters: Optional[pulumi.Input[float]] = None,
+                 number_cache_clusters: Optional[pulumi.Input[int]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  replication_group_description: Optional[pulumi.Input[str]] = None,
                  replication_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  security_group_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  snapshot_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
-                 snapshot_retention_limit: Optional[pulumi.Input[float]] = None,
+                 snapshot_retention_limit: Optional[pulumi.Input[int]] = None,
                  snapshot_window: Optional[pulumi.Input[str]] = None,
                  subnet_group_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -151,9 +151,9 @@ class ReplicationGroup(pulumi.CustomResource):
         :param pulumi.Input[str] notification_topic_arn: An Amazon Resource Name (ARN) of an
                SNS topic to send ElastiCache notifications to. Example:
                `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
-        :param pulumi.Input[float] number_cache_clusters: The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications.
+        :param pulumi.Input[int] number_cache_clusters: The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used.
-        :param pulumi.Input[float] port: The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379.
+        :param pulumi.Input[int] port: The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379.
         :param pulumi.Input[str] replication_group_description: A user-created description for the replication group.
         :param pulumi.Input[str] replication_group_id: The replication group identifier. This parameter is stored as a lowercase string.
         :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: One or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud
@@ -162,7 +162,7 @@ class ReplicationGroup(pulumi.CustomResource):
                Amazon Resource Name (ARN) of a Redis RDB snapshot file stored in Amazon S3.
                Example: `arn:aws:s3:::my_bucket/snapshot1.rdb`
         :param pulumi.Input[str] snapshot_name: The name of a snapshot from which to restore data into the new node group. Changing the `snapshot_name` forces a new resource.
-        :param pulumi.Input[float] snapshot_retention_limit: The number of days for which ElastiCache will
+        :param pulumi.Input[int] snapshot_retention_limit: The number of days for which ElastiCache will
                retain automatic cache cluster snapshots before deleting them. For example, if you set
                SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days
                before being deleted. If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
@@ -247,9 +247,9 @@ class ReplicationGroup(pulumi.CustomResource):
             member_clusters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
             notification_topic_arn: Optional[pulumi.Input[str]] = None,
-            number_cache_clusters: Optional[pulumi.Input[float]] = None,
+            number_cache_clusters: Optional[pulumi.Input[int]] = None,
             parameter_group_name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             primary_endpoint_address: Optional[pulumi.Input[str]] = None,
             replication_group_description: Optional[pulumi.Input[str]] = None,
             replication_group_id: Optional[pulumi.Input[str]] = None,
@@ -257,7 +257,7 @@ class ReplicationGroup(pulumi.CustomResource):
             security_group_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             snapshot_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             snapshot_name: Optional[pulumi.Input[str]] = None,
-            snapshot_retention_limit: Optional[pulumi.Input[float]] = None,
+            snapshot_retention_limit: Optional[pulumi.Input[int]] = None,
             snapshot_window: Optional[pulumi.Input[str]] = None,
             subnet_group_name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -288,9 +288,9 @@ class ReplicationGroup(pulumi.CustomResource):
         :param pulumi.Input[str] notification_topic_arn: An Amazon Resource Name (ARN) of an
                SNS topic to send ElastiCache notifications to. Example:
                `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
-        :param pulumi.Input[float] number_cache_clusters: The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications.
+        :param pulumi.Input[int] number_cache_clusters: The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used.
-        :param pulumi.Input[float] port: The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379.
+        :param pulumi.Input[int] port: The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379.
         :param pulumi.Input[str] primary_endpoint_address: (Redis only) The address of the endpoint for the primary node in the replication group, if the cluster mode is disabled.
         :param pulumi.Input[str] replication_group_description: A user-created description for the replication group.
         :param pulumi.Input[str] replication_group_id: The replication group identifier. This parameter is stored as a lowercase string.
@@ -300,7 +300,7 @@ class ReplicationGroup(pulumi.CustomResource):
                Amazon Resource Name (ARN) of a Redis RDB snapshot file stored in Amazon S3.
                Example: `arn:aws:s3:::my_bucket/snapshot1.rdb`
         :param pulumi.Input[str] snapshot_name: The name of a snapshot from which to restore data into the new node group. Changing the `snapshot_name` forces a new resource.
-        :param pulumi.Input[float] snapshot_retention_limit: The number of days for which ElastiCache will
+        :param pulumi.Input[int] snapshot_retention_limit: The number of days for which ElastiCache will
                retain automatic cache cluster snapshots before deleting them. For example, if you set
                SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days
                before being deleted. If the value of SnapshotRetentionLimit is set to zero (0), backups are turned off.
@@ -473,7 +473,7 @@ class ReplicationGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numberCacheClusters")
-    def number_cache_clusters(self) -> pulumi.Output[float]:
+    def number_cache_clusters(self) -> pulumi.Output[int]:
         """
         The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications.
         """
@@ -489,7 +489,7 @@ class ReplicationGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379.
         """
@@ -555,7 +555,7 @@ class ReplicationGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotRetentionLimit")
-    def snapshot_retention_limit(self) -> pulumi.Output[Optional[float]]:
+    def snapshot_retention_limit(self) -> pulumi.Output[Optional[int]]:
         """
         The number of days for which ElastiCache will
         retain automatic cache cluster snapshots before deleting them. For example, if you set

@@ -37,8 +37,8 @@ class GetVolumeResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if iops and not isinstance(iops, float):
-            raise TypeError("Expected argument 'iops' to be a float")
+        if iops and not isinstance(iops, int):
+            raise TypeError("Expected argument 'iops' to be a int")
         pulumi.set(__self__, "iops", iops)
         if kms_key_id and not isinstance(kms_key_id, str):
             raise TypeError("Expected argument 'kms_key_id' to be a str")
@@ -52,8 +52,8 @@ class GetVolumeResult:
         if outpost_arn and not isinstance(outpost_arn, str):
             raise TypeError("Expected argument 'outpost_arn' to be a str")
         pulumi.set(__self__, "outpost_arn", outpost_arn)
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
+        if size and not isinstance(size, int):
+            raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
         if snapshot_id and not isinstance(snapshot_id, str):
             raise TypeError("Expected argument 'snapshot_id' to be a str")
@@ -107,7 +107,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter
-    def iops(self) -> float:
+    def iops(self) -> int:
         """
         The amount of IOPS for the disk.
         """
@@ -144,7 +144,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The size of the drive in GiBs.
         """

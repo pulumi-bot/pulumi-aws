@@ -410,13 +410,13 @@ class NodeGroupResourceAutoscalingGroupArgs:
 @pulumi.input_type
 class NodeGroupScalingConfigArgs:
     def __init__(__self__, *,
-                 desired_size: pulumi.Input[float],
-                 max_size: pulumi.Input[float],
-                 min_size: pulumi.Input[float]):
+                 desired_size: pulumi.Input[int],
+                 max_size: pulumi.Input[int],
+                 min_size: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] desired_size: Desired number of worker nodes.
-        :param pulumi.Input[float] max_size: Maximum number of worker nodes.
-        :param pulumi.Input[float] min_size: Minimum number of worker nodes.
+        :param pulumi.Input[int] desired_size: Desired number of worker nodes.
+        :param pulumi.Input[int] max_size: Maximum number of worker nodes.
+        :param pulumi.Input[int] min_size: Minimum number of worker nodes.
         """
         pulumi.set(__self__, "desired_size", desired_size)
         pulumi.set(__self__, "max_size", max_size)
@@ -424,38 +424,38 @@ class NodeGroupScalingConfigArgs:
 
     @property
     @pulumi.getter(name="desiredSize")
-    def desired_size(self) -> pulumi.Input[float]:
+    def desired_size(self) -> pulumi.Input[int]:
         """
         Desired number of worker nodes.
         """
         return pulumi.get(self, "desired_size")
 
     @desired_size.setter
-    def desired_size(self, value: pulumi.Input[float]):
+    def desired_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "desired_size", value)
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Input[float]:
+    def max_size(self) -> pulumi.Input[int]:
         """
         Maximum number of worker nodes.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: pulumi.Input[float]):
+    def max_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_size", value)
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Input[float]:
+    def min_size(self) -> pulumi.Input[int]:
         """
         Minimum number of worker nodes.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: pulumi.Input[float]):
+    def min_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_size", value)
 
 

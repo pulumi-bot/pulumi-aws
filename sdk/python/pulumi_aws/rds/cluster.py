@@ -19,8 +19,8 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_immediately: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 backtrack_window: Optional[pulumi.Input[float]] = None,
-                 backup_retention_period: Optional[pulumi.Input[float]] = None,
+                 backtrack_window: Optional[pulumi.Input[int]] = None,
+                 backup_retention_period: Optional[pulumi.Input[int]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  cluster_identifier_prefix: Optional[pulumi.Input[str]] = None,
                  cluster_members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -41,7 +41,7 @@ class Cluster(pulumi.CustomResource):
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  master_password: Optional[pulumi.Input[str]] = None,
                  master_username: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  preferred_backup_window: Optional[pulumi.Input[str]] = None,
                  preferred_maintenance_window: Optional[pulumi.Input[str]] = None,
                  replication_source_identifier: Optional[pulumi.Input[str]] = None,
@@ -158,8 +158,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`. See [Amazon RDS Documentation for more information.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of EC2 Availability Zones for the DB cluster storage where DB cluster instances can be created. RDS automatically assigns 3 AZs if less than 3 AZs are configured, which will show as a difference requiring resource recreation next provider update. It is recommended to specify 3 AZs or use [the `ignoreChanges` argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if necessary.
-        :param pulumi.Input[float] backtrack_window: The target backtrack window, in seconds. Only available for `aurora` engine currently. To disable backtracking, set this value to `0`. Defaults to `0`. Must be between `0` and `259200` (72 hours)
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Default `1`
+        :param pulumi.Input[int] backtrack_window: The target backtrack window, in seconds. Only available for `aurora` engine currently. To disable backtracking, set this value to `0`. Defaults to `0`. Must be between `0` and `259200` (72 hours)
+        :param pulumi.Input[int] backup_retention_period: The days to retain backups for. Default `1`
         :param pulumi.Input[str] cluster_identifier: The cluster identifier. If omitted, this provider will assign a random, unique identifier.
         :param pulumi.Input[str] cluster_identifier_prefix: Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
         :param pulumi.Input[List[pulumi.Input[str]]] cluster_members: List of RDS Instances that are a part of this cluster
@@ -180,7 +180,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
         :param pulumi.Input[str] master_password: Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Please refer to the [RDS Naming Constraints](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.Constraints)
         :param pulumi.Input[str] master_username: Username for the master DB user. Please refer to the [RDS Naming Constraints](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.Constraints). This argument does not support in-place updates and cannot be changed during a restore from snapshot.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections
+        :param pulumi.Input[int] port: The port on which the DB accepts connections
         :param pulumi.Input[str] preferred_backup_window: The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
         :param pulumi.Input[str] preferred_maintenance_window: The weekly time range during which system maintenance can occur, in (UTC) e.g. wed:04:00-wed:04:30
         :param pulumi.Input[str] replication_source_identifier: ARN of the source DB cluster or DB instance if this DB cluster is created as a Read Replica.
@@ -263,8 +263,8 @@ class Cluster(pulumi.CustomResource):
             apply_immediately: Optional[pulumi.Input[bool]] = None,
             arn: Optional[pulumi.Input[str]] = None,
             availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            backtrack_window: Optional[pulumi.Input[float]] = None,
-            backup_retention_period: Optional[pulumi.Input[float]] = None,
+            backtrack_window: Optional[pulumi.Input[int]] = None,
+            backup_retention_period: Optional[pulumi.Input[int]] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
             cluster_identifier_prefix: Optional[pulumi.Input[str]] = None,
             cluster_members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -288,7 +288,7 @@ class Cluster(pulumi.CustomResource):
             kms_key_id: Optional[pulumi.Input[str]] = None,
             master_password: Optional[pulumi.Input[str]] = None,
             master_username: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             preferred_backup_window: Optional[pulumi.Input[str]] = None,
             preferred_maintenance_window: Optional[pulumi.Input[str]] = None,
             reader_endpoint: Optional[pulumi.Input[str]] = None,
@@ -311,8 +311,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] apply_immediately: Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`. See [Amazon RDS Documentation for more information.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of cluster
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of EC2 Availability Zones for the DB cluster storage where DB cluster instances can be created. RDS automatically assigns 3 AZs if less than 3 AZs are configured, which will show as a difference requiring resource recreation next provider update. It is recommended to specify 3 AZs or use [the `ignoreChanges` argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if necessary.
-        :param pulumi.Input[float] backtrack_window: The target backtrack window, in seconds. Only available for `aurora` engine currently. To disable backtracking, set this value to `0`. Defaults to `0`. Must be between `0` and `259200` (72 hours)
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Default `1`
+        :param pulumi.Input[int] backtrack_window: The target backtrack window, in seconds. Only available for `aurora` engine currently. To disable backtracking, set this value to `0`. Defaults to `0`. Must be between `0` and `259200` (72 hours)
+        :param pulumi.Input[int] backup_retention_period: The days to retain backups for. Default `1`
         :param pulumi.Input[str] cluster_identifier: The cluster identifier. If omitted, this provider will assign a random, unique identifier.
         :param pulumi.Input[str] cluster_identifier_prefix: Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
         :param pulumi.Input[List[pulumi.Input[str]]] cluster_members: List of RDS Instances that are a part of this cluster
@@ -336,7 +336,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
         :param pulumi.Input[str] master_password: Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Please refer to the [RDS Naming Constraints](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.Constraints)
         :param pulumi.Input[str] master_username: Username for the master DB user. Please refer to the [RDS Naming Constraints](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.Constraints). This argument does not support in-place updates and cannot be changed during a restore from snapshot.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections
+        :param pulumi.Input[int] port: The port on which the DB accepts connections
         :param pulumi.Input[str] preferred_backup_window: The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
         :param pulumi.Input[str] preferred_maintenance_window: The weekly time range during which system maintenance can occur, in (UTC) e.g. wed:04:00-wed:04:30
         :param pulumi.Input[str] reader_endpoint: A read-only endpoint for the Aurora cluster, automatically
@@ -423,7 +423,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backtrackWindow")
-    def backtrack_window(self) -> pulumi.Output[Optional[float]]:
+    def backtrack_window(self) -> pulumi.Output[Optional[int]]:
         """
         The target backtrack window, in seconds. Only available for `aurora` engine currently. To disable backtracking, set this value to `0`. Defaults to `0`. Must be between `0` and `259200` (72 hours)
         """
@@ -431,7 +431,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> pulumi.Output[Optional[float]]:
+    def backup_retention_period(self) -> pulumi.Output[Optional[int]]:
         """
         The days to retain backups for. Default `1`
         """
@@ -623,7 +623,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The port on which the DB accepts connections
         """

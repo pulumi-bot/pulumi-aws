@@ -25,8 +25,8 @@ class GetCustomerGatewayResult:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         pulumi.set(__self__, "arn", arn)
-        if bgp_asn and not isinstance(bgp_asn, float):
-            raise TypeError("Expected argument 'bgp_asn' to be a float")
+        if bgp_asn and not isinstance(bgp_asn, int):
+            raise TypeError("Expected argument 'bgp_asn' to be a int")
         pulumi.set(__self__, "bgp_asn", bgp_asn)
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
@@ -54,7 +54,7 @@ class GetCustomerGatewayResult:
 
     @property
     @pulumi.getter(name="bgpAsn")
-    def bgp_asn(self) -> float:
+    def bgp_asn(self) -> int:
         """
         (Optional) The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
         """

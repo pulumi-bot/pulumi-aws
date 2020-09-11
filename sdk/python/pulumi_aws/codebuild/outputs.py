@@ -621,7 +621,7 @@ class ProjectSecondarySource(dict):
                  type: str,
                  auths: Optional[List['outputs.ProjectSecondarySourceAuth']] = None,
                  buildspec: Optional[str] = None,
-                 git_clone_depth: Optional[float] = None,
+                 git_clone_depth: Optional[int] = None,
                  git_submodules_config: Optional['outputs.ProjectSecondarySourceGitSubmodulesConfig'] = None,
                  insecure_ssl: Optional[bool] = None,
                  location: Optional[str] = None,
@@ -631,7 +631,7 @@ class ProjectSecondarySource(dict):
         :param str type: The type of repository that contains the source code to be built. Valid values for this parameter are: `CODECOMMIT`, `CODEPIPELINE`, `GITHUB`, `GITHUB_ENTERPRISE`, `BITBUCKET` or `S3`.
         :param List['ProjectSecondarySourceAuthArgs'] auths: Information about the authorization settings for AWS CodeBuild to access the source code to be built. Auth blocks are documented below.
         :param str buildspec: The build spec declaration to use for this build project's related builds.
-        :param float git_clone_depth: Truncate git history to this many commits.
+        :param int git_clone_depth: Truncate git history to this many commits.
         :param 'ProjectSecondarySourceGitSubmodulesConfigArgs' git_submodules_config: Information about the Git submodules configuration for an AWS CodeBuild build project. Git submodules config blocks are documented below. This option is only valid when the `type` is `CODECOMMIT`, `GITHUB` or `GITHUB_ENTERPRISE`.
         :param bool insecure_ssl: Ignore SSL warnings when connecting to source control.
         :param str location: The location of the source code from git or s3.
@@ -688,7 +688,7 @@ class ProjectSecondarySource(dict):
 
     @property
     @pulumi.getter(name="gitCloneDepth")
-    def git_clone_depth(self) -> Optional[float]:
+    def git_clone_depth(self) -> Optional[int]:
         """
         Truncate git history to this many commits.
         """
@@ -790,7 +790,7 @@ class ProjectSource(dict):
                  type: str,
                  auths: Optional[List['outputs.ProjectSourceAuth']] = None,
                  buildspec: Optional[str] = None,
-                 git_clone_depth: Optional[float] = None,
+                 git_clone_depth: Optional[int] = None,
                  git_submodules_config: Optional['outputs.ProjectSourceGitSubmodulesConfig'] = None,
                  insecure_ssl: Optional[bool] = None,
                  location: Optional[str] = None,
@@ -799,7 +799,7 @@ class ProjectSource(dict):
         :param str type: The type of repository that contains the source code to be built. Valid values for this parameter are: `CODECOMMIT`, `CODEPIPELINE`, `GITHUB`, `GITHUB_ENTERPRISE`, `BITBUCKET`, `S3` or `NO_SOURCE`.
         :param List['ProjectSourceAuthArgs'] auths: Information about the authorization settings for AWS CodeBuild to access the source code to be built. Auth blocks are documented below.
         :param str buildspec: The build spec declaration to use for this build project's related builds. This must be set when `type` is `NO_SOURCE`.
-        :param float git_clone_depth: Truncate git history to this many commits.
+        :param int git_clone_depth: Truncate git history to this many commits.
         :param 'ProjectSourceGitSubmodulesConfigArgs' git_submodules_config: Information about the Git submodules configuration for an AWS CodeBuild build project. Git submodules config blocks are documented below. This option is only valid when the `type` is `CODECOMMIT`, `GITHUB` or `GITHUB_ENTERPRISE`.
         :param bool insecure_ssl: Ignore SSL warnings when connecting to source control.
         :param str location: The location of the source code from git or s3.
@@ -847,7 +847,7 @@ class ProjectSource(dict):
 
     @property
     @pulumi.getter(name="gitCloneDepth")
-    def git_clone_depth(self) -> Optional[float]:
+    def git_clone_depth(self) -> Optional[int]:
         """
         Truncate git history to this many commits.
         """

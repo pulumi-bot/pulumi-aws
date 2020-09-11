@@ -32,7 +32,7 @@ class CustomLayer(pulumi.CustomResource):
                  ebs_volumes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomLayerEbsVolumeArgs']]]]] = None,
                  elastic_load_balancer: Optional[pulumi.Input[str]] = None,
                  install_updates_on_boot: Optional[pulumi.Input[bool]] = None,
-                 instance_shutdown_timeout: Optional[pulumi.Input[float]] = None,
+                 instance_shutdown_timeout: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  stack_id: Optional[pulumi.Input[str]] = None,
@@ -68,7 +68,7 @@ class CustomLayer(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomLayerEbsVolumeArgs']]]] ebs_volumes: `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
         :param pulumi.Input[str] elastic_load_balancer: Name of an Elastic Load Balancer to attach to this layer
         :param pulumi.Input[bool] install_updates_on_boot: Whether to install OS and package updates on each instance when it boots.
-        :param pulumi.Input[float] instance_shutdown_timeout: The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
+        :param pulumi.Input[int] instance_shutdown_timeout: The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
         :param pulumi.Input[str] name: A human-readable name for the layer.
         :param pulumi.Input[str] short_name: A short, machine-readable name for the layer, which will be used to identify it in the Chef node JSON.
         :param pulumi.Input[str] stack_id: The id of the stack the layer will belong to.
@@ -146,7 +146,7 @@ class CustomLayer(pulumi.CustomResource):
             ebs_volumes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomLayerEbsVolumeArgs']]]]] = None,
             elastic_load_balancer: Optional[pulumi.Input[str]] = None,
             install_updates_on_boot: Optional[pulumi.Input[bool]] = None,
-            instance_shutdown_timeout: Optional[pulumi.Input[float]] = None,
+            instance_shutdown_timeout: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             short_name: Optional[pulumi.Input[str]] = None,
             stack_id: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class CustomLayer(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomLayerEbsVolumeArgs']]]] ebs_volumes: `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
         :param pulumi.Input[str] elastic_load_balancer: Name of an Elastic Load Balancer to attach to this layer
         :param pulumi.Input[bool] install_updates_on_boot: Whether to install OS and package updates on each instance when it boots.
-        :param pulumi.Input[float] instance_shutdown_timeout: The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
+        :param pulumi.Input[int] instance_shutdown_timeout: The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
         :param pulumi.Input[str] name: A human-readable name for the layer.
         :param pulumi.Input[str] short_name: A short, machine-readable name for the layer, which will be used to identify it in the Chef node JSON.
         :param pulumi.Input[str] stack_id: The id of the stack the layer will belong to.
@@ -323,7 +323,7 @@ class CustomLayer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceShutdownTimeout")
-    def instance_shutdown_timeout(self) -> pulumi.Output[Optional[float]]:
+    def instance_shutdown_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The time, in seconds, that OpsWorks will wait for Chef to complete after triggering the Shutdown event.
         """

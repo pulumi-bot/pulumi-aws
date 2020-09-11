@@ -27,7 +27,7 @@ class Stack(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_body: Optional[pulumi.Input[str]] = None,
                  template_url: Optional[pulumi.Input[str]] = None,
-                 timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+                 timeout_in_minutes: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -87,7 +87,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A list of tags to associate with this stack.
         :param pulumi.Input[str] template_body: Structure containing the template body (max size: 51,200 bytes).
         :param pulumi.Input[str] template_url: Location of a file containing the template body (max size: 460,800 bytes).
-        :param pulumi.Input[float] timeout_in_minutes: The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
+        :param pulumi.Input[int] timeout_in_minutes: The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -143,7 +143,7 @@ class Stack(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_body: Optional[pulumi.Input[str]] = None,
             template_url: Optional[pulumi.Input[str]] = None,
-            timeout_in_minutes: Optional[pulumi.Input[float]] = None) -> 'Stack':
+            timeout_in_minutes: Optional[pulumi.Input[int]] = None) -> 'Stack':
         """
         Get an existing Stack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -169,7 +169,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A list of tags to associate with this stack.
         :param pulumi.Input[str] template_body: Structure containing the template body (max size: 51,200 bytes).
         :param pulumi.Input[str] template_url: Location of a file containing the template body (max size: 460,800 bytes).
-        :param pulumi.Input[float] timeout_in_minutes: The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
+        :param pulumi.Input[int] timeout_in_minutes: The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +302,7 @@ class Stack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutInMinutes")
-    def timeout_in_minutes(self) -> pulumi.Output[Optional[float]]:
+    def timeout_in_minutes(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
         """

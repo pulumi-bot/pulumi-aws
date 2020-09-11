@@ -30,7 +30,7 @@ class GroupInitialLifecycleHookArgs:
                  lifecycle_transition: pulumi.Input[str],
                  name: pulumi.Input[str],
                  default_result: Optional[pulumi.Input[str]] = None,
-                 heartbeat_timeout: Optional[pulumi.Input[float]] = None,
+                 heartbeat_timeout: Optional[pulumi.Input[int]] = None,
                  notification_metadata: Optional[pulumi.Input[str]] = None,
                  notification_target_arn: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None):
@@ -82,11 +82,11 @@ class GroupInitialLifecycleHookArgs:
 
     @property
     @pulumi.getter(name="heartbeatTimeout")
-    def heartbeat_timeout(self) -> Optional[pulumi.Input[float]]:
+    def heartbeat_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "heartbeat_timeout")
 
     @heartbeat_timeout.setter
-    def heartbeat_timeout(self, value: Optional[pulumi.Input[float]]):
+    def heartbeat_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "heartbeat_timeout", value)
 
     @property
@@ -214,17 +214,17 @@ class GroupMixedInstancesPolicyArgs:
 class GroupMixedInstancesPolicyInstancesDistributionArgs:
     def __init__(__self__, *,
                  on_demand_allocation_strategy: Optional[pulumi.Input[str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[float]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[float]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
-                 spot_instance_pools: Optional[pulumi.Input[float]] = None,
+                 spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_max_price: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] on_demand_allocation_strategy: Strategy to use when launching on-demand instances. Valid values: `prioritized`. Default: `prioritized`.
-        :param pulumi.Input[float] on_demand_base_capacity: Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances. Default: `0`.
-        :param pulumi.Input[float] on_demand_percentage_above_base_capacity: Percentage split between on-demand and Spot instances above the base on-demand capacity. Default: `100`.
+        :param pulumi.Input[int] on_demand_base_capacity: Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances. Default: `0`.
+        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Percentage split between on-demand and Spot instances above the base on-demand capacity. Default: `100`.
         :param pulumi.Input[str] spot_allocation_strategy: How to allocate capacity across the Spot pools. Valid values: `lowest-price`, `capacity-optimized`. Default: `lowest-price`.
-        :param pulumi.Input[float] spot_instance_pools: Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Default: `2`.
+        :param pulumi.Input[int] spot_instance_pools: Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Default: `2`.
         :param pulumi.Input[str] spot_max_price: Maximum price per unit hour that the user is willing to pay for the Spot instances. Default: an empty string which means the on-demand price.
         """
         if on_demand_allocation_strategy is not None:
@@ -254,26 +254,26 @@ class GroupMixedInstancesPolicyInstancesDistributionArgs:
 
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> Optional[pulumi.Input[float]]:
+    def on_demand_base_capacity(self) -> Optional[pulumi.Input[int]]:
         """
         Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances. Default: `0`.
         """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
-    def on_demand_base_capacity(self, value: Optional[pulumi.Input[float]]):
+    def on_demand_base_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "on_demand_base_capacity", value)
 
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[float]]:
+    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[int]]:
         """
         Percentage split between on-demand and Spot instances above the base on-demand capacity. Default: `100`.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
-    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[float]]):
+    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @property
@@ -290,14 +290,14 @@ class GroupMixedInstancesPolicyInstancesDistributionArgs:
 
     @property
     @pulumi.getter(name="spotInstancePools")
-    def spot_instance_pools(self) -> Optional[pulumi.Input[float]]:
+    def spot_instance_pools(self) -> Optional[pulumi.Input[int]]:
         """
         Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Default: `2`.
         """
         return pulumi.get(self, "spot_instance_pools")
 
     @spot_instance_pools.setter
-    def spot_instance_pools(self, value: Optional[pulumi.Input[float]]):
+    def spot_instance_pools(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "spot_instance_pools", value)
 
     @property
@@ -502,11 +502,11 @@ class GroupTagArgs:
 @pulumi.input_type
 class PolicyStepAdjustmentArgs:
     def __init__(__self__, *,
-                 scaling_adjustment: pulumi.Input[float],
+                 scaling_adjustment: pulumi.Input[int],
                  metric_interval_lower_bound: Optional[pulumi.Input[str]] = None,
                  metric_interval_upper_bound: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] scaling_adjustment: The number of members by which to
+        :param pulumi.Input[int] scaling_adjustment: The number of members by which to
                scale, when the adjustment bounds are breached. A positive value scales
                up. A negative value scales down.
         :param pulumi.Input[str] metric_interval_lower_bound: The lower bound for the
@@ -525,7 +525,7 @@ class PolicyStepAdjustmentArgs:
 
     @property
     @pulumi.getter(name="scalingAdjustment")
-    def scaling_adjustment(self) -> pulumi.Input[float]:
+    def scaling_adjustment(self) -> pulumi.Input[int]:
         """
         The number of members by which to
         scale, when the adjustment bounds are breached. A positive value scales
@@ -534,7 +534,7 @@ class PolicyStepAdjustmentArgs:
         return pulumi.get(self, "scaling_adjustment")
 
     @scaling_adjustment.setter
-    def scaling_adjustment(self, value: pulumi.Input[float]):
+    def scaling_adjustment(self, value: pulumi.Input[int]):
         pulumi.set(self, "scaling_adjustment", value)
 
     @property

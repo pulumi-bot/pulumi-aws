@@ -21,7 +21,7 @@ class RateBasedRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  predicates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RateBasedRulePredicateArgs']]]]] = None,
                  rate_key: Optional[pulumi.Input[str]] = None,
-                 rate_limit: Optional[pulumi.Input[float]] = None,
+                 rate_limit: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
@@ -57,7 +57,7 @@ class RateBasedRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name or description of the rule.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RateBasedRulePredicateArgs']]]] predicates: The objects to include in a rule (documented below).
         :param pulumi.Input[str] rate_key: Valid value is IP.
-        :param pulumi.Input[float] rate_limit: The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
+        :param pulumi.Input[int] rate_limit: The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         if __name__ is not None:
@@ -105,7 +105,7 @@ class RateBasedRule(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             predicates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RateBasedRulePredicateArgs']]]]] = None,
             rate_key: Optional[pulumi.Input[str]] = None,
-            rate_limit: Optional[pulumi.Input[float]] = None,
+            rate_limit: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'RateBasedRule':
         """
         Get an existing RateBasedRule resource's state with the given name, id, and optional extra
@@ -119,7 +119,7 @@ class RateBasedRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name or description of the rule.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RateBasedRulePredicateArgs']]]] predicates: The objects to include in a rule (documented below).
         :param pulumi.Input[str] rate_key: Valid value is IP.
-        :param pulumi.Input[float] rate_limit: The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
+        :param pulumi.Input[int] rate_limit: The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -177,7 +177,7 @@ class RateBasedRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rateLimit")
-    def rate_limit(self) -> pulumi.Output[float]:
+    def rate_limit(self) -> pulumi.Output[int]:
         """
         The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
         """

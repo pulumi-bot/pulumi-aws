@@ -42,8 +42,8 @@ class GetRestApiResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if minimum_compression_size and not isinstance(minimum_compression_size, float):
-            raise TypeError("Expected argument 'minimum_compression_size' to be a float")
+        if minimum_compression_size and not isinstance(minimum_compression_size, int):
+            raise TypeError("Expected argument 'minimum_compression_size' to be a int")
         pulumi.set(__self__, "minimum_compression_size", minimum_compression_size)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -116,7 +116,7 @@ class GetRestApiResult:
 
     @property
     @pulumi.getter(name="minimumCompressionSize")
-    def minimum_compression_size(self) -> float:
+    def minimum_compression_size(self) -> int:
         """
         Minimum response size to compress for the REST API.
         """

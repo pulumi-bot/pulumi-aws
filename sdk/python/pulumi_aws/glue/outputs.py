@@ -94,7 +94,7 @@ class CatalogTableStorageDescriptor(dict):
                  compressed: Optional[bool] = None,
                  input_format: Optional[str] = None,
                  location: Optional[str] = None,
-                 number_of_buckets: Optional[float] = None,
+                 number_of_buckets: Optional[int] = None,
                  output_format: Optional[str] = None,
                  parameters: Optional[Mapping[str, str]] = None,
                  ser_de_info: Optional['outputs.CatalogTableStorageDescriptorSerDeInfo'] = None,
@@ -107,7 +107,7 @@ class CatalogTableStorageDescriptor(dict):
         :param bool compressed: True if the data in the table is compressed, or False if not.
         :param str input_format: The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
         :param str location: The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
-        :param float number_of_buckets: Must be specified if the table contains any dimension columns.
+        :param int number_of_buckets: Must be specified if the table contains any dimension columns.
         :param str output_format: The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
         :param Mapping[str, str] parameters: A map of initialization parameters for the SerDe, in key-value form.
         :param 'CatalogTableStorageDescriptorSerDeInfoArgs' ser_de_info: Serialization/deserialization (SerDe) information.
@@ -182,7 +182,7 @@ class CatalogTableStorageDescriptor(dict):
 
     @property
     @pulumi.getter(name="numberOfBuckets")
-    def number_of_buckets(self) -> Optional[float]:
+    def number_of_buckets(self) -> Optional[int]:
         """
         Must be specified if the table contains any dimension columns.
         """
@@ -381,10 +381,10 @@ class CatalogTableStorageDescriptorSkewedInfo(dict):
 class CatalogTableStorageDescriptorSortColumn(dict):
     def __init__(__self__, *,
                  column: str,
-                 sort_order: float):
+                 sort_order: int):
         """
         :param str column: The name of the column.
-        :param float sort_order: Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+        :param int sort_order: Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
         """
         pulumi.set(__self__, "column", column)
         pulumi.set(__self__, "sort_order", sort_order)
@@ -399,7 +399,7 @@ class CatalogTableStorageDescriptorSortColumn(dict):
 
     @property
     @pulumi.getter(name="sortOrder")
-    def sort_order(self) -> float:
+    def sort_order(self) -> int:
         """
         Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
         """
@@ -846,16 +846,16 @@ class JobCommand(dict):
 @pulumi.output_type
 class JobExecutionProperty(dict):
     def __init__(__self__, *,
-                 max_concurrent_runs: Optional[float] = None):
+                 max_concurrent_runs: Optional[int] = None):
         """
-        :param float max_concurrent_runs: The maximum number of concurrent runs allowed for a job. The default is 1.
+        :param int max_concurrent_runs: The maximum number of concurrent runs allowed for a job. The default is 1.
         """
         if max_concurrent_runs is not None:
             pulumi.set(__self__, "max_concurrent_runs", max_concurrent_runs)
 
     @property
     @pulumi.getter(name="maxConcurrentRuns")
-    def max_concurrent_runs(self) -> Optional[float]:
+    def max_concurrent_runs(self) -> Optional[int]:
         """
         The maximum number of concurrent runs allowed for a job. The default is 1.
         """
@@ -868,16 +868,16 @@ class JobExecutionProperty(dict):
 @pulumi.output_type
 class JobNotificationProperty(dict):
     def __init__(__self__, *,
-                 notify_delay_after: Optional[float] = None):
+                 notify_delay_after: Optional[int] = None):
         """
-        :param float notify_delay_after: After a job run starts, the number of minutes to wait before sending a job run delay notification.
+        :param int notify_delay_after: After a job run starts, the number of minutes to wait before sending a job run delay notification.
         """
         if notify_delay_after is not None:
             pulumi.set(__self__, "notify_delay_after", notify_delay_after)
 
     @property
     @pulumi.getter(name="notifyDelayAfter")
-    def notify_delay_after(self) -> Optional[float]:
+    def notify_delay_after(self) -> Optional[int]:
         """
         After a job run starts, the number of minutes to wait before sending a job run delay notification.
         """
@@ -1030,12 +1030,12 @@ class TriggerAction(dict):
                  arguments: Optional[Mapping[str, str]] = None,
                  crawler_name: Optional[str] = None,
                  job_name: Optional[str] = None,
-                 timeout: Optional[float] = None):
+                 timeout: Optional[int] = None):
         """
         :param Mapping[str, str] arguments: Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
         :param str crawler_name: The name of the crawler to be executed. Conflicts with `job_name`.
         :param str job_name: The name of a job to be executed. Conflicts with `crawler_name`.
-        :param float timeout: The job run timeout in minutes. It overrides the timeout value of the job.
+        :param int timeout: The job run timeout in minutes. It overrides the timeout value of the job.
         """
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
@@ -1072,7 +1072,7 @@ class TriggerAction(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         """
         The job run timeout in minutes. It overrides the timeout value of the job.
         """
@@ -1232,12 +1232,12 @@ class GetScriptDagNodeResult(dict):
                  args: List['outputs.GetScriptDagNodeArgResult'],
                  id: str,
                  node_type: str,
-                 line_number: Optional[float] = None):
+                 line_number: Optional[int] = None):
         """
         :param List['GetScriptDagNodeArgArgs'] args: Nested configuration an argument or property of a node. Defined below.
         :param str id: A node identifier that is unique within the node's graph.
         :param str node_type: The type of node this is.
-        :param float line_number: The line number of the node.
+        :param int line_number: The line number of the node.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "id", id)
@@ -1271,7 +1271,7 @@ class GetScriptDagNodeResult(dict):
 
     @property
     @pulumi.getter(name="lineNumber")
-    def line_number(self) -> Optional[float]:
+    def line_number(self) -> Optional[int]:
         """
         The line number of the node.
         """

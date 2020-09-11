@@ -26,14 +26,14 @@ class ApiCorsConfiguration(dict):
                  allow_methods: Optional[List[str]] = None,
                  allow_origins: Optional[List[str]] = None,
                  expose_headers: Optional[List[str]] = None,
-                 max_age: Optional[float] = None):
+                 max_age: Optional[int] = None):
         """
         :param bool allow_credentials: Whether credentials are included in the CORS request.
         :param List[str] allow_headers: The set of allowed HTTP headers.
         :param List[str] allow_methods: The set of allowed HTTP methods.
         :param List[str] allow_origins: The set of allowed origins.
         :param List[str] expose_headers: The set of exposed HTTP headers.
-        :param float max_age: The number of seconds that the browser should cache preflight request results.
+        :param int max_age: The number of seconds that the browser should cache preflight request results.
         """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
@@ -90,7 +90,7 @@ class ApiCorsConfiguration(dict):
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[float]:
+    def max_age(self) -> Optional[int]:
         """
         The number of seconds that the browser should cache preflight request results.
         """
@@ -263,7 +263,7 @@ class StageDefaultRouteSettings(dict):
                  data_trace_enabled: Optional[bool] = None,
                  detailed_metrics_enabled: Optional[bool] = None,
                  logging_level: Optional[str] = None,
-                 throttling_burst_limit: Optional[float] = None,
+                 throttling_burst_limit: Optional[int] = None,
                  throttling_rate_limit: Optional[float] = None):
         """
         :param bool data_trace_enabled: Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
@@ -271,7 +271,7 @@ class StageDefaultRouteSettings(dict):
         :param bool detailed_metrics_enabled: Whether detailed metrics are enabled for the default route. Defaults to `false`.
         :param str logging_level: The logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
                Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-        :param float throttling_burst_limit: The throttling burst limit for the default route.
+        :param int throttling_burst_limit: The throttling burst limit for the default route.
         :param float throttling_rate_limit: The throttling rate limit for the default route.
         """
         if data_trace_enabled is not None:
@@ -313,7 +313,7 @@ class StageDefaultRouteSettings(dict):
 
     @property
     @pulumi.getter(name="throttlingBurstLimit")
-    def throttling_burst_limit(self) -> Optional[float]:
+    def throttling_burst_limit(self) -> Optional[int]:
         """
         The throttling burst limit for the default route.
         """
@@ -338,7 +338,7 @@ class StageRouteSetting(dict):
                  data_trace_enabled: Optional[bool] = None,
                  detailed_metrics_enabled: Optional[bool] = None,
                  logging_level: Optional[str] = None,
-                 throttling_burst_limit: Optional[float] = None,
+                 throttling_burst_limit: Optional[int] = None,
                  throttling_rate_limit: Optional[float] = None):
         """
         :param str route_key: Route key.
@@ -347,7 +347,7 @@ class StageRouteSetting(dict):
         :param bool detailed_metrics_enabled: Whether detailed metrics are enabled for the route. Defaults to `false`.
         :param str logging_level: The logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
                Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-        :param float throttling_burst_limit: The throttling burst limit for the route.
+        :param int throttling_burst_limit: The throttling burst limit for the route.
         :param float throttling_rate_limit: The throttling rate limit for the route.
         """
         pulumi.set(__self__, "route_key", route_key)
@@ -398,7 +398,7 @@ class StageRouteSetting(dict):
 
     @property
     @pulumi.getter(name="throttlingBurstLimit")
-    def throttling_burst_limit(self) -> Optional[float]:
+    def throttling_burst_limit(self) -> Optional[int]:
         """
         The throttling burst limit for the route.
         """

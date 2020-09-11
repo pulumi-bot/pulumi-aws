@@ -20,7 +20,7 @@ class ListenerRule(pulumi.CustomResource):
                  actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleActionArgs']]]]] = None,
                  conditions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]]] = None,
                  listener_arn: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -188,7 +188,7 @@ class ListenerRule(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleActionArgs']]]] actions: An Action block. Action blocks are documented below.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]] conditions: A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
         :param pulumi.Input[str] listener_arn: The ARN of the listener to which to attach the rule.
-        :param pulumi.Input[float] priority: The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
+        :param pulumi.Input[int] priority: The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -234,7 +234,7 @@ class ListenerRule(pulumi.CustomResource):
             arn: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]]] = None,
             listener_arn: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None) -> 'ListenerRule':
+            priority: Optional[pulumi.Input[int]] = None) -> 'ListenerRule':
         """
         Get an existing ListenerRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,7 +246,7 @@ class ListenerRule(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the target group.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerRuleConditionArgs']]]] conditions: A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
         :param pulumi.Input[str] listener_arn: The ARN of the listener to which to attach the rule.
-        :param pulumi.Input[float] priority: The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
+        :param pulumi.Input[int] priority: The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -293,7 +293,7 @@ class ListenerRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         """
         The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
         """

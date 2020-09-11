@@ -73,8 +73,8 @@ class GetSnapshotResult:
         if volume_id and not isinstance(volume_id, str):
             raise TypeError("Expected argument 'volume_id' to be a str")
         pulumi.set(__self__, "volume_id", volume_id)
-        if volume_size and not isinstance(volume_size, float):
-            raise TypeError("Expected argument 'volume_size' to be a float")
+        if volume_size and not isinstance(volume_size, int):
+            raise TypeError("Expected argument 'volume_size' to be a int")
         pulumi.set(__self__, "volume_size", volume_size)
 
     @property
@@ -200,7 +200,7 @@ class GetSnapshotResult:
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> float:
+    def volume_size(self) -> int:
         """
         The size of the drive in GiBs.
         """

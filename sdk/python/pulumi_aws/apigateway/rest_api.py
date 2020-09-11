@@ -22,7 +22,7 @@ class RestApi(pulumi.CustomResource):
                  body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint_configuration: Optional[pulumi.Input[pulumi.InputType['RestApiEndpointConfigurationArgs']]] = None,
-                 minimum_compression_size: Optional[pulumi.Input[float]] = None,
+                 minimum_compression_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -61,7 +61,7 @@ class RestApi(pulumi.CustomResource):
         :param pulumi.Input[str] body: An OpenAPI specification that defines the set of routes and integrations to create as part of the REST API.
         :param pulumi.Input[str] description: The description of the REST API
         :param pulumi.Input[pulumi.InputType['RestApiEndpointConfigurationArgs']] endpoint_configuration: Nested argument defining API endpoint configuration including endpoint type. Defined below.
-        :param pulumi.Input[float] minimum_compression_size: Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
+        :param pulumi.Input[int] minimum_compression_size: Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
         :param pulumi.Input[str] name: The name of the REST API
         :param pulumi.Input[str] policy: JSON formatted policy document that controls access to the API Gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
@@ -114,7 +114,7 @@ class RestApi(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             endpoint_configuration: Optional[pulumi.Input[pulumi.InputType['RestApiEndpointConfigurationArgs']]] = None,
             execution_arn: Optional[pulumi.Input[str]] = None,
-            minimum_compression_size: Optional[pulumi.Input[float]] = None,
+            minimum_compression_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             policy: Optional[pulumi.Input[str]] = None,
             root_resource_id: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class RestApi(pulumi.CustomResource):
         :param pulumi.Input[str] execution_arn: The execution ARN part to be used in `lambda_permission`'s `source_arn`
                when allowing API Gateway to invoke a Lambda function,
                e.g. `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
-        :param pulumi.Input[float] minimum_compression_size: Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
+        :param pulumi.Input[int] minimum_compression_size: Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
         :param pulumi.Input[str] name: The name of the REST API
         :param pulumi.Input[str] policy: JSON formatted policy document that controls access to the API Gateway.
         :param pulumi.Input[str] root_resource_id: The resource ID of the REST API's root
@@ -229,7 +229,7 @@ class RestApi(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumCompressionSize")
-    def minimum_compression_size(self) -> pulumi.Output[Optional[float]]:
+    def minimum_compression_size(self) -> pulumi.Output[Optional[int]]:
         """
         Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
         """

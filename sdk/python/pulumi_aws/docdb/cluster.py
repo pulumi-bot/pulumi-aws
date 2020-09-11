@@ -17,7 +17,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_immediately: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 backup_retention_period: Optional[pulumi.Input[float]] = None,
+                 backup_retention_period: Optional[pulumi.Input[int]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  cluster_identifier_prefix: Optional[pulumi.Input[str]] = None,
                  cluster_members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -31,7 +31,7 @@ class Cluster(pulumi.CustomResource):
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  master_password: Optional[pulumi.Input[str]] = None,
                  master_username: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  preferred_backup_window: Optional[pulumi.Input[str]] = None,
                  preferred_maintenance_window: Optional[pulumi.Input[str]] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
@@ -78,7 +78,7 @@ class Cluster(pulumi.CustomResource):
                `false`.
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of EC2 Availability Zones that
                instances in the DB cluster can be created in.
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Default `1`
+        :param pulumi.Input[int] backup_retention_period: The days to retain backups for. Default `1`
         :param pulumi.Input[str] cluster_identifier: The cluster identifier. If omitted, this provider will assign a random, unique identifier.
         :param pulumi.Input[str] cluster_identifier_prefix: Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifer`.
         :param pulumi.Input[List[pulumi.Input[str]]] cluster_members: List of DocDB Instances that are a part of this cluster
@@ -96,7 +96,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_password: Password for the master DB user. Note that this may
                show up in logs, and it will be stored in the state file. Please refer to the DocDB Naming Constraints.
         :param pulumi.Input[str] master_username: Username for the master DB user.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections
+        :param pulumi.Input[int] port: The port on which the DB accepts connections
         :param pulumi.Input[str] preferred_backup_window: The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC
                Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
         :param pulumi.Input[bool] skip_final_snapshot: Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
@@ -165,7 +165,7 @@ class Cluster(pulumi.CustomResource):
             apply_immediately: Optional[pulumi.Input[bool]] = None,
             arn: Optional[pulumi.Input[str]] = None,
             availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            backup_retention_period: Optional[pulumi.Input[float]] = None,
+            backup_retention_period: Optional[pulumi.Input[int]] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
             cluster_identifier_prefix: Optional[pulumi.Input[str]] = None,
             cluster_members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -182,7 +182,7 @@ class Cluster(pulumi.CustomResource):
             kms_key_id: Optional[pulumi.Input[str]] = None,
             master_password: Optional[pulumi.Input[str]] = None,
             master_username: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             preferred_backup_window: Optional[pulumi.Input[str]] = None,
             preferred_maintenance_window: Optional[pulumi.Input[str]] = None,
             reader_endpoint: Optional[pulumi.Input[str]] = None,
@@ -204,7 +204,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of cluster
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of EC2 Availability Zones that
                instances in the DB cluster can be created in.
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Default `1`
+        :param pulumi.Input[int] backup_retention_period: The days to retain backups for. Default `1`
         :param pulumi.Input[str] cluster_identifier: The cluster identifier. If omitted, this provider will assign a random, unique identifier.
         :param pulumi.Input[str] cluster_identifier_prefix: Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifer`.
         :param pulumi.Input[List[pulumi.Input[str]]] cluster_members: List of DocDB Instances that are a part of this cluster
@@ -225,7 +225,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_password: Password for the master DB user. Note that this may
                show up in logs, and it will be stored in the state file. Please refer to the DocDB Naming Constraints.
         :param pulumi.Input[str] master_username: Username for the master DB user.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections
+        :param pulumi.Input[int] port: The port on which the DB accepts connections
         :param pulumi.Input[str] preferred_backup_window: The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC
                Default: A 30-minute window selected at random from an 8-hour block of time per region. e.g. 04:00-09:00
         :param pulumi.Input[str] reader_endpoint: A read-only endpoint for the DocDB cluster, automatically load-balanced across replicas
@@ -300,7 +300,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> pulumi.Output[Optional[float]]:
+    def backup_retention_period(self) -> pulumi.Output[Optional[int]]:
         """
         The days to retain backups for. Default `1`
         """
@@ -440,7 +440,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The port on which the DB accepts connections
         """

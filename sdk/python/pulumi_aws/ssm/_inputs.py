@@ -493,7 +493,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs:
                  output_s3_key_prefix: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[List[pulumi.Input['MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterArgs']]]] = None,
                  service_role_arn: Optional[pulumi.Input[str]] = None,
-                 timeout_seconds: Optional[pulumi.Input[float]] = None):
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] comment: Information about the command(s) to execute.
         :param pulumi.Input[str] document_hash: The SHA-256 or SHA-1 hash created by the system when the document was created. SHA-1 hashes have been deprecated.
@@ -503,7 +503,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs:
         :param pulumi.Input[str] output_s3_key_prefix: The Amazon S3 bucket subfolder.
         :param pulumi.Input[List[pulumi.Input['MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterArgs']]] parameters: The parameters for the RUN_COMMAND task execution. Documented below.
         :param pulumi.Input[str] service_role_arn: The IAM service role to assume during task execution.
-        :param pulumi.Input[float] timeout_seconds: If this time is reached and the command has not already started executing, it doesn't run.
+        :param pulumi.Input[int] timeout_seconds: If this time is reached and the command has not already started executing, it doesn't run.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -622,14 +622,14 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs:
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[float]]:
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         If this time is reached and the command has not already started executing, it doesn't run.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[float]]):
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
@@ -767,12 +767,12 @@ class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs:
 @pulumi.input_type
 class PatchBaselineApprovalRuleArgs:
     def __init__(__self__, *,
-                 approve_after_days: pulumi.Input[float],
+                 approve_after_days: pulumi.Input[int],
                  patch_filters: pulumi.Input[List[pulumi.Input['PatchBaselineApprovalRulePatchFilterArgs']]],
                  compliance_level: Optional[pulumi.Input[str]] = None,
                  enable_non_security: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[float] approve_after_days: The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline. Valid Range: 0 to 100.
+        :param pulumi.Input[int] approve_after_days: The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline. Valid Range: 0 to 100.
         :param pulumi.Input[List[pulumi.Input['PatchBaselineApprovalRulePatchFilterArgs']]] patch_filters: The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
         :param pulumi.Input[str] compliance_level: Defines the compliance level for patches approved by this rule. Valid compliance levels include the following: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
         :param pulumi.Input[bool] enable_non_security: Boolean enabling the application of non-security updates. The default value is 'false'. Valid for Linux instances only.
@@ -786,14 +786,14 @@ class PatchBaselineApprovalRuleArgs:
 
     @property
     @pulumi.getter(name="approveAfterDays")
-    def approve_after_days(self) -> pulumi.Input[float]:
+    def approve_after_days(self) -> pulumi.Input[int]:
         """
         The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline. Valid Range: 0 to 100.
         """
         return pulumi.get(self, "approve_after_days")
 
     @approve_after_days.setter
-    def approve_after_days(self, value: pulumi.Input[float]):
+    def approve_after_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "approve_after_days", value)
 
     @property

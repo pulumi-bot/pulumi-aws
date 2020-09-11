@@ -217,14 +217,14 @@ class GraphQLApiAdditionalAuthenticationProviderArgs:
 class GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs:
     def __init__(__self__, *,
                  issuer: pulumi.Input[str],
-                 auth_ttl: Optional[pulumi.Input[float]] = None,
+                 auth_ttl: Optional[pulumi.Input[int]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
-                 iat_ttl: Optional[pulumi.Input[float]] = None):
+                 iat_ttl: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] issuer: Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
-        :param pulumi.Input[float] auth_ttl: Number of milliseconds a token is valid after being authenticated.
+        :param pulumi.Input[int] auth_ttl: Number of milliseconds a token is valid after being authenticated.
         :param pulumi.Input[str] client_id: Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
-        :param pulumi.Input[float] iat_ttl: Number of milliseconds a token is valid after being issued to a user.
+        :param pulumi.Input[int] iat_ttl: Number of milliseconds a token is valid after being issued to a user.
         """
         pulumi.set(__self__, "issuer", issuer)
         if auth_ttl is not None:
@@ -248,14 +248,14 @@ class GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs:
 
     @property
     @pulumi.getter(name="authTtl")
-    def auth_ttl(self) -> Optional[pulumi.Input[float]]:
+    def auth_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         Number of milliseconds a token is valid after being authenticated.
         """
         return pulumi.get(self, "auth_ttl")
 
     @auth_ttl.setter
-    def auth_ttl(self, value: Optional[pulumi.Input[float]]):
+    def auth_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auth_ttl", value)
 
     @property
@@ -272,14 +272,14 @@ class GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs:
 
     @property
     @pulumi.getter(name="iatTtl")
-    def iat_ttl(self) -> Optional[pulumi.Input[float]]:
+    def iat_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         Number of milliseconds a token is valid after being issued to a user.
         """
         return pulumi.get(self, "iat_ttl")
 
     @iat_ttl.setter
-    def iat_ttl(self, value: Optional[pulumi.Input[float]]):
+    def iat_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iat_ttl", value)
 
 
@@ -394,14 +394,14 @@ class GraphQLApiLogConfigArgs:
 class GraphQLApiOpenidConnectConfigArgs:
     def __init__(__self__, *,
                  issuer: pulumi.Input[str],
-                 auth_ttl: Optional[pulumi.Input[float]] = None,
+                 auth_ttl: Optional[pulumi.Input[int]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
-                 iat_ttl: Optional[pulumi.Input[float]] = None):
+                 iat_ttl: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] issuer: Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
-        :param pulumi.Input[float] auth_ttl: Number of milliseconds a token is valid after being authenticated.
+        :param pulumi.Input[int] auth_ttl: Number of milliseconds a token is valid after being authenticated.
         :param pulumi.Input[str] client_id: Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
-        :param pulumi.Input[float] iat_ttl: Number of milliseconds a token is valid after being issued to a user.
+        :param pulumi.Input[int] iat_ttl: Number of milliseconds a token is valid after being issued to a user.
         """
         pulumi.set(__self__, "issuer", issuer)
         if auth_ttl is not None:
@@ -425,14 +425,14 @@ class GraphQLApiOpenidConnectConfigArgs:
 
     @property
     @pulumi.getter(name="authTtl")
-    def auth_ttl(self) -> Optional[pulumi.Input[float]]:
+    def auth_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         Number of milliseconds a token is valid after being authenticated.
         """
         return pulumi.get(self, "auth_ttl")
 
     @auth_ttl.setter
-    def auth_ttl(self, value: Optional[pulumi.Input[float]]):
+    def auth_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auth_ttl", value)
 
     @property
@@ -449,14 +449,14 @@ class GraphQLApiOpenidConnectConfigArgs:
 
     @property
     @pulumi.getter(name="iatTtl")
-    def iat_ttl(self) -> Optional[pulumi.Input[float]]:
+    def iat_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         Number of milliseconds a token is valid after being issued to a user.
         """
         return pulumi.get(self, "iat_ttl")
 
     @iat_ttl.setter
-    def iat_ttl(self, value: Optional[pulumi.Input[float]]):
+    def iat_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iat_ttl", value)
 
 
@@ -533,10 +533,10 @@ class GraphQLApiUserPoolConfigArgs:
 class ResolverCachingConfigArgs:
     def __init__(__self__, *,
                  caching_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None):
+                 ttl: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] caching_keys: The list of caching key.
-        :param pulumi.Input[float] ttl: The TTL in seconds.
+        :param pulumi.Input[int] ttl: The TTL in seconds.
         """
         if caching_keys is not None:
             pulumi.set(__self__, "caching_keys", caching_keys)
@@ -557,14 +557,14 @@ class ResolverCachingConfigArgs:
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[float]]:
+    def ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The TTL in seconds.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[float]]):
+    def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
 

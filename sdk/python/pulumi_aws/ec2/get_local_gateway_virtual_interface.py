@@ -31,8 +31,8 @@ class GetLocalGatewayVirtualInterfaceResult:
         if local_address and not isinstance(local_address, str):
             raise TypeError("Expected argument 'local_address' to be a str")
         pulumi.set(__self__, "local_address", local_address)
-        if local_bgp_asn and not isinstance(local_bgp_asn, float):
-            raise TypeError("Expected argument 'local_bgp_asn' to be a float")
+        if local_bgp_asn and not isinstance(local_bgp_asn, int):
+            raise TypeError("Expected argument 'local_bgp_asn' to be a int")
         pulumi.set(__self__, "local_bgp_asn", local_bgp_asn)
         if local_gateway_id and not isinstance(local_gateway_id, str):
             raise TypeError("Expected argument 'local_gateway_id' to be a str")
@@ -43,14 +43,14 @@ class GetLocalGatewayVirtualInterfaceResult:
         if peer_address and not isinstance(peer_address, str):
             raise TypeError("Expected argument 'peer_address' to be a str")
         pulumi.set(__self__, "peer_address", peer_address)
-        if peer_bgp_asn and not isinstance(peer_bgp_asn, float):
-            raise TypeError("Expected argument 'peer_bgp_asn' to be a float")
+        if peer_bgp_asn and not isinstance(peer_bgp_asn, int):
+            raise TypeError("Expected argument 'peer_bgp_asn' to be a int")
         pulumi.set(__self__, "peer_bgp_asn", peer_bgp_asn)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
-        if vlan and not isinstance(vlan, float):
-            raise TypeError("Expected argument 'vlan' to be a float")
+        if vlan and not isinstance(vlan, int):
+            raise TypeError("Expected argument 'vlan' to be a int")
         pulumi.set(__self__, "vlan", vlan)
 
     @property
@@ -73,7 +73,7 @@ class GetLocalGatewayVirtualInterfaceResult:
 
     @property
     @pulumi.getter(name="localBgpAsn")
-    def local_bgp_asn(self) -> float:
+    def local_bgp_asn(self) -> int:
         """
         Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the EC2 Local Gateway.
         """
@@ -102,7 +102,7 @@ class GetLocalGatewayVirtualInterfaceResult:
 
     @property
     @pulumi.getter(name="peerBgpAsn")
-    def peer_bgp_asn(self) -> float:
+    def peer_bgp_asn(self) -> int:
         """
         Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the peer.
         """
@@ -115,7 +115,7 @@ class GetLocalGatewayVirtualInterfaceResult:
 
     @property
     @pulumi.getter
-    def vlan(self) -> float:
+    def vlan(self) -> int:
         """
         Virtual Local Area Network.
         """

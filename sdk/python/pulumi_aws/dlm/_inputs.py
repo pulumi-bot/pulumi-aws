@@ -154,11 +154,11 @@ class LifecyclePolicyPolicyDetailsScheduleArgs:
 @pulumi.input_type
 class LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs:
     def __init__(__self__, *,
-                 interval: pulumi.Input[float],
+                 interval: pulumi.Input[int],
                  interval_unit: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] interval: How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+        :param pulumi.Input[int] interval: How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
         :param pulumi.Input[str] interval_unit: The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
         :param pulumi.Input[str] times: A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
         """
@@ -170,14 +170,14 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs:
 
     @property
     @pulumi.getter
-    def interval(self) -> pulumi.Input[float]:
+    def interval(self) -> pulumi.Input[int]:
         """
         How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: pulumi.Input[float]):
+    def interval(self, value: pulumi.Input[int]):
         pulumi.set(self, "interval", value)
 
     @property
@@ -208,22 +208,22 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs:
 @pulumi.input_type
 class LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float]):
+                 count: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] count: How many snapshots to keep. Must be an integer between 1 and 1000.
+        :param pulumi.Input[int] count: How many snapshots to keep. Must be an integer between 1 and 1000.
         """
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         How many snapshots to keep. Must be an integer between 1 and 1000.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
 

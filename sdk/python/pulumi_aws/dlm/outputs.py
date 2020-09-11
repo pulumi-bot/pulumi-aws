@@ -129,11 +129,11 @@ class LifecyclePolicyPolicyDetailsSchedule(dict):
 @pulumi.output_type
 class LifecyclePolicyPolicyDetailsScheduleCreateRule(dict):
     def __init__(__self__, *,
-                 interval: float,
+                 interval: int,
                  interval_unit: Optional[str] = None,
                  times: Optional[str] = None):
         """
-        :param float interval: How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+        :param int interval: How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
         :param str interval_unit: The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
         :param str times: A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
         """
@@ -145,7 +145,7 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRule(dict):
 
     @property
     @pulumi.getter
-    def interval(self) -> float:
+    def interval(self) -> int:
         """
         How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
         """
@@ -174,15 +174,15 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRule(dict):
 @pulumi.output_type
 class LifecyclePolicyPolicyDetailsScheduleRetainRule(dict):
     def __init__(__self__, *,
-                 count: float):
+                 count: int):
         """
-        :param float count: How many snapshots to keep. Must be an integer between 1 and 1000.
+        :param int count: How many snapshots to keep. Must be an integer between 1 and 1000.
         """
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         How many snapshots to keep. Must be an integer between 1 and 1000.
         """

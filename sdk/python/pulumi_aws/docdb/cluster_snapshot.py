@@ -90,7 +90,7 @@ class ClusterSnapshot(pulumi.CustomResource):
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             snapshot_type: Optional[pulumi.Input[str]] = None,
             source_db_cluster_snapshot_arn: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class ClusterSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Specifies the name of the database engine.
         :param pulumi.Input[str] engine_version: Version of the database engine for this DocDB cluster snapshot.
         :param pulumi.Input[str] kms_key_id: If storage_encrypted is true, the AWS KMS key identifier for the encrypted DocDB cluster snapshot.
-        :param pulumi.Input[float] port: Port that the DocDB cluster was listening on at the time of the snapshot.
+        :param pulumi.Input[int] port: Port that the DocDB cluster was listening on at the time of the snapshot.
         :param pulumi.Input[str] status: The status of this DocDB Cluster Snapshot.
         :param pulumi.Input[bool] storage_encrypted: Specifies whether the DocDB cluster snapshot is encrypted.
         :param pulumi.Input[str] vpc_id: The VPC ID associated with the DocDB cluster snapshot.
@@ -192,7 +192,7 @@ class ClusterSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Port that the DocDB cluster was listening on at the time of the snapshot.
         """

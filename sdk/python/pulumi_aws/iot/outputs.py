@@ -1150,11 +1150,11 @@ class TopicRuleErrorActionRepublish(dict):
     def __init__(__self__, *,
                  role_arn: str,
                  topic: str,
-                 qos: Optional[float] = None):
+                 qos: Optional[int] = None):
         """
         :param str role_arn: The ARN of the IAM role that grants access.
         :param str topic: The name of the MQTT topic the message should be republished to.
-        :param float qos: The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
+        :param int qos: The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
         """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "topic", topic)
@@ -1179,7 +1179,7 @@ class TopicRuleErrorActionRepublish(dict):
 
     @property
     @pulumi.getter
-    def qos(self) -> Optional[float]:
+    def qos(self) -> Optional[int]:
         """
         The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
         """
@@ -1553,11 +1553,11 @@ class TopicRuleRepublish(dict):
     def __init__(__self__, *,
                  role_arn: str,
                  topic: str,
-                 qos: Optional[float] = None):
+                 qos: Optional[int] = None):
         """
         :param str role_arn: The ARN of the IAM role that grants access.
         :param str topic: The name of the MQTT topic the message should be republished to.
-        :param float qos: The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
+        :param int qos: The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
         """
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "topic", topic)
@@ -1582,7 +1582,7 @@ class TopicRuleRepublish(dict):
 
     @property
     @pulumi.getter
-    def qos(self) -> Optional[float]:
+    def qos(self) -> Optional[int]:
         """
         The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
         """

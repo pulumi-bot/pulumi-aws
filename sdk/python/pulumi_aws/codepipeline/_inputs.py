@@ -174,7 +174,7 @@ class PipelineStageActionArgs:
                  output_artifacts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
-                 run_order: Optional[pulumi.Input[float]] = None):
+                 run_order: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] category: A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
         :param pulumi.Input[str] name: The action declaration's name.
@@ -187,7 +187,7 @@ class PipelineStageActionArgs:
         :param pulumi.Input[List[pulumi.Input[str]]] output_artifacts: A list of artifact names to output. Output artifact names must be unique within a pipeline.
         :param pulumi.Input[str] region: The region in which to run the action.
         :param pulumi.Input[str] role_arn: The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
-        :param pulumi.Input[float] run_order: The order in which actions are run.
+        :param pulumi.Input[int] run_order: The order in which actions are run.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "name", name)
@@ -343,14 +343,14 @@ class PipelineStageActionArgs:
 
     @property
     @pulumi.getter(name="runOrder")
-    def run_order(self) -> Optional[pulumi.Input[float]]:
+    def run_order(self) -> Optional[pulumi.Input[int]]:
         """
         The order in which actions are run.
         """
         return pulumi.get(self, "run_order")
 
     @run_order.setter
-    def run_order(self, value: Optional[pulumi.Input[float]]):
+    def run_order(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "run_order", value)
 
 

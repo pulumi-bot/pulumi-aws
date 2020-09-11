@@ -365,13 +365,13 @@ class NodeGroupResourceAutoscalingGroup(dict):
 @pulumi.output_type
 class NodeGroupScalingConfig(dict):
     def __init__(__self__, *,
-                 desired_size: float,
-                 max_size: float,
-                 min_size: float):
+                 desired_size: int,
+                 max_size: int,
+                 min_size: int):
         """
-        :param float desired_size: Desired number of worker nodes.
-        :param float max_size: Maximum number of worker nodes.
-        :param float min_size: Minimum number of worker nodes.
+        :param int desired_size: Desired number of worker nodes.
+        :param int max_size: Maximum number of worker nodes.
+        :param int min_size: Minimum number of worker nodes.
         """
         pulumi.set(__self__, "desired_size", desired_size)
         pulumi.set(__self__, "max_size", max_size)
@@ -379,7 +379,7 @@ class NodeGroupScalingConfig(dict):
 
     @property
     @pulumi.getter(name="desiredSize")
-    def desired_size(self) -> float:
+    def desired_size(self) -> int:
         """
         Desired number of worker nodes.
         """
@@ -387,7 +387,7 @@ class NodeGroupScalingConfig(dict):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> int:
         """
         Maximum number of worker nodes.
         """
@@ -395,7 +395,7 @@ class NodeGroupScalingConfig(dict):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> int:
         """
         Minimum number of worker nodes.
         """

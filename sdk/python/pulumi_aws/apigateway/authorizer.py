@@ -16,7 +16,7 @@ class Authorizer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorizer_credentials: Optional[pulumi.Input[str]] = None,
-                 authorizer_result_ttl_in_seconds: Optional[pulumi.Input[float]] = None,
+                 authorizer_result_ttl_in_seconds: Optional[pulumi.Input[int]] = None,
                  authorizer_uri: Optional[pulumi.Input[str]] = None,
                  identity_source: Optional[pulumi.Input[str]] = None,
                  identity_validation_expression: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,7 @@ class Authorizer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorizer_credentials: The credentials required for the authorizer.
                To specify an IAM Role for API Gateway to assume, use the IAM Role ARN.
-        :param pulumi.Input[float] authorizer_result_ttl_in_seconds: The TTL of cached authorizer results in seconds.
+        :param pulumi.Input[int] authorizer_result_ttl_in_seconds: The TTL of cached authorizer results in seconds.
                Defaults to `300`.
         :param pulumi.Input[str] authorizer_uri: The authorizer's Uniform Resource Identifier (URI).
                This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`,
@@ -91,7 +91,7 @@ class Authorizer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             authorizer_credentials: Optional[pulumi.Input[str]] = None,
-            authorizer_result_ttl_in_seconds: Optional[pulumi.Input[float]] = None,
+            authorizer_result_ttl_in_seconds: Optional[pulumi.Input[int]] = None,
             authorizer_uri: Optional[pulumi.Input[str]] = None,
             identity_source: Optional[pulumi.Input[str]] = None,
             identity_validation_expression: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class Authorizer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorizer_credentials: The credentials required for the authorizer.
                To specify an IAM Role for API Gateway to assume, use the IAM Role ARN.
-        :param pulumi.Input[float] authorizer_result_ttl_in_seconds: The TTL of cached authorizer results in seconds.
+        :param pulumi.Input[int] authorizer_result_ttl_in_seconds: The TTL of cached authorizer results in seconds.
                Defaults to `300`.
         :param pulumi.Input[str] authorizer_uri: The authorizer's Uniform Resource Identifier (URI).
                This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`,
@@ -152,7 +152,7 @@ class Authorizer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizerResultTtlInSeconds")
-    def authorizer_result_ttl_in_seconds(self) -> pulumi.Output[Optional[float]]:
+    def authorizer_result_ttl_in_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The TTL of cached authorizer results in seconds.
         Defaults to `300`.

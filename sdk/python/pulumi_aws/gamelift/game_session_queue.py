@@ -21,7 +21,7 @@ class GameSessionQueue(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  player_latency_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameSessionQueuePlayerLatencyPolicyArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 timeout_in_seconds: Optional[pulumi.Input[float]] = None,
+                 timeout_in_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -57,7 +57,7 @@ class GameSessionQueue(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the session queue.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameSessionQueuePlayerLatencyPolicyArgs']]]] player_latency_policies: One or more policies used to choose fleet based on player latency. See below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[float] timeout_in_seconds: Maximum time a game session request can remain in the queue.
+        :param pulumi.Input[int] timeout_in_seconds: Maximum time a game session request can remain in the queue.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +97,7 @@ class GameSessionQueue(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             player_latency_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameSessionQueuePlayerLatencyPolicyArgs']]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            timeout_in_seconds: Optional[pulumi.Input[float]] = None) -> 'GameSessionQueue':
+            timeout_in_seconds: Optional[pulumi.Input[int]] = None) -> 'GameSessionQueue':
         """
         Get an existing GameSessionQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -110,7 +110,7 @@ class GameSessionQueue(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the session queue.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameSessionQueuePlayerLatencyPolicyArgs']]]] player_latency_policies: One or more policies used to choose fleet based on player latency. See below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[float] timeout_in_seconds: Maximum time a game session request can remain in the queue.
+        :param pulumi.Input[int] timeout_in_seconds: Maximum time a game session request can remain in the queue.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -166,7 +166,7 @@ class GameSessionQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutInSeconds")
-    def timeout_in_seconds(self) -> pulumi.Output[Optional[float]]:
+    def timeout_in_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum time a game session request can remain in the queue.
         """

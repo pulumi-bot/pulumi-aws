@@ -25,7 +25,7 @@ class Cluster(pulumi.CustomResource):
                  node_type: Optional[pulumi.Input[str]] = None,
                  notification_topic_arn: Optional[pulumi.Input[str]] = None,
                  parameter_group_name: Optional[pulumi.Input[str]] = None,
-                 replication_factor: Optional[pulumi.Input[float]] = None,
+                 replication_factor: Optional[pulumi.Input[int]] = None,
                  security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  server_side_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterServerSideEncryptionArgs']]] = None,
                  subnet_group_name: Optional[pulumi.Input[str]] = None,
@@ -70,7 +70,7 @@ class Cluster(pulumi.CustomResource):
                `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
         :param pulumi.Input[str] parameter_group_name: Name of the parameter group to associate
                with this DAX cluster
-        :param pulumi.Input[float] replication_factor: The number of nodes in the DAX cluster. A
+        :param pulumi.Input[int] replication_factor: The number of nodes in the DAX cluster. A
                replication factor of 1 will create a single-node cluster, without any read
                replicas
         :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: One or more VPC security groups associated
@@ -145,8 +145,8 @@ class Cluster(pulumi.CustomResource):
             nodes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterNodeArgs']]]]] = None,
             notification_topic_arn: Optional[pulumi.Input[str]] = None,
             parameter_group_name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
-            replication_factor: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
+            replication_factor: Optional[pulumi.Input[int]] = None,
             security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             server_side_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterServerSideEncryptionArgs']]] = None,
             subnet_group_name: Optional[pulumi.Input[str]] = None,
@@ -184,8 +184,8 @@ class Cluster(pulumi.CustomResource):
                `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
         :param pulumi.Input[str] parameter_group_name: Name of the parameter group to associate
                with this DAX cluster
-        :param pulumi.Input[float] port: The port used by the configuration endpoint
-        :param pulumi.Input[float] replication_factor: The number of nodes in the DAX cluster. A
+        :param pulumi.Input[int] port: The port used by the configuration endpoint
+        :param pulumi.Input[int] replication_factor: The number of nodes in the DAX cluster. A
                replication factor of 1 will create a single-node cluster, without any read
                replicas
         :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: One or more VPC security groups associated
@@ -331,7 +331,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The port used by the configuration endpoint
         """
@@ -339,7 +339,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> pulumi.Output[float]:
+    def replication_factor(self) -> pulumi.Output[int]:
         """
         The number of nodes in the DAX cluster. A
         replication factor of 1 will create a single-node cluster, without any read

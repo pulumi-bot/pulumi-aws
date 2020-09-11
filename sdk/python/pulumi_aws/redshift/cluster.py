@@ -18,7 +18,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_version_upgrade: Optional[pulumi.Input[bool]] = None,
-                 automated_snapshot_retention_period: Optional[pulumi.Input[float]] = None,
+                 automated_snapshot_retention_period: Optional[pulumi.Input[int]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -40,9 +40,9 @@ class Cluster(pulumi.CustomResource):
                  master_password: Optional[pulumi.Input[str]] = None,
                  master_username: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
-                 number_of_nodes: Optional[pulumi.Input[float]] = None,
+                 number_of_nodes: Optional[pulumi.Input[int]] = None,
                  owner_account: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  preferred_maintenance_window: Optional[pulumi.Input[str]] = None,
                  publicly_accessible: Optional[pulumi.Input[bool]] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
@@ -77,7 +77,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_version_upgrade: If true , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default is true
-        :param pulumi.Input[float] automated_snapshot_retention_period: The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
+        :param pulumi.Input[int] automated_snapshot_retention_period: The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
         :param pulumi.Input[str] availability_zone: The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency.
         :param pulumi.Input[str] cluster_identifier: The Cluster Identifier. Must be a lower case
                string.
@@ -104,9 +104,9 @@ class Cluster(pulumi.CustomResource):
                contain at least one uppercase letter, one lowercase letter, and one number.
         :param pulumi.Input[str] master_username: Username for the master DB user.
         :param pulumi.Input[str] node_type: The node type to be provisioned for the cluster.
-        :param pulumi.Input[float] number_of_nodes: The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node. Default is 1.
+        :param pulumi.Input[int] number_of_nodes: The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node. Default is 1.
         :param pulumi.Input[str] owner_account: The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.
-        :param pulumi.Input[float] port: The port number on which the cluster accepts incoming connections.
+        :param pulumi.Input[int] port: The port number on which the cluster accepts incoming connections.
                The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default port is 5439.
         :param pulumi.Input[str] preferred_maintenance_window: The weekly time range (in UTC) during which automated cluster maintenance can occur.
                Format: ddd:hh24:mi-ddd:hh24:mi
@@ -187,7 +187,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_version_upgrade: Optional[pulumi.Input[bool]] = None,
             arn: Optional[pulumi.Input[str]] = None,
-            automated_snapshot_retention_period: Optional[pulumi.Input[float]] = None,
+            automated_snapshot_retention_period: Optional[pulumi.Input[int]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             cluster_identifier: Optional[pulumi.Input[str]] = None,
             cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
@@ -210,9 +210,9 @@ class Cluster(pulumi.CustomResource):
             master_password: Optional[pulumi.Input[str]] = None,
             master_username: Optional[pulumi.Input[str]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
-            number_of_nodes: Optional[pulumi.Input[float]] = None,
+            number_of_nodes: Optional[pulumi.Input[int]] = None,
             owner_account: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             preferred_maintenance_window: Optional[pulumi.Input[str]] = None,
             publicly_accessible: Optional[pulumi.Input[bool]] = None,
             skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
@@ -230,7 +230,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_version_upgrade: If true , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default is true
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of cluster
-        :param pulumi.Input[float] automated_snapshot_retention_period: The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
+        :param pulumi.Input[int] automated_snapshot_retention_period: The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
         :param pulumi.Input[str] availability_zone: The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency.
         :param pulumi.Input[str] cluster_identifier: The Cluster Identifier. Must be a lower case
                string.
@@ -258,9 +258,9 @@ class Cluster(pulumi.CustomResource):
                contain at least one uppercase letter, one lowercase letter, and one number.
         :param pulumi.Input[str] master_username: Username for the master DB user.
         :param pulumi.Input[str] node_type: The node type to be provisioned for the cluster.
-        :param pulumi.Input[float] number_of_nodes: The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node. Default is 1.
+        :param pulumi.Input[int] number_of_nodes: The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node. Default is 1.
         :param pulumi.Input[str] owner_account: The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.
-        :param pulumi.Input[float] port: The port number on which the cluster accepts incoming connections.
+        :param pulumi.Input[int] port: The port number on which the cluster accepts incoming connections.
                The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default port is 5439.
         :param pulumi.Input[str] preferred_maintenance_window: The weekly time range (in UTC) during which automated cluster maintenance can occur.
                Format: ddd:hh24:mi-ddd:hh24:mi
@@ -332,7 +332,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automatedSnapshotRetentionPeriod")
-    def automated_snapshot_retention_period(self) -> pulumi.Output[Optional[float]]:
+    def automated_snapshot_retention_period(self) -> pulumi.Output[Optional[int]]:
         """
         The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
         """
@@ -521,7 +521,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numberOfNodes")
-    def number_of_nodes(self) -> pulumi.Output[Optional[float]]:
+    def number_of_nodes(self) -> pulumi.Output[Optional[int]]:
         """
         The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node. Default is 1.
         """
@@ -537,7 +537,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The port number on which the cluster accepts incoming connections.
         The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default port is 5439.

@@ -32,8 +32,8 @@ class GetConfigurationResult:
         if kafka_versions and not isinstance(kafka_versions, list):
             raise TypeError("Expected argument 'kafka_versions' to be a list")
         pulumi.set(__self__, "kafka_versions", kafka_versions)
-        if latest_revision and not isinstance(latest_revision, float):
-            raise TypeError("Expected argument 'latest_revision' to be a float")
+        if latest_revision and not isinstance(latest_revision, int):
+            raise TypeError("Expected argument 'latest_revision' to be a int")
         pulumi.set(__self__, "latest_revision", latest_revision)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -76,7 +76,7 @@ class GetConfigurationResult:
 
     @property
     @pulumi.getter(name="latestRevision")
-    def latest_revision(self) -> float:
+    def latest_revision(self) -> int:
         """
         Latest revision of the configuration.
         """

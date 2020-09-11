@@ -39,10 +39,10 @@ __all__ = [
 class DeploymentConfigMinimumHealthyHostsArgs:
     def __init__(__self__, *,
                  type: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[float]] = None):
+                 value: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] type: The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
-        :param pulumi.Input[float] value: The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
+        :param pulumi.Input[int] value: The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
                a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
                deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.
                When the type is `HOST_COUNT`, the value represents the minimum number of healthy instances as an absolute value.
@@ -66,7 +66,7 @@ class DeploymentConfigMinimumHealthyHostsArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[float]]:
+    def value(self) -> Optional[pulumi.Input[int]]:
         """
         The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
         a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
@@ -76,7 +76,7 @@ class DeploymentConfigMinimumHealthyHostsArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[float]]):
+    def value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value", value)
 
 
@@ -138,11 +138,11 @@ class DeploymentConfigTrafficRoutingConfigArgs:
 @pulumi.input_type
 class DeploymentConfigTrafficRoutingConfigTimeBasedCanaryArgs:
     def __init__(__self__, *,
-                 interval: Optional[pulumi.Input[float]] = None,
-                 percentage: Optional[pulumi.Input[float]] = None):
+                 interval: Optional[pulumi.Input[int]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] interval: The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
-        :param pulumi.Input[float] percentage: The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
+        :param pulumi.Input[int] interval: The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
+        :param pulumi.Input[int] percentage: The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
         """
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -151,37 +151,37 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanaryArgs:
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[float]]:
+    def interval(self) -> Optional[pulumi.Input[int]]:
         """
         The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[float]]):
+    def interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval", value)
 
     @property
     @pulumi.getter
-    def percentage(self) -> Optional[pulumi.Input[float]]:
+    def percentage(self) -> Optional[pulumi.Input[int]]:
         """
         The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
         """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
-    def percentage(self, value: Optional[pulumi.Input[float]]):
+    def percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percentage", value)
 
 
 @pulumi.input_type
 class DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs:
     def __init__(__self__, *,
-                 interval: Optional[pulumi.Input[float]] = None,
-                 percentage: Optional[pulumi.Input[float]] = None):
+                 interval: Optional[pulumi.Input[int]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] interval: The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
-        :param pulumi.Input[float] percentage: The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
+        :param pulumi.Input[int] interval: The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
+        :param pulumi.Input[int] percentage: The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
         """
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -190,26 +190,26 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs:
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[float]]:
+    def interval(self) -> Optional[pulumi.Input[int]]:
         """
         The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[float]]):
+    def interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval", value)
 
     @property
     @pulumi.getter
-    def percentage(self) -> Optional[pulumi.Input[float]]:
+    def percentage(self) -> Optional[pulumi.Input[int]]:
         """
         The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
         """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
-    def percentage(self, value: Optional[pulumi.Input[float]]):
+    def percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percentage", value)
 
 
@@ -370,12 +370,12 @@ class DeploymentGroupBlueGreenDeploymentConfigArgs:
 class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs:
     def __init__(__self__, *,
                  action_on_timeout: Optional[pulumi.Input[str]] = None,
-                 wait_time_in_minutes: Optional[pulumi.Input[float]] = None):
+                 wait_time_in_minutes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] action_on_timeout: When to reroute traffic from an original environment to a replacement environment in a blue/green deployment.
                * `CONTINUE_DEPLOYMENT`: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.
                * `STOP_DEPLOYMENT`: Do not register new instances with load balancer unless traffic is rerouted manually. If traffic is not rerouted manually before the end of the specified wait period, the deployment status is changed to Stopped.
-        :param pulumi.Input[float] wait_time_in_minutes: The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
+        :param pulumi.Input[int] wait_time_in_minutes: The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
         """
         if action_on_timeout is not None:
             pulumi.set(__self__, "action_on_timeout", action_on_timeout)
@@ -398,14 +398,14 @@ class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs:
 
     @property
     @pulumi.getter(name="waitTimeInMinutes")
-    def wait_time_in_minutes(self) -> Optional[pulumi.Input[float]]:
+    def wait_time_in_minutes(self) -> Optional[pulumi.Input[int]]:
         """
         The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
         """
         return pulumi.get(self, "wait_time_in_minutes")
 
     @wait_time_in_minutes.setter
-    def wait_time_in_minutes(self, value: Optional[pulumi.Input[float]]):
+    def wait_time_in_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wait_time_in_minutes", value)
 
 
@@ -440,12 +440,12 @@ class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionArgs:
 class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
-                 termination_wait_time_in_minutes: Optional[pulumi.Input[float]] = None):
+                 termination_wait_time_in_minutes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] action: The action to take on instances in the original environment after a successful blue/green deployment.
                * `TERMINATE`: Instances are terminated after a specified wait time.
                * `KEEP_ALIVE`: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.
-        :param pulumi.Input[float] termination_wait_time_in_minutes: The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
+        :param pulumi.Input[int] termination_wait_time_in_minutes: The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -468,14 +468,14 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
 
     @property
     @pulumi.getter(name="terminationWaitTimeInMinutes")
-    def termination_wait_time_in_minutes(self) -> Optional[pulumi.Input[float]]:
+    def termination_wait_time_in_minutes(self) -> Optional[pulumi.Input[int]]:
         """
         The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
         """
         return pulumi.get(self, "termination_wait_time_in_minutes")
 
     @termination_wait_time_in_minutes.setter
-    def termination_wait_time_in_minutes(self, value: Optional[pulumi.Input[float]]):
+    def termination_wait_time_in_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "termination_wait_time_in_minutes", value)
 
 

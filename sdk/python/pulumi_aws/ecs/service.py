@@ -20,12 +20,12 @@ class Service(pulumi.CustomResource):
                  capacity_provider_strategies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCapacityProviderStrategyArgs']]]]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deployment_controller: Optional[pulumi.Input[pulumi.InputType['ServiceDeploymentControllerArgs']]] = None,
-                 deployment_maximum_percent: Optional[pulumi.Input[float]] = None,
-                 deployment_minimum_healthy_percent: Optional[pulumi.Input[float]] = None,
-                 desired_count: Optional[pulumi.Input[float]] = None,
+                 deployment_maximum_percent: Optional[pulumi.Input[int]] = None,
+                 deployment_minimum_healthy_percent: Optional[pulumi.Input[int]] = None,
+                 desired_count: Optional[pulumi.Input[int]] = None,
                  enable_ecs_managed_tags: Optional[pulumi.Input[bool]] = None,
                  force_new_deployment: Optional[pulumi.Input[bool]] = None,
-                 health_check_grace_period_seconds: Optional[pulumi.Input[float]] = None,
+                 health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  iam_role: Optional[pulumi.Input[str]] = None,
                  launch_type: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceLoadBalancerArgs']]]]] = None,
@@ -116,12 +116,12 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCapacityProviderStrategyArgs']]]] capacity_provider_strategies: The capacity provider strategy to use for the service. Can be one or more.  Defined below.
         :param pulumi.Input[str] cluster: ARN of an ECS cluster
         :param pulumi.Input[pulumi.InputType['ServiceDeploymentControllerArgs']] deployment_controller: Configuration block containing deployment controller configuration. Defined below.
-        :param pulumi.Input[float] deployment_maximum_percent: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Not valid when using the `DAEMON` scheduling strategy.
-        :param pulumi.Input[float] deployment_minimum_healthy_percent: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment.
-        :param pulumi.Input[float] desired_count: The number of instances of the task definition to place and keep running. Defaults to 0. Do not specify if using the `DAEMON` scheduling strategy.
+        :param pulumi.Input[int] deployment_maximum_percent: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Not valid when using the `DAEMON` scheduling strategy.
+        :param pulumi.Input[int] deployment_minimum_healthy_percent: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment.
+        :param pulumi.Input[int] desired_count: The number of instances of the task definition to place and keep running. Defaults to 0. Do not specify if using the `DAEMON` scheduling strategy.
         :param pulumi.Input[bool] enable_ecs_managed_tags: Specifies whether to enable Amazon ECS managed tags for the tasks within the service.
         :param pulumi.Input[bool] force_new_deployment: Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g. `myimage:latest`), roll Fargate tasks onto a newer platform version, or immediately deploy `ordered_placement_strategy` and `placement_constraints` updates.
-        :param pulumi.Input[float] health_check_grace_period_seconds: Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
+        :param pulumi.Input[int] health_check_grace_period_seconds: Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
         :param pulumi.Input[str] iam_role: ARN of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service, but only if your task definition does not use the `awsvpc` network mode. If using `awsvpc` network mode, do not specify this role. If your account has already created the Amazon ECS service-linked role, that role is used by default for your service unless you specify a role here.
         :param pulumi.Input[str] launch_type: The launch type on which to run your service. The valid values are `EC2` and `FARGATE`. Defaults to `EC2`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceLoadBalancerArgs']]]] load_balancers: A load balancer block. Load balancers documented below.
@@ -189,12 +189,12 @@ class Service(pulumi.CustomResource):
             capacity_provider_strategies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCapacityProviderStrategyArgs']]]]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             deployment_controller: Optional[pulumi.Input[pulumi.InputType['ServiceDeploymentControllerArgs']]] = None,
-            deployment_maximum_percent: Optional[pulumi.Input[float]] = None,
-            deployment_minimum_healthy_percent: Optional[pulumi.Input[float]] = None,
-            desired_count: Optional[pulumi.Input[float]] = None,
+            deployment_maximum_percent: Optional[pulumi.Input[int]] = None,
+            deployment_minimum_healthy_percent: Optional[pulumi.Input[int]] = None,
+            desired_count: Optional[pulumi.Input[int]] = None,
             enable_ecs_managed_tags: Optional[pulumi.Input[bool]] = None,
             force_new_deployment: Optional[pulumi.Input[bool]] = None,
-            health_check_grace_period_seconds: Optional[pulumi.Input[float]] = None,
+            health_check_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             iam_role: Optional[pulumi.Input[str]] = None,
             launch_type: Optional[pulumi.Input[str]] = None,
             load_balancers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceLoadBalancerArgs']]]]] = None,
@@ -219,12 +219,12 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCapacityProviderStrategyArgs']]]] capacity_provider_strategies: The capacity provider strategy to use for the service. Can be one or more.  Defined below.
         :param pulumi.Input[str] cluster: ARN of an ECS cluster
         :param pulumi.Input[pulumi.InputType['ServiceDeploymentControllerArgs']] deployment_controller: Configuration block containing deployment controller configuration. Defined below.
-        :param pulumi.Input[float] deployment_maximum_percent: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Not valid when using the `DAEMON` scheduling strategy.
-        :param pulumi.Input[float] deployment_minimum_healthy_percent: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment.
-        :param pulumi.Input[float] desired_count: The number of instances of the task definition to place and keep running. Defaults to 0. Do not specify if using the `DAEMON` scheduling strategy.
+        :param pulumi.Input[int] deployment_maximum_percent: The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Not valid when using the `DAEMON` scheduling strategy.
+        :param pulumi.Input[int] deployment_minimum_healthy_percent: The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment.
+        :param pulumi.Input[int] desired_count: The number of instances of the task definition to place and keep running. Defaults to 0. Do not specify if using the `DAEMON` scheduling strategy.
         :param pulumi.Input[bool] enable_ecs_managed_tags: Specifies whether to enable Amazon ECS managed tags for the tasks within the service.
         :param pulumi.Input[bool] force_new_deployment: Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g. `myimage:latest`), roll Fargate tasks onto a newer platform version, or immediately deploy `ordered_placement_strategy` and `placement_constraints` updates.
-        :param pulumi.Input[float] health_check_grace_period_seconds: Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
+        :param pulumi.Input[int] health_check_grace_period_seconds: Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
         :param pulumi.Input[str] iam_role: ARN of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service, but only if your task definition does not use the `awsvpc` network mode. If using `awsvpc` network mode, do not specify this role. If your account has already created the Amazon ECS service-linked role, that role is used by default for your service unless you specify a role here.
         :param pulumi.Input[str] launch_type: The launch type on which to run your service. The valid values are `EC2` and `FARGATE`. Defaults to `EC2`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceLoadBalancerArgs']]]] load_balancers: A load balancer block. Load balancers documented below.
@@ -294,7 +294,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentMaximumPercent")
-    def deployment_maximum_percent(self) -> pulumi.Output[Optional[float]]:
+    def deployment_maximum_percent(self) -> pulumi.Output[Optional[int]]:
         """
         The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Not valid when using the `DAEMON` scheduling strategy.
         """
@@ -302,7 +302,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentMinimumHealthyPercent")
-    def deployment_minimum_healthy_percent(self) -> pulumi.Output[Optional[float]]:
+    def deployment_minimum_healthy_percent(self) -> pulumi.Output[Optional[int]]:
         """
         The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment.
         """
@@ -310,7 +310,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCount")
-    def desired_count(self) -> pulumi.Output[Optional[float]]:
+    def desired_count(self) -> pulumi.Output[Optional[int]]:
         """
         The number of instances of the task definition to place and keep running. Defaults to 0. Do not specify if using the `DAEMON` scheduling strategy.
         """
@@ -334,7 +334,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckGracePeriodSeconds")
-    def health_check_grace_period_seconds(self) -> pulumi.Output[Optional[float]]:
+    def health_check_grace_period_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
         """

@@ -88,7 +88,7 @@ class Configuration(pulumi.CustomResource):
             arn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             kafka_versions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            latest_revision: Optional[pulumi.Input[float]] = None,
+            latest_revision: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             server_properties: Optional[pulumi.Input[str]] = None) -> 'Configuration':
         """
@@ -101,7 +101,7 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the configuration.
         :param pulumi.Input[str] description: Description of the configuration.
         :param pulumi.Input[List[pulumi.Input[str]]] kafka_versions: List of Apache Kafka versions which can use this configuration.
-        :param pulumi.Input[float] latest_revision: Latest revision of the configuration.
+        :param pulumi.Input[int] latest_revision: Latest revision of the configuration.
         :param pulumi.Input[str] name: Name of the configuration.
         :param pulumi.Input[str] server_properties: Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
         """
@@ -143,7 +143,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="latestRevision")
-    def latest_revision(self) -> pulumi.Output[float]:
+    def latest_revision(self) -> pulumi.Output[int]:
         """
         Latest revision of the configuration.
         """

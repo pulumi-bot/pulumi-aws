@@ -24,14 +24,14 @@ class Job(pulumi.CustomResource):
                  execution_property: Optional[pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']]] = None,
                  glue_version: Optional[pulumi.Input[str]] = None,
                  max_capacity: Optional[pulumi.Input[float]] = None,
-                 max_retries: Optional[pulumi.Input[float]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_property: Optional[pulumi.Input[pulumi.InputType['JobNotificationPropertyArgs']]] = None,
-                 number_of_workers: Optional[pulumi.Input[float]] = None,
+                 number_of_workers: Optional[pulumi.Input[int]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  security_configuration: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  worker_type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -94,14 +94,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']] execution_property: Execution property of the job. Defined below.
         :param pulumi.Input[str] glue_version: The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
         :param pulumi.Input[float] max_capacity: The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`.
-        :param pulumi.Input[float] max_retries: The maximum number of times to retry this job if it fails.
+        :param pulumi.Input[int] max_retries: The maximum number of times to retry this job if it fails.
         :param pulumi.Input[str] name: The name you assign to this job. It must be unique in your account.
         :param pulumi.Input[pulumi.InputType['JobNotificationPropertyArgs']] notification_property: Notification property of the job. Defined below.
-        :param pulumi.Input[float] number_of_workers: The number of workers of a defined workerType that are allocated when a job runs.
+        :param pulumi.Input[int] number_of_workers: The number of workers of a defined workerType that are allocated when a job runs.
         :param pulumi.Input[str] role_arn: The ARN of the IAM role associated with this job.
         :param pulumi.Input[str] security_configuration: The name of the Security Configuration to be associated with the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[float] timeout: The job timeout in minutes. The default is 2880 minutes (48 hours).
+        :param pulumi.Input[int] timeout: The job timeout in minutes. The default is 2880 minutes (48 hours).
         :param pulumi.Input[str] worker_type: The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
         """
         if __name__ is not None:
@@ -160,14 +160,14 @@ class Job(pulumi.CustomResource):
             execution_property: Optional[pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']]] = None,
             glue_version: Optional[pulumi.Input[str]] = None,
             max_capacity: Optional[pulumi.Input[float]] = None,
-            max_retries: Optional[pulumi.Input[float]] = None,
+            max_retries: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_property: Optional[pulumi.Input[pulumi.InputType['JobNotificationPropertyArgs']]] = None,
-            number_of_workers: Optional[pulumi.Input[float]] = None,
+            number_of_workers: Optional[pulumi.Input[int]] = None,
             role_arn: Optional[pulumi.Input[str]] = None,
             security_configuration: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            timeout: Optional[pulumi.Input[float]] = None,
+            timeout: Optional[pulumi.Input[int]] = None,
             worker_type: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -184,14 +184,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']] execution_property: Execution property of the job. Defined below.
         :param pulumi.Input[str] glue_version: The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
         :param pulumi.Input[float] max_capacity: The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`.
-        :param pulumi.Input[float] max_retries: The maximum number of times to retry this job if it fails.
+        :param pulumi.Input[int] max_retries: The maximum number of times to retry this job if it fails.
         :param pulumi.Input[str] name: The name you assign to this job. It must be unique in your account.
         :param pulumi.Input[pulumi.InputType['JobNotificationPropertyArgs']] notification_property: Notification property of the job. Defined below.
-        :param pulumi.Input[float] number_of_workers: The number of workers of a defined workerType that are allocated when a job runs.
+        :param pulumi.Input[int] number_of_workers: The number of workers of a defined workerType that are allocated when a job runs.
         :param pulumi.Input[str] role_arn: The ARN of the IAM role associated with this job.
         :param pulumi.Input[str] security_configuration: The name of the Security Configuration to be associated with the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags
-        :param pulumi.Input[float] timeout: The job timeout in minutes. The default is 2880 minutes (48 hours).
+        :param pulumi.Input[int] timeout: The job timeout in minutes. The default is 2880 minutes (48 hours).
         :param pulumi.Input[str] worker_type: The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -283,7 +283,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> pulumi.Output[Optional[float]]:
+    def max_retries(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum number of times to retry this job if it fails.
         """
@@ -307,7 +307,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numberOfWorkers")
-    def number_of_workers(self) -> pulumi.Output[Optional[float]]:
+    def number_of_workers(self) -> pulumi.Output[Optional[int]]:
         """
         The number of workers of a defined workerType that are allocated when a job runs.
         """
@@ -339,7 +339,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Output[Optional[float]]:
+    def timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The job timeout in minutes. The default is 2880 minutes (48 hours).
         """

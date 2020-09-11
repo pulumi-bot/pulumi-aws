@@ -18,21 +18,21 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 default_cooldown: Optional[pulumi.Input[float]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
+                 default_cooldown: Optional[pulumi.Input[int]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
                  enabled_metrics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
-                 health_check_grace_period: Optional[pulumi.Input[float]] = None,
+                 health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  initial_lifecycle_hooks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupInitialLifecycleHookArgs']]]]] = None,
                  launch_configuration: Optional[pulumi.Input[str]] = None,
                  launch_template: Optional[pulumi.Input[pulumi.InputType['GroupLaunchTemplateArgs']]] = None,
                  load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 max_instance_lifetime: Optional[pulumi.Input[float]] = None,
-                 max_size: Optional[pulumi.Input[float]] = None,
+                 max_instance_lifetime: Optional[pulumi.Input[int]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
                  metrics_granularity: Optional[pulumi.Input[str]] = None,
-                 min_elb_capacity: Optional[pulumi.Input[float]] = None,
-                 min_size: Optional[pulumi.Input[float]] = None,
+                 min_elb_capacity: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
                  mixed_instances_policy: Optional[pulumi.Input[pulumi.InputType['GroupMixedInstancesPolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,7 @@ class Group(pulumi.CustomResource):
                  termination_policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  vpc_zone_identifiers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  wait_for_capacity_timeout: Optional[pulumi.Input[str]] = None,
-                 wait_for_elb_capacity: Optional[pulumi.Input[float]] = None,
+                 wait_for_elb_capacity: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -174,8 +174,8 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of one or more availability zones for the group. Used for EC2-Classic and default subnets when not specified with `vpc_zone_identifier` argument. Conflicts with `vpc_zone_identifier`.
-        :param pulumi.Input[float] default_cooldown: The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
-        :param pulumi.Input[float] desired_capacity: The number of Amazon EC2 instances that
+        :param pulumi.Input[int] default_cooldown: The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
+        :param pulumi.Input[int] desired_capacity: The number of Amazon EC2 instances that
                should be running in the group. (See also Waiting for
                Capacity below.)
         :param pulumi.Input[List[pulumi.Input[str]]] enabled_metrics: A list of metrics to collect. The allowed values are `GroupDesiredCapacity`, `GroupInServiceCapacity`, `GroupPendingCapacity`, `GroupMinSize`, `GroupMaxSize`, `GroupInServiceInstances`, `GroupPendingInstances`, `GroupStandbyInstances`, `GroupStandbyCapacity`, `GroupTerminatingCapacity`, `GroupTerminatingInstances`, `GroupTotalCapacity`, `GroupTotalInstances`.
@@ -184,7 +184,7 @@ class Group(pulumi.CustomResource):
                even if it's in the process of scaling a resource. Normally, this provider
                drains all the instances before deleting the group.  This bypasses that
                behavior and potentially leaves resources dangling.
-        :param pulumi.Input[float] health_check_grace_period: Time (in seconds) after instance comes into service before checking health.
+        :param pulumi.Input[int] health_check_grace_period: Time (in seconds) after instance comes into service before checking health.
         :param pulumi.Input[str] health_check_type: "EC2" or "ELB". Controls how health checking is done.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupInitialLifecycleHookArgs']]]] initial_lifecycle_hooks: One or more
                [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
@@ -197,14 +197,14 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GroupLaunchTemplateArgs']] launch_template: Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
         :param pulumi.Input[List[pulumi.Input[str]]] load_balancers: A list of elastic load balancer names to add to the autoscaling
                group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
-        :param pulumi.Input[float] max_instance_lifetime: The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
-        :param pulumi.Input[float] max_size: The maximum size of the auto scale group.
+        :param pulumi.Input[int] max_instance_lifetime: The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
+        :param pulumi.Input[int] max_size: The maximum size of the auto scale group.
         :param pulumi.Input[str] metrics_granularity: The granularity to associate with the metrics to collect. The only valid value is `1Minute`. Default is `1Minute`.
-        :param pulumi.Input[float] min_elb_capacity: Setting this causes this provider to wait for
+        :param pulumi.Input[int] min_elb_capacity: Setting this causes this provider to wait for
                this number of instances from this autoscaling group to show up healthy in the
                ELB only on creation. Updates will not wait on ELB instance number changes.
                (See also Waiting for Capacity below.)
-        :param pulumi.Input[float] min_size: The minimum size of the auto scale group.
+        :param pulumi.Input[int] min_size: The minimum size of the auto scale group.
                (See also Waiting for Capacity below.)
         :param pulumi.Input[pulumi.InputType['GroupMixedInstancesPolicyArgs']] mixed_instances_policy: Configuration block containing settings to define launch targets for Auto Scaling groups. Defined below.
         :param pulumi.Input[str] name: The name of the auto scaling group. By default generated by this provider.
@@ -227,7 +227,7 @@ class Group(pulumi.CustomResource):
                wait for ASG instances to be healthy before timing out.  (See also Waiting
                for Capacity below.) Setting this to "0" causes
                this provider to skip all Capacity Waiting behavior.
-        :param pulumi.Input[float] wait_for_elb_capacity: Setting this will cause this provider to wait
+        :param pulumi.Input[int] wait_for_elb_capacity: Setting this will cause this provider to wait
                for exactly this number of healthy instances from this autoscaling group in
                all attached load balancers on both create and update operations. (Takes
                precedence over `min_elb_capacity` behavior.)
@@ -297,21 +297,21 @@ class Group(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            default_cooldown: Optional[pulumi.Input[float]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
+            default_cooldown: Optional[pulumi.Input[int]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
             enabled_metrics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
-            health_check_grace_period: Optional[pulumi.Input[float]] = None,
+            health_check_grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
             initial_lifecycle_hooks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupInitialLifecycleHookArgs']]]]] = None,
             launch_configuration: Optional[pulumi.Input[str]] = None,
             launch_template: Optional[pulumi.Input[pulumi.InputType['GroupLaunchTemplateArgs']]] = None,
             load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            max_instance_lifetime: Optional[pulumi.Input[float]] = None,
-            max_size: Optional[pulumi.Input[float]] = None,
+            max_instance_lifetime: Optional[pulumi.Input[int]] = None,
+            max_size: Optional[pulumi.Input[int]] = None,
             metrics_granularity: Optional[pulumi.Input[str]] = None,
-            min_elb_capacity: Optional[pulumi.Input[float]] = None,
-            min_size: Optional[pulumi.Input[float]] = None,
+            min_elb_capacity: Optional[pulumi.Input[int]] = None,
+            min_size: Optional[pulumi.Input[int]] = None,
             mixed_instances_policy: Optional[pulumi.Input[pulumi.InputType['GroupMixedInstancesPolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
@@ -325,7 +325,7 @@ class Group(pulumi.CustomResource):
             termination_policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             vpc_zone_identifiers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             wait_for_capacity_timeout: Optional[pulumi.Input[str]] = None,
-            wait_for_elb_capacity: Optional[pulumi.Input[float]] = None) -> 'Group':
+            wait_for_elb_capacity: Optional[pulumi.Input[int]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -335,8 +335,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN for this AutoScaling Group
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: A list of one or more availability zones for the group. Used for EC2-Classic and default subnets when not specified with `vpc_zone_identifier` argument. Conflicts with `vpc_zone_identifier`.
-        :param pulumi.Input[float] default_cooldown: The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
-        :param pulumi.Input[float] desired_capacity: The number of Amazon EC2 instances that
+        :param pulumi.Input[int] default_cooldown: The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
+        :param pulumi.Input[int] desired_capacity: The number of Amazon EC2 instances that
                should be running in the group. (See also Waiting for
                Capacity below.)
         :param pulumi.Input[List[pulumi.Input[str]]] enabled_metrics: A list of metrics to collect. The allowed values are `GroupDesiredCapacity`, `GroupInServiceCapacity`, `GroupPendingCapacity`, `GroupMinSize`, `GroupMaxSize`, `GroupInServiceInstances`, `GroupPendingInstances`, `GroupStandbyInstances`, `GroupStandbyCapacity`, `GroupTerminatingCapacity`, `GroupTerminatingInstances`, `GroupTotalCapacity`, `GroupTotalInstances`.
@@ -345,7 +345,7 @@ class Group(pulumi.CustomResource):
                even if it's in the process of scaling a resource. Normally, this provider
                drains all the instances before deleting the group.  This bypasses that
                behavior and potentially leaves resources dangling.
-        :param pulumi.Input[float] health_check_grace_period: Time (in seconds) after instance comes into service before checking health.
+        :param pulumi.Input[int] health_check_grace_period: Time (in seconds) after instance comes into service before checking health.
         :param pulumi.Input[str] health_check_type: "EC2" or "ELB". Controls how health checking is done.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupInitialLifecycleHookArgs']]]] initial_lifecycle_hooks: One or more
                [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
@@ -358,14 +358,14 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GroupLaunchTemplateArgs']] launch_template: Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
         :param pulumi.Input[List[pulumi.Input[str]]] load_balancers: A list of elastic load balancer names to add to the autoscaling
                group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
-        :param pulumi.Input[float] max_instance_lifetime: The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
-        :param pulumi.Input[float] max_size: The maximum size of the auto scale group.
+        :param pulumi.Input[int] max_instance_lifetime: The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
+        :param pulumi.Input[int] max_size: The maximum size of the auto scale group.
         :param pulumi.Input[str] metrics_granularity: The granularity to associate with the metrics to collect. The only valid value is `1Minute`. Default is `1Minute`.
-        :param pulumi.Input[float] min_elb_capacity: Setting this causes this provider to wait for
+        :param pulumi.Input[int] min_elb_capacity: Setting this causes this provider to wait for
                this number of instances from this autoscaling group to show up healthy in the
                ELB only on creation. Updates will not wait on ELB instance number changes.
                (See also Waiting for Capacity below.)
-        :param pulumi.Input[float] min_size: The minimum size of the auto scale group.
+        :param pulumi.Input[int] min_size: The minimum size of the auto scale group.
                (See also Waiting for Capacity below.)
         :param pulumi.Input[pulumi.InputType['GroupMixedInstancesPolicyArgs']] mixed_instances_policy: Configuration block containing settings to define launch targets for Auto Scaling groups. Defined below.
         :param pulumi.Input[str] name: The name of the auto scaling group. By default generated by this provider.
@@ -388,7 +388,7 @@ class Group(pulumi.CustomResource):
                wait for ASG instances to be healthy before timing out.  (See also Waiting
                for Capacity below.) Setting this to "0" causes
                this provider to skip all Capacity Waiting behavior.
-        :param pulumi.Input[float] wait_for_elb_capacity: Setting this will cause this provider to wait
+        :param pulumi.Input[int] wait_for_elb_capacity: Setting this will cause this provider to wait
                for exactly this number of healthy instances from this autoscaling group in
                all attached load balancers on both create and update operations. (Takes
                precedence over `min_elb_capacity` behavior.)
@@ -449,7 +449,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultCooldown")
-    def default_cooldown(self) -> pulumi.Output[float]:
+    def default_cooldown(self) -> pulumi.Output[int]:
         """
         The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
         """
@@ -457,7 +457,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[float]:
+    def desired_capacity(self) -> pulumi.Output[int]:
         """
         The number of Amazon EC2 instances that
         should be running in the group. (See also Waiting for
@@ -487,7 +487,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
-    def health_check_grace_period(self) -> pulumi.Output[Optional[float]]:
+    def health_check_grace_period(self) -> pulumi.Output[Optional[int]]:
         """
         Time (in seconds) after instance comes into service before checking health.
         """
@@ -542,7 +542,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxInstanceLifetime")
-    def max_instance_lifetime(self) -> pulumi.Output[Optional[float]]:
+    def max_instance_lifetime(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
         """
@@ -550,7 +550,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[float]:
+    def max_size(self) -> pulumi.Output[int]:
         """
         The maximum size of the auto scale group.
         """
@@ -566,7 +566,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minElbCapacity")
-    def min_elb_capacity(self) -> pulumi.Output[Optional[float]]:
+    def min_elb_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         Setting this causes this provider to wait for
         this number of instances from this autoscaling group to show up healthy in the
@@ -577,7 +577,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[float]:
+    def min_size(self) -> pulumi.Output[int]:
         """
         The minimum size of the auto scale group.
         (See also Waiting for Capacity below.)
@@ -698,7 +698,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForElbCapacity")
-    def wait_for_elb_capacity(self) -> pulumi.Output[Optional[float]]:
+    def wait_for_elb_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         Setting this will cause this provider to wait
         for exactly this number of healthy instances from this autoscaling group in

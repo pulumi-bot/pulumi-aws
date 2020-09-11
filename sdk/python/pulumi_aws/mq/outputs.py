@@ -27,10 +27,10 @@ __all__ = [
 class BrokerConfiguration(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
-                 revision: Optional[float] = None):
+                 revision: Optional[int] = None):
         """
         :param str id: The Configuration ID.
-        :param float revision: Revision of the Configuration.
+        :param int revision: Revision of the Configuration.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -47,7 +47,7 @@ class BrokerConfiguration(dict):
 
     @property
     @pulumi.getter
-    def revision(self) -> Optional[float]:
+    def revision(self) -> Optional[int]:
         """
         Revision of the Configuration.
         """
@@ -260,7 +260,7 @@ class BrokerUser(dict):
 class GetBrokerConfigurationResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 revision: float):
+                 revision: int):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "revision", revision)
 
@@ -271,7 +271,7 @@ class GetBrokerConfigurationResult(dict):
 
     @property
     @pulumi.getter
-    def revision(self) -> float:
+    def revision(self) -> int:
         return pulumi.get(self, "revision")
 
 

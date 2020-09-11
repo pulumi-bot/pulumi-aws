@@ -20,7 +20,7 @@ class Listener(pulumi.CustomResource):
                  certificate_arn: Optional[pulumi.Input[str]] = None,
                  default_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
                  load_balancer_arn: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -168,7 +168,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_arn: The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `lb.ListenerCertificate` resource.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: An Action block. Action blocks are documented below.
         :param pulumi.Input[str] load_balancer_arn: The ARN of the load balancer.
-        :param pulumi.Input[float] port: The port on which the load balancer is listening.
+        :param pulumi.Input[int] port: The port on which the load balancer is listening.
         :param pulumi.Input[str] protocol: The protocol for connections from clients to the load balancer. Valid values are `TCP`, `TLS`, `UDP`, `TCP_UDP`, `HTTP` and `HTTPS`. Defaults to `HTTP`.
         :param pulumi.Input[str] ssl_policy: The name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
         """
@@ -218,7 +218,7 @@ class Listener(pulumi.CustomResource):
             certificate_arn: Optional[pulumi.Input[str]] = None,
             default_actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
             load_balancer_arn: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None) -> 'Listener':
         """
@@ -232,7 +232,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_arn: The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `lb.ListenerCertificate` resource.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: An Action block. Action blocks are documented below.
         :param pulumi.Input[str] load_balancer_arn: The ARN of the load balancer.
-        :param pulumi.Input[float] port: The port on which the load balancer is listening.
+        :param pulumi.Input[int] port: The port on which the load balancer is listening.
         :param pulumi.Input[str] protocol: The protocol for connections from clients to the load balancer. Valid values are `TCP`, `TLS`, `UDP`, `TCP_UDP`, `HTTP` and `HTTPS`. Defaults to `HTTP`.
         :param pulumi.Input[str] ssl_policy: The name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
         """
@@ -283,7 +283,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The port on which the load balancer is listening.
         """

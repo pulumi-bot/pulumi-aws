@@ -31,8 +31,8 @@ class GetLaunchTemplateResult:
         if credit_specifications and not isinstance(credit_specifications, list):
             raise TypeError("Expected argument 'credit_specifications' to be a list")
         pulumi.set(__self__, "credit_specifications", credit_specifications)
-        if default_version and not isinstance(default_version, float):
-            raise TypeError("Expected argument 'default_version' to be a float")
+        if default_version and not isinstance(default_version, int):
+            raise TypeError("Expected argument 'default_version' to be a int")
         pulumi.set(__self__, "default_version", default_version)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
@@ -76,8 +76,8 @@ class GetLaunchTemplateResult:
         if key_name and not isinstance(key_name, str):
             raise TypeError("Expected argument 'key_name' to be a str")
         pulumi.set(__self__, "key_name", key_name)
-        if latest_version and not isinstance(latest_version, float):
-            raise TypeError("Expected argument 'latest_version' to be a float")
+        if latest_version and not isinstance(latest_version, int):
+            raise TypeError("Expected argument 'latest_version' to be a int")
         pulumi.set(__self__, "latest_version", latest_version)
         if metadata_options and not isinstance(metadata_options, list):
             raise TypeError("Expected argument 'metadata_options' to be a list")
@@ -140,7 +140,7 @@ class GetLaunchTemplateResult:
 
     @property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> float:
+    def default_version(self) -> int:
         """
         The default version of the launch template.
         """
@@ -262,7 +262,7 @@ class GetLaunchTemplateResult:
 
     @property
     @pulumi.getter(name="latestVersion")
-    def latest_version(self) -> float:
+    def latest_version(self) -> int:
         """
         The latest version of the launch template.
         """

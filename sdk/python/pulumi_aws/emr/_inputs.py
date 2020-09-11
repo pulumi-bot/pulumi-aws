@@ -82,7 +82,7 @@ class ClusterCoreInstanceGroupArgs:
                  bid_price: Optional[pulumi.Input[str]] = None,
                  ebs_configs: Optional[pulumi.Input[List[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] instance_type: EC2 instance type for all instances in the instance group.
@@ -90,7 +90,7 @@ class ClusterCoreInstanceGroupArgs:
         :param pulumi.Input[str] bid_price: Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
         :param pulumi.Input[List[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]] ebs_configs: Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
         :param pulumi.Input[str] id: The ID of the EMR Cluster
-        :param pulumi.Input[float] instance_count: Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
+        :param pulumi.Input[int] instance_count: Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         :param pulumi.Input[str] name: The name of the step.
         """
         pulumi.set(__self__, "instance_type", instance_type)
@@ -169,14 +169,14 @@ class ClusterCoreInstanceGroupArgs:
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[float]]:
+    def instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[float]]):
+    def instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_count", value)
 
     @property
@@ -195,15 +195,15 @@ class ClusterCoreInstanceGroupArgs:
 @pulumi.input_type
 class ClusterCoreInstanceGroupEbsConfigArgs:
     def __init__(__self__, *,
-                 size: pulumi.Input[float],
+                 size: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 iops: Optional[pulumi.Input[float]] = None,
-                 volumes_per_instance: Optional[pulumi.Input[float]] = None):
+                 iops: Optional[pulumi.Input[int]] = None,
+                 volumes_per_instance: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] size: The volume size, in gibibytes (GiB).
+        :param pulumi.Input[int] size: The volume size, in gibibytes (GiB).
         :param pulumi.Input[str] type: The volume type. Valid options are `gp2`, `io1`, `standard` and `st1`. See [EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
-        :param pulumi.Input[float] iops: The number of I/O operations per second (IOPS) that the volume supports
-        :param pulumi.Input[float] volumes_per_instance: The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS) that the volume supports
+        :param pulumi.Input[int] volumes_per_instance: The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
@@ -214,14 +214,14 @@ class ClusterCoreInstanceGroupEbsConfigArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[float]:
+    def size(self) -> pulumi.Input[int]:
         """
         The volume size, in gibibytes (GiB).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[float]):
+    def size(self, value: pulumi.Input[int]):
         pulumi.set(self, "size", value)
 
     @property
@@ -238,26 +238,26 @@ class ClusterCoreInstanceGroupEbsConfigArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         """
         The number of I/O operations per second (IOPS) that the volume supports
         """
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[pulumi.Input[float]]:
+    def volumes_per_instance(self) -> Optional[pulumi.Input[int]]:
         """
         The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
         """
         return pulumi.get(self, "volumes_per_instance")
 
     @volumes_per_instance.setter
-    def volumes_per_instance(self, value: Optional[pulumi.Input[float]]):
+    def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
 
@@ -487,14 +487,14 @@ class ClusterMasterInstanceGroupArgs:
                  bid_price: Optional[pulumi.Input[str]] = None,
                  ebs_configs: Optional[pulumi.Input[List[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] instance_type: EC2 instance type for all instances in the instance group.
         :param pulumi.Input[str] bid_price: Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
         :param pulumi.Input[List[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]] ebs_configs: Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
         :param pulumi.Input[str] id: The ID of the EMR Cluster
-        :param pulumi.Input[float] instance_count: Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
+        :param pulumi.Input[int] instance_count: Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         :param pulumi.Input[str] name: The name of the step.
         """
         pulumi.set(__self__, "instance_type", instance_type)
@@ -559,14 +559,14 @@ class ClusterMasterInstanceGroupArgs:
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[float]]:
+    def instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[float]]):
+    def instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_count", value)
 
     @property
@@ -585,15 +585,15 @@ class ClusterMasterInstanceGroupArgs:
 @pulumi.input_type
 class ClusterMasterInstanceGroupEbsConfigArgs:
     def __init__(__self__, *,
-                 size: pulumi.Input[float],
+                 size: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 iops: Optional[pulumi.Input[float]] = None,
-                 volumes_per_instance: Optional[pulumi.Input[float]] = None):
+                 iops: Optional[pulumi.Input[int]] = None,
+                 volumes_per_instance: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] size: The volume size, in gibibytes (GiB).
+        :param pulumi.Input[int] size: The volume size, in gibibytes (GiB).
         :param pulumi.Input[str] type: The volume type. Valid options are `gp2`, `io1`, `standard` and `st1`. See [EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
-        :param pulumi.Input[float] iops: The number of I/O operations per second (IOPS) that the volume supports
-        :param pulumi.Input[float] volumes_per_instance: The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS) that the volume supports
+        :param pulumi.Input[int] volumes_per_instance: The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
@@ -604,14 +604,14 @@ class ClusterMasterInstanceGroupEbsConfigArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[float]:
+    def size(self) -> pulumi.Input[int]:
         """
         The volume size, in gibibytes (GiB).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[float]):
+    def size(self, value: pulumi.Input[int]):
         pulumi.set(self, "size", value)
 
     @property
@@ -628,26 +628,26 @@ class ClusterMasterInstanceGroupEbsConfigArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         """
         The number of I/O operations per second (IOPS) that the volume supports
         """
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[pulumi.Input[float]]:
+    def volumes_per_instance(self) -> Optional[pulumi.Input[int]]:
         """
         The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
         """
         return pulumi.get(self, "volumes_per_instance")
 
     @volumes_per_instance.setter
-    def volumes_per_instance(self, value: Optional[pulumi.Input[float]]):
+    def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
 
@@ -776,15 +776,15 @@ class ClusterStepHadoopJarStepArgs:
 @pulumi.input_type
 class InstanceGroupEbsConfigArgs:
     def __init__(__self__, *,
-                 size: pulumi.Input[float],
+                 size: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 iops: Optional[pulumi.Input[float]] = None,
-                 volumes_per_instance: Optional[pulumi.Input[float]] = None):
+                 iops: Optional[pulumi.Input[int]] = None,
+                 volumes_per_instance: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] size: The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+        :param pulumi.Input[int] size: The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
         :param pulumi.Input[str] type: The volume type. Valid options are 'gp2', 'io1' and 'standard'.
-        :param pulumi.Input[float] iops: The number of I/O operations per second (IOPS) that the volume supports.
-        :param pulumi.Input[float] volumes_per_instance: The number of EBS Volumes to attach per instance.
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS) that the volume supports.
+        :param pulumi.Input[int] volumes_per_instance: The number of EBS Volumes to attach per instance.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
@@ -795,14 +795,14 @@ class InstanceGroupEbsConfigArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Input[float]:
+    def size(self) -> pulumi.Input[int]:
         """
         The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: pulumi.Input[float]):
+    def size(self, value: pulumi.Input[int]):
         pulumi.set(self, "size", value)
 
     @property
@@ -819,26 +819,26 @@ class InstanceGroupEbsConfigArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         """
         The number of I/O operations per second (IOPS) that the volume supports.
         """
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[pulumi.Input[float]]:
+    def volumes_per_instance(self) -> Optional[pulumi.Input[int]]:
         """
         The number of EBS Volumes to attach per instance.
         """
         return pulumi.get(self, "volumes_per_instance")
 
     @volumes_per_instance.setter
-    def volumes_per_instance(self, value: Optional[pulumi.Input[float]]):
+    def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
 

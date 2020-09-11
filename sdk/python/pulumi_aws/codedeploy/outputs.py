@@ -40,10 +40,10 @@ __all__ = [
 class DeploymentConfigMinimumHealthyHosts(dict):
     def __init__(__self__, *,
                  type: Optional[str] = None,
-                 value: Optional[float] = None):
+                 value: Optional[int] = None):
         """
         :param str type: The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
-        :param float value: The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
+        :param int value: The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
                a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
                deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.
                When the type is `HOST_COUNT`, the value represents the minimum number of healthy instances as an absolute value.
@@ -63,7 +63,7 @@ class DeploymentConfigMinimumHealthyHosts(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[float]:
+    def value(self) -> Optional[int]:
         """
         The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
         a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
@@ -125,11 +125,11 @@ class DeploymentConfigTrafficRoutingConfig(dict):
 @pulumi.output_type
 class DeploymentConfigTrafficRoutingConfigTimeBasedCanary(dict):
     def __init__(__self__, *,
-                 interval: Optional[float] = None,
-                 percentage: Optional[float] = None):
+                 interval: Optional[int] = None,
+                 percentage: Optional[int] = None):
         """
-        :param float interval: The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
-        :param float percentage: The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
+        :param int interval: The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
+        :param int percentage: The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
         """
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -138,7 +138,7 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanary(dict):
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[float]:
+    def interval(self) -> Optional[int]:
         """
         The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
         """
@@ -146,7 +146,7 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanary(dict):
 
     @property
     @pulumi.getter
-    def percentage(self) -> Optional[float]:
+    def percentage(self) -> Optional[int]:
         """
         The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
         """
@@ -159,11 +159,11 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanary(dict):
 @pulumi.output_type
 class DeploymentConfigTrafficRoutingConfigTimeBasedLinear(dict):
     def __init__(__self__, *,
-                 interval: Optional[float] = None,
-                 percentage: Optional[float] = None):
+                 interval: Optional[int] = None,
+                 percentage: Optional[int] = None):
         """
-        :param float interval: The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
-        :param float percentage: The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
+        :param int interval: The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
+        :param int percentage: The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
         """
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -172,7 +172,7 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinear(dict):
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[float]:
+    def interval(self) -> Optional[int]:
         """
         The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
         """
@@ -180,7 +180,7 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinear(dict):
 
     @property
     @pulumi.getter
-    def percentage(self) -> Optional[float]:
+    def percentage(self) -> Optional[int]:
         """
         The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
         """
@@ -324,12 +324,12 @@ class DeploymentGroupBlueGreenDeploymentConfig(dict):
 class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption(dict):
     def __init__(__self__, *,
                  action_on_timeout: Optional[str] = None,
-                 wait_time_in_minutes: Optional[float] = None):
+                 wait_time_in_minutes: Optional[int] = None):
         """
         :param str action_on_timeout: When to reroute traffic from an original environment to a replacement environment in a blue/green deployment.
                * `CONTINUE_DEPLOYMENT`: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.
                * `STOP_DEPLOYMENT`: Do not register new instances with load balancer unless traffic is rerouted manually. If traffic is not rerouted manually before the end of the specified wait period, the deployment status is changed to Stopped.
-        :param float wait_time_in_minutes: The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
+        :param int wait_time_in_minutes: The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
         """
         if action_on_timeout is not None:
             pulumi.set(__self__, "action_on_timeout", action_on_timeout)
@@ -348,7 +348,7 @@ class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption(dict):
 
     @property
     @pulumi.getter(name="waitTimeInMinutes")
-    def wait_time_in_minutes(self) -> Optional[float]:
+    def wait_time_in_minutes(self) -> Optional[int]:
         """
         The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
         """
@@ -388,12 +388,12 @@ class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption(dict)
 class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
-                 termination_wait_time_in_minutes: Optional[float] = None):
+                 termination_wait_time_in_minutes: Optional[int] = None):
         """
         :param str action: The action to take on instances in the original environment after a successful blue/green deployment.
                * `TERMINATE`: Instances are terminated after a specified wait time.
                * `KEEP_ALIVE`: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.
-        :param float termination_wait_time_in_minutes: The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
+        :param int termination_wait_time_in_minutes: The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -412,7 +412,7 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
 
     @property
     @pulumi.getter(name="terminationWaitTimeInMinutes")
-    def termination_wait_time_in_minutes(self) -> Optional[float]:
+    def termination_wait_time_in_minutes(self) -> Optional[int]:
         """
         The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
         """

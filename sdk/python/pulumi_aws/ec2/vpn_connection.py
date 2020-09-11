@@ -153,14 +153,14 @@ class VpnConnection(pulumi.CustomResource):
             transit_gateway_id: Optional[pulumi.Input[str]] = None,
             tunnel1_address: Optional[pulumi.Input[str]] = None,
             tunnel1_bgp_asn: Optional[pulumi.Input[str]] = None,
-            tunnel1_bgp_holdtime: Optional[pulumi.Input[float]] = None,
+            tunnel1_bgp_holdtime: Optional[pulumi.Input[int]] = None,
             tunnel1_cgw_inside_address: Optional[pulumi.Input[str]] = None,
             tunnel1_inside_cidr: Optional[pulumi.Input[str]] = None,
             tunnel1_preshared_key: Optional[pulumi.Input[str]] = None,
             tunnel1_vgw_inside_address: Optional[pulumi.Input[str]] = None,
             tunnel2_address: Optional[pulumi.Input[str]] = None,
             tunnel2_bgp_asn: Optional[pulumi.Input[str]] = None,
-            tunnel2_bgp_holdtime: Optional[pulumi.Input[float]] = None,
+            tunnel2_bgp_holdtime: Optional[pulumi.Input[int]] = None,
             tunnel2_cgw_inside_address: Optional[pulumi.Input[str]] = None,
             tunnel2_inside_cidr: Optional[pulumi.Input[str]] = None,
             tunnel2_preshared_key: Optional[pulumi.Input[str]] = None,
@@ -184,14 +184,14 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.Input[str] transit_gateway_id: The ID of the EC2 Transit Gateway.
         :param pulumi.Input[str] tunnel1_address: The public IP address of the first VPN tunnel.
         :param pulumi.Input[str] tunnel1_bgp_asn: The bgp asn number of the first VPN tunnel.
-        :param pulumi.Input[float] tunnel1_bgp_holdtime: The bgp holdtime of the first VPN tunnel.
+        :param pulumi.Input[int] tunnel1_bgp_holdtime: The bgp holdtime of the first VPN tunnel.
         :param pulumi.Input[str] tunnel1_cgw_inside_address: The RFC 6890 link-local address of the first VPN tunnel (Customer Gateway Side).
         :param pulumi.Input[str] tunnel1_inside_cidr: The CIDR block of the inside IP addresses for the first VPN tunnel.
         :param pulumi.Input[str] tunnel1_preshared_key: The preshared key of the first VPN tunnel.
         :param pulumi.Input[str] tunnel1_vgw_inside_address: The RFC 6890 link-local address of the first VPN tunnel (VPN Gateway Side).
         :param pulumi.Input[str] tunnel2_address: The public IP address of the second VPN tunnel.
         :param pulumi.Input[str] tunnel2_bgp_asn: The bgp asn number of the second VPN tunnel.
-        :param pulumi.Input[float] tunnel2_bgp_holdtime: The bgp holdtime of the second VPN tunnel.
+        :param pulumi.Input[int] tunnel2_bgp_holdtime: The bgp holdtime of the second VPN tunnel.
         :param pulumi.Input[str] tunnel2_cgw_inside_address: The RFC 6890 link-local address of the second VPN tunnel (Customer Gateway Side).
         :param pulumi.Input[str] tunnel2_inside_cidr: The CIDR block of the inside IP addresses for the second VPN tunnel.
         :param pulumi.Input[str] tunnel2_preshared_key: The preshared key of the second VPN tunnel.
@@ -309,7 +309,7 @@ class VpnConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tunnel1BgpHoldtime")
-    def tunnel1_bgp_holdtime(self) -> pulumi.Output[float]:
+    def tunnel1_bgp_holdtime(self) -> pulumi.Output[int]:
         """
         The bgp holdtime of the first VPN tunnel.
         """
@@ -365,7 +365,7 @@ class VpnConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tunnel2BgpHoldtime")
-    def tunnel2_bgp_holdtime(self) -> pulumi.Output[float]:
+    def tunnel2_bgp_holdtime(self) -> pulumi.Output[int]:
         """
         The bgp holdtime of the second VPN tunnel.
         """

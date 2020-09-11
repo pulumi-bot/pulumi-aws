@@ -26,11 +26,11 @@ class GetClusterResult:
         if availability_zones and not isinstance(availability_zones, list):
             raise TypeError("Expected argument 'availability_zones' to be a list")
         pulumi.set(__self__, "availability_zones", availability_zones)
-        if backtrack_window and not isinstance(backtrack_window, float):
-            raise TypeError("Expected argument 'backtrack_window' to be a float")
+        if backtrack_window and not isinstance(backtrack_window, int):
+            raise TypeError("Expected argument 'backtrack_window' to be a int")
         pulumi.set(__self__, "backtrack_window", backtrack_window)
-        if backup_retention_period and not isinstance(backup_retention_period, float):
-            raise TypeError("Expected argument 'backup_retention_period' to be a float")
+        if backup_retention_period and not isinstance(backup_retention_period, int):
+            raise TypeError("Expected argument 'backup_retention_period' to be a int")
         pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if cluster_identifier and not isinstance(cluster_identifier, str):
             raise TypeError("Expected argument 'cluster_identifier' to be a str")
@@ -83,8 +83,8 @@ class GetClusterResult:
         if master_username and not isinstance(master_username, str):
             raise TypeError("Expected argument 'master_username' to be a str")
         pulumi.set(__self__, "master_username", master_username)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
         if preferred_backup_window and not isinstance(preferred_backup_window, str):
             raise TypeError("Expected argument 'preferred_backup_window' to be a str")
@@ -120,12 +120,12 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="backtrackWindow")
-    def backtrack_window(self) -> float:
+    def backtrack_window(self) -> int:
         return pulumi.get(self, "backtrack_window")
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> float:
+    def backup_retention_period(self) -> int:
         return pulumi.get(self, "backup_retention_period")
 
     @property
@@ -218,7 +218,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property

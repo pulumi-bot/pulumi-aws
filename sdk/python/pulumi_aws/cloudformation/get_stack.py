@@ -53,8 +53,8 @@ class GetStackResult:
         if template_body and not isinstance(template_body, str):
             raise TypeError("Expected argument 'template_body' to be a str")
         pulumi.set(__self__, "template_body", template_body)
-        if timeout_in_minutes and not isinstance(timeout_in_minutes, float):
-            raise TypeError("Expected argument 'timeout_in_minutes' to be a float")
+        if timeout_in_minutes and not isinstance(timeout_in_minutes, int):
+            raise TypeError("Expected argument 'timeout_in_minutes' to be a int")
         pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
 
     @property
@@ -144,7 +144,7 @@ class GetStackResult:
 
     @property
     @pulumi.getter(name="timeoutInMinutes")
-    def timeout_in_minutes(self) -> float:
+    def timeout_in_minutes(self) -> int:
         """
         The amount of time that can pass before the stack status becomes `CREATE_FAILED`
         """

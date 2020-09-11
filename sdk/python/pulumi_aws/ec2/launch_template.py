@@ -21,7 +21,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  capacity_reservation_specification: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCapacityReservationSpecificationArgs']]] = None,
                  cpu_options: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCpuOptionsArgs']]] = None,
                  credit_specification: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCreditSpecificationArgs']]] = None,
-                 default_version: Optional[pulumi.Input[float]] = None,
+                 default_version: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_api_termination: Optional[pulumi.Input[bool]] = None,
                  ebs_optimized: Optional[pulumi.Input[str]] = None,
@@ -63,7 +63,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LaunchTemplateCpuOptionsArgs']] cpu_options: The CPU options for the instance. See CPU Options below for more details.
         :param pulumi.Input[pulumi.InputType['LaunchTemplateCreditSpecificationArgs']] credit_specification: Customize the credit specification of the instance. See Credit
                Specification below for more details.
-        :param pulumi.Input[float] default_version: Default Version of the launch template.
+        :param pulumi.Input[int] default_version: Default Version of the launch template.
         :param pulumi.Input[str] description: Description of the launch template.
         :param pulumi.Input[bool] disable_api_termination: If `true`, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
@@ -165,7 +165,7 @@ class LaunchTemplate(pulumi.CustomResource):
             capacity_reservation_specification: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCapacityReservationSpecificationArgs']]] = None,
             cpu_options: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCpuOptionsArgs']]] = None,
             credit_specification: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateCreditSpecificationArgs']]] = None,
-            default_version: Optional[pulumi.Input[float]] = None,
+            default_version: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_api_termination: Optional[pulumi.Input[bool]] = None,
             ebs_optimized: Optional[pulumi.Input[str]] = None,
@@ -179,7 +179,7 @@ class LaunchTemplate(pulumi.CustomResource):
             instance_type: Optional[pulumi.Input[str]] = None,
             kernel_id: Optional[pulumi.Input[str]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
-            latest_version: Optional[pulumi.Input[float]] = None,
+            latest_version: Optional[pulumi.Input[int]] = None,
             license_specifications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateLicenseSpecificationArgs']]]]] = None,
             metadata_options: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateMetadataOptionsArgs']]] = None,
             monitoring: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateMonitoringArgs']]] = None,
@@ -208,7 +208,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LaunchTemplateCpuOptionsArgs']] cpu_options: The CPU options for the instance. See CPU Options below for more details.
         :param pulumi.Input[pulumi.InputType['LaunchTemplateCreditSpecificationArgs']] credit_specification: Customize the credit specification of the instance. See Credit
                Specification below for more details.
-        :param pulumi.Input[float] default_version: Default Version of the launch template.
+        :param pulumi.Input[int] default_version: Default Version of the launch template.
         :param pulumi.Input[str] description: Description of the launch template.
         :param pulumi.Input[bool] disable_api_termination: If `true`, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
@@ -227,7 +227,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The type of the instance.
         :param pulumi.Input[str] kernel_id: The kernel ID.
         :param pulumi.Input[str] key_name: The key name to use for the instance.
-        :param pulumi.Input[float] latest_version: The latest version of the launch template.
+        :param pulumi.Input[int] latest_version: The latest version of the launch template.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LaunchTemplateLicenseSpecificationArgs']]]] license_specifications: A list of license specifications to associate with. See License Specification below for more details.
         :param pulumi.Input[pulumi.InputType['LaunchTemplateMetadataOptionsArgs']] metadata_options: Customize the metadata options for the instance. See Metadata Options below for more details.
         :param pulumi.Input[pulumi.InputType['LaunchTemplateMonitoringArgs']] monitoring: The monitoring option for the instance. See Monitoring below for more details.
@@ -329,7 +329,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> pulumi.Output[float]:
+    def default_version(self) -> pulumi.Output[int]:
         """
         Default Version of the launch template.
         """
@@ -446,7 +446,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="latestVersion")
-    def latest_version(self) -> pulumi.Output[float]:
+    def latest_version(self) -> pulumi.Output[int]:
         """
         The latest version of the launch template.
         """

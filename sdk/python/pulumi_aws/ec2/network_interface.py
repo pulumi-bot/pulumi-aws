@@ -21,7 +21,7 @@ class NetworkInterface(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 private_ips_count: Optional[pulumi.Input[float]] = None,
+                 private_ips_count: Optional[pulumi.Input[int]] = None,
                  security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  source_dest_check: Optional[pulumi.Input[bool]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
@@ -53,7 +53,7 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkInterfaceAttachmentArgs']]]] attachments: Block to define the attachment of the ENI. Documented below.
         :param pulumi.Input[str] description: A description for the network interface.
         :param pulumi.Input[List[pulumi.Input[str]]] private_ips: List of private IPs to assign to the ENI.
-        :param pulumi.Input[float] private_ips_count: Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
+        :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
         :param pulumi.Input[List[pulumi.Input[str]]] security_groups: List of security group IDs to assign to the ENI.
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.
@@ -107,7 +107,7 @@ class NetworkInterface(pulumi.CustomResource):
             private_dns_name: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
             private_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            private_ips_count: Optional[pulumi.Input[float]] = None,
+            private_ips_count: Optional[pulumi.Input[int]] = None,
             security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             source_dest_check: Optional[pulumi.Input[bool]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] mac_address: The MAC address of the network interface.
         :param pulumi.Input[str] private_dns_name: The private DNS name of the network interface (IPv4).
         :param pulumi.Input[List[pulumi.Input[str]]] private_ips: List of private IPs to assign to the ENI.
-        :param pulumi.Input[float] private_ips_count: Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
+        :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
         :param pulumi.Input[List[pulumi.Input[str]]] security_groups: List of security group IDs to assign to the ENI.
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.
@@ -200,7 +200,7 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpsCount")
-    def private_ips_count(self) -> pulumi.Output[float]:
+    def private_ips_count(self) -> pulumi.Output[int]:
         """
         Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
         """

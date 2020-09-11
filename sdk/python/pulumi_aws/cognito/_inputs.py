@@ -700,19 +700,19 @@ class UserPoolLambdaConfigArgs:
 @pulumi.input_type
 class UserPoolPasswordPolicyArgs:
     def __init__(__self__, *,
-                 minimum_length: Optional[pulumi.Input[float]] = None,
+                 minimum_length: Optional[pulumi.Input[int]] = None,
                  require_lowercase: Optional[pulumi.Input[bool]] = None,
                  require_numbers: Optional[pulumi.Input[bool]] = None,
                  require_symbols: Optional[pulumi.Input[bool]] = None,
                  require_uppercase: Optional[pulumi.Input[bool]] = None,
-                 temporary_password_validity_days: Optional[pulumi.Input[float]] = None):
+                 temporary_password_validity_days: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] minimum_length: The minimum length of the password policy that you have set.
+        :param pulumi.Input[int] minimum_length: The minimum length of the password policy that you have set.
         :param pulumi.Input[bool] require_lowercase: Whether you have required users to use at least one lowercase letter in their password.
         :param pulumi.Input[bool] require_numbers: Whether you have required users to use at least one number in their password.
         :param pulumi.Input[bool] require_symbols: Whether you have required users to use at least one symbol in their password.
         :param pulumi.Input[bool] require_uppercase: Whether you have required users to use at least one uppercase letter in their password.
-        :param pulumi.Input[float] temporary_password_validity_days: In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+        :param pulumi.Input[int] temporary_password_validity_days: In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
         """
         if minimum_length is not None:
             pulumi.set(__self__, "minimum_length", minimum_length)
@@ -729,14 +729,14 @@ class UserPoolPasswordPolicyArgs:
 
     @property
     @pulumi.getter(name="minimumLength")
-    def minimum_length(self) -> Optional[pulumi.Input[float]]:
+    def minimum_length(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum length of the password policy that you have set.
         """
         return pulumi.get(self, "minimum_length")
 
     @minimum_length.setter
-    def minimum_length(self, value: Optional[pulumi.Input[float]]):
+    def minimum_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minimum_length", value)
 
     @property
@@ -789,14 +789,14 @@ class UserPoolPasswordPolicyArgs:
 
     @property
     @pulumi.getter(name="temporaryPasswordValidityDays")
-    def temporary_password_validity_days(self) -> Optional[pulumi.Input[float]]:
+    def temporary_password_validity_days(self) -> Optional[pulumi.Input[int]]:
         """
         In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
         """
         return pulumi.get(self, "temporary_password_validity_days")
 
     @temporary_password_validity_days.setter
-    def temporary_password_validity_days(self, value: Optional[pulumi.Input[float]]):
+    def temporary_password_validity_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "temporary_password_validity_days", value)
 
 

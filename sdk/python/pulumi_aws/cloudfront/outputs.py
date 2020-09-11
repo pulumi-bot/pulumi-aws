@@ -37,17 +37,17 @@ __all__ = [
 @pulumi.output_type
 class DistributionCustomErrorResponse(dict):
     def __init__(__self__, *,
-                 error_code: float,
-                 error_caching_min_ttl: Optional[float] = None,
-                 response_code: Optional[float] = None,
+                 error_code: int,
+                 error_caching_min_ttl: Optional[int] = None,
+                 response_code: Optional[int] = None,
                  response_page_path: Optional[str] = None):
         """
-        :param float error_code: The 4xx or 5xx HTTP status code that you want to
+        :param int error_code: The 4xx or 5xx HTTP status code that you want to
                customize.
-        :param float error_caching_min_ttl: The minimum amount of time you want
+        :param int error_caching_min_ttl: The minimum amount of time you want
                HTTP error codes to stay in CloudFront caches before CloudFront queries your
                origin to see whether the object has been updated.
-        :param float response_code: The HTTP status code that you want CloudFront
+        :param int response_code: The HTTP status code that you want CloudFront
                to return with the custom error page to the viewer.
         :param str response_page_path: The path of the custom error page (for
                example, `/custom_404.html`).
@@ -62,7 +62,7 @@ class DistributionCustomErrorResponse(dict):
 
     @property
     @pulumi.getter(name="errorCode")
-    def error_code(self) -> float:
+    def error_code(self) -> int:
         """
         The 4xx or 5xx HTTP status code that you want to
         customize.
@@ -71,7 +71,7 @@ class DistributionCustomErrorResponse(dict):
 
     @property
     @pulumi.getter(name="errorCachingMinTtl")
-    def error_caching_min_ttl(self) -> Optional[float]:
+    def error_caching_min_ttl(self) -> Optional[int]:
         """
         The minimum amount of time you want
         HTTP error codes to stay in CloudFront caches before CloudFront queries your
@@ -81,7 +81,7 @@ class DistributionCustomErrorResponse(dict):
 
     @property
     @pulumi.getter(name="responseCode")
-    def response_code(self) -> Optional[float]:
+    def response_code(self) -> Optional[int]:
         """
         The HTTP status code that you want CloudFront
         to return with the custom error page to the viewer.
@@ -110,11 +110,11 @@ class DistributionDefaultCacheBehavior(dict):
                  target_origin_id: str,
                  viewer_protocol_policy: str,
                  compress: Optional[bool] = None,
-                 default_ttl: Optional[float] = None,
+                 default_ttl: Optional[int] = None,
                  field_level_encryption_id: Optional[str] = None,
                  lambda_function_associations: Optional[List['outputs.DistributionDefaultCacheBehaviorLambdaFunctionAssociation']] = None,
-                 max_ttl: Optional[float] = None,
-                 min_ttl: Optional[float] = None,
+                 max_ttl: Optional[int] = None,
+                 min_ttl: Optional[int] = None,
                  smooth_streaming: Optional[bool] = None,
                  trusted_signers: Optional[List[str]] = None):
         """
@@ -134,19 +134,19 @@ class DistributionDefaultCacheBehavior(dict):
         :param bool compress: Whether you want CloudFront to automatically
                compress content for web requests that include `Accept-Encoding: gzip` in
                the request header (default: `false`).
-        :param float default_ttl: The default amount of time (in seconds) that an
+        :param int default_ttl: The default amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                in the absence of an `Cache-Control max-age` or `Expires` header. Defaults to
                1 day.
         :param str field_level_encryption_id: Field level encryption configuration ID
         :param List['DistributionDefaultCacheBehaviorLambdaFunctionAssociationArgs'] lambda_function_associations: A config block that triggers a lambda function with
                specific actions. Defined below, maximum 4.
-        :param float max_ttl: The maximum amount of time (in seconds) that an
+        :param int max_ttl: The maximum amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                to your origin to determine whether the object has been updated. Only
                effective in the presence of `Cache-Control max-age`, `Cache-Control
                s-maxage`, and `Expires` headers. Defaults to 365 days.
-        :param float min_ttl: The minimum amount of time that you want objects to
+        :param int min_ttl: The minimum amount of time that you want objects to
                stay in CloudFront caches before CloudFront queries your origin to see
                whether the object has been updated. Defaults to 0 seconds.
         :param bool smooth_streaming: Indicates whether you want to distribute
@@ -237,7 +237,7 @@ class DistributionDefaultCacheBehavior(dict):
 
     @property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[float]:
+    def default_ttl(self) -> Optional[int]:
         """
         The default amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -265,7 +265,7 @@ class DistributionDefaultCacheBehavior(dict):
 
     @property
     @pulumi.getter(name="maxTtl")
-    def max_ttl(self) -> Optional[float]:
+    def max_ttl(self) -> Optional[int]:
         """
         The maximum amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -277,7 +277,7 @@ class DistributionDefaultCacheBehavior(dict):
 
     @property
     @pulumi.getter(name="minTtl")
-    def min_ttl(self) -> Optional[float]:
+    def min_ttl(self) -> Optional[int]:
         """
         The minimum amount of time that you want objects to
         stay in CloudFront caches before CloudFront queries your origin to see
@@ -530,11 +530,11 @@ class DistributionOrderedCacheBehavior(dict):
                  target_origin_id: str,
                  viewer_protocol_policy: str,
                  compress: Optional[bool] = None,
-                 default_ttl: Optional[float] = None,
+                 default_ttl: Optional[int] = None,
                  field_level_encryption_id: Optional[str] = None,
                  lambda_function_associations: Optional[List['outputs.DistributionOrderedCacheBehaviorLambdaFunctionAssociation']] = None,
-                 max_ttl: Optional[float] = None,
-                 min_ttl: Optional[float] = None,
+                 max_ttl: Optional[int] = None,
+                 min_ttl: Optional[int] = None,
                  smooth_streaming: Optional[bool] = None,
                  trusted_signers: Optional[List[str]] = None):
         """
@@ -556,19 +556,19 @@ class DistributionOrderedCacheBehavior(dict):
         :param bool compress: Whether you want CloudFront to automatically
                compress content for web requests that include `Accept-Encoding: gzip` in
                the request header (default: `false`).
-        :param float default_ttl: The default amount of time (in seconds) that an
+        :param int default_ttl: The default amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                in the absence of an `Cache-Control max-age` or `Expires` header. Defaults to
                1 day.
         :param str field_level_encryption_id: Field level encryption configuration ID
         :param List['DistributionOrderedCacheBehaviorLambdaFunctionAssociationArgs'] lambda_function_associations: A config block that triggers a lambda function with
                specific actions. Defined below, maximum 4.
-        :param float max_ttl: The maximum amount of time (in seconds) that an
+        :param int max_ttl: The maximum amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                to your origin to determine whether the object has been updated. Only
                effective in the presence of `Cache-Control max-age`, `Cache-Control
                s-maxage`, and `Expires` headers. Defaults to 365 days.
-        :param float min_ttl: The minimum amount of time that you want objects to
+        :param int min_ttl: The minimum amount of time that you want objects to
                stay in CloudFront caches before CloudFront queries your origin to see
                whether the object has been updated. Defaults to 0 seconds.
         :param bool smooth_streaming: Indicates whether you want to distribute
@@ -669,7 +669,7 @@ class DistributionOrderedCacheBehavior(dict):
 
     @property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[float]:
+    def default_ttl(self) -> Optional[int]:
         """
         The default amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -697,7 +697,7 @@ class DistributionOrderedCacheBehavior(dict):
 
     @property
     @pulumi.getter(name="maxTtl")
-    def max_ttl(self) -> Optional[float]:
+    def max_ttl(self) -> Optional[int]:
         """
         The maximum amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -709,7 +709,7 @@ class DistributionOrderedCacheBehavior(dict):
 
     @property
     @pulumi.getter(name="minTtl")
-    def min_ttl(self) -> Optional[float]:
+    def min_ttl(self) -> Optional[int]:
         """
         The minimum amount of time that you want objects to
         stay in CloudFront caches before CloudFront queries your origin to see
@@ -1024,22 +1024,22 @@ class DistributionOriginCustomHeader(dict):
 @pulumi.output_type
 class DistributionOriginCustomOriginConfig(dict):
     def __init__(__self__, *,
-                 http_port: float,
-                 https_port: float,
+                 http_port: int,
+                 https_port: int,
                  origin_protocol_policy: str,
                  origin_ssl_protocols: List[str],
-                 origin_keepalive_timeout: Optional[float] = None,
-                 origin_read_timeout: Optional[float] = None):
+                 origin_keepalive_timeout: Optional[int] = None,
+                 origin_read_timeout: Optional[int] = None):
         """
-        :param float http_port: The HTTP port the custom origin listens on.
-        :param float https_port: The HTTPS port the custom origin listens on.
+        :param int http_port: The HTTP port the custom origin listens on.
+        :param int https_port: The HTTPS port the custom origin listens on.
         :param str origin_protocol_policy: The origin protocol policy to apply to
                your origin. One of `http-only`, `https-only`, or `match-viewer`.
         :param List[str] origin_ssl_protocols: The SSL/TLS protocols that you want
                CloudFront to use when communicating with your origin over HTTPS. A list of
                one or more of `SSLv3`, `TLSv1`, `TLSv1.1`, and `TLSv1.2`.
-        :param float origin_keepalive_timeout: The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
-        :param float origin_read_timeout: The Custom Read timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
+        :param int origin_keepalive_timeout: The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
+        :param int origin_read_timeout: The Custom Read timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
         """
         pulumi.set(__self__, "http_port", http_port)
         pulumi.set(__self__, "https_port", https_port)
@@ -1052,7 +1052,7 @@ class DistributionOriginCustomOriginConfig(dict):
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> float:
+    def http_port(self) -> int:
         """
         The HTTP port the custom origin listens on.
         """
@@ -1060,7 +1060,7 @@ class DistributionOriginCustomOriginConfig(dict):
 
     @property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> float:
+    def https_port(self) -> int:
         """
         The HTTPS port the custom origin listens on.
         """
@@ -1087,7 +1087,7 @@ class DistributionOriginCustomOriginConfig(dict):
 
     @property
     @pulumi.getter(name="originKeepaliveTimeout")
-    def origin_keepalive_timeout(self) -> Optional[float]:
+    def origin_keepalive_timeout(self) -> Optional[int]:
         """
         The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
         """
@@ -1095,7 +1095,7 @@ class DistributionOriginCustomOriginConfig(dict):
 
     @property
     @pulumi.getter(name="originReadTimeout")
-    def origin_read_timeout(self) -> Optional[float]:
+    def origin_read_timeout(self) -> Optional[int]:
         """
         The Custom Read timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
         """
@@ -1151,15 +1151,15 @@ class DistributionOriginGroup(dict):
 @pulumi.output_type
 class DistributionOriginGroupFailoverCriteria(dict):
     def __init__(__self__, *,
-                 status_codes: List[float]):
+                 status_codes: List[int]):
         """
-        :param List[float] status_codes: A list of HTTP status codes for the origin group
+        :param List[int] status_codes: A list of HTTP status codes for the origin group
         """
         pulumi.set(__self__, "status_codes", status_codes)
 
     @property
     @pulumi.getter(name="statusCodes")
-    def status_codes(self) -> List[float]:
+    def status_codes(self) -> List[int]:
         """
         A list of HTTP status codes for the origin group
         """

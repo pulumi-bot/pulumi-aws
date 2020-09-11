@@ -22,14 +22,14 @@ class SpotFleetRequest(pulumi.CustomResource):
                  fleet_type: Optional[pulumi.Input[str]] = None,
                  iam_fleet_role: Optional[pulumi.Input[str]] = None,
                  instance_interruption_behaviour: Optional[pulumi.Input[str]] = None,
-                 instance_pools_to_use_count: Optional[pulumi.Input[float]] = None,
+                 instance_pools_to_use_count: Optional[pulumi.Input[int]] = None,
                  launch_specifications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]]] = None,
                  launch_template_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]]] = None,
                  load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  replace_unhealthy_instances: Optional[pulumi.Input[bool]] = None,
                  spot_price: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 target_capacity: Optional[pulumi.Input[float]] = None,
+                 target_capacity: Optional[pulumi.Input[int]] = None,
                  target_group_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
                  valid_from: Optional[pulumi.Input[str]] = None,
@@ -188,7 +188,7 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[str] instance_interruption_behaviour: Indicates whether a Spot
                instance stops or terminates when it is interrupted. Default is
                `terminate`.
-        :param pulumi.Input[float] instance_pools_to_use_count: The number of Spot pools across which to allocate your target Spot capacity.
+        :param pulumi.Input[int] instance_pools_to_use_count: The number of Spot pools across which to allocate your target Spot capacity.
                Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
                the cheapest Spot pools and evenly allocates your target Spot capacity across
                the number of Spot pools that you specify.
@@ -200,7 +200,7 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[bool] replace_unhealthy_instances: Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
         :param pulumi.Input[str] spot_price: The maximum spot bid for this override request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
+        :param pulumi.Input[int] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
         :param pulumi.Input[List[pulumi.Input[str]]] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
@@ -269,7 +269,7 @@ class SpotFleetRequest(pulumi.CustomResource):
             fleet_type: Optional[pulumi.Input[str]] = None,
             iam_fleet_role: Optional[pulumi.Input[str]] = None,
             instance_interruption_behaviour: Optional[pulumi.Input[str]] = None,
-            instance_pools_to_use_count: Optional[pulumi.Input[float]] = None,
+            instance_pools_to_use_count: Optional[pulumi.Input[int]] = None,
             launch_specifications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchSpecificationArgs']]]]] = None,
             launch_template_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotFleetRequestLaunchTemplateConfigArgs']]]]] = None,
             load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -277,7 +277,7 @@ class SpotFleetRequest(pulumi.CustomResource):
             spot_price: Optional[pulumi.Input[str]] = None,
             spot_request_state: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            target_capacity: Optional[pulumi.Input[float]] = None,
+            target_capacity: Optional[pulumi.Input[int]] = None,
             target_group_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
             valid_from: Optional[pulumi.Input[str]] = None,
@@ -305,7 +305,7 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[str] instance_interruption_behaviour: Indicates whether a Spot
                instance stops or terminates when it is interrupted. Default is
                `terminate`.
-        :param pulumi.Input[float] instance_pools_to_use_count: The number of Spot pools across which to allocate your target Spot capacity.
+        :param pulumi.Input[int] instance_pools_to_use_count: The number of Spot pools across which to allocate your target Spot capacity.
                Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
                the cheapest Spot pools and evenly allocates your target Spot capacity across
                the number of Spot pools that you specify.
@@ -318,7 +318,7 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[str] spot_price: The maximum spot bid for this override request.
         :param pulumi.Input[str] spot_request_state: The state of the Spot fleet request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
+        :param pulumi.Input[int] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
         :param pulumi.Input[List[pulumi.Input[str]]] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
@@ -413,7 +413,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instancePoolsToUseCount")
-    def instance_pools_to_use_count(self) -> pulumi.Output[Optional[float]]:
+    def instance_pools_to_use_count(self) -> pulumi.Output[Optional[int]]:
         """
         The number of Spot pools across which to allocate your target Spot capacity.
         Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
@@ -482,7 +482,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetCapacity")
-    def target_capacity(self) -> pulumi.Output[float]:
+    def target_capacity(self) -> pulumi.Output[int]:
         """
         The number of units to request. You can choose to set the
         target capacity in terms of instances or a performance characteristic that is

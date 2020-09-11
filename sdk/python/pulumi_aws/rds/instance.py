@@ -17,12 +17,12 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocated_storage: Optional[pulumi.Input[float]] = None,
+                 allocated_storage: Optional[pulumi.Input[int]] = None,
                  allow_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  apply_immediately: Optional[pulumi.Input[bool]] = None,
                  auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[float]] = None,
+                 backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_window: Optional[pulumi.Input[str]] = None,
                  ca_cert_identifier: Optional[pulumi.Input[str]] = None,
                  character_set_name: Optional[pulumi.Input[str]] = None,
@@ -40,12 +40,12 @@ class Instance(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  identifier_prefix: Optional[pulumi.Input[str]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 iops: Optional[pulumi.Input[float]] = None,
+                 iops: Optional[pulumi.Input[int]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  license_model: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[str]] = None,
-                 max_allocated_storage: Optional[pulumi.Input[float]] = None,
-                 monitoring_interval: Optional[pulumi.Input[float]] = None,
+                 max_allocated_storage: Optional[pulumi.Input[int]] = None,
+                 monitoring_interval: Optional[pulumi.Input[int]] = None,
                  monitoring_role_arn: Optional[pulumi.Input[str]] = None,
                  multi_az: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -54,8 +54,8 @@ class Instance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  performance_insights_enabled: Optional[pulumi.Input[bool]] = None,
                  performance_insights_kms_key_id: Optional[pulumi.Input[str]] = None,
-                 performance_insights_retention_period: Optional[pulumi.Input[float]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 performance_insights_retention_period: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  publicly_accessible: Optional[pulumi.Input[bool]] = None,
                  replicate_source_db: Optional[pulumi.Input[str]] = None,
                  s3_import: Optional[pulumi.Input[pulumi.InputType['InstanceS3ImportArgs']]] = None,
@@ -131,7 +131,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] allocated_storage: The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs.
+        :param pulumi.Input[int] allocated_storage: The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs.
         :param pulumi.Input[bool] allow_major_version_upgrade: Indicates that major version
                upgrades are allowed. Changing this parameter does not result in an outage and
                the change is asynchronously applied as soon as possible.
@@ -143,7 +143,7 @@ class Instance(pulumi.CustomResource):
                will be applied automatically to the DB instance during the maintenance window.
                Defaults to true.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Must be
+        :param pulumi.Input[int] backup_retention_period: The days to retain backups for. Must be
                between `0` and `35`. Must be greater than `0` if the database is used as a source for a Read Replica. [See Read Replica][1].
         :param pulumi.Input[str] backup_window: The daily time range (in UTC) during which
                automated backups are created if they are enabled. Example: "09:46-10:16". Must
@@ -188,7 +188,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] identifier_prefix: Creates a unique
                identifier beginning with the specified prefix. Conflicts with `identifier`.
         :param pulumi.Input[str] instance_class: The instance type of the RDS instance.
-        :param pulumi.Input[float] iops: The amount of provisioned IOPS. Setting this implies a
+        :param pulumi.Input[int] iops: The amount of provisioned IOPS. Setting this implies a
                storage_type of "io1".
         :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. If creating an
                encrypted replica, set this to the destination KMS ARN.
@@ -199,8 +199,8 @@ class Instance(pulumi.CustomResource):
                Maintenance Window
                docs](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
                for more information.
-        :param pulumi.Input[float] max_allocated_storage: When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. Configuring this will automatically ignore differences to `allocated_storage`. Must be greater than or equal to `allocated_storage` or `0` to disable Storage Autoscaling.
-        :param pulumi.Input[float] monitoring_interval: The interval, in seconds, between points
+        :param pulumi.Input[int] max_allocated_storage: When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. Configuring this will automatically ignore differences to `allocated_storage`. Must be greater than or equal to `allocated_storage` or `0` to disable Storage Autoscaling.
+        :param pulumi.Input[int] monitoring_interval: The interval, in seconds, between points
                when Enhanced Monitoring metrics are collected for the DB instance. To disable
                collecting Enhanced Monitoring metrics, specify 0. The default is 0. Valid
                Values: 0, 1, 5, 10, 15, 30, 60.
@@ -219,8 +219,8 @@ class Instance(pulumi.CustomResource):
                logs, and it will be stored in the state file.
         :param pulumi.Input[bool] performance_insights_enabled: Specifies whether Performance Insights are enabled. Defaults to false.
         :param pulumi.Input[str] performance_insights_kms_key_id: The ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true. Once KMS key is set, it can never be changed.
-        :param pulumi.Input[float] performance_insights_retention_period: The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years). When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections.
+        :param pulumi.Input[int] performance_insights_retention_period: The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years). When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
+        :param pulumi.Input[int] port: The port on which the DB accepts connections.
         :param pulumi.Input[bool] publicly_accessible: Bool to control if instance is publicly
                accessible. Default is `false`.
         :param pulumi.Input[str] replicate_source_db: Specifies that this resource is a Replicate
@@ -350,13 +350,13 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
-            allocated_storage: Optional[pulumi.Input[float]] = None,
+            allocated_storage: Optional[pulumi.Input[int]] = None,
             allow_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
             apply_immediately: Optional[pulumi.Input[bool]] = None,
             arn: Optional[pulumi.Input[str]] = None,
             auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
-            backup_retention_period: Optional[pulumi.Input[float]] = None,
+            backup_retention_period: Optional[pulumi.Input[int]] = None,
             backup_window: Optional[pulumi.Input[str]] = None,
             ca_cert_identifier: Optional[pulumi.Input[str]] = None,
             character_set_name: Optional[pulumi.Input[str]] = None,
@@ -376,12 +376,12 @@ class Instance(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             identifier_prefix: Optional[pulumi.Input[str]] = None,
             instance_class: Optional[pulumi.Input[str]] = None,
-            iops: Optional[pulumi.Input[float]] = None,
+            iops: Optional[pulumi.Input[int]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             license_model: Optional[pulumi.Input[str]] = None,
             maintenance_window: Optional[pulumi.Input[str]] = None,
-            max_allocated_storage: Optional[pulumi.Input[float]] = None,
-            monitoring_interval: Optional[pulumi.Input[float]] = None,
+            max_allocated_storage: Optional[pulumi.Input[int]] = None,
+            monitoring_interval: Optional[pulumi.Input[int]] = None,
             monitoring_role_arn: Optional[pulumi.Input[str]] = None,
             multi_az: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -390,8 +390,8 @@ class Instance(pulumi.CustomResource):
             password: Optional[pulumi.Input[str]] = None,
             performance_insights_enabled: Optional[pulumi.Input[bool]] = None,
             performance_insights_kms_key_id: Optional[pulumi.Input[str]] = None,
-            performance_insights_retention_period: Optional[pulumi.Input[float]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            performance_insights_retention_period: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             publicly_accessible: Optional[pulumi.Input[bool]] = None,
             replicas: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             replicate_source_db: Optional[pulumi.Input[str]] = None,
@@ -415,7 +415,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The hostname of the RDS instance. See also `endpoint` and `port`.
-        :param pulumi.Input[float] allocated_storage: The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs.
+        :param pulumi.Input[int] allocated_storage: The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs.
         :param pulumi.Input[bool] allow_major_version_upgrade: Indicates that major version
                upgrades are allowed. Changing this parameter does not result in an outage and
                the change is asynchronously applied as soon as possible.
@@ -428,7 +428,7 @@ class Instance(pulumi.CustomResource):
                will be applied automatically to the DB instance during the maintenance window.
                Defaults to true.
         :param pulumi.Input[str] availability_zone: The AZ for the RDS instance.
-        :param pulumi.Input[float] backup_retention_period: The days to retain backups for. Must be
+        :param pulumi.Input[int] backup_retention_period: The days to retain backups for. Must be
                between `0` and `35`. Must be greater than `0` if the database is used as a source for a Read Replica. [See Read Replica][1].
         :param pulumi.Input[str] backup_window: The daily time range (in UTC) during which
                automated backups are created if they are enabled. Example: "09:46-10:16". Must
@@ -476,7 +476,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] identifier_prefix: Creates a unique
                identifier beginning with the specified prefix. Conflicts with `identifier`.
         :param pulumi.Input[str] instance_class: The instance type of the RDS instance.
-        :param pulumi.Input[float] iops: The amount of provisioned IOPS. Setting this implies a
+        :param pulumi.Input[int] iops: The amount of provisioned IOPS. Setting this implies a
                storage_type of "io1".
         :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. If creating an
                encrypted replica, set this to the destination KMS ARN.
@@ -487,8 +487,8 @@ class Instance(pulumi.CustomResource):
                Maintenance Window
                docs](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
                for more information.
-        :param pulumi.Input[float] max_allocated_storage: When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. Configuring this will automatically ignore differences to `allocated_storage`. Must be greater than or equal to `allocated_storage` or `0` to disable Storage Autoscaling.
-        :param pulumi.Input[float] monitoring_interval: The interval, in seconds, between points
+        :param pulumi.Input[int] max_allocated_storage: When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. Configuring this will automatically ignore differences to `allocated_storage`. Must be greater than or equal to `allocated_storage` or `0` to disable Storage Autoscaling.
+        :param pulumi.Input[int] monitoring_interval: The interval, in seconds, between points
                when Enhanced Monitoring metrics are collected for the DB instance. To disable
                collecting Enhanced Monitoring metrics, specify 0. The default is 0. Valid
                Values: 0, 1, 5, 10, 15, 30, 60.
@@ -507,8 +507,8 @@ class Instance(pulumi.CustomResource):
                logs, and it will be stored in the state file.
         :param pulumi.Input[bool] performance_insights_enabled: Specifies whether Performance Insights are enabled. Defaults to false.
         :param pulumi.Input[str] performance_insights_kms_key_id: The ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true. Once KMS key is set, it can never be changed.
-        :param pulumi.Input[float] performance_insights_retention_period: The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years). When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
-        :param pulumi.Input[float] port: The port on which the DB accepts connections.
+        :param pulumi.Input[int] performance_insights_retention_period: The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years). When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
+        :param pulumi.Input[int] port: The port on which the DB accepts connections.
         :param pulumi.Input[bool] publicly_accessible: Bool to control if instance is publicly
                accessible. Default is `false`.
         :param pulumi.Input[str] replicate_source_db: Specifies that this resource is a Replicate
@@ -626,7 +626,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocatedStorage")
-    def allocated_storage(self) -> pulumi.Output[float]:
+    def allocated_storage(self) -> pulumi.Output[int]:
         """
         The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs.
         """
@@ -681,7 +681,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> pulumi.Output[float]:
+    def backup_retention_period(self) -> pulumi.Output[int]:
         """
         The days to retain backups for. Must be
         between `0` and `35`. Must be greater than `0` if the database is used as a source for a Read Replica. [See Read Replica][1].
@@ -869,7 +869,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def iops(self) -> pulumi.Output[Optional[float]]:
+    def iops(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of provisioned IOPS. Setting this implies a
         storage_type of "io1".
@@ -908,7 +908,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxAllocatedStorage")
-    def max_allocated_storage(self) -> pulumi.Output[Optional[float]]:
+    def max_allocated_storage(self) -> pulumi.Output[Optional[int]]:
         """
         When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. Configuring this will automatically ignore differences to `allocated_storage`. Must be greater than or equal to `allocated_storage` or `0` to disable Storage Autoscaling.
         """
@@ -916,7 +916,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoringInterval")
-    def monitoring_interval(self) -> pulumi.Output[Optional[float]]:
+    def monitoring_interval(self) -> pulumi.Output[Optional[int]]:
         """
         The interval, in seconds, between points
         when Enhanced Monitoring metrics are collected for the DB instance. To disable
@@ -998,7 +998,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="performanceInsightsRetentionPeriod")
-    def performance_insights_retention_period(self) -> pulumi.Output[float]:
+    def performance_insights_retention_period(self) -> pulumi.Output[int]:
         """
         The amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years). When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
         """
@@ -1006,7 +1006,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The port on which the DB accepts connections.
         """

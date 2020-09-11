@@ -24,7 +24,7 @@ class Provider(pulumi.ProviderResource):
                  forbidden_account_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  ignore_tags: Optional[pulumi.Input[pulumi.InputType['ProviderIgnoreTagsArgs']]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
-                 max_retries: Optional[pulumi.Input[float]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  s3_force_path_style: Optional[pulumi.Input[bool]] = None,
@@ -50,7 +50,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] access_key: The access key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
         :param pulumi.Input[pulumi.InputType['ProviderIgnoreTagsArgs']] ignore_tags: Configuration block with settings to ignore resource tags across all resources.
         :param pulumi.Input[bool] insecure: Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`
-        :param pulumi.Input[float] max_retries: The maximum number of times an AWS API request is being executed. If the API request still fails, an error is thrown.
+        :param pulumi.Input[int] max_retries: The maximum number of times an AWS API request is being executed. If the API request still fails, an error is thrown.
         :param pulumi.Input[str] profile: The profile for API operations. If not set, the default profile created with `aws configure` will be used.
         :param pulumi.Input[str] region: The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
         :param pulumi.Input[bool] s3_force_path_style: Set this to true to force the request to use path-style addressing, i.e., http://s3.amazonaws.com/BUCKET/KEY. By

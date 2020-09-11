@@ -26,8 +26,8 @@ class GetStreamResult:
         if closed_shards and not isinstance(closed_shards, list):
             raise TypeError("Expected argument 'closed_shards' to be a list")
         pulumi.set(__self__, "closed_shards", closed_shards)
-        if creation_timestamp and not isinstance(creation_timestamp, float):
-            raise TypeError("Expected argument 'creation_timestamp' to be a float")
+        if creation_timestamp and not isinstance(creation_timestamp, int):
+            raise TypeError("Expected argument 'creation_timestamp' to be a int")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -38,8 +38,8 @@ class GetStreamResult:
         if open_shards and not isinstance(open_shards, list):
             raise TypeError("Expected argument 'open_shards' to be a list")
         pulumi.set(__self__, "open_shards", open_shards)
-        if retention_period and not isinstance(retention_period, float):
-            raise TypeError("Expected argument 'retention_period' to be a float")
+        if retention_period and not isinstance(retention_period, int):
+            raise TypeError("Expected argument 'retention_period' to be a int")
         pulumi.set(__self__, "retention_period", retention_period)
         if shard_level_metrics and not isinstance(shard_level_metrics, list):
             raise TypeError("Expected argument 'shard_level_metrics' to be a list")
@@ -69,7 +69,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> float:
+    def creation_timestamp(self) -> int:
         """
         The approximate UNIX timestamp that the stream was created.
         """
@@ -101,7 +101,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> float:
+    def retention_period(self) -> int:
         """
         Length of time (in hours) data records are accessible after they are added to the stream.
         """

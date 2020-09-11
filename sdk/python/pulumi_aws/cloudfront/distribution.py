@@ -357,7 +357,7 @@ class Distribution(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             hosted_zone_id: Optional[pulumi.Input[str]] = None,
             http_version: Optional[pulumi.Input[str]] = None,
-            in_progress_validation_batches: Optional[pulumi.Input[float]] = None,
+            in_progress_validation_batches: Optional[pulumi.Input[int]] = None,
             is_ipv6_enabled: Optional[pulumi.Input[bool]] = None,
             last_modified_time: Optional[pulumi.Input[str]] = None,
             logging_config: Optional[pulumi.Input[pulumi.InputType['DistributionLoggingConfigArgs']]] = None,
@@ -404,7 +404,7 @@ class Distribution(pulumi.CustomResource):
         :param pulumi.Input[str] http_version: The maximum HTTP version to support on the
                distribution. Allowed values are `http1.1` and `http2`. The default is
                `http2`.
-        :param pulumi.Input[float] in_progress_validation_batches: The number of invalidation batches
+        :param pulumi.Input[int] in_progress_validation_batches: The number of invalidation batches
                currently in progress.
         :param pulumi.Input[bool] is_ipv6_enabled: Whether the IPv6 is enabled for the distribution.
         :param pulumi.Input[str] last_modified_time: The date and time the distribution was last modified.
@@ -587,7 +587,7 @@ class Distribution(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inProgressValidationBatches")
-    def in_progress_validation_batches(self) -> pulumi.Output[float]:
+    def in_progress_validation_batches(self) -> pulumi.Output[int]:
         """
         The number of invalidation batches
         currently in progress.

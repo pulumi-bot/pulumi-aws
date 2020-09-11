@@ -761,7 +761,7 @@ class ProjectSecondarySourceArgs:
                  type: pulumi.Input[str],
                  auths: Optional[pulumi.Input[List[pulumi.Input['ProjectSecondarySourceAuthArgs']]]] = None,
                  buildspec: Optional[pulumi.Input[str]] = None,
-                 git_clone_depth: Optional[pulumi.Input[float]] = None,
+                 git_clone_depth: Optional[pulumi.Input[int]] = None,
                  git_submodules_config: Optional[pulumi.Input['ProjectSecondarySourceGitSubmodulesConfigArgs']] = None,
                  insecure_ssl: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -771,7 +771,7 @@ class ProjectSecondarySourceArgs:
         :param pulumi.Input[str] type: The type of repository that contains the source code to be built. Valid values for this parameter are: `CODECOMMIT`, `CODEPIPELINE`, `GITHUB`, `GITHUB_ENTERPRISE`, `BITBUCKET` or `S3`.
         :param pulumi.Input[List[pulumi.Input['ProjectSecondarySourceAuthArgs']]] auths: Information about the authorization settings for AWS CodeBuild to access the source code to be built. Auth blocks are documented below.
         :param pulumi.Input[str] buildspec: The build spec declaration to use for this build project's related builds.
-        :param pulumi.Input[float] git_clone_depth: Truncate git history to this many commits.
+        :param pulumi.Input[int] git_clone_depth: Truncate git history to this many commits.
         :param pulumi.Input['ProjectSecondarySourceGitSubmodulesConfigArgs'] git_submodules_config: Information about the Git submodules configuration for an AWS CodeBuild build project. Git submodules config blocks are documented below. This option is only valid when the `type` is `CODECOMMIT`, `GITHUB` or `GITHUB_ENTERPRISE`.
         :param pulumi.Input[bool] insecure_ssl: Ignore SSL warnings when connecting to source control.
         :param pulumi.Input[str] location: The location of the source code from git or s3.
@@ -844,14 +844,14 @@ class ProjectSecondarySourceArgs:
 
     @property
     @pulumi.getter(name="gitCloneDepth")
-    def git_clone_depth(self) -> Optional[pulumi.Input[float]]:
+    def git_clone_depth(self) -> Optional[pulumi.Input[int]]:
         """
         Truncate git history to this many commits.
         """
         return pulumi.get(self, "git_clone_depth")
 
     @git_clone_depth.setter
-    def git_clone_depth(self, value: Optional[pulumi.Input[float]]):
+    def git_clone_depth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "git_clone_depth", value)
 
     @property
@@ -969,7 +969,7 @@ class ProjectSourceArgs:
                  type: pulumi.Input[str],
                  auths: Optional[pulumi.Input[List[pulumi.Input['ProjectSourceAuthArgs']]]] = None,
                  buildspec: Optional[pulumi.Input[str]] = None,
-                 git_clone_depth: Optional[pulumi.Input[float]] = None,
+                 git_clone_depth: Optional[pulumi.Input[int]] = None,
                  git_submodules_config: Optional[pulumi.Input['ProjectSourceGitSubmodulesConfigArgs']] = None,
                  insecure_ssl: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -978,7 +978,7 @@ class ProjectSourceArgs:
         :param pulumi.Input[str] type: The type of repository that contains the source code to be built. Valid values for this parameter are: `CODECOMMIT`, `CODEPIPELINE`, `GITHUB`, `GITHUB_ENTERPRISE`, `BITBUCKET`, `S3` or `NO_SOURCE`.
         :param pulumi.Input[List[pulumi.Input['ProjectSourceAuthArgs']]] auths: Information about the authorization settings for AWS CodeBuild to access the source code to be built. Auth blocks are documented below.
         :param pulumi.Input[str] buildspec: The build spec declaration to use for this build project's related builds. This must be set when `type` is `NO_SOURCE`.
-        :param pulumi.Input[float] git_clone_depth: Truncate git history to this many commits.
+        :param pulumi.Input[int] git_clone_depth: Truncate git history to this many commits.
         :param pulumi.Input['ProjectSourceGitSubmodulesConfigArgs'] git_submodules_config: Information about the Git submodules configuration for an AWS CodeBuild build project. Git submodules config blocks are documented below. This option is only valid when the `type` is `CODECOMMIT`, `GITHUB` or `GITHUB_ENTERPRISE`.
         :param pulumi.Input[bool] insecure_ssl: Ignore SSL warnings when connecting to source control.
         :param pulumi.Input[str] location: The location of the source code from git or s3.
@@ -1038,14 +1038,14 @@ class ProjectSourceArgs:
 
     @property
     @pulumi.getter(name="gitCloneDepth")
-    def git_clone_depth(self) -> Optional[pulumi.Input[float]]:
+    def git_clone_depth(self) -> Optional[pulumi.Input[int]]:
         """
         Truncate git history to this many commits.
         """
         return pulumi.get(self, "git_clone_depth")
 
     @git_clone_depth.setter
-    def git_clone_depth(self, value: Optional[pulumi.Input[float]]):
+    def git_clone_depth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "git_clone_depth", value)
 
     @property

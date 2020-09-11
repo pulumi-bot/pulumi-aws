@@ -579,19 +579,19 @@ class UserPoolLambdaConfig(dict):
 @pulumi.output_type
 class UserPoolPasswordPolicy(dict):
     def __init__(__self__, *,
-                 minimum_length: Optional[float] = None,
+                 minimum_length: Optional[int] = None,
                  require_lowercase: Optional[bool] = None,
                  require_numbers: Optional[bool] = None,
                  require_symbols: Optional[bool] = None,
                  require_uppercase: Optional[bool] = None,
-                 temporary_password_validity_days: Optional[float] = None):
+                 temporary_password_validity_days: Optional[int] = None):
         """
-        :param float minimum_length: The minimum length of the password policy that you have set.
+        :param int minimum_length: The minimum length of the password policy that you have set.
         :param bool require_lowercase: Whether you have required users to use at least one lowercase letter in their password.
         :param bool require_numbers: Whether you have required users to use at least one number in their password.
         :param bool require_symbols: Whether you have required users to use at least one symbol in their password.
         :param bool require_uppercase: Whether you have required users to use at least one uppercase letter in their password.
-        :param float temporary_password_validity_days: In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+        :param int temporary_password_validity_days: In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
         """
         if minimum_length is not None:
             pulumi.set(__self__, "minimum_length", minimum_length)
@@ -608,7 +608,7 @@ class UserPoolPasswordPolicy(dict):
 
     @property
     @pulumi.getter(name="minimumLength")
-    def minimum_length(self) -> Optional[float]:
+    def minimum_length(self) -> Optional[int]:
         """
         The minimum length of the password policy that you have set.
         """
@@ -648,7 +648,7 @@ class UserPoolPasswordPolicy(dict):
 
     @property
     @pulumi.getter(name="temporaryPasswordValidityDays")
-    def temporary_password_validity_days(self) -> Optional[float]:
+    def temporary_password_validity_days(self) -> Optional[int]:
         """
         In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
         """

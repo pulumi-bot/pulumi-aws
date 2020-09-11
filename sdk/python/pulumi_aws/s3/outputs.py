@@ -317,13 +317,13 @@ class BucketCorsRule(dict):
                  allowed_origins: List[str],
                  allowed_headers: Optional[List[str]] = None,
                  expose_headers: Optional[List[str]] = None,
-                 max_age_seconds: Optional[float] = None):
+                 max_age_seconds: Optional[int] = None):
         """
         :param List[str] allowed_methods: Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
         :param List[str] allowed_origins: Specifies which origins are allowed.
         :param List[str] allowed_headers: Specifies which headers are allowed.
         :param List[str] expose_headers: Specifies expose header in the response.
-        :param float max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
+        :param int max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -368,7 +368,7 @@ class BucketCorsRule(dict):
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[float]:
+    def max_age_seconds(self) -> Optional[int]:
         """
         Specifies time in seconds that browser can cache the response for a preflight request.
         """
@@ -438,7 +438,7 @@ class BucketGrant(dict):
 class BucketLifecycleRule(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 abort_incomplete_multipart_upload_days: Optional[float] = None,
+                 abort_incomplete_multipart_upload_days: Optional[int] = None,
                  expiration: Optional['outputs.BucketLifecycleRuleExpiration'] = None,
                  id: Optional[str] = None,
                  noncurrent_version_expiration: Optional['outputs.BucketLifecycleRuleNoncurrentVersionExpiration'] = None,
@@ -448,7 +448,7 @@ class BucketLifecycleRule(dict):
                  transitions: Optional[List['outputs.BucketLifecycleRuleTransition']] = None):
         """
         :param bool enabled: Specifies lifecycle rule status.
-        :param float abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+        :param int abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
         :param 'BucketLifecycleRuleExpirationArgs' expiration: Specifies a period in the object's expire (documented below).
         :param str id: Unique identifier for the rule.
         :param 'BucketLifecycleRuleNoncurrentVersionExpirationArgs' noncurrent_version_expiration: Specifies when noncurrent object versions expire (documented below).
@@ -485,7 +485,7 @@ class BucketLifecycleRule(dict):
 
     @property
     @pulumi.getter(name="abortIncompleteMultipartUploadDays")
-    def abort_incomplete_multipart_upload_days(self) -> Optional[float]:
+    def abort_incomplete_multipart_upload_days(self) -> Optional[int]:
         """
         Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
         """
@@ -555,11 +555,11 @@ class BucketLifecycleRule(dict):
 class BucketLifecycleRuleExpiration(dict):
     def __init__(__self__, *,
                  date: Optional[str] = None,
-                 days: Optional[float] = None,
+                 days: Optional[int] = None,
                  expired_object_delete_marker: Optional[bool] = None):
         """
         :param str date: Specifies the date after which you want the corresponding action to take effect.
-        :param float days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
         """
         if date is not None:
@@ -579,7 +579,7 @@ class BucketLifecycleRuleExpiration(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
         """
@@ -600,16 +600,16 @@ class BucketLifecycleRuleExpiration(dict):
 @pulumi.output_type
 class BucketLifecycleRuleNoncurrentVersionExpiration(dict):
     def __init__(__self__, *,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
-        :param float days: Specifies the number of days noncurrent object versions expire.
+        :param int days: Specifies the number of days noncurrent object versions expire.
         """
         if days is not None:
             pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days noncurrent object versions expire.
         """
@@ -623,10 +623,10 @@ class BucketLifecycleRuleNoncurrentVersionExpiration(dict):
 class BucketLifecycleRuleNoncurrentVersionTransition(dict):
     def __init__(__self__, *,
                  storage_class: str,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param str storage_class: Specifies the Amazon S3 storage class to which you want the noncurrent object versions to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
-        :param float days: Specifies the number of days noncurrent object versions transition.
+        :param int days: Specifies the number of days noncurrent object versions transition.
         """
         pulumi.set(__self__, "storage_class", storage_class)
         if days is not None:
@@ -642,7 +642,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days noncurrent object versions transition.
         """
@@ -657,11 +657,11 @@ class BucketLifecycleRuleTransition(dict):
     def __init__(__self__, *,
                  storage_class: str,
                  date: Optional[str] = None,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param str storage_class: Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
         :param str date: Specifies the date after which you want the corresponding action to take effect.
-        :param float days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         """
         pulumi.set(__self__, "storage_class", storage_class)
         if date is not None:
@@ -687,7 +687,7 @@ class BucketLifecycleRuleTransition(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
         """
@@ -1027,12 +1027,12 @@ class BucketObjectLockConfigurationRule(dict):
 class BucketObjectLockConfigurationRuleDefaultRetention(dict):
     def __init__(__self__, *,
                  mode: str,
-                 days: Optional[float] = None,
-                 years: Optional[float] = None):
+                 days: Optional[int] = None,
+                 years: Optional[int] = None):
         """
         :param str mode: The default Object Lock retention mode you want to apply to new objects placed in this bucket. Valid values are `GOVERNANCE` and `COMPLIANCE`.
-        :param float days: The number of days that you want to specify for the default retention period.
-        :param float years: The number of years that you want to specify for the default retention period.
+        :param int days: The number of days that you want to specify for the default retention period.
+        :param int years: The number of years that you want to specify for the default retention period.
         """
         pulumi.set(__self__, "mode", mode)
         if days is not None:
@@ -1050,7 +1050,7 @@ class BucketObjectLockConfigurationRuleDefaultRetention(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         The number of days that you want to specify for the default retention period.
         """
@@ -1058,7 +1058,7 @@ class BucketObjectLockConfigurationRuleDefaultRetention(dict):
 
     @property
     @pulumi.getter
-    def years(self) -> Optional[float]:
+    def years(self) -> Optional[int]:
         """
         The number of years that you want to specify for the default retention period.
         """
@@ -1108,7 +1108,7 @@ class BucketReplicationConfigurationRule(dict):
                  filter: Optional['outputs.BucketReplicationConfigurationRuleFilter'] = None,
                  id: Optional[str] = None,
                  prefix: Optional[str] = None,
-                 priority: Optional[float] = None,
+                 priority: Optional[int] = None,
                  source_selection_criteria: Optional['outputs.BucketReplicationConfigurationRuleSourceSelectionCriteria'] = None):
         """
         :param 'BucketReplicationConfigurationRuleDestinationArgs' destination: Specifies the destination for the rule (documented below).
@@ -1116,7 +1116,7 @@ class BucketReplicationConfigurationRule(dict):
         :param 'BucketReplicationConfigurationRuleFilterArgs' filter: Filter that identifies subset of objects to which the replication rule applies (documented below).
         :param str id: Unique identifier for the rule.
         :param str prefix: Object keyname prefix identifying one or more objects to which the rule applies.
-        :param float priority: is optional (with a default value of `0`) but must be unique between multiple rules
+        :param int priority: is optional (with a default value of `0`) but must be unique between multiple rules
         :param 'BucketReplicationConfigurationRuleSourceSelectionCriteriaArgs' source_selection_criteria: Specifies special object selection criteria (documented below).
         """
         pulumi.set(__self__, "destination", destination)
@@ -1174,7 +1174,7 @@ class BucketReplicationConfigurationRule(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> Optional[int]:
         """
         is optional (with a default value of `0`) but must be unique between multiple rules
         """

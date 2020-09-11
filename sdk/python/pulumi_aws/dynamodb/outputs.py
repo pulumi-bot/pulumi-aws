@@ -87,8 +87,8 @@ class TableGlobalSecondaryIndex(dict):
                  projection_type: str,
                  non_key_attributes: Optional[List[str]] = None,
                  range_key: Optional[str] = None,
-                 read_capacity: Optional[float] = None,
-                 write_capacity: Optional[float] = None):
+                 read_capacity: Optional[int] = None,
+                 write_capacity: Optional[int] = None):
         """
         :param str hash_key: The name of the hash key in the index; must be
                defined as an attribute in the resource.
@@ -102,8 +102,8 @@ class TableGlobalSecondaryIndex(dict):
                projection type; a list of attributes to project into the index. These
                do not need to be defined as attributes on the table.
         :param str range_key: The name of the range key; must be defined
-        :param float read_capacity: The number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
-        :param float write_capacity: The number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
+        :param int read_capacity: The number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
+        :param int write_capacity: The number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
         """
         pulumi.set(__self__, "hash_key", hash_key)
         pulumi.set(__self__, "name", name)
@@ -166,7 +166,7 @@ class TableGlobalSecondaryIndex(dict):
 
     @property
     @pulumi.getter(name="readCapacity")
-    def read_capacity(self) -> Optional[float]:
+    def read_capacity(self) -> Optional[int]:
         """
         The number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
         """
@@ -174,7 +174,7 @@ class TableGlobalSecondaryIndex(dict):
 
     @property
     @pulumi.getter(name="writeCapacity")
-    def write_capacity(self) -> Optional[float]:
+    def write_capacity(self) -> Optional[int]:
         """
         The number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
         """
@@ -394,8 +394,8 @@ class GetTableGlobalSecondaryIndexResult(dict):
                  non_key_attributes: List[str],
                  projection_type: str,
                  range_key: str,
-                 read_capacity: float,
-                 write_capacity: float):
+                 read_capacity: int,
+                 write_capacity: int):
         """
         :param str name: The name of the DynamoDB table.
         """
@@ -437,12 +437,12 @@ class GetTableGlobalSecondaryIndexResult(dict):
 
     @property
     @pulumi.getter(name="readCapacity")
-    def read_capacity(self) -> float:
+    def read_capacity(self) -> int:
         return pulumi.get(self, "read_capacity")
 
     @property
     @pulumi.getter(name="writeCapacity")
-    def write_capacity(self) -> float:
+    def write_capacity(self) -> int:
         return pulumi.get(self, "write_capacity")
 
 

@@ -23,7 +23,7 @@ class InstanceGroup(pulumi.CustomResource):
                  configurations_json: Optional[pulumi.Input[str]] = None,
                  ebs_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupEbsConfigArgs']]]]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
-                 instance_count: Optional[pulumi.Input[float]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -57,7 +57,7 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] configurations_json: A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupEbsConfigArgs']]]] ebs_configs: One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] ebs_optimized: Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] instance_count: target number of instances for the instance group. defaults to 0.
+        :param pulumi.Input[int] instance_count: target number of instances for the instance group. defaults to 0.
         :param pulumi.Input[str] instance_type: The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Human friendly name given to the instance group. Changing this forces a new resource to be created.
         """
@@ -109,10 +109,10 @@ class InstanceGroup(pulumi.CustomResource):
             configurations_json: Optional[pulumi.Input[str]] = None,
             ebs_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupEbsConfigArgs']]]]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
-            instance_count: Optional[pulumi.Input[float]] = None,
+            instance_count: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            running_instance_count: Optional[pulumi.Input[float]] = None,
+            running_instance_count: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'InstanceGroup':
         """
         Get an existing InstanceGroup resource's state with the given name, id, and optional extra
@@ -127,7 +127,7 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] configurations_json: A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupEbsConfigArgs']]]] ebs_configs: One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] ebs_optimized: Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] instance_count: target number of instances for the instance group. defaults to 0.
+        :param pulumi.Input[int] instance_count: target number of instances for the instance group. defaults to 0.
         :param pulumi.Input[str] instance_type: The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Human friendly name given to the instance group. Changing this forces a new resource to be created.
         """
@@ -198,7 +198,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> pulumi.Output[Optional[float]]:
+    def instance_count(self) -> pulumi.Output[Optional[int]]:
         """
         target number of instances for the instance group. defaults to 0.
         """
@@ -222,7 +222,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runningInstanceCount")
-    def running_instance_count(self) -> pulumi.Output[float]:
+    def running_instance_count(self) -> pulumi.Output[int]:
         return pulumi.get(self, "running_instance_count")
 
     @property

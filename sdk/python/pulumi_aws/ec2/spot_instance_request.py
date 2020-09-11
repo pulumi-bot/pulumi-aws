@@ -20,9 +20,9 @@ class SpotInstanceRequest(pulumi.CustomResource):
                  ami: Optional[pulumi.Input[str]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
-                 block_duration_minutes: Optional[pulumi.Input[float]] = None,
-                 cpu_core_count: Optional[pulumi.Input[float]] = None,
-                 cpu_threads_per_core: Optional[pulumi.Input[float]] = None,
+                 block_duration_minutes: Optional[pulumi.Input[int]] = None,
+                 cpu_core_count: Optional[pulumi.Input[int]] = None,
+                 cpu_threads_per_core: Optional[pulumi.Input[int]] = None,
                  credit_specification: Optional[pulumi.Input[pulumi.InputType['SpotInstanceRequestCreditSpecificationArgs']]] = None,
                  disable_api_termination: Optional[pulumi.Input[bool]] = None,
                  ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotInstanceRequestEbsBlockDeviceArgs']]]]] = None,
@@ -35,7 +35,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
                  instance_initiated_shutdown_behavior: Optional[pulumi.Input[str]] = None,
                  instance_interruption_behaviour: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[float]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  launch_group: Optional[pulumi.Input[str]] = None,
@@ -108,13 +108,13 @@ class SpotInstanceRequest(pulumi.CustomResource):
         :param pulumi.Input[str] ami: The AMI to use for the instance.
         :param pulumi.Input[bool] associate_public_ip_address: Associate a public ip address with an instance in a VPC.  Boolean value.
         :param pulumi.Input[str] availability_zone: The AZ to start the instance in.
-        :param pulumi.Input[float] block_duration_minutes: The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+        :param pulumi.Input[int] block_duration_minutes: The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
                The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
                Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
-        :param pulumi.Input[float] cpu_core_count: Sets the number of CPU cores for an instance. This option is
+        :param pulumi.Input[int] cpu_core_count: Sets the number of CPU cores for an instance. This option is
                only supported on creation of instance type that support CPU Options
                [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        :param pulumi.Input[float] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
+        :param pulumi.Input[int] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         :param pulumi.Input[pulumi.InputType['SpotInstanceRequestCreditSpecificationArgs']] credit_specification: Customize the credit specification of the instance. See Credit Specification below for more details.
         :param pulumi.Input[bool] disable_api_termination: If true, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
@@ -138,7 +138,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
                instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
         :param pulumi.Input[str] instance_interruption_behaviour: Indicates whether a Spot instance stops or terminates when it is interrupted. Default is `terminate` as this is the current AWS behaviour.
         :param pulumi.Input[str] instance_type: The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        :param pulumi.Input[float] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
+        :param pulumi.Input[int] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
         :param pulumi.Input[List[pulumi.Input[str]]] ipv6_addresses: Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
         :param pulumi.Input[str] key_name: The key name of the Key Pair to use for the instance; which can be managed using the `ec2.KeyPair` resource.
         :param pulumi.Input[str] launch_group: A launch group is a group of spot instances that launch together and terminate together.
@@ -260,9 +260,9 @@ class SpotInstanceRequest(pulumi.CustomResource):
             arn: Optional[pulumi.Input[str]] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
-            block_duration_minutes: Optional[pulumi.Input[float]] = None,
-            cpu_core_count: Optional[pulumi.Input[float]] = None,
-            cpu_threads_per_core: Optional[pulumi.Input[float]] = None,
+            block_duration_minutes: Optional[pulumi.Input[int]] = None,
+            cpu_core_count: Optional[pulumi.Input[int]] = None,
+            cpu_threads_per_core: Optional[pulumi.Input[int]] = None,
             credit_specification: Optional[pulumi.Input[pulumi.InputType['SpotInstanceRequestCreditSpecificationArgs']]] = None,
             disable_api_termination: Optional[pulumi.Input[bool]] = None,
             ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SpotInstanceRequestEbsBlockDeviceArgs']]]]] = None,
@@ -276,7 +276,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
             instance_interruption_behaviour: Optional[pulumi.Input[str]] = None,
             instance_state: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            ipv6_address_count: Optional[pulumi.Input[float]] = None,
+            ipv6_address_count: Optional[pulumi.Input[int]] = None,
             ipv6_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             launch_group: Optional[pulumi.Input[str]] = None,
@@ -320,13 +320,13 @@ class SpotInstanceRequest(pulumi.CustomResource):
         :param pulumi.Input[str] ami: The AMI to use for the instance.
         :param pulumi.Input[bool] associate_public_ip_address: Associate a public ip address with an instance in a VPC.  Boolean value.
         :param pulumi.Input[str] availability_zone: The AZ to start the instance in.
-        :param pulumi.Input[float] block_duration_minutes: The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+        :param pulumi.Input[int] block_duration_minutes: The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
                The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
                Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
-        :param pulumi.Input[float] cpu_core_count: Sets the number of CPU cores for an instance. This option is
+        :param pulumi.Input[int] cpu_core_count: Sets the number of CPU cores for an instance. This option is
                only supported on creation of instance type that support CPU Options
                [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        :param pulumi.Input[float] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
+        :param pulumi.Input[int] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         :param pulumi.Input[pulumi.InputType['SpotInstanceRequestCreditSpecificationArgs']] credit_specification: Customize the credit specification of the instance. See Credit Specification below for more details.
         :param pulumi.Input[bool] disable_api_termination: If true, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
@@ -350,7 +350,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
                instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
         :param pulumi.Input[str] instance_interruption_behaviour: Indicates whether a Spot instance stops or terminates when it is interrupted. Default is `terminate` as this is the current AWS behaviour.
         :param pulumi.Input[str] instance_type: The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        :param pulumi.Input[float] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
+        :param pulumi.Input[int] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
         :param pulumi.Input[List[pulumi.Input[str]]] ipv6_addresses: Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
         :param pulumi.Input[str] key_name: The key name of the Key Pair to use for the instance; which can be managed using the `ec2.KeyPair` resource.
         :param pulumi.Input[str] launch_group: A launch group is a group of spot instances that launch together and terminate together.
@@ -488,7 +488,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockDurationMinutes")
-    def block_duration_minutes(self) -> pulumi.Output[Optional[float]]:
+    def block_duration_minutes(self) -> pulumi.Output[Optional[int]]:
         """
         The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
         The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
@@ -498,7 +498,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuCoreCount")
-    def cpu_core_count(self) -> pulumi.Output[float]:
+    def cpu_core_count(self) -> pulumi.Output[int]:
         """
         Sets the number of CPU cores for an instance. This option is
         only supported on creation of instance type that support CPU Options
@@ -508,7 +508,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuThreadsPerCore")
-    def cpu_threads_per_core(self) -> pulumi.Output[float]:
+    def cpu_threads_per_core(self) -> pulumi.Output[int]:
         """
         If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         """
@@ -628,7 +628,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
-    def ipv6_address_count(self) -> pulumi.Output[float]:
+    def ipv6_address_count(self) -> pulumi.Output[int]:
         """
         A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
         """

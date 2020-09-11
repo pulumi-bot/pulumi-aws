@@ -35,8 +35,8 @@ class GetParameterResult:
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
         if with_decryption and not isinstance(with_decryption, bool):
             raise TypeError("Expected argument 'with_decryption' to be a bool")
@@ -72,7 +72,7 @@ class GetParameterResult:
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         return pulumi.get(self, "version")
 
     @property

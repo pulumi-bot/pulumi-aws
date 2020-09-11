@@ -26,14 +26,14 @@ class ApiCorsConfigurationArgs:
                  allow_methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allow_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  expose_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 max_age: Optional[pulumi.Input[float]] = None):
+                 max_age: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] allow_credentials: Whether credentials are included in the CORS request.
         :param pulumi.Input[List[pulumi.Input[str]]] allow_headers: The set of allowed HTTP headers.
         :param pulumi.Input[List[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods.
         :param pulumi.Input[List[pulumi.Input[str]]] allow_origins: The set of allowed origins.
         :param pulumi.Input[List[pulumi.Input[str]]] expose_headers: The set of exposed HTTP headers.
-        :param pulumi.Input[float] max_age: The number of seconds that the browser should cache preflight request results.
+        :param pulumi.Input[int] max_age: The number of seconds that the browser should cache preflight request results.
         """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
@@ -110,14 +110,14 @@ class ApiCorsConfigurationArgs:
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input[float]]:
+    def max_age(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds that the browser should cache preflight request results.
         """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input[float]]):
+    def max_age(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age", value)
 
 
@@ -312,7 +312,7 @@ class StageDefaultRouteSettingsArgs:
                  data_trace_enabled: Optional[pulumi.Input[bool]] = None,
                  detailed_metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  logging_level: Optional[pulumi.Input[str]] = None,
-                 throttling_burst_limit: Optional[pulumi.Input[float]] = None,
+                 throttling_burst_limit: Optional[pulumi.Input[int]] = None,
                  throttling_rate_limit: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[bool] data_trace_enabled: Whether data trace logging is enabled for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
@@ -320,7 +320,7 @@ class StageDefaultRouteSettingsArgs:
         :param pulumi.Input[bool] detailed_metrics_enabled: Whether detailed metrics are enabled for the default route. Defaults to `false`.
         :param pulumi.Input[str] logging_level: The logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
                Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-        :param pulumi.Input[float] throttling_burst_limit: The throttling burst limit for the default route.
+        :param pulumi.Input[int] throttling_burst_limit: The throttling burst limit for the default route.
         :param pulumi.Input[float] throttling_rate_limit: The throttling rate limit for the default route.
         """
         if data_trace_enabled is not None:
@@ -374,14 +374,14 @@ class StageDefaultRouteSettingsArgs:
 
     @property
     @pulumi.getter(name="throttlingBurstLimit")
-    def throttling_burst_limit(self) -> Optional[pulumi.Input[float]]:
+    def throttling_burst_limit(self) -> Optional[pulumi.Input[int]]:
         """
         The throttling burst limit for the default route.
         """
         return pulumi.get(self, "throttling_burst_limit")
 
     @throttling_burst_limit.setter
-    def throttling_burst_limit(self, value: Optional[pulumi.Input[float]]):
+    def throttling_burst_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "throttling_burst_limit", value)
 
     @property
@@ -404,7 +404,7 @@ class StageRouteSettingArgs:
                  data_trace_enabled: Optional[pulumi.Input[bool]] = None,
                  detailed_metrics_enabled: Optional[pulumi.Input[bool]] = None,
                  logging_level: Optional[pulumi.Input[str]] = None,
-                 throttling_burst_limit: Optional[pulumi.Input[float]] = None,
+                 throttling_burst_limit: Optional[pulumi.Input[int]] = None,
                  throttling_rate_limit: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] route_key: Route key.
@@ -413,7 +413,7 @@ class StageRouteSettingArgs:
         :param pulumi.Input[bool] detailed_metrics_enabled: Whether detailed metrics are enabled for the route. Defaults to `false`.
         :param pulumi.Input[str] logging_level: The logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
                Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-        :param pulumi.Input[float] throttling_burst_limit: The throttling burst limit for the route.
+        :param pulumi.Input[int] throttling_burst_limit: The throttling burst limit for the route.
         :param pulumi.Input[float] throttling_rate_limit: The throttling rate limit for the route.
         """
         pulumi.set(__self__, "route_key", route_key)
@@ -480,14 +480,14 @@ class StageRouteSettingArgs:
 
     @property
     @pulumi.getter(name="throttlingBurstLimit")
-    def throttling_burst_limit(self) -> Optional[pulumi.Input[float]]:
+    def throttling_burst_limit(self) -> Optional[pulumi.Input[int]]:
         """
         The throttling burst limit for the route.
         """
         return pulumi.get(self, "throttling_burst_limit")
 
     @throttling_burst_limit.setter
-    def throttling_burst_limit(self, value: Optional[pulumi.Input[float]]):
+    def throttling_burst_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "throttling_burst_limit", value)
 
     @property

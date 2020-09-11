@@ -29,7 +29,7 @@ class UserPoolClient(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  prevent_user_existence_errors: Optional[pulumi.Input[str]] = None,
                  read_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 refresh_token_validity: Optional[pulumi.Input[float]] = None,
+                 refresh_token_validity: Optional[pulumi.Input[int]] = None,
                  supported_identity_providers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  user_pool_id: Optional[pulumi.Input[str]] = None,
                  write_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -126,7 +126,7 @@ class UserPoolClient(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the application client.
         :param pulumi.Input[str] prevent_user_existence_errors: Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
         :param pulumi.Input[List[pulumi.Input[str]]] read_attributes: List of user pool attributes the application client can read from.
-        :param pulumi.Input[float] refresh_token_validity: The time limit in days refresh tokens are valid for.
+        :param pulumi.Input[int] refresh_token_validity: The time limit in days refresh tokens are valid for.
         :param pulumi.Input[List[pulumi.Input[str]]] supported_identity_providers: List of provider names for the identity providers that are supported on this client.
         :param pulumi.Input[str] user_pool_id: The user pool the client belongs to.
         :param pulumi.Input[List[pulumi.Input[str]]] write_attributes: List of user pool attributes the application client can write to.
@@ -190,7 +190,7 @@ class UserPoolClient(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             prevent_user_existence_errors: Optional[pulumi.Input[str]] = None,
             read_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            refresh_token_validity: Optional[pulumi.Input[float]] = None,
+            refresh_token_validity: Optional[pulumi.Input[int]] = None,
             supported_identity_providers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             user_pool_id: Optional[pulumi.Input[str]] = None,
             write_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'UserPoolClient':
@@ -214,7 +214,7 @@ class UserPoolClient(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the application client.
         :param pulumi.Input[str] prevent_user_existence_errors: Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
         :param pulumi.Input[List[pulumi.Input[str]]] read_attributes: List of user pool attributes the application client can read from.
-        :param pulumi.Input[float] refresh_token_validity: The time limit in days refresh tokens are valid for.
+        :param pulumi.Input[int] refresh_token_validity: The time limit in days refresh tokens are valid for.
         :param pulumi.Input[List[pulumi.Input[str]]] supported_identity_providers: List of provider names for the identity providers that are supported on this client.
         :param pulumi.Input[str] user_pool_id: The user pool the client belongs to.
         :param pulumi.Input[List[pulumi.Input[str]]] write_attributes: List of user pool attributes the application client can write to.
@@ -348,7 +348,7 @@ class UserPoolClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshTokenValidity")
-    def refresh_token_validity(self) -> pulumi.Output[Optional[float]]:
+    def refresh_token_validity(self) -> pulumi.Output[Optional[int]]:
         """
         The time limit in days refresh tokens are valid for.
         """

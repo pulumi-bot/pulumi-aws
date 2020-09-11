@@ -24,10 +24,10 @@ class LoadBalancer(pulumi.CustomResource):
                  access_logs: Optional[pulumi.Input[pulumi.InputType['LoadBalancerAccessLogsArgs']]] = None,
                  availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  connection_draining: Optional[pulumi.Input[bool]] = None,
-                 connection_draining_timeout: Optional[pulumi.Input[float]] = None,
+                 connection_draining_timeout: Optional[pulumi.Input[int]] = None,
                  cross_zone_load_balancing: Optional[pulumi.Input[bool]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthCheckArgs']]] = None,
-                 idle_timeout: Optional[pulumi.Input[float]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
                  instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  internal: Optional[pulumi.Input[bool]] = None,
                  listeners: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerListenerArgs']]]]] = None,
@@ -114,10 +114,10 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LoadBalancerAccessLogsArgs']] access_logs: An Access Logs block. Access Logs documented below.
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: The AZ's to serve traffic in.
         :param pulumi.Input[bool] connection_draining: Boolean to enable connection draining. Default: `false`
-        :param pulumi.Input[float] connection_draining_timeout: The time in seconds to allow for connections to drain. Default: `300`
+        :param pulumi.Input[int] connection_draining_timeout: The time in seconds to allow for connections to drain. Default: `300`
         :param pulumi.Input[bool] cross_zone_load_balancing: Enable cross-zone load balancing. Default: `true`
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthCheckArgs']] health_check: A health_check block. Health Check documented below.
-        :param pulumi.Input[float] idle_timeout: The time in seconds that the connection is allowed to be idle. Default: `60`
+        :param pulumi.Input[int] idle_timeout: The time in seconds that the connection is allowed to be idle. Default: `60`
         :param pulumi.Input[List[pulumi.Input[str]]] instances: A list of instance ids to place in the ELB pool.
         :param pulumi.Input[bool] internal: If true, ELB will be an internal ELB.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerListenerArgs']]]] listeners: A list of listener blocks. Listeners documented below.
@@ -186,11 +186,11 @@ class LoadBalancer(pulumi.CustomResource):
             arn: Optional[pulumi.Input[str]] = None,
             availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             connection_draining: Optional[pulumi.Input[bool]] = None,
-            connection_draining_timeout: Optional[pulumi.Input[float]] = None,
+            connection_draining_timeout: Optional[pulumi.Input[int]] = None,
             cross_zone_load_balancing: Optional[pulumi.Input[bool]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
             health_check: Optional[pulumi.Input[pulumi.InputType['LoadBalancerHealthCheckArgs']]] = None,
-            idle_timeout: Optional[pulumi.Input[float]] = None,
+            idle_timeout: Optional[pulumi.Input[int]] = None,
             instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             internal: Optional[pulumi.Input[bool]] = None,
             listeners: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerListenerArgs']]]]] = None,
@@ -213,11 +213,11 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the ELB
         :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: The AZ's to serve traffic in.
         :param pulumi.Input[bool] connection_draining: Boolean to enable connection draining. Default: `false`
-        :param pulumi.Input[float] connection_draining_timeout: The time in seconds to allow for connections to drain. Default: `300`
+        :param pulumi.Input[int] connection_draining_timeout: The time in seconds to allow for connections to drain. Default: `300`
         :param pulumi.Input[bool] cross_zone_load_balancing: Enable cross-zone load balancing. Default: `true`
         :param pulumi.Input[str] dns_name: The DNS name of the ELB
         :param pulumi.Input[pulumi.InputType['LoadBalancerHealthCheckArgs']] health_check: A health_check block. Health Check documented below.
-        :param pulumi.Input[float] idle_timeout: The time in seconds that the connection is allowed to be idle. Default: `60`
+        :param pulumi.Input[int] idle_timeout: The time in seconds that the connection is allowed to be idle. Default: `60`
         :param pulumi.Input[List[pulumi.Input[str]]] instances: A list of instance ids to place in the ELB pool.
         :param pulumi.Input[bool] internal: If true, ELB will be an internal ELB.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerListenerArgs']]]] listeners: A list of listener blocks. Listeners documented below.
@@ -296,7 +296,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionDrainingTimeout")
-    def connection_draining_timeout(self) -> pulumi.Output[Optional[float]]:
+    def connection_draining_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The time in seconds to allow for connections to drain. Default: `300`
         """
@@ -328,7 +328,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> pulumi.Output[Optional[float]]:
+    def idle_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The time in seconds that the connection is allowed to be idle. Default: `60`
         """

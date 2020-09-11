@@ -24,7 +24,7 @@ class CatalogTable(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  partition_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogTablePartitionKeyArgs']]]]] = None,
-                 retention: Optional[pulumi.Input[float]] = None,
+                 retention: Optional[pulumi.Input[int]] = None,
                  storage_descriptor: Optional[pulumi.Input[pulumi.InputType['CatalogTableStorageDescriptorArgs']]] = None,
                  table_type: Optional[pulumi.Input[str]] = None,
                  view_expanded_text: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class CatalogTable(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Owner of the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of initialization parameters for the SerDe, in key-value form.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogTablePartitionKeyArgs']]]] partition_keys: A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
-        :param pulumi.Input[float] retention: Retention time for this table.
+        :param pulumi.Input[int] retention: Retention time for this table.
         :param pulumi.Input[pulumi.InputType['CatalogTableStorageDescriptorArgs']] storage_descriptor: A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
         :param pulumi.Input[str] table_type: The type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.).
         :param pulumi.Input[str] view_expanded_text: If the table is a view, the expanded text of the view; otherwise null.
@@ -164,7 +164,7 @@ class CatalogTable(pulumi.CustomResource):
             owner: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             partition_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogTablePartitionKeyArgs']]]]] = None,
-            retention: Optional[pulumi.Input[float]] = None,
+            retention: Optional[pulumi.Input[int]] = None,
             storage_descriptor: Optional[pulumi.Input[pulumi.InputType['CatalogTableStorageDescriptorArgs']]] = None,
             table_type: Optional[pulumi.Input[str]] = None,
             view_expanded_text: Optional[pulumi.Input[str]] = None,
@@ -184,7 +184,7 @@ class CatalogTable(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Owner of the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of initialization parameters for the SerDe, in key-value form.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogTablePartitionKeyArgs']]]] partition_keys: A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
-        :param pulumi.Input[float] retention: Retention time for this table.
+        :param pulumi.Input[int] retention: Retention time for this table.
         :param pulumi.Input[pulumi.InputType['CatalogTableStorageDescriptorArgs']] storage_descriptor: A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
         :param pulumi.Input[str] table_type: The type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.).
         :param pulumi.Input[str] view_expanded_text: If the table is a view, the expanded text of the view; otherwise null.
@@ -275,7 +275,7 @@ class CatalogTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def retention(self) -> pulumi.Output[Optional[float]]:
+    def retention(self) -> pulumi.Output[Optional[int]]:
         """
         Retention time for this table.
         """

@@ -128,23 +128,23 @@ class DomainAdvancedSecurityOptionsMasterUserOptions(dict):
 @pulumi.output_type
 class DomainClusterConfig(dict):
     def __init__(__self__, *,
-                 dedicated_master_count: Optional[float] = None,
+                 dedicated_master_count: Optional[int] = None,
                  dedicated_master_enabled: Optional[bool] = None,
                  dedicated_master_type: Optional[str] = None,
-                 instance_count: Optional[float] = None,
+                 instance_count: Optional[int] = None,
                  instance_type: Optional[str] = None,
-                 warm_count: Optional[float] = None,
+                 warm_count: Optional[int] = None,
                  warm_enabled: Optional[bool] = None,
                  warm_type: Optional[str] = None,
                  zone_awareness_config: Optional['outputs.DomainClusterConfigZoneAwarenessConfig'] = None,
                  zone_awareness_enabled: Optional[bool] = None):
         """
-        :param float dedicated_master_count: Number of dedicated master nodes in the cluster
+        :param int dedicated_master_count: Number of dedicated master nodes in the cluster
         :param bool dedicated_master_enabled: Indicates whether dedicated master nodes are enabled for the cluster.
         :param str dedicated_master_type: Instance type of the dedicated master nodes in the cluster.
-        :param float instance_count: Number of instances in the cluster.
+        :param int instance_count: Number of instances in the cluster.
         :param str instance_type: Instance type of data nodes in the cluster.
-        :param float warm_count: The number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
+        :param int warm_count: The number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
         :param bool warm_enabled: Indicates whether to enable warm storage.
         :param str warm_type: The instance type for the Elasticsearch cluster's warm nodes. Valid values are `ultrawarm1.medium.elasticsearch`, `ultrawarm1.large.elasticsearch` and `ultrawarm1.xlarge.elasticsearch`. `warm_type` can be only and must be set when `warm_enabled` is set to `true`.
         :param 'DomainClusterConfigZoneAwarenessConfigArgs' zone_awareness_config: Configuration block containing zone awareness settings. Documented below.
@@ -173,7 +173,7 @@ class DomainClusterConfig(dict):
 
     @property
     @pulumi.getter(name="dedicatedMasterCount")
-    def dedicated_master_count(self) -> Optional[float]:
+    def dedicated_master_count(self) -> Optional[int]:
         """
         Number of dedicated master nodes in the cluster
         """
@@ -197,7 +197,7 @@ class DomainClusterConfig(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[float]:
+    def instance_count(self) -> Optional[int]:
         """
         Number of instances in the cluster.
         """
@@ -213,7 +213,7 @@ class DomainClusterConfig(dict):
 
     @property
     @pulumi.getter(name="warmCount")
-    def warm_count(self) -> Optional[float]:
+    def warm_count(self) -> Optional[int]:
         """
         The number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
         """
@@ -258,16 +258,16 @@ class DomainClusterConfig(dict):
 @pulumi.output_type
 class DomainClusterConfigZoneAwarenessConfig(dict):
     def __init__(__self__, *,
-                 availability_zone_count: Optional[float] = None):
+                 availability_zone_count: Optional[int] = None):
         """
-        :param float availability_zone_count: Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
+        :param int availability_zone_count: Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
         """
         if availability_zone_count is not None:
             pulumi.set(__self__, "availability_zone_count", availability_zone_count)
 
     @property
     @pulumi.getter(name="availabilityZoneCount")
-    def availability_zone_count(self) -> Optional[float]:
+    def availability_zone_count(self) -> Optional[int]:
         """
         Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
         """
@@ -369,14 +369,14 @@ class DomainDomainEndpointOptions(dict):
 class DomainEbsOptions(dict):
     def __init__(__self__, *,
                  ebs_enabled: bool,
-                 iops: Optional[float] = None,
-                 volume_size: Optional[float] = None,
+                 iops: Optional[int] = None,
+                 volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         """
         :param bool ebs_enabled: Whether EBS volumes are attached to data nodes in the domain.
-        :param float iops: The baseline input/output (I/O) performance of EBS volumes
+        :param int iops: The baseline input/output (I/O) performance of EBS volumes
                attached to data nodes. Applicable only for the Provisioned IOPS EBS volume type.
-        :param float volume_size: The size of EBS volumes attached to data nodes (in GB).
+        :param int volume_size: The size of EBS volumes attached to data nodes (in GB).
                **Required** if `ebs_enabled` is set to `true`.
         :param str volume_type: The type of EBS volumes attached to data nodes.
         """
@@ -398,7 +398,7 @@ class DomainEbsOptions(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[float]:
+    def iops(self) -> Optional[int]:
         """
         The baseline input/output (I/O) performance of EBS volumes
         attached to data nodes. Applicable only for the Provisioned IOPS EBS volume type.
@@ -407,7 +407,7 @@ class DomainEbsOptions(dict):
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[float]:
+    def volume_size(self) -> Optional[int]:
         """
         The size of EBS volumes attached to data nodes (in GB).
         **Required** if `ebs_enabled` is set to `true`.
@@ -527,16 +527,16 @@ class DomainNodeToNodeEncryption(dict):
 @pulumi.output_type
 class DomainSnapshotOptions(dict):
     def __init__(__self__, *,
-                 automated_snapshot_start_hour: float):
+                 automated_snapshot_start_hour: int):
         """
-        :param float automated_snapshot_start_hour: Hour during which the service takes an automated daily
+        :param int automated_snapshot_start_hour: Hour during which the service takes an automated daily
                snapshot of the indices in the domain.
         """
         pulumi.set(__self__, "automated_snapshot_start_hour", automated_snapshot_start_hour)
 
     @property
     @pulumi.getter(name="automatedSnapshotStartHour")
-    def automated_snapshot_start_hour(self) -> float:
+    def automated_snapshot_start_hour(self) -> int:
         """
         Hour during which the service takes an automated daily
         snapshot of the indices in the domain.
@@ -629,23 +629,23 @@ class GetDomainAdvancedSecurityOptionResult(dict):
 @pulumi.output_type
 class GetDomainClusterConfigResult(dict):
     def __init__(__self__, *,
-                 dedicated_master_count: float,
+                 dedicated_master_count: int,
                  dedicated_master_enabled: bool,
                  dedicated_master_type: str,
-                 instance_count: float,
+                 instance_count: int,
                  instance_type: str,
-                 warm_count: float,
+                 warm_count: int,
                  warm_type: str,
                  zone_awareness_configs: List['outputs.GetDomainClusterConfigZoneAwarenessConfigResult'],
                  zone_awareness_enabled: bool,
                  warm_enabled: Optional[bool] = None):
         """
-        :param float dedicated_master_count: Number of dedicated master nodes in the cluster.
+        :param int dedicated_master_count: Number of dedicated master nodes in the cluster.
         :param bool dedicated_master_enabled: Indicates whether dedicated master nodes are enabled for the cluster.
         :param str dedicated_master_type: Instance type of the dedicated master nodes in the cluster.
-        :param float instance_count: Number of instances in the cluster.
+        :param int instance_count: Number of instances in the cluster.
         :param str instance_type: Instance type of data nodes in the cluster.
-        :param float warm_count: The number of warm nodes in the cluster.
+        :param int warm_count: The number of warm nodes in the cluster.
         :param str warm_type: The instance type for the Elasticsearch cluster's warm nodes.
         :param List['GetDomainClusterConfigZoneAwarenessConfigArgs'] zone_awareness_configs: Configuration block containing zone awareness settings.
         :param bool zone_awareness_enabled: Indicates whether zone awareness is enabled.
@@ -665,7 +665,7 @@ class GetDomainClusterConfigResult(dict):
 
     @property
     @pulumi.getter(name="dedicatedMasterCount")
-    def dedicated_master_count(self) -> float:
+    def dedicated_master_count(self) -> int:
         """
         Number of dedicated master nodes in the cluster.
         """
@@ -689,7 +689,7 @@ class GetDomainClusterConfigResult(dict):
 
     @property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> float:
+    def instance_count(self) -> int:
         """
         Number of instances in the cluster.
         """
@@ -705,7 +705,7 @@ class GetDomainClusterConfigResult(dict):
 
     @property
     @pulumi.getter(name="warmCount")
-    def warm_count(self) -> float:
+    def warm_count(self) -> int:
         """
         The number of warm nodes in the cluster.
         """
@@ -747,15 +747,15 @@ class GetDomainClusterConfigResult(dict):
 @pulumi.output_type
 class GetDomainClusterConfigZoneAwarenessConfigResult(dict):
     def __init__(__self__, *,
-                 availability_zone_count: float):
+                 availability_zone_count: int):
         """
-        :param float availability_zone_count: Number of availability zones used.
+        :param int availability_zone_count: Number of availability zones used.
         """
         pulumi.set(__self__, "availability_zone_count", availability_zone_count)
 
     @property
     @pulumi.getter(name="availabilityZoneCount")
-    def availability_zone_count(self) -> float:
+    def availability_zone_count(self) -> int:
         """
         Number of availability zones used.
         """
@@ -817,14 +817,14 @@ class GetDomainCognitoOptionResult(dict):
 class GetDomainEbsOptionResult(dict):
     def __init__(__self__, *,
                  ebs_enabled: bool,
-                 iops: float,
-                 volume_size: float,
+                 iops: int,
+                 volume_size: int,
                  volume_type: str):
         """
         :param bool ebs_enabled: Whether EBS volumes are attached to data nodes in the domain.
-        :param float iops: The baseline input/output (I/O) performance of EBS volumes
+        :param int iops: The baseline input/output (I/O) performance of EBS volumes
                attached to data nodes.
-        :param float volume_size: The size of EBS volumes attached to data nodes (in GB).
+        :param int volume_size: The size of EBS volumes attached to data nodes (in GB).
         :param str volume_type: The type of EBS volumes attached to data nodes.
         """
         pulumi.set(__self__, "ebs_enabled", ebs_enabled)
@@ -842,7 +842,7 @@ class GetDomainEbsOptionResult(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> float:
+    def iops(self) -> int:
         """
         The baseline input/output (I/O) performance of EBS volumes
         attached to data nodes.
@@ -851,7 +851,7 @@ class GetDomainEbsOptionResult(dict):
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> float:
+    def volume_size(self) -> int:
         """
         The size of EBS volumes attached to data nodes (in GB).
         """
@@ -956,16 +956,16 @@ class GetDomainNodeToNodeEncryptionResult(dict):
 @pulumi.output_type
 class GetDomainSnapshotOptionResult(dict):
     def __init__(__self__, *,
-                 automated_snapshot_start_hour: float):
+                 automated_snapshot_start_hour: int):
         """
-        :param float automated_snapshot_start_hour: Hour during which the service takes an automated daily
+        :param int automated_snapshot_start_hour: Hour during which the service takes an automated daily
                snapshot of the indices in the domain.
         """
         pulumi.set(__self__, "automated_snapshot_start_hour", automated_snapshot_start_hour)
 
     @property
     @pulumi.getter(name="automatedSnapshotStartHour")
-    def automated_snapshot_start_hour(self) -> float:
+    def automated_snapshot_start_hour(self) -> int:
         """
         Hour during which the service takes an automated daily
         snapshot of the indices in the domain.

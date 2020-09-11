@@ -26,7 +26,7 @@ class LoadBalancer(pulumi.CustomResource):
                  enable_cross_zone_load_balancing: Optional[pulumi.Input[bool]] = None,
                  enable_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_http2: Optional[pulumi.Input[bool]] = None,
-                 idle_timeout: Optional[pulumi.Input[float]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
                  internal: Optional[pulumi.Input[bool]] = None,
                  ip_address_type: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_deletion_protection: If true, deletion of the load balancer will be disabled via
                the AWS API. This will prevent this provider from deleting the load balancer. Defaults to `false`.
         :param pulumi.Input[bool] enable_http2: Indicates whether HTTP/2 is enabled in `application` load balancers. Defaults to `true`.
-        :param pulumi.Input[float] idle_timeout: The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`. Default: 60.
+        :param pulumi.Input[int] idle_timeout: The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`. Default: 60.
         :param pulumi.Input[bool] internal: If true, the LB will be internal.
         :param pulumi.Input[str] ip_address_type: The type of IP addresses used by the subnets for your load balancer. The possible values are `ipv4` and `dualstack`
         :param pulumi.Input[str] load_balancer_type: The type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
@@ -200,7 +200,7 @@ class LoadBalancer(pulumi.CustomResource):
             enable_cross_zone_load_balancing: Optional[pulumi.Input[bool]] = None,
             enable_deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_http2: Optional[pulumi.Input[bool]] = None,
-            idle_timeout: Optional[pulumi.Input[float]] = None,
+            idle_timeout: Optional[pulumi.Input[int]] = None,
             internal: Optional[pulumi.Input[bool]] = None,
             ip_address_type: Optional[pulumi.Input[str]] = None,
             load_balancer_type: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_deletion_protection: If true, deletion of the load balancer will be disabled via
                the AWS API. This will prevent this provider from deleting the load balancer. Defaults to `false`.
         :param pulumi.Input[bool] enable_http2: Indicates whether HTTP/2 is enabled in `application` load balancers. Defaults to `true`.
-        :param pulumi.Input[float] idle_timeout: The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`. Default: 60.
+        :param pulumi.Input[int] idle_timeout: The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`. Default: 60.
         :param pulumi.Input[bool] internal: If true, the LB will be internal.
         :param pulumi.Input[str] ip_address_type: The type of IP addresses used by the subnets for your load balancer. The possible values are `ipv4` and `dualstack`
         :param pulumi.Input[str] load_balancer_type: The type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
@@ -339,7 +339,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> pulumi.Output[Optional[float]]:
+    def idle_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type `application`. Default: 60.
         """

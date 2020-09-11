@@ -38,8 +38,8 @@ class GetIpRangesResult:
         if services and not isinstance(services, list):
             raise TypeError("Expected argument 'services' to be a list")
         pulumi.set(__self__, "services", services)
-        if sync_token and not isinstance(sync_token, float):
-            raise TypeError("Expected argument 'sync_token' to be a float")
+        if sync_token and not isinstance(sync_token, int):
+            raise TypeError("Expected argument 'sync_token' to be a int")
         pulumi.set(__self__, "sync_token", sync_token)
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
@@ -89,7 +89,7 @@ class GetIpRangesResult:
 
     @property
     @pulumi.getter(name="syncToken")
-    def sync_token(self) -> float:
+    def sync_token(self) -> int:
         """
         The publication time of the IP ranges, in Unix epoch time format
         (e.g. `1470267965`).

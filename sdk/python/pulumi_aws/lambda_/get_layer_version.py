@@ -50,11 +50,11 @@ class GetLayerVersionResult:
         if source_code_hash and not isinstance(source_code_hash, str):
             raise TypeError("Expected argument 'source_code_hash' to be a str")
         pulumi.set(__self__, "source_code_hash", source_code_hash)
-        if source_code_size and not isinstance(source_code_size, float):
-            raise TypeError("Expected argument 'source_code_size' to be a float")
+        if source_code_size and not isinstance(source_code_size, int):
+            raise TypeError("Expected argument 'source_code_size' to be a int")
         pulumi.set(__self__, "source_code_size", source_code_size)
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
 
     @property
@@ -133,7 +133,7 @@ class GetLayerVersionResult:
 
     @property
     @pulumi.getter(name="sourceCodeSize")
-    def source_code_size(self) -> float:
+    def source_code_size(self) -> int:
         """
         The size in bytes of the function .zip file.
         """
@@ -141,7 +141,7 @@ class GetLayerVersionResult:
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         """
         This Lamba Layer version.
         """
@@ -170,7 +170,7 @@ class AwaitableGetLayerVersionResult(GetLayerVersionResult):
 
 def get_layer_version(compatible_runtime: Optional[str] = None,
                       layer_name: Optional[str] = None,
-                      version: Optional[float] = None,
+                      version: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLayerVersionResult:
     """
     Provides information about a Lambda Layer Version.
@@ -189,7 +189,7 @@ def get_layer_version(compatible_runtime: Optional[str] = None,
 
     :param str compatible_runtime: Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
     :param str layer_name: Name of the lambda layer.
-    :param float version: Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
+    :param int version: Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
     """
     __args__ = dict()
     __args__['compatibleRuntime'] = compatible_runtime

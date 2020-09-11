@@ -31,13 +31,13 @@ __all__ = [
 class ClusterBrokerNodeGroupInfo(dict):
     def __init__(__self__, *,
                  client_subnets: List[str],
-                 ebs_volume_size: float,
+                 ebs_volume_size: int,
                  instance_type: str,
                  security_groups: List[str],
                  az_distribution: Optional[str] = None):
         """
         :param List[str] client_subnets: A list of subnets to connect to in client VPC ([documentation](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#clusters-prop-brokernodegroupinfo-clientsubnets)).
-        :param float ebs_volume_size: The size in GiB of the EBS volume for the data drive on each broker node.
+        :param int ebs_volume_size: The size in GiB of the EBS volume for the data drive on each broker node.
         :param str instance_type: Specify the instance type to use for the kafka brokers. e.g. kafka.m5.large. ([Pricing info](https://aws.amazon.com/msk/pricing/))
         :param List[str] security_groups: A list of the security groups to associate with the elastic network interfaces to control who can communicate with the cluster.
         :param str az_distribution: The distribution of broker nodes across availability zones ([documentation](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#clusters-model-brokerazdistribution)). Currently the only valid value is `DEFAULT`.
@@ -59,7 +59,7 @@ class ClusterBrokerNodeGroupInfo(dict):
 
     @property
     @pulumi.getter(name="ebsVolumeSize")
-    def ebs_volume_size(self) -> float:
+    def ebs_volume_size(self) -> int:
         """
         The size in GiB of the EBS volume for the data drive on each broker node.
         """
@@ -141,10 +141,10 @@ class ClusterClientAuthenticationTls(dict):
 class ClusterConfigurationInfo(dict):
     def __init__(__self__, *,
                  arn: str,
-                 revision: float):
+                 revision: int):
         """
         :param str arn: Amazon Resource Name (ARN) of the MSK Configuration to use in the cluster.
-        :param float revision: Revision of the MSK Configuration to use in the cluster.
+        :param int revision: Revision of the MSK Configuration to use in the cluster.
         """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "revision", revision)
@@ -159,7 +159,7 @@ class ClusterConfigurationInfo(dict):
 
     @property
     @pulumi.getter
-    def revision(self) -> float:
+    def revision(self) -> int:
         """
         Revision of the MSK Configuration to use in the cluster.
         """

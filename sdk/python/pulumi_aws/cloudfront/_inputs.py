@@ -36,17 +36,17 @@ __all__ = [
 @pulumi.input_type
 class DistributionCustomErrorResponseArgs:
     def __init__(__self__, *,
-                 error_code: pulumi.Input[float],
-                 error_caching_min_ttl: Optional[pulumi.Input[float]] = None,
-                 response_code: Optional[pulumi.Input[float]] = None,
+                 error_code: pulumi.Input[int],
+                 error_caching_min_ttl: Optional[pulumi.Input[int]] = None,
+                 response_code: Optional[pulumi.Input[int]] = None,
                  response_page_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] error_code: The 4xx or 5xx HTTP status code that you want to
+        :param pulumi.Input[int] error_code: The 4xx or 5xx HTTP status code that you want to
                customize.
-        :param pulumi.Input[float] error_caching_min_ttl: The minimum amount of time you want
+        :param pulumi.Input[int] error_caching_min_ttl: The minimum amount of time you want
                HTTP error codes to stay in CloudFront caches before CloudFront queries your
                origin to see whether the object has been updated.
-        :param pulumi.Input[float] response_code: The HTTP status code that you want CloudFront
+        :param pulumi.Input[int] response_code: The HTTP status code that you want CloudFront
                to return with the custom error page to the viewer.
         :param pulumi.Input[str] response_page_path: The path of the custom error page (for
                example, `/custom_404.html`).
@@ -61,7 +61,7 @@ class DistributionCustomErrorResponseArgs:
 
     @property
     @pulumi.getter(name="errorCode")
-    def error_code(self) -> pulumi.Input[float]:
+    def error_code(self) -> pulumi.Input[int]:
         """
         The 4xx or 5xx HTTP status code that you want to
         customize.
@@ -69,12 +69,12 @@ class DistributionCustomErrorResponseArgs:
         return pulumi.get(self, "error_code")
 
     @error_code.setter
-    def error_code(self, value: pulumi.Input[float]):
+    def error_code(self, value: pulumi.Input[int]):
         pulumi.set(self, "error_code", value)
 
     @property
     @pulumi.getter(name="errorCachingMinTtl")
-    def error_caching_min_ttl(self) -> Optional[pulumi.Input[float]]:
+    def error_caching_min_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum amount of time you want
         HTTP error codes to stay in CloudFront caches before CloudFront queries your
@@ -83,12 +83,12 @@ class DistributionCustomErrorResponseArgs:
         return pulumi.get(self, "error_caching_min_ttl")
 
     @error_caching_min_ttl.setter
-    def error_caching_min_ttl(self, value: Optional[pulumi.Input[float]]):
+    def error_caching_min_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "error_caching_min_ttl", value)
 
     @property
     @pulumi.getter(name="responseCode")
-    def response_code(self) -> Optional[pulumi.Input[float]]:
+    def response_code(self) -> Optional[pulumi.Input[int]]:
         """
         The HTTP status code that you want CloudFront
         to return with the custom error page to the viewer.
@@ -96,7 +96,7 @@ class DistributionCustomErrorResponseArgs:
         return pulumi.get(self, "response_code")
 
     @response_code.setter
-    def response_code(self, value: Optional[pulumi.Input[float]]):
+    def response_code(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "response_code", value)
 
     @property
@@ -122,11 +122,11 @@ class DistributionDefaultCacheBehaviorArgs:
                  target_origin_id: pulumi.Input[str],
                  viewer_protocol_policy: pulumi.Input[str],
                  compress: Optional[pulumi.Input[bool]] = None,
-                 default_ttl: Optional[pulumi.Input[float]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
                  field_level_encryption_id: Optional[pulumi.Input[str]] = None,
                  lambda_function_associations: Optional[pulumi.Input[List[pulumi.Input['DistributionDefaultCacheBehaviorLambdaFunctionAssociationArgs']]]] = None,
-                 max_ttl: Optional[pulumi.Input[float]] = None,
-                 min_ttl: Optional[pulumi.Input[float]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 min_ttl: Optional[pulumi.Input[int]] = None,
                  smooth_streaming: Optional[pulumi.Input[bool]] = None,
                  trusted_signers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
@@ -146,19 +146,19 @@ class DistributionDefaultCacheBehaviorArgs:
         :param pulumi.Input[bool] compress: Whether you want CloudFront to automatically
                compress content for web requests that include `Accept-Encoding: gzip` in
                the request header (default: `false`).
-        :param pulumi.Input[float] default_ttl: The default amount of time (in seconds) that an
+        :param pulumi.Input[int] default_ttl: The default amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                in the absence of an `Cache-Control max-age` or `Expires` header. Defaults to
                1 day.
         :param pulumi.Input[str] field_level_encryption_id: Field level encryption configuration ID
         :param pulumi.Input[List[pulumi.Input['DistributionDefaultCacheBehaviorLambdaFunctionAssociationArgs']]] lambda_function_associations: A config block that triggers a lambda function with
                specific actions. Defined below, maximum 4.
-        :param pulumi.Input[float] max_ttl: The maximum amount of time (in seconds) that an
+        :param pulumi.Input[int] max_ttl: The maximum amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                to your origin to determine whether the object has been updated. Only
                effective in the presence of `Cache-Control max-age`, `Cache-Control
                s-maxage`, and `Expires` headers. Defaults to 365 days.
-        :param pulumi.Input[float] min_ttl: The minimum amount of time that you want objects to
+        :param pulumi.Input[int] min_ttl: The minimum amount of time that you want objects to
                stay in CloudFront caches before CloudFront queries your origin to see
                whether the object has been updated. Defaults to 0 seconds.
         :param pulumi.Input[bool] smooth_streaming: Indicates whether you want to distribute
@@ -273,7 +273,7 @@ class DistributionDefaultCacheBehaviorArgs:
 
     @property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[float]]:
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The default amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -283,7 +283,7 @@ class DistributionDefaultCacheBehaviorArgs:
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[float]]):
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default_ttl", value)
 
     @property
@@ -313,7 +313,7 @@ class DistributionDefaultCacheBehaviorArgs:
 
     @property
     @pulumi.getter(name="maxTtl")
-    def max_ttl(self) -> Optional[pulumi.Input[float]]:
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -324,12 +324,12 @@ class DistributionDefaultCacheBehaviorArgs:
         return pulumi.get(self, "max_ttl")
 
     @max_ttl.setter
-    def max_ttl(self, value: Optional[pulumi.Input[float]]):
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_ttl", value)
 
     @property
     @pulumi.getter(name="minTtl")
-    def min_ttl(self) -> Optional[pulumi.Input[float]]:
+    def min_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum amount of time that you want objects to
         stay in CloudFront caches before CloudFront queries your origin to see
@@ -338,7 +338,7 @@ class DistributionDefaultCacheBehaviorArgs:
         return pulumi.get(self, "min_ttl")
 
     @min_ttl.setter
-    def min_ttl(self, value: Optional[pulumi.Input[float]]):
+    def min_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_ttl", value)
 
     @property
@@ -627,11 +627,11 @@ class DistributionOrderedCacheBehaviorArgs:
                  target_origin_id: pulumi.Input[str],
                  viewer_protocol_policy: pulumi.Input[str],
                  compress: Optional[pulumi.Input[bool]] = None,
-                 default_ttl: Optional[pulumi.Input[float]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
                  field_level_encryption_id: Optional[pulumi.Input[str]] = None,
                  lambda_function_associations: Optional[pulumi.Input[List[pulumi.Input['DistributionOrderedCacheBehaviorLambdaFunctionAssociationArgs']]]] = None,
-                 max_ttl: Optional[pulumi.Input[float]] = None,
-                 min_ttl: Optional[pulumi.Input[float]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 min_ttl: Optional[pulumi.Input[int]] = None,
                  smooth_streaming: Optional[pulumi.Input[bool]] = None,
                  trusted_signers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
@@ -653,19 +653,19 @@ class DistributionOrderedCacheBehaviorArgs:
         :param pulumi.Input[bool] compress: Whether you want CloudFront to automatically
                compress content for web requests that include `Accept-Encoding: gzip` in
                the request header (default: `false`).
-        :param pulumi.Input[float] default_ttl: The default amount of time (in seconds) that an
+        :param pulumi.Input[int] default_ttl: The default amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                in the absence of an `Cache-Control max-age` or `Expires` header. Defaults to
                1 day.
         :param pulumi.Input[str] field_level_encryption_id: Field level encryption configuration ID
         :param pulumi.Input[List[pulumi.Input['DistributionOrderedCacheBehaviorLambdaFunctionAssociationArgs']]] lambda_function_associations: A config block that triggers a lambda function with
                specific actions. Defined below, maximum 4.
-        :param pulumi.Input[float] max_ttl: The maximum amount of time (in seconds) that an
+        :param pulumi.Input[int] max_ttl: The maximum amount of time (in seconds) that an
                object is in a CloudFront cache before CloudFront forwards another request
                to your origin to determine whether the object has been updated. Only
                effective in the presence of `Cache-Control max-age`, `Cache-Control
                s-maxage`, and `Expires` headers. Defaults to 365 days.
-        :param pulumi.Input[float] min_ttl: The minimum amount of time that you want objects to
+        :param pulumi.Input[int] min_ttl: The minimum amount of time that you want objects to
                stay in CloudFront caches before CloudFront queries your origin to see
                whether the object has been updated. Defaults to 0 seconds.
         :param pulumi.Input[bool] smooth_streaming: Indicates whether you want to distribute
@@ -794,7 +794,7 @@ class DistributionOrderedCacheBehaviorArgs:
 
     @property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[float]]:
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The default amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -804,7 +804,7 @@ class DistributionOrderedCacheBehaviorArgs:
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[float]]):
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default_ttl", value)
 
     @property
@@ -834,7 +834,7 @@ class DistributionOrderedCacheBehaviorArgs:
 
     @property
     @pulumi.getter(name="maxTtl")
-    def max_ttl(self) -> Optional[pulumi.Input[float]]:
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum amount of time (in seconds) that an
         object is in a CloudFront cache before CloudFront forwards another request
@@ -845,12 +845,12 @@ class DistributionOrderedCacheBehaviorArgs:
         return pulumi.get(self, "max_ttl")
 
     @max_ttl.setter
-    def max_ttl(self, value: Optional[pulumi.Input[float]]):
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_ttl", value)
 
     @property
     @pulumi.getter(name="minTtl")
-    def min_ttl(self) -> Optional[pulumi.Input[float]]:
+    def min_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum amount of time that you want objects to
         stay in CloudFront caches before CloudFront queries your origin to see
@@ -859,7 +859,7 @@ class DistributionOrderedCacheBehaviorArgs:
         return pulumi.get(self, "min_ttl")
 
     @min_ttl.setter
-    def min_ttl(self, value: Optional[pulumi.Input[float]]):
+    def min_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_ttl", value)
 
     @property
@@ -1227,22 +1227,22 @@ class DistributionOriginCustomHeaderArgs:
 @pulumi.input_type
 class DistributionOriginCustomOriginConfigArgs:
     def __init__(__self__, *,
-                 http_port: pulumi.Input[float],
-                 https_port: pulumi.Input[float],
+                 http_port: pulumi.Input[int],
+                 https_port: pulumi.Input[int],
                  origin_protocol_policy: pulumi.Input[str],
                  origin_ssl_protocols: pulumi.Input[List[pulumi.Input[str]]],
-                 origin_keepalive_timeout: Optional[pulumi.Input[float]] = None,
-                 origin_read_timeout: Optional[pulumi.Input[float]] = None):
+                 origin_keepalive_timeout: Optional[pulumi.Input[int]] = None,
+                 origin_read_timeout: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] http_port: The HTTP port the custom origin listens on.
-        :param pulumi.Input[float] https_port: The HTTPS port the custom origin listens on.
+        :param pulumi.Input[int] http_port: The HTTP port the custom origin listens on.
+        :param pulumi.Input[int] https_port: The HTTPS port the custom origin listens on.
         :param pulumi.Input[str] origin_protocol_policy: The origin protocol policy to apply to
                your origin. One of `http-only`, `https-only`, or `match-viewer`.
         :param pulumi.Input[List[pulumi.Input[str]]] origin_ssl_protocols: The SSL/TLS protocols that you want
                CloudFront to use when communicating with your origin over HTTPS. A list of
                one or more of `SSLv3`, `TLSv1`, `TLSv1.1`, and `TLSv1.2`.
-        :param pulumi.Input[float] origin_keepalive_timeout: The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
-        :param pulumi.Input[float] origin_read_timeout: The Custom Read timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
+        :param pulumi.Input[int] origin_keepalive_timeout: The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
+        :param pulumi.Input[int] origin_read_timeout: The Custom Read timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
         """
         pulumi.set(__self__, "http_port", http_port)
         pulumi.set(__self__, "https_port", https_port)
@@ -1255,26 +1255,26 @@ class DistributionOriginCustomOriginConfigArgs:
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> pulumi.Input[float]:
+    def http_port(self) -> pulumi.Input[int]:
         """
         The HTTP port the custom origin listens on.
         """
         return pulumi.get(self, "http_port")
 
     @http_port.setter
-    def http_port(self, value: pulumi.Input[float]):
+    def http_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "http_port", value)
 
     @property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> pulumi.Input[float]:
+    def https_port(self) -> pulumi.Input[int]:
         """
         The HTTPS port the custom origin listens on.
         """
         return pulumi.get(self, "https_port")
 
     @https_port.setter
-    def https_port(self, value: pulumi.Input[float]):
+    def https_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "https_port", value)
 
     @property
@@ -1306,26 +1306,26 @@ class DistributionOriginCustomOriginConfigArgs:
 
     @property
     @pulumi.getter(name="originKeepaliveTimeout")
-    def origin_keepalive_timeout(self) -> Optional[pulumi.Input[float]]:
+    def origin_keepalive_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
         """
         return pulumi.get(self, "origin_keepalive_timeout")
 
     @origin_keepalive_timeout.setter
-    def origin_keepalive_timeout(self, value: Optional[pulumi.Input[float]]):
+    def origin_keepalive_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "origin_keepalive_timeout", value)
 
     @property
     @pulumi.getter(name="originReadTimeout")
-    def origin_read_timeout(self) -> Optional[pulumi.Input[float]]:
+    def origin_read_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The Custom Read timeout, in seconds. By default, AWS enforces a limit of `60`. But you can request an [increase](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout).
         """
         return pulumi.get(self, "origin_read_timeout")
 
     @origin_read_timeout.setter
-    def origin_read_timeout(self, value: Optional[pulumi.Input[float]]):
+    def origin_read_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "origin_read_timeout", value)
 
 
@@ -1384,22 +1384,22 @@ class DistributionOriginGroupArgs:
 @pulumi.input_type
 class DistributionOriginGroupFailoverCriteriaArgs:
     def __init__(__self__, *,
-                 status_codes: pulumi.Input[List[pulumi.Input[float]]]):
+                 status_codes: pulumi.Input[List[pulumi.Input[int]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] status_codes: A list of HTTP status codes for the origin group
+        :param pulumi.Input[List[pulumi.Input[int]]] status_codes: A list of HTTP status codes for the origin group
         """
         pulumi.set(__self__, "status_codes", status_codes)
 
     @property
     @pulumi.getter(name="statusCodes")
-    def status_codes(self) -> pulumi.Input[List[pulumi.Input[float]]]:
+    def status_codes(self) -> pulumi.Input[List[pulumi.Input[int]]]:
         """
         A list of HTTP status codes for the origin group
         """
         return pulumi.get(self, "status_codes")
 
     @status_codes.setter
-    def status_codes(self, value: pulumi.Input[List[pulumi.Input[float]]]):
+    def status_codes(self, value: pulumi.Input[List[pulumi.Input[int]]]):
         pulumi.set(self, "status_codes", value)
 
 

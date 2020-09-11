@@ -139,15 +139,15 @@ class ClusterS3Import(dict):
 class ClusterScalingConfiguration(dict):
     def __init__(__self__, *,
                  auto_pause: Optional[bool] = None,
-                 max_capacity: Optional[float] = None,
-                 min_capacity: Optional[float] = None,
-                 seconds_until_auto_pause: Optional[float] = None,
+                 max_capacity: Optional[int] = None,
+                 min_capacity: Optional[int] = None,
+                 seconds_until_auto_pause: Optional[int] = None,
                  timeout_action: Optional[str] = None):
         """
         :param bool auto_pause: Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
-        :param float max_capacity: The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
-        :param float min_capacity: The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
-        :param float seconds_until_auto_pause: The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+        :param int max_capacity: The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+        :param int min_capacity: The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
+        :param int seconds_until_auto_pause: The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
         :param str timeout_action: The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
         """
         if auto_pause is not None:
@@ -171,7 +171,7 @@ class ClusterScalingConfiguration(dict):
 
     @property
     @pulumi.getter(name="maxCapacity")
-    def max_capacity(self) -> Optional[float]:
+    def max_capacity(self) -> Optional[int]:
         """
         The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
         """
@@ -179,7 +179,7 @@ class ClusterScalingConfiguration(dict):
 
     @property
     @pulumi.getter(name="minCapacity")
-    def min_capacity(self) -> Optional[float]:
+    def min_capacity(self) -> Optional[int]:
         """
         The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `1`.
         """
@@ -187,7 +187,7 @@ class ClusterScalingConfiguration(dict):
 
     @property
     @pulumi.getter(name="secondsUntilAutoPause")
-    def seconds_until_auto_pause(self) -> Optional[float]:
+    def seconds_until_auto_pause(self) -> Optional[int]:
         """
         The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
         """
@@ -311,14 +311,14 @@ class OptionGroupOption(dict):
                  option_name: str,
                  db_security_group_memberships: Optional[List[str]] = None,
                  option_settings: Optional[List['outputs.OptionGroupOptionOptionSetting']] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  version: Optional[str] = None,
                  vpc_security_group_memberships: Optional[List[str]] = None):
         """
         :param str option_name: The Name of the Option (e.g. MEMCACHED).
         :param List[str] db_security_group_memberships: A list of DB Security Groups for which the option is enabled.
         :param List['OptionGroupOptionOptionSettingArgs'] option_settings: A list of option settings to apply.
-        :param float port: The Port number when connecting to the Option (e.g. 11211).
+        :param int port: The Port number when connecting to the Option (e.g. 11211).
         :param str version: The version of the option (e.g. 13.1.0.0).
         :param List[str] vpc_security_group_memberships: A list of VPC Security Groups for which the option is enabled.
         """
@@ -360,7 +360,7 @@ class OptionGroupOption(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The Port number when connecting to the Option (e.g. 11211).
         """

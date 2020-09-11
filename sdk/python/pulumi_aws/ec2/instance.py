@@ -20,8 +20,8 @@ class Instance(pulumi.CustomResource):
                  ami: Optional[pulumi.Input[str]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
-                 cpu_core_count: Optional[pulumi.Input[float]] = None,
-                 cpu_threads_per_core: Optional[pulumi.Input[float]] = None,
+                 cpu_core_count: Optional[pulumi.Input[int]] = None,
+                 cpu_threads_per_core: Optional[pulumi.Input[int]] = None,
                  credit_specification: Optional[pulumi.Input[pulumi.InputType['InstanceCreditSpecificationArgs']]] = None,
                  disable_api_termination: Optional[pulumi.Input[bool]] = None,
                  ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceEbsBlockDeviceArgs']]]]] = None,
@@ -33,7 +33,7 @@ class Instance(pulumi.CustomResource):
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  instance_initiated_shutdown_behavior: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[float]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  metadata_options: Optional[pulumi.Input[pulumi.InputType['InstanceMetadataOptionsArgs']]] = None,
@@ -90,10 +90,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ami: The AMI to use for the instance.
         :param pulumi.Input[bool] associate_public_ip_address: Associate a public ip address with an instance in a VPC.  Boolean value.
         :param pulumi.Input[str] availability_zone: The AZ to start the instance in.
-        :param pulumi.Input[float] cpu_core_count: Sets the number of CPU cores for an instance. This option is
+        :param pulumi.Input[int] cpu_core_count: Sets the number of CPU cores for an instance. This option is
                only supported on creation of instance type that support CPU Options
                [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        :param pulumi.Input[float] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
+        :param pulumi.Input[int] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         :param pulumi.Input[pulumi.InputType['InstanceCreditSpecificationArgs']] credit_specification: Customize the credit specification of the instance. See Credit Specification below for more details.
         :param pulumi.Input[bool] disable_api_termination: If true, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
@@ -116,7 +116,7 @@ class Instance(pulumi.CustomResource):
                `terminate` for instance-store instances. Cannot be set on instance-store
                instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
         :param pulumi.Input[str] instance_type: The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        :param pulumi.Input[float] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
+        :param pulumi.Input[int] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
         :param pulumi.Input[List[pulumi.Input[str]]] ipv6_addresses: Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
         :param pulumi.Input[str] key_name: The key name of the Key Pair to use for the instance; which can be managed using the `ec2.KeyPair` resource.
         :param pulumi.Input[pulumi.InputType['InstanceMetadataOptionsArgs']] metadata_options: Customize the metadata options of the instance. See Metadata Options below for more details.
@@ -220,8 +220,8 @@ class Instance(pulumi.CustomResource):
             arn: Optional[pulumi.Input[str]] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
-            cpu_core_count: Optional[pulumi.Input[float]] = None,
-            cpu_threads_per_core: Optional[pulumi.Input[float]] = None,
+            cpu_core_count: Optional[pulumi.Input[int]] = None,
+            cpu_threads_per_core: Optional[pulumi.Input[int]] = None,
             credit_specification: Optional[pulumi.Input[pulumi.InputType['InstanceCreditSpecificationArgs']]] = None,
             disable_api_termination: Optional[pulumi.Input[bool]] = None,
             ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceEbsBlockDeviceArgs']]]]] = None,
@@ -234,7 +234,7 @@ class Instance(pulumi.CustomResource):
             instance_initiated_shutdown_behavior: Optional[pulumi.Input[str]] = None,
             instance_state: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            ipv6_address_count: Optional[pulumi.Input[float]] = None,
+            ipv6_address_count: Optional[pulumi.Input[int]] = None,
             ipv6_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             metadata_options: Optional[pulumi.Input[pulumi.InputType['InstanceMetadataOptionsArgs']]] = None,
@@ -270,10 +270,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the instance.
         :param pulumi.Input[bool] associate_public_ip_address: Associate a public ip address with an instance in a VPC.  Boolean value.
         :param pulumi.Input[str] availability_zone: The AZ to start the instance in.
-        :param pulumi.Input[float] cpu_core_count: Sets the number of CPU cores for an instance. This option is
+        :param pulumi.Input[int] cpu_core_count: Sets the number of CPU cores for an instance. This option is
                only supported on creation of instance type that support CPU Options
                [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        :param pulumi.Input[float] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
+        :param pulumi.Input[int] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         :param pulumi.Input[pulumi.InputType['InstanceCreditSpecificationArgs']] credit_specification: Customize the credit specification of the instance. See Credit Specification below for more details.
         :param pulumi.Input[bool] disable_api_termination: If true, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
@@ -297,7 +297,7 @@ class Instance(pulumi.CustomResource):
                instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
         :param pulumi.Input[str] instance_state: The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
         :param pulumi.Input[str] instance_type: The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
-        :param pulumi.Input[float] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
+        :param pulumi.Input[int] ipv6_address_count: A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
         :param pulumi.Input[List[pulumi.Input[str]]] ipv6_addresses: Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
         :param pulumi.Input[str] key_name: The key name of the Key Pair to use for the instance; which can be managed using the `ec2.KeyPair` resource.
         :param pulumi.Input[pulumi.InputType['InstanceMetadataOptionsArgs']] metadata_options: Customize the metadata options of the instance. See Metadata Options below for more details.
@@ -416,7 +416,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuCoreCount")
-    def cpu_core_count(self) -> pulumi.Output[float]:
+    def cpu_core_count(self) -> pulumi.Output[int]:
         """
         Sets the number of CPU cores for an instance. This option is
         only supported on creation of instance type that support CPU Options
@@ -426,7 +426,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuThreadsPerCore")
-    def cpu_threads_per_core(self) -> pulumi.Output[float]:
+    def cpu_threads_per_core(self) -> pulumi.Output[int]:
         """
         If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         """
@@ -541,7 +541,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
-    def ipv6_address_count(self) -> pulumi.Output[float]:
+    def ipv6_address_count(self) -> pulumi.Output[int]:
         """
         A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
         """

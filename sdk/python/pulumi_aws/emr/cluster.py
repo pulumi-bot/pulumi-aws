@@ -25,7 +25,7 @@ class Cluster(pulumi.CustomResource):
                  configurations_json: Optional[pulumi.Input[str]] = None,
                  core_instance_group: Optional[pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']]] = None,
                  custom_ami_id: Optional[pulumi.Input[str]] = None,
-                 ebs_root_volume_size: Optional[pulumi.Input[float]] = None,
+                 ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
                  ec2_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterEc2AttributesArgs']]] = None,
                  keep_job_flow_alive_when_no_steps: Optional[pulumi.Input[bool]] = None,
                  kerberos_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterKerberosAttributesArgs']]] = None,
@@ -36,7 +36,7 @@ class Cluster(pulumi.CustomResource):
                  scale_down_behavior: Optional[pulumi.Input[str]] = None,
                  security_configuration: Optional[pulumi.Input[str]] = None,
                  service_role: Optional[pulumi.Input[str]] = None,
-                 step_concurrency_level: Optional[pulumi.Input[float]] = None,
+                 step_concurrency_level: Optional[pulumi.Input[int]] = None,
                  steps: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
@@ -469,7 +469,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] configurations_json: A JSON string for supplying list of configurations for the EMR cluster.
         :param pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']] core_instance_group: Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
         :param pulumi.Input[str] custom_ami_id: A custom Amazon Linux AMI for the cluster (instead of an EMR-owned AMI). Available in Amazon EMR version 5.7.0 and later.
-        :param pulumi.Input[float] ebs_root_volume_size: Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
+        :param pulumi.Input[int] ebs_root_volume_size: Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
         :param pulumi.Input[pulumi.InputType['ClusterEc2AttributesArgs']] ec2_attributes: Attributes for the EC2 instances running the job flow. Defined below
         :param pulumi.Input[bool] keep_job_flow_alive_when_no_steps: Switch on/off run cluster with no steps or when all steps are complete (default is on)
         :param pulumi.Input[pulumi.InputType['ClusterKerberosAttributesArgs']] kerberos_attributes: Kerberos configuration for the cluster. Defined below
@@ -480,7 +480,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] scale_down_behavior: The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
         :param pulumi.Input[str] security_configuration: The security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater
         :param pulumi.Input[str] service_role: IAM role that will be assumed by the Amazon EMR service to access AWS resources
-        :param pulumi.Input[float] step_concurrency_level: The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
+        :param pulumi.Input[int] step_concurrency_level: The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]] steps: List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: list of tags to apply to the EMR Cluster
         :param pulumi.Input[bool] termination_protection: Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
@@ -554,7 +554,7 @@ class Cluster(pulumi.CustomResource):
             configurations_json: Optional[pulumi.Input[str]] = None,
             core_instance_group: Optional[pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']]] = None,
             custom_ami_id: Optional[pulumi.Input[str]] = None,
-            ebs_root_volume_size: Optional[pulumi.Input[float]] = None,
+            ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
             ec2_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterEc2AttributesArgs']]] = None,
             keep_job_flow_alive_when_no_steps: Optional[pulumi.Input[bool]] = None,
             kerberos_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterKerberosAttributesArgs']]] = None,
@@ -566,7 +566,7 @@ class Cluster(pulumi.CustomResource):
             scale_down_behavior: Optional[pulumi.Input[str]] = None,
             security_configuration: Optional[pulumi.Input[str]] = None,
             service_role: Optional[pulumi.Input[str]] = None,
-            step_concurrency_level: Optional[pulumi.Input[float]] = None,
+            step_concurrency_level: Optional[pulumi.Input[int]] = None,
             steps: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None,
@@ -586,7 +586,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] configurations_json: A JSON string for supplying list of configurations for the EMR cluster.
         :param pulumi.Input[pulumi.InputType['ClusterCoreInstanceGroupArgs']] core_instance_group: Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
         :param pulumi.Input[str] custom_ami_id: A custom Amazon Linux AMI for the cluster (instead of an EMR-owned AMI). Available in Amazon EMR version 5.7.0 and later.
-        :param pulumi.Input[float] ebs_root_volume_size: Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
+        :param pulumi.Input[int] ebs_root_volume_size: Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
         :param pulumi.Input[pulumi.InputType['ClusterEc2AttributesArgs']] ec2_attributes: Attributes for the EC2 instances running the job flow. Defined below
         :param pulumi.Input[bool] keep_job_flow_alive_when_no_steps: Switch on/off run cluster with no steps or when all steps are complete (default is on)
         :param pulumi.Input[pulumi.InputType['ClusterKerberosAttributesArgs']] kerberos_attributes: Kerberos configuration for the cluster. Defined below
@@ -599,7 +599,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] scale_down_behavior: The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
         :param pulumi.Input[str] security_configuration: The security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater
         :param pulumi.Input[str] service_role: IAM role that will be assumed by the Amazon EMR service to access AWS resources
-        :param pulumi.Input[float] step_concurrency_level: The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
+        :param pulumi.Input[int] step_concurrency_level: The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterStepArgs']]]] steps: List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: list of tags to apply to the EMR Cluster
         :param pulumi.Input[bool] termination_protection: Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
@@ -714,7 +714,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ebsRootVolumeSize")
-    def ebs_root_volume_size(self) -> pulumi.Output[Optional[float]]:
+    def ebs_root_volume_size(self) -> pulumi.Output[Optional[int]]:
         """
         Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
         """
@@ -811,7 +811,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stepConcurrencyLevel")
-    def step_concurrency_level(self) -> pulumi.Output[Optional[float]]:
+    def step_concurrency_level(self) -> pulumi.Output[Optional[int]]:
         """
         The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater. (default is 1)
         """

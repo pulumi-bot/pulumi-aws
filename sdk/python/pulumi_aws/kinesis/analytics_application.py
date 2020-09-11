@@ -133,7 +133,7 @@ class AnalyticsApplication(pulumi.CustomResource):
             reference_data_sources: Optional[pulumi.Input[pulumi.InputType['AnalyticsApplicationReferenceDataSourcesArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            version: Optional[pulumi.Input[float]] = None) -> 'AnalyticsApplication':
+            version: Optional[pulumi.Input[int]] = None) -> 'AnalyticsApplication':
         """
         Get an existing AnalyticsApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -155,7 +155,7 @@ class AnalyticsApplication(pulumi.CustomResource):
                See Reference Data Sources below for more details.
         :param pulumi.Input[str] status: The Status of the application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of tags for the Kinesis Analytics Application.
-        :param pulumi.Input[float] version: The Version of the application.
+        :param pulumi.Input[int] version: The Version of the application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -276,7 +276,7 @@ class AnalyticsApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[float]:
+    def version(self) -> pulumi.Output[int]:
         """
         The Version of the application.
         """
