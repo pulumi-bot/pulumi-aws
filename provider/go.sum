@@ -714,6 +714,7 @@ github.com/michaelklishin/rabbit-hole v1.5.0/go.mod h1:vvI1uOitYZi0O5HEGXhaWC1XT
 github.com/miekg/dns v1.0.14/go.mod h1:W1PPwlIAgtquWBMBEV9nkV9Cazfe8ScdGz/Lj7v3Nrg=
 github.com/mitchellh/cli v1.0.0 h1:iGBIsUe3+HZ/AD/Vd7DErOt5sU9fa8Uj7A2s1aggv1Y=
 github.com/mitchellh/cli v1.0.0/go.mod h1:hNIlj7HEI86fIcpObd7a0FcrxTWetlwJDGcceTlRvqc=
+github.com/mitchellh/cli v1.1.1 h1:J64v/xD7Clql+JVKSvkYojLOXu1ibnY9ZjGLwSt/89w=
 github.com/mitchellh/cli v1.1.1/go.mod h1:xcISNoH86gajksDmfB23e/pu+B+GeFRMYmoHXxx3xhI=
 github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db h1:62I3jR2EmQ4l5rM/4FEfDWcRD+abF5XlKShorW5LRoQ=
 github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db/go.mod h1:l0dey0ia/Uv7NcFFVbCLtqEBQbrT4OCwCSKTEv6enCw=
@@ -870,6 +871,7 @@ github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200821035132-629254334213 h1:c8UQ842Z
 github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200821035132-629254334213/go.mod h1:Yq1q3nwy/KeU08DyyX0QsMyc6SqPs0jGJb8ev5f45AU=
 github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200825190708-910aa96016cd h1:e4nK2jqLm6g7qMW0BInHR3ZM55y1NblvgOlkfNGT2F4=
 github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200825190708-910aa96016cd/go.mod h1:Yq1q3nwy/KeU08DyyX0QsMyc6SqPs0jGJb8ev5f45AU=
+github.com/pulumi/pulumi/pkg/v2 v2.9.3-0.20200909052235-d0ba9fbdcde1 h1:9qcvpb2erZMBX1tQ0t9T1u2bDEhdrvbfMwk9coqVdHM=
 github.com/pulumi/pulumi/pkg/v2 v2.9.3-0.20200909052235-d0ba9fbdcde1/go.mod h1:zQWe2D4tYJDeXNzSclqNmP8/SMSKOh8k22AbWg3+mVc=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
 github.com/pulumi/pulumi/sdk/v2 v2.2.1/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
@@ -890,6 +892,7 @@ github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200821035132-629254334213 h1:h4hBtS6/
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200821035132-629254334213/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd h1:m5jEWpbr/Q94vCqA/7fw5US7cHZLeQiMQXrnSblZzdU=
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
+github.com/pulumi/pulumi/sdk/v2 v2.9.3-0.20200909052235-d0ba9fbdcde1 h1:1+YR2TP/U/U4kKUqoXqGta2KqcC8antg+YmiyD9+Xb0=
 github.com/pulumi/pulumi/sdk/v2 v2.9.3-0.20200909052235-d0ba9fbdcde1/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
 github.com/pulumi/terraform-provider-aws v1.38.1-0.20200619081042-5755382a412a h1:nfJ+u6CB3dHl7m2o34sP9d7bc4zkNj+lzDxaXQ445B0=
 github.com/pulumi/terraform-provider-aws v1.38.1-0.20200619081042-5755382a412a/go.mod h1:0U3OgA2uDYSc7gNkdWA92+/BxWXwuYhWqqZ4UhM1RCw=
