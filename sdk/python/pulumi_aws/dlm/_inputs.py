@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -18,12 +18,12 @@ __all__ = [
 @pulumi.input_type
 class LifecyclePolicyPolicyDetailsArgs:
     def __init__(__self__, *,
-                 resource_types: pulumi.Input[List[pulumi.Input[str]]],
-                 schedules: pulumi.Input[List[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]],
+                 resource_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 schedules: pulumi.Input[Sequence[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]],
                  target_tags: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_types: A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
-        :param pulumi.Input[List[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]] schedules: See the `schedule` configuration block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+        :param pulumi.Input[Sequence[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]] schedules: See the `schedule` configuration block.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] target_tags: A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         """
         pulumi.set(__self__, "resource_types", resource_types)
@@ -32,26 +32,26 @@ class LifecyclePolicyPolicyDetailsArgs:
 
     @property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
         """
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
     @property
     @pulumi.getter
-    def schedules(self) -> pulumi.Input[List[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]]:
+    def schedules(self) -> pulumi.Input[Sequence[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]]:
         """
         See the `schedule` configuration block.
         """
         return pulumi.get(self, "schedules")
 
     @schedules.setter
-    def schedules(self, value: pulumi.Input[List[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]]):
+    def schedules(self, value: pulumi.Input[Sequence[pulumi.Input['LifecyclePolicyPolicyDetailsScheduleArgs']]]):
         pulumi.set(self, "schedules", value)
 
     @property

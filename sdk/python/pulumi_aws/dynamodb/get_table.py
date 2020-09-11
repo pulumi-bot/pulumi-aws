@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -90,7 +90,7 @@ class GetTableResult:
 
     @property
     @pulumi.getter
-    def attributes(self) -> List['outputs.GetTableAttributeResult']:
+    def attributes(self) -> Sequence['outputs.GetTableAttributeResult']:
         return pulumi.get(self, "attributes")
 
     @property
@@ -100,7 +100,7 @@ class GetTableResult:
 
     @property
     @pulumi.getter(name="globalSecondaryIndexes")
-    def global_secondary_indexes(self) -> List['outputs.GetTableGlobalSecondaryIndexResult']:
+    def global_secondary_indexes(self) -> Sequence['outputs.GetTableGlobalSecondaryIndexResult']:
         return pulumi.get(self, "global_secondary_indexes")
 
     @property
@@ -118,7 +118,7 @@ class GetTableResult:
 
     @property
     @pulumi.getter(name="localSecondaryIndexes")
-    def local_secondary_indexes(self) -> List['outputs.GetTableLocalSecondaryIndexResult']:
+    def local_secondary_indexes(self) -> Sequence['outputs.GetTableLocalSecondaryIndexResult']:
         return pulumi.get(self, "local_secondary_indexes")
 
     @property
@@ -143,7 +143,7 @@ class GetTableResult:
 
     @property
     @pulumi.getter
-    def replicas(self) -> List['outputs.GetTableReplicaResult']:
+    def replicas(self) -> Sequence['outputs.GetTableReplicaResult']:
         return pulumi.get(self, "replicas")
 
     @property

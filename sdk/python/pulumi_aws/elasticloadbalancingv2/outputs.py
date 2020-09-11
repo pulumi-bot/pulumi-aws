@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -428,10 +428,10 @@ class ListenerDefaultActionFixedResponse(dict):
 @pulumi.output_type
 class ListenerDefaultActionForward(dict):
     def __init__(__self__, *,
-                 target_groups: List['outputs.ListenerDefaultActionForwardTargetGroup'],
+                 target_groups: Sequence['outputs.ListenerDefaultActionForwardTargetGroup'],
                  stickiness: Optional['outputs.ListenerDefaultActionForwardStickiness'] = None):
         """
-        :param List['ListenerDefaultActionForwardTargetGroupArgs'] target_groups: One or more target groups block.
+        :param Sequence['ListenerDefaultActionForwardTargetGroupArgs'] target_groups: One or more target groups block.
         :param 'ListenerDefaultActionForwardStickinessArgs' stickiness: The target group stickiness for the rule.
         """
         pulumi.set(__self__, "target_groups", target_groups)
@@ -440,7 +440,7 @@ class ListenerDefaultActionForward(dict):
 
     @property
     @pulumi.getter(name="targetGroups")
-    def target_groups(self) -> List['outputs.ListenerDefaultActionForwardTargetGroup']:
+    def target_groups(self) -> Sequence['outputs.ListenerDefaultActionForwardTargetGroup']:
         """
         One or more target groups block.
         """
@@ -993,10 +993,10 @@ class ListenerRuleActionFixedResponse(dict):
 @pulumi.output_type
 class ListenerRuleActionForward(dict):
     def __init__(__self__, *,
-                 target_groups: List['outputs.ListenerRuleActionForwardTargetGroup'],
+                 target_groups: Sequence['outputs.ListenerRuleActionForwardTargetGroup'],
                  stickiness: Optional['outputs.ListenerRuleActionForwardStickiness'] = None):
         """
-        :param List['ListenerRuleActionForwardTargetGroupArgs'] target_groups: One or more target groups block.
+        :param Sequence['ListenerRuleActionForwardTargetGroupArgs'] target_groups: One or more target groups block.
         :param 'ListenerRuleActionForwardStickinessArgs' stickiness: The target group stickiness for the rule.
         """
         pulumi.set(__self__, "target_groups", target_groups)
@@ -1005,7 +1005,7 @@ class ListenerRuleActionForward(dict):
 
     @property
     @pulumi.getter(name="targetGroups")
-    def target_groups(self) -> List['outputs.ListenerRuleActionForwardTargetGroup']:
+    def target_groups(self) -> Sequence['outputs.ListenerRuleActionForwardTargetGroup']:
         """
         One or more target groups block.
         """
@@ -1177,14 +1177,14 @@ class ListenerRuleCondition(dict):
                  http_header: Optional['outputs.ListenerRuleConditionHttpHeader'] = None,
                  http_request_method: Optional['outputs.ListenerRuleConditionHttpRequestMethod'] = None,
                  path_pattern: Optional['outputs.ListenerRuleConditionPathPattern'] = None,
-                 query_strings: Optional[List['outputs.ListenerRuleConditionQueryString']] = None,
+                 query_strings: Optional[Sequence['outputs.ListenerRuleConditionQueryString']] = None,
                  source_ip: Optional['outputs.ListenerRuleConditionSourceIp'] = None):
         """
         :param 'ListenerRuleConditionHostHeaderArgs' host_header: Contains a single `values` item which is a list of host header patterns to match. The maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). Only one pattern needs to match for the condition to be satisfied.
         :param 'ListenerRuleConditionHttpHeaderArgs' http_header: HTTP headers to match. HTTP Header block fields documented below.
         :param 'ListenerRuleConditionHttpRequestMethodArgs' http_request_method: Contains a single `values` item which is a list of HTTP request methods or verbs to match. Maximum size is 40 characters. Only allowed characters are A-Z, hyphen (-) and underscore (\_). Comparison is case sensitive. Wildcards are not supported. Only one needs to match for the condition to be satisfied. AWS recommends that GET and HEAD requests are routed in the same way because the response to a HEAD request may be cached.
         :param 'ListenerRuleConditionPathPatternArgs' path_pattern: Contains a single `values` item which is a list of path patterns to match against the request URL. Maximum size of each pattern is 128 characters. Comparison is case sensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). Only one pattern needs to match for the condition to be satisfied. Path pattern is compared only to the path of the URL, not to its query string. To compare against the query string, use a `query_string` condition.
-        :param List['ListenerRuleConditionQueryStringArgs'] query_strings: Query strings to match. Query String block fields documented below.
+        :param Sequence['ListenerRuleConditionQueryStringArgs'] query_strings: Query strings to match. Query String block fields documented below.
         :param 'ListenerRuleConditionSourceIpArgs' source_ip: Contains a single `values` item which is a list of source IP CIDR notations to match. You can use both IPv4 and IPv6 addresses. Wildcards are not supported. Condition is satisfied if the source IP address of the request matches one of the CIDR blocks. Condition is not satisfied by the addresses in the `X-Forwarded-For` header, use `http_header` condition instead.
         """
         if host_header is not None:
@@ -1234,7 +1234,7 @@ class ListenerRuleCondition(dict):
 
     @property
     @pulumi.getter(name="queryStrings")
-    def query_strings(self) -> Optional[List['outputs.ListenerRuleConditionQueryString']]:
+    def query_strings(self) -> Optional[Sequence['outputs.ListenerRuleConditionQueryString']]:
         """
         Query strings to match. Query String block fields documented below.
         """
@@ -1255,15 +1255,15 @@ class ListenerRuleCondition(dict):
 @pulumi.output_type
 class ListenerRuleConditionHostHeader(dict):
     def __init__(__self__, *,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
-        :param List[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
+        :param Sequence[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
@@ -1277,10 +1277,10 @@ class ListenerRuleConditionHostHeader(dict):
 class ListenerRuleConditionHttpHeader(dict):
     def __init__(__self__, *,
                  http_header_name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str http_header_name: Name of HTTP header to search. The maximum size is 40 characters. Comparison is case insensitive. Only RFC7240 characters are supported. Wildcards are not supported. You cannot use HTTP header condition to specify the host header, use a `host-header` condition instead.
-        :param List[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
+        :param Sequence[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
         pulumi.set(__self__, "http_header_name", http_header_name)
         pulumi.set(__self__, "values", values)
@@ -1295,7 +1295,7 @@ class ListenerRuleConditionHttpHeader(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
@@ -1308,15 +1308,15 @@ class ListenerRuleConditionHttpHeader(dict):
 @pulumi.output_type
 class ListenerRuleConditionHttpRequestMethod(dict):
     def __init__(__self__, *,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
-        :param List[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
+        :param Sequence[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
@@ -1329,15 +1329,15 @@ class ListenerRuleConditionHttpRequestMethod(dict):
 @pulumi.output_type
 class ListenerRuleConditionPathPattern(dict):
     def __init__(__self__, *,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
-        :param List[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
+        :param Sequence[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
@@ -1383,15 +1383,15 @@ class ListenerRuleConditionQueryString(dict):
 @pulumi.output_type
 class ListenerRuleConditionSourceIp(dict):
     def __init__(__self__, *,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
-        :param List[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
+        :param Sequence[str] values: List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string.
         """
@@ -1657,11 +1657,11 @@ class TargetGroupStickiness(dict):
 @pulumi.output_type
 class GetListenerDefaultActionResult(dict):
     def __init__(__self__, *,
-                 authenticate_cognitos: List['outputs.GetListenerDefaultActionAuthenticateCognitoResult'],
-                 authenticate_oidcs: List['outputs.GetListenerDefaultActionAuthenticateOidcResult'],
-                 fixed_responses: List['outputs.GetListenerDefaultActionFixedResponseResult'],
+                 authenticate_cognitos: Sequence['outputs.GetListenerDefaultActionAuthenticateCognitoResult'],
+                 authenticate_oidcs: Sequence['outputs.GetListenerDefaultActionAuthenticateOidcResult'],
+                 fixed_responses: Sequence['outputs.GetListenerDefaultActionFixedResponseResult'],
                  order: float,
-                 redirects: List['outputs.GetListenerDefaultActionRedirectResult'],
+                 redirects: Sequence['outputs.GetListenerDefaultActionRedirectResult'],
                  target_group_arn: str,
                  type: str):
         pulumi.set(__self__, "authenticate_cognitos", authenticate_cognitos)
@@ -1674,17 +1674,17 @@ class GetListenerDefaultActionResult(dict):
 
     @property
     @pulumi.getter(name="authenticateCognitos")
-    def authenticate_cognitos(self) -> List['outputs.GetListenerDefaultActionAuthenticateCognitoResult']:
+    def authenticate_cognitos(self) -> Sequence['outputs.GetListenerDefaultActionAuthenticateCognitoResult']:
         return pulumi.get(self, "authenticate_cognitos")
 
     @property
     @pulumi.getter(name="authenticateOidcs")
-    def authenticate_oidcs(self) -> List['outputs.GetListenerDefaultActionAuthenticateOidcResult']:
+    def authenticate_oidcs(self) -> Sequence['outputs.GetListenerDefaultActionAuthenticateOidcResult']:
         return pulumi.get(self, "authenticate_oidcs")
 
     @property
     @pulumi.getter(name="fixedResponses")
-    def fixed_responses(self) -> List['outputs.GetListenerDefaultActionFixedResponseResult']:
+    def fixed_responses(self) -> Sequence['outputs.GetListenerDefaultActionFixedResponseResult']:
         return pulumi.get(self, "fixed_responses")
 
     @property
@@ -1694,7 +1694,7 @@ class GetListenerDefaultActionResult(dict):
 
     @property
     @pulumi.getter
-    def redirects(self) -> List['outputs.GetListenerDefaultActionRedirectResult']:
+    def redirects(self) -> Sequence['outputs.GetListenerDefaultActionRedirectResult']:
         return pulumi.get(self, "redirects")
 
     @property

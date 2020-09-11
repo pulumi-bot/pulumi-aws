@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -62,7 +62,7 @@ class GetCustomerGatewayResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetCustomerGatewayFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetCustomerGatewayFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -110,7 +110,7 @@ class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
             type=self.type)
 
 
-def get_customer_gateway(filters: Optional[List[pulumi.InputType['GetCustomerGatewayFilterArgs']]] = None,
+def get_customer_gateway(filters: Optional[Sequence[pulumi.InputType['GetCustomerGatewayFilterArgs']]] = None,
                          id: Optional[str] = None,
                          tags: Optional[Mapping[str, str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomerGatewayResult:
@@ -138,7 +138,7 @@ def get_customer_gateway(filters: Optional[List[pulumi.InputType['GetCustomerGat
     ```
 
 
-    :param List[pulumi.InputType['GetCustomerGatewayFilterArgs']] filters: One or more [name-value pairs][dcg-filters] to filter by.
+    :param Sequence[pulumi.InputType['GetCustomerGatewayFilterArgs']] filters: One or more [name-value pairs][dcg-filters] to filter by.
     :param str id: The ID of the gateway.
     :param Mapping[str, str] tags: Map of key-value pairs assigned to the gateway.
     """

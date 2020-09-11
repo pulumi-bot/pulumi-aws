@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,10 +19,10 @@ __all__ = [
 @pulumi.output_type
 class EfsLocationEc2Config(dict):
     def __init__(__self__, *,
-                 security_group_arns: List[str],
+                 security_group_arns: Sequence[str],
                  subnet_arn: str):
         """
-        :param List[str] security_group_arns: List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+        :param Sequence[str] security_group_arns: List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
         :param str subnet_arn: Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
         """
         pulumi.set(__self__, "security_group_arns", security_group_arns)
@@ -30,7 +30,7 @@ class EfsLocationEc2Config(dict):
 
     @property
     @pulumi.getter(name="securityGroupArns")
-    def security_group_arns(self) -> List[str]:
+    def security_group_arns(self) -> Sequence[str]:
         """
         List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
         """
@@ -73,15 +73,15 @@ class LocationSmbMountOptions(dict):
 @pulumi.output_type
 class NfsLocationOnPremConfig(dict):
     def __init__(__self__, *,
-                 agent_arns: List[str]):
+                 agent_arns: Sequence[str]):
         """
-        :param List[str] agent_arns: List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+        :param Sequence[str] agent_arns: List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
         """
         pulumi.set(__self__, "agent_arns", agent_arns)
 
     @property
     @pulumi.getter(name="agentArns")
-    def agent_arns(self) -> List[str]:
+    def agent_arns(self) -> Sequence[str]:
         """
         List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
         """

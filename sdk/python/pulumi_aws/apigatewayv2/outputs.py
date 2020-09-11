@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,17 +22,17 @@ __all__ = [
 class ApiCorsConfiguration(dict):
     def __init__(__self__, *,
                  allow_credentials: Optional[bool] = None,
-                 allow_headers: Optional[List[str]] = None,
-                 allow_methods: Optional[List[str]] = None,
-                 allow_origins: Optional[List[str]] = None,
-                 expose_headers: Optional[List[str]] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origins: Optional[Sequence[str]] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[float] = None):
         """
         :param bool allow_credentials: Whether credentials are included in the CORS request.
-        :param List[str] allow_headers: The set of allowed HTTP headers.
-        :param List[str] allow_methods: The set of allowed HTTP methods.
-        :param List[str] allow_origins: The set of allowed origins.
-        :param List[str] expose_headers: The set of exposed HTTP headers.
+        :param Sequence[str] allow_headers: The set of allowed HTTP headers.
+        :param Sequence[str] allow_methods: The set of allowed HTTP methods.
+        :param Sequence[str] allow_origins: The set of allowed origins.
+        :param Sequence[str] expose_headers: The set of exposed HTTP headers.
         :param float max_age: The number of seconds that the browser should cache preflight request results.
         """
         if allow_credentials is not None:
@@ -58,7 +58,7 @@ class ApiCorsConfiguration(dict):
 
     @property
     @pulumi.getter(name="allowHeaders")
-    def allow_headers(self) -> Optional[List[str]]:
+    def allow_headers(self) -> Optional[Sequence[str]]:
         """
         The set of allowed HTTP headers.
         """
@@ -66,7 +66,7 @@ class ApiCorsConfiguration(dict):
 
     @property
     @pulumi.getter(name="allowMethods")
-    def allow_methods(self) -> Optional[List[str]]:
+    def allow_methods(self) -> Optional[Sequence[str]]:
         """
         The set of allowed HTTP methods.
         """
@@ -74,7 +74,7 @@ class ApiCorsConfiguration(dict):
 
     @property
     @pulumi.getter(name="allowOrigins")
-    def allow_origins(self) -> Optional[List[str]]:
+    def allow_origins(self) -> Optional[Sequence[str]]:
         """
         The set of allowed origins.
         """
@@ -82,7 +82,7 @@ class ApiCorsConfiguration(dict):
 
     @property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> Optional[List[str]]:
+    def expose_headers(self) -> Optional[Sequence[str]]:
         """
         The set of exposed HTTP headers.
         """
@@ -103,10 +103,10 @@ class ApiCorsConfiguration(dict):
 @pulumi.output_type
 class AuthorizerJwtConfiguration(dict):
     def __init__(__self__, *,
-                 audiences: Optional[List[str]] = None,
+                 audiences: Optional[Sequence[str]] = None,
                  issuer: Optional[str] = None):
         """
-        :param List[str] audiences: A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
+        :param Sequence[str] audiences: A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
         :param str issuer: The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `cognito.UserPool` resource.
         """
         if audiences is not None:
@@ -116,7 +116,7 @@ class AuthorizerJwtConfiguration(dict):
 
     @property
     @pulumi.getter
-    def audiences(self) -> Optional[List[str]]:
+    def audiences(self) -> Optional[Sequence[str]]:
         """
         A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
         """

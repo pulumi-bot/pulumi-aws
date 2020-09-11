@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -111,7 +111,7 @@ class GetSnapshotResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.GetSnapshotFilterResult']]:
+    def filters(self) -> Optional[Sequence['outputs.GetSnapshotFilterResult']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -153,12 +153,12 @@ class GetSnapshotResult:
 
     @property
     @pulumi.getter
-    def owners(self) -> Optional[List[str]]:
+    def owners(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "owners")
 
     @property
     @pulumi.getter(name="restorableByUserIds")
-    def restorable_by_user_ids(self) -> Optional[List[str]]:
+    def restorable_by_user_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "restorable_by_user_ids")
 
     @property
@@ -171,7 +171,7 @@ class GetSnapshotResult:
 
     @property
     @pulumi.getter(name="snapshotIds")
-    def snapshot_ids(self) -> Optional[List[str]]:
+    def snapshot_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "snapshot_ids")
 
     @property
@@ -233,11 +233,11 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             volume_size=self.volume_size)
 
 
-def get_snapshot(filters: Optional[List[pulumi.InputType['GetSnapshotFilterArgs']]] = None,
+def get_snapshot(filters: Optional[Sequence[pulumi.InputType['GetSnapshotFilterArgs']]] = None,
                  most_recent: Optional[bool] = None,
-                 owners: Optional[List[str]] = None,
-                 restorable_by_user_ids: Optional[List[str]] = None,
-                 snapshot_ids: Optional[List[str]] = None,
+                 owners: Optional[Sequence[str]] = None,
+                 restorable_by_user_ids: Optional[Sequence[str]] = None,
+                 snapshot_ids: Optional[Sequence[str]] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
@@ -264,13 +264,13 @@ def get_snapshot(filters: Optional[List[pulumi.InputType['GetSnapshotFilterArgs'
     ```
 
 
-    :param List[pulumi.InputType['GetSnapshotFilterArgs']] filters: One or more name/value pairs to filter off of. There are
+    :param Sequence[pulumi.InputType['GetSnapshotFilterArgs']] filters: One or more name/value pairs to filter off of. There are
            several valid keys, for a full reference, check out
            [describe-snapshots in the AWS CLI reference][1].
     :param bool most_recent: If more than one result is returned, use the most recent snapshot.
-    :param List[str] owners: Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
-    :param List[str] restorable_by_user_ids: One or more AWS accounts IDs that can create volumes from the snapshot.
-    :param List[str] snapshot_ids: Returns information on a specific snapshot_id.
+    :param Sequence[str] owners: Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
+    :param Sequence[str] restorable_by_user_ids: One or more AWS accounts IDs that can create volumes from the snapshot.
+    :param Sequence[str] snapshot_ids: Returns information on a specific snapshot_id.
     :param Mapping[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()

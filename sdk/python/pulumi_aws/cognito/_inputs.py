@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -91,12 +91,12 @@ class IdentityPoolRoleAttachmentRoleMappingArgs:
                  identity_provider: pulumi.Input[str],
                  type: pulumi.Input[str],
                  ambiguous_role_resolution: Optional[pulumi.Input[str]] = None,
-                 mapping_rules: Optional[pulumi.Input[List[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]]] = None):
+                 mapping_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]]] = None):
         """
         :param pulumi.Input[str] identity_provider: A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
         :param pulumi.Input[str] type: The role mapping type.
         :param pulumi.Input[str] ambiguous_role_resolution: Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
-        :param pulumi.Input[List[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]] mapping_rules: The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+        :param pulumi.Input[Sequence[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]] mapping_rules: The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
         """
         pulumi.set(__self__, "identity_provider", identity_provider)
         pulumi.set(__self__, "type", type)
@@ -143,14 +143,14 @@ class IdentityPoolRoleAttachmentRoleMappingArgs:
 
     @property
     @pulumi.getter(name="mappingRules")
-    def mapping_rules(self) -> Optional[pulumi.Input[List[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]]]:
+    def mapping_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]]]:
         """
         The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
         """
         return pulumi.get(self, "mapping_rules")
 
     @mapping_rules.setter
-    def mapping_rules(self, value: Optional[pulumi.Input[List[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]]]):
+    def mapping_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs']]]]):
         pulumi.set(self, "mapping_rules", value)
 
 

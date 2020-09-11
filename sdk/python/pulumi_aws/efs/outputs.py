@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -25,11 +25,11 @@ class AccessPointPosixUser(dict):
     def __init__(__self__, *,
                  gid: float,
                  uid: float,
-                 secondary_gids: Optional[List[float]] = None):
+                 secondary_gids: Optional[Sequence[float]] = None):
         """
         :param float gid: The POSIX group ID used for all file system operations using this access point.
         :param float uid: The POSIX user ID used for all file system operations using this access point.
-        :param List[float] secondary_gids: Secondary POSIX group IDs used for all file system operations using this access point.
+        :param Sequence[float] secondary_gids: Secondary POSIX group IDs used for all file system operations using this access point.
         """
         pulumi.set(__self__, "gid", gid)
         pulumi.set(__self__, "uid", uid)
@@ -54,7 +54,7 @@ class AccessPointPosixUser(dict):
 
     @property
     @pulumi.getter(name="secondaryGids")
-    def secondary_gids(self) -> Optional[List[float]]:
+    def secondary_gids(self) -> Optional[Sequence[float]]:
         """
         Secondary POSIX group IDs used for all file system operations using this access point.
         """
@@ -166,11 +166,11 @@ class FileSystemLifecyclePolicy(dict):
 class GetAccessPointPosixUserResult(dict):
     def __init__(__self__, *,
                  gid: float,
-                 secondary_gids: List[float],
+                 secondary_gids: Sequence[float],
                  uid: float):
         """
         :param float gid: Group ID
-        :param List[float] secondary_gids: Secondary group IDs
+        :param Sequence[float] secondary_gids: Secondary group IDs
         :param float uid: User Id
                * `root_directory`- Single element list containing information on the directory on the Amazon EFS file system that the access point provides access to.
         """
@@ -188,7 +188,7 @@ class GetAccessPointPosixUserResult(dict):
 
     @property
     @pulumi.getter(name="secondaryGids")
-    def secondary_gids(self) -> List[float]:
+    def secondary_gids(self) -> Sequence[float]:
         """
         Secondary group IDs
         """
@@ -207,10 +207,10 @@ class GetAccessPointPosixUserResult(dict):
 @pulumi.output_type
 class GetAccessPointRootDirectoryResult(dict):
     def __init__(__self__, *,
-                 creation_infos: List['outputs.GetAccessPointRootDirectoryCreationInfoResult'],
+                 creation_infos: Sequence['outputs.GetAccessPointRootDirectoryCreationInfoResult'],
                  path: str):
         """
-        :param List['GetAccessPointRootDirectoryCreationInfoArgs'] creation_infos: Single element list containing information on the creation permissions of the directory
+        :param Sequence['GetAccessPointRootDirectoryCreationInfoArgs'] creation_infos: Single element list containing information on the creation permissions of the directory
         :param str path: Path exposed as the root directory
         """
         pulumi.set(__self__, "creation_infos", creation_infos)
@@ -218,7 +218,7 @@ class GetAccessPointRootDirectoryResult(dict):
 
     @property
     @pulumi.getter(name="creationInfos")
-    def creation_infos(self) -> List['outputs.GetAccessPointRootDirectoryCreationInfoResult']:
+    def creation_infos(self) -> Sequence['outputs.GetAccessPointRootDirectoryCreationInfoResult']:
         """
         Single element list containing information on the creation permissions of the directory
         """

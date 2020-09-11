@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  command: Optional[pulumi.Input[pulumi.InputType['JobCommandArgs']]] = None,
-                 connections: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 connections: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_arguments: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_property: Optional[pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']]] = None,
@@ -88,7 +88,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobCommandArgs']] command: The command of the job. Defined below.
-        :param pulumi.Input[List[pulumi.Input[str]]] connections: The list of connections used for this job.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] connections: The list of connections used for this job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_arguments: The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
         :param pulumi.Input[str] description: Description of the job.
         :param pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']] execution_property: Execution property of the job. Defined below.
@@ -154,7 +154,7 @@ class Job(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             command: Optional[pulumi.Input[pulumi.InputType['JobCommandArgs']]] = None,
-            connections: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            connections: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             default_arguments: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             execution_property: Optional[pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']]] = None,
@@ -178,7 +178,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of Glue Job
         :param pulumi.Input[pulumi.InputType['JobCommandArgs']] command: The command of the job. Defined below.
-        :param pulumi.Input[List[pulumi.Input[str]]] connections: The list of connections used for this job.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] connections: The list of connections used for this job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_arguments: The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
         :param pulumi.Input[str] description: Description of the job.
         :param pulumi.Input[pulumi.InputType['JobExecutionPropertyArgs']] execution_property: Execution property of the job. Defined below.
@@ -235,7 +235,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def connections(self) -> pulumi.Output[Optional[List[str]]]:
+    def connections(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of connections used for this job.
         """

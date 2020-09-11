@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -200,11 +200,11 @@ class FleetRuntimeConfiguration(dict):
     def __init__(__self__, *,
                  game_session_activation_timeout_seconds: Optional[float] = None,
                  max_concurrent_game_session_activations: Optional[float] = None,
-                 server_processes: Optional[List['outputs.FleetRuntimeConfigurationServerProcess']] = None):
+                 server_processes: Optional[Sequence['outputs.FleetRuntimeConfigurationServerProcess']] = None):
         """
         :param float game_session_activation_timeout_seconds: Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
         :param float max_concurrent_game_session_activations: Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
-        :param List['FleetRuntimeConfigurationServerProcessArgs'] server_processes: Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+        :param Sequence['FleetRuntimeConfigurationServerProcessArgs'] server_processes: Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
         """
         if game_session_activation_timeout_seconds is not None:
             pulumi.set(__self__, "game_session_activation_timeout_seconds", game_session_activation_timeout_seconds)
@@ -231,7 +231,7 @@ class FleetRuntimeConfiguration(dict):
 
     @property
     @pulumi.getter(name="serverProcesses")
-    def server_processes(self) -> Optional[List['outputs.FleetRuntimeConfigurationServerProcess']]:
+    def server_processes(self) -> Optional[Sequence['outputs.FleetRuntimeConfigurationServerProcess']]:
         """
         Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
         """

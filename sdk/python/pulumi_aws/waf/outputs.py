@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -734,15 +734,15 @@ class WebAclLoggingConfiguration(dict):
 @pulumi.output_type
 class WebAclLoggingConfigurationRedactedFields(dict):
     def __init__(__self__, *,
-                 field_to_matches: List['outputs.WebAclLoggingConfigurationRedactedFieldsFieldToMatch']):
+                 field_to_matches: Sequence['outputs.WebAclLoggingConfigurationRedactedFieldsFieldToMatch']):
         """
-        :param List['WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs'] field_to_matches: Set of configuration blocks for fields to redact. Detailed below.
+        :param Sequence['WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs'] field_to_matches: Set of configuration blocks for fields to redact. Detailed below.
         """
         pulumi.set(__self__, "field_to_matches", field_to_matches)
 
     @property
     @pulumi.getter(name="fieldToMatches")
-    def field_to_matches(self) -> List['outputs.WebAclLoggingConfigurationRedactedFieldsFieldToMatch']:
+    def field_to_matches(self) -> Sequence['outputs.WebAclLoggingConfigurationRedactedFieldsFieldToMatch']:
         """
         Set of configuration blocks for fields to redact. Detailed below.
         """

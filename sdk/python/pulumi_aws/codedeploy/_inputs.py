@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -216,11 +216,11 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs:
 @pulumi.input_type
 class DeploymentGroupAlarmConfigurationArgs:
     def __init__(__self__, *,
-                 alarms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 alarms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ignore_poll_alarm_failure: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] alarms: A list of alarms configured for the deployment group. _A maximum of 10 alarms can be added to a deployment group_.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alarms: A list of alarms configured for the deployment group. _A maximum of 10 alarms can be added to a deployment group_.
         :param pulumi.Input[bool] enabled: Indicates whether the alarm configuration is enabled. This option is useful when you want to temporarily deactivate alarm monitoring for a deployment group without having to add the same alarms again later.
         :param pulumi.Input[bool] ignore_poll_alarm_failure: Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from CloudWatch. The default value is `false`.
                * `true`: The deployment will proceed even if alarm status information can't be retrieved.
@@ -235,14 +235,14 @@ class DeploymentGroupAlarmConfigurationArgs:
 
     @property
     @pulumi.getter
-    def alarms(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def alarms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of alarms configured for the deployment group. _A maximum of 10 alarms can be added to a deployment group_.
         """
         return pulumi.get(self, "alarms")
 
     @alarms.setter
-    def alarms(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def alarms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "alarms", value)
 
     @property
@@ -276,10 +276,10 @@ class DeploymentGroupAlarmConfigurationArgs:
 class DeploymentGroupAutoRollbackConfigurationArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 events: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] enabled: Indicates whether a defined automatic rollback configuration is currently enabled for this Deployment Group. If you enable automatic rollback, you must specify at least one event type.
-        :param pulumi.Input[List[pulumi.Input[str]]] events: The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE` and `DEPLOYMENT_STOP_ON_ALARM`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE` and `DEPLOYMENT_STOP_ON_ALARM`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -300,14 +300,14 @@ class DeploymentGroupAutoRollbackConfigurationArgs:
 
     @property
     @pulumi.getter
-    def events(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE` and `DEPLOYMENT_STOP_ON_ALARM`.
         """
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "events", value)
 
 
@@ -576,23 +576,23 @@ class DeploymentGroupEc2TagFilterArgs:
 @pulumi.input_type
 class DeploymentGroupEc2TagSetArgs:
     def __init__(__self__, *,
-                 ec2_tag_filters: Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]]] = None):
+                 ec2_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]] ec2_tag_filters: Tag filters associated with the deployment group. See the AWS docs for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]] ec2_tag_filters: Tag filters associated with the deployment group. See the AWS docs for details.
         """
         if ec2_tag_filters is not None:
             pulumi.set(__self__, "ec2_tag_filters", ec2_tag_filters)
 
     @property
     @pulumi.getter(name="ec2TagFilters")
-    def ec2_tag_filters(self) -> Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]]]:
+    def ec2_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]]]:
         """
         Tag filters associated with the deployment group. See the AWS docs for details.
         """
         return pulumi.get(self, "ec2_tag_filters")
 
     @ec2_tag_filters.setter
-    def ec2_tag_filters(self, value: Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]]]):
+    def ec2_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupEc2TagSetEc2TagFilterArgs']]]]):
         pulumi.set(self, "ec2_tag_filters", value)
 
 
@@ -691,12 +691,12 @@ class DeploymentGroupEcsServiceArgs:
 @pulumi.input_type
 class DeploymentGroupLoadBalancerInfoArgs:
     def __init__(__self__, *,
-                 elb_infos: Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]]] = None,
-                 target_group_infos: Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]]] = None,
+                 elb_infos: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]]] = None,
+                 target_group_infos: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]]] = None,
                  target_group_pair_info: Optional[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs']] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]] elb_infos: The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
-        :param pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]] target_group_infos: The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]] elb_infos: The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]] target_group_infos: The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
         :param pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs'] target_group_pair_info: The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
         """
         if elb_infos is not None:
@@ -708,26 +708,26 @@ class DeploymentGroupLoadBalancerInfoArgs:
 
     @property
     @pulumi.getter(name="elbInfos")
-    def elb_infos(self) -> Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]]]:
+    def elb_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]]]:
         """
         The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
         """
         return pulumi.get(self, "elb_infos")
 
     @elb_infos.setter
-    def elb_infos(self, value: Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]]]):
+    def elb_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoElbInfoArgs']]]]):
         pulumi.set(self, "elb_infos", value)
 
     @property
     @pulumi.getter(name="targetGroupInfos")
-    def target_group_infos(self) -> Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]]]:
+    def target_group_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]]]:
         """
         The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
         """
         return pulumi.get(self, "target_group_infos")
 
     @target_group_infos.setter
-    def target_group_infos(self, value: Optional[pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]]]):
+    def target_group_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs']]]]):
         pulumi.set(self, "target_group_infos", value)
 
     @property
@@ -793,11 +793,11 @@ class DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs:
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs:
     def __init__(__self__, *,
                  prod_traffic_route: pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs'],
-                 target_groups: pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]],
+                 target_groups: pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]],
                  test_traffic_route: Optional[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs']] = None):
         """
         :param pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs'] prod_traffic_route: Configuration block for the production traffic route (documented below).
-        :param pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]] target_groups: Configuration blocks for a target group within a target group pair (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]] target_groups: Configuration blocks for a target group within a target group pair (documented below).
         :param pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs'] test_traffic_route: Configuration block for the test traffic route (documented below).
         """
         pulumi.set(__self__, "prod_traffic_route", prod_traffic_route)
@@ -819,14 +819,14 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs:
 
     @property
     @pulumi.getter(name="targetGroups")
-    def target_groups(self) -> pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]]:
+    def target_groups(self) -> pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]]:
         """
         Configuration blocks for a target group within a target group pair (documented below).
         """
         return pulumi.get(self, "target_groups")
 
     @target_groups.setter
-    def target_groups(self, value: pulumi.Input[List[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]]):
+    def target_groups(self, value: pulumi.Input[Sequence[pulumi.Input['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs']]]):
         pulumi.set(self, "target_groups", value)
 
     @property
@@ -845,22 +845,22 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs:
 @pulumi.input_type
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs:
     def __init__(__self__, *,
-                 listener_arns: pulumi.Input[List[pulumi.Input[str]]]):
+                 listener_arns: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
         pulumi.set(__self__, "listener_arns", listener_arns)
 
     @property
     @pulumi.getter(name="listenerArns")
-    def listener_arns(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def listener_arns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
         return pulumi.get(self, "listener_arns")
 
     @listener_arns.setter
-    def listener_arns(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def listener_arns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "listener_arns", value)
 
 
@@ -889,22 +889,22 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs:
 @pulumi.input_type
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs:
     def __init__(__self__, *,
-                 listener_arns: pulumi.Input[List[pulumi.Input[str]]]):
+                 listener_arns: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
         pulumi.set(__self__, "listener_arns", listener_arns)
 
     @property
     @pulumi.getter(name="listenerArns")
-    def listener_arns(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def listener_arns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
         return pulumi.get(self, "listener_arns")
 
     @listener_arns.setter
-    def listener_arns(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def listener_arns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "listener_arns", value)
 
 
@@ -966,11 +966,11 @@ class DeploymentGroupOnPremisesInstanceTagFilterArgs:
 @pulumi.input_type
 class DeploymentGroupTriggerConfigurationArgs:
     def __init__(__self__, *,
-                 trigger_events: pulumi.Input[List[pulumi.Input[str]]],
+                 trigger_events: pulumi.Input[Sequence[pulumi.Input[str]]],
                  trigger_name: pulumi.Input[str],
                  trigger_target_arn: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] trigger_events: The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] trigger_events: The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
         :param pulumi.Input[str] trigger_name: The name of the notification trigger.
         :param pulumi.Input[str] trigger_target_arn: The ARN of the SNS topic through which notifications are sent.
         """
@@ -980,14 +980,14 @@ class DeploymentGroupTriggerConfigurationArgs:
 
     @property
     @pulumi.getter(name="triggerEvents")
-    def trigger_events(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def trigger_events(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
         """
         return pulumi.get(self, "trigger_events")
 
     @trigger_events.setter
-    def trigger_events(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def trigger_events(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "trigger_events", value)
 
     @property

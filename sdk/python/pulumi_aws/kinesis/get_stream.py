@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -61,7 +61,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="closedShards")
-    def closed_shards(self) -> List[str]:
+    def closed_shards(self) -> Sequence[str]:
         """
         The list of shard ids in the CLOSED state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
         """
@@ -93,7 +93,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="openShards")
-    def open_shards(self) -> List[str]:
+    def open_shards(self) -> Sequence[str]:
         """
         The list of shard ids in the OPEN state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
         """
@@ -109,7 +109,7 @@ class GetStreamResult:
 
     @property
     @pulumi.getter(name="shardLevelMetrics")
-    def shard_level_metrics(self) -> List[str]:
+    def shard_level_metrics(self) -> Sequence[str]:
         """
         A list of shard-level CloudWatch metrics which are enabled for the stream. See [Monitoring with CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html) for more.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -550,13 +550,13 @@ class DomainSnapshotOptions(dict):
 @pulumi.output_type
 class DomainVpcOptions(dict):
     def __init__(__self__, *,
-                 availability_zones: Optional[List[str]] = None,
-                 security_group_ids: Optional[List[str]] = None,
-                 subnet_ids: Optional[List[str]] = None,
+                 availability_zones: Optional[Sequence[str]] = None,
+                 security_group_ids: Optional[Sequence[str]] = None,
+                 subnet_ids: Optional[Sequence[str]] = None,
                  vpc_id: Optional[str] = None):
         """
-        :param List[str] security_group_ids: List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
-        :param List[str] subnet_ids: List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
+        :param Sequence[str] security_group_ids: List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
+        :param Sequence[str] subnet_ids: List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
         """
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
@@ -569,12 +569,12 @@ class DomainVpcOptions(dict):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[List[str]]:
+    def availability_zones(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[List[str]]:
+    def security_group_ids(self) -> Optional[Sequence[str]]:
         """
         List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
         """
@@ -582,7 +582,7 @@ class DomainVpcOptions(dict):
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[List[str]]:
+    def subnet_ids(self) -> Optional[Sequence[str]]:
         """
         List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
         """
@@ -636,7 +636,7 @@ class GetDomainClusterConfigResult(dict):
                  instance_type: str,
                  warm_count: float,
                  warm_type: str,
-                 zone_awareness_configs: List['outputs.GetDomainClusterConfigZoneAwarenessConfigResult'],
+                 zone_awareness_configs: Sequence['outputs.GetDomainClusterConfigZoneAwarenessConfigResult'],
                  zone_awareness_enabled: bool,
                  warm_enabled: Optional[bool] = None):
         """
@@ -647,7 +647,7 @@ class GetDomainClusterConfigResult(dict):
         :param str instance_type: Instance type of data nodes in the cluster.
         :param float warm_count: The number of warm nodes in the cluster.
         :param str warm_type: The instance type for the Elasticsearch cluster's warm nodes.
-        :param List['GetDomainClusterConfigZoneAwarenessConfigArgs'] zone_awareness_configs: Configuration block containing zone awareness settings.
+        :param Sequence['GetDomainClusterConfigZoneAwarenessConfigArgs'] zone_awareness_configs: Configuration block containing zone awareness settings.
         :param bool zone_awareness_enabled: Indicates whether zone awareness is enabled.
         :param bool warm_enabled: Indicates warm storage is enabled.
         """
@@ -721,7 +721,7 @@ class GetDomainClusterConfigResult(dict):
 
     @property
     @pulumi.getter(name="zoneAwarenessConfigs")
-    def zone_awareness_configs(self) -> List['outputs.GetDomainClusterConfigZoneAwarenessConfigResult']:
+    def zone_awareness_configs(self) -> Sequence['outputs.GetDomainClusterConfigZoneAwarenessConfigResult']:
         """
         Configuration block containing zone awareness settings.
         """
@@ -976,14 +976,14 @@ class GetDomainSnapshotOptionResult(dict):
 @pulumi.output_type
 class GetDomainVpcOptionResult(dict):
     def __init__(__self__, *,
-                 availability_zones: List[str],
-                 security_group_ids: List[str],
-                 subnet_ids: List[str],
+                 availability_zones: Sequence[str],
+                 security_group_ids: Sequence[str],
+                 subnet_ids: Sequence[str],
                  vpc_id: str):
         """
-        :param List[str] availability_zones: The availability zones used by the domain.
-        :param List[str] security_group_ids: The security groups used by the domain.
-        :param List[str] subnet_ids: The subnets used by the domain.
+        :param Sequence[str] availability_zones: The availability zones used by the domain.
+        :param Sequence[str] security_group_ids: The security groups used by the domain.
+        :param Sequence[str] subnet_ids: The subnets used by the domain.
         :param str vpc_id: The VPC used by the domain.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
@@ -993,7 +993,7 @@ class GetDomainVpcOptionResult(dict):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> List[str]:
+    def availability_zones(self) -> Sequence[str]:
         """
         The availability zones used by the domain.
         """
@@ -1001,7 +1001,7 @@ class GetDomainVpcOptionResult(dict):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> Sequence[str]:
         """
         The security groups used by the domain.
         """
@@ -1009,7 +1009,7 @@ class GetDomainVpcOptionResult(dict):
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> List[str]:
+    def subnet_ids(self) -> Sequence[str]:
         """
         The subnets used by the domain.
         """

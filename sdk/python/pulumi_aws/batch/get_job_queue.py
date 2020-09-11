@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -56,7 +56,7 @@ class GetJobQueueResult:
 
     @property
     @pulumi.getter(name="computeEnvironmentOrders")
-    def compute_environment_orders(self) -> List['outputs.GetJobQueueComputeEnvironmentOrderResult']:
+    def compute_environment_orders(self) -> Sequence['outputs.GetJobQueueComputeEnvironmentOrderResult']:
         """
         The compute environments that are attached to the job queue and the order in
         which job placement is preferred. Compute environments are selected for job placement in ascending order.
