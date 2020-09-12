@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -18,11 +18,11 @@ __all__ = [
 @pulumi.input_type
 class ServiceDnsConfigArgs:
     def __init__(__self__, *,
-                 dns_records: pulumi.Input[List[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]],
+                 dns_records: pulumi.Input[Sequence[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]],
                  namespace_id: pulumi.Input[str],
                  routing_policy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]] dns_records: An array that contains one DnsRecord object for each resource record set.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]] dns_records: An array that contains one DnsRecord object for each resource record set.
         :param pulumi.Input[str] namespace_id: The ID of the namespace to use for DNS configuration.
         :param pulumi.Input[str] routing_policy: The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
         """
@@ -33,14 +33,14 @@ class ServiceDnsConfigArgs:
 
     @property
     @pulumi.getter(name="dnsRecords")
-    def dns_records(self) -> pulumi.Input[List[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]]:
+    def dns_records(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]]:
         """
         An array that contains one DnsRecord object for each resource record set.
         """
         return pulumi.get(self, "dns_records")
 
     @dns_records.setter
-    def dns_records(self, value: pulumi.Input[List[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]]):
+    def dns_records(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceDnsConfigDnsRecordArgs']]]):
         pulumi.set(self, "dns_records", value)
 
     @property

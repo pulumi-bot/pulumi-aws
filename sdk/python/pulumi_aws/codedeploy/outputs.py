@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -193,11 +193,11 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinear(dict):
 @pulumi.output_type
 class DeploymentGroupAlarmConfiguration(dict):
     def __init__(__self__, *,
-                 alarms: Optional[List[str]] = None,
+                 alarms: Optional[Sequence[str]] = None,
                  enabled: Optional[bool] = None,
                  ignore_poll_alarm_failure: Optional[bool] = None):
         """
-        :param List[str] alarms: A list of alarms configured for the deployment group. _A maximum of 10 alarms can be added to a deployment group_.
+        :param Sequence[str] alarms: A list of alarms configured for the deployment group. _A maximum of 10 alarms can be added to a deployment group_.
         :param bool enabled: Indicates whether the alarm configuration is enabled. This option is useful when you want to temporarily deactivate alarm monitoring for a deployment group without having to add the same alarms again later.
         :param bool ignore_poll_alarm_failure: Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from CloudWatch. The default value is `false`.
                * `true`: The deployment will proceed even if alarm status information can't be retrieved.
@@ -212,7 +212,7 @@ class DeploymentGroupAlarmConfiguration(dict):
 
     @property
     @pulumi.getter
-    def alarms(self) -> Optional[List[str]]:
+    def alarms(self) -> Optional[Sequence[str]]:
         """
         A list of alarms configured for the deployment group. _A maximum of 10 alarms can be added to a deployment group_.
         """
@@ -244,10 +244,10 @@ class DeploymentGroupAlarmConfiguration(dict):
 class DeploymentGroupAutoRollbackConfiguration(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 events: Optional[List[str]] = None):
+                 events: Optional[Sequence[str]] = None):
         """
         :param bool enabled: Indicates whether a defined automatic rollback configuration is currently enabled for this Deployment Group. If you enable automatic rollback, you must specify at least one event type.
-        :param List[str] events: The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE` and `DEPLOYMENT_STOP_ON_ALARM`.
+        :param Sequence[str] events: The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE` and `DEPLOYMENT_STOP_ON_ALARM`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -264,7 +264,7 @@ class DeploymentGroupAutoRollbackConfiguration(dict):
 
     @property
     @pulumi.getter
-    def events(self) -> Optional[List[str]]:
+    def events(self) -> Optional[Sequence[str]]:
         """
         The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE` and `DEPLOYMENT_STOP_ON_ALARM`.
         """
@@ -505,16 +505,16 @@ class DeploymentGroupEc2TagFilter(dict):
 @pulumi.output_type
 class DeploymentGroupEc2TagSet(dict):
     def __init__(__self__, *,
-                 ec2_tag_filters: Optional[List['outputs.DeploymentGroupEc2TagSetEc2TagFilter']] = None):
+                 ec2_tag_filters: Optional[Sequence['outputs.DeploymentGroupEc2TagSetEc2TagFilter']] = None):
         """
-        :param List['DeploymentGroupEc2TagSetEc2TagFilterArgs'] ec2_tag_filters: Tag filters associated with the deployment group. See the AWS docs for details.
+        :param Sequence['DeploymentGroupEc2TagSetEc2TagFilterArgs'] ec2_tag_filters: Tag filters associated with the deployment group. See the AWS docs for details.
         """
         if ec2_tag_filters is not None:
             pulumi.set(__self__, "ec2_tag_filters", ec2_tag_filters)
 
     @property
     @pulumi.getter(name="ec2TagFilters")
-    def ec2_tag_filters(self) -> Optional[List['outputs.DeploymentGroupEc2TagSetEc2TagFilter']]:
+    def ec2_tag_filters(self) -> Optional[Sequence['outputs.DeploymentGroupEc2TagSetEc2TagFilter']]:
         """
         Tag filters associated with the deployment group. See the AWS docs for details.
         """
@@ -605,12 +605,12 @@ class DeploymentGroupEcsService(dict):
 @pulumi.output_type
 class DeploymentGroupLoadBalancerInfo(dict):
     def __init__(__self__, *,
-                 elb_infos: Optional[List['outputs.DeploymentGroupLoadBalancerInfoElbInfo']] = None,
-                 target_group_infos: Optional[List['outputs.DeploymentGroupLoadBalancerInfoTargetGroupInfo']] = None,
+                 elb_infos: Optional[Sequence['outputs.DeploymentGroupLoadBalancerInfoElbInfo']] = None,
+                 target_group_infos: Optional[Sequence['outputs.DeploymentGroupLoadBalancerInfoTargetGroupInfo']] = None,
                  target_group_pair_info: Optional['outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfo'] = None):
         """
-        :param List['DeploymentGroupLoadBalancerInfoElbInfoArgs'] elb_infos: The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
-        :param List['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs'] target_group_infos: The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
+        :param Sequence['DeploymentGroupLoadBalancerInfoElbInfoArgs'] elb_infos: The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
+        :param Sequence['DeploymentGroupLoadBalancerInfoTargetGroupInfoArgs'] target_group_infos: The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
         :param 'DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs' target_group_pair_info: The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
         """
         if elb_infos is not None:
@@ -622,7 +622,7 @@ class DeploymentGroupLoadBalancerInfo(dict):
 
     @property
     @pulumi.getter(name="elbInfos")
-    def elb_infos(self) -> Optional[List['outputs.DeploymentGroupLoadBalancerInfoElbInfo']]:
+    def elb_infos(self) -> Optional[Sequence['outputs.DeploymentGroupLoadBalancerInfoElbInfo']]:
         """
         The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
         """
@@ -630,7 +630,7 @@ class DeploymentGroupLoadBalancerInfo(dict):
 
     @property
     @pulumi.getter(name="targetGroupInfos")
-    def target_group_infos(self) -> Optional[List['outputs.DeploymentGroupLoadBalancerInfoTargetGroupInfo']]:
+    def target_group_infos(self) -> Optional[Sequence['outputs.DeploymentGroupLoadBalancerInfoTargetGroupInfo']]:
         """
         The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
         """
@@ -696,11 +696,11 @@ class DeploymentGroupLoadBalancerInfoTargetGroupInfo(dict):
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo(dict):
     def __init__(__self__, *,
                  prod_traffic_route: 'outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute',
-                 target_groups: List['outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup'],
+                 target_groups: Sequence['outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup'],
                  test_traffic_route: Optional['outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute'] = None):
         """
         :param 'DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs' prod_traffic_route: Configuration block for the production traffic route (documented below).
-        :param List['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs'] target_groups: Configuration blocks for a target group within a target group pair (documented below).
+        :param Sequence['DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs'] target_groups: Configuration blocks for a target group within a target group pair (documented below).
         :param 'DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs' test_traffic_route: Configuration block for the test traffic route (documented below).
         """
         pulumi.set(__self__, "prod_traffic_route", prod_traffic_route)
@@ -718,7 +718,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo(dict):
 
     @property
     @pulumi.getter(name="targetGroups")
-    def target_groups(self) -> List['outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup']:
+    def target_groups(self) -> Sequence['outputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup']:
         """
         Configuration blocks for a target group within a target group pair (documented below).
         """
@@ -739,15 +739,15 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo(dict):
 @pulumi.output_type
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute(dict):
     def __init__(__self__, *,
-                 listener_arns: List[str]):
+                 listener_arns: Sequence[str]):
         """
-        :param List[str] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
+        :param Sequence[str] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
         pulumi.set(__self__, "listener_arns", listener_arns)
 
     @property
     @pulumi.getter(name="listenerArns")
-    def listener_arns(self) -> List[str]:
+    def listener_arns(self) -> Sequence[str]:
         """
         List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
@@ -781,15 +781,15 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup(dict):
 @pulumi.output_type
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute(dict):
     def __init__(__self__, *,
-                 listener_arns: List[str]):
+                 listener_arns: Sequence[str]):
         """
-        :param List[str] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
+        :param Sequence[str] listener_arns: List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
         pulumi.set(__self__, "listener_arns", listener_arns)
 
     @property
     @pulumi.getter(name="listenerArns")
-    def listener_arns(self) -> List[str]:
+    def listener_arns(self) -> Sequence[str]:
         """
         List of Amazon Resource Names (ARNs) of the load balancer listeners.
         """
@@ -848,11 +848,11 @@ class DeploymentGroupOnPremisesInstanceTagFilter(dict):
 @pulumi.output_type
 class DeploymentGroupTriggerConfiguration(dict):
     def __init__(__self__, *,
-                 trigger_events: List[str],
+                 trigger_events: Sequence[str],
                  trigger_name: str,
                  trigger_target_arn: str):
         """
-        :param List[str] trigger_events: The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
+        :param Sequence[str] trigger_events: The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
         :param str trigger_name: The name of the notification trigger.
         :param str trigger_target_arn: The ARN of the SNS topic through which notifications are sent.
         """
@@ -862,7 +862,7 @@ class DeploymentGroupTriggerConfiguration(dict):
 
     @property
     @pulumi.getter(name="triggerEvents")
-    def trigger_events(self) -> List[str]:
+    def trigger_events(self) -> Sequence[str]:
         """
         The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
         """

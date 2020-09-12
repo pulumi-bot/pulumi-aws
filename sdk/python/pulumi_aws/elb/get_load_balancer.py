@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -94,7 +94,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> List[str]:
+    def availability_zones(self) -> Sequence[str]:
         return pulumi.get(self, "availability_zones")
 
     @property
@@ -137,7 +137,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List[str]:
+    def instances(self) -> Sequence[str]:
         return pulumi.get(self, "instances")
 
     @property
@@ -147,7 +147,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
-    def listeners(self) -> List['outputs.GetLoadBalancerListenerResult']:
+    def listeners(self) -> Sequence['outputs.GetLoadBalancerListenerResult']:
         return pulumi.get(self, "listeners")
 
     @property
@@ -157,7 +157,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> Sequence[str]:
         return pulumi.get(self, "security_groups")
 
     @property
@@ -172,7 +172,7 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter
-    def subnets(self) -> List[str]:
+    def subnets(self) -> Sequence[str]:
         return pulumi.get(self, "subnets")
 
     @property

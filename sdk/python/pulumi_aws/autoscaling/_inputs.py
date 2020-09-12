@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -317,10 +317,10 @@ class GroupMixedInstancesPolicyInstancesDistributionArgs:
 class GroupMixedInstancesPolicyLaunchTemplateArgs:
     def __init__(__self__, *,
                  launch_template_specification: pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs'],
-                 overrides: Optional[pulumi.Input[List[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]]] = None):
+                 overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]]] = None):
         """
         :param pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs'] launch_template_specification: Nested argument defines the Launch Template. Defined below.
-        :param pulumi.Input[List[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]] overrides: List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]] overrides: List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
         """
         pulumi.set(__self__, "launch_template_specification", launch_template_specification)
         if overrides is not None:
@@ -340,14 +340,14 @@ class GroupMixedInstancesPolicyLaunchTemplateArgs:
 
     @property
     @pulumi.getter
-    def overrides(self) -> Optional[pulumi.Input[List[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]]]:
+    def overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]]]:
         """
         List of nested arguments provides the ability to specify multiple instance types. This will override the same parameter in the launch template. For on-demand instances, Auto Scaling considers the order of preference of instance types to launch based on the order specified in the overrides list. Defined below.
         """
         return pulumi.get(self, "overrides")
 
     @overrides.setter
-    def overrides(self, value: Optional[pulumi.Input[List[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]]]):
+    def overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMixedInstancesPolicyLaunchTemplateOverrideArgs']]]]):
         pulumi.set(self, "overrides", value)
 
 
@@ -643,13 +643,13 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs:
                  metric_name: pulumi.Input[str],
                  namespace: pulumi.Input[str],
                  statistic: pulumi.Input[str],
-                 metric_dimensions: Optional[pulumi.Input[List[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]]] = None,
+                 metric_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_name: The name of the metric.
         :param pulumi.Input[str] namespace: The namespace of the metric.
         :param pulumi.Input[str] statistic: The statistic of the metric.
-        :param pulumi.Input[List[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]] metric_dimensions: The dimensions of the metric.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]] metric_dimensions: The dimensions of the metric.
         :param pulumi.Input[str] unit: The unit of the metric.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -698,14 +698,14 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs:
 
     @property
     @pulumi.getter(name="metricDimensions")
-    def metric_dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]]]:
+    def metric_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]]]:
         """
         The dimensions of the metric.
         """
         return pulumi.get(self, "metric_dimensions")
 
     @metric_dimensions.setter
-    def metric_dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]]]):
+    def metric_dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionArgs']]]]):
         pulumi.set(self, "metric_dimensions", value)
 
     @property

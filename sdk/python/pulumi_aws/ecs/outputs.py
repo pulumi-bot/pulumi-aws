@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -337,13 +337,13 @@ class ServiceLoadBalancer(dict):
 @pulumi.output_type
 class ServiceNetworkConfiguration(dict):
     def __init__(__self__, *,
-                 subnets: List[str],
+                 subnets: Sequence[str],
                  assign_public_ip: Optional[bool] = None,
-                 security_groups: Optional[List[str]] = None):
+                 security_groups: Optional[Sequence[str]] = None):
         """
-        :param List[str] subnets: The subnets associated with the task or service.
+        :param Sequence[str] subnets: The subnets associated with the task or service.
         :param bool assign_public_ip: Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
-        :param List[str] security_groups: The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
+        :param Sequence[str] security_groups: The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
         """
         pulumi.set(__self__, "subnets", subnets)
         if assign_public_ip is not None:
@@ -353,7 +353,7 @@ class ServiceNetworkConfiguration(dict):
 
     @property
     @pulumi.getter
-    def subnets(self) -> List[str]:
+    def subnets(self) -> Sequence[str]:
         """
         The subnets associated with the task or service.
         """
@@ -369,7 +369,7 @@ class ServiceNetworkConfiguration(dict):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> Optional[Sequence[str]]:
         """
         The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
         """

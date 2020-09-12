@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -81,7 +81,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="imageTags")
-    def image_tags(self) -> List[str]:
+    def image_tags(self) -> Sequence[str]:
         """
         The list of tags associated with this image.
         """

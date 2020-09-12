@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -149,17 +149,17 @@ class GetLoadBalancerResult:
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> Sequence[str]:
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="subnetMappings")
-    def subnet_mappings(self) -> List['outputs.GetLoadBalancerSubnetMappingResult']:
+    def subnet_mappings(self) -> Sequence['outputs.GetLoadBalancerSubnetMappingResult']:
         return pulumi.get(self, "subnet_mappings")
 
     @property
     @pulumi.getter
-    def subnets(self) -> List[str]:
+    def subnets(self) -> Sequence[str]:
         return pulumi.get(self, "subnets")
 
     @property

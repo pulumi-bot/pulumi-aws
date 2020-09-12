@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -49,10 +49,10 @@ __all__ = [
 class ThingTypePropertiesArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 searchable_attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 searchable_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] description: The description of the thing type.
-        :param pulumi.Input[List[pulumi.Input[str]]] searchable_attributes: A list of searchable thing attribute names.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] searchable_attributes: A list of searchable thing attribute names.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -73,14 +73,14 @@ class ThingTypePropertiesArgs:
 
     @property
     @pulumi.getter(name="searchableAttributes")
-    def searchable_attributes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def searchable_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of searchable thing attribute names.
         """
         return pulumi.get(self, "searchable_attributes")
 
     @searchable_attributes.setter
-    def searchable_attributes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def searchable_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "searchable_attributes", value)
 
 

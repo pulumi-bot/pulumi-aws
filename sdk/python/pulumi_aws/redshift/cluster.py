@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -24,7 +24,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
                  cluster_public_key: Optional[pulumi.Input[str]] = None,
                  cluster_revision_number: Optional[pulumi.Input[str]] = None,
-                 cluster_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 cluster_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_subnet_group_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,7 @@ class Cluster(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[str]] = None,
                  enhanced_vpc_routing: Optional[pulumi.Input[bool]] = None,
                  final_snapshot_identifier: Optional[pulumi.Input[str]] = None,
-                 iam_roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 iam_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingArgs']]] = None,
                  master_password: Optional[pulumi.Input[str]] = None,
@@ -50,7 +50,7 @@ class Cluster(pulumi.CustomResource):
                  snapshot_copy: Optional[pulumi.Input[pulumi.InputType['ClusterSnapshotCopyArgs']]] = None,
                  snapshot_identifier: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 vpc_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 vpc_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -84,7 +84,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_parameter_group_name: The name of the parameter group to be associated with this cluster.
         :param pulumi.Input[str] cluster_public_key: The public key for the cluster
         :param pulumi.Input[str] cluster_revision_number: The specific revision number of the database in the cluster
-        :param pulumi.Input[List[pulumi.Input[str]]] cluster_security_groups: A list of security groups to be associated with this cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_security_groups: A list of security groups to be associated with this cluster.
         :param pulumi.Input[str] cluster_subnet_group_name: The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).
         :param pulumi.Input[str] cluster_type: The cluster type to use. Either `single-node` or `multi-node`.
         :param pulumi.Input[str] cluster_version: The version of the Amazon Redshift engine software that you want to deploy on the cluster.
@@ -96,7 +96,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: The connection endpoint
         :param pulumi.Input[bool] enhanced_vpc_routing: If true , enhanced VPC routing is enabled.
         :param pulumi.Input[str] final_snapshot_identifier: The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skip_final_snapshot` must be false.
-        :param pulumi.Input[List[pulumi.Input[str]]] iam_roles: A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] iam_roles: A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
         :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
         :param pulumi.Input[pulumi.InputType['ClusterLoggingArgs']] logging: Logging, documented below.
         :param pulumi.Input[str] master_password: Password for the master DB user.
@@ -116,7 +116,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterSnapshotCopyArgs']] snapshot_copy: Configuration of automatic copy of snapshots from one region to another. Documented below.
         :param pulumi.Input[str] snapshot_identifier: The name of the snapshot from which to create the new cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_security_group_ids: A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_security_group_ids: A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -193,7 +193,7 @@ class Cluster(pulumi.CustomResource):
             cluster_parameter_group_name: Optional[pulumi.Input[str]] = None,
             cluster_public_key: Optional[pulumi.Input[str]] = None,
             cluster_revision_number: Optional[pulumi.Input[str]] = None,
-            cluster_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            cluster_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cluster_subnet_group_name: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             cluster_version: Optional[pulumi.Input[str]] = None,
@@ -204,7 +204,7 @@ class Cluster(pulumi.CustomResource):
             endpoint: Optional[pulumi.Input[str]] = None,
             enhanced_vpc_routing: Optional[pulumi.Input[bool]] = None,
             final_snapshot_identifier: Optional[pulumi.Input[str]] = None,
-            iam_roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            iam_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             logging: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingArgs']]] = None,
             master_password: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class Cluster(pulumi.CustomResource):
             snapshot_copy: Optional[pulumi.Input[pulumi.InputType['ClusterSnapshotCopyArgs']]] = None,
             snapshot_identifier: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            vpc_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Cluster':
+            vpc_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -237,7 +237,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_parameter_group_name: The name of the parameter group to be associated with this cluster.
         :param pulumi.Input[str] cluster_public_key: The public key for the cluster
         :param pulumi.Input[str] cluster_revision_number: The specific revision number of the database in the cluster
-        :param pulumi.Input[List[pulumi.Input[str]]] cluster_security_groups: A list of security groups to be associated with this cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_security_groups: A list of security groups to be associated with this cluster.
         :param pulumi.Input[str] cluster_subnet_group_name: The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).
         :param pulumi.Input[str] cluster_type: The cluster type to use. Either `single-node` or `multi-node`.
         :param pulumi.Input[str] cluster_version: The version of the Amazon Redshift engine software that you want to deploy on the cluster.
@@ -250,7 +250,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: The connection endpoint
         :param pulumi.Input[bool] enhanced_vpc_routing: If true , enhanced VPC routing is enabled.
         :param pulumi.Input[str] final_snapshot_identifier: The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, `skip_final_snapshot` must be false.
-        :param pulumi.Input[List[pulumi.Input[str]]] iam_roles: A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] iam_roles: A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
         :param pulumi.Input[str] kms_key_id: The ARN for the KMS encryption key. When specifying `kms_key_id`, `encrypted` needs to be set to true.
         :param pulumi.Input[pulumi.InputType['ClusterLoggingArgs']] logging: Logging, documented below.
         :param pulumi.Input[str] master_password: Password for the master DB user.
@@ -270,7 +270,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterSnapshotCopyArgs']] snapshot_copy: Configuration of automatic copy of snapshots from one region to another. Documented below.
         :param pulumi.Input[str] snapshot_identifier: The name of the snapshot from which to create the new cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_security_group_ids: A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_security_group_ids: A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -381,7 +381,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterSecurityGroups")
-    def cluster_security_groups(self) -> pulumi.Output[List[str]]:
+    def cluster_security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of security groups to be associated with this cluster.
         """
@@ -471,7 +471,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iamRoles")
-    def iam_roles(self) -> pulumi.Output[List[str]]:
+    def iam_roles(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
         """
@@ -603,7 +603,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
-    def vpc_security_group_ids(self) -> pulumi.Output[List[str]]:
+    def vpc_security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
         """

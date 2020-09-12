@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -451,10 +451,10 @@ class GraphQLApiUserPoolConfig(dict):
 @pulumi.output_type
 class ResolverCachingConfig(dict):
     def __init__(__self__, *,
-                 caching_keys: Optional[List[str]] = None,
+                 caching_keys: Optional[Sequence[str]] = None,
                  ttl: Optional[float] = None):
         """
-        :param List[str] caching_keys: The list of caching key.
+        :param Sequence[str] caching_keys: The list of caching key.
         :param float ttl: The TTL in seconds.
         """
         if caching_keys is not None:
@@ -464,7 +464,7 @@ class ResolverCachingConfig(dict):
 
     @property
     @pulumi.getter(name="cachingKeys")
-    def caching_keys(self) -> Optional[List[str]]:
+    def caching_keys(self) -> Optional[Sequence[str]]:
         """
         The list of caching key.
         """
@@ -485,16 +485,16 @@ class ResolverCachingConfig(dict):
 @pulumi.output_type
 class ResolverPipelineConfig(dict):
     def __init__(__self__, *,
-                 functions: Optional[List[str]] = None):
+                 functions: Optional[Sequence[str]] = None):
         """
-        :param List[str] functions: The list of Function ID.
+        :param Sequence[str] functions: The list of Function ID.
         """
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
 
     @property
     @pulumi.getter
-    def functions(self) -> Optional[List[str]]:
+    def functions(self) -> Optional[Sequence[str]]:
         """
         The list of Function ID.
         """

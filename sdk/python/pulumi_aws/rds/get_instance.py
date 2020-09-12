@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -236,7 +236,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="dbParameterGroups")
-    def db_parameter_groups(self) -> List[str]:
+    def db_parameter_groups(self) -> Sequence[str]:
         """
         Provides the list of DB parameter groups applied to this DB instance.
         """
@@ -244,7 +244,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="dbSecurityGroups")
-    def db_security_groups(self) -> List[str]:
+    def db_security_groups(self) -> Sequence[str]:
         """
         Provides List of DB security groups associated to this DB instance.
         """
@@ -260,7 +260,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="enabledCloudwatchLogsExports")
-    def enabled_cloudwatch_logs_exports(self) -> List[str]:
+    def enabled_cloudwatch_logs_exports(self) -> Sequence[str]:
         """
         List of log types to export to cloudwatch.
         """
@@ -364,7 +364,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="optionGroupMemberships")
-    def option_group_memberships(self) -> List[str]:
+    def option_group_memberships(self) -> Sequence[str]:
         """
         Provides the list of option group memberships for this DB instance.
         """
@@ -449,7 +449,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="vpcSecurityGroups")
-    def vpc_security_groups(self) -> List[str]:
+    def vpc_security_groups(self) -> Sequence[str]:
         """
         Provides a list of VPC security group elements that the DB instance belongs to.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -56,7 +56,7 @@ class GetBundleResult:
 
     @property
     @pulumi.getter(name="computeTypes")
-    def compute_types(self) -> List['outputs.GetBundleComputeTypeResult']:
+    def compute_types(self) -> Sequence['outputs.GetBundleComputeTypeResult']:
         """
         The compute type. See supported fields below.
         """
@@ -96,7 +96,7 @@ class GetBundleResult:
 
     @property
     @pulumi.getter(name="rootStorages")
-    def root_storages(self) -> List['outputs.GetBundleRootStorageResult']:
+    def root_storages(self) -> Sequence['outputs.GetBundleRootStorageResult']:
         """
         The root volume. See supported fields below.
         """
@@ -104,7 +104,7 @@ class GetBundleResult:
 
     @property
     @pulumi.getter(name="userStorages")
-    def user_storages(self) -> List['outputs.GetBundleUserStorageResult']:
+    def user_storages(self) -> Sequence['outputs.GetBundleUserStorageResult']:
         """
         The user storage. See supported fields below.
         """

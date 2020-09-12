@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['HostedPublicVirtualInterface']
@@ -23,7 +23,7 @@ class HostedPublicVirtualInterface(pulumi.CustomResource):
                  customer_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner_account_id: Optional[pulumi.Input[str]] = None,
-                 route_filter_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 route_filter_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vlan: Optional[pulumi.Input[float]] = None,
                  __props__=None,
                  __name__=None,
@@ -61,7 +61,7 @@ class HostedPublicVirtualInterface(pulumi.CustomResource):
         :param pulumi.Input[str] customer_address: The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
         :param pulumi.Input[str] name: The name for the virtual interface.
         :param pulumi.Input[str] owner_account_id: The AWS account that will own the new virtual interface.
-        :param pulumi.Input[List[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
         :param pulumi.Input[float] vlan: The VLAN ID.
         """
         if __name__ is not None:
@@ -127,7 +127,7 @@ class HostedPublicVirtualInterface(pulumi.CustomResource):
             customer_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner_account_id: Optional[pulumi.Input[str]] = None,
-            route_filter_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            route_filter_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vlan: Optional[pulumi.Input[float]] = None) -> 'HostedPublicVirtualInterface':
         """
         Get an existing HostedPublicVirtualInterface resource's state with the given name, id, and optional extra
@@ -146,7 +146,7 @@ class HostedPublicVirtualInterface(pulumi.CustomResource):
         :param pulumi.Input[str] customer_address: The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
         :param pulumi.Input[str] name: The name for the virtual interface.
         :param pulumi.Input[str] owner_account_id: The AWS account that will own the new virtual interface.
-        :param pulumi.Input[List[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_filter_prefixes: A list of routes to be advertised to the AWS network in this region.
         :param pulumi.Input[float] vlan: The VLAN ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -255,7 +255,7 @@ class HostedPublicVirtualInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeFilterPrefixes")
-    def route_filter_prefixes(self) -> pulumi.Output[List[str]]:
+    def route_filter_prefixes(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of routes to be advertised to the AWS network in this region.
         """

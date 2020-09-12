@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -32,7 +32,7 @@ class Instance(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  domain_iam_role_name: Optional[pulumi.Input[str]] = None,
-                 enabled_cloudwatch_logs_exports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 enabled_cloudwatch_logs_exports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  final_snapshot_identifier: Optional[pulumi.Input[str]] = None,
@@ -59,7 +59,7 @@ class Instance(pulumi.CustomResource):
                  publicly_accessible: Optional[pulumi.Input[bool]] = None,
                  replicate_source_db: Optional[pulumi.Input[str]] = None,
                  s3_import: Optional[pulumi.Input[pulumi.InputType['InstanceS3ImportArgs']]] = None,
-                 security_group_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
                  snapshot_identifier: Optional[pulumi.Input[str]] = None,
                  storage_encrypted: Optional[pulumi.Input[bool]] = None,
@@ -67,7 +67,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
-                 vpc_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 vpc_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -165,7 +165,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
         :param pulumi.Input[str] domain: The ID of the Directory Service Active Directory domain to create the instance in.
         :param pulumi.Input[str] domain_iam_role_name: The name of the IAM role to be used when making API calls to the Directory Service.
-        :param pulumi.Input[List[pulumi.Input[str]]] enabled_cloudwatch_logs_exports: List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on `engine`). MySQL and MariaDB: `audit`, `error`, `general`, `slowquery`. PostgreSQL: `postgresql`, `upgrade`. MSSQL: `agent` , `error`. Oracle: `alert`, `audit`, `listener`, `trace`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_cloudwatch_logs_exports: List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on `engine`). MySQL and MariaDB: `audit`, `error`, `general`, `slowquery`. PostgreSQL: `postgresql`, `upgrade`. MSSQL: `agent` , `error`. Oracle: `alert`, `audit`, `listener`, `trace`.
         :param pulumi.Input[str] engine: (Required unless a `snapshot_identifier` or `replicate_source_db`
                is provided) The database engine to use.  For supported values, see the Engine parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
                Note that for Amazon Aurora instances the engine must match the `DB cluster`'s engine'.
@@ -233,7 +233,7 @@ class Instance(pulumi.CustomResource):
                PostgreSQL and MySQL Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
                for more information on using Replication.
         :param pulumi.Input[pulumi.InputType['InstanceS3ImportArgs']] s3_import: Restore from a Percona Xtrabackup in S3.  See [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_names: List of DB Security Groups to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_names: List of DB Security Groups to
                associate. Only used for [DB Instances on the _EC2-Classic_
                Platform](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html#USER_VPC.FindDefaultVPC).
         :param pulumi.Input[bool] skip_final_snapshot: Determines whether a final DB snapshot is
@@ -259,7 +259,7 @@ class Instance(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[str] username: (Required unless a `snapshot_identifier` or `replicate_source_db`
                is provided) Username for the master DB user.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_security_group_ids: List of VPC security groups to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_security_group_ids: List of VPC security groups to
                associate.
         """
         if __name__ is not None:
@@ -366,7 +366,7 @@ class Instance(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             domain_iam_role_name: Optional[pulumi.Input[str]] = None,
-            enabled_cloudwatch_logs_exports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            enabled_cloudwatch_logs_exports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -393,11 +393,11 @@ class Instance(pulumi.CustomResource):
             performance_insights_retention_period: Optional[pulumi.Input[float]] = None,
             port: Optional[pulumi.Input[float]] = None,
             publicly_accessible: Optional[pulumi.Input[bool]] = None,
-            replicas: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            replicas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             replicate_source_db: Optional[pulumi.Input[str]] = None,
             resource_id: Optional[pulumi.Input[str]] = None,
             s3_import: Optional[pulumi.Input[pulumi.InputType['InstanceS3ImportArgs']]] = None,
-            security_group_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             skip_final_snapshot: Optional[pulumi.Input[bool]] = None,
             snapshot_identifier: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -406,7 +406,7 @@ class Instance(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
-            vpc_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Instance':
+            vpc_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -450,7 +450,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
         :param pulumi.Input[str] domain: The ID of the Directory Service Active Directory domain to create the instance in.
         :param pulumi.Input[str] domain_iam_role_name: The name of the IAM role to be used when making API calls to the Directory Service.
-        :param pulumi.Input[List[pulumi.Input[str]]] enabled_cloudwatch_logs_exports: List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on `engine`). MySQL and MariaDB: `audit`, `error`, `general`, `slowquery`. PostgreSQL: `postgresql`, `upgrade`. MSSQL: `agent` , `error`. Oracle: `alert`, `audit`, `listener`, `trace`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_cloudwatch_logs_exports: List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on `engine`). MySQL and MariaDB: `audit`, `error`, `general`, `slowquery`. PostgreSQL: `postgresql`, `upgrade`. MSSQL: `agent` , `error`. Oracle: `alert`, `audit`, `listener`, `trace`.
         :param pulumi.Input[str] endpoint: The connection endpoint in `address:port` format.
         :param pulumi.Input[str] engine: (Required unless a `snapshot_identifier` or `replicate_source_db`
                is provided) The database engine to use.  For supported values, see the Engine parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
@@ -522,7 +522,7 @@ class Instance(pulumi.CustomResource):
                for more information on using Replication.
         :param pulumi.Input[str] resource_id: The RDS Resource ID of this instance.
         :param pulumi.Input[pulumi.InputType['InstanceS3ImportArgs']] s3_import: Restore from a Percona Xtrabackup in S3.  See [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_names: List of DB Security Groups to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_names: List of DB Security Groups to
                associate. Only used for [DB Instances on the _EC2-Classic_
                Platform](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html#USER_VPC.FindDefaultVPC).
         :param pulumi.Input[bool] skip_final_snapshot: Determines whether a final DB snapshot is
@@ -549,7 +549,7 @@ class Instance(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[str] username: (Required unless a `snapshot_identifier` or `replicate_source_db`
                is provided) Username for the master DB user.
-        :param pulumi.Input[List[pulumi.Input[str]]] vpc_security_group_ids: List of VPC security groups to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_security_group_ids: List of VPC security groups to
                associate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -773,7 +773,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enabledCloudwatchLogsExports")
-    def enabled_cloudwatch_logs_exports(self) -> pulumi.Output[Optional[List[str]]]:
+    def enabled_cloudwatch_logs_exports(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on `engine`). MySQL and MariaDB: `audit`, `error`, `general`, `slowquery`. PostgreSQL: `postgresql`, `upgrade`. MSSQL: `agent` , `error`. Oracle: `alert`, `audit`, `listener`, `trace`.
         """
@@ -1023,7 +1023,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def replicas(self) -> pulumi.Output[List[str]]:
+    def replicas(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "replicas")
 
     @property
@@ -1060,7 +1060,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupNames")
-    def security_group_names(self) -> pulumi.Output[Optional[List[str]]]:
+    def security_group_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of DB Security Groups to
         associate. Only used for [DB Instances on the _EC2-Classic_
@@ -1150,7 +1150,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcSecurityGroupIds")
-    def vpc_security_group_ids(self) -> pulumi.Output[List[str]]:
+    def vpc_security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         List of VPC security groups to
         associate.

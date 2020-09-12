@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -248,13 +248,13 @@ class EventTargetEcsTargetArgs:
 @pulumi.input_type
 class EventTargetEcsTargetNetworkConfigurationArgs:
     def __init__(__self__, *,
-                 subnets: pulumi.Input[List[pulumi.Input[str]]],
+                 subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
-                 security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] subnets: The subnets associated with the task or service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The subnets associated with the task or service.
         :param pulumi.Input[bool] assign_public_ip: Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
         """
         pulumi.set(__self__, "subnets", subnets)
         if assign_public_ip is not None:
@@ -264,14 +264,14 @@ class EventTargetEcsTargetNetworkConfigurationArgs:
 
     @property
     @pulumi.getter
-    def subnets(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def subnets(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The subnets associated with the task or service.
         """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
-    def subnets(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def subnets(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "subnets", value)
 
     @property
@@ -288,14 +288,14 @@ class EventTargetEcsTargetNetworkConfigurationArgs:
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_groups", value)
 
 
@@ -364,10 +364,10 @@ class EventTargetKinesisTargetArgs:
 class EventTargetRunCommandTargetArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
-                 values: pulumi.Input[List[pulumi.Input[str]]]):
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] key: Can be either `tag:tag-key` or `InstanceIds`.
-        :param pulumi.Input[List[pulumi.Input[str]]] values: If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
@@ -386,14 +386,14 @@ class EventTargetRunCommandTargetArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 

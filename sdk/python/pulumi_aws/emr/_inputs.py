@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -26,11 +26,11 @@ class ClusterBootstrapActionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  path: pulumi.Input[str],
-                 args: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: The name of the step.
         :param pulumi.Input[str] path: Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system
-        :param pulumi.Input[List[pulumi.Input[str]]] args: List of command line arguments passed to the JAR file's main function when executed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of command line arguments passed to the JAR file's main function when executed.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "path", path)
@@ -63,14 +63,14 @@ class ClusterBootstrapActionArgs:
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of command line arguments passed to the JAR file's main function when executed.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
 
 
@@ -80,7 +80,7 @@ class ClusterCoreInstanceGroupArgs:
                  instance_type: pulumi.Input[str],
                  autoscaling_policy: Optional[pulumi.Input[str]] = None,
                  bid_price: Optional[pulumi.Input[str]] = None,
-                 ebs_configs: Optional[pulumi.Input[List[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]] = None,
+                 ebs_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -88,7 +88,7 @@ class ClusterCoreInstanceGroupArgs:
         :param pulumi.Input[str] instance_type: EC2 instance type for all instances in the instance group.
         :param pulumi.Input[str] autoscaling_policy: String containing the [EMR Auto Scaling Policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html) JSON.
         :param pulumi.Input[str] bid_price: Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
-        :param pulumi.Input[List[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]] ebs_configs: Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]] ebs_configs: Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
         :param pulumi.Input[str] id: The ID of the EMR Cluster
         :param pulumi.Input[float] instance_count: Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         :param pulumi.Input[str] name: The name of the step.
@@ -145,14 +145,14 @@ class ClusterCoreInstanceGroupArgs:
 
     @property
     @pulumi.getter(name="ebsConfigs")
-    def ebs_configs(self) -> Optional[pulumi.Input[List[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]]:
+    def ebs_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]]:
         """
         Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
         """
         return pulumi.get(self, "ebs_configs")
 
     @ebs_configs.setter
-    def ebs_configs(self, value: Optional[pulumi.Input[List[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]]):
+    def ebs_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCoreInstanceGroupEbsConfigArgs']]]]):
         pulumi.set(self, "ebs_configs", value)
 
     @property
@@ -485,14 +485,14 @@ class ClusterMasterInstanceGroupArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
                  bid_price: Optional[pulumi.Input[str]] = None,
-                 ebs_configs: Optional[pulumi.Input[List[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]] = None,
+                 ebs_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] instance_type: EC2 instance type for all instances in the instance group.
         :param pulumi.Input[str] bid_price: Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
-        :param pulumi.Input[List[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]] ebs_configs: Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]] ebs_configs: Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
         :param pulumi.Input[str] id: The ID of the EMR Cluster
         :param pulumi.Input[float] instance_count: Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have `map public IP on launch` enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         :param pulumi.Input[str] name: The name of the step.
@@ -535,14 +535,14 @@ class ClusterMasterInstanceGroupArgs:
 
     @property
     @pulumi.getter(name="ebsConfigs")
-    def ebs_configs(self) -> Optional[pulumi.Input[List[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]]:
+    def ebs_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]]:
         """
         Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
         """
         return pulumi.get(self, "ebs_configs")
 
     @ebs_configs.setter
-    def ebs_configs(self, value: Optional[pulumi.Input[List[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]]):
+    def ebs_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterInstanceGroupEbsConfigArgs']]]]):
         pulumi.set(self, "ebs_configs", value)
 
     @property
@@ -707,12 +707,12 @@ class ClusterStepArgs:
 class ClusterStepHadoopJarStepArgs:
     def __init__(__self__, *,
                  jar: pulumi.Input[str],
-                 args: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] jar: Path to a JAR file run during the step.
-        :param pulumi.Input[List[pulumi.Input[str]]] args: List of command line arguments passed to the JAR file's main function when executed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of command line arguments passed to the JAR file's main function when executed.
         :param pulumi.Input[str] main_class: Name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Key-Value map of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
         """
@@ -738,14 +738,14 @@ class ClusterStepHadoopJarStepArgs:
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of command line arguments passed to the JAR file's main function when executed.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
 
     @property

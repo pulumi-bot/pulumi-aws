@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['HealthCheck']
@@ -16,7 +16,7 @@ class HealthCheck(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  child_health_threshold: Optional[pulumi.Input[float]] = None,
-                 child_healthchecks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 child_healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cloudwatch_alarm_name: Optional[pulumi.Input[str]] = None,
                  cloudwatch_alarm_region: Optional[pulumi.Input[str]] = None,
                  enable_sni: Optional[pulumi.Input[bool]] = None,
@@ -28,7 +28,7 @@ class HealthCheck(pulumi.CustomResource):
                  measure_latency: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[float]] = None,
                  reference_name: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_interval: Optional[pulumi.Input[float]] = None,
                  resource_path: Optional[pulumi.Input[str]] = None,
                  search_string: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class HealthCheck(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] child_health_threshold: The minimum number of child health checks that must be healthy for Route 53 to consider the parent health check to be healthy. Valid values are integers between 0 and 256, inclusive
-        :param pulumi.Input[List[pulumi.Input[str]]] child_healthchecks: For a specified parent health check, a list of HealthCheckId values for the associated child health checks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] child_healthchecks: For a specified parent health check, a list of HealthCheckId values for the associated child health checks.
         :param pulumi.Input[str] cloudwatch_alarm_name: The name of the CloudWatch alarm.
         :param pulumi.Input[str] cloudwatch_alarm_region: The CloudWatchRegion that the CloudWatch alarm was created in.
         :param pulumi.Input[bool] enable_sni: A boolean value that indicates whether Route53 should send the `fqdn` to the endpoint when performing the health check. This defaults to AWS' defaults: when the `type` is "HTTPS" `enable_sni` defaults to `true`, when `type` is anything else `enable_sni` defaults to `false`.
@@ -125,7 +125,7 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[float] port: The port of the endpoint to be checked.
         :param pulumi.Input[str] reference_name: This is a reference name used in Caller Reference
                (helpful for identifying single health_check set amongst others)
-        :param pulumi.Input[List[pulumi.Input[str]]] regions: A list of AWS regions that you want Amazon Route 53 health checkers to check the specified endpoint from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of AWS regions that you want Amazon Route 53 health checkers to check the specified endpoint from.
         :param pulumi.Input[float] request_interval: The number of seconds between the time that Amazon Route 53 gets a response from your endpoint and the time that it sends the next health-check request.
         :param pulumi.Input[str] resource_path: The path that you want Amazon Route 53 to request when performing health checks.
         :param pulumi.Input[str] search_string: String searched in the first 5120 bytes of the response body for check to be considered healthy. Only valid with `HTTP_STR_MATCH` and `HTTPS_STR_MATCH`.
@@ -181,7 +181,7 @@ class HealthCheck(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             child_health_threshold: Optional[pulumi.Input[float]] = None,
-            child_healthchecks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            child_healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cloudwatch_alarm_name: Optional[pulumi.Input[str]] = None,
             cloudwatch_alarm_region: Optional[pulumi.Input[str]] = None,
             enable_sni: Optional[pulumi.Input[bool]] = None,
@@ -193,7 +193,7 @@ class HealthCheck(pulumi.CustomResource):
             measure_latency: Optional[pulumi.Input[bool]] = None,
             port: Optional[pulumi.Input[float]] = None,
             reference_name: Optional[pulumi.Input[str]] = None,
-            regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             request_interval: Optional[pulumi.Input[float]] = None,
             resource_path: Optional[pulumi.Input[str]] = None,
             search_string: Optional[pulumi.Input[str]] = None,
@@ -207,7 +207,7 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] child_health_threshold: The minimum number of child health checks that must be healthy for Route 53 to consider the parent health check to be healthy. Valid values are integers between 0 and 256, inclusive
-        :param pulumi.Input[List[pulumi.Input[str]]] child_healthchecks: For a specified parent health check, a list of HealthCheckId values for the associated child health checks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] child_healthchecks: For a specified parent health check, a list of HealthCheckId values for the associated child health checks.
         :param pulumi.Input[str] cloudwatch_alarm_name: The name of the CloudWatch alarm.
         :param pulumi.Input[str] cloudwatch_alarm_region: The CloudWatchRegion that the CloudWatch alarm was created in.
         :param pulumi.Input[bool] enable_sni: A boolean value that indicates whether Route53 should send the `fqdn` to the endpoint when performing the health check. This defaults to AWS' defaults: when the `type` is "HTTPS" `enable_sni` defaults to `true`, when `type` is anything else `enable_sni` defaults to `false`.
@@ -220,7 +220,7 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[float] port: The port of the endpoint to be checked.
         :param pulumi.Input[str] reference_name: This is a reference name used in Caller Reference
                (helpful for identifying single health_check set amongst others)
-        :param pulumi.Input[List[pulumi.Input[str]]] regions: A list of AWS regions that you want Amazon Route 53 health checkers to check the specified endpoint from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: A list of AWS regions that you want Amazon Route 53 health checkers to check the specified endpoint from.
         :param pulumi.Input[float] request_interval: The number of seconds between the time that Amazon Route 53 gets a response from your endpoint and the time that it sends the next health-check request.
         :param pulumi.Input[str] resource_path: The path that you want Amazon Route 53 to request when performing health checks.
         :param pulumi.Input[str] search_string: String searched in the first 5120 bytes of the response body for check to be considered healthy. Only valid with `HTTP_STR_MATCH` and `HTTPS_STR_MATCH`.
@@ -262,7 +262,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childHealthchecks")
-    def child_healthchecks(self) -> pulumi.Output[Optional[List[str]]]:
+    def child_healthchecks(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         For a specified parent health check, a list of HealthCheckId values for the associated child health checks.
         """
@@ -359,7 +359,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> pulumi.Output[Optional[List[str]]]:
+    def regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of AWS regions that you want Amazon Route 53 health checkers to check the specified endpoint from.
         """

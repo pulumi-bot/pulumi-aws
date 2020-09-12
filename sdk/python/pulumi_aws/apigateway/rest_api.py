@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class RestApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key_source: Optional[pulumi.Input[str]] = None,
-                 binary_media_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 binary_media_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint_configuration: Optional[pulumi.Input[pulumi.InputType['RestApiEndpointConfigurationArgs']]] = None,
@@ -57,7 +57,7 @@ class RestApi(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key_source: The source of the API key for requests. Valid values are HEADER (default) and AUTHORIZER.
-        :param pulumi.Input[List[pulumi.Input[str]]] binary_media_types: The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] binary_media_types: The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
         :param pulumi.Input[str] body: An OpenAPI specification that defines the set of routes and integrations to create as part of the REST API.
         :param pulumi.Input[str] description: The description of the REST API
         :param pulumi.Input[pulumi.InputType['RestApiEndpointConfigurationArgs']] endpoint_configuration: Nested argument defining API endpoint configuration including endpoint type. Defined below.
@@ -108,7 +108,7 @@ class RestApi(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_key_source: Optional[pulumi.Input[str]] = None,
             arn: Optional[pulumi.Input[str]] = None,
-            binary_media_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            binary_media_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             body: Optional[pulumi.Input[str]] = None,
             created_date: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class RestApi(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key_source: The source of the API key for requests. Valid values are HEADER (default) and AUTHORIZER.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN)
-        :param pulumi.Input[List[pulumi.Input[str]]] binary_media_types: The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] binary_media_types: The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
         :param pulumi.Input[str] body: An OpenAPI specification that defines the set of routes and integrations to create as part of the REST API.
         :param pulumi.Input[str] created_date: The creation date of the REST API
         :param pulumi.Input[str] description: The description of the REST API
@@ -179,7 +179,7 @@ class RestApi(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="binaryMediaTypes")
-    def binary_media_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def binary_media_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads.
         """

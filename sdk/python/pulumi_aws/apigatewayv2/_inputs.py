@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,17 +22,17 @@ __all__ = [
 class ApiCorsConfigurationArgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
-                 allow_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allow_methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allow_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 expose_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[bool] allow_credentials: Whether credentials are included in the CORS request.
-        :param pulumi.Input[List[pulumi.Input[str]]] allow_headers: The set of allowed HTTP headers.
-        :param pulumi.Input[List[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods.
-        :param pulumi.Input[List[pulumi.Input[str]]] allow_origins: The set of allowed origins.
-        :param pulumi.Input[List[pulumi.Input[str]]] expose_headers: The set of exposed HTTP headers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The set of allowed HTTP headers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The set of allowed HTTP methods.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: The set of allowed origins.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The set of exposed HTTP headers.
         :param pulumi.Input[float] max_age: The number of seconds that the browser should cache preflight request results.
         """
         if allow_credentials is not None:
@@ -62,50 +62,50 @@ class ApiCorsConfigurationArgs:
 
     @property
     @pulumi.getter(name="allowHeaders")
-    def allow_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of allowed HTTP headers.
         """
         return pulumi.get(self, "allow_headers")
 
     @allow_headers.setter
-    def allow_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allow_headers", value)
 
     @property
     @pulumi.getter(name="allowMethods")
-    def allow_methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of allowed HTTP methods.
         """
         return pulumi.get(self, "allow_methods")
 
     @allow_methods.setter
-    def allow_methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allow_methods", value)
 
     @property
     @pulumi.getter(name="allowOrigins")
-    def allow_origins(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of allowed origins.
         """
         return pulumi.get(self, "allow_origins")
 
     @allow_origins.setter
-    def allow_origins(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allow_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allow_origins", value)
 
     @property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of exposed HTTP headers.
         """
         return pulumi.get(self, "expose_headers")
 
     @expose_headers.setter
-    def expose_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "expose_headers", value)
 
     @property
@@ -124,10 +124,10 @@ class ApiCorsConfigurationArgs:
 @pulumi.input_type
 class AuthorizerJwtConfigurationArgs:
     def __init__(__self__, *,
-                 audiences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  issuer: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] audiences: A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
         :param pulumi.Input[str] issuer: The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `cognito.UserPool` resource.
         """
         if audiences is not None:
@@ -137,14 +137,14 @@ class AuthorizerJwtConfigurationArgs:
 
     @property
     @pulumi.getter
-    def audiences(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
         """
         return pulumi.get(self, "audiences")
 
     @audiences.setter
-    def audiences(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "audiences", value)
 
     @property

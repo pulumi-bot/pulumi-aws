@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -19,12 +19,12 @@ __all__ = [
 @pulumi.output_type
 class LifecyclePolicyPolicyDetails(dict):
     def __init__(__self__, *,
-                 resource_types: List[str],
-                 schedules: List['outputs.LifecyclePolicyPolicyDetailsSchedule'],
+                 resource_types: Sequence[str],
+                 schedules: Sequence['outputs.LifecyclePolicyPolicyDetailsSchedule'],
                  target_tags: Mapping[str, str]):
         """
-        :param List[str] resource_types: A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
-        :param List['LifecyclePolicyPolicyDetailsScheduleArgs'] schedules: See the `schedule` configuration block.
+        :param Sequence[str] resource_types: A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+        :param Sequence['LifecyclePolicyPolicyDetailsScheduleArgs'] schedules: See the `schedule` configuration block.
         :param Mapping[str, str] target_tags: A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         """
         pulumi.set(__self__, "resource_types", resource_types)
@@ -33,7 +33,7 @@ class LifecyclePolicyPolicyDetails(dict):
 
     @property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> List[str]:
+    def resource_types(self) -> Sequence[str]:
         """
         A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
         """
@@ -41,7 +41,7 @@ class LifecyclePolicyPolicyDetails(dict):
 
     @property
     @pulumi.getter
-    def schedules(self) -> List['outputs.LifecyclePolicyPolicyDetailsSchedule']:
+    def schedules(self) -> Sequence['outputs.LifecyclePolicyPolicyDetailsSchedule']:
         """
         See the `schedule` configuration block.
         """

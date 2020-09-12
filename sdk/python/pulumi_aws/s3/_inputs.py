@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -351,16 +351,16 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDes
 @pulumi.input_type
 class BucketCorsRuleArgs:
     def __init__(__self__, *,
-                 allowed_methods: pulumi.Input[List[pulumi.Input[str]]],
-                 allowed_origins: pulumi.Input[List[pulumi.Input[str]]],
-                 allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 expose_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age_seconds: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: Specifies which origins are allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: Specifies which headers are allowed.
-        :param pulumi.Input[List[pulumi.Input[str]]] expose_headers: Specifies expose header in the response.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: Specifies which origins are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: Specifies which headers are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: Specifies expose header in the response.
         :param pulumi.Input[float] max_age_seconds: Specifies time in seconds that browser can cache the response for a preflight request.
         """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
@@ -374,50 +374,50 @@ class BucketCorsRuleArgs:
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
         """
         return pulumi.get(self, "allowed_methods")
 
     @allowed_methods.setter
-    def allowed_methods(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_methods", value)
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_origins(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies which origins are allowed.
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_origins(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies which headers are allowed.
         """
         return pulumi.get(self, "allowed_headers")
 
     @allowed_headers.setter
-    def allowed_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_headers", value)
 
     @property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies expose header in the response.
         """
         return pulumi.get(self, "expose_headers")
 
     @expose_headers.setter
-    def expose_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "expose_headers", value)
 
     @property
@@ -436,12 +436,12 @@ class BucketCorsRuleArgs:
 @pulumi.input_type
 class BucketGrantArgs:
     def __init__(__self__, *,
-                 permissions: pulumi.Input[List[pulumi.Input[str]]],
+                 permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] permissions: List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
         :param pulumi.Input[str] type: - Type of grantee to apply for. Valid values are `CanonicalUser` and `Group`. `AmazonCustomerByEmail` is not supported.
         :param pulumi.Input[str] id: Canonical user id to grant for. Used only when `type` is `CanonicalUser`.
         :param pulumi.Input[str] uri: Uri address to grant for. Used only when `type` is `Group`.
@@ -455,14 +455,14 @@ class BucketGrantArgs:
 
     @property
     @pulumi.getter
-    def permissions(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def permissions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "permissions", value)
 
     @property
@@ -510,20 +510,20 @@ class BucketLifecycleRuleArgs:
                  expiration: Optional[pulumi.Input['BucketLifecycleRuleExpirationArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  noncurrent_version_expiration: Optional[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgs']] = None,
-                 noncurrent_version_transitions: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]] = None,
+                 noncurrent_version_transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 transitions: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None):
+                 transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None):
         """
         :param pulumi.Input[bool] enabled: Specifies lifecycle rule status.
         :param pulumi.Input[float] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
         :param pulumi.Input['BucketLifecycleRuleExpirationArgs'] expiration: Specifies a period in the object's expire (documented below).
         :param pulumi.Input[str] id: Unique identifier for the rule.
         :param pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expiration: Specifies when noncurrent object versions expire (documented below).
-        :param pulumi.Input[List[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]] noncurrent_version_transitions: Specifies when noncurrent object versions transitions (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]] noncurrent_version_transitions: Specifies when noncurrent object versions transitions (documented below).
         :param pulumi.Input[str] prefix: Object key prefix identifying one or more objects to which the rule applies.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Specifies object tags key and value.
-        :param pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]] transitions: Specifies a period in the object's transitions (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]] transitions: Specifies a period in the object's transitions (documented below).
         """
         pulumi.set(__self__, "enabled", enabled)
         if abort_incomplete_multipart_upload_days is not None:
@@ -605,14 +605,14 @@ class BucketLifecycleRuleArgs:
 
     @property
     @pulumi.getter(name="noncurrentVersionTransitions")
-    def noncurrent_version_transitions(self) -> Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]:
+    def noncurrent_version_transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]:
         """
         Specifies when noncurrent object versions transitions (documented below).
         """
         return pulumi.get(self, "noncurrent_version_transitions")
 
     @noncurrent_version_transitions.setter
-    def noncurrent_version_transitions(self, value: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]):
+    def noncurrent_version_transitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]):
         pulumi.set(self, "noncurrent_version_transitions", value)
 
     @property
@@ -641,14 +641,14 @@ class BucketLifecycleRuleArgs:
 
     @property
     @pulumi.getter
-    def transitions(self) -> Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]:
+    def transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]:
         """
         Specifies a period in the object's transitions (documented below).
         """
         return pulumi.get(self, "transitions")
 
     @transitions.setter
-    def transitions(self, value: Optional[pulumi.Input[List[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]):
+    def transitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]):
         pulumi.set(self, "transitions", value)
 
 
@@ -902,13 +902,13 @@ class BucketMetricFilterArgs:
 @pulumi.input_type
 class BucketNotificationLambdaFunctionArgs:
     def __init__(__self__, *,
-                 events: pulumi.Input[List[pulumi.Input[str]]],
+                 events: pulumi.Input[Sequence[pulumi.Input[str]]],
                  filter_prefix: Optional[pulumi.Input[str]] = None,
                  filter_suffix: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  lambda_function_arn: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] events: Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
         :param pulumi.Input[str] filter_prefix: Specifies object key name prefix.
         :param pulumi.Input[str] filter_suffix: Specifies object key name suffix.
         :param pulumi.Input[str] id: Specifies unique identifier for each of the notification configurations.
@@ -926,14 +926,14 @@ class BucketNotificationLambdaFunctionArgs:
 
     @property
     @pulumi.getter
-    def events(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def events(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
         """
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def events(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "events", value)
 
     @property
@@ -988,13 +988,13 @@ class BucketNotificationLambdaFunctionArgs:
 @pulumi.input_type
 class BucketNotificationQueueArgs:
     def __init__(__self__, *,
-                 events: pulumi.Input[List[pulumi.Input[str]]],
+                 events: pulumi.Input[Sequence[pulumi.Input[str]]],
                  queue_arn: pulumi.Input[str],
                  filter_prefix: Optional[pulumi.Input[str]] = None,
                  filter_suffix: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] events: Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
         :param pulumi.Input[str] queue_arn: Specifies Amazon SQS queue ARN.
         :param pulumi.Input[str] filter_prefix: Specifies object key name prefix.
         :param pulumi.Input[str] filter_suffix: Specifies object key name suffix.
@@ -1011,14 +1011,14 @@ class BucketNotificationQueueArgs:
 
     @property
     @pulumi.getter
-    def events(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def events(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
         """
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def events(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "events", value)
 
     @property
@@ -1073,13 +1073,13 @@ class BucketNotificationQueueArgs:
 @pulumi.input_type
 class BucketNotificationTopicArgs:
     def __init__(__self__, *,
-                 events: pulumi.Input[List[pulumi.Input[str]]],
+                 events: pulumi.Input[Sequence[pulumi.Input[str]]],
                  topic_arn: pulumi.Input[str],
                  filter_prefix: Optional[pulumi.Input[str]] = None,
                  filter_suffix: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] events: Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
         :param pulumi.Input[str] topic_arn: Specifies Amazon SNS topic ARN.
         :param pulumi.Input[str] filter_prefix: Specifies object key name prefix.
         :param pulumi.Input[str] filter_suffix: Specifies object key name suffix.
@@ -1096,14 +1096,14 @@ class BucketNotificationTopicArgs:
 
     @property
     @pulumi.getter
-    def events(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def events(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
         """
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def events(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "events", value)
 
     @property
@@ -1273,10 +1273,10 @@ class BucketObjectLockConfigurationRuleDefaultRetentionArgs:
 class BucketReplicationConfigurationArgs:
     def __init__(__self__, *,
                  role: pulumi.Input[str],
-                 rules: pulumi.Input[List[pulumi.Input['BucketReplicationConfigurationRuleArgs']]]):
+                 rules: pulumi.Input[Sequence[pulumi.Input['BucketReplicationConfigurationRuleArgs']]]):
         """
         :param pulumi.Input[str] role: The ARN of the IAM role for Amazon S3 to assume when replicating the objects.
-        :param pulumi.Input[List[pulumi.Input['BucketReplicationConfigurationRuleArgs']]] rules: Specifies the rules managing the replication (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['BucketReplicationConfigurationRuleArgs']]] rules: Specifies the rules managing the replication (documented below).
         """
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "rules", rules)
@@ -1295,14 +1295,14 @@ class BucketReplicationConfigurationArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[List[pulumi.Input['BucketReplicationConfigurationRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['BucketReplicationConfigurationRuleArgs']]]:
         """
         Specifies the rules managing the replication (documented below).
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[List[pulumi.Input['BucketReplicationConfigurationRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['BucketReplicationConfigurationRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
 
@@ -1748,12 +1748,12 @@ class BucketWebsiteArgs:
                  error_document: Optional[pulumi.Input[str]] = None,
                  index_document: Optional[pulumi.Input[str]] = None,
                  redirect_all_requests_to: Optional[pulumi.Input[str]] = None,
-                 routing_rules: Optional[pulumi.Input[Union[str, List[pulumi.Input[str]]]]] = None):
+                 routing_rules: Optional[pulumi.Input[Union[str, Sequence[pulumi.Input[str]]]]] = None):
         """
         :param pulumi.Input[str] error_document: An absolute path to the document to return in case of a 4XX error.
         :param pulumi.Input[str] index_document: Amazon S3 returns this index document when requests are made to the root domain or any of the subfolders.
         :param pulumi.Input[str] redirect_all_requests_to: A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-        :param pulumi.Input[Union[str, List[pulumi.Input[str]]]] routing_rules: A json array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
+        :param pulumi.Input[Union[str, Sequence[pulumi.Input[str]]]] routing_rules: A json array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
                describing redirect behavior and when redirects are applied.
         """
         if error_document is not None:
@@ -1803,7 +1803,7 @@ class BucketWebsiteArgs:
 
     @property
     @pulumi.getter(name="routingRules")
-    def routing_rules(self) -> Optional[pulumi.Input[Union[str, List[pulumi.Input[str]]]]]:
+    def routing_rules(self) -> Optional[pulumi.Input[Union[str, Sequence[pulumi.Input[str]]]]]:
         """
         A json array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
         describing redirect behavior and when redirects are applied.
@@ -1811,7 +1811,7 @@ class BucketWebsiteArgs:
         return pulumi.get(self, "routing_rules")
 
     @routing_rules.setter
-    def routing_rules(self, value: Optional[pulumi.Input[Union[str, List[pulumi.Input[str]]]]]):
+    def routing_rules(self, value: Optional[pulumi.Input[Union[str, Sequence[pulumi.Input[str]]]]]):
         pulumi.set(self, "routing_rules", value)
 
 

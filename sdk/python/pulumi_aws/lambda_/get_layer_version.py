@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -72,7 +72,7 @@ class GetLayerVersionResult:
 
     @property
     @pulumi.getter(name="compatibleRuntimes")
-    def compatible_runtimes(self) -> List[str]:
+    def compatible_runtimes(self) -> Sequence[str]:
         """
         A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleRuntimes) the specific Lambda Layer version is compatible with.
         """

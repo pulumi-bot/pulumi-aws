@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -19,11 +19,11 @@ __all__ = [
 @pulumi.output_type
 class ServiceDnsConfig(dict):
     def __init__(__self__, *,
-                 dns_records: List['outputs.ServiceDnsConfigDnsRecord'],
+                 dns_records: Sequence['outputs.ServiceDnsConfigDnsRecord'],
                  namespace_id: str,
                  routing_policy: Optional[str] = None):
         """
-        :param List['ServiceDnsConfigDnsRecordArgs'] dns_records: An array that contains one DnsRecord object for each resource record set.
+        :param Sequence['ServiceDnsConfigDnsRecordArgs'] dns_records: An array that contains one DnsRecord object for each resource record set.
         :param str namespace_id: The ID of the namespace to use for DNS configuration.
         :param str routing_policy: The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
         """
@@ -34,7 +34,7 @@ class ServiceDnsConfig(dict):
 
     @property
     @pulumi.getter(name="dnsRecords")
-    def dns_records(self) -> List['outputs.ServiceDnsConfigDnsRecord']:
+    def dns_records(self) -> Sequence['outputs.ServiceDnsConfigDnsRecord']:
         """
         An array that contains one DnsRecord object for each resource record set.
         """

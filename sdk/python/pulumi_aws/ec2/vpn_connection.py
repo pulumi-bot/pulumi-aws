@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -146,7 +146,7 @@ class VpnConnection(pulumi.CustomResource):
             arn: Optional[pulumi.Input[str]] = None,
             customer_gateway_configuration: Optional[pulumi.Input[str]] = None,
             customer_gateway_id: Optional[pulumi.Input[str]] = None,
-            routes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VpnConnectionRouteArgs']]]]] = None,
+            routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnConnectionRouteArgs']]]]] = None,
             static_routes_only: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transit_gateway_attachment_id: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class VpnConnection(pulumi.CustomResource):
             tunnel2_preshared_key: Optional[pulumi.Input[str]] = None,
             tunnel2_vgw_inside_address: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vgw_telemetries: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VpnConnectionVgwTelemetryArgs']]]]] = None,
+            vgw_telemetries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnConnectionVgwTelemetryArgs']]]]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None) -> 'VpnConnection':
         """
         Get an existing VpnConnection resource's state with the given name, id, and optional extra
@@ -256,7 +256,7 @@ class VpnConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def routes(self) -> pulumi.Output[List['outputs.VpnConnectionRoute']]:
+    def routes(self) -> pulumi.Output[Sequence['outputs.VpnConnectionRoute']]:
         return pulumi.get(self, "routes")
 
     @property
@@ -413,7 +413,7 @@ class VpnConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vgwTelemetries")
-    def vgw_telemetries(self) -> pulumi.Output[List['outputs.VpnConnectionVgwTelemetry']]:
+    def vgw_telemetries(self) -> pulumi.Output[Sequence['outputs.VpnConnectionVgwTelemetry']]:
         return pulumi.get(self, "vgw_telemetries")
 
     @property

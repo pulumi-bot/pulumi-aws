@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -27,8 +27,8 @@ class Project(pulumi.CustomResource):
                  logs_config: Optional[pulumi.Input[pulumi.InputType['ProjectLogsConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  queued_timeout: Optional[pulumi.Input[float]] = None,
-                 secondary_artifacts: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]]] = None,
-                 secondary_sources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]]] = None,
+                 secondary_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]]] = None,
+                 secondary_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]]] = None,
                  service_role: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['ProjectSourceArgs']]] = None,
                  source_version: Optional[pulumi.Input[str]] = None,
@@ -228,8 +228,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ProjectLogsConfigArgs']] logs_config: Configuration for the builds to store log data to CloudWatch or S3.
         :param pulumi.Input[str] name: The projects name.
         :param pulumi.Input[float] queued_timeout: How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]] secondary_artifacts: A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]] secondary_sources: A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]] secondary_artifacts: A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]] secondary_sources: A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
         :param pulumi.Input[str] service_role: The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
         :param pulumi.Input[pulumi.InputType['ProjectSourceArgs']] source: Information about the project's input source code. Source blocks are documented below.
         :param pulumi.Input[str] source_version: A version of the build input to be built for this project. If not specified, the latest version is used.
@@ -302,8 +302,8 @@ class Project(pulumi.CustomResource):
             logs_config: Optional[pulumi.Input[pulumi.InputType['ProjectLogsConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             queued_timeout: Optional[pulumi.Input[float]] = None,
-            secondary_artifacts: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]]] = None,
-            secondary_sources: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]]] = None,
+            secondary_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]]] = None,
+            secondary_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]]] = None,
             service_role: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[pulumi.InputType['ProjectSourceArgs']]] = None,
             source_version: Optional[pulumi.Input[str]] = None,
@@ -328,8 +328,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ProjectLogsConfigArgs']] logs_config: Configuration for the builds to store log data to CloudWatch or S3.
         :param pulumi.Input[str] name: The projects name.
         :param pulumi.Input[float] queued_timeout: How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]] secondary_artifacts: A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]] secondary_sources: A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondaryArtifactArgs']]]] secondary_artifacts: A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSecondarySourceArgs']]]] secondary_sources: A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
         :param pulumi.Input[str] service_role: The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
         :param pulumi.Input[pulumi.InputType['ProjectSourceArgs']] source: Information about the project's input source code. Source blocks are documented below.
         :param pulumi.Input[str] source_version: A version of the build input to be built for this project. If not specified, the latest version is used.
@@ -459,7 +459,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryArtifacts")
-    def secondary_artifacts(self) -> pulumi.Output[Optional[List['outputs.ProjectSecondaryArtifact']]]:
+    def secondary_artifacts(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectSecondaryArtifact']]]:
         """
         A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
         """
@@ -467,7 +467,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondarySources")
-    def secondary_sources(self) -> pulumi.Output[Optional[List['outputs.ProjectSecondarySource']]]:
+    def secondary_sources(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectSecondarySource']]]:
         """
         A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
         """
