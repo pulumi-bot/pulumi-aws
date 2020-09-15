@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ResourceShareAccepter']
@@ -91,7 +91,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             invitation_arn: Optional[pulumi.Input[str]] = None,
             receiver_account_id: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             sender_account_id: Optional[pulumi.Input[str]] = None,
             share_arn: Optional[pulumi.Input[str]] = None,
             share_id: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] invitation_arn: The ARN of the resource share invitation.
         :param pulumi.Input[str] receiver_account_id: The account ID of the receiver account which accepts the invitation.
-        :param pulumi.Input[List[pulumi.Input[str]]] resources: A list of the resource ARNs shared via the resource share.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of the resource ARNs shared via the resource share.
         :param pulumi.Input[str] sender_account_id: The account ID of the sender account which submits the invitation.
         :param pulumi.Input[str] share_arn: The ARN of the resource share.
         :param pulumi.Input[str] share_id: The ID of the resource share as displayed in the console.
@@ -145,7 +145,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> pulumi.Output[List[str]]:
+    def resources(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of the resource ARNs shared via the resource share.
         """
