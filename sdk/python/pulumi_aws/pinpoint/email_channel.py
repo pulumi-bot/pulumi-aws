@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['EmailChannel']
@@ -126,7 +126,7 @@ class EmailChannel(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[bool]] = None,
             from_address: Optional[pulumi.Input[str]] = None,
             identity: Optional[pulumi.Input[str]] = None,
-            messages_per_second: Optional[pulumi.Input[float]] = None,
+            messages_per_second: Optional[pulumi.Input[int]] = None,
             role_arn: Optional[pulumi.Input[str]] = None) -> 'EmailChannel':
         """
         Get an existing EmailChannel resource's state with the given name, id, and optional extra
@@ -139,7 +139,7 @@ class EmailChannel(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
         :param pulumi.Input[str] from_address: The email address used to send emails from.
         :param pulumi.Input[str] identity: The ARN of an identity verified with SES.
-        :param pulumi.Input[float] messages_per_second: Messages per second that can be sent.
+        :param pulumi.Input[int] messages_per_second: Messages per second that can be sent.
         :param pulumi.Input[str] role_arn: The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -188,7 +188,7 @@ class EmailChannel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="messagesPerSecond")
-    def messages_per_second(self) -> pulumi.Output[float]:
+    def messages_per_second(self) -> pulumi.Output[int]:
         """
         Messages per second that can be sent.
         """
