@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,8 +18,8 @@ class SecurityGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 egress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]]] = None,
-                 ingress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]]] = None,
+                 egress: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]]] = None,
+                 ingress: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  revoke_rules_on_delete: Optional[pulumi.Input[bool]] = None,
@@ -87,9 +87,9 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of this egress rule.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]] egress: Can be specified multiple times for each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]] egress: Can be specified multiple times for each
                egress rule. Each egress block supports fields documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]] ingress: Can be specified multiple times for each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]] ingress: Can be specified multiple times for each
                ingress rule. Each ingress block supports fields documented below.
         :param pulumi.Input[str] name: The name of the security group. If omitted, this provider will
                assign a random, unique name
@@ -146,8 +146,8 @@ class SecurityGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            egress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]]] = None,
-            ingress: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]]] = None,
+            egress: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]]] = None,
+            ingress: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             owner_id: Optional[pulumi.Input[str]] = None,
@@ -163,9 +163,9 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the security group
         :param pulumi.Input[str] description: Description of this egress rule.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]] egress: Can be specified multiple times for each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupEgressArgs']]]] egress: Can be specified multiple times for each
                egress rule. Each egress block supports fields documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]] ingress: Can be specified multiple times for each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupIngressArgs']]]] ingress: Can be specified multiple times for each
                ingress rule. Each ingress block supports fields documented below.
         :param pulumi.Input[str] name: The name of the security group. If omitted, this provider will
                assign a random, unique name
@@ -216,7 +216,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def egress(self) -> pulumi.Output[List['outputs.SecurityGroupEgress']]:
+    def egress(self) -> pulumi.Output[Sequence['outputs.SecurityGroupEgress']]:
         """
         Can be specified multiple times for each
         egress rule. Each egress block supports fields documented below.
@@ -225,7 +225,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ingress(self) -> pulumi.Output[List['outputs.SecurityGroupIngress']]:
+    def ingress(self) -> pulumi.Output[Sequence['outputs.SecurityGroupIngress']]:
         """
         Can be specified multiple times for each
         ingress rule. Each ingress block supports fields documented below.
