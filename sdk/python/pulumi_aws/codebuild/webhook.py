@@ -54,29 +54,6 @@ class Webhook(pulumi.CustomResource):
                 ],
             )])
         ```
-        ### GitHub Enterprise
-
-        When working with [GitHub Enterprise](https://enterprise.github.com/) source CodeBuild webhooks, the GHE repository webhook must be separately managed (e.g. manually or with the `github_repository_webhook` resource).
-
-        More information creating webhooks with GitHub Enterprise can be found in the [CodeBuild User Guide](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-github-enterprise.html).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_github as github
-
-        example_webhook = aws.codebuild.Webhook("exampleWebhook", project_name=aws_codebuild_project["example"]["name"])
-        example_repository_webhook = github.RepositoryWebhook("exampleRepositoryWebhook",
-            active=True,
-            events=["push"],
-            repository=github_repository["example"]["name"],
-            configuration={
-                "url": example_webhook.payload_url,
-                "secret": example_webhook.secret,
-                "contentType": "json",
-                "insecureSsl": False,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
