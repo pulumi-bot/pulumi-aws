@@ -946,6 +946,7 @@
         "transfer/server.ts",
         "transfer/sshKey.ts",
         "transfer/user.ts",
+        "types/enum.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
