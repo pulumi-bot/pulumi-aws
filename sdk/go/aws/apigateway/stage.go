@@ -108,10 +108,16 @@ import (
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigateway"
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudwatch"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		config := config.New(ctx, "")
+// 		stageName := "example"
+// 		if param := config.Get("stageName"); param != "" {
+// 			stageName = param
+// 		}
 // 		_, err := apigateway.NewRestApi(ctx, "exampleRestApi", nil)
 // 		if err != nil {
 // 			return err

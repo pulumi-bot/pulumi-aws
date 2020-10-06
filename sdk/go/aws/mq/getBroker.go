@@ -17,10 +17,20 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/mq"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		config := config.New(ctx, "")
+// 		brokerId := ""
+// 		if param := config.Get("brokerId"); param != "" {
+// 			brokerId = param
+// 		}
+// 		brokerName := ""
+// 		if param := config.Get("brokerName"); param != "" {
+// 			brokerName = param
+// 		}
 // 		opt0 := brokerId
 // 		_, err := mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
 // 			BrokerId: &opt0,
