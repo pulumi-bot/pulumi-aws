@@ -56,7 +56,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var domain = config.Get("domain") ?? "tf-test";
+    ///         var domain = Output.Create(config.Get("domain")) ?? "tf-test";
     ///         var currentRegion = Output.Create(Aws.GetRegion.InvokeAsync());
     ///         var currentCallerIdentity = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
     ///         var example = new Aws.ElasticSearch.Domain("example", new Aws.ElasticSearch.DomainArgs
@@ -149,7 +149,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///     {
     ///         var config = new Config();
     ///         var vpc = config.RequireObject&lt;dynamic&gt;("vpc");
-    ///         var domain = config.Get("domain") ?? "tf-test";
+    ///         var domain = Output.Create(config.Get("domain")) ?? "tf-test";
     ///         var selectedVpc = Output.Create(Aws.Ec2.GetVpc.InvokeAsync(new Aws.Ec2.GetVpcArgs
     ///         {
     ///             Tags = 

@@ -49,7 +49,7 @@ namespace Pulumi.Aws.SecretsManager
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var example = config.GetObject&lt;dynamic&gt;("example") ?? 
+    ///         var example = Output.Create(config.GetObject&lt;dynamic&gt;("example")) ?? 
     ///         {
     ///             { "key1", "value1" },
     ///             { "key2", "value2" },

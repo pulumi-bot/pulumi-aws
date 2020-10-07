@@ -27,7 +27,7 @@ namespace Pulumi.Aws.Efs
         ///     public MyStack()
         ///     {
         ///         var config = new Config();
-        ///         var mountTargetId = config.Get("mountTargetId") ?? "";
+        ///         var mountTargetId = Output.Create(config.Get("mountTargetId")) ?? "";
         ///         var byId = Output.Create(Aws.Efs.GetMountTarget.InvokeAsync(new Aws.Efs.GetMountTargetArgs
         ///         {
         ///             MountTargetId = mountTargetId,

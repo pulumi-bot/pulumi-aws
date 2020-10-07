@@ -27,7 +27,7 @@ namespace Pulumi.Aws.Efs
         ///     public MyStack()
         ///     {
         ///         var config = new Config();
-        ///         var fileSystemId = config.Get("fileSystemId") ?? "";
+        ///         var fileSystemId = Output.Create(config.Get("fileSystemId")) ?? "";
         ///         var byId = Output.Create(Aws.Efs.GetFileSystem.InvokeAsync(new Aws.Efs.GetFileSystemArgs
         ///         {
         ///             FileSystemId = fileSystemId,

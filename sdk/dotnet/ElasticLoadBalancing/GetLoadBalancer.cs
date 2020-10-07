@@ -34,7 +34,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         ///     public MyStack()
         ///     {
         ///         var config = new Config();
-        ///         var lbName = config.Get("lbName") ?? "";
+        ///         var lbName = Output.Create(config.Get("lbName")) ?? "";
         ///         var test = Output.Create(Aws.Elb.GetLoadBalancer.InvokeAsync(new Aws.Elb.GetLoadBalancerArgs
         ///         {
         ///             Name = lbName,

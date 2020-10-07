@@ -27,8 +27,8 @@ namespace Pulumi.Aws.Mq
         ///     public MyStack()
         ///     {
         ///         var config = new Config();
-        ///         var brokerId = config.Get("brokerId") ?? "";
-        ///         var brokerName = config.Get("brokerName") ?? "";
+        ///         var brokerId = Output.Create(config.Get("brokerId")) ?? "";
+        ///         var brokerName = Output.Create(config.Get("brokerName")) ?? "";
         ///         var byId = Output.Create(Aws.Mq.GetBroker.InvokeAsync(new Aws.Mq.GetBrokerArgs
         ///         {
         ///             BrokerId = brokerId,

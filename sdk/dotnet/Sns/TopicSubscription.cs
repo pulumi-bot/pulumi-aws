@@ -84,7 +84,7 @@ namespace Pulumi.Aws.Sns
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var sns = config.GetObject&lt;dynamic&gt;("sns") ?? 
+    ///         var sns = Output.Create(config.GetObject&lt;dynamic&gt;("sns")) ?? 
     ///         {
     ///             { "account-id", "111111111111" },
     ///             { "role-name", "service/service" },
@@ -92,7 +92,7 @@ namespace Pulumi.Aws.Sns
     ///             { "display_name", "example" },
     ///             { "region", "us-west-1" },
     ///         };
-    ///         var sqs = config.GetObject&lt;dynamic&gt;("sqs") ?? 
+    ///         var sqs = Output.Create(config.GetObject&lt;dynamic&gt;("sqs")) ?? 
     ///         {
     ///             { "account-id", "222222222222" },
     ///             { "role-name", "service/service" },

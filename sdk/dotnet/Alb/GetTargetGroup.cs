@@ -33,8 +33,8 @@ namespace Pulumi.Aws.Alb
         ///     public MyStack()
         ///     {
         ///         var config = new Config();
-        ///         var lbTgArn = config.Get("lbTgArn") ?? "";
-        ///         var lbTgName = config.Get("lbTgName") ?? "";
+        ///         var lbTgArn = Output.Create(config.Get("lbTgArn")) ?? "";
+        ///         var lbTgName = Output.Create(config.Get("lbTgName")) ?? "";
         ///         var test = Output.Create(Aws.LB.GetTargetGroup.InvokeAsync(new Aws.LB.GetTargetGroupArgs
         ///         {
         ///             Arn = lbTgArn,

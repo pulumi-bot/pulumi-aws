@@ -98,7 +98,7 @@ namespace Pulumi.Aws.ApiGateway
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var stageName = config.Get("stageName") ?? "example";
+    ///         var stageName = Output.Create(config.Get("stageName")) ?? "example";
     ///         var exampleRestApi = new Aws.ApiGateway.RestApi("exampleRestApi", new Aws.ApiGateway.RestApiArgs
     ///         {
     ///         });

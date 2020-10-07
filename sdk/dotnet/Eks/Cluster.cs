@@ -70,7 +70,7 @@ namespace Pulumi.Aws.Eks
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var clusterName = config.Get("clusterName") ?? "example";
+    ///         var clusterName = Output.Create(config.Get("clusterName")) ?? "example";
     ///         var exampleLogGroup = new Aws.CloudWatch.LogGroup("exampleLogGroup", new Aws.CloudWatch.LogGroupArgs
     ///         {
     ///             RetentionInDays = 7,
