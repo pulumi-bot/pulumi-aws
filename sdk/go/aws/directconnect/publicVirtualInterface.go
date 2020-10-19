@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -224,4 +225,43 @@ type PublicVirtualInterfaceArgs struct {
 
 func (PublicVirtualInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicVirtualInterfaceArgs)(nil)).Elem()
+}
+
+type PublicVirtualInterfaceInput interface {
+	pulumi.Input
+
+	ToPublicVirtualInterfaceOutput() PublicVirtualInterfaceOutput
+	ToPublicVirtualInterfaceOutputWithContext(ctx context.Context) PublicVirtualInterfaceOutput
+}
+
+func (PublicVirtualInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicVirtualInterface)(nil)).Elem()
+}
+
+func (i PublicVirtualInterface) ToPublicVirtualInterfaceOutput() PublicVirtualInterfaceOutput {
+	return i.ToPublicVirtualInterfaceOutputWithContext(context.Background())
+}
+
+func (i PublicVirtualInterface) ToPublicVirtualInterfaceOutputWithContext(ctx context.Context) PublicVirtualInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicVirtualInterfaceOutput)
+}
+
+type PublicVirtualInterfaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicVirtualInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicVirtualInterfaceOutput)(nil)).Elem()
+}
+
+func (o PublicVirtualInterfaceOutput) ToPublicVirtualInterfaceOutput() PublicVirtualInterfaceOutput {
+	return o
+}
+
+func (o PublicVirtualInterfaceOutput) ToPublicVirtualInterfaceOutputWithContext(ctx context.Context) PublicVirtualInterfaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PublicVirtualInterfaceOutput{})
 }

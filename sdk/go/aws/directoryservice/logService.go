@@ -4,6 +4,7 @@
 package directoryservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,4 +89,43 @@ type LogServiceArgs struct {
 
 func (LogServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logServiceArgs)(nil)).Elem()
+}
+
+type LogServiceInput interface {
+	pulumi.Input
+
+	ToLogServiceOutput() LogServiceOutput
+	ToLogServiceOutputWithContext(ctx context.Context) LogServiceOutput
+}
+
+func (LogService) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogService)(nil)).Elem()
+}
+
+func (i LogService) ToLogServiceOutput() LogServiceOutput {
+	return i.ToLogServiceOutputWithContext(context.Background())
+}
+
+func (i LogService) ToLogServiceOutputWithContext(ctx context.Context) LogServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogServiceOutput)
+}
+
+type LogServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogServiceOutput)(nil)).Elem()
+}
+
+func (o LogServiceOutput) ToLogServiceOutput() LogServiceOutput {
+	return o
+}
+
+func (o LogServiceOutput) ToLogServiceOutputWithContext(ctx context.Context) LogServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogServiceOutput{})
 }

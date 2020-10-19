@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -120,4 +121,43 @@ type DelegationSetArgs struct {
 
 func (DelegationSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*delegationSetArgs)(nil)).Elem()
+}
+
+type DelegationSetInput interface {
+	pulumi.Input
+
+	ToDelegationSetOutput() DelegationSetOutput
+	ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput
+}
+
+func (DelegationSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelegationSet)(nil)).Elem()
+}
+
+func (i DelegationSet) ToDelegationSetOutput() DelegationSetOutput {
+	return i.ToDelegationSetOutputWithContext(context.Background())
+}
+
+func (i DelegationSet) ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DelegationSetOutput)
+}
+
+type DelegationSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (DelegationSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelegationSetOutput)(nil)).Elem()
+}
+
+func (o DelegationSetOutput) ToDelegationSetOutput() DelegationSetOutput {
+	return o
+}
+
+func (o DelegationSetOutput) ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DelegationSetOutput{})
 }

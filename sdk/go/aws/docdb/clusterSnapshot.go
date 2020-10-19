@@ -4,6 +4,7 @@
 package docdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -172,4 +173,43 @@ type ClusterSnapshotArgs struct {
 
 func (ClusterSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterSnapshotArgs)(nil)).Elem()
+}
+
+type ClusterSnapshotInput interface {
+	pulumi.Input
+
+	ToClusterSnapshotOutput() ClusterSnapshotOutput
+	ToClusterSnapshotOutputWithContext(ctx context.Context) ClusterSnapshotOutput
+}
+
+func (ClusterSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshot)(nil)).Elem()
+}
+
+func (i ClusterSnapshot) ToClusterSnapshotOutput() ClusterSnapshotOutput {
+	return i.ToClusterSnapshotOutputWithContext(context.Background())
+}
+
+func (i ClusterSnapshot) ToClusterSnapshotOutputWithContext(ctx context.Context) ClusterSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotOutput)
+}
+
+type ClusterSnapshotOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshotOutput)(nil)).Elem()
+}
+
+func (o ClusterSnapshotOutput) ToClusterSnapshotOutput() ClusterSnapshotOutput {
+	return o
+}
+
+func (o ClusterSnapshotOutput) ToClusterSnapshotOutputWithContext(ctx context.Context) ClusterSnapshotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterSnapshotOutput{})
 }

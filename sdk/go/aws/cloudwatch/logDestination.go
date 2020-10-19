@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,4 +129,43 @@ type LogDestinationArgs struct {
 
 func (LogDestinationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logDestinationArgs)(nil)).Elem()
+}
+
+type LogDestinationInput interface {
+	pulumi.Input
+
+	ToLogDestinationOutput() LogDestinationOutput
+	ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput
+}
+
+func (LogDestination) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogDestination)(nil)).Elem()
+}
+
+func (i LogDestination) ToLogDestinationOutput() LogDestinationOutput {
+	return i.ToLogDestinationOutputWithContext(context.Background())
+}
+
+func (i LogDestination) ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogDestinationOutput)
+}
+
+type LogDestinationOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogDestinationOutput)(nil)).Elem()
+}
+
+func (o LogDestinationOutput) ToLogDestinationOutput() LogDestinationOutput {
+	return o
+}
+
+func (o LogDestinationOutput) ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogDestinationOutput{})
 }
