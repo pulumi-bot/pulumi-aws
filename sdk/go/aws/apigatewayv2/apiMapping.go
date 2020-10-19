@@ -4,6 +4,7 @@
 package apigatewayv2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -138,4 +139,43 @@ type ApiMappingArgs struct {
 
 func (ApiMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiMappingArgs)(nil)).Elem()
+}
+
+type ApiMappingInput interface {
+	pulumi.Input
+
+	ToApiMappingOutput() ApiMappingOutput
+	ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput
+}
+
+func (ApiMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiMapping)(nil)).Elem()
+}
+
+func (i ApiMapping) ToApiMappingOutput() ApiMappingOutput {
+	return i.ToApiMappingOutputWithContext(context.Background())
+}
+
+func (i ApiMapping) ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiMappingOutput)
+}
+
+type ApiMappingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiMappingOutput)(nil)).Elem()
+}
+
+func (o ApiMappingOutput) ToApiMappingOutput() ApiMappingOutput {
+	return o
+}
+
+func (o ApiMappingOutput) ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiMappingOutput{})
 }

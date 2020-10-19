@@ -4,6 +4,7 @@
 package fsx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -345,4 +346,43 @@ type WindowsFileSystemArgs struct {
 
 func (WindowsFileSystemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*windowsFileSystemArgs)(nil)).Elem()
+}
+
+type WindowsFileSystemInput interface {
+	pulumi.Input
+
+	ToWindowsFileSystemOutput() WindowsFileSystemOutput
+	ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput
+}
+
+func (WindowsFileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystem)(nil)).Elem()
+}
+
+func (i WindowsFileSystem) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
+	return i.ToWindowsFileSystemOutputWithContext(context.Background())
+}
+
+func (i WindowsFileSystem) ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemOutput)
+}
+
+type WindowsFileSystemOutput struct {
+	*pulumi.OutputState
+}
+
+func (WindowsFileSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystemOutput)(nil)).Elem()
+}
+
+func (o WindowsFileSystemOutput) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
+	return o
+}
+
+func (o WindowsFileSystemOutput) ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WindowsFileSystemOutput{})
 }

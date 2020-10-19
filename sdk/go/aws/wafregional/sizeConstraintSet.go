@@ -4,6 +4,7 @@
 package wafregional
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -116,4 +117,43 @@ type SizeConstraintSetArgs struct {
 
 func (SizeConstraintSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sizeConstraintSetArgs)(nil)).Elem()
+}
+
+type SizeConstraintSetInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetOutput() SizeConstraintSetOutput
+	ToSizeConstraintSetOutputWithContext(ctx context.Context) SizeConstraintSetOutput
+}
+
+func (SizeConstraintSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSet)(nil)).Elem()
+}
+
+func (i SizeConstraintSet) ToSizeConstraintSetOutput() SizeConstraintSetOutput {
+	return i.ToSizeConstraintSetOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSet) ToSizeConstraintSetOutputWithContext(ctx context.Context) SizeConstraintSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetOutput)
+}
+
+type SizeConstraintSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (SizeConstraintSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetOutput)(nil)).Elem()
+}
+
+func (o SizeConstraintSetOutput) ToSizeConstraintSetOutput() SizeConstraintSetOutput {
+	return o
+}
+
+func (o SizeConstraintSetOutput) ToSizeConstraintSetOutputWithContext(ctx context.Context) SizeConstraintSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SizeConstraintSetOutput{})
 }
