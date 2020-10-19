@@ -4,6 +4,7 @@
 package securityhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,4 +118,43 @@ type ProductSubscriptionArgs struct {
 
 func (ProductSubscriptionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*productSubscriptionArgs)(nil)).Elem()
+}
+
+type ProductSubscriptionInput interface {
+	pulumi.Input
+
+	ToProductSubscriptionOutput() ProductSubscriptionOutput
+	ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput
+}
+
+func (ProductSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductSubscription)(nil)).Elem()
+}
+
+func (i ProductSubscription) ToProductSubscriptionOutput() ProductSubscriptionOutput {
+	return i.ToProductSubscriptionOutputWithContext(context.Background())
+}
+
+func (i ProductSubscription) ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductSubscriptionOutput)
+}
+
+type ProductSubscriptionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductSubscriptionOutput)(nil)).Elem()
+}
+
+func (o ProductSubscriptionOutput) ToProductSubscriptionOutput() ProductSubscriptionOutput {
+	return o
+}
+
+func (o ProductSubscriptionOutput) ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProductSubscriptionOutput{})
 }

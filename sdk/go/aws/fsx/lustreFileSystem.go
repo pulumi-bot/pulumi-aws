@@ -4,6 +4,7 @@
 package fsx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -293,4 +294,43 @@ type LustreFileSystemArgs struct {
 
 func (LustreFileSystemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lustreFileSystemArgs)(nil)).Elem()
+}
+
+type LustreFileSystemInput interface {
+	pulumi.Input
+
+	ToLustreFileSystemOutput() LustreFileSystemOutput
+	ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput
+}
+
+func (LustreFileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*LustreFileSystem)(nil)).Elem()
+}
+
+func (i LustreFileSystem) ToLustreFileSystemOutput() LustreFileSystemOutput {
+	return i.ToLustreFileSystemOutputWithContext(context.Background())
+}
+
+func (i LustreFileSystem) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LustreFileSystemOutput)
+}
+
+type LustreFileSystemOutput struct {
+	*pulumi.OutputState
+}
+
+func (LustreFileSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LustreFileSystemOutput)(nil)).Elem()
+}
+
+func (o LustreFileSystemOutput) ToLustreFileSystemOutput() LustreFileSystemOutput {
+	return o
+}
+
+func (o LustreFileSystemOutput) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LustreFileSystemOutput{})
 }

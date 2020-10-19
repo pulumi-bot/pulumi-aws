@@ -4,6 +4,7 @@
 package datasync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -197,4 +198,43 @@ type LocationSmbArgs struct {
 
 func (LocationSmbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationSmbArgs)(nil)).Elem()
+}
+
+type LocationSmbInput interface {
+	pulumi.Input
+
+	ToLocationSmbOutput() LocationSmbOutput
+	ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput
+}
+
+func (LocationSmb) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmb)(nil)).Elem()
+}
+
+func (i LocationSmb) ToLocationSmbOutput() LocationSmbOutput {
+	return i.ToLocationSmbOutputWithContext(context.Background())
+}
+
+func (i LocationSmb) ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbOutput)
+}
+
+type LocationSmbOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationSmbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmbOutput)(nil)).Elem()
+}
+
+func (o LocationSmbOutput) ToLocationSmbOutput() LocationSmbOutput {
+	return o
+}
+
+func (o LocationSmbOutput) ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocationSmbOutput{})
 }

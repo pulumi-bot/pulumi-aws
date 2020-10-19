@@ -4,6 +4,7 @@
 package elastictranscoder
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -241,4 +242,43 @@ type PresetArgs struct {
 
 func (PresetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*presetArgs)(nil)).Elem()
+}
+
+type PresetInput interface {
+	pulumi.Input
+
+	ToPresetOutput() PresetOutput
+	ToPresetOutputWithContext(ctx context.Context) PresetOutput
+}
+
+func (Preset) ElementType() reflect.Type {
+	return reflect.TypeOf((*Preset)(nil)).Elem()
+}
+
+func (i Preset) ToPresetOutput() PresetOutput {
+	return i.ToPresetOutputWithContext(context.Background())
+}
+
+func (i Preset) ToPresetOutputWithContext(ctx context.Context) PresetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PresetOutput)
+}
+
+type PresetOutput struct {
+	*pulumi.OutputState
+}
+
+func (PresetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PresetOutput)(nil)).Elem()
+}
+
+func (o PresetOutput) ToPresetOutput() PresetOutput {
+	return o
+}
+
+func (o PresetOutput) ToPresetOutputWithContext(ctx context.Context) PresetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PresetOutput{})
 }

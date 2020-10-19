@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -226,4 +227,43 @@ type VpcPeeringConnectionAccepterArgs struct {
 
 func (VpcPeeringConnectionAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcPeeringConnectionAccepterArgs)(nil)).Elem()
+}
+
+type VpcPeeringConnectionAccepterInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConnectionAccepterOutput() VpcPeeringConnectionAccepterOutput
+	ToVpcPeeringConnectionAccepterOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterOutput
+}
+
+func (VpcPeeringConnectionAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConnectionAccepter)(nil)).Elem()
+}
+
+func (i VpcPeeringConnectionAccepter) ToVpcPeeringConnectionAccepterOutput() VpcPeeringConnectionAccepterOutput {
+	return i.ToVpcPeeringConnectionAccepterOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConnectionAccepter) ToVpcPeeringConnectionAccepterOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterOutput)
+}
+
+type VpcPeeringConnectionAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcPeeringConnectionAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConnectionAccepterOutput)(nil)).Elem()
+}
+
+func (o VpcPeeringConnectionAccepterOutput) ToVpcPeeringConnectionAccepterOutput() VpcPeeringConnectionAccepterOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionAccepterOutput) ToVpcPeeringConnectionAccepterOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcPeeringConnectionAccepterOutput{})
 }

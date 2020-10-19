@@ -4,6 +4,7 @@
 package dlm
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -195,4 +196,43 @@ type LifecyclePolicyArgs struct {
 
 func (LifecyclePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lifecyclePolicyArgs)(nil)).Elem()
+}
+
+type LifecyclePolicyInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyOutput() LifecyclePolicyOutput
+	ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput
+}
+
+func (LifecyclePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicy)(nil)).Elem()
+}
+
+func (i LifecyclePolicy) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
+	return i.ToLifecyclePolicyOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicy) ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyOutput)
+}
+
+type LifecyclePolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (LifecyclePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyOutput)(nil)).Elem()
+}
+
+func (o LifecyclePolicyOutput) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
+	return o
+}
+
+func (o LifecyclePolicyOutput) ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LifecyclePolicyOutput{})
 }
