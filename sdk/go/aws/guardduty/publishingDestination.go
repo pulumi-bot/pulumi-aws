@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -225,4 +226,43 @@ type PublishingDestinationArgs struct {
 
 func (PublishingDestinationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*publishingDestinationArgs)(nil)).Elem()
+}
+
+type PublishingDestinationInput interface {
+	pulumi.Input
+
+	ToPublishingDestinationOutput() PublishingDestinationOutput
+	ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput
+}
+
+func (PublishingDestination) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingDestination)(nil)).Elem()
+}
+
+func (i PublishingDestination) ToPublishingDestinationOutput() PublishingDestinationOutput {
+	return i.ToPublishingDestinationOutputWithContext(context.Background())
+}
+
+func (i PublishingDestination) ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublishingDestinationOutput)
+}
+
+type PublishingDestinationOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublishingDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingDestinationOutput)(nil)).Elem()
+}
+
+func (o PublishingDestinationOutput) ToPublishingDestinationOutput() PublishingDestinationOutput {
+	return o
+}
+
+func (o PublishingDestinationOutput) ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PublishingDestinationOutput{})
 }

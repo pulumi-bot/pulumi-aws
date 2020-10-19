@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -285,4 +286,43 @@ type TopicRuleArgs struct {
 
 func (TopicRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicRuleArgs)(nil)).Elem()
+}
+
+type TopicRuleInput interface {
+	pulumi.Input
+
+	ToTopicRuleOutput() TopicRuleOutput
+	ToTopicRuleOutputWithContext(ctx context.Context) TopicRuleOutput
+}
+
+func (TopicRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicRule)(nil)).Elem()
+}
+
+func (i TopicRule) ToTopicRuleOutput() TopicRuleOutput {
+	return i.ToTopicRuleOutputWithContext(context.Background())
+}
+
+func (i TopicRule) ToTopicRuleOutputWithContext(ctx context.Context) TopicRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleOutput)
+}
+
+type TopicRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicRuleOutput)(nil)).Elem()
+}
+
+func (o TopicRuleOutput) ToTopicRuleOutput() TopicRuleOutput {
+	return o
+}
+
+func (o TopicRuleOutput) ToTopicRuleOutputWithContext(ctx context.Context) TopicRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TopicRuleOutput{})
 }

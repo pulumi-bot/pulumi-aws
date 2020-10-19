@@ -4,6 +4,7 @@
 package appsync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -173,4 +174,43 @@ type ResolverArgs struct {
 
 func (ResolverArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resolverArgs)(nil)).Elem()
+}
+
+type ResolverInput interface {
+	pulumi.Input
+
+	ToResolverOutput() ResolverOutput
+	ToResolverOutputWithContext(ctx context.Context) ResolverOutput
+}
+
+func (Resolver) ElementType() reflect.Type {
+	return reflect.TypeOf((*Resolver)(nil)).Elem()
+}
+
+func (i Resolver) ToResolverOutput() ResolverOutput {
+	return i.ToResolverOutputWithContext(context.Background())
+}
+
+func (i Resolver) ToResolverOutputWithContext(ctx context.Context) ResolverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverOutput)
+}
+
+type ResolverOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverOutput)(nil)).Elem()
+}
+
+func (o ResolverOutput) ToResolverOutput() ResolverOutput {
+	return o
+}
+
+func (o ResolverOutput) ToResolverOutputWithContext(ctx context.Context) ResolverOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResolverOutput{})
 }

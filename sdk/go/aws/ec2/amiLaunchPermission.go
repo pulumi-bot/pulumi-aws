@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -112,4 +113,43 @@ type AmiLaunchPermissionArgs struct {
 
 func (AmiLaunchPermissionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*amiLaunchPermissionArgs)(nil)).Elem()
+}
+
+type AmiLaunchPermissionInput interface {
+	pulumi.Input
+
+	ToAmiLaunchPermissionOutput() AmiLaunchPermissionOutput
+	ToAmiLaunchPermissionOutputWithContext(ctx context.Context) AmiLaunchPermissionOutput
+}
+
+func (AmiLaunchPermission) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmiLaunchPermission)(nil)).Elem()
+}
+
+func (i AmiLaunchPermission) ToAmiLaunchPermissionOutput() AmiLaunchPermissionOutput {
+	return i.ToAmiLaunchPermissionOutputWithContext(context.Background())
+}
+
+func (i AmiLaunchPermission) ToAmiLaunchPermissionOutputWithContext(ctx context.Context) AmiLaunchPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmiLaunchPermissionOutput)
+}
+
+type AmiLaunchPermissionOutput struct {
+	*pulumi.OutputState
+}
+
+func (AmiLaunchPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmiLaunchPermissionOutput)(nil)).Elem()
+}
+
+func (o AmiLaunchPermissionOutput) ToAmiLaunchPermissionOutput() AmiLaunchPermissionOutput {
+	return o
+}
+
+func (o AmiLaunchPermissionOutput) ToAmiLaunchPermissionOutputWithContext(ctx context.Context) AmiLaunchPermissionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AmiLaunchPermissionOutput{})
 }

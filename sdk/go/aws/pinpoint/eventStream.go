@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -153,4 +154,43 @@ type EventStreamArgs struct {
 
 func (EventStreamArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventStreamArgs)(nil)).Elem()
+}
+
+type EventStreamInput interface {
+	pulumi.Input
+
+	ToEventStreamOutput() EventStreamOutput
+	ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput
+}
+
+func (EventStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStream)(nil)).Elem()
+}
+
+func (i EventStream) ToEventStreamOutput() EventStreamOutput {
+	return i.ToEventStreamOutputWithContext(context.Background())
+}
+
+func (i EventStream) ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamOutput)
+}
+
+type EventStreamOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamOutput)(nil)).Elem()
+}
+
+func (o EventStreamOutput) ToEventStreamOutput() EventStreamOutput {
+	return o
+}
+
+func (o EventStreamOutput) ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventStreamOutput{})
 }

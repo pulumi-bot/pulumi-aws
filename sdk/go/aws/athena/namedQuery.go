@@ -4,6 +4,7 @@
 package athena
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -180,4 +181,43 @@ type NamedQueryArgs struct {
 
 func (NamedQueryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*namedQueryArgs)(nil)).Elem()
+}
+
+type NamedQueryInput interface {
+	pulumi.Input
+
+	ToNamedQueryOutput() NamedQueryOutput
+	ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput
+}
+
+func (NamedQuery) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedQuery)(nil)).Elem()
+}
+
+func (i NamedQuery) ToNamedQueryOutput() NamedQueryOutput {
+	return i.ToNamedQueryOutputWithContext(context.Background())
+}
+
+func (i NamedQuery) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedQueryOutput)
+}
+
+type NamedQueryOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamedQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedQueryOutput)(nil)).Elem()
+}
+
+func (o NamedQueryOutput) ToNamedQueryOutput() NamedQueryOutput {
+	return o
+}
+
+func (o NamedQueryOutput) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NamedQueryOutput{})
 }

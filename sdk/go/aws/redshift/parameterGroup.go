@@ -4,6 +4,7 @@
 package redshift
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -161,4 +162,43 @@ type ParameterGroupArgs struct {
 
 func (ParameterGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*parameterGroupArgs)(nil)).Elem()
+}
+
+type ParameterGroupInput interface {
+	pulumi.Input
+
+	ToParameterGroupOutput() ParameterGroupOutput
+	ToParameterGroupOutputWithContext(ctx context.Context) ParameterGroupOutput
+}
+
+func (ParameterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroup)(nil)).Elem()
+}
+
+func (i ParameterGroup) ToParameterGroupOutput() ParameterGroupOutput {
+	return i.ToParameterGroupOutputWithContext(context.Background())
+}
+
+func (i ParameterGroup) ToParameterGroupOutputWithContext(ctx context.Context) ParameterGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupOutput)
+}
+
+type ParameterGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ParameterGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupOutput)(nil)).Elem()
+}
+
+func (o ParameterGroupOutput) ToParameterGroupOutput() ParameterGroupOutput {
+	return o
+}
+
+func (o ParameterGroupOutput) ToParameterGroupOutputWithContext(ctx context.Context) ParameterGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ParameterGroupOutput{})
 }

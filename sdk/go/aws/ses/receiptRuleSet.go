@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -98,4 +99,43 @@ type ReceiptRuleSetArgs struct {
 
 func (ReceiptRuleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*receiptRuleSetArgs)(nil)).Elem()
+}
+
+type ReceiptRuleSetInput interface {
+	pulumi.Input
+
+	ToReceiptRuleSetOutput() ReceiptRuleSetOutput
+	ToReceiptRuleSetOutputWithContext(ctx context.Context) ReceiptRuleSetOutput
+}
+
+func (ReceiptRuleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleSet)(nil)).Elem()
+}
+
+func (i ReceiptRuleSet) ToReceiptRuleSetOutput() ReceiptRuleSetOutput {
+	return i.ToReceiptRuleSetOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleSet) ToReceiptRuleSetOutputWithContext(ctx context.Context) ReceiptRuleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleSetOutput)
+}
+
+type ReceiptRuleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReceiptRuleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleSetOutput)(nil)).Elem()
+}
+
+func (o ReceiptRuleSetOutput) ToReceiptRuleSetOutput() ReceiptRuleSetOutput {
+	return o
+}
+
+func (o ReceiptRuleSetOutput) ToReceiptRuleSetOutputWithContext(ctx context.Context) ReceiptRuleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReceiptRuleSetOutput{})
 }

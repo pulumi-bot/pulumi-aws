@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,4 +135,43 @@ type IdentityNotificationTopicArgs struct {
 
 func (IdentityNotificationTopicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityNotificationTopicArgs)(nil)).Elem()
+}
+
+type IdentityNotificationTopicInput interface {
+	pulumi.Input
+
+	ToIdentityNotificationTopicOutput() IdentityNotificationTopicOutput
+	ToIdentityNotificationTopicOutputWithContext(ctx context.Context) IdentityNotificationTopicOutput
+}
+
+func (IdentityNotificationTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityNotificationTopic)(nil)).Elem()
+}
+
+func (i IdentityNotificationTopic) ToIdentityNotificationTopicOutput() IdentityNotificationTopicOutput {
+	return i.ToIdentityNotificationTopicOutputWithContext(context.Background())
+}
+
+func (i IdentityNotificationTopic) ToIdentityNotificationTopicOutputWithContext(ctx context.Context) IdentityNotificationTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityNotificationTopicOutput)
+}
+
+type IdentityNotificationTopicOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityNotificationTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityNotificationTopicOutput)(nil)).Elem()
+}
+
+func (o IdentityNotificationTopicOutput) ToIdentityNotificationTopicOutput() IdentityNotificationTopicOutput {
+	return o
+}
+
+func (o IdentityNotificationTopicOutput) ToIdentityNotificationTopicOutputWithContext(ctx context.Context) IdentityNotificationTopicOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityNotificationTopicOutput{})
 }

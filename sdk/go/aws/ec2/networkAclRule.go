@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -228,4 +229,43 @@ type NetworkAclRuleArgs struct {
 
 func (NetworkAclRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclRuleArgs)(nil)).Elem()
+}
+
+type NetworkAclRuleInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleOutput() NetworkAclRuleOutput
+	ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput
+}
+
+func (NetworkAclRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRule)(nil)).Elem()
+}
+
+func (i NetworkAclRule) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
+	return i.ToNetworkAclRuleOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRule) ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleOutput)
+}
+
+type NetworkAclRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAclRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleOutput)(nil)).Elem()
+}
+
+func (o NetworkAclRuleOutput) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
+	return o
+}
+
+func (o NetworkAclRuleOutput) ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkAclRuleOutput{})
 }

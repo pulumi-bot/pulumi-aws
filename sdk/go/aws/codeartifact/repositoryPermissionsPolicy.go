@@ -4,6 +4,7 @@
 package codeartifact
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -127,4 +128,43 @@ type RepositoryPermissionsPolicyArgs struct {
 
 func (RepositoryPermissionsPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryPermissionsPolicyArgs)(nil)).Elem()
+}
+
+type RepositoryPermissionsPolicyInput interface {
+	pulumi.Input
+
+	ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput
+	ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput
+}
+
+func (RepositoryPermissionsPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPermissionsPolicy)(nil)).Elem()
+}
+
+func (i RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
+	return i.ToRepositoryPermissionsPolicyOutputWithContext(context.Background())
+}
+
+func (i RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPermissionsPolicyOutput)
+}
+
+type RepositoryPermissionsPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryPermissionsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPermissionsPolicyOutput)(nil)).Elem()
+}
+
+func (o RepositoryPermissionsPolicyOutput) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
+	return o
+}
+
+func (o RepositoryPermissionsPolicyOutput) ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RepositoryPermissionsPolicyOutput{})
 }
