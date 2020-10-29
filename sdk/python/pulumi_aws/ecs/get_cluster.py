@@ -130,15 +130,6 @@ def get_cluster(cluster_name: Optional[str] = None,
     The ECS Cluster data source allows access to details of a specific
     cluster within an AWS ECS service.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    ecs_mongo = aws.ecs.get_cluster(cluster_name="ecs-mongo-production")
-    ```
-
 
     :param str cluster_name: The name of the ECS Cluster
     """

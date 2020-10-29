@@ -29,34 +29,6 @@ class GatewayRoute(pulumi.CustomResource):
         """
         Provides an AWS App Mesh gateway route resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.appmesh.GatewayRoute("example",
-            mesh_name="example-service-mesh",
-            virtual_gateway_name=aws_appmesh_virtual_gateway["example"]["name"],
-            spec=aws.appmesh.GatewayRouteSpecArgs(
-                http_route=aws.appmesh.GatewayRouteSpecHttpRouteArgs(
-                    action=aws.appmesh.GatewayRouteSpecHttpRouteActionArgs(
-                        target=aws.appmesh.GatewayRouteSpecHttpRouteActionTargetArgs(
-                            virtual_service=aws.appmesh.GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs(
-                                virtual_service_name=aws_appmesh_virtual_service["example"]["name"],
-                            ),
-                        ),
-                    ),
-                    match=aws.appmesh.GatewayRouteSpecHttpRouteMatchArgs(
-                        prefix="/",
-                    ),
-                ),
-            ),
-            tags={
-                "Environment": "test",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the gateway route.

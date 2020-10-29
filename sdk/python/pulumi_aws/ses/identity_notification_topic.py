@@ -25,19 +25,6 @@ class IdentityNotificationTopic(pulumi.CustomResource):
         """
         Resource for managing SES Identity Notification Topics
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.ses.IdentityNotificationTopic("test",
-            topic_arn=aws_sns_topic["example"]["arn"],
-            notification_type="Bounce",
-            identity=aws_ses_domain_identity["example"]["domain"],
-            include_original_headers=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] identity: The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).

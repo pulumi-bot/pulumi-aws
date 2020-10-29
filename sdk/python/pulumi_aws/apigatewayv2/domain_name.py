@@ -31,20 +31,6 @@ class DomainName(pulumi.CustomResource):
         a particular domain name. An API stage can be associated with the domain name using the `apigatewayv2.ApiMapping` resource.
 
         ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigatewayv2.DomainName("example",
-            domain_name="ws-api.example.com",
-            domain_name_configuration=aws.apigatewayv2.DomainNameDomainNameConfigurationArgs(
-                certificate_arn=aws_acm_certificate["example"]["arn"],
-                endpoint_type="REGIONAL",
-                security_policy="TLS_1_2",
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Sagemaker
 {
     /// <summary>
     /// Provides a Sagemaker Notebook Instance resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ni = new Aws.Sagemaker.NotebookInstance("ni", new Aws.Sagemaker.NotebookInstanceArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Role.Arn,
-    ///             InstanceType = "ml.t2.medium",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "foo" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class NotebookInstance : Pulumi.CustomResource
     {

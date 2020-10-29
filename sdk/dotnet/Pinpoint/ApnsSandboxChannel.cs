@@ -13,31 +13,6 @@ namespace Pulumi.Aws.Pinpoint
     /// Provides a Pinpoint APNs Sandbox Channel resource.
     /// 
     /// &gt; **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new Aws.Pinpoint.App("app", new Aws.Pinpoint.AppArgs
-    ///         {
-    ///         });
-    ///         var apnsSandbox = new Aws.Pinpoint.ApnsSandboxChannel("apnsSandbox", new Aws.Pinpoint.ApnsSandboxChannelArgs
-    ///         {
-    ///             ApplicationId = app.ApplicationId,
-    ///             Certificate = File.ReadAllText("./certificate.pem"),
-    ///             PrivateKey = File.ReadAllText("./private_key.key"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ApnsSandboxChannel : Pulumi.CustomResource
     {

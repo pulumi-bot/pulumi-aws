@@ -14,29 +14,6 @@ namespace Pulumi.Aws.ApiGateway
         /// <summary>
         /// Use this data source to get the name and value of a pre-existing API Key, for
         /// example to supply credentials for a dependency microservice.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myApiKey = Output.Create(Aws.ApiGateway.GetKey.InvokeAsync(new Aws.ApiGateway.GetKeyArgs
-        ///         {
-        ///             Id = "ru3mpjgse6",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:apigateway/getKey:getKey", args ?? new GetKeyArgs(), options.WithVersion());

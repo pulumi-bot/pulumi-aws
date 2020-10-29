@@ -26,19 +26,6 @@ class Domain(pulumi.CustomResource):
         """
         Provides an SWF Domain resource.
 
-        ## Example Usage
-
-        To register a basic SWF domain:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.swf.Domain("foo",
-            description="SWF Domain",
-            workflow_execution_retention_period_in_days="30")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The domain description.

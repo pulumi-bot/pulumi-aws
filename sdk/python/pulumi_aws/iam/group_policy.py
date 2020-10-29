@@ -25,30 +25,6 @@ class GroupPolicy(pulumi.CustomResource):
         """
         Provides an IAM policy attached to a group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_developers = aws.iam.Group("myDevelopers", path="/users/")
-        my_developer_policy = aws.iam.GroupPolicy("myDeveloperPolicy",
-            group=my_developers.name,
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "ec2:Describe*"
-              ],
-              "Effect": "Allow",
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The IAM group to attach to the policy.

@@ -18,50 +18,6 @@ import (
 // meta-parameter to make multiple instances and join them all to the same DocDB
 // Cluster, or you may specify different Cluster Instance resources with various
 // `instanceClass` sizes.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/docdb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := docdb.NewCluster(ctx, "_default", &docdb.ClusterArgs{
-// 			ClusterIdentifier: pulumi.String("docdb-cluster-demo"),
-// 			AvailabilityZones: pulumi.StringArray{
-// 				pulumi.String("us-west-2a"),
-// 				pulumi.String("us-west-2b"),
-// 				pulumi.String("us-west-2c"),
-// 			},
-// 			MasterUsername: pulumi.String("foo"),
-// 			MasterPassword: pulumi.String("barbut8chars"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var clusterInstances []*docdb.ClusterInstance
-// 		for key0, val0 := range 2 {
-// 			__res, err := docdb.NewClusterInstance(ctx, fmt.Sprintf("clusterInstances-%v", key0), &docdb.ClusterInstanceArgs{
-// 				Identifier:        pulumi.String(fmt.Sprintf("%v%v", "docdb-cluster-demo-", val0)),
-// 				ClusterIdentifier: _default.ID(),
-// 				InstanceClass:     pulumi.String("db.r5.large"),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			clusterInstances = append(clusterInstances, __res)
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ClusterInstance struct {
 	pulumi.CustomResourceState
 

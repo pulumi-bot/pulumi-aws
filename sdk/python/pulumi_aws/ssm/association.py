@@ -35,18 +35,6 @@ class Association(pulumi.CustomResource):
         """
         Associates an SSM Document to an instance or EC2 tag.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ssm.Association("example", targets=[aws.ssm.AssociationTargetArgs(
-            key="InstanceIds",
-            values=[aws_instance["example"]["id"]],
-        )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] association_name: The descriptive name for the association.

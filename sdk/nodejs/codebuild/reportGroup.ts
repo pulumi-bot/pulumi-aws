@@ -9,48 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeBuild Report Groups Resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleKey = new aws.kms.Key("exampleKey", {
- *     description: "my test kms key",
- *     deletionWindowInDays: 7,
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Id": "kms-tf-1",
- *   "Statement": [
- *     {
- *       "Sid": "Enable IAM User Permissions",
- *       "Effect": "Allow",
- *       "Principal": {
- *         "AWS": "*"
- *       },
- *       "Action": "kms:*",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * const exampleBucket = new aws.s3.Bucket("exampleBucket", {});
- * const exampleReportGroup = new aws.codebuild.ReportGroup("exampleReportGroup", {
- *     type: "TEST",
- *     exportConfig: {
- *         type: "S3",
- *         s3Destination: {
- *             bucket: exampleBucket.id,
- *             encryptionDisabled: false,
- *             encryptionKey: exampleKey.arn,
- *             packaging: "NONE",
- *             path: "/some",
- *         },
- *     },
- * });
- * ```
  */
 export class ReportGroup extends pulumi.CustomResource {
     /**

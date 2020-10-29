@@ -13,27 +13,6 @@ namespace Pulumi.Aws.DirectConnect
     /// Provides a Direct Connect LAG. Connections can be added to the LAG via the `aws.directconnect.Connection` and `aws.directconnect.ConnectionAssociation` resources.
     /// 
     /// &gt; *NOTE:* When creating a LAG, Direct Connect requires creating a Connection. This provider will remove this unmanaged connection during resource creation.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var hoge = new Aws.DirectConnect.LinkAggregationGroup("hoge", new Aws.DirectConnect.LinkAggregationGroupArgs
-    ///         {
-    ///             ConnectionsBandwidth = "1Gbps",
-    ///             ForceDestroy = true,
-    ///             Location = "EqDC2",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class LinkAggregationGroup : Pulumi.CustomResource
     {

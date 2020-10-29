@@ -14,42 +14,6 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// The VPN Gateway data source provides details about
         /// a specific VPN gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var selected = Output.Create(Aws.Ec2.GetVpnGateway.InvokeAsync(new Aws.Ec2.GetVpnGatewayArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetVpnGatewayFilterArgs
-        ///                 {
-        ///                     Name = "tag:Name",
-        ///                     Values = 
-        ///                     {
-        ///                         "vpn-gw",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///         this.VpnGatewayId = selected.Apply(selected =&gt; selected.Id);
-        ///     }
-        /// 
-        ///     [Output("vpnGatewayId")]
-        ///     public Output&lt;string&gt; VpnGatewayId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpnGatewayResult> InvokeAsync(GetVpnGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpnGatewayResult>("aws:ec2/getVpnGateway:getVpnGateway", args ?? new GetVpnGatewayArgs(), options.WithVersion());

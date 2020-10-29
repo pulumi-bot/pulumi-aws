@@ -31,42 +31,6 @@ class Grant(pulumi.CustomResource):
         """
         Provides a resource-based access control mechanism for a KMS customer master key.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        key = aws.kms.Key("key")
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "lambda.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-        \"\"\")
-        grant = aws.kms.Grant("grant",
-            key_id=key.key_id,
-            grantee_principal=role.arn,
-            operations=[
-                "Encrypt",
-                "Decrypt",
-                "GenerateDataKey",
-            ],
-            constraints=[aws.kms.GrantConstraintArgs(
-                encryption_context_equals={
-                    "Department": "Finance",
-                },
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantConstraintArgs']]]] constraints: A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).

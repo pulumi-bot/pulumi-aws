@@ -16,29 +16,6 @@ namespace Pulumi.Aws.Kinesis
         /// resources.
         /// 
         /// For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var stream = Output.Create(Aws.Kinesis.GetStream.InvokeAsync(new Aws.Kinesis.GetStreamArgs
-        ///         {
-        ///             Name = "stream-name",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetStreamResult> InvokeAsync(GetStreamArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStreamResult>("aws:kinesis/getStream:getStream", args ?? new GetStreamArgs(), options.WithVersion());

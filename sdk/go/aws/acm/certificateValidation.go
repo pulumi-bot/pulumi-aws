@@ -20,37 +20,6 @@ import (
 // > **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
 //
 // ## Example Usage
-// ### Email Validation
-//
-// In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/acm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleCertificate, err := acm.NewCertificate(ctx, "exampleCertificate", &acm.CertificateArgs{
-// 			DomainName:       pulumi.String("example.com"),
-// 			ValidationMethod: pulumi.String("EMAIL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = acm.NewCertificateValidation(ctx, "exampleCertificateValidation", &acm.CertificateValidationArgs{
-// 			CertificateArn: exampleCertificate.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type CertificateValidation struct {
 	pulumi.CustomResourceState
 

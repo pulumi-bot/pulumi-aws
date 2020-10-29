@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Waf
     {
         /// <summary>
         /// `aws.waf.IpSet` Retrieves a WAF IP Set Resource Id.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Waf.GetIpset.InvokeAsync(new Aws.Waf.GetIpsetArgs
-        ///         {
-        ///             Name = "tfWAFIPSet",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpsetResult> InvokeAsync(GetIpsetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpsetResult>("aws:waf/getIpset:getIpset", args ?? new GetIpsetArgs(), options.WithVersion());

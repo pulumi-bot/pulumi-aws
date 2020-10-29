@@ -25,31 +25,6 @@ class InstanceProfile(pulumi.CustomResource):
         """
         Provides an IAM instance profile.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        role = aws.iam.Role("role",
-            path="/",
-            assume_role_policy=\"\"\"{
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Action": "sts:AssumeRole",
-                    "Principal": {
-                       "Service": "ec2.amazonaws.com"
-                    },
-                    "Effect": "Allow",
-                    "Sid": ""
-                }
-            ]
-        }
-        \"\"\")
-        test_profile = aws.iam.InstanceProfile("testProfile", role=role.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The profile's name. If omitted, this provider will assign a random, unique name.

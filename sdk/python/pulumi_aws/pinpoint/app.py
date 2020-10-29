@@ -29,22 +29,6 @@ class App(pulumi.CustomResource):
         """
         Provides a Pinpoint App resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.pinpoint.App("example",
-            limits=aws.pinpoint.AppLimitsArgs(
-                maximum_duration=600,
-            ),
-            quiet_time=aws.pinpoint.AppQuietTimeArgs(
-                end="06:00",
-                start="00:00",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppCampaignHookArgs']] campaign_hook: The default campaign limits for the app. These limits apply to each campaign for the app, unless the campaign overrides the default with limits of its own

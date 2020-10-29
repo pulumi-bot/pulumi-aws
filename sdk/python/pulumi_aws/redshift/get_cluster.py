@@ -405,33 +405,6 @@ def get_cluster(cluster_identifier: Optional[str] = None,
     """
     Provides details about a specific redshift cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test_cluster = aws.redshift.get_cluster(cluster_identifier="test-cluster")
-    test_stream = aws.kinesis.FirehoseDeliveryStream("testStream",
-        destination="redshift",
-        s3_configuration=aws.kinesis.FirehoseDeliveryStreamS3ConfigurationArgs(
-            role_arn=aws_iam_role["firehose_role"]["arn"],
-            bucket_arn=aws_s3_bucket["bucket"]["arn"],
-            buffer_size=10,
-            buffer_interval=400,
-            compression_format="GZIP",
-        ),
-        redshift_configuration=aws.kinesis.FirehoseDeliveryStreamRedshiftConfigurationArgs(
-            role_arn=aws_iam_role["firehose_role"]["arn"],
-            cluster_jdbcurl=f"jdbc:redshift://{test_cluster.endpoint}/{test_cluster.database_name}",
-            username="testuser",
-            password="T3stPass",
-            data_table_name="test-table",
-            copy_options="delimiter '|'",
-            data_table_columns="test-col",
-        ))
-    ```
-
 
     :param str cluster_identifier: The cluster identifier
     :param Mapping[str, str] tags: The tags associated to the cluster

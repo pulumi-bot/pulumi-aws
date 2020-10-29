@@ -27,39 +27,6 @@ class VpcDhcpOptions(pulumi.CustomResource):
         """
         Provides a VPC DHCP Options resource.
 
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        dns_resolver = aws.ec2.VpcDhcpOptions("dnsResolver", domain_name_servers=[
-            "8.8.8.8",
-            "8.8.4.4",
-        ])
-        ```
-
-        Full usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.ec2.VpcDhcpOptions("foo",
-            domain_name="service.consul",
-            domain_name_servers=[
-                "127.0.0.1",
-                "10.0.0.2",
-            ],
-            netbios_name_servers=["127.0.0.1"],
-            netbios_node_type="2",
-            ntp_servers=["127.0.0.1"],
-            tags={
-                "Name": "foo-name",
-            })
-        ```
         ## Remarks
 
         * Notice that all arguments are optional but you have to specify at least one argument.

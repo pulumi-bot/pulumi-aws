@@ -28,30 +28,6 @@ import * as utilities from "../utilities";
  * this resource will delete any propagating gateways not explicitly listed in
  * `propagatingVgws`. Omit this argument when defining route propagation using
  * the separate resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const routeTable = new aws.ec2.RouteTable("routeTable", {
- *     vpcId: aws_vpc["default"].id,
- *     routes: [
- *         {
- *             cidrBlock: "10.0.1.0/24",
- *             gatewayId: aws_internet_gateway.main.id,
- *         },
- *         {
- *             ipv6CidrBlock: "::/0",
- *             egressOnlyGatewayId: aws_egress_only_internet_gateway.foo.id,
- *         },
- *     ],
- *     tags: {
- *         Name: "main",
- *     },
- * });
- * ```
  */
 export class RouteTable extends pulumi.CustomResource {
     /**

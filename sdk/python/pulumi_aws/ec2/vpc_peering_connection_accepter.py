@@ -35,39 +35,6 @@ class VpcPeeringConnectionAccepter(pulumi.CustomResource):
         and the accepter can use the `ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
         connection into management.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        peer = pulumi.providers.Aws("peer", region="us-west-2")
-        # Accepter's credentials.
-        main = aws.ec2.Vpc("main", cidr_block="10.0.0.0/16")
-        peer_vpc = aws.ec2.Vpc("peerVpc", cidr_block="10.1.0.0/16",
-        opts=ResourceOptions(provider=aws["peer"]))
-        peer_caller_identity = aws.get_caller_identity()
-        # Requester's side of the connection.
-        peer_vpc_peering_connection = aws.ec2.VpcPeeringConnection("peerVpcPeeringConnection",
-            vpc_id=main.id,
-            peer_vpc_id=peer_vpc.id,
-            peer_owner_id=peer_caller_identity.account_id,
-            peer_region="us-west-2",
-            auto_accept=False,
-            tags={
-                "Side": "Requester",
-            })
-        # Accepter's side of the connection.
-        peer_vpc_peering_connection_accepter = aws.ec2.VpcPeeringConnectionAccepter("peerVpcPeeringConnectionAccepter",
-            vpc_peering_connection_id=peer_vpc_peering_connection.id,
-            auto_accept=True,
-            tags={
-                "Side": "Accepter",
-            },
-            opts=ResourceOptions(provider=aws["peer"]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['VpcPeeringConnectionAccepterAccepterArgs']] accepter: A configuration block that describes [VPC Peering Connection]

@@ -17,46 +17,6 @@ import (
 // [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
 // or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
 // (policy-based) scaling.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/autoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := autoscaling.NewGroup(ctx, "bar", &autoscaling.GroupArgs{
-// 			AvailabilityZones: pulumi.StringArray{
-// 				pulumi.String("us-east-1a"),
-// 			},
-// 			MaxSize:                pulumi.Int(5),
-// 			MinSize:                pulumi.Int(2),
-// 			HealthCheckGracePeriod: pulumi.Int(300),
-// 			HealthCheckType:        pulumi.String("ELB"),
-// 			ForceDelete:            pulumi.Bool(true),
-// 			LaunchConfiguration:    pulumi.Any(aws_launch_configuration.Foo.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = autoscaling.NewPolicy(ctx, "bat", &autoscaling.PolicyArgs{
-// 			ScalingAdjustment:    pulumi.Int(4),
-// 			AdjustmentType:       pulumi.String("ChangeInCapacity"),
-// 			Cooldown:             pulumi.Int(300),
-// 			AutoscalingGroupName: bar.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

@@ -29,32 +29,6 @@ class EventSubscription(pulumi.CustomResource):
         """
         Provides a Redshift event subscription resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_cluster = aws.redshift.Cluster("defaultCluster",
-            cluster_identifier="default",
-            database_name="default")
-        # ...
-        default_topic = aws.sns.Topic("defaultTopic")
-        default_event_subscription = aws.redshift.EventSubscription("defaultEventSubscription",
-            sns_topic_arn=default_topic.arn,
-            source_type="cluster",
-            source_ids=[default_cluster.id],
-            severity="INFO",
-            event_categories=[
-                "configuration",
-                "management",
-                "monitoring",
-                "security",
-            ],
-            tags={
-                "Name": "default",
-            })
-        ```
         ## Attributes
 
         The following additional atttributes are provided:

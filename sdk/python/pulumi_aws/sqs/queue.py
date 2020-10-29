@@ -33,48 +33,7 @@ class Queue(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_aws as aws
-
-        queue = aws.sqs.Queue("queue",
-            delay_seconds=90,
-            max_message_size=2048,
-            message_retention_seconds=86400,
-            receive_wait_time_seconds=10,
-            redrive_policy=json.dumps({
-                "deadLetterTargetArn": aws_sqs_queue["queue_deadletter"]["arn"],
-                "maxReceiveCount": 4,
-            }),
-            tags={
-                "Environment": "production",
-            })
-        ```
-        ## FIFO queue
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        queue = aws.sqs.Queue("queue",
-            content_based_deduplication=True,
-            fifo_queue=True)
-        ```
-
-        ## Server-side encryption (SSE)
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        queue = aws.sqs.Queue("queue",
-            kms_data_key_reuse_period_seconds=300,
-            kms_master_key_id="alias/aws/sqs")
-        ```
-
+        Create a Queue resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] content_based_deduplication: Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)

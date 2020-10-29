@@ -57,19 +57,6 @@ class DefaultRouteTable(pulumi.CustomResource):
         a conflict of rule settings and will overwrite routes.
 
         ## Example Usage
-        ### With Tags
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_route_table = aws.ec2.DefaultRouteTable("defaultRouteTable",
-            default_route_table_id=aws_vpc["foo"]["default_route_table_id"],
-            routes=[aws.ec2.DefaultRouteTableRouteArgs()],
-            tags={
-                "Name": "default table",
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

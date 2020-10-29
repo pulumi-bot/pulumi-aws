@@ -25,24 +25,6 @@ class DataCatalogEncryptionSettings(pulumi.CustomResource):
         """
         Provides a Glue Data Catalog Encryption Settings resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.DataCatalogEncryptionSettings("example", data_catalog_encryption_settings=aws.glue.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsArgs(
-            connection_password_encryption=aws.glue.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionArgs(
-                aws_kms_key_id=aws_kms_key["test"]["arn"],
-                return_connection_password_encrypted=True,
-            ),
-            encryption_at_rest=aws.glue.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs(
-                catalog_encryption_mode="SSE-KMS",
-                sse_aws_kms_key_id=aws_kms_key["test"]["arn"],
-            ),
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_id: The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.

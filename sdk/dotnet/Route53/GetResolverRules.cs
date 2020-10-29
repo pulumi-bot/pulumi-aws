@@ -13,51 +13,6 @@ namespace Pulumi.Aws.Route53
     {
         /// <summary>
         /// `aws.route53.getResolverRules` provides details about a set of Route53 Resolver rules.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Retrieving the default resolver rule.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Route53.GetResolverRules.InvokeAsync(new Aws.Route53.GetResolverRulesArgs
-        ///         {
-        ///             OwnerId = "Route 53 Resolver",
-        ///             RuleType = "RECURSIVE",
-        ///             ShareStatus = "NOT_SHARED",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Route53.GetResolverRules.InvokeAsync(new Aws.Route53.GetResolverRulesArgs
-        ///         {
-        ///             RuleType = "FORWARD",
-        ///             ShareStatus = "SHARED_WITH_ME",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolverRulesResult> InvokeAsync(GetResolverRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolverRulesResult>("aws:route53/getResolverRules:getResolverRules", args ?? new GetResolverRulesArgs(), options.WithVersion());

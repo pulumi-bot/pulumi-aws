@@ -13,27 +13,6 @@ namespace Pulumi.Aws.Dms
     /// Provides a DMS (Data Migration Service) certificate resource. DMS certificates can be created, deleted, and imported.
     /// 
     /// &gt; **Note:** All arguments including the PEM encoded certificate will be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new certificate
-    ///         var test = new Aws.Dms.Certificate("test", new Aws.Dms.CertificateArgs
-    ///         {
-    ///             CertificateId = "test-dms-certificate-tf",
-    ///             CertificatePem = "...",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

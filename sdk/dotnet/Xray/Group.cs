@@ -11,26 +11,6 @@ namespace Pulumi.Aws.Xray
 {
     /// <summary>
     /// Creates and manages an AWS XRay Group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Xray.Group("example", new Aws.Xray.GroupArgs
-    ///         {
-    ///             FilterExpression = "responsetime &gt; 5",
-    ///             GroupName = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

@@ -27,15 +27,6 @@ class IpGroup(pulumi.CustomResource):
         """
         Provides an IP access control group in AWS WorkSpaces Service
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        contractors = aws.workspaces.IpGroup("contractors", description="Contractors IP access control group")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description.

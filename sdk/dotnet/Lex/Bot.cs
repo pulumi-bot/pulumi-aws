@@ -12,63 +12,6 @@ namespace Pulumi.Aws.Lex
     /// <summary>
     /// Provides an Amazon Lex Bot resource. For more information see
     /// [Amazon Lex: How It Works](https://docs.aws.amazon.com/lex/latest/dg/how-it-works.html)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var orderFlowersBot = new Aws.Lex.Bot("orderFlowersBot", new Aws.Lex.BotArgs
-    ///         {
-    ///             AbortStatement = new Aws.Lex.Inputs.BotAbortStatementArgs
-    ///             {
-    ///                 Messages = 
-    ///                 {
-    ///                     new Aws.Lex.Inputs.BotAbortStatementMessageArgs
-    ///                     {
-    ///                         Content = "Sorry, I am not able to assist at this time",
-    ///                         ContentType = "PlainText",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ChildDirected = false,
-    ///             ClarificationPrompt = new Aws.Lex.Inputs.BotClarificationPromptArgs
-    ///             {
-    ///                 MaxAttempts = 2,
-    ///                 Messages = 
-    ///                 {
-    ///                     new Aws.Lex.Inputs.BotClarificationPromptMessageArgs
-    ///                     {
-    ///                         Content = "I didn't understand you, what would you like to do?",
-    ///                         ContentType = "PlainText",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             CreateVersion = false,
-    ///             Description = "Bot to order flowers on the behalf of a user",
-    ///             IdleSessionTtlInSeconds = 600,
-    ///             Intents = 
-    ///             {
-    ///                 new Aws.Lex.Inputs.BotIntentArgs
-    ///                 {
-    ///                     IntentName = "OrderFlowers",
-    ///                     IntentVersion = "1",
-    ///                 },
-    ///             },
-    ///             Locale = "en-US",
-    ///             Name = "OrderFlowers",
-    ///             ProcessBehavior = "BUILD",
-    ///             VoiceId = "Salli",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Bot : Pulumi.CustomResource
     {

@@ -11,58 +11,6 @@ import (
 )
 
 // Provides a VPC resource.
-//
-// ## Example Usage
-//
-// Basic usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewVpc(ctx, "main", &ec2.VpcArgs{
-// 			CidrBlock: pulumi.String("10.0.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// Basic usage with tags:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewVpc(ctx, "main", &ec2.VpcArgs{
-// 			CidrBlock:       pulumi.String("10.0.0.0/16"),
-// 			InstanceTenancy: pulumi.String("default"),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("main"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Vpc struct {
 	pulumi.CustomResourceState
 

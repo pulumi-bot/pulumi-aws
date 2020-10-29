@@ -11,64 +11,6 @@ namespace Pulumi.Aws.OpsWorks
 {
     /// <summary>
     /// Provides an OpsWorks application resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo_app = new Aws.OpsWorks.Application("foo-app", new Aws.OpsWorks.ApplicationArgs
-    ///         {
-    ///             ShortName = "foobar",
-    ///             StackId = aws_opsworks_stack.Main.Id,
-    ///             Type = "rails",
-    ///             Description = "This is a Rails application",
-    ///             Domains = 
-    ///             {
-    ///                 "example.com",
-    ///                 "sub.example.com",
-    ///             },
-    ///             Environments = 
-    ///             {
-    ///                 new Aws.OpsWorks.Inputs.ApplicationEnvironmentArgs
-    ///                 {
-    ///                     Key = "key",
-    ///                     Value = "value",
-    ///                     Secure = false,
-    ///                 },
-    ///             },
-    ///             AppSources = 
-    ///             {
-    ///                 new Aws.OpsWorks.Inputs.ApplicationAppSourceArgs
-    ///                 {
-    ///                     Type = "git",
-    ///                     Revision = "master",
-    ///                     Url = "https://github.com/example.git",
-    ///                 },
-    ///             },
-    ///             EnableSsl = true,
-    ///             SslConfigurations = 
-    ///             {
-    ///                 new Aws.OpsWorks.Inputs.ApplicationSslConfigurationArgs
-    ///                 {
-    ///                     PrivateKey = File.ReadAllText("./foobar.key"),
-    ///                     Certificate = File.ReadAllText("./foobar.crt"),
-    ///                 },
-    ///             },
-    ///             DocumentRoot = "public",
-    ///             AutoBundleOnDeploy = "true",
-    ///             RailsEnv = "staging",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

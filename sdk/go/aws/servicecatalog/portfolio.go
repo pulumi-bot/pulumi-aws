@@ -10,30 +10,6 @@ import (
 )
 
 // Provides a resource to create a Service Catalog Portfolio.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/servicecatalog"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicecatalog.NewPortfolio(ctx, "portfolio", &servicecatalog.PortfolioArgs{
-// 			Description:  pulumi.String("List of my organizations apps"),
-// 			ProviderName: pulumi.String("Brett"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Portfolio struct {
 	pulumi.CustomResourceState
 

@@ -609,15 +609,6 @@ def get_instance_type(default_cores: Optional[int] = None,
     """
     Get characteristics for a single EC2 Instance Type.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2.get_instance_type(instance_type="t2.micro")
-    ```
-
 
     :param int default_cores: The default number of cores for the instance type.
     :param int default_threads_per_core: The  default  number of threads per core for the instance type.

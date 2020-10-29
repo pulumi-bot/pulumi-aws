@@ -25,26 +25,6 @@ class Analyzer(pulumi.CustomResource):
         Manages an Access Analyzer Analyzer. More information can be found in the [Access Analyzer User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
 
         ## Example Usage
-        ### Account Analyzer
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.accessanalyzer.Analyzer("example", analyzer_name="example")
-        ```
-        ### Organization Analyzer
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_organization = aws.organizations.Organization("exampleOrganization", aws_service_access_principals=["access-analyzer.amazonaws.com"])
-        example_analyzer = aws.accessanalyzer.Analyzer("exampleAnalyzer",
-            analyzer_name="example",
-            type="ORGANIZATION",
-            opts=ResourceOptions(depends_on=[example_organization]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

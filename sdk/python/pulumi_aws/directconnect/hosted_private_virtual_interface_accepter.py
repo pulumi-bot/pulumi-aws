@@ -26,35 +26,6 @@ class HostedPrivateVirtualInterfaceAccepter(pulumi.CustomResource):
         Provides a resource to manage the accepter's side of a Direct Connect hosted private virtual interface.
         This resource accepts ownership of a private virtual interface created by another AWS account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        accepter = pulumi.providers.Aws("accepter")
-        # Accepter's credentials.
-        accepter_caller_identity = aws.get_caller_identity()
-        # Accepter's side of the VIF.
-        vpn_gw = aws.ec2.VpnGateway("vpnGw", opts=ResourceOptions(provider=aws["accepter"]))
-        # Creator's side of the VIF
-        creator = aws.directconnect.HostedPrivateVirtualInterface("creator",
-            connection_id="dxcon-zzzzzzzz",
-            owner_account_id=accepter_caller_identity.account_id,
-            vlan=4094,
-            address_family="ipv4",
-            bgp_asn=65352,
-            opts=ResourceOptions(depends_on=[vpn_gw]))
-        accepter_hosted_private_virtual_interface_accepter = aws.directconnect.HostedPrivateVirtualInterfaceAccepter("accepterHostedPrivateVirtualInterfaceAccepter",
-            virtual_interface_id=creator.id,
-            vpn_gateway_id=vpn_gw.id,
-            tags={
-                "Side": "Accepter",
-            },
-            opts=ResourceOptions(provider=aws["accepter"]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dx_gateway_id: The ID of the Direct Connect gateway to which to connect the virtual interface.

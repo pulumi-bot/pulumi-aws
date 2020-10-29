@@ -14,35 +14,6 @@ import (
 // a specific application and are used to deploy different versions of the
 // application with the same configuration settings.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/elasticbeanstalk"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tftest, err := elasticbeanstalk.NewApplication(ctx, "tftest", &elasticbeanstalk.ApplicationArgs{
-// 			Description: pulumi.String("tf-test-desc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = elasticbeanstalk.NewConfigurationTemplate(ctx, "tfTemplate", &elasticbeanstalk.ConfigurationTemplateArgs{
-// 			Application:       tftest.Name,
-// 			SolutionStackName: pulumi.String("64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ## Option Settings
 //
 // The `setting` field supports the following format:

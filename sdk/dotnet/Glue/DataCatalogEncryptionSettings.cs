@@ -11,37 +11,6 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Provides a Glue Data Catalog Encryption Settings resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Glue.DataCatalogEncryptionSettings("example", new Aws.Glue.DataCatalogEncryptionSettingsArgs
-    ///         {
-    ///             DataCatalogEncryptionSettings = new Aws.Glue.Inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsArgs
-    ///             {
-    ///                 ConnectionPasswordEncryption = new Aws.Glue.Inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionArgs
-    ///                 {
-    ///                     AwsKmsKeyId = aws_kms_key.Test.Arn,
-    ///                     ReturnConnectionPasswordEncrypted = true,
-    ///                 },
-    ///                 EncryptionAtRest = new Aws.Glue.Inputs.DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs
-    ///                 {
-    ///                     CatalogEncryptionMode = "SSE-KMS",
-    ///                     SseAwsKmsKeyId = aws_kms_key.Test.Arn,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DataCatalogEncryptionSettings : Pulumi.CustomResource
     {

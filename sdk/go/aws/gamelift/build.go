@@ -11,36 +11,6 @@ import (
 )
 
 // Provides an Gamelift Build resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/gamelift"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gamelift.NewBuild(ctx, "test", &gamelift.BuildArgs{
-// 			OperatingSystem: pulumi.String("WINDOWS_2012"),
-// 			StorageLocation: &gamelift.BuildStorageLocationArgs{
-// 				Bucket:  pulumi.Any(aws_s3_bucket.Test.Bucket),
-// 				Key:     pulumi.Any(aws_s3_bucket_object.Test.Key),
-// 				RoleArn: pulumi.Any(aws_iam_role.Test.Arn),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			aws_iam_role_policy.Test,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Build struct {
 	pulumi.CustomResourceState
 

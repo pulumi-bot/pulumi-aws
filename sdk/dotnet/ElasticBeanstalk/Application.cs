@@ -16,31 +16,6 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// 
     /// This resource creates an application that has one configuration template named
     /// `default`, and no application versions
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var tftest = new Aws.ElasticBeanstalk.Application("tftest", new Aws.ElasticBeanstalk.ApplicationArgs
-    ///         {
-    ///             Description = "tf-test-desc",
-    ///             AppversionLifecycle = new Aws.ElasticBeanstalk.Inputs.ApplicationAppversionLifecycleArgs
-    ///             {
-    ///                 ServiceRole = aws_iam_role.Beanstalk_service.Arn,
-    ///                 MaxCount = 128,
-    ///                 DeleteSourceFromS3 = true,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

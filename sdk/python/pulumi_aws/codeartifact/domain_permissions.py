@@ -25,32 +25,6 @@ class DomainPermissions(pulumi.CustomResource):
         """
         Provides a CodeArtifact Domains Permissions Policy Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_key = aws.kms.Key("exampleKey", description="domain key")
-        example_domain = aws.codeartifact.Domain("exampleDomain",
-            domain="example.com",
-            encryption_key=example_key.arn)
-        test = aws.codeartifact.DomainPermissions("test",
-            domain=example_domain.domain,
-            policy_document=example_domain.arn.apply(lambda arn: f\"\"\"{{
-            "Version": "2012-10-17",
-            "Statement": [
-                {{
-                    "Action": "codeartifact:CreateRepository",
-                    "Effect": "Allow",
-                    "Principal": "*",
-                    "Resource": "{arn}"
-                }}
-            ]
-        }}
-        \"\"\"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The name of the domain on which to set the resource policy.

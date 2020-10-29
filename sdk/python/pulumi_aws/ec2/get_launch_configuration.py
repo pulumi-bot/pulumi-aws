@@ -264,15 +264,6 @@ def get_launch_configuration(name: Optional[str] = None,
     """
     Provides information about a Launch Configuration.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    ubuntu = aws.ec2.get_launch_configuration(name="test-launch-config")
-    ```
-
 
     :param str name: The name of the launch configuration.
     """

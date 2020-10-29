@@ -138,15 +138,6 @@ def get_certificate(id: Optional[str] = None,
     """
     Information about an RDS Certificate.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.rds.get_certificate(latest_valid_till=True)
-    ```
-
 
     :param str id: Certificate identifier. For example, `rds-ca-2019`.
     :param bool latest_valid_till: When enabled, returns the certificate with the latest `ValidTill`.

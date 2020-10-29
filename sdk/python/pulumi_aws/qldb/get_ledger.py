@@ -80,15 +80,6 @@ def get_ledger(name: Optional[str] = None,
     """
     Use this data source to fetch information about a Quantum Ledger Database.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.qldb.get_ledger(name="an_example_ledger")
-    ```
-
 
     :param str name: The friendly name of the ledger to match.
     """

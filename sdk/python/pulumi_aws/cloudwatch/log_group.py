@@ -26,18 +26,6 @@ class LogGroup(pulumi.CustomResource):
         """
         Provides a CloudWatch Log Group resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        yada = aws.cloudwatch.LogGroup("yada", tags={
-            "Application": "serviceA",
-            "Environment": "production",
-        })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_id: The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group,

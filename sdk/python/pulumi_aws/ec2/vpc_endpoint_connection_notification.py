@@ -26,36 +26,6 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
         Provides a VPC Endpoint connection notification resource.
         Connection notifications notify subscribers of VPC Endpoint events.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        topic = aws.sns.Topic("topic", policy=\"\"\"{
-            "Version":"2012-10-17",
-            "Statement":[{
-                "Effect": "Allow",
-                "Principal": {
-                    "Service": "vpce.amazonaws.com"
-                },
-                "Action": "SNS:Publish",
-                "Resource": "arn:aws:sns:*:*:vpce-notification-topic"
-            }]
-        }
-        \"\"\")
-        foo_vpc_endpoint_service = aws.ec2.VpcEndpointService("fooVpcEndpointService",
-            acceptance_required=False,
-            network_load_balancer_arns=[aws_lb["test"]["arn"]])
-        foo_vpc_endpoint_connection_notification = aws.ec2.VpcEndpointConnectionNotification("fooVpcEndpointConnectionNotification",
-            vpc_endpoint_service_id=foo_vpc_endpoint_service.id,
-            connection_notification_arn=topic.arn,
-            connection_events=[
-                "Accept",
-                "Reject",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connection_events: One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.

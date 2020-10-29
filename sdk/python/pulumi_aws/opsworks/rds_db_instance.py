@@ -27,19 +27,6 @@ class RdsDbInstance(pulumi.CustomResource):
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_instance = aws.opsworks.RdsDbInstance("myInstance",
-            stack_id=aws_opsworks_stack["my_stack"]["id"],
-            rds_db_instance_arn=aws_db_instance["my_instance"]["arn"],
-            db_user="someUser",
-            db_password="somePass")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_password: A db password

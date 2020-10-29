@@ -29,31 +29,6 @@ class Vpc(pulumi.CustomResource):
         """
         Provides a VPC resource.
 
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ec2.Vpc("main", cidr_block="10.0.0.0/16")
-        ```
-
-        Basic usage with tags:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ec2.Vpc("main",
-            cidr_block="10.0.0.0/16",
-            instance_tenancy="default",
-            tags={
-                "Name": "main",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] assign_generated_ipv6_cidr_block: Requests an Amazon-provided IPv6 CIDR

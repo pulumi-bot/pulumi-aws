@@ -24,31 +24,6 @@ class NatGateway(pulumi.CustomResource):
         """
         Provides a resource to create a VPC NAT Gateway.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        gw = aws.ec2.NatGateway("gw",
-            allocation_id=aws_eip["nat"]["id"],
-            subnet_id=aws_subnet["example"]["id"])
-        ```
-
-        Usage with tags:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        gw = aws.ec2.NatGateway("gw",
-            allocation_id=aws_eip["nat"]["id"],
-            subnet_id=aws_subnet["example"]["id"],
-            tags={
-                "Name": "gw NAT",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_id: The Allocation ID of the Elastic IP address for the gateway.

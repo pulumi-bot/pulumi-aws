@@ -26,30 +26,6 @@ class NetworkAssociation(pulumi.CustomResource):
         [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
 
         ## Example Usage
-        ### Using default security group
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2clientvpn.NetworkAssociation("example",
-            client_vpn_endpoint_id=aws_ec2_client_vpn_endpoint["example"]["id"],
-            subnet_id=aws_subnet["example"]["id"])
-        ```
-        ### Using custom security groups
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2clientvpn.NetworkAssociation("example",
-            client_vpn_endpoint_id=aws_ec2_client_vpn_endpoint["example"]["id"],
-            subnet_id=aws_subnet["example"]["id"],
-            security_groups=[
-                aws_security_group["example1"]["id"],
-                aws_security_group["example2"]["id"],
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

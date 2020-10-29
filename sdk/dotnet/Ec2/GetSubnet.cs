@@ -17,52 +17,6 @@ namespace Pulumi.Aws.Ec2
         /// This resource can prove useful when a module accepts a subnet id as
         /// an input variable and needs to, for example, determine the id of the
         /// VPC that the subnet belongs to.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how one might accept a subnet id as a variable
-        /// and use this data source to obtain the data necessary to create a security
-        /// group that allows connections from hosts in that subnet.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var subnetId = config.RequireObject&lt;dynamic&gt;("subnetId");
-        ///         var selected = Output.Create(Aws.Ec2.GetSubnet.InvokeAsync(new Aws.Ec2.GetSubnetArgs
-        ///         {
-        ///             Id = subnetId,
-        ///         }));
-        ///         var subnet = new Aws.Ec2.SecurityGroup("subnet", new Aws.Ec2.SecurityGroupArgs
-        ///         {
-        ///             VpcId = selected.Apply(selected =&gt; selected.VpcId),
-        ///             Ingress = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.SecurityGroupIngressArgs
-        ///                 {
-        ///                     CidrBlocks = 
-        ///                     {
-        ///                         selected.Apply(selected =&gt; selected.CidrBlock),
-        ///                     },
-        ///                     FromPort = 80,
-        ///                     ToPort = 80,
-        ///                     Protocol = "tcp",
-        ///                 },
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("aws:ec2/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());

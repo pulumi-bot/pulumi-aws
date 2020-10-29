@@ -13,57 +13,6 @@ import (
 // Provides a resource to create a CloudWatch Events permission to support cross-account events in the current account default event bus.
 //
 // ## Example Usage
-// ### Account Access
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudwatch"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudwatch.NewEventPermission(ctx, "devAccountAccess", &cloudwatch.EventPermissionArgs{
-// 			Principal:   pulumi.String("123456789012"),
-// 			StatementId: pulumi.String("DevAccountAccess"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Organization Access
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cloudwatch"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudwatch.NewEventPermission(ctx, "organizationAccess", &cloudwatch.EventPermissionArgs{
-// 			Principal:   pulumi.String("*"),
-// 			StatementId: pulumi.String("OrganizationAccess"),
-// 			Condition: &cloudwatch.EventPermissionConditionArgs{
-// 				Key:   pulumi.String("aws:PrincipalOrgID"),
-// 				Type:  pulumi.String("StringEquals"),
-// 				Value: pulumi.Any(aws_organizations_organization.Example.Id),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type EventPermission struct {
 	pulumi.CustomResourceState
 

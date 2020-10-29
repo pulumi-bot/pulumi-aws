@@ -11,29 +11,6 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a CloudWatch Logs subscription filter resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testLambdafunctionLogfilter = new Aws.CloudWatch.LogSubscriptionFilter("testLambdafunctionLogfilter", new Aws.CloudWatch.LogSubscriptionFilterArgs
-    ///         {
-    ///             RoleArn = aws_iam_role.Iam_for_lambda.Arn,
-    ///             LogGroup = "/aws/lambda/example_lambda_name",
-    ///             FilterPattern = "logtype test",
-    ///             DestinationArn = aws_kinesis_stream.Test_logstream.Arn,
-    ///             Distribution = "Random",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class LogSubscriptionFilter : Pulumi.CustomResource
     {

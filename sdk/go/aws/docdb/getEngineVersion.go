@@ -8,30 +8,6 @@ import (
 )
 
 // Information about a DocumentDB engine version.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/docdb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "3.6.0"
-// 		_, err := docdb.GetEngineVersion(ctx, &docdb.GetEngineVersionArgs{
-// 			Version: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetEngineVersion(ctx *pulumi.Context, args *GetEngineVersionArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionResult, error) {
 	var rv GetEngineVersionResult
 	err := ctx.Invoke("aws:docdb/getEngineVersion:getEngineVersion", args, &rv, opts...)

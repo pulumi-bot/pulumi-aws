@@ -12,51 +12,6 @@ import (
 // This resource can prove useful when finding the resource
 // associated with a CIDR. For example, finding the peering
 // connection associated with a CIDR value.
-//
-// ## Example Usage
-//
-// The following example shows how one might use a CIDR value to find a network interface id
-// and use this to create a data source of that network interface.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		subnetId := cfg.RequireObject("subnetId")
-// 		opt0 := subnetId
-// 		_, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
-// 			SubnetId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := "10.0.1.0/24"
-// 		route, err := ec2.LookupRoute(ctx, &ec2.LookupRouteArgs{
-// 			RouteTableId:         aws_route_table.Selected.Id,
-// 			DestinationCidrBlock: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt2 := route.NetworkInterfaceId
-// 		_, err = ec2.LookupNetworkInterface(ctx, &ec2.LookupNetworkInterfaceArgs{
-// 			Id: &opt2,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	var rv LookupRouteResult
 	err := ctx.Invoke("aws:ec2/getRoute:getRoute", args, &rv, opts...)

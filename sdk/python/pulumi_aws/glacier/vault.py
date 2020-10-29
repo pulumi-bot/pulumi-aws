@@ -29,42 +29,6 @@ class Vault(pulumi.CustomResource):
 
         > **NOTE:** When removing a Glacier Vault, the Vault must be empty.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        aws_sns_topic = aws.sns.Topic("awsSnsTopic")
-        my_archive = aws.glacier.Vault("myArchive",
-            notifications=[aws.glacier.VaultNotificationArgs(
-                sns_topic=aws_sns_topic.arn,
-                events=[
-                    "ArchiveRetrievalCompleted",
-                    "InventoryRetrievalCompleted",
-                ],
-            )],
-            access_policy=\"\"\"{
-            "Version":"2012-10-17",
-            "Statement":[
-               {
-                  "Sid": "add-read-only-perm",
-                  "Principal": "*",
-                  "Effect": "Allow",
-                  "Action": [
-                     "glacier:InitiateJob",
-                     "glacier:GetJobOutput"
-                  ],
-                  "Resource": "arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive"
-               }
-            ]
-        }
-        \"\"\",
-            tags={
-                "Test": "MyArchive",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_policy: The policy document. This is a JSON formatted string.

@@ -33,27 +33,6 @@ class Endpoint(pulumi.CustomResource):
         Provides an AWS Client VPN endpoint for OpenVPN clients. For more information on usage, please see the
         [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2clientvpn.Endpoint("example",
-            description="clientvpn-example",
-            server_certificate_arn=aws_acm_certificate["cert"]["arn"],
-            client_cidr_block="10.0.0.0/16",
-            authentication_options=[aws.ec2clientvpn.EndpointAuthenticationOptionArgs(
-                type="certificate-authentication",
-                root_certificate_chain_arn=aws_acm_certificate["root_cert"]["arn"],
-            )],
-            connection_log_options=aws.ec2clientvpn.EndpointConnectionLogOptionsArgs(
-                enabled=True,
-                cloudwatch_log_group=aws_cloudwatch_log_group["lg"]["name"],
-                cloudwatch_log_stream=aws_cloudwatch_log_stream["ls"]["name"],
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointAuthenticationOptionArgs']]]] authentication_options: Information about the authentication method to be used to authenticate clients.

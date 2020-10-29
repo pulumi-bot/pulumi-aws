@@ -114,16 +114,6 @@ def get_ip_set(name: Optional[str] = None,
     """
     Retrieves the summary of a WAFv2 IP Set.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.wafv2.get_ip_set(name="some-ip-set",
-        scope="REGIONAL")
-    ```
-
 
     :param str name: The name of the WAFv2 IP Set.
     :param str scope: Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.

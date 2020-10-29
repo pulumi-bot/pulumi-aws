@@ -17,65 +17,6 @@ import {ARN} from "..";
  * > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
  *
  * ## Example Usage
- * ### Lambda Layers
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleLayerVersion = new aws.lambda.LayerVersion("exampleLayerVersion", {});
- * // ... other configuration ...
- * const exampleFunction = new aws.lambda.Function("exampleFunction", {layers: [exampleLayerVersion.arn]});
- * ```
- * ### Lambda File Systems
- *
- * Lambda File Systems allow you to connect an Amazon Elastic File System (EFS) file system to a Lambda function to share data across function invocations, access existing data including large files, and save function state.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // EFS file system
- * const efsForLambda = new aws.efs.FileSystem("efsForLambda", {tags: {
- *     Name: "efs_for_lambda",
- * }});
- * // Mount target connects the file system to the subnet
- * const alpha = new aws.efs.MountTarget("alpha", {
- *     fileSystemId: efsForLambda.id,
- *     subnetId: aws_subnet.subnet_for_lambda.id,
- *     securityGroups: [aws_security_group.sg_for_lambda.id],
- * });
- * // EFS access point used by lambda file system
- * const accessPointForLambda = new aws.efs.AccessPoint("accessPointForLambda", {
- *     fileSystemId: efsForLambda.id,
- *     rootDirectory: {
- *         path: "/lambda",
- *         creationInfo: {
- *             ownerGid: 1000,
- *             ownerUid: 1000,
- *             permissions: "777",
- *         },
- *     },
- *     posixUser: {
- *         gid: 1000,
- *         uid: 1000,
- *     },
- * });
- * // A lambda function connected to an EFS file system
- * // ... other configuration ...
- * const example = new aws.lambda.Function("example", {
- *     fileSystemConfig: {
- *         arn: accessPointForLambda.arn,
- *         localMountPath: "/mnt/efs",
- *     },
- *     vpcConfig: {
- *         subnetIds: [aws_subnet.subnet_for_lambda.id],
- *         securityGroupIds: [aws_security_group.sg_for_lambda.id],
- *     },
- * }, {
- *     dependsOn: [alpha],
- * });
- * ```
  * ## Specifying the Deployment Package
  *
  * AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.

@@ -14,22 +14,6 @@ import * as utilities from "../utilities";
  *
  * This resource creates an application that has one configuration template named
  * `default`, and no application versions
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const tftest = new aws.elasticbeanstalk.Application("tftest", {
- *     description: "tf-test-desc",
- *     appversionLifecycle: {
- *         serviceRole: aws_iam_role.beanstalk_service.arn,
- *         maxCount: 128,
- *         deleteSourceFromS3: true,
- *     },
- * });
- * ```
  */
 export class Application extends pulumi.CustomResource {
     /**

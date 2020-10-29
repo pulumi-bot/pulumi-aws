@@ -24,20 +24,6 @@ class Member(pulumi.CustomResource):
         """
         Provides a Security Hub member resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_account = aws.securityhub.Account("exampleAccount")
-        example_member = aws.securityhub.Member("exampleMember",
-            account_id="123456789012",
-            email="example@example.com",
-            invite=True,
-            opts=ResourceOptions(depends_on=[example_account]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the member AWS account.

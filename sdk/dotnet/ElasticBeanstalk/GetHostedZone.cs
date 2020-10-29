@@ -13,26 +13,6 @@ namespace Pulumi.Aws.ElasticBeanstalk
     {
         /// <summary>
         /// Use this data source to get the ID of an [elastic beanstalk hosted zone](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Aws.ElasticBeanstalk.GetHostedZone.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostedZoneResult> InvokeAsync(GetHostedZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostedZoneResult>("aws:elasticbeanstalk/getHostedZone:getHostedZone", args ?? new GetHostedZoneArgs(), options.WithVersion());

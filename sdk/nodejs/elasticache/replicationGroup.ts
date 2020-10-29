@@ -21,54 +21,6 @@ import * as utilities from "../utilities";
  * servers reboots.
  *
  * ## Example Usage
- * ### Redis Cluster Mode Disabled
- *
- * To create a single shard primary with single read replica:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.elasticache.ReplicationGroup("example", {
- *     automaticFailoverEnabled: true,
- *     availabilityZones: [
- *         "us-west-2a",
- *         "us-west-2b",
- *     ],
- *     nodeType: "cache.m4.large",
- *     numberCacheClusters: 2,
- *     parameterGroupName: "default.redis3.2",
- *     port: 6379,
- *     replicationGroupDescription: "test description",
- * });
- * ```
- *
- * You have two options for adjusting the number of replicas:
- *
- * * Adjusting `numberCacheClusters` directly. This will attempt to automatically add or remove replicas, but provides no granular control (e.g. preferred availability zone, cache cluster ID) for the added or removed replicas. This also currently expects cache cluster IDs in the form of `replication_group_id-00#`.
- * * Otherwise for fine grained control of the underlying cache clusters, they can be added or removed with the `aws.elasticache.Cluster` resource and its `replicationGroupId` attribute. In this situation, you will need to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to prevent perpetual differences with the `numberCacheCluster` attribute.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.elasticache.ReplicationGroup("example", {
- *     automaticFailoverEnabled: true,
- *     availabilityZones: [
- *         "us-west-2a",
- *         "us-west-2b",
- *     ],
- *     replicationGroupDescription: "test description",
- *     nodeType: "cache.m4.large",
- *     numberCacheClusters: 2,
- *     parameterGroupName: "default.redis3.2",
- *     port: 6379,
- * });
- * let replica: aws.elasticache.Cluster | undefined;
- * if (1 == true) {
- *     replica = new aws.elasticache.Cluster("replica", {replicationGroupId: example.id});
- * }
- * ```
  * ### Redis Cluster Mode Enabled
  *
  * To create two shards with a primary and a single read replica each:

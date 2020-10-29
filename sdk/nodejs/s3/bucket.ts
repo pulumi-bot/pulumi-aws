@@ -28,31 +28,6 @@ import {CannedAcl, RoutingRule} from "./index";
  *     },
  * });
  * ```
- * ### Static Website Hosting
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * from "fs";
- *
- * const bucket = new aws.s3.Bucket("bucket", {
- *     acl: "public-read",
- *     policy: fs.readFileSync("policy.json"),
- *     website: {
- *         indexDocument: "index.html",
- *         errorDocument: "error.html",
- *         routingRules: `[{
- *     "Condition": {
- *         "KeyPrefixEquals": "docs/"
- *     },
- *     "Redirect": {
- *         "ReplaceKeyPrefixWith": "documents/"
- *     }
- * }]
- * `,
- *     },
- * });
- * ```
  * ### Using CORS
  *
  * ```typescript
@@ -84,21 +59,6 @@ import {CannedAcl, RoutingRule} from "./index";
  *     versioning: {
  *         enabled: true,
  *     },
- * });
- * ```
- * ### Enable Logging
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const logBucket = new aws.s3.Bucket("logBucket", {acl: "log-delivery-write"});
- * const bucket = new aws.s3.Bucket("bucket", {
- *     acl: "private",
- *     loggings: [{
- *         targetBucket: logBucket.id,
- *         targetPrefix: "log/",
- *     }],
  * });
  * ```
  * ### Using object lifecycle
@@ -165,131 +125,6 @@ import {CannedAcl, RoutingRule} from "./index";
  *         enabled: true,
  *     },
  * });
- * ```
- * ### Using replication configuration
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const central = new aws.Provider("central", {region: "eu-central-1"});
- * const replicationRole = new aws.iam.Role("replicationRole", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "s3.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `});
- * const destination = new aws.s3.Bucket("destination", {versioning: {
- *     enabled: true,
- * }});
- * const bucket = new aws.s3.Bucket("bucket", {
- *     acl: "private",
- *     versioning: {
- *         enabled: true,
- *     },
- *     replicationConfiguration: {
- *         role: replicationRole.arn,
- *         rules: [{
- *             id: "foobar",
- *             prefix: "foo",
- *             status: "Enabled",
- *             destination: {
- *                 bucket: destination.arn,
- *                 storageClass: "STANDARD",
- *             },
- *         }],
- *     },
- * }, {
- *     provider: aws.central,
- * });
- * const replicationPolicy = new aws.iam.Policy("replicationPolicy", {policy: pulumi.interpolate`{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "s3:GetReplicationConfiguration",
- *         "s3:ListBucket"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": [
- *         "${bucket.arn}"
- *       ]
- *     },
- *     {
- *       "Action": [
- *         "s3:GetObjectVersion",
- *         "s3:GetObjectVersionAcl"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": [
- *         "${bucket.arn}/*"
- *       ]
- *     },
- *     {
- *       "Action": [
- *         "s3:ReplicateObject",
- *         "s3:ReplicateDelete"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "${destination.arn}/*"
- *     }
- *   ]
- * }
- * `});
- * const replicationRolePolicyAttachment = new aws.iam.RolePolicyAttachment("replicationRolePolicyAttachment", {
- *     role: replicationRole.name,
- *     policyArn: replicationPolicy.arn,
- * });
- * ```
- * ### Enable Default Server Side Encryption
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const mykey = new aws.kms.Key("mykey", {
- *     description: "This key is used to encrypt bucket objects",
- *     deletionWindowInDays: 10,
- * });
- * const mybucket = new aws.s3.Bucket("mybucket", {serverSideEncryptionConfiguration: {
- *     rule: {
- *         applyServerSideEncryptionByDefault: {
- *             kmsMasterKeyId: mykey.arn,
- *             sseAlgorithm: "aws:kms",
- *         },
- *     },
- * }});
- * ```
- * ### Using ACL policy grants
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const currentUser = aws.getCanonicalUserId({});
- * const bucket = new aws.s3.Bucket("bucket", {grants: [
- *     {
- *         id: currentUser.then(currentUser => currentUser.id),
- *         type: "CanonicalUser",
- *         permissions: ["FULL_CONTROL"],
- *     },
- *     {
- *         type: "Group",
- *         permissions: [
- *             "READ",
- *             "WRITE",
- *         ],
- *         uri: "http://acs.amazonaws.com/groups/s3/LogDelivery",
- *     },
- * ]});
  * ```
  */
 export class Bucket extends pulumi.CustomResource {

@@ -36,40 +36,6 @@ class AnalyticsApplication(pulumi.CustomResource):
 
         > **Note:** To manage Amazon Kinesis Data Analytics for Apache Flink applications, use the [`kinesisanalyticsv2.Application`](https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html) resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_stream = aws.kinesis.Stream("testStream", shard_count=1)
-        test_application = aws.kinesis.AnalyticsApplication("testApplication", inputs=aws.kinesis.AnalyticsApplicationInputsArgs(
-            name_prefix="test_prefix",
-            kinesis_stream=aws.kinesis.AnalyticsApplicationInputsKinesisStreamArgs(
-                resource_arn=test_stream.arn,
-                role_arn=aws_iam_role["test"]["arn"],
-            ),
-            parallelism=aws.kinesis.AnalyticsApplicationInputsParallelismArgs(
-                count=1,
-            ),
-            schema=aws.kinesis.AnalyticsApplicationInputsSchemaArgs(
-                record_columns=[aws.kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs(
-                    mapping="$.test",
-                    name="test",
-                    sql_type="VARCHAR(8)",
-                )],
-                record_encoding="UTF-8",
-                record_format=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatArgs(
-                    mapping_parameters=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs(
-                        json=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs(
-                            record_row_path="$",
-                        ),
-                    ),
-                ),
-            ),
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AnalyticsApplicationCloudwatchLoggingOptionsArgs']] cloudwatch_logging_options: The CloudWatch log stream options to monitor application errors.

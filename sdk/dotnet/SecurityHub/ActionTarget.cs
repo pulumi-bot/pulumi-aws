@@ -11,35 +11,6 @@ namespace Pulumi.Aws.SecurityHub
 {
     /// <summary>
     /// Creates Security Hub custom action.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleAccount = new Aws.SecurityHub.Account("exampleAccount", new Aws.SecurityHub.AccountArgs
-    ///         {
-    ///         });
-    ///         var exampleActionTarget = new Aws.SecurityHub.ActionTarget("exampleActionTarget", new Aws.SecurityHub.ActionTargetArgs
-    ///         {
-    ///             Identifier = "SendToChat",
-    ///             Description = "This is custom action sends selected findings to chat",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleAccount,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ActionTarget : Pulumi.CustomResource
     {

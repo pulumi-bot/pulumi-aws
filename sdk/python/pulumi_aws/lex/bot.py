@@ -38,40 +38,6 @@ class Bot(pulumi.CustomResource):
         Provides an Amazon Lex Bot resource. For more information see
         [Amazon Lex: How It Works](https://docs.aws.amazon.com/lex/latest/dg/how-it-works.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        order_flowers_bot = aws.lex.Bot("orderFlowersBot",
-            abort_statement=aws.lex.BotAbortStatementArgs(
-                messages=[aws.lex.BotAbortStatementMessageArgs(
-                    content="Sorry, I am not able to assist at this time",
-                    content_type="PlainText",
-                )],
-            ),
-            child_directed=False,
-            clarification_prompt=aws.lex.BotClarificationPromptArgs(
-                max_attempts=2,
-                messages=[aws.lex.BotClarificationPromptMessageArgs(
-                    content="I didn't understand you, what would you like to do?",
-                    content_type="PlainText",
-                )],
-            ),
-            create_version=False,
-            description="Bot to order flowers on the behalf of a user",
-            idle_session_ttl_in_seconds=600,
-            intents=[aws.lex.BotIntentArgs(
-                intent_name="OrderFlowers",
-                intent_version="1",
-            )],
-            locale="en-US",
-            name="OrderFlowers",
-            process_behavior="BUILD",
-            voice_id="Salli")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BotAbortStatementArgs']] abort_statement: The message that Amazon Lex uses to abort a conversation. Attributes are documented under statement.

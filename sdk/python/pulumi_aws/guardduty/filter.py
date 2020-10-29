@@ -30,42 +30,6 @@ class Filter(pulumi.CustomResource):
         """
         Provides a resource to manage a GuardDuty filter.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_filter = aws.guardduty.Filter("myFilter",
-            action="ARCHIVE",
-            detector_id=aws_guardduty_detector["example"]["id"],
-            rank=1,
-            finding_criteria=aws.guardduty.FilterFindingCriteriaArgs(
-                criterions=[
-                    aws.guardduty.FilterFindingCriteriaCriterionArgs(
-                        field="region",
-                        equals=["eu-west-1"],
-                    ),
-                    aws.guardduty.FilterFindingCriteriaCriterionArgs(
-                        field="service.additionalInfo.threatListName",
-                        not_equals=[
-                            "some-threat",
-                            "another-threat",
-                        ],
-                    ),
-                    aws.guardduty.FilterFindingCriteriaCriterionArgs(
-                        field="updatedAt",
-                        greater_than="2020-01-01T00:00:00Z",
-                        less_than="2020-02-01T00:00:00Z",
-                    ),
-                    aws.guardduty.FilterFindingCriteriaCriterionArgs(
-                        field="severity",
-                        greater_than_or_equal="4",
-                    ),
-                ],
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Specifies the action that is to be applied to the findings that match the filter. Can be one of `ARCHIVE` or `NOOP`.

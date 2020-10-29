@@ -16,46 +16,6 @@ namespace Pulumi.Aws.SecretsManager
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### ARN
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var by_arn = Output.Create(Aws.SecretsManager.GetSecret.InvokeAsync(new Aws.SecretsManager.GetSecretArgs
-        ///         {
-        ///             Arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Name
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var by_name = Output.Create(Aws.SecretsManager.GetSecret.InvokeAsync(new Aws.SecretsManager.GetSecretArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)

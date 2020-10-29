@@ -11,37 +11,6 @@ namespace Pulumi.Aws.OpsWorks
 {
     /// <summary>
     /// Provides an OpsWorks stack resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var main = new Aws.OpsWorks.Stack("main", new Aws.OpsWorks.StackArgs
-    ///         {
-    ///             Region = "us-west-1",
-    ///             ServiceRoleArn = aws_iam_role.Opsworks.Arn,
-    ///             DefaultInstanceProfileArn = aws_iam_instance_profile.Opsworks.Arn,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "foobar-stack" },
-    ///             },
-    ///             CustomJson = @"{
-    ///  ""foobar"": {
-    ///     ""version"": ""1.0.0""
-    ///   }
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Stack : Pulumi.CustomResource
     {

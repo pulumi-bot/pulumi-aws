@@ -19,33 +19,6 @@ namespace Pulumi.Aws.LB
         /// This data source can prove useful when a module accepts an LB Target Group as an
         /// input variable and needs to know its attributes. It can also be used to get the ARN of
         /// an LB Target Group for use in other resources, given LB Target Group name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var lbTgArn = config.Get("lbTgArn") ?? "";
-        ///         var lbTgName = config.Get("lbTgName") ?? "";
-        ///         var test = Output.Create(Aws.LB.GetTargetGroup.InvokeAsync(new Aws.LB.GetTargetGroupArgs
-        ///         {
-        ///             Arn = lbTgArn,
-        ///             Name = lbTgName,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTargetGroupResult> InvokeAsync(GetTargetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGroupResult>("aws:lb/getTargetGroup:getTargetGroup", args ?? new GetTargetGroupArgs(), options.WithVersion());

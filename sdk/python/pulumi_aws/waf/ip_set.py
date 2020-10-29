@@ -25,24 +25,6 @@ class IpSet(pulumi.CustomResource):
         """
         Provides a WAF IPSet Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[
-            aws.waf.IpSetIpSetDescriptorArgs(
-                type="IPV4",
-                value="192.0.7.0/24",
-            ),
-            aws.waf.IpSetIpSetDescriptorArgs(
-                type="IPV4",
-                value="10.16.16.0/16",
-            ),
-        ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpSetIpSetDescriptorArgs']]]] ip_set_descriptors: One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.

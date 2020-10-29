@@ -148,16 +148,6 @@ def get_intent(name: Optional[str] = None,
     """
     Provides details about a specific Amazon Lex Intent.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    order_flowers = aws.lex.get_intent(name="OrderFlowers",
-        version="$LATEST")
-    ```
-
 
     :param str name: The name of the intent. The name is case sensitive.
     :param str version: The version of the intent.

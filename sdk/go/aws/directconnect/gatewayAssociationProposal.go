@@ -11,33 +11,6 @@ import (
 )
 
 // Manages a Direct Connect Gateway Association Proposal, typically for enabling cross-account associations. For single account associations, see the `directconnect.GatewayAssociation` resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/directconnect"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directconnect.NewGatewayAssociationProposal(ctx, "example", &directconnect.GatewayAssociationProposalArgs{
-// 			DxGatewayId:             pulumi.Any(aws_dx_gateway.Example.Id),
-// 			DxGatewayOwnerAccountId: pulumi.Any(aws_dx_gateway.Example.Owner_account_id),
-// 			AssociatedGatewayId:     pulumi.Any(aws_vpn_gateway.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// A full example of how to create a VPN Gateway in one AWS account, create a Direct Connect Gateway in a second AWS account, and associate the VPN Gateway with the Direct Connect Gateway via the `directconnect.GatewayAssociationProposal` and `directconnect.GatewayAssociation` resources can be found in [the `./examples/dx-gateway-cross-account-vgw-association` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/dx-gateway-cross-account-vgw-association).
 type GatewayAssociationProposal struct {
 	pulumi.CustomResourceState
 

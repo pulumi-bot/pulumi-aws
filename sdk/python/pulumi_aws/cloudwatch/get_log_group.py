@@ -117,15 +117,6 @@ def get_log_group(name: Optional[str] = None,
     """
     Use this data source to get information about an AWS Cloudwatch Log Group
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.cloudwatch.get_log_group(name="MyImportantLogs")
-    ```
-
 
     :param str name: The name of the Cloudwatch log group
     :param Mapping[str, str] tags: A map of tags to assign to the resource.

@@ -14,30 +14,6 @@ namespace Pulumi.Aws.Ecs
         /// <summary>
         /// The ECS container definition data source allows access to details of
         /// a specific container within an AWS ECS service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ecs_mongo = Output.Create(Aws.Ecs.GetContainerDefinition.InvokeAsync(new Aws.Ecs.GetContainerDefinitionArgs
-        ///         {
-        ///             TaskDefinition = aws_ecs_task_definition.Mongo.Id,
-        ///             ContainerName = "mongodb",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerDefinitionResult> InvokeAsync(GetContainerDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerDefinitionResult>("aws:ecs/getContainerDefinition:getContainerDefinition", args ?? new GetContainerDefinitionArgs(), options.WithVersion());

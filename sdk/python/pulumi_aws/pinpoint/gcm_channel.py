@@ -26,18 +26,6 @@ class GcmChannel(pulumi.CustomResource):
 
         > **Note:** Api Key argument will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        gcm = aws.pinpoint.GcmChannel("gcm",
-            application_id=app.application_id,
-            api_key="api_key")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key: Platform credential API key from Google.

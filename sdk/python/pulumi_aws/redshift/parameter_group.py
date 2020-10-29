@@ -28,30 +28,6 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Provides a Redshift Cluster parameter group resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bar = aws.redshift.ParameterGroup("bar",
-            family="redshift-1.0",
-            parameters=[
-                aws.redshift.ParameterGroupParameterArgs(
-                    name="require_ssl",
-                    value="true",
-                ),
-                aws.redshift.ParameterGroupParameterArgs(
-                    name="query_group",
-                    value="example",
-                ),
-                aws.redshift.ParameterGroupParameterArgs(
-                    name="enable_user_activity_logging",
-                    value="true",
-                ),
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Redshift parameter group. Defaults to "Managed by Pulumi".

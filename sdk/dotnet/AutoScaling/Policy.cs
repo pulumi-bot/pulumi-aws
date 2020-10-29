@@ -17,41 +17,6 @@ namespace Pulumi.Aws.AutoScaling
     /// [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
     /// or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
     /// (policy-based) scaling.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bar = new Aws.AutoScaling.Group("bar", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///             AvailabilityZones = 
-    ///             {
-    ///                 "us-east-1a",
-    ///             },
-    ///             MaxSize = 5,
-    ///             MinSize = 2,
-    ///             HealthCheckGracePeriod = 300,
-    ///             HealthCheckType = "ELB",
-    ///             ForceDelete = true,
-    ///             LaunchConfiguration = aws_launch_configuration.Foo.Name,
-    ///         });
-    ///         var bat = new Aws.AutoScaling.Policy("bat", new Aws.AutoScaling.PolicyArgs
-    ///         {
-    ///             ScalingAdjustment = 4,
-    ///             AdjustmentType = "ChangeInCapacity",
-    ///             Cooldown = 300,
-    ///             AutoscalingGroupName = bar.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

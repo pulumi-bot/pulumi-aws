@@ -35,24 +35,6 @@ class RestApi(pulumi.CustomResource):
         > **Note:** Amazon API Gateway Version 1 resources are used for creating and deploying REST APIs. To create and deploy WebSocket and HTTP APIs, use Amazon API Gateway Version 2.
 
         ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_demo_api = aws.apigateway.RestApi("myDemoAPI", description="This is my API for demonstration purposes")
-        ```
-        ### Regional Endpoint Type
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.apigateway.RestApi("example", endpoint_configuration=aws.apigateway.RestApiEndpointConfigurationArgs(
-            types="REGIONAL",
-        ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

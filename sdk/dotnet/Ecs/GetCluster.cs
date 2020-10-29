@@ -14,29 +14,6 @@ namespace Pulumi.Aws.Ecs
         /// <summary>
         /// The ECS Cluster data source allows access to details of a specific
         /// cluster within an AWS ECS service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ecs_mongo = Output.Create(Aws.Ecs.GetCluster.InvokeAsync(new Aws.Ecs.GetClusterArgs
-        ///         {
-        ///             ClusterName = "ecs-mongo-production",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:ecs/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());

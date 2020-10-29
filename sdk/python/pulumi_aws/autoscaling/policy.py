@@ -40,27 +40,6 @@ class Policy(pulumi.CustomResource):
         or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
         (policy-based) scaling.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bar = aws.autoscaling.Group("bar",
-            availability_zones=["us-east-1a"],
-            max_size=5,
-            min_size=2,
-            health_check_grace_period=300,
-            health_check_type="ELB",
-            force_delete=True,
-            launch_configuration=aws_launch_configuration["foo"]["name"])
-        bat = aws.autoscaling.Policy("bat",
-            scaling_adjustment=4,
-            adjustment_type="ChangeInCapacity",
-            cooldown=300,
-            autoscaling_group_name=bar.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adjustment_type: Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.

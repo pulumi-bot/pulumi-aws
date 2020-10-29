@@ -27,26 +27,6 @@ class Rule(pulumi.CustomResource):
         """
         Provides a WAF Rule Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[aws.waf.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
-        wafrule = aws.waf.Rule("wafrule",
-            metric_name="tfWAFRule",
-            predicates=[aws.waf.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )],
-            opts=ResourceOptions(depends_on=[ipset]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] metric_name: The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.

@@ -28,19 +28,6 @@ class LocationFsxWindows(pulumi.CustomResource):
         """
         Manages an AWS DataSync FSx Windows Location.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.datasync.LocationFsxWindows("example",
-            fsx_filesystem_arn=aws_fsx_windows_file_system["example"]["arn"],
-            user="SomeUser",
-            password="SuperSecretPassw0rd",
-            security_group_arns=[aws_security_group["example"]["arn"]])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The name of the Windows domain that the FSx for Windows server belongs to.

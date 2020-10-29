@@ -12,60 +12,6 @@ namespace Pulumi.Aws.DirectConnect
     /// <summary>
     /// Provides a resource to manage the accepter's side of a Direct Connect hosted private virtual interface.
     /// This resource accepts ownership of a private virtual interface created by another AWS account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var accepter = new Aws.Provider("accepter", new Aws.ProviderArgs
-    ///         {
-    ///         });
-    ///         // Accepter's credentials.
-    ///         var accepterCallerIdentity = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
-    ///         // Accepter's side of the VIF.
-    ///         var vpnGw = new Aws.Ec2.VpnGateway("vpnGw", new Aws.Ec2.VpnGatewayArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Accepter,
-    ///         });
-    ///         // Creator's side of the VIF
-    ///         var creator = new Aws.DirectConnect.HostedPrivateVirtualInterface("creator", new Aws.DirectConnect.HostedPrivateVirtualInterfaceArgs
-    ///         {
-    ///             ConnectionId = "dxcon-zzzzzzzz",
-    ///             OwnerAccountId = accepterCallerIdentity.Apply(accepterCallerIdentity =&gt; accepterCallerIdentity.AccountId),
-    ///             Vlan = 4094,
-    ///             AddressFamily = "ipv4",
-    ///             BgpAsn = 65352,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 vpnGw,
-    ///             },
-    ///         });
-    ///         var accepterHostedPrivateVirtualInterfaceAccepter = new Aws.DirectConnect.HostedPrivateVirtualInterfaceAccepter("accepterHostedPrivateVirtualInterfaceAccepter", new Aws.DirectConnect.HostedPrivateVirtualInterfaceAccepterArgs
-    ///         {
-    ///             VirtualInterfaceId = creator.Id,
-    ///             VpnGatewayId = vpnGw.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Side", "Accepter" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Accepter,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class HostedPrivateVirtualInterfaceAccepter : Pulumi.CustomResource
     {

@@ -29,26 +29,6 @@ class IPSet(pulumi.CustomResource):
 
         > **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage IPSets. IPSets that are uploaded by the primary account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-ip-set.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        primary = aws.guardduty.Detector("primary", enable=True)
-        bucket = aws.s3.Bucket("bucket", acl="private")
-        my_ip_set = aws.s3.BucketObject("myIPSet",
-            acl="public-read",
-            content="10.0.0.0/8\n",
-            bucket=bucket.id,
-            key="MyIPSet")
-        example = aws.guardduty.IPSet("example",
-            activate=True,
-            detector_id=primary.id,
-            format="TXT",
-            location=pulumi.Output.all(my_ip_set.bucket, my_ip_set.key).apply(lambda bucket, key: f"https://s3.amazonaws.com/{bucket}/{key}"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] activate: Specifies whether GuardDuty is to start using the uploaded IPSet.

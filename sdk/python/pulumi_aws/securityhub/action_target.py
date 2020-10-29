@@ -24,19 +24,6 @@ class ActionTarget(pulumi.CustomResource):
         """
         Creates Security Hub custom action.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_account = aws.securityhub.Account("exampleAccount")
-        example_action_target = aws.securityhub.ActionTarget("exampleActionTarget",
-            identifier="SendToChat",
-            description="This is custom action sends selected findings to chat",
-            opts=ResourceOptions(depends_on=[example_account]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The name of the custom action target.

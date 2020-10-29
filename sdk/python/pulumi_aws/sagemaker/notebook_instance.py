@@ -33,22 +33,6 @@ class NotebookInstance(pulumi.CustomResource):
         """
         Provides a Sagemaker Notebook Instance resource.
 
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ni = aws.sagemaker.NotebookInstance("ni",
-            role_arn=aws_iam_role["role"]["arn"],
-            instance_type="ml.t2.medium",
-            tags={
-                "Name": "foo",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_code_repository: The Git repository associated with the notebook instance as its default code repository

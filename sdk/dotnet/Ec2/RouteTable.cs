@@ -30,42 +30,6 @@ namespace Pulumi.Aws.Ec2
     /// this resource will delete any propagating gateways not explicitly listed in
     /// `propagating_vgws`. Omit this argument when defining route propagation using
     /// the separate resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var routeTable = new Aws.Ec2.RouteTable("routeTable", new Aws.Ec2.RouteTableArgs
-    ///         {
-    ///             VpcId = aws_vpc.Default.Id,
-    ///             Routes = 
-    ///             {
-    ///                 new Aws.Ec2.Inputs.RouteTableRouteArgs
-    ///                 {
-    ///                     CidrBlock = "10.0.1.0/24",
-    ///                     GatewayId = aws_internet_gateway.Main.Id,
-    ///                 },
-    ///                 new Aws.Ec2.Inputs.RouteTableRouteArgs
-    ///                 {
-    ///                     Ipv6CidrBlock = "::/0",
-    ///                     EgressOnlyGatewayId = aws_egress_only_internet_gateway.Foo.Id,
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "main" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RouteTable : Pulumi.CustomResource
     {

@@ -24,18 +24,6 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         """
         Attach an Elastic network interface (ENI) resource with EC2 instance.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.ec2.NetworkInterfaceAttachment("test",
-            instance_id=aws_instance["test"]["id"],
-            network_interface_id=aws_network_interface["test"]["id"],
-            device_index=0)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] device_index: Network interface index (int).

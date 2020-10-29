@@ -25,39 +25,6 @@ class UserPoolDomain(pulumi.CustomResource):
         Provides a Cognito User Pool Domain resource.
 
         ## Example Usage
-        ### Amazon Cognito domain
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.cognito.UserPool("example")
-        main = aws.cognito.UserPoolDomain("main",
-            domain="example-domain",
-            user_pool_id=example.id)
-        ```
-        ### Custom Cognito domain
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_user_pool = aws.cognito.UserPool("exampleUserPool")
-        main = aws.cognito.UserPoolDomain("main",
-            domain="example-domain.example.com",
-            certificate_arn=aws_acm_certificate["cert"]["arn"],
-            user_pool_id=example_user_pool.id)
-        example_zone = aws.route53.get_zone(name="example.com")
-        auth_cognito__a = aws.route53.Record("auth-cognito-A",
-            name=main.domain,
-            type="A",
-            zone_id=example_zone.zone_id,
-            aliases=[aws.route53.RecordAliasArgs(
-                evaluate_target_health=False,
-                name=main.cloudfront_distribution_arn,
-                zone_id="Z2FDTNDATAQYW2",
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -29,25 +29,6 @@ class Workgroup(pulumi.CustomResource):
         """
         Provides an Athena Workgroup.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.athena.Workgroup("example", configuration=aws.athena.WorkgroupConfigurationArgs(
-            enforce_workgroup_configuration=True,
-            publish_cloudwatch_metrics_enabled=True,
-            result_configuration=aws.athena.WorkgroupConfigurationResultConfigurationArgs(
-                output_location="s3://{aws_s3_bucket.example.bucket}/output/",
-                encryption_configuration={
-                    "encryptionOption": "SSE_KMS",
-                    "kms_key_arn": aws_kms_key["example"]["arn"],
-                },
-            ),
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['WorkgroupConfigurationArgs']] configuration: Configuration block with various settings for the workgroup. Documented below.

@@ -146,18 +146,6 @@ def get_resolver_rule(domain_name: Optional[str] = None,
     """
     `route53.ResolverRule` provides details about a specific Route53 Resolver rule.
 
-    ## Example Usage
-
-    The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.route53.get_resolver_rule(domain_name="subdomain.example.com",
-        rule_type="SYSTEM")
-    ```
-
 
     :param str domain_name: The domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolver_rule_id`.
     :param str name: The friendly name of the desired resolver rule. Conflicts with `resolver_rule_id`.

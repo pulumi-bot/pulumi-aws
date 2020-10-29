@@ -32,19 +32,6 @@ class ApnsChannel(pulumi.CustomResource):
 
         > **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        apns = aws.pinpoint.ApnsChannel("apns",
-            application_id=app.application_id,
-            certificate=(lambda path: open(path).read())("./certificate.pem"),
-            private_key=(lambda path: open(path).read())("./private_key.key"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The application ID.

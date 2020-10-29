@@ -203,29 +203,6 @@ def get_subnet(availability_zone: Optional[str] = None,
     an input variable and needs to, for example, determine the id of the
     VPC that the subnet belongs to.
 
-    ## Example Usage
-
-    The following example shows how one might accept a subnet id as a variable
-    and use this data source to obtain the data necessary to create a security
-    group that allows connections from hosts in that subnet.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    subnet_id = config.require_object("subnetId")
-    selected = aws.ec2.get_subnet(id=subnet_id)
-    subnet = aws.ec2.SecurityGroup("subnet",
-        vpc_id=selected.vpc_id,
-        ingress=[aws.ec2.SecurityGroupIngressArgs(
-            cidr_blocks=[selected.cidr_block],
-            from_port=80,
-            to_port=80,
-            protocol="tcp",
-        )])
-    ```
-
 
     :param str availability_zone: The availability zone where the
            subnet must reside.

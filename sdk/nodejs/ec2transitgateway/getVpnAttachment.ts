@@ -11,17 +11,6 @@ import * as utilities from "../utilities";
  * Get information on an EC2 Transit Gateway VPN Attachment.
  *
  * ## Example Usage
- * ### By Transit Gateway and VPN Connection Identifiers
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = aws.ec2transitgateway.getVpnAttachment({
- *     transitGatewayId: aws_ec2_transit_gateway.example.id,
- *     vpnConnectionId: aws_vpn_connection.example.id,
- * });
- * ```
  * ### Filter
  *
  * ```typescript

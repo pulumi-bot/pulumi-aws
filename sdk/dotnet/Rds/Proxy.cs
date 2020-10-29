@@ -11,52 +11,6 @@ namespace Pulumi.Aws.Rds
 {
     /// <summary>
     /// Provides an RDS DB proxy resource. For additional information, see the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Rds.Proxy("example", new Aws.Rds.ProxyArgs
-    ///         {
-    ///             DebugLogging = false,
-    ///             EngineFamily = "MYSQL",
-    ///             IdleClientTimeout = 1800,
-    ///             RequireTls = true,
-    ///             RoleArn = aws_iam_role.Example.Arn,
-    ///             VpcSecurityGroupIds = 
-    ///             {
-    ///                 aws_security_group.Example.Id,
-    ///             },
-    ///             VpcSubnetIds = 
-    ///             {
-    ///                 aws_subnet.Example.Id,
-    ///             },
-    ///             Auths = 
-    ///             {
-    ///                 new Aws.Rds.Inputs.ProxyAuthArgs
-    ///                 {
-    ///                     AuthScheme = "SECRETS",
-    ///                     Description = "example",
-    ///                     IamAuth = "DISABLED",
-    ///                     SecretArn = aws_secretsmanager_secret.Example.Arn,
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "example" },
-    ///                 { "Key", "value" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Proxy : Pulumi.CustomResource
     {

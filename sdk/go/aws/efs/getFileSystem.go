@@ -8,36 +8,6 @@ import (
 )
 
 // Provides information about an Elastic File System (EFS) File System.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/efs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		fileSystemId := ""
-// 		if param := cfg.Get("fileSystemId"); param != "" {
-// 			fileSystemId = param
-// 		}
-// 		opt0 := fileSystemId
-// 		_, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
-// 			FileSystemId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupFileSystem(ctx *pulumi.Context, args *LookupFileSystemArgs, opts ...pulumi.InvokeOption) (*LookupFileSystemResult, error) {
 	var rv LookupFileSystemResult
 	err := ctx.Invoke("aws:efs/getFileSystem:getFileSystem", args, &rv, opts...)

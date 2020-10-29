@@ -11,58 +11,6 @@ import * as utilities from "../utilities";
  * Manages an EKS Cluster.
  *
  * ## Example Usage
- * ### Example IAM Role for EKS Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.iam.Role("example", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Effect": "Allow",
- *       "Principal": {
- *         "Service": "eks.amazonaws.com"
- *       },
- *       "Action": "sts:AssumeRole"
- *     }
- *   ]
- * }
- * `});
- * const example_AmazonEKSClusterPolicy = new aws.iam.RolePolicyAttachment("example-AmazonEKSClusterPolicy", {
- *     policyArn: "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
- *     role: example.name,
- * });
- * // Optionally, enable Security Groups for Pods
- * // Reference: https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
- * const example_AmazonEKSVPCResourceController = new aws.iam.RolePolicyAttachment("example-AmazonEKSVPCResourceController", {
- *     policyArn: "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController",
- *     role: example.name,
- * });
- * ```
- * ### Enabling Control Plane Logging
- *
- * [EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) can be enabled via the `enabledClusterLogTypes` argument. To manage the CloudWatch Log Group retention period, the `aws.cloudwatch.LogGroup` resource can be used.
- *
- * > The below configuration uses [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) to prevent ordering issues with EKS automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const config = new pulumi.Config();
- * const clusterName = config.get("clusterName") || "example";
- * const exampleLogGroup = new aws.cloudwatch.LogGroup("exampleLogGroup", {retentionInDays: 7});
- * // ... potentially other configuration ...
- * const exampleCluster = new aws.eks.Cluster("exampleCluster", {enabledClusterLogTypes: [
- *     "api",
- *     "audit",
- * ]}, {
- *     dependsOn: [exampleLogGroup],
- * });
- * // ... other configuration ...
- * ```
  */
 export class Cluster extends pulumi.CustomResource {
     /**

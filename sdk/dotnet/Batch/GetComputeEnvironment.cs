@@ -14,29 +14,6 @@ namespace Pulumi.Aws.Batch
         /// <summary>
         /// The Batch Compute Environment data source allows access to details of a specific
         /// compute environment within AWS Batch.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var batch_mongo = Output.Create(Aws.Batch.GetComputeEnvironment.InvokeAsync(new Aws.Batch.GetComputeEnvironmentArgs
-        ///         {
-        ///             ComputeEnvironmentName = "batch-mongo-production",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetComputeEnvironmentResult> InvokeAsync(GetComputeEnvironmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeEnvironmentResult>("aws:batch/getComputeEnvironment:getComputeEnvironment", args ?? new GetComputeEnvironmentArgs(), options.WithVersion());

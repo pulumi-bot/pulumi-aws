@@ -29,53 +29,6 @@ class Repository(pulumi.CustomResource):
         """
         Provides a CodeArtifact Repository Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_key = aws.kms.Key("exampleKey", description="domain key")
-        example_domain = aws.codeartifact.Domain("exampleDomain",
-            domain="example",
-            encryption_key=example_key.arn)
-        test = aws.codeartifact.Repository("test",
-            repository="example",
-            domain=example_domain.domain)
-        ```
-        ### With Upstream Repository
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        upstream = aws.codeartifact.Repository("upstream",
-            repository="upstream",
-            domain=aws_codeartifact_domain["test"]["domain"])
-        test = aws.codeartifact.Repository("test",
-            repository="example",
-            domain=aws_codeartifact_domain["example"]["domain"],
-            upstreams=[aws.codeartifact.RepositoryUpstreamArgs(
-                repository_name=upstream.repository,
-            )])
-        ```
-        ### With External Connection
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        upstream = aws.codeartifact.Repository("upstream",
-            repository="upstream",
-            domain=aws_codeartifact_domain["test"]["domain"])
-        test = aws.codeartifact.Repository("test",
-            repository="example",
-            domain=aws_codeartifact_domain["example"]["domain"],
-            external_connections=aws.codeartifact.RepositoryExternalConnectionsArgs(
-                external_connection_name="public:npmjs",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the repository.

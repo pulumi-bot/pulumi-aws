@@ -98,27 +98,6 @@ def get_resolver_rules(owner_id: Optional[str] = None,
     """
     `route53.getResolverRules` provides details about a set of Route53 Resolver rules.
 
-    ## Example Usage
-
-    Retrieving the default resolver rule.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.route53.get_resolver_rules(owner_id="Route 53 Resolver",
-        rule_type="RECURSIVE",
-        share_status="NOT_SHARED")
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.route53.get_resolver_rules(rule_type="FORWARD",
-        share_status="SHARED_WITH_ME")
-    ```
-
 
     :param str owner_id: When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
     :param str resolver_endpoint_id: The ID of the outbound resolver endpoint for the desired resolver rules.

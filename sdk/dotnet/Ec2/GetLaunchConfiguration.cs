@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Ec2
     {
         /// <summary>
         /// Provides information about a Launch Configuration.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ubuntu = Output.Create(Aws.Ec2.GetLaunchConfiguration.InvokeAsync(new Aws.Ec2.GetLaunchConfigurationArgs
-        ///         {
-        ///             Name = "test-launch-config",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLaunchConfigurationResult> InvokeAsync(GetLaunchConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLaunchConfigurationResult>("aws:ec2/getLaunchConfiguration:getLaunchConfiguration", args ?? new GetLaunchConfigurationArgs(), options.WithVersion());

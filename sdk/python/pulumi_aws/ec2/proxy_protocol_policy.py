@@ -23,36 +23,6 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
         """
         Provides a proxy protocol policy, which allows an ELB to carry a client connection information to a backend.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        lb = aws.elb.LoadBalancer("lb",
-            availability_zones=["us-east-1a"],
-            listeners=[
-                aws.elb.LoadBalancerListenerArgs(
-                    instance_port=25,
-                    instance_protocol="tcp",
-                    lb_port=25,
-                    lb_protocol="tcp",
-                ),
-                aws.elb.LoadBalancerListenerArgs(
-                    instance_port=587,
-                    instance_protocol="tcp",
-                    lb_port=587,
-                    lb_protocol="tcp",
-                ),
-            ])
-        smtp = aws.ec2.ProxyProtocolPolicy("smtp",
-            load_balancer=lb.name,
-            instance_ports=[
-                "25",
-                "587",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ports: List of instance ports to which the policy

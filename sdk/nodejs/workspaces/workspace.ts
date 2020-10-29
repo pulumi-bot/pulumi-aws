@@ -12,35 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** During deletion of an `aws.workspaces.Workspace` resource, the service role `workspaces_DefaultRole` must be attached to the
  * policy `arn:aws:iam::aws:policy/AmazonWorkSpacesServiceAccess`, or it will leak the ENI that the Workspaces service creates for the Workspace.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const valueWindows10 = aws.workspaces.getBundle({
- *     bundleId: "wsb-bh8rsxt14",
- * });
- * const example = new aws.workspaces.Workspace("example", {
- *     directoryId: aws_workspaces_directory.example.id,
- *     bundleId: valueWindows10.then(valueWindows10 => valueWindows10.id),
- *     userName: "john.doe",
- *     rootVolumeEncryptionEnabled: true,
- *     userVolumeEncryptionEnabled: true,
- *     volumeEncryptionKey: "alias/aws/workspaces",
- *     workspaceProperties: {
- *         computeTypeName: "VALUE",
- *         userVolumeSizeGib: 10,
- *         rootVolumeSizeGib: 80,
- *         runningMode: "AUTO_STOP",
- *         runningModeAutoStopTimeoutInMinutes: 60,
- *     },
- *     tags: {
- *         Department: "IT",
- *     },
- * });
- * ```
  */
 export class Workspace extends pulumi.CustomResource {
     /**

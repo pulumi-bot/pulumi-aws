@@ -11,48 +11,6 @@ import (
 )
 
 // Provides a CodeArtifact Domains Permissions Policy Resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/codeartifact"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/kms"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
-// 			Description: pulumi.String("domain key"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDomain, err := codeartifact.NewDomain(ctx, "exampleDomain", &codeartifact.DomainArgs{
-// 			Domain:        pulumi.String("example.com"),
-// 			EncryptionKey: exampleKey.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = codeartifact.NewDomainPermissions(ctx, "test", &codeartifact.DomainPermissionsArgs{
-// 			Domain: exampleDomain.Domain,
-// 			PolicyDocument: exampleDomain.Arn.ApplyT(func(arn string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "    \"Version\": \"2012-10-17\",\n", "    \"Statement\": [\n", "        {\n", "            \"Action\": \"codeartifact:CreateRepository\",\n", "            \"Effect\": \"Allow\",\n", "            \"Principal\": \"*\",\n", "            \"Resource\": \"", arn, "\"\n", "        }\n", "    ]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DomainPermissions struct {
 	pulumi.CustomResourceState
 

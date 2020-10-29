@@ -21,21 +21,6 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
- * ### AWS Cognito User Pool Authentication
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.appsync.GraphQLApi("example", {
- *     authenticationType: "AMAZON_COGNITO_USER_POOLS",
- *     userPoolConfig: {
- *         awsRegion: data.aws_region.current.name,
- *         defaultAction: "DENY",
- *         userPoolId: aws_cognito_user_pool.example.id,
- *     },
- * });
- * ```
  * ### AWS IAM Authentication
  *
  * ```typescript
@@ -88,35 +73,6 @@ import * as utilities from "../utilities";
  *     }],
  *     authenticationType: "API_KEY",
  * });
- * ```
- * ### Enabling Logging
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleRole = new aws.iam.Role("exampleRole", {assumeRolePolicy: `{
- *     "Version": "2012-10-17",
- *     "Statement": [
- *         {
- *         "Effect": "Allow",
- *         "Principal": {
- *             "Service": "appsync.amazonaws.com"
- *         },
- *         "Action": "sts:AssumeRole"
- *         }
- *     ]
- * }
- * `});
- * const exampleRolePolicyAttachment = new aws.iam.RolePolicyAttachment("exampleRolePolicyAttachment", {
- *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs",
- *     role: exampleRole.name,
- * });
- * // ... other configuration ...
- * const exampleGraphQLApi = new aws.appsync.GraphQLApi("exampleGraphQLApi", {logConfig: {
- *     cloudwatchLogsRoleArn: exampleRole.arn,
- *     fieldLogLevel: "ERROR",
- * }});
  * ```
  */
 export class GraphQLApi extends pulumi.CustomResource {

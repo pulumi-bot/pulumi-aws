@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an RDS database cluster snapshot for Aurora clusters. For managing RDS database instance snapshots, see the `aws.rds.Snapshot` resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.rds.ClusterSnapshot("example", {
- *     dbClusterIdentifier: aws_rds_cluster.example.id,
- *     dbClusterSnapshotIdentifier: "resourcetestsnapshot1234",
- * });
- * ```
  */
 export class ClusterSnapshot extends pulumi.CustomResource {
     /**

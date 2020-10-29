@@ -14,35 +14,6 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// The VPC Endpoint data source provides details about
         /// a specific VPC endpoint.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var s3 = Output.Create(Aws.Ec2.GetVpcEndpoint.InvokeAsync(new Aws.Ec2.GetVpcEndpointArgs
-        ///         {
-        ///             VpcId = aws_vpc.Foo.Id,
-        ///             ServiceName = "com.amazonaws.us-west-2.s3",
-        ///         }));
-        ///         var privateS3 = new Aws.Ec2.VpcEndpointRouteTableAssociation("privateS3", new Aws.Ec2.VpcEndpointRouteTableAssociationArgs
-        ///         {
-        ///             VpcEndpointId = s3.Apply(s3 =&gt; s3.Id),
-        ///             RouteTableId = aws_route_table.Private.Id,
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcEndpointResult> InvokeAsync(GetVpcEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointResult>("aws:ec2/getVpcEndpoint:getVpcEndpoint", args ?? new GetVpcEndpointArgs(), options.WithVersion());

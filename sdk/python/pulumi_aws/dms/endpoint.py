@@ -44,31 +44,6 @@ class Endpoint(pulumi.CustomResource):
 
         > **Note:** All arguments including the password will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new endpoint
-        test = aws.dms.Endpoint("test",
-            certificate_arn="arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012",
-            database_name="test",
-            endpoint_id="test-dms-endpoint-tf",
-            endpoint_type="source",
-            engine_name="aurora",
-            extra_connection_attributes="",
-            kms_key_arn="arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
-            password="test",
-            port=3306,
-            server_name="test",
-            ssl_mode="none",
-            tags={
-                "Name": "test",
-            },
-            username="test")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_arn: The Amazon Resource Name (ARN) for the certificate.

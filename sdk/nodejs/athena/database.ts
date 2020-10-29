@@ -9,19 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Athena database.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const hogeBucket = new aws.s3.Bucket("hogeBucket", {});
- * const hogeDatabase = new aws.athena.Database("hogeDatabase", {
- *     name: "database_name",
- *     bucket: hogeBucket.bucket,
- * });
- * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

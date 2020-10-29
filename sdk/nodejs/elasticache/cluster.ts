@@ -49,16 +49,6 @@ import * as utilities from "../utilities";
  *     port: 6379,
  * });
  * ```
- * ### Redis Cluster Mode Disabled Read Replica Instance
- *
- * These inherit their settings from the replication group.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const replica = new aws.elasticache.Cluster("replica", {replicationGroupId: aws_elasticache_replication_group.example.id});
- * ```
  */
 export class Cluster extends pulumi.CustomResource {
     /**

@@ -11,27 +11,6 @@ namespace Pulumi.Aws.DirectConnect
 {
     /// <summary>
     /// Provides a Direct Connect BGP peer resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var peer = new Aws.DirectConnect.BgpPeer("peer", new Aws.DirectConnect.BgpPeerArgs
-    ///         {
-    ///             VirtualInterfaceId = aws_dx_private_virtual_interface.Foo.Id,
-    ///             AddressFamily = "ipv6",
-    ///             BgpAsn = 65351,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class BgpPeer : Pulumi.CustomResource
     {

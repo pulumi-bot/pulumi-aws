@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Ec2
     {
         /// <summary>
         /// Get characteristics for a single EC2 Instance Type.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Ec2.GetInstanceType.InvokeAsync(new Aws.Ec2.GetInstanceTypeArgs
-        ///         {
-        ///             InstanceType = "t2.micro",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypeResult> InvokeAsync(GetInstanceTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeResult>("aws:ec2/getInstanceType:getInstanceType", args ?? new GetInstanceTypeArgs(), options.WithVersion());

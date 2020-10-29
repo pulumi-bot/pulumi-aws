@@ -28,28 +28,6 @@ class ZoneAssociation(pulumi.CustomResource):
 
         > **NOTE:** This provider provides both this standalone Zone VPC Association resource and exclusive VPC associations defined in-line in the `route53.Zone` resource via `vpc` configuration blocks. At this time, you cannot use those in-line VPC associations in conjunction with this resource and the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) in the `route53.Zone` resource to manage additional associations via this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        primary = aws.ec2.Vpc("primary",
-            cidr_block="10.6.0.0/16",
-            enable_dns_hostnames=True,
-            enable_dns_support=True)
-        secondary_vpc = aws.ec2.Vpc("secondaryVpc",
-            cidr_block="10.7.0.0/16",
-            enable_dns_hostnames=True,
-            enable_dns_support=True)
-        example = aws.route53.Zone("example", vpcs=[aws.route53.ZoneVpcArgs(
-            vpc_id=primary.id,
-        )])
-        secondary_zone_association = aws.route53.ZoneAssociation("secondaryZoneAssociation",
-            zone_id=example.zone_id,
-            vpc_id=secondary_vpc.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] vpc_id: The VPC to associate with the private hosted zone.

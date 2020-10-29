@@ -23,19 +23,7 @@ class PublicKey(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        The following example below creates a CloudFront public key.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.cloudfront.PublicKey("example",
-            comment="test public key",
-            encoded_key=(lambda path: open(path).read())("public_key.pem"))
-        ```
-
+        Create a PublicKey resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: An optional comment about the public key.

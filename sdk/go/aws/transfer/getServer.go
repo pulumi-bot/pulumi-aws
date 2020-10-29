@@ -9,29 +9,6 @@ import (
 
 // Use this data source to get the ARN of an AWS Transfer Server for use in other
 // resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/transfer"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := transfer.LookupServer(ctx, &transfer.LookupServerArgs{
-// 			ServerId: "s-1234567",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	var rv LookupServerResult
 	err := ctx.Invoke("aws:transfer/getServer:getServer", args, &rv, opts...)

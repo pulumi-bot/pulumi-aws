@@ -6,36 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Athena Named Query resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const hogeBucket = new aws.s3.Bucket("hogeBucket", {});
- * const testKey = new aws.kms.Key("testKey", {
- *     deletionWindowInDays: 7,
- *     description: "Athena KMS Key",
- * });
- * const testWorkgroup = new aws.athena.Workgroup("testWorkgroup", {configuration: {
- *     resultConfiguration: {
- *         encryptionConfiguration: {
- *             encryptionOption: "SSE_KMS",
- *             kmsKeyArn: testKey.arn,
- *         },
- *     },
- * }});
- * const hogeDatabase = new aws.athena.Database("hogeDatabase", {
- *     name: "users",
- *     bucket: hogeBucket.id,
- * });
- * const foo = new aws.athena.NamedQuery("foo", {
- *     workgroup: testWorkgroup.id,
- *     database: hogeDatabase.name,
- *     query: pulumi.interpolate`SELECT * FROM ${hogeDatabase.name} limit 10;`,
- * });
- * ```
  */
 export class NamedQuery extends pulumi.CustomResource {
     /**

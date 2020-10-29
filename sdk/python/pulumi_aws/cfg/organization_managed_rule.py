@@ -35,19 +35,6 @@ class OrganizationManagedRule(pulumi.CustomResource):
 
         > **NOTE:** Every Organization account except those configured in the `excluded_accounts` argument must have a Configuration Recorder with proper IAM permissions before the rule will successfully create or update. See also the `cfg.Recorder` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_organization = aws.organizations.Organization("exampleOrganization",
-            aws_service_access_principals=["config-multiaccountsetup.amazonaws.com"],
-            feature_set="ALL")
-        example_organization_managed_rule = aws.cfg.OrganizationManagedRule("exampleOrganizationManagedRule", rule_identifier="IAM_PASSWORD_POLICY",
-        opts=ResourceOptions(depends_on=[example_organization]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the rule

@@ -38,18 +38,6 @@ class LustreFileSystem(pulumi.CustomResource):
         """
         Manages a FSx Lustre File System. See the [FSx Lustre Guide](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.fsx.LustreFileSystem("example",
-            import_path=f"s3://{aws_s3_bucket['example']['bucket']}",
-            storage_capacity=1200,
-            subnet_ids=[aws_subnet["example"]["id"]])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_import_policy: How Amazon FSx keeps your file and directory listings up to date as you add or modify objects in your linked S3 bucket. see [Auto Import Data Repo](https://docs.aws.amazon.com/fsx/latest/LustreGuide/autoimport-data-repo.html) for more details.

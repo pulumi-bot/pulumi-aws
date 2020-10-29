@@ -11,37 +11,6 @@ import (
 )
 
 // Provides a CodeArtifact Domain Resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/codeartifact"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/kms"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
-// 			Description: pulumi.String("domain key"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = codeartifact.NewDomain(ctx, "exampleDomain", &codeartifact.DomainArgs{
-// 			Domain:        pulumi.String("example"),
-// 			EncryptionKey: exampleKey.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Domain struct {
 	pulumi.CustomResourceState
 

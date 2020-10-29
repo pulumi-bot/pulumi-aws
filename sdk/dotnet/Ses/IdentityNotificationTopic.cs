@@ -11,28 +11,6 @@ namespace Pulumi.Aws.Ses
 {
     /// <summary>
     /// Resource for managing SES Identity Notification Topics
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.Ses.IdentityNotificationTopic("test", new Aws.Ses.IdentityNotificationTopicArgs
-    ///         {
-    ///             TopicArn = aws_sns_topic.Example.Arn,
-    ///             NotificationType = "Bounce",
-    ///             Identity = aws_ses_domain_identity.Example.Domain,
-    ///             IncludeOriginalHeaders = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class IdentityNotificationTopic : Pulumi.CustomResource
     {

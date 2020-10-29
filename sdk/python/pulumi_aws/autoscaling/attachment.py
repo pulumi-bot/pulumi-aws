@@ -32,40 +32,6 @@ class Attachment(pulumi.CustomResource):
         `load_balancers` or `target_group_arns`, the `autoscaling.Group` resource must be configured
         to [ignore changes](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to the `load_balancers` and `target_group_arns` arguments.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new load balancer attachment
-        asg_attachment_bar = aws.autoscaling.Attachment("asgAttachmentBar",
-            autoscaling_group_name=aws_autoscaling_group["asg"]["id"],
-            elb=aws_elb["bar"]["id"])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new ALB Target Group attachment
-        asg_attachment_bar = aws.autoscaling.Attachment("asgAttachmentBar",
-            autoscaling_group_name=aws_autoscaling_group["asg"]["id"],
-            alb_target_group_arn=aws_alb_target_group["test"]["arn"])
-        ```
-        ## With An AutoScaling Group Resource
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configuration ...
-        asg = aws.autoscaling.Group("asg")
-        asg_attachment_bar = aws.autoscaling.Attachment("asgAttachmentBar",
-            autoscaling_group_name=asg.id,
-            elb=aws_elb["test"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alb_target_group_arn: The ARN of an ALB Target Group.

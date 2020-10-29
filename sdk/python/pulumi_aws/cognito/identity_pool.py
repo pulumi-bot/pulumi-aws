@@ -31,36 +31,6 @@ class IdentityPool(pulumi.CustomResource):
         """
         Provides an AWS Cognito Identity Pool.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.iam.SamlProvider("default", saml_metadata_document=(lambda path: open(path).read())("saml-metadata.xml"))
-        main = aws.cognito.IdentityPool("main",
-            identity_pool_name="identity pool",
-            allow_unauthenticated_identities=False,
-            cognito_identity_providers=[
-                aws.cognito.IdentityPoolCognitoIdentityProviderArgs(
-                    client_id="6lhlkkfbfb4q5kpp90urffae",
-                    provider_name="cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ",
-                    server_side_token_check=False,
-                ),
-                aws.cognito.IdentityPoolCognitoIdentityProviderArgs(
-                    client_id="7kodkvfqfb4qfkp39eurffae",
-                    provider_name="cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu",
-                    server_side_token_check=False,
-                ),
-            ],
-            supported_login_providers={
-                "graph.facebook.com": "7346241598935552",
-                "accounts.google.com": "123456789012.apps.googleusercontent.com",
-            },
-            saml_provider_arns=[default.arn],
-            openid_connect_provider_arns=["arn:aws:iam::123456789012:oidc-provider/id.example.com"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_unauthenticated_identities: Whether the identity pool supports unauthenticated logins or not.

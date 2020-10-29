@@ -13,32 +13,6 @@ namespace Pulumi.Aws.Route53
     {
         /// <summary>
         /// `aws.route53.ResolverRule` provides details about a specific Route53 Resolver rule.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Route53.GetResolverRule.InvokeAsync(new Aws.Route53.GetResolverRuleArgs
-        ///         {
-        ///             DomainName = "subdomain.example.com",
-        ///             RuleType = "SYSTEM",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolverRuleResult> InvokeAsync(GetResolverRuleArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolverRuleResult>("aws:route53/getResolverRule:getResolverRule", args ?? new GetResolverRuleArgs(), options.WithVersion());

@@ -23,17 +23,6 @@ class ClusterSnapshot(pulumi.CustomResource):
         """
         Manages a DocDB database cluster snapshot for DocDB clusters.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.docdb.ClusterSnapshot("example",
-            db_cluster_identifier=aws_docdb_cluster["example"]["id"],
-            db_cluster_snapshot_identifier="resourcetestsnapshot1234")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_cluster_identifier: The DocDB Cluster Identifier from which to take the snapshot.

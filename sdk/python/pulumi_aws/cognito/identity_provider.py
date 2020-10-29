@@ -27,28 +27,6 @@ class IdentityProvider(pulumi.CustomResource):
         """
         Provides a Cognito User Identity Provider resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.cognito.UserPool("example", auto_verified_attributes=["email"])
-        example_provider = aws.cognito.IdentityProvider("exampleProvider",
-            user_pool_id=example.id,
-            provider_name="Google",
-            provider_type="Google",
-            provider_details={
-                "authorize_scopes": "email",
-                "client_id": "your client_id",
-                "client_secret": "your client_secret",
-            },
-            attribute_mapping={
-                "email": "email",
-                "username": "sub",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: The map of attribute mapping of user pool attributes. [AttributeMapping in AWS API documentation](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-AttributeMapping)

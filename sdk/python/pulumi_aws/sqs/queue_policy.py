@@ -24,36 +24,6 @@ class QueuePolicy(pulumi.CustomResource):
         Allows you to set a policy of an SQS Queue
         while referencing ARN of the queue within the policy.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        queue = aws.sqs.Queue("queue")
-        test = aws.sqs.QueuePolicy("test",
-            queue_url=queue.id,
-            policy=queue.arn.apply(lambda arn: f\"\"\"{{
-          "Version": "2012-10-17",
-          "Id": "sqspolicy",
-          "Statement": [
-            {{
-              "Sid": "First",
-              "Effect": "Allow",
-              "Principal": "*",
-              "Action": "sqs:SendMessage",
-              "Resource": "{arn}",
-              "Condition": {{
-                "ArnEquals": {{
-                  "aws:SourceArn": "{aws_sns_topic["example"]["arn"]}"
-                }}
-              }}
-            }}
-          ]
-        }}
-        \"\"\"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The JSON policy for the SQS queue.

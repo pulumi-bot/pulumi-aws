@@ -27,17 +27,6 @@ class VpnGatewayRoutePropagation(pulumi.CustomResource):
         the `propagating_vgws` argument set. If that argument is set, any route
         propagation not explicitly listed in its value will be removed.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2.VpnGatewayRoutePropagation("example",
-            vpn_gateway_id=aws_vpn_gateway["example"]["id"],
-            route_table_id=aws_route_table["example"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] route_table_id: The id of the `ec2.RouteTable` to propagate routes into.

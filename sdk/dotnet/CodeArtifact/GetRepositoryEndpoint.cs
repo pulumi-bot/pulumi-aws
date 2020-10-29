@@ -13,31 +13,6 @@ namespace Pulumi.Aws.CodeArtifact
     {
         /// <summary>
         /// The CodeArtifact Repository Endpoint data source returns the endpoint of a repository for a specific package format.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.CodeArtifact.GetRepositoryEndpoint.InvokeAsync(new Aws.CodeArtifact.GetRepositoryEndpointArgs
-        ///         {
-        ///             Domain = aws_codeartifact_domain.Test.Domain,
-        ///             Repository = aws_codeartifact_repository.Test.Repository,
-        ///             Format = "npm",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRepositoryEndpointResult> InvokeAsync(GetRepositoryEndpointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryEndpointResult>("aws:codeartifact/getRepositoryEndpoint:getRepositoryEndpoint", args ?? new GetRepositoryEndpointArgs(), options.WithVersion());

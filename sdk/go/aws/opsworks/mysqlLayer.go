@@ -13,29 +13,6 @@ import (
 // Provides an OpsWorks MySQL layer resource.
 //
 // > **Note:** All arguments including the root password will be stored in the raw state as plain-text.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/opsworks"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := opsworks.NewMysqlLayer(ctx, "db", &opsworks.MysqlLayerArgs{
-// 			StackId: pulumi.Any(aws_opsworks_stack.Main.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type MysqlLayer struct {
 	pulumi.CustomResourceState
 

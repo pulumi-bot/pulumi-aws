@@ -33,32 +33,6 @@ class Proxy(pulumi.CustomResource):
         """
         Provides an RDS DB proxy resource. For additional information, see the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.rds.Proxy("example",
-            debug_logging=False,
-            engine_family="MYSQL",
-            idle_client_timeout=1800,
-            require_tls=True,
-            role_arn=aws_iam_role["example"]["arn"],
-            vpc_security_group_ids=[aws_security_group["example"]["id"]],
-            vpc_subnet_ids=[aws_subnet["example"]["id"]],
-            auths=[aws.rds.ProxyAuthArgs(
-                auth_scheme="SECRETS",
-                description="example",
-                iam_auth="DISABLED",
-                secret_arn=aws_secretsmanager_secret["example"]["arn"],
-            )],
-            tags={
-                "Name": "example",
-                "Key": "value",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProxyAuthArgs']]]] auths: Configuration block(s) with authorization mechanisms to connect to the associated instances or clusters. Described below.

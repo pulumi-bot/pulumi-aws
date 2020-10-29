@@ -8,30 +8,6 @@ import (
 )
 
 // Provides details about an Outposts Outpost.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/outposts"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example"
-// 		_, err := outposts.GetOutpost(ctx, &outposts.GetOutpostArgs{
-// 			Name: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetOutpost(ctx *pulumi.Context, args *GetOutpostArgs, opts ...pulumi.InvokeOption) (*GetOutpostResult, error) {
 	var rv GetOutpostResult
 	err := ctx.Invoke("aws:outposts/getOutpost:getOutpost", args, &rv, opts...)

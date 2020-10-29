@@ -13,35 +13,6 @@ import {InstanceType} from "./index";
 /**
  * Provides an EC2 instance resource. This allows instances to be created, updated,
  * and deleted.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ubuntu = aws.getAmi({
- *     mostRecent: true,
- *     filters: [
- *         {
- *             name: "name",
- *             values: ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"],
- *         },
- *         {
- *             name: "virtualization-type",
- *             values: ["hvm"],
- *         },
- *     ],
- *     owners: ["099720109477"],
- * });
- * const web = new aws.ec2.Instance("web", {
- *     ami: ubuntu.then(ubuntu => ubuntu.id),
- *     instanceType: "t3.micro",
- *     tags: {
- *         Name: "HelloWorld",
- *     },
- * });
- * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

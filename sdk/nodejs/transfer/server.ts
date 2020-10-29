@@ -9,50 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a AWS Transfer Server resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleRole = new aws.iam.Role("exampleRole", {assumeRolePolicy: `{
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 		"Effect": "Allow",
- * 		"Principal": {
- * 			"Service": "transfer.amazonaws.com"
- * 		},
- * 		"Action": "sts:AssumeRole"
- * 		}
- * 	]
- * }
- * `});
- * const exampleServer = new aws.transfer.Server("exampleServer", {
- *     identityProviderType: "SERVICE_MANAGED",
- *     loggingRole: exampleRole.arn,
- *     tags: {
- *         NAME: "tf-acc-test-transfer-server",
- *         ENV: "test",
- *     },
- * });
- * const exampleRolePolicy = new aws.iam.RolePolicy("exampleRolePolicy", {
- *     role: exampleRole.id,
- *     policy: `{
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 		"Sid": "AllowFullAccesstoCloudWatchLogs",
- * 		"Effect": "Allow",
- * 		"Action": [
- * 			"logs:*"
- * 		],
- * 		"Resource": "*"
- * 		}
- * 	]
- * }
- * `,
- * });
- * ```
  */
 export class Server extends pulumi.CustomResource {
     /**

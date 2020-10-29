@@ -151,16 +151,6 @@ def get_slot_type(name: Optional[str] = None,
     """
     Provides details about a specific Amazon Lex Slot Type.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    flower_types = aws.lex.get_slot_type(name="FlowerTypes",
-        version="1")
-    ```
-
 
     :param str name: The name of the slot type. The name is case sensitive.
     :param str version: The version of the slot type.

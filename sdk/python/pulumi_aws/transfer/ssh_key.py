@@ -24,57 +24,6 @@ class SshKey(pulumi.CustomResource):
         """
         Provides a AWS Transfer User SSH Key resource.
 
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_server = aws.transfer.Server("exampleServer",
-            identity_provider_type="SERVICE_MANAGED",
-            tags={
-                "NAME": "tf-acc-test-transfer-server",
-            })
-        example_role = aws.iam.Role("exampleRole", assume_role_policy=\"\"\"{
-        	"Version": "2012-10-17",
-        	"Statement": [
-        		{
-        		"Effect": "Allow",
-        		"Principal": {
-        			"Service": "transfer.amazonaws.com"
-        		},
-        		"Action": "sts:AssumeRole"
-        		}
-        	]
-        }
-        \"\"\")
-        example_user = aws.transfer.User("exampleUser",
-            server_id=example_server.id,
-            user_name="tftestuser",
-            role=example_role.arn,
-            tags={
-                "NAME": "tftestuser",
-            })
-        example_ssh_key = aws.transfer.SshKey("exampleSshKey",
-            server_id=example_server.id,
-            user_name=example_user.user_name,
-            body="... SSH key ...")
-        example_role_policy = aws.iam.RolePolicy("exampleRolePolicy",
-            role=example_role.id,
-            policy=\"\"\"{
-        	"Version": "2012-10-17",
-        	"Statement": [
-        		{
-        			"Sid": "AllowFullAccesstoS3",
-        			"Effect": "Allow",
-        			"Action": [
-        				"s3:*"
-        			],
-        			"Resource": "*"
-        		}
-        	]
-        }
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: The public key portion of an SSH key pair.

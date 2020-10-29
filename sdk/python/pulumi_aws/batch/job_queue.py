@@ -26,21 +26,6 @@ class JobQueue(pulumi.CustomResource):
         """
         Provides a Batch Job Queue resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_queue = aws.batch.JobQueue("testQueue",
-            state="ENABLED",
-            priority=1,
-            compute_environments=[
-                aws_batch_compute_environment["test_environment_1"]["arn"],
-                aws_batch_compute_environment["test_environment_2"]["arn"],
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compute_environments: Specifies the set of compute environments

@@ -11,35 +11,6 @@ import (
 )
 
 // Provides a Sagemaker Notebook Instance resource.
-//
-// ## Example Usage
-//
-// Basic usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sagemaker"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sagemaker.NewNotebookInstance(ctx, "ni", &sagemaker.NotebookInstanceArgs{
-// 			RoleArn:      pulumi.Any(aws_iam_role.Role.Arn),
-// 			InstanceType: pulumi.String("ml.t2.medium"),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("foo"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type NotebookInstance struct {
 	pulumi.CustomResourceState
 

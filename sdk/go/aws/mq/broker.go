@@ -25,45 +25,6 @@ import (
 // brief downtime as the broker reboots.
 //
 // > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/mq"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mq.NewBroker(ctx, "example", &mq.BrokerArgs{
-// 			BrokerName: pulumi.String("example"),
-// 			Configuration: &mq.BrokerConfigurationArgs{
-// 				Id:       pulumi.Any(aws_mq_configuration.Test.Id),
-// 				Revision: pulumi.Any(aws_mq_configuration.Test.Latest_revision),
-// 			},
-// 			EngineType:       pulumi.String("ActiveMQ"),
-// 			EngineVersion:    pulumi.String("5.15.0"),
-// 			HostInstanceType: pulumi.String("mq.t2.micro"),
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.Any(aws_security_group.Test.Id),
-// 			},
-// 			Users: mq.BrokerUserArray{
-// 				&mq.BrokerUserArgs{
-// 					Username: pulumi.String("ExampleUser"),
-// 					Password: pulumi.String("MindTheGap"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Broker struct {
 	pulumi.CustomResourceState
 

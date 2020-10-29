@@ -26,18 +26,6 @@ class Certificate(pulumi.CustomResource):
 
         > **Note:** All arguments including the PEM encoded certificate will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new certificate
-        test = aws.dms.Certificate("test",
-            certificate_id="test-dms-certificate-tf",
-            certificate_pem="...")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_id: The certificate identifier.

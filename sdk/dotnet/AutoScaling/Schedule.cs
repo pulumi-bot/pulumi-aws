@@ -11,47 +11,6 @@ namespace Pulumi.Aws.AutoScaling
 {
     /// <summary>
     /// Provides an AutoScaling Schedule resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foobarGroup = new Aws.AutoScaling.Group("foobarGroup", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///             AvailabilityZones = 
-    ///             {
-    ///                 "us-west-2a",
-    ///             },
-    ///             MaxSize = 1,
-    ///             MinSize = 1,
-    ///             HealthCheckGracePeriod = 300,
-    ///             HealthCheckType = "ELB",
-    ///             ForceDelete = true,
-    ///             TerminationPolicies = 
-    ///             {
-    ///                 "OldestInstance",
-    ///             },
-    ///         });
-    ///         var foobarSchedule = new Aws.AutoScaling.Schedule("foobarSchedule", new Aws.AutoScaling.ScheduleArgs
-    ///         {
-    ///             ScheduledActionName = "foobar",
-    ///             MinSize = 0,
-    ///             MaxSize = 1,
-    ///             DesiredCapacity = 0,
-    ///             StartTime = "2016-12-11T18:00:00Z",
-    ///             EndTime = "2016-12-12T06:00:00Z",
-    ///             AutoscalingGroupName = foobarGroup.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Schedule : Pulumi.CustomResource
     {

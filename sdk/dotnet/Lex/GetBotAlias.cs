@@ -13,30 +13,6 @@ namespace Pulumi.Aws.Lex
     {
         /// <summary>
         /// Provides details about a specific Amazon Lex Bot Alias.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var orderFlowersProd = Output.Create(Aws.Lex.GetBotAlias.InvokeAsync(new Aws.Lex.GetBotAliasArgs
-        ///         {
-        ///             BotName = "OrderFlowers",
-        ///             Name = "OrderFlowersProd",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBotAliasResult> InvokeAsync(GetBotAliasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBotAliasResult>("aws:lex/getBotAlias:getBotAlias", args ?? new GetBotAliasArgs(), options.WithVersion());

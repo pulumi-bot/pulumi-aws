@@ -99,35 +99,6 @@ class Instance(pulumi.CustomResource):
         about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 
         ## Example Usage
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.rds.Instance("default",
-            allocated_storage=20,
-            engine="mysql",
-            engine_version="5.7",
-            instance_class="db.t2.micro",
-            name="mydb",
-            parameter_group_name="default.mysql5.7",
-            password="foobarbaz",
-            storage_type="gp2",
-            username="foo")
-        ```
-        ### Storage Autoscaling
-
-        To enable Storage Autoscaling with instances that support the feature, define the `max_allocated_storage` argument higher than the `allocated_storage` argument. This provider will automatically hide differences with the `allocated_storage` argument value if autoscaling occurs.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.rds.Instance("example",
-            allocated_storage=50,
-            max_allocated_storage=100)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

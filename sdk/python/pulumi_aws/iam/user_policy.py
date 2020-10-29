@@ -25,31 +25,6 @@ class UserPolicy(pulumi.CustomResource):
         """
         Provides an IAM policy attached to a user.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        lb_user = aws.iam.User("lbUser", path="/system/")
-        lb_ro = aws.iam.UserPolicy("lbRo",
-            user=lb_user.name,
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "ec2:Describe*"
-              ],
-              "Effect": "Allow",
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        lb_access_key = aws.iam.AccessKey("lbAccessKey", user=lb_user.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the policy. If omitted, this provider will assign a random, unique name.

@@ -13,35 +13,6 @@ namespace Pulumi.Aws.ServiceQuotas
     {
         /// <summary>
         /// Retrieve information about a Service Quota.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var byQuotaCode = Output.Create(Aws.ServiceQuotas.GetServiceQuota.InvokeAsync(new Aws.ServiceQuotas.GetServiceQuotaArgs
-        ///         {
-        ///             QuotaCode = "L-F678F1CE",
-        ///             ServiceCode = "vpc",
-        ///         }));
-        ///         var byQuotaName = Output.Create(Aws.ServiceQuotas.GetServiceQuota.InvokeAsync(new Aws.ServiceQuotas.GetServiceQuotaArgs
-        ///         {
-        ///             QuotaName = "VPCs per Region",
-        ///             ServiceCode = "vpc",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceQuotaResult> InvokeAsync(GetServiceQuotaArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceQuotaResult>("aws:servicequotas/getServiceQuota:getServiceQuota", args ?? new GetServiceQuotaArgs(), options.WithVersion());

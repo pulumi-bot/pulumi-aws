@@ -24,25 +24,6 @@ class Snapshot(pulumi.CustomResource):
         """
         Creates a Snapshot of an EBS Volume.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ebs.Volume("example",
-            availability_zone="us-west-2a",
-            size=40,
-            tags={
-                "Name": "HelloWorld",
-            })
-        example_snapshot = aws.ebs.Snapshot("exampleSnapshot",
-            volume_id=example.id,
-            tags={
-                "Name": "HelloWorld_snap",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of what the snapshot is.

@@ -13,60 +13,6 @@ namespace Pulumi.Aws.CodeDeploy
     /// Provides a CodeDeploy application to be used as a basis for deployments
     /// 
     /// ## Example Usage
-    /// ### ECS Application
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeDeploy.Application("example", new Aws.CodeDeploy.ApplicationArgs
-    ///         {
-    ///             ComputePlatform = "ECS",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Lambda Application
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeDeploy.Application("example", new Aws.CodeDeploy.ApplicationArgs
-    ///         {
-    ///             ComputePlatform = "Lambda",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Server Application
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.CodeDeploy.Application("example", new Aws.CodeDeploy.ApplicationArgs
-    ///         {
-    ///             ComputePlatform = "Server",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

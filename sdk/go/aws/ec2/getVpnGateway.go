@@ -9,37 +9,6 @@ import (
 
 // The VPN Gateway data source provides details about
 // a specific VPN gateway.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := ec2.LookupVpnGateway(ctx, &ec2.LookupVpnGatewayArgs{
-// 			Filters: []ec2.GetVpnGatewayFilter{
-// 				ec2.GetVpnGatewayFilter{
-// 					Name: "tag:Name",
-// 					Values: []string{
-// 						"vpn-gw",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpnGatewayId", selected.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupVpnGateway(ctx *pulumi.Context, args *LookupVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVpnGatewayResult, error) {
 	var rv LookupVpnGatewayResult
 	err := ctx.Invoke("aws:ec2/getVpnGateway:getVpnGateway", args, &rv, opts...)

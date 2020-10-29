@@ -27,26 +27,6 @@ class EndpointConfiguration(pulumi.CustomResource):
         """
         Provides a SageMaker endpoint configuration resource.
 
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ec = aws.sagemaker.EndpointConfiguration("ec",
-            production_variants=[aws.sagemaker.EndpointConfigurationProductionVariantArgs(
-                variant_name="variant-1",
-                model_name=aws_sagemaker_model["m"]["name"],
-                initial_instance_count=1,
-                instance_type="ml.t2.medium",
-            )],
-            tags={
-                "Name": "foo",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_arn: Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.

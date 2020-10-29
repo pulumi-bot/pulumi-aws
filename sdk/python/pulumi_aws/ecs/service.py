@@ -50,67 +50,6 @@ class Service(pulumi.CustomResource):
 
         See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        mongo = aws.ecs.Service("mongo",
-            cluster=aws_ecs_cluster["foo"]["id"],
-            task_definition=aws_ecs_task_definition["mongo"]["arn"],
-            desired_count=3,
-            iam_role=aws_iam_role["foo"]["arn"],
-            ordered_placement_strategies=[aws.ecs.ServiceOrderedPlacementStrategyArgs(
-                type="binpack",
-                field="cpu",
-            )],
-            load_balancers=[aws.ecs.ServiceLoadBalancerArgs(
-                target_group_arn=aws_lb_target_group["foo"]["arn"],
-                container_name="mongo",
-                container_port=8080,
-            )],
-            placement_constraints=[aws.ecs.ServicePlacementConstraintArgs(
-                type="memberOf",
-                expression="attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
-            )],
-            opts=ResourceOptions(depends_on=[aws_iam_role_policy["foo"]]))
-        ```
-        ### Ignoring Changes to Desired Count
-
-        You can use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configurations ...
-        example = aws.ecs.Service("example", desired_count=2)
-        ```
-        ### Daemon Scheduling Strategy
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bar = aws.ecs.Service("bar",
-            cluster=aws_ecs_cluster["foo"]["id"],
-            task_definition=aws_ecs_task_definition["bar"]["arn"],
-            scheduling_strategy="DAEMON")
-        ```
-        ### External Deployment Controller
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ecs.Service("example",
-            cluster=aws_ecs_cluster["example"]["id"],
-            deployment_controller=aws.ecs.ServiceDeploymentControllerArgs(
-                type="EXTERNAL",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCapacityProviderStrategyArgs']]]] capacity_provider_strategies: The capacity provider strategy to use for the service. Can be one or more.  Defined below.

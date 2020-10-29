@@ -13,26 +13,6 @@ namespace Pulumi.Aws.Ecr
     {
         /// <summary>
         /// The ECR Authorization Token data source allows the authorization token, proxy endpoint, token expiration date, user name and password to be retrieved for an ECR repository.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var token = Output.Create(Aws.Ecr.GetAuthorizationToken.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuthorizationTokenResult> InvokeAsync(GetAuthorizationTokenArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationTokenResult>("aws:ecr/getAuthorizationToken:getAuthorizationToken", args ?? new GetAuthorizationTokenArgs(), options.WithVersion());

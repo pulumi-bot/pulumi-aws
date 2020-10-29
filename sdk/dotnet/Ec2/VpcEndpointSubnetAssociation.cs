@@ -17,28 +17,6 @@ namespace Pulumi.Aws.Ec2
     /// and a single `subnet_id`) and a VPC Endpoint resource with a `subnet_ids`
     /// attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
     /// Association resource. Doing so will cause a conflict of associations and will overwrite the association.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var snEc2 = new Aws.Ec2.VpcEndpointSubnetAssociation("snEc2", new Aws.Ec2.VpcEndpointSubnetAssociationArgs
-    ///         {
-    ///             VpcEndpointId = aws_vpc_endpoint.Ec2.Id,
-    ///             SubnetId = aws_subnet.Sn.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class VpcEndpointSubnetAssociation : Pulumi.CustomResource
     {

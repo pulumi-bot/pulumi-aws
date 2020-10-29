@@ -29,58 +29,6 @@ class VirtualGateway(pulumi.CustomResource):
         Provides an AWS App Mesh virtual gateway resource.
 
         ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.appmesh.VirtualGateway("example",
-            mesh_name="example-service-mesh",
-            spec=aws.appmesh.VirtualGatewaySpecArgs(
-                listener=aws.appmesh.VirtualGatewaySpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualGatewaySpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-            ),
-            tags={
-                "Environment": "test",
-            })
-        ```
-        ### Access Logs and TLS
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.appmesh.VirtualGateway("example",
-            mesh_name="example-service-mesh",
-            spec=aws.appmesh.VirtualGatewaySpecArgs(
-                listener=aws.appmesh.VirtualGatewaySpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualGatewaySpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                    tls=aws.appmesh.VirtualGatewaySpecListenerTlsArgs(
-                        certificate=aws.appmesh.VirtualGatewaySpecListenerTlsCertificateArgs(
-                            acm=aws.appmesh.VirtualGatewaySpecListenerTlsCertificateAcmArgs(
-                                certificate_arn=aws_acm_certificate["example"]["arn"],
-                            ),
-                        ),
-                        mode="STRICT",
-                    ),
-                ),
-                logging=aws.appmesh.VirtualGatewaySpecLoggingArgs(
-                    access_log=aws.appmesh.VirtualGatewaySpecLoggingAccessLogArgs(
-                        file=aws.appmesh.VirtualGatewaySpecLoggingAccessLogFileArgs(
-                            path="/var/log/access.log",
-                        ),
-                    ),
-                ),
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

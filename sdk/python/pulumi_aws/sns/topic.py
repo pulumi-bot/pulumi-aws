@@ -40,50 +40,6 @@ class Topic(pulumi.CustomResource):
         """
         Provides an SNS topic resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user_updates = aws.sns.Topic("userUpdates")
-        ```
-        ## Example with Delivery Policy
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user_updates = aws.sns.Topic("userUpdates", delivery_policy=\"\"\"{
-          "http": {
-            "defaultHealthyRetryPolicy": {
-              "minDelayTarget": 20,
-              "maxDelayTarget": 20,
-              "numRetries": 3,
-              "numMaxDelayRetries": 0,
-              "numNoDelayRetries": 0,
-              "numMinDelayRetries": 0,
-              "backoffFunction": "linear"
-            },
-            "disableSubscriptionOverrides": false,
-            "defaultThrottlePolicy": {
-              "maxReceivesPerSecond": 1
-            }
-          }
-        }
-
-        \"\"\")
-        ```
-
-        ## Example with Server-side encryption (SSE)
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user_updates = aws.sns.Topic("userUpdates", kms_master_key_id="alias/aws/sns")
-        ```
-
         ## Message Delivery Status Arguments
 
         The `<endpoint>_success_feedback_role_arn` and `<endpoint>_failure_feedback_role_arn` arguments are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<endpoint>_success_feedback_sample_rate` argument is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the  `<endpoint>_failure_feedback_role_arn` argument, then all failed message deliveries generate CloudWatch Logs.

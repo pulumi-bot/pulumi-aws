@@ -14,35 +14,6 @@ namespace Pulumi.Aws
         /// <summary>
         /// Use this data source to get the access to the effective Account ID, User ID, and ARN in
         /// which this provider is authorized.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
-        ///         this.AccountId = current.Apply(current =&gt; current.AccountId);
-        ///         this.CallerArn = current.Apply(current =&gt; current.Arn);
-        ///         this.CallerUser = current.Apply(current =&gt; current.UserId);
-        ///     }
-        /// 
-        ///     [Output("accountId")]
-        ///     public Output&lt;string&gt; AccountId { get; set; }
-        ///     [Output("callerArn")]
-        ///     public Output&lt;string&gt; CallerArn { get; set; }
-        ///     [Output("callerUser")]
-        ///     public Output&lt;string&gt; CallerUser { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCallerIdentityResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("aws:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithVersion());

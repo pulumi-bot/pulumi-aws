@@ -25,20 +25,6 @@ class Hsm(pulumi.CustomResource):
         """
         Creates an HSM module in Amazon CloudHSM v2 cluster.
 
-        ## Example Usage
-
-        The following example below creates an HSM module in CloudHSM cluster.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cluster = aws.cloudhsmv2.get_cluster(cluster_id=var["cloudhsm_cluster_id"])
-        cloudhsm_v2_hsm = aws.cloudhsmv2.Hsm("cloudhsmV2Hsm",
-            subnet_id=cluster.subnet_ids[0],
-            cluster_id=cluster.cluster_id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.

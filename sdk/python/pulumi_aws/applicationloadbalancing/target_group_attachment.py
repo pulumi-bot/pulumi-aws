@@ -31,41 +31,6 @@ class TargetGroupAttachment(pulumi.CustomResource):
 
         > **Note:** `alb.TargetGroupAttachment` is known as `lb.TargetGroupAttachment`. The functionality is identical.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_target_group = aws.lb.TargetGroup("testTargetGroup")
-        # ... other configuration ...
-        test_instance = aws.ec2.Instance("testInstance")
-        # ... other configuration ...
-        test_target_group_attachment = aws.lb.TargetGroupAttachment("testTargetGroupAttachment",
-            target_group_arn=test_target_group.arn,
-            target_id=test_instance.id,
-            port=80)
-        ```
-        ## Usage with lambda
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_target_group = aws.lb.TargetGroup("testTargetGroup", target_type="lambda")
-        test_function = aws.lambda_.Function("testFunction")
-        # ... other configuration ...
-        with_lb = aws.lambda_.Permission("withLb",
-            action="lambda:InvokeFunction",
-            function=test_function.arn,
-            principal="elasticloadbalancing.amazonaws.com",
-            source_arn=test_target_group.arn)
-        test_target_group_attachment = aws.lb.TargetGroupAttachment("testTargetGroupAttachment",
-            target_group_arn=test_target_group.arn,
-            target_id=test_function.arn,
-            opts=ResourceOptions(depends_on=[with_lb]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.

@@ -25,26 +25,6 @@ class RouteTableAssociation(pulumi.CustomResource):
         Provides a resource to create an association between a route table and a subnet or a route table and an
         internet gateway or virtual private gateway.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        route_table_association = aws.ec2.RouteTableAssociation("routeTableAssociation",
-            subnet_id=aws_subnet["foo"]["id"],
-            route_table_id=aws_route_table["bar"]["id"])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        route_table_association = aws.ec2.RouteTableAssociation("routeTableAssociation",
-            gateway_id=aws_internet_gateway["foo"]["id"],
-            route_table_id=aws_route_table["bar"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] gateway_id: The gateway ID to create an association. Conflicts with `subnet_id`.

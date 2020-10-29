@@ -26,15 +26,6 @@ class MemberAccountAssociation(pulumi.CustomResource):
 
         > **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.macie.MemberAccountAssociation("example", member_account_id="123456789012")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] member_account_id: The ID of the AWS account that you want to associate with Amazon Macie as a member account.

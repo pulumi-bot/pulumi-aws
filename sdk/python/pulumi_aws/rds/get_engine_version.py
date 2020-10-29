@@ -254,20 +254,6 @@ def get_engine_version(engine: Optional[str] = None,
     """
     Information about an RDS engine version.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.rds.get_engine_version(engine="mysql",
-        preferred_versions=[
-            "5.7.42",
-            "5.7.19",
-            "5.7.17",
-        ])
-    ```
-
 
     :param str engine: DB engine. Engine values include `aurora`, `aurora-mysql`, `aurora-postgresql`, `docdb`, `mariadb`, `mysql`, `neptune`, `oracle-ee`, `oracle-se`, `oracle-se1`, `oracle-se2`, `postgres`, `sqlserver-ee`, `sqlserver-ex`, `sqlserver-se`, and `sqlserver-web`.
     :param str parameter_group_family: The name of a specific DB parameter group family. Examples of parameter group families are `mysql8.0`, `mariadb10.4`, and `postgres12`.

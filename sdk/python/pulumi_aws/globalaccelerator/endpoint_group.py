@@ -32,20 +32,6 @@ class EndpointGroup(pulumi.CustomResource):
         """
         Provides a Global Accelerator endpoint group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.globalaccelerator.EndpointGroup("example",
-            listener_arn=aws_globalaccelerator_listener["example"]["id"],
-            endpoint_configurations=[aws.globalaccelerator.EndpointGroupEndpointConfigurationArgs(
-                endpoint_id=aws_lb["example"]["arn"],
-                weight=100,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The list of endpoint objects. Fields documented below.

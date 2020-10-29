@@ -19,69 +19,6 @@ namespace Pulumi.Aws.AutoScaling
     /// mutually-exclusive. If `aws.autoscaling.Attachment` resources are used, either alone or with inline
     /// `load_balancers` or `target_group_arns`, the `aws.autoscaling.Group` resource must be configured
     /// to [ignore changes](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to the `load_balancers` and `target_group_arns` arguments.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new load balancer attachment
-    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
-    ///         {
-    ///             AutoscalingGroupName = aws_autoscaling_group.Asg.Id,
-    ///             Elb = aws_elb.Bar.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new ALB Target Group attachment
-    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
-    ///         {
-    ///             AutoscalingGroupName = aws_autoscaling_group.Asg.Id,
-    ///             AlbTargetGroupArn = aws_alb_target_group.Test.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## With An AutoScaling Group Resource
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // ... other configuration ...
-    ///         var asg = new Aws.AutoScaling.Group("asg", new Aws.AutoScaling.GroupArgs
-    ///         {
-    ///         });
-    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
-    ///         {
-    ///             AutoscalingGroupName = asg.Id,
-    ///             Elb = aws_elb.Test.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {

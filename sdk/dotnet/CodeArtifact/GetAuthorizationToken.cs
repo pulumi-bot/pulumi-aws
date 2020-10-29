@@ -13,29 +13,6 @@ namespace Pulumi.Aws.CodeArtifact
     {
         /// <summary>
         /// The CodeArtifact Authorization Token data source generates a temporary authentication token for accessing repositories in a CodeArtifact domain.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.CodeArtifact.GetAuthorizationToken.InvokeAsync(new Aws.CodeArtifact.GetAuthorizationTokenArgs
-        ///         {
-        ///             Domain = aws_codeartifact_domain.Test.Domain,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuthorizationTokenResult> InvokeAsync(GetAuthorizationTokenArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationTokenResult>("aws:codeartifact/getAuthorizationToken:getAuthorizationToken", args ?? new GetAuthorizationTokenArgs(), options.WithVersion());

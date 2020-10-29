@@ -13,34 +13,6 @@ namespace Pulumi.Aws.RedShift
     {
         /// <summary>
         /// Information about Redshift Orderable Clusters and valid parameter combinations.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.RedShift.GetOrderableCluster.InvokeAsync(new Aws.RedShift.GetOrderableClusterArgs
-        ///         {
-        ///             ClusterType = "multi-node",
-        ///             PreferredNodeTypes = 
-        ///             {
-        ///                 "dc2.large",
-        ///                 "ds2.xlarge",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrderableClusterResult> InvokeAsync(GetOrderableClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrderableClusterResult>("aws:redshift/getOrderableCluster:getOrderableCluster", args ?? new GetOrderableClusterArgs(), options.WithVersion());

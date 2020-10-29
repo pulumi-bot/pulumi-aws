@@ -15,39 +15,6 @@ namespace Pulumi.Aws.WafV2
     /// &gt; **Note:** To start logging from a WAFv2 Web ACL, an Amazon Kinesis Data Firehose (e.g. [`aws.kinesis.FirehoseDeliveryStream` resource](https://www.terraform.io/docs/providers/aws/r/kinesis_firehose_delivery_stream.html) must also be created with a PUT source (not a stream) and in the region that you are operating.
     /// If you are capturing logs for Amazon CloudFront, always create the firehose in US East (N. Virginia).
     /// Be sure to give the data firehose a name that starts with the prefix `aws-waf-logs-`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.WafV2.WebAclLoggingConfiguration("example", new Aws.WafV2.WebAclLoggingConfigurationArgs
-    ///         {
-    ///             LogDestinationConfigs = 
-    ///             {
-    ///                 aws_kinesis_firehose_delivery_stream.Example.Arn,
-    ///             },
-    ///             ResourceArn = aws_wafv2_web_acl.Example.Arn,
-    ///             RedactedFields = 
-    ///             {
-    ///                 new Aws.WafV2.Inputs.WebAclLoggingConfigurationRedactedFieldArgs
-    ///                 {
-    ///                     SingleHeader = new Aws.WafV2.Inputs.WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs
-    ///                     {
-    ///                         Name = "user-agent",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class WebAclLoggingConfiguration : Pulumi.CustomResource
     {

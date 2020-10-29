@@ -104,19 +104,6 @@ def get_coip_pool(filters: Optional[Sequence[pulumi.InputType['GetCoipPoolFilter
     an input variable and needs to, for example, determine the CIDR block of that
     COIP Pool.
 
-    ## Example Usage
-
-    The following example returns a specific coip pool ID
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    coip_pool_id = config.require_object("coipPoolId")
-    selected = aws.ec2.get_coip_pool(id=coip_pool_id)
-    ```
-
 
     :param str local_gateway_route_table_id: Local Gateway Route Table Id assigned to desired COIP Pool
     :param str pool_id: The id of the specific COIP Pool to retrieve.

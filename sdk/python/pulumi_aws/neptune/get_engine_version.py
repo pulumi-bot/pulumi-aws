@@ -170,19 +170,6 @@ def get_engine_version(engine: Optional[str] = None,
     """
     Information about a Neptune engine version.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.neptune.get_engine_version(preferred_versions=[
-        "1.0.3.0",
-        "1.0.2.2",
-        "1.0.2.1",
-    ])
-    ```
-
 
     :param str engine: DB engine. (Default: `neptune`)
     :param str parameter_group_family: The name of a specific DB parameter group family. An example parameter group family is `neptune1`.

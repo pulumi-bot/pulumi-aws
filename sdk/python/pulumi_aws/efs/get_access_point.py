@@ -136,15 +136,6 @@ def get_access_point(access_point_id: Optional[str] = None,
     """
     Provides information about an Elastic File System (EFS) Access Point.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.efs.get_access_point(access_point_id="fsap-12345678")
-    ```
-
 
     :param str access_point_id: The ID that identifies the file system.
     :param Mapping[str, str] tags: Key-value mapping of resource tags.

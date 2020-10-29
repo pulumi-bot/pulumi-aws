@@ -11,69 +11,6 @@ import (
 )
 
 // Authorizes a VPC in a peer account to be associated with a local Route53 Hosted Zone.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/providers"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/route53"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newaws(ctx, "alternate", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleVpc, err := ec2.NewVpc(ctx, "exampleVpc", &ec2.VpcArgs{
-// 			CidrBlock:          pulumi.String("10.6.0.0/16"),
-// 			EnableDnsHostnames: pulumi.Bool(true),
-// 			EnableDnsSupport:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleZone, err := route53.NewZone(ctx, "exampleZone", &route53.ZoneArgs{
-// 			Vpcs: route53.ZoneVpcArray{
-// 				&route53.ZoneVpcArgs{
-// 					VpcId: exampleVpc.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		alternateVpc, err := ec2.NewVpc(ctx, "alternateVpc", &ec2.VpcArgs{
-// 			CidrBlock:          pulumi.String("10.7.0.0/16"),
-// 			EnableDnsHostnames: pulumi.Bool(true),
-// 			EnableDnsSupport:   pulumi.Bool(true),
-// 		}, pulumi.Provider("aws.alternate"))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleVpcAssociationAuthorization, err := route53.NewVpcAssociationAuthorization(ctx, "exampleVpcAssociationAuthorization", &route53.VpcAssociationAuthorizationArgs{
-// 			VpcId:  alternateVpc.ID(),
-// 			ZoneId: exampleZone.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = route53.NewZoneAssociation(ctx, "exampleZoneAssociation", &route53.ZoneAssociationArgs{
-// 			VpcId:  exampleVpcAssociationAuthorization.VpcId,
-// 			ZoneId: exampleVpcAssociationAuthorization.ZoneId,
-// 		}, pulumi.Provider("aws.alternate"))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VpcAssociationAuthorization struct {
 	pulumi.CustomResourceState
 

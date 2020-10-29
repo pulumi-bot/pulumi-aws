@@ -31,23 +31,6 @@ class Alias(pulumi.CustomResource):
         For information about Lambda and how to use it, see [What is AWS Lambda?](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
         For information about function aliases, see [CreateAlias](http://docs.aws.amazon.com/lambda/latest/dg/API_CreateAlias.html) and [AliasRoutingConfiguration](https://docs.aws.amazon.com/lambda/latest/dg/API_AliasRoutingConfiguration.html) in the API docs.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_lambda_alias = aws.lambda_.Alias("testLambdaAlias",
-            description="a sample description",
-            function_name=aws_lambda_function["lambda_function_test"]["arn"],
-            function_version="1",
-            routing_config=aws.lambda..AliasRoutingConfigArgs(
-                additional_version_weights={
-                    "2": 0.5,
-                },
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the alias.

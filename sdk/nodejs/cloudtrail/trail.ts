@@ -15,54 +15,7 @@ import * as utilities from "../utilities";
  * > *NOTE:* For an organization trail, this resource must be in the master account of the organization.
  *
  * ## Example Usage
- * ### Basic
  *
- * Enable CloudTrail to capture all compatible management events in region.
- * For capturing events from services like IAM, `includeGlobalServiceEvents` must be enabled.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const current = aws.getCallerIdentity({});
- * const foo = new aws.s3.Bucket("foo", {
- *     forceDestroy: true,
- *     policy: current.then(current => `{
- *     "Version": "2012-10-17",
- *     "Statement": [
- *         {
- *             "Sid": "AWSCloudTrailAclCheck",
- *             "Effect": "Allow",
- *             "Principal": {
- *               "Service": "cloudtrail.amazonaws.com"
- *             },
- *             "Action": "s3:GetBucketAcl",
- *             "Resource": "arn:aws:s3:::tf-test-trail"
- *         },
- *         {
- *             "Sid": "AWSCloudTrailWrite",
- *             "Effect": "Allow",
- *             "Principal": {
- *               "Service": "cloudtrail.amazonaws.com"
- *             },
- *             "Action": "s3:PutObject",
- *             "Resource": "arn:aws:s3:::tf-test-trail/prefix/AWSLogs/${current.accountId}/*",
- *             "Condition": {
- *                 "StringEquals": {
- *                     "s3:x-amz-acl": "bucket-owner-full-control"
- *                 }
- *             }
- *         }
- *     ]
- * }
- * `),
- * });
- * const foobar = new aws.cloudtrail.Trail("foobar", {
- *     s3BucketName: foo.id,
- *     s3KeyPrefix: "prefix",
- *     includeGlobalServiceEvents: false,
- * });
- * ```
  * ### Data Event Logging
  *
  * CloudTrail can log [Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) for certain services such as S3 bucket objects and Lambda function invocations. Additional information about data event configuration can be found in the [CloudTrail API DataResource documentation](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_DataResource.html).

@@ -11,31 +11,6 @@ namespace Pulumi.Aws.DataSync
 {
     /// <summary>
     /// Manages an AWS DataSync FSx Windows Location.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DataSync.LocationFsxWindows("example", new Aws.DataSync.LocationFsxWindowsArgs
-    ///         {
-    ///             FsxFilesystemArn = aws_fsx_windows_file_system.Example.Arn,
-    ///             User = "SomeUser",
-    ///             Password = "SuperSecretPassw0rd",
-    ///             SecurityGroupArns = 
-    ///             {
-    ///                 aws_security_group.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class LocationFsxWindows : Pulumi.CustomResource
     {

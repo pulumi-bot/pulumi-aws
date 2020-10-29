@@ -6,16 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IAM SAML provider.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * from "fs";
- *
- * const _default = new aws.iam.SamlProvider("default", {samlMetadataDocument: fs.readFileSync("saml-metadata.xml")});
- * ```
  */
 export class SamlProvider extends pulumi.CustomResource {
     /**

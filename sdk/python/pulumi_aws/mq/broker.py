@@ -53,28 +53,6 @@ class Broker(pulumi.CustomResource):
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.mq.Broker("example",
-            broker_name="example",
-            configuration=aws.mq.BrokerConfigurationArgs(
-                id=aws_mq_configuration["test"]["id"],
-                revision=aws_mq_configuration["test"]["latest_revision"],
-            ),
-            engine_type="ActiveMQ",
-            engine_version="5.15.0",
-            host_instance_type="mq.t2.micro",
-            security_groups=[aws_security_group["test"]["id"]],
-            users=[aws.mq.BrokerUserArgs(
-                username="ExampleUser",
-                password="MindTheGap",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: Specifies whether any broker modifications

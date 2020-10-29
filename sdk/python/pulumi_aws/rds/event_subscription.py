@@ -29,40 +29,6 @@ class EventSubscription(pulumi.CustomResource):
         """
         Provides a DB event subscription resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_instance = aws.rds.Instance("defaultInstance",
-            allocated_storage=10,
-            engine="mysql",
-            engine_version="5.6.17",
-            instance_class="db.t2.micro",
-            name="mydb",
-            username="foo",
-            password="bar",
-            db_subnet_group_name="my_database_subnet_group",
-            parameter_group_name="default.mysql5.6")
-        default_topic = aws.sns.Topic("defaultTopic")
-        default_event_subscription = aws.rds.EventSubscription("defaultEventSubscription",
-            sns_topic=default_topic.arn,
-            source_type="db-instance",
-            source_ids=[default_instance.id],
-            event_categories=[
-                "availability",
-                "deletion",
-                "failover",
-                "failure",
-                "low storage",
-                "maintenance",
-                "notification",
-                "read replica",
-                "recovery",
-                "restoration",
-            ])
-        ```
         ## Attributes
 
         The following additional atttributes are provided:

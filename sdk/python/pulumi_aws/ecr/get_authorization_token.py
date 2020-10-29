@@ -116,15 +116,6 @@ def get_authorization_token(registry_id: Optional[str] = None,
     """
     The ECR Authorization Token data source allows the authorization token, proxy endpoint, token expiration date, user name and password to be retrieved for an ECR repository.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    token = aws.ecr.get_authorization_token()
-    ```
-
 
     :param str registry_id: AWS account ID of the ECR Repository. If not specified the default account is assumed.
     """

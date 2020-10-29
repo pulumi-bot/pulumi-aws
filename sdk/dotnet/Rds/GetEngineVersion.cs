@@ -13,35 +13,6 @@ namespace Pulumi.Aws.Rds
     {
         /// <summary>
         /// Information about an RDS engine version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Rds.GetEngineVersion.InvokeAsync(new Aws.Rds.GetEngineVersionArgs
-        ///         {
-        ///             Engine = "mysql",
-        ///             PreferredVersions = 
-        ///             {
-        ///                 "5.7.42",
-        ///                 "5.7.19",
-        ///                 "5.7.17",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineVersionResult> InvokeAsync(GetEngineVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionResult>("aws:rds/getEngineVersion:getEngineVersion", args ?? new GetEngineVersionArgs(), options.WithVersion());

@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Rds
     {
         /// <summary>
         /// Use this data source to get information about an RDS instance
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var database = Output.Create(Aws.Rds.GetInstance.InvokeAsync(new Aws.Rds.GetInstanceArgs
-        ///         {
-        ///             DbInstanceIdentifier = "my-test-database",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("aws:rds/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());

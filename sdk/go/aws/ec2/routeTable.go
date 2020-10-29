@@ -30,42 +30,6 @@ import (
 // this resource will delete any propagating gateways not explicitly listed in
 // `propagatingVgws`. Omit this argument when defining route propagation using
 // the separate resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewRouteTable(ctx, "routeTable", &ec2.RouteTableArgs{
-// 			VpcId: pulumi.Any(aws_vpc.Default.Id),
-// 			Routes: ec2.RouteTableRouteArray{
-// 				&ec2.RouteTableRouteArgs{
-// 					CidrBlock: pulumi.String("10.0.1.0/24"),
-// 					GatewayId: pulumi.Any(aws_internet_gateway.Main.Id),
-// 				},
-// 				&ec2.RouteTableRouteArgs{
-// 					Ipv6CidrBlock:       pulumi.String("::/0"),
-// 					EgressOnlyGatewayId: pulumi.Any(aws_egress_only_internet_gateway.Foo.Id),
-// 				},
-// 			},
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("main"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RouteTable struct {
 	pulumi.CustomResourceState
 

@@ -40,24 +40,6 @@ class VirtualRouter(pulumi.CustomResource):
 
         The state associated with existing resources will automatically be migrated.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        serviceb = aws.appmesh.VirtualRouter("serviceb",
-            mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualRouterSpecArgs(
-                listener=aws.appmesh.VirtualRouterSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualRouterSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the virtual router.

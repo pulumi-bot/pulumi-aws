@@ -23,17 +23,6 @@ class ResolverQueryLogConfigAssociation(pulumi.CustomResource):
         """
         Provides a Route 53 Resolver query logging configuration association resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.route53.ResolverQueryLogConfigAssociation("example",
-            resolver_query_log_config_id=aws_route53_resolver_query_log_config["example"]["id"],
-            resource_id=aws_vpc["example"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resolver_query_log_config_id: The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.

@@ -11,61 +11,6 @@ namespace Pulumi.Aws.CodeBuild
 {
     /// <summary>
     /// Provides a CodeBuild Report Groups Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleKey = new Aws.Kms.Key("exampleKey", new Aws.Kms.KeyArgs
-    ///         {
-    ///             Description = "my test kms key",
-    ///             DeletionWindowInDays = 7,
-    ///             Policy = @"{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Id"": ""kms-tf-1"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Sid"": ""Enable IAM User Permissions"",
-    ///       ""Effect"": ""Allow"",
-    ///       ""Principal"": {
-    ///         ""AWS"": ""*""
-    ///       },
-    ///       ""Action"": ""kms:*"",
-    ///       ""Resource"": ""*""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///         });
-    ///         var exampleBucket = new Aws.S3.Bucket("exampleBucket", new Aws.S3.BucketArgs
-    ///         {
-    ///         });
-    ///         var exampleReportGroup = new Aws.CodeBuild.ReportGroup("exampleReportGroup", new Aws.CodeBuild.ReportGroupArgs
-    ///         {
-    ///             Type = "TEST",
-    ///             ExportConfig = new Aws.CodeBuild.Inputs.ReportGroupExportConfigArgs
-    ///             {
-    ///                 Type = "S3",
-    ///                 S3Destination = new Aws.CodeBuild.Inputs.ReportGroupExportConfigS3DestinationArgs
-    ///                 {
-    ///                     Bucket = exampleBucket.Id,
-    ///                     EncryptionDisabled = false,
-    ///                     EncryptionKey = exampleKey.Arn,
-    ///                     Packaging = "NONE",
-    ///                     Path = "/some",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ReportGroup : Pulumi.CustomResource
     {

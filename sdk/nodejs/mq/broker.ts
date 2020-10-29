@@ -23,29 +23,6 @@ import * as utilities from "../utilities";
  * brief downtime as the broker reboots.
  *
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.mq.Broker("example", {
- *     brokerName: "example",
- *     configuration: {
- *         id: aws_mq_configuration.test.id,
- *         revision: aws_mq_configuration.test.latest_revision,
- *     },
- *     engineType: "ActiveMQ",
- *     engineVersion: "5.15.0",
- *     hostInstanceType: "mq.t2.micro",
- *     securityGroups: [aws_security_group.test.id],
- *     users: [{
- *         username: "ExampleUser",
- *         password: "MindTheGap",
- *     }],
- * });
- * ```
  */
 export class Broker extends pulumi.CustomResource {
     /**

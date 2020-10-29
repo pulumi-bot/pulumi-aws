@@ -11,21 +11,6 @@ import {ARN} from "..";
 
 /**
  * Manages an S3 Location within AWS DataSync.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.datasync.S3Location("example", {
- *     s3BucketArn: aws_s3_bucket.example.arn,
- *     subdirectory: "/example/prefix",
- *     s3Config: {
- *         bucketAccessRoleArn: aws_iam_role.example.arn,
- *     },
- * });
- * ```
  */
 export class S3Location extends pulumi.CustomResource {
     /**

@@ -98,17 +98,6 @@ def get_repository_endpoint(domain: Optional[str] = None,
     """
     The CodeArtifact Repository Endpoint data source returns the endpoint of a repository for a specific package format.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.codeartifact.get_repository_endpoint(domain=aws_codeartifact_domain["test"]["domain"],
-        repository=aws_codeartifact_repository["test"]["repository"],
-        format="npm")
-    ```
-
 
     :param str domain: The name of the domain that contains the repository.
     :param str domain_owner: The account number of the AWS account that owns the domain.

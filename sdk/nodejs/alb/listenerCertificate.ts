@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This resource is for additional certificates and does not replace the default certificate on the listener.
  *
  * > **Note:** `aws.alb.ListenerCertificate` is known as `aws.lb.ListenerCertificate`. The functionality is identical.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleCertificate = new aws.acm.Certificate("exampleCertificate", {});
- * // ...
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEndLoadBalancer", {});
- * // ...
- * const frontEndListener = new aws.lb.Listener("frontEndListener", {});
- * // ...
- * const exampleListenerCertificate = new aws.lb.ListenerCertificate("exampleListenerCertificate", {
- *     listenerArn: frontEndListener.arn,
- *     certificateArn: exampleCertificate.arn,
- * });
- * ```
  */
 export class ListenerCertificate extends pulumi.CustomResource {
     /**

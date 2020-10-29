@@ -45,32 +45,6 @@ class UserPool(pulumi.CustomResource):
         Provides a Cognito User Pool resource.
 
         ## Example Usage
-        ### Basic configuration
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        pool = aws.cognito.UserPool("pool")
-        ```
-        ### Enabling SMS and Software Token Multi-Factor Authentication
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configuration ...
-        example = aws.cognito.UserPool("example",
-            mfa_configuration="ON",
-            sms_authentication_message="Your code is {####}",
-            sms_configuration=aws.cognito.UserPoolSmsConfigurationArgs(
-                external_id="example",
-                sns_caller_arn=aws_iam_role["example"]["arn"],
-            ),
-            software_token_mfa_configuration=aws.cognito.UserPoolSoftwareTokenMfaConfigurationArgs(
-                enabled=True,
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

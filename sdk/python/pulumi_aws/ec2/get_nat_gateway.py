@@ -144,29 +144,6 @@ def get_nat_gateway(filters: Optional[Sequence[pulumi.InputType['GetNatGatewayFi
     """
     Provides details about a specific Nat Gateway.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    subnet_id = config.require_object("subnetId")
-    default = aws.ec2.get_nat_gateway(subnet_id=aws_subnet["public"]["id"])
-    ```
-
-    Usage with tags:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    default = aws.ec2.get_nat_gateway(subnet_id=aws_subnet["public"]["id"],
-        tags={
-            "Name": "gw NAT",
-        })
-    ```
-
 
     :param Sequence[pulumi.InputType['GetNatGatewayFilterArgs']] filters: Custom filter block as described below.
     :param str id: The id of the specific Nat Gateway to retrieve.

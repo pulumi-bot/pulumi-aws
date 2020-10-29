@@ -90,17 +90,6 @@ def get_application(name: Optional[str] = None,
     """
     Retrieve information about an Elastic Beanstalk Application.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.elasticbeanstalk.get_application(name="example")
-    pulumi.export("arn", example.arn)
-    pulumi.export("description", example.description)
-    ```
-
 
     :param str name: The name of the application
     """

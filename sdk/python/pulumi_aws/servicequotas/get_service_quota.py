@@ -148,18 +148,6 @@ def get_service_quota(quota_code: Optional[str] = None,
     """
     Retrieve information about a Service Quota.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    by_quota_code = aws.servicequotas.get_service_quota(quota_code="L-F678F1CE",
-        service_code="vpc")
-    by_quota_name = aws.servicequotas.get_service_quota(quota_name="VPCs per Region",
-        service_code="vpc")
-    ```
-
 
     :param str quota_code: Quota code within the service. When configured, the data source directly looks up the service quota. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
     :param str quota_name: Quota name within the service. When configured, the data source searches through all service quotas to find the matching quota name. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).

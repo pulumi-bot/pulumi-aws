@@ -13,30 +13,6 @@ namespace Pulumi.Aws.Lex
     {
         /// <summary>
         /// Provides details about a specific Amazon Lex Slot Type.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var flowerTypes = Output.Create(Aws.Lex.GetSlotType.InvokeAsync(new Aws.Lex.GetSlotTypeArgs
-        ///         {
-        ///             Name = "FlowerTypes",
-        ///             Version = "1",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSlotTypeResult> InvokeAsync(GetSlotTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSlotTypeResult>("aws:lex/getSlotType:getSlotType", args ?? new GetSlotTypeArgs(), options.WithVersion());

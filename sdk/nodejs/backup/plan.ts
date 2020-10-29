@@ -9,27 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS Backup plan resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.backup.Plan("example", {
- *     rules: [{
- *         ruleName: "tf_example_backup_rule",
- *         targetVaultName: aws_backup_vault.test.name,
- *         schedule: "cron(0 12 * * ? *)",
- *     }],
- *     advancedBackupSettings: [{
- *         backupOptions: {
- *             WindowsVSS: "enabled",
- *         },
- *         resourceType: "EC2",
- *     }],
- * });
- * ```
  */
 export class Plan extends pulumi.CustomResource {
     /**

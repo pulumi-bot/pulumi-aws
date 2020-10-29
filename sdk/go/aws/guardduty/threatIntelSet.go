@@ -13,60 +13,6 @@ import (
 // Provides a resource to manage a GuardDuty ThreatIntelSet.
 //
 // > **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage ThreatIntelSets. ThreatIntelSets that are uploaded by the primary account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-threat-intel-set.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/guardduty"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := guardduty.NewDetector(ctx, "primary", &guardduty.DetectorArgs{
-// 			Enable: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
-// 			Acl: pulumi.String("private"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myThreatIntelSetBucketObject, err := s3.NewBucketObject(ctx, "myThreatIntelSetBucketObject", &s3.BucketObjectArgs{
-// 			Acl:     pulumi.String("public-read"),
-// 			Content: pulumi.String("10.0.0.0/8\n"),
-// 			Bucket:  bucket.ID(),
-// 			Key:     pulumi.String("MyThreatIntelSet"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = guardduty.NewThreatIntelSet(ctx, "myThreatIntelSetThreatIntelSet", &guardduty.ThreatIntelSetArgs{
-// 			Activate:   pulumi.Bool(true),
-// 			DetectorId: primary.ID(),
-// 			Format:     pulumi.String("TXT"),
-// 			Location: pulumi.All(myThreatIntelSetBucketObject.Bucket, myThreatIntelSetBucketObject.Key).ApplyT(func(_args []interface{}) (string, error) {
-// 				bucket := _args[0].(string)
-// 				key := _args[1].(string)
-// 				return fmt.Sprintf("%v%v%v%v", "https://s3.amazonaws.com/", bucket, "/", key), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ThreatIntelSet struct {
 	pulumi.CustomResourceState
 

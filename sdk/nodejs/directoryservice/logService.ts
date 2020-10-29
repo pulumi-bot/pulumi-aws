@@ -6,37 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleLogGroup = new aws.cloudwatch.LogGroup("exampleLogGroup", {retentionInDays: 14});
- * const ad-log-policyPolicyDocument = exampleLogGroup.arn.apply(arn => aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: [
- *             "logs:CreateLogStream",
- *             "logs:PutLogEvents",
- *         ],
- *         principals: [{
- *             identifiers: ["ds.amazonaws.com"],
- *             type: "Service",
- *         }],
- *         resources: [`${arn}:*`],
- *         effect: "Allow",
- *     }],
- * }));
- * const ad_log_policyLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("ad-log-policyLogResourcePolicy", {
- *     policyDocument: ad_log_policyPolicyDocument.json,
- *     policyName: "ad-log-policy",
- * });
- * const exampleLogService = new aws.directoryservice.LogService("exampleLogService", {
- *     directoryId: aws_directory_service_directory.example.id,
- *     logGroupName: exampleLogGroup.name,
- * });
- * ```
  */
 export class LogService extends pulumi.CustomResource {
     /**

@@ -28,22 +28,6 @@ class Accelerator(pulumi.CustomResource):
         """
         Creates a Global Accelerator accelerator.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.globalaccelerator.Accelerator("example",
-            attributes=aws.globalaccelerator.AcceleratorAttributesArgs(
-                flow_logs_enabled=True,
-                flow_logs_s3_bucket="example-bucket",
-                flow_logs_s3_prefix="flow-logs/",
-            ),
-            enabled=True,
-            ip_address_type="IPV4")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AcceleratorAttributesArgs']] attributes: The attributes of the accelerator. Fields documented below.

@@ -23,21 +23,6 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
         """
         Attaches Principal to AWS IoT Thing.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.iot.Thing("example")
-        cert = aws.iot.Certificate("cert",
-            csr=(lambda path: open(path).read())("csr.pem"),
-            active=True)
-        att = aws.iot.ThingPrincipalAttachment("att",
-            principal=cert.arn,
-            thing=example.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] principal: The AWS IoT Certificate ARN or Amazon Cognito Identity ID.

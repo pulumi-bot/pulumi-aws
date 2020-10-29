@@ -29,66 +29,6 @@ class WebAcl(pulumi.CustomResource):
         """
         Provides a WAF Web ACL Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[aws.waf.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
-        wafrule = aws.waf.Rule("wafrule",
-            metric_name="tfWAFRule",
-            predicates=[aws.waf.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )],
-            opts=ResourceOptions(depends_on=[ipset]))
-        waf_acl = aws.waf.WebAcl("wafAcl",
-            metric_name="tfWebACL",
-            default_action=aws.waf.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.waf.WebAclRuleArgs(
-                action=aws.waf.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=wafrule.id,
-                type="REGULAR",
-            )],
-            opts=ResourceOptions(depends_on=[
-                    ipset,
-                    wafrule,
-                ]))
-        ```
-        ### Logging
-
-        > *NOTE:* The Kinesis Firehose Delivery Stream name must begin with `aws-waf-logs-` and be located in `us-east-1` region. See the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) for more information about enabling WAF logging.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.waf.WebAcl("example", logging_configuration=aws.waf.WebAclLoggingConfigurationArgs(
-            log_destination=aws_kinesis_firehose_delivery_stream["example"]["arn"],
-            redacted_fields={
-                "fieldToMatches": [
-                    {
-                        "type": "URI",
-                    },
-                    {
-                        "data": "referer",
-                        "type": "HEADER",
-                    },
-                ],
-            },
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['WebAclDefaultActionArgs']] default_action: Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.

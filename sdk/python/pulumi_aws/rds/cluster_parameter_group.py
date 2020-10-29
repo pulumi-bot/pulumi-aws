@@ -32,27 +32,6 @@ class ClusterParameterGroup(pulumi.CustomResource):
         * [Aurora MySQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Reference.html)
         * [Aurora PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraPostgreSQL.Reference.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.rds.ClusterParameterGroup("default",
-            description="RDS default cluster parameter group",
-            family="aurora5.6",
-            parameters=[
-                aws.rds.ClusterParameterGroupParameterArgs(
-                    name="character_set_server",
-                    value="utf8",
-                ),
-                aws.rds.ClusterParameterGroupParameterArgs(
-                    name="character_set_client",
-                    value="utf8",
-                ),
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".

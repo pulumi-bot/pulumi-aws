@@ -113,15 +113,6 @@ def get_image(image_id: Optional[str] = None,
     """
     Use this data source to get information about a Workspaces image.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.workspaces.get_image(image_id="wsi-ten5h0y19")
-    ```
-
 
     :param str image_id: The ID of the image.
     """

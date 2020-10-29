@@ -24,24 +24,6 @@ class Certificate(pulumi.CustomResource):
         Creates and manages an AWS IoT certificate.
 
         ## Example Usage
-        ### With CSR
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cert = aws.iot.Certificate("cert",
-            csr=(lambda path: open(path).read())("/my/csr.pem"),
-            active=True)
-        ```
-        ### Without CSR
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cert = aws.iot.Certificate("cert", active=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -92,26 +92,6 @@ def get_vpn_attachment(filters: Optional[Sequence[pulumi.InputType['GetVpnAttach
     Get information on an EC2 Transit Gateway VPN Attachment.
 
     ## Example Usage
-    ### By Transit Gateway and VPN Connection Identifiers
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2transitgateway.get_vpn_attachment(transit_gateway_id=aws_ec2_transit_gateway["example"]["id"],
-        vpn_connection_id=aws_vpn_connection["example"]["id"])
-    ```
-    ### Filter
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.ec2transitgateway.get_vpn_attachment(filters=[aws.ec2transitgateway.GetVpnAttachmentFilterArgs(
-        name="resource-id",
-        values=["some-resource"],
-    )])
-    ```
 
 
     :param Sequence[pulumi.InputType['GetVpnAttachmentFilterArgs']] filters: Configuration block(s) for filtering. Detailed below.

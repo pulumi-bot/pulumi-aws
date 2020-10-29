@@ -80,15 +80,6 @@ def get_access_points(file_system_id: Optional[str] = None,
     """
     Provides information about multiple Elastic File System (EFS) Access Points.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.efs.get_access_points(file_system_id="fs-12345678")
-    ```
-
 
     :param str file_system_id: EFS File System identifier.
     """

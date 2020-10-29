@@ -18,29 +18,6 @@ namespace Pulumi.Aws
         /// discover the name of the region configured within the provider. The latter
         /// can be useful in a child module which is inheriting an AWS provider
         /// configuration from its parent module.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example shows how the resource might be used to obtain
-        /// the name of the AWS region configured on the provider.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Aws.GetRegion.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("aws:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());

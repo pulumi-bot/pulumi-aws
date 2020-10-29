@@ -26,19 +26,6 @@ class SnapshotCopyGrant(pulumi.CustomResource):
 
         Note that the grant must exist in the destination region, and not in the region of the cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_snapshot_copy_grant = aws.redshift.SnapshotCopyGrant("testSnapshotCopyGrant", snapshot_copy_grant_name="my-grant")
-        test_cluster = aws.redshift.Cluster("testCluster", snapshot_copy=aws.redshift.ClusterSnapshotCopyArgs(
-            destination_region="us-east-2",
-            grant_name=test_snapshot_copy_grant.snapshot_copy_grant_name,
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_id: The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.

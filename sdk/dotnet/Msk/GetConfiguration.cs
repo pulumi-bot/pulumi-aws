@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Msk
     {
         /// <summary>
         /// Get information on an Amazon MSK Configuration.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Msk.GetConfiguration.InvokeAsync(new Aws.Msk.GetConfigurationArgs
-        ///         {
-        ///             Name = "example",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigurationResult> InvokeAsync(GetConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationResult>("aws:msk/getConfiguration:getConfiguration", args ?? new GetConfigurationArgs(), options.WithVersion());

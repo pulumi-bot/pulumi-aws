@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Route 53 Resolver query logging configuration association resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.route53.ResolverQueryLogConfigAssociation("example", {
- *     resolverQueryLogConfigId: aws_route53_resolver_query_log_config.example.id,
- *     resourceId: aws_vpc.example.id,
- * });
- * ```
  */
 export class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
     /**

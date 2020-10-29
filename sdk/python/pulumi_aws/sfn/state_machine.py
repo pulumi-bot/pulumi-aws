@@ -25,29 +25,6 @@ class StateMachine(pulumi.CustomResource):
         """
         Provides a Step Function State Machine resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ...
-        sfn_state_machine = aws.sfn.StateMachine("sfnStateMachine",
-            role_arn=aws_iam_role["iam_for_sfn"]["arn"],
-            definition=f\"\"\"{{
-          "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
-          "StartAt": "HelloWorld",
-          "States": {{
-            "HelloWorld": {{
-              "Type": "Task",
-              "Resource": "{aws_lambda_function["lambda"]["arn"]}",
-              "End": true
-            }}
-          }}
-        }}
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The Amazon States Language definition of the state machine.

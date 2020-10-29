@@ -23,18 +23,6 @@ class PatchGroup(pulumi.CustomResource):
         """
         Provides an SSM Patch Group resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        production = aws.ssm.PatchBaseline("production", approved_patches=["KB123456"])
-        patchgroup = aws.ssm.PatchGroup("patchgroup",
-            baseline_id=production.id,
-            patch_group="patch-group-name")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] baseline_id: The ID of the patch baseline to register the patch group with.

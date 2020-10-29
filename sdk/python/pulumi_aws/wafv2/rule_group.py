@@ -31,41 +31,6 @@ class RuleGroup(pulumi.CustomResource):
         Creates a WAFv2 Rule Group resource.
 
         ## Example Usage
-        ### Simple
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.RuleGroup("example",
-            capacity=2,
-            rules=[aws.wafv2.RuleGroupRuleArgs(
-                action=aws.wafv2.RuleGroupRuleActionArgs(
-                    allow=aws.wafv2.RuleGroupRuleActionAllowArgs(),
-                ),
-                name="rule-1",
-                priority=1,
-                statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                    geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                        country_codes=[
-                            "US",
-                            "NL",
-                        ],
-                    ),
-                ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
-            )],
-            scope="REGIONAL",
-            visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

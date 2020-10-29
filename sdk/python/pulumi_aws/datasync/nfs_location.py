@@ -29,20 +29,6 @@ class NfsLocation(pulumi.CustomResource):
 
         > **NOTE:** The DataSync Agents must be available before creating this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.datasync.NfsLocation("example",
-            server_hostname="nfs.example.com",
-            subdirectory="/exported/path",
-            on_prem_config=aws.datasync.NfsLocationOnPremConfigArgs(
-                agent_arns=[aws_datasync_agent["example"]["arn"]],
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NfsLocationOnPremConfigArgs']] on_prem_config: Configuration block containing information for connecting to the NFS File System.

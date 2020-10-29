@@ -13,35 +13,6 @@ namespace Pulumi.Aws.Neptune
     {
         /// <summary>
         /// Information about Neptune orderable DB instances.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Neptune.GetOrderableDbInstance.InvokeAsync(new Aws.Neptune.GetOrderableDbInstanceArgs
-        ///         {
-        ///             EngineVersion = "1.0.3.0",
-        ///             PreferredInstanceClasses = 
-        ///             {
-        ///                 "db.r5.large",
-        ///                 "db.r4.large",
-        ///                 "db.t3.medium",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrderableDbInstanceResult> InvokeAsync(GetOrderableDbInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrderableDbInstanceResult>("aws:neptune/getOrderableDbInstance:getOrderableDbInstance", args ?? new GetOrderableDbInstanceArgs(), options.WithVersion());

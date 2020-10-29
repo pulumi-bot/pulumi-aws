@@ -28,43 +28,6 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         Provides a S3 bucket [analytics configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html) resource.
 
         ## Example Usage
-        ### Add analytics configuration for entire S3 bucket and export results to a second S3 bucket
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.s3.Bucket("example")
-        analytics = aws.s3.Bucket("analytics")
-        example_entire_bucket = aws.s3.AnalyticsConfiguration("example-entire-bucket",
-            bucket=example.bucket,
-            storage_class_analysis=aws.s3.AnalyticsConfigurationStorageClassAnalysisArgs(
-                data_export=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportArgs(
-                    destination=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs(
-                        s3_bucket_destination=aws.s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs(
-                            bucket_arn=analytics.arn,
-                        ),
-                    ),
-                ),
-            ))
-        ```
-        ### Add analytics configuration with S3 bucket object filter
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.s3.Bucket("example")
-        example_filtered = aws.s3.AnalyticsConfiguration("example-filtered",
-            bucket=example.bucket,
-            filter=aws.s3.AnalyticsConfigurationFilterArgs(
-                prefix="documents/",
-                tags={
-                    "priority": "high",
-                    "class": "blue",
-                },
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

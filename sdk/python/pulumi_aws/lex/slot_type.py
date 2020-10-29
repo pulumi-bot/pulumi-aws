@@ -29,35 +29,6 @@ class SlotType(pulumi.CustomResource):
         Provides an Amazon Lex Slot Type resource. For more information see
         [Amazon Lex: How It Works](https://docs.aws.amazon.com/lex/latest/dg/how-it-works.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        flower_types = aws.lex.SlotType("flowerTypes",
-            create_version=True,
-            description="Types of flowers to order",
-            enumeration_values=[
-                aws.lex.SlotTypeEnumerationValueArgs(
-                    synonyms=[
-                        "Lirium",
-                        "Martagon",
-                    ],
-                    value="lilies",
-                ),
-                aws.lex.SlotTypeEnumerationValueArgs(
-                    synonyms=[
-                        "Eduardoregelia",
-                        "Podonix",
-                    ],
-                    value="tulips",
-                ),
-            ],
-            name="FlowerTypes",
-            value_selection_strategy="ORIGINAL_VALUE")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_version: Determines if a new slot type version is created when the initial resource is created and on each

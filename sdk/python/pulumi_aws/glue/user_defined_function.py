@@ -30,25 +30,6 @@ class UserDefinedFunction(pulumi.CustomResource):
         """
         Provides a Glue User Defined Function Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_catalog_database = aws.glue.CatalogDatabase("exampleCatalogDatabase", name="my_database")
-        example_user_defined_function = aws.glue.UserDefinedFunction("exampleUserDefinedFunction",
-            catalog_id=example_catalog_database.catalog_id,
-            database_name=example_catalog_database.name,
-            class_name="class",
-            owner_name="owner",
-            owner_type="GROUP",
-            resource_uris=[aws.glue.UserDefinedFunctionResourceUriArgs(
-                resource_type="ARCHIVE",
-                uri="uri",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_id: ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.

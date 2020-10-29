@@ -13,60 +13,6 @@ namespace Pulumi.Aws.WafV2
     /// Creates a WAFv2 Rule Group resource.
     /// 
     /// ## Example Usage
-    /// ### Simple
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.WafV2.RuleGroup("example", new Aws.WafV2.RuleGroupArgs
-    ///         {
-    ///             Capacity = 2,
-    ///             Rules = 
-    ///             {
-    ///                 new Aws.WafV2.Inputs.RuleGroupRuleArgs
-    ///                 {
-    ///                     Action = new Aws.WafV2.Inputs.RuleGroupRuleActionArgs
-    ///                     {
-    ///                         Allow = ,
-    ///                     },
-    ///                     Name = "rule-1",
-    ///                     Priority = 1,
-    ///                     Statement = new Aws.WafV2.Inputs.RuleGroupRuleStatementArgs
-    ///                     {
-    ///                         GeoMatchStatement = new Aws.WafV2.Inputs.RuleGroupRuleStatementGeoMatchStatementArgs
-    ///                         {
-    ///                             CountryCodes = 
-    ///                             {
-    ///                                 "US",
-    ///                                 "NL",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     VisibilityConfig = new Aws.WafV2.Inputs.RuleGroupRuleVisibilityConfigArgs
-    ///                     {
-    ///                         CloudwatchMetricsEnabled = false,
-    ///                         MetricName = "friendly-rule-metric-name",
-    ///                         SampledRequestsEnabled = false,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Scope = "REGIONAL",
-    ///             VisibilityConfig = new Aws.WafV2.Inputs.RuleGroupVisibilityConfigArgs
-    ///             {
-    ///                 CloudwatchMetricsEnabled = false,
-    ///                 MetricName = "friendly-metric-name",
-    ///                 SampledRequestsEnabled = false,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RuleGroup : Pulumi.CustomResource
     {

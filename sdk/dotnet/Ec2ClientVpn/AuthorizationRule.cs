@@ -12,27 +12,6 @@ namespace Pulumi.Aws.Ec2ClientVpn
     /// <summary>
     /// Provides authorization rules for AWS Client VPN endpoints. For more information on usage, please see the
     /// [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2ClientVpn.AuthorizationRule("example", new Aws.Ec2ClientVpn.AuthorizationRuleArgs
-    ///         {
-    ///             ClientVpnEndpointId = aws_ec2_client_vpn_endpoint.Example.Id,
-    ///             TargetNetworkCidr = aws_subnet.Example.Cidr_block,
-    ///             AuthorizeAllGroups = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class AuthorizationRule : Pulumi.CustomResource
     {

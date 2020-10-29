@@ -67,19 +67,6 @@ class Instance(pulumi.CustomResource):
         """
         Provides an OpsWorks instance resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_instance = aws.opsworks.Instance("my-instance",
-            stack_id=aws_opsworks_stack["main"]["id"],
-            layer_ids=[aws_opsworks_custom_layer["my-layer"]["id"]],
-            instance_type="t2.micro",
-            os="Amazon Linux 2015.09",
-            state="stopped")
-        ```
         ## Block devices
 
         Each of the `*_block_device` attributes controls a portion of the AWS

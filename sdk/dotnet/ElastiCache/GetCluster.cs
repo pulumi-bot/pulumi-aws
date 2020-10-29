@@ -13,29 +13,6 @@ namespace Pulumi.Aws.ElastiCache
     {
         /// <summary>
         /// Use this data source to get information about an Elasticache Cluster
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myCluster = Output.Create(Aws.ElastiCache.GetCluster.InvokeAsync(new Aws.ElastiCache.GetClusterArgs
-        ///         {
-        ///             ClusterId = "my-cluster-id",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:elasticache/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());

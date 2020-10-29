@@ -13,59 +13,6 @@ namespace Pulumi.Aws.Glacier
     /// Provides a Glacier Vault Resource. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html) for a full explanation of the Glacier Vault functionality
     /// 
     /// &gt; **NOTE:** When removing a Glacier Vault, the Vault must be empty.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var awsSnsTopic = new Aws.Sns.Topic("awsSnsTopic", new Aws.Sns.TopicArgs
-    ///         {
-    ///         });
-    ///         var myArchive = new Aws.Glacier.Vault("myArchive", new Aws.Glacier.VaultArgs
-    ///         {
-    ///             Notifications = 
-    ///             {
-    ///                 new Aws.Glacier.Inputs.VaultNotificationArgs
-    ///                 {
-    ///                     SnsTopic = awsSnsTopic.Arn,
-    ///                     Events = 
-    ///                     {
-    ///                         "ArchiveRetrievalCompleted",
-    ///                         "InventoryRetrievalCompleted",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             AccessPolicy = @"{
-    ///     ""Version"":""2012-10-17"",
-    ///     ""Statement"":[
-    ///        {
-    ///           ""Sid"": ""add-read-only-perm"",
-    ///           ""Principal"": ""*"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Action"": [
-    ///              ""glacier:InitiateJob"",
-    ///              ""glacier:GetJobOutput""
-    ///           ],
-    ///           ""Resource"": ""arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive""
-    ///        }
-    ///     ]
-    /// }
-    /// ",
-    ///             Tags = 
-    ///             {
-    ///                 { "Test", "MyArchive" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Vault : Pulumi.CustomResource
     {

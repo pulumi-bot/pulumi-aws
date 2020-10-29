@@ -37,26 +37,6 @@ import {PolicyDocument} from "./index";
  *     },
  * });
  * ```
- * ## Example of Using Data Source for Assume Role Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const instance-assume-role-policy = aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             type: "Service",
- *             identifiers: ["ec2.amazonaws.com"],
- *         }],
- *     }],
- * });
- * const instance = new aws.iam.Role("instance", {
- *     path: "/system/",
- *     assumeRolePolicy: instance_assume_role_policy.then(instance_assume_role_policy => instance_assume_role_policy.json),
- * });
- * ```
  */
 export class Role extends pulumi.CustomResource {
     /**

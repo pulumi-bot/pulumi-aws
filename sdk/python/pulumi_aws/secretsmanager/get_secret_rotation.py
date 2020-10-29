@@ -94,14 +94,6 @@ def get_secret_rotation(secret_id: Optional[str] = None,
     Retrieve information about a Secrets Manager secret rotation. To retrieve secret metadata, see the [`secretsmanager.Secret` data source](https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret.html). To retrieve a secret value, see the [`secretsmanager.SecretVersion` data source](https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret_version.html).
 
     ## Example Usage
-    ### Retrieve Secret Rotation Configuration
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.secretsmanager.get_secret_rotation(secret_id=data["aws_secretsmanager_secret"]["example"]["id"])
-    ```
 
 
     :param str secret_id: Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.

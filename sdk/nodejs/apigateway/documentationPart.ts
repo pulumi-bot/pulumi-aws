@@ -9,24 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a settings of an API Gateway Documentation Part.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleRestApi = new aws.apigateway.RestApi("exampleRestApi", {});
- * const exampleDocumentationPart = new aws.apigateway.DocumentationPart("exampleDocumentationPart", {
- *     location: {
- *         type: "METHOD",
- *         method: "GET",
- *         path: "/example",
- *     },
- *     properties: "{\"description\":\"Example description\"}",
- *     restApiId: exampleRestApi.id,
- * });
- * ```
  */
 export class DocumentationPart extends pulumi.CustomResource {
     /**

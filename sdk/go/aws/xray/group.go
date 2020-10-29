@@ -11,30 +11,6 @@ import (
 )
 
 // Creates and manages an AWS XRay Group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/xray"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := xray.NewGroup(ctx, "example", &xray.GroupArgs{
-// 			FilterExpression: pulumi.String("responsetime > 5"),
-// 			GroupName:        pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Group struct {
 	pulumi.CustomResourceState
 

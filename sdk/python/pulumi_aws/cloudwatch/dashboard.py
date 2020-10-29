@@ -23,53 +23,6 @@ class Dashboard(pulumi.CustomResource):
         """
         Provides a CloudWatch Dashboard resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.cloudwatch.Dashboard("main",
-            dashboard_body=\"\"\"{
-          "widgets": [
-            {
-              "type": "metric",
-              "x": 0,
-              "y": 0,
-              "width": 12,
-              "height": 6,
-              "properties": {
-                "metrics": [
-                  [
-                    "AWS/EC2",
-                    "CPUUtilization",
-                    "InstanceId",
-                    "i-012345"
-                  ]
-                ],
-                "period": 300,
-                "stat": "Average",
-                "region": "us-east-1",
-                "title": "EC2 Instance CPU"
-              }
-            },
-            {
-              "type": "text",
-              "x": 0,
-              "y": 7,
-              "width": 3,
-              "height": 3,
-              "properties": {
-                "markdown": "Hello world"
-              }
-            }
-          ]
-        }
-
-        \"\"\",
-            dashboard_name="my-dashboard")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dashboard_body: The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).

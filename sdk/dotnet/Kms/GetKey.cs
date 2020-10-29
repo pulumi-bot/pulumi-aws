@@ -16,41 +16,6 @@ namespace Pulumi.Aws.Kms
         /// the specified KMS Key with flexible key id input.
         /// This can be useful to reference key alias
         /// without having to hard code the ARN as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var byAlias = Output.Create(Aws.Kms.GetKey.InvokeAsync(new Aws.Kms.GetKeyArgs
-        ///         {
-        ///             KeyId = "alias/my-key",
-        ///         }));
-        ///         var byId = Output.Create(Aws.Kms.GetKey.InvokeAsync(new Aws.Kms.GetKeyArgs
-        ///         {
-        ///             KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-        ///         }));
-        ///         var byAliasArn = Output.Create(Aws.Kms.GetKey.InvokeAsync(new Aws.Kms.GetKeyArgs
-        ///         {
-        ///             KeyId = "arn:aws:kms:us-east-1:111122223333:alias/my-key",
-        ///         }));
-        ///         var byKeyArn = Output.Create(Aws.Kms.GetKey.InvokeAsync(new Aws.Kms.GetKeyArgs
-        ///         {
-        ///             KeyId = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:kms/getKey:getKey", args ?? new GetKeyArgs(), options.WithVersion());

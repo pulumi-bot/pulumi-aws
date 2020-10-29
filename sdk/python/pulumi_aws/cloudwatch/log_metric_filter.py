@@ -27,23 +27,6 @@ class LogMetricFilter(pulumi.CustomResource):
         """
         Provides a CloudWatch Log Metric Filter resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        dada = aws.cloudwatch.LogGroup("dada")
-        yada = aws.cloudwatch.LogMetricFilter("yada",
-            pattern="",
-            log_group_name=dada.name,
-            metric_transformation=aws.cloudwatch.LogMetricFilterMetricTransformationArgs(
-                name="EventCount",
-                namespace="YourNamespace",
-                value="1",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] log_group_name: The name of the log group to associate the metric filter with.

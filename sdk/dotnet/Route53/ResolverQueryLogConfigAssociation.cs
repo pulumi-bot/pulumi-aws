@@ -11,26 +11,6 @@ namespace Pulumi.Aws.Route53
 {
     /// <summary>
     /// Provides a Route 53 Resolver query logging configuration association resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Route53.ResolverQueryLogConfigAssociation("example", new Aws.Route53.ResolverQueryLogConfigAssociationArgs
-    ///         {
-    ///             ResolverQueryLogConfigId = aws_route53_resolver_query_log_config.Example.Id,
-    ///             ResourceId = aws_vpc.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ResolverQueryLogConfigAssociation : Pulumi.CustomResource
     {

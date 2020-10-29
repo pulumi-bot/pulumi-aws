@@ -26,32 +26,6 @@ class Route(pulumi.CustomResource):
         Provides additional routes for AWS Client VPN endpoints. For more information on usage, please see the
         [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_endpoint = aws.ec2clientvpn.Endpoint("exampleEndpoint",
-            description="Example Client VPN endpoint",
-            server_certificate_arn=aws_acm_certificate["example"]["arn"],
-            client_cidr_block="10.0.0.0/16",
-            authentication_options=[aws.ec2clientvpn.EndpointAuthenticationOptionArgs(
-                type="certificate-authentication",
-                root_certificate_chain_arn=aws_acm_certificate["example"]["arn"],
-            )],
-            connection_log_options=aws.ec2clientvpn.EndpointConnectionLogOptionsArgs(
-                enabled=False,
-            ))
-        example_network_association = aws.ec2clientvpn.NetworkAssociation("exampleNetworkAssociation",
-            client_vpn_endpoint_id=example_endpoint.id,
-            subnet_id=aws_subnet["example"]["id"])
-        example_route = aws.ec2clientvpn.Route("exampleRoute",
-            client_vpn_endpoint_id=example_endpoint.id,
-            destination_cidr_block="0.0.0.0/0",
-            target_vpc_subnet_id=example_network_association.subnet_id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_vpn_endpoint_id: The ID of the Client VPN endpoint.

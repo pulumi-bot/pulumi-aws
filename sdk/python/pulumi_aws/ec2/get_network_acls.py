@@ -88,45 +88,7 @@ def get_network_acls(filters: Optional[Sequence[pulumi.InputType['GetNetworkAcls
                      vpc_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkAclsResult:
     """
-    ## Example Usage
-
-    The following shows outputing all network ACL ids in a vpc.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example_network_acls = aws.ec2.get_network_acls(vpc_id=var["vpc_id"])
-    pulumi.export("example", example_network_acls.ids)
-    ```
-
-    The following example retrieves a list of all network ACL ids in a VPC with a custom
-    tag of `Tier` set to a value of "Private".
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2.get_network_acls(vpc_id=var["vpc_id"],
-        tags={
-            "Tier": "Private",
-        })
-    ```
-
-    The following example retrieves a network ACL id in a VPC which associated
-    with specific subnet.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ec2.get_network_acls(vpc_id=var["vpc_id"],
-        filters=[aws.ec2.GetNetworkAclsFilterArgs(
-            name="association.subnet-id",
-            values=[aws_subnet["test"]["id"]],
-        )])
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param Sequence[pulumi.InputType['GetNetworkAclsFilterArgs']] filters: Custom filter block as described below.
     :param Mapping[str, str] tags: A map of tags, each pair of which must exactly match

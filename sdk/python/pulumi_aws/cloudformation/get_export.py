@@ -83,19 +83,6 @@ def get_export(name: Optional[str] = None,
 
      > Note: If you are trying to use a value from a Cloudformation Stack in the same deployment please use normal interpolation or Cloudformation Outputs.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    subnet_id = aws.cloudformation.get_export(name="mySubnetIdExportName")
-    web = aws.ec2.Instance("web",
-        ami="ami-abb07bcb",
-        instance_type="t2.micro",
-        subnet_id=subnet_id.value)
-    ```
-
 
     :param str name: The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
     """

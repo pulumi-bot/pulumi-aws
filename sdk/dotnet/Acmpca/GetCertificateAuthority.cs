@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Acmpca
     {
         /// <summary>
         /// Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Acmpca.GetCertificateAuthority.InvokeAsync(new Aws.Acmpca.GetCertificateAuthorityArgs
-        ///         {
-        ///             Arn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateAuthorityResult> InvokeAsync(GetCertificateAuthorityArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityResult>("aws:acmpca/getCertificateAuthority:getCertificateAuthority", args ?? new GetCertificateAuthorityArgs(), options.WithVersion());

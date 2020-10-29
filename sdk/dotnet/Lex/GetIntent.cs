@@ -13,30 +13,6 @@ namespace Pulumi.Aws.Lex
     {
         /// <summary>
         /// Provides details about a specific Amazon Lex Intent.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var orderFlowers = Output.Create(Aws.Lex.GetIntent.InvokeAsync(new Aws.Lex.GetIntentArgs
-        ///         {
-        ///             Name = "OrderFlowers",
-        ///             Version = "$LATEST",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIntentResult> InvokeAsync(GetIntentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIntentResult>("aws:lex/getIntent:getIntent", args ?? new GetIntentArgs(), options.WithVersion());

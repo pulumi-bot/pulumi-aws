@@ -24,19 +24,6 @@ class ResolverQueryLogConfig(pulumi.CustomResource):
         """
         Provides a Route 53 Resolver query logging configuration resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.route53.ResolverQueryLogConfig("example",
-            destination_arn=aws_s3_bucket["example"]["arn"],
-            tags={
-                "Environment": "Prod",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_arn: The ARN of the resource that you want Route 53 Resolver to send query logs.

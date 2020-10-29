@@ -146,15 +146,6 @@ def get_engine_version(engine: Optional[str] = None,
     """
     Information about a DocumentDB engine version.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    test = aws.docdb.get_engine_version(version="3.6.0")
-    ```
-
 
     :param str engine: DB engine. (Default: `docdb`)
     :param str parameter_group_family: The name of a specific DB parameter group family. An example parameter group family is `docdb3.6`.

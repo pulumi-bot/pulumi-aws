@@ -13,15 +13,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Creating an `aws.ebs.DefaultKmsKey` resource does not enable default EBS encryption. Use the `aws.ebs.EncryptionByDefault` to enable default EBS encryption.
  *
  * > **NOTE:** Destroying this resource will reset the default CMK to the account's AWS-managed default CMK for EBS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ebs.DefaultKmsKey("example", {keyArn: aws_kms_key.example.arn});
- * ```
  */
 export class DefaultKmsKey extends pulumi.CustomResource {
     /**

@@ -68,15 +68,6 @@ def get_outpost_instance_types(arn: Optional[str] = None,
     """
     Information about Outposts Instance Types.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.outposts.get_outpost_instance_types(arn=data["aws_outposts_outpost"]["example"]["arn"])
-    ```
-
 
     :param str arn: Outpost Amazon Resource Name (ARN).
     """

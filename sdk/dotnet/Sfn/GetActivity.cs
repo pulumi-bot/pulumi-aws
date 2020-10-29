@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Sfn
     {
         /// <summary>
         /// Provides a Step Functions Activity data source
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sfnActivity = Output.Create(Aws.Sfn.GetActivity.InvokeAsync(new Aws.Sfn.GetActivityArgs
-        ///         {
-        ///             Name = "my-activity",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetActivityResult> InvokeAsync(GetActivityArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActivityResult>("aws:sfn/getActivity:getActivity", args ?? new GetActivityArgs(), options.WithVersion());

@@ -29,52 +29,6 @@ class GlobalTable(pulumi.CustomResource):
 
         > Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        us_east_1 = pulumi.providers.Aws("us-east-1", region="us-east-1")
-        us_west_2 = pulumi.providers.Aws("us-west-2", region="us-west-2")
-        us_east_1_table = aws.dynamodb.Table("us-east-1Table",
-            hash_key="myAttribute",
-            stream_enabled=True,
-            stream_view_type="NEW_AND_OLD_IMAGES",
-            read_capacity=1,
-            write_capacity=1,
-            attributes=[aws.dynamodb.TableAttributeArgs(
-                name="myAttribute",
-                type="S",
-            )],
-            opts=ResourceOptions(provider=aws["us-east-1"]))
-        us_west_2_table = aws.dynamodb.Table("us-west-2Table",
-            hash_key="myAttribute",
-            stream_enabled=True,
-            stream_view_type="NEW_AND_OLD_IMAGES",
-            read_capacity=1,
-            write_capacity=1,
-            attributes=[aws.dynamodb.TableAttributeArgs(
-                name="myAttribute",
-                type="S",
-            )],
-            opts=ResourceOptions(provider=aws["us-west-2"]))
-        my_table = aws.dynamodb.GlobalTable("myTable", replicas=[
-            aws.dynamodb.GlobalTableReplicaArgs(
-                region_name="us-east-1",
-            ),
-            aws.dynamodb.GlobalTableReplicaArgs(
-                region_name="us-west-2",
-            ),
-        ],
-        opts=ResourceOptions(provider=aws["us-east-1"],
-            depends_on=[
-                us_east_1_table,
-                us_west_2_table,
-            ]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the global table. Must match underlying DynamoDB Table names in all regions.

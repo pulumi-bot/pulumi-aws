@@ -258,15 +258,6 @@ def get_network_interface(filters: Optional[Sequence[pulumi.InputType['GetNetwor
     """
     Use this data source to get information about a Network Interface.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    bar = aws.ec2.get_network_interface(id="eni-01234567")
-    ```
-
 
     :param Sequence[pulumi.InputType['GetNetworkInterfaceFilterArgs']] filters: One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
     :param str id: The identifier for the network interface.

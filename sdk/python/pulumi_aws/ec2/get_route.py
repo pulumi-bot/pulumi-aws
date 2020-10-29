@@ -160,23 +160,6 @@ def get_route(destination_cidr_block: Optional[str] = None,
     associated with a CIDR. For example, finding the peering
     connection associated with a CIDR value.
 
-    ## Example Usage
-
-    The following example shows how one might use a CIDR value to find a network interface id
-    and use this to create a data source of that network interface.
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    subnet_id = config.require_object("subnetId")
-    selected = aws.ec2.get_route_table(subnet_id=subnet_id)
-    route = aws.ec2.get_route(route_table_id=aws_route_table["selected"]["id"],
-        destination_cidr_block="10.0.1.0/24")
-    interface = aws.ec2.get_network_interface(id=route.network_interface_id)
-    ```
-
 
     :param str destination_cidr_block: The CIDR block of the Route belonging to the Route Table.
     :param str destination_ipv6_cidr_block: The IPv6 CIDR block of the Route belonging to the Route Table.

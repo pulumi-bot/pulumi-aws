@@ -29,19 +29,6 @@ class User(pulumi.CustomResource):
         """
         Resource for managing QuickSight User
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.quicksight.User("example",
-            email="author@example.com",
-            identity_type="IAM",
-            user_name="an-author",
-            user_role="AUTHOR")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aws_account_id: The ID for the AWS account that the user is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account.

@@ -30,49 +30,6 @@ class Zone(pulumi.CustomResource):
         Manages a Route53 Hosted Zone.
 
         ## Example Usage
-        ### Public Zone
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        primary = aws.route53.Zone("primary")
-        ```
-        ### Public Subdomain Zone
-
-        For use in subdomains, note that you need to create a
-        `route53.Record` of type `NS` as well as the subdomain
-        zone.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.route53.Zone("main")
-        dev = aws.route53.Zone("dev", tags={
-            "Environment": "dev",
-        })
-        dev_ns = aws.route53.Record("dev-ns",
-            zone_id=main.zone_id,
-            name="dev.example.com",
-            type="NS",
-            ttl=30,
-            records=dev.name_servers)
-        ```
-        ### Private Zone
-
-        > **NOTE:** This provider provides both exclusive VPC associations defined in-line in this resource via `vpc` configuration blocks and a separate ` Zone VPC Association resource. At this time, you cannot use in-line VPC associations in conjunction with any  `route53.ZoneAssociation`  resources with the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use [ `ignoreChanges` ](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to manage additional associations via the  `route53.ZoneAssociation` resource.
-
-        > **NOTE:** Private zones require at least one VPC association at all times.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        private = aws.route53.Zone("private", vpcs=[aws.route53.ZoneVpcArgs(
-            vpc_id=aws_vpc["example"]["id"],
-        )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

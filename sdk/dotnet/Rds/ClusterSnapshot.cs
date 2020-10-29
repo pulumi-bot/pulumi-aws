@@ -11,26 +11,6 @@ namespace Pulumi.Aws.Rds
 {
     /// <summary>
     /// Manages an RDS database cluster snapshot for Aurora clusters. For managing RDS database instance snapshots, see the `aws.rds.Snapshot` resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Rds.ClusterSnapshot("example", new Aws.Rds.ClusterSnapshotArgs
-    ///         {
-    ///             DbClusterIdentifier = aws_rds_cluster.Example.Id,
-    ///             DbClusterSnapshotIdentifier = "resourcetestsnapshot1234",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ClusterSnapshot : Pulumi.CustomResource
     {

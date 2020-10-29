@@ -27,46 +27,6 @@ class ReportGroup(pulumi.CustomResource):
         """
         Provides a CodeBuild Report Groups Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_key = aws.kms.Key("exampleKey",
-            description="my test kms key",
-            deletion_window_in_days=7,
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Id": "kms-tf-1",
-          "Statement": [
-            {
-              "Sid": "Enable IAM User Permissions",
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": "*"
-              },
-              "Action": "kms:*",
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        example_bucket = aws.s3.Bucket("exampleBucket")
-        example_report_group = aws.codebuild.ReportGroup("exampleReportGroup",
-            type="TEST",
-            export_config=aws.codebuild.ReportGroupExportConfigArgs(
-                type="S3",
-                s3_destination={
-                    "bucket": example_bucket.id,
-                    "encryptionDisabled": False,
-                    "encryption_key": example_key.arn,
-                    "packaging": "NONE",
-                    "path": "/some",
-                },
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ReportGroupExportConfigArgs']] export_config: Information about the destination where the raw data of this Report Group is exported. see Export Config documented below.

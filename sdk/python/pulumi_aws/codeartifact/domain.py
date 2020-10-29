@@ -23,18 +23,6 @@ class Domain(pulumi.CustomResource):
         """
         Provides a CodeArtifact Domain Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_key = aws.kms.Key("exampleKey", description="domain key")
-        example_domain = aws.codeartifact.Domain("exampleDomain",
-            domain="example",
-            encryption_key=example_key.arn)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The name of the domain to create. All domain names in an AWS Region that are in the same AWS account must be unique. The domain name is used as the prefix in DNS hostnames. Do not use sensitive information in a domain name because it is publicly discoverable.

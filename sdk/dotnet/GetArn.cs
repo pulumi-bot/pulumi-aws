@@ -13,29 +13,6 @@ namespace Pulumi.Aws
     {
         /// <summary>
         /// Parses an Amazon Resource Name (ARN) into its constituent parts.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var dbInstance = Output.Create(Aws.GetArn.InvokeAsync(new Aws.GetArnArgs
-        ///         {
-        ///             Arn = "arn:aws:rds:eu-west-1:123456789012:db:mysql-db",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetArnResult> InvokeAsync(GetArnArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetArnResult>("aws:index/getArn:getArn", args ?? new GetArnArgs(), options.WithVersion());

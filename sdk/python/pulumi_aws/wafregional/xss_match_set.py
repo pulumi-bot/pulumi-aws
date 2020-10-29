@@ -25,28 +25,6 @@ class XssMatchSet(pulumi.CustomResource):
         """
         Provides a WAF Regional XSS Match Set Resource for use with Application Load Balancer.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        xss_match_set = aws.wafregional.XssMatchSet("xssMatchSet", xss_match_tuples=[
-            aws.wafregional.XssMatchSetXssMatchTupleArgs(
-                field_to_match=aws.wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs(
-                    type="URI",
-                ),
-                text_transformation="NONE",
-            ),
-            aws.wafregional.XssMatchSetXssMatchTupleArgs(
-                field_to_match=aws.wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs(
-                    type="QUERY_STRING",
-                ),
-                text_transformation="NONE",
-            ),
-        ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the set
