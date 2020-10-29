@@ -4,6 +4,7 @@
 package sagemaker
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -223,4 +224,43 @@ type NotebookInstanceArgs struct {
 
 func (NotebookInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notebookInstanceArgs)(nil)).Elem()
+}
+
+type NotebookInstanceInput interface {
+	pulumi.Input
+
+	ToNotebookInstanceOutput() NotebookInstanceOutput
+	ToNotebookInstanceOutputWithContext(ctx context.Context) NotebookInstanceOutput
+}
+
+func (NotebookInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookInstance)(nil)).Elem()
+}
+
+func (i NotebookInstance) ToNotebookInstanceOutput() NotebookInstanceOutput {
+	return i.ToNotebookInstanceOutputWithContext(context.Background())
+}
+
+func (i NotebookInstance) ToNotebookInstanceOutputWithContext(ctx context.Context) NotebookInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookInstanceOutput)
+}
+
+type NotebookInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotebookInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookInstanceOutput)(nil)).Elem()
+}
+
+func (o NotebookInstanceOutput) ToNotebookInstanceOutput() NotebookInstanceOutput {
+	return o
+}
+
+func (o NotebookInstanceOutput) ToNotebookInstanceOutputWithContext(ctx context.Context) NotebookInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotebookInstanceOutput{})
 }

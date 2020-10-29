@@ -4,6 +4,7 @@
 package sns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -233,4 +234,43 @@ type PlatformApplicationArgs struct {
 
 func (PlatformApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*platformApplicationArgs)(nil)).Elem()
+}
+
+type PlatformApplicationInput interface {
+	pulumi.Input
+
+	ToPlatformApplicationOutput() PlatformApplicationOutput
+	ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput
+}
+
+func (PlatformApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformApplication)(nil)).Elem()
+}
+
+func (i PlatformApplication) ToPlatformApplicationOutput() PlatformApplicationOutput {
+	return i.ToPlatformApplicationOutputWithContext(context.Background())
+}
+
+func (i PlatformApplication) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformApplicationOutput)
+}
+
+type PlatformApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlatformApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformApplicationOutput)(nil)).Elem()
+}
+
+func (o PlatformApplicationOutput) ToPlatformApplicationOutput() PlatformApplicationOutput {
+	return o
+}
+
+func (o PlatformApplicationOutput) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PlatformApplicationOutput{})
 }

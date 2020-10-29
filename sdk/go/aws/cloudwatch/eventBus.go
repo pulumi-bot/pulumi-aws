@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -118,4 +119,43 @@ type EventBusArgs struct {
 
 func (EventBusArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventBusArgs)(nil)).Elem()
+}
+
+type EventBusInput interface {
+	pulumi.Input
+
+	ToEventBusOutput() EventBusOutput
+	ToEventBusOutputWithContext(ctx context.Context) EventBusOutput
+}
+
+func (EventBus) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventBus)(nil)).Elem()
+}
+
+func (i EventBus) ToEventBusOutput() EventBusOutput {
+	return i.ToEventBusOutputWithContext(context.Background())
+}
+
+func (i EventBus) ToEventBusOutputWithContext(ctx context.Context) EventBusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventBusOutput)
+}
+
+type EventBusOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventBusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventBusOutput)(nil)).Elem()
+}
+
+func (o EventBusOutput) ToEventBusOutput() EventBusOutput {
+	return o
+}
+
+func (o EventBusOutput) ToEventBusOutputWithContext(ctx context.Context) EventBusOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventBusOutput{})
 }

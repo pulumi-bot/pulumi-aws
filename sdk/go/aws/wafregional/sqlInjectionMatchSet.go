@@ -4,6 +4,7 @@
 package wafregional
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -111,4 +112,43 @@ type SqlInjectionMatchSetArgs struct {
 
 func (SqlInjectionMatchSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlInjectionMatchSetArgs)(nil)).Elem()
+}
+
+type SqlInjectionMatchSetInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetOutput() SqlInjectionMatchSetOutput
+	ToSqlInjectionMatchSetOutputWithContext(ctx context.Context) SqlInjectionMatchSetOutput
+}
+
+func (SqlInjectionMatchSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSet)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSet) ToSqlInjectionMatchSetOutput() SqlInjectionMatchSetOutput {
+	return i.ToSqlInjectionMatchSetOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSet) ToSqlInjectionMatchSetOutputWithContext(ctx context.Context) SqlInjectionMatchSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetOutput)
+}
+
+type SqlInjectionMatchSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlInjectionMatchSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetOutput)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetOutput) ToSqlInjectionMatchSetOutput() SqlInjectionMatchSetOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetOutput) ToSqlInjectionMatchSetOutputWithContext(ctx context.Context) SqlInjectionMatchSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SqlInjectionMatchSetOutput{})
 }

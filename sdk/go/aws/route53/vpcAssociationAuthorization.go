@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -161,4 +162,43 @@ type VpcAssociationAuthorizationArgs struct {
 
 func (VpcAssociationAuthorizationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAssociationAuthorizationArgs)(nil)).Elem()
+}
+
+type VpcAssociationAuthorizationInput interface {
+	pulumi.Input
+
+	ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput
+	ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput
+}
+
+func (VpcAssociationAuthorization) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAssociationAuthorization)(nil)).Elem()
+}
+
+func (i VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
+	return i.ToVpcAssociationAuthorizationOutputWithContext(context.Background())
+}
+
+func (i VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAssociationAuthorizationOutput)
+}
+
+type VpcAssociationAuthorizationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAssociationAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAssociationAuthorizationOutput)(nil)).Elem()
+}
+
+func (o VpcAssociationAuthorizationOutput) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
+	return o
+}
+
+func (o VpcAssociationAuthorizationOutput) ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcAssociationAuthorizationOutput{})
 }

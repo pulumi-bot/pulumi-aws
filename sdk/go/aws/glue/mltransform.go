@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -329,4 +330,43 @@ type MLTransformArgs struct {
 
 func (MLTransformArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mltransformArgs)(nil)).Elem()
+}
+
+type MLTransformInput interface {
+	pulumi.Input
+
+	ToMLTransformOutput() MLTransformOutput
+	ToMLTransformOutputWithContext(ctx context.Context) MLTransformOutput
+}
+
+func (MLTransform) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLTransform)(nil)).Elem()
+}
+
+func (i MLTransform) ToMLTransformOutput() MLTransformOutput {
+	return i.ToMLTransformOutputWithContext(context.Background())
+}
+
+func (i MLTransform) ToMLTransformOutputWithContext(ctx context.Context) MLTransformOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MLTransformOutput)
+}
+
+type MLTransformOutput struct {
+	*pulumi.OutputState
+}
+
+func (MLTransformOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLTransformOutput)(nil)).Elem()
+}
+
+func (o MLTransformOutput) ToMLTransformOutput() MLTransformOutput {
+	return o
+}
+
+func (o MLTransformOutput) ToMLTransformOutputWithContext(ctx context.Context) MLTransformOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MLTransformOutput{})
 }

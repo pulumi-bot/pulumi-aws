@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -187,4 +188,43 @@ type LogResourcePolicyArgs struct {
 
 func (LogResourcePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logResourcePolicyArgs)(nil)).Elem()
+}
+
+type LogResourcePolicyInput interface {
+	pulumi.Input
+
+	ToLogResourcePolicyOutput() LogResourcePolicyOutput
+	ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput
+}
+
+func (LogResourcePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogResourcePolicy)(nil)).Elem()
+}
+
+func (i LogResourcePolicy) ToLogResourcePolicyOutput() LogResourcePolicyOutput {
+	return i.ToLogResourcePolicyOutputWithContext(context.Background())
+}
+
+func (i LogResourcePolicy) ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogResourcePolicyOutput)
+}
+
+type LogResourcePolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogResourcePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogResourcePolicyOutput)(nil)).Elem()
+}
+
+func (o LogResourcePolicyOutput) ToLogResourcePolicyOutput() LogResourcePolicyOutput {
+	return o
+}
+
+func (o LogResourcePolicyOutput) ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogResourcePolicyOutput{})
 }

@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -131,4 +132,43 @@ type RoleAssociationArgs struct {
 
 func (RoleAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAssociationArgs)(nil)).Elem()
+}
+
+type RoleAssociationInput interface {
+	pulumi.Input
+
+	ToRoleAssociationOutput() RoleAssociationOutput
+	ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput
+}
+
+func (RoleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssociation)(nil)).Elem()
+}
+
+func (i RoleAssociation) ToRoleAssociationOutput() RoleAssociationOutput {
+	return i.ToRoleAssociationOutputWithContext(context.Background())
+}
+
+func (i RoleAssociation) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssociationOutput)
+}
+
+type RoleAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssociationOutput)(nil)).Elem()
+}
+
+func (o RoleAssociationOutput) ToRoleAssociationOutput() RoleAssociationOutput {
+	return o
+}
+
+func (o RoleAssociationOutput) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleAssociationOutput{})
 }

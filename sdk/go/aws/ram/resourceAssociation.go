@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,4 +115,43 @@ type ResourceAssociationArgs struct {
 
 func (ResourceAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceAssociationArgs)(nil)).Elem()
+}
+
+type ResourceAssociationInput interface {
+	pulumi.Input
+
+	ToResourceAssociationOutput() ResourceAssociationOutput
+	ToResourceAssociationOutputWithContext(ctx context.Context) ResourceAssociationOutput
+}
+
+func (ResourceAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAssociation)(nil)).Elem()
+}
+
+func (i ResourceAssociation) ToResourceAssociationOutput() ResourceAssociationOutput {
+	return i.ToResourceAssociationOutputWithContext(context.Background())
+}
+
+func (i ResourceAssociation) ToResourceAssociationOutputWithContext(ctx context.Context) ResourceAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAssociationOutput)
+}
+
+type ResourceAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAssociationOutput)(nil)).Elem()
+}
+
+func (o ResourceAssociationOutput) ToResourceAssociationOutput() ResourceAssociationOutput {
+	return o
+}
+
+func (o ResourceAssociationOutput) ToResourceAssociationOutputWithContext(ctx context.Context) ResourceAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceAssociationOutput{})
 }
