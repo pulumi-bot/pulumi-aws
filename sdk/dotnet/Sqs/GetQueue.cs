@@ -15,29 +15,6 @@ namespace Pulumi.Aws.Sqs
         /// Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
         /// By using this data source, you can reference SQS queues without having to hardcode
         /// the ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Sqs.GetQueue.InvokeAsync(new Aws.Sqs.GetQueueArgs
-        ///         {
-        ///             Name = "queue",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQueueResult> InvokeAsync(GetQueueArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQueueResult>("aws:sqs/getQueue:getQueue", args ?? new GetQueueArgs(), options.WithVersion());

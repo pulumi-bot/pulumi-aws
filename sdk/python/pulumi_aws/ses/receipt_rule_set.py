@@ -22,15 +22,6 @@ class ReceiptRuleSet(pulumi.CustomResource):
         """
         Provides an SES receipt rule set resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ses.ReceiptRuleSet("main", rule_set_name="primary-rules")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] rule_set_name: The name of the rule set

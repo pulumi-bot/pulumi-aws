@@ -35,19 +35,6 @@ class DefaultVpc(pulumi.CustomResource):
         this provider does not _create_ this resource, but instead "adopts" it
         into management.
 
-        ## Example Usage
-
-        Basic usage with tags:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.ec2.DefaultVpc("default", tags={
-            "Name": "Default VPC",
-        })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable_classiclink: A boolean flag to enable/disable ClassicLink

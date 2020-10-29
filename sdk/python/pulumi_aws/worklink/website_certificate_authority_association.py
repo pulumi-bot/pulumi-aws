@@ -22,18 +22,7 @@ class WebsiteCertificateAuthorityAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.worklink.Fleet("example")
-        test = aws.worklink.WebsiteCertificateAuthorityAssociation("test",
-            fleet_arn=aws_worklink_fleet["test"]["arn"],
-            certificate=(lambda path: open(path).read())("certificate.pem"))
-        ```
-
+        Create a WebsiteCertificateAuthorityAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The root certificate of the Certificate Authority.

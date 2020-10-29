@@ -26,33 +26,6 @@ class NamedQuery(pulumi.CustomResource):
         """
         Provides an Athena Named Query resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        hoge_bucket = aws.s3.Bucket("hogeBucket")
-        test_key = aws.kms.Key("testKey",
-            deletion_window_in_days=7,
-            description="Athena KMS Key")
-        test_workgroup = aws.athena.Workgroup("testWorkgroup", configuration=aws.athena.WorkgroupConfigurationArgs(
-            result_configuration=aws.athena.WorkgroupConfigurationResultConfigurationArgs(
-                encryption_configuration={
-                    "encryptionOption": "SSE_KMS",
-                    "kms_key_arn": test_key.arn,
-                },
-            ),
-        ))
-        hoge_database = aws.athena.Database("hogeDatabase",
-            name="users",
-            bucket=hoge_bucket.id)
-        foo = aws.athena.NamedQuery("foo",
-            workgroup=test_workgroup.id,
-            database=hoge_database.name,
-            query=hoge_database.name.apply(lambda name: f"SELECT * FROM {name} limit 10;"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to which the query belongs.

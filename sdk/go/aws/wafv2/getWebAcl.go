@@ -8,30 +8,6 @@ import (
 )
 
 // Retrieves the summary of a WAFv2 Web ACL.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/wafv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := wafv2.LookupWebAcl(ctx, &wafv2.LookupWebAclArgs{
-// 			Name:  "some-web-acl",
-// 			Scope: "REGIONAL",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupWebAcl(ctx *pulumi.Context, args *LookupWebAclArgs, opts ...pulumi.InvokeOption) (*LookupWebAclResult, error) {
 	var rv LookupWebAclResult
 	err := ctx.Invoke("aws:wafv2/getWebAcl:getWebAcl", args, &rv, opts...)

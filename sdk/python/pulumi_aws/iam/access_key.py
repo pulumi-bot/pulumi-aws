@@ -24,43 +24,6 @@ class AccessKey(pulumi.CustomResource):
         """
         Provides an IAM access key. This is a set of credentials that allow API requests to be made as an IAM user.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        lb_user = aws.iam.User("lbUser", path="/system/")
-        lb_access_key = aws.iam.AccessKey("lbAccessKey",
-            user=lb_user.name,
-            pgp_key="keybase:some_person_that_exists")
-        lb_ro = aws.iam.UserPolicy("lbRo",
-            user=lb_user.name,
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "ec2:Describe*"
-              ],
-              "Effect": "Allow",
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        pulumi.export("secret", lb_access_key.encrypted_secret)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_user = aws.iam.User("testUser", path="/test/")
-        test_access_key = aws.iam.AccessKey("testAccessKey", user=test_user.name)
-        pulumi.export("awsIamSmtpPasswordV4", test_access_key.ses_smtp_password_v4)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a

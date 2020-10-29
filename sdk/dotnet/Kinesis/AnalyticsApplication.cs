@@ -16,64 +16,6 @@ namespace Pulumi.Aws.Kinesis
     /// For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
     /// 
     /// &gt; **Note:** To manage Amazon Kinesis Data Analytics for Apache Flink applications, use the [`aws.kinesisanalyticsv2.Application`](https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html) resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testStream = new Aws.Kinesis.Stream("testStream", new Aws.Kinesis.StreamArgs
-    ///         {
-    ///             ShardCount = 1,
-    ///         });
-    ///         var testApplication = new Aws.Kinesis.AnalyticsApplication("testApplication", new Aws.Kinesis.AnalyticsApplicationArgs
-    ///         {
-    ///             Inputs = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsArgs
-    ///             {
-    ///                 NamePrefix = "test_prefix",
-    ///                 KinesisStream = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsKinesisStreamArgs
-    ///                 {
-    ///                     ResourceArn = testStream.Arn,
-    ///                     RoleArn = aws_iam_role.Test.Arn,
-    ///                 },
-    ///                 Parallelism = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsParallelismArgs
-    ///                 {
-    ///                     Count = 1,
-    ///                 },
-    ///                 Schema = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaArgs
-    ///                 {
-    ///                     RecordColumns = 
-    ///                     {
-    ///                         new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs
-    ///                         {
-    ///                             Mapping = "$.test",
-    ///                             Name = "test",
-    ///                             SqlType = "VARCHAR(8)",
-    ///                         },
-    ///                     },
-    ///                     RecordEncoding = "UTF-8",
-    ///                     RecordFormat = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs
-    ///                     {
-    ///                         MappingParameters = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs
-    ///                         {
-    ///                             Json = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs
-    ///                             {
-    ///                                 RecordRowPath = "$",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class AnalyticsApplication : Pulumi.CustomResource
     {

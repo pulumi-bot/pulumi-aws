@@ -11,39 +11,6 @@ import (
 
 // Provides an Traffic mirror target.\
 // Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
-//
-// ## Example Usage
-//
-// To create a basic traffic mirror session
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewTrafficMirrorTarget(ctx, "nlb", &ec2.TrafficMirrorTargetArgs{
-// 			Description:            pulumi.String("NLB target"),
-// 			NetworkLoadBalancerArn: pulumi.Any(aws_lb.Lb.Arn),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewTrafficMirrorTarget(ctx, "eni", &ec2.TrafficMirrorTargetArgs{
-// 			Description:        pulumi.String("ENI target"),
-// 			NetworkInterfaceId: pulumi.Any(aws_instance.Test.Primary_network_interface_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TrafficMirrorTarget struct {
 	pulumi.CustomResourceState
 

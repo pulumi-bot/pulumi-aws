@@ -30,15 +30,6 @@ class ExternalKey(pulumi.CustomResource):
 
         > **Note:** All arguments including the key material will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.kms.ExternalKey("example", description="KMS EXTERNAL for AMI encryption")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] deletion_window_in_days: Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.

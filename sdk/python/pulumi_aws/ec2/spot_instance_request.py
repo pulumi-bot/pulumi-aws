@@ -87,22 +87,6 @@ class SpotInstanceRequest(pulumi.CustomResource):
         documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
         for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Request a spot instance at $0.03
-        cheap_worker = aws.ec2.SpotInstanceRequest("cheapWorker",
-            ami="ami-1234",
-            instance_type="c4.xlarge",
-            spot_price="0.03",
-            tags={
-                "Name": "CheapWorker",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami: The AMI to use for the instance.

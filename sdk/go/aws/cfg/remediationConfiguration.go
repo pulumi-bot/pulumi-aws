@@ -13,58 +13,6 @@ import (
 // Provides an AWS Config Remediation Configuration.
 //
 // > **Note:** Config Remediation Configuration requires an existing [Config Rule](https://www.terraform.io/docs/providers/aws/r/config_config_rule.html) to be present.
-//
-// ## Example Usage
-//
-// AWS managed rules can be used by setting the source owner to `AWS` and the source identifier to the name of the managed rule. More information about AWS managed rules can be found in the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisRule, err := cfg.NewRule(ctx, "thisRule", &cfg.RuleArgs{
-// 			Source: &cfg.RuleSourceArgs{
-// 				Owner:            pulumi.String("AWS"),
-// 				SourceIdentifier: pulumi.String("S3_BUCKET_VERSIONING_ENABLED"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewRemediationConfiguration(ctx, "thisRemediationConfiguration", &cfg.RemediationConfigurationArgs{
-// 			ConfigRuleName: thisRule.Name,
-// 			ResourceType:   pulumi.String("AWS::S3::Bucket"),
-// 			TargetType:     pulumi.String("SSM_DOCUMENT"),
-// 			TargetId:       pulumi.String("AWS-EnableS3BucketEncryption"),
-// 			TargetVersion:  pulumi.String("1"),
-// 			Parameters: cfg.RemediationConfigurationParameterArray{
-// 				&cfg.RemediationConfigurationParameterArgs{
-// 					Name:        pulumi.String("AutomationAssumeRole"),
-// 					StaticValue: pulumi.String("arn:aws:iam::875924563244:role/security_config"),
-// 				},
-// 				&cfg.RemediationConfigurationParameterArgs{
-// 					Name:          pulumi.String("BucketName"),
-// 					ResourceValue: pulumi.String("RESOURCE_ID"),
-// 				},
-// 				&cfg.RemediationConfigurationParameterArgs{
-// 					Name:        pulumi.String("SSEAlgorithm"),
-// 					StaticValue: pulumi.String("AES256"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RemediationConfiguration struct {
 	pulumi.CustomResourceState
 

@@ -9,53 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the `aws.transfer.SshKey` resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const fooServer = new aws.transfer.Server("fooServer", {
- *     identityProviderType: "SERVICE_MANAGED",
- *     tags: {
- *         NAME: "tf-acc-test-transfer-server",
- *     },
- * });
- * const fooRole = new aws.iam.Role("fooRole", {assumeRolePolicy: `{
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 		"Effect": "Allow",
- * 		"Principal": {
- * 			"Service": "transfer.amazonaws.com"
- * 		},
- * 		"Action": "sts:AssumeRole"
- * 		}
- * 	]
- * }
- * `});
- * const fooRolePolicy = new aws.iam.RolePolicy("fooRolePolicy", {
- *     role: fooRole.id,
- *     policy: `{
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 			"Sid": "AllowFullAccesstoS3",
- * 			"Effect": "Allow",
- * 			"Action": [
- * 				"s3:*"
- * 			],
- * 			"Resource": "*"
- * 		}
- * 	]
- * }
- * `,
- * });
- * const fooUser = new aws.transfer.User("fooUser", {
- *     serverId: fooServer.id,
- *     userName: "tftestuser",
- *     role: fooRole.arn,
- * });
- * ```
  */
 export class User extends pulumi.CustomResource {
     /**

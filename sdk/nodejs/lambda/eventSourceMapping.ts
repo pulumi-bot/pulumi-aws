@@ -14,41 +14,6 @@ import * as utilities from "../utilities";
  * For information about event source mappings, see [CreateEventSourceMapping](http://docs.aws.amazon.com/lambda/latest/dg/API_CreateEventSourceMapping.html) in the API docs.
  *
  * ## Example Usage
- * ### DynamoDB
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.lambda.EventSourceMapping("example", {
- *     eventSourceArn: aws_dynamodb_table.example.stream_arn,
- *     functionName: aws_lambda_function.example.arn,
- *     startingPosition: "LATEST",
- * });
- * ```
- * ### Kinesis
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.lambda.EventSourceMapping("example", {
- *     eventSourceArn: aws_kinesis_stream.example.arn,
- *     functionName: aws_lambda_function.example.arn,
- *     startingPosition: "LATEST",
- * });
- * ```
- * ### SQS
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.lambda.EventSourceMapping("example", {
- *     eventSourceArn: aws_sqs_queue.sqs_queue_test.arn,
- *     functionName: aws_lambda_function.example.arn,
- * });
- * ```
  */
 export class EventSourceMapping extends pulumi.CustomResource {
     /**

@@ -16,26 +16,6 @@ namespace Pulumi.Aws.SecretsManager
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Retrieve Secret Rotation Configuration
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.SecretsManager.GetSecretRotation.InvokeAsync(new Aws.SecretsManager.GetSecretRotationArgs
-        ///         {
-        ///             SecretId = data.Aws_secretsmanager_secret.Example.Id,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretRotationResult> InvokeAsync(GetSecretRotationArgs args, InvokeOptions? options = null)

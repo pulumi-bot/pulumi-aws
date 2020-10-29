@@ -6,63 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync Function.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleGraphQLApi = new aws.appsync.GraphQLApi("exampleGraphQLApi", {
- *     authenticationType: "API_KEY",
- *     schema: `type Mutation {
- *   putPost(id: ID!, title: String!): Post
- * }
- *
- * type Post {
- *   id: ID!
- *   title: String!
- * }
- *
- * type Query {
- *   singlePost(id: ID!): Post
- * }
- *
- * schema {
- *   query: Query
- *   mutation: Mutation
- * }
- * `,
- * });
- * const exampleDataSource = new aws.appsync.DataSource("exampleDataSource", {
- *     apiId: exampleGraphQLApi.id,
- *     name: "example",
- *     type: "HTTP",
- *     httpConfig: {
- *         endpoint: "http://example.com",
- *     },
- * });
- * const exampleFunction = new aws.appsync.Function("exampleFunction", {
- *     apiId: exampleGraphQLApi.id,
- *     dataSource: exampleDataSource.name,
- *     name: "example",
- *     requestMappingTemplate: `{
- *     "version": "2018-05-29",
- *     "method": "GET",
- *     "resourcePath": "/",
- *     "params":{
- *         "headers": $utils.http.copyheaders($ctx.request.headers)
- *     }
- * }
- * `,
- *     responseMappingTemplate: `#if($ctx.result.statusCode == 200)
- *     $ctx.result.body
- * #else
- *     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
- * #end
- * `,
- * });
- * ```
  */
 export class Function extends pulumi.CustomResource {
     /**

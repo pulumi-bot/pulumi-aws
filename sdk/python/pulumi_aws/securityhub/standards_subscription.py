@@ -22,19 +22,6 @@ class StandardsSubscription(pulumi.CustomResource):
         """
         Subscribes to a Security Hub standard.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.securityhub.Account("example")
-        cis = aws.securityhub.StandardsSubscription("cis", standards_arn="arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
-        opts=ResourceOptions(depends_on=[example]))
-        pci321 = aws.securityhub.StandardsSubscription("pci321", standards_arn="arn:aws:securityhub:us-east-1::standards/pci-dss/v/3.2.1",
-        opts=ResourceOptions(depends_on=[example]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] standards_arn: The ARN of a standard - see below.

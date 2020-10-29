@@ -23,16 +23,6 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         """
         Provides a resource for managing the main routing table of a VPC.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main_route_table_association = aws.ec2.MainRouteTableAssociation("mainRouteTableAssociation",
-            vpc_id=aws_vpc["foo"]["id"],
-            route_table_id=aws_route_table["bar"]["id"])
-        ```
         ## Notes
 
         On VPC creation, the AWS API always creates an initial Main Route Table. This

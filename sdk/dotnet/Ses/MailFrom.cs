@@ -13,56 +13,6 @@ namespace Pulumi.Aws.Ses
     /// Provides an SES domain MAIL FROM resource.
     /// 
     /// &gt; **NOTE:** For the MAIL FROM domain to be fully usable, this resource should be paired with the `aws.ses.DomainIdentity` resource. To validate the MAIL FROM domain, a DNS MX record is required. To pass SPF checks, a DNS TXT record may also be required. See the [Amazon SES MAIL FROM documentation](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html) for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Example SES Domain Identity
-    ///         var exampleDomainIdentity = new Aws.Ses.DomainIdentity("exampleDomainIdentity", new Aws.Ses.DomainIdentityArgs
-    ///         {
-    ///             Domain = "example.com",
-    ///         });
-    ///         var exampleMailFrom = new Aws.Ses.MailFrom("exampleMailFrom", new Aws.Ses.MailFromArgs
-    ///         {
-    ///             Domain = exampleDomainIdentity.Domain,
-    ///             MailFromDomain = exampleDomainIdentity.Domain.Apply(domain =&gt; $"bounce.{domain}"),
-    ///         });
-    ///         // Example Route53 MX record
-    ///         var exampleSesDomainMailFromMx = new Aws.Route53.Record("exampleSesDomainMailFromMx", new Aws.Route53.RecordArgs
-    ///         {
-    ///             ZoneId = aws_route53_zone.Example.Id,
-    ///             Name = exampleMailFrom.MailFromDomain,
-    ///             Type = "MX",
-    ///             Ttl = 600,
-    ///             Records = 
-    ///             {
-    ///                 "10 feedback-smtp.us-east-1.amazonses.com",
-    ///             },
-    ///         });
-    ///         // Change to the region in which `aws_ses_domain_identity.example` is created
-    ///         // Example Route53 TXT record for SPF
-    ///         var exampleSesDomainMailFromTxt = new Aws.Route53.Record("exampleSesDomainMailFromTxt", new Aws.Route53.RecordArgs
-    ///         {
-    ///             ZoneId = aws_route53_zone.Example.Id,
-    ///             Name = exampleMailFrom.MailFromDomain,
-    ///             Type = "TXT",
-    ///             Ttl = 600,
-    ///             Records = 
-    ///             {
-    ///                 "v=spf1 include:amazonses.com -all",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class MailFrom : Pulumi.CustomResource
     {

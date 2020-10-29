@@ -11,29 +11,6 @@ import * as utilities from "../utilities";
  * Provides an AWS Config Configuration Recorder. Please note that this resource **does not start** the created recorder automatically.
  *
  * > **Note:** _Starting_ the Configuration Recorder requires a `delivery channel` (while delivery channel creation requires Configuration Recorder). This is why `aws.cfg.RecorderStatus` is a separate resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const role = new aws.iam.Role("role", {assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "config.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `});
- * const foo = new aws.cfg.Recorder("foo", {roleArn: role.arn});
- * ```
  */
 export class Recorder extends pulumi.CustomResource {
     /**

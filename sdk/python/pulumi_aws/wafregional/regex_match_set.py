@@ -25,26 +25,6 @@ class RegexMatchSet(pulumi.CustomResource):
         """
         Provides a WAF Regional Regex Match Set Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_regex_pattern_set = aws.wafregional.RegexPatternSet("exampleRegexPatternSet", regex_pattern_strings=[
-            "one",
-            "two",
-        ])
-        example_regex_match_set = aws.wafregional.RegexMatchSet("exampleRegexMatchSet", regex_match_tuples=[aws.wafregional.RegexMatchSetRegexMatchTupleArgs(
-            field_to_match=aws.wafregional.RegexMatchSetRegexMatchTupleFieldToMatchArgs(
-                data="User-Agent",
-                type="HEADER",
-            ),
-            regex_pattern_set_id=example_regex_pattern_set.id,
-            text_transformation="NONE",
-        )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name or description of the Regex Match Set.

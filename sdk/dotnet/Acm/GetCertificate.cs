@@ -15,50 +15,6 @@ namespace Pulumi.Aws.Acm
         /// Use this data source to get the ARN of a certificate in AWS Certificate
         /// Manager (ACM), you can reference
         /// it by domain without having to hard code the ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var issued = Output.Create(Aws.Acm.GetCertificate.InvokeAsync(new Aws.Acm.GetCertificateArgs
-        ///         {
-        ///             Domain = "tf.example.com",
-        ///             Statuses = 
-        ///             {
-        ///                 "ISSUED",
-        ///             },
-        ///         }));
-        ///         var amazonIssued = Output.Create(Aws.Acm.GetCertificate.InvokeAsync(new Aws.Acm.GetCertificateArgs
-        ///         {
-        ///             Domain = "tf.example.com",
-        ///             MostRecent = true,
-        ///             Types = 
-        ///             {
-        ///                 "AMAZON_ISSUED",
-        ///             },
-        ///         }));
-        ///         var rsa4096 = Output.Create(Aws.Acm.GetCertificate.InvokeAsync(new Aws.Acm.GetCertificateArgs
-        ///         {
-        ///             Domain = "tf.example.com",
-        ///             KeyTypes = 
-        ///             {
-        ///                 "RSA_4096",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("aws:acm/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());

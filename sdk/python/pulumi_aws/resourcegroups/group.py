@@ -27,29 +27,6 @@ class Group(pulumi.CustomResource):
         """
         Provides a Resource Group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.resourcegroups.Group("test", resource_query=aws.resourcegroups.GroupResourceQueryArgs(
-            query=\"\"\"{
-          "ResourceTypeFilters": [
-            "AWS::EC2::Instance"
-          ],
-          "TagFilters": [
-            {
-              "Key": "Stage",
-              "Values": ["Test"]
-            }
-          ]
-        }
-
-        \"\"\",
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the resource group.

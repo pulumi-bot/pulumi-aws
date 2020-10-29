@@ -29,21 +29,6 @@ class ClusterParameterGroup(pulumi.CustomResource):
         """
         Manages a DocumentDB Cluster Parameter Group
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.docdb.ClusterParameterGroup("example",
-            description="docdb cluster parameter group",
-            family="docdb3.6",
-            parameters=[aws.docdb.ClusterParameterGroupParameterArgs(
-                name="tls",
-                value="enabled",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the documentDB cluster parameter group. Defaults to "Managed by Pulumi".

@@ -11,53 +11,6 @@ namespace Pulumi.Aws.Waf
 {
     /// <summary>
     /// Provides a WAF Rate Based Rule Resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ipset = new Aws.Waf.IpSet("ipset", new Aws.Waf.IpSetArgs
-    ///         {
-    ///             IpSetDescriptors = 
-    ///             {
-    ///                 new Aws.Waf.Inputs.IpSetIpSetDescriptorArgs
-    ///                 {
-    ///                     Type = "IPV4",
-    ///                     Value = "192.0.7.0/24",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var wafrule = new Aws.Waf.RateBasedRule("wafrule", new Aws.Waf.RateBasedRuleArgs
-    ///         {
-    ///             MetricName = "tfWAFRule",
-    ///             RateKey = "IP",
-    ///             RateLimit = 100,
-    ///             Predicates = 
-    ///             {
-    ///                 new Aws.Waf.Inputs.RateBasedRulePredicateArgs
-    ///                 {
-    ///                     DataId = ipset.Id,
-    ///                     Negated = false,
-    ///                     Type = "IPMatch",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 ipset,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RateBasedRule : Pulumi.CustomResource
     {

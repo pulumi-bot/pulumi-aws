@@ -11,40 +11,6 @@ namespace Pulumi.Aws.GuardDuty
 {
     /// <summary>
     /// Provides a resource to manage a GuardDuty member. To accept invitations in member accounts, see the `aws.guardduty.InviteAccepter` resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var primary = new Aws.GuardDuty.Detector("primary", new Aws.GuardDuty.DetectorArgs
-    ///         {
-    ///             Enable = true,
-    ///         });
-    ///         var memberDetector = new Aws.GuardDuty.Detector("memberDetector", new Aws.GuardDuty.DetectorArgs
-    ///         {
-    ///             Enable = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = aws.Dev,
-    ///         });
-    ///         var memberMember = new Aws.GuardDuty.Member("memberMember", new Aws.GuardDuty.MemberArgs
-    ///         {
-    ///             AccountId = memberDetector.AccountId,
-    ///             DetectorId = primary.Id,
-    ///             Email = "required@example.com",
-    ///             Invite = true,
-    ///             InvitationMessage = "please accept guardduty invitation",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Member : Pulumi.CustomResource
     {

@@ -11,35 +11,6 @@ namespace Pulumi.Aws.ApiGateway
 {
     /// <summary>
     /// Provides a Model for a REST API Gateway.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDemoAPI = new Aws.ApiGateway.RestApi("myDemoAPI", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///             Description = "This is my API for demonstration purposes",
-    ///         });
-    ///         var myDemoModel = new Aws.ApiGateway.Model("myDemoModel", new Aws.ApiGateway.ModelArgs
-    ///         {
-    ///             RestApi = myDemoAPI.Id,
-    ///             Description = "a JSON schema",
-    ///             ContentType = "application/json",
-    ///             Schema = @"{
-    ///   ""type"": ""object""
-    /// }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Model : Pulumi.CustomResource
     {

@@ -15,29 +15,6 @@ namespace Pulumi.Aws.Iam
         /// This data source can be used to fetch information about a specific
         /// IAM instance profile. By using this data source, you can reference IAM
         /// instance profile properties without having to hard code ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Iam.GetInstanceProfile.InvokeAsync(new Aws.Iam.GetInstanceProfileArgs
-        ///         {
-        ///             Name = "an_example_instance_profile_name",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceProfileResult> InvokeAsync(GetInstanceProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceProfileResult>("aws:iam/getInstanceProfile:getInstanceProfile", args ?? new GetInstanceProfileArgs(), options.WithVersion());

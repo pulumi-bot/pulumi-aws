@@ -6,23 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Sagemaker Notebook Instance resource.
- *
- * ## Example Usage
- *
- * Basic usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ni = new aws.sagemaker.NotebookInstance("ni", {
- *     roleArn: aws_iam_role.role.arn,
- *     instanceType: "ml.t2.medium",
- *     tags: {
- *         Name: "foo",
- *     },
- * });
- * ```
  */
 export class NotebookInstance extends pulumi.CustomResource {
     /**

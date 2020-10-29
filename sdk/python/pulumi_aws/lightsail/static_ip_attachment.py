@@ -25,23 +25,6 @@ class StaticIpAttachment(pulumi.CustomResource):
 
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_static_ip = aws.lightsail.StaticIp("testStaticIp")
-        test_instance = aws.lightsail.Instance("testInstance",
-            availability_zone="us-east-1b",
-            blueprint_id="string",
-            bundle_id="string",
-            key_pair_name="some_key_name")
-        test_static_ip_attachment = aws.lightsail.StaticIpAttachment("testStaticIpAttachment",
-            static_ip_name=test_static_ip.id,
-            instance_name=test_instance.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The name of the Lightsail instance to attach the IP to

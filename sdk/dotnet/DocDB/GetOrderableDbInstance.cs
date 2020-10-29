@@ -13,37 +13,6 @@ namespace Pulumi.Aws.DocDB
     {
         /// <summary>
         /// Information about DocumentDB orderable DB instances.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.DocDB.GetOrderableDbInstance.InvokeAsync(new Aws.DocDB.GetOrderableDbInstanceArgs
-        ///         {
-        ///             Engine = "docdb",
-        ///             EngineVersion = "3.6.0",
-        ///             LicenseModel = "na",
-        ///             PreferredInstanceClasses = 
-        ///             {
-        ///                 "db.r5.large",
-        ///                 "db.r4.large",
-        ///                 "db.t3.medium",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrderableDbInstanceResult> InvokeAsync(GetOrderableDbInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrderableDbInstanceResult>("aws:docdb/getOrderableDbInstance:getOrderableDbInstance", args ?? new GetOrderableDbInstanceArgs(), options.WithVersion());

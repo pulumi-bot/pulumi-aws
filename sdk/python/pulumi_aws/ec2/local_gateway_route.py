@@ -24,18 +24,6 @@ class LocalGatewayRoute(pulumi.CustomResource):
         """
         Manages an EC2 Local Gateway Route. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2.LocalGatewayRoute("example",
-            destination_cidr_block="172.16.0.0/16",
-            local_gateway_route_table_id=data["aws_ec2_local_gateway_route_table"]["example"]["id"],
-            local_gateway_virtual_interface_group_id=data["aws_ec2_local_gateway_virtual_interface_group"]["example"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr_block: IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.

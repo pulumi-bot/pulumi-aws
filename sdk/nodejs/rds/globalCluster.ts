@@ -13,51 +13,6 @@ import * as utilities from "../utilities";
  * More information about Aurora global databases can be found in the [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database-creating).
  *
  * ## Example Usage
- * ### New Global Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const primary = new aws.Provider("primary", {region: "us-east-2"});
- * const secondary = new aws.Provider("secondary", {region: "us-west-2"});
- * const example = new aws.rds.GlobalCluster("example", {globalClusterIdentifier: "example"}, {
- *     provider: aws.primary,
- * });
- * const primaryCluster = new aws.rds.Cluster("primaryCluster", {
- *     engineMode: "global",
- *     globalClusterIdentifier: example.id,
- * }, {
- *     provider: aws.primary,
- * });
- * const primaryClusterInstance = new aws.rds.ClusterInstance("primaryClusterInstance", {clusterIdentifier: primaryCluster.id}, {
- *     provider: aws.primary,
- * });
- * const secondaryCluster = new aws.rds.Cluster("secondaryCluster", {
- *     engineMode: "global",
- *     globalClusterIdentifier: example.id,
- * }, {
- *     provider: aws.secondary,
- *     dependsOn: [primaryClusterInstance],
- * });
- * const secondaryClusterInstance = new aws.rds.ClusterInstance("secondaryClusterInstance", {clusterIdentifier: secondaryCluster.id}, {
- *     provider: aws.secondary,
- * });
- * ```
- * ### New Global Cluster From Existing DB Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // ... other configuration ...
- * const exampleCluster = new aws.rds.Cluster("exampleCluster", {});
- * const exampleGlobalCluster = new aws.rds.GlobalCluster("exampleGlobalCluster", {
- *     forceDestroy: true,
- *     globalClusterIdentifier: "example",
- *     sourceDbClusterIdentifier: exampleCluster.arn,
- * });
- * ```
  */
 export class GlobalCluster extends pulumi.CustomResource {
     /**

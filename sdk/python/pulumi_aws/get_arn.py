@@ -118,15 +118,6 @@ def get_arn(arn: Optional[str] = None,
     """
     Parses an Amazon Resource Name (ARN) into its constituent parts.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    db_instance = aws.get_arn(arn="arn:aws:rds:eu-west-1:123456789012:db:mysql-db")
-    ```
-
 
     :param str arn: The ARN to parse.
     """

@@ -13,30 +13,6 @@ namespace Pulumi.Aws.Lex
     {
         /// <summary>
         /// Provides details about a specific Amazon Lex Bot.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var orderFlowersBot = Output.Create(Aws.Lex.GetBot.InvokeAsync(new Aws.Lex.GetBotArgs
-        ///         {
-        ///             Name = "OrderFlowers",
-        ///             Version = "$LATEST",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBotResult> InvokeAsync(GetBotArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBotResult>("aws:lex/getBot:getBot", args ?? new GetBotArgs(), options.WithVersion());

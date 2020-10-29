@@ -15,29 +15,6 @@ namespace Pulumi.Aws.Sns
         /// Use this data source to get the ARN of a topic in AWS Simple Notification
         /// Service (SNS). By using this data source, you can reference SNS topics
         /// without having to hard code the ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Sns.GetTopic.InvokeAsync(new Aws.Sns.GetTopicArgs
-        ///         {
-        ///             Name = "an_example_topic",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("aws:sns/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithVersion());

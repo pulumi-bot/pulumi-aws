@@ -29,28 +29,6 @@ class VolumeAttachment(pulumi.CustomResource):
 
         > **NOTE on EBS block devices:** If you use `ebs_block_device` on an `ec2.Instance`, this provider will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebs_block_device` cannot be mixed with external `ebs.Volume` + `aws_ebs_volume_attachment` resources for a given instance.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        web = aws.ec2.Instance("web",
-            ami="ami-21f78e11",
-            availability_zone="us-west-2a",
-            instance_type="t2.micro",
-            tags={
-                "Name": "HelloWorld",
-            })
-        example = aws.ebs.Volume("example",
-            availability_zone="us-west-2a",
-            size=1)
-        ebs_att = aws.ec2.VolumeAttachment("ebsAtt",
-            device_name="/dev/sdh",
-            volume_id=example.id,
-            instance_id=web.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: The device name to expose to the instance (for

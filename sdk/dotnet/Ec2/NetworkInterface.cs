@@ -11,41 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides an Elastic network interface (ENI) resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Aws.Ec2.NetworkInterface("test", new Aws.Ec2.NetworkInterfaceArgs
-    ///         {
-    ///             SubnetId = aws_subnet.Public_a.Id,
-    ///             PrivateIps = 
-    ///             {
-    ///                 "10.0.0.50",
-    ///             },
-    ///             SecurityGroups = 
-    ///             {
-    ///                 aws_security_group.Web.Id,
-    ///             },
-    ///             Attachments = 
-    ///             {
-    ///                 new Aws.Ec2.Inputs.NetworkInterfaceAttachmentArgs
-    ///                 {
-    ///                     Instance = aws_instance.Test.Id,
-    ///                     DeviceIndex = 1,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource
     {

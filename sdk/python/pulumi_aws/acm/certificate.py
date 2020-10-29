@@ -49,66 +49,6 @@ class Certificate(pulumi.CustomResource):
         which is currently in use (eg, by `lb.Listener`).
 
         ## Example Usage
-        ### Certificate creation
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cert = aws.acm.Certificate("cert",
-            domain_name="example.com",
-            tags={
-                "Environment": "test",
-            },
-            validation_method="DNS")
-        ```
-        ### Importing an existing certificate
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_tls as tls
-
-        example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
-        example_self_signed_cert = tls.SelfSignedCert("exampleSelfSignedCert",
-            key_algorithm="RSA",
-            private_key_pem=example_private_key.private_key_pem,
-            subjects=[{
-                "commonName": "example.com",
-                "organization": "ACME Examples, Inc",
-            }],
-            validity_period_hours=12,
-            allowed_uses=[
-                "key_encipherment",
-                "digital_signature",
-                "server_auth",
-            ])
-        cert = aws.acm.Certificate("cert",
-            private_key=example_private_key.private_key_pem,
-            certificate_body=example_self_signed_cert.cert_pem)
-        ```
-        ### Referencing domain_validation_options With for_each Based Resources
-
-        See the `acm.CertificateValidation` resource for a full example of performing DNS validation.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({dvo.domainName: {
-            name: dvo.resourceRecordName,
-            record: dvo.resourceRecordValue,
-            type: dvo.resourceRecordType,
-        } for dvo in aws_acm_certificate.example.domain_validation_options})]:
-            example.append(aws.route53.Record(f"example-{range['key']}",
-                allow_overwrite=True,
-                name=range["value"]["name"],
-                records=[range["value"]["record"]],
-                ttl=60,
-                type=range["value"]["type"],
-                zone_id=aws_route53_zone["example"]["zone_id"]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

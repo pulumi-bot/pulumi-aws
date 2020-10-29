@@ -13,55 +13,6 @@ namespace Pulumi.Aws.Ssm
     {
         /// <summary>
         /// Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// To retrieve a baseline provided by AWS:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var centos = Output.Create(Aws.Ssm.GetPatchBaseline.InvokeAsync(new Aws.Ssm.GetPatchBaselineArgs
-        ///         {
-        ///             NamePrefix = "AWS-",
-        ///             OperatingSystem = "CENTOS",
-        ///             Owner = "AWS",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// To retrieve a baseline on your account:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var defaultCustom = Output.Create(Aws.Ssm.GetPatchBaseline.InvokeAsync(new Aws.Ssm.GetPatchBaselineArgs
-        ///         {
-        ///             DefaultBaseline = true,
-        ///             NamePrefix = "MyCustomBaseline",
-        ///             OperatingSystem = "WINDOWS",
-        ///             Owner = "Self",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPatchBaselineResult> InvokeAsync(GetPatchBaselineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselineResult>("aws:ssm/getPatchBaseline:getPatchBaseline", args ?? new GetPatchBaselineArgs(), options.WithVersion());

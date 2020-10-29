@@ -32,48 +32,6 @@ class Server(pulumi.CustomResource):
         """
         Provides a AWS Transfer Server resource.
 
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_role = aws.iam.Role("exampleRole", assume_role_policy=\"\"\"{
-        	"Version": "2012-10-17",
-        	"Statement": [
-        		{
-        		"Effect": "Allow",
-        		"Principal": {
-        			"Service": "transfer.amazonaws.com"
-        		},
-        		"Action": "sts:AssumeRole"
-        		}
-        	]
-        }
-        \"\"\")
-        example_server = aws.transfer.Server("exampleServer",
-            identity_provider_type="SERVICE_MANAGED",
-            logging_role=example_role.arn,
-            tags={
-                "NAME": "tf-acc-test-transfer-server",
-                "ENV": "test",
-            })
-        example_role_policy = aws.iam.RolePolicy("exampleRolePolicy",
-            role=example_role.id,
-            policy=\"\"\"{
-        	"Version": "2012-10-17",
-        	"Statement": [
-        		{
-        		"Sid": "AllowFullAccesstoCloudWatchLogs",
-        		"Effect": "Allow",
-        		"Action": [
-        			"logs:*"
-        		],
-        		"Resource": "*"
-        		}
-        	]
-        }
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServerEndpointDetailsArgs']] endpoint_details: The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. Fields documented below.

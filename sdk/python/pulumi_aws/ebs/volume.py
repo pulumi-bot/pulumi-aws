@@ -31,22 +31,6 @@ class Volume(pulumi.CustomResource):
         """
         Manages a single EBS volume.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ebs.Volume("example",
-            availability_zone="us-west-2a",
-            size=40,
-            tags={
-                "Name": "HelloWorld",
-            })
-        ```
-
-        > **NOTE**: One of `size` or `snapshot_id` is required when specifying an EBS volume
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The AZ where the EBS volume will exist.

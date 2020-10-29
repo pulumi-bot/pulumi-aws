@@ -13,49 +13,6 @@ namespace Pulumi.Aws.GuardDuty
     /// Provides a resource to manage a GuardDuty ThreatIntelSet.
     /// 
     /// &gt; **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage ThreatIntelSets. ThreatIntelSets that are uploaded by the primary account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-threat-intel-set.html)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var primary = new Aws.GuardDuty.Detector("primary", new Aws.GuardDuty.DetectorArgs
-    ///         {
-    ///             Enable = true,
-    ///         });
-    ///         var bucket = new Aws.S3.Bucket("bucket", new Aws.S3.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///         });
-    ///         var myThreatIntelSetBucketObject = new Aws.S3.BucketObject("myThreatIntelSetBucketObject", new Aws.S3.BucketObjectArgs
-    ///         {
-    ///             Acl = "public-read",
-    ///             Content = @"10.0.0.0/8
-    /// ",
-    ///             Bucket = bucket.Id,
-    ///             Key = "MyThreatIntelSet",
-    ///         });
-    ///         var myThreatIntelSetThreatIntelSet = new Aws.GuardDuty.ThreatIntelSet("myThreatIntelSetThreatIntelSet", new Aws.GuardDuty.ThreatIntelSetArgs
-    ///         {
-    ///             Activate = true,
-    ///             DetectorId = primary.Id,
-    ///             Format = "TXT",
-    ///             Location = Output.Tuple(myThreatIntelSetBucketObject.Bucket, myThreatIntelSetBucketObject.Key).Apply(values =&gt;
-    ///             {
-    ///                 var bucket = values.Item1;
-    ///                 var key = values.Item2;
-    ///                 return $"https://s3.amazonaws.com/{bucket}/{key}";
-    ///             }),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ThreatIntelSet : Pulumi.CustomResource
     {

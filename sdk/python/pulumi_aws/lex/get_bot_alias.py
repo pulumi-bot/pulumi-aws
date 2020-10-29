@@ -144,16 +144,6 @@ def get_bot_alias(bot_name: Optional[str] = None,
     """
     Provides details about a specific Amazon Lex Bot Alias.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    order_flowers_prod = aws.lex.get_bot_alias(bot_name="OrderFlowers",
-        name="OrderFlowersProd")
-    ```
-
 
     :param str bot_name: The name of the bot.
     :param str name: The name of the bot alias. The name is case sensitive.

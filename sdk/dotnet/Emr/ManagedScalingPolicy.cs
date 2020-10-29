@@ -11,49 +11,6 @@ namespace Pulumi.Aws.Emr
 {
     /// <summary>
     /// Provides a Managed Scaling policy for EMR Cluster. With Amazon EMR versions 5.30.0 and later (except for Amazon EMR 6.0.0), you can enable EMR managed scaling to automatically increase or decrease the number of instances or units in your cluster based on workload. See [Using EMR Managed Scaling in Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-managed-scaling.html) for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var sample = new Aws.Emr.Cluster("sample", new Aws.Emr.ClusterArgs
-    ///         {
-    ///             ReleaseLabel = "emr-5.30.0",
-    ///             MasterInstanceGroup = new Aws.Emr.Inputs.ClusterMasterInstanceGroupArgs
-    ///             {
-    ///                 InstanceType = "m4.large",
-    ///             },
-    ///             CoreInstanceGroup = new Aws.Emr.Inputs.ClusterCoreInstanceGroupArgs
-    ///             {
-    ///                 InstanceType = "c4.large",
-    ///             },
-    ///         });
-    ///         // skip ...
-    ///         var samplepolicy = new Aws.Emr.ManagedScalingPolicy("samplepolicy", new Aws.Emr.ManagedScalingPolicyArgs
-    ///         {
-    ///             ClusterId = sample.Id,
-    ///             ComputeLimits = 
-    ///             {
-    ///                 new Aws.Emr.Inputs.ManagedScalingPolicyComputeLimitArgs
-    ///                 {
-    ///                     UnitType = "Instances",
-    ///                     MinimumCapacityUnits = 2,
-    ///                     MaximumCapacityUnits = 10,
-    ///                     MaximumOndemandCapacityUnits = 2,
-    ///                     MaximumCoreCapacityUnits = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ManagedScalingPolicy : Pulumi.CustomResource
     {

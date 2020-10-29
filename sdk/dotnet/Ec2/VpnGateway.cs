@@ -11,29 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a resource to create a VPC VPN Gateway.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpnGw = new Aws.Ec2.VpnGateway("vpnGw", new Aws.Ec2.VpnGatewayArgs
-    ///         {
-    ///             VpcId = aws_vpc.Main.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "main" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class VpnGateway : Pulumi.CustomResource
     {

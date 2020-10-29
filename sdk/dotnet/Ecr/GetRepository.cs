@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Ecr
     {
         /// <summary>
         /// The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var service = Output.Create(Aws.Ecr.GetRepository.InvokeAsync(new Aws.Ecr.GetRepositoryArgs
-        ///         {
-        ///             Name = "ecr-repository",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("aws:ecr/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithVersion());

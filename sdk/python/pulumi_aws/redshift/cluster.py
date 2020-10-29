@@ -59,21 +59,6 @@ class Cluster(pulumi.CustomResource):
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.redshift.Cluster("default",
-            cluster_identifier="tf-redshift-cluster",
-            cluster_type="single-node",
-            database_name="mydb",
-            master_password="Mustbe8characters",
-            master_username="foo",
-            node_type="dc1.large")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_version_upgrade: If true , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default is true

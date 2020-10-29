@@ -42,44 +42,6 @@ class WindowsFileSystem(pulumi.CustomResource):
         > **NOTE:** Either the `active_directory_id` argument or `self_managed_active_directory` configuration block must be specified.
 
         ## Example Usage
-        ### Using AWS Directory Service
-
-        Additional information for using AWS Directory Service with Windows File Systems can be found in the [FSx Windows Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/fsx-aws-managed-ad.html).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.fsx.WindowsFileSystem("example",
-            active_directory_id=aws_directory_service_directory["example"]["id"],
-            kms_key_id=aws_kms_key["example"]["arn"],
-            storage_capacity=300,
-            subnet_ids=[aws_subnet["example"]["id"]],
-            throughput_capacity=1024)
-        ```
-        ### Using a Self-Managed Microsoft Active Directory
-
-        Additional information for using AWS Directory Service with Windows File Systems can be found in the [FSx Windows Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/self-managed-AD.html).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.fsx.WindowsFileSystem("example",
-            kms_key_id=aws_kms_key["example"]["arn"],
-            storage_capacity=300,
-            subnet_ids=[aws_subnet["example"]["id"]],
-            throughput_capacity=1024,
-            self_managed_active_directory=aws.fsx.WindowsFileSystemSelfManagedActiveDirectoryArgs(
-                dns_ips=[
-                    "10.0.0.111",
-                    "10.0.0.222",
-                ],
-                domain_name="corp.example.com",
-                password="avoid-plaintext-passwords",
-                username="Admin",
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

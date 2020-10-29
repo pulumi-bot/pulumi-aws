@@ -15,54 +15,6 @@ namespace Pulumi.Aws.SecretsManager
     /// &gt; **NOTE:** If the `AWSCURRENT` staging label is present on this version during resource deletion, that label cannot be removed and will be skipped to prevent errors when fully deleting the secret. That label will leave this secret version active even after the resource is deleted from this provider unless the secret itself is deleted. Move the `AWSCURRENT` staging label before or after deleting this resource from this provider to fully trigger version deprecation if necessary.
     /// 
     /// ## Example Usage
-    /// ### Simple String Value
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.SecretsManager.SecretVersion("example", new Aws.SecretsManager.SecretVersionArgs
-    ///         {
-    ///             SecretId = aws_secretsmanager_secret.Example.Id,
-    ///             SecretString = "example-string-to-protect",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Key-Value Pairs
-    /// 
-    /// Secrets Manager also accepts key-value pairs in JSON.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var example = config.GetObject&lt;dynamic&gt;("example") ?? 
-    ///         {
-    ///             { "key1", "value1" },
-    ///             { "key2", "value2" },
-    ///         };
-    ///         var exampleSecretVersion = new Aws.SecretsManager.SecretVersion("exampleSecretVersion", new Aws.SecretsManager.SecretVersionArgs
-    ///         {
-    ///             SecretId = aws_secretsmanager_secret.Example.Id,
-    ///             SecretString = JsonSerializer.Serialize(example),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SecretVersion : Pulumi.CustomResource
     {

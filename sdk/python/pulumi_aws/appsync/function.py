@@ -28,60 +28,6 @@ class Function(pulumi.CustomResource):
         """
         Provides an AppSync Function.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_graph_ql_api = aws.appsync.GraphQLApi("exampleGraphQLApi",
-            authentication_type="API_KEY",
-            schema=\"\"\"type Mutation {
-          putPost(id: ID!, title: String!): Post
-        }
-
-        type Post {
-          id: ID!
-          title: String!
-        }
-
-        type Query {
-          singlePost(id: ID!): Post
-        }
-
-        schema {
-          query: Query
-          mutation: Mutation
-        }
-        \"\"\")
-        example_data_source = aws.appsync.DataSource("exampleDataSource",
-            api_id=example_graph_ql_api.id,
-            name="example",
-            type="HTTP",
-            http_config=aws.appsync.DataSourceHttpConfigArgs(
-                endpoint="http://example.com",
-            ))
-        example_function = aws.appsync.Function("exampleFunction",
-            api_id=example_graph_ql_api.id,
-            data_source=example_data_source.name,
-            name="example",
-            request_mapping_template=\"\"\"{
-            "version": "2018-05-29",
-            "method": "GET",
-            "resourcePath": "/",
-            "params":{
-                "headers": $utils.http.copyheaders($ctx.request.headers)
-            }
-        }
-        \"\"\",
-            response_mapping_template=\"\"\"#if($ctx.result.statusCode == 200)
-            $ctx.result.body
-        #else
-            $utils.appendError($ctx.result.body, $ctx.result.statusCode)
-        #end
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The ID of the associated AppSync API.

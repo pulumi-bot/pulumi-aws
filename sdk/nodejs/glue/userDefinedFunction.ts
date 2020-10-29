@@ -9,26 +9,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Glue User Defined Function Resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleCatalogDatabase = new aws.glue.CatalogDatabase("exampleCatalogDatabase", {name: "my_database"});
- * const exampleUserDefinedFunction = new aws.glue.UserDefinedFunction("exampleUserDefinedFunction", {
- *     catalogId: exampleCatalogDatabase.catalogId,
- *     databaseName: exampleCatalogDatabase.name,
- *     className: "class",
- *     ownerName: "owner",
- *     ownerType: "GROUP",
- *     resourceUris: [{
- *         resourceType: "ARCHIVE",
- *         uri: "uri",
- *     }],
- * });
- * ```
  */
 export class UserDefinedFunction extends pulumi.CustomResource {
     /**

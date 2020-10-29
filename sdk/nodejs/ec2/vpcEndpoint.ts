@@ -18,45 +18,6 @@ import * as utilities from "../utilities";
  * Doing so will cause a conflict of associations and will overwrite the association.
  *
  * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const s3 = new aws.ec2.VpcEndpoint("s3", {
- *     vpcId: aws_vpc.main.id,
- *     serviceName: "com.amazonaws.us-west-2.s3",
- * });
- * ```
- * ### Basic w/ Tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const s3 = new aws.ec2.VpcEndpoint("s3", {
- *     vpcId: aws_vpc.main.id,
- *     serviceName: "com.amazonaws.us-west-2.s3",
- *     tags: {
- *         Environment: "test",
- *     },
- * });
- * ```
- * ### Interface Endpoint Type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const ec2 = new aws.ec2.VpcEndpoint("ec2", {
- *     vpcId: aws_vpc.main.id,
- *     serviceName: "com.amazonaws.us-west-2.ec2",
- *     vpcEndpointType: "Interface",
- *     securityGroupIds: [aws_security_group.sg1.id],
- *     privateDnsEnabled: true,
- * });
- * ```
  */
 export class VpcEndpoint extends pulumi.CustomResource {
     /**

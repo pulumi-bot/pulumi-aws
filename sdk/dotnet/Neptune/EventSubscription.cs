@@ -10,68 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Neptune
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultCluster = new Aws.Neptune.Cluster("defaultCluster", new Aws.Neptune.ClusterArgs
-    ///         {
-    ///             ClusterIdentifier = "neptune-cluster-demo",
-    ///             Engine = "neptune",
-    ///             BackupRetentionPeriod = 5,
-    ///             PreferredBackupWindow = "07:00-09:00",
-    ///             SkipFinalSnapshot = true,
-    ///             IamDatabaseAuthenticationEnabled = true,
-    ///             ApplyImmediately = true,
-    ///         });
-    ///         var example = new Aws.Neptune.ClusterInstance("example", new Aws.Neptune.ClusterInstanceArgs
-    ///         {
-    ///             ClusterIdentifier = defaultCluster.Id,
-    ///             Engine = "neptune",
-    ///             InstanceClass = "db.r4.large",
-    ///             ApplyImmediately = true,
-    ///         });
-    ///         var defaultTopic = new Aws.Sns.Topic("defaultTopic", new Aws.Sns.TopicArgs
-    ///         {
-    ///         });
-    ///         var defaultEventSubscription = new Aws.Neptune.EventSubscription("defaultEventSubscription", new Aws.Neptune.EventSubscriptionArgs
-    ///         {
-    ///             SnsTopicArn = defaultTopic.Arn,
-    ///             SourceType = "db-instance",
-    ///             SourceIds = 
-    ///             {
-    ///                 example.Id,
-    ///             },
-    ///             EventCategories = 
-    ///             {
-    ///                 "maintenance",
-    ///                 "availability",
-    ///                 "creation",
-    ///                 "backup",
-    ///                 "restoration",
-    ///                 "recovery",
-    ///                 "deletion",
-    ///                 "failover",
-    ///                 "failure",
-    ///                 "notification",
-    ///                 "configuration change",
-    ///                 "read replica",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "env", "test" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// ## Attributes
     /// 
     /// The following additional atttributes are provided:

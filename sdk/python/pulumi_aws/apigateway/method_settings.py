@@ -27,51 +27,6 @@ class MethodSettings(pulumi.CustomResource):
         """
         Provides an API Gateway Method Settings, e.g. logging or monitoring.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_rest_api = aws.apigateway.RestApi("testRestApi", description="This is my API for demonstration purposes")
-        test_resource = aws.apigateway.Resource("testResource",
-            rest_api=test_rest_api.id,
-            parent_id=test_rest_api.root_resource_id,
-            path_part="mytestresource")
-        test_method = aws.apigateway.Method("testMethod",
-            rest_api=test_rest_api.id,
-            resource_id=test_resource.id,
-            http_method="GET",
-            authorization="NONE")
-        test_integration = aws.apigateway.Integration("testIntegration",
-            rest_api=test_rest_api.id,
-            resource_id=test_resource.id,
-            http_method=test_method.http_method,
-            type="MOCK",
-            request_templates={
-                "application/xml": \"\"\"{
-           "body" : $input.json('$')
-        }
-        \"\"\",
-            })
-        test_deployment = aws.apigateway.Deployment("testDeployment",
-            rest_api=test_rest_api.id,
-            stage_name="dev",
-            opts=ResourceOptions(depends_on=[test_integration]))
-        test_stage = aws.apigateway.Stage("testStage",
-            stage_name="prod",
-            rest_api=test_rest_api.id,
-            deployment=test_deployment.id)
-        method_settings = aws.apigateway.MethodSettings("methodSettings",
-            rest_api=test_rest_api.id,
-            stage_name=test_stage.stage_name,
-            method_path=pulumi.Output.all(test_resource.path_part, test_method.http_method).apply(lambda path_part, http_method: f"{path_part}/{http_method}"),
-            settings=aws.apigateway.MethodSettingsSettingsArgs(
-                metrics_enabled=True,
-                logging_level="INFO",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] method_path: Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.

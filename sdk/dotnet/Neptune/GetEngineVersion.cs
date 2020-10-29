@@ -13,34 +13,6 @@ namespace Pulumi.Aws.Neptune
     {
         /// <summary>
         /// Information about a Neptune engine version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Neptune.GetEngineVersion.InvokeAsync(new Aws.Neptune.GetEngineVersionArgs
-        ///         {
-        ///             PreferredVersions = 
-        ///             {
-        ///                 "1.0.3.0",
-        ///                 "1.0.2.2",
-        ///                 "1.0.2.1",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineVersionResult> InvokeAsync(GetEngineVersionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionResult>("aws:neptune/getEngineVersion:getEngineVersion", args ?? new GetEngineVersionArgs(), options.WithVersion());

@@ -33,25 +33,6 @@ class Fleet(pulumi.CustomResource):
         """
         Provides a resource to manage EC2 Fleets.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2.Fleet("example",
-            launch_template_config=aws.ec2.FleetLaunchTemplateConfigArgs(
-                launch_template_specification=aws.ec2.FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs(
-                    launch_template_id=aws_launch_template["example"]["id"],
-                    version=aws_launch_template["example"]["latest_version"],
-                ),
-            ),
-            target_capacity_specification=aws.ec2.FleetTargetCapacitySpecificationArgs(
-                default_target_capacity_type="spot",
-                total_target_capacity=5,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] excess_capacity_termination_policy: Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`.

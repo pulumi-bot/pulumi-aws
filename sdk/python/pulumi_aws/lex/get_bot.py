@@ -219,16 +219,6 @@ def get_bot(name: Optional[str] = None,
     """
     Provides details about a specific Amazon Lex Bot.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    order_flowers_bot = aws.lex.get_bot(name="OrderFlowers",
-        version="$LATEST")
-    ```
-
 
     :param str name: The name of the bot. The name is case sensitive.
     :param str version: The version or alias of the bot.

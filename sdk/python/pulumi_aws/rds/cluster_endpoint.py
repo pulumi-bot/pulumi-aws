@@ -28,63 +28,6 @@ class ClusterEndpoint(pulumi.CustomResource):
         Manages an RDS Aurora Cluster Endpoint.
         You can refer to the [User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.rds.Cluster("default",
-            cluster_identifier="aurora-cluster-demo",
-            availability_zones=[
-                "us-west-2a",
-                "us-west-2b",
-                "us-west-2c",
-            ],
-            database_name="mydb",
-            master_username="foo",
-            master_password="bar",
-            backup_retention_period=5,
-            preferred_backup_window="07:00-09:00")
-        test1 = aws.rds.ClusterInstance("test1",
-            apply_immediately=True,
-            cluster_identifier=default.id,
-            identifier="test1",
-            instance_class="db.t2.small",
-            engine=default.engine,
-            engine_version=default.engine_version)
-        test2 = aws.rds.ClusterInstance("test2",
-            apply_immediately=True,
-            cluster_identifier=default.id,
-            identifier="test2",
-            instance_class="db.t2.small",
-            engine=default.engine,
-            engine_version=default.engine_version)
-        test3 = aws.rds.ClusterInstance("test3",
-            apply_immediately=True,
-            cluster_identifier=default.id,
-            identifier="test3",
-            instance_class="db.t2.small",
-            engine=default.engine,
-            engine_version=default.engine_version)
-        eligible = aws.rds.ClusterEndpoint("eligible",
-            cluster_identifier=default.id,
-            cluster_endpoint_identifier="reader",
-            custom_endpoint_type="READER",
-            excluded_members=[
-                test1.id,
-                test2.id,
-            ])
-        static = aws.rds.ClusterEndpoint("static",
-            cluster_identifier=default.id,
-            cluster_endpoint_identifier="static",
-            custom_endpoint_type="READER",
-            static_members=[
-                test1.id,
-                test3.id,
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_endpoint_identifier: The identifier to use for the new endpoint. This parameter is stored as a lowercase string.

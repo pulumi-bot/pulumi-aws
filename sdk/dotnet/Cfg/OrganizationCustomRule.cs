@@ -15,50 +15,6 @@ namespace Pulumi.Aws.Cfg
     /// &gt; **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excluded_accounts` argument.
     /// 
     /// &gt; **NOTE:** The proper Lambda permission to allow the AWS Config service invoke the Lambda Function must be in place before the rule will successfully create or update. See also the `aws.lambda.Permission` resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var examplePermission = new Aws.Lambda.Permission("examplePermission", new Aws.Lambda.PermissionArgs
-    ///         {
-    ///             Action = "lambda:InvokeFunction",
-    ///             Function = aws_lambda_function.Example.Arn,
-    ///             Principal = "config.amazonaws.com",
-    ///         });
-    ///         var exampleOrganization = new Aws.Organizations.Organization("exampleOrganization", new Aws.Organizations.OrganizationArgs
-    ///         {
-    ///             AwsServiceAccessPrincipals = 
-    ///             {
-    ///                 "config-multiaccountsetup.amazonaws.com",
-    ///             },
-    ///             FeatureSet = "ALL",
-    ///         });
-    ///         var exampleOrganizationCustomRule = new Aws.Cfg.OrganizationCustomRule("exampleOrganizationCustomRule", new Aws.Cfg.OrganizationCustomRuleArgs
-    ///         {
-    ///             LambdaFunctionArn = aws_lambda_function.Example.Arn,
-    ///             TriggerTypes = 
-    ///             {
-    ///                 "ConfigurationItemChangeNotification",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 examplePermission,
-    ///                 exampleOrganization,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class OrganizationCustomRule : Pulumi.CustomResource
     {

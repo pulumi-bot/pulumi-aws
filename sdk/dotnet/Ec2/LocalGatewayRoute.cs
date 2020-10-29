@@ -11,27 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Manages an EC2 Local Gateway Route. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2.LocalGatewayRoute("example", new Aws.Ec2.LocalGatewayRouteArgs
-    ///         {
-    ///             DestinationCidrBlock = "172.16.0.0/16",
-    ///             LocalGatewayRouteTableId = data.Aws_ec2_local_gateway_route_table.Example.Id,
-    ///             LocalGatewayVirtualInterfaceGroupId = data.Aws_ec2_local_gateway_virtual_interface_group.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class LocalGatewayRoute : Pulumi.CustomResource
     {

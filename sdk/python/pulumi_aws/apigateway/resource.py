@@ -24,19 +24,6 @@ class Resource(pulumi.CustomResource):
         """
         Provides an API Gateway Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_demo_api = aws.apigateway.RestApi("myDemoAPI", description="This is my API for demonstration purposes")
-        my_demo_resource = aws.apigateway.Resource("myDemoResource",
-            rest_api=my_demo_api.id,
-            parent_id=my_demo_api.root_resource_id,
-            path_part="mydemoresource")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent_id: The ID of the parent API resource

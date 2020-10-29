@@ -25,17 +25,6 @@ class Repository(pulumi.CustomResource):
         """
         Provides a CodeCommit Repository Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.codecommit.Repository("test",
-            description="This is the Sample App Repository",
-            repository_name="MyTestRepository")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_branch: The default branch of the repository. The branch specified here needs to exist.

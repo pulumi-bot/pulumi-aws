@@ -11,49 +11,6 @@ import (
 )
 
 // Registers an on-premises server or virtual machine with Amazon EC2 so that it can be managed using Run Command.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ssm"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testRole, err := iam.NewRole(ctx, "testRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "  {\n", "    \"Version\": \"2012-10-17\",\n", "    \"Statement\": {\n", "      \"Effect\": \"Allow\",\n", "      \"Principal\": {\"Service\": \"ssm.amazonaws.com\"},\n", "      \"Action\": \"sts:AssumeRole\"\n", "    }\n", "  }\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testAttach, err := iam.NewRolePolicyAttachment(ctx, "testAttach", &iam.RolePolicyAttachmentArgs{
-// 			Role:      testRole.Name,
-// 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ssm.NewActivation(ctx, "foo", &ssm.ActivationArgs{
-// 			Description:       pulumi.String("Test"),
-// 			IamRole:           testRole.ID(),
-// 			RegistrationLimit: pulumi.Int(5),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			testAttach,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Activation struct {
 	pulumi.CustomResourceState
 

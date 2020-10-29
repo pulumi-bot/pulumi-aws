@@ -40,20 +40,6 @@ import * as utilities from "../utilities";
  * a conflict of rule settings and will overwrite routes.
  *
  * ## Example Usage
- * ### With Tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const defaultRouteTable = new aws.ec2.DefaultRouteTable("defaultRouteTable", {
- *     defaultRouteTableId: aws_vpc.foo.default_route_table_id,
- *     routes: [{}],
- *     tags: {
- *         Name: "default table",
- *     },
- * });
- * ```
  */
 export class DefaultRouteTable extends pulumi.CustomResource {
     /**

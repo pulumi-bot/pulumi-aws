@@ -14,29 +14,6 @@ namespace Pulumi.Aws
         /// <summary>
         /// The Canonical User ID data source allows access to the [canonical user ID](http://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)
         /// for the effective account in which this provider is working.  
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Aws.GetCanonicalUserId.InvokeAsync());
-        ///         this.CanonicalUserId = current.Apply(current =&gt; current.Id);
-        ///     }
-        /// 
-        ///     [Output("canonicalUserId")]
-        ///     public Output&lt;string&gt; CanonicalUserId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCanonicalUserIdResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCanonicalUserIdResult>("aws:index/getCanonicalUserId:getCanonicalUserId", InvokeArgs.Empty, options.WithVersion());

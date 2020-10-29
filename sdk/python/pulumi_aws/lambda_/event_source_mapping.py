@@ -39,38 +39,6 @@ class EventSourceMapping(pulumi.CustomResource):
         For information about event source mappings, see [CreateEventSourceMapping](http://docs.aws.amazon.com/lambda/latest/dg/API_CreateEventSourceMapping.html) in the API docs.
 
         ## Example Usage
-        ### DynamoDB
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.EventSourceMapping("example",
-            event_source_arn=aws_dynamodb_table["example"]["stream_arn"],
-            function_name=aws_lambda_function["example"]["arn"],
-            starting_position="LATEST")
-        ```
-        ### Kinesis
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.EventSourceMapping("example",
-            event_source_arn=aws_kinesis_stream["example"]["arn"],
-            function_name=aws_lambda_function["example"]["arn"],
-            starting_position="LATEST")
-        ```
-        ### SQS
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.EventSourceMapping("example",
-            event_source_arn=aws_sqs_queue["sqs_queue_test"]["arn"],
-            function_name=aws_lambda_function["example"]["arn"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

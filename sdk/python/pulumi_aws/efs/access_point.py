@@ -27,15 +27,6 @@ class AccessPoint(pulumi.CustomResource):
         """
         Provides an Elastic File System (EFS) access point.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.efs.AccessPoint("test", file_system_id=aws_efs_file_system["foo"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] file_system_id: The ID of the file system for which the access point is intended.

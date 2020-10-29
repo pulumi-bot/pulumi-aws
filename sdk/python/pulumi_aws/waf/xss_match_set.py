@@ -25,28 +25,6 @@ class XssMatchSet(pulumi.CustomResource):
         """
         Provides a WAF XSS Match Set Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        xss_match_set = aws.waf.XssMatchSet("xssMatchSet", xss_match_tuples=[
-            aws.waf.XssMatchSetXssMatchTupleArgs(
-                field_to_match=aws.waf.XssMatchSetXssMatchTupleFieldToMatchArgs(
-                    type="URI",
-                ),
-                text_transformation="NONE",
-            ),
-            aws.waf.XssMatchSetXssMatchTupleArgs(
-                field_to_match=aws.waf.XssMatchSetXssMatchTupleFieldToMatchArgs(
-                    type="QUERY_STRING",
-                ),
-                text_transformation="NONE",
-            ),
-        ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name or description of the SizeConstraintSet.

@@ -27,18 +27,6 @@ class BgpPeer(pulumi.CustomResource):
         """
         Provides a Direct Connect BGP peer resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        peer = aws.directconnect.BgpPeer("peer",
-            virtual_interface_id=aws_dx_private_virtual_interface["foo"]["id"],
-            address_family="ipv6",
-            bgp_asn=65351)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.

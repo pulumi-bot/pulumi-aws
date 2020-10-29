@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const defaultCluster = new aws.redshift.Cluster("defaultCluster", {
- *     clusterIdentifier: "tf-redshift-cluster",
- *     databaseName: "mydb",
- *     masterUsername: "foo",
- *     masterPassword: "Mustbe8characters",
- *     nodeType: "dc1.large",
- *     clusterType: "single-node",
- * });
- * const defaultSnapshotSchedule = new aws.redshift.SnapshotSchedule("defaultSnapshotSchedule", {
- *     identifier: "tf-redshift-snapshot-schedule",
- *     definitions: ["rate(12 hours)"],
- * });
- * const defaultSnapshotScheduleAssociation = new aws.redshift.SnapshotScheduleAssociation("defaultSnapshotScheduleAssociation", {
- *     clusterIdentifier: defaultCluster.id,
- *     scheduleIdentifier: defaultSnapshotSchedule.id,
- * });
- * ```
- */
 export class SnapshotScheduleAssociation extends pulumi.CustomResource {
     /**
      * Get an existing SnapshotScheduleAssociation resource's state with the given name, ID, and optional extra

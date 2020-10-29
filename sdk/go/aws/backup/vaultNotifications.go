@@ -11,49 +11,6 @@ import (
 )
 
 // Provides an AWS Backup vault notifications resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/backup"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/iam"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testTopic, err := sns.NewTopic(ctx, "testTopic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sns.NewTopicPolicy(ctx, "testTopicPolicy", &sns.TopicPolicyArgs{
-// 			Arn: testTopic.Arn,
-// 			Policy: testPolicyDocument.ApplyT(func(testPolicyDocument iam.GetPolicyDocumentResult) (string, error) {
-// 				return testPolicyDocument.Json, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = backup.NewVaultNotifications(ctx, "testVaultNotifications", &backup.VaultNotificationsArgs{
-// 			BackupVaultName: pulumi.String("example_backup_vault"),
-// 			SnsTopicArn:     testTopic.Arn,
-// 			BackupVaultEvents: pulumi.StringArray{
-// 				pulumi.String("BACKUP_JOB_STARTED"),
-// 				pulumi.String("RESTORE_JOB_COMPLETED"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VaultNotifications struct {
 	pulumi.CustomResourceState
 

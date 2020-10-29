@@ -35,54 +35,6 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         [1]: https://www.terraform.io/docs/providers/aws/d/instance.html
         [2]: https://www.terraform.io/docs/providers/aws/r/network_interface.html
 
-        ## Example Usage
-
-        The following provides a very basic example of setting up an instance (provided
-        by `instance`) in the default security group, creating a security group
-        (provided by `sg`) and then attaching the security group to the instance's
-        primary network interface via the `ec2.NetworkInterfaceSecurityGroupAttachment` resource,
-        named `sg_attachment`:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ami = aws.get_ami(most_recent=True,
-            filters=[aws.GetAmiFilterArgs(
-                name="name",
-                values=["amzn-ami-hvm-*"],
-            )],
-            owners=["amazon"])
-        instance = aws.ec2.Instance("instance",
-            instance_type="t2.micro",
-            ami=ami.id,
-            tags={
-                "type": "test-instance",
-            })
-        sg = aws.ec2.SecurityGroup("sg", tags={
-            "type": "test-security-group",
-        })
-        sg_attachment = aws.ec2.NetworkInterfaceSecurityGroupAttachment("sgAttachment",
-            security_group_id=sg.id,
-            network_interface_id=instance.primary_network_interface_id)
-        ```
-
-        In this example, `instance` is provided by the `ec2.Instance` data source,
-        fetching an external instance, possibly not managed by this provider.
-        `sg_attachment` then attaches to the output instance's `network_interface_id`:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        instance = aws.ec2.get_instance(instance_id="i-1234567890abcdef0")
-        sg = aws.ec2.SecurityGroup("sg", tags={
-            "type": "test-security-group",
-        })
-        sg_attachment = aws.ec2.NetworkInterfaceSecurityGroupAttachment("sgAttachment",
-            security_group_id=sg.id,
-            network_interface_id=instance.network_interface_id)
-        ```
         ## Output Reference
 
         There are no outputs for this resource.

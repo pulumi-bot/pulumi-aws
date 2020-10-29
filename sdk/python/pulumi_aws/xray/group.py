@@ -24,17 +24,6 @@ class Group(pulumi.CustomResource):
         """
         Creates and manages an AWS XRay Group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.xray.Group("example",
-            filter_expression="responsetime > 5",
-            group_name="example")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] filter_expression: The filter expression defining criteria by which to group traces. more info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).

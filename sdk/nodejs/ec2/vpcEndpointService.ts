@@ -15,31 +15,6 @@ import * as utilities from "../utilities";
  * and will overwrite the association.
  *
  * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.VpcEndpointService("example", {
- *     acceptanceRequired: false,
- *     networkLoadBalancerArns: [aws_lb.example.arn],
- * });
- * ```
- * ### Basic w/ Tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.VpcEndpointService("example", {
- *     acceptanceRequired: false,
- *     networkLoadBalancerArns: [aws_lb.example.arn],
- *     tags: {
- *         Environment: "test",
- *     },
- * });
- * ```
  */
 export class VpcEndpointService extends pulumi.CustomResource {
     /**

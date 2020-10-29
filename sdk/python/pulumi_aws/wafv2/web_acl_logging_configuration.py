@@ -30,22 +30,6 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
         If you are capturing logs for Amazon CloudFront, always create the firehose in US East (N. Virginia).
         Be sure to give the data firehose a name that starts with the prefix `aws-waf-logs-`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.WebAclLoggingConfiguration("example",
-            log_destination_configs=[aws_kinesis_firehose_delivery_stream["example"]["arn"]],
-            resource_arn=aws_wafv2_web_acl["example"]["arn"],
-            redacted_fields=[aws.wafv2.WebAclLoggingConfigurationRedactedFieldArgs(
-                single_header=aws.wafv2.WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs(
-                    name="user-agent",
-                ),
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] log_destination_configs: The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.

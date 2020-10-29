@@ -14,29 +14,6 @@ namespace Pulumi.Aws.Iam
         /// <summary>
         /// This data source can be used to fetch information about a specific
         /// IAM policy.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Iam.GetPolicy.InvokeAsync(new Aws.Iam.GetPolicyArgs
-        ///         {
-        ///             Arn = "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("aws:iam/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithVersion());

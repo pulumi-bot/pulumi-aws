@@ -24,36 +24,6 @@ class VaultNotifications(pulumi.CustomResource):
         """
         Provides an AWS Backup vault notifications resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_topic = aws.sns.Topic("testTopic")
-        test_policy_document = test_topic.arn.apply(lambda arn: aws.iam.get_policy_document(policy_id="__default_policy_ID",
-            statements=[aws.iam.GetPolicyDocumentStatementArgs(
-                actions=["SNS:Publish"],
-                effect="Allow",
-                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                    type="Service",
-                    identifiers=["backup.amazonaws.com"],
-                )],
-                resources=[arn],
-                sid="__default_statement_ID",
-            )]))
-        test_topic_policy = aws.sns.TopicPolicy("testTopicPolicy",
-            arn=test_topic.arn,
-            policy=test_policy_document.json)
-        test_vault_notifications = aws.backup.VaultNotifications("testVaultNotifications",
-            backup_vault_name="example_backup_vault",
-            sns_topic_arn=test_topic.arn,
-            backup_vault_events=[
-                "BACKUP_JOB_STARTED",
-                "RESTORE_JOB_COMPLETED",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_vault_events: An array of events that indicate the status of jobs to back up resources to the backup vault.

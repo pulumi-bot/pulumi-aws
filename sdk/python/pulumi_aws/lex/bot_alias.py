@@ -29,19 +29,6 @@ class BotAlias(pulumi.CustomResource):
         Provides an Amazon Lex Bot Alias resource. For more information see
         [Amazon Lex: How It Works](https://docs.aws.amazon.com/lex/latest/dg/how-it-works.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        order_flowers_prod = aws.lex.BotAlias("orderFlowersProd",
-            bot_name="OrderFlowers",
-            bot_version="1",
-            description="Production Version of the OrderFlowers Bot.",
-            name="OrderFlowersProd")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bot_name: The name of the bot.

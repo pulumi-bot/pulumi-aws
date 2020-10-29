@@ -8,45 +8,6 @@ import * as utilities from "../utilities";
  * Provides the ability to register instances and containers with an Application Load Balancer (ALB) or Network Load Balancer (NLB) target group. For attaching resources with Elastic Load Balancer (ELB), see the `aws.elb.Attachment` resource.
  *
  * > **Note:** `aws.alb.TargetGroupAttachment` is known as `aws.lb.TargetGroupAttachment`. The functionality is identical.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testTargetGroup = new aws.lb.TargetGroup("testTargetGroup", {});
- * // ... other configuration ...
- * const testInstance = new aws.ec2.Instance("testInstance", {});
- * // ... other configuration ...
- * const testTargetGroupAttachment = new aws.lb.TargetGroupAttachment("testTargetGroupAttachment", {
- *     targetGroupArn: testTargetGroup.arn,
- *     targetId: testInstance.id,
- *     port: 80,
- * });
- * ```
- * ## Usage with lambda
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testTargetGroup = new aws.lb.TargetGroup("testTargetGroup", {targetType: "lambda"});
- * const testFunction = new aws.lambda.Function("testFunction", {});
- * // ... other configuration ...
- * const withLb = new aws.lambda.Permission("withLb", {
- *     action: "lambda:InvokeFunction",
- *     "function": testFunction.arn,
- *     principal: "elasticloadbalancing.amazonaws.com",
- *     sourceArn: testTargetGroup.arn,
- * });
- * const testTargetGroupAttachment = new aws.lb.TargetGroupAttachment("testTargetGroupAttachment", {
- *     targetGroupArn: testTargetGroup.arn,
- *     targetId: testFunction.arn,
- * }, {
- *     dependsOn: [withLb],
- * });
- * ```
  */
 export class TargetGroupAttachment extends pulumi.CustomResource {
     /**

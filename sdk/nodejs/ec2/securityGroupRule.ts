@@ -18,46 +18,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Setting `protocol = "all"` or `protocol = -1` with `fromPort` and `toPort` will result in the EC2 API creating a security group rule with all ports open. This API behavior cannot be controlled by this provider and may generate warnings in the future.
  *
  * > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
- *
- * ## Example Usage
- *
- * Basic usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.ec2.SecurityGroupRule("example", {
- *     type: "ingress",
- *     fromPort: 0,
- *     toPort: 65535,
- *     protocol: "tcp",
- *     cidrBlocks: [aws_vpc.example.cidr_block],
- *     securityGroupId: "sg-123456",
- * });
- * ```
- * ## Usage with prefix list IDs
- *
- * Prefix list IDs are managed by AWS internally. Prefix list IDs
- * are associated with a prefix list name, or service name, that is linked to a specific region.
- * Prefix list IDs are exported on VPC Endpoints, so you can use this format:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * // ...
- * const myEndpoint = new aws.ec2.VpcEndpoint("myEndpoint", {});
- * // ...
- * const allowAll = new aws.ec2.SecurityGroupRule("allowAll", {
- *     type: "egress",
- *     toPort: 0,
- *     protocol: "-1",
- *     prefixListIds: [myEndpoint.prefixListId],
- *     fromPort: 0,
- *     securityGroupId: "sg-123456",
- * });
- * ```
  */
 export class SecurityGroupRule extends pulumi.CustomResource {
     /**

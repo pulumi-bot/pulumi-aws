@@ -13,59 +13,6 @@ namespace Pulumi.Aws.Glue
     /// Provides a Glue Workflow resource.
     /// The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource.
     /// See the example below for creating a graph with four nodes (two triggers and two jobs).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Glue.Workflow("example", new Aws.Glue.WorkflowArgs
-    ///         {
-    ///         });
-    ///         var example_start = new Aws.Glue.Trigger("example-start", new Aws.Glue.TriggerArgs
-    ///         {
-    ///             Type = "ON_DEMAND",
-    ///             WorkflowName = example.Name,
-    ///             Actions = 
-    ///             {
-    ///                 new Aws.Glue.Inputs.TriggerActionArgs
-    ///                 {
-    ///                     JobName = "example-job",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var example_inner = new Aws.Glue.Trigger("example-inner", new Aws.Glue.TriggerArgs
-    ///         {
-    ///             Type = "CONDITIONAL",
-    ///             WorkflowName = example.Name,
-    ///             Predicate = new Aws.Glue.Inputs.TriggerPredicateArgs
-    ///             {
-    ///                 Conditions = 
-    ///                 {
-    ///                     new Aws.Glue.Inputs.TriggerPredicateConditionArgs
-    ///                     {
-    ///                         JobName = "example-job",
-    ///                         State = "SUCCEEDED",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Actions = 
-    ///             {
-    ///                 new Aws.Glue.Inputs.TriggerActionArgs
-    ///                 {
-    ///                     JobName = "another-example-job",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Workflow : Pulumi.CustomResource
     {

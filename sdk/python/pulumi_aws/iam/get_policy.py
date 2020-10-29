@@ -108,15 +108,6 @@ def get_policy(arn: Optional[str] = None,
     This data source can be used to fetch information about a specific
     IAM policy.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.iam.get_policy(arn="arn:aws:iam::123456789012:policy/UsersManageOwnCredentials")
-    ```
-
 
     :param str arn: ARN of the IAM policy.
     """

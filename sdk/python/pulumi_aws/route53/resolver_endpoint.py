@@ -28,32 +28,6 @@ class ResolverEndpoint(pulumi.CustomResource):
         """
         Provides a Route 53 Resolver endpoint resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.route53.ResolverEndpoint("foo",
-            direction="INBOUND",
-            security_group_ids=[
-                aws_security_group["sg1"]["id"],
-                aws_security_group["sg2"]["id"],
-            ],
-            ip_addresses=[
-                aws.route53.ResolverEndpointIpAddressArgs(
-                    subnet_id=aws_subnet["sn1"]["id"],
-                ),
-                aws.route53.ResolverEndpointIpAddressArgs(
-                    subnet_id=aws_subnet["sn2"]["id"],
-                    ip="10.0.64.4",
-                ),
-            ],
-            tags={
-                "Environment": "Prod",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of DNS queries to or from the Route 53 Resolver endpoint.

@@ -23,28 +23,6 @@ class VpnConnectionRoute(pulumi.CustomResource):
         """
         Provides a static route between a VPN connection and a customer gateway.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        vpc = aws.ec2.Vpc("vpc", cidr_block="10.0.0.0/16")
-        vpn_gateway = aws.ec2.VpnGateway("vpnGateway", vpc_id=vpc.id)
-        customer_gateway = aws.ec2.CustomerGateway("customerGateway",
-            bgp_asn="65000",
-            ip_address="172.0.0.1",
-            type="ipsec.1")
-        main = aws.ec2.VpnConnection("main",
-            vpn_gateway_id=vpn_gateway.id,
-            customer_gateway_id=customer_gateway.id,
-            type="ipsec.1",
-            static_routes_only=True)
-        office = aws.ec2.VpnConnectionRoute("office",
-            destination_cidr_block="192.168.10.0/24",
-            vpn_connection_id=main.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr_block: The CIDR block associated with the local subnet of the customer network.

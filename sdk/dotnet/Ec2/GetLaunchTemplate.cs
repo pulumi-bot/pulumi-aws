@@ -13,59 +13,6 @@ namespace Pulumi.Aws.Ec2
     {
         /// <summary>
         /// Provides information about a Launch Template.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Aws.Ec2.GetLaunchTemplate.InvokeAsync(new Aws.Ec2.GetLaunchTemplateArgs
-        ///         {
-        ///             Name = "my-launch-template",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Filter
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Ec2.GetLaunchTemplate.InvokeAsync(new Aws.Ec2.GetLaunchTemplateArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetLaunchTemplateFilterArgs
-        ///                 {
-        ///                     Name = "launch-template-name",
-        ///                     Values = 
-        ///                     {
-        ///                         "some-template",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLaunchTemplateResult> InvokeAsync(GetLaunchTemplateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLaunchTemplateResult>("aws:ec2/getLaunchTemplate:getLaunchTemplate", args ?? new GetLaunchTemplateArgs(), options.WithVersion());

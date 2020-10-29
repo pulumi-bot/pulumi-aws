@@ -28,29 +28,6 @@ class CapacityProvider(pulumi.CustomResource):
 
         > **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling Group will automatically add the `AmazonECSManaged` tag to the Auto Scaling Group. This tag should be included in the `autoscaling.Group` resource configuration to prevent the provider from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling Group if `min_size` is above 0 on creation. Any EC2 Instances in the Auto Scaling Group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configuration, including potentially other tags ...
-        test_group = aws.autoscaling.Group("testGroup", tags=[aws.autoscaling.GroupTagArgs(
-            key="AmazonECSManaged",
-            propagate_at_launch=True,
-        )])
-        test_capacity_provider = aws.ecs.CapacityProvider("testCapacityProvider", auto_scaling_group_provider=aws.ecs.CapacityProviderAutoScalingGroupProviderArgs(
-            auto_scaling_group_arn=test_group.arn,
-            managed_termination_protection="ENABLED",
-            managed_scaling=aws.ecs.CapacityProviderAutoScalingGroupProviderManagedScalingArgs(
-                maximum_scaling_step_size=1000,
-                minimum_scaling_step_size=1,
-                status="ENABLED",
-                target_capacity=10,
-            ),
-        ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CapacityProviderAutoScalingGroupProviderArgs']] auto_scaling_group_provider: Nested argument defining the provider for the ECS auto scaling group. Defined below.

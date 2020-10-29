@@ -16,56 +16,6 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### By Filter
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Ec2TransitGateway.GetPeeringAttachment.InvokeAsync(new Aws.Ec2TransitGateway.GetPeeringAttachmentArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2TransitGateway.Inputs.GetPeeringAttachmentFilterArgs
-        ///                 {
-        ///                     Name = "transit-gateway-attachment-id",
-        ///                     Values = 
-        ///                     {
-        ///                         "tgw-attach-12345678",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### By Identifier
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var attachment = Output.Create(Aws.Ec2TransitGateway.GetPeeringAttachment.InvokeAsync(new Aws.Ec2TransitGateway.GetPeeringAttachmentArgs
-        ///         {
-        ///             Id = "tgw-attach-12345678",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPeeringAttachmentResult> InvokeAsync(GetPeeringAttachmentArgs? args = null, InvokeOptions? options = null)

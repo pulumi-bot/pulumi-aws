@@ -12,50 +12,6 @@ namespace Pulumi.Aws.Ec2ClientVpn
     /// <summary>
     /// Provides additional routes for AWS Client VPN endpoints. For more information on usage, please see the
     /// [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleEndpoint = new Aws.Ec2ClientVpn.Endpoint("exampleEndpoint", new Aws.Ec2ClientVpn.EndpointArgs
-    ///         {
-    ///             Description = "Example Client VPN endpoint",
-    ///             ServerCertificateArn = aws_acm_certificate.Example.Arn,
-    ///             ClientCidrBlock = "10.0.0.0/16",
-    ///             AuthenticationOptions = 
-    ///             {
-    ///                 new Aws.Ec2ClientVpn.Inputs.EndpointAuthenticationOptionArgs
-    ///                 {
-    ///                     Type = "certificate-authentication",
-    ///                     RootCertificateChainArn = aws_acm_certificate.Example.Arn,
-    ///                 },
-    ///             },
-    ///             ConnectionLogOptions = new Aws.Ec2ClientVpn.Inputs.EndpointConnectionLogOptionsArgs
-    ///             {
-    ///                 Enabled = false,
-    ///             },
-    ///         });
-    ///         var exampleNetworkAssociation = new Aws.Ec2ClientVpn.NetworkAssociation("exampleNetworkAssociation", new Aws.Ec2ClientVpn.NetworkAssociationArgs
-    ///         {
-    ///             ClientVpnEndpointId = exampleEndpoint.Id,
-    ///             SubnetId = aws_subnet.Example.Id,
-    ///         });
-    ///         var exampleRoute = new Aws.Ec2ClientVpn.Route("exampleRoute", new Aws.Ec2ClientVpn.RouteArgs
-    ///         {
-    ///             ClientVpnEndpointId = exampleEndpoint.Id,
-    ///             DestinationCidrBlock = "0.0.0.0/0",
-    ///             TargetVpcSubnetId = exampleNetworkAssociation.SubnetId,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {

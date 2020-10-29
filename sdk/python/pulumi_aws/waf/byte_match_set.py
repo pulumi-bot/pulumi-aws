@@ -25,23 +25,6 @@ class ByteMatchSet(pulumi.CustomResource):
         """
         Provides a WAF Byte Match Set Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        byte_set = aws.waf.ByteMatchSet("byteSet", byte_match_tuples=[aws.waf.ByteMatchSetByteMatchTupleArgs(
-            field_to_match=aws.waf.ByteMatchSetByteMatchTupleFieldToMatchArgs(
-                data="referer",
-                type="HEADER",
-            ),
-            positional_constraint="CONTAINS",
-            target_string="badrefer1",
-            text_transformation="NONE",
-        )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ByteMatchSetByteMatchTupleArgs']]]] byte_match_tuples: Specifies the bytes (typically a string that corresponds

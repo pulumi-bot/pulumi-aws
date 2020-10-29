@@ -32,19 +32,6 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
         Provides a Direct Connect hosted private virtual interface resource. This resource represents the allocator's side of the hosted virtual interface.
         A hosted virtual interface is a virtual interface that is owned by another AWS account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.directconnect.HostedPrivateVirtualInterface("foo",
-            address_family="ipv4",
-            bgp_asn=65352,
-            connection_id="dxcon-zzzzzzzz",
-            vlan=4094)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.

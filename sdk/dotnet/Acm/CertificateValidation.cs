@@ -20,31 +20,6 @@ namespace Pulumi.Aws.Acm
     /// &gt; **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
     /// 
     /// ## Example Usage
-    /// ### Email Validation
-    /// 
-    /// In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleCertificate = new Aws.Acm.Certificate("exampleCertificate", new Aws.Acm.CertificateArgs
-    ///         {
-    ///             DomainName = "example.com",
-    ///             ValidationMethod = "EMAIL",
-    ///         });
-    ///         var exampleCertificateValidation = new Aws.Acm.CertificateValidation("exampleCertificateValidation", new Aws.Acm.CertificateValidationArgs
-    ///         {
-    ///             CertificateArn = exampleCertificate.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class CertificateValidation : Pulumi.CustomResource
     {

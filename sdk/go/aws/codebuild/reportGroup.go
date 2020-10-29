@@ -11,55 +11,6 @@ import (
 )
 
 // Provides a CodeBuild Report Groups Resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/codebuild"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/kms"
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/s3"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
-// 			Description:          pulumi.String("my test kms key"),
-// 			DeletionWindowInDays: pulumi.Int(7),
-// 			Policy:               pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Id\": \"kms-tf-1\",\n", "  \"Statement\": [\n", "    {\n", "      \"Sid\": \"Enable IAM User Permissions\",\n", "      \"Effect\": \"Allow\",\n", "      \"Principal\": {\n", "        \"AWS\": \"*\"\n", "      },\n", "      \"Action\": \"kms:*\",\n", "      \"Resource\": \"*\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleBucket, err := s3.NewBucket(ctx, "exampleBucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = codebuild.NewReportGroup(ctx, "exampleReportGroup", &codebuild.ReportGroupArgs{
-// 			Type: pulumi.String("TEST"),
-// 			ExportConfig: &codebuild.ReportGroupExportConfigArgs{
-// 				Type: pulumi.String("S3"),
-// 				S3Destination: &codebuild.ReportGroupExportConfigS3DestinationArgs{
-// 					Bucket:             exampleBucket.ID(),
-// 					EncryptionDisabled: pulumi.Bool(false),
-// 					EncryptionKey:      exampleKey.Arn,
-// 					Packaging:          pulumi.String("NONE"),
-// 					Path:               pulumi.String("/some"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ReportGroup struct {
 	pulumi.CustomResourceState
 

@@ -14,29 +14,6 @@ namespace Pulumi.Aws.Transfer
         /// <summary>
         /// Use this data source to get the ARN of an AWS Transfer Server for use in other
         /// resources.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Transfer.GetServer.InvokeAsync(new Aws.Transfer.GetServerArgs
-        ///         {
-        ///             ServerId = "s-1234567",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("aws:transfer/getServer:getServer", args ?? new GetServerArgs(), options.WithVersion());

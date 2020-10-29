@@ -13,43 +13,6 @@ namespace Pulumi.Aws
     {
         /// <summary>
         /// Use this data source to get a list of AMI IDs matching the specified criteria.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ubuntu = Output.Create(Aws.GetAmiIds.InvokeAsync(new Aws.GetAmiIdsArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Inputs.GetAmiIdsFilterArgs
-        ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "ubuntu/images/ubuntu-*-*-amd64-server-*",
-        ///                     },
-        ///                 },
-        ///             },
-        ///             Owners = 
-        ///             {
-        ///                 "099720109477",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAmiIdsResult> InvokeAsync(GetAmiIdsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAmiIdsResult>("aws:index/getAmiIds:getAmiIds", args ?? new GetAmiIdsArgs(), options.WithVersion());

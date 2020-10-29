@@ -22,21 +22,6 @@ class DomainIdentity(pulumi.CustomResource):
         """
         Provides an SES domain identity resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ses.DomainIdentity("example", domain="example.com")
-        example_amazonses_verification_record = aws.route53.Record("exampleAmazonsesVerificationRecord",
-            zone_id="ABCDEFGHIJ123",
-            name="_amazonses.example.com",
-            type="TXT",
-            ttl=600,
-            records=[example.verification_token])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain name to assign to SES

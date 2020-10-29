@@ -11,29 +11,6 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a resource to create a VPC Internet Gateway.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var gw = new Aws.Ec2.InternetGateway("gw", new Aws.Ec2.InternetGatewayArgs
-    ///         {
-    ///             VpcId = aws_vpc.Main.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "main" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class InternetGateway : Pulumi.CustomResource
     {

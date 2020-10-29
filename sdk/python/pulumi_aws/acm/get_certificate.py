@@ -123,21 +123,6 @@ def get_certificate(domain: Optional[str] = None,
     Manager (ACM), you can reference
     it by domain without having to hard code the ARNs as input.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    issued = aws.acm.get_certificate(domain="tf.example.com",
-        statuses=["ISSUED"])
-    amazon_issued = aws.acm.get_certificate(domain="tf.example.com",
-        most_recent=True,
-        types=["AMAZON_ISSUED"])
-    rsa4096 = aws.acm.get_certificate(domain="tf.example.com",
-        key_types=["RSA_4096"])
-    ```
-
 
     :param str domain: The domain of the certificate to look up. If no certificate is found with this name, an error will be returned.
     :param Sequence[str] key_types: A list of key algorithms to filter certificates. By default, ACM does not return all certificate types when searching. Valid values are `RSA_1024`, `RSA_2048`, `RSA_4096`, `EC_prime256v1`, `EC_secp384r1`, and `EC_secp521r1`.

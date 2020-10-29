@@ -12,28 +12,6 @@ namespace Pulumi.Aws.Lex
     /// <summary>
     /// Provides an Amazon Lex Bot Alias resource. For more information see
     /// [Amazon Lex: How It Works](https://docs.aws.amazon.com/lex/latest/dg/how-it-works.html)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var orderFlowersProd = new Aws.Lex.BotAlias("orderFlowersProd", new Aws.Lex.BotAliasArgs
-    ///         {
-    ///             BotName = "OrderFlowers",
-    ///             BotVersion = "1",
-    ///             Description = "Production Version of the OrderFlowers Bot.",
-    ///             Name = "OrderFlowersProd",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class BotAlias : Pulumi.CustomResource
     {

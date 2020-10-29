@@ -13,26 +13,6 @@ namespace Pulumi.Aws.Ebs
     {
         /// <summary>
         /// Provides a way to check whether default EBS encryption is enabled for your AWS account in the current AWS region.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Aws.Ebs.GetEncryptionByDefault.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEncryptionByDefaultResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEncryptionByDefaultResult>("aws:ebs/getEncryptionByDefault:getEncryptionByDefault", InvokeArgs.Empty, options.WithVersion());

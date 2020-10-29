@@ -20,56 +20,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
  *
  * > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
- *
- * ## Example Usage
- *
- * Basic usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const allowTls = new aws.ec2.SecurityGroup("allowTls", {
- *     description: "Allow TLS inbound traffic",
- *     vpcId: aws_vpc.main.id,
- *     ingress: [{
- *         description: "TLS from VPC",
- *         fromPort: 443,
- *         toPort: 443,
- *         protocol: "tcp",
- *         cidrBlocks: [aws_vpc.main.cidr_block],
- *     }],
- *     egress: [{
- *         fromPort: 0,
- *         toPort: 0,
- *         protocol: "-1",
- *         cidrBlocks: ["0.0.0.0/0"],
- *     }],
- *     tags: {
- *         Name: "allow_tls",
- *     },
- * });
- * ```
- * ## Usage with prefix list IDs
- *
- * Prefix list IDs are managed by AWS internally. Prefix list IDs
- * are associated with a prefix list name, or service name, that is linked to a specific region.
- * Prefix list IDs are exported on VPC Endpoints, so you can use this format:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const myEndpoint = new aws.ec2.VpcEndpoint("myEndpoint", {});
- * // ... other configuration ...
- * // ... other configuration ...
- * const example = new aws.ec2.SecurityGroup("example", {egress: [{
- *     fromPort: 0,
- *     toPort: 0,
- *     protocol: "-1",
- *     prefixListIds: [myEndpoint.prefixListId],
- * }]});
- * ```
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**

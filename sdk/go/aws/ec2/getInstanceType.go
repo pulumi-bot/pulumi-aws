@@ -8,29 +8,6 @@ import (
 )
 
 // Get characteristics for a single EC2 Instance Type.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.GetInstanceType(ctx, &ec2.GetInstanceTypeArgs{
-// 			InstanceType: "t2.micro",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetInstanceType(ctx *pulumi.Context, args *GetInstanceTypeArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeResult, error) {
 	var rv GetInstanceTypeResult
 	err := ctx.Invoke("aws:ec2/getInstanceType:getInstanceType", args, &rv, opts...)

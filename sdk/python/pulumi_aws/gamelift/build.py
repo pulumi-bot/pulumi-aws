@@ -28,22 +28,6 @@ class Build(pulumi.CustomResource):
         """
         Provides an Gamelift Build resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.gamelift.Build("test",
-            operating_system="WINDOWS_2012",
-            storage_location=aws.gamelift.BuildStorageLocationArgs(
-                bucket=aws_s3_bucket["test"]["bucket"],
-                key=aws_s3_bucket_object["test"]["key"],
-                role_arn=aws_iam_role["test"]["arn"],
-            ),
-            opts=ResourceOptions(depends_on=[aws_iam_role_policy["test"]]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the build

@@ -21,27 +21,7 @@ class SnapshotScheduleAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default_cluster = aws.redshift.Cluster("defaultCluster",
-            cluster_identifier="tf-redshift-cluster",
-            database_name="mydb",
-            master_username="foo",
-            master_password="Mustbe8characters",
-            node_type="dc1.large",
-            cluster_type="single-node")
-        default_snapshot_schedule = aws.redshift.SnapshotSchedule("defaultSnapshotSchedule",
-            identifier="tf-redshift-snapshot-schedule",
-            definitions=["rate(12 hours)"])
-        default_snapshot_schedule_association = aws.redshift.SnapshotScheduleAssociation("defaultSnapshotScheduleAssociation",
-            cluster_identifier=default_cluster.id,
-            schedule_identifier=default_snapshot_schedule.id)
-        ```
-
+        Create a SnapshotScheduleAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_identifier: The cluster identifier.

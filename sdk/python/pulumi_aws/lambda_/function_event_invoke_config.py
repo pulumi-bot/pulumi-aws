@@ -29,69 +29,6 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         Manages an asynchronous invocation configuration for a Lambda Function or Alias. More information about asynchronous invocations and the configurable values can be found in the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html).
 
         ## Example Usage
-        ### Destination Configuration
-
-        > **NOTE:** Ensure the Lambda Function IAM Role has necessary permissions for the destination, such as `sqs:SendMessage` or `sns:Publish`, otherwise the API will return a generic `InvalidParameterValueException: The destination ARN arn:PARTITION:SERVICE:REGION:ACCOUNT:RESOURCE is invalid.` error.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            destination_config=aws.lambda..FunctionEventInvokeConfigDestinationConfigArgs(
-                on_failure={
-                    "destination": aws_sqs_queue["example"]["arn"],
-                },
-                on_success=aws.lambda..FunctionEventInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=aws_sns_topic["example"]["arn"],
-                ),
-            ))
-        ```
-        ### Error Handling Configuration
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            maximum_event_age_in_seconds=60,
-            maximum_retry_attempts=0)
-        ```
-        ### Configuration for Alias Name
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_alias["example"]["function_name"],
-            qualifier=aws_lambda_alias["example"]["name"])
-        # ... other configuration ...
-        ```
-        ### Configuration for Function Latest Unpublished Version
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_function["example"]["function_name"],
-            qualifier="$LATEST")
-        # ... other configuration ...
-        ```
-        ### Configuration for Function Published Version
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.lambda_.FunctionEventInvokeConfig("example",
-            function_name=aws_lambda_function["example"]["function_name"],
-            qualifier=aws_lambda_function["example"]["version"])
-        # ... other configuration ...
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -27,23 +27,6 @@ class ListenerCertificate(pulumi.CustomResource):
 
         > **Note:** `alb.ListenerCertificate` is known as `lb.ListenerCertificate`. The functionality is identical.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_certificate = aws.acm.Certificate("exampleCertificate")
-        # ...
-        front_end_load_balancer = aws.lb.LoadBalancer("frontEndLoadBalancer")
-        # ...
-        front_end_listener = aws.lb.Listener("frontEndListener")
-        # ...
-        example_listener_certificate = aws.lb.ListenerCertificate("exampleListenerCertificate",
-            listener_arn=front_end_listener.arn,
-            certificate_arn=example_certificate.arn)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_arn: The ARN of the certificate to attach to the listener.

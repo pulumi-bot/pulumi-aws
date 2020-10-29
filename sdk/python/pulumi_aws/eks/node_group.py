@@ -38,68 +38,6 @@ class NodeGroup(pulumi.CustomResource):
         """
         Manages an EKS Node Group, which can provision and optionally update an Auto Scaling Group of Kubernetes worker nodes compatible with EKS. Additional documentation about this functionality can be found in the [EKS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.eks.NodeGroup("example",
-            cluster_name=aws_eks_cluster["example"]["name"],
-            node_role_arn=aws_iam_role["example"]["arn"],
-            subnet_ids=[__item["id"] for __item in aws_subnet["example"]],
-            scaling_config=aws.eks.NodeGroupScalingConfigArgs(
-                desired_size=1,
-                max_size=1,
-                min_size=1,
-            ),
-            opts=ResourceOptions(depends_on=[
-                    aws_iam_role_policy_attachment["example-AmazonEKSWorkerNodePolicy"],
-                    aws_iam_role_policy_attachment["example-AmazonEKS_CNI_Policy"],
-                    aws_iam_role_policy_attachment["example-AmazonEC2ContainerRegistryReadOnly"],
-                ]))
-        ```
-        ### Ignoring Changes to Desired Size
-
-        You can utilize [ignoreChanges](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) create an EKS Node Group with an initial size of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # ... other configurations ...
-        example = aws.eks.NodeGroup("example", scaling_config=aws.eks.NodeGroupScalingConfigArgs(
-            desired_size=2,
-        ))
-        ```
-        ### Example IAM Role for EKS Node Group
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_aws as aws
-
-        example = aws.iam.Role("example", assume_role_policy=json.dumps({
-            "Statement": [{
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                    "Service": "ec2.amazonaws.com",
-                },
-            }],
-            "Version": "2012-10-17",
-        }))
-        example__amazon_eks_worker_node_policy = aws.iam.RolePolicyAttachment("example-AmazonEKSWorkerNodePolicy",
-            policy_arn="arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
-            role=example.name)
-        example__amazon_ekscni_policy = aws.iam.RolePolicyAttachment("example-AmazonEKSCNIPolicy",
-            policy_arn="arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
-            role=example.name)
-        example__amazon_ec2_container_registry_read_only = aws.iam.RolePolicyAttachment("example-AmazonEC2ContainerRegistryReadOnly",
-            policy_arn="arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
-            role=example.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami_type: Type of Amazon Machine Image (AMI) associated with the EKS Node Group. Defaults to `AL2_x86_64`. Valid values: `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`. This provider will only perform drift detection if a configuration value is provided.

@@ -8,29 +8,6 @@ import (
 )
 
 // Use this data source to get information about an RDS subnet group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/rds"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.LookupSubnetGroup(ctx, &rds.LookupSubnetGroupArgs{
-// 			Name: "my-test-database-subnet-group",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupSubnetGroup(ctx *pulumi.Context, args *LookupSubnetGroupArgs, opts ...pulumi.InvokeOption) (*LookupSubnetGroupResult, error) {
 	var rv LookupSubnetGroupResult
 	err := ctx.Invoke("aws:rds/getSubnetGroup:getSubnetGroup", args, &rv, opts...)

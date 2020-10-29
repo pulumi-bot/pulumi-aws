@@ -30,33 +30,6 @@ class ResolverRule(pulumi.CustomResource):
         Provides a Route53 Resolver rule.
 
         ## Example Usage
-        ### System rule
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        sys = aws.route53.ResolverRule("sys",
-            domain_name="subdomain.example.com",
-            rule_type="SYSTEM")
-        ```
-        ### Forward rule
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        fwd = aws.route53.ResolverRule("fwd",
-            domain_name="example.com",
-            rule_type="FORWARD",
-            resolver_endpoint_id=aws_route53_resolver_endpoint["foo"]["id"],
-            target_ips=[aws.route53.ResolverRuleTargetIpArgs(
-                ip="123.45.67.89",
-            )],
-            tags={
-                "Environment": "Prod",
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

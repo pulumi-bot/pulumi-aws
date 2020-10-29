@@ -13,31 +13,6 @@ namespace Pulumi.Aws.Pinpoint
     /// Provides a Pinpoint APNs VoIP Channel resource.
     /// 
     /// &gt; **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new Aws.Pinpoint.App("app", new Aws.Pinpoint.AppArgs
-    ///         {
-    ///         });
-    ///         var apnsVoip = new Aws.Pinpoint.ApnsVoipChannel("apnsVoip", new Aws.Pinpoint.ApnsVoipChannelArgs
-    ///         {
-    ///             ApplicationId = app.ApplicationId,
-    ///             Certificate = File.ReadAllText("./certificate.pem"),
-    ///             PrivateKey = File.ReadAllText("./private_key.key"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ApnsVoipChannel : Pulumi.CustomResource
     {

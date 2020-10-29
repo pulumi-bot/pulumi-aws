@@ -25,17 +25,7 @@ class SnapshotSchedule(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.redshift.SnapshotSchedule("default",
-            definitions=["rate(12 hours)"],
-            identifier="tf-redshift-snapshot-schedule")
-        ```
-
+        Create a SnapshotSchedule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.

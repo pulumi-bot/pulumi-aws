@@ -26,22 +26,6 @@ class SubnetGroup(pulumi.CustomResource):
         """
         Provides an RDS DB subnet group resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.rds.SubnetGroup("default",
-            subnet_ids=[
-                aws_subnet["frontend"]["id"],
-                aws_subnet["backend"]["id"],
-            ],
-            tags={
-                "Name": "My DB subnet group",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the DB subnet group. Defaults to "Managed by Pulumi".

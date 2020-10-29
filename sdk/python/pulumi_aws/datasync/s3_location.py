@@ -27,20 +27,6 @@ class S3Location(pulumi.CustomResource):
         """
         Manages an S3 Location within AWS DataSync.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.datasync.S3Location("example",
-            s3_bucket_arn=aws_s3_bucket["example"]["arn"],
-            subdirectory="/example/prefix",
-            s3_config=aws.datasync.S3LocationS3ConfigArgs(
-                bucket_access_role_arn=aws_iam_role["example"]["arn"],
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] s3_bucket_arn: Amazon Resource Name (ARN) of the S3 Bucket.

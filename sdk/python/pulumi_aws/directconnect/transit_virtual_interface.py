@@ -33,21 +33,6 @@ class TransitVirtualInterface(pulumi.CustomResource):
         Provides a Direct Connect transit virtual interface resource.
         A transit virtual interface is a VLAN that transports traffic from a Direct Connect gateway to one or more transit gateways.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_gateway = aws.directconnect.Gateway("exampleGateway", amazon_side_asn="64512")
-        example_transit_virtual_interface = aws.directconnect.TransitVirtualInterface("exampleTransitVirtualInterface",
-            connection_id=aws_dx_connection["example"]["id"],
-            dx_gateway_id=example_gateway.id,
-            vlan=4094,
-            address_family="ipv4",
-            bgp_asn=65352)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.

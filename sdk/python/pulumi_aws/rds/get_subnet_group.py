@@ -116,15 +116,6 @@ def get_subnet_group(name: Optional[str] = None,
     """
     Use this data source to get information about an RDS subnet group.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    database = aws.rds.get_subnet_group(name="my-test-database-subnet-group")
-    ```
-
 
     :param str name: The name of the RDS database subnet group.
     """

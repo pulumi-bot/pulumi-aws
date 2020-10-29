@@ -33,25 +33,6 @@ class Pipeline(pulumi.CustomResource):
         """
         Provides an Elastic Transcoder pipeline resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bar = aws.elastictranscoder.Pipeline("bar",
-            input_bucket=aws_s3_bucket["input_bucket"]["bucket"],
-            role=aws_iam_role["test_role"]["arn"],
-            content_config=aws.elastictranscoder.PipelineContentConfigArgs(
-                bucket=aws_s3_bucket["content_bucket"]["bucket"],
-                storage_class="Standard",
-            ),
-            thumbnail_config=aws.elastictranscoder.PipelineThumbnailConfigArgs(
-                bucket=aws_s3_bucket["thumb_bucket"]["bucket"],
-                storage_class="Standard",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aws_kms_key_arn: The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.

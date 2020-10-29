@@ -11,24 +11,6 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a CloudWatch Events/EventBridge event bus resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var messenger = new Aws.CloudWatch.EventBus("messenger", new Aws.CloudWatch.EventBusArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class EventBus : Pulumi.CustomResource
     {

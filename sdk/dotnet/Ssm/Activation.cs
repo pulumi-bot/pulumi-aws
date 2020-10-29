@@ -11,50 +11,6 @@ namespace Pulumi.Aws.Ssm
 {
     /// <summary>
     /// Registers an on-premises server or virtual machine with Amazon EC2 so that it can be managed using Run Command.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testRole = new Aws.Iam.Role("testRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = @"  {
-    ///     ""Version"": ""2012-10-17"",
-    ///     ""Statement"": {
-    ///       ""Effect"": ""Allow"",
-    ///       ""Principal"": {""Service"": ""ssm.amazonaws.com""},
-    ///       ""Action"": ""sts:AssumeRole""
-    ///     }
-    ///   }
-    /// ",
-    ///         });
-    ///         var testAttach = new Aws.Iam.RolePolicyAttachment("testAttach", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             Role = testRole.Name,
-    ///             PolicyArn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-    ///         });
-    ///         var foo = new Aws.Ssm.Activation("foo", new Aws.Ssm.ActivationArgs
-    ///         {
-    ///             Description = "Test",
-    ///             IamRole = testRole.Id,
-    ///             RegistrationLimit = 5,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 testAttach,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Activation : Pulumi.CustomResource
     {

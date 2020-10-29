@@ -11,45 +11,6 @@ namespace Pulumi.Aws.ApiGateway
 {
     /// <summary>
     /// Provides a resource to manage an API Gateway Documentation Version.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRestApi = new Aws.ApiGateway.RestApi("exampleRestApi", new Aws.ApiGateway.RestApiArgs
-    ///         {
-    ///         });
-    ///         var exampleDocumentationPart = new Aws.ApiGateway.DocumentationPart("exampleDocumentationPart", new Aws.ApiGateway.DocumentationPartArgs
-    ///         {
-    ///             Location = new Aws.ApiGateway.Inputs.DocumentationPartLocationArgs
-    ///             {
-    ///                 Type = "API",
-    ///             },
-    ///             Properties = "{\"description\":\"Example\"}",
-    ///             RestApiId = exampleRestApi.Id,
-    ///         });
-    ///         var exampleDocumentationVersion = new Aws.ApiGateway.DocumentationVersion("exampleDocumentationVersion", new Aws.ApiGateway.DocumentationVersionArgs
-    ///         {
-    ///             Version = "example_version",
-    ///             RestApiId = exampleRestApi.Id,
-    ///             Description = "Example description",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleDocumentationPart,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DocumentationVersion : Pulumi.CustomResource
     {

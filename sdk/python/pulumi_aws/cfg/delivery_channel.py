@@ -30,50 +30,6 @@ class DeliveryChannel(pulumi.CustomResource):
 
         > **Note:** Delivery Channel requires a `Configuration Recorder` to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        bucket = aws.s3.Bucket("bucket", force_destroy=True)
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "config.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-        \"\"\")
-        foo_recorder = aws.cfg.Recorder("fooRecorder", role_arn=role.arn)
-        foo_delivery_channel = aws.cfg.DeliveryChannel("fooDeliveryChannel", s3_bucket_name=bucket.bucket,
-        opts=ResourceOptions(depends_on=[foo_recorder]))
-        role_policy = aws.iam.RolePolicy("rolePolicy",
-            role=role.id,
-            policy=pulumi.Output.all(bucket.arn, bucket.arn).apply(lambda bucketArn, bucketArn1: f\"\"\"{{
-          "Version": "2012-10-17",
-          "Statement": [
-            {{
-              "Action": [
-                "s3:*"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                "{bucket_arn}",
-                "{bucket_arn1}/*"
-              ]
-            }}
-          ]
-        }}
-        \"\"\"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.

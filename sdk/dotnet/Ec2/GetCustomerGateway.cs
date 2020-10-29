@@ -13,51 +13,6 @@ namespace Pulumi.Aws.Ec2
     {
         /// <summary>
         /// Get an existing AWS Customer Gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Aws.Ec2.GetCustomerGateway.InvokeAsync(new Aws.Ec2.GetCustomerGatewayArgs
-        ///         {
-        ///             Filters = 
-        ///             {
-        ///                 new Aws.Ec2.Inputs.GetCustomerGatewayFilterArgs
-        ///                 {
-        ///                     Name = "tag:Name",
-        ///                     Values = 
-        ///                     {
-        ///                         "foo-prod",
-        ///                     },
-        ///                 },
-        ///             },
-        ///         }));
-        ///         var main = new Aws.Ec2.VpnGateway("main", new Aws.Ec2.VpnGatewayArgs
-        ///         {
-        ///             VpcId = aws_vpc.Main.Id,
-        ///             AmazonSideAsn = "7224",
-        ///         });
-        ///         var transit = new Aws.Ec2.VpnConnection("transit", new Aws.Ec2.VpnConnectionArgs
-        ///         {
-        ///             VpnGatewayId = main.Id,
-        ///             CustomerGatewayId = foo.Apply(foo =&gt; foo.Id),
-        ///             Type = foo.Apply(foo =&gt; foo.Type),
-        ///             StaticRoutesOnly = false,
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomerGatewayResult> InvokeAsync(GetCustomerGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewayResult>("aws:ec2/getCustomerGateway:getCustomerGateway", args ?? new GetCustomerGatewayArgs(), options.WithVersion());

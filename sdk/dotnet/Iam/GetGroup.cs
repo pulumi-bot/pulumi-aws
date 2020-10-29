@@ -15,29 +15,6 @@ namespace Pulumi.Aws.Iam
         /// This data source can be used to fetch information about a specific
         /// IAM group. By using this data source, you can reference IAM group
         /// properties without having to hard code ARNs as input.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Iam.GetGroup.InvokeAsync(new Aws.Iam.GetGroupArgs
-        ///         {
-        ///             GroupName = "an_example_group_name",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("aws:iam/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());

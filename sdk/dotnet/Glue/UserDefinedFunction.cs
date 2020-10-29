@@ -11,41 +11,6 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Provides a Glue User Defined Function Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleCatalogDatabase = new Aws.Glue.CatalogDatabase("exampleCatalogDatabase", new Aws.Glue.CatalogDatabaseArgs
-    ///         {
-    ///             Name = "my_database",
-    ///         });
-    ///         var exampleUserDefinedFunction = new Aws.Glue.UserDefinedFunction("exampleUserDefinedFunction", new Aws.Glue.UserDefinedFunctionArgs
-    ///         {
-    ///             CatalogId = exampleCatalogDatabase.CatalogId,
-    ///             DatabaseName = exampleCatalogDatabase.Name,
-    ///             ClassName = "class",
-    ///             OwnerName = "owner",
-    ///             OwnerType = "GROUP",
-    ///             ResourceUris = 
-    ///             {
-    ///                 new Aws.Glue.Inputs.UserDefinedFunctionResourceUriArgs
-    ///                 {
-    ///                     ResourceType = "ARCHIVE",
-    ///                     Uri = "uri",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class UserDefinedFunction : Pulumi.CustomResource
     {

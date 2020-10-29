@@ -32,52 +32,6 @@ class Inventory(pulumi.CustomResource):
         Provides a S3 bucket [inventory configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html) resource.
 
         ## Example Usage
-        ### Add inventory configuration
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_bucket = aws.s3.Bucket("testBucket")
-        inventory = aws.s3.Bucket("inventory")
-        test_inventory = aws.s3.Inventory("testInventory",
-            bucket=test_bucket.id,
-            included_object_versions="All",
-            schedule=aws.s3.InventoryScheduleArgs(
-                frequency="Daily",
-            ),
-            destination=aws.s3.InventoryDestinationArgs(
-                bucket=aws.s3.InventoryDestinationBucketArgs(
-                    format="ORC",
-                    bucket_arn=inventory.arn,
-                ),
-            ))
-        ```
-        ### Add inventory configuration with S3 bucket object prefix
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.s3.Bucket("test")
-        inventory = aws.s3.Bucket("inventory")
-        test_prefix = aws.s3.Inventory("test-prefix",
-            bucket=test.id,
-            included_object_versions="All",
-            schedule=aws.s3.InventoryScheduleArgs(
-                frequency="Daily",
-            ),
-            filter=aws.s3.InventoryFilterArgs(
-                prefix="documents/",
-            ),
-            destination=aws.s3.InventoryDestinationArgs(
-                bucket=aws.s3.InventoryDestinationBucketArgs(
-                    format="ORC",
-                    bucket_arn=inventory.arn,
-                    prefix="inventory",
-                ),
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

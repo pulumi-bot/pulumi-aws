@@ -12,56 +12,6 @@ import (
 // Provides a Cognito User Pool resource.
 //
 // ## Example Usage
-// ### Basic configuration
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cognito"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cognito.NewUserPool(ctx, "pool", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Enabling SMS and Software Token Multi-Factor Authentication
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/cognito"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cognito.NewUserPool(ctx, "example", &cognito.UserPoolArgs{
-// 			MfaConfiguration:         pulumi.String("ON"),
-// 			SmsAuthenticationMessage: pulumi.String("Your code is {####}"),
-// 			SmsConfiguration: &cognito.UserPoolSmsConfigurationArgs{
-// 				ExternalId:   pulumi.String("example"),
-// 				SnsCallerArn: pulumi.Any(aws_iam_role.Example.Arn),
-// 			},
-// 			SoftwareTokenMfaConfiguration: &cognito.UserPoolSoftwareTokenMfaConfigurationArgs{
-// 				Enabled: pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type UserPool struct {
 	pulumi.CustomResourceState
 

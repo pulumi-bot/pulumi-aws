@@ -41,42 +41,6 @@ class VpcEndpoint(pulumi.CustomResource):
         Doing so will cause a conflict of associations and will overwrite the association.
 
         ## Example Usage
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        s3 = aws.ec2.VpcEndpoint("s3",
-            vpc_id=aws_vpc["main"]["id"],
-            service_name="com.amazonaws.us-west-2.s3")
-        ```
-        ### Basic w/ Tags
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        s3 = aws.ec2.VpcEndpoint("s3",
-            vpc_id=aws_vpc["main"]["id"],
-            service_name="com.amazonaws.us-west-2.s3",
-            tags={
-                "Environment": "test",
-            })
-        ```
-        ### Interface Endpoint Type
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ec2 = aws.ec2.VpcEndpoint("ec2",
-            vpc_id=aws_vpc["main"]["id"],
-            service_name="com.amazonaws.us-west-2.ec2",
-            vpc_endpoint_type="Interface",
-            security_group_ids=[aws_security_group["sg1"]["id"]],
-            private_dns_enabled=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

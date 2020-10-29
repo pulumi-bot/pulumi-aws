@@ -105,15 +105,6 @@ def get_vault(name: Optional[str] = None,
     """
     Use this data source to get information on an existing backup vault.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.backup.get_vault(name="example_backup_vault")
-    ```
-
 
     :param str name: The name of the backup vault.
     :param Mapping[str, str] tags: Metadata that you can assign to help organize the resources that you create.

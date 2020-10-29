@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Efs
     {
         /// <summary>
         /// Provides information about multiple Elastic File System (EFS) Access Points.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Efs.GetAccessPoints.InvokeAsync(new Aws.Efs.GetAccessPointsArgs
-        ///         {
-        ///             FileSystemId = "fs-12345678",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessPointsResult> InvokeAsync(GetAccessPointsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("aws:efs/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithVersion());

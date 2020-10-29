@@ -30,29 +30,6 @@ class Model(pulumi.CustomResource):
         """
         Provides a SageMaker model resource.
 
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        model = aws.sagemaker.Model("model",
-            execution_role_arn=aws_iam_role["foo"]["arn"],
-            primary_container=aws.sagemaker.ModelPrimaryContainerArgs(
-                image="174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
-            ))
-        assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["sagemaker.amazonaws.com"],
-            )],
-        )])
-        role = aws.iam.Role("role", assume_role_policy=assume_role.json)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelContainerArgs']]]] containers: Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.

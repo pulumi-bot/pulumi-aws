@@ -23,33 +23,6 @@ class PolicyAttachment(pulumi.CustomResource):
         """
         Provides an IoT policy attachment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        pubsub = aws.iot.Policy("pubsub", policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "iot:*"
-              ],
-              "Effect": "Allow",
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        cert = aws.iot.Certificate("cert",
-            csr=(lambda path: open(path).read())("csr.pem"),
-            active=True)
-        att = aws.iot.PolicyAttachment("att",
-            policy=pubsub.name,
-            target=cert.arn)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The name of the policy to attach.

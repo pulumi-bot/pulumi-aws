@@ -31,54 +31,6 @@ class GatewayAssociation(pulumi.CustomResource):
         by creating an `directconnect.GatewayAssociation` resource with the `proposal_id` and `associated_gateway_owner_account_id` attributes set.
 
         ## Example Usage
-        ### VPN Gateway Association
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_gateway = aws.directconnect.Gateway("exampleGateway", amazon_side_asn="64512")
-        example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.255.255.0/28")
-        example_vpn_gateway = aws.ec2.VpnGateway("exampleVpnGateway", vpc_id=example_vpc.id)
-        example_gateway_association = aws.directconnect.GatewayAssociation("exampleGatewayAssociation",
-            dx_gateway_id=example_gateway.id,
-            associated_gateway_id=example_vpn_gateway.id)
-        ```
-        ### Transit Gateway Association
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_gateway = aws.directconnect.Gateway("exampleGateway", amazon_side_asn="64512")
-        example_transit_gateway = aws.ec2transitgateway.TransitGateway("exampleTransitGateway")
-        example_gateway_association = aws.directconnect.GatewayAssociation("exampleGatewayAssociation",
-            dx_gateway_id=example_gateway.id,
-            associated_gateway_id=example_transit_gateway.id,
-            allowed_prefixes=[
-                "10.255.255.0/30",
-                "10.255.255.8/30",
-            ])
-        ```
-        ### Allowed Prefixes
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_gateway = aws.directconnect.Gateway("exampleGateway", amazon_side_asn="64512")
-        example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.255.255.0/28")
-        example_vpn_gateway = aws.ec2.VpnGateway("exampleVpnGateway", vpc_id=example_vpc.id)
-        example_gateway_association = aws.directconnect.GatewayAssociation("exampleGatewayAssociation",
-            dx_gateway_id=example_gateway.id,
-            associated_gateway_id=example_vpn_gateway.id,
-            allowed_prefixes=[
-                "210.52.109.0/24",
-                "175.45.176.0/22",
-            ])
-        ```
-
-        A full example of how to create a VPN Gateway in one AWS account, create a Direct Connect Gateway in a second AWS account, and associate the VPN Gateway with the Direct Connect Gateway via the `directconnect.GatewayAssociationProposal` and `directconnect.GatewayAssociation` resources can be found in [the `./examples/dx-gateway-cross-account-vgw-association` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/dx-gateway-cross-account-vgw-association).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

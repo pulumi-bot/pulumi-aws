@@ -22,24 +22,6 @@ import * as utilities from "../utilities";
  *     ruleType: "SYSTEM",
  * });
  * ```
- * ### Forward rule
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const fwd = new aws.route53.ResolverRule("fwd", {
- *     domainName: "example.com",
- *     ruleType: "FORWARD",
- *     resolverEndpointId: aws_route53_resolver_endpoint.foo.id,
- *     targetIps: [{
- *         ip: "123.45.67.89",
- *     }],
- *     tags: {
- *         Environment: "Prod",
- *     },
- * });
- * ```
  */
 export class ResolverRule extends pulumi.CustomResource {
     /**

@@ -33,20 +33,6 @@ class LocationSmb(pulumi.CustomResource):
 
         > **NOTE:** The DataSync Agents must be available before creating this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.datasync.LocationSmb("example",
-            server_hostname="smb.example.com",
-            subdirectory="/exported/path",
-            user="Guest",
-            password="ANotGreatPassword",
-            agent_arns=[aws_datasync_agent["example"]["arn"]])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] agent_arns: A list of DataSync Agent ARNs with which this location will be associated.

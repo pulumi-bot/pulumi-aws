@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Rds
     {
         /// <summary>
         /// Information about an RDS Certificate.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.Rds.GetCertificate.InvokeAsync(new Aws.Rds.GetCertificateArgs
-        ///         {
-        ///             LatestValidTill = true,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("aws:rds/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());

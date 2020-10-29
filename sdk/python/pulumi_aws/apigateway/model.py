@@ -26,23 +26,6 @@ class Model(pulumi.CustomResource):
         """
         Provides a Model for a REST API Gateway.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_demo_api = aws.apigateway.RestApi("myDemoAPI", description="This is my API for demonstration purposes")
-        my_demo_model = aws.apigateway.Model("myDemoModel",
-            rest_api=my_demo_api.id,
-            description="a JSON schema",
-            content_type="application/json",
-            schema=\"\"\"{
-          "type": "object"
-        }
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The content type of the model

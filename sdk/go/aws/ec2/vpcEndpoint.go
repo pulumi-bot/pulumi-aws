@@ -20,55 +20,6 @@ import (
 // Doing so will cause a conflict of associations and will overwrite the association.
 //
 // ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
-// 			VpcId:       pulumi.Any(aws_vpc.Main.Id),
-// 			ServiceName: pulumi.String("com.amazonaws.us-west-2.s3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Basic w/ Tags
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
-// 			VpcId:       pulumi.Any(aws_vpc.Main.Id),
-// 			ServiceName: pulumi.String("com.amazonaws.us-west-2.s3"),
-// 			Tags: pulumi.StringMap{
-// 				"Environment": pulumi.String("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VpcEndpoint struct {
 	pulumi.CustomResourceState
 

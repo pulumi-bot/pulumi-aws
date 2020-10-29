@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
  * Creates and manages an AWS IoT certificate.
  *
  * ## Example Usage
- * ### With CSR
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * from "fs";
- *
- * const cert = new aws.iot.Certificate("cert", {
- *     csr: fs.readFileSync("/my/csr.pem"),
- *     active: true,
- * });
- * ```
  * ### Without CSR
  *
  * ```typescript

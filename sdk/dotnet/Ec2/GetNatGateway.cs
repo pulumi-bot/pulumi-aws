@@ -13,54 +13,6 @@ namespace Pulumi.Aws.Ec2
     {
         /// <summary>
         /// Provides details about a specific Nat Gateway.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var subnetId = config.RequireObject&lt;dynamic&gt;("subnetId");
-        ///         var @default = Output.Create(Aws.Ec2.GetNatGateway.InvokeAsync(new Aws.Ec2.GetNatGatewayArgs
-        ///         {
-        ///             SubnetId = aws_subnet.Public.Id,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// Usage with tags:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Aws.Ec2.GetNatGateway.InvokeAsync(new Aws.Ec2.GetNatGatewayArgs
-        ///         {
-        ///             SubnetId = aws_subnet.Public.Id,
-        ///             Tags = 
-        ///             {
-        ///                 { "Name", "gw NAT" },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatGatewayResult> InvokeAsync(GetNatGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewayResult>("aws:ec2/getNatGateway:getNatGateway", args ?? new GetNatGatewayArgs(), options.WithVersion());

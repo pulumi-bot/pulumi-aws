@@ -14,40 +14,6 @@ import * as utilities from "../utilities";
  * * [Microsoft SQL Server Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.html)
  * * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
  * * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.rds.OptionGroup("example", {
- *     optionGroupDescription: "Option Group",
- *     engineName: "sqlserver-ee",
- *     majorEngineVersion: "11.00",
- *     options: [
- *         {
- *             optionName: "Timezone",
- *             optionSettings: [{
- *                 name: "TIME_ZONE",
- *                 value: "UTC",
- *             }],
- *         },
- *         {
- *             optionName: "SQLSERVER_BACKUP_RESTORE",
- *             optionSettings: [{
- *                 name: "IAM_ROLE_ARN",
- *                 value: aws_iam_role.example.arn,
- *             }],
- *         },
- *         {
- *             optionName: "TDE",
- *         },
- *     ],
- * });
- * ```
- *
- * > **Note**: Any modifications to the `dbOptionGroup` are set to happen immediately as we default to applying immediately.
  */
 export class OptionGroup extends pulumi.CustomResource {
     /**

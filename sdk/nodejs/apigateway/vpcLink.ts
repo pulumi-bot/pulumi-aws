@@ -9,25 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
  * To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleLoadBalancer = new aws.lb.LoadBalancer("exampleLoadBalancer", {
- *     internal: true,
- *     loadBalancerType: "network",
- *     subnetMappings: [{
- *         subnetId: "12345",
- *     }],
- * });
- * const exampleVpcLink = new aws.apigateway.VpcLink("exampleVpcLink", {
- *     description: "example description",
- *     targetArn: [exampleLoadBalancer.arn],
- * });
- * ```
  */
 export class VpcLink extends pulumi.CustomResource {
     /**

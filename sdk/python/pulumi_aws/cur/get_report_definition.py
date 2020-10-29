@@ -180,15 +180,6 @@ def get_report_definition(report_name: Optional[str] = None,
 
     > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    report_definition = aws.cur.get_report_definition(report_name="example")
-    ```
-
 
     :param str report_name: The name of the report definition to match.
     """

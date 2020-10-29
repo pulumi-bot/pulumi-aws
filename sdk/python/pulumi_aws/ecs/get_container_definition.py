@@ -163,16 +163,6 @@ def get_container_definition(container_name: Optional[str] = None,
     The ECS container definition data source allows access to details of
     a specific container within an AWS ECS service.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    ecs_mongo = aws.ecs.get_container_definition(task_definition=aws_ecs_task_definition["mongo"]["id"],
-        container_name="mongodb")
-    ```
-
 
     :param str container_name: The name of the container definition
     :param str task_definition: The ARN of the task definition which contains the container

@@ -13,30 +13,6 @@ namespace Pulumi.Aws.WafV2
     {
         /// <summary>
         /// Retrieves the summary of a WAFv2 IP Set.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.WafV2.GetIpSet.InvokeAsync(new Aws.WafV2.GetIpSetArgs
-        ///         {
-        ///             Name = "some-ip-set",
-        ///             Scope = "REGIONAL",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpSetResult> InvokeAsync(GetIpSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpSetResult>("aws:wafv2/getIpSet:getIpSet", args ?? new GetIpSetArgs(), options.WithVersion());

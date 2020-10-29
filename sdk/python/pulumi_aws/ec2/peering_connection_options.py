@@ -37,78 +37,7 @@ class PeeringConnectionOptions(pulumi.CustomResource):
 
         Basic usage:
 
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.0.0.0/16")
-        bar = aws.ec2.Vpc("bar", cidr_block="10.1.0.0/16")
-        foo_vpc_peering_connection = aws.ec2.VpcPeeringConnection("fooVpcPeeringConnection",
-            vpc_id=foo_vpc.id,
-            peer_vpc_id=bar.id,
-            auto_accept=True)
-        foo_peering_connection_options = aws.ec2.PeeringConnectionOptions("fooPeeringConnectionOptions",
-            vpc_peering_connection_id=foo_vpc_peering_connection.id,
-            accepter=aws.ec2.PeeringConnectionOptionsAccepterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
-            requester=aws.ec2.PeeringConnectionOptionsRequesterArgs(
-                allow_vpc_to_remote_classic_link=True,
-                allow_classic_link_to_remote_vpc=True,
-            ))
-        ```
-
         Basic cross-account usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        requester = pulumi.providers.Aws("requester")
-        # Requester's credentials.
-        accepter = pulumi.providers.Aws("accepter")
-        # Accepter's credentials.
-        main = aws.ec2.Vpc("main",
-            cidr_block="10.0.0.0/16",
-            enable_dns_support=True,
-            enable_dns_hostnames=True,
-            opts=ResourceOptions(provider=aws["requester"]))
-        peer_vpc = aws.ec2.Vpc("peerVpc",
-            cidr_block="10.1.0.0/16",
-            enable_dns_support=True,
-            enable_dns_hostnames=True,
-            opts=ResourceOptions(provider=aws["accepter"]))
-        peer_caller_identity = aws.get_caller_identity()
-        peer_vpc_peering_connection = aws.ec2.VpcPeeringConnection("peerVpcPeeringConnection",
-            vpc_id=main.id,
-            peer_vpc_id=peer_vpc.id,
-            peer_owner_id=peer_caller_identity.account_id,
-            auto_accept=False,
-            tags={
-                "Side": "Requester",
-            },
-            opts=ResourceOptions(provider=aws["requester"]))
-        peer_vpc_peering_connection_accepter = aws.ec2.VpcPeeringConnectionAccepter("peerVpcPeeringConnectionAccepter",
-            vpc_peering_connection_id=peer_vpc_peering_connection.id,
-            auto_accept=True,
-            tags={
-                "Side": "Accepter",
-            },
-            opts=ResourceOptions(provider=aws["accepter"]))
-        requester_peering_connection_options = aws.ec2.PeeringConnectionOptions("requesterPeeringConnectionOptions",
-            vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
-            requester=aws.ec2.PeeringConnectionOptionsRequesterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
-            opts=ResourceOptions(provider=aws["requester"]))
-        accepter_peering_connection_options = aws.ec2.PeeringConnectionOptions("accepterPeeringConnectionOptions",
-            vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
-            accepter=aws.ec2.PeeringConnectionOptionsAccepterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
-            opts=ResourceOptions(provider=aws["accepter"]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

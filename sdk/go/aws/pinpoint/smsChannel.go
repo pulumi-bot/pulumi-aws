@@ -11,33 +11,6 @@ import (
 )
 
 // Provides a Pinpoint SMS Channel resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/pinpoint"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		app, err := pinpoint.NewApp(ctx, "app", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pinpoint.NewSmsChannel(ctx, "sms", &pinpoint.SmsChannelArgs{
-// 			ApplicationId: app.ApplicationId,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SmsChannel struct {
 	pulumi.CustomResourceState
 

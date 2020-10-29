@@ -24,24 +24,6 @@ class DomainDkim(pulumi.CustomResource):
 
         Domain ownership needs to be confirmed first using `ses.DomainIdentity` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_domain_identity = aws.ses.DomainIdentity("exampleDomainIdentity", domain="example.com")
-        example_domain_dkim = aws.ses.DomainDkim("exampleDomainDkim", domain=example_domain_identity.domain)
-        example_amazonses_dkim_record = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            example_amazonses_dkim_record.append(aws.route53.Record(f"exampleAmazonsesDkimRecord-{range['value']}",
-                zone_id="ABCDEFGHIJ123",
-                name=example_domain_dkim.dkim_tokens[range["value"]].apply(lambda dkim_tokens: f"{dkim_tokens}._domainkey.example.com"),
-                type="CNAME",
-                ttl=600,
-                records=[example_domain_dkim.dkim_tokens[range["value"]].apply(lambda dkim_tokens: f"{dkim_tokens}.dkim.amazonses.com")]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: Verified domain name to generate DKIM tokens for.

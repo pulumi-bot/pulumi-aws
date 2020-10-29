@@ -23,19 +23,6 @@ class TransitGatewayPeeringAttachmentAccepter(pulumi.CustomResource):
         """
         Manages the accepter's side of an EC2 Transit Gateway Peering Attachment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.ec2.TransitGatewayPeeringAttachmentAccepter("example",
-            transit_gateway_attachment_id=aws_ec2_transit_gateway_peering_attachment["example"]["id"],
-            tags={
-                "Name": "Example cross-account attachment",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value tags for the EC2 Transit Gateway Peering Attachment.

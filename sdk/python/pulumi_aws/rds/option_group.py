@@ -35,39 +35,6 @@ class OptionGroup(pulumi.CustomResource):
         * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
         * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.rds.OptionGroup("example",
-            option_group_description="Option Group",
-            engine_name="sqlserver-ee",
-            major_engine_version="11.00",
-            options=[
-                aws.rds.OptionGroupOptionArgs(
-                    option_name="Timezone",
-                    option_settings=[aws.rds.OptionGroupOptionOptionSettingArgs(
-                        name="TIME_ZONE",
-                        value="UTC",
-                    )],
-                ),
-                aws.rds.OptionGroupOptionArgs(
-                    option_name="SQLSERVER_BACKUP_RESTORE",
-                    option_settings=[aws.rds.OptionGroupOptionOptionSettingArgs(
-                        name="IAM_ROLE_ARN",
-                        value=aws_iam_role["example"]["arn"],
-                    )],
-                ),
-                aws.rds.OptionGroupOptionArgs(
-                    option_name="TDE",
-                ),
-            ])
-        ```
-
-        > **Note**: Any modifications to the `db_option_group` are set to happen immediately as we default to applying immediately.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine_name: Specifies the name of the engine that this option group should be associated with.

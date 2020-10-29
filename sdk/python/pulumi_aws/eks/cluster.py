@@ -31,57 +31,6 @@ class Cluster(pulumi.CustomResource):
         Manages an EKS Cluster.
 
         ## Example Usage
-        ### Example IAM Role for EKS Cluster
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.iam.Role("example", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "eks.amazonaws.com"
-              },
-              "Action": "sts:AssumeRole"
-            }
-          ]
-        }
-        \"\"\")
-        example__amazon_eks_cluster_policy = aws.iam.RolePolicyAttachment("example-AmazonEKSClusterPolicy",
-            policy_arn="arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
-            role=example.name)
-        # Optionally, enable Security Groups for Pods
-        # Reference: https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
-        example__amazon_eksvpc_resource_controller = aws.iam.RolePolicyAttachment("example-AmazonEKSVPCResourceController",
-            policy_arn="arn:aws:iam::aws:policy/AmazonEKSVPCResourceController",
-            role=example.name)
-        ```
-        ### Enabling Control Plane Logging
-
-        [EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) can be enabled via the `enabled_cluster_log_types` argument. To manage the CloudWatch Log Group retention period, the `cloudwatch.LogGroup` resource can be used.
-
-        > The below configuration uses [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) to prevent ordering issues with EKS automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        config = pulumi.Config()
-        cluster_name = config.get("clusterName")
-        if cluster_name is None:
-            cluster_name = "example"
-        example_log_group = aws.cloudwatch.LogGroup("exampleLogGroup", retention_in_days=7)
-        # ... potentially other configuration ...
-        example_cluster = aws.eks.Cluster("exampleCluster", enabled_cluster_log_types=[
-            "api",
-            "audit",
-        ],
-        opts=ResourceOptions(depends_on=[example_log_group]))
-        # ... other configuration ...
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

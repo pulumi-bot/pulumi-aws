@@ -31,49 +31,6 @@ class CertificateValidation(pulumi.CustomResource):
         > **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
 
         ## Example Usage
-        ### DNS Validation with Route 53
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_certificate = aws.acm.Certificate("exampleCertificate",
-            domain_name="example.com",
-            validation_method="DNS")
-        example_zone = aws.route53.get_zone(name="example.com",
-            private_zone=False)
-        example_record = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({dvo.domainName: {
-            name: dvo.resourceRecordName,
-            record: dvo.resourceRecordValue,
-            type: dvo.resourceRecordType,
-        } for dvo in example_certificate.domainValidationOptions})]:
-            example_record.append(aws.route53.Record(f"exampleRecord-{range['key']}",
-                allow_overwrite=True,
-                name=range["value"]["name"],
-                records=[range["value"]["record"]],
-                ttl=60,
-                type=range["value"]["type"],
-                zone_id=example_zone.zone_id))
-        example_certificate_validation = aws.acm.CertificateValidation("exampleCertificateValidation",
-            certificate_arn=example_certificate.arn,
-            validation_record_fqdns=example_record.apply(lambda example_record: [record.fqdn for record in example_record]))
-        # ... other configuration ...
-        example_listener = aws.lb.Listener("exampleListener", certificate_arn=example_certificate_validation.certificate_arn)
-        ```
-        ### Email Validation
-
-        In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_certificate = aws.acm.Certificate("exampleCertificate",
-            domain_name="example.com",
-            validation_method="EMAIL")
-        example_certificate_validation = aws.acm.CertificateValidation("exampleCertificateValidation", certificate_arn=example_certificate.arn)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

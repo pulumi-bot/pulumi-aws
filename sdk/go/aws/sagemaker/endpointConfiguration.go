@@ -11,41 +11,6 @@ import (
 )
 
 // Provides a SageMaker endpoint configuration resource.
-//
-// ## Example Usage
-//
-// Basic usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/sagemaker"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sagemaker.NewEndpointConfiguration(ctx, "ec", &sagemaker.EndpointConfigurationArgs{
-// 			ProductionVariants: sagemaker.EndpointConfigurationProductionVariantArray{
-// 				&sagemaker.EndpointConfigurationProductionVariantArgs{
-// 					VariantName:          pulumi.String("variant-1"),
-// 					ModelName:            pulumi.Any(aws_sagemaker_model.M.Name),
-// 					InitialInstanceCount: pulumi.Int(1),
-// 					InstanceType:         pulumi.String("ml.t2.medium"),
-// 				},
-// 			},
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("foo"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type EndpointConfiguration struct {
 	pulumi.CustomResourceState
 

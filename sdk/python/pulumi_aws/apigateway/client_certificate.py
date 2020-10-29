@@ -23,15 +23,6 @@ class ClientCertificate(pulumi.CustomResource):
         """
         Provides an API Gateway Client Certificate.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        demo = aws.apigateway.ClientCertificate("demo", description="My client certificate")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the client certificate.

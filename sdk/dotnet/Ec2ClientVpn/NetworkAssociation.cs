@@ -14,49 +14,6 @@ namespace Pulumi.Aws.Ec2ClientVpn
     /// [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
     /// 
     /// ## Example Usage
-    /// ### Using default security group
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2ClientVpn.NetworkAssociation("example", new Aws.Ec2ClientVpn.NetworkAssociationArgs
-    ///         {
-    ///             ClientVpnEndpointId = aws_ec2_client_vpn_endpoint.Example.Id,
-    ///             SubnetId = aws_subnet.Example.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using custom security groups
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ec2ClientVpn.NetworkAssociation("example", new Aws.Ec2ClientVpn.NetworkAssociationArgs
-    ///         {
-    ///             ClientVpnEndpointId = aws_ec2_client_vpn_endpoint.Example.Id,
-    ///             SubnetId = aws_subnet.Example.Id,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 aws_security_group.Example1.Id,
-    ///                 aws_security_group.Example2.Id,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class NetworkAssociation : Pulumi.CustomResource
     {

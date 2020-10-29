@@ -13,30 +13,6 @@ namespace Pulumi.Aws.Ecr
     {
         /// <summary>
         /// The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var serviceImage = Output.Create(Aws.Ecr.GetImage.InvokeAsync(new Aws.Ecr.GetImageArgs
-        ///         {
-        ///             ImageTag = "latest",
-        ///             RepositoryName = "my/service",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("aws:ecr/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());

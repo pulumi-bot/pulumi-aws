@@ -11,32 +11,6 @@ namespace Pulumi.Aws.Ebs
 {
     /// <summary>
     /// Manages a single EBS volume.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.Ebs.Volume("example", new Aws.Ebs.VolumeArgs
-    ///         {
-    ///             AvailabilityZone = "us-west-2a",
-    ///             Size = 40,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "HelloWorld" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &gt; **NOTE**: One of `size` or `snapshot_id` is required when specifying an EBS volume
     /// </summary>
     public partial class Volume : Pulumi.CustomResource
     {

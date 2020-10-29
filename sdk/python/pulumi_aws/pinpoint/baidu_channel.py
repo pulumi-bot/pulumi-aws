@@ -27,19 +27,6 @@ class BaiduChannel(pulumi.CustomResource):
 
         > **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        app = aws.pinpoint.App("app")
-        channel = aws.pinpoint.BaiduChannel("channel",
-            application_id=app.application_id,
-            api_key="",
-            secret_key="")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key: Platform credential API key from Baidu.

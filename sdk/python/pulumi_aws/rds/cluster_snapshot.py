@@ -24,17 +24,6 @@ class ClusterSnapshot(pulumi.CustomResource):
         """
         Manages an RDS database cluster snapshot for Aurora clusters. For managing RDS database instance snapshots, see the `rds.Snapshot` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.rds.ClusterSnapshot("example",
-            db_cluster_identifier=aws_rds_cluster["example"]["id"],
-            db_cluster_snapshot_identifier="resourcetestsnapshot1234")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_cluster_identifier: The DB Cluster Identifier from which to take the snapshot.

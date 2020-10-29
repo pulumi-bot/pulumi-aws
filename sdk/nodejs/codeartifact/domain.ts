@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeArtifact Domain Resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleKey = new aws.kms.Key("exampleKey", {description: "domain key"});
- * const exampleDomain = new aws.codeartifact.Domain("exampleDomain", {
- *     domain: "example",
- *     encryptionKey: exampleKey.arn,
- * });
- * ```
  */
 export class Domain extends pulumi.CustomResource {
     /**

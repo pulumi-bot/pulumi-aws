@@ -27,24 +27,6 @@ class Rule(pulumi.CustomResource):
         """
         Provides an WAF Regional Rule Resource for use with Application Load Balancer.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
-        wafrule = aws.wafregional.Rule("wafrule",
-            metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                type="IPMatch",
-                data_id=ipset.id,
-                negated=False,
-            )])
-        ```
         ## Nested Fields
 
         ### `predicate`

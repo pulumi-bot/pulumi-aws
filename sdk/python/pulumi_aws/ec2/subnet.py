@@ -33,35 +33,6 @@ class Subnet(pulumi.CustomResource):
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), subnets associated with Lambda Functions can take up to 45 minutes to successfully delete.
 
         ## Example Usage
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ec2.Subnet("main",
-            vpc_id=aws_vpc["main"]["id"],
-            cidr_block="10.0.1.0/24",
-            tags={
-                "Name": "Main",
-            })
-        ```
-        ### Subnets In Secondary VPC CIDR Blocks
-
-        When managing subnets in one of a VPC's secondary CIDR blocks created using a `ec2.VpcIpv4CidrBlockAssociation`
-        resource, it is recommended to reference that resource's `vpc_id` attribute to ensure correct dependency ordering.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        secondary_cidr = aws.ec2.VpcIpv4CidrBlockAssociation("secondaryCidr",
-            vpc_id=aws_vpc["main"]["id"],
-            cidr_block="172.2.0.0/16")
-        in_secondary_cidr = aws.ec2.Subnet("inSecondaryCidr",
-            vpc_id=secondary_cidr.vpc_id,
-            cidr_block="172.2.0.0/24")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

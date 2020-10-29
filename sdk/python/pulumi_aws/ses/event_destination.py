@@ -31,60 +31,6 @@ class EventDestination(pulumi.CustomResource):
         Provides an SES event destination
 
         ## Example Usage
-        ### CloudWatch Destination
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cloudwatch = aws.ses.EventDestination("cloudwatch",
-            configuration_set_name=aws_ses_configuration_set["example"]["name"],
-            enabled=True,
-            matching_types=[
-                "bounce",
-                "send",
-            ],
-            cloudwatch_destinations=[aws.ses.EventDestinationCloudwatchDestinationArgs(
-                default_value="default",
-                dimension_name="dimension",
-                value_source="emailHeader",
-            )])
-        ```
-        ### Kinesis Destination
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        kinesis = aws.ses.EventDestination("kinesis",
-            configuration_set_name=aws_ses_configuration_set["example"]["name"],
-            enabled=True,
-            matching_types=[
-                "bounce",
-                "send",
-            ],
-            kinesis_destination=aws.ses.EventDestinationKinesisDestinationArgs(
-                stream_arn=aws_kinesis_firehose_delivery_stream["example"]["arn"],
-                role_arn=aws_iam_role["example"]["arn"],
-            ))
-        ```
-        ### SNS Destination
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        sns = aws.ses.EventDestination("sns",
-            configuration_set_name=aws_ses_configuration_set["example"]["name"],
-            enabled=True,
-            matching_types=[
-                "bounce",
-                "send",
-            ],
-            sns_destination=aws.ses.EventDestinationSnsDestinationArgs(
-                topic_arn=aws_sns_topic["example"]["arn"],
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

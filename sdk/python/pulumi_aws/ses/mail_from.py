@@ -26,34 +26,6 @@ class MailFrom(pulumi.CustomResource):
 
         > **NOTE:** For the MAIL FROM domain to be fully usable, this resource should be paired with the `ses.DomainIdentity` resource. To validate the MAIL FROM domain, a DNS MX record is required. To pass SPF checks, a DNS TXT record may also be required. See the [Amazon SES MAIL FROM documentation](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html) for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Example SES Domain Identity
-        example_domain_identity = aws.ses.DomainIdentity("exampleDomainIdentity", domain="example.com")
-        example_mail_from = aws.ses.MailFrom("exampleMailFrom",
-            domain=example_domain_identity.domain,
-            mail_from_domain=example_domain_identity.domain.apply(lambda domain: f"bounce.{domain}"))
-        # Example Route53 MX record
-        example_ses_domain_mail_from_mx = aws.route53.Record("exampleSesDomainMailFromMx",
-            zone_id=aws_route53_zone["example"]["id"],
-            name=example_mail_from.mail_from_domain,
-            type="MX",
-            ttl=600,
-            records=["10 feedback-smtp.us-east-1.amazonses.com"])
-        # Change to the region in which `aws_ses_domain_identity.example` is created
-        # Example Route53 TXT record for SPF
-        example_ses_domain_mail_from_txt = aws.route53.Record("exampleSesDomainMailFromTxt",
-            zone_id=aws_route53_zone["example"]["id"],
-            name=example_mail_from.mail_from_domain,
-            type="TXT",
-            ttl=600,
-            records=["v=spf1 include:amazonses.com -all"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] behavior_on_mx_failure: The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.

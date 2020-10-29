@@ -13,29 +13,6 @@ namespace Pulumi.Aws.DocDB
     {
         /// <summary>
         /// Information about a DocumentDB engine version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.DocDB.GetEngineVersion.InvokeAsync(new Aws.DocDB.GetEngineVersionArgs
-        ///         {
-        ///             Version = "3.6.0",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineVersionResult> InvokeAsync(GetEngineVersionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionResult>("aws:docdb/getEngineVersion:getEngineVersion", args ?? new GetEngineVersionArgs(), options.WithVersion());

@@ -31,16 +31,6 @@ import * as utilities from "../utilities";
  *     pgpKey: "keybase:keybaseusername",
  * });
  * ```
- *
- * ## Import an existing public key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * from "fs";
- *
- * const lgKeyPair = new aws.lightsail.KeyPair("lgKeyPair", {publicKey: fs.readFileSync("~/.ssh/id_rsa.pub")});
- * ```
  */
 export class KeyPair extends pulumi.CustomResource {
     /**

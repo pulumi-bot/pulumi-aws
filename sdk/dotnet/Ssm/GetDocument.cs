@@ -13,55 +13,6 @@ namespace Pulumi.Aws.Ssm
     {
         /// <summary>
         /// Gets the contents of the specified Systems Manager document.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// To get the contents of the document owned by AWS.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Aws.Ssm.GetDocument.InvokeAsync(new Aws.Ssm.GetDocumentArgs
-        ///         {
-        ///             Name = "AWS-GatherSoftwareInventory",
-        ///             DocumentFormat = "YAML",
-        ///         }));
-        ///         this.Content = foo.Apply(foo =&gt; foo.Content);
-        ///     }
-        /// 
-        ///     [Output("content")]
-        ///     public Output&lt;string&gt; Content { get; set; }
-        /// }
-        /// ```
-        /// 
-        /// To get the contents of the custom document.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Aws.Ssm.GetDocument.InvokeAsync(new Aws.Ssm.GetDocumentArgs
-        ///         {
-        ///             Name = aws_ssm_document.Test.Name,
-        ///             DocumentFormat = "JSON",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDocumentResult> InvokeAsync(GetDocumentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("aws:ssm/getDocument:getDocument", args ?? new GetDocumentArgs(), options.WithVersion());

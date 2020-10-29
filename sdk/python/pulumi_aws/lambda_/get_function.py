@@ -329,17 +329,6 @@ def get_function(function_name: Optional[str] = None,
     """
     Provides information about a Lambda Function.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    function_name = config.require("functionName")
-    existing = aws.lambda.get_function(function_name=function_name)
-    ```
-
 
     :param str function_name: Name of the lambda function.
     :param str qualifier: Alias name or version number of the lambda function. e.g. `$LATEST`, `my-alias`, or `1`

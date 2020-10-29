@@ -32,50 +32,6 @@ class ScheduledAction(pulumi.CustomResource):
         Provides an Application AutoScaling ScheduledAction resource.
 
         ## Example Usage
-        ### DynamoDB Table Autoscaling
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        dynamodb_target = aws.appautoscaling.Target("dynamodbTarget",
-            max_capacity=100,
-            min_capacity=5,
-            resource_id="table/tableName",
-            scalable_dimension="dynamodb:table:ReadCapacityUnits",
-            service_namespace="dynamodb")
-        dynamodb_scheduled_action = aws.appautoscaling.ScheduledAction("dynamodbScheduledAction",
-            service_namespace=dynamodb_target.service_namespace,
-            resource_id=dynamodb_target.resource_id,
-            scalable_dimension=dynamodb_target.scalable_dimension,
-            schedule="at(2006-01-02T15:04:05)",
-            scalable_target_action=aws.appautoscaling.ScheduledActionScalableTargetActionArgs(
-                min_capacity=1,
-                max_capacity=200,
-            ))
-        ```
-        ### ECS Service Autoscaling
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ecs_target = aws.appautoscaling.Target("ecsTarget",
-            max_capacity=4,
-            min_capacity=1,
-            resource_id="service/clusterName/serviceName",
-            scalable_dimension="ecs:service:DesiredCount",
-            service_namespace="ecs")
-        ecs_scheduled_action = aws.appautoscaling.ScheduledAction("ecsScheduledAction",
-            service_namespace=ecs_target.service_namespace,
-            resource_id=ecs_target.resource_id,
-            scalable_dimension=ecs_target.scalable_dimension,
-            schedule="at(2006-01-02T15:04:05)",
-            scalable_target_action=aws.appautoscaling.ScheduledActionScalableTargetActionArgs(
-                min_capacity=1,
-                max_capacity=10,
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

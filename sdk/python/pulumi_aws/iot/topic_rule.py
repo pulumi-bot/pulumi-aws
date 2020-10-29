@@ -43,61 +43,7 @@ class TopicRule(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        mytopic = aws.sns.Topic("mytopic")
-        myerrortopic = aws.sns.Topic("myerrortopic")
-        role = aws.iam.Role("role", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "iot.amazonaws.com"
-              },
-              "Action": "sts:AssumeRole"
-            }
-          ]
-        }
-        \"\"\")
-        rule = aws.iot.TopicRule("rule",
-            description="Example rule",
-            enabled=True,
-            sql="SELECT * FROM 'topic/test'",
-            sql_version="2016-03-23",
-            sns=aws.iot.TopicRuleSnsArgs(
-                message_format="RAW",
-                role_arn=role.arn,
-                target_arn=mytopic.arn,
-            ),
-            error_action=aws.iot.TopicRuleErrorActionArgs(
-                sns=aws.iot.TopicRuleErrorActionSnsArgs(
-                    message_format="RAW",
-                    role_arn=role.arn,
-                    target_arn=myerrortopic.arn,
-                ),
-            ))
-        iam_policy_for_lambda = aws.iam.RolePolicy("iamPolicyForLambda",
-            role=role.id,
-            policy=mytopic.arn.apply(lambda arn: f\"\"\"{{
-          "Version": "2012-10-17",
-          "Statement": [
-            {{
-                "Effect": "Allow",
-                "Action": [
-                    "sns:Publish"
-                ],
-                "Resource": "{arn}"
-            }}
-          ]
-        }}
-        \"\"\"))
-        ```
-
+        Create a TopicRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the rule.

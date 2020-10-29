@@ -27,24 +27,6 @@ class RuleGroup(pulumi.CustomResource):
         """
         Provides a WAF Regional Rule Group Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_rule = aws.wafregional.Rule("exampleRule", metric_name="example")
-        example_rule_group = aws.wafregional.RuleGroup("exampleRuleGroup",
-            metric_name="example",
-            activated_rules=[aws.wafregional.RuleGroupActivatedRuleArgs(
-                action=aws.wafregional.RuleGroupActivatedRuleActionArgs(
-                    type="COUNT",
-                ),
-                priority=50,
-                rule_id=example_rule.id,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleGroupActivatedRuleArgs']]]] activated_rules: A list of activated rules, see below

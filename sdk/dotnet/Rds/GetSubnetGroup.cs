@@ -13,29 +13,6 @@ namespace Pulumi.Aws.Rds
     {
         /// <summary>
         /// Use this data source to get information about an RDS subnet group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var database = Output.Create(Aws.Rds.GetSubnetGroup.InvokeAsync(new Aws.Rds.GetSubnetGroupArgs
-        ///         {
-        ///             Name = "my-test-database-subnet-group",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetGroupResult> InvokeAsync(GetSubnetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetGroupResult>("aws:rds/getSubnetGroup:getSubnetGroup", args ?? new GetSubnetGroupArgs(), options.WithVersion());

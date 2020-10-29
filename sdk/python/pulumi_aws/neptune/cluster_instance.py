@@ -41,31 +41,6 @@ class ClusterInstance(pulumi.CustomResource):
         You can simply add neptune instances and Neptune manages the replication. You can use the [count](https://www.terraform.io/docs/configuration/resources.html#count)
         meta-parameter to make multiple instances and join them all to the same Neptune Cluster, or you may specify different Cluster Instance resources with various `instance_class` sizes.
 
-        ## Example Usage
-
-        The following example will create a neptune cluster with two neptune instances(one writer and one reader).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.neptune.Cluster("default",
-            cluster_identifier="neptune-cluster-demo",
-            engine="neptune",
-            backup_retention_period=5,
-            preferred_backup_window="07:00-09:00",
-            skip_final_snapshot=True,
-            iam_database_authentication_enabled=True,
-            apply_immediately=True)
-        example = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example.append(aws.neptune.ClusterInstance(f"example-{range['value']}",
-                cluster_identifier=default.id,
-                engine="neptune",
-                instance_class="db.r4.large",
-                apply_immediately=True))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: Specifies whether any instance modifications

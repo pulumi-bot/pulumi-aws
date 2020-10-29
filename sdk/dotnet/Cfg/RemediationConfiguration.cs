@@ -13,57 +13,6 @@ namespace Pulumi.Aws.Cfg
     /// Provides an AWS Config Remediation Configuration.
     /// 
     /// &gt; **Note:** Config Remediation Configuration requires an existing [Config Rule](https://www.terraform.io/docs/providers/aws/r/config_config_rule.html) to be present.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// AWS managed rules can be used by setting the source owner to `AWS` and the source identifier to the name of the managed rule. More information about AWS managed rules can be found in the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var thisRule = new Aws.Cfg.Rule("thisRule", new Aws.Cfg.RuleArgs
-    ///         {
-    ///             Source = new Aws.Cfg.Inputs.RuleSourceArgs
-    ///             {
-    ///                 Owner = "AWS",
-    ///                 SourceIdentifier = "S3_BUCKET_VERSIONING_ENABLED",
-    ///             },
-    ///         });
-    ///         var thisRemediationConfiguration = new Aws.Cfg.RemediationConfiguration("thisRemediationConfiguration", new Aws.Cfg.RemediationConfigurationArgs
-    ///         {
-    ///             ConfigRuleName = thisRule.Name,
-    ///             ResourceType = "AWS::S3::Bucket",
-    ///             TargetType = "SSM_DOCUMENT",
-    ///             TargetId = "AWS-EnableS3BucketEncryption",
-    ///             TargetVersion = "1",
-    ///             Parameters = 
-    ///             {
-    ///                 new Aws.Cfg.Inputs.RemediationConfigurationParameterArgs
-    ///                 {
-    ///                     Name = "AutomationAssumeRole",
-    ///                     StaticValue = "arn:aws:iam::875924563244:role/security_config",
-    ///                 },
-    ///                 new Aws.Cfg.Inputs.RemediationConfigurationParameterArgs
-    ///                 {
-    ///                     Name = "BucketName",
-    ///                     ResourceValue = "RESOURCE_ID",
-    ///                 },
-    ///                 new Aws.Cfg.Inputs.RemediationConfigurationParameterArgs
-    ///                 {
-    ///                     Name = "SSEAlgorithm",
-    ///                     StaticValue = "AES256",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RemediationConfiguration : Pulumi.CustomResource
     {

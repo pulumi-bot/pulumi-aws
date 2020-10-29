@@ -31,38 +31,6 @@ class Connection(pulumi.CustomResource):
         Provides a Glue Connection resource.
 
         ## Example Usage
-        ### Non-VPC Connection
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Connection("example", connection_properties={
-            "JDBC_CONNECTION_URL": "jdbc:mysql://example.com/exampledatabase",
-            "PASSWORD": "examplepassword",
-            "USERNAME": "exampleusername",
-        })
-        ```
-        ### VPC Connection
-
-        For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html#connection-JDBC-VPC).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Connection("example",
-            connection_properties={
-                "JDBC_CONNECTION_URL": f"jdbc:mysql://{aws_rds_cluster['example']['endpoint']}/exampledatabase",
-                "PASSWORD": "examplepassword",
-                "USERNAME": "exampleusername",
-            },
-            physical_connection_requirements=aws.glue.ConnectionPhysicalConnectionRequirementsArgs(
-                availability_zone=aws_subnet["example"]["availability_zone"],
-                security_group_id_lists=[aws_security_group["example"]["id"]],
-                subnet_id=aws_subnet["example"]["id"],
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

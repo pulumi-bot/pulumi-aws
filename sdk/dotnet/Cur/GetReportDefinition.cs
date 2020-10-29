@@ -17,29 +17,6 @@ namespace Pulumi.Aws.Cur
         /// &gt; *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
         /// 
         /// &gt; *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var reportDefinition = Output.Create(Aws.Cur.GetReportDefinition.InvokeAsync(new Aws.Cur.GetReportDefinitionArgs
-        ///         {
-        ///             ReportName = "example",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetReportDefinitionResult> InvokeAsync(GetReportDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReportDefinitionResult>("aws:cur/getReportDefinition:getReportDefinition", args ?? new GetReportDefinitionArgs(), options.WithVersion());

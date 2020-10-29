@@ -28,65 +28,6 @@ class Directory(pulumi.CustomResource):
         """
         Provides a WorkSpaces directory in AWS WorkSpaces Service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.0.0.0/16")
-        example_a = aws.ec2.Subnet("exampleA",
-            vpc_id=example_vpc.id,
-            availability_zone="us-east-1a",
-            cidr_block="10.0.0.0/24")
-        example_b = aws.ec2.Subnet("exampleB",
-            vpc_id=example_vpc.id,
-            availability_zone="us-east-1b",
-            cidr_block="10.0.1.0/24")
-        example_c = aws.ec2.Subnet("exampleC",
-            vpc_id=example_vpc.id,
-            availability_zone="us-east-1c",
-            cidr_block="10.0.2.0/24")
-        example_d = aws.ec2.Subnet("exampleD",
-            vpc_id=example_vpc.id,
-            availability_zone="us-east-1d",
-            cidr_block="10.0.3.0/24")
-        example_directory = aws.directoryservice.Directory("exampleDirectory",
-            name="corp.example.com",
-            password="#S1ncerely",
-            size="Small",
-            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
-                vpc_id=example_vpc.id,
-                subnet_ids=[
-                    example_a.id,
-                    example_b.id,
-                ],
-            ))
-        example_workspaces_directory_directory = aws.workspaces.Directory("exampleWorkspaces/directoryDirectory",
-            directory_id=example_directory.id,
-            subnet_ids=[
-                example_c.id,
-                example_d.id,
-            ],
-            tags={
-                "Example": "true",
-            },
-            self_service_permissions=aws.workspaces.DirectorySelfServicePermissionsArgs(
-                change_compute_type=True,
-                increase_volume_size=True,
-                rebuild_workspace=True,
-                restart_workspace=True,
-                switch_running_mode=True,
-            ),
-            workspace_creation_properties=aws.workspaces.DirectoryWorkspaceCreationPropertiesArgs(
-                custom_security_group_id=aws_security_group["example"]["id"],
-                default_ou="OU=AWS,DC=Workgroup,DC=Example,DC=com",
-                enable_internet_access=True,
-                enable_maintenance_mode=True,
-                user_enabled_as_local_administrator=True,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] directory_id: The directory identifier for registration in WorkSpaces service.

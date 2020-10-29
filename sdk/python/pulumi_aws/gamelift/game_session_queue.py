@@ -28,29 +28,6 @@ class GameSessionQueue(pulumi.CustomResource):
         """
         Provides an Gamelift Game Session Queue resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.gamelift.GameSessionQueue("test",
-            destinations=[
-                aws_gamelift_fleet["us_west_2_fleet"]["arn"],
-                aws_gamelift_fleet["eu_central_1_fleet"]["arn"],
-            ],
-            player_latency_policies=[
-                aws.gamelift.GameSessionQueuePlayerLatencyPolicyArgs(
-                    maximum_individual_player_latency_milliseconds=100,
-                    policy_duration_seconds=5,
-                ),
-                aws.gamelift.GameSessionQueuePlayerLatencyPolicyArgs(
-                    maximum_individual_player_latency_milliseconds=200,
-                ),
-            ],
-            timeout_in_seconds=60)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destinations: List of fleet/alias ARNs used by session queue for placing game sessions.

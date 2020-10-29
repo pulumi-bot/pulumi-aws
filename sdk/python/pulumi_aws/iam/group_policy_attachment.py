@@ -25,21 +25,6 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** The usage of this resource conflicts with the `iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        group = aws.iam.Group("group")
-        policy = aws.iam.Policy("policy",
-            description="A test policy",
-            policy="{ ... policy JSON ... }")
-        test_attach = aws.iam.GroupPolicyAttachment("test-attach",
-            group=group.name,
-            policy_arn=policy.arn)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The group the policy should be applied to

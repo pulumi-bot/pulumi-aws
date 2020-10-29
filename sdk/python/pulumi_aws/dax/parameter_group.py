@@ -26,24 +26,6 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Provides a DAX Parameter Group resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.dax.ParameterGroup("example", parameters=[
-            aws.dax.ParameterGroupParameterArgs(
-                name="query-ttl-millis",
-                value="100000",
-            ),
-            aws.dax.ParameterGroupParameterArgs(
-                name="record-ttl-millis",
-                value="100000",
-            ),
-        ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the parameter group.

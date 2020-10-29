@@ -301,15 +301,6 @@ def get_cluster(cluster_id: Optional[str] = None,
     """
     Use this data source to get information about an Elasticache Cluster
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    my_cluster = aws.elasticache.get_cluster(cluster_id="my-cluster-id")
-    ```
-
 
     :param str cluster_id: Group identifier.
     :param Mapping[str, str] tags: The tags assigned to the resource

@@ -8,31 +8,6 @@ import {PolicyDocument} from "./index";
 
 /**
  * Provides an IAM policy attached to a group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const myDevelopers = new aws.iam.Group("myDevelopers", {path: "/users/"});
- * const myDeveloperPolicy = new aws.iam.GroupPolicy("myDeveloperPolicy", {
- *     group: myDevelopers.name,
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "ec2:Describe*"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
  */
 export class GroupPolicy extends pulumi.CustomResource {
     /**

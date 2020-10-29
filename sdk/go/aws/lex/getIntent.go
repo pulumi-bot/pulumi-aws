@@ -8,33 +8,6 @@ import (
 )
 
 // Provides details about a specific Amazon Lex Intent.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/lex"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := fmt.Sprintf("%v%v", "$", "LATEST")
-// 		_, err := lex.LookupIntent(ctx, &lex.LookupIntentArgs{
-// 			Name:    "OrderFlowers",
-// 			Version: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupIntent(ctx *pulumi.Context, args *LookupIntentArgs, opts ...pulumi.InvokeOption) (*LookupIntentResult, error) {
 	var rv LookupIntentResult
 	err := ctx.Invoke("aws:lex/getIntent:getIntent", args, &rv, opts...)

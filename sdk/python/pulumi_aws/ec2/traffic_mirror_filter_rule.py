@@ -34,44 +34,6 @@ class TrafficMirrorFilterRule(pulumi.CustomResource):
         Provides an Traffic mirror filter rule.\
         Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
 
-        ## Example Usage
-
-        To create a basic traffic mirror session
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        filter = aws.ec2.TrafficMirrorFilter("filter",
-            description="traffic mirror filter - example",
-            network_services=["amazon-dns"])
-        ruleout = aws.ec2.TrafficMirrorFilterRule("ruleout",
-            description="test rule",
-            traffic_mirror_filter_id=filter.id,
-            destination_cidr_block="10.0.0.0/8",
-            source_cidr_block="10.0.0.0/8",
-            rule_number=1,
-            rule_action="accept",
-            traffic_direction="egress")
-        rulein = aws.ec2.TrafficMirrorFilterRule("rulein",
-            description="test rule",
-            traffic_mirror_filter_id=filter.id,
-            destination_cidr_block="10.0.0.0/8",
-            source_cidr_block="10.0.0.0/8",
-            rule_number=1,
-            rule_action="accept",
-            traffic_direction="ingress",
-            protocol=6,
-            destination_port_range=aws.ec2.TrafficMirrorFilterRuleDestinationPortRangeArgs(
-                from_port=22,
-                to_port=53,
-            ),
-            source_port_range=aws.ec2.TrafficMirrorFilterRuleSourcePortRangeArgs(
-                from_port=0,
-                to_port=10,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the traffic mirror filter rule.

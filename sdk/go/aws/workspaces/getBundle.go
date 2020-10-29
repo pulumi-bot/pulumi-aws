@@ -8,39 +8,6 @@ import (
 )
 
 // Retrieve information about an AWS WorkSpaces bundle.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/workspaces"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "wsb-b0s22j3d7"
-// 		_, err := workspaces.GetBundle(ctx, &workspaces.GetBundleArgs{
-// 			BundleId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt1 := "Value with Windows 10 and Office 2016"
-// 		opt2 := "AMAZON"
-// 		_, err = workspaces.GetBundle(ctx, &workspaces.GetBundleArgs{
-// 			Name:  &opt1,
-// 			Owner: &opt2,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetBundle(ctx *pulumi.Context, args *GetBundleArgs, opts ...pulumi.InvokeOption) (*GetBundleResult, error) {
 	var rv GetBundleResult
 	err := ctx.Invoke("aws:workspaces/getBundle:getBundle", args, &rv, opts...)

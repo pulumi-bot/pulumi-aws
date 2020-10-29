@@ -29,65 +29,6 @@ class Selection(pulumi.CustomResource):
         Manages selection conditions for AWS Backup plan resources.
 
         ## Example Usage
-        ### IAM Role
-
-        > For more information about creating and managing IAM Roles for backups and restores, see the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/iam-service-roles.html).
-
-        The below example creates an IAM role with the default managed IAM Policy for allowing AWS Backup to create backups.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_role = aws.iam.Role("exampleRole", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": ["sts:AssumeRole"],
-              "Effect": "allow",
-              "Principal": {
-                "Service": ["backup.amazonaws.com"]
-              }
-            }
-          ]
-        }
-        \"\"\")
-        example_role_policy_attachment = aws.iam.RolePolicyAttachment("exampleRolePolicyAttachment",
-            policy_arn="arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup",
-            role=example_role.name)
-        # ... other configuration ...
-        example_selection = aws.backup.Selection("exampleSelection", iam_role_arn=example_role.arn)
-        ```
-        ### Selecting Backups By Tag
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.backup.Selection("example",
-            iam_role_arn=aws_iam_role["example"]["arn"],
-            plan_id=aws_backup_plan["example"]["id"],
-            selection_tags=[aws.backup.SelectionSelectionTagArgs(
-                type="STRINGEQUALS",
-                key="foo",
-                value="bar",
-            )])
-        ```
-        ### Selecting Backups By Resource
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.backup.Selection("example",
-            iam_role_arn=aws_iam_role["example"]["arn"],
-            plan_id=aws_backup_plan["example"]["id"],
-            resources=[
-                aws_db_instance["example"]["arn"],
-                aws_ebs_volume["example"]["arn"],
-                aws_efs_file_system["example"]["arn"],
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

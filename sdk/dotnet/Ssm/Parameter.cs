@@ -11,68 +11,6 @@ namespace Pulumi.Aws.Ssm
 {
     /// <summary>
     /// Provides an SSM Parameter resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// To store a basic string parameter:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new Aws.Ssm.Parameter("foo", new Aws.Ssm.ParameterArgs
-    ///         {
-    ///             Type = "String",
-    ///             Value = "bar",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// To store an encrypted string using the default SSM KMS key:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.Rds.Instance("default", new Aws.Rds.InstanceArgs
-    ///         {
-    ///             AllocatedStorage = 10,
-    ///             StorageType = "gp2",
-    ///             Engine = "mysql",
-    ///             EngineVersion = "5.7.16",
-    ///             InstanceClass = "db.t2.micro",
-    ///             Name = "mydb",
-    ///             Username = "foo",
-    ///             Password = @var.Database_master_password,
-    ///             DbSubnetGroupName = "my_database_subnet_group",
-    ///             ParameterGroupName = "default.mysql5.7",
-    ///         });
-    ///         var secret = new Aws.Ssm.Parameter("secret", new Aws.Ssm.ParameterArgs
-    ///         {
-    ///             Description = "The parameter description",
-    ///             Type = "SecureString",
-    ///             Value = @var.Database_master_password,
-    ///             Tags = 
-    ///             {
-    ///                 { "environment", "production" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &gt; **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
     /// </summary>
     public partial class Parameter : Pulumi.CustomResource
     {

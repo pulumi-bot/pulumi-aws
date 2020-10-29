@@ -14,61 +14,6 @@ import (
 // More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
 //
 // ## Example Usage
-// ### Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
-// 			ApiId:           pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			IntegrationType: pulumi.String("MOCK"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### AWS Service Integration
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/apigatewayv2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
-// 			ApiId:              pulumi.Any(aws_apigatewayv2_api.Example.Id),
-// 			CredentialsArn:     pulumi.Any(aws_iam_role.Example.Arn),
-// 			Description:        pulumi.String("SQS example"),
-// 			IntegrationType:    pulumi.String("AWS_PROXY"),
-// 			IntegrationSubtype: pulumi.String("SQS-SendMessage"),
-// 			RequestParameters: pulumi.StringMap{
-// 				"QueueUrl":    pulumi.String(fmt.Sprintf("%v%v", "$", "request.header.queueUrl")),
-// 				"MessageBody": pulumi.String(fmt.Sprintf("%v%v", "$", "request.body.message")),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

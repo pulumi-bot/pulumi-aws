@@ -141,15 +141,6 @@ def get_cluster(cluster_name: Optional[str] = None,
     """
     Get information on an Amazon MSK Cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.msk.get_cluster(cluster_name="example")
-    ```
-
 
     :param str cluster_name: Name of the cluster.
     :param Mapping[str, str] tags: Map of key-value pairs assigned to the cluster.

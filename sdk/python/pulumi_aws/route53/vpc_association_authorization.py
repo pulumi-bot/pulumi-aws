@@ -24,35 +24,6 @@ class VpcAssociationAuthorization(pulumi.CustomResource):
         """
         Authorizes a VPC in a peer account to be associated with a local Route53 Hosted Zone.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_pulumi as pulumi
-
-        alternate = pulumi.providers.Aws("alternate")
-        example_vpc = aws.ec2.Vpc("exampleVpc",
-            cidr_block="10.6.0.0/16",
-            enable_dns_hostnames=True,
-            enable_dns_support=True)
-        example_zone = aws.route53.Zone("exampleZone", vpcs=[aws.route53.ZoneVpcArgs(
-            vpc_id=example_vpc.id,
-        )])
-        alternate_vpc = aws.ec2.Vpc("alternateVpc",
-            cidr_block="10.7.0.0/16",
-            enable_dns_hostnames=True,
-            enable_dns_support=True,
-            opts=ResourceOptions(provider="aws.alternate"))
-        example_vpc_association_authorization = aws.route53.VpcAssociationAuthorization("exampleVpcAssociationAuthorization",
-            vpc_id=alternate_vpc.id,
-            zone_id=example_zone.id)
-        example_zone_association = aws.route53.ZoneAssociation("exampleZoneAssociation",
-            vpc_id=example_vpc_association_authorization.vpc_id,
-            zone_id=example_vpc_association_authorization.zone_id,
-            opts=ResourceOptions(provider="aws.alternate"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] vpc_id: The VPC to authorize for association with the private hosted zone.

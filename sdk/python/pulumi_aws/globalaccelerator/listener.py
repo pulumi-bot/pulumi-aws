@@ -27,30 +27,6 @@ class Listener(pulumi.CustomResource):
         """
         Provides a Global Accelerator listener.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_accelerator = aws.globalaccelerator.Accelerator("exampleAccelerator",
-            ip_address_type="IPV4",
-            enabled=True,
-            attributes=aws.globalaccelerator.AcceleratorAttributesArgs(
-                flow_logs_enabled=True,
-                flow_logs_s3_bucket="example-bucket",
-                flow_logs_s3_prefix="flow-logs/",
-            ))
-        example_listener = aws.globalaccelerator.Listener("exampleListener",
-            accelerator_arn=example_accelerator.id,
-            client_affinity="SOURCE_IP",
-            protocol="TCP",
-            port_ranges=[aws.globalaccelerator.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_arn: The Amazon Resource Name (ARN) of your accelerator.

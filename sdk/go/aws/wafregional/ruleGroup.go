@@ -11,44 +11,6 @@ import (
 )
 
 // Provides a WAF Regional Rule Group Resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/wafregional"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRule, err := wafregional.NewRule(ctx, "exampleRule", &wafregional.RuleArgs{
-// 			MetricName: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = wafregional.NewRuleGroup(ctx, "exampleRuleGroup", &wafregional.RuleGroupArgs{
-// 			MetricName: pulumi.String("example"),
-// 			ActivatedRules: wafregional.RuleGroupActivatedRuleArray{
-// 				&wafregional.RuleGroupActivatedRuleArgs{
-// 					Action: &wafregional.RuleGroupActivatedRuleActionArgs{
-// 						Type: pulumi.String("COUNT"),
-// 					},
-// 					Priority: pulumi.Int(50),
-// 					RuleId:   exampleRule.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RuleGroup struct {
 	pulumi.CustomResourceState
 

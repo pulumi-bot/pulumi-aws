@@ -9,24 +9,6 @@ import * as utilities from "../utilities";
  * An egress-only Internet gateway is used to enable outbound communication
  * over IPv6 from instances in your VPC to the Internet, and prevents hosts
  * outside of your VPC from initiating an IPv6 connection with your instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const exampleVpc = new aws.ec2.Vpc("exampleVpc", {
- *     cidrBlock: "10.1.0.0/16",
- *     assignGeneratedIpv6CidrBlock: true,
- * });
- * const exampleEgressOnlyInternetGateway = new aws.ec2.EgressOnlyInternetGateway("exampleEgressOnlyInternetGateway", {
- *     vpcId: exampleVpc.id,
- *     tags: {
- *         Name: "main",
- *     },
- * });
- * ```
  */
 export class EgressOnlyInternetGateway extends pulumi.CustomResource {
     /**

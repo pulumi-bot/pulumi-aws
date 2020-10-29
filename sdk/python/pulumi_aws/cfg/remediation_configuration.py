@@ -31,40 +31,6 @@ class RemediationConfiguration(pulumi.CustomResource):
 
         > **Note:** Config Remediation Configuration requires an existing [Config Rule](https://www.terraform.io/docs/providers/aws/r/config_config_rule.html) to be present.
 
-        ## Example Usage
-
-        AWS managed rules can be used by setting the source owner to `AWS` and the source identifier to the name of the managed rule. More information about AWS managed rules can be found in the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        this_rule = aws.cfg.Rule("thisRule", source=aws.cfg.RuleSourceArgs(
-            owner="AWS",
-            source_identifier="S3_BUCKET_VERSIONING_ENABLED",
-        ))
-        this_remediation_configuration = aws.cfg.RemediationConfiguration("thisRemediationConfiguration",
-            config_rule_name=this_rule.name,
-            resource_type="AWS::S3::Bucket",
-            target_type="SSM_DOCUMENT",
-            target_id="AWS-EnableS3BucketEncryption",
-            target_version="1",
-            parameters=[
-                aws.cfg.RemediationConfigurationParameterArgs(
-                    name="AutomationAssumeRole",
-                    static_value="arn:aws:iam::875924563244:role/security_config",
-                ),
-                aws.cfg.RemediationConfigurationParameterArgs(
-                    name="BucketName",
-                    resource_value="RESOURCE_ID",
-                ),
-                aws.cfg.RemediationConfigurationParameterArgs(
-                    name="SSEAlgorithm",
-                    static_value="AES256",
-                ),
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_rule_name: The name of the AWS Config rule

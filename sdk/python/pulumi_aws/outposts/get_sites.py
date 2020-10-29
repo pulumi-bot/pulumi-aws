@@ -57,15 +57,6 @@ class AwaitableGetSitesResult(GetSitesResult):
 def get_sites(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSitesResult:
     """
     Provides details about multiple Outposts Sites.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    all = aws.outposts.get_sites()
-    ```
     """
     __args__ = dict()
     if opts is None:

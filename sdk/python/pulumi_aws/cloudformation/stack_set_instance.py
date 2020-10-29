@@ -30,46 +30,6 @@ class StackSetInstance(pulumi.CustomResource):
 
         > **NOTE:** To retain the Stack during resource destroy, ensure `retain_stack` has been set to `true` in the state first. This must be completed _before_ a deployment that would destroy the resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.cloudformation.StackSetInstance("example",
-            account_id="123456789012",
-            region="us-east-1",
-            stack_set_name=aws_cloudformation_stack_set["example"]["name"])
-        ```
-        ### Example IAM Setup in Target Account
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        a_ws_cloud_formation_stack_set_execution_role_assume_role_policy = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            effect="Allow",
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=[aws_iam_role["AWSCloudFormationStackSetAdministrationRole"]["arn"]],
-                type="AWS",
-            )],
-        )])
-        a_ws_cloud_formation_stack_set_execution_role = aws.iam.Role("aWSCloudFormationStackSetExecutionRole", assume_role_policy=a_ws_cloud_formation_stack_set_execution_role_assume_role_policy.json)
-        a_ws_cloud_formation_stack_set_execution_role_minimum_execution_policy_policy_document = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=[
-                "cloudformation:*",
-                "s3:*",
-                "sns:*",
-            ],
-            effect="Allow",
-            resources=["*"],
-        )])
-        a_ws_cloud_formation_stack_set_execution_role_minimum_execution_policy_role_policy = aws.iam.RolePolicy("aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicyRolePolicy",
-            policy=a_ws_cloud_formation_stack_set_execution_role_minimum_execution_policy_policy_document.json,
-            role=a_ws_cloud_formation_stack_set_execution_role.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.

@@ -32,47 +32,6 @@ class Parameter(pulumi.CustomResource):
         """
         Provides an SSM Parameter resource.
 
-        ## Example Usage
-
-        To store a basic string parameter:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foo = aws.ssm.Parameter("foo",
-            type="String",
-            value="bar")
-        ```
-
-        To store an encrypted string using the default SSM KMS key:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.rds.Instance("default",
-            allocated_storage=10,
-            storage_type="gp2",
-            engine="mysql",
-            engine_version="5.7.16",
-            instance_class="db.t2.micro",
-            name="mydb",
-            username="foo",
-            password=var["database_master_password"],
-            db_subnet_group_name="my_database_subnet_group",
-            parameter_group_name="default.mysql5.7")
-        secret = aws.ssm.Parameter("secret",
-            description="The parameter description",
-            type="SecureString",
-            value=var["database_master_password"],
-            tags={
-                "environment": "production",
-            })
-        ```
-
-        > **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allowed_pattern: A regular expression used to validate the parameter value.

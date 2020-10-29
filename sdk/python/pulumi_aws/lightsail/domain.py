@@ -29,14 +29,6 @@ class Domain(pulumi.CustomResource):
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 
         ## Example Usage
-        ### Creating A New Domain
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        domain_test = aws.lightsail.Domain("domainTest", domain_name="mydomain.com")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

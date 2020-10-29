@@ -28,29 +28,6 @@ class RegexPatternSet(pulumi.CustomResource):
         """
         Provides an AWS WAFv2 Regex Pattern Set Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.RegexPatternSet("example",
-            description="Example regex pattern set",
-            regular_expressions=[
-                aws.wafv2.RegexPatternSetRegularExpressionArgs(
-                    regex_string="one",
-                ),
-                aws.wafv2.RegexPatternSetRegularExpressionArgs(
-                    regex_string="two",
-                ),
-            ],
-            scope="REGIONAL",
-            tags={
-                "Tag1": "Value1",
-                "Tag2": "Value2",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A friendly description of the regular expression pattern set.

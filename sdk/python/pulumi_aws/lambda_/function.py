@@ -50,61 +50,6 @@ class Function(pulumi.CustomResource):
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
 
         ## Example Usage
-        ### Lambda Layers
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_layer_version = aws.lambda_.LayerVersion("exampleLayerVersion")
-        # ... other configuration ...
-        example_function = aws.lambda_.Function("exampleFunction", layers=[example_layer_version.arn])
-        ```
-        ### Lambda File Systems
-
-        Lambda File Systems allow you to connect an Amazon Elastic File System (EFS) file system to a Lambda function to share data across function invocations, access existing data including large files, and save function state.
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # EFS file system
-        efs_for_lambda = aws.efs.FileSystem("efsForLambda", tags={
-            "Name": "efs_for_lambda",
-        })
-        # Mount target connects the file system to the subnet
-        alpha = aws.efs.MountTarget("alpha",
-            file_system_id=efs_for_lambda.id,
-            subnet_id=aws_subnet["subnet_for_lambda"]["id"],
-            security_groups=[aws_security_group["sg_for_lambda"]["id"]])
-        # EFS access point used by lambda file system
-        access_point_for_lambda = aws.efs.AccessPoint("accessPointForLambda",
-            file_system_id=efs_for_lambda.id,
-            root_directory=aws.efs.AccessPointRootDirectoryArgs(
-                path="/lambda",
-                creation_info=aws.efs.AccessPointRootDirectoryCreationInfoArgs(
-                    owner_gid=1000,
-                    owner_uid=1000,
-                    permissions="777",
-                ),
-            ),
-            posix_user=aws.efs.AccessPointPosixUserArgs(
-                gid=1000,
-                uid=1000,
-            ))
-        # A lambda function connected to an EFS file system
-        # ... other configuration ...
-        example = aws.lambda_.Function("example",
-            file_system_config=aws.lambda..FunctionFileSystemConfigArgs(
-                arn=access_point_for_lambda.arn,
-                local_mount_path="/mnt/efs",
-            ),
-            vpc_config=aws.lambda..FunctionVpcConfigArgs(
-                subnet_ids=[aws_subnet["subnet_for_lambda"]["id"]],
-                security_group_ids=[aws_security_group["sg_for_lambda"]["id"]],
-            ),
-            opts=ResourceOptions(depends_on=[alpha]))
-        ```
         ## Specifying the Deployment Package
 
         AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.

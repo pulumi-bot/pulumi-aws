@@ -12,25 +12,6 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides a VPC DHCP Options Association resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dnsResolver = new Aws.Ec2.VpcDhcpOptionsAssociation("dnsResolver", new Aws.Ec2.VpcDhcpOptionsAssociationArgs
-    ///         {
-    ///             VpcId = aws_vpc.Foo.Id,
-    ///             DhcpOptionsId = aws_vpc_dhcp_options.Foo.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// ## Remarks
     /// 
     /// * You can only associate one DHCP Options Set to a given VPC ID.

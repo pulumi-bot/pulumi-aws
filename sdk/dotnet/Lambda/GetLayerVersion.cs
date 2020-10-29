@@ -13,31 +13,6 @@ namespace Pulumi.Aws.Lambda
     {
         /// <summary>
         /// Provides information about a Lambda Layer Version.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var layerName = config.Require("layerName");
-        ///         var existing = Output.Create(Aws.Lambda.GetLayerVersion.InvokeAsync(new Aws.Lambda.GetLayerVersionArgs
-        ///         {
-        ///             LayerName = layerName,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLayerVersionResult> InvokeAsync(GetLayerVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLayerVersionResult>("aws:lambda/getLayerVersion:getLayerVersion", args ?? new GetLayerVersionArgs(), options.WithVersion());

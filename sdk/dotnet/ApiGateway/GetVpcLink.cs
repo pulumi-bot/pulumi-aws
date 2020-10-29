@@ -16,29 +16,6 @@ namespace Pulumi.Aws.ApiGateway
         /// API Gateway. To fetch the VPC Link you must provide a name to match against.
         /// As there is no unique name constraint on API Gateway VPC Links this data source will
         /// error if there is more than one match.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myApiGatewayVpcLink = Output.Create(Aws.ApiGateway.GetVpcLink.InvokeAsync(new Aws.ApiGateway.GetVpcLinkArgs
-        ///         {
-        ///             Name = "my-vpc-link",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcLinkResult> InvokeAsync(GetVpcLinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcLinkResult>("aws:apigateway/getVpcLink:getVpcLink", args ?? new GetVpcLinkArgs(), options.WithVersion());

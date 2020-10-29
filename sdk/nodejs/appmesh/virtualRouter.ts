@@ -21,25 +21,6 @@ import * as utilities from "../utilities";
  * * Add a `listener` configuration block to the `spec` argument.
  *
  * The state associated with existing resources will automatically be migrated.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const serviceb = new aws.appmesh.VirtualRouter("serviceb", {
- *     meshName: aws_appmesh_mesh.simple.id,
- *     spec: {
- *         listener: {
- *             portMapping: {
- *                 port: 8080,
- *                 protocol: "http",
- *             },
- *         },
- *     },
- * });
- * ```
  */
 export class VirtualRouter extends pulumi.CustomResource {
     /**

@@ -32,50 +32,6 @@ class Role(pulumi.CustomResource):
 
         > *NOTE:* If policies are attached to the role via the `iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `force_detach_policies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test_role = aws.iam.Role("testRole",
-            assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "ec2.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-
-        \"\"\",
-            tags={
-                "tag-key": "tag-value",
-            })
-        ```
-        ## Example of Using Data Source for Assume Role Policy
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        instance_assume_role_policy = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["ec2.amazonaws.com"],
-            )],
-        )])
-        instance = aws.iam.Role("instance",
-            path="/system/",
-            assume_role_policy=instance_assume_role_policy.json)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assume_role_policy: The policy that grants an entity permission to assume the role.

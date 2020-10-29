@@ -11,30 +11,6 @@ namespace Pulumi.Aws.CodeArtifact
 {
     /// <summary>
     /// Provides a CodeArtifact Domain Resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleKey = new Aws.Kms.Key("exampleKey", new Aws.Kms.KeyArgs
-    ///         {
-    ///             Description = "domain key",
-    ///         });
-    ///         var exampleDomain = new Aws.CodeArtifact.Domain("exampleDomain", new Aws.CodeArtifact.DomainArgs
-    ///         {
-    ///             Domain = "example",
-    ///             EncryptionKey = exampleKey.Arn,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

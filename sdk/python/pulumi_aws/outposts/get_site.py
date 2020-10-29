@@ -78,15 +78,6 @@ def get_site(id: Optional[str] = None,
     """
     Provides details about an Outposts Site.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.outposts.get_site(name="example")
-    ```
-
 
     :param str id: Identifier of the Site.
     :param str name: Name of the Site.

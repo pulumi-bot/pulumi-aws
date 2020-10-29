@@ -24,15 +24,6 @@ class AccountAlias(pulumi.CustomResource):
 
         Manages the account alias for the AWS Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        alias = aws.iam.AccountAlias("alias", account_alias="my-account-alias")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_alias: The account alias

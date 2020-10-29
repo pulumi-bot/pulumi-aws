@@ -12,38 +12,6 @@ import * as utilities from "../utilities";
  * defined in-line. At this time you cannot use a Route Table with in-line routes
  * in conjunction with any Route resources. Doing so will cause
  * a conflict of rule settings and will overwrite rules.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const route = new aws.ec2.Route("route", {
- *     routeTableId: "rtb-4fbb3ac4",
- *     destinationCidrBlock: "10.0.1.0/22",
- *     vpcPeeringConnectionId: "pcx-45ff3dc1",
- * }, {
- *     dependsOn: [aws_route_table.testing],
- * });
- * ```
- * ## Example IPv6 Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const vpc = new aws.ec2.Vpc("vpc", {
- *     cidrBlock: "10.1.0.0/16",
- *     assignGeneratedIpv6CidrBlock: true,
- * });
- * const egress = new aws.ec2.EgressOnlyInternetGateway("egress", {vpcId: vpc.id});
- * const route = new aws.ec2.Route("route", {
- *     routeTableId: "rtb-4fbb3ac4",
- *     destinationIpv6CidrBlock: "::/0",
- *     egressOnlyGatewayId: egress.id,
- * });
- * ```
  */
 export class Route extends pulumi.CustomResource {
     /**

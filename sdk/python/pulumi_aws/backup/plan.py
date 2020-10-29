@@ -27,26 +27,6 @@ class Plan(pulumi.CustomResource):
         """
         Provides an AWS Backup plan resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.backup.Plan("example",
-            rules=[aws.backup.PlanRuleArgs(
-                rule_name="tf_example_backup_rule",
-                target_vault_name=aws_backup_vault["test"]["name"],
-                schedule="cron(0 12 * * ? *)",
-            )],
-            advanced_backup_settings=[aws.backup.PlanAdvancedBackupSettingArgs(
-                backup_options={
-                    "WindowsVSS": "enabled",
-                },
-                resource_type="EC2",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PlanAdvancedBackupSettingArgs']]]] advanced_backup_settings: An object that specifies backup options for each resource type.

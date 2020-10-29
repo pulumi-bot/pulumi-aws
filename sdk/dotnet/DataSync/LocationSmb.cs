@@ -13,32 +13,6 @@ namespace Pulumi.Aws.DataSync
     /// Manages a SMB Location within AWS DataSync.
     /// 
     /// &gt; **NOTE:** The DataSync Agents must be available before creating this resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.DataSync.LocationSmb("example", new Aws.DataSync.LocationSmbArgs
-    ///         {
-    ///             ServerHostname = "smb.example.com",
-    ///             Subdirectory = "/exported/path",
-    ///             User = "Guest",
-    ///             Password = "ANotGreatPassword",
-    ///             AgentArns = 
-    ///             {
-    ///                 aws_datasync_agent.Example.Arn,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class LocationSmb : Pulumi.CustomResource
     {

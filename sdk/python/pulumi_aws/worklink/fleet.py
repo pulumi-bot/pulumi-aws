@@ -28,42 +28,7 @@ class Fleet(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        ## Example Usage
-
-        Basic usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.worklink.Fleet("example")
-        ```
-
-        Network Configuration Usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.worklink.Fleet("example", network=aws.worklink.FleetNetworkArgs(
-            vpc_id=aws_vpc["test"]["id"],
-            subnet_ids=[[__item["id"] for __item in aws_subnet["test"]]],
-            security_group_ids=[aws_security_group["test"]["id"]],
-        ))
-        ```
-
-        Identity Provider Configuration Usage:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        test = aws.worklink.Fleet("test", identity_provider=aws.worklink.FleetIdentityProviderArgs(
-            type="SAML",
-            saml_metadata=(lambda path: open(path).read())("saml-metadata.xml"),
-        ))
-        ```
-
+        Create a Fleet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] audit_stream_arn: The ARN of the Amazon Kinesis data stream that receives the audit events. Kinesis data stream name must begin with `"AmazonWorkLink-"`.

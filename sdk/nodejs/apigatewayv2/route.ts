@@ -9,17 +9,6 @@ import * as utilities from "../utilities";
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
  *
  * ## Example Usage
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const example = new aws.apigatewayv2.Route("example", {
- *     apiId: aws_apigatewayv2_api.example.id,
- *     routeKey: `$default`,
- * });
- * ```
  */
 export class Route extends pulumi.CustomResource {
     /**

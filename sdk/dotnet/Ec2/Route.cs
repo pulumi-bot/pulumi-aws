@@ -17,62 +17,6 @@ namespace Pulumi.Aws.Ec2
     /// defined in-line. At this time you cannot use a Route Table with in-line routes
     /// in conjunction with any Route resources. Doing so will cause
     /// a conflict of rule settings and will overwrite rules.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var route = new Aws.Ec2.Route("route", new Aws.Ec2.RouteArgs
-    ///         {
-    ///             RouteTableId = "rtb-4fbb3ac4",
-    ///             DestinationCidrBlock = "10.0.1.0/22",
-    ///             VpcPeeringConnectionId = "pcx-45ff3dc1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 aws_route_table.Testing,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Example IPv6 Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpc = new Aws.Ec2.Vpc("vpc", new Aws.Ec2.VpcArgs
-    ///         {
-    ///             CidrBlock = "10.1.0.0/16",
-    ///             AssignGeneratedIpv6CidrBlock = true,
-    ///         });
-    ///         var egress = new Aws.Ec2.EgressOnlyInternetGateway("egress", new Aws.Ec2.EgressOnlyInternetGatewayArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var route = new Aws.Ec2.Route("route", new Aws.Ec2.RouteArgs
-    ///         {
-    ///             RouteTableId = "rtb-4fbb3ac4",
-    ///             DestinationIpv6CidrBlock = "::/0",
-    ///             EgressOnlyGatewayId = egress.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {

@@ -35,35 +35,6 @@ class NetworkAcl(pulumi.CustomResource):
         in conjunction with any Network ACL Rule resources. Doing so will cause
         a conflict of rule settings and will overwrite rules.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        main = aws.ec2.NetworkAcl("main",
-            vpc_id=aws_vpc["main"]["id"],
-            egress=[aws.ec2.NetworkAclEgressArgs(
-                protocol="tcp",
-                rule_no=200,
-                action="allow",
-                cidr_block="10.3.0.0/18",
-                from_port=443,
-                to_port=443,
-            )],
-            ingress=[aws.ec2.NetworkAclIngressArgs(
-                protocol="tcp",
-                rule_no=100,
-                action="allow",
-                cidr_block="10.3.0.0/18",
-                from_port=80,
-                to_port=80,
-            )],
-            tags={
-                "Name": "main",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressArgs']]]] egress: Specifies an egress rule. Parameters defined below.

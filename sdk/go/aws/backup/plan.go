@@ -11,43 +11,6 @@ import (
 )
 
 // Provides an AWS Backup plan resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/backup"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := backup.NewPlan(ctx, "example", &backup.PlanArgs{
-// 			Rules: backup.PlanRuleArray{
-// 				&backup.PlanRuleArgs{
-// 					RuleName:        pulumi.String("tf_example_backup_rule"),
-// 					TargetVaultName: pulumi.Any(aws_backup_vault.Test.Name),
-// 					Schedule:        pulumi.String("cron(0 12 * * ? *)"),
-// 				},
-// 			},
-// 			AdvancedBackupSettings: backup.PlanAdvancedBackupSettingArray{
-// 				&backup.PlanAdvancedBackupSettingArgs{
-// 					BackupOptions: pulumi.StringMap{
-// 						"WindowsVSS": pulumi.String("enabled"),
-// 					},
-// 					ResourceType: pulumi.String("EC2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Plan struct {
 	pulumi.CustomResourceState
 

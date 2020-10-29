@@ -13,30 +13,6 @@ namespace Pulumi.Aws.WafV2
     {
         /// <summary>
         /// Retrieves the summary of a WAFv2 Rule Group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Aws.WafV2.GetRuleGroup.InvokeAsync(new Aws.WafV2.GetRuleGroupArgs
-        ///         {
-        ///             Name = "some-rule-group",
-        ///             Scope = "REGIONAL",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRuleGroupResult> InvokeAsync(GetRuleGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRuleGroupResult>("aws:wafv2/getRuleGroup:getRuleGroup", args ?? new GetRuleGroupArgs(), options.WithVersion());

@@ -23,16 +23,6 @@ class LogStream(pulumi.CustomResource):
         """
         Provides a CloudWatch Log Stream resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        yada = aws.cloudwatch.LogGroup("yada")
-        foo = aws.cloudwatch.LogStream("foo", log_group_name=yada.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] log_group_name: The name of the log group under which the log stream is to be created.

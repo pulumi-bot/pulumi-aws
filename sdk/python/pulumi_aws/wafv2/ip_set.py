@@ -27,26 +27,6 @@ class IpSet(pulumi.CustomResource):
         """
         Provides a WAFv2 IP Set Resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.wafv2.IpSet("example",
-            addresses=[
-                "1.2.3.4/32",
-                "5.6.7.8/32",
-            ],
-            description="Example IP set",
-            ip_address_version="IPV4",
-            scope="REGIONAL",
-            tags={
-                "Tag1": "Value1",
-                "Tag2": "Value2",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all address ranges for IP versions IPv4 and IPv6.

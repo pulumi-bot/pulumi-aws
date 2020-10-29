@@ -11,61 +11,6 @@ namespace Pulumi.Aws.GuardDuty
 {
     /// <summary>
     /// Provides a resource to manage a GuardDuty filter.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myFilter = new Aws.GuardDuty.Filter("myFilter", new Aws.GuardDuty.FilterArgs
-    ///         {
-    ///             Action = "ARCHIVE",
-    ///             DetectorId = aws_guardduty_detector.Example.Id,
-    ///             Rank = 1,
-    ///             FindingCriteria = new Aws.GuardDuty.Inputs.FilterFindingCriteriaArgs
-    ///             {
-    ///                 Criterions = 
-    ///                 {
-    ///                     new Aws.GuardDuty.Inputs.FilterFindingCriteriaCriterionArgs
-    ///                     {
-    ///                         Field = "region",
-    ///                         Equals = 
-    ///                         {
-    ///                             "eu-west-1",
-    ///                         },
-    ///                     },
-    ///                     new Aws.GuardDuty.Inputs.FilterFindingCriteriaCriterionArgs
-    ///                     {
-    ///                         Field = "service.additionalInfo.threatListName",
-    ///                         NotEquals = 
-    ///                         {
-    ///                             "some-threat",
-    ///                             "another-threat",
-    ///                         },
-    ///                     },
-    ///                     new Aws.GuardDuty.Inputs.FilterFindingCriteriaCriterionArgs
-    ///                     {
-    ///                         Field = "updatedAt",
-    ///                         GreaterThan = "2020-01-01T00:00:00Z",
-    ///                         LessThan = "2020-02-01T00:00:00Z",
-    ///                     },
-    ///                     new Aws.GuardDuty.Inputs.FilterFindingCriteriaCriterionArgs
-    ///                     {
-    ///                         Field = "severity",
-    ///                         GreaterThanOrEqual = "4",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Filter : Pulumi.CustomResource
     {

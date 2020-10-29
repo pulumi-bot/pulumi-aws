@@ -296,15 +296,6 @@ def get_domain(domain_name: Optional[str] = None,
     """
     Use this data source to get information about an Elasticsearch Domain
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    my_domain = aws.elasticsearch.get_domain(domain_name="my-domain-name")
-    ```
-
 
     :param str domain_name: Name of the domain.
     :param Mapping[str, str] tags: The tags assigned to the domain.

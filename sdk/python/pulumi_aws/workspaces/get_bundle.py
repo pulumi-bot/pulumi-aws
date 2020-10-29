@@ -134,17 +134,6 @@ def get_bundle(bundle_id: Optional[str] = None,
     """
     Retrieve information about an AWS WorkSpaces bundle.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    by_id = aws.workspaces.get_bundle(bundle_id="wsb-b0s22j3d7")
-    by_owner_and_name = aws.workspaces.get_bundle(name="Value with Windows 10 and Office 2016",
-        owner="AMAZON")
-    ```
-
 
     :param str bundle_id: The ID of the bundle.
     :param str name: The name of the bundle. You cannot combine this parameter with `bundle_id`.

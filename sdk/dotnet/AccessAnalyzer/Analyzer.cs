@@ -13,56 +13,6 @@ namespace Pulumi.Aws.AccessAnalyzer
     /// Manages an Access Analyzer Analyzer. More information can be found in the [Access Analyzer User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
     /// 
     /// ## Example Usage
-    /// ### Account Analyzer
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Aws.AccessAnalyzer.Analyzer("example", new Aws.AccessAnalyzer.AnalyzerArgs
-    ///         {
-    ///             AnalyzerName = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Organization Analyzer
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleOrganization = new Aws.Organizations.Organization("exampleOrganization", new Aws.Organizations.OrganizationArgs
-    ///         {
-    ///             AwsServiceAccessPrincipals = 
-    ///             {
-    ///                 "access-analyzer.amazonaws.com",
-    ///             },
-    ///         });
-    ///         var exampleAnalyzer = new Aws.AccessAnalyzer.Analyzer("exampleAnalyzer", new Aws.AccessAnalyzer.AnalyzerArgs
-    ///         {
-    ///             AnalyzerName = "example",
-    ///             Type = "ORGANIZATION",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleOrganization,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Analyzer : Pulumi.CustomResource
     {

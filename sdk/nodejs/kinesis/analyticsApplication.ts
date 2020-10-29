@@ -16,40 +16,6 @@ import {ARN} from "..";
  * For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
  *
  * > **Note:** To manage Amazon Kinesis Data Analytics for Apache Flink applications, use the [`aws.kinesisanalyticsv2.Application`](https://www.terraform.io/docs/providers/aws/r/kinesisanalyticsv2_application.html) resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- *
- * const testStream = new aws.kinesis.Stream("testStream", {shardCount: 1});
- * const testApplication = new aws.kinesis.AnalyticsApplication("testApplication", {inputs: {
- *     namePrefix: "test_prefix",
- *     kinesisStream: {
- *         resourceArn: testStream.arn,
- *         roleArn: aws_iam_role.test.arn,
- *     },
- *     parallelism: {
- *         count: 1,
- *     },
- *     schema: {
- *         recordColumns: [{
- *             mapping: `$.test`,
- *             name: "test",
- *             sqlType: "VARCHAR(8)",
- *         }],
- *         recordEncoding: "UTF-8",
- *         recordFormat: {
- *             mappingParameters: {
- *                 json: {
- *                     recordRowPath: "$",
- *                 },
- *             },
- *         },
- *     },
- * }});
- * ```
  */
 export class AnalyticsApplication extends pulumi.CustomResource {
     /**

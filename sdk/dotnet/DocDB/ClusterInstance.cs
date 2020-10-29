@@ -18,45 +18,6 @@ namespace Pulumi.Aws.DocDB
     /// meta-parameter to make multiple instances and join them all to the same DocDB
     /// Cluster, or you may specify different Cluster Instance resources with various
     /// `instance_class` sizes.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Aws.DocDB.Cluster("default", new Aws.DocDB.ClusterArgs
-    ///         {
-    ///             ClusterIdentifier = "docdb-cluster-demo",
-    ///             AvailabilityZones = 
-    ///             {
-    ///                 "us-west-2a",
-    ///                 "us-west-2b",
-    ///                 "us-west-2c",
-    ///             },
-    ///             MasterUsername = "foo",
-    ///             MasterPassword = "barbut8chars",
-    ///         });
-    ///         var clusterInstances = new List&lt;Aws.DocDB.ClusterInstance&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             clusterInstances.Add(new Aws.DocDB.ClusterInstance($"clusterInstances-{range.Value}", new Aws.DocDB.ClusterInstanceArgs
-    ///             {
-    ///                 Identifier = $"docdb-cluster-demo-{range.Value}",
-    ///                 ClusterIdentifier = @default.Id,
-    ///                 InstanceClass = "db.r5.large",
-    ///             }));
-    ///         }
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ClusterInstance : Pulumi.CustomResource
     {

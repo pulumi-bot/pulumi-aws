@@ -23,16 +23,6 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
         """
         Provides a VPC DHCP Options Association resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        dns_resolver = aws.ec2.VpcDhcpOptionsAssociation("dnsResolver",
-            vpc_id=aws_vpc["foo"]["id"],
-            dhcp_options_id=aws_vpc_dhcp_options["foo"]["id"])
-        ```
         ## Remarks
 
         * You can only associate one DHCP Options Set to a given VPC ID.

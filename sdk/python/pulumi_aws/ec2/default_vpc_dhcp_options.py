@@ -33,19 +33,6 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         this provider does not _create_ this resource, but instead "adopts" it
         into management.
 
-        ## Example Usage
-
-        Basic usage with tags:
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        default = aws.ec2.DefaultVpcDhcpOptions("default", tags={
-            "Name": "Default DHCP Option Set",
-        })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] netbios_name_servers: List of NETBIOS name servers.

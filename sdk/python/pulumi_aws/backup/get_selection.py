@@ -102,16 +102,6 @@ def get_selection(plan_id: Optional[str] = None,
     """
     Use this data source to get information on an existing backup selection.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.backup.get_selection(plan_id=data["aws_backup_plan"]["example"]["id"],
-        selection_id="selection-id-example")
-    ```
-
 
     :param str plan_id: The backup plan ID associated with the selection of resources.
     :param str selection_id: The backup selection ID.
