@@ -4,6 +4,7 @@
 package wafv2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -418,4 +419,43 @@ type WebAclArgs struct {
 
 func (WebAclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAclArgs)(nil)).Elem()
+}
+
+type WebAclInput interface {
+	pulumi.Input
+
+	ToWebAclOutput() WebAclOutput
+	ToWebAclOutputWithContext(ctx context.Context) WebAclOutput
+}
+
+func (WebAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAcl)(nil)).Elem()
+}
+
+func (i WebAcl) ToWebAclOutput() WebAclOutput {
+	return i.ToWebAclOutputWithContext(context.Background())
+}
+
+func (i WebAcl) ToWebAclOutputWithContext(ctx context.Context) WebAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclOutput)
+}
+
+type WebAclOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclOutput)(nil)).Elem()
+}
+
+func (o WebAclOutput) ToWebAclOutput() WebAclOutput {
+	return o
+}
+
+func (o WebAclOutput) ToWebAclOutputWithContext(ctx context.Context) WebAclOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAclOutput{})
 }

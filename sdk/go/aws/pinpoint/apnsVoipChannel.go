@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -172,4 +173,43 @@ type ApnsVoipChannelArgs struct {
 
 func (ApnsVoipChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apnsVoipChannelArgs)(nil)).Elem()
+}
+
+type ApnsVoipChannelInput interface {
+	pulumi.Input
+
+	ToApnsVoipChannelOutput() ApnsVoipChannelOutput
+	ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput
+}
+
+func (ApnsVoipChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsVoipChannel)(nil)).Elem()
+}
+
+func (i ApnsVoipChannel) ToApnsVoipChannelOutput() ApnsVoipChannelOutput {
+	return i.ToApnsVoipChannelOutputWithContext(context.Background())
+}
+
+func (i ApnsVoipChannel) ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApnsVoipChannelOutput)
+}
+
+type ApnsVoipChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApnsVoipChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsVoipChannelOutput)(nil)).Elem()
+}
+
+func (o ApnsVoipChannelOutput) ToApnsVoipChannelOutput() ApnsVoipChannelOutput {
+	return o
+}
+
+func (o ApnsVoipChannelOutput) ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApnsVoipChannelOutput{})
 }

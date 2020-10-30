@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -179,4 +180,43 @@ type AnalyticsConfigurationArgs struct {
 
 func (AnalyticsConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsConfigurationArgs)(nil)).Elem()
+}
+
+type AnalyticsConfigurationInput interface {
+	pulumi.Input
+
+	ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput
+	ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput
+}
+
+func (AnalyticsConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsConfiguration)(nil)).Elem()
+}
+
+func (i AnalyticsConfiguration) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
+	return i.ToAnalyticsConfigurationOutputWithContext(context.Background())
+}
+
+func (i AnalyticsConfiguration) ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationOutput)
+}
+
+type AnalyticsConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsConfigurationOutput)(nil)).Elem()
+}
+
+func (o AnalyticsConfigurationOutput) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
+	return o
+}
+
+func (o AnalyticsConfigurationOutput) ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsConfigurationOutput{})
 }

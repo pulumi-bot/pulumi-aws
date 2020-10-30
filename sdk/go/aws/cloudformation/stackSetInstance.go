@@ -4,6 +4,7 @@
 package cloudformation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -150,4 +151,43 @@ type StackSetInstanceArgs struct {
 
 func (StackSetInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackSetInstanceArgs)(nil)).Elem()
+}
+
+type StackSetInstanceInput interface {
+	pulumi.Input
+
+	ToStackSetInstanceOutput() StackSetInstanceOutput
+	ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput
+}
+
+func (StackSetInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackSetInstance)(nil)).Elem()
+}
+
+func (i StackSetInstance) ToStackSetInstanceOutput() StackSetInstanceOutput {
+	return i.ToStackSetInstanceOutputWithContext(context.Background())
+}
+
+func (i StackSetInstance) ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackSetInstanceOutput)
+}
+
+type StackSetInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackSetInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackSetInstanceOutput)(nil)).Elem()
+}
+
+func (o StackSetInstanceOutput) ToStackSetInstanceOutput() StackSetInstanceOutput {
+	return o
+}
+
+func (o StackSetInstanceOutput) ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StackSetInstanceOutput{})
 }

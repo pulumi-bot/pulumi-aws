@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -163,4 +164,43 @@ type EventPermissionArgs struct {
 
 func (EventPermissionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventPermissionArgs)(nil)).Elem()
+}
+
+type EventPermissionInput interface {
+	pulumi.Input
+
+	ToEventPermissionOutput() EventPermissionOutput
+	ToEventPermissionOutputWithContext(ctx context.Context) EventPermissionOutput
+}
+
+func (EventPermission) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventPermission)(nil)).Elem()
+}
+
+func (i EventPermission) ToEventPermissionOutput() EventPermissionOutput {
+	return i.ToEventPermissionOutputWithContext(context.Background())
+}
+
+func (i EventPermission) ToEventPermissionOutputWithContext(ctx context.Context) EventPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionOutput)
+}
+
+type EventPermissionOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventPermissionOutput)(nil)).Elem()
+}
+
+func (o EventPermissionOutput) ToEventPermissionOutput() EventPermissionOutput {
+	return o
+}
+
+func (o EventPermissionOutput) ToEventPermissionOutputWithContext(ctx context.Context) EventPermissionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventPermissionOutput{})
 }

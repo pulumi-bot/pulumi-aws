@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -291,4 +292,43 @@ type CachesIscsiVolumeArgs struct {
 
 func (CachesIscsiVolumeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cachesIscsiVolumeArgs)(nil)).Elem()
+}
+
+type CachesIscsiVolumeInput interface {
+	pulumi.Input
+
+	ToCachesIscsiVolumeOutput() CachesIscsiVolumeOutput
+	ToCachesIscsiVolumeOutputWithContext(ctx context.Context) CachesIscsiVolumeOutput
+}
+
+func (CachesIscsiVolume) ElementType() reflect.Type {
+	return reflect.TypeOf((*CachesIscsiVolume)(nil)).Elem()
+}
+
+func (i CachesIscsiVolume) ToCachesIscsiVolumeOutput() CachesIscsiVolumeOutput {
+	return i.ToCachesIscsiVolumeOutputWithContext(context.Background())
+}
+
+func (i CachesIscsiVolume) ToCachesIscsiVolumeOutputWithContext(ctx context.Context) CachesIscsiVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachesIscsiVolumeOutput)
+}
+
+type CachesIscsiVolumeOutput struct {
+	*pulumi.OutputState
+}
+
+func (CachesIscsiVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CachesIscsiVolumeOutput)(nil)).Elem()
+}
+
+func (o CachesIscsiVolumeOutput) ToCachesIscsiVolumeOutput() CachesIscsiVolumeOutput {
+	return o
+}
+
+func (o CachesIscsiVolumeOutput) ToCachesIscsiVolumeOutputWithContext(ctx context.Context) CachesIscsiVolumeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CachesIscsiVolumeOutput{})
 }

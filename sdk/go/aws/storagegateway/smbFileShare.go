@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -335,4 +336,43 @@ type SmbFileShareArgs struct {
 
 func (SmbFileShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*smbFileShareArgs)(nil)).Elem()
+}
+
+type SmbFileShareInput interface {
+	pulumi.Input
+
+	ToSmbFileShareOutput() SmbFileShareOutput
+	ToSmbFileShareOutputWithContext(ctx context.Context) SmbFileShareOutput
+}
+
+func (SmbFileShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbFileShare)(nil)).Elem()
+}
+
+func (i SmbFileShare) ToSmbFileShareOutput() SmbFileShareOutput {
+	return i.ToSmbFileShareOutputWithContext(context.Background())
+}
+
+func (i SmbFileShare) ToSmbFileShareOutputWithContext(ctx context.Context) SmbFileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmbFileShareOutput)
+}
+
+type SmbFileShareOutput struct {
+	*pulumi.OutputState
+}
+
+func (SmbFileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbFileShareOutput)(nil)).Elem()
+}
+
+func (o SmbFileShareOutput) ToSmbFileShareOutput() SmbFileShareOutput {
+	return o
+}
+
+func (o SmbFileShareOutput) ToSmbFileShareOutputWithContext(ctx context.Context) SmbFileShareOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SmbFileShareOutput{})
 }

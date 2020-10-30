@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -281,4 +282,43 @@ type CatalogTableArgs struct {
 
 func (CatalogTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogTableArgs)(nil)).Elem()
+}
+
+type CatalogTableInput interface {
+	pulumi.Input
+
+	ToCatalogTableOutput() CatalogTableOutput
+	ToCatalogTableOutputWithContext(ctx context.Context) CatalogTableOutput
+}
+
+func (CatalogTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTable)(nil)).Elem()
+}
+
+func (i CatalogTable) ToCatalogTableOutput() CatalogTableOutput {
+	return i.ToCatalogTableOutputWithContext(context.Background())
+}
+
+func (i CatalogTable) ToCatalogTableOutputWithContext(ctx context.Context) CatalogTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableOutput)
+}
+
+type CatalogTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableOutput)(nil)).Elem()
+}
+
+func (o CatalogTableOutput) ToCatalogTableOutput() CatalogTableOutput {
+	return o
+}
+
+func (o CatalogTableOutput) ToCatalogTableOutputWithContext(ctx context.Context) CatalogTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CatalogTableOutput{})
 }

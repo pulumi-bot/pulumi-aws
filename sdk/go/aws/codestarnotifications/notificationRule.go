@@ -4,6 +4,7 @@
 package codestarnotifications
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -206,4 +207,43 @@ type NotificationRuleArgs struct {
 
 func (NotificationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationRuleArgs)(nil)).Elem()
+}
+
+type NotificationRuleInput interface {
+	pulumi.Input
+
+	ToNotificationRuleOutput() NotificationRuleOutput
+	ToNotificationRuleOutputWithContext(ctx context.Context) NotificationRuleOutput
+}
+
+func (NotificationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRule)(nil)).Elem()
+}
+
+func (i NotificationRule) ToNotificationRuleOutput() NotificationRuleOutput {
+	return i.ToNotificationRuleOutputWithContext(context.Background())
+}
+
+func (i NotificationRule) ToNotificationRuleOutputWithContext(ctx context.Context) NotificationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleOutput)
+}
+
+type NotificationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotificationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleOutput)(nil)).Elem()
+}
+
+func (o NotificationRuleOutput) ToNotificationRuleOutput() NotificationRuleOutput {
+	return o
+}
+
+func (o NotificationRuleOutput) ToNotificationRuleOutputWithContext(ctx context.Context) NotificationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotificationRuleOutput{})
 }

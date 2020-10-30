@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -282,4 +283,43 @@ type GatewayAssociationArgs struct {
 
 func (GatewayAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayAssociationArgs)(nil)).Elem()
+}
+
+type GatewayAssociationInput interface {
+	pulumi.Input
+
+	ToGatewayAssociationOutput() GatewayAssociationOutput
+	ToGatewayAssociationOutputWithContext(ctx context.Context) GatewayAssociationOutput
+}
+
+func (GatewayAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociation)(nil)).Elem()
+}
+
+func (i GatewayAssociation) ToGatewayAssociationOutput() GatewayAssociationOutput {
+	return i.ToGatewayAssociationOutputWithContext(context.Background())
+}
+
+func (i GatewayAssociation) ToGatewayAssociationOutputWithContext(ctx context.Context) GatewayAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAssociationOutput)
+}
+
+type GatewayAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociationOutput)(nil)).Elem()
+}
+
+func (o GatewayAssociationOutput) ToGatewayAssociationOutput() GatewayAssociationOutput {
+	return o
+}
+
+func (o GatewayAssociationOutput) ToGatewayAssociationOutputWithContext(ctx context.Context) GatewayAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayAssociationOutput{})
 }

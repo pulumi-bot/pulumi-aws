@@ -4,6 +4,7 @@
 package iam
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -150,4 +151,43 @@ type RolePolicyArgs struct {
 
 func (RolePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolePolicyArgs)(nil)).Elem()
+}
+
+type RolePolicyInput interface {
+	pulumi.Input
+
+	ToRolePolicyOutput() RolePolicyOutput
+	ToRolePolicyOutputWithContext(ctx context.Context) RolePolicyOutput
+}
+
+func (RolePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePolicy)(nil)).Elem()
+}
+
+func (i RolePolicy) ToRolePolicyOutput() RolePolicyOutput {
+	return i.ToRolePolicyOutputWithContext(context.Background())
+}
+
+func (i RolePolicy) ToRolePolicyOutputWithContext(ctx context.Context) RolePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePolicyOutput)
+}
+
+type RolePolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (RolePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePolicyOutput)(nil)).Elem()
+}
+
+func (o RolePolicyOutput) ToRolePolicyOutput() RolePolicyOutput {
+	return o
+}
+
+func (o RolePolicyOutput) ToRolePolicyOutputWithContext(ctx context.Context) RolePolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RolePolicyOutput{})
 }

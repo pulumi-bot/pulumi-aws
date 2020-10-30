@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -188,4 +189,43 @@ type TransitGatewayArgs struct {
 
 func (TransitGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitGatewayArgs)(nil)).Elem()
+}
+
+type TransitGatewayInput interface {
+	pulumi.Input
+
+	ToTransitGatewayOutput() TransitGatewayOutput
+	ToTransitGatewayOutputWithContext(ctx context.Context) TransitGatewayOutput
+}
+
+func (TransitGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGateway)(nil)).Elem()
+}
+
+func (i TransitGateway) ToTransitGatewayOutput() TransitGatewayOutput {
+	return i.ToTransitGatewayOutputWithContext(context.Background())
+}
+
+func (i TransitGateway) ToTransitGatewayOutputWithContext(ctx context.Context) TransitGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayOutput)
+}
+
+type TransitGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayOutput)(nil)).Elem()
+}
+
+func (o TransitGatewayOutput) ToTransitGatewayOutput() TransitGatewayOutput {
+	return o
+}
+
+func (o TransitGatewayOutput) ToTransitGatewayOutputWithContext(ctx context.Context) TransitGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TransitGatewayOutput{})
 }
