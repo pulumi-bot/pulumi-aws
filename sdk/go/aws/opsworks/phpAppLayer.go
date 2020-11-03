@@ -84,9 +84,6 @@ func NewPhpAppLayer(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &PhpAppLayerArgs{}
-	}
 	var resource PhpAppLayer
 	err := ctx.RegisterResource("aws:opsworks/phpAppLayer:PhpAppLayer", name, args, &resource, opts...)
 	if err != nil {

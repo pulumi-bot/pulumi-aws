@@ -120,9 +120,6 @@ func NewPreset(ctx *pulumi.Context,
 	if args == nil || args.Container == nil {
 		return nil, errors.New("missing required argument 'Container'")
 	}
-	if args == nil {
-		args = &PresetArgs{}
-	}
 	var resource Preset
 	err := ctx.RegisterResource("aws:elastictranscoder/preset:Preset", name, args, &resource, opts...)
 	if err != nil {

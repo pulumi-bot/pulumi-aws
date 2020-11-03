@@ -321,9 +321,6 @@ func NewTopicSubscription(ctx *pulumi.Context,
 	if args == nil || args.Topic == nil {
 		return nil, errors.New("missing required argument 'Topic'")
 	}
-	if args == nil {
-		args = &TopicSubscriptionArgs{}
-	}
 	var resource TopicSubscription
 	err := ctx.RegisterResource("aws:sns/topicSubscription:TopicSubscription", name, args, &resource, opts...)
 	if err != nil {

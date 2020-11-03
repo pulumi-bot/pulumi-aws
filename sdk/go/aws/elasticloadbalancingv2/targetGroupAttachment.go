@@ -116,9 +116,6 @@ func NewTargetGroupAttachment(ctx *pulumi.Context,
 	if args == nil || args.TargetId == nil {
 		return nil, errors.New("missing required argument 'TargetId'")
 	}
-	if args == nil {
-		args = &TargetGroupAttachmentArgs{}
-	}
 	var resource TargetGroupAttachment
 	err := ctx.RegisterResource("aws:elasticloadbalancingv2/targetGroupAttachment:TargetGroupAttachment", name, args, &resource, opts...)
 	if err != nil {

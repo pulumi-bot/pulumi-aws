@@ -45,9 +45,6 @@ func NewPartition(ctx *pulumi.Context,
 	if args == nil || args.TableName == nil {
 		return nil, errors.New("missing required argument 'TableName'")
 	}
-	if args == nil {
-		args = &PartitionArgs{}
-	}
 	var resource Partition
 	err := ctx.RegisterResource("aws:glue/partition:Partition", name, args, &resource, opts...)
 	if err != nil {

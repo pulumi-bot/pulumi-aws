@@ -92,9 +92,6 @@ func NewDeliveryChannel(ctx *pulumi.Context,
 	if args == nil || args.S3BucketName == nil {
 		return nil, errors.New("missing required argument 'S3BucketName'")
 	}
-	if args == nil {
-		args = &DeliveryChannelArgs{}
-	}
 	var resource DeliveryChannel
 	err := ctx.RegisterResource("aws:cfg/deliveryChannel:DeliveryChannel", name, args, &resource, opts...)
 	if err != nil {

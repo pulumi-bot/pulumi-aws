@@ -67,9 +67,6 @@ func NewBuild(ctx *pulumi.Context,
 	if args == nil || args.StorageLocation == nil {
 		return nil, errors.New("missing required argument 'StorageLocation'")
 	}
-	if args == nil {
-		args = &BuildArgs{}
-	}
 	var resource Build
 	err := ctx.RegisterResource("aws:gamelift/build:Build", name, args, &resource, opts...)
 	if err != nil {

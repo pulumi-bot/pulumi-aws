@@ -80,9 +80,6 @@ func NewDomainIdentityVerification(ctx *pulumi.Context,
 	if args == nil || args.Domain == nil {
 		return nil, errors.New("missing required argument 'Domain'")
 	}
-	if args == nil {
-		args = &DomainIdentityVerificationArgs{}
-	}
 	var resource DomainIdentityVerification
 	err := ctx.RegisterResource("aws:ses/domainIdentityVerification:DomainIdentityVerification", name, args, &resource, opts...)
 	if err != nil {

@@ -156,9 +156,6 @@ func NewJob(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &JobArgs{}
-	}
 	var resource Job
 	err := ctx.RegisterResource("aws:glue/job:Job", name, args, &resource, opts...)
 	if err != nil {

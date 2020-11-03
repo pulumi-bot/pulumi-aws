@@ -259,9 +259,6 @@ func NewApplication(ctx *pulumi.Context,
 	if args == nil || args.ServiceExecutionRole == nil {
 		return nil, errors.New("missing required argument 'ServiceExecutionRole'")
 	}
-	if args == nil {
-		args = &ApplicationArgs{}
-	}
 	var resource Application
 	err := ctx.RegisterResource("aws:kinesisanalyticsv2/application:Application", name, args, &resource, opts...)
 	if err != nil {

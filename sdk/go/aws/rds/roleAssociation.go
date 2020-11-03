@@ -64,9 +64,6 @@ func NewRoleAssociation(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &RoleAssociationArgs{}
-	}
 	var resource RoleAssociation
 	err := ctx.RegisterResource("aws:rds/roleAssociation:RoleAssociation", name, args, &resource, opts...)
 	if err != nil {

@@ -223,9 +223,6 @@ func NewRoute(ctx *pulumi.Context,
 	if args == nil || args.VirtualRouterName == nil {
 		return nil, errors.New("missing required argument 'VirtualRouterName'")
 	}
-	if args == nil {
-		args = &RouteArgs{}
-	}
 	var resource Route
 	err := ctx.RegisterResource("aws:appmesh/route:Route", name, args, &resource, opts...)
 	if err != nil {

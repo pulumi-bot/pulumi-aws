@@ -144,9 +144,6 @@ func NewRule(ctx *pulumi.Context,
 	if args == nil || args.Source == nil {
 		return nil, errors.New("missing required argument 'Source'")
 	}
-	if args == nil {
-		args = &RuleArgs{}
-	}
 	var resource Rule
 	err := ctx.RegisterResource("aws:cfg/rule:Rule", name, args, &resource, opts...)
 	if err != nil {

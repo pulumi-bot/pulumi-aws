@@ -111,9 +111,6 @@ func NewVpcEndpointService(ctx *pulumi.Context,
 	if args == nil || args.NetworkLoadBalancerArns == nil {
 		return nil, errors.New("missing required argument 'NetworkLoadBalancerArns'")
 	}
-	if args == nil {
-		args = &VpcEndpointServiceArgs{}
-	}
 	var resource VpcEndpointService
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointService:VpcEndpointService", name, args, &resource, opts...)
 	if err != nil {

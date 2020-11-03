@@ -49,9 +49,6 @@ func NewAccountAlias(ctx *pulumi.Context,
 	if args == nil || args.AccountAlias == nil {
 		return nil, errors.New("missing required argument 'AccountAlias'")
 	}
-	if args == nil {
-		args = &AccountAliasArgs{}
-	}
 	var resource AccountAlias
 	err := ctx.RegisterResource("aws:iam/accountAlias:AccountAlias", name, args, &resource, opts...)
 	if err != nil {

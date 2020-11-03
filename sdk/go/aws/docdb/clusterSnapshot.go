@@ -73,9 +73,6 @@ func NewClusterSnapshot(ctx *pulumi.Context,
 	if args == nil || args.DbClusterSnapshotIdentifier == nil {
 		return nil, errors.New("missing required argument 'DbClusterSnapshotIdentifier'")
 	}
-	if args == nil {
-		args = &ClusterSnapshotArgs{}
-	}
 	var resource ClusterSnapshot
 	err := ctx.RegisterResource("aws:docdb/clusterSnapshot:ClusterSnapshot", name, args, &resource, opts...)
 	if err != nil {

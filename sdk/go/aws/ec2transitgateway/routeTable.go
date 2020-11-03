@@ -53,9 +53,6 @@ func NewRouteTable(ctx *pulumi.Context,
 	if args == nil || args.TransitGatewayId == nil {
 		return nil, errors.New("missing required argument 'TransitGatewayId'")
 	}
-	if args == nil {
-		args = &RouteTableArgs{}
-	}
 	var resource RouteTable
 	err := ctx.RegisterResource("aws:ec2transitgateway/routeTable:RouteTable", name, args, &resource, opts...)
 	if err != nil {

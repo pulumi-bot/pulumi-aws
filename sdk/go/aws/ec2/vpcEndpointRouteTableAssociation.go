@@ -53,9 +53,6 @@ func NewVpcEndpointRouteTableAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcEndpointId == nil {
 		return nil, errors.New("missing required argument 'VpcEndpointId'")
 	}
-	if args == nil {
-		args = &VpcEndpointRouteTableAssociationArgs{}
-	}
 	var resource VpcEndpointRouteTableAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation", name, args, &resource, opts...)
 	if err != nil {

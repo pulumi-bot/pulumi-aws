@@ -540,9 +540,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.ServiceRole == nil {
 		return nil, errors.New("missing required argument 'ServiceRole'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("aws:emr/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

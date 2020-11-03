@@ -161,9 +161,6 @@ func NewReplicationInstance(ctx *pulumi.Context,
 	if args == nil || args.ReplicationInstanceId == nil {
 		return nil, errors.New("missing required argument 'ReplicationInstanceId'")
 	}
-	if args == nil {
-		args = &ReplicationInstanceArgs{}
-	}
 	var resource ReplicationInstance
 	err := ctx.RegisterResource("aws:dms/replicationInstance:ReplicationInstance", name, args, &resource, opts...)
 	if err != nil {

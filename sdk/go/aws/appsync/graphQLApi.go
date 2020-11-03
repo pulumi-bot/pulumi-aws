@@ -235,9 +235,6 @@ func NewGraphQLApi(ctx *pulumi.Context,
 	if args == nil || args.AuthenticationType == nil {
 		return nil, errors.New("missing required argument 'AuthenticationType'")
 	}
-	if args == nil {
-		args = &GraphQLApiArgs{}
-	}
 	var resource GraphQLApi
 	err := ctx.RegisterResource("aws:appsync/graphQLApi:GraphQLApi", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewCustomerGateway(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &CustomerGatewayArgs{}
-	}
 	var resource CustomerGateway
 	err := ctx.RegisterResource("aws:ec2/customerGateway:CustomerGateway", name, args, &resource, opts...)
 	if err != nil {

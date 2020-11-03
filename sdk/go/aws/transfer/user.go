@@ -94,9 +94,6 @@ func NewUser(ctx *pulumi.Context,
 	if args == nil || args.UserName == nil {
 		return nil, errors.New("missing required argument 'UserName'")
 	}
-	if args == nil {
-		args = &UserArgs{}
-	}
 	var resource User
 	err := ctx.RegisterResource("aws:transfer/user:User", name, args, &resource, opts...)
 	if err != nil {

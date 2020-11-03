@@ -92,9 +92,6 @@ func NewDefaultRouteTable(ctx *pulumi.Context,
 	if args == nil || args.DefaultRouteTableId == nil {
 		return nil, errors.New("missing required argument 'DefaultRouteTableId'")
 	}
-	if args == nil {
-		args = &DefaultRouteTableArgs{}
-	}
 	var resource DefaultRouteTable
 	err := ctx.RegisterResource("aws:ec2/defaultRouteTable:DefaultRouteTable", name, args, &resource, opts...)
 	if err != nil {

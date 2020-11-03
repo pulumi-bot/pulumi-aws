@@ -272,9 +272,6 @@ func NewListener(ctx *pulumi.Context,
 	if args == nil || args.Port == nil {
 		return nil, errors.New("missing required argument 'Port'")
 	}
-	if args == nil {
-		args = &ListenerArgs{}
-	}
 	var resource Listener
 	err := ctx.RegisterResource("aws:applicationloadbalancing/listener:Listener", name, args, &resource, opts...)
 	if err != nil {

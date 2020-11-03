@@ -113,9 +113,6 @@ func NewDataSource(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &DataSourceArgs{}
-	}
 	var resource DataSource
 	err := ctx.RegisterResource("aws:appsync/dataSource:DataSource", name, args, &resource, opts...)
 	if err != nil {

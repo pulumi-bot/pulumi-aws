@@ -94,9 +94,6 @@ func NewJavaAppLayer(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &JavaAppLayerArgs{}
-	}
 	var resource JavaAppLayer
 	err := ctx.RegisterResource("aws:opsworks/javaAppLayer:JavaAppLayer", name, args, &resource, opts...)
 	if err != nil {

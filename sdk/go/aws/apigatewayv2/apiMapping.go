@@ -63,9 +63,6 @@ func NewApiMapping(ctx *pulumi.Context,
 	if args == nil || args.Stage == nil {
 		return nil, errors.New("missing required argument 'Stage'")
 	}
-	if args == nil {
-		args = &ApiMappingArgs{}
-	}
 	var resource ApiMapping
 	err := ctx.RegisterResource("aws:apigatewayv2/apiMapping:ApiMapping", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewRouteResponse(ctx *pulumi.Context,
 	if args == nil || args.RouteResponseKey == nil {
 		return nil, errors.New("missing required argument 'RouteResponseKey'")
 	}
-	if args == nil {
-		args = &RouteResponseArgs{}
-	}
 	var resource RouteResponse
 	err := ctx.RegisterResource("aws:apigatewayv2/routeResponse:RouteResponse", name, args, &resource, opts...)
 	if err != nil {

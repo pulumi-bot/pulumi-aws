@@ -121,9 +121,6 @@ func NewWebhook(ctx *pulumi.Context,
 	if args == nil || args.ProjectName == nil {
 		return nil, errors.New("missing required argument 'ProjectName'")
 	}
-	if args == nil {
-		args = &WebhookArgs{}
-	}
 	var resource Webhook
 	err := ctx.RegisterResource("aws:codebuild/webhook:Webhook", name, args, &resource, opts...)
 	if err != nil {

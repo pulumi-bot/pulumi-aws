@@ -55,9 +55,6 @@ func NewUploadBuffer(ctx *pulumi.Context,
 	if args == nil || args.GatewayArn == nil {
 		return nil, errors.New("missing required argument 'GatewayArn'")
 	}
-	if args == nil {
-		args = &UploadBufferArgs{}
-	}
 	var resource UploadBuffer
 	err := ctx.RegisterResource("aws:storagegateway/uploadBuffer:UploadBuffer", name, args, &resource, opts...)
 	if err != nil {

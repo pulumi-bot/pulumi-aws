@@ -87,9 +87,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil || args.Listeners == nil {
 		return nil, errors.New("missing required argument 'Listeners'")
 	}
-	if args == nil {
-		args = &LoadBalancerArgs{}
-	}
 	var resource LoadBalancer
 	err := ctx.RegisterResource("aws:elasticloadbalancing/loadBalancer:LoadBalancer", name, args, &resource, opts...)
 	if err != nil {

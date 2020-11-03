@@ -63,9 +63,6 @@ func NewRepositoryPolicy(ctx *pulumi.Context,
 	if args == nil || args.Repository == nil {
 		return nil, errors.New("missing required argument 'Repository'")
 	}
-	if args == nil {
-		args = &RepositoryPolicyArgs{}
-	}
 	var resource RepositoryPolicy
 	err := ctx.RegisterResource("aws:ecr/repositoryPolicy:RepositoryPolicy", name, args, &resource, opts...)
 	if err != nil {

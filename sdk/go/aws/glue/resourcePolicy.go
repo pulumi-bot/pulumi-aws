@@ -86,9 +86,6 @@ func NewResourcePolicy(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &ResourcePolicyArgs{}
-	}
 	var resource ResourcePolicy
 	err := ctx.RegisterResource("aws:glue/resourcePolicy:ResourcePolicy", name, args, &resource, opts...)
 	if err != nil {

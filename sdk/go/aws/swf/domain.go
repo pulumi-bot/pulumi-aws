@@ -60,9 +60,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args == nil || args.WorkflowExecutionRetentionPeriodInDays == nil {
 		return nil, errors.New("missing required argument 'WorkflowExecutionRetentionPeriodInDays'")
 	}
-	if args == nil {
-		args = &DomainArgs{}
-	}
 	var resource Domain
 	err := ctx.RegisterResource("aws:swf/domain:Domain", name, args, &resource, opts...)
 	if err != nil {

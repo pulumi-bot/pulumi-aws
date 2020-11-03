@@ -85,9 +85,6 @@ func NewNotification(ctx *pulumi.Context,
 	if args == nil || args.TopicArn == nil {
 		return nil, errors.New("missing required argument 'TopicArn'")
 	}
-	if args == nil {
-		args = &NotificationArgs{}
-	}
 	var resource Notification
 	err := ctx.RegisterResource("aws:autoscaling/notification:Notification", name, args, &resource, opts...)
 	if err != nil {

@@ -119,9 +119,6 @@ func NewUserPoolDomain(ctx *pulumi.Context,
 	if args == nil || args.UserPoolId == nil {
 		return nil, errors.New("missing required argument 'UserPoolId'")
 	}
-	if args == nil {
-		args = &UserPoolDomainArgs{}
-	}
 	var resource UserPoolDomain
 	err := ctx.RegisterResource("aws:cognito/userPoolDomain:UserPoolDomain", name, args, &resource, opts...)
 	if err != nil {

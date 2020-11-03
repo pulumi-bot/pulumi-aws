@@ -97,9 +97,6 @@ func NewVaultLock(ctx *pulumi.Context,
 	if args == nil || args.VaultName == nil {
 		return nil, errors.New("missing required argument 'VaultName'")
 	}
-	if args == nil {
-		args = &VaultLockArgs{}
-	}
 	var resource VaultLock
 	err := ctx.RegisterResource("aws:glacier/vaultLock:VaultLock", name, args, &resource, opts...)
 	if err != nil {

@@ -72,9 +72,6 @@ func NewJobQueue(ctx *pulumi.Context,
 	if args == nil || args.State == nil {
 		return nil, errors.New("missing required argument 'State'")
 	}
-	if args == nil {
-		args = &JobQueueArgs{}
-	}
 	var resource JobQueue
 	err := ctx.RegisterResource("aws:batch/jobQueue:JobQueue", name, args, &resource, opts...)
 	if err != nil {

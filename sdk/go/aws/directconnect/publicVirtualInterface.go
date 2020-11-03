@@ -91,9 +91,6 @@ func NewPublicVirtualInterface(ctx *pulumi.Context,
 	if args == nil || args.Vlan == nil {
 		return nil, errors.New("missing required argument 'Vlan'")
 	}
-	if args == nil {
-		args = &PublicVirtualInterfaceArgs{}
-	}
 	var resource PublicVirtualInterface
 	err := ctx.RegisterResource("aws:directconnect/publicVirtualInterface:PublicVirtualInterface", name, args, &resource, opts...)
 	if err != nil {

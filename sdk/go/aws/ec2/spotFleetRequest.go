@@ -286,9 +286,6 @@ func NewSpotFleetRequest(ctx *pulumi.Context,
 	if args == nil || args.TargetCapacity == nil {
 		return nil, errors.New("missing required argument 'TargetCapacity'")
 	}
-	if args == nil {
-		args = &SpotFleetRequestArgs{}
-	}
 	var resource SpotFleetRequest
 	err := ctx.RegisterResource("aws:ec2/spotFleetRequest:SpotFleetRequest", name, args, &resource, opts...)
 	if err != nil {

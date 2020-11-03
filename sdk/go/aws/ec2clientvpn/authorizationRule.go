@@ -61,9 +61,6 @@ func NewAuthorizationRule(ctx *pulumi.Context,
 	if args == nil || args.TargetNetworkCidr == nil {
 		return nil, errors.New("missing required argument 'TargetNetworkCidr'")
 	}
-	if args == nil {
-		args = &AuthorizationRuleArgs{}
-	}
 	var resource AuthorizationRule
 	err := ctx.RegisterResource("aws:ec2clientvpn/authorizationRule:AuthorizationRule", name, args, &resource, opts...)
 	if err != nil {

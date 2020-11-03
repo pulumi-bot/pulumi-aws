@@ -133,9 +133,6 @@ func NewIntegration(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &IntegrationArgs{}
-	}
 	var resource Integration
 	err := ctx.RegisterResource("aws:apigateway/integration:Integration", name, args, &resource, opts...)
 	if err != nil {

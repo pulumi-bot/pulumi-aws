@@ -173,9 +173,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args == nil || args.Application == nil {
 		return nil, errors.New("missing required argument 'Application'")
 	}
-	if args == nil {
-		args = &EnvironmentArgs{}
-	}
 	var resource Environment
 	err := ctx.RegisterResource("aws:elasticbeanstalk/environment:Environment", name, args, &resource, opts...)
 	if err != nil {

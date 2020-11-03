@@ -98,9 +98,6 @@ func NewPlatformApplication(ctx *pulumi.Context,
 	if args == nil || args.PlatformCredential == nil {
 		return nil, errors.New("missing required argument 'PlatformCredential'")
 	}
-	if args == nil {
-		args = &PlatformApplicationArgs{}
-	}
 	var resource PlatformApplication
 	err := ctx.RegisterResource("aws:sns/platformApplication:PlatformApplication", name, args, &resource, opts...)
 	if err != nil {

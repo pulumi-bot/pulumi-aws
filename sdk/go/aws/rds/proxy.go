@@ -55,9 +55,6 @@ func NewProxy(ctx *pulumi.Context,
 	if args == nil || args.VpcSubnetIds == nil {
 		return nil, errors.New("missing required argument 'VpcSubnetIds'")
 	}
-	if args == nil {
-		args = &ProxyArgs{}
-	}
 	var resource Proxy
 	err := ctx.RegisterResource("aws:rds/proxy:Proxy", name, args, &resource, opts...)
 	if err != nil {

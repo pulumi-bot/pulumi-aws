@@ -136,9 +136,6 @@ func NewEventDestination(ctx *pulumi.Context,
 	if args == nil || args.MatchingTypes == nil {
 		return nil, errors.New("missing required argument 'MatchingTypes'")
 	}
-	if args == nil {
-		args = &EventDestinationArgs{}
-	}
 	var resource EventDestination
 	err := ctx.RegisterResource("aws:ses/eventDestination:EventDestination", name, args, &resource, opts...)
 	if err != nil {

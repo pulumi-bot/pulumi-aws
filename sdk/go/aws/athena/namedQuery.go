@@ -97,9 +97,6 @@ func NewNamedQuery(ctx *pulumi.Context,
 	if args == nil || args.Query == nil {
 		return nil, errors.New("missing required argument 'Query'")
 	}
-	if args == nil {
-		args = &NamedQueryArgs{}
-	}
 	var resource NamedQuery
 	err := ctx.RegisterResource("aws:athena/namedQuery:NamedQuery", name, args, &resource, opts...)
 	if err != nil {

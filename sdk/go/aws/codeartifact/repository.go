@@ -147,9 +147,6 @@ func NewRepository(ctx *pulumi.Context,
 	if args == nil || args.Repository == nil {
 		return nil, errors.New("missing required argument 'Repository'")
 	}
-	if args == nil {
-		args = &RepositoryArgs{}
-	}
 	var resource Repository
 	err := ctx.RegisterResource("aws:codeartifact/repository:Repository", name, args, &resource, opts...)
 	if err != nil {

@@ -49,9 +49,6 @@ func NewEmailIdentity(ctx *pulumi.Context,
 	if args == nil || args.Email == nil {
 		return nil, errors.New("missing required argument 'Email'")
 	}
-	if args == nil {
-		args = &EmailIdentityArgs{}
-	}
 	var resource EmailIdentity
 	err := ctx.RegisterResource("aws:ses/emailIdentity:EmailIdentity", name, args, &resource, opts...)
 	if err != nil {

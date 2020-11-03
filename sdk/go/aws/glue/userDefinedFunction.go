@@ -86,9 +86,6 @@ func NewUserDefinedFunction(ctx *pulumi.Context,
 	if args == nil || args.OwnerType == nil {
 		return nil, errors.New("missing required argument 'OwnerType'")
 	}
-	if args == nil {
-		args = &UserDefinedFunctionArgs{}
-	}
 	var resource UserDefinedFunction
 	err := ctx.RegisterResource("aws:glue/userDefinedFunction:UserDefinedFunction", name, args, &resource, opts...)
 	if err != nil {

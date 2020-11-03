@@ -161,9 +161,6 @@ func NewListenerPolicy(ctx *pulumi.Context,
 	if args == nil || args.LoadBalancerPort == nil {
 		return nil, errors.New("missing required argument 'LoadBalancerPort'")
 	}
-	if args == nil {
-		args = &ListenerPolicyArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:elasticloadbalancing/listenerPolicy:ListenerPolicy"),

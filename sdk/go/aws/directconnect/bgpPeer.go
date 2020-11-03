@@ -73,9 +73,6 @@ func NewBgpPeer(ctx *pulumi.Context,
 	if args == nil || args.VirtualInterfaceId == nil {
 		return nil, errors.New("missing required argument 'VirtualInterfaceId'")
 	}
-	if args == nil {
-		args = &BgpPeerArgs{}
-	}
 	var resource BgpPeer
 	err := ctx.RegisterResource("aws:directconnect/bgpPeer:BgpPeer", name, args, &resource, opts...)
 	if err != nil {

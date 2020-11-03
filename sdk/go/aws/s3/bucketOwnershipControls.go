@@ -28,9 +28,6 @@ func NewBucketOwnershipControls(ctx *pulumi.Context,
 	if args == nil || args.Rule == nil {
 		return nil, errors.New("missing required argument 'Rule'")
 	}
-	if args == nil {
-		args = &BucketOwnershipControlsArgs{}
-	}
 	var resource BucketOwnershipControls
 	err := ctx.RegisterResource("aws:s3/bucketOwnershipControls:BucketOwnershipControls", name, args, &resource, opts...)
 	if err != nil {

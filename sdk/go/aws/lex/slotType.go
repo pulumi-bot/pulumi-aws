@@ -91,9 +91,6 @@ func NewSlotType(ctx *pulumi.Context,
 	if args == nil || args.EnumerationValues == nil {
 		return nil, errors.New("missing required argument 'EnumerationValues'")
 	}
-	if args == nil {
-		args = &SlotTypeArgs{}
-	}
 	var resource SlotType
 	err := ctx.RegisterResource("aws:lex/slotType:SlotType", name, args, &resource, opts...)
 	if err != nil {

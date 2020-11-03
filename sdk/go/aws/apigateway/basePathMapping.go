@@ -35,9 +35,6 @@ func NewBasePathMapping(ctx *pulumi.Context,
 	if args == nil || args.RestApi == nil {
 		return nil, errors.New("missing required argument 'RestApi'")
 	}
-	if args == nil {
-		args = &BasePathMappingArgs{}
-	}
 	var resource BasePathMapping
 	err := ctx.RegisterResource("aws:apigateway/basePathMapping:BasePathMapping", name, args, &resource, opts...)
 	if err != nil {

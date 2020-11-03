@@ -98,9 +98,6 @@ func NewTransitVirtualInterface(ctx *pulumi.Context,
 	if args == nil || args.Vlan == nil {
 		return nil, errors.New("missing required argument 'Vlan'")
 	}
-	if args == nil {
-		args = &TransitVirtualInterfaceArgs{}
-	}
 	var resource TransitVirtualInterface
 	err := ctx.RegisterResource("aws:directconnect/transitVirtualInterface:TransitVirtualInterface", name, args, &resource, opts...)
 	if err != nil {

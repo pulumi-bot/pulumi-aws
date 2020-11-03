@@ -152,9 +152,6 @@ func NewNetworkInterfaceSecurityGroupAttachment(ctx *pulumi.Context,
 	if args == nil || args.SecurityGroupId == nil {
 		return nil, errors.New("missing required argument 'SecurityGroupId'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceSecurityGroupAttachmentArgs{}
-	}
 	var resource NetworkInterfaceSecurityGroupAttachment
 	err := ctx.RegisterResource("aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment", name, args, &resource, opts...)
 	if err != nil {

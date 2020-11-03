@@ -82,9 +82,6 @@ func NewUsagePlanKey(ctx *pulumi.Context,
 	if args == nil || args.UsagePlanId == nil {
 		return nil, errors.New("missing required argument 'UsagePlanId'")
 	}
-	if args == nil {
-		args = &UsagePlanKeyArgs{}
-	}
 	var resource UsagePlanKey
 	err := ctx.RegisterResource("aws:apigateway/usagePlanKey:UsagePlanKey", name, args, &resource, opts...)
 	if err != nil {

@@ -66,9 +66,6 @@ func NewResourceDataSync(ctx *pulumi.Context,
 	if args == nil || args.S3Destination == nil {
 		return nil, errors.New("missing required argument 'S3Destination'")
 	}
-	if args == nil {
-		args = &ResourceDataSyncArgs{}
-	}
 	var resource ResourceDataSync
 	err := ctx.RegisterResource("aws:ssm/resourceDataSync:ResourceDataSync", name, args, &resource, opts...)
 	if err != nil {

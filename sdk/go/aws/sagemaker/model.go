@@ -93,9 +93,6 @@ func NewModel(ctx *pulumi.Context,
 	if args == nil || args.ExecutionRoleArn == nil {
 		return nil, errors.New("missing required argument 'ExecutionRoleArn'")
 	}
-	if args == nil {
-		args = &ModelArgs{}
-	}
 	var resource Model
 	err := ctx.RegisterResource("aws:sagemaker/model:Model", name, args, &resource, opts...)
 	if err != nil {

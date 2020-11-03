@@ -57,9 +57,6 @@ func NewUserProfile(ctx *pulumi.Context,
 	if args == nil || args.UserArn == nil {
 		return nil, errors.New("missing required argument 'UserArn'")
 	}
-	if args == nil {
-		args = &UserProfileArgs{}
-	}
 	var resource UserProfile
 	err := ctx.RegisterResource("aws:opsworks/userProfile:UserProfile", name, args, &resource, opts...)
 	if err != nil {

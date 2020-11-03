@@ -90,9 +90,6 @@ func NewCustomLayer(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &CustomLayerArgs{}
-	}
 	var resource CustomLayer
 	err := ctx.RegisterResource("aws:opsworks/customLayer:CustomLayer", name, args, &resource, opts...)
 	if err != nil {

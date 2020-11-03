@@ -136,9 +136,6 @@ func NewDistribution(ctx *pulumi.Context,
 	if args == nil || args.ViewerCertificate == nil {
 		return nil, errors.New("missing required argument 'ViewerCertificate'")
 	}
-	if args == nil {
-		args = &DistributionArgs{}
-	}
 	var resource Distribution
 	err := ctx.RegisterResource("aws:cloudfront/distribution:Distribution", name, args, &resource, opts...)
 	if err != nil {

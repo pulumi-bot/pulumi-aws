@@ -84,9 +84,6 @@ func NewVpcEndpointConnectionNotification(ctx *pulumi.Context,
 	if args == nil || args.ConnectionNotificationArn == nil {
 		return nil, errors.New("missing required argument 'ConnectionNotificationArn'")
 	}
-	if args == nil {
-		args = &VpcEndpointConnectionNotificationArgs{}
-	}
 	var resource VpcEndpointConnectionNotification
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification", name, args, &resource, opts...)
 	if err != nil {

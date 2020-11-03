@@ -40,9 +40,6 @@ func NewRepositoryPermissionsPolicy(ctx *pulumi.Context,
 	if args == nil || args.Repository == nil {
 		return nil, errors.New("missing required argument 'Repository'")
 	}
-	if args == nil {
-		args = &RepositoryPermissionsPolicyArgs{}
-	}
 	var resource RepositoryPermissionsPolicy
 	err := ctx.RegisterResource("aws:codeartifact/repositoryPermissionsPolicy:RepositoryPermissionsPolicy", name, args, &resource, opts...)
 	if err != nil {

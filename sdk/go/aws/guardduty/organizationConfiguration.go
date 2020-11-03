@@ -61,9 +61,6 @@ func NewOrganizationConfiguration(ctx *pulumi.Context,
 	if args == nil || args.DetectorId == nil {
 		return nil, errors.New("missing required argument 'DetectorId'")
 	}
-	if args == nil {
-		args = &OrganizationConfigurationArgs{}
-	}
 	var resource OrganizationConfiguration
 	err := ctx.RegisterResource("aws:guardduty/organizationConfiguration:OrganizationConfiguration", name, args, &resource, opts...)
 	if err != nil {

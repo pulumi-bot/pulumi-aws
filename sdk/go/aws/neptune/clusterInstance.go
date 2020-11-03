@@ -122,9 +122,6 @@ func NewClusterInstance(ctx *pulumi.Context,
 	if args == nil || args.InstanceClass == nil {
 		return nil, errors.New("missing required argument 'InstanceClass'")
 	}
-	if args == nil {
-		args = &ClusterInstanceArgs{}
-	}
 	var resource ClusterInstance
 	err := ctx.RegisterResource("aws:neptune/clusterInstance:ClusterInstance", name, args, &resource, opts...)
 	if err != nil {

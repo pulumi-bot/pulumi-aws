@@ -72,9 +72,6 @@ func NewDocumentationVersion(ctx *pulumi.Context,
 	if args == nil || args.Version == nil {
 		return nil, errors.New("missing required argument 'Version'")
 	}
-	if args == nil {
-		args = &DocumentationVersionArgs{}
-	}
 	var resource DocumentationVersion
 	err := ctx.RegisterResource("aws:apigateway/documentationVersion:DocumentationVersion", name, args, &resource, opts...)
 	if err != nil {

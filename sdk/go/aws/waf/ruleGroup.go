@@ -70,9 +70,6 @@ func NewRuleGroup(ctx *pulumi.Context,
 	if args == nil || args.MetricName == nil {
 		return nil, errors.New("missing required argument 'MetricName'")
 	}
-	if args == nil {
-		args = &RuleGroupArgs{}
-	}
 	var resource RuleGroup
 	err := ctx.RegisterResource("aws:waf/ruleGroup:RuleGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -61,9 +61,6 @@ func NewPatchGroup(ctx *pulumi.Context,
 	if args == nil || args.PatchGroup == nil {
 		return nil, errors.New("missing required argument 'PatchGroup'")
 	}
-	if args == nil {
-		args = &PatchGroupArgs{}
-	}
 	var resource PatchGroup
 	err := ctx.RegisterResource("aws:ssm/patchGroup:PatchGroup", name, args, &resource, opts...)
 	if err != nil {

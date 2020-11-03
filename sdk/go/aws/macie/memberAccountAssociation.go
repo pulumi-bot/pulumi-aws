@@ -51,9 +51,6 @@ func NewMemberAccountAssociation(ctx *pulumi.Context,
 	if args == nil || args.MemberAccountId == nil {
 		return nil, errors.New("missing required argument 'MemberAccountId'")
 	}
-	if args == nil {
-		args = &MemberAccountAssociationArgs{}
-	}
 	var resource MemberAccountAssociation
 	err := ctx.RegisterResource("aws:macie/memberAccountAssociation:MemberAccountAssociation", name, args, &resource, opts...)
 	if err != nil {

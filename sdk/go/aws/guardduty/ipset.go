@@ -101,9 +101,6 @@ func NewIPSet(ctx *pulumi.Context,
 	if args == nil || args.Location == nil {
 		return nil, errors.New("missing required argument 'Location'")
 	}
-	if args == nil {
-		args = &IPSetArgs{}
-	}
 	var resource IPSet
 	err := ctx.RegisterResource("aws:guardduty/iPSet:IPSet", name, args, &resource, opts...)
 	if err != nil {

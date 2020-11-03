@@ -29,9 +29,6 @@ func NewThingPrincipalAttachment(ctx *pulumi.Context,
 	if args == nil || args.Thing == nil {
 		return nil, errors.New("missing required argument 'Thing'")
 	}
-	if args == nil {
-		args = &ThingPrincipalAttachmentArgs{}
-	}
 	var resource ThingPrincipalAttachment
 	err := ctx.RegisterResource("aws:iot/thingPrincipalAttachment:ThingPrincipalAttachment", name, args, &resource, opts...)
 	if err != nil {

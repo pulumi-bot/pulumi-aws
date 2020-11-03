@@ -29,9 +29,6 @@ func NewPolicyAttachment(ctx *pulumi.Context,
 	if args == nil || args.Target == nil {
 		return nil, errors.New("missing required argument 'Target'")
 	}
-	if args == nil {
-		args = &PolicyAttachmentArgs{}
-	}
 	var resource PolicyAttachment
 	err := ctx.RegisterResource("aws:iot/policyAttachment:PolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

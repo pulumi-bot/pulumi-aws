@@ -113,9 +113,6 @@ func NewSamplingRule(ctx *pulumi.Context,
 	if args == nil || args.Version == nil {
 		return nil, errors.New("missing required argument 'Version'")
 	}
-	if args == nil {
-		args = &SamplingRuleArgs{}
-	}
 	var resource SamplingRule
 	err := ctx.RegisterResource("aws:xray/samplingRule:SamplingRule", name, args, &resource, opts...)
 	if err != nil {

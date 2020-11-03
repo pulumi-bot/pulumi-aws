@@ -95,9 +95,6 @@ func NewLifecyclePolicy(ctx *pulumi.Context,
 	if args == nil || args.Repository == nil {
 		return nil, errors.New("missing required argument 'Repository'")
 	}
-	if args == nil {
-		args = &LifecyclePolicyArgs{}
-	}
 	var resource LifecyclePolicy
 	err := ctx.RegisterResource("aws:ecr/lifecyclePolicy:LifecyclePolicy", name, args, &resource, opts...)
 	if err != nil {

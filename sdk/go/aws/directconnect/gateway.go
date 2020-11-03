@@ -51,9 +51,6 @@ func NewGateway(ctx *pulumi.Context,
 	if args == nil || args.AmazonSideAsn == nil {
 		return nil, errors.New("missing required argument 'AmazonSideAsn'")
 	}
-	if args == nil {
-		args = &GatewayArgs{}
-	}
 	var resource Gateway
 	err := ctx.RegisterResource("aws:directconnect/gateway:Gateway", name, args, &resource, opts...)
 	if err != nil {

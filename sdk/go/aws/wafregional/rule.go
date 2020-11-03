@@ -84,9 +84,6 @@ func NewRule(ctx *pulumi.Context,
 	if args == nil || args.MetricName == nil {
 		return nil, errors.New("missing required argument 'MetricName'")
 	}
-	if args == nil {
-		args = &RuleArgs{}
-	}
 	var resource Rule
 	err := ctx.RegisterResource("aws:wafregional/rule:Rule", name, args, &resource, opts...)
 	if err != nil {

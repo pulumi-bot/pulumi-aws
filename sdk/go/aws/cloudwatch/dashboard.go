@@ -57,9 +57,6 @@ func NewDashboard(ctx *pulumi.Context,
 	if args == nil || args.DashboardName == nil {
 		return nil, errors.New("missing required argument 'DashboardName'")
 	}
-	if args == nil {
-		args = &DashboardArgs{}
-	}
 	var resource Dashboard
 	err := ctx.RegisterResource("aws:cloudwatch/dashboard:Dashboard", name, args, &resource, opts...)
 	if err != nil {

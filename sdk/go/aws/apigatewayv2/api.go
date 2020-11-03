@@ -114,9 +114,6 @@ func NewApi(ctx *pulumi.Context,
 	if args == nil || args.ProtocolType == nil {
 		return nil, errors.New("missing required argument 'ProtocolType'")
 	}
-	if args == nil {
-		args = &ApiArgs{}
-	}
 	var resource Api
 	err := ctx.RegisterResource("aws:apigatewayv2/api:Api", name, args, &resource, opts...)
 	if err != nil {

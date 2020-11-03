@@ -233,9 +233,6 @@ func NewEventTarget(ctx *pulumi.Context,
 	if args == nil || args.Rule == nil {
 		return nil, errors.New("missing required argument 'Rule'")
 	}
-	if args == nil {
-		args = &EventTargetArgs{}
-	}
 	var resource EventTarget
 	err := ctx.RegisterResource("aws:cloudwatch/eventTarget:EventTarget", name, args, &resource, opts...)
 	if err != nil {

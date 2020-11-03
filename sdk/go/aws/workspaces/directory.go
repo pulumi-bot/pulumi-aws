@@ -149,9 +149,6 @@ func NewDirectory(ctx *pulumi.Context,
 	if args == nil || args.DirectoryId == nil {
 		return nil, errors.New("missing required argument 'DirectoryId'")
 	}
-	if args == nil {
-		args = &DirectoryArgs{}
-	}
 	var resource Directory
 	err := ctx.RegisterResource("aws:workspaces/directory:Directory", name, args, &resource, opts...)
 	if err != nil {

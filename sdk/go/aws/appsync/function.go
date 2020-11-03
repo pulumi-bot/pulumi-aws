@@ -96,9 +96,6 @@ func NewFunction(ctx *pulumi.Context,
 	if args == nil || args.ResponseMappingTemplate == nil {
 		return nil, errors.New("missing required argument 'ResponseMappingTemplate'")
 	}
-	if args == nil {
-		args = &FunctionArgs{}
-	}
 	var resource Function
 	err := ctx.RegisterResource("aws:appsync/function:Function", name, args, &resource, opts...)
 	if err != nil {

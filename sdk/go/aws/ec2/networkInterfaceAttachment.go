@@ -63,9 +63,6 @@ func NewNetworkInterfaceAttachment(ctx *pulumi.Context,
 	if args == nil || args.NetworkInterfaceId == nil {
 		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceAttachmentArgs{}
-	}
 	var resource NetworkInterfaceAttachment
 	err := ctx.RegisterResource("aws:ec2/networkInterfaceAttachment:NetworkInterfaceAttachment", name, args, &resource, opts...)
 	if err != nil {

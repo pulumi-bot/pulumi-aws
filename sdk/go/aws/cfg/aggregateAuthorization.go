@@ -57,9 +57,6 @@ func NewAggregateAuthorization(ctx *pulumi.Context,
 	if args == nil || args.Region == nil {
 		return nil, errors.New("missing required argument 'Region'")
 	}
-	if args == nil {
-		args = &AggregateAuthorizationArgs{}
-	}
 	var resource AggregateAuthorization
 	err := ctx.RegisterResource("aws:cfg/aggregateAuthorization:AggregateAuthorization", name, args, &resource, opts...)
 	if err != nil {

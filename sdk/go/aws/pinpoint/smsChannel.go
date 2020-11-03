@@ -61,9 +61,6 @@ func NewSmsChannel(ctx *pulumi.Context,
 	if args == nil || args.ApplicationId == nil {
 		return nil, errors.New("missing required argument 'ApplicationId'")
 	}
-	if args == nil {
-		args = &SmsChannelArgs{}
-	}
 	var resource SmsChannel
 	err := ctx.RegisterResource("aws:pinpoint/smsChannel:SmsChannel", name, args, &resource, opts...)
 	if err != nil {

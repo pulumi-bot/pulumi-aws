@@ -64,9 +64,6 @@ func NewSnapshotCopyGrant(ctx *pulumi.Context,
 	if args == nil || args.SnapshotCopyGrantName == nil {
 		return nil, errors.New("missing required argument 'SnapshotCopyGrantName'")
 	}
-	if args == nil {
-		args = &SnapshotCopyGrantArgs{}
-	}
 	var resource SnapshotCopyGrant
 	err := ctx.RegisterResource("aws:redshift/snapshotCopyGrant:SnapshotCopyGrant", name, args, &resource, opts...)
 	if err != nil {

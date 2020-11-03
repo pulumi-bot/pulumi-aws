@@ -77,9 +77,6 @@ func NewFleet(ctx *pulumi.Context,
 	if args == nil || args.TargetCapacitySpecification == nil {
 		return nil, errors.New("missing required argument 'TargetCapacitySpecification'")
 	}
-	if args == nil {
-		args = &FleetArgs{}
-	}
 	var resource Fleet
 	err := ctx.RegisterResource("aws:ec2/fleet:Fleet", name, args, &resource, opts...)
 	if err != nil {

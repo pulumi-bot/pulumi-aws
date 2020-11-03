@@ -67,9 +67,6 @@ func NewKeyPair(ctx *pulumi.Context,
 	if args == nil || args.PublicKey == nil {
 		return nil, errors.New("missing required argument 'PublicKey'")
 	}
-	if args == nil {
-		args = &KeyPairArgs{}
-	}
 	var resource KeyPair
 	err := ctx.RegisterResource("aws:ec2/keyPair:KeyPair", name, args, &resource, opts...)
 	if err != nil {

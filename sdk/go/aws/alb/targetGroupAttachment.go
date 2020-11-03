@@ -114,9 +114,6 @@ func NewTargetGroupAttachment(ctx *pulumi.Context,
 	if args == nil || args.TargetId == nil {
 		return nil, errors.New("missing required argument 'TargetId'")
 	}
-	if args == nil {
-		args = &TargetGroupAttachmentArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:applicationloadbalancing/targetGroupAttachment:TargetGroupAttachment"),

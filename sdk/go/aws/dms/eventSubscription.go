@@ -39,9 +39,6 @@ func NewEventSubscription(ctx *pulumi.Context,
 	if args == nil || args.SnsTopicArn == nil {
 		return nil, errors.New("missing required argument 'SnsTopicArn'")
 	}
-	if args == nil {
-		args = &EventSubscriptionArgs{}
-	}
 	var resource EventSubscription
 	err := ctx.RegisterResource("aws:dms/eventSubscription:EventSubscription", name, args, &resource, opts...)
 	if err != nil {

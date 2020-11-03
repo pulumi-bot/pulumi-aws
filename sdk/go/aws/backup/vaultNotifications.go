@@ -79,9 +79,6 @@ func NewVaultNotifications(ctx *pulumi.Context,
 	if args == nil || args.SnsTopicArn == nil {
 		return nil, errors.New("missing required argument 'SnsTopicArn'")
 	}
-	if args == nil {
-		args = &VaultNotificationsArgs{}
-	}
 	var resource VaultNotifications
 	err := ctx.RegisterResource("aws:backup/vaultNotifications:VaultNotifications", name, args, &resource, opts...)
 	if err != nil {

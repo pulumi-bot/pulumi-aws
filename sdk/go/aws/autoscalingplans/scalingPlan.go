@@ -40,9 +40,6 @@ func NewScalingPlan(ctx *pulumi.Context,
 	if args == nil || args.ScalingInstructions == nil {
 		return nil, errors.New("missing required argument 'ScalingInstructions'")
 	}
-	if args == nil {
-		args = &ScalingPlanArgs{}
-	}
 	var resource ScalingPlan
 	err := ctx.RegisterResource("aws:autoscalingplans/scalingPlan:ScalingPlan", name, args, &resource, opts...)
 	if err != nil {

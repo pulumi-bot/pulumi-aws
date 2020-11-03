@@ -81,9 +81,6 @@ func NewCapacityReservation(ctx *pulumi.Context,
 	if args == nil || args.InstanceType == nil {
 		return nil, errors.New("missing required argument 'InstanceType'")
 	}
-	if args == nil {
-		args = &CapacityReservationArgs{}
-	}
 	var resource CapacityReservation
 	err := ctx.RegisterResource("aws:ec2/capacityReservation:CapacityReservation", name, args, &resource, opts...)
 	if err != nil {

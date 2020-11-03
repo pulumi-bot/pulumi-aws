@@ -86,9 +86,6 @@ func NewMemcachedLayer(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &MemcachedLayerArgs{}
-	}
 	var resource MemcachedLayer
 	err := ctx.RegisterResource("aws:opsworks/memcachedLayer:MemcachedLayer", name, args, &resource, opts...)
 	if err != nil {

@@ -110,9 +110,6 @@ func NewGlobalTable(ctx *pulumi.Context,
 	if args == nil || args.Replicas == nil {
 		return nil, errors.New("missing required argument 'Replicas'")
 	}
-	if args == nil {
-		args = &GlobalTableArgs{}
-	}
 	var resource GlobalTable
 	err := ctx.RegisterResource("aws:dynamodb/globalTable:GlobalTable", name, args, &resource, opts...)
 	if err != nil {

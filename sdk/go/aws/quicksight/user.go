@@ -72,9 +72,6 @@ func NewUser(ctx *pulumi.Context,
 	if args == nil || args.UserRole == nil {
 		return nil, errors.New("missing required argument 'UserRole'")
 	}
-	if args == nil {
-		args = &UserArgs{}
-	}
 	var resource User
 	err := ctx.RegisterResource("aws:quicksight/user:User", name, args, &resource, opts...)
 	if err != nil {

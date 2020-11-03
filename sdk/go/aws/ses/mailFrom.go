@@ -92,9 +92,6 @@ func NewMailFrom(ctx *pulumi.Context,
 	if args == nil || args.MailFromDomain == nil {
 		return nil, errors.New("missing required argument 'MailFromDomain'")
 	}
-	if args == nil {
-		args = &MailFromArgs{}
-	}
 	var resource MailFrom
 	err := ctx.RegisterResource("aws:ses/mailFrom:MailFrom", name, args, &resource, opts...)
 	if err != nil {

@@ -211,9 +211,6 @@ func NewTrigger(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &TriggerArgs{}
-	}
 	var resource Trigger
 	err := ctx.RegisterResource("aws:glue/trigger:Trigger", name, args, &resource, opts...)
 	if err != nil {

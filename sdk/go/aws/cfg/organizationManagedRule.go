@@ -83,9 +83,6 @@ func NewOrganizationManagedRule(ctx *pulumi.Context,
 	if args == nil || args.RuleIdentifier == nil {
 		return nil, errors.New("missing required argument 'RuleIdentifier'")
 	}
-	if args == nil {
-		args = &OrganizationManagedRuleArgs{}
-	}
 	var resource OrganizationManagedRule
 	err := ctx.RegisterResource("aws:cfg/organizationManagedRule:OrganizationManagedRule", name, args, &resource, opts...)
 	if err != nil {

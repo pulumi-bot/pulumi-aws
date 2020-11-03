@@ -126,9 +126,6 @@ func NewMethodSettings(ctx *pulumi.Context,
 	if args == nil || args.StageName == nil {
 		return nil, errors.New("missing required argument 'StageName'")
 	}
-	if args == nil {
-		args = &MethodSettingsArgs{}
-	}
 	var resource MethodSettings
 	err := ctx.RegisterResource("aws:apigateway/methodSettings:MethodSettings", name, args, &resource, opts...)
 	if err != nil {

@@ -175,9 +175,6 @@ func NewGatewayAssociation(ctx *pulumi.Context,
 	if args == nil || args.DxGatewayId == nil {
 		return nil, errors.New("missing required argument 'DxGatewayId'")
 	}
-	if args == nil {
-		args = &GatewayAssociationArgs{}
-	}
 	var resource GatewayAssociation
 	err := ctx.RegisterResource("aws:directconnect/gatewayAssociation:GatewayAssociation", name, args, &resource, opts...)
 	if err != nil {

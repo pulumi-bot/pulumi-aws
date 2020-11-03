@@ -66,9 +66,6 @@ func NewS3Location(ctx *pulumi.Context,
 	if args == nil || args.Subdirectory == nil {
 		return nil, errors.New("missing required argument 'Subdirectory'")
 	}
-	if args == nil {
-		args = &S3LocationArgs{}
-	}
 	var resource S3Location
 	err := ctx.RegisterResource("aws:datasync/s3Location:S3Location", name, args, &resource, opts...)
 	if err != nil {

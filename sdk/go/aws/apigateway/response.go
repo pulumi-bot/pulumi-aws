@@ -72,9 +72,6 @@ func NewResponse(ctx *pulumi.Context,
 	if args == nil || args.RestApiId == nil {
 		return nil, errors.New("missing required argument 'RestApiId'")
 	}
-	if args == nil {
-		args = &ResponseArgs{}
-	}
 	var resource Response
 	err := ctx.RegisterResource("aws:apigateway/response:Response", name, args, &resource, opts...)
 	if err != nil {

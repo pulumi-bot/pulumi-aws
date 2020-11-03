@@ -91,9 +91,6 @@ func NewReceiptRule(ctx *pulumi.Context,
 	if args == nil || args.RuleSetName == nil {
 		return nil, errors.New("missing required argument 'RuleSetName'")
 	}
-	if args == nil {
-		args = &ReceiptRuleArgs{}
-	}
 	var resource ReceiptRule
 	err := ctx.RegisterResource("aws:ses/receiptRule:ReceiptRule", name, args, &resource, opts...)
 	if err != nil {

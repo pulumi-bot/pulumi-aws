@@ -41,9 +41,6 @@ func NewIdentityPool(ctx *pulumi.Context,
 	if args == nil || args.IdentityPoolName == nil {
 		return nil, errors.New("missing required argument 'IdentityPoolName'")
 	}
-	if args == nil {
-		args = &IdentityPoolArgs{}
-	}
 	var resource IdentityPool
 	err := ctx.RegisterResource("aws:cognito/identityPool:IdentityPool", name, args, &resource, opts...)
 	if err != nil {

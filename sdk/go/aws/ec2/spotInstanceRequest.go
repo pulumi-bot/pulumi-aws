@@ -207,9 +207,6 @@ func NewSpotInstanceRequest(ctx *pulumi.Context,
 	if args == nil || args.InstanceType == nil {
 		return nil, errors.New("missing required argument 'InstanceType'")
 	}
-	if args == nil {
-		args = &SpotInstanceRequestArgs{}
-	}
 	var resource SpotInstanceRequest
 	err := ctx.RegisterResource("aws:ec2/spotInstanceRequest:SpotInstanceRequest", name, args, &resource, opts...)
 	if err != nil {

@@ -191,9 +191,6 @@ func NewIntent(ctx *pulumi.Context,
 	if args == nil || args.FulfillmentActivity == nil {
 		return nil, errors.New("missing required argument 'FulfillmentActivity'")
 	}
-	if args == nil {
-		args = &IntentArgs{}
-	}
 	var resource Intent
 	err := ctx.RegisterResource("aws:lex/intent:Intent", name, args, &resource, opts...)
 	if err != nil {

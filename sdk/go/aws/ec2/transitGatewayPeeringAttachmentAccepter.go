@@ -59,9 +59,6 @@ func NewTransitGatewayPeeringAttachmentAccepter(ctx *pulumi.Context,
 	if args == nil || args.TransitGatewayAttachmentId == nil {
 		return nil, errors.New("missing required argument 'TransitGatewayAttachmentId'")
 	}
-	if args == nil {
-		args = &TransitGatewayPeeringAttachmentAccepterArgs{}
-	}
 	var resource TransitGatewayPeeringAttachmentAccepter
 	err := ctx.RegisterResource("aws:ec2/transitGatewayPeeringAttachmentAccepter:TransitGatewayPeeringAttachmentAccepter", name, args, &resource, opts...)
 	if err != nil {

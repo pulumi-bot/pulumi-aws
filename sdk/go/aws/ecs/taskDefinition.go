@@ -65,9 +65,6 @@ func NewTaskDefinition(ctx *pulumi.Context,
 	if args == nil || args.Family == nil {
 		return nil, errors.New("missing required argument 'Family'")
 	}
-	if args == nil {
-		args = &TaskDefinitionArgs{}
-	}
 	var resource TaskDefinition
 	err := ctx.RegisterResource("aws:ecs/taskDefinition:TaskDefinition", name, args, &resource, opts...)
 	if err != nil {

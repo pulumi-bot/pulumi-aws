@@ -219,9 +219,6 @@ func NewMetricAlarm(ctx *pulumi.Context,
 	if args == nil || args.EvaluationPeriods == nil {
 		return nil, errors.New("missing required argument 'EvaluationPeriods'")
 	}
-	if args == nil {
-		args = &MetricAlarmArgs{}
-	}
 	var resource MetricAlarm
 	err := ctx.RegisterResource("aws:cloudwatch/metricAlarm:MetricAlarm", name, args, &resource, opts...)
 	if err != nil {

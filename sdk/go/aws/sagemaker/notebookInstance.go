@@ -122,9 +122,6 @@ func NewNotebookInstance(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &NotebookInstanceArgs{}
-	}
 	var resource NotebookInstance
 	err := ctx.RegisterResource("aws:sagemaker/notebookInstance:NotebookInstance", name, args, &resource, opts...)
 	if err != nil {

@@ -108,9 +108,6 @@ func NewLifecyclePolicy(ctx *pulumi.Context,
 	if args == nil || args.PolicyDetails == nil {
 		return nil, errors.New("missing required argument 'PolicyDetails'")
 	}
-	if args == nil {
-		args = &LifecyclePolicyArgs{}
-	}
 	var resource LifecyclePolicy
 	err := ctx.RegisterResource("aws:dlm/lifecyclePolicy:LifecyclePolicy", name, args, &resource, opts...)
 	if err != nil {

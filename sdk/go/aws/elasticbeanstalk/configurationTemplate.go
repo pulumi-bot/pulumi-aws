@@ -77,9 +77,6 @@ func NewConfigurationTemplate(ctx *pulumi.Context,
 	if args == nil || args.Application == nil {
 		return nil, errors.New("missing required argument 'Application'")
 	}
-	if args == nil {
-		args = &ConfigurationTemplateArgs{}
-	}
 	var resource ConfigurationTemplate
 	err := ctx.RegisterResource("aws:elasticbeanstalk/configurationTemplate:ConfigurationTemplate", name, args, &resource, opts...)
 	if err != nil {

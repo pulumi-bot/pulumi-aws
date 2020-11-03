@@ -102,9 +102,6 @@ func NewSecretVersion(ctx *pulumi.Context,
 	if args == nil || args.SecretId == nil {
 		return nil, errors.New("missing required argument 'SecretId'")
 	}
-	if args == nil {
-		args = &SecretVersionArgs{}
-	}
 	var resource SecretVersion
 	err := ctx.RegisterResource("aws:secretsmanager/secretVersion:SecretVersion", name, args, &resource, opts...)
 	if err != nil {

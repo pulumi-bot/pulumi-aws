@@ -63,9 +63,6 @@ func NewLogDestinationPolicy(ctx *pulumi.Context,
 	if args == nil || args.DestinationName == nil {
 		return nil, errors.New("missing required argument 'DestinationName'")
 	}
-	if args == nil {
-		args = &LogDestinationPolicyArgs{}
-	}
 	var resource LogDestinationPolicy
 	err := ctx.RegisterResource("aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy", name, args, &resource, opts...)
 	if err != nil {

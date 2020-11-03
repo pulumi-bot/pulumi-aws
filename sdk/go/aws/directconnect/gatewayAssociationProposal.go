@@ -67,9 +67,6 @@ func NewGatewayAssociationProposal(ctx *pulumi.Context,
 	if args == nil || args.DxGatewayOwnerAccountId == nil {
 		return nil, errors.New("missing required argument 'DxGatewayOwnerAccountId'")
 	}
-	if args == nil {
-		args = &GatewayAssociationProposalArgs{}
-	}
 	var resource GatewayAssociationProposal
 	err := ctx.RegisterResource("aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal", name, args, &resource, opts...)
 	if err != nil {

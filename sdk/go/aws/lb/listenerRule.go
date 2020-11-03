@@ -264,9 +264,6 @@ func NewListenerRule(ctx *pulumi.Context,
 	if args == nil || args.ListenerArn == nil {
 		return nil, errors.New("missing required argument 'ListenerArn'")
 	}
-	if args == nil {
-		args = &ListenerRuleArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:elasticloadbalancingv2/listenerRule:ListenerRule"),

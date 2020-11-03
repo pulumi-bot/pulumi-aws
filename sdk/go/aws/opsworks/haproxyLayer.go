@@ -100,9 +100,6 @@ func NewHaproxyLayer(ctx *pulumi.Context,
 	if args == nil || args.StatsPassword == nil {
 		return nil, errors.New("missing required argument 'StatsPassword'")
 	}
-	if args == nil {
-		args = &HaproxyLayerArgs{}
-	}
 	var resource HaproxyLayer
 	err := ctx.RegisterResource("aws:opsworks/haproxyLayer:HaproxyLayer", name, args, &resource, opts...)
 	if err != nil {

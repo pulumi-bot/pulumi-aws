@@ -54,9 +54,6 @@ func NewResolver(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &ResolverArgs{}
-	}
 	var resource Resolver
 	err := ctx.RegisterResource("aws:appsync/resolver:Resolver", name, args, &resource, opts...)
 	if err != nil {

@@ -62,9 +62,6 @@ func NewAttachment(ctx *pulumi.Context,
 	if args == nil || args.Instance == nil {
 		return nil, errors.New("missing required argument 'Instance'")
 	}
-	if args == nil {
-		args = &AttachmentArgs{}
-	}
 	var resource Attachment
 	err := ctx.RegisterResource("aws:elasticloadbalancing/attachment:Attachment", name, args, &resource, opts...)
 	if err != nil {

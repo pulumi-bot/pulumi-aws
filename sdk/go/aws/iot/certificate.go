@@ -62,9 +62,6 @@ func NewCertificate(ctx *pulumi.Context,
 	if args == nil || args.Active == nil {
 		return nil, errors.New("missing required argument 'Active'")
 	}
-	if args == nil {
-		args = &CertificateArgs{}
-	}
 	var resource Certificate
 	err := ctx.RegisterResource("aws:iot/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {

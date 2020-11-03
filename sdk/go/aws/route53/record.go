@@ -213,9 +213,6 @@ func NewRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneId == nil {
 		return nil, errors.New("missing required argument 'ZoneId'")
 	}
-	if args == nil {
-		args = &RecordArgs{}
-	}
 	var resource Record
 	err := ctx.RegisterResource("aws:route53/record:Record", name, args, &resource, opts...)
 	if err != nil {

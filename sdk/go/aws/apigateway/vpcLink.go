@@ -73,9 +73,6 @@ func NewVpcLink(ctx *pulumi.Context,
 	if args == nil || args.TargetArn == nil {
 		return nil, errors.New("missing required argument 'TargetArn'")
 	}
-	if args == nil {
-		args = &VpcLinkArgs{}
-	}
 	var resource VpcLink
 	err := ctx.RegisterResource("aws:apigateway/vpcLink:VpcLink", name, args, &resource, opts...)
 	if err != nil {

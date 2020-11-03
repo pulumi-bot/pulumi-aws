@@ -75,9 +75,6 @@ func NewDefaultSubnet(ctx *pulumi.Context,
 	if args == nil || args.AvailabilityZone == nil {
 		return nil, errors.New("missing required argument 'AvailabilityZone'")
 	}
-	if args == nil {
-		args = &DefaultSubnetArgs{}
-	}
 	var resource DefaultSubnet
 	err := ctx.RegisterResource("aws:ec2/defaultSubnet:DefaultSubnet", name, args, &resource, opts...)
 	if err != nil {

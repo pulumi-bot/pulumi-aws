@@ -63,9 +63,6 @@ func NewNetworkAssociation(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &NetworkAssociationArgs{}
-	}
 	var resource NetworkAssociation
 	err := ctx.RegisterResource("aws:ec2clientvpn/networkAssociation:NetworkAssociation", name, args, &resource, opts...)
 	if err != nil {

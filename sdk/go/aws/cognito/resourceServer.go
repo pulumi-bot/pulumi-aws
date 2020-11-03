@@ -96,9 +96,6 @@ func NewResourceServer(ctx *pulumi.Context,
 	if args == nil || args.UserPoolId == nil {
 		return nil, errors.New("missing required argument 'UserPoolId'")
 	}
-	if args == nil {
-		args = &ResourceServerArgs{}
-	}
 	var resource ResourceServer
 	err := ctx.RegisterResource("aws:cognito/resourceServer:ResourceServer", name, args, &resource, opts...)
 	if err != nil {

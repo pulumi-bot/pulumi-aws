@@ -53,9 +53,6 @@ func NewResolverQueryLogConfigAssociation(ctx *pulumi.Context,
 	if args == nil || args.ResourceId == nil {
 		return nil, errors.New("missing required argument 'ResourceId'")
 	}
-	if args == nil {
-		args = &ResolverQueryLogConfigAssociationArgs{}
-	}
 	var resource ResolverQueryLogConfigAssociation
 	err := ctx.RegisterResource("aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation", name, args, &resource, opts...)
 	if err != nil {

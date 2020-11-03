@@ -67,9 +67,6 @@ func NewBaiduChannel(ctx *pulumi.Context,
 	if args == nil || args.SecretKey == nil {
 		return nil, errors.New("missing required argument 'SecretKey'")
 	}
-	if args == nil {
-		args = &BaiduChannelArgs{}
-	}
 	var resource BaiduChannel
 	err := ctx.RegisterResource("aws:pinpoint/baiduChannel:BaiduChannel", name, args, &resource, opts...)
 	if err != nil {

@@ -109,9 +109,6 @@ func NewDeployment(ctx *pulumi.Context,
 	if args == nil || args.RestApi == nil {
 		return nil, errors.New("missing required argument 'RestApi'")
 	}
-	if args == nil {
-		args = &DeploymentArgs{}
-	}
 	var resource Deployment
 	err := ctx.RegisterResource("aws:apigateway/deployment:Deployment", name, args, &resource, opts...)
 	if err != nil {

@@ -87,9 +87,6 @@ func NewFleet(ctx *pulumi.Context,
 	if args == nil || args.Ec2InstanceType == nil {
 		return nil, errors.New("missing required argument 'Ec2InstanceType'")
 	}
-	if args == nil {
-		args = &FleetArgs{}
-	}
 	var resource Fleet
 	err := ctx.RegisterResource("aws:gamelift/fleet:Fleet", name, args, &resource, opts...)
 	if err != nil {

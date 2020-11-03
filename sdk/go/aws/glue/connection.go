@@ -66,9 +66,6 @@ func NewConnection(ctx *pulumi.Context,
 	if args == nil || args.ConnectionProperties == nil {
 		return nil, errors.New("missing required argument 'ConnectionProperties'")
 	}
-	if args == nil {
-		args = &ConnectionArgs{}
-	}
 	var resource Connection
 	err := ctx.RegisterResource("aws:glue/connection:Connection", name, args, &resource, opts...)
 	if err != nil {

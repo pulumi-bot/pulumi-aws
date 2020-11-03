@@ -83,9 +83,6 @@ func NewActivation(ctx *pulumi.Context,
 	if args == nil || args.IamRole == nil {
 		return nil, errors.New("missing required argument 'IamRole'")
 	}
-	if args == nil {
-		args = &ActivationArgs{}
-	}
 	var resource Activation
 	err := ctx.RegisterResource("aws:ssm/activation:Activation", name, args, &resource, opts...)
 	if err != nil {

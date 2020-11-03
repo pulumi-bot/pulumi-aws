@@ -67,9 +67,6 @@ func NewEndpointGroup(ctx *pulumi.Context,
 	if args == nil || args.ListenerArn == nil {
 		return nil, errors.New("missing required argument 'ListenerArn'")
 	}
-	if args == nil {
-		args = &EndpointGroupArgs{}
-	}
 	var resource EndpointGroup
 	err := ctx.RegisterResource("aws:globalaccelerator/endpointGroup:EndpointGroup", name, args, &resource, opts...)
 	if err != nil {

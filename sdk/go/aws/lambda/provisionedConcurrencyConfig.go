@@ -84,9 +84,6 @@ func NewProvisionedConcurrencyConfig(ctx *pulumi.Context,
 	if args == nil || args.Qualifier == nil {
 		return nil, errors.New("missing required argument 'Qualifier'")
 	}
-	if args == nil {
-		args = &ProvisionedConcurrencyConfigArgs{}
-	}
 	var resource ProvisionedConcurrencyConfig
 	err := ctx.RegisterResource("aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig", name, args, &resource, opts...)
 	if err != nil {

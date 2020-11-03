@@ -39,9 +39,6 @@ func NewTask(ctx *pulumi.Context,
 	if args == nil || args.SourceLocationArn == nil {
 		return nil, errors.New("missing required argument 'SourceLocationArn'")
 	}
-	if args == nil {
-		args = &TaskArgs{}
-	}
 	var resource Task
 	err := ctx.RegisterResource("aws:datasync/task:Task", name, args, &resource, opts...)
 	if err != nil {

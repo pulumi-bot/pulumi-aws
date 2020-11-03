@@ -81,9 +81,6 @@ func NewProxyProtocolPolicy(ctx *pulumi.Context,
 	if args == nil || args.LoadBalancer == nil {
 		return nil, errors.New("missing required argument 'LoadBalancer'")
 	}
-	if args == nil {
-		args = &ProxyProtocolPolicyArgs{}
-	}
 	var resource ProxyProtocolPolicy
 	err := ctx.RegisterResource("aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy", name, args, &resource, opts...)
 	if err != nil {

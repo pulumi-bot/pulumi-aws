@@ -260,9 +260,6 @@ func NewTrail(ctx *pulumi.Context,
 	if args == nil || args.S3BucketName == nil {
 		return nil, errors.New("missing required argument 'S3BucketName'")
 	}
-	if args == nil {
-		args = &TrailArgs{}
-	}
 	var resource Trail
 	err := ctx.RegisterResource("aws:cloudtrail/trail:Trail", name, args, &resource, opts...)
 	if err != nil {

@@ -65,9 +65,6 @@ func NewConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ServerProperties == nil {
 		return nil, errors.New("missing required argument 'ServerProperties'")
 	}
-	if args == nil {
-		args = &ConfigurationArgs{}
-	}
 	var resource Configuration
 	err := ctx.RegisterResource("aws:msk/configuration:Configuration", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewIntegrationResponse(ctx *pulumi.Context,
 	if args == nil || args.IntegrationResponseKey == nil {
 		return nil, errors.New("missing required argument 'IntegrationResponseKey'")
 	}
-	if args == nil {
-		args = &IntegrationResponseArgs{}
-	}
 	var resource IntegrationResponse
 	err := ctx.RegisterResource("aws:apigatewayv2/integrationResponse:IntegrationResponse", name, args, &resource, opts...)
 	if err != nil {

@@ -123,9 +123,6 @@ func NewVirtualGateway(ctx *pulumi.Context,
 	if args == nil || args.Spec == nil {
 		return nil, errors.New("missing required argument 'Spec'")
 	}
-	if args == nil {
-		args = &VirtualGatewayArgs{}
-	}
 	var resource VirtualGateway
 	err := ctx.RegisterResource("aws:appmesh/virtualGateway:VirtualGateway", name, args, &resource, opts...)
 	if err != nil {

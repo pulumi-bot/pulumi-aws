@@ -45,9 +45,6 @@ func NewProxyTarget(ctx *pulumi.Context,
 	if args == nil || args.TargetGroupName == nil {
 		return nil, errors.New("missing required argument 'TargetGroupName'")
 	}
-	if args == nil {
-		args = &ProxyTargetArgs{}
-	}
 	var resource ProxyTarget
 	err := ctx.RegisterResource("aws:rds/proxyTarget:ProxyTarget", name, args, &resource, opts...)
 	if err != nil {

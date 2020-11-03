@@ -53,9 +53,6 @@ func NewOrganizationalUnit(ctx *pulumi.Context,
 	if args == nil || args.ParentId == nil {
 		return nil, errors.New("missing required argument 'ParentId'")
 	}
-	if args == nil {
-		args = &OrganizationalUnitArgs{}
-	}
 	var resource OrganizationalUnit
 	err := ctx.RegisterResource("aws:organizations/organizationalUnit:OrganizationalUnit", name, args, &resource, opts...)
 	if err != nil {

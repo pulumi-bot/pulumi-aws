@@ -75,9 +75,6 @@ func NewProtection(ctx *pulumi.Context,
 	if args == nil || args.ResourceArn == nil {
 		return nil, errors.New("missing required argument 'ResourceArn'")
 	}
-	if args == nil {
-		args = &ProtectionArgs{}
-	}
 	var resource Protection
 	err := ctx.RegisterResource("aws:shield/protection:Protection", name, args, &resource, opts...)
 	if err != nil {

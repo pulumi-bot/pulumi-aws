@@ -59,9 +59,6 @@ func NewIdentityNotificationTopic(ctx *pulumi.Context,
 	if args == nil || args.NotificationType == nil {
 		return nil, errors.New("missing required argument 'NotificationType'")
 	}
-	if args == nil {
-		args = &IdentityNotificationTopicArgs{}
-	}
 	var resource IdentityNotificationTopic
 	err := ctx.RegisterResource("aws:ses/identityNotificationTopic:IdentityNotificationTopic", name, args, &resource, opts...)
 	if err != nil {

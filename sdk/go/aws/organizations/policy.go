@@ -59,9 +59,6 @@ func NewPolicy(ctx *pulumi.Context,
 	if args == nil || args.Content == nil {
 		return nil, errors.New("missing required argument 'Content'")
 	}
-	if args == nil {
-		args = &PolicyArgs{}
-	}
 	var resource Policy
 	err := ctx.RegisterResource("aws:organizations/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

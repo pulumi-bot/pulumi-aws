@@ -67,9 +67,6 @@ func NewEfsLocation(ctx *pulumi.Context,
 	if args == nil || args.EfsFileSystemArn == nil {
 		return nil, errors.New("missing required argument 'EfsFileSystemArn'")
 	}
-	if args == nil {
-		args = &EfsLocationArgs{}
-	}
 	var resource EfsLocation
 	err := ctx.RegisterResource("aws:datasync/efsLocation:EfsLocation", name, args, &resource, opts...)
 	if err != nil {

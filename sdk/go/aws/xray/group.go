@@ -57,9 +57,6 @@ func NewGroup(ctx *pulumi.Context,
 	if args == nil || args.GroupName == nil {
 		return nil, errors.New("missing required argument 'GroupName'")
 	}
-	if args == nil {
-		args = &GroupArgs{}
-	}
 	var resource Group
 	err := ctx.RegisterResource("aws:xray/group:Group", name, args, &resource, opts...)
 	if err != nil {

@@ -127,9 +127,6 @@ func NewBot(ctx *pulumi.Context,
 	if args == nil || args.Intents == nil {
 		return nil, errors.New("missing required argument 'Intents'")
 	}
-	if args == nil {
-		args = &BotArgs{}
-	}
 	var resource Bot
 	err := ctx.RegisterResource("aws:lex/bot:Bot", name, args, &resource, opts...)
 	if err != nil {

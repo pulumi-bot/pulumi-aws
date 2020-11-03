@@ -270,9 +270,6 @@ func NewListener(ctx *pulumi.Context,
 	if args == nil || args.Port == nil {
 		return nil, errors.New("missing required argument 'Port'")
 	}
-	if args == nil {
-		args = &ListenerArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:applicationloadbalancing/listener:Listener"),

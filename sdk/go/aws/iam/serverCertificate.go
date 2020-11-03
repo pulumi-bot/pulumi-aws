@@ -58,9 +58,6 @@ func NewServerCertificate(ctx *pulumi.Context,
 	if args == nil || args.PrivateKey == nil {
 		return nil, errors.New("missing required argument 'PrivateKey'")
 	}
-	if args == nil {
-		args = &ServerCertificateArgs{}
-	}
 	var resource ServerCertificate
 	err := ctx.RegisterResource("aws:iam/serverCertificate:ServerCertificate", name, args, &resource, opts...)
 	if err != nil {

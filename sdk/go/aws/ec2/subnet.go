@@ -117,9 +117,6 @@ func NewSubnet(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &SubnetArgs{}
-	}
 	var resource Subnet
 	err := ctx.RegisterResource("aws:ec2/subnet:Subnet", name, args, &resource, opts...)
 	if err != nil {

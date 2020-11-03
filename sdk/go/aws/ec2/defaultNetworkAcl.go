@@ -191,9 +191,6 @@ func NewDefaultNetworkAcl(ctx *pulumi.Context,
 	if args == nil || args.DefaultNetworkAclId == nil {
 		return nil, errors.New("missing required argument 'DefaultNetworkAclId'")
 	}
-	if args == nil {
-		args = &DefaultNetworkAclArgs{}
-	}
 	var resource DefaultNetworkAcl
 	err := ctx.RegisterResource("aws:ec2/defaultNetworkAcl:DefaultNetworkAcl", name, args, &resource, opts...)
 	if err != nil {

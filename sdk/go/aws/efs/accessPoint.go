@@ -58,9 +58,6 @@ func NewAccessPoint(ctx *pulumi.Context,
 	if args == nil || args.FileSystemId == nil {
 		return nil, errors.New("missing required argument 'FileSystemId'")
 	}
-	if args == nil {
-		args = &AccessPointArgs{}
-	}
 	var resource AccessPoint
 	err := ctx.RegisterResource("aws:efs/accessPoint:AccessPoint", name, args, &resource, opts...)
 	if err != nil {

@@ -136,9 +136,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.VpcConfig == nil {
 		return nil, errors.New("missing required argument 'VpcConfig'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("aws:eks/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

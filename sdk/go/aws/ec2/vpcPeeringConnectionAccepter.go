@@ -115,9 +115,6 @@ func NewVpcPeeringConnectionAccepter(ctx *pulumi.Context,
 	if args == nil || args.VpcPeeringConnectionId == nil {
 		return nil, errors.New("missing required argument 'VpcPeeringConnectionId'")
 	}
-	if args == nil {
-		args = &VpcPeeringConnectionAccepterArgs{}
-	}
 	var resource VpcPeeringConnectionAccepter
 	err := ctx.RegisterResource("aws:ec2/vpcPeeringConnectionAccepter:VpcPeeringConnectionAccepter", name, args, &resource, opts...)
 	if err != nil {

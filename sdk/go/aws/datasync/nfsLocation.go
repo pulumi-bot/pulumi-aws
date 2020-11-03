@@ -70,9 +70,6 @@ func NewNfsLocation(ctx *pulumi.Context,
 	if args == nil || args.Subdirectory == nil {
 		return nil, errors.New("missing required argument 'Subdirectory'")
 	}
-	if args == nil {
-		args = &NfsLocationArgs{}
-	}
 	var resource NfsLocation
 	err := ctx.RegisterResource("aws:datasync/nfsLocation:NfsLocation", name, args, &resource, opts...)
 	if err != nil {

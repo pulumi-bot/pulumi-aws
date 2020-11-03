@@ -95,9 +95,6 @@ func NewNfsFileShare(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &NfsFileShareArgs{}
-	}
 	var resource NfsFileShare
 	err := ctx.RegisterResource("aws:storagegateway/nfsFileShare:NfsFileShare", name, args, &resource, opts...)
 	if err != nil {

@@ -81,9 +81,6 @@ func NewTableItem(ctx *pulumi.Context,
 	if args == nil || args.TableName == nil {
 		return nil, errors.New("missing required argument 'TableName'")
 	}
-	if args == nil {
-		args = &TableItemArgs{}
-	}
 	var resource TableItem
 	err := ctx.RegisterResource("aws:dynamodb/tableItem:TableItem", name, args, &resource, opts...)
 	if err != nil {

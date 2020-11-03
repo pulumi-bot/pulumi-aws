@@ -162,9 +162,6 @@ func NewTarget(ctx *pulumi.Context,
 	if args == nil || args.ServiceNamespace == nil {
 		return nil, errors.New("missing required argument 'ServiceNamespace'")
 	}
-	if args == nil {
-		args = &TargetArgs{}
-	}
 	var resource Target
 	err := ctx.RegisterResource("aws:appautoscaling/target:Target", name, args, &resource, opts...)
 	if err != nil {

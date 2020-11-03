@@ -63,9 +63,6 @@ func NewDomainPolicy(ctx *pulumi.Context,
 	if args == nil || args.DomainName == nil {
 		return nil, errors.New("missing required argument 'DomainName'")
 	}
-	if args == nil {
-		args = &DomainPolicyArgs{}
-	}
 	var resource DomainPolicy
 	err := ctx.RegisterResource("aws:elasticsearch/domainPolicy:DomainPolicy", name, args, &resource, opts...)
 	if err != nil {

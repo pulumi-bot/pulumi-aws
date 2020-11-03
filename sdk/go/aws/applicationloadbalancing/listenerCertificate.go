@@ -72,9 +72,6 @@ func NewListenerCertificate(ctx *pulumi.Context,
 	if args == nil || args.ListenerArn == nil {
 		return nil, errors.New("missing required argument 'ListenerArn'")
 	}
-	if args == nil {
-		args = &ListenerCertificateArgs{}
-	}
 	var resource ListenerCertificate
 	err := ctx.RegisterResource("aws:applicationloadbalancing/listenerCertificate:ListenerCertificate", name, args, &resource, opts...)
 	if err != nil {

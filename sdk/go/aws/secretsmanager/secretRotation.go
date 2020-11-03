@@ -72,9 +72,6 @@ func NewSecretRotation(ctx *pulumi.Context,
 	if args == nil || args.SecretId == nil {
 		return nil, errors.New("missing required argument 'SecretId'")
 	}
-	if args == nil {
-		args = &SecretRotationArgs{}
-	}
 	var resource SecretRotation
 	err := ctx.RegisterResource("aws:secretsmanager/secretRotation:SecretRotation", name, args, &resource, opts...)
 	if err != nil {

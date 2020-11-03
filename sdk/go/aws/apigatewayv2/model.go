@@ -66,9 +66,6 @@ func NewModel(ctx *pulumi.Context,
 	if args == nil || args.Schema == nil {
 		return nil, errors.New("missing required argument 'Schema'")
 	}
-	if args == nil {
-		args = &ModelArgs{}
-	}
 	var resource Model
 	err := ctx.RegisterResource("aws:apigatewayv2/model:Model", name, args, &resource, opts...)
 	if err != nil {

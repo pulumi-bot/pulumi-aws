@@ -87,9 +87,6 @@ func NewRateBasedRule(ctx *pulumi.Context,
 	if args == nil || args.RateLimit == nil {
 		return nil, errors.New("missing required argument 'RateLimit'")
 	}
-	if args == nil {
-		args = &RateBasedRuleArgs{}
-	}
 	var resource RateBasedRule
 	err := ctx.RegisterResource("aws:waf/rateBasedRule:RateBasedRule", name, args, &resource, opts...)
 	if err != nil {

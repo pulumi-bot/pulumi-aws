@@ -109,9 +109,6 @@ func NewSelection(ctx *pulumi.Context,
 	if args == nil || args.PlanId == nil {
 		return nil, errors.New("missing required argument 'PlanId'")
 	}
-	if args == nil {
-		args = &SelectionArgs{}
-	}
 	var resource Selection
 	err := ctx.RegisterResource("aws:backup/selection:Selection", name, args, &resource, opts...)
 	if err != nil {

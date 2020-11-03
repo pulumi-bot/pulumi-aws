@@ -179,9 +179,6 @@ func NewDomainName(ctx *pulumi.Context,
 	if args == nil || args.DomainName == nil {
 		return nil, errors.New("missing required argument 'DomainName'")
 	}
-	if args == nil {
-		args = &DomainNameArgs{}
-	}
 	var resource DomainName
 	err := ctx.RegisterResource("aws:apigateway/domainName:DomainName", name, args, &resource, opts...)
 	if err != nil {

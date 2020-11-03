@@ -76,9 +76,6 @@ func NewCapacityProvider(ctx *pulumi.Context,
 	if args == nil || args.AutoScalingGroupProvider == nil {
 		return nil, errors.New("missing required argument 'AutoScalingGroupProvider'")
 	}
-	if args == nil {
-		args = &CapacityProviderArgs{}
-	}
 	var resource CapacityProvider
 	err := ctx.RegisterResource("aws:ecs/capacityProvider:CapacityProvider", name, args, &resource, opts...)
 	if err != nil {

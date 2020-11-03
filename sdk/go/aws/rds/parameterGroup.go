@@ -75,9 +75,6 @@ func NewParameterGroup(ctx *pulumi.Context,
 	if args == nil || args.Family == nil {
 		return nil, errors.New("missing required argument 'Family'")
 	}
-	if args == nil {
-		args = &ParameterGroupArgs{}
-	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}

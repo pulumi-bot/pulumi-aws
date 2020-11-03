@@ -84,9 +84,6 @@ func NewResolverEndpoint(ctx *pulumi.Context,
 	if args == nil || args.SecurityGroupIds == nil {
 		return nil, errors.New("missing required argument 'SecurityGroupIds'")
 	}
-	if args == nil {
-		args = &ResolverEndpointArgs{}
-	}
 	var resource ResolverEndpoint
 	err := ctx.RegisterResource("aws:route53/resolverEndpoint:ResolverEndpoint", name, args, &resource, opts...)
 	if err != nil {

@@ -70,9 +70,6 @@ func NewRolePolicyAttachment(ctx *pulumi.Context,
 	if args == nil || args.Role == nil {
 		return nil, errors.New("missing required argument 'Role'")
 	}
-	if args == nil {
-		args = &RolePolicyAttachmentArgs{}
-	}
 	var resource RolePolicyAttachment
 	err := ctx.RegisterResource("aws:iam/rolePolicyAttachment:RolePolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

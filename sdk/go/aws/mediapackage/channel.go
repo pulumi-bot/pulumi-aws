@@ -56,9 +56,6 @@ func NewChannel(ctx *pulumi.Context,
 	if args == nil || args.ChannelId == nil {
 		return nil, errors.New("missing required argument 'ChannelId'")
 	}
-	if args == nil {
-		args = &ChannelArgs{}
-	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}

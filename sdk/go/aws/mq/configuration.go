@@ -76,9 +76,6 @@ func NewConfiguration(ctx *pulumi.Context,
 	if args == nil || args.EngineVersion == nil {
 		return nil, errors.New("missing required argument 'EngineVersion'")
 	}
-	if args == nil {
-		args = &ConfigurationArgs{}
-	}
 	var resource Configuration
 	err := ctx.RegisterResource("aws:mq/configuration:Configuration", name, args, &resource, opts...)
 	if err != nil {

@@ -38,9 +38,6 @@ func NewLoadBalancerPolicy(ctx *pulumi.Context,
 	if args == nil || args.PolicyTypeName == nil {
 		return nil, errors.New("missing required argument 'PolicyTypeName'")
 	}
-	if args == nil {
-		args = &LoadBalancerPolicyArgs{}
-	}
 	var resource LoadBalancerPolicy
 	err := ctx.RegisterResource("aws:elasticloadbalancing/loadBalancerPolicy:LoadBalancerPolicy", name, args, &resource, opts...)
 	if err != nil {

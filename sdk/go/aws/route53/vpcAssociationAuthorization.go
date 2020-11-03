@@ -94,9 +94,6 @@ func NewVpcAssociationAuthorization(ctx *pulumi.Context,
 	if args == nil || args.ZoneId == nil {
 		return nil, errors.New("missing required argument 'ZoneId'")
 	}
-	if args == nil {
-		args = &VpcAssociationAuthorizationArgs{}
-	}
 	var resource VpcAssociationAuthorization
 	err := ctx.RegisterResource("aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization", name, args, &resource, opts...)
 	if err != nil {

@@ -59,9 +59,6 @@ func NewFileSystemPolicy(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &FileSystemPolicyArgs{}
-	}
 	var resource FileSystemPolicy
 	err := ctx.RegisterResource("aws:efs/fileSystemPolicy:FileSystemPolicy", name, args, &resource, opts...)
 	if err != nil {

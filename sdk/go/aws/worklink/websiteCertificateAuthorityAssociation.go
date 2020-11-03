@@ -32,9 +32,6 @@ func NewWebsiteCertificateAuthorityAssociation(ctx *pulumi.Context,
 	if args == nil || args.FleetArn == nil {
 		return nil, errors.New("missing required argument 'FleetArn'")
 	}
-	if args == nil {
-		args = &WebsiteCertificateAuthorityAssociationArgs{}
-	}
 	var resource WebsiteCertificateAuthorityAssociation
 	err := ctx.RegisterResource("aws:worklink/websiteCertificateAuthorityAssociation:WebsiteCertificateAuthorityAssociation", name, args, &resource, opts...)
 	if err != nil {

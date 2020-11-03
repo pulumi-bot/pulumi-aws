@@ -66,9 +66,6 @@ func NewUserPolicyAttachment(ctx *pulumi.Context,
 	if args == nil || args.User == nil {
 		return nil, errors.New("missing required argument 'User'")
 	}
-	if args == nil {
-		args = &UserPolicyAttachmentArgs{}
-	}
 	var resource UserPolicyAttachment
 	err := ctx.RegisterResource("aws:iam/userPolicyAttachment:UserPolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

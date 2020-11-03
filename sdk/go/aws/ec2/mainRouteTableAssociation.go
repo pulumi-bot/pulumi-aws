@@ -64,9 +64,6 @@ func NewMainRouteTableAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &MainRouteTableAssociationArgs{}
-	}
 	var resource MainRouteTableAssociation
 	err := ctx.RegisterResource("aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation", name, args, &resource, opts...)
 	if err != nil {

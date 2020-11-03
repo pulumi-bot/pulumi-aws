@@ -111,9 +111,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.ReplicationFactor == nil {
 		return nil, errors.New("missing required argument 'ReplicationFactor'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("aws:dax/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

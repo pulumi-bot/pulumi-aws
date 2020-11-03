@@ -76,9 +76,6 @@ func NewVpcAttachmentAccepter(ctx *pulumi.Context,
 	if args == nil || args.TransitGatewayAttachmentId == nil {
 		return nil, errors.New("missing required argument 'TransitGatewayAttachmentId'")
 	}
-	if args == nil {
-		args = &VpcAttachmentAccepterArgs{}
-	}
 	var resource VpcAttachmentAccepter
 	err := ctx.RegisterResource("aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter", name, args, &resource, opts...)
 	if err != nil {

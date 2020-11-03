@@ -89,9 +89,6 @@ func NewNetworkAcl(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &NetworkAclArgs{}
-	}
 	var resource NetworkAcl
 	err := ctx.RegisterResource("aws:ec2/networkAcl:NetworkAcl", name, args, &resource, opts...)
 	if err != nil {

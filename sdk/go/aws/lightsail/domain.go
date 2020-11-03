@@ -56,9 +56,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args == nil || args.DomainName == nil {
 		return nil, errors.New("missing required argument 'DomainName'")
 	}
-	if args == nil {
-		args = &DomainArgs{}
-	}
 	var resource Domain
 	err := ctx.RegisterResource("aws:lightsail/domain:Domain", name, args, &resource, opts...)
 	if err != nil {

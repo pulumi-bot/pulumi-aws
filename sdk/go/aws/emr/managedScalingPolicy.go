@@ -73,9 +73,6 @@ func NewManagedScalingPolicy(ctx *pulumi.Context,
 	if args == nil || args.ComputeLimits == nil {
 		return nil, errors.New("missing required argument 'ComputeLimits'")
 	}
-	if args == nil {
-		args = &ManagedScalingPolicyArgs{}
-	}
 	var resource ManagedScalingPolicy
 	err := ctx.RegisterResource("aws:emr/managedScalingPolicy:ManagedScalingPolicy", name, args, &resource, opts...)
 	if err != nil {

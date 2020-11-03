@@ -63,9 +63,6 @@ func NewActionTarget(ctx *pulumi.Context,
 	if args == nil || args.Identifier == nil {
 		return nil, errors.New("missing required argument 'Identifier'")
 	}
-	if args == nil {
-		args = &ActionTargetArgs{}
-	}
 	var resource ActionTarget
 	err := ctx.RegisterResource("aws:securityhub/actionTarget:ActionTarget", name, args, &resource, opts...)
 	if err != nil {

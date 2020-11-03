@@ -93,9 +93,6 @@ func NewPrincipalAssociation(ctx *pulumi.Context,
 	if args == nil || args.ResourceShareArn == nil {
 		return nil, errors.New("missing required argument 'ResourceShareArn'")
 	}
-	if args == nil {
-		args = &PrincipalAssociationArgs{}
-	}
 	var resource PrincipalAssociation
 	err := ctx.RegisterResource("aws:ram/principalAssociation:PrincipalAssociation", name, args, &resource, opts...)
 	if err != nil {

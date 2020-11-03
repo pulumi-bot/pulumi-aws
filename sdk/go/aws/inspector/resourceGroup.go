@@ -52,9 +52,6 @@ func NewResourceGroup(ctx *pulumi.Context,
 	if args == nil || args.Tags == nil {
 		return nil, errors.New("missing required argument 'Tags'")
 	}
-	if args == nil {
-		args = &ResourceGroupArgs{}
-	}
 	var resource ResourceGroup
 	err := ctx.RegisterResource("aws:inspector/resourceGroup:ResourceGroup", name, args, &resource, opts...)
 	if err != nil {

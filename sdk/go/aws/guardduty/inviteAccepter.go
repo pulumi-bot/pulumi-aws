@@ -81,9 +81,6 @@ func NewInviteAccepter(ctx *pulumi.Context,
 	if args == nil || args.MasterAccountId == nil {
 		return nil, errors.New("missing required argument 'MasterAccountId'")
 	}
-	if args == nil {
-		args = &InviteAccepterArgs{}
-	}
 	var resource InviteAccepter
 	err := ctx.RegisterResource("aws:guardduty/inviteAccepter:InviteAccepter", name, args, &resource, opts...)
 	if err != nil {

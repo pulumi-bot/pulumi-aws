@@ -66,9 +66,6 @@ func NewRoleAlias(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &RoleAliasArgs{}
-	}
 	var resource RoleAlias
 	err := ctx.RegisterResource("aws:iot/roleAlias:RoleAlias", name, args, &resource, opts...)
 	if err != nil {

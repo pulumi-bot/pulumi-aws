@@ -66,9 +66,6 @@ func NewClusterParameterGroup(ctx *pulumi.Context,
 	if args == nil || args.Family == nil {
 		return nil, errors.New("missing required argument 'Family'")
 	}
-	if args == nil {
-		args = &ClusterParameterGroupArgs{}
-	}
 	var resource ClusterParameterGroup
 	err := ctx.RegisterResource("aws:neptune/clusterParameterGroup:ClusterParameterGroup", name, args, &resource, opts...)
 	if err != nil {

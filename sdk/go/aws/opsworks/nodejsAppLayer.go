@@ -86,9 +86,6 @@ func NewNodejsAppLayer(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &NodejsAppLayerArgs{}
-	}
 	var resource NodejsAppLayer
 	err := ctx.RegisterResource("aws:opsworks/nodejsAppLayer:NodejsAppLayer", name, args, &resource, opts...)
 	if err != nil {

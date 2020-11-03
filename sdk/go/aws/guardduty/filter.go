@@ -98,9 +98,6 @@ func NewFilter(ctx *pulumi.Context,
 	if args == nil || args.Rank == nil {
 		return nil, errors.New("missing required argument 'Rank'")
 	}
-	if args == nil {
-		args = &FilterArgs{}
-	}
 	var resource Filter
 	err := ctx.RegisterResource("aws:guardduty/filter:Filter", name, args, &resource, opts...)
 	if err != nil {

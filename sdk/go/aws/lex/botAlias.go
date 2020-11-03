@@ -70,9 +70,6 @@ func NewBotAlias(ctx *pulumi.Context,
 	if args == nil || args.BotVersion == nil {
 		return nil, errors.New("missing required argument 'BotVersion'")
 	}
-	if args == nil {
-		args = &BotAliasArgs{}
-	}
 	var resource BotAlias
 	err := ctx.RegisterResource("aws:lex/botAlias:BotAlias", name, args, &resource, opts...)
 	if err != nil {

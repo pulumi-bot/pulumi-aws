@@ -93,9 +93,6 @@ func NewSshKey(ctx *pulumi.Context,
 	if args == nil || args.UserName == nil {
 		return nil, errors.New("missing required argument 'UserName'")
 	}
-	if args == nil {
-		args = &SshKeyArgs{}
-	}
 	var resource SshKey
 	err := ctx.RegisterResource("aws:transfer/sshKey:SshKey", name, args, &resource, opts...)
 	if err != nil {

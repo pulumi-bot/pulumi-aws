@@ -27,9 +27,6 @@ func NewCodeRepository(ctx *pulumi.Context,
 	if args == nil || args.GitConfig == nil {
 		return nil, errors.New("missing required argument 'GitConfig'")
 	}
-	if args == nil {
-		args = &CodeRepositoryArgs{}
-	}
 	var resource CodeRepository
 	err := ctx.RegisterResource("aws:sagemaker/codeRepository:CodeRepository", name, args, &resource, opts...)
 	if err != nil {

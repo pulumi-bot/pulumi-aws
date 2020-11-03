@@ -98,9 +98,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args == nil || args.UserName == nil {
 		return nil, errors.New("missing required argument 'UserName'")
 	}
-	if args == nil {
-		args = &WorkspaceArgs{}
-	}
 	var resource Workspace
 	err := ctx.RegisterResource("aws:workspaces/workspace:Workspace", name, args, &resource, opts...)
 	if err != nil {

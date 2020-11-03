@@ -101,9 +101,6 @@ func NewReportDefinition(ctx *pulumi.Context,
 	if args == nil || args.TimeUnit == nil {
 		return nil, errors.New("missing required argument 'TimeUnit'")
 	}
-	if args == nil {
-		args = &ReportDefinitionArgs{}
-	}
 	var resource ReportDefinition
 	err := ctx.RegisterResource("aws:cur/reportDefinition:ReportDefinition", name, args, &resource, opts...)
 	if err != nil {

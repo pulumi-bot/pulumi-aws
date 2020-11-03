@@ -67,9 +67,6 @@ func NewEndpointConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ProductionVariants == nil {
 		return nil, errors.New("missing required argument 'ProductionVariants'")
 	}
-	if args == nil {
-		args = &EndpointConfigurationArgs{}
-	}
 	var resource EndpointConfiguration
 	err := ctx.RegisterResource("aws:sagemaker/endpointConfiguration:EndpointConfiguration", name, args, &resource, opts...)
 	if err != nil {

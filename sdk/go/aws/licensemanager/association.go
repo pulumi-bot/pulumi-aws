@@ -31,9 +31,6 @@ func NewAssociation(ctx *pulumi.Context,
 	if args == nil || args.ResourceArn == nil {
 		return nil, errors.New("missing required argument 'ResourceArn'")
 	}
-	if args == nil {
-		args = &AssociationArgs{}
-	}
 	var resource Association
 	err := ctx.RegisterResource("aws:licensemanager/association:Association", name, args, &resource, opts...)
 	if err != nil {

@@ -176,9 +176,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil || args.BundleId == nil {
 		return nil, errors.New("missing required argument 'BundleId'")
 	}
-	if args == nil {
-		args = &InstanceArgs{}
-	}
 	var resource Instance
 	err := ctx.RegisterResource("aws:lightsail/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

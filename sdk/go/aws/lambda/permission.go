@@ -92,9 +92,6 @@ func NewPermission(ctx *pulumi.Context,
 	if args == nil || args.Principal == nil {
 		return nil, errors.New("missing required argument 'Principal'")
 	}
-	if args == nil {
-		args = &PermissionArgs{}
-	}
 	var resource Permission
 	err := ctx.RegisterResource("aws:lambda/permission:Permission", name, args, &resource, opts...)
 	if err != nil {

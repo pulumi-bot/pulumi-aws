@@ -64,9 +64,6 @@ func NewLayerVersion(ctx *pulumi.Context,
 	if args == nil || args.LayerName == nil {
 		return nil, errors.New("missing required argument 'LayerName'")
 	}
-	if args == nil {
-		args = &LayerVersionArgs{}
-	}
 	var resource LayerVersion
 	err := ctx.RegisterResource("aws:lambda/layerVersion:LayerVersion", name, args, &resource, opts...)
 	if err != nil {

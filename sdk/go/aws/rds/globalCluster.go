@@ -137,9 +137,6 @@ func NewGlobalCluster(ctx *pulumi.Context,
 	if args == nil || args.GlobalClusterIdentifier == nil {
 		return nil, errors.New("missing required argument 'GlobalClusterIdentifier'")
 	}
-	if args == nil {
-		args = &GlobalClusterArgs{}
-	}
 	var resource GlobalCluster
 	err := ctx.RegisterResource("aws:rds/globalCluster:GlobalCluster", name, args, &resource, opts...)
 	if err != nil {

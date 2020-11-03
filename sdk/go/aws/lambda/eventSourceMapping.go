@@ -137,9 +137,6 @@ func NewEventSourceMapping(ctx *pulumi.Context,
 	if args == nil || args.FunctionName == nil {
 		return nil, errors.New("missing required argument 'FunctionName'")
 	}
-	if args == nil {
-		args = &EventSourceMappingArgs{}
-	}
 	var resource EventSourceMapping
 	err := ctx.RegisterResource("aws:lambda/eventSourceMapping:EventSourceMapping", name, args, &resource, opts...)
 	if err != nil {

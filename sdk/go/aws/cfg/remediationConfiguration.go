@@ -96,9 +96,6 @@ func NewRemediationConfiguration(ctx *pulumi.Context,
 	if args == nil || args.TargetType == nil {
 		return nil, errors.New("missing required argument 'TargetType'")
 	}
-	if args == nil {
-		args = &RemediationConfigurationArgs{}
-	}
 	var resource RemediationConfiguration
 	err := ctx.RegisterResource("aws:cfg/remediationConfiguration:RemediationConfiguration", name, args, &resource, opts...)
 	if err != nil {

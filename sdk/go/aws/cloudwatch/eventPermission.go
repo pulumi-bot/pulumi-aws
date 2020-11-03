@@ -88,9 +88,6 @@ func NewEventPermission(ctx *pulumi.Context,
 	if args == nil || args.StatementId == nil {
 		return nil, errors.New("missing required argument 'StatementId'")
 	}
-	if args == nil {
-		args = &EventPermissionArgs{}
-	}
 	var resource EventPermission
 	err := ctx.RegisterResource("aws:cloudwatch/eventPermission:EventPermission", name, args, &resource, opts...)
 	if err != nil {

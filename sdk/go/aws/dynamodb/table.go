@@ -179,9 +179,6 @@ func NewTable(ctx *pulumi.Context,
 	if args == nil || args.HashKey == nil {
 		return nil, errors.New("missing required argument 'HashKey'")
 	}
-	if args == nil {
-		args = &TableArgs{}
-	}
 	var resource Table
 	err := ctx.RegisterResource("aws:dynamodb/table:Table", name, args, &resource, opts...)
 	if err != nil {

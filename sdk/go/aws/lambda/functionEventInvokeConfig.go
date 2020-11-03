@@ -161,9 +161,6 @@ func NewFunctionEventInvokeConfig(ctx *pulumi.Context,
 	if args == nil || args.FunctionName == nil {
 		return nil, errors.New("missing required argument 'FunctionName'")
 	}
-	if args == nil {
-		args = &FunctionEventInvokeConfigArgs{}
-	}
 	var resource FunctionEventInvokeConfig
 	err := ctx.RegisterResource("aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig", name, args, &resource, opts...)
 	if err != nil {

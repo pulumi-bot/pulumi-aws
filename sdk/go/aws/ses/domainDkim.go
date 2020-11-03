@@ -33,9 +33,6 @@ func NewDomainDkim(ctx *pulumi.Context,
 	if args == nil || args.Domain == nil {
 		return nil, errors.New("missing required argument 'Domain'")
 	}
-	if args == nil {
-		args = &DomainDkimArgs{}
-	}
 	var resource DomainDkim
 	err := ctx.RegisterResource("aws:ses/domainDkim:DomainDkim", name, args, &resource, opts...)
 	if err != nil {

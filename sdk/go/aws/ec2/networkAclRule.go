@@ -97,9 +97,6 @@ func NewNetworkAclRule(ctx *pulumi.Context,
 	if args == nil || args.RuleNumber == nil {
 		return nil, errors.New("missing required argument 'RuleNumber'")
 	}
-	if args == nil {
-		args = &NetworkAclRuleArgs{}
-	}
 	var resource NetworkAclRule
 	err := ctx.RegisterResource("aws:ec2/networkAclRule:NetworkAclRule", name, args, &resource, opts...)
 	if err != nil {

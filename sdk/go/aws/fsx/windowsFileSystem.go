@@ -146,9 +146,6 @@ func NewWindowsFileSystem(ctx *pulumi.Context,
 	if args == nil || args.ThroughputCapacity == nil {
 		return nil, errors.New("missing required argument 'ThroughputCapacity'")
 	}
-	if args == nil {
-		args = &WindowsFileSystemArgs{}
-	}
 	var resource WindowsFileSystem
 	err := ctx.RegisterResource("aws:fsx/windowsFileSystem:WindowsFileSystem", name, args, &resource, opts...)
 	if err != nil {

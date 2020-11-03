@@ -55,9 +55,6 @@ func NewWorkingStorage(ctx *pulumi.Context,
 	if args == nil || args.GatewayArn == nil {
 		return nil, errors.New("missing required argument 'GatewayArn'")
 	}
-	if args == nil {
-		args = &WorkingStorageArgs{}
-	}
 	var resource WorkingStorage
 	err := ctx.RegisterResource("aws:storagegateway/workingStorage:WorkingStorage", name, args, &resource, opts...)
 	if err != nil {

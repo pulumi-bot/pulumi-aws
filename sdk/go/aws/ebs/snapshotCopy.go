@@ -96,9 +96,6 @@ func NewSnapshotCopy(ctx *pulumi.Context,
 	if args == nil || args.SourceSnapshotId == nil {
 		return nil, errors.New("missing required argument 'SourceSnapshotId'")
 	}
-	if args == nil {
-		args = &SnapshotCopyArgs{}
-	}
 	var resource SnapshotCopy
 	err := ctx.RegisterResource("aws:ebs/snapshotCopy:SnapshotCopy", name, args, &resource, opts...)
 	if err != nil {

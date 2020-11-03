@@ -68,9 +68,6 @@ func NewWebAclLoggingConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ResourceArn == nil {
 		return nil, errors.New("missing required argument 'ResourceArn'")
 	}
-	if args == nil {
-		args = &WebAclLoggingConfigurationArgs{}
-	}
 	var resource WebAclLoggingConfiguration
 	err := ctx.RegisterResource("aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration", name, args, &resource, opts...)
 	if err != nil {

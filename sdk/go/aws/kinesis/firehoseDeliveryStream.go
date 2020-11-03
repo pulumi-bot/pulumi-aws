@@ -253,9 +253,6 @@ func NewFirehoseDeliveryStream(ctx *pulumi.Context,
 	if args == nil || args.Destination == nil {
 		return nil, errors.New("missing required argument 'Destination'")
 	}
-	if args == nil {
-		args = &FirehoseDeliveryStreamArgs{}
-	}
 	var resource FirehoseDeliveryStream
 	err := ctx.RegisterResource("aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream", name, args, &resource, opts...)
 	if err != nil {

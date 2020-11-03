@@ -92,9 +92,6 @@ func NewSchedule(ctx *pulumi.Context,
 	if args == nil || args.ScheduledActionName == nil {
 		return nil, errors.New("missing required argument 'ScheduledActionName'")
 	}
-	if args == nil {
-		args = &ScheduleArgs{}
-	}
 	var resource Schedule
 	err := ctx.RegisterResource("aws:autoscaling/schedule:Schedule", name, args, &resource, opts...)
 	if err != nil {

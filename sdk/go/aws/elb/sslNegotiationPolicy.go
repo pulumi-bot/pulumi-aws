@@ -107,9 +107,6 @@ func NewSslNegotiationPolicy(ctx *pulumi.Context,
 	if args == nil || args.LoadBalancer == nil {
 		return nil, errors.New("missing required argument 'LoadBalancer'")
 	}
-	if args == nil {
-		args = &SslNegotiationPolicyArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:elasticloadbalancing/sslNegotiationPolicy:SslNegotiationPolicy"),

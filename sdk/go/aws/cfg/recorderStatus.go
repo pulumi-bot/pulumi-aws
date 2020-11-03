@@ -97,9 +97,6 @@ func NewRecorderStatus(ctx *pulumi.Context,
 	if args == nil || args.IsEnabled == nil {
 		return nil, errors.New("missing required argument 'IsEnabled'")
 	}
-	if args == nil {
-		args = &RecorderStatusArgs{}
-	}
 	var resource RecorderStatus
 	err := ctx.RegisterResource("aws:cfg/recorderStatus:RecorderStatus", name, args, &resource, opts...)
 	if err != nil {

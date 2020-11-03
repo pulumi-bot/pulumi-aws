@@ -75,9 +75,6 @@ func NewMaintenanceWindow(ctx *pulumi.Context,
 	if args == nil || args.Schedule == nil {
 		return nil, errors.New("missing required argument 'Schedule'")
 	}
-	if args == nil {
-		args = &MaintenanceWindowArgs{}
-	}
 	var resource MaintenanceWindow
 	err := ctx.RegisterResource("aws:ssm/maintenanceWindow:MaintenanceWindow", name, args, &resource, opts...)
 	if err != nil {

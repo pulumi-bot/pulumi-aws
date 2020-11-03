@@ -50,9 +50,6 @@ func NewAuthorizer(ctx *pulumi.Context,
 	if args == nil || args.RestApi == nil {
 		return nil, errors.New("missing required argument 'RestApi'")
 	}
-	if args == nil {
-		args = &AuthorizerArgs{}
-	}
 	var resource Authorizer
 	err := ctx.RegisterResource("aws:apigateway/authorizer:Authorizer", name, args, &resource, opts...)
 	if err != nil {

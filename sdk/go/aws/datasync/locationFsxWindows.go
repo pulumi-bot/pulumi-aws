@@ -79,9 +79,6 @@ func NewLocationFsxWindows(ctx *pulumi.Context,
 	if args == nil || args.User == nil {
 		return nil, errors.New("missing required argument 'User'")
 	}
-	if args == nil {
-		args = &LocationFsxWindowsArgs{}
-	}
 	var resource LocationFsxWindows
 	err := ctx.RegisterResource("aws:datasync/locationFsxWindows:LocationFsxWindows", name, args, &resource, opts...)
 	if err != nil {

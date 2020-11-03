@@ -98,9 +98,6 @@ func NewGrant(ctx *pulumi.Context,
 	if args == nil || args.Operations == nil {
 		return nil, errors.New("missing required argument 'Operations'")
 	}
-	if args == nil {
-		args = &GrantArgs{}
-	}
 	var resource Grant
 	err := ctx.RegisterResource("aws:kms/grant:Grant", name, args, &resource, opts...)
 	if err != nil {

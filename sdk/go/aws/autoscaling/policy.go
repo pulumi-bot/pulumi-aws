@@ -95,9 +95,6 @@ func NewPolicy(ctx *pulumi.Context,
 	if args == nil || args.AutoscalingGroupName == nil {
 		return nil, errors.New("missing required argument 'AutoscalingGroupName'")
 	}
-	if args == nil {
-		args = &PolicyArgs{}
-	}
 	var resource Policy
 	err := ctx.RegisterResource("aws:autoscaling/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

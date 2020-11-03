@@ -75,9 +75,6 @@ func NewVpcAttachment(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &VpcAttachmentArgs{}
-	}
 	var resource VpcAttachment
 	err := ctx.RegisterResource("aws:ec2transitgateway/vpcAttachment:VpcAttachment", name, args, &resource, opts...)
 	if err != nil {

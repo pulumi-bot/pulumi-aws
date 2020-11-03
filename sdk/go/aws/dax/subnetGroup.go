@@ -56,9 +56,6 @@ func NewSubnetGroup(ctx *pulumi.Context,
 	if args == nil || args.SubnetIds == nil {
 		return nil, errors.New("missing required argument 'SubnetIds'")
 	}
-	if args == nil {
-		args = &SubnetGroupArgs{}
-	}
 	var resource SubnetGroup
 	err := ctx.RegisterResource("aws:dax/subnetGroup:SubnetGroup", name, args, &resource, opts...)
 	if err != nil {

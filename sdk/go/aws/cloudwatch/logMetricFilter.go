@@ -71,9 +71,6 @@ func NewLogMetricFilter(ctx *pulumi.Context,
 	if args == nil || args.Pattern == nil {
 		return nil, errors.New("missing required argument 'Pattern'")
 	}
-	if args == nil {
-		args = &LogMetricFilterArgs{}
-	}
 	var resource LogMetricFilter
 	err := ctx.RegisterResource("aws:cloudwatch/logMetricFilter:LogMetricFilter", name, args, &resource, opts...)
 	if err != nil {

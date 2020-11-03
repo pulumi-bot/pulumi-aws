@@ -119,9 +119,6 @@ func NewTrafficMirrorFilterRule(ctx *pulumi.Context,
 	if args == nil || args.TrafficMirrorFilterId == nil {
 		return nil, errors.New("missing required argument 'TrafficMirrorFilterId'")
 	}
-	if args == nil {
-		args = &TrafficMirrorFilterRuleArgs{}
-	}
 	var resource TrafficMirrorFilterRule
 	err := ctx.RegisterResource("aws:ec2/trafficMirrorFilterRule:TrafficMirrorFilterRule", name, args, &resource, opts...)
 	if err != nil {

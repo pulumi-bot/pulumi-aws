@@ -72,9 +72,6 @@ func NewAlias(ctx *pulumi.Context,
 	if args == nil || args.FunctionVersion == nil {
 		return nil, errors.New("missing required argument 'FunctionVersion'")
 	}
-	if args == nil {
-		args = &AliasArgs{}
-	}
 	var resource Alias
 	err := ctx.RegisterResource("aws:lambda/alias:Alias", name, args, &resource, opts...)
 	if err != nil {

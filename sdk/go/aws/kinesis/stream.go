@@ -75,9 +75,6 @@ func NewStream(ctx *pulumi.Context,
 	if args == nil || args.ShardCount == nil {
 		return nil, errors.New("missing required argument 'ShardCount'")
 	}
-	if args == nil {
-		args = &StreamArgs{}
-	}
 	var resource Stream
 	err := ctx.RegisterResource("aws:kinesis/stream:Stream", name, args, &resource, opts...)
 	if err != nil {

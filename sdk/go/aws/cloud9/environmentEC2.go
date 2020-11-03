@@ -63,9 +63,6 @@ func NewEnvironmentEC2(ctx *pulumi.Context,
 	if args == nil || args.InstanceType == nil {
 		return nil, errors.New("missing required argument 'InstanceType'")
 	}
-	if args == nil {
-		args = &EnvironmentEC2Args{}
-	}
 	var resource EnvironmentEC2
 	err := ctx.RegisterResource("aws:cloud9/environmentEC2:EnvironmentEC2", name, args, &resource, opts...)
 	if err != nil {

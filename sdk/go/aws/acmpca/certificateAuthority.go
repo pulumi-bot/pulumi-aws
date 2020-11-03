@@ -138,9 +138,6 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 	if args == nil || args.CertificateAuthorityConfiguration == nil {
 		return nil, errors.New("missing required argument 'CertificateAuthorityConfiguration'")
 	}
-	if args == nil {
-		args = &CertificateAuthorityArgs{}
-	}
 	var resource CertificateAuthority
 	err := ctx.RegisterResource("aws:acmpca/certificateAuthority:CertificateAuthority", name, args, &resource, opts...)
 	if err != nil {

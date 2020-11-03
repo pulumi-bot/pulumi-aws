@@ -61,9 +61,6 @@ func NewServiceLinkedRole(ctx *pulumi.Context,
 	if args == nil || args.AwsServiceName == nil {
 		return nil, errors.New("missing required argument 'AwsServiceName'")
 	}
-	if args == nil {
-		args = &ServiceLinkedRoleArgs{}
-	}
 	var resource ServiceLinkedRole
 	err := ctx.RegisterResource("aws:iam/serviceLinkedRole:ServiceLinkedRole", name, args, &resource, opts...)
 	if err != nil {

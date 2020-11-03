@@ -29,9 +29,6 @@ func NewLogService(ctx *pulumi.Context,
 	if args == nil || args.LogGroupName == nil {
 		return nil, errors.New("missing required argument 'LogGroupName'")
 	}
-	if args == nil {
-		args = &LogServiceArgs{}
-	}
 	var resource LogService
 	err := ctx.RegisterResource("aws:directoryservice/logService:LogService", name, args, &resource, opts...)
 	if err != nil {

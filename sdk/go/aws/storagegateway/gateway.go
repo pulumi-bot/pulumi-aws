@@ -165,9 +165,6 @@ func NewGateway(ctx *pulumi.Context,
 	if args == nil || args.GatewayTimezone == nil {
 		return nil, errors.New("missing required argument 'GatewayTimezone'")
 	}
-	if args == nil {
-		args = &GatewayArgs{}
-	}
 	var resource Gateway
 	err := ctx.RegisterResource("aws:storagegateway/gateway:Gateway", name, args, &resource, opts...)
 	if err != nil {

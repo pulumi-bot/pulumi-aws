@@ -97,9 +97,6 @@ func NewRuleGroup(ctx *pulumi.Context,
 	if args == nil || args.VisibilityConfig == nil {
 		return nil, errors.New("missing required argument 'VisibilityConfig'")
 	}
-	if args == nil {
-		args = &RuleGroupArgs{}
-	}
 	var resource RuleGroup
 	err := ctx.RegisterResource("aws:wafv2/ruleGroup:RuleGroup", name, args, &resource, opts...)
 	if err != nil {

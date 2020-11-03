@@ -76,9 +76,6 @@ func NewVpnGatewayAttachment(ctx *pulumi.Context,
 	if args == nil || args.VpnGatewayId == nil {
 		return nil, errors.New("missing required argument 'VpnGatewayId'")
 	}
-	if args == nil {
-		args = &VpnGatewayAttachmentArgs{}
-	}
 	var resource VpnGatewayAttachment
 	err := ctx.RegisterResource("aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment", name, args, &resource, opts...)
 	if err != nil {

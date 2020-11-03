@@ -269,9 +269,6 @@ func NewWebAclAssociation(ctx *pulumi.Context,
 	if args == nil || args.WebAclId == nil {
 		return nil, errors.New("missing required argument 'WebAclId'")
 	}
-	if args == nil {
-		args = &WebAclAssociationArgs{}
-	}
 	var resource WebAclAssociation
 	err := ctx.RegisterResource("aws:wafregional/webAclAssociation:WebAclAssociation", name, args, &resource, opts...)
 	if err != nil {

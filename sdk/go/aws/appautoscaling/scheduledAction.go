@@ -123,9 +123,6 @@ func NewScheduledAction(ctx *pulumi.Context,
 	if args == nil || args.ServiceNamespace == nil {
 		return nil, errors.New("missing required argument 'ServiceNamespace'")
 	}
-	if args == nil {
-		args = &ScheduledActionArgs{}
-	}
 	var resource ScheduledAction
 	err := ctx.RegisterResource("aws:appautoscaling/scheduledAction:ScheduledAction", name, args, &resource, opts...)
 	if err != nil {

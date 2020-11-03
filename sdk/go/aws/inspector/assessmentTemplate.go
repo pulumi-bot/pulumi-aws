@@ -70,9 +70,6 @@ func NewAssessmentTemplate(ctx *pulumi.Context,
 	if args == nil || args.TargetArn == nil {
 		return nil, errors.New("missing required argument 'TargetArn'")
 	}
-	if args == nil {
-		args = &AssessmentTemplateArgs{}
-	}
 	var resource AssessmentTemplate
 	err := ctx.RegisterResource("aws:inspector/assessmentTemplate:AssessmentTemplate", name, args, &resource, opts...)
 	if err != nil {

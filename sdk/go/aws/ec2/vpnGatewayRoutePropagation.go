@@ -57,9 +57,6 @@ func NewVpnGatewayRoutePropagation(ctx *pulumi.Context,
 	if args == nil || args.VpnGatewayId == nil {
 		return nil, errors.New("missing required argument 'VpnGatewayId'")
 	}
-	if args == nil {
-		args = &VpnGatewayRoutePropagationArgs{}
-	}
 	var resource VpnGatewayRoutePropagation
 	err := ctx.RegisterResource("aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation", name, args, &resource, opts...)
 	if err != nil {

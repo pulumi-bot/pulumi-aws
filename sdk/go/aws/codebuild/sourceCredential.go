@@ -88,9 +88,6 @@ func NewSourceCredential(ctx *pulumi.Context,
 	if args == nil || args.Token == nil {
 		return nil, errors.New("missing required argument 'Token'")
 	}
-	if args == nil {
-		args = &SourceCredentialArgs{}
-	}
 	var resource SourceCredential
 	err := ctx.RegisterResource("aws:codebuild/sourceCredential:SourceCredential", name, args, &resource, opts...)
 	if err != nil {

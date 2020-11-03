@@ -155,9 +155,6 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args == nil || args.SubnetIds == nil {
 		return nil, errors.New("missing required argument 'SubnetIds'")
 	}
-	if args == nil {
-		args = &NodeGroupArgs{}
-	}
 	var resource NodeGroup
 	err := ctx.RegisterResource("aws:eks/nodeGroup:NodeGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -64,9 +64,6 @@ func NewIdentityPolicy(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &IdentityPolicyArgs{}
-	}
 	var resource IdentityPolicy
 	err := ctx.RegisterResource("aws:ses/identityPolicy:IdentityPolicy", name, args, &resource, opts...)
 	if err != nil {

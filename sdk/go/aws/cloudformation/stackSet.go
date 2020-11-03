@@ -114,9 +114,6 @@ func NewStackSet(ctx *pulumi.Context,
 	if args == nil || args.AdministrationRoleArn == nil {
 		return nil, errors.New("missing required argument 'AdministrationRoleArn'")
 	}
-	if args == nil {
-		args = &StackSetArgs{}
-	}
 	var resource StackSet
 	err := ctx.RegisterResource("aws:cloudformation/stackSet:StackSet", name, args, &resource, opts...)
 	if err != nil {

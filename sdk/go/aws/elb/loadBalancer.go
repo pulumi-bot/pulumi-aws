@@ -85,9 +85,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil || args.Listeners == nil {
 		return nil, errors.New("missing required argument 'Listeners'")
 	}
-	if args == nil {
-		args = &LoadBalancerArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:elasticloadbalancing/loadBalancer:LoadBalancer"),

@@ -112,9 +112,6 @@ func NewStack(ctx *pulumi.Context,
 	if args == nil || args.ServiceRoleArn == nil {
 		return nil, errors.New("missing required argument 'ServiceRoleArn'")
 	}
-	if args == nil {
-		args = &StackArgs{}
-	}
 	var resource Stack
 	err := ctx.RegisterResource("aws:opsworks/stack:Stack", name, args, &resource, opts...)
 	if err != nil {

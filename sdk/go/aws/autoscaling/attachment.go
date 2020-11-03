@@ -109,9 +109,6 @@ func NewAttachment(ctx *pulumi.Context,
 	if args == nil || args.AutoscalingGroupName == nil {
 		return nil, errors.New("missing required argument 'AutoscalingGroupName'")
 	}
-	if args == nil {
-		args = &AttachmentArgs{}
-	}
 	var resource Attachment
 	err := ctx.RegisterResource("aws:autoscaling/attachment:Attachment", name, args, &resource, opts...)
 	if err != nil {

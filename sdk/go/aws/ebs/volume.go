@@ -73,9 +73,6 @@ func NewVolume(ctx *pulumi.Context,
 	if args == nil || args.AvailabilityZone == nil {
 		return nil, errors.New("missing required argument 'AvailabilityZone'")
 	}
-	if args == nil {
-		args = &VolumeArgs{}
-	}
 	var resource Volume
 	err := ctx.RegisterResource("aws:ebs/volume:Volume", name, args, &resource, opts...)
 	if err != nil {

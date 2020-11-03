@@ -70,9 +70,6 @@ func NewStaticIpAttachment(ctx *pulumi.Context,
 	if args == nil || args.StaticIpName == nil {
 		return nil, errors.New("missing required argument 'StaticIpName'")
 	}
-	if args == nil {
-		args = &StaticIpAttachmentArgs{}
-	}
 	var resource StaticIpAttachment
 	err := ctx.RegisterResource("aws:lightsail/staticIpAttachment:StaticIpAttachment", name, args, &resource, opts...)
 	if err != nil {

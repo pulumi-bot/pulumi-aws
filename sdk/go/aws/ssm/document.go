@@ -106,9 +106,6 @@ func NewDocument(ctx *pulumi.Context,
 	if args == nil || args.DocumentType == nil {
 		return nil, errors.New("missing required argument 'DocumentType'")
 	}
-	if args == nil {
-		args = &DocumentArgs{}
-	}
 	var resource Document
 	err := ctx.RegisterResource("aws:ssm/document:Document", name, args, &resource, opts...)
 	if err != nil {

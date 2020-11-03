@@ -88,9 +88,6 @@ func NewNatGateway(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &NatGatewayArgs{}
-	}
 	var resource NatGateway
 	err := ctx.RegisterResource("aws:ec2/natGateway:NatGateway", name, args, &resource, opts...)
 	if err != nil {

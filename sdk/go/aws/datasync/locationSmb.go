@@ -84,9 +84,6 @@ func NewLocationSmb(ctx *pulumi.Context,
 	if args == nil || args.User == nil {
 		return nil, errors.New("missing required argument 'User'")
 	}
-	if args == nil {
-		args = &LocationSmbArgs{}
-	}
 	var resource LocationSmb
 	err := ctx.RegisterResource("aws:datasync/locationSmb:LocationSmb", name, args, &resource, opts...)
 	if err != nil {

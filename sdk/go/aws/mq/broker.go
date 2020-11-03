@@ -135,9 +135,6 @@ func NewBroker(ctx *pulumi.Context,
 	if args == nil || args.Users == nil {
 		return nil, errors.New("missing required argument 'Users'")
 	}
-	if args == nil {
-		args = &BrokerArgs{}
-	}
 	var resource Broker
 	err := ctx.RegisterResource("aws:mq/broker:Broker", name, args, &resource, opts...)
 	if err != nil {

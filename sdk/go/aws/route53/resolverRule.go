@@ -103,9 +103,6 @@ func NewResolverRule(ctx *pulumi.Context,
 	if args == nil || args.RuleType == nil {
 		return nil, errors.New("missing required argument 'RuleType'")
 	}
-	if args == nil {
-		args = &ResolverRuleArgs{}
-	}
 	var resource ResolverRule
 	err := ctx.RegisterResource("aws:route53/resolverRule:ResolverRule", name, args, &resource, opts...)
 	if err != nil {

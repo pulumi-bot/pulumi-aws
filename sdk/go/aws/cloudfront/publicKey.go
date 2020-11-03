@@ -33,9 +33,6 @@ func NewPublicKey(ctx *pulumi.Context,
 	if args == nil || args.EncodedKey == nil {
 		return nil, errors.New("missing required argument 'EncodedKey'")
 	}
-	if args == nil {
-		args = &PublicKeyArgs{}
-	}
 	var resource PublicKey
 	err := ctx.RegisterResource("aws:cloudfront/publicKey:PublicKey", name, args, &resource, opts...)
 	if err != nil {

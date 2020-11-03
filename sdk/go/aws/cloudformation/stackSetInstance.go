@@ -63,9 +63,6 @@ func NewStackSetInstance(ctx *pulumi.Context,
 	if args == nil || args.StackSetName == nil {
 		return nil, errors.New("missing required argument 'StackSetName'")
 	}
-	if args == nil {
-		args = &StackSetInstanceArgs{}
-	}
 	var resource StackSetInstance
 	err := ctx.RegisterResource("aws:cloudformation/stackSetInstance:StackSetInstance", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewLogSubscriptionFilter(ctx *pulumi.Context,
 	if args == nil || args.LogGroup == nil {
 		return nil, errors.New("missing required argument 'LogGroup'")
 	}
-	if args == nil {
-		args = &LogSubscriptionFilterArgs{}
-	}
 	var resource LogSubscriptionFilter
 	err := ctx.RegisterResource("aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter", name, args, &resource, opts...)
 	if err != nil {

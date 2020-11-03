@@ -93,9 +93,6 @@ func NewFargateProfile(ctx *pulumi.Context,
 	if args == nil || args.Selectors == nil {
 		return nil, errors.New("missing required argument 'Selectors'")
 	}
-	if args == nil {
-		args = &FargateProfileArgs{}
-	}
 	var resource FargateProfile
 	err := ctx.RegisterResource("aws:eks/fargateProfile:FargateProfile", name, args, &resource, opts...)
 	if err != nil {

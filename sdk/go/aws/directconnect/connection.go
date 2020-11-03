@@ -65,9 +65,6 @@ func NewConnection(ctx *pulumi.Context,
 	if args == nil || args.Location == nil {
 		return nil, errors.New("missing required argument 'Location'")
 	}
-	if args == nil {
-		args = &ConnectionArgs{}
-	}
 	var resource Connection
 	err := ctx.RegisterResource("aws:directconnect/connection:Connection", name, args, &resource, opts...)
 	if err != nil {

@@ -70,9 +70,6 @@ func NewContainerPolicy(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &ContainerPolicyArgs{}
-	}
 	var resource ContainerPolicy
 	err := ctx.RegisterResource("aws:mediastore/containerPolicy:ContainerPolicy", name, args, &resource, opts...)
 	if err != nil {

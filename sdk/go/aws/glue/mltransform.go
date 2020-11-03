@@ -178,9 +178,6 @@ func NewMLTransform(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &MLTransformArgs{}
-	}
 	var resource MLTransform
 	err := ctx.RegisterResource("aws:glue/mLTransform:MLTransform", name, args, &resource, opts...)
 	if err != nil {

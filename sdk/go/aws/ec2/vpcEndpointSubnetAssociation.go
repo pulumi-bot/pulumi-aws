@@ -61,9 +61,6 @@ func NewVpcEndpointSubnetAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcEndpointId == nil {
 		return nil, errors.New("missing required argument 'VpcEndpointId'")
 	}
-	if args == nil {
-		args = &VpcEndpointSubnetAssociationArgs{}
-	}
 	var resource VpcEndpointSubnetAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation", name, args, &resource, opts...)
 	if err != nil {

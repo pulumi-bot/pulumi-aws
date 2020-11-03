@@ -148,9 +148,6 @@ func NewCachesIscsiVolume(ctx *pulumi.Context,
 	if args == nil || args.VolumeSizeInBytes == nil {
 		return nil, errors.New("missing required argument 'VolumeSizeInBytes'")
 	}
-	if args == nil {
-		args = &CachesIscsiVolumeArgs{}
-	}
 	var resource CachesIscsiVolume
 	err := ctx.RegisterResource("aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume", name, args, &resource, opts...)
 	if err != nil {

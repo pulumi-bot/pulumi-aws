@@ -66,9 +66,6 @@ func NewGroupPolicyAttachment(ctx *pulumi.Context,
 	if args == nil || args.PolicyArn == nil {
 		return nil, errors.New("missing required argument 'PolicyArn'")
 	}
-	if args == nil {
-		args = &GroupPolicyAttachmentArgs{}
-	}
 	var resource GroupPolicyAttachment
 	err := ctx.RegisterResource("aws:iam/groupPolicyAttachment:GroupPolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

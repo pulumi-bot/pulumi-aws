@@ -30,9 +30,6 @@ func NewSamlProvider(ctx *pulumi.Context,
 	if args == nil || args.SamlMetadataDocument == nil {
 		return nil, errors.New("missing required argument 'SamlMetadataDocument'")
 	}
-	if args == nil {
-		args = &SamlProviderArgs{}
-	}
 	var resource SamlProvider
 	err := ctx.RegisterResource("aws:iam/samlProvider:SamlProvider", name, args, &resource, opts...)
 	if err != nil {

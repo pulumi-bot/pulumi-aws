@@ -92,9 +92,6 @@ func NewReplicationTask(ctx *pulumi.Context,
 	if args == nil || args.TargetEndpointArn == nil {
 		return nil, errors.New("missing required argument 'TargetEndpointArn'")
 	}
-	if args == nil {
-		args = &ReplicationTaskArgs{}
-	}
 	var resource ReplicationTask
 	err := ctx.RegisterResource("aws:dms/replicationTask:ReplicationTask", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewRdsDbInstance(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &RdsDbInstanceArgs{}
-	}
 	var resource RdsDbInstance
 	err := ctx.RegisterResource("aws:opsworks/rdsDbInstance:RdsDbInstance", name, args, &resource, opts...)
 	if err != nil {

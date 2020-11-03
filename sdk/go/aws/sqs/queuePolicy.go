@@ -62,9 +62,6 @@ func NewQueuePolicy(ctx *pulumi.Context,
 	if args == nil || args.QueueUrl == nil {
 		return nil, errors.New("missing required argument 'QueueUrl'")
 	}
-	if args == nil {
-		args = &QueuePolicyArgs{}
-	}
 	var resource QueuePolicy
 	err := ctx.RegisterResource("aws:sqs/queuePolicy:QueuePolicy", name, args, &resource, opts...)
 	if err != nil {

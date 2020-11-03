@@ -82,9 +82,6 @@ func NewAppCookieStickinessPolicy(ctx *pulumi.Context,
 	if args == nil || args.LoadBalancer == nil {
 		return nil, errors.New("missing required argument 'LoadBalancer'")
 	}
-	if args == nil {
-		args = &AppCookieStickinessPolicyArgs{}
-	}
 	var resource AppCookieStickinessPolicy
 	err := ctx.RegisterResource("aws:elasticloadbalancing/appCookieStickinessPolicy:AppCookieStickinessPolicy", name, args, &resource, opts...)
 	if err != nil {

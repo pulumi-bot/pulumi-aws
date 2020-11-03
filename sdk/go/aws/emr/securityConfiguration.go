@@ -56,9 +56,6 @@ func NewSecurityConfiguration(ctx *pulumi.Context,
 	if args == nil || args.Configuration == nil {
 		return nil, errors.New("missing required argument 'Configuration'")
 	}
-	if args == nil {
-		args = &SecurityConfigurationArgs{}
-	}
 	var resource SecurityConfiguration
 	err := ctx.RegisterResource("aws:emr/securityConfiguration:SecurityConfiguration", name, args, &resource, opts...)
 	if err != nil {

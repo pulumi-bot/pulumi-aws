@@ -55,9 +55,6 @@ func NewAvailabilityZoneGroup(ctx *pulumi.Context,
 	if args == nil || args.OptInStatus == nil {
 		return nil, errors.New("missing required argument 'OptInStatus'")
 	}
-	if args == nil {
-		args = &AvailabilityZoneGroupArgs{}
-	}
 	var resource AvailabilityZoneGroup
 	err := ctx.RegisterResource("aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup", name, args, &resource, opts...)
 	if err != nil {

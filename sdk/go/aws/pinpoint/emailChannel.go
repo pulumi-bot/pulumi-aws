@@ -96,9 +96,6 @@ func NewEmailChannel(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &EmailChannelArgs{}
-	}
 	var resource EmailChannel
 	err := ctx.RegisterResource("aws:pinpoint/emailChannel:EmailChannel", name, args, &resource, opts...)
 	if err != nil {

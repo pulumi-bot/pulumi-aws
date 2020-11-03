@@ -138,9 +138,6 @@ func NewCatalogTable(ctx *pulumi.Context,
 	if args == nil || args.DatabaseName == nil {
 		return nil, errors.New("missing required argument 'DatabaseName'")
 	}
-	if args == nil {
-		args = &CatalogTableArgs{}
-	}
 	var resource CatalogTable
 	err := ctx.RegisterResource("aws:glue/catalogTable:CatalogTable", name, args, &resource, opts...)
 	if err != nil {

@@ -69,9 +69,6 @@ func NewLocalGatewayRouteTableVpcAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &LocalGatewayRouteTableVpcAssociationArgs{}
-	}
 	var resource LocalGatewayRouteTableVpcAssociation
 	err := ctx.RegisterResource("aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation", name, args, &resource, opts...)
 	if err != nil {

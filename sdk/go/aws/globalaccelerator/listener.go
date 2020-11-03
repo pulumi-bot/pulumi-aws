@@ -79,9 +79,6 @@ func NewListener(ctx *pulumi.Context,
 	if args == nil || args.Protocol == nil {
 		return nil, errors.New("missing required argument 'Protocol'")
 	}
-	if args == nil {
-		args = &ListenerArgs{}
-	}
 	var resource Listener
 	err := ctx.RegisterResource("aws:globalaccelerator/listener:Listener", name, args, &resource, opts...)
 	if err != nil {

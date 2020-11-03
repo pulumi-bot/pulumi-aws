@@ -58,9 +58,6 @@ func NewDataCatalogEncryptionSettings(ctx *pulumi.Context,
 	if args == nil || args.DataCatalogEncryptionSettings == nil {
 		return nil, errors.New("missing required argument 'DataCatalogEncryptionSettings'")
 	}
-	if args == nil {
-		args = &DataCatalogEncryptionSettingsArgs{}
-	}
 	var resource DataCatalogEncryptionSettings
 	err := ctx.RegisterResource("aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings", name, args, &resource, opts...)
 	if err != nil {

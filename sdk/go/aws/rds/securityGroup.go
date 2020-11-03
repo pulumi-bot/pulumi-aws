@@ -62,9 +62,6 @@ func NewSecurityGroup(ctx *pulumi.Context,
 	if args == nil || args.Ingress == nil {
 		return nil, errors.New("missing required argument 'Ingress'")
 	}
-	if args == nil {
-		args = &SecurityGroupArgs{}
-	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}

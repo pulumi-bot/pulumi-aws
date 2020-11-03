@@ -77,9 +77,6 @@ func NewGroupMembership(ctx *pulumi.Context,
 	if args == nil || args.Users == nil {
 		return nil, errors.New("missing required argument 'Users'")
 	}
-	if args == nil {
-		args = &GroupMembershipArgs{}
-	}
 	var resource GroupMembership
 	err := ctx.RegisterResource("aws:iam/groupMembership:GroupMembership", name, args, &resource, opts...)
 	if err != nil {

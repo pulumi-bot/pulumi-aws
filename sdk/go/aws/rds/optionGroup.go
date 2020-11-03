@@ -96,9 +96,6 @@ func NewOptionGroup(ctx *pulumi.Context,
 	if args == nil || args.MajorEngineVersion == nil {
 		return nil, errors.New("missing required argument 'MajorEngineVersion'")
 	}
-	if args == nil {
-		args = &OptionGroupArgs{}
-	}
 	if args.OptionGroupDescription == nil {
 		args.OptionGroupDescription = pulumi.StringPtr("Managed by Pulumi")
 	}

@@ -64,9 +64,6 @@ func NewRecorder(ctx *pulumi.Context,
 	if args == nil || args.RoleArn == nil {
 		return nil, errors.New("missing required argument 'RoleArn'")
 	}
-	if args == nil {
-		args = &RecorderArgs{}
-	}
 	var resource Recorder
 	err := ctx.RegisterResource("aws:cfg/recorder:Recorder", name, args, &resource, opts...)
 	if err != nil {

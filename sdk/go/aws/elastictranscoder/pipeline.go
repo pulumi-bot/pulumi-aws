@@ -78,9 +78,6 @@ func NewPipeline(ctx *pulumi.Context,
 	if args == nil || args.Role == nil {
 		return nil, errors.New("missing required argument 'Role'")
 	}
-	if args == nil {
-		args = &PipelineArgs{}
-	}
 	var resource Pipeline
 	err := ctx.RegisterResource("aws:elastictranscoder/pipeline:Pipeline", name, args, &resource, opts...)
 	if err != nil {

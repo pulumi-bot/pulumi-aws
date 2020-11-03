@@ -122,9 +122,6 @@ func NewTopicRule(ctx *pulumi.Context,
 	if args == nil || args.SqlVersion == nil {
 		return nil, errors.New("missing required argument 'SqlVersion'")
 	}
-	if args == nil {
-		args = &TopicRuleArgs{}
-	}
 	var resource TopicRule
 	err := ctx.RegisterResource("aws:iot/topicRule:TopicRule", name, args, &resource, opts...)
 	if err != nil {

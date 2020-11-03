@@ -57,9 +57,6 @@ func NewVpcDhcpOptionsAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &VpcDhcpOptionsAssociationArgs{}
-	}
 	var resource VpcDhcpOptionsAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation", name, args, &resource, opts...)
 	if err != nil {

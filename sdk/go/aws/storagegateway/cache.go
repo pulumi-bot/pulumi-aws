@@ -55,9 +55,6 @@ func NewCache(ctx *pulumi.Context,
 	if args == nil || args.GatewayArn == nil {
 		return nil, errors.New("missing required argument 'GatewayArn'")
 	}
-	if args == nil {
-		args = &CacheArgs{}
-	}
 	var resource Cache
 	err := ctx.RegisterResource("aws:storagegateway/cache:Cache", name, args, &resource, opts...)
 	if err != nil {

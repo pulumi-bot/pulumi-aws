@@ -59,9 +59,6 @@ func NewPermission(ctx *pulumi.Context,
 	if args == nil || args.UserArn == nil {
 		return nil, errors.New("missing required argument 'UserArn'")
 	}
-	if args == nil {
-		args = &PermissionArgs{}
-	}
 	var resource Permission
 	err := ctx.RegisterResource("aws:opsworks/permission:Permission", name, args, &resource, opts...)
 	if err != nil {

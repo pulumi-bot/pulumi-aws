@@ -60,9 +60,6 @@ func NewSnapshotSchedule(ctx *pulumi.Context,
 	if args == nil || args.Definitions == nil {
 		return nil, errors.New("missing required argument 'Definitions'")
 	}
-	if args == nil {
-		args = &SnapshotScheduleArgs{}
-	}
 	var resource SnapshotSchedule
 	err := ctx.RegisterResource("aws:redshift/snapshotSchedule:SnapshotSchedule", name, args, &resource, opts...)
 	if err != nil {

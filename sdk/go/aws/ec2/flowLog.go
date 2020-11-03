@@ -130,9 +130,6 @@ func NewFlowLog(ctx *pulumi.Context,
 	if args == nil || args.TrafficType == nil {
 		return nil, errors.New("missing required argument 'TrafficType'")
 	}
-	if args == nil {
-		args = &FlowLogArgs{}
-	}
 	var resource FlowLog
 	err := ctx.RegisterResource("aws:ec2/flowLog:FlowLog", name, args, &resource, opts...)
 	if err != nil {

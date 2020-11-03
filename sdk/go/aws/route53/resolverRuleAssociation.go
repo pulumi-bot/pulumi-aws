@@ -55,9 +55,6 @@ func NewResolverRuleAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &ResolverRuleAssociationArgs{}
-	}
 	var resource ResolverRuleAssociation
 	err := ctx.RegisterResource("aws:route53/resolverRuleAssociation:ResolverRuleAssociation", name, args, &resource, opts...)
 	if err != nil {

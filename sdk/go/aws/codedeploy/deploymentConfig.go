@@ -148,9 +148,6 @@ func NewDeploymentConfig(ctx *pulumi.Context,
 	if args == nil || args.DeploymentConfigName == nil {
 		return nil, errors.New("missing required argument 'DeploymentConfigName'")
 	}
-	if args == nil {
-		args = &DeploymentConfigArgs{}
-	}
 	var resource DeploymentConfig
 	err := ctx.RegisterResource("aws:codedeploy/deploymentConfig:DeploymentConfig", name, args, &resource, opts...)
 	if err != nil {

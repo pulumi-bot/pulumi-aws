@@ -67,9 +67,6 @@ func NewConnectionAssociation(ctx *pulumi.Context,
 	if args == nil || args.LagId == nil {
 		return nil, errors.New("missing required argument 'LagId'")
 	}
-	if args == nil {
-		args = &ConnectionAssociationArgs{}
-	}
 	var resource ConnectionAssociation
 	err := ctx.RegisterResource("aws:directconnect/connectionAssociation:ConnectionAssociation", name, args, &resource, opts...)
 	if err != nil {

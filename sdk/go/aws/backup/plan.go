@@ -71,9 +71,6 @@ func NewPlan(ctx *pulumi.Context,
 	if args == nil || args.Rules == nil {
 		return nil, errors.New("missing required argument 'Rules'")
 	}
-	if args == nil {
-		args = &PlanArgs{}
-	}
 	var resource Plan
 	err := ctx.RegisterResource("aws:backup/plan:Plan", name, args, &resource, opts...)
 	if err != nil {

@@ -313,9 +313,6 @@ func NewLaunchConfiguration(ctx *pulumi.Context,
 	if args == nil || args.InstanceType == nil {
 		return nil, errors.New("missing required argument 'InstanceType'")
 	}
-	if args == nil {
-		args = &LaunchConfigurationArgs{}
-	}
 	var resource LaunchConfiguration
 	err := ctx.RegisterResource("aws:ec2/launchConfiguration:LaunchConfiguration", name, args, &resource, opts...)
 	if err != nil {

@@ -120,9 +120,6 @@ func NewRole(ctx *pulumi.Context,
 	if args == nil || args.AssumeRolePolicy == nil {
 		return nil, errors.New("missing required argument 'AssumeRolePolicy'")
 	}
-	if args == nil {
-		args = &RoleArgs{}
-	}
 	var resource Role
 	err := ctx.RegisterResource("aws:iam/role:Role", name, args, &resource, opts...)
 	if err != nil {

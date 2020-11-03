@@ -54,9 +54,6 @@ func NewDefaultKmsKey(ctx *pulumi.Context,
 	if args == nil || args.KeyArn == nil {
 		return nil, errors.New("missing required argument 'KeyArn'")
 	}
-	if args == nil {
-		args = &DefaultKmsKeyArgs{}
-	}
 	var resource DefaultKmsKey
 	err := ctx.RegisterResource("aws:ebs/defaultKmsKey:DefaultKmsKey", name, args, &resource, opts...)
 	if err != nil {

@@ -55,9 +55,6 @@ func NewPolicy(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &PolicyArgs{}
-	}
 	var resource Policy
 	err := ctx.RegisterResource("aws:iot/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

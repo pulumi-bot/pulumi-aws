@@ -106,9 +106,6 @@ func NewAmiFromInstance(ctx *pulumi.Context,
 	if args == nil || args.SourceInstanceId == nil {
 		return nil, errors.New("missing required argument 'SourceInstanceId'")
 	}
-	if args == nil {
-		args = &AmiFromInstanceArgs{}
-	}
 	var resource AmiFromInstance
 	err := ctx.RegisterResource("aws:ec2/amiFromInstance:AmiFromInstance", name, args, &resource, opts...)
 	if err != nil {

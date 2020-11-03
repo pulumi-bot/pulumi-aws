@@ -198,9 +198,6 @@ func NewDeploymentGroup(ctx *pulumi.Context,
 	if args == nil || args.ServiceRoleArn == nil {
 		return nil, errors.New("missing required argument 'ServiceRoleArn'")
 	}
-	if args == nil {
-		args = &DeploymentGroupArgs{}
-	}
 	var resource DeploymentGroup
 	err := ctx.RegisterResource("aws:codedeploy/deploymentGroup:DeploymentGroup", name, args, &resource, opts...)
 	if err != nil {

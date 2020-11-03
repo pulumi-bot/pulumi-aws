@@ -181,9 +181,6 @@ func NewBucketNotification(ctx *pulumi.Context,
 	if args == nil || args.Bucket == nil {
 		return nil, errors.New("missing required argument 'Bucket'")
 	}
-	if args == nil {
-		args = &BucketNotificationArgs{}
-	}
 	var resource BucketNotification
 	err := ctx.RegisterResource("aws:s3/bucketNotification:BucketNotification", name, args, &resource, opts...)
 	if err != nil {

@@ -62,9 +62,6 @@ func NewVpcIpv4CidrBlockAssociation(ctx *pulumi.Context,
 	if args == nil || args.VpcId == nil {
 		return nil, errors.New("missing required argument 'VpcId'")
 	}
-	if args == nil {
-		args = &VpcIpv4CidrBlockAssociationArgs{}
-	}
 	var resource VpcIpv4CidrBlockAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation", name, args, &resource, opts...)
 	if err != nil {

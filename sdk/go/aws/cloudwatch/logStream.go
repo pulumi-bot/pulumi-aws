@@ -55,9 +55,6 @@ func NewLogStream(ctx *pulumi.Context,
 	if args == nil || args.LogGroupName == nil {
 		return nil, errors.New("missing required argument 'LogGroupName'")
 	}
-	if args == nil {
-		args = &LogStreamArgs{}
-	}
 	var resource LogStream
 	err := ctx.RegisterResource("aws:cloudwatch/logStream:LogStream", name, args, &resource, opts...)
 	if err != nil {

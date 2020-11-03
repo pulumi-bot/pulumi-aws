@@ -93,9 +93,6 @@ func NewResourceShareAccepter(ctx *pulumi.Context,
 	if args == nil || args.ShareArn == nil {
 		return nil, errors.New("missing required argument 'ShareArn'")
 	}
-	if args == nil {
-		args = &ResourceShareAccepterArgs{}
-	}
 	var resource ResourceShareAccepter
 	err := ctx.RegisterResource("aws:ram/resourceShareAccepter:ResourceShareAccepter", name, args, &resource, opts...)
 	if err != nil {

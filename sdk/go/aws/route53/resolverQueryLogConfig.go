@@ -63,9 +63,6 @@ func NewResolverQueryLogConfig(ctx *pulumi.Context,
 	if args == nil || args.DestinationArn == nil {
 		return nil, errors.New("missing required argument 'DestinationArn'")
 	}
-	if args == nil {
-		args = &ResolverQueryLogConfigArgs{}
-	}
 	var resource ResolverQueryLogConfig
 	err := ctx.RegisterResource("aws:route53/resolverQueryLogConfig:ResolverQueryLogConfig", name, args, &resource, opts...)
 	if err != nil {

@@ -103,9 +103,6 @@ func NewLifecycleHook(ctx *pulumi.Context,
 	if args == nil || args.LifecycleTransition == nil {
 		return nil, errors.New("missing required argument 'LifecycleTransition'")
 	}
-	if args == nil {
-		args = &LifecycleHookArgs{}
-	}
 	var resource LifecycleHook
 	err := ctx.RegisterResource("aws:autoscaling/lifecycleHook:LifecycleHook", name, args, &resource, opts...)
 	if err != nil {

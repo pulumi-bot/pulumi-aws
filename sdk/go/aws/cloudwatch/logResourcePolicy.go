@@ -128,9 +128,6 @@ func NewLogResourcePolicy(ctx *pulumi.Context,
 	if args == nil || args.PolicyName == nil {
 		return nil, errors.New("missing required argument 'PolicyName'")
 	}
-	if args == nil {
-		args = &LogResourcePolicyArgs{}
-	}
 	var resource LogResourcePolicy
 	err := ctx.RegisterResource("aws:cloudwatch/logResourcePolicy:LogResourcePolicy", name, args, &resource, opts...)
 	if err != nil {

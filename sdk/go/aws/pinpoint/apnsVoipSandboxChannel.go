@@ -45,9 +45,6 @@ func NewApnsVoipSandboxChannel(ctx *pulumi.Context,
 	if args == nil || args.ApplicationId == nil {
 		return nil, errors.New("missing required argument 'ApplicationId'")
 	}
-	if args == nil {
-		args = &ApnsVoipSandboxChannelArgs{}
-	}
 	var resource ApnsVoipSandboxChannel
 	err := ctx.RegisterResource("aws:pinpoint/apnsVoipSandboxChannel:ApnsVoipSandboxChannel", name, args, &resource, opts...)
 	if err != nil {

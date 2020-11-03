@@ -115,9 +115,6 @@ func NewVpc(ctx *pulumi.Context,
 	if args == nil || args.CidrBlock == nil {
 		return nil, errors.New("missing required argument 'CidrBlock'")
 	}
-	if args == nil {
-		args = &VpcArgs{}
-	}
 	var resource Vpc
 	err := ctx.RegisterResource("aws:ec2/vpc:Vpc", name, args, &resource, opts...)
 	if err != nil {

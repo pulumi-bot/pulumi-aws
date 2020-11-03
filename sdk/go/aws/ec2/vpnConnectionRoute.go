@@ -82,9 +82,6 @@ func NewVpnConnectionRoute(ctx *pulumi.Context,
 	if args == nil || args.VpnConnectionId == nil {
 		return nil, errors.New("missing required argument 'VpnConnectionId'")
 	}
-	if args == nil {
-		args = &VpnConnectionRouteArgs{}
-	}
 	var resource VpnConnectionRoute
 	err := ctx.RegisterResource("aws:ec2/vpnConnectionRoute:VpnConnectionRoute", name, args, &resource, opts...)
 	if err != nil {

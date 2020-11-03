@@ -83,9 +83,6 @@ func NewStaticWebLayer(ctx *pulumi.Context,
 	if args == nil || args.StackId == nil {
 		return nil, errors.New("missing required argument 'StackId'")
 	}
-	if args == nil {
-		args = &StaticWebLayerArgs{}
-	}
 	var resource StaticWebLayer
 	err := ctx.RegisterResource("aws:opsworks/staticWebLayer:StaticWebLayer", name, args, &resource, opts...)
 	if err != nil {

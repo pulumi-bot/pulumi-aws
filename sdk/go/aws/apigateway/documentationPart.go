@@ -67,9 +67,6 @@ func NewDocumentationPart(ctx *pulumi.Context,
 	if args == nil || args.RestApiId == nil {
 		return nil, errors.New("missing required argument 'RestApiId'")
 	}
-	if args == nil {
-		args = &DocumentationPartArgs{}
-	}
 	var resource DocumentationPart
 	err := ctx.RegisterResource("aws:apigateway/documentationPart:DocumentationPart", name, args, &resource, opts...)
 	if err != nil {

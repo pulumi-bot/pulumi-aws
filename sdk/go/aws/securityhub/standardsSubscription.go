@@ -61,9 +61,6 @@ func NewStandardsSubscription(ctx *pulumi.Context,
 	if args == nil || args.StandardsArn == nil {
 		return nil, errors.New("missing required argument 'StandardsArn'")
 	}
-	if args == nil {
-		args = &StandardsSubscriptionArgs{}
-	}
 	var resource StandardsSubscription
 	err := ctx.RegisterResource("aws:securityhub/standardsSubscription:StandardsSubscription", name, args, &resource, opts...)
 	if err != nil {

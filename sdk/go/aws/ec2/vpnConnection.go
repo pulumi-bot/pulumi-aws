@@ -162,9 +162,6 @@ func NewVpnConnection(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &VpnConnectionArgs{}
-	}
 	var resource VpnConnection
 	err := ctx.RegisterResource("aws:ec2/vpnConnection:VpnConnection", name, args, &resource, opts...)
 	if err != nil {

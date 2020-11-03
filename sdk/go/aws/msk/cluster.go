@@ -223,9 +223,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.NumberOfBrokerNodes == nil {
 		return nil, errors.New("missing required argument 'NumberOfBrokerNodes'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("aws:msk/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

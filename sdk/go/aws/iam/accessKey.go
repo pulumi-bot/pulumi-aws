@@ -114,9 +114,6 @@ func NewAccessKey(ctx *pulumi.Context,
 	if args == nil || args.User == nil {
 		return nil, errors.New("missing required argument 'User'")
 	}
-	if args == nil {
-		args = &AccessKeyArgs{}
-	}
 	var resource AccessKey
 	err := ctx.RegisterResource("aws:iam/accessKey:AccessKey", name, args, &resource, opts...)
 	if err != nil {

@@ -93,9 +93,6 @@ func NewVolumeAttachment(ctx *pulumi.Context,
 	if args == nil || args.VolumeId == nil {
 		return nil, errors.New("missing required argument 'VolumeId'")
 	}
-	if args == nil {
-		args = &VolumeAttachmentArgs{}
-	}
 	var resource VolumeAttachment
 	err := ctx.RegisterResource("aws:ec2/volumeAttachment:VolumeAttachment", name, args, &resource, opts...)
 	if err != nil {

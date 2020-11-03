@@ -81,9 +81,6 @@ func NewHostedPublicVirtualInterfaceAccepter(ctx *pulumi.Context,
 	if args == nil || args.VirtualInterfaceId == nil {
 		return nil, errors.New("missing required argument 'VirtualInterfaceId'")
 	}
-	if args == nil {
-		args = &HostedPublicVirtualInterfaceAccepterArgs{}
-	}
 	var resource HostedPublicVirtualInterfaceAccepter
 	err := ctx.RegisterResource("aws:directconnect/hostedPublicVirtualInterfaceAccepter:HostedPublicVirtualInterfaceAccepter", name, args, &resource, opts...)
 	if err != nil {

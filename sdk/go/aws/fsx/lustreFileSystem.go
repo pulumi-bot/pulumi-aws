@@ -100,9 +100,6 @@ func NewLustreFileSystem(ctx *pulumi.Context,
 	if args == nil || args.SubnetIds == nil {
 		return nil, errors.New("missing required argument 'SubnetIds'")
 	}
-	if args == nil {
-		args = &LustreFileSystemArgs{}
-	}
 	var resource LustreFileSystem
 	err := ctx.RegisterResource("aws:fsx/lustreFileSystem:LustreFileSystem", name, args, &resource, opts...)
 	if err != nil {

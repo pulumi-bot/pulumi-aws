@@ -62,9 +62,6 @@ func NewConditionalForwader(ctx *pulumi.Context,
 	if args == nil || args.RemoteDomainName == nil {
 		return nil, errors.New("missing required argument 'RemoteDomainName'")
 	}
-	if args == nil {
-		args = &ConditionalForwaderArgs{}
-	}
 	var resource ConditionalForwader
 	err := ctx.RegisterResource("aws:directoryservice/conditionalForwader:ConditionalForwader", name, args, &resource, opts...)
 	if err != nil {

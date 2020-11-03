@@ -163,9 +163,6 @@ func NewListenerPolicy(ctx *pulumi.Context,
 	if args == nil || args.LoadBalancerPort == nil {
 		return nil, errors.New("missing required argument 'LoadBalancerPort'")
 	}
-	if args == nil {
-		args = &ListenerPolicyArgs{}
-	}
 	var resource ListenerPolicy
 	err := ctx.RegisterResource("aws:elasticloadbalancing/listenerPolicy:ListenerPolicy", name, args, &resource, opts...)
 	if err != nil {

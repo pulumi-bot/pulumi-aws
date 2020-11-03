@@ -90,9 +90,6 @@ func NewRoute(ctx *pulumi.Context,
 	if args == nil || args.TargetVpcSubnetId == nil {
 		return nil, errors.New("missing required argument 'TargetVpcSubnetId'")
 	}
-	if args == nil {
-		args = &RouteArgs{}
-	}
 	var resource Route
 	err := ctx.RegisterResource("aws:ec2clientvpn/route:Route", name, args, &resource, opts...)
 	if err != nil {

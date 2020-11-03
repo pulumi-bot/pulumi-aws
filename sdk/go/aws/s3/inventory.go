@@ -134,9 +134,6 @@ func NewInventory(ctx *pulumi.Context,
 	if args == nil || args.Schedule == nil {
 		return nil, errors.New("missing required argument 'Schedule'")
 	}
-	if args == nil {
-		args = &InventoryArgs{}
-	}
 	var resource Inventory
 	err := ctx.RegisterResource("aws:s3/inventory:Inventory", name, args, &resource, opts...)
 	if err != nil {

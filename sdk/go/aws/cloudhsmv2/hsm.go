@@ -68,9 +68,6 @@ func NewHsm(ctx *pulumi.Context,
 	if args == nil || args.ClusterId == nil {
 		return nil, errors.New("missing required argument 'ClusterId'")
 	}
-	if args == nil {
-		args = &HsmArgs{}
-	}
 	var resource Hsm
 	err := ctx.RegisterResource("aws:cloudhsmv2/hsm:Hsm", name, args, &resource, opts...)
 	if err != nil {

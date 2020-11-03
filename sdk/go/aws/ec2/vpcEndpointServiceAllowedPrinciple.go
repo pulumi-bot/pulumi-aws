@@ -66,9 +66,6 @@ func NewVpcEndpointServiceAllowedPrinciple(ctx *pulumi.Context,
 	if args == nil || args.VpcEndpointServiceId == nil {
 		return nil, errors.New("missing required argument 'VpcEndpointServiceId'")
 	}
-	if args == nil {
-		args = &VpcEndpointServiceAllowedPrincipleArgs{}
-	}
 	var resource VpcEndpointServiceAllowedPrinciple
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple", name, args, &resource, opts...)
 	if err != nil {

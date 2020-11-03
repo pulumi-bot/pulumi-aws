@@ -227,9 +227,6 @@ func NewBudget(ctx *pulumi.Context,
 	if args == nil || args.TimeUnit == nil {
 		return nil, errors.New("missing required argument 'TimeUnit'")
 	}
-	if args == nil {
-		args = &BudgetArgs{}
-	}
 	var resource Budget
 	err := ctx.RegisterResource("aws:budgets/budget:Budget", name, args, &resource, opts...)
 	if err != nil {

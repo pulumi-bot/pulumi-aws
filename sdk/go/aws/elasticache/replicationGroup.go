@@ -221,9 +221,6 @@ func NewReplicationGroup(ctx *pulumi.Context,
 	if args == nil || args.ReplicationGroupDescription == nil {
 		return nil, errors.New("missing required argument 'ReplicationGroupDescription'")
 	}
-	if args == nil {
-		args = &ReplicationGroupArgs{}
-	}
 	var resource ReplicationGroup
 	err := ctx.RegisterResource("aws:elasticache/replicationGroup:ReplicationGroup", name, args, &resource, opts...)
 	if err != nil {

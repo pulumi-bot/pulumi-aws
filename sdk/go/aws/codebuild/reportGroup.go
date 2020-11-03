@@ -86,9 +86,6 @@ func NewReportGroup(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &ReportGroupArgs{}
-	}
 	var resource ReportGroup
 	err := ctx.RegisterResource("aws:codebuild/reportGroup:ReportGroup", name, args, &resource, opts...)
 	if err != nil {

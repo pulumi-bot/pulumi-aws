@@ -104,9 +104,6 @@ func NewAnalyticsConfiguration(ctx *pulumi.Context,
 	if args == nil || args.Bucket == nil {
 		return nil, errors.New("missing required argument 'Bucket'")
 	}
-	if args == nil {
-		args = &AnalyticsConfigurationArgs{}
-	}
 	var resource AnalyticsConfiguration
 	err := ctx.RegisterResource("aws:s3/analyticsConfiguration:AnalyticsConfiguration", name, args, &resource, opts...)
 	if err != nil {

@@ -57,9 +57,6 @@ func NewReceiptFilter(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &ReceiptFilterArgs{}
-	}
 	var resource ReceiptFilter
 	err := ctx.RegisterResource("aws:ses/receiptFilter:ReceiptFilter", name, args, &resource, opts...)
 	if err != nil {

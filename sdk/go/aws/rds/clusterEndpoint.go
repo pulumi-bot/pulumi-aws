@@ -135,9 +135,6 @@ func NewClusterEndpoint(ctx *pulumi.Context,
 	if args == nil || args.CustomEndpointType == nil {
 		return nil, errors.New("missing required argument 'CustomEndpointType'")
 	}
-	if args == nil {
-		args = &ClusterEndpointArgs{}
-	}
 	var resource ClusterEndpoint
 	err := ctx.RegisterResource("aws:rds/clusterEndpoint:ClusterEndpoint", name, args, &resource, opts...)
 	if err != nil {

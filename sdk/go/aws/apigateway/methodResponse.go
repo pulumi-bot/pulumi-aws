@@ -103,9 +103,6 @@ func NewMethodResponse(ctx *pulumi.Context,
 	if args == nil || args.StatusCode == nil {
 		return nil, errors.New("missing required argument 'StatusCode'")
 	}
-	if args == nil {
-		args = &MethodResponseArgs{}
-	}
 	var resource MethodResponse
 	err := ctx.RegisterResource("aws:apigateway/methodResponse:MethodResponse", name, args, &resource, opts...)
 	if err != nil {

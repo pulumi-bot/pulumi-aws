@@ -101,9 +101,6 @@ func NewOrganizationCustomRule(ctx *pulumi.Context,
 	if args == nil || args.TriggerTypes == nil {
 		return nil, errors.New("missing required argument 'TriggerTypes'")
 	}
-	if args == nil {
-		args = &OrganizationCustomRuleArgs{}
-	}
 	var resource OrganizationCustomRule
 	err := ctx.RegisterResource("aws:cfg/organizationCustomRule:OrganizationCustomRule", name, args, &resource, opts...)
 	if err != nil {

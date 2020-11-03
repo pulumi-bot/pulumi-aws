@@ -123,9 +123,6 @@ func NewMaintenanceWindowTarget(ctx *pulumi.Context,
 	if args == nil || args.WindowId == nil {
 		return nil, errors.New("missing required argument 'WindowId'")
 	}
-	if args == nil {
-		args = &MaintenanceWindowTargetArgs{}
-	}
 	var resource MaintenanceWindowTarget
 	err := ctx.RegisterResource("aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget", name, args, &resource, opts...)
 	if err != nil {

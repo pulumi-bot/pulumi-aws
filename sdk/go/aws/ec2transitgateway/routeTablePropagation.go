@@ -57,9 +57,6 @@ func NewRouteTablePropagation(ctx *pulumi.Context,
 	if args == nil || args.TransitGatewayRouteTableId == nil {
 		return nil, errors.New("missing required argument 'TransitGatewayRouteTableId'")
 	}
-	if args == nil {
-		args = &RouteTablePropagationArgs{}
-	}
 	var resource RouteTablePropagation
 	err := ctx.RegisterResource("aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation", name, args, &resource, opts...)
 	if err != nil {

@@ -134,9 +134,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.NodeType == nil {
 		return nil, errors.New("missing required argument 'NodeType'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("aws:redshift/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

@@ -75,9 +75,6 @@ func NewBucketPolicy(ctx *pulumi.Context,
 	if args == nil || args.Policy == nil {
 		return nil, errors.New("missing required argument 'Policy'")
 	}
-	if args == nil {
-		args = &BucketPolicyArgs{}
-	}
 	var resource BucketPolicy
 	err := ctx.RegisterResource("aws:s3control/bucketPolicy:BucketPolicy", name, args, &resource, opts...)
 	if err != nil {

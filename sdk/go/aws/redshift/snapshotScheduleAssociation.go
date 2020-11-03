@@ -71,9 +71,6 @@ func NewSnapshotScheduleAssociation(ctx *pulumi.Context,
 	if args == nil || args.ScheduleIdentifier == nil {
 		return nil, errors.New("missing required argument 'ScheduleIdentifier'")
 	}
-	if args == nil {
-		args = &SnapshotScheduleAssociationArgs{}
-	}
 	var resource SnapshotScheduleAssociation
 	err := ctx.RegisterResource("aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation", name, args, &resource, opts...)
 	if err != nil {

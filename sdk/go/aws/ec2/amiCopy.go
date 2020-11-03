@@ -113,9 +113,6 @@ func NewAmiCopy(ctx *pulumi.Context,
 	if args == nil || args.SourceAmiRegion == nil {
 		return nil, errors.New("missing required argument 'SourceAmiRegion'")
 	}
-	if args == nil {
-		args = &AmiCopyArgs{}
-	}
 	var resource AmiCopy
 	err := ctx.RegisterResource("aws:ec2/amiCopy:AmiCopy", name, args, &resource, opts...)
 	if err != nil {

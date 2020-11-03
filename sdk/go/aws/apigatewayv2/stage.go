@@ -80,9 +80,6 @@ func NewStage(ctx *pulumi.Context,
 	if args == nil || args.ApiId == nil {
 		return nil, errors.New("missing required argument 'ApiId'")
 	}
-	if args == nil {
-		args = &StageArgs{}
-	}
 	var resource Stage
 	err := ctx.RegisterResource("aws:apigatewayv2/stage:Stage", name, args, &resource, opts...)
 	if err != nil {

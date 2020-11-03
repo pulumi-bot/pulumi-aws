@@ -89,9 +89,6 @@ func NewBucketMetric(ctx *pulumi.Context,
 	if args == nil || args.Bucket == nil {
 		return nil, errors.New("missing required argument 'Bucket'")
 	}
-	if args == nil {
-		args = &BucketMetricArgs{}
-	}
 	var resource BucketMetric
 	err := ctx.RegisterResource("aws:s3/bucketMetric:BucketMetric", name, args, &resource, opts...)
 	if err != nil {

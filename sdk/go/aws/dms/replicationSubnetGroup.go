@@ -69,9 +69,6 @@ func NewReplicationSubnetGroup(ctx *pulumi.Context,
 	if args == nil || args.SubnetIds == nil {
 		return nil, errors.New("missing required argument 'SubnetIds'")
 	}
-	if args == nil {
-		args = &ReplicationSubnetGroupArgs{}
-	}
 	var resource ReplicationSubnetGroup
 	err := ctx.RegisterResource("aws:dms/replicationSubnetGroup:ReplicationSubnetGroup", name, args, &resource, opts...)
 	if err != nil {

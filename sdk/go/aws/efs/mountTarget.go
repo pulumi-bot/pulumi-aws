@@ -88,9 +88,6 @@ func NewMountTarget(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &MountTargetArgs{}
-	}
 	var resource MountTarget
 	err := ctx.RegisterResource("aws:efs/mountTarget:MountTarget", name, args, &resource, opts...)
 	if err != nil {

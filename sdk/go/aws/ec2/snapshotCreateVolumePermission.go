@@ -67,9 +67,6 @@ func NewSnapshotCreateVolumePermission(ctx *pulumi.Context,
 	if args == nil || args.SnapshotId == nil {
 		return nil, errors.New("missing required argument 'SnapshotId'")
 	}
-	if args == nil {
-		args = &SnapshotCreateVolumePermissionArgs{}
-	}
 	var resource SnapshotCreateVolumePermission
 	err := ctx.RegisterResource("aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission", name, args, &resource, opts...)
 	if err != nil {

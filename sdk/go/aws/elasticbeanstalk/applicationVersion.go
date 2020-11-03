@@ -100,9 +100,6 @@ func NewApplicationVersion(ctx *pulumi.Context,
 	if args == nil || args.Key == nil {
 		return nil, errors.New("missing required argument 'Key'")
 	}
-	if args == nil {
-		args = &ApplicationVersionArgs{}
-	}
 	var resource ApplicationVersion
 	err := ctx.RegisterResource("aws:elasticbeanstalk/applicationVersion:ApplicationVersion", name, args, &resource, opts...)
 	if err != nil {

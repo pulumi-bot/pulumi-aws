@@ -110,9 +110,6 @@ func NewAccessPoint(ctx *pulumi.Context,
 	if args == nil || args.Bucket == nil {
 		return nil, errors.New("missing required argument 'Bucket'")
 	}
-	if args == nil {
-		args = &AccessPointArgs{}
-	}
 	var resource AccessPoint
 	err := ctx.RegisterResource("aws:s3/accessPoint:AccessPoint", name, args, &resource, opts...)
 	if err != nil {

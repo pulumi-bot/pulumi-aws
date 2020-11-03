@@ -78,9 +78,6 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args == nil || args.VolumeId == nil {
 		return nil, errors.New("missing required argument 'VolumeId'")
 	}
-	if args == nil {
-		args = &SnapshotArgs{}
-	}
 	var resource Snapshot
 	err := ctx.RegisterResource("aws:ebs/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {

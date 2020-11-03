@@ -68,9 +68,6 @@ func NewJobDefinition(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &JobDefinitionArgs{}
-	}
 	var resource JobDefinition
 	err := ctx.RegisterResource("aws:batch/jobDefinition:JobDefinition", name, args, &resource, opts...)
 	if err != nil {

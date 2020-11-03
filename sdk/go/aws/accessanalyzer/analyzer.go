@@ -87,9 +87,6 @@ func NewAnalyzer(ctx *pulumi.Context,
 	if args == nil || args.AnalyzerName == nil {
 		return nil, errors.New("missing required argument 'AnalyzerName'")
 	}
-	if args == nil {
-		args = &AnalyzerArgs{}
-	}
 	var resource Analyzer
 	err := ctx.RegisterResource("aws:accessanalyzer/analyzer:Analyzer", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewTrigger(ctx *pulumi.Context,
 	if args == nil || args.Triggers == nil {
 		return nil, errors.New("missing required argument 'Triggers'")
 	}
-	if args == nil {
-		args = &TriggerArgs{}
-	}
 	var resource Trigger
 	err := ctx.RegisterResource("aws:codecommit/trigger:Trigger", name, args, &resource, opts...)
 	if err != nil {

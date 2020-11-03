@@ -59,9 +59,6 @@ func NewAlias(ctx *pulumi.Context,
 	if args == nil || args.RoutingStrategy == nil {
 		return nil, errors.New("missing required argument 'RoutingStrategy'")
 	}
-	if args == nil {
-		args = &AliasArgs{}
-	}
 	var resource Alias
 	err := ctx.RegisterResource("aws:gamelift/alias:Alias", name, args, &resource, opts...)
 	if err != nil {

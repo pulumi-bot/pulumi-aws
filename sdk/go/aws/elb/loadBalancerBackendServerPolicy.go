@@ -31,9 +31,6 @@ func NewLoadBalancerBackendServerPolicy(ctx *pulumi.Context,
 	if args == nil || args.LoadBalancerName == nil {
 		return nil, errors.New("missing required argument 'LoadBalancerName'")
 	}
-	if args == nil {
-		args = &LoadBalancerBackendServerPolicyArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("aws:elasticloadbalancing/loadBalancerBackendServerPolicy:LoadBalancerBackendServerPolicy"),

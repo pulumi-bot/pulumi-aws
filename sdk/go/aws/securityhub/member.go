@@ -66,9 +66,6 @@ func NewMember(ctx *pulumi.Context,
 	if args == nil || args.Email == nil {
 		return nil, errors.New("missing required argument 'Email'")
 	}
-	if args == nil {
-		args = &MemberArgs{}
-	}
 	var resource Member
 	err := ctx.RegisterResource("aws:securityhub/member:Member", name, args, &resource, opts...)
 	if err != nil {

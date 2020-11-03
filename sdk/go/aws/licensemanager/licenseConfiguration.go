@@ -81,9 +81,6 @@ func NewLicenseConfiguration(ctx *pulumi.Context,
 	if args == nil || args.LicenseCountingType == nil {
 		return nil, errors.New("missing required argument 'LicenseCountingType'")
 	}
-	if args == nil {
-		args = &LicenseConfigurationArgs{}
-	}
 	var resource LicenseConfiguration
 	err := ctx.RegisterResource("aws:licensemanager/licenseConfiguration:LicenseConfiguration", name, args, &resource, opts...)
 	if err != nil {

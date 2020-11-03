@@ -71,9 +71,6 @@ func NewCiphertext(ctx *pulumi.Context,
 	if args == nil || args.Plaintext == nil {
 		return nil, errors.New("missing required argument 'Plaintext'")
 	}
-	if args == nil {
-		args = &CiphertextArgs{}
-	}
 	var resource Ciphertext
 	err := ctx.RegisterResource("aws:kms/ciphertext:Ciphertext", name, args, &resource, opts...)
 	if err != nil {

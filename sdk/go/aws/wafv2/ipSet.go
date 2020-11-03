@@ -73,9 +73,6 @@ func NewIpSet(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &IpSetArgs{}
-	}
 	var resource IpSet
 	err := ctx.RegisterResource("aws:wafv2/ipSet:IpSet", name, args, &resource, opts...)
 	if err != nil {

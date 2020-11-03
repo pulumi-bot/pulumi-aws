@@ -150,9 +150,6 @@ func NewPublishingDestination(ctx *pulumi.Context,
 	if args == nil || args.KmsKeyArn == nil {
 		return nil, errors.New("missing required argument 'KmsKeyArn'")
 	}
-	if args == nil {
-		args = &PublishingDestinationArgs{}
-	}
 	var resource PublishingDestination
 	err := ctx.RegisterResource("aws:guardduty/publishingDestination:PublishingDestination", name, args, &resource, opts...)
 	if err != nil {

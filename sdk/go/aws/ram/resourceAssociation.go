@@ -55,9 +55,6 @@ func NewResourceAssociation(ctx *pulumi.Context,
 	if args == nil || args.ResourceShareArn == nil {
 		return nil, errors.New("missing required argument 'ResourceShareArn'")
 	}
-	if args == nil {
-		args = &ResourceAssociationArgs{}
-	}
 	var resource ResourceAssociation
 	err := ctx.RegisterResource("aws:ram/resourceAssociation:ResourceAssociation", name, args, &resource, opts...)
 	if err != nil {

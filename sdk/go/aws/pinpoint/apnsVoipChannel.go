@@ -45,9 +45,6 @@ func NewApnsVoipChannel(ctx *pulumi.Context,
 	if args == nil || args.ApplicationId == nil {
 		return nil, errors.New("missing required argument 'ApplicationId'")
 	}
-	if args == nil {
-		args = &ApnsVoipChannelArgs{}
-	}
 	var resource ApnsVoipChannel
 	err := ctx.RegisterResource("aws:pinpoint/apnsVoipChannel:ApnsVoipChannel", name, args, &resource, opts...)
 	if err != nil {

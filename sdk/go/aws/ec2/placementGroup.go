@@ -56,9 +56,6 @@ func NewPlacementGroup(ctx *pulumi.Context,
 	if args == nil || args.Strategy == nil {
 		return nil, errors.New("missing required argument 'Strategy'")
 	}
-	if args == nil {
-		args = &PlacementGroupArgs{}
-	}
 	var resource PlacementGroup
 	err := ctx.RegisterResource("aws:ec2/placementGroup:PlacementGroup", name, args, &resource, opts...)
 	if err != nil {

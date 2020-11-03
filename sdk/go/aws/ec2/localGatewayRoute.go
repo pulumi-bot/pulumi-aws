@@ -59,9 +59,6 @@ func NewLocalGatewayRoute(ctx *pulumi.Context,
 	if args == nil || args.LocalGatewayVirtualInterfaceGroupId == nil {
 		return nil, errors.New("missing required argument 'LocalGatewayVirtualInterfaceGroupId'")
 	}
-	if args == nil {
-		args = &LocalGatewayRouteArgs{}
-	}
 	var resource LocalGatewayRoute
 	err := ctx.RegisterResource("aws:ec2/localGatewayRoute:LocalGatewayRoute", name, args, &resource, opts...)
 	if err != nil {

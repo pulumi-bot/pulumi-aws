@@ -32,9 +32,6 @@ func NewProxyDefaultTargetGroup(ctx *pulumi.Context,
 	if args == nil || args.DbProxyName == nil {
 		return nil, errors.New("missing required argument 'DbProxyName'")
 	}
-	if args == nil {
-		args = &ProxyDefaultTargetGroupArgs{}
-	}
 	var resource ProxyDefaultTargetGroup
 	err := ctx.RegisterResource("aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup", name, args, &resource, opts...)
 	if err != nil {

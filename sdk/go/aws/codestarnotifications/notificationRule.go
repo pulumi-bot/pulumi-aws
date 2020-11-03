@@ -99,9 +99,6 @@ func NewNotificationRule(ctx *pulumi.Context,
 	if args == nil || args.Resource == nil {
 		return nil, errors.New("missing required argument 'Resource'")
 	}
-	if args == nil {
-		args = &NotificationRuleArgs{}
-	}
 	var resource NotificationRule
 	err := ctx.RegisterResource("aws:codestarnotifications/notificationRule:NotificationRule", name, args, &resource, opts...)
 	if err != nil {

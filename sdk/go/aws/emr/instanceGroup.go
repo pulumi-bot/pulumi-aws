@@ -75,9 +75,6 @@ func NewInstanceGroup(ctx *pulumi.Context,
 	if args == nil || args.InstanceType == nil {
 		return nil, errors.New("missing required argument 'InstanceType'")
 	}
-	if args == nil {
-		args = &InstanceGroupArgs{}
-	}
 	var resource InstanceGroup
 	err := ctx.RegisterResource("aws:emr/instanceGroup:InstanceGroup", name, args, &resource, opts...)
 	if err != nil {

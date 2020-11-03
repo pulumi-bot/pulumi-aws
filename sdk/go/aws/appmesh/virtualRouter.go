@@ -86,9 +86,6 @@ func NewVirtualRouter(ctx *pulumi.Context,
 	if args == nil || args.Spec == nil {
 		return nil, errors.New("missing required argument 'Spec'")
 	}
-	if args == nil {
-		args = &VirtualRouterArgs{}
-	}
 	var resource VirtualRouter
 	err := ctx.RegisterResource("aws:appmesh/virtualRouter:VirtualRouter", name, args, &resource, opts...)
 	if err != nil {

@@ -61,9 +61,6 @@ func NewS3BucketAssociation(ctx *pulumi.Context,
 	if args == nil || args.BucketName == nil {
 		return nil, errors.New("missing required argument 'BucketName'")
 	}
-	if args == nil {
-		args = &S3BucketAssociationArgs{}
-	}
 	var resource S3BucketAssociation
 	err := ctx.RegisterResource("aws:macie/s3BucketAssociation:S3BucketAssociation", name, args, &resource, opts...)
 	if err != nil {

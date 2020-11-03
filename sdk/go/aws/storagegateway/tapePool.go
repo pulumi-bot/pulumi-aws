@@ -61,9 +61,6 @@ func NewTapePool(ctx *pulumi.Context,
 	if args == nil || args.StorageClass == nil {
 		return nil, errors.New("missing required argument 'StorageClass'")
 	}
-	if args == nil {
-		args = &TapePoolArgs{}
-	}
 	var resource TapePool
 	err := ctx.RegisterResource("aws:storagegateway/tapePool:TapePool", name, args, &resource, opts...)
 	if err != nil {

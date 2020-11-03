@@ -77,9 +77,6 @@ func NewDomainPermissions(ctx *pulumi.Context,
 	if args == nil || args.PolicyDocument == nil {
 		return nil, errors.New("missing required argument 'PolicyDocument'")
 	}
-	if args == nil {
-		args = &DomainPermissionsArgs{}
-	}
 	var resource DomainPermissions
 	err := ctx.RegisterResource("aws:codeartifact/domainPermissions:DomainPermissions", name, args, &resource, opts...)
 	if err != nil {

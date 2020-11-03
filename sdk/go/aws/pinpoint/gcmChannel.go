@@ -61,9 +61,6 @@ func NewGcmChannel(ctx *pulumi.Context,
 	if args == nil || args.ApplicationId == nil {
 		return nil, errors.New("missing required argument 'ApplicationId'")
 	}
-	if args == nil {
-		args = &GcmChannelArgs{}
-	}
 	var resource GcmChannel
 	err := ctx.RegisterResource("aws:pinpoint/gcmChannel:GcmChannel", name, args, &resource, opts...)
 	if err != nil {

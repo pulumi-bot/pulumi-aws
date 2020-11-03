@@ -35,9 +35,6 @@ func NewInstanceFleet(ctx *pulumi.Context,
 	if args == nil || args.ClusterId == nil {
 		return nil, errors.New("missing required argument 'ClusterId'")
 	}
-	if args == nil {
-		args = &InstanceFleetArgs{}
-	}
 	var resource InstanceFleet
 	err := ctx.RegisterResource("aws:emr/instanceFleet:InstanceFleet", name, args, &resource, opts...)
 	if err != nil {

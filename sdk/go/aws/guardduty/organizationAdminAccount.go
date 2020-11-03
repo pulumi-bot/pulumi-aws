@@ -63,9 +63,6 @@ func NewOrganizationAdminAccount(ctx *pulumi.Context,
 	if args == nil || args.AdminAccountId == nil {
 		return nil, errors.New("missing required argument 'AdminAccountId'")
 	}
-	if args == nil {
-		args = &OrganizationAdminAccountArgs{}
-	}
 	var resource OrganizationAdminAccount
 	err := ctx.RegisterResource("aws:guardduty/organizationAdminAccount:OrganizationAdminAccount", name, args, &resource, opts...)
 	if err != nil {

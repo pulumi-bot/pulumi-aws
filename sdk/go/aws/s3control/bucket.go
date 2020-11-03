@@ -63,9 +63,6 @@ func NewBucket(ctx *pulumi.Context,
 	if args == nil || args.OutpostId == nil {
 		return nil, errors.New("missing required argument 'OutpostId'")
 	}
-	if args == nil {
-		args = &BucketArgs{}
-	}
 	var resource Bucket
 	err := ctx.RegisterResource("aws:s3control/bucket:Bucket", name, args, &resource, opts...)
 	if err != nil {

@@ -103,9 +103,6 @@ func NewVirtualService(ctx *pulumi.Context,
 	if args == nil || args.Spec == nil {
 		return nil, errors.New("missing required argument 'Spec'")
 	}
-	if args == nil {
-		args = &VirtualServiceArgs{}
-	}
 	var resource VirtualService
 	err := ctx.RegisterResource("aws:appmesh/virtualService:VirtualService", name, args, &resource, opts...)
 	if err != nil {

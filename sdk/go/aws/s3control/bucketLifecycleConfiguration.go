@@ -28,9 +28,6 @@ func NewBucketLifecycleConfiguration(ctx *pulumi.Context,
 	if args == nil || args.Rules == nil {
 		return nil, errors.New("missing required argument 'Rules'")
 	}
-	if args == nil {
-		args = &BucketLifecycleConfigurationArgs{}
-	}
 	var resource BucketLifecycleConfiguration
 	err := ctx.RegisterResource("aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration", name, args, &resource, opts...)
 	if err != nil {

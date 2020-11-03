@@ -58,9 +58,6 @@ func NewSpotDatafeedSubscription(ctx *pulumi.Context,
 	if args == nil || args.Bucket == nil {
 		return nil, errors.New("missing required argument 'Bucket'")
 	}
-	if args == nil {
-		args = &SpotDatafeedSubscriptionArgs{}
-	}
 	var resource SpotDatafeedSubscription
 	err := ctx.RegisterResource("aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription", name, args, &resource, opts...)
 	if err != nil {

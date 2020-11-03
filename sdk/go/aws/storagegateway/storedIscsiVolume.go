@@ -129,9 +129,6 @@ func NewStoredIscsiVolume(ctx *pulumi.Context,
 	if args == nil || args.TargetName == nil {
 		return nil, errors.New("missing required argument 'TargetName'")
 	}
-	if args == nil {
-		args = &StoredIscsiVolumeArgs{}
-	}
 	var resource StoredIscsiVolume
 	err := ctx.RegisterResource("aws:storagegateway/storedIscsiVolume:StoredIscsiVolume", name, args, &resource, opts...)
 	if err != nil {

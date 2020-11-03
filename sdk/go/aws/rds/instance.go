@@ -298,9 +298,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil || args.InstanceClass == nil {
 		return nil, errors.New("missing required argument 'InstanceClass'")
 	}
-	if args == nil {
-		args = &InstanceArgs{}
-	}
 	var resource Instance
 	err := ctx.RegisterResource("aws:rds/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

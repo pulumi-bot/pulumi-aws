@@ -68,9 +68,6 @@ func NewAdmChannel(ctx *pulumi.Context,
 	if args == nil || args.ClientSecret == nil {
 		return nil, errors.New("missing required argument 'ClientSecret'")
 	}
-	if args == nil {
-		args = &AdmChannelArgs{}
-	}
 	var resource AdmChannel
 	err := ctx.RegisterResource("aws:pinpoint/admChannel:AdmChannel", name, args, &resource, opts...)
 	if err != nil {

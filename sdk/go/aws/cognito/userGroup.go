@@ -71,9 +71,6 @@ func NewUserGroup(ctx *pulumi.Context,
 	if args == nil || args.UserPoolId == nil {
 		return nil, errors.New("missing required argument 'UserPoolId'")
 	}
-	if args == nil {
-		args = &UserGroupArgs{}
-	}
 	var resource UserGroup
 	err := ctx.RegisterResource("aws:cognito/userGroup:UserGroup", name, args, &resource, opts...)
 	if err != nil {

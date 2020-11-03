@@ -62,9 +62,6 @@ func NewProductSubscription(ctx *pulumi.Context,
 	if args == nil || args.ProductArn == nil {
 		return nil, errors.New("missing required argument 'ProductArn'")
 	}
-	if args == nil {
-		args = &ProductSubscriptionArgs{}
-	}
 	var resource ProductSubscription
 	err := ctx.RegisterResource("aws:securityhub/productSubscription:ProductSubscription", name, args, &resource, opts...)
 	if err != nil {

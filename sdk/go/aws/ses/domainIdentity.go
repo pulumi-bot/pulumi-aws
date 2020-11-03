@@ -70,9 +70,6 @@ func NewDomainIdentity(ctx *pulumi.Context,
 	if args == nil || args.Domain == nil {
 		return nil, errors.New("missing required argument 'Domain'")
 	}
-	if args == nil {
-		args = &DomainIdentityArgs{}
-	}
 	var resource DomainIdentity
 	err := ctx.RegisterResource("aws:ses/domainIdentity:DomainIdentity", name, args, &resource, opts...)
 	if err != nil {

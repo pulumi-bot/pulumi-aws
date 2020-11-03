@@ -93,9 +93,6 @@ func NewTrafficMirrorSession(ctx *pulumi.Context,
 	if args == nil || args.TrafficMirrorTargetId == nil {
 		return nil, errors.New("missing required argument 'TrafficMirrorTargetId'")
 	}
-	if args == nil {
-		args = &TrafficMirrorSessionArgs{}
-	}
 	var resource TrafficMirrorSession
 	err := ctx.RegisterResource("aws:ec2/trafficMirrorSession:TrafficMirrorSession", name, args, &resource, opts...)
 	if err != nil {

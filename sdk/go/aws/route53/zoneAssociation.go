@@ -88,9 +88,6 @@ func NewZoneAssociation(ctx *pulumi.Context,
 	if args == nil || args.ZoneId == nil {
 		return nil, errors.New("missing required argument 'ZoneId'")
 	}
-	if args == nil {
-		args = &ZoneAssociationArgs{}
-	}
 	var resource ZoneAssociation
 	err := ctx.RegisterResource("aws:route53/zoneAssociation:ZoneAssociation", name, args, &resource, opts...)
 	if err != nil {

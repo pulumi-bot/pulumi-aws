@@ -89,9 +89,6 @@ func NewGatewayRoute(ctx *pulumi.Context,
 	if args == nil || args.VirtualGatewayName == nil {
 		return nil, errors.New("missing required argument 'VirtualGatewayName'")
 	}
-	if args == nil {
-		args = &GatewayRouteArgs{}
-	}
 	var resource GatewayRoute
 	err := ctx.RegisterResource("aws:appmesh/gatewayRoute:GatewayRoute", name, args, &resource, opts...)
 	if err != nil {

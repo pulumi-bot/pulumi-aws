@@ -65,9 +65,6 @@ func NewPrivateDnsNamespace(ctx *pulumi.Context,
 	if args == nil || args.Vpc == nil {
 		return nil, errors.New("missing required argument 'Vpc'")
 	}
-	if args == nil {
-		args = &PrivateDnsNamespaceArgs{}
-	}
 	var resource PrivateDnsNamespace
 	err := ctx.RegisterResource("aws:servicediscovery/privateDnsNamespace:PrivateDnsNamespace", name, args, &resource, opts...)
 	if err != nil {

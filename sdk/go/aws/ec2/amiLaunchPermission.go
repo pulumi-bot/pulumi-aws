@@ -53,9 +53,6 @@ func NewAmiLaunchPermission(ctx *pulumi.Context,
 	if args == nil || args.ImageId == nil {
 		return nil, errors.New("missing required argument 'ImageId'")
 	}
-	if args == nil {
-		args = &AmiLaunchPermissionArgs{}
-	}
 	var resource AmiLaunchPermission
 	err := ctx.RegisterResource("aws:ec2/amiLaunchPermission:AmiLaunchPermission", name, args, &resource, opts...)
 	if err != nil {

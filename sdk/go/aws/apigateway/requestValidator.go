@@ -55,9 +55,6 @@ func NewRequestValidator(ctx *pulumi.Context,
 	if args == nil || args.RestApi == nil {
 		return nil, errors.New("missing required argument 'RestApi'")
 	}
-	if args == nil {
-		args = &RequestValidatorArgs{}
-	}
 	var resource RequestValidator
 	err := ctx.RegisterResource("aws:apigateway/requestValidator:RequestValidator", name, args, &resource, opts...)
 	if err != nil {

@@ -141,9 +141,6 @@ func NewWebAcl(ctx *pulumi.Context,
 	if args == nil || args.MetricName == nil {
 		return nil, errors.New("missing required argument 'MetricName'")
 	}
-	if args == nil {
-		args = &WebAclArgs{}
-	}
 	var resource WebAcl
 	err := ctx.RegisterResource("aws:waf/webAcl:WebAcl", name, args, &resource, opts...)
 	if err != nil {

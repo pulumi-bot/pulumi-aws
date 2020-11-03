@@ -66,9 +66,6 @@ func NewCertificateValidation(ctx *pulumi.Context,
 	if args == nil || args.CertificateArn == nil {
 		return nil, errors.New("missing required argument 'CertificateArn'")
 	}
-	if args == nil {
-		args = &CertificateValidationArgs{}
-	}
 	var resource CertificateValidation
 	err := ctx.RegisterResource("aws:acm/certificateValidation:CertificateValidation", name, args, &resource, opts...)
 	if err != nil {
