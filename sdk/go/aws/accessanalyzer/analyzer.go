@@ -4,6 +4,7 @@
 package accessanalyzer
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -84,11 +85,11 @@ type Analyzer struct {
 // NewAnalyzer registers a new resource with the given unique name, arguments, and options.
 func NewAnalyzer(ctx *pulumi.Context,
 	name string, args *AnalyzerArgs, opts ...pulumi.ResourceOption) (*Analyzer, error) {
-	if args == nil || args.AnalyzerName == nil {
-		return nil, errors.New("missing required argument 'AnalyzerName'")
-	}
 	if args == nil {
-		args = &AnalyzerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AnalyzerName == nil {
+		return nil, errors.New("invalid value for required argument 'AnalyzerName'")
 	}
 	var resource Analyzer
 	err := ctx.RegisterResource("aws:accessanalyzer/analyzer:Analyzer", name, args, &resource, opts...)

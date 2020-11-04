@@ -4,6 +4,7 @@
 package lb
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -261,17 +262,17 @@ type Listener struct {
 // NewListener registers a new resource with the given unique name, arguments, and options.
 func NewListener(ctx *pulumi.Context,
 	name string, args *ListenerArgs, opts ...pulumi.ResourceOption) (*Listener, error) {
-	if args == nil || args.DefaultActions == nil {
-		return nil, errors.New("missing required argument 'DefaultActions'")
-	}
-	if args == nil || args.LoadBalancerArn == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerArn'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
 	if args == nil {
-		args = &ListenerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DefaultActions == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultActions'")
+	}
+	if args.LoadBalancerArn == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerArn'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

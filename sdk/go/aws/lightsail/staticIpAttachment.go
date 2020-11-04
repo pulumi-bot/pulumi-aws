@@ -4,6 +4,7 @@
 package lightsail
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,14 +65,14 @@ type StaticIpAttachment struct {
 // NewStaticIpAttachment registers a new resource with the given unique name, arguments, and options.
 func NewStaticIpAttachment(ctx *pulumi.Context,
 	name string, args *StaticIpAttachmentArgs, opts ...pulumi.ResourceOption) (*StaticIpAttachment, error) {
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.StaticIpName == nil {
-		return nil, errors.New("missing required argument 'StaticIpName'")
-	}
 	if args == nil {
-		args = &StaticIpAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.StaticIpName == nil {
+		return nil, errors.New("invalid value for required argument 'StaticIpName'")
 	}
 	var resource StaticIpAttachment
 	err := ctx.RegisterResource("aws:lightsail/staticIpAttachment:StaticIpAttachment", name, args, &resource, opts...)

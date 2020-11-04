@@ -4,6 +4,7 @@
 package lex
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -188,11 +189,11 @@ type Intent struct {
 // NewIntent registers a new resource with the given unique name, arguments, and options.
 func NewIntent(ctx *pulumi.Context,
 	name string, args *IntentArgs, opts ...pulumi.ResourceOption) (*Intent, error) {
-	if args == nil || args.FulfillmentActivity == nil {
-		return nil, errors.New("missing required argument 'FulfillmentActivity'")
-	}
 	if args == nil {
-		args = &IntentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.FulfillmentActivity == nil {
+		return nil, errors.New("invalid value for required argument 'FulfillmentActivity'")
 	}
 	var resource Intent
 	err := ctx.RegisterResource("aws:lex/intent:Intent", name, args, &resource, opts...)

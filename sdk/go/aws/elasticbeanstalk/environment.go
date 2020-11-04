@@ -4,6 +4,7 @@
 package elasticbeanstalk
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -170,11 +171,11 @@ type Environment struct {
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
 func NewEnvironment(ctx *pulumi.Context,
 	name string, args *EnvironmentArgs, opts ...pulumi.ResourceOption) (*Environment, error) {
-	if args == nil || args.Application == nil {
-		return nil, errors.New("missing required argument 'Application'")
-	}
 	if args == nil {
-		args = &EnvironmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Application == nil {
+		return nil, errors.New("invalid value for required argument 'Application'")
 	}
 	var resource Environment
 	err := ctx.RegisterResource("aws:elasticbeanstalk/environment:Environment", name, args, &resource, opts...)
