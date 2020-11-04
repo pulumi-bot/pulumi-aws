@@ -4,6 +4,7 @@
 package xray
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +52,14 @@ type Group struct {
 // NewGroup registers a new resource with the given unique name, arguments, and options.
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
-	if args == nil || args.FilterExpression == nil {
-		return nil, errors.New("missing required argument 'FilterExpression'")
-	}
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
 	if args == nil {
-		args = &GroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.FilterExpression == nil {
+		return nil, errors.New("invalid value for required argument 'FilterExpression'")
+	}
+	if args.GroupName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupName'")
 	}
 	var resource Group
 	err := ctx.RegisterResource("aws:xray/group:Group", name, args, &resource, opts...)

@@ -4,6 +4,7 @@
 package sagemaker
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,11 +91,11 @@ type Model struct {
 // NewModel registers a new resource with the given unique name, arguments, and options.
 func NewModel(ctx *pulumi.Context,
 	name string, args *ModelArgs, opts ...pulumi.ResourceOption) (*Model, error) {
-	if args == nil || args.ExecutionRoleArn == nil {
-		return nil, errors.New("missing required argument 'ExecutionRoleArn'")
-	}
 	if args == nil {
-		args = &ModelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ExecutionRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'ExecutionRoleArn'")
 	}
 	var resource Model
 	err := ctx.RegisterResource("aws:sagemaker/model:Model", name, args, &resource, opts...)

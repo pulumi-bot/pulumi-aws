@@ -4,6 +4,7 @@
 package lambda
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -121,17 +122,17 @@ type Function struct {
 // NewFunction registers a new resource with the given unique name, arguments, and options.
 func NewFunction(ctx *pulumi.Context,
 	name string, args *FunctionArgs, opts ...pulumi.ResourceOption) (*Function, error) {
-	if args == nil || args.Handler == nil {
-		return nil, errors.New("missing required argument 'Handler'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Runtime == nil {
-		return nil, errors.New("missing required argument 'Runtime'")
-	}
 	if args == nil {
-		args = &FunctionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Handler == nil {
+		return nil, errors.New("invalid value for required argument 'Handler'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Runtime == nil {
+		return nil, errors.New("invalid value for required argument 'Runtime'")
 	}
 	var resource Function
 	err := ctx.RegisterResource("aws:lambda/function:Function", name, args, &resource, opts...)

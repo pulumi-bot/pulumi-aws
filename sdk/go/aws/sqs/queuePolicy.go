@@ -4,6 +4,7 @@
 package sqs
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -56,14 +57,14 @@ type QueuePolicy struct {
 // NewQueuePolicy registers a new resource with the given unique name, arguments, and options.
 func NewQueuePolicy(ctx *pulumi.Context,
 	name string, args *QueuePolicyArgs, opts ...pulumi.ResourceOption) (*QueuePolicy, error) {
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.QueueUrl == nil {
-		return nil, errors.New("missing required argument 'QueueUrl'")
-	}
 	if args == nil {
-		args = &QueuePolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.QueueUrl == nil {
+		return nil, errors.New("invalid value for required argument 'QueueUrl'")
 	}
 	var resource QueuePolicy
 	err := ctx.RegisterResource("aws:sqs/queuePolicy:QueuePolicy", name, args, &resource, opts...)

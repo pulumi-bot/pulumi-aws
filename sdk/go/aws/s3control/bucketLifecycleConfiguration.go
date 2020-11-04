@@ -4,6 +4,7 @@
 package s3control
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,14 +23,14 @@ type BucketLifecycleConfiguration struct {
 // NewBucketLifecycleConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewBucketLifecycleConfiguration(ctx *pulumi.Context,
 	name string, args *BucketLifecycleConfigurationArgs, opts ...pulumi.ResourceOption) (*BucketLifecycleConfiguration, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &BucketLifecycleConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource BucketLifecycleConfiguration
 	err := ctx.RegisterResource("aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration", name, args, &resource, opts...)

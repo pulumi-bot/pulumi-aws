@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +52,14 @@ type ReceiptFilter struct {
 // NewReceiptFilter registers a new resource with the given unique name, arguments, and options.
 func NewReceiptFilter(ctx *pulumi.Context,
 	name string, args *ReceiptFilterArgs, opts ...pulumi.ResourceOption) (*ReceiptFilter, error) {
-	if args == nil || args.Cidr == nil {
-		return nil, errors.New("missing required argument 'Cidr'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
 	if args == nil {
-		args = &ReceiptFilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Cidr == nil {
+		return nil, errors.New("invalid value for required argument 'Cidr'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
 	var resource ReceiptFilter
 	err := ctx.RegisterResource("aws:ses/receiptFilter:ReceiptFilter", name, args, &resource, opts...)

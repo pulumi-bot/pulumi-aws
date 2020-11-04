@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -49,14 +50,14 @@ type Cache struct {
 // NewCache registers a new resource with the given unique name, arguments, and options.
 func NewCache(ctx *pulumi.Context,
 	name string, args *CacheArgs, opts ...pulumi.ResourceOption) (*Cache, error) {
-	if args == nil || args.DiskId == nil {
-		return nil, errors.New("missing required argument 'DiskId'")
-	}
-	if args == nil || args.GatewayArn == nil {
-		return nil, errors.New("missing required argument 'GatewayArn'")
-	}
 	if args == nil {
-		args = &CacheArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DiskId == nil {
+		return nil, errors.New("invalid value for required argument 'DiskId'")
+	}
+	if args.GatewayArn == nil {
+		return nil, errors.New("invalid value for required argument 'GatewayArn'")
 	}
 	var resource Cache
 	err := ctx.RegisterResource("aws:storagegateway/cache:Cache", name, args, &resource, opts...)

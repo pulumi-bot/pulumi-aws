@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,11 +73,11 @@ type DefaultSubnet struct {
 // NewDefaultSubnet registers a new resource with the given unique name, arguments, and options.
 func NewDefaultSubnet(ctx *pulumi.Context,
 	name string, args *DefaultSubnetArgs, opts ...pulumi.ResourceOption) (*DefaultSubnet, error) {
-	if args == nil || args.AvailabilityZone == nil {
-		return nil, errors.New("missing required argument 'AvailabilityZone'")
-	}
 	if args == nil {
-		args = &DefaultSubnetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AvailabilityZone == nil {
+		return nil, errors.New("invalid value for required argument 'AvailabilityZone'")
 	}
 	var resource DefaultSubnet
 	err := ctx.RegisterResource("aws:ec2/defaultSubnet:DefaultSubnet", name, args, &resource, opts...)

@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,11 +61,11 @@ type OrganizationAdminAccount struct {
 // NewOrganizationAdminAccount registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationAdminAccount(ctx *pulumi.Context,
 	name string, args *OrganizationAdminAccountArgs, opts ...pulumi.ResourceOption) (*OrganizationAdminAccount, error) {
-	if args == nil || args.AdminAccountId == nil {
-		return nil, errors.New("missing required argument 'AdminAccountId'")
-	}
 	if args == nil {
-		args = &OrganizationAdminAccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AdminAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AdminAccountId'")
 	}
 	var resource OrganizationAdminAccount
 	err := ctx.RegisterResource("aws:guardduty/organizationAdminAccount:OrganizationAdminAccount", name, args, &resource, opts...)
