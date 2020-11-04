@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -176,11 +177,11 @@ type DomainName struct {
 // NewDomainName registers a new resource with the given unique name, arguments, and options.
 func NewDomainName(ctx *pulumi.Context,
 	name string, args *DomainNameArgs, opts ...pulumi.ResourceOption) (*DomainName, error) {
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
 	if args == nil {
-		args = &DomainNameArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
 	var resource DomainName
 	err := ctx.RegisterResource("aws:apigateway/domainName:DomainName", name, args, &resource, opts...)

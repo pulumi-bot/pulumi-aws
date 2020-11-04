@@ -4,6 +4,7 @@
 package mediastore
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,14 +65,14 @@ type ContainerPolicy struct {
 // NewContainerPolicy registers a new resource with the given unique name, arguments, and options.
 func NewContainerPolicy(ctx *pulumi.Context,
 	name string, args *ContainerPolicyArgs, opts ...pulumi.ResourceOption) (*ContainerPolicy, error) {
-	if args == nil || args.ContainerName == nil {
-		return nil, errors.New("missing required argument 'ContainerName'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
 	if args == nil {
-		args = &ContainerPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerName'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
 	var resource ContainerPolicy
 	err := ctx.RegisterResource("aws:mediastore/containerPolicy:ContainerPolicy", name, args, &resource, opts...)

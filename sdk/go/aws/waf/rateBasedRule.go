@@ -4,6 +4,7 @@
 package waf
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,17 +79,17 @@ type RateBasedRule struct {
 // NewRateBasedRule registers a new resource with the given unique name, arguments, and options.
 func NewRateBasedRule(ctx *pulumi.Context,
 	name string, args *RateBasedRuleArgs, opts ...pulumi.ResourceOption) (*RateBasedRule, error) {
-	if args == nil || args.MetricName == nil {
-		return nil, errors.New("missing required argument 'MetricName'")
-	}
-	if args == nil || args.RateKey == nil {
-		return nil, errors.New("missing required argument 'RateKey'")
-	}
-	if args == nil || args.RateLimit == nil {
-		return nil, errors.New("missing required argument 'RateLimit'")
-	}
 	if args == nil {
-		args = &RateBasedRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MetricName == nil {
+		return nil, errors.New("invalid value for required argument 'MetricName'")
+	}
+	if args.RateKey == nil {
+		return nil, errors.New("invalid value for required argument 'RateKey'")
+	}
+	if args.RateLimit == nil {
+		return nil, errors.New("invalid value for required argument 'RateLimit'")
 	}
 	var resource RateBasedRule
 	err := ctx.RegisterResource("aws:waf/rateBasedRule:RateBasedRule", name, args, &resource, opts...)

@@ -4,6 +4,7 @@
 package opsworks
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,11 +84,11 @@ type NodejsAppLayer struct {
 // NewNodejsAppLayer registers a new resource with the given unique name, arguments, and options.
 func NewNodejsAppLayer(ctx *pulumi.Context,
 	name string, args *NodejsAppLayerArgs, opts ...pulumi.ResourceOption) (*NodejsAppLayer, error) {
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &NodejsAppLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource NodejsAppLayer
 	err := ctx.RegisterResource("aws:opsworks/nodejsAppLayer:NodejsAppLayer", name, args, &resource, opts...)

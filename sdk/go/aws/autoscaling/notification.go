@@ -4,6 +4,7 @@
 package autoscaling
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,17 +77,17 @@ type Notification struct {
 // NewNotification registers a new resource with the given unique name, arguments, and options.
 func NewNotification(ctx *pulumi.Context,
 	name string, args *NotificationArgs, opts ...pulumi.ResourceOption) (*Notification, error) {
-	if args == nil || args.GroupNames == nil {
-		return nil, errors.New("missing required argument 'GroupNames'")
-	}
-	if args == nil || args.Notifications == nil {
-		return nil, errors.New("missing required argument 'Notifications'")
-	}
-	if args == nil || args.TopicArn == nil {
-		return nil, errors.New("missing required argument 'TopicArn'")
-	}
 	if args == nil {
-		args = &NotificationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.GroupNames == nil {
+		return nil, errors.New("invalid value for required argument 'GroupNames'")
+	}
+	if args.Notifications == nil {
+		return nil, errors.New("invalid value for required argument 'Notifications'")
+	}
+	if args.TopicArn == nil {
+		return nil, errors.New("invalid value for required argument 'TopicArn'")
 	}
 	var resource Notification
 	err := ctx.RegisterResource("aws:autoscaling/notification:Notification", name, args, &resource, opts...)

@@ -4,6 +4,7 @@
 package wafv2
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -113,14 +114,14 @@ type WebAclAssociation struct {
 // NewWebAclAssociation registers a new resource with the given unique name, arguments, and options.
 func NewWebAclAssociation(ctx *pulumi.Context,
 	name string, args *WebAclAssociationArgs, opts ...pulumi.ResourceOption) (*WebAclAssociation, error) {
-	if args == nil || args.ResourceArn == nil {
-		return nil, errors.New("missing required argument 'ResourceArn'")
-	}
-	if args == nil || args.WebAclArn == nil {
-		return nil, errors.New("missing required argument 'WebAclArn'")
-	}
 	if args == nil {
-		args = &WebAclAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceArn == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceArn'")
+	}
+	if args.WebAclArn == nil {
+		return nil, errors.New("invalid value for required argument 'WebAclArn'")
 	}
 	var resource WebAclAssociation
 	err := ctx.RegisterResource("aws:wafv2/webAclAssociation:WebAclAssociation", name, args, &resource, opts...)
