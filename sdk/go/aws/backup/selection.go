@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -103,14 +104,14 @@ type Selection struct {
 // NewSelection registers a new resource with the given unique name, arguments, and options.
 func NewSelection(ctx *pulumi.Context,
 	name string, args *SelectionArgs, opts ...pulumi.ResourceOption) (*Selection, error) {
-	if args == nil || args.IamRoleArn == nil {
-		return nil, errors.New("missing required argument 'IamRoleArn'")
-	}
-	if args == nil || args.PlanId == nil {
-		return nil, errors.New("missing required argument 'PlanId'")
-	}
 	if args == nil {
-		args = &SelectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.IamRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'IamRoleArn'")
+	}
+	if args.PlanId == nil {
+		return nil, errors.New("invalid value for required argument 'PlanId'")
 	}
 	var resource Selection
 	err := ctx.RegisterResource("aws:backup/selection:Selection", name, args, &resource, opts...)

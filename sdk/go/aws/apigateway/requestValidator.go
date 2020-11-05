@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,11 +53,11 @@ type RequestValidator struct {
 // NewRequestValidator registers a new resource with the given unique name, arguments, and options.
 func NewRequestValidator(ctx *pulumi.Context,
 	name string, args *RequestValidatorArgs, opts ...pulumi.ResourceOption) (*RequestValidator, error) {
-	if args == nil || args.RestApi == nil {
-		return nil, errors.New("missing required argument 'RestApi'")
-	}
 	if args == nil {
-		args = &RequestValidatorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RestApi == nil {
+		return nil, errors.New("invalid value for required argument 'RestApi'")
 	}
 	var resource RequestValidator
 	err := ctx.RegisterResource("aws:apigateway/requestValidator:RequestValidator", name, args, &resource, opts...)

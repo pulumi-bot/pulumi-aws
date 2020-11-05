@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,11 +43,11 @@ type ApnsChannel struct {
 // NewApnsChannel registers a new resource with the given unique name, arguments, and options.
 func NewApnsChannel(ctx *pulumi.Context,
 	name string, args *ApnsChannelArgs, opts ...pulumi.ResourceOption) (*ApnsChannel, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
 	if args == nil {
-		args = &ApnsChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
 	}
 	var resource ApnsChannel
 	err := ctx.RegisterResource("aws:pinpoint/apnsChannel:ApnsChannel", name, args, &resource, opts...)

@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,23 +96,23 @@ type SecurityGroupRule struct {
 // NewSecurityGroupRule registers a new resource with the given unique name, arguments, and options.
 func NewSecurityGroupRule(ctx *pulumi.Context,
 	name string, args *SecurityGroupRuleArgs, opts ...pulumi.ResourceOption) (*SecurityGroupRule, error) {
-	if args == nil || args.FromPort == nil {
-		return nil, errors.New("missing required argument 'FromPort'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
-	}
-	if args == nil || args.ToPort == nil {
-		return nil, errors.New("missing required argument 'ToPort'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SecurityGroupRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.FromPort == nil {
+		return nil, errors.New("invalid value for required argument 'FromPort'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.SecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
+	}
+	if args.ToPort == nil {
+		return nil, errors.New("invalid value for required argument 'ToPort'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SecurityGroupRule
 	err := ctx.RegisterResource("aws:ec2/securityGroupRule:SecurityGroupRule", name, args, &resource, opts...)

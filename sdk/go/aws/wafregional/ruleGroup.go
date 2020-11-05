@@ -4,6 +4,7 @@
 package wafregional
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,11 +68,11 @@ type RuleGroup struct {
 // NewRuleGroup registers a new resource with the given unique name, arguments, and options.
 func NewRuleGroup(ctx *pulumi.Context,
 	name string, args *RuleGroupArgs, opts ...pulumi.ResourceOption) (*RuleGroup, error) {
-	if args == nil || args.MetricName == nil {
-		return nil, errors.New("missing required argument 'MetricName'")
-	}
 	if args == nil {
-		args = &RuleGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MetricName == nil {
+		return nil, errors.New("invalid value for required argument 'MetricName'")
 	}
 	var resource RuleGroup
 	err := ctx.RegisterResource("aws:wafregional/ruleGroup:RuleGroup", name, args, &resource, opts...)

@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,14 +76,14 @@ type ProxyProtocolPolicy struct {
 // NewProxyProtocolPolicy registers a new resource with the given unique name, arguments, and options.
 func NewProxyProtocolPolicy(ctx *pulumi.Context,
 	name string, args *ProxyProtocolPolicyArgs, opts ...pulumi.ResourceOption) (*ProxyProtocolPolicy, error) {
-	if args == nil || args.InstancePorts == nil {
-		return nil, errors.New("missing required argument 'InstancePorts'")
-	}
-	if args == nil || args.LoadBalancer == nil {
-		return nil, errors.New("missing required argument 'LoadBalancer'")
-	}
 	if args == nil {
-		args = &ProxyProtocolPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.InstancePorts == nil {
+		return nil, errors.New("invalid value for required argument 'InstancePorts'")
+	}
+	if args.LoadBalancer == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancer'")
 	}
 	var resource ProxyProtocolPolicy
 	err := ctx.RegisterResource("aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy", name, args, &resource, opts...)

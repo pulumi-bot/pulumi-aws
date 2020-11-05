@@ -4,6 +4,7 @@
 package ssm
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +56,14 @@ type PatchGroup struct {
 // NewPatchGroup registers a new resource with the given unique name, arguments, and options.
 func NewPatchGroup(ctx *pulumi.Context,
 	name string, args *PatchGroupArgs, opts ...pulumi.ResourceOption) (*PatchGroup, error) {
-	if args == nil || args.BaselineId == nil {
-		return nil, errors.New("missing required argument 'BaselineId'")
-	}
-	if args == nil || args.PatchGroup == nil {
-		return nil, errors.New("missing required argument 'PatchGroup'")
-	}
 	if args == nil {
-		args = &PatchGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.BaselineId == nil {
+		return nil, errors.New("invalid value for required argument 'BaselineId'")
+	}
+	if args.PatchGroup == nil {
+		return nil, errors.New("invalid value for required argument 'PatchGroup'")
 	}
 	var resource PatchGroup
 	err := ctx.RegisterResource("aws:ssm/patchGroup:PatchGroup", name, args, &resource, opts...)

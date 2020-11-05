@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"

@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +52,14 @@ type RouteTablePropagation struct {
 // NewRouteTablePropagation registers a new resource with the given unique name, arguments, and options.
 func NewRouteTablePropagation(ctx *pulumi.Context,
 	name string, args *RouteTablePropagationArgs, opts ...pulumi.ResourceOption) (*RouteTablePropagation, error) {
-	if args == nil || args.TransitGatewayAttachmentId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayAttachmentId'")
-	}
-	if args == nil || args.TransitGatewayRouteTableId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayRouteTableId'")
-	}
 	if args == nil {
-		args = &RouteTablePropagationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TransitGatewayAttachmentId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayAttachmentId'")
+	}
+	if args.TransitGatewayRouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayRouteTableId'")
 	}
 	var resource RouteTablePropagation
 	err := ctx.RegisterResource("aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation", name, args, &resource, opts...)

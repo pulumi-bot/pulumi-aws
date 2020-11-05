@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,11 +87,11 @@ type NetworkAcl struct {
 // NewNetworkAcl registers a new resource with the given unique name, arguments, and options.
 func NewNetworkAcl(ctx *pulumi.Context,
 	name string, args *NetworkAclArgs, opts ...pulumi.ResourceOption) (*NetworkAcl, error) {
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &NetworkAclArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource NetworkAcl
 	err := ctx.RegisterResource("aws:ec2/networkAcl:NetworkAcl", name, args, &resource, opts...)
