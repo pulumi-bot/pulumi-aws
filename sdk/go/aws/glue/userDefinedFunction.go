@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -189,4 +190,43 @@ type UserDefinedFunctionArgs struct {
 
 func (UserDefinedFunctionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userDefinedFunctionArgs)(nil)).Elem()
+}
+
+type UserDefinedFunctionInput interface {
+	pulumi.Input
+
+	ToUserDefinedFunctionOutput() UserDefinedFunctionOutput
+	ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput
+}
+
+func (UserDefinedFunction) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDefinedFunction)(nil)).Elem()
+}
+
+func (i UserDefinedFunction) ToUserDefinedFunctionOutput() UserDefinedFunctionOutput {
+	return i.ToUserDefinedFunctionOutputWithContext(context.Background())
+}
+
+func (i UserDefinedFunction) ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedFunctionOutput)
+}
+
+type UserDefinedFunctionOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserDefinedFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDefinedFunctionOutput)(nil)).Elem()
+}
+
+func (o UserDefinedFunctionOutput) ToUserDefinedFunctionOutput() UserDefinedFunctionOutput {
+	return o
+}
+
+func (o UserDefinedFunctionOutput) ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserDefinedFunctionOutput{})
 }

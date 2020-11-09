@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,4 +125,43 @@ type RouteTablePropagationArgs struct {
 
 func (RouteTablePropagationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTablePropagationArgs)(nil)).Elem()
+}
+
+type RouteTablePropagationInput interface {
+	pulumi.Input
+
+	ToRouteTablePropagationOutput() RouteTablePropagationOutput
+	ToRouteTablePropagationOutputWithContext(ctx context.Context) RouteTablePropagationOutput
+}
+
+func (RouteTablePropagation) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTablePropagation)(nil)).Elem()
+}
+
+func (i RouteTablePropagation) ToRouteTablePropagationOutput() RouteTablePropagationOutput {
+	return i.ToRouteTablePropagationOutputWithContext(context.Background())
+}
+
+func (i RouteTablePropagation) ToRouteTablePropagationOutputWithContext(ctx context.Context) RouteTablePropagationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTablePropagationOutput)
+}
+
+type RouteTablePropagationOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteTablePropagationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTablePropagationOutput)(nil)).Elem()
+}
+
+func (o RouteTablePropagationOutput) ToRouteTablePropagationOutput() RouteTablePropagationOutput {
+	return o
+}
+
+func (o RouteTablePropagationOutput) ToRouteTablePropagationOutputWithContext(ctx context.Context) RouteTablePropagationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteTablePropagationOutput{})
 }

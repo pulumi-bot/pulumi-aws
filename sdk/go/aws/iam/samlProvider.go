@@ -4,6 +4,7 @@
 package iam
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -97,4 +98,43 @@ type SamlProviderArgs struct {
 
 func (SamlProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*samlProviderArgs)(nil)).Elem()
+}
+
+type SamlProviderInput interface {
+	pulumi.Input
+
+	ToSamlProviderOutput() SamlProviderOutput
+	ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput
+}
+
+func (SamlProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlProvider)(nil)).Elem()
+}
+
+func (i SamlProvider) ToSamlProviderOutput() SamlProviderOutput {
+	return i.ToSamlProviderOutputWithContext(context.Background())
+}
+
+func (i SamlProvider) ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderOutput)
+}
+
+type SamlProviderOutput struct {
+	*pulumi.OutputState
+}
+
+func (SamlProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlProviderOutput)(nil)).Elem()
+}
+
+func (o SamlProviderOutput) ToSamlProviderOutput() SamlProviderOutput {
+	return o
+}
+
+func (o SamlProviderOutput) ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SamlProviderOutput{})
 }
