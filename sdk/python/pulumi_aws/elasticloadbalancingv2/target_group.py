@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['TargetGroup']
 
-warnings.warn("aws.elasticloadbalancingv2.TargetGroup has been deprecated in favor of aws.lb.TargetGroup", DeprecationWarning)
+warnings.warn("""aws.elasticloadbalancingv2.TargetGroup has been deprecated in favor of aws.lb.TargetGroup""", DeprecationWarning)
 
 
 class TargetGroup(pulumi.CustomResource):
-    warnings.warn("aws.elasticloadbalancingv2.TargetGroup has been deprecated in favor of aws.lb.TargetGroup", DeprecationWarning)
+    warnings.warn("""aws.elasticloadbalancingv2.TargetGroup has been deprecated in favor of aws.lb.TargetGroup""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

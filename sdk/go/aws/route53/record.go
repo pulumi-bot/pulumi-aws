@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -376,4 +377,43 @@ type RecordArgs struct {
 
 func (RecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordArgs)(nil)).Elem()
+}
+
+type RecordInput interface {
+	pulumi.Input
+
+	ToRecordOutput() RecordOutput
+	ToRecordOutputWithContext(ctx context.Context) RecordOutput
+}
+
+func (Record) ElementType() reflect.Type {
+	return reflect.TypeOf((*Record)(nil)).Elem()
+}
+
+func (i Record) ToRecordOutput() RecordOutput {
+	return i.ToRecordOutputWithContext(context.Background())
+}
+
+func (i Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordOutput)
+}
+
+type RecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordOutput)(nil)).Elem()
+}
+
+func (o RecordOutput) ToRecordOutput() RecordOutput {
+	return o
+}
+
+func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RecordOutput{})
 }

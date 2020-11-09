@@ -4,6 +4,7 @@
 package cognito
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -154,4 +155,43 @@ type UserGroupArgs struct {
 
 func (UserGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGroupArgs)(nil)).Elem()
+}
+
+type UserGroupInput interface {
+	pulumi.Input
+
+	ToUserGroupOutput() UserGroupOutput
+	ToUserGroupOutputWithContext(ctx context.Context) UserGroupOutput
+}
+
+func (UserGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroup)(nil)).Elem()
+}
+
+func (i UserGroup) ToUserGroupOutput() UserGroupOutput {
+	return i.ToUserGroupOutputWithContext(context.Background())
+}
+
+func (i UserGroup) ToUserGroupOutputWithContext(ctx context.Context) UserGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupOutput)
+}
+
+type UserGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroupOutput)(nil)).Elem()
+}
+
+func (o UserGroupOutput) ToUserGroupOutput() UserGroupOutput {
+	return o
+}
+
+func (o UserGroupOutput) ToUserGroupOutputWithContext(ctx context.Context) UserGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserGroupOutput{})
 }

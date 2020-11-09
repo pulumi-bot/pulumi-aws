@@ -4,6 +4,7 @@
 package alb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -349,4 +350,43 @@ type ListenerRuleArgs struct {
 
 func (ListenerRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerRuleArgs)(nil)).Elem()
+}
+
+type ListenerRuleInput interface {
+	pulumi.Input
+
+	ToListenerRuleOutput() ListenerRuleOutput
+	ToListenerRuleOutputWithContext(ctx context.Context) ListenerRuleOutput
+}
+
+func (ListenerRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerRule)(nil)).Elem()
+}
+
+func (i ListenerRule) ToListenerRuleOutput() ListenerRuleOutput {
+	return i.ToListenerRuleOutputWithContext(context.Background())
+}
+
+func (i ListenerRule) ToListenerRuleOutputWithContext(ctx context.Context) ListenerRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleOutput)
+}
+
+type ListenerRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerRuleOutput)(nil)).Elem()
+}
+
+func (o ListenerRuleOutput) ToListenerRuleOutput() ListenerRuleOutput {
+	return o
+}
+
+func (o ListenerRuleOutput) ToListenerRuleOutputWithContext(ctx context.Context) ListenerRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListenerRuleOutput{})
 }

@@ -4,6 +4,7 @@
 package appmesh
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -196,4 +197,43 @@ type GatewayRouteArgs struct {
 
 func (GatewayRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayRouteArgs)(nil)).Elem()
+}
+
+type GatewayRouteInput interface {
+	pulumi.Input
+
+	ToGatewayRouteOutput() GatewayRouteOutput
+	ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput
+}
+
+func (GatewayRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRoute)(nil)).Elem()
+}
+
+func (i GatewayRoute) ToGatewayRouteOutput() GatewayRouteOutput {
+	return i.ToGatewayRouteOutputWithContext(context.Background())
+}
+
+func (i GatewayRoute) ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteOutput)
+}
+
+type GatewayRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRouteOutput)(nil)).Elem()
+}
+
+func (o GatewayRouteOutput) ToGatewayRouteOutput() GatewayRouteOutput {
+	return o
+}
+
+func (o GatewayRouteOutput) ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayRouteOutput{})
 }
