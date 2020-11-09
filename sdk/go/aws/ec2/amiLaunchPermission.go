@@ -35,6 +35,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// AWS AMI Launch Permission can be imported using the `ACCOUNT-ID/IMAGE-ID`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/amiLaunchPermission:AmiLaunchPermission example 123456789012/ami-12345678
+// ```
 type AmiLaunchPermission struct {
 	pulumi.CustomResourceState
 

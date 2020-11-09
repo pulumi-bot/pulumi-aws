@@ -21,6 +21,14 @@ import (
 // after creation or modification. During this time, deletes to resources will be
 // blocked. If you need to delete a distribution that is enabled and you do not
 // want to wait, you need to use the `retainOnDelete` flag.
+//
+// ## Import
+//
+// Cloudfront Distributions can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cloudfront/distribution:Distribution distribution E74FTE3EXAMPLE
+// ```
 type Distribution struct {
 	pulumi.CustomResourceState
 

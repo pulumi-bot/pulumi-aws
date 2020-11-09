@@ -91,6 +91,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cognito User Pool Domains can be imported using the `domain`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cognito/userPoolDomain:UserPoolDomain main <domain>
+// ```
 type UserPoolDomain struct {
 	pulumi.CustomResourceState
 

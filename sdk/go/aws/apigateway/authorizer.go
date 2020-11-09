@@ -11,6 +11,14 @@ import (
 )
 
 // Provides an API Gateway Authorizer.
+//
+// ## Import
+//
+// AWS API Gateway Authorizer can be imported using the `REST-API-ID/AUTHORIZER-ID`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigateway/authorizer:Authorizer authorizer 12345abcde/example
+// ```
 type Authorizer struct {
 	pulumi.CustomResourceState
 

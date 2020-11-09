@@ -69,6 +69,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_api_gateway_method_response` can be imported using `REST-API-ID/RESOURCE-ID/HTTP-METHOD/STATUS-CODE`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigateway/methodResponse:MethodResponse example 12345abcde/67890fghij/GET/200
+// ```
 type MethodResponse struct {
 	pulumi.CustomResourceState
 

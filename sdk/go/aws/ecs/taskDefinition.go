@@ -11,6 +11,14 @@ import (
 )
 
 // Manages a revision of an ECS task definition to be used in `ecs.Service`.
+//
+// ## Import
+//
+// ECS Task Definitions can be imported via their Amazon Resource Name (ARN)
+//
+// ```sh
+//  $ pulumi import aws:ecs/taskDefinition:TaskDefinition example arn:aws:ecs:us-east-1:012345678910:task-definition/mytaskfamily:123
+// ```
 type TaskDefinition struct {
 	pulumi.CustomResourceState
 

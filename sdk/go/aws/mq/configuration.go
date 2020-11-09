@@ -41,6 +41,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MQ Configurations can be imported using the configuration ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:mq/configuration:Configuration example c-0187d1eb-88c8-475a-9b79-16ef5a10c94f
+// ```
 type Configuration struct {
 	pulumi.CustomResourceState
 

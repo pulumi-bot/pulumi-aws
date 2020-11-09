@@ -35,6 +35,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_neptune_cluster_snapshot` can be imported by using the cluster snapshot identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:neptune/clusterSnapshot:ClusterSnapshot example my-cluster-snapshot
+// ```
 type ClusterSnapshot struct {
 	pulumi.CustomResourceState
 

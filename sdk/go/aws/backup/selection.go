@@ -85,6 +85,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Backup selection can be imported using the role plan_id and id separated by `|`.
+//
+// ```sh
+//  $ pulumi import aws:backup/selection:Selection example plan-id|selection-id
+// ```
 type Selection struct {
 	pulumi.CustomResourceState
 

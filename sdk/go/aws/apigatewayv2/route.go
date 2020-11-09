@@ -39,6 +39,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_apigatewayv2_route` can be imported by using the API identifier and route identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigatewayv2/route:Route example aabbccddee/1122334
+// ```
+//
+//  -> **Note:** The API Gateway managed route created as part of [_quick_create_](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
 type Route struct {
 	pulumi.CustomResourceState
 

@@ -93,6 +93,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DynamoDB Global Tables can be imported using the global table name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:dynamodb/globalTable:GlobalTable MyTable MyTable
+// ```
 type GlobalTable struct {
 	pulumi.CustomResourceState
 

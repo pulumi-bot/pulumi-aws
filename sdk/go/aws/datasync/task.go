@@ -11,6 +11,14 @@ import (
 )
 
 // Manages an AWS DataSync Task, which represents a configuration for synchronization. Starting an execution of these DataSync Tasks (actually synchronizing files) is performed outside of this resource.
+//
+// ## Import
+//
+// `aws_datasync_task` can be imported by using the DataSync Task Amazon Resource Name (ARN), e.g.
+//
+// ```sh
+//  $ pulumi import aws:datasync/task:Task example arn:aws:datasync:us-east-1:123456789012:task/task-12345678901234567
+// ```
 type Task struct {
 	pulumi.CustomResourceState
 

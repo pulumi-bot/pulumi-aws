@@ -71,6 +71,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// RDS Cluster Instances can be imported using the `identifier`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:rds/clusterInstance:ClusterInstance prod_instance_1 aurora-cluster-instance-1
+// ```
 type ClusterInstance struct {
 	pulumi.CustomResourceState
 

@@ -59,6 +59,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Transfer Users can be imported using the `server_id` and `user_name` separated by `/`.
+//
+// ```sh
+//  $ pulumi import aws:transfer/user:User bar s-12345678/test-username
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

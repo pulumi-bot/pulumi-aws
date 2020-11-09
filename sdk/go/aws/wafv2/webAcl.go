@@ -273,6 +273,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// WAFv2 Web ACLs can be imported using `ID/Name/Scope` e.g.
+//
+// ```sh
+//  $ pulumi import aws:wafv2/webAcl:WebAcl example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc/example/REGIONAL
+// ```
 type WebAcl struct {
 	pulumi.CustomResourceState
 

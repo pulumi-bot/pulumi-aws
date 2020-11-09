@@ -47,6 +47,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// XRay Sampling Rules can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:xray/samplingRule:SamplingRule example example
+// ```
 type SamplingRule struct {
 	pulumi.CustomResourceState
 

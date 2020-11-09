@@ -37,6 +37,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The AWS organization can be imported by using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:organizations/organization:Organization my_org o-1234567
+// ```
 type Organization struct {
 	pulumi.CustomResourceState
 
