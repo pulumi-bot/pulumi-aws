@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,11 +47,11 @@ type NetworkInterface struct {
 // NewNetworkInterface registers a new resource with the given unique name, arguments, and options.
 func NewNetworkInterface(ctx *pulumi.Context,
 	name string, args *NetworkInterfaceArgs, opts ...pulumi.ResourceOption) (*NetworkInterface, error) {
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &NetworkInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource NetworkInterface
 	err := ctx.RegisterResource("aws:ec2/networkInterface:NetworkInterface", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type NetworkInterfaceArgs struct {
 
 func (NetworkInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceOutput() NetworkInterfaceOutput
+	ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput
+}
+
+func (NetworkInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterface)(nil)).Elem()
+}
+
+func (i NetworkInterface) ToNetworkInterfaceOutput() NetworkInterfaceOutput {
+	return i.ToNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i NetworkInterface) ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceOutput)
+}
+
+type NetworkInterfaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceOutput) ToNetworkInterfaceOutput() NetworkInterfaceOutput {
+	return o
+}
+
+func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 }

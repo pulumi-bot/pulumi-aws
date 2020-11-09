@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -156,14 +158,14 @@ type VpnConnection struct {
 // NewVpnConnection registers a new resource with the given unique name, arguments, and options.
 func NewVpnConnection(ctx *pulumi.Context,
 	name string, args *VpnConnectionArgs, opts ...pulumi.ResourceOption) (*VpnConnection, error) {
-	if args == nil || args.CustomerGatewayId == nil {
-		return nil, errors.New("missing required argument 'CustomerGatewayId'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &VpnConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CustomerGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'CustomerGatewayId'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource VpnConnection
 	err := ctx.RegisterResource("aws:ec2/vpnConnection:VpnConnection", name, args, &resource, opts...)
@@ -341,4 +343,43 @@ type VpnConnectionArgs struct {
 
 func (VpnConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnConnectionArgs)(nil)).Elem()
+}
+
+type VpnConnectionInput interface {
+	pulumi.Input
+
+	ToVpnConnectionOutput() VpnConnectionOutput
+	ToVpnConnectionOutputWithContext(ctx context.Context) VpnConnectionOutput
+}
+
+func (VpnConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnection)(nil)).Elem()
+}
+
+func (i VpnConnection) ToVpnConnectionOutput() VpnConnectionOutput {
+	return i.ToVpnConnectionOutputWithContext(context.Background())
+}
+
+func (i VpnConnection) ToVpnConnectionOutputWithContext(ctx context.Context) VpnConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionOutput)
+}
+
+type VpnConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionOutput)(nil)).Elem()
+}
+
+func (o VpnConnectionOutput) ToVpnConnectionOutput() VpnConnectionOutput {
+	return o
+}
+
+func (o VpnConnectionOutput) ToVpnConnectionOutputWithContext(ctx context.Context) VpnConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpnConnectionOutput{})
 }

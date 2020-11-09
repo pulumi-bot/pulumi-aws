@@ -4,6 +4,8 @@
 package appmesh
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -242,14 +244,14 @@ type VirtualNode struct {
 // NewVirtualNode registers a new resource with the given unique name, arguments, and options.
 func NewVirtualNode(ctx *pulumi.Context,
 	name string, args *VirtualNodeArgs, opts ...pulumi.ResourceOption) (*VirtualNode, error) {
-	if args == nil || args.MeshName == nil {
-		return nil, errors.New("missing required argument 'MeshName'")
-	}
-	if args == nil || args.Spec == nil {
-		return nil, errors.New("missing required argument 'Spec'")
-	}
 	if args == nil {
-		args = &VirtualNodeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MeshName == nil {
+		return nil, errors.New("invalid value for required argument 'MeshName'")
+	}
+	if args.Spec == nil {
+		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
 	var resource VirtualNode
 	err := ctx.RegisterResource("aws:appmesh/virtualNode:VirtualNode", name, args, &resource, opts...)
@@ -347,4 +349,43 @@ type VirtualNodeArgs struct {
 
 func (VirtualNodeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualNodeArgs)(nil)).Elem()
+}
+
+type VirtualNodeInput interface {
+	pulumi.Input
+
+	ToVirtualNodeOutput() VirtualNodeOutput
+	ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput
+}
+
+func (VirtualNode) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNode)(nil)).Elem()
+}
+
+func (i VirtualNode) ToVirtualNodeOutput() VirtualNodeOutput {
+	return i.ToVirtualNodeOutputWithContext(context.Background())
+}
+
+func (i VirtualNode) ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeOutput)
+}
+
+type VirtualNodeOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNodeOutput)(nil)).Elem()
+}
+
+func (o VirtualNodeOutput) ToVirtualNodeOutput() VirtualNodeOutput {
+	return o
+}
+
+func (o VirtualNodeOutput) ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualNodeOutput{})
 }

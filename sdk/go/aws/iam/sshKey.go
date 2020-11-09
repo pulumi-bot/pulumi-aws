@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,17 +64,17 @@ type SshKey struct {
 // NewSshKey registers a new resource with the given unique name, arguments, and options.
 func NewSshKey(ctx *pulumi.Context,
 	name string, args *SshKeyArgs, opts ...pulumi.ResourceOption) (*SshKey, error) {
-	if args == nil || args.Encoding == nil {
-		return nil, errors.New("missing required argument 'Encoding'")
-	}
-	if args == nil || args.PublicKey == nil {
-		return nil, errors.New("missing required argument 'PublicKey'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &SshKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Encoding == nil {
+		return nil, errors.New("invalid value for required argument 'Encoding'")
+	}
+	if args.PublicKey == nil {
+		return nil, errors.New("invalid value for required argument 'PublicKey'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource SshKey
 	err := ctx.RegisterResource("aws:iam/sshKey:SshKey", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type SshKeyArgs struct {
 
 func (SshKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sshKeyArgs)(nil)).Elem()
+}
+
+type SshKeyInput interface {
+	pulumi.Input
+
+	ToSshKeyOutput() SshKeyOutput
+	ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutput
+}
+
+func (SshKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshKey)(nil)).Elem()
+}
+
+func (i SshKey) ToSshKeyOutput() SshKeyOutput {
+	return i.ToSshKeyOutputWithContext(context.Background())
+}
+
+func (i SshKey) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshKeyOutput)
+}
+
+type SshKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SshKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshKeyOutput)(nil)).Elem()
+}
+
+func (o SshKeyOutput) ToSshKeyOutput() SshKeyOutput {
+	return o
+}
+
+func (o SshKeyOutput) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SshKeyOutput{})
 }

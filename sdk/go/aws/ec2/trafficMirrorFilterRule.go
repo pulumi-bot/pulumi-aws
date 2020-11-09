@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -101,26 +103,26 @@ type TrafficMirrorFilterRule struct {
 // NewTrafficMirrorFilterRule registers a new resource with the given unique name, arguments, and options.
 func NewTrafficMirrorFilterRule(ctx *pulumi.Context,
 	name string, args *TrafficMirrorFilterRuleArgs, opts ...pulumi.ResourceOption) (*TrafficMirrorFilterRule, error) {
-	if args == nil || args.DestinationCidrBlock == nil {
-		return nil, errors.New("missing required argument 'DestinationCidrBlock'")
-	}
-	if args == nil || args.RuleAction == nil {
-		return nil, errors.New("missing required argument 'RuleAction'")
-	}
-	if args == nil || args.RuleNumber == nil {
-		return nil, errors.New("missing required argument 'RuleNumber'")
-	}
-	if args == nil || args.SourceCidrBlock == nil {
-		return nil, errors.New("missing required argument 'SourceCidrBlock'")
-	}
-	if args == nil || args.TrafficDirection == nil {
-		return nil, errors.New("missing required argument 'TrafficDirection'")
-	}
-	if args == nil || args.TrafficMirrorFilterId == nil {
-		return nil, errors.New("missing required argument 'TrafficMirrorFilterId'")
-	}
 	if args == nil {
-		args = &TrafficMirrorFilterRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DestinationCidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationCidrBlock'")
+	}
+	if args.RuleAction == nil {
+		return nil, errors.New("invalid value for required argument 'RuleAction'")
+	}
+	if args.RuleNumber == nil {
+		return nil, errors.New("invalid value for required argument 'RuleNumber'")
+	}
+	if args.SourceCidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'SourceCidrBlock'")
+	}
+	if args.TrafficDirection == nil {
+		return nil, errors.New("invalid value for required argument 'TrafficDirection'")
+	}
+	if args.TrafficMirrorFilterId == nil {
+		return nil, errors.New("invalid value for required argument 'TrafficMirrorFilterId'")
 	}
 	var resource TrafficMirrorFilterRule
 	err := ctx.RegisterResource("aws:ec2/trafficMirrorFilterRule:TrafficMirrorFilterRule", name, args, &resource, opts...)
@@ -242,4 +244,43 @@ type TrafficMirrorFilterRuleArgs struct {
 
 func (TrafficMirrorFilterRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficMirrorFilterRuleArgs)(nil)).Elem()
+}
+
+type TrafficMirrorFilterRuleInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterRuleOutput() TrafficMirrorFilterRuleOutput
+	ToTrafficMirrorFilterRuleOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleOutput
+}
+
+func (TrafficMirrorFilterRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterRule)(nil)).Elem()
+}
+
+func (i TrafficMirrorFilterRule) ToTrafficMirrorFilterRuleOutput() TrafficMirrorFilterRuleOutput {
+	return i.ToTrafficMirrorFilterRuleOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilterRule) ToTrafficMirrorFilterRuleOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleOutput)
+}
+
+type TrafficMirrorFilterRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrafficMirrorFilterRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterRuleOutput)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterRuleOutput) ToTrafficMirrorFilterRuleOutput() TrafficMirrorFilterRuleOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterRuleOutput) ToTrafficMirrorFilterRuleOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrafficMirrorFilterRuleOutput{})
 }

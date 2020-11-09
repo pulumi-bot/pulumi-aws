@@ -4,6 +4,8 @@
 package ses
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,14 +88,14 @@ type MailFrom struct {
 // NewMailFrom registers a new resource with the given unique name, arguments, and options.
 func NewMailFrom(ctx *pulumi.Context,
 	name string, args *MailFromArgs, opts ...pulumi.ResourceOption) (*MailFrom, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
-	if args == nil || args.MailFromDomain == nil {
-		return nil, errors.New("missing required argument 'MailFromDomain'")
-	}
 	if args == nil {
-		args = &MailFromArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
+	}
+	if args.MailFromDomain == nil {
+		return nil, errors.New("invalid value for required argument 'MailFromDomain'")
 	}
 	var resource MailFrom
 	err := ctx.RegisterResource("aws:ses/mailFrom:MailFrom", name, args, &resource, opts...)
@@ -159,4 +161,43 @@ type MailFromArgs struct {
 
 func (MailFromArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mailFromArgs)(nil)).Elem()
+}
+
+type MailFromInput interface {
+	pulumi.Input
+
+	ToMailFromOutput() MailFromOutput
+	ToMailFromOutputWithContext(ctx context.Context) MailFromOutput
+}
+
+func (MailFrom) ElementType() reflect.Type {
+	return reflect.TypeOf((*MailFrom)(nil)).Elem()
+}
+
+func (i MailFrom) ToMailFromOutput() MailFromOutput {
+	return i.ToMailFromOutputWithContext(context.Background())
+}
+
+func (i MailFrom) ToMailFromOutputWithContext(ctx context.Context) MailFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MailFromOutput)
+}
+
+type MailFromOutput struct {
+	*pulumi.OutputState
+}
+
+func (MailFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MailFromOutput)(nil)).Elem()
+}
+
+func (o MailFromOutput) ToMailFromOutput() MailFromOutput {
+	return o
+}
+
+func (o MailFromOutput) ToMailFromOutputWithContext(ctx context.Context) MailFromOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MailFromOutput{})
 }

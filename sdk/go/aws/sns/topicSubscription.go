@@ -4,6 +4,8 @@
 package sns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -312,17 +314,17 @@ type TopicSubscription struct {
 // NewTopicSubscription registers a new resource with the given unique name, arguments, and options.
 func NewTopicSubscription(ctx *pulumi.Context,
 	name string, args *TopicSubscriptionArgs, opts ...pulumi.ResourceOption) (*TopicSubscription, error) {
-	if args == nil || args.Endpoint == nil {
-		return nil, errors.New("missing required argument 'Endpoint'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.Topic == nil {
-		return nil, errors.New("missing required argument 'Topic'")
-	}
 	if args == nil {
-		args = &TopicSubscriptionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Endpoint == nil {
+		return nil, errors.New("invalid value for required argument 'Endpoint'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.Topic == nil {
+		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
 	var resource TopicSubscription
 	err := ctx.RegisterResource("aws:sns/topicSubscription:TopicSubscription", name, args, &resource, opts...)
@@ -432,4 +434,43 @@ type TopicSubscriptionArgs struct {
 
 func (TopicSubscriptionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicSubscriptionArgs)(nil)).Elem()
+}
+
+type TopicSubscriptionInput interface {
+	pulumi.Input
+
+	ToTopicSubscriptionOutput() TopicSubscriptionOutput
+	ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput
+}
+
+func (TopicSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSubscription)(nil)).Elem()
+}
+
+func (i TopicSubscription) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
+	return i.ToTopicSubscriptionOutputWithContext(context.Background())
+}
+
+func (i TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionOutput)
+}
+
+type TopicSubscriptionOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSubscriptionOutput)(nil)).Elem()
+}
+
+func (o TopicSubscriptionOutput) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
+	return o
+}
+
+func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TopicSubscriptionOutput{})
 }

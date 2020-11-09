@@ -4,6 +4,8 @@
 package rds
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,14 +75,14 @@ type ClusterSnapshot struct {
 // NewClusterSnapshot registers a new resource with the given unique name, arguments, and options.
 func NewClusterSnapshot(ctx *pulumi.Context,
 	name string, args *ClusterSnapshotArgs, opts ...pulumi.ResourceOption) (*ClusterSnapshot, error) {
-	if args == nil || args.DbClusterIdentifier == nil {
-		return nil, errors.New("missing required argument 'DbClusterIdentifier'")
-	}
-	if args == nil || args.DbClusterSnapshotIdentifier == nil {
-		return nil, errors.New("missing required argument 'DbClusterSnapshotIdentifier'")
-	}
 	if args == nil {
-		args = &ClusterSnapshotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DbClusterIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterIdentifier'")
+	}
+	if args.DbClusterSnapshotIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'DbClusterSnapshotIdentifier'")
 	}
 	var resource ClusterSnapshot
 	err := ctx.RegisterResource("aws:rds/clusterSnapshot:ClusterSnapshot", name, args, &resource, opts...)
@@ -194,4 +196,43 @@ type ClusterSnapshotArgs struct {
 
 func (ClusterSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterSnapshotArgs)(nil)).Elem()
+}
+
+type ClusterSnapshotInput interface {
+	pulumi.Input
+
+	ToClusterSnapshotOutput() ClusterSnapshotOutput
+	ToClusterSnapshotOutputWithContext(ctx context.Context) ClusterSnapshotOutput
+}
+
+func (ClusterSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshot)(nil)).Elem()
+}
+
+func (i ClusterSnapshot) ToClusterSnapshotOutput() ClusterSnapshotOutput {
+	return i.ToClusterSnapshotOutputWithContext(context.Background())
+}
+
+func (i ClusterSnapshot) ToClusterSnapshotOutputWithContext(ctx context.Context) ClusterSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotOutput)
+}
+
+type ClusterSnapshotOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshotOutput)(nil)).Elem()
+}
+
+func (o ClusterSnapshotOutput) ToClusterSnapshotOutput() ClusterSnapshotOutput {
+	return o
+}
+
+func (o ClusterSnapshotOutput) ToClusterSnapshotOutputWithContext(ctx context.Context) ClusterSnapshotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterSnapshotOutput{})
 }

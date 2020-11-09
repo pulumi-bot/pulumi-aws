@@ -4,6 +4,8 @@
 package elb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -71,17 +73,17 @@ type AppCookieStickinessPolicy struct {
 // NewAppCookieStickinessPolicy registers a new resource with the given unique name, arguments, and options.
 func NewAppCookieStickinessPolicy(ctx *pulumi.Context,
 	name string, args *AppCookieStickinessPolicyArgs, opts ...pulumi.ResourceOption) (*AppCookieStickinessPolicy, error) {
-	if args == nil || args.CookieName == nil {
-		return nil, errors.New("missing required argument 'CookieName'")
-	}
-	if args == nil || args.LbPort == nil {
-		return nil, errors.New("missing required argument 'LbPort'")
-	}
-	if args == nil || args.LoadBalancer == nil {
-		return nil, errors.New("missing required argument 'LoadBalancer'")
-	}
 	if args == nil {
-		args = &AppCookieStickinessPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CookieName == nil {
+		return nil, errors.New("invalid value for required argument 'CookieName'")
+	}
+	if args.LbPort == nil {
+		return nil, errors.New("invalid value for required argument 'LbPort'")
+	}
+	if args.LoadBalancer == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancer'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -173,4 +175,43 @@ type AppCookieStickinessPolicyArgs struct {
 
 func (AppCookieStickinessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCookieStickinessPolicyArgs)(nil)).Elem()
+}
+
+type AppCookieStickinessPolicyInput interface {
+	pulumi.Input
+
+	ToAppCookieStickinessPolicyOutput() AppCookieStickinessPolicyOutput
+	ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput
+}
+
+func (AppCookieStickinessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCookieStickinessPolicy)(nil)).Elem()
+}
+
+func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyOutput() AppCookieStickinessPolicyOutput {
+	return i.ToAppCookieStickinessPolicyOutputWithContext(context.Background())
+}
+
+func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCookieStickinessPolicyOutput)
+}
+
+type AppCookieStickinessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppCookieStickinessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCookieStickinessPolicyOutput)(nil)).Elem()
+}
+
+func (o AppCookieStickinessPolicyOutput) ToAppCookieStickinessPolicyOutput() AppCookieStickinessPolicyOutput {
+	return o
+}
+
+func (o AppCookieStickinessPolicyOutput) ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppCookieStickinessPolicyOutput{})
 }

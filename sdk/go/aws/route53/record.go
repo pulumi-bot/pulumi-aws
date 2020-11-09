@@ -4,6 +4,8 @@
 package route53
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -204,17 +206,17 @@ type Record struct {
 // NewRecord registers a new resource with the given unique name, arguments, and options.
 func NewRecord(ctx *pulumi.Context,
 	name string, args *RecordArgs, opts ...pulumi.ResourceOption) (*Record, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &RecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource Record
 	err := ctx.RegisterResource("aws:route53/record:Record", name, args, &resource, opts...)
@@ -376,4 +378,43 @@ type RecordArgs struct {
 
 func (RecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordArgs)(nil)).Elem()
+}
+
+type RecordInput interface {
+	pulumi.Input
+
+	ToRecordOutput() RecordOutput
+	ToRecordOutputWithContext(ctx context.Context) RecordOutput
+}
+
+func (Record) ElementType() reflect.Type {
+	return reflect.TypeOf((*Record)(nil)).Elem()
+}
+
+func (i Record) ToRecordOutput() RecordOutput {
+	return i.ToRecordOutputWithContext(context.Background())
+}
+
+func (i Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordOutput)
+}
+
+type RecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordOutput)(nil)).Elem()
+}
+
+func (o RecordOutput) ToRecordOutput() RecordOutput {
+	return o
+}
+
+func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RecordOutput{})
 }

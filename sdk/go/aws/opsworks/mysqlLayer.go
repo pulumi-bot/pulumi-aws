@@ -4,6 +4,8 @@
 package opsworks
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,11 +89,11 @@ type MysqlLayer struct {
 // NewMysqlLayer registers a new resource with the given unique name, arguments, and options.
 func NewMysqlLayer(ctx *pulumi.Context,
 	name string, args *MysqlLayerArgs, opts ...pulumi.ResourceOption) (*MysqlLayer, error) {
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &MysqlLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource MysqlLayer
 	err := ctx.RegisterResource("aws:opsworks/mysqlLayer:MysqlLayer", name, args, &resource, opts...)
@@ -301,4 +303,43 @@ type MysqlLayerArgs struct {
 
 func (MysqlLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mysqlLayerArgs)(nil)).Elem()
+}
+
+type MysqlLayerInput interface {
+	pulumi.Input
+
+	ToMysqlLayerOutput() MysqlLayerOutput
+	ToMysqlLayerOutputWithContext(ctx context.Context) MysqlLayerOutput
+}
+
+func (MysqlLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayer)(nil)).Elem()
+}
+
+func (i MysqlLayer) ToMysqlLayerOutput() MysqlLayerOutput {
+	return i.ToMysqlLayerOutputWithContext(context.Background())
+}
+
+func (i MysqlLayer) ToMysqlLayerOutputWithContext(ctx context.Context) MysqlLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerOutput)
+}
+
+type MysqlLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (MysqlLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayerOutput)(nil)).Elem()
+}
+
+func (o MysqlLayerOutput) ToMysqlLayerOutput() MysqlLayerOutput {
+	return o
+}
+
+func (o MysqlLayerOutput) ToMysqlLayerOutputWithContext(ctx context.Context) MysqlLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MysqlLayerOutput{})
 }

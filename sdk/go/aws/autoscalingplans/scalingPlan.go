@@ -4,6 +4,8 @@
 package autoscalingplans
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,14 +36,14 @@ type ScalingPlan struct {
 // NewScalingPlan registers a new resource with the given unique name, arguments, and options.
 func NewScalingPlan(ctx *pulumi.Context,
 	name string, args *ScalingPlanArgs, opts ...pulumi.ResourceOption) (*ScalingPlan, error) {
-	if args == nil || args.ApplicationSource == nil {
-		return nil, errors.New("missing required argument 'ApplicationSource'")
-	}
-	if args == nil || args.ScalingInstructions == nil {
-		return nil, errors.New("missing required argument 'ScalingInstructions'")
-	}
 	if args == nil {
-		args = &ScalingPlanArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationSource == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationSource'")
+	}
+	if args.ScalingInstructions == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingInstructions'")
 	}
 	var resource ScalingPlan
 	err := ctx.RegisterResource("aws:autoscalingplans/scalingPlan:ScalingPlan", name, args, &resource, opts...)
@@ -111,4 +113,43 @@ type ScalingPlanArgs struct {
 
 func (ScalingPlanArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingPlanArgs)(nil)).Elem()
+}
+
+type ScalingPlanInput interface {
+	pulumi.Input
+
+	ToScalingPlanOutput() ScalingPlanOutput
+	ToScalingPlanOutputWithContext(ctx context.Context) ScalingPlanOutput
+}
+
+func (ScalingPlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingPlan)(nil)).Elem()
+}
+
+func (i ScalingPlan) ToScalingPlanOutput() ScalingPlanOutput {
+	return i.ToScalingPlanOutputWithContext(context.Background())
+}
+
+func (i ScalingPlan) ToScalingPlanOutputWithContext(ctx context.Context) ScalingPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingPlanOutput)
+}
+
+type ScalingPlanOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingPlanOutput)(nil)).Elem()
+}
+
+func (o ScalingPlanOutput) ToScalingPlanOutput() ScalingPlanOutput {
+	return o
+}
+
+func (o ScalingPlanOutput) ToScalingPlanOutputWithContext(ctx context.Context) ScalingPlanOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScalingPlanOutput{})
 }

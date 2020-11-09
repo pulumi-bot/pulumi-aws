@@ -4,6 +4,8 @@
 package cognito
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -171,11 +173,11 @@ type UserPoolClient struct {
 // NewUserPoolClient registers a new resource with the given unique name, arguments, and options.
 func NewUserPoolClient(ctx *pulumi.Context,
 	name string, args *UserPoolClientArgs, opts ...pulumi.ResourceOption) (*UserPoolClient, error) {
-	if args == nil || args.UserPoolId == nil {
-		return nil, errors.New("missing required argument 'UserPoolId'")
-	}
 	if args == nil {
-		args = &UserPoolClientArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.UserPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'UserPoolId'")
 	}
 	var resource UserPoolClient
 	err := ctx.RegisterResource("aws:cognito/userPoolClient:UserPoolClient", name, args, &resource, opts...)
@@ -349,4 +351,43 @@ type UserPoolClientArgs struct {
 
 func (UserPoolClientArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPoolClientArgs)(nil)).Elem()
+}
+
+type UserPoolClientInput interface {
+	pulumi.Input
+
+	ToUserPoolClientOutput() UserPoolClientOutput
+	ToUserPoolClientOutputWithContext(ctx context.Context) UserPoolClientOutput
+}
+
+func (UserPoolClient) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClient)(nil)).Elem()
+}
+
+func (i UserPoolClient) ToUserPoolClientOutput() UserPoolClientOutput {
+	return i.ToUserPoolClientOutputWithContext(context.Background())
+}
+
+func (i UserPoolClient) ToUserPoolClientOutputWithContext(ctx context.Context) UserPoolClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientOutput)
+}
+
+type UserPoolClientOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPoolClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClientOutput)(nil)).Elem()
+}
+
+func (o UserPoolClientOutput) ToUserPoolClientOutput() UserPoolClientOutput {
+	return o
+}
+
+func (o UserPoolClientOutput) ToUserPoolClientOutputWithContext(ctx context.Context) UserPoolClientOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserPoolClientOutput{})
 }

@@ -4,6 +4,8 @@
 package ec2transitgateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,11 +52,11 @@ type RouteTable struct {
 // NewRouteTable registers a new resource with the given unique name, arguments, and options.
 func NewRouteTable(ctx *pulumi.Context,
 	name string, args *RouteTableArgs, opts ...pulumi.ResourceOption) (*RouteTable, error) {
-	if args == nil || args.TransitGatewayId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayId'")
-	}
 	if args == nil {
-		args = &RouteTableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TransitGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayId'")
 	}
 	var resource RouteTable
 	err := ctx.RegisterResource("aws:ec2transitgateway/routeTable:RouteTable", name, args, &resource, opts...)
@@ -120,4 +122,43 @@ type RouteTableArgs struct {
 
 func (RouteTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableArgs)(nil)).Elem()
+}
+
+type RouteTableInput interface {
+	pulumi.Input
+
+	ToRouteTableOutput() RouteTableOutput
+	ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput
+}
+
+func (RouteTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTable)(nil)).Elem()
+}
+
+func (i RouteTable) ToRouteTableOutput() RouteTableOutput {
+	return i.ToRouteTableOutputWithContext(context.Background())
+}
+
+func (i RouteTable) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTableOutput)
+}
+
+type RouteTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableOutput)(nil)).Elem()
+}
+
+func (o RouteTableOutput) ToRouteTableOutput() RouteTableOutput {
+	return o
+}
+
+func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteTableOutput{})
 }

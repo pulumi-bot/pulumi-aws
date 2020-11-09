@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,11 +91,11 @@ type DefaultRouteTable struct {
 // NewDefaultRouteTable registers a new resource with the given unique name, arguments, and options.
 func NewDefaultRouteTable(ctx *pulumi.Context,
 	name string, args *DefaultRouteTableArgs, opts ...pulumi.ResourceOption) (*DefaultRouteTable, error) {
-	if args == nil || args.DefaultRouteTableId == nil {
-		return nil, errors.New("missing required argument 'DefaultRouteTableId'")
-	}
 	if args == nil {
-		args = &DefaultRouteTableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DefaultRouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultRouteTableId'")
 	}
 	var resource DefaultRouteTable
 	err := ctx.RegisterResource("aws:ec2/defaultRouteTable:DefaultRouteTable", name, args, &resource, opts...)
@@ -173,4 +175,43 @@ type DefaultRouteTableArgs struct {
 
 func (DefaultRouteTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultRouteTableArgs)(nil)).Elem()
+}
+
+type DefaultRouteTableInput interface {
+	pulumi.Input
+
+	ToDefaultRouteTableOutput() DefaultRouteTableOutput
+	ToDefaultRouteTableOutputWithContext(ctx context.Context) DefaultRouteTableOutput
+}
+
+func (DefaultRouteTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultRouteTable)(nil)).Elem()
+}
+
+func (i DefaultRouteTable) ToDefaultRouteTableOutput() DefaultRouteTableOutput {
+	return i.ToDefaultRouteTableOutputWithContext(context.Background())
+}
+
+func (i DefaultRouteTable) ToDefaultRouteTableOutputWithContext(ctx context.Context) DefaultRouteTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultRouteTableOutput)
+}
+
+type DefaultRouteTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultRouteTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultRouteTableOutput)(nil)).Elem()
+}
+
+func (o DefaultRouteTableOutput) ToDefaultRouteTableOutput() DefaultRouteTableOutput {
+	return o
+}
+
+func (o DefaultRouteTableOutput) ToDefaultRouteTableOutputWithContext(ctx context.Context) DefaultRouteTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultRouteTableOutput{})
 }

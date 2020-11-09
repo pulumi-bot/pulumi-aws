@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,14 +62,14 @@ type UserPolicyAttachment struct {
 // NewUserPolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewUserPolicyAttachment(ctx *pulumi.Context,
 	name string, args *UserPolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*UserPolicyAttachment, error) {
-	if args == nil || args.PolicyArn == nil {
-		return nil, errors.New("missing required argument 'PolicyArn'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &UserPolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.PolicyArn == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyArn'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource UserPolicyAttachment
 	err := ctx.RegisterResource("aws:iam/userPolicyAttachment:UserPolicyAttachment", name, args, &resource, opts...)
@@ -125,4 +127,43 @@ type UserPolicyAttachmentArgs struct {
 
 func (UserPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPolicyAttachmentArgs)(nil)).Elem()
+}
+
+type UserPolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToUserPolicyAttachmentOutput() UserPolicyAttachmentOutput
+	ToUserPolicyAttachmentOutputWithContext(ctx context.Context) UserPolicyAttachmentOutput
+}
+
+func (UserPolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPolicyAttachment)(nil)).Elem()
+}
+
+func (i UserPolicyAttachment) ToUserPolicyAttachmentOutput() UserPolicyAttachmentOutput {
+	return i.ToUserPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i UserPolicyAttachment) ToUserPolicyAttachmentOutputWithContext(ctx context.Context) UserPolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPolicyAttachmentOutput)
+}
+
+type UserPolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o UserPolicyAttachmentOutput) ToUserPolicyAttachmentOutput() UserPolicyAttachmentOutput {
+	return o
+}
+
+func (o UserPolicyAttachmentOutput) ToUserPolicyAttachmentOutputWithContext(ctx context.Context) UserPolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserPolicyAttachmentOutput{})
 }

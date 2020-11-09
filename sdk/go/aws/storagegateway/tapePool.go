@@ -4,6 +4,8 @@
 package storagegateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +57,14 @@ type TapePool struct {
 // NewTapePool registers a new resource with the given unique name, arguments, and options.
 func NewTapePool(ctx *pulumi.Context,
 	name string, args *TapePoolArgs, opts ...pulumi.ResourceOption) (*TapePool, error) {
-	if args == nil || args.PoolName == nil {
-		return nil, errors.New("missing required argument 'PoolName'")
-	}
-	if args == nil || args.StorageClass == nil {
-		return nil, errors.New("missing required argument 'StorageClass'")
-	}
 	if args == nil {
-		args = &TapePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.PoolName == nil {
+		return nil, errors.New("invalid value for required argument 'PoolName'")
+	}
+	if args.StorageClass == nil {
+		return nil, errors.New("invalid value for required argument 'StorageClass'")
 	}
 	var resource TapePool
 	err := ctx.RegisterResource("aws:storagegateway/tapePool:TapePool", name, args, &resource, opts...)
@@ -148,4 +150,43 @@ type TapePoolArgs struct {
 
 func (TapePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tapePoolArgs)(nil)).Elem()
+}
+
+type TapePoolInput interface {
+	pulumi.Input
+
+	ToTapePoolOutput() TapePoolOutput
+	ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput
+}
+
+func (TapePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*TapePool)(nil)).Elem()
+}
+
+func (i TapePool) ToTapePoolOutput() TapePoolOutput {
+	return i.ToTapePoolOutputWithContext(context.Background())
+}
+
+func (i TapePool) ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TapePoolOutput)
+}
+
+type TapePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (TapePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TapePoolOutput)(nil)).Elem()
+}
+
+func (o TapePoolOutput) ToTapePoolOutput() TapePoolOutput {
+	return o
+}
+
+func (o TapePoolOutput) ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TapePoolOutput{})
 }

@@ -4,6 +4,8 @@
 package apigateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,11 +72,11 @@ type VpcLink struct {
 // NewVpcLink registers a new resource with the given unique name, arguments, and options.
 func NewVpcLink(ctx *pulumi.Context,
 	name string, args *VpcLinkArgs, opts ...pulumi.ResourceOption) (*VpcLink, error) {
-	if args == nil || args.TargetArn == nil {
-		return nil, errors.New("missing required argument 'TargetArn'")
-	}
 	if args == nil {
-		args = &VpcLinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TargetArn == nil {
+		return nil, errors.New("invalid value for required argument 'TargetArn'")
 	}
 	var resource VpcLink
 	err := ctx.RegisterResource("aws:apigateway/vpcLink:VpcLink", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type VpcLinkArgs struct {
 
 func (VpcLinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcLinkArgs)(nil)).Elem()
+}
+
+type VpcLinkInput interface {
+	pulumi.Input
+
+	ToVpcLinkOutput() VpcLinkOutput
+	ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOutput
+}
+
+func (VpcLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcLink)(nil)).Elem()
+}
+
+func (i VpcLink) ToVpcLinkOutput() VpcLinkOutput {
+	return i.ToVpcLinkOutputWithContext(context.Background())
+}
+
+func (i VpcLink) ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcLinkOutput)
+}
+
+type VpcLinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcLinkOutput)(nil)).Elem()
+}
+
+func (o VpcLinkOutput) ToVpcLinkOutput() VpcLinkOutput {
+	return o
+}
+
+func (o VpcLinkOutput) ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcLinkOutput{})
 }

@@ -4,6 +4,8 @@
 package directconnect
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -170,11 +172,11 @@ type GatewayAssociation struct {
 // NewGatewayAssociation registers a new resource with the given unique name, arguments, and options.
 func NewGatewayAssociation(ctx *pulumi.Context,
 	name string, args *GatewayAssociationArgs, opts ...pulumi.ResourceOption) (*GatewayAssociation, error) {
-	if args == nil || args.DxGatewayId == nil {
-		return nil, errors.New("missing required argument 'DxGatewayId'")
-	}
 	if args == nil {
-		args = &GatewayAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DxGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'DxGatewayId'")
 	}
 	var resource GatewayAssociation
 	err := ctx.RegisterResource("aws:directconnect/gatewayAssociation:GatewayAssociation", name, args, &resource, opts...)
@@ -280,4 +282,43 @@ type GatewayAssociationArgs struct {
 
 func (GatewayAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayAssociationArgs)(nil)).Elem()
+}
+
+type GatewayAssociationInput interface {
+	pulumi.Input
+
+	ToGatewayAssociationOutput() GatewayAssociationOutput
+	ToGatewayAssociationOutputWithContext(ctx context.Context) GatewayAssociationOutput
+}
+
+func (GatewayAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociation)(nil)).Elem()
+}
+
+func (i GatewayAssociation) ToGatewayAssociationOutput() GatewayAssociationOutput {
+	return i.ToGatewayAssociationOutputWithContext(context.Background())
+}
+
+func (i GatewayAssociation) ToGatewayAssociationOutputWithContext(ctx context.Context) GatewayAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAssociationOutput)
+}
+
+type GatewayAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociationOutput)(nil)).Elem()
+}
+
+func (o GatewayAssociationOutput) ToGatewayAssociationOutput() GatewayAssociationOutput {
+	return o
+}
+
+func (o GatewayAssociationOutput) ToGatewayAssociationOutputWithContext(ctx context.Context) GatewayAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayAssociationOutput{})
 }

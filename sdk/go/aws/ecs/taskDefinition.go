@@ -4,6 +4,8 @@
 package ecs
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -59,14 +61,14 @@ type TaskDefinition struct {
 // NewTaskDefinition registers a new resource with the given unique name, arguments, and options.
 func NewTaskDefinition(ctx *pulumi.Context,
 	name string, args *TaskDefinitionArgs, opts ...pulumi.ResourceOption) (*TaskDefinition, error) {
-	if args == nil || args.ContainerDefinitions == nil {
-		return nil, errors.New("missing required argument 'ContainerDefinitions'")
-	}
-	if args == nil || args.Family == nil {
-		return nil, errors.New("missing required argument 'Family'")
-	}
 	if args == nil {
-		args = &TaskDefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ContainerDefinitions == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerDefinitions'")
+	}
+	if args.Family == nil {
+		return nil, errors.New("invalid value for required argument 'Family'")
 	}
 	var resource TaskDefinition
 	err := ctx.RegisterResource("aws:ecs/taskDefinition:TaskDefinition", name, args, &resource, opts...)
@@ -260,4 +262,43 @@ type TaskDefinitionArgs struct {
 
 func (TaskDefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*taskDefinitionArgs)(nil)).Elem()
+}
+
+type TaskDefinitionInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionOutput() TaskDefinitionOutput
+	ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput
+}
+
+func (TaskDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinition)(nil)).Elem()
+}
+
+func (i TaskDefinition) ToTaskDefinitionOutput() TaskDefinitionOutput {
+	return i.ToTaskDefinitionOutputWithContext(context.Background())
+}
+
+func (i TaskDefinition) ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionOutput)
+}
+
+type TaskDefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaskDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionOutput)(nil)).Elem()
+}
+
+func (o TaskDefinitionOutput) ToTaskDefinitionOutput() TaskDefinitionOutput {
+	return o
+}
+
+func (o TaskDefinitionOutput) ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TaskDefinitionOutput{})
 }

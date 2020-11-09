@@ -4,6 +4,8 @@
 package storagegateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,23 +116,23 @@ type StoredIscsiVolume struct {
 // NewStoredIscsiVolume registers a new resource with the given unique name, arguments, and options.
 func NewStoredIscsiVolume(ctx *pulumi.Context,
 	name string, args *StoredIscsiVolumeArgs, opts ...pulumi.ResourceOption) (*StoredIscsiVolume, error) {
-	if args == nil || args.DiskId == nil {
-		return nil, errors.New("missing required argument 'DiskId'")
-	}
-	if args == nil || args.GatewayArn == nil {
-		return nil, errors.New("missing required argument 'GatewayArn'")
-	}
-	if args == nil || args.NetworkInterfaceId == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
-	}
-	if args == nil || args.PreserveExistingData == nil {
-		return nil, errors.New("missing required argument 'PreserveExistingData'")
-	}
-	if args == nil || args.TargetName == nil {
-		return nil, errors.New("missing required argument 'TargetName'")
-	}
 	if args == nil {
-		args = &StoredIscsiVolumeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DiskId == nil {
+		return nil, errors.New("invalid value for required argument 'DiskId'")
+	}
+	if args.GatewayArn == nil {
+		return nil, errors.New("invalid value for required argument 'GatewayArn'")
+	}
+	if args.NetworkInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkInterfaceId'")
+	}
+	if args.PreserveExistingData == nil {
+		return nil, errors.New("invalid value for required argument 'PreserveExistingData'")
+	}
+	if args.TargetName == nil {
+		return nil, errors.New("invalid value for required argument 'TargetName'")
 	}
 	var resource StoredIscsiVolume
 	err := ctx.RegisterResource("aws:storagegateway/storedIscsiVolume:StoredIscsiVolume", name, args, &resource, opts...)
@@ -284,4 +286,43 @@ type StoredIscsiVolumeArgs struct {
 
 func (StoredIscsiVolumeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storedIscsiVolumeArgs)(nil)).Elem()
+}
+
+type StoredIscsiVolumeInput interface {
+	pulumi.Input
+
+	ToStoredIscsiVolumeOutput() StoredIscsiVolumeOutput
+	ToStoredIscsiVolumeOutputWithContext(ctx context.Context) StoredIscsiVolumeOutput
+}
+
+func (StoredIscsiVolume) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoredIscsiVolume)(nil)).Elem()
+}
+
+func (i StoredIscsiVolume) ToStoredIscsiVolumeOutput() StoredIscsiVolumeOutput {
+	return i.ToStoredIscsiVolumeOutputWithContext(context.Background())
+}
+
+func (i StoredIscsiVolume) ToStoredIscsiVolumeOutputWithContext(ctx context.Context) StoredIscsiVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoredIscsiVolumeOutput)
+}
+
+type StoredIscsiVolumeOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoredIscsiVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoredIscsiVolumeOutput)(nil)).Elem()
+}
+
+func (o StoredIscsiVolumeOutput) ToStoredIscsiVolumeOutput() StoredIscsiVolumeOutput {
+	return o
+}
+
+func (o StoredIscsiVolumeOutput) ToStoredIscsiVolumeOutputWithContext(ctx context.Context) StoredIscsiVolumeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StoredIscsiVolumeOutput{})
 }

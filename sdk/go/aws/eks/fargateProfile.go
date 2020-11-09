@@ -4,6 +4,8 @@
 package eks
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -84,17 +86,17 @@ type FargateProfile struct {
 // NewFargateProfile registers a new resource with the given unique name, arguments, and options.
 func NewFargateProfile(ctx *pulumi.Context,
 	name string, args *FargateProfileArgs, opts ...pulumi.ResourceOption) (*FargateProfile, error) {
-	if args == nil || args.ClusterName == nil {
-		return nil, errors.New("missing required argument 'ClusterName'")
-	}
-	if args == nil || args.PodExecutionRoleArn == nil {
-		return nil, errors.New("missing required argument 'PodExecutionRoleArn'")
-	}
-	if args == nil || args.Selectors == nil {
-		return nil, errors.New("missing required argument 'Selectors'")
-	}
 	if args == nil {
-		args = &FargateProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.PodExecutionRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'PodExecutionRoleArn'")
+	}
+	if args.Selectors == nil {
+		return nil, errors.New("invalid value for required argument 'Selectors'")
 	}
 	var resource FargateProfile
 	err := ctx.RegisterResource("aws:eks/fargateProfile:FargateProfile", name, args, &resource, opts...)
@@ -192,4 +194,43 @@ type FargateProfileArgs struct {
 
 func (FargateProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fargateProfileArgs)(nil)).Elem()
+}
+
+type FargateProfileInput interface {
+	pulumi.Input
+
+	ToFargateProfileOutput() FargateProfileOutput
+	ToFargateProfileOutputWithContext(ctx context.Context) FargateProfileOutput
+}
+
+func (FargateProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfile)(nil)).Elem()
+}
+
+func (i FargateProfile) ToFargateProfileOutput() FargateProfileOutput {
+	return i.ToFargateProfileOutputWithContext(context.Background())
+}
+
+func (i FargateProfile) ToFargateProfileOutputWithContext(ctx context.Context) FargateProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FargateProfileOutput)
+}
+
+type FargateProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (FargateProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfileOutput)(nil)).Elem()
+}
+
+func (o FargateProfileOutput) ToFargateProfileOutput() FargateProfileOutput {
+	return o
+}
+
+func (o FargateProfileOutput) ToFargateProfileOutputWithContext(ctx context.Context) FargateProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FargateProfileOutput{})
 }

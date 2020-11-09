@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -56,11 +58,11 @@ type TransitGatewayPeeringAttachmentAccepter struct {
 // NewTransitGatewayPeeringAttachmentAccepter registers a new resource with the given unique name, arguments, and options.
 func NewTransitGatewayPeeringAttachmentAccepter(ctx *pulumi.Context,
 	name string, args *TransitGatewayPeeringAttachmentAccepterArgs, opts ...pulumi.ResourceOption) (*TransitGatewayPeeringAttachmentAccepter, error) {
-	if args == nil || args.TransitGatewayAttachmentId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayAttachmentId'")
-	}
 	if args == nil {
-		args = &TransitGatewayPeeringAttachmentAccepterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TransitGatewayAttachmentId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayAttachmentId'")
 	}
 	var resource TransitGatewayPeeringAttachmentAccepter
 	err := ctx.RegisterResource("aws:ec2/transitGatewayPeeringAttachmentAccepter:TransitGatewayPeeringAttachmentAccepter", name, args, &resource, opts...)
@@ -132,4 +134,43 @@ type TransitGatewayPeeringAttachmentAccepterArgs struct {
 
 func (TransitGatewayPeeringAttachmentAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitGatewayPeeringAttachmentAccepterArgs)(nil)).Elem()
+}
+
+type TransitGatewayPeeringAttachmentAccepterInput interface {
+	pulumi.Input
+
+	ToTransitGatewayPeeringAttachmentAccepterOutput() TransitGatewayPeeringAttachmentAccepterOutput
+	ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(ctx context.Context) TransitGatewayPeeringAttachmentAccepterOutput
+}
+
+func (TransitGatewayPeeringAttachmentAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayPeeringAttachmentAccepter)(nil)).Elem()
+}
+
+func (i TransitGatewayPeeringAttachmentAccepter) ToTransitGatewayPeeringAttachmentAccepterOutput() TransitGatewayPeeringAttachmentAccepterOutput {
+	return i.ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayPeeringAttachmentAccepter) ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(ctx context.Context) TransitGatewayPeeringAttachmentAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayPeeringAttachmentAccepterOutput)
+}
+
+type TransitGatewayPeeringAttachmentAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitGatewayPeeringAttachmentAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayPeeringAttachmentAccepterOutput)(nil)).Elem()
+}
+
+func (o TransitGatewayPeeringAttachmentAccepterOutput) ToTransitGatewayPeeringAttachmentAccepterOutput() TransitGatewayPeeringAttachmentAccepterOutput {
+	return o
+}
+
+func (o TransitGatewayPeeringAttachmentAccepterOutput) ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(ctx context.Context) TransitGatewayPeeringAttachmentAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TransitGatewayPeeringAttachmentAccepterOutput{})
 }

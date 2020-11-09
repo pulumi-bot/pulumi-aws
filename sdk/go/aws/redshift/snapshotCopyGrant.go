@@ -4,6 +4,8 @@
 package redshift
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,11 +63,11 @@ type SnapshotCopyGrant struct {
 // NewSnapshotCopyGrant registers a new resource with the given unique name, arguments, and options.
 func NewSnapshotCopyGrant(ctx *pulumi.Context,
 	name string, args *SnapshotCopyGrantArgs, opts ...pulumi.ResourceOption) (*SnapshotCopyGrant, error) {
-	if args == nil || args.SnapshotCopyGrantName == nil {
-		return nil, errors.New("missing required argument 'SnapshotCopyGrantName'")
-	}
 	if args == nil {
-		args = &SnapshotCopyGrantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SnapshotCopyGrantName == nil {
+		return nil, errors.New("invalid value for required argument 'SnapshotCopyGrantName'")
 	}
 	var resource SnapshotCopyGrant
 	err := ctx.RegisterResource("aws:redshift/snapshotCopyGrant:SnapshotCopyGrant", name, args, &resource, opts...)
@@ -135,4 +137,43 @@ type SnapshotCopyGrantArgs struct {
 
 func (SnapshotCopyGrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotCopyGrantArgs)(nil)).Elem()
+}
+
+type SnapshotCopyGrantInput interface {
+	pulumi.Input
+
+	ToSnapshotCopyGrantOutput() SnapshotCopyGrantOutput
+	ToSnapshotCopyGrantOutputWithContext(ctx context.Context) SnapshotCopyGrantOutput
+}
+
+func (SnapshotCopyGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotCopyGrant)(nil)).Elem()
+}
+
+func (i SnapshotCopyGrant) ToSnapshotCopyGrantOutput() SnapshotCopyGrantOutput {
+	return i.ToSnapshotCopyGrantOutputWithContext(context.Background())
+}
+
+func (i SnapshotCopyGrant) ToSnapshotCopyGrantOutputWithContext(ctx context.Context) SnapshotCopyGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotCopyGrantOutput)
+}
+
+type SnapshotCopyGrantOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnapshotCopyGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotCopyGrantOutput)(nil)).Elem()
+}
+
+func (o SnapshotCopyGrantOutput) ToSnapshotCopyGrantOutput() SnapshotCopyGrantOutput {
+	return o
+}
+
+func (o SnapshotCopyGrantOutput) ToSnapshotCopyGrantOutputWithContext(ctx context.Context) SnapshotCopyGrantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SnapshotCopyGrantOutput{})
 }

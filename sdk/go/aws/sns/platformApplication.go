@@ -4,6 +4,8 @@
 package sns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -92,14 +94,14 @@ type PlatformApplication struct {
 // NewPlatformApplication registers a new resource with the given unique name, arguments, and options.
 func NewPlatformApplication(ctx *pulumi.Context,
 	name string, args *PlatformApplicationArgs, opts ...pulumi.ResourceOption) (*PlatformApplication, error) {
-	if args == nil || args.Platform == nil {
-		return nil, errors.New("missing required argument 'Platform'")
-	}
-	if args == nil || args.PlatformCredential == nil {
-		return nil, errors.New("missing required argument 'PlatformCredential'")
-	}
 	if args == nil {
-		args = &PlatformApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Platform == nil {
+		return nil, errors.New("invalid value for required argument 'Platform'")
+	}
+	if args.PlatformCredential == nil {
+		return nil, errors.New("invalid value for required argument 'PlatformCredential'")
 	}
 	var resource PlatformApplication
 	err := ctx.RegisterResource("aws:sns/platformApplication:PlatformApplication", name, args, &resource, opts...)
@@ -233,4 +235,43 @@ type PlatformApplicationArgs struct {
 
 func (PlatformApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*platformApplicationArgs)(nil)).Elem()
+}
+
+type PlatformApplicationInput interface {
+	pulumi.Input
+
+	ToPlatformApplicationOutput() PlatformApplicationOutput
+	ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput
+}
+
+func (PlatformApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformApplication)(nil)).Elem()
+}
+
+func (i PlatformApplication) ToPlatformApplicationOutput() PlatformApplicationOutput {
+	return i.ToPlatformApplicationOutputWithContext(context.Background())
+}
+
+func (i PlatformApplication) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformApplicationOutput)
+}
+
+type PlatformApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlatformApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformApplicationOutput)(nil)).Elem()
+}
+
+func (o PlatformApplicationOutput) ToPlatformApplicationOutput() PlatformApplicationOutput {
+	return o
+}
+
+func (o PlatformApplicationOutput) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PlatformApplicationOutput{})
 }

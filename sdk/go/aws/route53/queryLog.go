@@ -4,6 +4,8 @@
 package route53
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -105,14 +107,14 @@ type QueryLog struct {
 // NewQueryLog registers a new resource with the given unique name, arguments, and options.
 func NewQueryLog(ctx *pulumi.Context,
 	name string, args *QueryLogArgs, opts ...pulumi.ResourceOption) (*QueryLog, error) {
-	if args == nil || args.CloudwatchLogGroupArn == nil {
-		return nil, errors.New("missing required argument 'CloudwatchLogGroupArn'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &QueryLogArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CloudwatchLogGroupArn == nil {
+		return nil, errors.New("invalid value for required argument 'CloudwatchLogGroupArn'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource QueryLog
 	err := ctx.RegisterResource("aws:route53/queryLog:QueryLog", name, args, &resource, opts...)
@@ -170,4 +172,43 @@ type QueryLogArgs struct {
 
 func (QueryLogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*queryLogArgs)(nil)).Elem()
+}
+
+type QueryLogInput interface {
+	pulumi.Input
+
+	ToQueryLogOutput() QueryLogOutput
+	ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput
+}
+
+func (QueryLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryLog)(nil)).Elem()
+}
+
+func (i QueryLog) ToQueryLogOutput() QueryLogOutput {
+	return i.ToQueryLogOutputWithContext(context.Background())
+}
+
+func (i QueryLog) ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryLogOutput)
+}
+
+type QueryLogOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueryLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryLogOutput)(nil)).Elem()
+}
+
+func (o QueryLogOutput) ToQueryLogOutput() QueryLogOutput {
+	return o
+}
+
+func (o QueryLogOutput) ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QueryLogOutput{})
 }

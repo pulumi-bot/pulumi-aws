@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,14 +62,14 @@ type GroupPolicyAttachment struct {
 // NewGroupPolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewGroupPolicyAttachment(ctx *pulumi.Context,
 	name string, args *GroupPolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*GroupPolicyAttachment, error) {
-	if args == nil || args.Group == nil {
-		return nil, errors.New("missing required argument 'Group'")
-	}
-	if args == nil || args.PolicyArn == nil {
-		return nil, errors.New("missing required argument 'PolicyArn'")
-	}
 	if args == nil {
-		args = &GroupPolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Group == nil {
+		return nil, errors.New("invalid value for required argument 'Group'")
+	}
+	if args.PolicyArn == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyArn'")
 	}
 	var resource GroupPolicyAttachment
 	err := ctx.RegisterResource("aws:iam/groupPolicyAttachment:GroupPolicyAttachment", name, args, &resource, opts...)
@@ -125,4 +127,43 @@ type GroupPolicyAttachmentArgs struct {
 
 func (GroupPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupPolicyAttachmentArgs)(nil)).Elem()
+}
+
+type GroupPolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToGroupPolicyAttachmentOutput() GroupPolicyAttachmentOutput
+	ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput
+}
+
+func (GroupPolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPolicyAttachment)(nil)).Elem()
+}
+
+func (i GroupPolicyAttachment) ToGroupPolicyAttachmentOutput() GroupPolicyAttachmentOutput {
+	return i.ToGroupPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i GroupPolicyAttachment) ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentOutput)
+}
+
+type GroupPolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupPolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutput() GroupPolicyAttachmentOutput {
+	return o
+}
+
+func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupPolicyAttachmentOutput{})
 }

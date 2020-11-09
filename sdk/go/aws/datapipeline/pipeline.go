@@ -4,6 +4,8 @@
 package datapipeline
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -112,4 +114,43 @@ type PipelineArgs struct {
 
 func (PipelineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineArgs)(nil)).Elem()
+}
+
+type PipelineInput interface {
+	pulumi.Input
+
+	ToPipelineOutput() PipelineOutput
+	ToPipelineOutputWithContext(ctx context.Context) PipelineOutput
+}
+
+func (Pipeline) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pipeline)(nil)).Elem()
+}
+
+func (i Pipeline) ToPipelineOutput() PipelineOutput {
+	return i.ToPipelineOutputWithContext(context.Background())
+}
+
+func (i Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineOutput)
+}
+
+type PipelineOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineOutput)(nil)).Elem()
+}
+
+func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
+	return o
+}
+
+func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PipelineOutput{})
 }

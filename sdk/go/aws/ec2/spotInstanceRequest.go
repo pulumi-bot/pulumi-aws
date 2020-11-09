@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -201,14 +203,14 @@ type SpotInstanceRequest struct {
 // NewSpotInstanceRequest registers a new resource with the given unique name, arguments, and options.
 func NewSpotInstanceRequest(ctx *pulumi.Context,
 	name string, args *SpotInstanceRequestArgs, opts ...pulumi.ResourceOption) (*SpotInstanceRequest, error) {
-	if args == nil || args.Ami == nil {
-		return nil, errors.New("missing required argument 'Ami'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
 	if args == nil {
-		args = &SpotInstanceRequestArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Ami == nil {
+		return nil, errors.New("invalid value for required argument 'Ami'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
 	var resource SpotInstanceRequest
 	err := ctx.RegisterResource("aws:ec2/spotInstanceRequest:SpotInstanceRequest", name, args, &resource, opts...)
@@ -732,4 +734,43 @@ type SpotInstanceRequestArgs struct {
 
 func (SpotInstanceRequestArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spotInstanceRequestArgs)(nil)).Elem()
+}
+
+type SpotInstanceRequestInput interface {
+	pulumi.Input
+
+	ToSpotInstanceRequestOutput() SpotInstanceRequestOutput
+	ToSpotInstanceRequestOutputWithContext(ctx context.Context) SpotInstanceRequestOutput
+}
+
+func (SpotInstanceRequest) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotInstanceRequest)(nil)).Elem()
+}
+
+func (i SpotInstanceRequest) ToSpotInstanceRequestOutput() SpotInstanceRequestOutput {
+	return i.ToSpotInstanceRequestOutputWithContext(context.Background())
+}
+
+func (i SpotInstanceRequest) ToSpotInstanceRequestOutputWithContext(ctx context.Context) SpotInstanceRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestOutput)
+}
+
+type SpotInstanceRequestOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpotInstanceRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotInstanceRequestOutput)(nil)).Elem()
+}
+
+func (o SpotInstanceRequestOutput) ToSpotInstanceRequestOutput() SpotInstanceRequestOutput {
+	return o
+}
+
+func (o SpotInstanceRequestOutput) ToSpotInstanceRequestOutputWithContext(ctx context.Context) SpotInstanceRequestOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpotInstanceRequestOutput{})
 }

@@ -4,6 +4,8 @@
 package docdb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,11 +65,11 @@ type ClusterParameterGroup struct {
 // NewClusterParameterGroup registers a new resource with the given unique name, arguments, and options.
 func NewClusterParameterGroup(ctx *pulumi.Context,
 	name string, args *ClusterParameterGroupArgs, opts ...pulumi.ResourceOption) (*ClusterParameterGroup, error) {
-	if args == nil || args.Family == nil {
-		return nil, errors.New("missing required argument 'Family'")
-	}
 	if args == nil {
-		args = &ClusterParameterGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Family == nil {
+		return nil, errors.New("invalid value for required argument 'Family'")
 	}
 	var resource ClusterParameterGroup
 	err := ctx.RegisterResource("aws:docdb/clusterParameterGroup:ClusterParameterGroup", name, args, &resource, opts...)
@@ -161,4 +163,43 @@ type ClusterParameterGroupArgs struct {
 
 func (ClusterParameterGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterParameterGroupArgs)(nil)).Elem()
+}
+
+type ClusterParameterGroupInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupOutput() ClusterParameterGroupOutput
+	ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput
+}
+
+func (ClusterParameterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroup)(nil)).Elem()
+}
+
+func (i ClusterParameterGroup) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
+	return i.ToClusterParameterGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroup) ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupOutput)
+}
+
+type ClusterParameterGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterParameterGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupOutput)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupOutput) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
+	return o
+}
+
+func (o ClusterParameterGroupOutput) ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterParameterGroupOutput{})
 }

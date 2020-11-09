@@ -4,6 +4,8 @@
 package elasticloadbalancingv2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -329,4 +331,43 @@ type TargetGroupArgs struct {
 
 func (TargetGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetGroupArgs)(nil)).Elem()
+}
+
+type TargetGroupInput interface {
+	pulumi.Input
+
+	ToTargetGroupOutput() TargetGroupOutput
+	ToTargetGroupOutputWithContext(ctx context.Context) TargetGroupOutput
+}
+
+func (TargetGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGroup)(nil)).Elem()
+}
+
+func (i TargetGroup) ToTargetGroupOutput() TargetGroupOutput {
+	return i.ToTargetGroupOutputWithContext(context.Background())
+}
+
+func (i TargetGroup) ToTargetGroupOutputWithContext(ctx context.Context) TargetGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupOutput)
+}
+
+type TargetGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGroupOutput)(nil)).Elem()
+}
+
+func (o TargetGroupOutput) ToTargetGroupOutput() TargetGroupOutput {
+	return o
+}
+
+func (o TargetGroupOutput) ToTargetGroupOutputWithContext(ctx context.Context) TargetGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetGroupOutput{})
 }

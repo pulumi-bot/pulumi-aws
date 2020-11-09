@@ -4,6 +4,8 @@
 package mediapackage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,11 +55,11 @@ type Channel struct {
 // NewChannel registers a new resource with the given unique name, arguments, and options.
 func NewChannel(ctx *pulumi.Context,
 	name string, args *ChannelArgs, opts ...pulumi.ResourceOption) (*Channel, error) {
-	if args == nil || args.ChannelId == nil {
-		return nil, errors.New("missing required argument 'ChannelId'")
-	}
 	if args == nil {
-		args = &ChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ChannelId == nil {
+		return nil, errors.New("invalid value for required argument 'ChannelId'")
 	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
@@ -134,4 +136,43 @@ type ChannelArgs struct {
 
 func (ChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelArgs)(nil)).Elem()
+}
+
+type ChannelInput interface {
+	pulumi.Input
+
+	ToChannelOutput() ChannelOutput
+	ToChannelOutputWithContext(ctx context.Context) ChannelOutput
+}
+
+func (Channel) ElementType() reflect.Type {
+	return reflect.TypeOf((*Channel)(nil)).Elem()
+}
+
+func (i Channel) ToChannelOutput() ChannelOutput {
+	return i.ToChannelOutputWithContext(context.Background())
+}
+
+func (i Channel) ToChannelOutputWithContext(ctx context.Context) ChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelOutput)
+}
+
+type ChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelOutput)(nil)).Elem()
+}
+
+func (o ChannelOutput) ToChannelOutput() ChannelOutput {
+	return o
+}
+
+func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelOutput{})
 }

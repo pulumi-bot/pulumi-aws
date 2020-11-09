@@ -4,6 +4,8 @@
 package wafregional
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -263,14 +265,14 @@ type WebAclAssociation struct {
 // NewWebAclAssociation registers a new resource with the given unique name, arguments, and options.
 func NewWebAclAssociation(ctx *pulumi.Context,
 	name string, args *WebAclAssociationArgs, opts ...pulumi.ResourceOption) (*WebAclAssociation, error) {
-	if args == nil || args.ResourceArn == nil {
-		return nil, errors.New("missing required argument 'ResourceArn'")
-	}
-	if args == nil || args.WebAclId == nil {
-		return nil, errors.New("missing required argument 'WebAclId'")
-	}
 	if args == nil {
-		args = &WebAclAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceArn == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceArn'")
+	}
+	if args.WebAclId == nil {
+		return nil, errors.New("invalid value for required argument 'WebAclId'")
 	}
 	var resource WebAclAssociation
 	err := ctx.RegisterResource("aws:wafregional/webAclAssociation:WebAclAssociation", name, args, &resource, opts...)
@@ -328,4 +330,43 @@ type WebAclAssociationArgs struct {
 
 func (WebAclAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAclAssociationArgs)(nil)).Elem()
+}
+
+type WebAclAssociationInput interface {
+	pulumi.Input
+
+	ToWebAclAssociationOutput() WebAclAssociationOutput
+	ToWebAclAssociationOutputWithContext(ctx context.Context) WebAclAssociationOutput
+}
+
+func (WebAclAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclAssociation)(nil)).Elem()
+}
+
+func (i WebAclAssociation) ToWebAclAssociationOutput() WebAclAssociationOutput {
+	return i.ToWebAclAssociationOutputWithContext(context.Background())
+}
+
+func (i WebAclAssociation) ToWebAclAssociationOutputWithContext(ctx context.Context) WebAclAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclAssociationOutput)
+}
+
+type WebAclAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclAssociationOutput)(nil)).Elem()
+}
+
+func (o WebAclAssociationOutput) ToWebAclAssociationOutput() WebAclAssociationOutput {
+	return o
+}
+
+func (o WebAclAssociationOutput) ToWebAclAssociationOutputWithContext(ctx context.Context) WebAclAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAclAssociationOutput{})
 }

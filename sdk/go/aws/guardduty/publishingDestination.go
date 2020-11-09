@@ -4,6 +4,8 @@
 package guardduty
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -141,17 +143,17 @@ type PublishingDestination struct {
 // NewPublishingDestination registers a new resource with the given unique name, arguments, and options.
 func NewPublishingDestination(ctx *pulumi.Context,
 	name string, args *PublishingDestinationArgs, opts ...pulumi.ResourceOption) (*PublishingDestination, error) {
-	if args == nil || args.DestinationArn == nil {
-		return nil, errors.New("missing required argument 'DestinationArn'")
-	}
-	if args == nil || args.DetectorId == nil {
-		return nil, errors.New("missing required argument 'DetectorId'")
-	}
-	if args == nil || args.KmsKeyArn == nil {
-		return nil, errors.New("missing required argument 'KmsKeyArn'")
-	}
 	if args == nil {
-		args = &PublishingDestinationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DestinationArn == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationArn'")
+	}
+	if args.DetectorId == nil {
+		return nil, errors.New("invalid value for required argument 'DetectorId'")
+	}
+	if args.KmsKeyArn == nil {
+		return nil, errors.New("invalid value for required argument 'KmsKeyArn'")
 	}
 	var resource PublishingDestination
 	err := ctx.RegisterResource("aws:guardduty/publishingDestination:PublishingDestination", name, args, &resource, opts...)
@@ -225,4 +227,43 @@ type PublishingDestinationArgs struct {
 
 func (PublishingDestinationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*publishingDestinationArgs)(nil)).Elem()
+}
+
+type PublishingDestinationInput interface {
+	pulumi.Input
+
+	ToPublishingDestinationOutput() PublishingDestinationOutput
+	ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput
+}
+
+func (PublishingDestination) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingDestination)(nil)).Elem()
+}
+
+func (i PublishingDestination) ToPublishingDestinationOutput() PublishingDestinationOutput {
+	return i.ToPublishingDestinationOutputWithContext(context.Background())
+}
+
+func (i PublishingDestination) ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublishingDestinationOutput)
+}
+
+type PublishingDestinationOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublishingDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingDestinationOutput)(nil)).Elem()
+}
+
+func (o PublishingDestinationOutput) ToPublishingDestinationOutput() PublishingDestinationOutput {
+	return o
+}
+
+func (o PublishingDestinationOutput) ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PublishingDestinationOutput{})
 }

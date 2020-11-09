@@ -4,6 +4,8 @@
 package iot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -118,4 +120,43 @@ type ThingTypeArgs struct {
 
 func (ThingTypeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*thingTypeArgs)(nil)).Elem()
+}
+
+type ThingTypeInput interface {
+	pulumi.Input
+
+	ToThingTypeOutput() ThingTypeOutput
+	ToThingTypeOutputWithContext(ctx context.Context) ThingTypeOutput
+}
+
+func (ThingType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThingType)(nil)).Elem()
+}
+
+func (i ThingType) ToThingTypeOutput() ThingTypeOutput {
+	return i.ToThingTypeOutputWithContext(context.Background())
+}
+
+func (i ThingType) ToThingTypeOutputWithContext(ctx context.Context) ThingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThingTypeOutput)
+}
+
+type ThingTypeOutput struct {
+	*pulumi.OutputState
+}
+
+func (ThingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThingTypeOutput)(nil)).Elem()
+}
+
+func (o ThingTypeOutput) ToThingTypeOutput() ThingTypeOutput {
+	return o
+}
+
+func (o ThingTypeOutput) ToThingTypeOutputWithContext(ctx context.Context) ThingTypeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ThingTypeOutput{})
 }

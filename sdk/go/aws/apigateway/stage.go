@@ -4,6 +4,8 @@
 package apigateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -182,17 +184,17 @@ type Stage struct {
 // NewStage registers a new resource with the given unique name, arguments, and options.
 func NewStage(ctx *pulumi.Context,
 	name string, args *StageArgs, opts ...pulumi.ResourceOption) (*Stage, error) {
-	if args == nil || args.Deployment == nil {
-		return nil, errors.New("missing required argument 'Deployment'")
-	}
-	if args == nil || args.RestApi == nil {
-		return nil, errors.New("missing required argument 'RestApi'")
-	}
-	if args == nil || args.StageName == nil {
-		return nil, errors.New("missing required argument 'StageName'")
-	}
 	if args == nil {
-		args = &StageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Deployment == nil {
+		return nil, errors.New("invalid value for required argument 'Deployment'")
+	}
+	if args.RestApi == nil {
+		return nil, errors.New("invalid value for required argument 'RestApi'")
+	}
+	if args.StageName == nil {
+		return nil, errors.New("invalid value for required argument 'StageName'")
 	}
 	var resource Stage
 	err := ctx.RegisterResource("aws:apigateway/stage:Stage", name, args, &resource, opts...)
@@ -352,4 +354,43 @@ type StageArgs struct {
 
 func (StageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stageArgs)(nil)).Elem()
+}
+
+type StageInput interface {
+	pulumi.Input
+
+	ToStageOutput() StageOutput
+	ToStageOutputWithContext(ctx context.Context) StageOutput
+}
+
+func (Stage) ElementType() reflect.Type {
+	return reflect.TypeOf((*Stage)(nil)).Elem()
+}
+
+func (i Stage) ToStageOutput() StageOutput {
+	return i.ToStageOutputWithContext(context.Background())
+}
+
+func (i Stage) ToStageOutputWithContext(ctx context.Context) StageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StageOutput)
+}
+
+type StageOutput struct {
+	*pulumi.OutputState
+}
+
+func (StageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageOutput)(nil)).Elem()
+}
+
+func (o StageOutput) ToStageOutput() StageOutput {
+	return o
+}
+
+func (o StageOutput) ToStageOutputWithContext(ctx context.Context) StageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StageOutput{})
 }

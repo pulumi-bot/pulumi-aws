@@ -4,6 +4,8 @@
 package ses
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,11 +90,11 @@ type ReceiptRule struct {
 // NewReceiptRule registers a new resource with the given unique name, arguments, and options.
 func NewReceiptRule(ctx *pulumi.Context,
 	name string, args *ReceiptRuleArgs, opts ...pulumi.ResourceOption) (*ReceiptRule, error) {
-	if args == nil || args.RuleSetName == nil {
-		return nil, errors.New("missing required argument 'RuleSetName'")
-	}
 	if args == nil {
-		args = &ReceiptRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RuleSetName == nil {
+		return nil, errors.New("invalid value for required argument 'RuleSetName'")
 	}
 	var resource ReceiptRule
 	err := ctx.RegisterResource("aws:ses/receiptRule:ReceiptRule", name, args, &resource, opts...)
@@ -246,4 +248,43 @@ type ReceiptRuleArgs struct {
 
 func (ReceiptRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*receiptRuleArgs)(nil)).Elem()
+}
+
+type ReceiptRuleInput interface {
+	pulumi.Input
+
+	ToReceiptRuleOutput() ReceiptRuleOutput
+	ToReceiptRuleOutputWithContext(ctx context.Context) ReceiptRuleOutput
+}
+
+func (ReceiptRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRule)(nil)).Elem()
+}
+
+func (i ReceiptRule) ToReceiptRuleOutput() ReceiptRuleOutput {
+	return i.ToReceiptRuleOutputWithContext(context.Background())
+}
+
+func (i ReceiptRule) ToReceiptRuleOutputWithContext(ctx context.Context) ReceiptRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleOutput)
+}
+
+type ReceiptRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReceiptRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleOutput)(nil)).Elem()
+}
+
+func (o ReceiptRuleOutput) ToReceiptRuleOutput() ReceiptRuleOutput {
+	return o
+}
+
+func (o ReceiptRuleOutput) ToReceiptRuleOutputWithContext(ctx context.Context) ReceiptRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReceiptRuleOutput{})
 }

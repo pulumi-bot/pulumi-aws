@@ -4,6 +4,8 @@
 package ebs
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,11 +53,11 @@ type DefaultKmsKey struct {
 // NewDefaultKmsKey registers a new resource with the given unique name, arguments, and options.
 func NewDefaultKmsKey(ctx *pulumi.Context,
 	name string, args *DefaultKmsKeyArgs, opts ...pulumi.ResourceOption) (*DefaultKmsKey, error) {
-	if args == nil || args.KeyArn == nil {
-		return nil, errors.New("missing required argument 'KeyArn'")
-	}
 	if args == nil {
-		args = &DefaultKmsKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KeyArn == nil {
+		return nil, errors.New("invalid value for required argument 'KeyArn'")
 	}
 	var resource DefaultKmsKey
 	err := ctx.RegisterResource("aws:ebs/defaultKmsKey:DefaultKmsKey", name, args, &resource, opts...)
@@ -105,4 +107,43 @@ type DefaultKmsKeyArgs struct {
 
 func (DefaultKmsKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultKmsKeyArgs)(nil)).Elem()
+}
+
+type DefaultKmsKeyInput interface {
+	pulumi.Input
+
+	ToDefaultKmsKeyOutput() DefaultKmsKeyOutput
+	ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput
+}
+
+func (DefaultKmsKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKmsKey)(nil)).Elem()
+}
+
+func (i DefaultKmsKey) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
+	return i.ToDefaultKmsKeyOutputWithContext(context.Background())
+}
+
+func (i DefaultKmsKey) ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultKmsKeyOutput)
+}
+
+type DefaultKmsKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultKmsKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKmsKeyOutput)(nil)).Elem()
+}
+
+func (o DefaultKmsKeyOutput) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
+	return o
+}
+
+func (o DefaultKmsKeyOutput) ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultKmsKeyOutput{})
 }

@@ -4,6 +4,8 @@
 package ssm
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +57,14 @@ type PatchGroup struct {
 // NewPatchGroup registers a new resource with the given unique name, arguments, and options.
 func NewPatchGroup(ctx *pulumi.Context,
 	name string, args *PatchGroupArgs, opts ...pulumi.ResourceOption) (*PatchGroup, error) {
-	if args == nil || args.BaselineId == nil {
-		return nil, errors.New("missing required argument 'BaselineId'")
-	}
-	if args == nil || args.PatchGroup == nil {
-		return nil, errors.New("missing required argument 'PatchGroup'")
-	}
 	if args == nil {
-		args = &PatchGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.BaselineId == nil {
+		return nil, errors.New("invalid value for required argument 'BaselineId'")
+	}
+	if args.PatchGroup == nil {
+		return nil, errors.New("invalid value for required argument 'PatchGroup'")
 	}
 	var resource PatchGroup
 	err := ctx.RegisterResource("aws:ssm/patchGroup:PatchGroup", name, args, &resource, opts...)
@@ -120,4 +122,43 @@ type PatchGroupArgs struct {
 
 func (PatchGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*patchGroupArgs)(nil)).Elem()
+}
+
+type PatchGroupInput interface {
+	pulumi.Input
+
+	ToPatchGroupOutput() PatchGroupOutput
+	ToPatchGroupOutputWithContext(ctx context.Context) PatchGroupOutput
+}
+
+func (PatchGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchGroup)(nil)).Elem()
+}
+
+func (i PatchGroup) ToPatchGroupOutput() PatchGroupOutput {
+	return i.ToPatchGroupOutputWithContext(context.Background())
+}
+
+func (i PatchGroup) ToPatchGroupOutputWithContext(ctx context.Context) PatchGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchGroupOutput)
+}
+
+type PatchGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (PatchGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchGroupOutput)(nil)).Elem()
+}
+
+func (o PatchGroupOutput) ToPatchGroupOutput() PatchGroupOutput {
+	return o
+}
+
+func (o PatchGroupOutput) ToPatchGroupOutputWithContext(ctx context.Context) PatchGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PatchGroupOutput{})
 }

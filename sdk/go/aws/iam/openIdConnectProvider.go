@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -54,17 +56,17 @@ type OpenIdConnectProvider struct {
 // NewOpenIdConnectProvider registers a new resource with the given unique name, arguments, and options.
 func NewOpenIdConnectProvider(ctx *pulumi.Context,
 	name string, args *OpenIdConnectProviderArgs, opts ...pulumi.ResourceOption) (*OpenIdConnectProvider, error) {
-	if args == nil || args.ClientIdLists == nil {
-		return nil, errors.New("missing required argument 'ClientIdLists'")
-	}
-	if args == nil || args.ThumbprintLists == nil {
-		return nil, errors.New("missing required argument 'ThumbprintLists'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &OpenIdConnectProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ClientIdLists == nil {
+		return nil, errors.New("invalid value for required argument 'ClientIdLists'")
+	}
+	if args.ThumbprintLists == nil {
+		return nil, errors.New("invalid value for required argument 'ThumbprintLists'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource OpenIdConnectProvider
 	err := ctx.RegisterResource("aws:iam/openIdConnectProvider:OpenIdConnectProvider", name, args, &resource, opts...)
@@ -134,4 +136,43 @@ type OpenIdConnectProviderArgs struct {
 
 func (OpenIdConnectProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*openIdConnectProviderArgs)(nil)).Elem()
+}
+
+type OpenIdConnectProviderInput interface {
+	pulumi.Input
+
+	ToOpenIdConnectProviderOutput() OpenIdConnectProviderOutput
+	ToOpenIdConnectProviderOutputWithContext(ctx context.Context) OpenIdConnectProviderOutput
+}
+
+func (OpenIdConnectProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenIdConnectProvider)(nil)).Elem()
+}
+
+func (i OpenIdConnectProvider) ToOpenIdConnectProviderOutput() OpenIdConnectProviderOutput {
+	return i.ToOpenIdConnectProviderOutputWithContext(context.Background())
+}
+
+func (i OpenIdConnectProvider) ToOpenIdConnectProviderOutputWithContext(ctx context.Context) OpenIdConnectProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectProviderOutput)
+}
+
+type OpenIdConnectProviderOutput struct {
+	*pulumi.OutputState
+}
+
+func (OpenIdConnectProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenIdConnectProviderOutput)(nil)).Elem()
+}
+
+func (o OpenIdConnectProviderOutput) ToOpenIdConnectProviderOutput() OpenIdConnectProviderOutput {
+	return o
+}
+
+func (o OpenIdConnectProviderOutput) ToOpenIdConnectProviderOutputWithContext(ctx context.Context) OpenIdConnectProviderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OpenIdConnectProviderOutput{})
 }

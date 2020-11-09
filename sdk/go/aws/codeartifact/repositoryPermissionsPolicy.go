@@ -4,6 +4,8 @@
 package codeartifact
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,17 +33,17 @@ type RepositoryPermissionsPolicy struct {
 // NewRepositoryPermissionsPolicy registers a new resource with the given unique name, arguments, and options.
 func NewRepositoryPermissionsPolicy(ctx *pulumi.Context,
 	name string, args *RepositoryPermissionsPolicyArgs, opts ...pulumi.ResourceOption) (*RepositoryPermissionsPolicy, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
-	if args == nil || args.PolicyDocument == nil {
-		return nil, errors.New("missing required argument 'PolicyDocument'")
-	}
-	if args == nil || args.Repository == nil {
-		return nil, errors.New("missing required argument 'Repository'")
-	}
 	if args == nil {
-		args = &RepositoryPermissionsPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
+	}
+	if args.PolicyDocument == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyDocument'")
+	}
+	if args.Repository == nil {
+		return nil, errors.New("invalid value for required argument 'Repository'")
 	}
 	var resource RepositoryPermissionsPolicy
 	err := ctx.RegisterResource("aws:codeartifact/repositoryPermissionsPolicy:RepositoryPermissionsPolicy", name, args, &resource, opts...)
@@ -127,4 +129,43 @@ type RepositoryPermissionsPolicyArgs struct {
 
 func (RepositoryPermissionsPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryPermissionsPolicyArgs)(nil)).Elem()
+}
+
+type RepositoryPermissionsPolicyInput interface {
+	pulumi.Input
+
+	ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput
+	ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput
+}
+
+func (RepositoryPermissionsPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPermissionsPolicy)(nil)).Elem()
+}
+
+func (i RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
+	return i.ToRepositoryPermissionsPolicyOutputWithContext(context.Background())
+}
+
+func (i RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPermissionsPolicyOutput)
+}
+
+type RepositoryPermissionsPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryPermissionsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPermissionsPolicyOutput)(nil)).Elem()
+}
+
+func (o RepositoryPermissionsPolicyOutput) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
+	return o
+}
+
+func (o RepositoryPermissionsPolicyOutput) ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RepositoryPermissionsPolicyOutput{})
 }

@@ -4,6 +4,8 @@
 package acm
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,11 +65,11 @@ type CertificateValidation struct {
 // NewCertificateValidation registers a new resource with the given unique name, arguments, and options.
 func NewCertificateValidation(ctx *pulumi.Context,
 	name string, args *CertificateValidationArgs, opts ...pulumi.ResourceOption) (*CertificateValidation, error) {
-	if args == nil || args.CertificateArn == nil {
-		return nil, errors.New("missing required argument 'CertificateArn'")
-	}
 	if args == nil {
-		args = &CertificateValidationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CertificateArn == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateArn'")
 	}
 	var resource CertificateValidation
 	err := ctx.RegisterResource("aws:acm/certificateValidation:CertificateValidation", name, args, &resource, opts...)
@@ -125,4 +127,43 @@ type CertificateValidationArgs struct {
 
 func (CertificateValidationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateValidationArgs)(nil)).Elem()
+}
+
+type CertificateValidationInput interface {
+	pulumi.Input
+
+	ToCertificateValidationOutput() CertificateValidationOutput
+	ToCertificateValidationOutputWithContext(ctx context.Context) CertificateValidationOutput
+}
+
+func (CertificateValidation) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateValidation)(nil)).Elem()
+}
+
+func (i CertificateValidation) ToCertificateValidationOutput() CertificateValidationOutput {
+	return i.ToCertificateValidationOutputWithContext(context.Background())
+}
+
+func (i CertificateValidation) ToCertificateValidationOutputWithContext(ctx context.Context) CertificateValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateValidationOutput)
+}
+
+type CertificateValidationOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateValidationOutput)(nil)).Elem()
+}
+
+func (o CertificateValidationOutput) ToCertificateValidationOutput() CertificateValidationOutput {
+	return o
+}
+
+func (o CertificateValidationOutput) ToCertificateValidationOutputWithContext(ctx context.Context) CertificateValidationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertificateValidationOutput{})
 }

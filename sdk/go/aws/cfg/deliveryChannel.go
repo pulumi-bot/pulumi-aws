@@ -4,6 +4,8 @@
 package cfg
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,11 +91,11 @@ type DeliveryChannel struct {
 // NewDeliveryChannel registers a new resource with the given unique name, arguments, and options.
 func NewDeliveryChannel(ctx *pulumi.Context,
 	name string, args *DeliveryChannelArgs, opts ...pulumi.ResourceOption) (*DeliveryChannel, error) {
-	if args == nil || args.S3BucketName == nil {
-		return nil, errors.New("missing required argument 'S3BucketName'")
-	}
 	if args == nil {
-		args = &DeliveryChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.S3BucketName == nil {
+		return nil, errors.New("invalid value for required argument 'S3BucketName'")
 	}
 	var resource DeliveryChannel
 	err := ctx.RegisterResource("aws:cfg/deliveryChannel:DeliveryChannel", name, args, &resource, opts...)
@@ -175,4 +177,43 @@ type DeliveryChannelArgs struct {
 
 func (DeliveryChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deliveryChannelArgs)(nil)).Elem()
+}
+
+type DeliveryChannelInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelOutput() DeliveryChannelOutput
+	ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput
+}
+
+func (DeliveryChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannel)(nil)).Elem()
+}
+
+func (i DeliveryChannel) ToDeliveryChannelOutput() DeliveryChannelOutput {
+	return i.ToDeliveryChannelOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannel) ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelOutput)
+}
+
+type DeliveryChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeliveryChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelOutput)(nil)).Elem()
+}
+
+func (o DeliveryChannelOutput) ToDeliveryChannelOutput() DeliveryChannelOutput {
+	return o
+}
+
+func (o DeliveryChannelOutput) ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeliveryChannelOutput{})
 }

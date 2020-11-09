@@ -4,6 +4,8 @@
 package ses
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +53,14 @@ type ReceiptFilter struct {
 // NewReceiptFilter registers a new resource with the given unique name, arguments, and options.
 func NewReceiptFilter(ctx *pulumi.Context,
 	name string, args *ReceiptFilterArgs, opts ...pulumi.ResourceOption) (*ReceiptFilter, error) {
-	if args == nil || args.Cidr == nil {
-		return nil, errors.New("missing required argument 'Cidr'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
 	if args == nil {
-		args = &ReceiptFilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Cidr == nil {
+		return nil, errors.New("invalid value for required argument 'Cidr'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
 	var resource ReceiptFilter
 	err := ctx.RegisterResource("aws:ses/receiptFilter:ReceiptFilter", name, args, &resource, opts...)
@@ -128,4 +130,43 @@ type ReceiptFilterArgs struct {
 
 func (ReceiptFilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*receiptFilterArgs)(nil)).Elem()
+}
+
+type ReceiptFilterInput interface {
+	pulumi.Input
+
+	ToReceiptFilterOutput() ReceiptFilterOutput
+	ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput
+}
+
+func (ReceiptFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptFilter)(nil)).Elem()
+}
+
+func (i ReceiptFilter) ToReceiptFilterOutput() ReceiptFilterOutput {
+	return i.ToReceiptFilterOutputWithContext(context.Background())
+}
+
+func (i ReceiptFilter) ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptFilterOutput)
+}
+
+type ReceiptFilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReceiptFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptFilterOutput)(nil)).Elem()
+}
+
+func (o ReceiptFilterOutput) ToReceiptFilterOutput() ReceiptFilterOutput {
+	return o
+}
+
+func (o ReceiptFilterOutput) ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReceiptFilterOutput{})
 }

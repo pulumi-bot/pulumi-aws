@@ -4,6 +4,8 @@
 package dynamodb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,17 +74,17 @@ type TableItem struct {
 // NewTableItem registers a new resource with the given unique name, arguments, and options.
 func NewTableItem(ctx *pulumi.Context,
 	name string, args *TableItemArgs, opts ...pulumi.ResourceOption) (*TableItem, error) {
-	if args == nil || args.HashKey == nil {
-		return nil, errors.New("missing required argument 'HashKey'")
-	}
-	if args == nil || args.Item == nil {
-		return nil, errors.New("missing required argument 'Item'")
-	}
-	if args == nil || args.TableName == nil {
-		return nil, errors.New("missing required argument 'TableName'")
-	}
 	if args == nil {
-		args = &TableItemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.HashKey == nil {
+		return nil, errors.New("invalid value for required argument 'HashKey'")
+	}
+	if args.Item == nil {
+		return nil, errors.New("invalid value for required argument 'Item'")
+	}
+	if args.TableName == nil {
+		return nil, errors.New("invalid value for required argument 'TableName'")
 	}
 	var resource TableItem
 	err := ctx.RegisterResource("aws:dynamodb/tableItem:TableItem", name, args, &resource, opts...)
@@ -160,4 +162,43 @@ type TableItemArgs struct {
 
 func (TableItemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableItemArgs)(nil)).Elem()
+}
+
+type TableItemInput interface {
+	pulumi.Input
+
+	ToTableItemOutput() TableItemOutput
+	ToTableItemOutputWithContext(ctx context.Context) TableItemOutput
+}
+
+func (TableItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableItem)(nil)).Elem()
+}
+
+func (i TableItem) ToTableItemOutput() TableItemOutput {
+	return i.ToTableItemOutputWithContext(context.Background())
+}
+
+func (i TableItem) ToTableItemOutputWithContext(ctx context.Context) TableItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableItemOutput)
+}
+
+type TableItemOutput struct {
+	*pulumi.OutputState
+}
+
+func (TableItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableItemOutput)(nil)).Elem()
+}
+
+func (o TableItemOutput) ToTableItemOutput() TableItemOutput {
+	return o
+}
+
+func (o TableItemOutput) ToTableItemOutputWithContext(ctx context.Context) TableItemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TableItemOutput{})
 }

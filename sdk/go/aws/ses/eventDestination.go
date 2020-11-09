@@ -4,6 +4,8 @@
 package ses
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -130,14 +132,14 @@ type EventDestination struct {
 // NewEventDestination registers a new resource with the given unique name, arguments, and options.
 func NewEventDestination(ctx *pulumi.Context,
 	name string, args *EventDestinationArgs, opts ...pulumi.ResourceOption) (*EventDestination, error) {
-	if args == nil || args.ConfigurationSetName == nil {
-		return nil, errors.New("missing required argument 'ConfigurationSetName'")
-	}
-	if args == nil || args.MatchingTypes == nil {
-		return nil, errors.New("missing required argument 'MatchingTypes'")
-	}
 	if args == nil {
-		args = &EventDestinationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ConfigurationSetName == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigurationSetName'")
+	}
+	if args.MatchingTypes == nil {
+		return nil, errors.New("invalid value for required argument 'MatchingTypes'")
 	}
 	var resource EventDestination
 	err := ctx.RegisterResource("aws:ses/eventDestination:EventDestination", name, args, &resource, opts...)
@@ -235,4 +237,43 @@ type EventDestinationArgs struct {
 
 func (EventDestinationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventDestinationArgs)(nil)).Elem()
+}
+
+type EventDestinationInput interface {
+	pulumi.Input
+
+	ToEventDestinationOutput() EventDestinationOutput
+	ToEventDestinationOutputWithContext(ctx context.Context) EventDestinationOutput
+}
+
+func (EventDestination) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestination)(nil)).Elem()
+}
+
+func (i EventDestination) ToEventDestinationOutput() EventDestinationOutput {
+	return i.ToEventDestinationOutputWithContext(context.Background())
+}
+
+func (i EventDestination) ToEventDestinationOutputWithContext(ctx context.Context) EventDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationOutput)
+}
+
+type EventDestinationOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationOutput)(nil)).Elem()
+}
+
+func (o EventDestinationOutput) ToEventDestinationOutput() EventDestinationOutput {
+	return o
+}
+
+func (o EventDestinationOutput) ToEventDestinationOutputWithContext(ctx context.Context) EventDestinationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventDestinationOutput{})
 }

@@ -4,6 +4,8 @@
 package apigateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -128,4 +130,43 @@ type ClientCertificateArgs struct {
 
 func (ClientCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientCertificateArgs)(nil)).Elem()
+}
+
+type ClientCertificateInput interface {
+	pulumi.Input
+
+	ToClientCertificateOutput() ClientCertificateOutput
+	ToClientCertificateOutputWithContext(ctx context.Context) ClientCertificateOutput
+}
+
+func (ClientCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificate)(nil)).Elem()
+}
+
+func (i ClientCertificate) ToClientCertificateOutput() ClientCertificateOutput {
+	return i.ToClientCertificateOutputWithContext(context.Background())
+}
+
+func (i ClientCertificate) ToClientCertificateOutputWithContext(ctx context.Context) ClientCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateOutput)
+}
+
+type ClientCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCertificateOutput)(nil)).Elem()
+}
+
+func (o ClientCertificateOutput) ToClientCertificateOutput() ClientCertificateOutput {
+	return o
+}
+
+func (o ClientCertificateOutput) ToClientCertificateOutputWithContext(ctx context.Context) ClientCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClientCertificateOutput{})
 }

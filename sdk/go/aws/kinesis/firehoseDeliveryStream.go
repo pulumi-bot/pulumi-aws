@@ -4,6 +4,8 @@
 package kinesis
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -250,11 +252,11 @@ type FirehoseDeliveryStream struct {
 // NewFirehoseDeliveryStream registers a new resource with the given unique name, arguments, and options.
 func NewFirehoseDeliveryStream(ctx *pulumi.Context,
 	name string, args *FirehoseDeliveryStreamArgs, opts ...pulumi.ResourceOption) (*FirehoseDeliveryStream, error) {
-	if args == nil || args.Destination == nil {
-		return nil, errors.New("missing required argument 'Destination'")
-	}
 	if args == nil {
-		args = &FirehoseDeliveryStreamArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
 	var resource FirehoseDeliveryStream
 	err := ctx.RegisterResource("aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream", name, args, &resource, opts...)
@@ -412,4 +414,43 @@ type FirehoseDeliveryStreamArgs struct {
 
 func (FirehoseDeliveryStreamArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firehoseDeliveryStreamArgs)(nil)).Elem()
+}
+
+type FirehoseDeliveryStreamInput interface {
+	pulumi.Input
+
+	ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput
+	ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput
+}
+
+func (FirehoseDeliveryStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirehoseDeliveryStream)(nil)).Elem()
+}
+
+func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
+	return i.ToFirehoseDeliveryStreamOutputWithContext(context.Background())
+}
+
+func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamOutput)
+}
+
+type FirehoseDeliveryStreamOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirehoseDeliveryStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirehoseDeliveryStreamOutput)(nil)).Elem()
+}
+
+func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirehoseDeliveryStreamOutput{})
 }

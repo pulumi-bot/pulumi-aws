@@ -4,6 +4,8 @@
 package cognito
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,11 +40,11 @@ type IdentityPool struct {
 // NewIdentityPool registers a new resource with the given unique name, arguments, and options.
 func NewIdentityPool(ctx *pulumi.Context,
 	name string, args *IdentityPoolArgs, opts ...pulumi.ResourceOption) (*IdentityPool, error) {
-	if args == nil || args.IdentityPoolName == nil {
-		return nil, errors.New("missing required argument 'IdentityPoolName'")
-	}
 	if args == nil {
-		args = &IdentityPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.IdentityPoolName == nil {
+		return nil, errors.New("invalid value for required argument 'IdentityPoolName'")
 	}
 	var resource IdentityPool
 	err := ctx.RegisterResource("aws:cognito/identityPool:IdentityPool", name, args, &resource, opts...)
@@ -156,4 +158,43 @@ type IdentityPoolArgs struct {
 
 func (IdentityPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityPoolArgs)(nil)).Elem()
+}
+
+type IdentityPoolInput interface {
+	pulumi.Input
+
+	ToIdentityPoolOutput() IdentityPoolOutput
+	ToIdentityPoolOutputWithContext(ctx context.Context) IdentityPoolOutput
+}
+
+func (IdentityPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPool)(nil)).Elem()
+}
+
+func (i IdentityPool) ToIdentityPoolOutput() IdentityPoolOutput {
+	return i.ToIdentityPoolOutputWithContext(context.Background())
+}
+
+func (i IdentityPool) ToIdentityPoolOutputWithContext(ctx context.Context) IdentityPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolOutput)
+}
+
+type IdentityPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolOutput)(nil)).Elem()
+}
+
+func (o IdentityPoolOutput) ToIdentityPoolOutput() IdentityPoolOutput {
+	return o
+}
+
+func (o IdentityPoolOutput) ToIdentityPoolOutputWithContext(ctx context.Context) IdentityPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityPoolOutput{})
 }

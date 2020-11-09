@@ -4,6 +4,8 @@
 package wafv2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,14 +64,14 @@ type WebAclLoggingConfiguration struct {
 // NewWebAclLoggingConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewWebAclLoggingConfiguration(ctx *pulumi.Context,
 	name string, args *WebAclLoggingConfigurationArgs, opts ...pulumi.ResourceOption) (*WebAclLoggingConfiguration, error) {
-	if args == nil || args.LogDestinationConfigs == nil {
-		return nil, errors.New("missing required argument 'LogDestinationConfigs'")
-	}
-	if args == nil || args.ResourceArn == nil {
-		return nil, errors.New("missing required argument 'ResourceArn'")
-	}
 	if args == nil {
-		args = &WebAclLoggingConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LogDestinationConfigs == nil {
+		return nil, errors.New("invalid value for required argument 'LogDestinationConfigs'")
+	}
+	if args.ResourceArn == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceArn'")
 	}
 	var resource WebAclLoggingConfiguration
 	err := ctx.RegisterResource("aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration", name, args, &resource, opts...)
@@ -135,4 +137,43 @@ type WebAclLoggingConfigurationArgs struct {
 
 func (WebAclLoggingConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAclLoggingConfigurationArgs)(nil)).Elem()
+}
+
+type WebAclLoggingConfigurationInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput
+	ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput
+}
+
+func (WebAclLoggingConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfiguration)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
+	return i.ToWebAclLoggingConfigurationOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationOutput)
+}
+
+type WebAclLoggingConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclLoggingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationOutput)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationOutput) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationOutput) ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationOutput{})
 }

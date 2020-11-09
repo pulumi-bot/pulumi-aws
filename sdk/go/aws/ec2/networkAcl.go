@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,11 +88,11 @@ type NetworkAcl struct {
 // NewNetworkAcl registers a new resource with the given unique name, arguments, and options.
 func NewNetworkAcl(ctx *pulumi.Context,
 	name string, args *NetworkAclArgs, opts ...pulumi.ResourceOption) (*NetworkAcl, error) {
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &NetworkAclArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource NetworkAcl
 	err := ctx.RegisterResource("aws:ec2/networkAcl:NetworkAcl", name, args, &resource, opts...)
@@ -180,4 +182,43 @@ type NetworkAclArgs struct {
 
 func (NetworkAclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclArgs)(nil)).Elem()
+}
+
+type NetworkAclInput interface {
+	pulumi.Input
+
+	ToNetworkAclOutput() NetworkAclOutput
+	ToNetworkAclOutputWithContext(ctx context.Context) NetworkAclOutput
+}
+
+func (NetworkAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAcl)(nil)).Elem()
+}
+
+func (i NetworkAcl) ToNetworkAclOutput() NetworkAclOutput {
+	return i.ToNetworkAclOutputWithContext(context.Background())
+}
+
+func (i NetworkAcl) ToNetworkAclOutputWithContext(ctx context.Context) NetworkAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclOutput)
+}
+
+type NetworkAclOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclOutput)(nil)).Elem()
+}
+
+func (o NetworkAclOutput) ToNetworkAclOutput() NetworkAclOutput {
+	return o
+}
+
+func (o NetworkAclOutput) ToNetworkAclOutputWithContext(ctx context.Context) NetworkAclOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkAclOutput{})
 }

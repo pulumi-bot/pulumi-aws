@@ -187,7 +187,7 @@ class Instance(pulumi.CustomResource):
             __props__['root_block_device'] = root_block_device
             __props__['secondary_private_ips'] = secondary_private_ips
             if security_groups is not None:
-                warnings.warn("Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.", DeprecationWarning)
+                warnings.warn("""Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.""", DeprecationWarning)
                 pulumi.log.warn("security_groups is deprecated: Use of `securityGroups` is discouraged as it does not allow for changes and will force your instance to be replaced if changes are made. To avoid this, use `vpcSecurityGroupIds` which allows for updates.")
             __props__['security_groups'] = security_groups
             __props__['source_dest_check'] = source_dest_check

@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,14 +84,14 @@ type NatGateway struct {
 // NewNatGateway registers a new resource with the given unique name, arguments, and options.
 func NewNatGateway(ctx *pulumi.Context,
 	name string, args *NatGatewayArgs, opts ...pulumi.ResourceOption) (*NatGateway, error) {
-	if args == nil || args.AllocationId == nil {
-		return nil, errors.New("missing required argument 'AllocationId'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &NatGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AllocationId == nil {
+		return nil, errors.New("invalid value for required argument 'AllocationId'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource NatGateway
 	err := ctx.RegisterResource("aws:ec2/natGateway:NatGateway", name, args, &resource, opts...)
@@ -167,4 +169,43 @@ type NatGatewayArgs struct {
 
 func (NatGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*natGatewayArgs)(nil)).Elem()
+}
+
+type NatGatewayInput interface {
+	pulumi.Input
+
+	ToNatGatewayOutput() NatGatewayOutput
+	ToNatGatewayOutputWithContext(ctx context.Context) NatGatewayOutput
+}
+
+func (NatGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGateway)(nil)).Elem()
+}
+
+func (i NatGateway) ToNatGatewayOutput() NatGatewayOutput {
+	return i.ToNatGatewayOutputWithContext(context.Background())
+}
+
+func (i NatGateway) ToNatGatewayOutputWithContext(ctx context.Context) NatGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayOutput)
+}
+
+type NatGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayOutput)(nil)).Elem()
+}
+
+func (o NatGatewayOutput) ToNatGatewayOutput() NatGatewayOutput {
+	return o
+}
+
+func (o NatGatewayOutput) ToNatGatewayOutputWithContext(ctx context.Context) NatGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NatGatewayOutput{})
 }

@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,14 +82,14 @@ type UserGroupMembership struct {
 // NewUserGroupMembership registers a new resource with the given unique name, arguments, and options.
 func NewUserGroupMembership(ctx *pulumi.Context,
 	name string, args *UserGroupMembershipArgs, opts ...pulumi.ResourceOption) (*UserGroupMembership, error) {
-	if args == nil || args.Groups == nil {
-		return nil, errors.New("missing required argument 'Groups'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &UserGroupMembershipArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Groups == nil {
+		return nil, errors.New("invalid value for required argument 'Groups'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource UserGroupMembership
 	err := ctx.RegisterResource("aws:iam/userGroupMembership:UserGroupMembership", name, args, &resource, opts...)
@@ -145,4 +147,43 @@ type UserGroupMembershipArgs struct {
 
 func (UserGroupMembershipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGroupMembershipArgs)(nil)).Elem()
+}
+
+type UserGroupMembershipInput interface {
+	pulumi.Input
+
+	ToUserGroupMembershipOutput() UserGroupMembershipOutput
+	ToUserGroupMembershipOutputWithContext(ctx context.Context) UserGroupMembershipOutput
+}
+
+func (UserGroupMembership) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroupMembership)(nil)).Elem()
+}
+
+func (i UserGroupMembership) ToUserGroupMembershipOutput() UserGroupMembershipOutput {
+	return i.ToUserGroupMembershipOutputWithContext(context.Background())
+}
+
+func (i UserGroupMembership) ToUserGroupMembershipOutputWithContext(ctx context.Context) UserGroupMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupMembershipOutput)
+}
+
+type UserGroupMembershipOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserGroupMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroupMembershipOutput)(nil)).Elem()
+}
+
+func (o UserGroupMembershipOutput) ToUserGroupMembershipOutput() UserGroupMembershipOutput {
+	return o
+}
+
+func (o UserGroupMembershipOutput) ToUserGroupMembershipOutputWithContext(ctx context.Context) UserGroupMembershipOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserGroupMembershipOutput{})
 }

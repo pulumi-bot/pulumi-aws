@@ -4,6 +4,8 @@
 package ecr
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,14 +59,14 @@ type RepositoryPolicy struct {
 // NewRepositoryPolicy registers a new resource with the given unique name, arguments, and options.
 func NewRepositoryPolicy(ctx *pulumi.Context,
 	name string, args *RepositoryPolicyArgs, opts ...pulumi.ResourceOption) (*RepositoryPolicy, error) {
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.Repository == nil {
-		return nil, errors.New("missing required argument 'Repository'")
-	}
 	if args == nil {
-		args = &RepositoryPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.Repository == nil {
+		return nil, errors.New("invalid value for required argument 'Repository'")
 	}
 	var resource RepositoryPolicy
 	err := ctx.RegisterResource("aws:ecr/repositoryPolicy:RepositoryPolicy", name, args, &resource, opts...)
@@ -126,4 +128,43 @@ type RepositoryPolicyArgs struct {
 
 func (RepositoryPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryPolicyArgs)(nil)).Elem()
+}
+
+type RepositoryPolicyInput interface {
+	pulumi.Input
+
+	ToRepositoryPolicyOutput() RepositoryPolicyOutput
+	ToRepositoryPolicyOutputWithContext(ctx context.Context) RepositoryPolicyOutput
+}
+
+func (RepositoryPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPolicy)(nil)).Elem()
+}
+
+func (i RepositoryPolicy) ToRepositoryPolicyOutput() RepositoryPolicyOutput {
+	return i.ToRepositoryPolicyOutputWithContext(context.Background())
+}
+
+func (i RepositoryPolicy) ToRepositoryPolicyOutputWithContext(ctx context.Context) RepositoryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPolicyOutput)
+}
+
+type RepositoryPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPolicyOutput)(nil)).Elem()
+}
+
+func (o RepositoryPolicyOutput) ToRepositoryPolicyOutput() RepositoryPolicyOutput {
+	return o
+}
+
+func (o RepositoryPolicyOutput) ToRepositoryPolicyOutputWithContext(ctx context.Context) RepositoryPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RepositoryPolicyOutput{})
 }

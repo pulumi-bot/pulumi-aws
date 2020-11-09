@@ -4,6 +4,8 @@
 package servicecatalog
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -131,4 +133,43 @@ type PortfolioArgs struct {
 
 func (PortfolioArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portfolioArgs)(nil)).Elem()
+}
+
+type PortfolioInput interface {
+	pulumi.Input
+
+	ToPortfolioOutput() PortfolioOutput
+	ToPortfolioOutputWithContext(ctx context.Context) PortfolioOutput
+}
+
+func (Portfolio) ElementType() reflect.Type {
+	return reflect.TypeOf((*Portfolio)(nil)).Elem()
+}
+
+func (i Portfolio) ToPortfolioOutput() PortfolioOutput {
+	return i.ToPortfolioOutputWithContext(context.Background())
+}
+
+func (i Portfolio) ToPortfolioOutputWithContext(ctx context.Context) PortfolioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortfolioOutput)
+}
+
+type PortfolioOutput struct {
+	*pulumi.OutputState
+}
+
+func (PortfolioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortfolioOutput)(nil)).Elem()
+}
+
+func (o PortfolioOutput) ToPortfolioOutput() PortfolioOutput {
+	return o
+}
+
+func (o PortfolioOutput) ToPortfolioOutputWithContext(ctx context.Context) PortfolioOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PortfolioOutput{})
 }

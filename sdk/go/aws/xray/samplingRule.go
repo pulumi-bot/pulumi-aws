@@ -4,6 +4,8 @@
 package xray
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,38 +85,38 @@ type SamplingRule struct {
 // NewSamplingRule registers a new resource with the given unique name, arguments, and options.
 func NewSamplingRule(ctx *pulumi.Context,
 	name string, args *SamplingRuleArgs, opts ...pulumi.ResourceOption) (*SamplingRule, error) {
-	if args == nil || args.FixedRate == nil {
-		return nil, errors.New("missing required argument 'FixedRate'")
-	}
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
-	if args == nil || args.HttpMethod == nil {
-		return nil, errors.New("missing required argument 'HttpMethod'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.ReservoirSize == nil {
-		return nil, errors.New("missing required argument 'ReservoirSize'")
-	}
-	if args == nil || args.ResourceArn == nil {
-		return nil, errors.New("missing required argument 'ResourceArn'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.ServiceType == nil {
-		return nil, errors.New("missing required argument 'ServiceType'")
-	}
-	if args == nil || args.UrlPath == nil {
-		return nil, errors.New("missing required argument 'UrlPath'")
-	}
-	if args == nil || args.Version == nil {
-		return nil, errors.New("missing required argument 'Version'")
-	}
 	if args == nil {
-		args = &SamplingRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.FixedRate == nil {
+		return nil, errors.New("invalid value for required argument 'FixedRate'")
+	}
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
+	}
+	if args.HttpMethod == nil {
+		return nil, errors.New("invalid value for required argument 'HttpMethod'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.ReservoirSize == nil {
+		return nil, errors.New("invalid value for required argument 'ReservoirSize'")
+	}
+	if args.ResourceArn == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceArn'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.ServiceType == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceType'")
+	}
+	if args.UrlPath == nil {
+		return nil, errors.New("invalid value for required argument 'UrlPath'")
+	}
+	if args.Version == nil {
+		return nil, errors.New("invalid value for required argument 'Version'")
 	}
 	var resource SamplingRule
 	err := ctx.RegisterResource("aws:xray/samplingRule:SamplingRule", name, args, &resource, opts...)
@@ -264,4 +266,43 @@ type SamplingRuleArgs struct {
 
 func (SamplingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*samplingRuleArgs)(nil)).Elem()
+}
+
+type SamplingRuleInput interface {
+	pulumi.Input
+
+	ToSamplingRuleOutput() SamplingRuleOutput
+	ToSamplingRuleOutputWithContext(ctx context.Context) SamplingRuleOutput
+}
+
+func (SamplingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamplingRule)(nil)).Elem()
+}
+
+func (i SamplingRule) ToSamplingRuleOutput() SamplingRuleOutput {
+	return i.ToSamplingRuleOutputWithContext(context.Background())
+}
+
+func (i SamplingRule) ToSamplingRuleOutputWithContext(ctx context.Context) SamplingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamplingRuleOutput)
+}
+
+type SamplingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SamplingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamplingRuleOutput)(nil)).Elem()
+}
+
+func (o SamplingRuleOutput) ToSamplingRuleOutput() SamplingRuleOutput {
+	return o
+}
+
+func (o SamplingRuleOutput) ToSamplingRuleOutputWithContext(ctx context.Context) SamplingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SamplingRuleOutput{})
 }

@@ -4,6 +4,8 @@
 package waf
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -119,4 +121,43 @@ type GeoMatchSetArgs struct {
 
 func (GeoMatchSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*geoMatchSetArgs)(nil)).Elem()
+}
+
+type GeoMatchSetInput interface {
+	pulumi.Input
+
+	ToGeoMatchSetOutput() GeoMatchSetOutput
+	ToGeoMatchSetOutputWithContext(ctx context.Context) GeoMatchSetOutput
+}
+
+func (GeoMatchSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSet)(nil)).Elem()
+}
+
+func (i GeoMatchSet) ToGeoMatchSetOutput() GeoMatchSetOutput {
+	return i.ToGeoMatchSetOutputWithContext(context.Background())
+}
+
+func (i GeoMatchSet) ToGeoMatchSetOutputWithContext(ctx context.Context) GeoMatchSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetOutput)
+}
+
+type GeoMatchSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (GeoMatchSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSetOutput)(nil)).Elem()
+}
+
+func (o GeoMatchSetOutput) ToGeoMatchSetOutput() GeoMatchSetOutput {
+	return o
+}
+
+func (o GeoMatchSetOutput) ToGeoMatchSetOutputWithContext(ctx context.Context) GeoMatchSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GeoMatchSetOutput{})
 }

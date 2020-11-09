@@ -4,6 +4,8 @@
 package rds
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,11 +136,11 @@ type GlobalCluster struct {
 // NewGlobalCluster registers a new resource with the given unique name, arguments, and options.
 func NewGlobalCluster(ctx *pulumi.Context,
 	name string, args *GlobalClusterArgs, opts ...pulumi.ResourceOption) (*GlobalCluster, error) {
-	if args == nil || args.GlobalClusterIdentifier == nil {
-		return nil, errors.New("missing required argument 'GlobalClusterIdentifier'")
-	}
 	if args == nil {
-		args = &GlobalClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.GlobalClusterIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'GlobalClusterIdentifier'")
 	}
 	var resource GlobalCluster
 	err := ctx.RegisterResource("aws:rds/globalCluster:GlobalCluster", name, args, &resource, opts...)
@@ -248,4 +250,43 @@ type GlobalClusterArgs struct {
 
 func (GlobalClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalClusterArgs)(nil)).Elem()
+}
+
+type GlobalClusterInput interface {
+	pulumi.Input
+
+	ToGlobalClusterOutput() GlobalClusterOutput
+	ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput
+}
+
+func (GlobalCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalCluster)(nil)).Elem()
+}
+
+func (i GlobalCluster) ToGlobalClusterOutput() GlobalClusterOutput {
+	return i.ToGlobalClusterOutputWithContext(context.Background())
+}
+
+func (i GlobalCluster) ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClusterOutput)
+}
+
+type GlobalClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClusterOutput)(nil)).Elem()
+}
+
+func (o GlobalClusterOutput) ToGlobalClusterOutput() GlobalClusterOutput {
+	return o
+}
+
+func (o GlobalClusterOutput) ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalClusterOutput{})
 }

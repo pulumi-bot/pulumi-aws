@@ -4,6 +4,8 @@
 package codedeploy
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -189,17 +191,17 @@ type DeploymentGroup struct {
 // NewDeploymentGroup registers a new resource with the given unique name, arguments, and options.
 func NewDeploymentGroup(ctx *pulumi.Context,
 	name string, args *DeploymentGroupArgs, opts ...pulumi.ResourceOption) (*DeploymentGroup, error) {
-	if args == nil || args.AppName == nil {
-		return nil, errors.New("missing required argument 'AppName'")
-	}
-	if args == nil || args.DeploymentGroupName == nil {
-		return nil, errors.New("missing required argument 'DeploymentGroupName'")
-	}
-	if args == nil || args.ServiceRoleArn == nil {
-		return nil, errors.New("missing required argument 'ServiceRoleArn'")
-	}
 	if args == nil {
-		args = &DeploymentGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AppName == nil {
+		return nil, errors.New("invalid value for required argument 'AppName'")
+	}
+	if args.DeploymentGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentGroupName'")
+	}
+	if args.ServiceRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceRoleArn'")
 	}
 	var resource DeploymentGroup
 	err := ctx.RegisterResource("aws:codedeploy/deploymentGroup:DeploymentGroup", name, args, &resource, opts...)
@@ -361,4 +363,43 @@ type DeploymentGroupArgs struct {
 
 func (DeploymentGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deploymentGroupArgs)(nil)).Elem()
+}
+
+type DeploymentGroupInput interface {
+	pulumi.Input
+
+	ToDeploymentGroupOutput() DeploymentGroupOutput
+	ToDeploymentGroupOutputWithContext(ctx context.Context) DeploymentGroupOutput
+}
+
+func (DeploymentGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentGroup)(nil)).Elem()
+}
+
+func (i DeploymentGroup) ToDeploymentGroupOutput() DeploymentGroupOutput {
+	return i.ToDeploymentGroupOutputWithContext(context.Background())
+}
+
+func (i DeploymentGroup) ToDeploymentGroupOutputWithContext(ctx context.Context) DeploymentGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupOutput)
+}
+
+type DeploymentGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeploymentGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentGroupOutput)(nil)).Elem()
+}
+
+func (o DeploymentGroupOutput) ToDeploymentGroupOutput() DeploymentGroupOutput {
+	return o
+}
+
+func (o DeploymentGroupOutput) ToDeploymentGroupOutputWithContext(ctx context.Context) DeploymentGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeploymentGroupOutput{})
 }

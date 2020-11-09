@@ -4,6 +4,8 @@
 package fsx
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,17 +139,17 @@ type WindowsFileSystem struct {
 // NewWindowsFileSystem registers a new resource with the given unique name, arguments, and options.
 func NewWindowsFileSystem(ctx *pulumi.Context,
 	name string, args *WindowsFileSystemArgs, opts ...pulumi.ResourceOption) (*WindowsFileSystem, error) {
-	if args == nil || args.StorageCapacity == nil {
-		return nil, errors.New("missing required argument 'StorageCapacity'")
-	}
-	if args == nil || args.SubnetIds == nil {
-		return nil, errors.New("missing required argument 'SubnetIds'")
-	}
-	if args == nil || args.ThroughputCapacity == nil {
-		return nil, errors.New("missing required argument 'ThroughputCapacity'")
-	}
 	if args == nil {
-		args = &WindowsFileSystemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StorageCapacity == nil {
+		return nil, errors.New("invalid value for required argument 'StorageCapacity'")
+	}
+	if args.SubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetIds'")
+	}
+	if args.ThroughputCapacity == nil {
+		return nil, errors.New("invalid value for required argument 'ThroughputCapacity'")
 	}
 	var resource WindowsFileSystem
 	err := ctx.RegisterResource("aws:fsx/windowsFileSystem:WindowsFileSystem", name, args, &resource, opts...)
@@ -345,4 +347,43 @@ type WindowsFileSystemArgs struct {
 
 func (WindowsFileSystemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*windowsFileSystemArgs)(nil)).Elem()
+}
+
+type WindowsFileSystemInput interface {
+	pulumi.Input
+
+	ToWindowsFileSystemOutput() WindowsFileSystemOutput
+	ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput
+}
+
+func (WindowsFileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystem)(nil)).Elem()
+}
+
+func (i WindowsFileSystem) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
+	return i.ToWindowsFileSystemOutputWithContext(context.Background())
+}
+
+func (i WindowsFileSystem) ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemOutput)
+}
+
+type WindowsFileSystemOutput struct {
+	*pulumi.OutputState
+}
+
+func (WindowsFileSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystemOutput)(nil)).Elem()
+}
+
+func (o WindowsFileSystemOutput) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
+	return o
+}
+
+func (o WindowsFileSystemOutput) ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WindowsFileSystemOutput{})
 }
