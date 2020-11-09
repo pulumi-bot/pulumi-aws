@@ -10,6 +10,14 @@ import (
 )
 
 // Provides an EC2 launch template resource. Can be used to create instances or auto scaling groups.
+//
+// ## Import
+//
+// Launch Templates can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/launchTemplate:LaunchTemplate web lt-12345678
+// ```
 type LaunchTemplate struct {
 	pulumi.CustomResourceState
 

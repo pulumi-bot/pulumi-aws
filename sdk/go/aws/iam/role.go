@@ -84,6 +84,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IAM Roles can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iam/role:Role developer developer_name
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 

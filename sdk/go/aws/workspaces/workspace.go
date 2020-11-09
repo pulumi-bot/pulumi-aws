@@ -59,6 +59,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Workspaces can be imported using their ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:workspaces/workspace:Workspace example ws-9z9zmbkhv
+// ```
 type Workspace struct {
 	pulumi.CustomResourceState
 

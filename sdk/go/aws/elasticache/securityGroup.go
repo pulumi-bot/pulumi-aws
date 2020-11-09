@@ -46,6 +46,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ElastiCache Security Groups can be imported by name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:elasticache/securityGroup:SecurityGroup my_ec_security_group ec-security-group-1
+// ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 

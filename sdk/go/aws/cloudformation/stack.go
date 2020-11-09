@@ -38,6 +38,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cloudformation Stacks can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cloudformation/stack:Stack stack networking-stack
+// ```
 type Stack struct {
 	pulumi.CustomResourceState
 

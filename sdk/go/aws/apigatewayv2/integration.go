@@ -69,6 +69,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_apigatewayv2_integration` can be imported by using the API identifier and integration identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigatewayv2/integration:Integration example aabbccddee/1122334
+// ```
+//
+//  -> **Note:** The API Gateway managed integration created as part of [_quick_create_](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
 type Integration struct {
 	pulumi.CustomResourceState
 

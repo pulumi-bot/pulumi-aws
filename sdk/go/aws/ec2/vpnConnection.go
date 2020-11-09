@@ -100,6 +100,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// VPN Connections can be imported using the `vpn connection id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/vpnConnection:VpnConnection testvpnconnection vpn-40f41529
+// ```
 type VpnConnection struct {
 	pulumi.CustomResourceState
 

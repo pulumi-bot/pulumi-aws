@@ -36,6 +36,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ECR Repositories can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ecr/repository:Repository service test-service
+// ```
 type Repository struct {
 	pulumi.CustomResourceState
 

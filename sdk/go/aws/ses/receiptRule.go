@@ -52,6 +52,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SES receipt rules can be imported using the ruleset name and rule name separated by `:`.
+//
+// ```sh
+//  $ pulumi import aws:ses/receiptRule:ReceiptRule my_rule my_rule_set:my_rule
+// ```
 type ReceiptRule struct {
 	pulumi.CustomResourceState
 

@@ -47,6 +47,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Egress-only Internet gateways can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/egressOnlyInternetGateway:EgressOnlyInternetGateway example eigw-015e0e244e24dfe8a
+// ```
 type EgressOnlyInternetGateway struct {
 	pulumi.CustomResourceState
 

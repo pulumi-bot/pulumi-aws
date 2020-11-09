@@ -39,6 +39,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Customer Gateways can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/customerGateway:CustomerGateway main cgw-b4dc3961
+// ```
 type CustomerGateway struct {
 	pulumi.CustomResourceState
 

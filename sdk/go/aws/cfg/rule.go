@@ -113,6 +113,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Config Rule can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cfg/rule:Rule foo example
+// ```
 type Rule struct {
 	pulumi.CustomResourceState
 

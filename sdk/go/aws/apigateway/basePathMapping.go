@@ -13,6 +13,20 @@ import (
 // Connects a custom domain name registered via `apigateway.DomainName`
 // with a deployed API so that its methods can be called via the
 // custom domain name.
+//
+// ## Import
+//
+// `aws_api_gateway_base_path_mapping` can be imported by using the domain name and base path, e.g. For empty `base_path` (e.g. root path (`/`))
+//
+// ```sh
+//  $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example example.com/
+// ```
+//
+//  Otherwise
+//
+// ```sh
+//  $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example example.com/base-path
+// ```
 type BasePathMapping struct {
 	pulumi.CustomResourceState
 

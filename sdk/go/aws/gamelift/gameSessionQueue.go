@@ -10,6 +10,14 @@ import (
 )
 
 // Provides an Gamelift Game Session Queue resource.
+//
+// ## Import
+//
+// Gamelift Game Session Queues can be imported by their `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:gamelift/gameSessionQueue:GameSessionQueue example example
+// ```
 type GameSessionQueue struct {
 	pulumi.CustomResourceState
 

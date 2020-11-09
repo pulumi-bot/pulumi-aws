@@ -33,6 +33,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_ec2_transit_gateway` can be imported by using the EC2 Transit Gateway identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2transitgateway/transitGateway:TransitGateway example tgw-12345678
+// ```
 type TransitGateway struct {
 	pulumi.CustomResourceState
 

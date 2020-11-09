@@ -11,6 +11,14 @@ import (
 )
 
 // Provides an AWS Cognito Identity Pool.
+//
+// ## Import
+//
+// Cognito Identity Pool can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cognito/identityPool:IdentityPool mypool <identity-pool-id>
+// ```
 type IdentityPool struct {
 	pulumi.CustomResourceState
 

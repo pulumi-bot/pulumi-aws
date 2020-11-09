@@ -75,6 +75,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Sagemaker Notebook Instances can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:sagemaker/notebookInstance:NotebookInstance test_notebook_instance my-notebook-instance
+// ```
 type NotebookInstance struct {
 	pulumi.CustomResourceState
 

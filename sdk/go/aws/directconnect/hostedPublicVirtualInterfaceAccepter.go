@@ -64,6 +64,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Direct Connect hosted public virtual interfaces can be imported using the `vif id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:directconnect/hostedPublicVirtualInterfaceAccepter:HostedPublicVirtualInterfaceAccepter test dxvif-33cc44dd
+// ```
 type HostedPublicVirtualInterfaceAccepter struct {
 	pulumi.CustomResourceState
 

@@ -44,6 +44,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_vpc_ipv4_cidr_block_association` can be imported by using the VPC CIDR Association ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation example vpc-cidr-assoc-xxxxxxxx
+// ```
 type VpcIpv4CidrBlockAssociation struct {
 	pulumi.CustomResourceState
 

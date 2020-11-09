@@ -60,6 +60,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_api_gateway_rest_api` can be imported by using the REST API ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigateway/restApi:RestApi example 12345abcde
+// ```
+//
+//  ~> **NOTE:** Resource import does not currently support the `body` attribute.
 type RestApi struct {
 	pulumi.CustomResourceState
 

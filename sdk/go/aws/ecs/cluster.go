@@ -31,6 +31,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ECS clusters can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ecs/cluster:Cluster stateless stateless-app
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

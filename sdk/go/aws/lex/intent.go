@@ -124,6 +124,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Intents can be imported using their name.
+//
+// ```sh
+//  $ pulumi import aws:lex/intent:Intent order_flowers_intent OrderFlowers
+// ```
 type Intent struct {
 	pulumi.CustomResourceState
 
