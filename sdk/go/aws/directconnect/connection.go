@@ -35,6 +35,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Direct Connect connections can be imported using the `connection id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:directconnect/connection:Connection test_connection dxcon-ffre0ec3
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 

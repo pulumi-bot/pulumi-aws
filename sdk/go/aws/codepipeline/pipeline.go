@@ -11,6 +11,14 @@ import (
 )
 
 // Provides a CodePipeline.
+//
+// ## Import
+//
+// CodePipelines can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:codepipeline/pipeline:Pipeline foo example
+// ```
 type Pipeline struct {
 	pulumi.CustomResourceState
 

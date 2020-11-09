@@ -31,6 +31,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Media Convert Queue can be imported via the queue name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:mediaconvert/queue:Queue test tf-test-queue
+// ```
 type Queue struct {
 	pulumi.CustomResourceState
 

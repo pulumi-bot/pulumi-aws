@@ -54,6 +54,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Slot types can be imported using their name.
+//
+// ```sh
+//  $ pulumi import aws:lex/slotType:SlotType flower_types FlowerTypes
+// ```
 type SlotType struct {
 	pulumi.CustomResourceState
 

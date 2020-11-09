@@ -38,6 +38,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_ec2_transit_gateway_vpc_attachment` can be imported by using the EC2 Transit Gateway Attachment identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2transitgateway/vpcAttachment:VpcAttachment example tgw-attach-12345678
+// ```
 type VpcAttachment struct {
 	pulumi.CustomResourceState
 

@@ -36,6 +36,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_apigatewayv2_stage` can be imported by using the API identifier and stage name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigatewayv2/stage:Stage example aabbccddee/example-stage
+// ```
+//
+//  -> **Note:** The API Gateway managed stage created as part of [_quick_create_](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
 type Stage struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,14 @@ import (
 )
 
 // Provides an AppSync Resolver.
+//
+// ## Import
+//
+// `aws_appsync_resolver` can be imported with their `api_id`, a hyphen, `type`, a hypen and `field` e.g.
+//
+// ```sh
+//  $ pulumi import aws:appsync/resolver:Resolver example abcdef123456-exampleType-exampleField
+// ```
 type Resolver struct {
 	pulumi.CustomResourceState
 

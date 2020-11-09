@@ -9,6 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// WorkLink can be imported using the ARN, e.g.
+//
+// ```sh
+//  $ pulumi import aws:worklink/fleet:Fleet test arn:aws:worklink::123456789012:fleet/example
+// ```
 type Fleet struct {
 	pulumi.CustomResourceState
 

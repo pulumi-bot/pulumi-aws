@@ -126,6 +126,14 @@ import (
 // - us-east-1: `20`
 // - us-east-2: `20`
 // - us-west-2: `20`
+//
+// ## Import
+//
+// Lightsail Instances can be imported using their name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:lightsail/instance:Instance gitlab_test 'custom gitlab'
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

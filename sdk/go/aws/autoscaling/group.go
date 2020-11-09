@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// AutoScaling Groups can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:autoscaling/group:Group web web-asg
+// ```
 type Group struct {
 	pulumi.CustomResourceState
 

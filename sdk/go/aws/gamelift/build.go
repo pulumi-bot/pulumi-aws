@@ -41,6 +41,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Gamelift Builds cannot be imported at this time.
 type Build struct {
 	pulumi.CustomResourceState
 

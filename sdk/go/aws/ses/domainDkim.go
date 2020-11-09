@@ -13,6 +13,14 @@ import (
 // Provides an SES domain DKIM generation resource.
 //
 // Domain ownership needs to be confirmed first using `ses.DomainIdentity` resource.
+//
+// ## Import
+//
+// DKIM tokens can be imported using the `domain` attribute, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ses/domainDkim:DomainDkim example example.com
+// ```
 type DomainDkim struct {
 	pulumi.CustomResourceState
 

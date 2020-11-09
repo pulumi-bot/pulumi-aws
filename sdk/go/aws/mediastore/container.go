@@ -31,6 +31,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MediaStore Container can be imported using the MediaStore Container Name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:mediastore/container:Container example example
+// ```
 type Container struct {
 	pulumi.CustomResourceState
 

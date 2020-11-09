@@ -90,6 +90,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Flow Logs can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/flowLog:FlowLog test_flow_log fl-1a2b3c4d
+// ```
 type FlowLog struct {
 	pulumi.CustomResourceState
 

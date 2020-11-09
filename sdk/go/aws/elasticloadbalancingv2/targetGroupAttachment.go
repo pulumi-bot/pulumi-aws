@@ -93,6 +93,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Target Group Attachments cannot be imported.
+//
 // Deprecated: aws.elasticloadbalancingv2.TargetGroupAttachment has been deprecated in favor of aws.lb.TargetGroupAttachment
 type TargetGroupAttachment struct {
 	pulumi.CustomResourceState

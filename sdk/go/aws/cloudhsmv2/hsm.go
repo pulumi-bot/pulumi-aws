@@ -43,6 +43,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HSM modules can be imported using their HSM ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cloudhsmv2/hsm:Hsm bar hsm-quo8dahtaca
+// ```
 type Hsm struct {
 	pulumi.CustomResourceState
 

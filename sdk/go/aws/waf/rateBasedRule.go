@@ -56,6 +56,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// WAF Rated Based Rule can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import aws:waf/rateBasedRule:RateBasedRule wafrule a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
+// ```
 type RateBasedRule struct {
 	pulumi.CustomResourceState
 

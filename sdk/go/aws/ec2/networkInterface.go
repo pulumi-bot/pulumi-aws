@@ -11,6 +11,14 @@ import (
 )
 
 // Provides an Elastic network interface (ENI) resource.
+//
+// ## Import
+//
+// Network Interfaces can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/networkInterface:NetworkInterface test eni-e5aa89a3
+// ```
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 

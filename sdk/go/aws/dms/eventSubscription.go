@@ -11,6 +11,14 @@ import (
 )
 
 // Provides a DMS (Data Migration Service) event subscription resource.
+//
+// ## Import
+//
+// Event subscriptions can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:dms/eventSubscription:EventSubscription test my-awesome-event-subscription
+// ```
 type EventSubscription struct {
 	pulumi.CustomResourceState
 

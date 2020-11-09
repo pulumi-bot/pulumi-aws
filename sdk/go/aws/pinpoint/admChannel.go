@@ -43,6 +43,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Pinpoint ADM Channel can be imported using the `application-id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:pinpoint/admChannel:AdmChannel channel application-id
+// ```
 type AdmChannel struct {
 	pulumi.CustomResourceState
 

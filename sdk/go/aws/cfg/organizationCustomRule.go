@@ -63,6 +63,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Config Organization Custom Rules can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cfg/organizationCustomRule:OrganizationCustomRule example example
+// ```
 type OrganizationCustomRule struct {
 	pulumi.CustomResourceState
 

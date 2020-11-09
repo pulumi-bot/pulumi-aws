@@ -10,6 +10,14 @@ import (
 )
 
 // Associates an SSM Document to an instance or EC2 tag.
+//
+// ## Import
+//
+// SSM associations can be imported using the `association_id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ssm/association:Association test-association 10abcdef-0abc-1234-5678-90abcdef123456
+// ```
 type Association struct {
 	pulumi.CustomResourceState
 

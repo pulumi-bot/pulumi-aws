@@ -84,6 +84,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Configuration Aggregators can be imported using the name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cfg/configurationAggregator:ConfigurationAggregator example foo
+// ```
 type ConfigurationAggregator struct {
 	pulumi.CustomResourceState
 

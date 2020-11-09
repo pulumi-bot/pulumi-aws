@@ -31,6 +31,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SES Configuration Sets can be imported using their `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ses/configurationSet:ConfigurationSet test some-configuration-set-test
+// ```
 type ConfigurationSet struct {
 	pulumi.CustomResourceState
 

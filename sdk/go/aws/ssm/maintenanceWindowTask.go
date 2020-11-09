@@ -114,6 +114,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// AWS Maintenance Window Task can be imported using the `window_id` and `window_task_id` separated by `/`.
+//
+// ```sh
+//  $ pulumi import aws:ssm/maintenanceWindowTask:MaintenanceWindowTask task <window_id>/<window_task_id>
+// ```
 type MaintenanceWindowTask struct {
 	pulumi.CustomResourceState
 

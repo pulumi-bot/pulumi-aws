@@ -42,6 +42,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Security Hub members can be imported using their account ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:securityhub/member:Member example 123456789012
+// ```
 type Member struct {
 	pulumi.CustomResourceState
 

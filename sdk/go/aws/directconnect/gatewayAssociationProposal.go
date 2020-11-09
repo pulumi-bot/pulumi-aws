@@ -36,6 +36,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Direct Connect Gateway Association Proposals can be imported using the proposal ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal example ac90e981-b718-4364-872d-65478c84fafe
+// ```
 type GatewayAssociationProposal struct {
 	pulumi.CustomResourceState
 

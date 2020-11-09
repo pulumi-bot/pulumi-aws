@@ -57,6 +57,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EIP Assocations can be imported using their association ID.
+//
+// ```sh
+//  $ pulumi import aws:ec2/eipAssociation:EipAssociation test eipassoc-ab12c345
+// ```
 type EipAssociation struct {
 	pulumi.CustomResourceState
 

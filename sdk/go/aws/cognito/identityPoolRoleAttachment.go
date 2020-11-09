@@ -80,6 +80,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cognito Identity Pool Roles Attachment can be imported using the Identity Pool id, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment example <identity-pool-id>
+// ```
 type IdentityPoolRoleAttachment struct {
 	pulumi.CustomResourceState
 
