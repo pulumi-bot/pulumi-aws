@@ -4,6 +4,7 @@
 package dynamodb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -173,4 +174,43 @@ type GlobalTableArgs struct {
 
 func (GlobalTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalTableArgs)(nil)).Elem()
+}
+
+type GlobalTableInput interface {
+	pulumi.Input
+
+	ToGlobalTableOutput() GlobalTableOutput
+	ToGlobalTableOutputWithContext(ctx context.Context) GlobalTableOutput
+}
+
+func (GlobalTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTable)(nil)).Elem()
+}
+
+func (i GlobalTable) ToGlobalTableOutput() GlobalTableOutput {
+	return i.ToGlobalTableOutputWithContext(context.Background())
+}
+
+func (i GlobalTable) ToGlobalTableOutputWithContext(ctx context.Context) GlobalTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalTableOutput)
+}
+
+type GlobalTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTableOutput)(nil)).Elem()
+}
+
+func (o GlobalTableOutput) ToGlobalTableOutput() GlobalTableOutput {
+	return o
+}
+
+func (o GlobalTableOutput) ToGlobalTableOutputWithContext(ctx context.Context) GlobalTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalTableOutput{})
 }

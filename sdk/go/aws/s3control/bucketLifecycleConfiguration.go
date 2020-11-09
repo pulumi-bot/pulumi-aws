@@ -4,6 +4,7 @@
 package s3control
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,4 +88,43 @@ type BucketLifecycleConfigurationArgs struct {
 
 func (BucketLifecycleConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketLifecycleConfigurationArgs)(nil)).Elem()
+}
+
+type BucketLifecycleConfigurationInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleConfigurationOutput() BucketLifecycleConfigurationOutput
+	ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput
+}
+
+func (BucketLifecycleConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleConfiguration)(nil)).Elem()
+}
+
+func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationOutput() BucketLifecycleConfigurationOutput {
+	return i.ToBucketLifecycleConfigurationOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationOutput)
+}
+
+type BucketLifecycleConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketLifecycleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleConfigurationOutput)(nil)).Elem()
+}
+
+func (o BucketLifecycleConfigurationOutput) ToBucketLifecycleConfigurationOutput() BucketLifecycleConfigurationOutput {
+	return o
+}
+
+func (o BucketLifecycleConfigurationOutput) ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketLifecycleConfigurationOutput{})
 }

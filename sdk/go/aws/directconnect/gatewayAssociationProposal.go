@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type GatewayAssociationProposalArgs struct {
 
 func (GatewayAssociationProposalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayAssociationProposalArgs)(nil)).Elem()
+}
+
+type GatewayAssociationProposalInput interface {
+	pulumi.Input
+
+	ToGatewayAssociationProposalOutput() GatewayAssociationProposalOutput
+	ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput
+}
+
+func (GatewayAssociationProposal) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociationProposal)(nil)).Elem()
+}
+
+func (i GatewayAssociationProposal) ToGatewayAssociationProposalOutput() GatewayAssociationProposalOutput {
+	return i.ToGatewayAssociationProposalOutputWithContext(context.Background())
+}
+
+func (i GatewayAssociationProposal) ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAssociationProposalOutput)
+}
+
+type GatewayAssociationProposalOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayAssociationProposalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociationProposalOutput)(nil)).Elem()
+}
+
+func (o GatewayAssociationProposalOutput) ToGatewayAssociationProposalOutput() GatewayAssociationProposalOutput {
+	return o
+}
+
+func (o GatewayAssociationProposalOutput) ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayAssociationProposalOutput{})
 }

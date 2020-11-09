@@ -4,6 +4,7 @@
 package dms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -150,4 +151,43 @@ type ReplicationSubnetGroupArgs struct {
 
 func (ReplicationSubnetGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationSubnetGroupArgs)(nil)).Elem()
+}
+
+type ReplicationSubnetGroupInput interface {
+	pulumi.Input
+
+	ToReplicationSubnetGroupOutput() ReplicationSubnetGroupOutput
+	ToReplicationSubnetGroupOutputWithContext(ctx context.Context) ReplicationSubnetGroupOutput
+}
+
+func (ReplicationSubnetGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationSubnetGroup)(nil)).Elem()
+}
+
+func (i ReplicationSubnetGroup) ToReplicationSubnetGroupOutput() ReplicationSubnetGroupOutput {
+	return i.ToReplicationSubnetGroupOutputWithContext(context.Background())
+}
+
+func (i ReplicationSubnetGroup) ToReplicationSubnetGroupOutputWithContext(ctx context.Context) ReplicationSubnetGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSubnetGroupOutput)
+}
+
+type ReplicationSubnetGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationSubnetGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationSubnetGroupOutput)(nil)).Elem()
+}
+
+func (o ReplicationSubnetGroupOutput) ToReplicationSubnetGroupOutput() ReplicationSubnetGroupOutput {
+	return o
+}
+
+func (o ReplicationSubnetGroupOutput) ToReplicationSubnetGroupOutputWithContext(ctx context.Context) ReplicationSubnetGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReplicationSubnetGroupOutput{})
 }

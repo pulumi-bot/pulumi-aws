@@ -4,6 +4,7 @@
 package ebs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -105,4 +106,43 @@ type DefaultKmsKeyArgs struct {
 
 func (DefaultKmsKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultKmsKeyArgs)(nil)).Elem()
+}
+
+type DefaultKmsKeyInput interface {
+	pulumi.Input
+
+	ToDefaultKmsKeyOutput() DefaultKmsKeyOutput
+	ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput
+}
+
+func (DefaultKmsKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKmsKey)(nil)).Elem()
+}
+
+func (i DefaultKmsKey) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
+	return i.ToDefaultKmsKeyOutputWithContext(context.Background())
+}
+
+func (i DefaultKmsKey) ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultKmsKeyOutput)
+}
+
+type DefaultKmsKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultKmsKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKmsKeyOutput)(nil)).Elem()
+}
+
+func (o DefaultKmsKeyOutput) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
+	return o
+}
+
+func (o DefaultKmsKeyOutput) ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultKmsKeyOutput{})
 }

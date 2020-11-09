@@ -4,6 +4,7 @@
 package ec2clientvpn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -144,4 +145,43 @@ type AuthorizationRuleArgs struct {
 
 func (AuthorizationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationRuleArgs)(nil)).Elem()
+}
+
+type AuthorizationRuleInput interface {
+	pulumi.Input
+
+	ToAuthorizationRuleOutput() AuthorizationRuleOutput
+	ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput
+}
+
+func (AuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationRule)(nil)).Elem()
+}
+
+func (i AuthorizationRule) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
+	return i.ToAuthorizationRuleOutputWithContext(context.Background())
+}
+
+func (i AuthorizationRule) ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationRuleOutput)
+}
+
+type AuthorizationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationRuleOutput)(nil)).Elem()
+}
+
+func (o AuthorizationRuleOutput) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
+	return o
+}
+
+func (o AuthorizationRuleOutput) ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthorizationRuleOutput{})
 }

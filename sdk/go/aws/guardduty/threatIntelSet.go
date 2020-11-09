@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -196,4 +197,43 @@ type ThreatIntelSetArgs struct {
 
 func (ThreatIntelSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*threatIntelSetArgs)(nil)).Elem()
+}
+
+type ThreatIntelSetInput interface {
+	pulumi.Input
+
+	ToThreatIntelSetOutput() ThreatIntelSetOutput
+	ToThreatIntelSetOutputWithContext(ctx context.Context) ThreatIntelSetOutput
+}
+
+func (ThreatIntelSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatIntelSet)(nil)).Elem()
+}
+
+func (i ThreatIntelSet) ToThreatIntelSetOutput() ThreatIntelSetOutput {
+	return i.ToThreatIntelSetOutputWithContext(context.Background())
+}
+
+func (i ThreatIntelSet) ToThreatIntelSetOutputWithContext(ctx context.Context) ThreatIntelSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelSetOutput)
+}
+
+type ThreatIntelSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ThreatIntelSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatIntelSetOutput)(nil)).Elem()
+}
+
+func (o ThreatIntelSetOutput) ToThreatIntelSetOutput() ThreatIntelSetOutput {
+	return o
+}
+
+func (o ThreatIntelSetOutput) ToThreatIntelSetOutputWithContext(ctx context.Context) ThreatIntelSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ThreatIntelSetOutput{})
 }

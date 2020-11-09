@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,4 +129,43 @@ type GcmChannelArgs struct {
 
 func (GcmChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcmChannelArgs)(nil)).Elem()
+}
+
+type GcmChannelInput interface {
+	pulumi.Input
+
+	ToGcmChannelOutput() GcmChannelOutput
+	ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput
+}
+
+func (GcmChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcmChannel)(nil)).Elem()
+}
+
+func (i GcmChannel) ToGcmChannelOutput() GcmChannelOutput {
+	return i.ToGcmChannelOutputWithContext(context.Background())
+}
+
+func (i GcmChannel) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelOutput)
+}
+
+type GcmChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (GcmChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcmChannelOutput)(nil)).Elem()
+}
+
+func (o GcmChannelOutput) ToGcmChannelOutput() GcmChannelOutput {
+	return o
+}
+
+func (o GcmChannelOutput) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GcmChannelOutput{})
 }
