@@ -4,6 +4,7 @@
 package workspaces
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -268,4 +269,43 @@ type DirectoryArgs struct {
 
 func (DirectoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryArgs)(nil)).Elem()
+}
+
+type DirectoryInput interface {
+	pulumi.Input
+
+	ToDirectoryOutput() DirectoryOutput
+	ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput
+}
+
+func (Directory) ElementType() reflect.Type {
+	return reflect.TypeOf((*Directory)(nil)).Elem()
+}
+
+func (i Directory) ToDirectoryOutput() DirectoryOutput {
+	return i.ToDirectoryOutputWithContext(context.Background())
+}
+
+func (i Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryOutput)
+}
+
+type DirectoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (DirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryOutput)(nil)).Elem()
+}
+
+func (o DirectoryOutput) ToDirectoryOutput() DirectoryOutput {
+	return o
+}
+
+func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DirectoryOutput{})
 }

@@ -4,6 +4,7 @@
 package opsworks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -274,4 +275,43 @@ type StaticWebLayerArgs struct {
 
 func (StaticWebLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*staticWebLayerArgs)(nil)).Elem()
+}
+
+type StaticWebLayerInput interface {
+	pulumi.Input
+
+	ToStaticWebLayerOutput() StaticWebLayerOutput
+	ToStaticWebLayerOutputWithContext(ctx context.Context) StaticWebLayerOutput
+}
+
+func (StaticWebLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticWebLayer)(nil)).Elem()
+}
+
+func (i StaticWebLayer) ToStaticWebLayerOutput() StaticWebLayerOutput {
+	return i.ToStaticWebLayerOutputWithContext(context.Background())
+}
+
+func (i StaticWebLayer) ToStaticWebLayerOutputWithContext(ctx context.Context) StaticWebLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticWebLayerOutput)
+}
+
+type StaticWebLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (StaticWebLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticWebLayerOutput)(nil)).Elem()
+}
+
+func (o StaticWebLayerOutput) ToStaticWebLayerOutput() StaticWebLayerOutput {
+	return o
+}
+
+func (o StaticWebLayerOutput) ToStaticWebLayerOutputWithContext(ctx context.Context) StaticWebLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StaticWebLayerOutput{})
 }

@@ -4,6 +4,7 @@
 package wafv2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -135,4 +136,43 @@ type WebAclLoggingConfigurationArgs struct {
 
 func (WebAclLoggingConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAclLoggingConfigurationArgs)(nil)).Elem()
+}
+
+type WebAclLoggingConfigurationInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput
+	ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput
+}
+
+func (WebAclLoggingConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfiguration)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
+	return i.ToWebAclLoggingConfigurationOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationOutput)
+}
+
+type WebAclLoggingConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclLoggingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationOutput)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationOutput) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationOutput) ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationOutput{})
 }

@@ -4,6 +4,7 @@
 package licensemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -180,4 +181,43 @@ type LicenseConfigurationArgs struct {
 
 func (LicenseConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseConfigurationArgs)(nil)).Elem()
+}
+
+type LicenseConfigurationInput interface {
+	pulumi.Input
+
+	ToLicenseConfigurationOutput() LicenseConfigurationOutput
+	ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput
+}
+
+func (LicenseConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfiguration)(nil)).Elem()
+}
+
+func (i LicenseConfiguration) ToLicenseConfigurationOutput() LicenseConfigurationOutput {
+	return i.ToLicenseConfigurationOutputWithContext(context.Background())
+}
+
+func (i LicenseConfiguration) ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigurationOutput)
+}
+
+type LicenseConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (LicenseConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigurationOutput)(nil)).Elem()
+}
+
+func (o LicenseConfigurationOutput) ToLicenseConfigurationOutput() LicenseConfigurationOutput {
+	return o
+}
+
+func (o LicenseConfigurationOutput) ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LicenseConfigurationOutput{})
 }
