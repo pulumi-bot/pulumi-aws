@@ -11,6 +11,14 @@ import (
 )
 
 // Provides an OpsWorks application resource.
+//
+// ## Import
+//
+// Opsworks Application can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:opsworks/application:Application test <id>
+// ```
 type Application struct {
 	pulumi.CustomResourceState
 

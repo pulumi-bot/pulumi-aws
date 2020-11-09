@@ -34,6 +34,16 @@ import * as utilities from "../utilities";
  *     dependsOn: [testAttach],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * AWS SSM Activation can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import aws:ssm/activation:Activation example e488f2f6-e686-4afb-8a04-ef6dfEXAMPLE
+ * ```
+ *
+ *  -> **Note:** The `activation_code` attribute cannot be imported.
  */
 export class Activation extends pulumi.CustomResource {
     /**

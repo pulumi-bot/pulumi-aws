@@ -53,6 +53,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Redshift Snapshot Schedule Association can be imported using the `<cluster-identifier>/<schedule-identifier>`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation default tf-redshift-cluster/tf-redshift-snapshot-schedule
+// ```
 type SnapshotScheduleAssociation struct {
 	pulumi.CustomResourceState
 

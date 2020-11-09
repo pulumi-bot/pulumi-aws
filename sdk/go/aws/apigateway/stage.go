@@ -140,6 +140,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_api_gateway_stage` can be imported using `REST-API-ID/STAGE-NAME`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigateway/stage:Stage example 12345abcde/example
+// ```
 type Stage struct {
 	pulumi.CustomResourceState
 

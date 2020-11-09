@@ -62,6 +62,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cognito User Pools can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cognito/userPool:UserPool pool <id>
+// ```
 type UserPool struct {
 	pulumi.CustomResourceState
 

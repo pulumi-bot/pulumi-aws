@@ -22,6 +22,16 @@ import (
 // Certificates][2] in AWS Documentation.
 //
 // > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
+//
+// ## Import
+//
+// IAM Server Certificates can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iam/serverCertificate:ServerCertificate certificate example.com-certificate-until-2018
+// ```
+//
+//  [1]https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html [2]https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html [lifecycle]/docs/configuration/resources.html
 type ServerCertificate struct {
 	pulumi.CustomResourceState
 

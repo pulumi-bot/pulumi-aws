@@ -45,6 +45,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Athena Workgroups can be imported using their name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:athena/workgroup:Workgroup example example
+// ```
 type Workgroup struct {
 	pulumi.CustomResourceState
 

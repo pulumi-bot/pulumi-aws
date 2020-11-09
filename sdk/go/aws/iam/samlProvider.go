@@ -11,6 +11,14 @@ import (
 )
 
 // Provides an IAM SAML provider.
+//
+// ## Import
+//
+// IAM SAML Providers can be imported using the `arn`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iam/samlProvider:SamlProvider default arn:aws:iam::123456789012:saml-provider/SAMLADFS
+// ```
 type SamlProvider struct {
 	pulumi.CustomResourceState
 

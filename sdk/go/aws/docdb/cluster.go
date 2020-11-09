@@ -49,6 +49,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DocDB Clusters can be imported using the `cluster_identifier`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:docdb/cluster:Cluster docdb_cluster docdb-prod-cluster
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

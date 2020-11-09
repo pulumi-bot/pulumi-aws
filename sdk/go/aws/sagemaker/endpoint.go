@@ -39,6 +39,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Endpoints can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:sagemaker/endpoint:Endpoint test_endpoint my-endpoint
+// ```
 type Endpoint struct {
 	pulumi.CustomResourceState
 

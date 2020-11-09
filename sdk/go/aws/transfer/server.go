@@ -52,6 +52,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Transfer Servers can be imported using the `server id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:transfer/server:Server bar s-12345678
+// ```
+//
+//  Certain resource arguments, such as `host_key`, cannot be read via the API and imported into the provider. This provider will display a difference for these arguments the first run after import if declared in the provider configuration for an imported resource.
 type Server struct {
 	pulumi.CustomResourceState
 

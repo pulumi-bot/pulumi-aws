@@ -72,6 +72,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kinesis Analytics Application can be imported by using ARN, e.g.
+//
+// ```sh
+//  $ pulumi import aws:kinesis/analyticsApplication:AnalyticsApplication example arn:aws:kinesisanalytics:us-west-2:1234567890:application/example
+// ```
 type AnalyticsApplication struct {
 	pulumi.CustomResourceState
 

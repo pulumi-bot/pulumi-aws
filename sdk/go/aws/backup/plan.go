@@ -48,6 +48,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Backup Plan can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:backup/plan:Plan test <id>
+// ```
 type Plan struct {
 	pulumi.CustomResourceState
 

@@ -57,6 +57,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ECS Capacity Providers can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ecs/capacityProvider:CapacityProvider example example
+// ```
 type CapacityProvider struct {
 	pulumi.CustomResourceState
 

@@ -106,6 +106,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Glue Jobs can be imported using `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:glue/job:Job MyJob MyJob
+// ```
 type Job struct {
 	pulumi.CustomResourceState
 

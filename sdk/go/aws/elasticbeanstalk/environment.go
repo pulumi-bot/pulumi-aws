@@ -99,6 +99,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Elastic Beanstalk Environments can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:elasticbeanstalk/environment:Environment prodenv e-rpqsewtp2j
+// ```
 type Environment struct {
 	pulumi.CustomResourceState
 

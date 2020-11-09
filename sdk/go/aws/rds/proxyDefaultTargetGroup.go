@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// DB proxy default target groups can be imported using the `db_proxy_name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup example example
+// ```
 type ProxyDefaultTargetGroup struct {
 	pulumi.CustomResourceState
 

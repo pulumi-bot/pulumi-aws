@@ -28,6 +28,14 @@ import (
 // P256 and P384 curves.  Using a certificate signed by a key using a different
 // curve could produce the error `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` in your
 // browser.
+//
+// ## Import
+//
+// ELBs can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:elb/loadBalancer:LoadBalancer bar elb-production-12345
+// ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

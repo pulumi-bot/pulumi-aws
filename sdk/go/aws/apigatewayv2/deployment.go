@@ -39,6 +39,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_apigatewayv2_deployment` can be imported by using the API identifier and deployment identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigatewayv2/deployment:Deployment example aabbccddee/1122334
+// ```
+//
+//  The `triggers` argument cannot be imported.
 type Deployment struct {
 	pulumi.CustomResourceState
 

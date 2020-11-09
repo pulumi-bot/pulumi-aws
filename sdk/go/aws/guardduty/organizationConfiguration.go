@@ -43,6 +43,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// GuardDuty Organization Configurations can be imported using the GuardDuty Detector ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:guardduty/organizationConfiguration:OrganizationConfiguration example 00b00fd5aecc0ab60a708659477e9617
+// ```
 type OrganizationConfiguration struct {
 	pulumi.CustomResourceState
 

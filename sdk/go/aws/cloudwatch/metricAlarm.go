@@ -151,6 +151,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cloud Metric Alarms can be imported using the `alarm_name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cloudwatch/metricAlarm:MetricAlarm test alarm-12345
+// ```
 type MetricAlarm struct {
 	pulumi.CustomResourceState
 

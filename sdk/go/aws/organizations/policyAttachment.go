@@ -82,6 +82,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_organizations_policy_attachment` can be imported by using the target ID and policy ID, e.g. with an account target
+//
+// ```sh
+//  $ pulumi import aws:organizations/policyAttachment:PolicyAttachment account 123456789012:p-12345678
+// ```
 type PolicyAttachment struct {
 	pulumi.CustomResourceState
 

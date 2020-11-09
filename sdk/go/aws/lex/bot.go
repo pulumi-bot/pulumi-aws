@@ -65,6 +65,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Bots can be imported using their name.
+//
+// ```sh
+//  $ pulumi import aws:lex/bot:Bot order_flowers_bot OrderFlowers
+// ```
 type Bot struct {
 	pulumi.CustomResourceState
 

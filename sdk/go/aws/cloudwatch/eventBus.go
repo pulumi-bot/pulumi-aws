@@ -33,6 +33,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventBridge event buses can be imported using the `name`, e.g. console
+//
+// ```sh
+//  $ pulumi import aws:cloudwatch/eventBus:EventBus messenger chat-messages
+// ```
 type EventBus struct {
 	pulumi.CustomResourceState
 

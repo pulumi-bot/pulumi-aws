@@ -51,6 +51,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SSM resource data sync can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ssm/resourceDataSync:ResourceDataSync example example-name
+// ```
 type ResourceDataSync struct {
 	pulumi.CustomResourceState
 

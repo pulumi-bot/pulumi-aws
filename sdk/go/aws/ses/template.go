@@ -37,6 +37,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SES templates can be imported using the template name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ses/template:Template MyTemplate MyTemplate
+// ```
 type Template struct {
 	pulumi.CustomResourceState
 

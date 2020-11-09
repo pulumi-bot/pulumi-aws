@@ -97,6 +97,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// S3 bucket inventory configurations can be imported using `bucket:inventory`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:s3/inventory:Inventory my-bucket-entire-bucket my-bucket:EntireBucket
+// ```
 type Inventory struct {
 	pulumi.CustomResourceState
 
