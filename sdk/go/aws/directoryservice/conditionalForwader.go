@@ -39,6 +39,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Conditional forwarders can be imported using the directory id and remote_domain_name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:directoryservice/conditionalForwader:ConditionalForwader example d-1234567890:example.com
+// ```
 type ConditionalForwader struct {
 	pulumi.CustomResourceState
 

@@ -36,6 +36,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The current Account Alias can be imported using the `account_alias`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iam/accountAlias:AccountAlias alias my-account-alias
+// ```
 type AccountAlias struct {
 	pulumi.CustomResourceState
 

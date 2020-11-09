@@ -98,6 +98,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CodeBuild Webhooks can be imported using the CodeBuild Project name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:codebuild/webhook:Webhook example MyProjectName
+// ```
 type Webhook struct {
 	pulumi.CustomResourceState
 

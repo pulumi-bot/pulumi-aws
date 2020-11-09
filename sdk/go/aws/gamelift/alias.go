@@ -38,6 +38,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Gamelift Aliases can be imported using the ID, e.g.
+//
+// ```sh
+//  $ pulumi import aws:gamelift/alias:Alias example <alias-id>
+// ```
 type Alias struct {
 	pulumi.CustomResourceState
 

@@ -70,6 +70,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Transfer SSH Public Key can be imported using the `server_id` and `user_name` and `ssh_public_key_id` separated by `/`.
+//
+// ```sh
+//  $ pulumi import aws:transfer/sshKey:SshKey bar s-12345678/test-username/key-12345
+// ```
 type SshKey struct {
 	pulumi.CustomResourceState
 

@@ -74,6 +74,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoT Topic Rules can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iot/topicRule:TopicRule rule <name>
+// ```
 type TopicRule struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,14 @@ import (
 // Provides a Pinpoint APNs VoIP Sandbox Channel resource.
 //
 // > **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
+//
+// ## Import
+//
+// Pinpoint APNs VoIP Sandbox Channel can be imported using the `application-id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:pinpoint/apnsVoipSandboxChannel:ApnsVoipSandboxChannel apns_voip_sandbox application-id
+// ```
 type ApnsVoipSandboxChannel struct {
 	pulumi.CustomResourceState
 

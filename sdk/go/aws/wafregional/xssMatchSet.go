@@ -46,6 +46,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// AWS WAF Regional XSS Match can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:wafregional/xssMatchSet:XssMatchSet example 12345abcde
+// ```
 type XssMatchSet struct {
 	pulumi.CustomResourceState
 

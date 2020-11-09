@@ -41,6 +41,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DB Security groups can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:rds/securityGroup:SecurityGroup default aws_rds_sg-1
+// ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 

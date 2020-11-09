@@ -38,6 +38,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IAM Policies can be imported using the `arn`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iam/policy:Policy administrator arn:aws:iam::123456789012:policy/UsersManageOwnCredentials
+// ```
 type Policy struct {
 	pulumi.CustomResourceState
 
