@@ -4,6 +4,8 @@
 package wafregional
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,11 +69,11 @@ type RuleGroup struct {
 // NewRuleGroup registers a new resource with the given unique name, arguments, and options.
 func NewRuleGroup(ctx *pulumi.Context,
 	name string, args *RuleGroupArgs, opts ...pulumi.ResourceOption) (*RuleGroup, error) {
-	if args == nil || args.MetricName == nil {
-		return nil, errors.New("missing required argument 'MetricName'")
-	}
 	if args == nil {
-		args = &RuleGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MetricName == nil {
+		return nil, errors.New("invalid value for required argument 'MetricName'")
 	}
 	var resource RuleGroup
 	err := ctx.RegisterResource("aws:wafregional/ruleGroup:RuleGroup", name, args, &resource, opts...)
@@ -149,4 +151,43 @@ type RuleGroupArgs struct {
 
 func (RuleGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleGroupArgs)(nil)).Elem()
+}
+
+type RuleGroupInput interface {
+	pulumi.Input
+
+	ToRuleGroupOutput() RuleGroupOutput
+	ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput
+}
+
+func (RuleGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroup)(nil)).Elem()
+}
+
+func (i RuleGroup) ToRuleGroupOutput() RuleGroupOutput {
+	return i.ToRuleGroupOutputWithContext(context.Background())
+}
+
+func (i RuleGroup) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupOutput)
+}
+
+type RuleGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupOutput)(nil)).Elem()
+}
+
+func (o RuleGroupOutput) ToRuleGroupOutput() RuleGroupOutput {
+	return o
+}
+
+func (o RuleGroupOutput) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RuleGroupOutput{})
 }

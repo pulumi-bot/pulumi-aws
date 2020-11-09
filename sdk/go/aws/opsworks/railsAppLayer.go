@@ -4,6 +4,8 @@
 package opsworks
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,11 +95,11 @@ type RailsAppLayer struct {
 // NewRailsAppLayer registers a new resource with the given unique name, arguments, and options.
 func NewRailsAppLayer(ctx *pulumi.Context,
 	name string, args *RailsAppLayerArgs, opts ...pulumi.ResourceOption) (*RailsAppLayer, error) {
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &RailsAppLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource RailsAppLayer
 	err := ctx.RegisterResource("aws:opsworks/railsAppLayer:RailsAppLayer", name, args, &resource, opts...)
@@ -339,4 +341,43 @@ type RailsAppLayerArgs struct {
 
 func (RailsAppLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*railsAppLayerArgs)(nil)).Elem()
+}
+
+type RailsAppLayerInput interface {
+	pulumi.Input
+
+	ToRailsAppLayerOutput() RailsAppLayerOutput
+	ToRailsAppLayerOutputWithContext(ctx context.Context) RailsAppLayerOutput
+}
+
+func (RailsAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayer)(nil)).Elem()
+}
+
+func (i RailsAppLayer) ToRailsAppLayerOutput() RailsAppLayerOutput {
+	return i.ToRailsAppLayerOutputWithContext(context.Background())
+}
+
+func (i RailsAppLayer) ToRailsAppLayerOutputWithContext(ctx context.Context) RailsAppLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerOutput)
+}
+
+type RailsAppLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (RailsAppLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayerOutput)(nil)).Elem()
+}
+
+func (o RailsAppLayerOutput) ToRailsAppLayerOutput() RailsAppLayerOutput {
+	return o
+}
+
+func (o RailsAppLayerOutput) ToRailsAppLayerOutputWithContext(ctx context.Context) RailsAppLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RailsAppLayerOutput{})
 }

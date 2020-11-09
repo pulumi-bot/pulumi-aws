@@ -4,6 +4,8 @@
 package globalaccelerator
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,17 +72,17 @@ type Listener struct {
 // NewListener registers a new resource with the given unique name, arguments, and options.
 func NewListener(ctx *pulumi.Context,
 	name string, args *ListenerArgs, opts ...pulumi.ResourceOption) (*Listener, error) {
-	if args == nil || args.AcceleratorArn == nil {
-		return nil, errors.New("missing required argument 'AcceleratorArn'")
-	}
-	if args == nil || args.PortRanges == nil {
-		return nil, errors.New("missing required argument 'PortRanges'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
 	if args == nil {
-		args = &ListenerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AcceleratorArn == nil {
+		return nil, errors.New("invalid value for required argument 'AcceleratorArn'")
+	}
+	if args.PortRanges == nil {
+		return nil, errors.New("invalid value for required argument 'PortRanges'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
 	var resource Listener
 	err := ctx.RegisterResource("aws:globalaccelerator/listener:Listener", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type ListenerArgs struct {
 
 func (ListenerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerArgs)(nil)).Elem()
+}
+
+type ListenerInput interface {
+	pulumi.Input
+
+	ToListenerOutput() ListenerOutput
+	ToListenerOutputWithContext(ctx context.Context) ListenerOutput
+}
+
+func (Listener) ElementType() reflect.Type {
+	return reflect.TypeOf((*Listener)(nil)).Elem()
+}
+
+func (i Listener) ToListenerOutput() ListenerOutput {
+	return i.ToListenerOutputWithContext(context.Background())
+}
+
+func (i Listener) ToListenerOutputWithContext(ctx context.Context) ListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerOutput)
+}
+
+type ListenerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerOutput)(nil)).Elem()
+}
+
+func (o ListenerOutput) ToListenerOutput() ListenerOutput {
+	return o
+}
+
+func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) ListenerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListenerOutput{})
 }

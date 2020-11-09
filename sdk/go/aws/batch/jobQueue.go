@@ -4,6 +4,8 @@
 package batch
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,17 +65,17 @@ type JobQueue struct {
 // NewJobQueue registers a new resource with the given unique name, arguments, and options.
 func NewJobQueue(ctx *pulumi.Context,
 	name string, args *JobQueueArgs, opts ...pulumi.ResourceOption) (*JobQueue, error) {
-	if args == nil || args.ComputeEnvironments == nil {
-		return nil, errors.New("missing required argument 'ComputeEnvironments'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.State == nil {
-		return nil, errors.New("missing required argument 'State'")
-	}
 	if args == nil {
-		args = &JobQueueArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ComputeEnvironments == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeEnvironments'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.State == nil {
+		return nil, errors.New("invalid value for required argument 'State'")
 	}
 	var resource JobQueue
 	err := ctx.RegisterResource("aws:batch/jobQueue:JobQueue", name, args, &resource, opts...)
@@ -175,4 +177,43 @@ type JobQueueArgs struct {
 
 func (JobQueueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobQueueArgs)(nil)).Elem()
+}
+
+type JobQueueInput interface {
+	pulumi.Input
+
+	ToJobQueueOutput() JobQueueOutput
+	ToJobQueueOutputWithContext(ctx context.Context) JobQueueOutput
+}
+
+func (JobQueue) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueue)(nil)).Elem()
+}
+
+func (i JobQueue) ToJobQueueOutput() JobQueueOutput {
+	return i.ToJobQueueOutputWithContext(context.Background())
+}
+
+func (i JobQueue) ToJobQueueOutputWithContext(ctx context.Context) JobQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueueOutput)
+}
+
+type JobQueueOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueueOutput)(nil)).Elem()
+}
+
+func (o JobQueueOutput) ToJobQueueOutput() JobQueueOutput {
+	return o
+}
+
+func (o JobQueueOutput) ToJobQueueOutputWithContext(ctx context.Context) JobQueueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(JobQueueOutput{})
 }

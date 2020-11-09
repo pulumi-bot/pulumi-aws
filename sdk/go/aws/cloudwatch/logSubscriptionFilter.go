@@ -4,6 +4,8 @@
 package cloudwatch
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,17 +60,17 @@ type LogSubscriptionFilter struct {
 // NewLogSubscriptionFilter registers a new resource with the given unique name, arguments, and options.
 func NewLogSubscriptionFilter(ctx *pulumi.Context,
 	name string, args *LogSubscriptionFilterArgs, opts ...pulumi.ResourceOption) (*LogSubscriptionFilter, error) {
-	if args == nil || args.DestinationArn == nil {
-		return nil, errors.New("missing required argument 'DestinationArn'")
-	}
-	if args == nil || args.FilterPattern == nil {
-		return nil, errors.New("missing required argument 'FilterPattern'")
-	}
-	if args == nil || args.LogGroup == nil {
-		return nil, errors.New("missing required argument 'LogGroup'")
-	}
 	if args == nil {
-		args = &LogSubscriptionFilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DestinationArn == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationArn'")
+	}
+	if args.FilterPattern == nil {
+		return nil, errors.New("invalid value for required argument 'FilterPattern'")
+	}
+	if args.LogGroup == nil {
+		return nil, errors.New("invalid value for required argument 'LogGroup'")
 	}
 	var resource LogSubscriptionFilter
 	err := ctx.RegisterResource("aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter", name, args, &resource, opts...)
@@ -158,4 +160,43 @@ type LogSubscriptionFilterArgs struct {
 
 func (LogSubscriptionFilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logSubscriptionFilterArgs)(nil)).Elem()
+}
+
+type LogSubscriptionFilterInput interface {
+	pulumi.Input
+
+	ToLogSubscriptionFilterOutput() LogSubscriptionFilterOutput
+	ToLogSubscriptionFilterOutputWithContext(ctx context.Context) LogSubscriptionFilterOutput
+}
+
+func (LogSubscriptionFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSubscriptionFilter)(nil)).Elem()
+}
+
+func (i LogSubscriptionFilter) ToLogSubscriptionFilterOutput() LogSubscriptionFilterOutput {
+	return i.ToLogSubscriptionFilterOutputWithContext(context.Background())
+}
+
+func (i LogSubscriptionFilter) ToLogSubscriptionFilterOutputWithContext(ctx context.Context) LogSubscriptionFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSubscriptionFilterOutput)
+}
+
+type LogSubscriptionFilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogSubscriptionFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSubscriptionFilterOutput)(nil)).Elem()
+}
+
+func (o LogSubscriptionFilterOutput) ToLogSubscriptionFilterOutput() LogSubscriptionFilterOutput {
+	return o
+}
+
+func (o LogSubscriptionFilterOutput) ToLogSubscriptionFilterOutputWithContext(ctx context.Context) LogSubscriptionFilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogSubscriptionFilterOutput{})
 }

@@ -4,6 +4,8 @@
 package wafv2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,17 +90,17 @@ type RuleGroup struct {
 // NewRuleGroup registers a new resource with the given unique name, arguments, and options.
 func NewRuleGroup(ctx *pulumi.Context,
 	name string, args *RuleGroupArgs, opts ...pulumi.ResourceOption) (*RuleGroup, error) {
-	if args == nil || args.Capacity == nil {
-		return nil, errors.New("missing required argument 'Capacity'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
-	if args == nil || args.VisibilityConfig == nil {
-		return nil, errors.New("missing required argument 'VisibilityConfig'")
-	}
 	if args == nil {
-		args = &RuleGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Capacity == nil {
+		return nil, errors.New("invalid value for required argument 'Capacity'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
+	}
+	if args.VisibilityConfig == nil {
+		return nil, errors.New("invalid value for required argument 'VisibilityConfig'")
 	}
 	var resource RuleGroup
 	err := ctx.RegisterResource("aws:wafv2/ruleGroup:RuleGroup", name, args, &resource, opts...)
@@ -202,4 +204,43 @@ type RuleGroupArgs struct {
 
 func (RuleGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleGroupArgs)(nil)).Elem()
+}
+
+type RuleGroupInput interface {
+	pulumi.Input
+
+	ToRuleGroupOutput() RuleGroupOutput
+	ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput
+}
+
+func (RuleGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroup)(nil)).Elem()
+}
+
+func (i RuleGroup) ToRuleGroupOutput() RuleGroupOutput {
+	return i.ToRuleGroupOutputWithContext(context.Background())
+}
+
+func (i RuleGroup) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupOutput)
+}
+
+type RuleGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupOutput)(nil)).Elem()
+}
+
+func (o RuleGroupOutput) ToRuleGroupOutput() RuleGroupOutput {
+	return o
+}
+
+func (o RuleGroupOutput) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RuleGroupOutput{})
 }

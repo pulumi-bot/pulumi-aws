@@ -4,6 +4,8 @@
 package xray
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,11 +24,11 @@ type EncryptionConfig struct {
 // NewEncryptionConfig registers a new resource with the given unique name, arguments, and options.
 func NewEncryptionConfig(ctx *pulumi.Context,
 	name string, args *EncryptionConfigArgs, opts ...pulumi.ResourceOption) (*EncryptionConfig, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &EncryptionConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource EncryptionConfig
 	err := ctx.RegisterResource("aws:xray/encryptionConfig:EncryptionConfig", name, args, &resource, opts...)
@@ -84,4 +86,43 @@ type EncryptionConfigArgs struct {
 
 func (EncryptionConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*encryptionConfigArgs)(nil)).Elem()
+}
+
+type EncryptionConfigInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigOutput() EncryptionConfigOutput
+	ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput
+}
+
+func (EncryptionConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (i EncryptionConfig) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return i.ToEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfig) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
+}
+
+type EncryptionConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (EncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigOutput)(nil)).Elem()
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 }

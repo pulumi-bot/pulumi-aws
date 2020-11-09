@@ -4,6 +4,8 @@
 package opsworks
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,14 +90,14 @@ type GangliaLayer struct {
 // NewGangliaLayer registers a new resource with the given unique name, arguments, and options.
 func NewGangliaLayer(ctx *pulumi.Context,
 	name string, args *GangliaLayerArgs, opts ...pulumi.ResourceOption) (*GangliaLayer, error) {
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &GangliaLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource GangliaLayer
 	err := ctx.RegisterResource("aws:opsworks/gangliaLayer:GangliaLayer", name, args, &resource, opts...)
@@ -313,4 +315,43 @@ type GangliaLayerArgs struct {
 
 func (GangliaLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gangliaLayerArgs)(nil)).Elem()
+}
+
+type GangliaLayerInput interface {
+	pulumi.Input
+
+	ToGangliaLayerOutput() GangliaLayerOutput
+	ToGangliaLayerOutputWithContext(ctx context.Context) GangliaLayerOutput
+}
+
+func (GangliaLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*GangliaLayer)(nil)).Elem()
+}
+
+func (i GangliaLayer) ToGangliaLayerOutput() GangliaLayerOutput {
+	return i.ToGangliaLayerOutputWithContext(context.Background())
+}
+
+func (i GangliaLayer) ToGangliaLayerOutputWithContext(ctx context.Context) GangliaLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerOutput)
+}
+
+type GangliaLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (GangliaLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GangliaLayerOutput)(nil)).Elem()
+}
+
+func (o GangliaLayerOutput) ToGangliaLayerOutput() GangliaLayerOutput {
+	return o
+}
+
+func (o GangliaLayerOutput) ToGangliaLayerOutputWithContext(ctx context.Context) GangliaLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GangliaLayerOutput{})
 }

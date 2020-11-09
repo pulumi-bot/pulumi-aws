@@ -4,6 +4,8 @@
 package lex
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,11 +90,11 @@ type SlotType struct {
 // NewSlotType registers a new resource with the given unique name, arguments, and options.
 func NewSlotType(ctx *pulumi.Context,
 	name string, args *SlotTypeArgs, opts ...pulumi.ResourceOption) (*SlotType, error) {
-	if args == nil || args.EnumerationValues == nil {
-		return nil, errors.New("missing required argument 'EnumerationValues'")
-	}
 	if args == nil {
-		args = &SlotTypeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.EnumerationValues == nil {
+		return nil, errors.New("invalid value for required argument 'EnumerationValues'")
 	}
 	var resource SlotType
 	err := ctx.RegisterResource("aws:lex/slotType:SlotType", name, args, &resource, opts...)
@@ -220,4 +222,43 @@ type SlotTypeArgs struct {
 
 func (SlotTypeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*slotTypeArgs)(nil)).Elem()
+}
+
+type SlotTypeInput interface {
+	pulumi.Input
+
+	ToSlotTypeOutput() SlotTypeOutput
+	ToSlotTypeOutputWithContext(ctx context.Context) SlotTypeOutput
+}
+
+func (SlotType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlotType)(nil)).Elem()
+}
+
+func (i SlotType) ToSlotTypeOutput() SlotTypeOutput {
+	return i.ToSlotTypeOutputWithContext(context.Background())
+}
+
+func (i SlotType) ToSlotTypeOutputWithContext(ctx context.Context) SlotTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlotTypeOutput)
+}
+
+type SlotTypeOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlotTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlotTypeOutput)(nil)).Elem()
+}
+
+func (o SlotTypeOutput) ToSlotTypeOutput() SlotTypeOutput {
+	return o
+}
+
+func (o SlotTypeOutput) ToSlotTypeOutputWithContext(ctx context.Context) SlotTypeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SlotTypeOutput{})
 }

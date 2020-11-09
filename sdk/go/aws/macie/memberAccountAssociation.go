@@ -4,6 +4,8 @@
 package macie
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,11 +50,11 @@ type MemberAccountAssociation struct {
 // NewMemberAccountAssociation registers a new resource with the given unique name, arguments, and options.
 func NewMemberAccountAssociation(ctx *pulumi.Context,
 	name string, args *MemberAccountAssociationArgs, opts ...pulumi.ResourceOption) (*MemberAccountAssociation, error) {
-	if args == nil || args.MemberAccountId == nil {
-		return nil, errors.New("missing required argument 'MemberAccountId'")
-	}
 	if args == nil {
-		args = &MemberAccountAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MemberAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'MemberAccountId'")
 	}
 	var resource MemberAccountAssociation
 	err := ctx.RegisterResource("aws:macie/memberAccountAssociation:MemberAccountAssociation", name, args, &resource, opts...)
@@ -102,4 +104,43 @@ type MemberAccountAssociationArgs struct {
 
 func (MemberAccountAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberAccountAssociationArgs)(nil)).Elem()
+}
+
+type MemberAccountAssociationInput interface {
+	pulumi.Input
+
+	ToMemberAccountAssociationOutput() MemberAccountAssociationOutput
+	ToMemberAccountAssociationOutputWithContext(ctx context.Context) MemberAccountAssociationOutput
+}
+
+func (MemberAccountAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberAccountAssociation)(nil)).Elem()
+}
+
+func (i MemberAccountAssociation) ToMemberAccountAssociationOutput() MemberAccountAssociationOutput {
+	return i.ToMemberAccountAssociationOutputWithContext(context.Background())
+}
+
+func (i MemberAccountAssociation) ToMemberAccountAssociationOutputWithContext(ctx context.Context) MemberAccountAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberAccountAssociationOutput)
+}
+
+type MemberAccountAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberAccountAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberAccountAssociationOutput)(nil)).Elem()
+}
+
+func (o MemberAccountAssociationOutput) ToMemberAccountAssociationOutput() MemberAccountAssociationOutput {
+	return o
+}
+
+func (o MemberAccountAssociationOutput) ToMemberAccountAssociationOutputWithContext(ctx context.Context) MemberAccountAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MemberAccountAssociationOutput{})
 }

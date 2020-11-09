@@ -4,6 +4,8 @@
 package codeartifact
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -71,14 +73,14 @@ type DomainPermissions struct {
 // NewDomainPermissions registers a new resource with the given unique name, arguments, and options.
 func NewDomainPermissions(ctx *pulumi.Context,
 	name string, args *DomainPermissionsArgs, opts ...pulumi.ResourceOption) (*DomainPermissions, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
-	if args == nil || args.PolicyDocument == nil {
-		return nil, errors.New("missing required argument 'PolicyDocument'")
-	}
 	if args == nil {
-		args = &DomainPermissionsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
+	}
+	if args.PolicyDocument == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyDocument'")
 	}
 	var resource DomainPermissions
 	err := ctx.RegisterResource("aws:codeartifact/domainPermissions:DomainPermissions", name, args, &resource, opts...)
@@ -156,4 +158,43 @@ type DomainPermissionsArgs struct {
 
 func (DomainPermissionsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainPermissionsArgs)(nil)).Elem()
+}
+
+type DomainPermissionsInput interface {
+	pulumi.Input
+
+	ToDomainPermissionsOutput() DomainPermissionsOutput
+	ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput
+}
+
+func (DomainPermissions) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPermissions)(nil)).Elem()
+}
+
+func (i DomainPermissions) ToDomainPermissionsOutput() DomainPermissionsOutput {
+	return i.ToDomainPermissionsOutputWithContext(context.Background())
+}
+
+func (i DomainPermissions) ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPermissionsOutput)
+}
+
+type DomainPermissionsOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPermissionsOutput)(nil)).Elem()
+}
+
+func (o DomainPermissionsOutput) ToDomainPermissionsOutput() DomainPermissionsOutput {
+	return o
+}
+
+func (o DomainPermissionsOutput) ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainPermissionsOutput{})
 }

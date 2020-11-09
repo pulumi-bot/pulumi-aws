@@ -4,6 +4,8 @@
 package elasticsearch
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,14 +59,14 @@ type DomainPolicy struct {
 // NewDomainPolicy registers a new resource with the given unique name, arguments, and options.
 func NewDomainPolicy(ctx *pulumi.Context,
 	name string, args *DomainPolicyArgs, opts ...pulumi.ResourceOption) (*DomainPolicy, error) {
-	if args == nil || args.AccessPolicies == nil {
-		return nil, errors.New("missing required argument 'AccessPolicies'")
-	}
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
 	if args == nil {
-		args = &DomainPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccessPolicies == nil {
+		return nil, errors.New("invalid value for required argument 'AccessPolicies'")
+	}
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
 	var resource DomainPolicy
 	err := ctx.RegisterResource("aws:elasticsearch/domainPolicy:DomainPolicy", name, args, &resource, opts...)
@@ -122,4 +124,43 @@ type DomainPolicyArgs struct {
 
 func (DomainPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainPolicyArgs)(nil)).Elem()
+}
+
+type DomainPolicyInput interface {
+	pulumi.Input
+
+	ToDomainPolicyOutput() DomainPolicyOutput
+	ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput
+}
+
+func (DomainPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPolicy)(nil)).Elem()
+}
+
+func (i DomainPolicy) ToDomainPolicyOutput() DomainPolicyOutput {
+	return i.ToDomainPolicyOutputWithContext(context.Background())
+}
+
+func (i DomainPolicy) ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPolicyOutput)
+}
+
+type DomainPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPolicyOutput)(nil)).Elem()
+}
+
+func (o DomainPolicyOutput) ToDomainPolicyOutput() DomainPolicyOutput {
+	return o
+}
+
+func (o DomainPolicyOutput) ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainPolicyOutput{})
 }

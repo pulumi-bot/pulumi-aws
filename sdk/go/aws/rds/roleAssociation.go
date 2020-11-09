@@ -4,6 +4,8 @@
 package rds
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,17 +57,17 @@ type RoleAssociation struct {
 // NewRoleAssociation registers a new resource with the given unique name, arguments, and options.
 func NewRoleAssociation(ctx *pulumi.Context,
 	name string, args *RoleAssociationArgs, opts ...pulumi.ResourceOption) (*RoleAssociation, error) {
-	if args == nil || args.DbInstanceIdentifier == nil {
-		return nil, errors.New("missing required argument 'DbInstanceIdentifier'")
-	}
-	if args == nil || args.FeatureName == nil {
-		return nil, errors.New("missing required argument 'FeatureName'")
-	}
-	if args == nil || args.RoleArn == nil {
-		return nil, errors.New("missing required argument 'RoleArn'")
-	}
 	if args == nil {
-		args = &RoleAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DbInstanceIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'DbInstanceIdentifier'")
+	}
+	if args.FeatureName == nil {
+		return nil, errors.New("invalid value for required argument 'FeatureName'")
+	}
+	if args.RoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'RoleArn'")
 	}
 	var resource RoleAssociation
 	err := ctx.RegisterResource("aws:rds/roleAssociation:RoleAssociation", name, args, &resource, opts...)
@@ -131,4 +133,43 @@ type RoleAssociationArgs struct {
 
 func (RoleAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAssociationArgs)(nil)).Elem()
+}
+
+type RoleAssociationInput interface {
+	pulumi.Input
+
+	ToRoleAssociationOutput() RoleAssociationOutput
+	ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput
+}
+
+func (RoleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssociation)(nil)).Elem()
+}
+
+func (i RoleAssociation) ToRoleAssociationOutput() RoleAssociationOutput {
+	return i.ToRoleAssociationOutputWithContext(context.Background())
+}
+
+func (i RoleAssociation) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssociationOutput)
+}
+
+type RoleAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssociationOutput)(nil)).Elem()
+}
+
+func (o RoleAssociationOutput) ToRoleAssociationOutput() RoleAssociationOutput {
+	return o
+}
+
+func (o RoleAssociationOutput) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleAssociationOutput{})
 }

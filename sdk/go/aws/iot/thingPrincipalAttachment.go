@@ -4,6 +4,8 @@
 package iot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,14 +25,14 @@ type ThingPrincipalAttachment struct {
 // NewThingPrincipalAttachment registers a new resource with the given unique name, arguments, and options.
 func NewThingPrincipalAttachment(ctx *pulumi.Context,
 	name string, args *ThingPrincipalAttachmentArgs, opts ...pulumi.ResourceOption) (*ThingPrincipalAttachment, error) {
-	if args == nil || args.Principal == nil {
-		return nil, errors.New("missing required argument 'Principal'")
-	}
-	if args == nil || args.Thing == nil {
-		return nil, errors.New("missing required argument 'Thing'")
-	}
 	if args == nil {
-		args = &ThingPrincipalAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Principal == nil {
+		return nil, errors.New("invalid value for required argument 'Principal'")
+	}
+	if args.Thing == nil {
+		return nil, errors.New("invalid value for required argument 'Thing'")
 	}
 	var resource ThingPrincipalAttachment
 	err := ctx.RegisterResource("aws:iot/thingPrincipalAttachment:ThingPrincipalAttachment", name, args, &resource, opts...)
@@ -88,4 +90,43 @@ type ThingPrincipalAttachmentArgs struct {
 
 func (ThingPrincipalAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*thingPrincipalAttachmentArgs)(nil)).Elem()
+}
+
+type ThingPrincipalAttachmentInput interface {
+	pulumi.Input
+
+	ToThingPrincipalAttachmentOutput() ThingPrincipalAttachmentOutput
+	ToThingPrincipalAttachmentOutputWithContext(ctx context.Context) ThingPrincipalAttachmentOutput
+}
+
+func (ThingPrincipalAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThingPrincipalAttachment)(nil)).Elem()
+}
+
+func (i ThingPrincipalAttachment) ToThingPrincipalAttachmentOutput() ThingPrincipalAttachmentOutput {
+	return i.ToThingPrincipalAttachmentOutputWithContext(context.Background())
+}
+
+func (i ThingPrincipalAttachment) ToThingPrincipalAttachmentOutputWithContext(ctx context.Context) ThingPrincipalAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThingPrincipalAttachmentOutput)
+}
+
+type ThingPrincipalAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ThingPrincipalAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThingPrincipalAttachmentOutput)(nil)).Elem()
+}
+
+func (o ThingPrincipalAttachmentOutput) ToThingPrincipalAttachmentOutput() ThingPrincipalAttachmentOutput {
+	return o
+}
+
+func (o ThingPrincipalAttachmentOutput) ToThingPrincipalAttachmentOutputWithContext(ctx context.Context) ThingPrincipalAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ThingPrincipalAttachmentOutput{})
 }

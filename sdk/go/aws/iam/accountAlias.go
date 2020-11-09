@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,11 +48,11 @@ type AccountAlias struct {
 // NewAccountAlias registers a new resource with the given unique name, arguments, and options.
 func NewAccountAlias(ctx *pulumi.Context,
 	name string, args *AccountAliasArgs, opts ...pulumi.ResourceOption) (*AccountAlias, error) {
-	if args == nil || args.AccountAlias == nil {
-		return nil, errors.New("missing required argument 'AccountAlias'")
-	}
 	if args == nil {
-		args = &AccountAliasArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountAlias == nil {
+		return nil, errors.New("invalid value for required argument 'AccountAlias'")
 	}
 	var resource AccountAlias
 	err := ctx.RegisterResource("aws:iam/accountAlias:AccountAlias", name, args, &resource, opts...)
@@ -100,4 +102,43 @@ type AccountAliasArgs struct {
 
 func (AccountAliasArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountAliasArgs)(nil)).Elem()
+}
+
+type AccountAliasInput interface {
+	pulumi.Input
+
+	ToAccountAliasOutput() AccountAliasOutput
+	ToAccountAliasOutputWithContext(ctx context.Context) AccountAliasOutput
+}
+
+func (AccountAlias) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAlias)(nil)).Elem()
+}
+
+func (i AccountAlias) ToAccountAliasOutput() AccountAliasOutput {
+	return i.ToAccountAliasOutputWithContext(context.Background())
+}
+
+func (i AccountAlias) ToAccountAliasOutputWithContext(ctx context.Context) AccountAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAliasOutput)
+}
+
+type AccountAliasOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAliasOutput)(nil)).Elem()
+}
+
+func (o AccountAliasOutput) ToAccountAliasOutput() AccountAliasOutput {
+	return o
+}
+
+func (o AccountAliasOutput) ToAccountAliasOutputWithContext(ctx context.Context) AccountAliasOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountAliasOutput{})
 }

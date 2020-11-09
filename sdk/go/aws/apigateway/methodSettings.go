@@ -4,6 +4,8 @@
 package apigateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,20 +116,20 @@ type MethodSettings struct {
 // NewMethodSettings registers a new resource with the given unique name, arguments, and options.
 func NewMethodSettings(ctx *pulumi.Context,
 	name string, args *MethodSettingsArgs, opts ...pulumi.ResourceOption) (*MethodSettings, error) {
-	if args == nil || args.MethodPath == nil {
-		return nil, errors.New("missing required argument 'MethodPath'")
-	}
-	if args == nil || args.RestApi == nil {
-		return nil, errors.New("missing required argument 'RestApi'")
-	}
-	if args == nil || args.Settings == nil {
-		return nil, errors.New("missing required argument 'Settings'")
-	}
-	if args == nil || args.StageName == nil {
-		return nil, errors.New("missing required argument 'StageName'")
-	}
 	if args == nil {
-		args = &MethodSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MethodPath == nil {
+		return nil, errors.New("invalid value for required argument 'MethodPath'")
+	}
+	if args.RestApi == nil {
+		return nil, errors.New("invalid value for required argument 'RestApi'")
+	}
+	if args.Settings == nil {
+		return nil, errors.New("invalid value for required argument 'Settings'")
+	}
+	if args.StageName == nil {
+		return nil, errors.New("invalid value for required argument 'StageName'")
 	}
 	var resource MethodSettings
 	err := ctx.RegisterResource("aws:apigateway/methodSettings:MethodSettings", name, args, &resource, opts...)
@@ -201,4 +203,43 @@ type MethodSettingsArgs struct {
 
 func (MethodSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*methodSettingsArgs)(nil)).Elem()
+}
+
+type MethodSettingsInput interface {
+	pulumi.Input
+
+	ToMethodSettingsOutput() MethodSettingsOutput
+	ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput
+}
+
+func (MethodSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettings)(nil)).Elem()
+}
+
+func (i MethodSettings) ToMethodSettingsOutput() MethodSettingsOutput {
+	return i.ToMethodSettingsOutputWithContext(context.Background())
+}
+
+func (i MethodSettings) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsOutput)
+}
+
+type MethodSettingsOutput struct {
+	*pulumi.OutputState
+}
+
+func (MethodSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettingsOutput)(nil)).Elem()
+}
+
+func (o MethodSettingsOutput) ToMethodSettingsOutput() MethodSettingsOutput {
+	return o
+}
+
+func (o MethodSettingsOutput) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MethodSettingsOutput{})
 }

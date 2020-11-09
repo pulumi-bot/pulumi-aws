@@ -4,6 +4,8 @@
 package rds
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -26,14 +28,14 @@ type ProxyDefaultTargetGroup struct {
 // NewProxyDefaultTargetGroup registers a new resource with the given unique name, arguments, and options.
 func NewProxyDefaultTargetGroup(ctx *pulumi.Context,
 	name string, args *ProxyDefaultTargetGroupArgs, opts ...pulumi.ResourceOption) (*ProxyDefaultTargetGroup, error) {
-	if args == nil || args.ConnectionPoolConfig == nil {
-		return nil, errors.New("missing required argument 'ConnectionPoolConfig'")
-	}
-	if args == nil || args.DbProxyName == nil {
-		return nil, errors.New("missing required argument 'DbProxyName'")
-	}
 	if args == nil {
-		args = &ProxyDefaultTargetGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ConnectionPoolConfig == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionPoolConfig'")
+	}
+	if args.DbProxyName == nil {
+		return nil, errors.New("invalid value for required argument 'DbProxyName'")
 	}
 	var resource ProxyDefaultTargetGroup
 	err := ctx.RegisterResource("aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup", name, args, &resource, opts...)
@@ -99,4 +101,43 @@ type ProxyDefaultTargetGroupArgs struct {
 
 func (ProxyDefaultTargetGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*proxyDefaultTargetGroupArgs)(nil)).Elem()
+}
+
+type ProxyDefaultTargetGroupInput interface {
+	pulumi.Input
+
+	ToProxyDefaultTargetGroupOutput() ProxyDefaultTargetGroupOutput
+	ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput
+}
+
+func (ProxyDefaultTargetGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyDefaultTargetGroup)(nil)).Elem()
+}
+
+func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutput() ProxyDefaultTargetGroupOutput {
+	return i.ToProxyDefaultTargetGroupOutputWithContext(context.Background())
+}
+
+func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupOutput)
+}
+
+type ProxyDefaultTargetGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyDefaultTargetGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyDefaultTargetGroupOutput)(nil)).Elem()
+}
+
+func (o ProxyDefaultTargetGroupOutput) ToProxyDefaultTargetGroupOutput() ProxyDefaultTargetGroupOutput {
+	return o
+}
+
+func (o ProxyDefaultTargetGroupOutput) ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProxyDefaultTargetGroupOutput{})
 }

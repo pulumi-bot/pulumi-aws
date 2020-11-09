@@ -4,6 +4,8 @@
 package cloudwatch
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,11 +54,11 @@ type LogStream struct {
 // NewLogStream registers a new resource with the given unique name, arguments, and options.
 func NewLogStream(ctx *pulumi.Context,
 	name string, args *LogStreamArgs, opts ...pulumi.ResourceOption) (*LogStream, error) {
-	if args == nil || args.LogGroupName == nil {
-		return nil, errors.New("missing required argument 'LogGroupName'")
-	}
 	if args == nil {
-		args = &LogStreamArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LogGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'LogGroupName'")
 	}
 	var resource LogStream
 	err := ctx.RegisterResource("aws:cloudwatch/logStream:LogStream", name, args, &resource, opts...)
@@ -118,4 +120,43 @@ type LogStreamArgs struct {
 
 func (LogStreamArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logStreamArgs)(nil)).Elem()
+}
+
+type LogStreamInput interface {
+	pulumi.Input
+
+	ToLogStreamOutput() LogStreamOutput
+	ToLogStreamOutputWithContext(ctx context.Context) LogStreamOutput
+}
+
+func (LogStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStream)(nil)).Elem()
+}
+
+func (i LogStream) ToLogStreamOutput() LogStreamOutput {
+	return i.ToLogStreamOutputWithContext(context.Background())
+}
+
+func (i LogStream) ToLogStreamOutputWithContext(ctx context.Context) LogStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamOutput)
+}
+
+type LogStreamOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStreamOutput)(nil)).Elem()
+}
+
+func (o LogStreamOutput) ToLogStreamOutput() LogStreamOutput {
+	return o
+}
+
+func (o LogStreamOutput) ToLogStreamOutputWithContext(ctx context.Context) LogStreamOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogStreamOutput{})
 }

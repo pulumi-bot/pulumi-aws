@@ -4,6 +4,8 @@
 package pinpoint
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,17 +79,17 @@ type EventStream struct {
 // NewEventStream registers a new resource with the given unique name, arguments, and options.
 func NewEventStream(ctx *pulumi.Context,
 	name string, args *EventStreamArgs, opts ...pulumi.ResourceOption) (*EventStream, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
-	if args == nil || args.DestinationStreamArn == nil {
-		return nil, errors.New("missing required argument 'DestinationStreamArn'")
-	}
-	if args == nil || args.RoleArn == nil {
-		return nil, errors.New("missing required argument 'RoleArn'")
-	}
 	if args == nil {
-		args = &EventStreamArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
+	if args.DestinationStreamArn == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationStreamArn'")
+	}
+	if args.RoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'RoleArn'")
 	}
 	var resource EventStream
 	err := ctx.RegisterResource("aws:pinpoint/eventStream:EventStream", name, args, &resource, opts...)
@@ -153,4 +155,43 @@ type EventStreamArgs struct {
 
 func (EventStreamArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventStreamArgs)(nil)).Elem()
+}
+
+type EventStreamInput interface {
+	pulumi.Input
+
+	ToEventStreamOutput() EventStreamOutput
+	ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput
+}
+
+func (EventStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStream)(nil)).Elem()
+}
+
+func (i EventStream) ToEventStreamOutput() EventStreamOutput {
+	return i.ToEventStreamOutputWithContext(context.Background())
+}
+
+func (i EventStream) ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamOutput)
+}
+
+type EventStreamOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamOutput)(nil)).Elem()
+}
+
+func (o EventStreamOutput) ToEventStreamOutput() EventStreamOutput {
+	return o
+}
+
+func (o EventStreamOutput) ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventStreamOutput{})
 }

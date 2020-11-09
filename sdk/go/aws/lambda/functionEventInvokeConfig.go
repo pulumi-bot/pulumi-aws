@@ -4,6 +4,8 @@
 package lambda
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -158,11 +160,11 @@ type FunctionEventInvokeConfig struct {
 // NewFunctionEventInvokeConfig registers a new resource with the given unique name, arguments, and options.
 func NewFunctionEventInvokeConfig(ctx *pulumi.Context,
 	name string, args *FunctionEventInvokeConfigArgs, opts ...pulumi.ResourceOption) (*FunctionEventInvokeConfig, error) {
-	if args == nil || args.FunctionName == nil {
-		return nil, errors.New("missing required argument 'FunctionName'")
-	}
 	if args == nil {
-		args = &FunctionEventInvokeConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.FunctionName == nil {
+		return nil, errors.New("invalid value for required argument 'FunctionName'")
 	}
 	var resource FunctionEventInvokeConfig
 	err := ctx.RegisterResource("aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig", name, args, &resource, opts...)
@@ -244,4 +246,43 @@ type FunctionEventInvokeConfigArgs struct {
 
 func (FunctionEventInvokeConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionEventInvokeConfigArgs)(nil)).Elem()
+}
+
+type FunctionEventInvokeConfigInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigOutput() FunctionEventInvokeConfigOutput
+	ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput
+}
+
+func (FunctionEventInvokeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfig)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigOutput() FunctionEventInvokeConfigOutput {
+	return i.ToFunctionEventInvokeConfigOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigOutput)
+}
+
+type FunctionEventInvokeConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionEventInvokeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigOutput)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigOutput) ToFunctionEventInvokeConfigOutput() FunctionEventInvokeConfigOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigOutput) ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigOutput{})
 }

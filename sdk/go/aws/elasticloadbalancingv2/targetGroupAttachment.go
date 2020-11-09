@@ -4,6 +4,8 @@
 package elasticloadbalancingv2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -110,14 +112,14 @@ type TargetGroupAttachment struct {
 // NewTargetGroupAttachment registers a new resource with the given unique name, arguments, and options.
 func NewTargetGroupAttachment(ctx *pulumi.Context,
 	name string, args *TargetGroupAttachmentArgs, opts ...pulumi.ResourceOption) (*TargetGroupAttachment, error) {
-	if args == nil || args.TargetGroupArn == nil {
-		return nil, errors.New("missing required argument 'TargetGroupArn'")
-	}
-	if args == nil || args.TargetId == nil {
-		return nil, errors.New("missing required argument 'TargetId'")
-	}
 	if args == nil {
-		args = &TargetGroupAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TargetGroupArn == nil {
+		return nil, errors.New("invalid value for required argument 'TargetGroupArn'")
+	}
+	if args.TargetId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
 	var resource TargetGroupAttachment
 	err := ctx.RegisterResource("aws:elasticloadbalancingv2/targetGroupAttachment:TargetGroupAttachment", name, args, &resource, opts...)
@@ -191,4 +193,43 @@ type TargetGroupAttachmentArgs struct {
 
 func (TargetGroupAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetGroupAttachmentArgs)(nil)).Elem()
+}
+
+type TargetGroupAttachmentInput interface {
+	pulumi.Input
+
+	ToTargetGroupAttachmentOutput() TargetGroupAttachmentOutput
+	ToTargetGroupAttachmentOutputWithContext(ctx context.Context) TargetGroupAttachmentOutput
+}
+
+func (TargetGroupAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGroupAttachment)(nil)).Elem()
+}
+
+func (i TargetGroupAttachment) ToTargetGroupAttachmentOutput() TargetGroupAttachmentOutput {
+	return i.ToTargetGroupAttachmentOutputWithContext(context.Background())
+}
+
+func (i TargetGroupAttachment) ToTargetGroupAttachmentOutputWithContext(ctx context.Context) TargetGroupAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupAttachmentOutput)
+}
+
+type TargetGroupAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetGroupAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGroupAttachmentOutput)(nil)).Elem()
+}
+
+func (o TargetGroupAttachmentOutput) ToTargetGroupAttachmentOutput() TargetGroupAttachmentOutput {
+	return o
+}
+
+func (o TargetGroupAttachmentOutput) ToTargetGroupAttachmentOutputWithContext(ctx context.Context) TargetGroupAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetGroupAttachmentOutput{})
 }

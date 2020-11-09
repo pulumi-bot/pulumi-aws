@@ -4,6 +4,8 @@
 package dynamodb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -107,11 +109,11 @@ type GlobalTable struct {
 // NewGlobalTable registers a new resource with the given unique name, arguments, and options.
 func NewGlobalTable(ctx *pulumi.Context,
 	name string, args *GlobalTableArgs, opts ...pulumi.ResourceOption) (*GlobalTable, error) {
-	if args == nil || args.Replicas == nil {
-		return nil, errors.New("missing required argument 'Replicas'")
-	}
 	if args == nil {
-		args = &GlobalTableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Replicas == nil {
+		return nil, errors.New("invalid value for required argument 'Replicas'")
 	}
 	var resource GlobalTable
 	err := ctx.RegisterResource("aws:dynamodb/globalTable:GlobalTable", name, args, &resource, opts...)
@@ -173,4 +175,43 @@ type GlobalTableArgs struct {
 
 func (GlobalTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalTableArgs)(nil)).Elem()
+}
+
+type GlobalTableInput interface {
+	pulumi.Input
+
+	ToGlobalTableOutput() GlobalTableOutput
+	ToGlobalTableOutputWithContext(ctx context.Context) GlobalTableOutput
+}
+
+func (GlobalTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTable)(nil)).Elem()
+}
+
+func (i GlobalTable) ToGlobalTableOutput() GlobalTableOutput {
+	return i.ToGlobalTableOutputWithContext(context.Background())
+}
+
+func (i GlobalTable) ToGlobalTableOutputWithContext(ctx context.Context) GlobalTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalTableOutput)
+}
+
+type GlobalTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTableOutput)(nil)).Elem()
+}
+
+func (o GlobalTableOutput) ToGlobalTableOutput() GlobalTableOutput {
+	return o
+}
+
+func (o GlobalTableOutput) ToGlobalTableOutputWithContext(ctx context.Context) GlobalTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalTableOutput{})
 }

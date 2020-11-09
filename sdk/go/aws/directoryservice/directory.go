@@ -4,6 +4,8 @@
 package directoryservice
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -227,14 +229,14 @@ type Directory struct {
 // NewDirectory registers a new resource with the given unique name, arguments, and options.
 func NewDirectory(ctx *pulumi.Context,
 	name string, args *DirectoryArgs, opts ...pulumi.ResourceOption) (*Directory, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
 	if args == nil {
-		args = &DirectoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
 	}
 	var resource Directory
 	err := ctx.RegisterResource("aws:directoryservice/directory:Directory", name, args, &resource, opts...)
@@ -384,4 +386,43 @@ type DirectoryArgs struct {
 
 func (DirectoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryArgs)(nil)).Elem()
+}
+
+type DirectoryInput interface {
+	pulumi.Input
+
+	ToDirectoryOutput() DirectoryOutput
+	ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput
+}
+
+func (Directory) ElementType() reflect.Type {
+	return reflect.TypeOf((*Directory)(nil)).Elem()
+}
+
+func (i Directory) ToDirectoryOutput() DirectoryOutput {
+	return i.ToDirectoryOutputWithContext(context.Background())
+}
+
+func (i Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryOutput)
+}
+
+type DirectoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (DirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryOutput)(nil)).Elem()
+}
+
+func (o DirectoryOutput) ToDirectoryOutput() DirectoryOutput {
+	return o
+}
+
+func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DirectoryOutput{})
 }

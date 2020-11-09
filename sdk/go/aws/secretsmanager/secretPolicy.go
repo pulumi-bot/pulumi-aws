@@ -4,6 +4,8 @@
 package secretsmanager
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +57,14 @@ type SecretPolicy struct {
 // NewSecretPolicy registers a new resource with the given unique name, arguments, and options.
 func NewSecretPolicy(ctx *pulumi.Context,
 	name string, args *SecretPolicyArgs, opts ...pulumi.ResourceOption) (*SecretPolicy, error) {
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.SecretArn == nil {
-		return nil, errors.New("missing required argument 'SecretArn'")
-	}
 	if args == nil {
-		args = &SecretPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.SecretArn == nil {
+		return nil, errors.New("invalid value for required argument 'SecretArn'")
 	}
 	var resource SecretPolicy
 	err := ctx.RegisterResource("aws:secretsmanager/secretPolicy:SecretPolicy", name, args, &resource, opts...)
@@ -124,4 +126,43 @@ type SecretPolicyArgs struct {
 
 func (SecretPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretPolicyArgs)(nil)).Elem()
+}
+
+type SecretPolicyInput interface {
+	pulumi.Input
+
+	ToSecretPolicyOutput() SecretPolicyOutput
+	ToSecretPolicyOutputWithContext(ctx context.Context) SecretPolicyOutput
+}
+
+func (SecretPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPolicy)(nil)).Elem()
+}
+
+func (i SecretPolicy) ToSecretPolicyOutput() SecretPolicyOutput {
+	return i.ToSecretPolicyOutputWithContext(context.Background())
+}
+
+func (i SecretPolicy) ToSecretPolicyOutputWithContext(ctx context.Context) SecretPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPolicyOutput)
+}
+
+type SecretPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPolicyOutput)(nil)).Elem()
+}
+
+func (o SecretPolicyOutput) ToSecretPolicyOutput() SecretPolicyOutput {
+	return o
+}
+
+func (o SecretPolicyOutput) ToSecretPolicyOutputWithContext(ctx context.Context) SecretPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretPolicyOutput{})
 }

@@ -4,6 +4,8 @@
 package licensemanager
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,11 +80,11 @@ type LicenseConfiguration struct {
 // NewLicenseConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewLicenseConfiguration(ctx *pulumi.Context,
 	name string, args *LicenseConfigurationArgs, opts ...pulumi.ResourceOption) (*LicenseConfiguration, error) {
-	if args == nil || args.LicenseCountingType == nil {
-		return nil, errors.New("missing required argument 'LicenseCountingType'")
-	}
 	if args == nil {
-		args = &LicenseConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LicenseCountingType == nil {
+		return nil, errors.New("invalid value for required argument 'LicenseCountingType'")
 	}
 	var resource LicenseConfiguration
 	err := ctx.RegisterResource("aws:licensemanager/licenseConfiguration:LicenseConfiguration", name, args, &resource, opts...)
@@ -180,4 +182,43 @@ type LicenseConfigurationArgs struct {
 
 func (LicenseConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseConfigurationArgs)(nil)).Elem()
+}
+
+type LicenseConfigurationInput interface {
+	pulumi.Input
+
+	ToLicenseConfigurationOutput() LicenseConfigurationOutput
+	ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput
+}
+
+func (LicenseConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfiguration)(nil)).Elem()
+}
+
+func (i LicenseConfiguration) ToLicenseConfigurationOutput() LicenseConfigurationOutput {
+	return i.ToLicenseConfigurationOutputWithContext(context.Background())
+}
+
+func (i LicenseConfiguration) ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigurationOutput)
+}
+
+type LicenseConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (LicenseConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigurationOutput)(nil)).Elem()
+}
+
+func (o LicenseConfigurationOutput) ToLicenseConfigurationOutput() LicenseConfigurationOutput {
+	return o
+}
+
+func (o LicenseConfigurationOutput) ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LicenseConfigurationOutput{})
 }

@@ -4,6 +4,8 @@
 package servicediscovery
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,11 +64,11 @@ type PrivateDnsNamespace struct {
 // NewPrivateDnsNamespace registers a new resource with the given unique name, arguments, and options.
 func NewPrivateDnsNamespace(ctx *pulumi.Context,
 	name string, args *PrivateDnsNamespaceArgs, opts ...pulumi.ResourceOption) (*PrivateDnsNamespace, error) {
-	if args == nil || args.Vpc == nil {
-		return nil, errors.New("missing required argument 'Vpc'")
-	}
 	if args == nil {
-		args = &PrivateDnsNamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Vpc == nil {
+		return nil, errors.New("invalid value for required argument 'Vpc'")
 	}
 	var resource PrivateDnsNamespace
 	err := ctx.RegisterResource("aws:servicediscovery/privateDnsNamespace:PrivateDnsNamespace", name, args, &resource, opts...)
@@ -148,4 +150,43 @@ type PrivateDnsNamespaceArgs struct {
 
 func (PrivateDnsNamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateDnsNamespaceArgs)(nil)).Elem()
+}
+
+type PrivateDnsNamespaceInput interface {
+	pulumi.Input
+
+	ToPrivateDnsNamespaceOutput() PrivateDnsNamespaceOutput
+	ToPrivateDnsNamespaceOutputWithContext(ctx context.Context) PrivateDnsNamespaceOutput
+}
+
+func (PrivateDnsNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateDnsNamespace)(nil)).Elem()
+}
+
+func (i PrivateDnsNamespace) ToPrivateDnsNamespaceOutput() PrivateDnsNamespaceOutput {
+	return i.ToPrivateDnsNamespaceOutputWithContext(context.Background())
+}
+
+func (i PrivateDnsNamespace) ToPrivateDnsNamespaceOutputWithContext(ctx context.Context) PrivateDnsNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateDnsNamespaceOutput)
+}
+
+type PrivateDnsNamespaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (PrivateDnsNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateDnsNamespaceOutput)(nil)).Elem()
+}
+
+func (o PrivateDnsNamespaceOutput) ToPrivateDnsNamespaceOutput() PrivateDnsNamespaceOutput {
+	return o
+}
+
+func (o PrivateDnsNamespaceOutput) ToPrivateDnsNamespaceOutputWithContext(ctx context.Context) PrivateDnsNamespaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PrivateDnsNamespaceOutput{})
 }

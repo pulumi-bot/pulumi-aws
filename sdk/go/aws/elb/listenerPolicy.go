@@ -4,6 +4,8 @@
 package elb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -155,14 +157,14 @@ type ListenerPolicy struct {
 // NewListenerPolicy registers a new resource with the given unique name, arguments, and options.
 func NewListenerPolicy(ctx *pulumi.Context,
 	name string, args *ListenerPolicyArgs, opts ...pulumi.ResourceOption) (*ListenerPolicy, error) {
-	if args == nil || args.LoadBalancerName == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerName'")
-	}
-	if args == nil || args.LoadBalancerPort == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerPort'")
-	}
 	if args == nil {
-		args = &ListenerPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LoadBalancerName == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerName'")
+	}
+	if args.LoadBalancerPort == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerPort'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -234,4 +236,43 @@ type ListenerPolicyArgs struct {
 
 func (ListenerPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerPolicyArgs)(nil)).Elem()
+}
+
+type ListenerPolicyInput interface {
+	pulumi.Input
+
+	ToListenerPolicyOutput() ListenerPolicyOutput
+	ToListenerPolicyOutputWithContext(ctx context.Context) ListenerPolicyOutput
+}
+
+func (ListenerPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerPolicy)(nil)).Elem()
+}
+
+func (i ListenerPolicy) ToListenerPolicyOutput() ListenerPolicyOutput {
+	return i.ToListenerPolicyOutputWithContext(context.Background())
+}
+
+func (i ListenerPolicy) ToListenerPolicyOutputWithContext(ctx context.Context) ListenerPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerPolicyOutput)
+}
+
+type ListenerPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerPolicyOutput)(nil)).Elem()
+}
+
+func (o ListenerPolicyOutput) ToListenerPolicyOutput() ListenerPolicyOutput {
+	return o
+}
+
+func (o ListenerPolicyOutput) ToListenerPolicyOutputWithContext(ctx context.Context) ListenerPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListenerPolicyOutput{})
 }

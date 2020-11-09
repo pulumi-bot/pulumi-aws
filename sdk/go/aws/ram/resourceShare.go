@@ -4,6 +4,8 @@
 package ram
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -123,4 +125,43 @@ type ResourceShareArgs struct {
 
 func (ResourceShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceShareArgs)(nil)).Elem()
+}
+
+type ResourceShareInput interface {
+	pulumi.Input
+
+	ToResourceShareOutput() ResourceShareOutput
+	ToResourceShareOutputWithContext(ctx context.Context) ResourceShareOutput
+}
+
+func (ResourceShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShare)(nil)).Elem()
+}
+
+func (i ResourceShare) ToResourceShareOutput() ResourceShareOutput {
+	return i.ToResourceShareOutputWithContext(context.Background())
+}
+
+func (i ResourceShare) ToResourceShareOutputWithContext(ctx context.Context) ResourceShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareOutput)
+}
+
+type ResourceShareOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareOutput)(nil)).Elem()
+}
+
+func (o ResourceShareOutput) ToResourceShareOutput() ResourceShareOutput {
+	return o
+}
+
+func (o ResourceShareOutput) ToResourceShareOutputWithContext(ctx context.Context) ResourceShareOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceShareOutput{})
 }

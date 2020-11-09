@@ -4,6 +4,8 @@
 package sagemaker
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,14 +23,14 @@ type CodeRepository struct {
 // NewCodeRepository registers a new resource with the given unique name, arguments, and options.
 func NewCodeRepository(ctx *pulumi.Context,
 	name string, args *CodeRepositoryArgs, opts ...pulumi.ResourceOption) (*CodeRepository, error) {
-	if args == nil || args.CodeRepositoryName == nil {
-		return nil, errors.New("missing required argument 'CodeRepositoryName'")
-	}
-	if args == nil || args.GitConfig == nil {
-		return nil, errors.New("missing required argument 'GitConfig'")
-	}
 	if args == nil {
-		args = &CodeRepositoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CodeRepositoryName == nil {
+		return nil, errors.New("invalid value for required argument 'CodeRepositoryName'")
+	}
+	if args.GitConfig == nil {
+		return nil, errors.New("invalid value for required argument 'GitConfig'")
 	}
 	var resource CodeRepository
 	err := ctx.RegisterResource("aws:sagemaker/codeRepository:CodeRepository", name, args, &resource, opts...)
@@ -80,4 +82,43 @@ type CodeRepositoryArgs struct {
 
 func (CodeRepositoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*codeRepositoryArgs)(nil)).Elem()
+}
+
+type CodeRepositoryInput interface {
+	pulumi.Input
+
+	ToCodeRepositoryOutput() CodeRepositoryOutput
+	ToCodeRepositoryOutputWithContext(ctx context.Context) CodeRepositoryOutput
+}
+
+func (CodeRepository) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeRepository)(nil)).Elem()
+}
+
+func (i CodeRepository) ToCodeRepositoryOutput() CodeRepositoryOutput {
+	return i.ToCodeRepositoryOutputWithContext(context.Background())
+}
+
+func (i CodeRepository) ToCodeRepositoryOutputWithContext(ctx context.Context) CodeRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryOutput)
+}
+
+type CodeRepositoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (CodeRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeRepositoryOutput)(nil)).Elem()
+}
+
+func (o CodeRepositoryOutput) ToCodeRepositoryOutput() CodeRepositoryOutput {
+	return o
+}
+
+func (o CodeRepositoryOutput) ToCodeRepositoryOutputWithContext(ctx context.Context) CodeRepositoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CodeRepositoryOutput{})
 }

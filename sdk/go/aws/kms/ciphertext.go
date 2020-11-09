@@ -4,6 +4,8 @@
 package kms
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,14 +67,14 @@ type Ciphertext struct {
 // NewCiphertext registers a new resource with the given unique name, arguments, and options.
 func NewCiphertext(ctx *pulumi.Context,
 	name string, args *CiphertextArgs, opts ...pulumi.ResourceOption) (*Ciphertext, error) {
-	if args == nil || args.KeyId == nil {
-		return nil, errors.New("missing required argument 'KeyId'")
-	}
-	if args == nil || args.Plaintext == nil {
-		return nil, errors.New("missing required argument 'Plaintext'")
-	}
 	if args == nil {
-		args = &CiphertextArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
+	}
+	if args.Plaintext == nil {
+		return nil, errors.New("invalid value for required argument 'Plaintext'")
 	}
 	var resource Ciphertext
 	err := ctx.RegisterResource("aws:kms/ciphertext:Ciphertext", name, args, &resource, opts...)
@@ -142,4 +144,43 @@ type CiphertextArgs struct {
 
 func (CiphertextArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ciphertextArgs)(nil)).Elem()
+}
+
+type CiphertextInput interface {
+	pulumi.Input
+
+	ToCiphertextOutput() CiphertextOutput
+	ToCiphertextOutputWithContext(ctx context.Context) CiphertextOutput
+}
+
+func (Ciphertext) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ciphertext)(nil)).Elem()
+}
+
+func (i Ciphertext) ToCiphertextOutput() CiphertextOutput {
+	return i.ToCiphertextOutputWithContext(context.Background())
+}
+
+func (i Ciphertext) ToCiphertextOutputWithContext(ctx context.Context) CiphertextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CiphertextOutput)
+}
+
+type CiphertextOutput struct {
+	*pulumi.OutputState
+}
+
+func (CiphertextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CiphertextOutput)(nil)).Elem()
+}
+
+func (o CiphertextOutput) ToCiphertextOutput() CiphertextOutput {
+	return o
+}
+
+func (o CiphertextOutput) ToCiphertextOutputWithContext(ctx context.Context) CiphertextOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CiphertextOutput{})
 }

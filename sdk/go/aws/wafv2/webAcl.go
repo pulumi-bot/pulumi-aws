@@ -4,6 +4,8 @@
 package wafv2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -300,17 +302,17 @@ type WebAcl struct {
 // NewWebAcl registers a new resource with the given unique name, arguments, and options.
 func NewWebAcl(ctx *pulumi.Context,
 	name string, args *WebAclArgs, opts ...pulumi.ResourceOption) (*WebAcl, error) {
-	if args == nil || args.DefaultAction == nil {
-		return nil, errors.New("missing required argument 'DefaultAction'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
-	if args == nil || args.VisibilityConfig == nil {
-		return nil, errors.New("missing required argument 'VisibilityConfig'")
-	}
 	if args == nil {
-		args = &WebAclArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DefaultAction == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultAction'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
+	}
+	if args.VisibilityConfig == nil {
+		return nil, errors.New("invalid value for required argument 'VisibilityConfig'")
 	}
 	var resource WebAcl
 	err := ctx.RegisterResource("aws:wafv2/webAcl:WebAcl", name, args, &resource, opts...)
@@ -418,4 +420,43 @@ type WebAclArgs struct {
 
 func (WebAclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAclArgs)(nil)).Elem()
+}
+
+type WebAclInput interface {
+	pulumi.Input
+
+	ToWebAclOutput() WebAclOutput
+	ToWebAclOutputWithContext(ctx context.Context) WebAclOutput
+}
+
+func (WebAcl) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAcl)(nil)).Elem()
+}
+
+func (i WebAcl) ToWebAclOutput() WebAclOutput {
+	return i.ToWebAclOutputWithContext(context.Background())
+}
+
+func (i WebAcl) ToWebAclOutputWithContext(ctx context.Context) WebAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclOutput)
+}
+
+type WebAclOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclOutput)(nil)).Elem()
+}
+
+func (o WebAclOutput) ToWebAclOutput() WebAclOutput {
+	return o
+}
+
+func (o WebAclOutput) ToWebAclOutputWithContext(ctx context.Context) WebAclOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAclOutput{})
 }

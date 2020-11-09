@@ -4,6 +4,8 @@
 package secretsmanager
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,11 +101,11 @@ type SecretVersion struct {
 // NewSecretVersion registers a new resource with the given unique name, arguments, and options.
 func NewSecretVersion(ctx *pulumi.Context,
 	name string, args *SecretVersionArgs, opts ...pulumi.ResourceOption) (*SecretVersion, error) {
-	if args == nil || args.SecretId == nil {
-		return nil, errors.New("missing required argument 'SecretId'")
-	}
 	if args == nil {
-		args = &SecretVersionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SecretId == nil {
+		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
 	var resource SecretVersion
 	err := ctx.RegisterResource("aws:secretsmanager/secretVersion:SecretVersion", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type SecretVersionArgs struct {
 
 func (SecretVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretVersionArgs)(nil)).Elem()
+}
+
+type SecretVersionInput interface {
+	pulumi.Input
+
+	ToSecretVersionOutput() SecretVersionOutput
+	ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput
+}
+
+func (SecretVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersion) ToSecretVersionOutput() SecretVersionOutput {
+	return i.ToSecretVersionOutputWithContext(context.Background())
+}
+
+func (i SecretVersion) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionOutput)
+}
+
+type SecretVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersionOutput)(nil)).Elem()
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutput() SecretVersionOutput {
+	return o
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretVersionOutput{})
 }

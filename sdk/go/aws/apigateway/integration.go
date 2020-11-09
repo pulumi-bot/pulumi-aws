@@ -4,6 +4,8 @@
 package apigateway
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -121,20 +123,20 @@ type Integration struct {
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
 func NewIntegration(ctx *pulumi.Context,
 	name string, args *IntegrationArgs, opts ...pulumi.ResourceOption) (*Integration, error) {
-	if args == nil || args.HttpMethod == nil {
-		return nil, errors.New("missing required argument 'HttpMethod'")
-	}
-	if args == nil || args.ResourceId == nil {
-		return nil, errors.New("missing required argument 'ResourceId'")
-	}
-	if args == nil || args.RestApi == nil {
-		return nil, errors.New("missing required argument 'RestApi'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &IntegrationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.HttpMethod == nil {
+		return nil, errors.New("invalid value for required argument 'HttpMethod'")
+	}
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
+	}
+	if args.RestApi == nil {
+		return nil, errors.New("invalid value for required argument 'RestApi'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Integration
 	err := ctx.RegisterResource("aws:apigateway/integration:Integration", name, args, &resource, opts...)
@@ -336,4 +338,43 @@ type IntegrationArgs struct {
 
 func (IntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationArgs)(nil)).Elem()
+}
+
+type IntegrationInput interface {
+	pulumi.Input
+
+	ToIntegrationOutput() IntegrationOutput
+	ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput
+}
+
+func (Integration) ElementType() reflect.Type {
+	return reflect.TypeOf((*Integration)(nil)).Elem()
+}
+
+func (i Integration) ToIntegrationOutput() IntegrationOutput {
+	return i.ToIntegrationOutputWithContext(context.Background())
+}
+
+func (i Integration) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationOutput)
+}
+
+type IntegrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationOutput)(nil)).Elem()
+}
+
+func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
+	return o
+}
+
+func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IntegrationOutput{})
 }

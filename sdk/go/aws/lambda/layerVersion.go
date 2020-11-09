@@ -4,6 +4,8 @@
 package lambda
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,11 +63,11 @@ type LayerVersion struct {
 // NewLayerVersion registers a new resource with the given unique name, arguments, and options.
 func NewLayerVersion(ctx *pulumi.Context,
 	name string, args *LayerVersionArgs, opts ...pulumi.ResourceOption) (*LayerVersion, error) {
-	if args == nil || args.LayerName == nil {
-		return nil, errors.New("missing required argument 'LayerName'")
-	}
 	if args == nil {
-		args = &LayerVersionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LayerName == nil {
+		return nil, errors.New("invalid value for required argument 'LayerName'")
 	}
 	var resource LayerVersion
 	err := ctx.RegisterResource("aws:lambda/layerVersion:LayerVersion", name, args, &resource, opts...)
@@ -199,4 +201,43 @@ type LayerVersionArgs struct {
 
 func (LayerVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*layerVersionArgs)(nil)).Elem()
+}
+
+type LayerVersionInput interface {
+	pulumi.Input
+
+	ToLayerVersionOutput() LayerVersionOutput
+	ToLayerVersionOutputWithContext(ctx context.Context) LayerVersionOutput
+}
+
+func (LayerVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*LayerVersion)(nil)).Elem()
+}
+
+func (i LayerVersion) ToLayerVersionOutput() LayerVersionOutput {
+	return i.ToLayerVersionOutputWithContext(context.Background())
+}
+
+func (i LayerVersion) ToLayerVersionOutputWithContext(ctx context.Context) LayerVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LayerVersionOutput)
+}
+
+type LayerVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (LayerVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LayerVersionOutput)(nil)).Elem()
+}
+
+func (o LayerVersionOutput) ToLayerVersionOutput() LayerVersionOutput {
+	return o
+}
+
+func (o LayerVersionOutput) ToLayerVersionOutputWithContext(ctx context.Context) LayerVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LayerVersionOutput{})
 }

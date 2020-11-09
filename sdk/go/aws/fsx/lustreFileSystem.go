@@ -4,6 +4,8 @@
 package fsx
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -94,14 +96,14 @@ type LustreFileSystem struct {
 // NewLustreFileSystem registers a new resource with the given unique name, arguments, and options.
 func NewLustreFileSystem(ctx *pulumi.Context,
 	name string, args *LustreFileSystemArgs, opts ...pulumi.ResourceOption) (*LustreFileSystem, error) {
-	if args == nil || args.StorageCapacity == nil {
-		return nil, errors.New("missing required argument 'StorageCapacity'")
-	}
-	if args == nil || args.SubnetIds == nil {
-		return nil, errors.New("missing required argument 'SubnetIds'")
-	}
 	if args == nil {
-		args = &LustreFileSystemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StorageCapacity == nil {
+		return nil, errors.New("invalid value for required argument 'StorageCapacity'")
+	}
+	if args.SubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetIds'")
 	}
 	var resource LustreFileSystem
 	err := ctx.RegisterResource("aws:fsx/lustreFileSystem:LustreFileSystem", name, args, &resource, opts...)
@@ -303,4 +305,43 @@ type LustreFileSystemArgs struct {
 
 func (LustreFileSystemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lustreFileSystemArgs)(nil)).Elem()
+}
+
+type LustreFileSystemInput interface {
+	pulumi.Input
+
+	ToLustreFileSystemOutput() LustreFileSystemOutput
+	ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput
+}
+
+func (LustreFileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*LustreFileSystem)(nil)).Elem()
+}
+
+func (i LustreFileSystem) ToLustreFileSystemOutput() LustreFileSystemOutput {
+	return i.ToLustreFileSystemOutputWithContext(context.Background())
+}
+
+func (i LustreFileSystem) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LustreFileSystemOutput)
+}
+
+type LustreFileSystemOutput struct {
+	*pulumi.OutputState
+}
+
+func (LustreFileSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LustreFileSystemOutput)(nil)).Elem()
+}
+
+func (o LustreFileSystemOutput) ToLustreFileSystemOutput() LustreFileSystemOutput {
+	return o
+}
+
+func (o LustreFileSystemOutput) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LustreFileSystemOutput{})
 }

@@ -4,6 +4,8 @@
 package cloudwatch
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +53,14 @@ type LogDestination struct {
 // NewLogDestination registers a new resource with the given unique name, arguments, and options.
 func NewLogDestination(ctx *pulumi.Context,
 	name string, args *LogDestinationArgs, opts ...pulumi.ResourceOption) (*LogDestination, error) {
-	if args == nil || args.RoleArn == nil {
-		return nil, errors.New("missing required argument 'RoleArn'")
-	}
-	if args == nil || args.TargetArn == nil {
-		return nil, errors.New("missing required argument 'TargetArn'")
-	}
 	if args == nil {
-		args = &LogDestinationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'RoleArn'")
+	}
+	if args.TargetArn == nil {
+		return nil, errors.New("invalid value for required argument 'TargetArn'")
 	}
 	var resource LogDestination
 	err := ctx.RegisterResource("aws:cloudwatch/logDestination:LogDestination", name, args, &resource, opts...)
@@ -128,4 +130,43 @@ type LogDestinationArgs struct {
 
 func (LogDestinationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logDestinationArgs)(nil)).Elem()
+}
+
+type LogDestinationInput interface {
+	pulumi.Input
+
+	ToLogDestinationOutput() LogDestinationOutput
+	ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput
+}
+
+func (LogDestination) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogDestination)(nil)).Elem()
+}
+
+func (i LogDestination) ToLogDestinationOutput() LogDestinationOutput {
+	return i.ToLogDestinationOutputWithContext(context.Background())
+}
+
+func (i LogDestination) ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogDestinationOutput)
+}
+
+type LogDestinationOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogDestinationOutput)(nil)).Elem()
+}
+
+func (o LogDestinationOutput) ToLogDestinationOutput() LogDestinationOutput {
+	return o
+}
+
+func (o LogDestinationOutput) ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogDestinationOutput{})
 }

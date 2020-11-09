@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,20 +71,20 @@ type CapacityReservation struct {
 // NewCapacityReservation registers a new resource with the given unique name, arguments, and options.
 func NewCapacityReservation(ctx *pulumi.Context,
 	name string, args *CapacityReservationArgs, opts ...pulumi.ResourceOption) (*CapacityReservation, error) {
-	if args == nil || args.AvailabilityZone == nil {
-		return nil, errors.New("missing required argument 'AvailabilityZone'")
-	}
-	if args == nil || args.InstanceCount == nil {
-		return nil, errors.New("missing required argument 'InstanceCount'")
-	}
-	if args == nil || args.InstancePlatform == nil {
-		return nil, errors.New("missing required argument 'InstancePlatform'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
 	if args == nil {
-		args = &CapacityReservationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AvailabilityZone == nil {
+		return nil, errors.New("invalid value for required argument 'AvailabilityZone'")
+	}
+	if args.InstanceCount == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceCount'")
+	}
+	if args.InstancePlatform == nil {
+		return nil, errors.New("invalid value for required argument 'InstancePlatform'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
 	var resource CapacityReservation
 	err := ctx.RegisterResource("aws:ec2/capacityReservation:CapacityReservation", name, args, &resource, opts...)
@@ -216,4 +218,43 @@ type CapacityReservationArgs struct {
 
 func (CapacityReservationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*capacityReservationArgs)(nil)).Elem()
+}
+
+type CapacityReservationInput interface {
+	pulumi.Input
+
+	ToCapacityReservationOutput() CapacityReservationOutput
+	ToCapacityReservationOutputWithContext(ctx context.Context) CapacityReservationOutput
+}
+
+func (CapacityReservation) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityReservation)(nil)).Elem()
+}
+
+func (i CapacityReservation) ToCapacityReservationOutput() CapacityReservationOutput {
+	return i.ToCapacityReservationOutputWithContext(context.Background())
+}
+
+func (i CapacityReservation) ToCapacityReservationOutputWithContext(ctx context.Context) CapacityReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityReservationOutput)
+}
+
+type CapacityReservationOutput struct {
+	*pulumi.OutputState
+}
+
+func (CapacityReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityReservationOutput)(nil)).Elem()
+}
+
+func (o CapacityReservationOutput) ToCapacityReservationOutput() CapacityReservationOutput {
+	return o
+}
+
+func (o CapacityReservationOutput) ToCapacityReservationOutputWithContext(ctx context.Context) CapacityReservationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CapacityReservationOutput{})
 }

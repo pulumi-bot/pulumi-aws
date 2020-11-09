@@ -4,6 +4,8 @@
 package sagemaker
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -97,4 +99,43 @@ type NotebookInstanceLifecycleConfigurationArgs struct {
 
 func (NotebookInstanceLifecycleConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notebookInstanceLifecycleConfigurationArgs)(nil)).Elem()
+}
+
+type NotebookInstanceLifecycleConfigurationInput interface {
+	pulumi.Input
+
+	ToNotebookInstanceLifecycleConfigurationOutput() NotebookInstanceLifecycleConfigurationOutput
+	ToNotebookInstanceLifecycleConfigurationOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationOutput
+}
+
+func (NotebookInstanceLifecycleConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookInstanceLifecycleConfiguration)(nil)).Elem()
+}
+
+func (i NotebookInstanceLifecycleConfiguration) ToNotebookInstanceLifecycleConfigurationOutput() NotebookInstanceLifecycleConfigurationOutput {
+	return i.ToNotebookInstanceLifecycleConfigurationOutputWithContext(context.Background())
+}
+
+func (i NotebookInstanceLifecycleConfiguration) ToNotebookInstanceLifecycleConfigurationOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookInstanceLifecycleConfigurationOutput)
+}
+
+type NotebookInstanceLifecycleConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotebookInstanceLifecycleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookInstanceLifecycleConfigurationOutput)(nil)).Elem()
+}
+
+func (o NotebookInstanceLifecycleConfigurationOutput) ToNotebookInstanceLifecycleConfigurationOutput() NotebookInstanceLifecycleConfigurationOutput {
+	return o
+}
+
+func (o NotebookInstanceLifecycleConfigurationOutput) ToNotebookInstanceLifecycleConfigurationOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotebookInstanceLifecycleConfigurationOutput{})
 }

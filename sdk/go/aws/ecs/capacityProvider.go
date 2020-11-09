@@ -4,6 +4,8 @@
 package ecs
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,11 +75,11 @@ type CapacityProvider struct {
 // NewCapacityProvider registers a new resource with the given unique name, arguments, and options.
 func NewCapacityProvider(ctx *pulumi.Context,
 	name string, args *CapacityProviderArgs, opts ...pulumi.ResourceOption) (*CapacityProvider, error) {
-	if args == nil || args.AutoScalingGroupProvider == nil {
-		return nil, errors.New("missing required argument 'AutoScalingGroupProvider'")
-	}
 	if args == nil {
-		args = &CapacityProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AutoScalingGroupProvider == nil {
+		return nil, errors.New("invalid value for required argument 'AutoScalingGroupProvider'")
 	}
 	var resource CapacityProvider
 	err := ctx.RegisterResource("aws:ecs/capacityProvider:CapacityProvider", name, args, &resource, opts...)
@@ -147,4 +149,43 @@ type CapacityProviderArgs struct {
 
 func (CapacityProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*capacityProviderArgs)(nil)).Elem()
+}
+
+type CapacityProviderInput interface {
+	pulumi.Input
+
+	ToCapacityProviderOutput() CapacityProviderOutput
+	ToCapacityProviderOutputWithContext(ctx context.Context) CapacityProviderOutput
+}
+
+func (CapacityProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProvider)(nil)).Elem()
+}
+
+func (i CapacityProvider) ToCapacityProviderOutput() CapacityProviderOutput {
+	return i.ToCapacityProviderOutputWithContext(context.Background())
+}
+
+func (i CapacityProvider) ToCapacityProviderOutputWithContext(ctx context.Context) CapacityProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderOutput)
+}
+
+type CapacityProviderOutput struct {
+	*pulumi.OutputState
+}
+
+func (CapacityProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderOutput)(nil)).Elem()
+}
+
+func (o CapacityProviderOutput) ToCapacityProviderOutput() CapacityProviderOutput {
+	return o
+}
+
+func (o CapacityProviderOutput) ToCapacityProviderOutputWithContext(ctx context.Context) CapacityProviderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CapacityProviderOutput{})
 }

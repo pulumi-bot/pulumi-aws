@@ -4,6 +4,8 @@
 package kms
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,17 +91,17 @@ type Grant struct {
 // NewGrant registers a new resource with the given unique name, arguments, and options.
 func NewGrant(ctx *pulumi.Context,
 	name string, args *GrantArgs, opts ...pulumi.ResourceOption) (*Grant, error) {
-	if args == nil || args.GranteePrincipal == nil {
-		return nil, errors.New("missing required argument 'GranteePrincipal'")
-	}
-	if args == nil || args.KeyId == nil {
-		return nil, errors.New("missing required argument 'KeyId'")
-	}
-	if args == nil || args.Operations == nil {
-		return nil, errors.New("missing required argument 'Operations'")
-	}
 	if args == nil {
-		args = &GrantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.GranteePrincipal == nil {
+		return nil, errors.New("invalid value for required argument 'GranteePrincipal'")
+	}
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
+	}
+	if args.Operations == nil {
+		return nil, errors.New("invalid value for required argument 'Operations'")
 	}
 	var resource Grant
 	err := ctx.RegisterResource("aws:kms/grant:Grant", name, args, &resource, opts...)
@@ -217,4 +219,43 @@ type GrantArgs struct {
 
 func (GrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantArgs)(nil)).Elem()
+}
+
+type GrantInput interface {
+	pulumi.Input
+
+	ToGrantOutput() GrantOutput
+	ToGrantOutputWithContext(ctx context.Context) GrantOutput
+}
+
+func (Grant) ElementType() reflect.Type {
+	return reflect.TypeOf((*Grant)(nil)).Elem()
+}
+
+func (i Grant) ToGrantOutput() GrantOutput {
+	return i.ToGrantOutputWithContext(context.Background())
+}
+
+func (i Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrantOutput)
+}
+
+type GrantOutput struct {
+	*pulumi.OutputState
+}
+
+func (GrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrantOutput)(nil)).Elem()
+}
+
+func (o GrantOutput) ToGrantOutput() GrantOutput {
+	return o
+}
+
+func (o GrantOutput) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GrantOutput{})
 }

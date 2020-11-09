@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -56,14 +58,14 @@ type VpcIpv4CidrBlockAssociation struct {
 // NewVpcIpv4CidrBlockAssociation registers a new resource with the given unique name, arguments, and options.
 func NewVpcIpv4CidrBlockAssociation(ctx *pulumi.Context,
 	name string, args *VpcIpv4CidrBlockAssociationArgs, opts ...pulumi.ResourceOption) (*VpcIpv4CidrBlockAssociation, error) {
-	if args == nil || args.CidrBlock == nil {
-		return nil, errors.New("missing required argument 'CidrBlock'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &VpcIpv4CidrBlockAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'CidrBlock'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource VpcIpv4CidrBlockAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation", name, args, &resource, opts...)
@@ -121,4 +123,43 @@ type VpcIpv4CidrBlockAssociationArgs struct {
 
 func (VpcIpv4CidrBlockAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcIpv4CidrBlockAssociationArgs)(nil)).Elem()
+}
+
+type VpcIpv4CidrBlockAssociationInput interface {
+	pulumi.Input
+
+	ToVpcIpv4CidrBlockAssociationOutput() VpcIpv4CidrBlockAssociationOutput
+	ToVpcIpv4CidrBlockAssociationOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationOutput
+}
+
+func (VpcIpv4CidrBlockAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcIpv4CidrBlockAssociation)(nil)).Elem()
+}
+
+func (i VpcIpv4CidrBlockAssociation) ToVpcIpv4CidrBlockAssociationOutput() VpcIpv4CidrBlockAssociationOutput {
+	return i.ToVpcIpv4CidrBlockAssociationOutputWithContext(context.Background())
+}
+
+func (i VpcIpv4CidrBlockAssociation) ToVpcIpv4CidrBlockAssociationOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcIpv4CidrBlockAssociationOutput)
+}
+
+type VpcIpv4CidrBlockAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcIpv4CidrBlockAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcIpv4CidrBlockAssociationOutput)(nil)).Elem()
+}
+
+func (o VpcIpv4CidrBlockAssociationOutput) ToVpcIpv4CidrBlockAssociationOutput() VpcIpv4CidrBlockAssociationOutput {
+	return o
+}
+
+func (o VpcIpv4CidrBlockAssociationOutput) ToVpcIpv4CidrBlockAssociationOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcIpv4CidrBlockAssociationOutput{})
 }

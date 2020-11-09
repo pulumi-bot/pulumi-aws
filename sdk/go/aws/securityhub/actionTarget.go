@@ -4,6 +4,8 @@
 package securityhub
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,14 +59,14 @@ type ActionTarget struct {
 // NewActionTarget registers a new resource with the given unique name, arguments, and options.
 func NewActionTarget(ctx *pulumi.Context,
 	name string, args *ActionTargetArgs, opts ...pulumi.ResourceOption) (*ActionTarget, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Identifier == nil {
-		return nil, errors.New("missing required argument 'Identifier'")
-	}
 	if args == nil {
-		args = &ActionTargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Identifier == nil {
+		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
 	var resource ActionTarget
 	err := ctx.RegisterResource("aws:securityhub/actionTarget:ActionTarget", name, args, &resource, opts...)
@@ -134,4 +136,43 @@ type ActionTargetArgs struct {
 
 func (ActionTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionTargetArgs)(nil)).Elem()
+}
+
+type ActionTargetInput interface {
+	pulumi.Input
+
+	ToActionTargetOutput() ActionTargetOutput
+	ToActionTargetOutputWithContext(ctx context.Context) ActionTargetOutput
+}
+
+func (ActionTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionTarget)(nil)).Elem()
+}
+
+func (i ActionTarget) ToActionTargetOutput() ActionTargetOutput {
+	return i.ToActionTargetOutputWithContext(context.Background())
+}
+
+func (i ActionTarget) ToActionTargetOutputWithContext(ctx context.Context) ActionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionTargetOutput)
+}
+
+type ActionTargetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionTargetOutput)(nil)).Elem()
+}
+
+func (o ActionTargetOutput) ToActionTargetOutput() ActionTargetOutput {
+	return o
+}
+
+func (o ActionTargetOutput) ToActionTargetOutputWithContext(ctx context.Context) ActionTargetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionTargetOutput{})
 }

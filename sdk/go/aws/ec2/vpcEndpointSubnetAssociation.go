@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +57,14 @@ type VpcEndpointSubnetAssociation struct {
 // NewVpcEndpointSubnetAssociation registers a new resource with the given unique name, arguments, and options.
 func NewVpcEndpointSubnetAssociation(ctx *pulumi.Context,
 	name string, args *VpcEndpointSubnetAssociationArgs, opts ...pulumi.ResourceOption) (*VpcEndpointSubnetAssociation, error) {
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
-	if args == nil || args.VpcEndpointId == nil {
-		return nil, errors.New("missing required argument 'VpcEndpointId'")
-	}
 	if args == nil {
-		args = &VpcEndpointSubnetAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
+	}
+	if args.VpcEndpointId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcEndpointId'")
 	}
 	var resource VpcEndpointSubnetAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation", name, args, &resource, opts...)
@@ -120,4 +122,43 @@ type VpcEndpointSubnetAssociationArgs struct {
 
 func (VpcEndpointSubnetAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointSubnetAssociationArgs)(nil)).Elem()
+}
+
+type VpcEndpointSubnetAssociationInput interface {
+	pulumi.Input
+
+	ToVpcEndpointSubnetAssociationOutput() VpcEndpointSubnetAssociationOutput
+	ToVpcEndpointSubnetAssociationOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationOutput
+}
+
+func (VpcEndpointSubnetAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointSubnetAssociation)(nil)).Elem()
+}
+
+func (i VpcEndpointSubnetAssociation) ToVpcEndpointSubnetAssociationOutput() VpcEndpointSubnetAssociationOutput {
+	return i.ToVpcEndpointSubnetAssociationOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointSubnetAssociation) ToVpcEndpointSubnetAssociationOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointSubnetAssociationOutput)
+}
+
+type VpcEndpointSubnetAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointSubnetAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointSubnetAssociationOutput)(nil)).Elem()
+}
+
+func (o VpcEndpointSubnetAssociationOutput) ToVpcEndpointSubnetAssociationOutput() VpcEndpointSubnetAssociationOutput {
+	return o
+}
+
+func (o VpcEndpointSubnetAssociationOutput) ToVpcEndpointSubnetAssociationOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcEndpointSubnetAssociationOutput{})
 }

@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,14 +72,14 @@ type VpnGatewayAttachment struct {
 // NewVpnGatewayAttachment registers a new resource with the given unique name, arguments, and options.
 func NewVpnGatewayAttachment(ctx *pulumi.Context,
 	name string, args *VpnGatewayAttachmentArgs, opts ...pulumi.ResourceOption) (*VpnGatewayAttachment, error) {
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
-	if args == nil || args.VpnGatewayId == nil {
-		return nil, errors.New("missing required argument 'VpnGatewayId'")
-	}
 	if args == nil {
-		args = &VpnGatewayAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
+	}
+	if args.VpnGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnGatewayId'")
 	}
 	var resource VpnGatewayAttachment
 	err := ctx.RegisterResource("aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment", name, args, &resource, opts...)
@@ -135,4 +137,43 @@ type VpnGatewayAttachmentArgs struct {
 
 func (VpnGatewayAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnGatewayAttachmentArgs)(nil)).Elem()
+}
+
+type VpnGatewayAttachmentInput interface {
+	pulumi.Input
+
+	ToVpnGatewayAttachmentOutput() VpnGatewayAttachmentOutput
+	ToVpnGatewayAttachmentOutputWithContext(ctx context.Context) VpnGatewayAttachmentOutput
+}
+
+func (VpnGatewayAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayAttachment)(nil)).Elem()
+}
+
+func (i VpnGatewayAttachment) ToVpnGatewayAttachmentOutput() VpnGatewayAttachmentOutput {
+	return i.ToVpnGatewayAttachmentOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayAttachment) ToVpnGatewayAttachmentOutputWithContext(ctx context.Context) VpnGatewayAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayAttachmentOutput)
+}
+
+type VpnGatewayAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnGatewayAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayAttachmentOutput)(nil)).Elem()
+}
+
+func (o VpnGatewayAttachmentOutput) ToVpnGatewayAttachmentOutput() VpnGatewayAttachmentOutput {
+	return o
+}
+
+func (o VpnGatewayAttachmentOutput) ToVpnGatewayAttachmentOutputWithContext(ctx context.Context) VpnGatewayAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpnGatewayAttachmentOutput{})
 }

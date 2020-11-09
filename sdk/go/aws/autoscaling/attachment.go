@@ -4,6 +4,8 @@
 package autoscaling
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -106,11 +108,11 @@ type Attachment struct {
 // NewAttachment registers a new resource with the given unique name, arguments, and options.
 func NewAttachment(ctx *pulumi.Context,
 	name string, args *AttachmentArgs, opts ...pulumi.ResourceOption) (*Attachment, error) {
-	if args == nil || args.AutoscalingGroupName == nil {
-		return nil, errors.New("missing required argument 'AutoscalingGroupName'")
-	}
 	if args == nil {
-		args = &AttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AutoscalingGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'AutoscalingGroupName'")
 	}
 	var resource Attachment
 	err := ctx.RegisterResource("aws:autoscaling/attachment:Attachment", name, args, &resource, opts...)
@@ -176,4 +178,43 @@ type AttachmentArgs struct {
 
 func (AttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachmentArgs)(nil)).Elem()
+}
+
+type AttachmentInput interface {
+	pulumi.Input
+
+	ToAttachmentOutput() AttachmentOutput
+	ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput
+}
+
+func (Attachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Attachment)(nil)).Elem()
+}
+
+func (i Attachment) ToAttachmentOutput() AttachmentOutput {
+	return i.ToAttachmentOutputWithContext(context.Background())
+}
+
+func (i Attachment) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachmentOutput)
+}
+
+type AttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachmentOutput)(nil)).Elem()
+}
+
+func (o AttachmentOutput) ToAttachmentOutput() AttachmentOutput {
+	return o
+}
+
+func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AttachmentOutput{})
 }

@@ -4,6 +4,8 @@
 package codebuild
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -118,11 +120,11 @@ type Webhook struct {
 // NewWebhook registers a new resource with the given unique name, arguments, and options.
 func NewWebhook(ctx *pulumi.Context,
 	name string, args *WebhookArgs, opts ...pulumi.ResourceOption) (*Webhook, error) {
-	if args == nil || args.ProjectName == nil {
-		return nil, errors.New("missing required argument 'ProjectName'")
-	}
 	if args == nil {
-		args = &WebhookArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ProjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
 	var resource Webhook
 	err := ctx.RegisterResource("aws:codebuild/webhook:Webhook", name, args, &resource, opts...)
@@ -200,4 +202,43 @@ type WebhookArgs struct {
 
 func (WebhookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhookArgs)(nil)).Elem()
+}
+
+type WebhookInput interface {
+	pulumi.Input
+
+	ToWebhookOutput() WebhookOutput
+	ToWebhookOutputWithContext(ctx context.Context) WebhookOutput
+}
+
+func (Webhook) ElementType() reflect.Type {
+	return reflect.TypeOf((*Webhook)(nil)).Elem()
+}
+
+func (i Webhook) ToWebhookOutput() WebhookOutput {
+	return i.ToWebhookOutputWithContext(context.Background())
+}
+
+func (i Webhook) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput)
+}
+
+type WebhookOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookOutput)(nil)).Elem()
+}
+
+func (o WebhookOutput) ToWebhookOutput() WebhookOutput {
+	return o
+}
+
+func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebhookOutput{})
 }

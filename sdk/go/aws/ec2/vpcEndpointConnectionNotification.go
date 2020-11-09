@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,14 +80,14 @@ type VpcEndpointConnectionNotification struct {
 // NewVpcEndpointConnectionNotification registers a new resource with the given unique name, arguments, and options.
 func NewVpcEndpointConnectionNotification(ctx *pulumi.Context,
 	name string, args *VpcEndpointConnectionNotificationArgs, opts ...pulumi.ResourceOption) (*VpcEndpointConnectionNotification, error) {
-	if args == nil || args.ConnectionEvents == nil {
-		return nil, errors.New("missing required argument 'ConnectionEvents'")
-	}
-	if args == nil || args.ConnectionNotificationArn == nil {
-		return nil, errors.New("missing required argument 'ConnectionNotificationArn'")
-	}
 	if args == nil {
-		args = &VpcEndpointConnectionNotificationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ConnectionEvents == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionEvents'")
+	}
+	if args.ConnectionNotificationArn == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionNotificationArn'")
 	}
 	var resource VpcEndpointConnectionNotification
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification", name, args, &resource, opts...)
@@ -167,4 +169,43 @@ type VpcEndpointConnectionNotificationArgs struct {
 
 func (VpcEndpointConnectionNotificationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointConnectionNotificationArgs)(nil)).Elem()
+}
+
+type VpcEndpointConnectionNotificationInput interface {
+	pulumi.Input
+
+	ToVpcEndpointConnectionNotificationOutput() VpcEndpointConnectionNotificationOutput
+	ToVpcEndpointConnectionNotificationOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationOutput
+}
+
+func (VpcEndpointConnectionNotification) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointConnectionNotification)(nil)).Elem()
+}
+
+func (i VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationOutput() VpcEndpointConnectionNotificationOutput {
+	return i.ToVpcEndpointConnectionNotificationOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointConnectionNotificationOutput)
+}
+
+type VpcEndpointConnectionNotificationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointConnectionNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointConnectionNotificationOutput)(nil)).Elem()
+}
+
+func (o VpcEndpointConnectionNotificationOutput) ToVpcEndpointConnectionNotificationOutput() VpcEndpointConnectionNotificationOutput {
+	return o
+}
+
+func (o VpcEndpointConnectionNotificationOutput) ToVpcEndpointConnectionNotificationOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcEndpointConnectionNotificationOutput{})
 }

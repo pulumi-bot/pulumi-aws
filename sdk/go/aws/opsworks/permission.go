@@ -4,6 +4,8 @@
 package opsworks
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -56,11 +58,11 @@ type Permission struct {
 // NewPermission registers a new resource with the given unique name, arguments, and options.
 func NewPermission(ctx *pulumi.Context,
 	name string, args *PermissionArgs, opts ...pulumi.ResourceOption) (*Permission, error) {
-	if args == nil || args.UserArn == nil {
-		return nil, errors.New("missing required argument 'UserArn'")
-	}
 	if args == nil {
-		args = &PermissionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.UserArn == nil {
+		return nil, errors.New("invalid value for required argument 'UserArn'")
 	}
 	var resource Permission
 	err := ctx.RegisterResource("aws:opsworks/permission:Permission", name, args, &resource, opts...)
@@ -142,4 +144,43 @@ type PermissionArgs struct {
 
 func (PermissionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*permissionArgs)(nil)).Elem()
+}
+
+type PermissionInput interface {
+	pulumi.Input
+
+	ToPermissionOutput() PermissionOutput
+	ToPermissionOutputWithContext(ctx context.Context) PermissionOutput
+}
+
+func (Permission) ElementType() reflect.Type {
+	return reflect.TypeOf((*Permission)(nil)).Elem()
+}
+
+func (i Permission) ToPermissionOutput() PermissionOutput {
+	return i.ToPermissionOutputWithContext(context.Background())
+}
+
+func (i Permission) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionOutput)
+}
+
+type PermissionOutput struct {
+	*pulumi.OutputState
+}
+
+func (PermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionOutput)(nil)).Elem()
+}
+
+func (o PermissionOutput) ToPermissionOutput() PermissionOutput {
+	return o
+}
+
+func (o PermissionOutput) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PermissionOutput{})
 }

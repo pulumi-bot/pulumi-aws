@@ -4,6 +4,8 @@
 package appmesh
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,17 +82,17 @@ type GatewayRoute struct {
 // NewGatewayRoute registers a new resource with the given unique name, arguments, and options.
 func NewGatewayRoute(ctx *pulumi.Context,
 	name string, args *GatewayRouteArgs, opts ...pulumi.ResourceOption) (*GatewayRoute, error) {
-	if args == nil || args.MeshName == nil {
-		return nil, errors.New("missing required argument 'MeshName'")
-	}
-	if args == nil || args.Spec == nil {
-		return nil, errors.New("missing required argument 'Spec'")
-	}
-	if args == nil || args.VirtualGatewayName == nil {
-		return nil, errors.New("missing required argument 'VirtualGatewayName'")
-	}
 	if args == nil {
-		args = &GatewayRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MeshName == nil {
+		return nil, errors.New("invalid value for required argument 'MeshName'")
+	}
+	if args.Spec == nil {
+		return nil, errors.New("invalid value for required argument 'Spec'")
+	}
+	if args.VirtualGatewayName == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualGatewayName'")
 	}
 	var resource GatewayRoute
 	err := ctx.RegisterResource("aws:appmesh/gatewayRoute:GatewayRoute", name, args, &resource, opts...)
@@ -196,4 +198,43 @@ type GatewayRouteArgs struct {
 
 func (GatewayRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayRouteArgs)(nil)).Elem()
+}
+
+type GatewayRouteInput interface {
+	pulumi.Input
+
+	ToGatewayRouteOutput() GatewayRouteOutput
+	ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput
+}
+
+func (GatewayRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRoute)(nil)).Elem()
+}
+
+func (i GatewayRoute) ToGatewayRouteOutput() GatewayRouteOutput {
+	return i.ToGatewayRouteOutputWithContext(context.Background())
+}
+
+func (i GatewayRoute) ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteOutput)
+}
+
+type GatewayRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRouteOutput)(nil)).Elem()
+}
+
+func (o GatewayRouteOutput) ToGatewayRouteOutput() GatewayRouteOutput {
+	return o
+}
+
+func (o GatewayRouteOutput) ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayRouteOutput{})
 }

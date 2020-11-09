@@ -4,6 +4,8 @@
 package athena
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,14 +93,14 @@ type NamedQuery struct {
 // NewNamedQuery registers a new resource with the given unique name, arguments, and options.
 func NewNamedQuery(ctx *pulumi.Context,
 	name string, args *NamedQueryArgs, opts ...pulumi.ResourceOption) (*NamedQuery, error) {
-	if args == nil || args.Database == nil {
-		return nil, errors.New("missing required argument 'Database'")
-	}
-	if args == nil || args.Query == nil {
-		return nil, errors.New("missing required argument 'Query'")
-	}
 	if args == nil {
-		args = &NamedQueryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Database == nil {
+		return nil, errors.New("invalid value for required argument 'Database'")
+	}
+	if args.Query == nil {
+		return nil, errors.New("invalid value for required argument 'Query'")
 	}
 	var resource NamedQuery
 	err := ctx.RegisterResource("aws:athena/namedQuery:NamedQuery", name, args, &resource, opts...)
@@ -180,4 +182,43 @@ type NamedQueryArgs struct {
 
 func (NamedQueryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*namedQueryArgs)(nil)).Elem()
+}
+
+type NamedQueryInput interface {
+	pulumi.Input
+
+	ToNamedQueryOutput() NamedQueryOutput
+	ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput
+}
+
+func (NamedQuery) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedQuery)(nil)).Elem()
+}
+
+func (i NamedQuery) ToNamedQueryOutput() NamedQueryOutput {
+	return i.ToNamedQueryOutputWithContext(context.Background())
+}
+
+func (i NamedQuery) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedQueryOutput)
+}
+
+type NamedQueryOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamedQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedQueryOutput)(nil)).Elem()
+}
+
+func (o NamedQueryOutput) ToNamedQueryOutput() NamedQueryOutput {
+	return o
+}
+
+func (o NamedQueryOutput) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NamedQueryOutput{})
 }

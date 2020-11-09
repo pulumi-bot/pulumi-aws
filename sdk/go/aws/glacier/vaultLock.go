@@ -4,6 +4,8 @@
 package glacier
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,17 +90,17 @@ type VaultLock struct {
 // NewVaultLock registers a new resource with the given unique name, arguments, and options.
 func NewVaultLock(ctx *pulumi.Context,
 	name string, args *VaultLockArgs, opts ...pulumi.ResourceOption) (*VaultLock, error) {
-	if args == nil || args.CompleteLock == nil {
-		return nil, errors.New("missing required argument 'CompleteLock'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.VaultName == nil {
-		return nil, errors.New("missing required argument 'VaultName'")
-	}
 	if args == nil {
-		args = &VaultLockArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CompleteLock == nil {
+		return nil, errors.New("invalid value for required argument 'CompleteLock'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.VaultName == nil {
+		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
 	var resource VaultLock
 	err := ctx.RegisterResource("aws:glacier/vaultLock:VaultLock", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type VaultLockArgs struct {
 
 func (VaultLockArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vaultLockArgs)(nil)).Elem()
+}
+
+type VaultLockInput interface {
+	pulumi.Input
+
+	ToVaultLockOutput() VaultLockOutput
+	ToVaultLockOutputWithContext(ctx context.Context) VaultLockOutput
+}
+
+func (VaultLock) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultLock)(nil)).Elem()
+}
+
+func (i VaultLock) ToVaultLockOutput() VaultLockOutput {
+	return i.ToVaultLockOutputWithContext(context.Background())
+}
+
+func (i VaultLock) ToVaultLockOutputWithContext(ctx context.Context) VaultLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultLockOutput)
+}
+
+type VaultLockOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultLockOutput)(nil)).Elem()
+}
+
+func (o VaultLockOutput) ToVaultLockOutput() VaultLockOutput {
+	return o
+}
+
+func (o VaultLockOutput) ToVaultLockOutputWithContext(ctx context.Context) VaultLockOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VaultLockOutput{})
 }

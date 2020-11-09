@@ -4,6 +4,8 @@
 package macie
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,11 +60,11 @@ type S3BucketAssociation struct {
 // NewS3BucketAssociation registers a new resource with the given unique name, arguments, and options.
 func NewS3BucketAssociation(ctx *pulumi.Context,
 	name string, args *S3BucketAssociationArgs, opts ...pulumi.ResourceOption) (*S3BucketAssociation, error) {
-	if args == nil || args.BucketName == nil {
-		return nil, errors.New("missing required argument 'BucketName'")
-	}
 	if args == nil {
-		args = &S3BucketAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.BucketName == nil {
+		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
 	var resource S3BucketAssociation
 	err := ctx.RegisterResource("aws:macie/s3BucketAssociation:S3BucketAssociation", name, args, &resource, opts...)
@@ -136,4 +138,43 @@ type S3BucketAssociationArgs struct {
 
 func (S3BucketAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*s3bucketAssociationArgs)(nil)).Elem()
+}
+
+type S3BucketAssociationInput interface {
+	pulumi.Input
+
+	ToS3BucketAssociationOutput() S3BucketAssociationOutput
+	ToS3BucketAssociationOutputWithContext(ctx context.Context) S3BucketAssociationOutput
+}
+
+func (S3BucketAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociation)(nil)).Elem()
+}
+
+func (i S3BucketAssociation) ToS3BucketAssociationOutput() S3BucketAssociationOutput {
+	return i.ToS3BucketAssociationOutputWithContext(context.Background())
+}
+
+func (i S3BucketAssociation) ToS3BucketAssociationOutputWithContext(ctx context.Context) S3BucketAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationOutput)
+}
+
+type S3BucketAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (S3BucketAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociationOutput)(nil)).Elem()
+}
+
+func (o S3BucketAssociationOutput) ToS3BucketAssociationOutput() S3BucketAssociationOutput {
+	return o
+}
+
+func (o S3BucketAssociationOutput) ToS3BucketAssociationOutputWithContext(ctx context.Context) S3BucketAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(S3BucketAssociationOutput{})
 }

@@ -4,6 +4,8 @@
 package dlm
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,17 +101,17 @@ type LifecyclePolicy struct {
 // NewLifecyclePolicy registers a new resource with the given unique name, arguments, and options.
 func NewLifecyclePolicy(ctx *pulumi.Context,
 	name string, args *LifecyclePolicyArgs, opts ...pulumi.ResourceOption) (*LifecyclePolicy, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.ExecutionRoleArn == nil {
-		return nil, errors.New("missing required argument 'ExecutionRoleArn'")
-	}
-	if args == nil || args.PolicyDetails == nil {
-		return nil, errors.New("missing required argument 'PolicyDetails'")
-	}
 	if args == nil {
-		args = &LifecyclePolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.ExecutionRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'ExecutionRoleArn'")
+	}
+	if args.PolicyDetails == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyDetails'")
 	}
 	var resource LifecyclePolicy
 	err := ctx.RegisterResource("aws:dlm/lifecyclePolicy:LifecyclePolicy", name, args, &resource, opts...)
@@ -195,4 +197,43 @@ type LifecyclePolicyArgs struct {
 
 func (LifecyclePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lifecyclePolicyArgs)(nil)).Elem()
+}
+
+type LifecyclePolicyInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyOutput() LifecyclePolicyOutput
+	ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput
+}
+
+func (LifecyclePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicy)(nil)).Elem()
+}
+
+func (i LifecyclePolicy) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
+	return i.ToLifecyclePolicyOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicy) ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyOutput)
+}
+
+type LifecyclePolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (LifecyclePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyOutput)(nil)).Elem()
+}
+
+func (o LifecyclePolicyOutput) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
+	return o
+}
+
+func (o LifecyclePolicyOutput) ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LifecyclePolicyOutput{})
 }

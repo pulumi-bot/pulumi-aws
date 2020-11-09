@@ -4,6 +4,8 @@
 package ses
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,14 +60,14 @@ type IdentityPolicy struct {
 // NewIdentityPolicy registers a new resource with the given unique name, arguments, and options.
 func NewIdentityPolicy(ctx *pulumi.Context,
 	name string, args *IdentityPolicyArgs, opts ...pulumi.ResourceOption) (*IdentityPolicy, error) {
-	if args == nil || args.Identity == nil {
-		return nil, errors.New("missing required argument 'Identity'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
 	if args == nil {
-		args = &IdentityPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Identity == nil {
+		return nil, errors.New("invalid value for required argument 'Identity'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
 	var resource IdentityPolicy
 	err := ctx.RegisterResource("aws:ses/identityPolicy:IdentityPolicy", name, args, &resource, opts...)
@@ -131,4 +133,43 @@ type IdentityPolicyArgs struct {
 
 func (IdentityPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityPolicyArgs)(nil)).Elem()
+}
+
+type IdentityPolicyInput interface {
+	pulumi.Input
+
+	ToIdentityPolicyOutput() IdentityPolicyOutput
+	ToIdentityPolicyOutputWithContext(ctx context.Context) IdentityPolicyOutput
+}
+
+func (IdentityPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPolicy)(nil)).Elem()
+}
+
+func (i IdentityPolicy) ToIdentityPolicyOutput() IdentityPolicyOutput {
+	return i.ToIdentityPolicyOutputWithContext(context.Background())
+}
+
+func (i IdentityPolicy) ToIdentityPolicyOutputWithContext(ctx context.Context) IdentityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPolicyOutput)
+}
+
+type IdentityPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPolicyOutput)(nil)).Elem()
+}
+
+func (o IdentityPolicyOutput) ToIdentityPolicyOutput() IdentityPolicyOutput {
+	return o
+}
+
+func (o IdentityPolicyOutput) ToIdentityPolicyOutputWithContext(ctx context.Context) IdentityPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityPolicyOutput{})
 }

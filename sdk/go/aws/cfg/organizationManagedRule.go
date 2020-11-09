@@ -4,6 +4,8 @@
 package cfg
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,11 +82,11 @@ type OrganizationManagedRule struct {
 // NewOrganizationManagedRule registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationManagedRule(ctx *pulumi.Context,
 	name string, args *OrganizationManagedRuleArgs, opts ...pulumi.ResourceOption) (*OrganizationManagedRule, error) {
-	if args == nil || args.RuleIdentifier == nil {
-		return nil, errors.New("missing required argument 'RuleIdentifier'")
-	}
 	if args == nil {
-		args = &OrganizationManagedRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RuleIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'RuleIdentifier'")
 	}
 	var resource OrganizationManagedRule
 	err := ctx.RegisterResource("aws:cfg/organizationManagedRule:OrganizationManagedRule", name, args, &resource, opts...)
@@ -210,4 +212,43 @@ type OrganizationManagedRuleArgs struct {
 
 func (OrganizationManagedRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationManagedRuleArgs)(nil)).Elem()
+}
+
+type OrganizationManagedRuleInput interface {
+	pulumi.Input
+
+	ToOrganizationManagedRuleOutput() OrganizationManagedRuleOutput
+	ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput
+}
+
+func (OrganizationManagedRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationManagedRule)(nil)).Elem()
+}
+
+func (i OrganizationManagedRule) ToOrganizationManagedRuleOutput() OrganizationManagedRuleOutput {
+	return i.ToOrganizationManagedRuleOutputWithContext(context.Background())
+}
+
+func (i OrganizationManagedRule) ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagedRuleOutput)
+}
+
+type OrganizationManagedRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationManagedRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationManagedRuleOutput)(nil)).Elem()
+}
+
+func (o OrganizationManagedRuleOutput) ToOrganizationManagedRuleOutput() OrganizationManagedRuleOutput {
+	return o
+}
+
+func (o OrganizationManagedRuleOutput) ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationManagedRuleOutput{})
 }

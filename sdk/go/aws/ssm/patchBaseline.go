@@ -4,6 +4,8 @@
 package ssm
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -336,4 +338,43 @@ type PatchBaselineArgs struct {
 
 func (PatchBaselineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*patchBaselineArgs)(nil)).Elem()
+}
+
+type PatchBaselineInput interface {
+	pulumi.Input
+
+	ToPatchBaselineOutput() PatchBaselineOutput
+	ToPatchBaselineOutputWithContext(ctx context.Context) PatchBaselineOutput
+}
+
+func (PatchBaseline) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchBaseline)(nil)).Elem()
+}
+
+func (i PatchBaseline) ToPatchBaselineOutput() PatchBaselineOutput {
+	return i.ToPatchBaselineOutputWithContext(context.Background())
+}
+
+func (i PatchBaseline) ToPatchBaselineOutputWithContext(ctx context.Context) PatchBaselineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchBaselineOutput)
+}
+
+type PatchBaselineOutput struct {
+	*pulumi.OutputState
+}
+
+func (PatchBaselineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchBaselineOutput)(nil)).Elem()
+}
+
+func (o PatchBaselineOutput) ToPatchBaselineOutput() PatchBaselineOutput {
+	return o
+}
+
+func (o PatchBaselineOutput) ToPatchBaselineOutputWithContext(ctx context.Context) PatchBaselineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PatchBaselineOutput{})
 }

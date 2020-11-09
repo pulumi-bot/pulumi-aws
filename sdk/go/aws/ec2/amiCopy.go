@@ -4,6 +4,8 @@
 package ec2
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -107,14 +109,14 @@ type AmiCopy struct {
 // NewAmiCopy registers a new resource with the given unique name, arguments, and options.
 func NewAmiCopy(ctx *pulumi.Context,
 	name string, args *AmiCopyArgs, opts ...pulumi.ResourceOption) (*AmiCopy, error) {
-	if args == nil || args.SourceAmiId == nil {
-		return nil, errors.New("missing required argument 'SourceAmiId'")
-	}
-	if args == nil || args.SourceAmiRegion == nil {
-		return nil, errors.New("missing required argument 'SourceAmiRegion'")
-	}
 	if args == nil {
-		args = &AmiCopyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SourceAmiId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceAmiId'")
+	}
+	if args.SourceAmiRegion == nil {
+		return nil, errors.New("invalid value for required argument 'SourceAmiRegion'")
 	}
 	var resource AmiCopy
 	err := ctx.RegisterResource("aws:ec2/amiCopy:AmiCopy", name, args, &resource, opts...)
@@ -304,4 +306,43 @@ type AmiCopyArgs struct {
 
 func (AmiCopyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*amiCopyArgs)(nil)).Elem()
+}
+
+type AmiCopyInput interface {
+	pulumi.Input
+
+	ToAmiCopyOutput() AmiCopyOutput
+	ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput
+}
+
+func (AmiCopy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmiCopy)(nil)).Elem()
+}
+
+func (i AmiCopy) ToAmiCopyOutput() AmiCopyOutput {
+	return i.ToAmiCopyOutputWithContext(context.Background())
+}
+
+func (i AmiCopy) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmiCopyOutput)
+}
+
+type AmiCopyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AmiCopyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmiCopyOutput)(nil)).Elem()
+}
+
+func (o AmiCopyOutput) ToAmiCopyOutput() AmiCopyOutput {
+	return o
+}
+
+func (o AmiCopyOutput) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AmiCopyOutput{})
 }

@@ -4,6 +4,8 @@
 package s3control
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,14 +59,14 @@ type Bucket struct {
 // NewBucket registers a new resource with the given unique name, arguments, and options.
 func NewBucket(ctx *pulumi.Context,
 	name string, args *BucketArgs, opts ...pulumi.ResourceOption) (*Bucket, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.OutpostId == nil {
-		return nil, errors.New("missing required argument 'OutpostId'")
-	}
 	if args == nil {
-		args = &BucketArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.OutpostId == nil {
+		return nil, errors.New("invalid value for required argument 'OutpostId'")
 	}
 	var resource Bucket
 	err := ctx.RegisterResource("aws:s3control/bucket:Bucket", name, args, &resource, opts...)
@@ -142,4 +144,43 @@ type BucketArgs struct {
 
 func (BucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketArgs)(nil)).Elem()
+}
+
+type BucketInput interface {
+	pulumi.Input
+
+	ToBucketOutput() BucketOutput
+	ToBucketOutputWithContext(ctx context.Context) BucketOutput
+}
+
+func (Bucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*Bucket)(nil)).Elem()
+}
+
+func (i Bucket) ToBucketOutput() BucketOutput {
+	return i.ToBucketOutputWithContext(context.Background())
+}
+
+func (i Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
+}
+
+type BucketOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOutput)(nil)).Elem()
+}
+
+func (o BucketOutput) ToBucketOutput() BucketOutput {
+	return o
+}
+
+func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketOutput{})
 }

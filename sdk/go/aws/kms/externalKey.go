@@ -4,6 +4,8 @@
 package kms
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -180,4 +182,43 @@ type ExternalKeyArgs struct {
 
 func (ExternalKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalKeyArgs)(nil)).Elem()
+}
+
+type ExternalKeyInput interface {
+	pulumi.Input
+
+	ToExternalKeyOutput() ExternalKeyOutput
+	ToExternalKeyOutputWithContext(ctx context.Context) ExternalKeyOutput
+}
+
+func (ExternalKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalKey)(nil)).Elem()
+}
+
+func (i ExternalKey) ToExternalKeyOutput() ExternalKeyOutput {
+	return i.ToExternalKeyOutputWithContext(context.Background())
+}
+
+func (i ExternalKey) ToExternalKeyOutputWithContext(ctx context.Context) ExternalKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalKeyOutput)
+}
+
+type ExternalKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExternalKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalKeyOutput)(nil)).Elem()
+}
+
+func (o ExternalKeyOutput) ToExternalKeyOutput() ExternalKeyOutput {
+	return o
+}
+
+func (o ExternalKeyOutput) ToExternalKeyOutputWithContext(ctx context.Context) ExternalKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExternalKeyOutput{})
 }

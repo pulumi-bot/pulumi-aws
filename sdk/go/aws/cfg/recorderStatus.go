@@ -4,6 +4,8 @@
 package cfg
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -94,11 +96,11 @@ type RecorderStatus struct {
 // NewRecorderStatus registers a new resource with the given unique name, arguments, and options.
 func NewRecorderStatus(ctx *pulumi.Context,
 	name string, args *RecorderStatusArgs, opts ...pulumi.ResourceOption) (*RecorderStatus, error) {
-	if args == nil || args.IsEnabled == nil {
-		return nil, errors.New("missing required argument 'IsEnabled'")
-	}
 	if args == nil {
-		args = &RecorderStatusArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.IsEnabled == nil {
+		return nil, errors.New("invalid value for required argument 'IsEnabled'")
 	}
 	var resource RecorderStatus
 	err := ctx.RegisterResource("aws:cfg/recorderStatus:RecorderStatus", name, args, &resource, opts...)
@@ -156,4 +158,43 @@ type RecorderStatusArgs struct {
 
 func (RecorderStatusArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recorderStatusArgs)(nil)).Elem()
+}
+
+type RecorderStatusInput interface {
+	pulumi.Input
+
+	ToRecorderStatusOutput() RecorderStatusOutput
+	ToRecorderStatusOutputWithContext(ctx context.Context) RecorderStatusOutput
+}
+
+func (RecorderStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecorderStatus)(nil)).Elem()
+}
+
+func (i RecorderStatus) ToRecorderStatusOutput() RecorderStatusOutput {
+	return i.ToRecorderStatusOutputWithContext(context.Background())
+}
+
+func (i RecorderStatus) ToRecorderStatusOutputWithContext(ctx context.Context) RecorderStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecorderStatusOutput)
+}
+
+type RecorderStatusOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecorderStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecorderStatusOutput)(nil)).Elem()
+}
+
+func (o RecorderStatusOutput) ToRecorderStatusOutput() RecorderStatusOutput {
+	return o
+}
+
+func (o RecorderStatusOutput) ToRecorderStatusOutputWithContext(ctx context.Context) RecorderStatusOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RecorderStatusOutput{})
 }

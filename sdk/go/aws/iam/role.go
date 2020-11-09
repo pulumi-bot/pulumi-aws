@@ -4,6 +4,8 @@
 package iam
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,11 +119,11 @@ type Role struct {
 // NewRole registers a new resource with the given unique name, arguments, and options.
 func NewRole(ctx *pulumi.Context,
 	name string, args *RoleArgs, opts ...pulumi.ResourceOption) (*Role, error) {
-	if args == nil || args.AssumeRolePolicy == nil {
-		return nil, errors.New("missing required argument 'AssumeRolePolicy'")
-	}
 	if args == nil {
-		args = &RoleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AssumeRolePolicy == nil {
+		return nil, errors.New("invalid value for required argument 'AssumeRolePolicy'")
 	}
 	var resource Role
 	err := ctx.RegisterResource("aws:iam/role:Role", name, args, &resource, opts...)
@@ -251,4 +253,43 @@ type RoleArgs struct {
 
 func (RoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleArgs)(nil)).Elem()
+}
+
+type RoleInput interface {
+	pulumi.Input
+
+	ToRoleOutput() RoleOutput
+	ToRoleOutputWithContext(ctx context.Context) RoleOutput
+}
+
+func (Role) ElementType() reflect.Type {
+	return reflect.TypeOf((*Role)(nil)).Elem()
+}
+
+func (i Role) ToRoleOutput() RoleOutput {
+	return i.ToRoleOutputWithContext(context.Background())
+}
+
+func (i Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
+}
+
+type RoleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleOutput)(nil)).Elem()
+}
+
+func (o RoleOutput) ToRoleOutput() RoleOutput {
+	return o
+}
+
+func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleOutput{})
 }

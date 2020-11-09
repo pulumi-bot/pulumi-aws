@@ -4,6 +4,8 @@
 package opsworks
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,11 +85,11 @@ type MemcachedLayer struct {
 // NewMemcachedLayer registers a new resource with the given unique name, arguments, and options.
 func NewMemcachedLayer(ctx *pulumi.Context,
 	name string, args *MemcachedLayerArgs, opts ...pulumi.ResourceOption) (*MemcachedLayer, error) {
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &MemcachedLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource MemcachedLayer
 	err := ctx.RegisterResource("aws:opsworks/memcachedLayer:MemcachedLayer", name, args, &resource, opts...)
@@ -289,4 +291,43 @@ type MemcachedLayerArgs struct {
 
 func (MemcachedLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memcachedLayerArgs)(nil)).Elem()
+}
+
+type MemcachedLayerInput interface {
+	pulumi.Input
+
+	ToMemcachedLayerOutput() MemcachedLayerOutput
+	ToMemcachedLayerOutputWithContext(ctx context.Context) MemcachedLayerOutput
+}
+
+func (MemcachedLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemcachedLayer)(nil)).Elem()
+}
+
+func (i MemcachedLayer) ToMemcachedLayerOutput() MemcachedLayerOutput {
+	return i.ToMemcachedLayerOutputWithContext(context.Background())
+}
+
+func (i MemcachedLayer) ToMemcachedLayerOutputWithContext(ctx context.Context) MemcachedLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemcachedLayerOutput)
+}
+
+type MemcachedLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemcachedLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemcachedLayerOutput)(nil)).Elem()
+}
+
+func (o MemcachedLayerOutput) ToMemcachedLayerOutput() MemcachedLayerOutput {
+	return o
+}
+
+func (o MemcachedLayerOutput) ToMemcachedLayerOutputWithContext(ctx context.Context) MemcachedLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MemcachedLayerOutput{})
 }

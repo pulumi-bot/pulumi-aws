@@ -4,6 +4,8 @@
 package appmesh
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,14 +82,14 @@ type VirtualRouter struct {
 // NewVirtualRouter registers a new resource with the given unique name, arguments, and options.
 func NewVirtualRouter(ctx *pulumi.Context,
 	name string, args *VirtualRouterArgs, opts ...pulumi.ResourceOption) (*VirtualRouter, error) {
-	if args == nil || args.MeshName == nil {
-		return nil, errors.New("missing required argument 'MeshName'")
-	}
-	if args == nil || args.Spec == nil {
-		return nil, errors.New("missing required argument 'Spec'")
-	}
 	if args == nil {
-		args = &VirtualRouterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MeshName == nil {
+		return nil, errors.New("invalid value for required argument 'MeshName'")
+	}
+	if args.Spec == nil {
+		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
 	var resource VirtualRouter
 	err := ctx.RegisterResource("aws:appmesh/virtualRouter:VirtualRouter", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type VirtualRouterArgs struct {
 
 func (VirtualRouterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualRouterArgs)(nil)).Elem()
+}
+
+type VirtualRouterInput interface {
+	pulumi.Input
+
+	ToVirtualRouterOutput() VirtualRouterOutput
+	ToVirtualRouterOutputWithContext(ctx context.Context) VirtualRouterOutput
+}
+
+func (VirtualRouter) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualRouter)(nil)).Elem()
+}
+
+func (i VirtualRouter) ToVirtualRouterOutput() VirtualRouterOutput {
+	return i.ToVirtualRouterOutputWithContext(context.Background())
+}
+
+func (i VirtualRouter) ToVirtualRouterOutputWithContext(ctx context.Context) VirtualRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterOutput)
+}
+
+type VirtualRouterOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualRouterOutput)(nil)).Elem()
+}
+
+func (o VirtualRouterOutput) ToVirtualRouterOutput() VirtualRouterOutput {
+	return o
+}
+
+func (o VirtualRouterOutput) ToVirtualRouterOutputWithContext(ctx context.Context) VirtualRouterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualRouterOutput{})
 }
