@@ -189,6 +189,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DirectoryService directories can be imported using the directory `id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:directoryservice/directory:Directory sample d-926724cf57
+// ```
 type Directory struct {
 	pulumi.CustomResourceState
 

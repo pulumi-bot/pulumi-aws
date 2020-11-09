@@ -50,6 +50,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Report Definitions can be imported using the `report_name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:cur/reportDefinition:ReportDefinition example_cur_report_definition example-cur-report-definition
+// ```
 type ReportDefinition struct {
 	pulumi.CustomResourceState
 

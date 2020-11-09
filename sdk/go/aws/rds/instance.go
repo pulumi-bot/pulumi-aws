@@ -92,6 +92,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DB Instances can be imported using the `identifier`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:rds/instance:Instance default mydb-rds-instance
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

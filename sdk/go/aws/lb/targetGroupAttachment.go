@@ -92,6 +92,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Target Group Attachments cannot be imported.
 type TargetGroupAttachment struct {
 	pulumi.CustomResourceState
 

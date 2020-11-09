@@ -60,6 +60,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CodeBuild Report Group can be imported using the CodeBuild Report Group arn, e.g.
+//
+// ```sh
+//  $ pulumi import aws:codebuild/reportGroup:ReportGroup example arn:aws:codebuild:us-west-2:123456789:report-group/report-group-name
+// ```
 type ReportGroup struct {
 	pulumi.CustomResourceState
 

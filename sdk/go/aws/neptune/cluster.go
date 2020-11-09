@@ -50,6 +50,14 @@ import (
 //
 // > **Note:** AWS Neptune does not support user name/password–based access control.
 // See the AWS [Docs](https://docs.aws.amazon.com/neptune/latest/userguide/limits.html) for more information.
+//
+// ## Import
+//
+// `aws_neptune_cluster` can be imported by using the cluster identifier, e.g.
+//
+// ```sh
+//  $ pulumi import aws:neptune/cluster:Cluster example my-cluster
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

@@ -95,6 +95,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EKS Clusters can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:eks/cluster:Cluster my_cluster my_cluster
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

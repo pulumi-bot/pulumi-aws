@@ -33,6 +33,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Gateway Client Certificates can be imported using the id, e.g.
+//
+// ```sh
+//  $ pulumi import aws:apigateway/clientCertificate:ClientCertificate demo ab1cqe
+// ```
 type ClientCertificate struct {
 	pulumi.CustomResourceState
 

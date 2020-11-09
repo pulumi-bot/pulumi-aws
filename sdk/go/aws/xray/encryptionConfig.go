@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// XRay Encryption Config can be imported using the region name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:xray/encryptionConfig:EncryptionConfig example us-west-2
+// ```
 type EncryptionConfig struct {
 	pulumi.CustomResourceState
 

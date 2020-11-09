@@ -64,6 +64,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Pinpoint Email Channel can be imported using the `application-id`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:pinpoint/emailChannel:EmailChannel email application-id
+// ```
 type EmailChannel struct {
 	pulumi.CustomResourceState
 

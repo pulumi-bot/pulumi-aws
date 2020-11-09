@@ -79,6 +79,14 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// LBs can be imported using their ARN, e.g.
+//
+// ```sh
+//  $ pulumi import aws:applicationloadbalancing/loadBalancer:LoadBalancer bar arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188
+// ```
+//
 // Deprecated: aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer
 type LoadBalancer struct {
 	pulumi.CustomResourceState

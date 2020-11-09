@@ -35,6 +35,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Codecommit repository can be imported using repository name, e.g.
+//
+// ```sh
+//  $ pulumi import aws:codecommit/repository:Repository imported ExistingRepo
+// ```
 type Repository struct {
 	pulumi.CustomResourceState
 

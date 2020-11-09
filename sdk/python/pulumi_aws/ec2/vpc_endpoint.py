@@ -78,6 +78,14 @@ class VpcEndpoint(pulumi.CustomResource):
             private_dns_enabled=True)
         ```
 
+        ## Import
+
+        VPC Endpoints can be imported using the `vpc endpoint id`, e.g.
+
+        ```sh
+         $ pulumi import aws:ec2/vpcEndpoint:VpcEndpoint endpoint1 vpce-3ecf2a57
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_accept: Accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).

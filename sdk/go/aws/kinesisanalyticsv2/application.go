@@ -221,6 +221,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `aws_kinesisanalyticsv2_application` can be imported by using the application ARN, e.g.
+//
+// ```sh
+//  $ pulumi import aws:kinesisanalyticsv2/application:Application example arn:aws:kinesisanalytics:us-west-2:123456789012:application/example-sql-application
+// ```
 type Application struct {
 	pulumi.CustomResourceState
 

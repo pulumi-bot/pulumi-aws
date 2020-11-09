@@ -34,6 +34,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// QuickSight Group can be imported using the aws account id, namespace and group name separated by `/`.
+//
+// ```sh
+//  $ pulumi import aws:quicksight/group:Group example 123456789123/default/tf-example
+// ```
 type Group struct {
 	pulumi.CustomResourceState
 

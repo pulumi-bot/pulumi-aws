@@ -42,6 +42,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IAM Account Password Policy can be imported using the word `iam-account-password-policy`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:iam/accountPasswordPolicy:AccountPasswordPolicy strict iam-account-password-policy
+// ```
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
 

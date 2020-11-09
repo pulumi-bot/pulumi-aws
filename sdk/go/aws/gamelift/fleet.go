@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Gamelift Fleets cannot be imported at this time.
 type Fleet struct {
 	pulumi.CustomResourceState
 

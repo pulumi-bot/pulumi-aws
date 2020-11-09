@@ -10,6 +10,14 @@ import (
 )
 
 // Provides a lifecycle configuration for SageMaker Notebook Instances.
+//
+// ## Import
+//
+// Models can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:sagemaker/notebookInstanceLifecycleConfiguration:NotebookInstanceLifecycleConfiguration lc foo
+// ```
 type NotebookInstanceLifecycleConfiguration struct {
 	pulumi.CustomResourceState
 

@@ -42,6 +42,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Key Pairs can be imported using the `key_name`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2/keyPair:KeyPair deployer deployer-key
+// ```
 type KeyPair struct {
 	pulumi.CustomResourceState
 

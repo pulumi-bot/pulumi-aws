@@ -213,6 +213,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kinesis Firehose Delivery streams can be imported using the stream ARN, e.g.
+//
+// ```sh
+//  $ pulumi import aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream foo arn:aws:firehose:us-east-1:XXX:deliverystream/example
+// ```
+//
+//  NoteImport does not work for stream destination `s3`. Consider using `extended_s3` since `s3` destination is deprecated.
 type FirehoseDeliveryStream struct {
 	pulumi.CustomResourceState
 

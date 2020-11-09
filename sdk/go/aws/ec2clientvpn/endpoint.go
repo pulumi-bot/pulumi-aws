@@ -48,6 +48,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// AWS Client VPN endpoints can be imported using the `id` value found via `aws ec2 describe-client-vpn-endpoints`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:ec2clientvpn/endpoint:Endpoint example cvpn-endpoint-0ac3a1abbccddd666
+// ```
 type Endpoint struct {
 	pulumi.CustomResourceState
 

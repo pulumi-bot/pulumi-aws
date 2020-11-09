@@ -37,6 +37,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Certificates can be imported using the `certificate_arn`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:dms/certificate:Certificate test arn:aws:dms:us-west-2:123456789:cert:xxxxxxxxxx
+// ```
 type Certificate struct {
 	pulumi.CustomResourceState
 
