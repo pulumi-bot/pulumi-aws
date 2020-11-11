@@ -4,6 +4,7 @@
 package cognito
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -202,4 +203,43 @@ type UserPoolDomainArgs struct {
 
 func (UserPoolDomainArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPoolDomainArgs)(nil)).Elem()
+}
+
+type UserPoolDomainInput interface {
+	pulumi.Input
+
+	ToUserPoolDomainOutput() UserPoolDomainOutput
+	ToUserPoolDomainOutputWithContext(ctx context.Context) UserPoolDomainOutput
+}
+
+func (UserPoolDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolDomain)(nil)).Elem()
+}
+
+func (i UserPoolDomain) ToUserPoolDomainOutput() UserPoolDomainOutput {
+	return i.ToUserPoolDomainOutputWithContext(context.Background())
+}
+
+func (i UserPoolDomain) ToUserPoolDomainOutputWithContext(ctx context.Context) UserPoolDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDomainOutput)
+}
+
+type UserPoolDomainOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPoolDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolDomainOutput)(nil)).Elem()
+}
+
+func (o UserPoolDomainOutput) ToUserPoolDomainOutput() UserPoolDomainOutput {
+	return o
+}
+
+func (o UserPoolDomainOutput) ToUserPoolDomainOutputWithContext(ctx context.Context) UserPoolDomainOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserPoolDomainOutput{})
 }

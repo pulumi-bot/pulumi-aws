@@ -4,6 +4,7 @@
 package inspector
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type AssessmentTemplateArgs struct {
 
 func (AssessmentTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*assessmentTemplateArgs)(nil)).Elem()
+}
+
+type AssessmentTemplateInput interface {
+	pulumi.Input
+
+	ToAssessmentTemplateOutput() AssessmentTemplateOutput
+	ToAssessmentTemplateOutputWithContext(ctx context.Context) AssessmentTemplateOutput
+}
+
+func (AssessmentTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentTemplate)(nil)).Elem()
+}
+
+func (i AssessmentTemplate) ToAssessmentTemplateOutput() AssessmentTemplateOutput {
+	return i.ToAssessmentTemplateOutputWithContext(context.Background())
+}
+
+func (i AssessmentTemplate) ToAssessmentTemplateOutputWithContext(ctx context.Context) AssessmentTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTemplateOutput)
+}
+
+type AssessmentTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssessmentTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentTemplateOutput)(nil)).Elem()
+}
+
+func (o AssessmentTemplateOutput) ToAssessmentTemplateOutput() AssessmentTemplateOutput {
+	return o
+}
+
+func (o AssessmentTemplateOutput) ToAssessmentTemplateOutputWithContext(ctx context.Context) AssessmentTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AssessmentTemplateOutput{})
 }

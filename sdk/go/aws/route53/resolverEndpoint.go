@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -187,4 +188,43 @@ type ResolverEndpointArgs struct {
 
 func (ResolverEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resolverEndpointArgs)(nil)).Elem()
+}
+
+type ResolverEndpointInput interface {
+	pulumi.Input
+
+	ToResolverEndpointOutput() ResolverEndpointOutput
+	ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput
+}
+
+func (ResolverEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpoint)(nil)).Elem()
+}
+
+func (i ResolverEndpoint) ToResolverEndpointOutput() ResolverEndpointOutput {
+	return i.ToResolverEndpointOutputWithContext(context.Background())
+}
+
+func (i ResolverEndpoint) ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointOutput)
+}
+
+type ResolverEndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpointOutput)(nil)).Elem()
+}
+
+func (o ResolverEndpointOutput) ToResolverEndpointOutput() ResolverEndpointOutput {
+	return o
+}
+
+func (o ResolverEndpointOutput) ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResolverEndpointOutput{})
 }

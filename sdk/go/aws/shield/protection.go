@@ -4,6 +4,7 @@
 package shield
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,4 +135,43 @@ type ProtectionArgs struct {
 
 func (ProtectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectionArgs)(nil)).Elem()
+}
+
+type ProtectionInput interface {
+	pulumi.Input
+
+	ToProtectionOutput() ProtectionOutput
+	ToProtectionOutputWithContext(ctx context.Context) ProtectionOutput
+}
+
+func (Protection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Protection)(nil)).Elem()
+}
+
+func (i Protection) ToProtectionOutput() ProtectionOutput {
+	return i.ToProtectionOutputWithContext(context.Background())
+}
+
+func (i Protection) ToProtectionOutputWithContext(ctx context.Context) ProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectionOutput)
+}
+
+type ProtectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectionOutput)(nil)).Elem()
+}
+
+func (o ProtectionOutput) ToProtectionOutput() ProtectionOutput {
+	return o
+}
+
+func (o ProtectionOutput) ToProtectionOutputWithContext(ctx context.Context) ProtectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectionOutput{})
 }

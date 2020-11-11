@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,4 +115,43 @@ type UploadBufferArgs struct {
 
 func (UploadBufferArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*uploadBufferArgs)(nil)).Elem()
+}
+
+type UploadBufferInput interface {
+	pulumi.Input
+
+	ToUploadBufferOutput() UploadBufferOutput
+	ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput
+}
+
+func (UploadBuffer) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadBuffer)(nil)).Elem()
+}
+
+func (i UploadBuffer) ToUploadBufferOutput() UploadBufferOutput {
+	return i.ToUploadBufferOutputWithContext(context.Background())
+}
+
+func (i UploadBuffer) ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UploadBufferOutput)
+}
+
+type UploadBufferOutput struct {
+	*pulumi.OutputState
+}
+
+func (UploadBufferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadBufferOutput)(nil)).Elem()
+}
+
+func (o UploadBufferOutput) ToUploadBufferOutput() UploadBufferOutput {
+	return o
+}
+
+func (o UploadBufferOutput) ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UploadBufferOutput{})
 }

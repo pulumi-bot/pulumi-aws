@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -126,4 +127,43 @@ type LocalGatewayRouteArgs struct {
 
 func (LocalGatewayRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*localGatewayRouteArgs)(nil)).Elem()
+}
+
+type LocalGatewayRouteInput interface {
+	pulumi.Input
+
+	ToLocalGatewayRouteOutput() LocalGatewayRouteOutput
+	ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput
+}
+
+func (LocalGatewayRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalGatewayRoute)(nil)).Elem()
+}
+
+func (i LocalGatewayRoute) ToLocalGatewayRouteOutput() LocalGatewayRouteOutput {
+	return i.ToLocalGatewayRouteOutputWithContext(context.Background())
+}
+
+func (i LocalGatewayRoute) ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRouteOutput)
+}
+
+type LocalGatewayRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocalGatewayRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalGatewayRouteOutput)(nil)).Elem()
+}
+
+func (o LocalGatewayRouteOutput) ToLocalGatewayRouteOutput() LocalGatewayRouteOutput {
+	return o
+}
+
+func (o LocalGatewayRouteOutput) ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocalGatewayRouteOutput{})
 }

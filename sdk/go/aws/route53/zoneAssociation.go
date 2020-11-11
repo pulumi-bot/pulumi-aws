@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -159,4 +160,43 @@ type ZoneAssociationArgs struct {
 
 func (ZoneAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneAssociationArgs)(nil)).Elem()
+}
+
+type ZoneAssociationInput interface {
+	pulumi.Input
+
+	ToZoneAssociationOutput() ZoneAssociationOutput
+	ToZoneAssociationOutputWithContext(ctx context.Context) ZoneAssociationOutput
+}
+
+func (ZoneAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAssociation)(nil)).Elem()
+}
+
+func (i ZoneAssociation) ToZoneAssociationOutput() ZoneAssociationOutput {
+	return i.ToZoneAssociationOutputWithContext(context.Background())
+}
+
+func (i ZoneAssociation) ToZoneAssociationOutputWithContext(ctx context.Context) ZoneAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAssociationOutput)
+}
+
+type ZoneAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAssociationOutput)(nil)).Elem()
+}
+
+func (o ZoneAssociationOutput) ToZoneAssociationOutput() ZoneAssociationOutput {
+	return o
+}
+
+func (o ZoneAssociationOutput) ToZoneAssociationOutputWithContext(ctx context.Context) ZoneAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneAssociationOutput{})
 }
