@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -186,4 +187,43 @@ type ProxyArgs struct {
 
 func (ProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*proxyArgs)(nil)).Elem()
+}
+
+type ProxyInput interface {
+	pulumi.Input
+
+	ToProxyOutput() ProxyOutput
+	ToProxyOutputWithContext(ctx context.Context) ProxyOutput
+}
+
+func (Proxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*Proxy)(nil)).Elem()
+}
+
+func (i Proxy) ToProxyOutput() ProxyOutput {
+	return i.ToProxyOutputWithContext(context.Background())
+}
+
+func (i Proxy) ToProxyOutputWithContext(ctx context.Context) ProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyOutput)
+}
+
+type ProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyOutput)(nil)).Elem()
+}
+
+func (o ProxyOutput) ToProxyOutput() ProxyOutput {
+	return o
+}
+
+func (o ProxyOutput) ToProxyOutputWithContext(ctx context.Context) ProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProxyOutput{})
 }

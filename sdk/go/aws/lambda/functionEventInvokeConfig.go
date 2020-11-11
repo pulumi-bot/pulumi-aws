@@ -4,6 +4,7 @@
 package lambda
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -244,4 +245,43 @@ type FunctionEventInvokeConfigArgs struct {
 
 func (FunctionEventInvokeConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionEventInvokeConfigArgs)(nil)).Elem()
+}
+
+type FunctionEventInvokeConfigInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigOutput() FunctionEventInvokeConfigOutput
+	ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput
+}
+
+func (FunctionEventInvokeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfig)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigOutput() FunctionEventInvokeConfigOutput {
+	return i.ToFunctionEventInvokeConfigOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigOutput)
+}
+
+type FunctionEventInvokeConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionEventInvokeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigOutput)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigOutput) ToFunctionEventInvokeConfigOutput() FunctionEventInvokeConfigOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigOutput) ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigOutput{})
 }

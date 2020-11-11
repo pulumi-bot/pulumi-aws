@@ -4,6 +4,7 @@
 package lambda
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -151,4 +152,43 @@ type ProvisionedConcurrencyConfigArgs struct {
 
 func (ProvisionedConcurrencyConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*provisionedConcurrencyConfigArgs)(nil)).Elem()
+}
+
+type ProvisionedConcurrencyConfigInput interface {
+	pulumi.Input
+
+	ToProvisionedConcurrencyConfigOutput() ProvisionedConcurrencyConfigOutput
+	ToProvisionedConcurrencyConfigOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigOutput
+}
+
+func (ProvisionedConcurrencyConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisionedConcurrencyConfig)(nil)).Elem()
+}
+
+func (i ProvisionedConcurrencyConfig) ToProvisionedConcurrencyConfigOutput() ProvisionedConcurrencyConfigOutput {
+	return i.ToProvisionedConcurrencyConfigOutputWithContext(context.Background())
+}
+
+func (i ProvisionedConcurrencyConfig) ToProvisionedConcurrencyConfigOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProvisionedConcurrencyConfigOutput)
+}
+
+type ProvisionedConcurrencyConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProvisionedConcurrencyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisionedConcurrencyConfigOutput)(nil)).Elem()
+}
+
+func (o ProvisionedConcurrencyConfigOutput) ToProvisionedConcurrencyConfigOutput() ProvisionedConcurrencyConfigOutput {
+	return o
+}
+
+func (o ProvisionedConcurrencyConfigOutput) ToProvisionedConcurrencyConfigOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProvisionedConcurrencyConfigOutput{})
 }

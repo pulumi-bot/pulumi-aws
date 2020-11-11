@@ -4,6 +4,7 @@
 package codeartifact
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -156,4 +157,43 @@ type DomainPermissionsArgs struct {
 
 func (DomainPermissionsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainPermissionsArgs)(nil)).Elem()
+}
+
+type DomainPermissionsInput interface {
+	pulumi.Input
+
+	ToDomainPermissionsOutput() DomainPermissionsOutput
+	ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput
+}
+
+func (DomainPermissions) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPermissions)(nil)).Elem()
+}
+
+func (i DomainPermissions) ToDomainPermissionsOutput() DomainPermissionsOutput {
+	return i.ToDomainPermissionsOutputWithContext(context.Background())
+}
+
+func (i DomainPermissions) ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPermissionsOutput)
+}
+
+type DomainPermissionsOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPermissionsOutput)(nil)).Elem()
+}
+
+func (o DomainPermissionsOutput) ToDomainPermissionsOutput() DomainPermissionsOutput {
+	return o
+}
+
+func (o DomainPermissionsOutput) ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainPermissionsOutput{})
 }

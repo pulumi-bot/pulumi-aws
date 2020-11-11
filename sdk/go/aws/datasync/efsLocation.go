@@ -4,6 +4,7 @@
 package datasync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type EfsLocationArgs struct {
 
 func (EfsLocationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*efsLocationArgs)(nil)).Elem()
+}
+
+type EfsLocationInput interface {
+	pulumi.Input
+
+	ToEfsLocationOutput() EfsLocationOutput
+	ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput
+}
+
+func (EfsLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocation)(nil)).Elem()
+}
+
+func (i EfsLocation) ToEfsLocationOutput() EfsLocationOutput {
+	return i.ToEfsLocationOutputWithContext(context.Background())
+}
+
+func (i EfsLocation) ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationOutput)
+}
+
+type EfsLocationOutput struct {
+	*pulumi.OutputState
+}
+
+func (EfsLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocationOutput)(nil)).Elem()
+}
+
+func (o EfsLocationOutput) ToEfsLocationOutput() EfsLocationOutput {
+	return o
+}
+
+func (o EfsLocationOutput) ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EfsLocationOutput{})
 }
