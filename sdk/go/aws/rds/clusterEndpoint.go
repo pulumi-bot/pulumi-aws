@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -102,6 +103,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// RDS Clusters Endpoint can be imported using the `cluster_endpoint_identifier`, e.g.
+//
+// ```sh
+//  $ pulumi import aws:rds/clusterEndpoint:ClusterEndpoint custom_reader aurora-prod-cluster-custom-reader
+// ```
+//
+//  [1]https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster
 type ClusterEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -234,4 +245,43 @@ type ClusterEndpointArgs struct {
 
 func (ClusterEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterEndpointArgs)(nil)).Elem()
+}
+
+type ClusterEndpointInput interface {
+	pulumi.Input
+
+	ToClusterEndpointOutput() ClusterEndpointOutput
+	ToClusterEndpointOutputWithContext(ctx context.Context) ClusterEndpointOutput
+}
+
+func (ClusterEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEndpoint)(nil)).Elem()
+}
+
+func (i ClusterEndpoint) ToClusterEndpointOutput() ClusterEndpointOutput {
+	return i.ToClusterEndpointOutputWithContext(context.Background())
+}
+
+func (i ClusterEndpoint) ToClusterEndpointOutputWithContext(ctx context.Context) ClusterEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEndpointOutput)
+}
+
+type ClusterEndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEndpointOutput)(nil)).Elem()
+}
+
+func (o ClusterEndpointOutput) ToClusterEndpointOutput() ClusterEndpointOutput {
+	return o
+}
+
+func (o ClusterEndpointOutput) ToClusterEndpointOutputWithContext(ctx context.Context) ClusterEndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterEndpointOutput{})
 }
