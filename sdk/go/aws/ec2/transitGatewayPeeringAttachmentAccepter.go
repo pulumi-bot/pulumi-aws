@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -132,4 +133,43 @@ type TransitGatewayPeeringAttachmentAccepterArgs struct {
 
 func (TransitGatewayPeeringAttachmentAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitGatewayPeeringAttachmentAccepterArgs)(nil)).Elem()
+}
+
+type TransitGatewayPeeringAttachmentAccepterInput interface {
+	pulumi.Input
+
+	ToTransitGatewayPeeringAttachmentAccepterOutput() TransitGatewayPeeringAttachmentAccepterOutput
+	ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(ctx context.Context) TransitGatewayPeeringAttachmentAccepterOutput
+}
+
+func (TransitGatewayPeeringAttachmentAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayPeeringAttachmentAccepter)(nil)).Elem()
+}
+
+func (i TransitGatewayPeeringAttachmentAccepter) ToTransitGatewayPeeringAttachmentAccepterOutput() TransitGatewayPeeringAttachmentAccepterOutput {
+	return i.ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayPeeringAttachmentAccepter) ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(ctx context.Context) TransitGatewayPeeringAttachmentAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayPeeringAttachmentAccepterOutput)
+}
+
+type TransitGatewayPeeringAttachmentAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitGatewayPeeringAttachmentAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayPeeringAttachmentAccepterOutput)(nil)).Elem()
+}
+
+func (o TransitGatewayPeeringAttachmentAccepterOutput) ToTransitGatewayPeeringAttachmentAccepterOutput() TransitGatewayPeeringAttachmentAccepterOutput {
+	return o
+}
+
+func (o TransitGatewayPeeringAttachmentAccepterOutput) ToTransitGatewayPeeringAttachmentAccepterOutputWithContext(ctx context.Context) TransitGatewayPeeringAttachmentAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TransitGatewayPeeringAttachmentAccepterOutput{})
 }

@@ -4,6 +4,7 @@
 package elb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -173,4 +174,43 @@ type AppCookieStickinessPolicyArgs struct {
 
 func (AppCookieStickinessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCookieStickinessPolicyArgs)(nil)).Elem()
+}
+
+type AppCookieStickinessPolicyInput interface {
+	pulumi.Input
+
+	ToAppCookieStickinessPolicyOutput() AppCookieStickinessPolicyOutput
+	ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput
+}
+
+func (AppCookieStickinessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCookieStickinessPolicy)(nil)).Elem()
+}
+
+func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyOutput() AppCookieStickinessPolicyOutput {
+	return i.ToAppCookieStickinessPolicyOutputWithContext(context.Background())
+}
+
+func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCookieStickinessPolicyOutput)
+}
+
+type AppCookieStickinessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppCookieStickinessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCookieStickinessPolicyOutput)(nil)).Elem()
+}
+
+func (o AppCookieStickinessPolicyOutput) ToAppCookieStickinessPolicyOutput() AppCookieStickinessPolicyOutput {
+	return o
+}
+
+func (o AppCookieStickinessPolicyOutput) ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppCookieStickinessPolicyOutput{})
 }

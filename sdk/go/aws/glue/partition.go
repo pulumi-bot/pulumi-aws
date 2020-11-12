@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -144,4 +145,43 @@ type PartitionArgs struct {
 
 func (PartitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*partitionArgs)(nil)).Elem()
+}
+
+type PartitionInput interface {
+	pulumi.Input
+
+	ToPartitionOutput() PartitionOutput
+	ToPartitionOutputWithContext(ctx context.Context) PartitionOutput
+}
+
+func (Partition) ElementType() reflect.Type {
+	return reflect.TypeOf((*Partition)(nil)).Elem()
+}
+
+func (i Partition) ToPartitionOutput() PartitionOutput {
+	return i.ToPartitionOutputWithContext(context.Background())
+}
+
+func (i Partition) ToPartitionOutputWithContext(ctx context.Context) PartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartitionOutput)
+}
+
+type PartitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (PartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartitionOutput)(nil)).Elem()
+}
+
+func (o PartitionOutput) ToPartitionOutput() PartitionOutput {
+	return o
+}
+
+func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) PartitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PartitionOutput{})
 }

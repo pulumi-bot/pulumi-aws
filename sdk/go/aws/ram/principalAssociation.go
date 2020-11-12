@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -152,4 +153,43 @@ type PrincipalAssociationArgs struct {
 
 func (PrincipalAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*principalAssociationArgs)(nil)).Elem()
+}
+
+type PrincipalAssociationInput interface {
+	pulumi.Input
+
+	ToPrincipalAssociationOutput() PrincipalAssociationOutput
+	ToPrincipalAssociationOutputWithContext(ctx context.Context) PrincipalAssociationOutput
+}
+
+func (PrincipalAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAssociation)(nil)).Elem()
+}
+
+func (i PrincipalAssociation) ToPrincipalAssociationOutput() PrincipalAssociationOutput {
+	return i.ToPrincipalAssociationOutputWithContext(context.Background())
+}
+
+func (i PrincipalAssociation) ToPrincipalAssociationOutputWithContext(ctx context.Context) PrincipalAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAssociationOutput)
+}
+
+type PrincipalAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (PrincipalAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAssociationOutput)(nil)).Elem()
+}
+
+func (o PrincipalAssociationOutput) ToPrincipalAssociationOutput() PrincipalAssociationOutput {
+	return o
+}
+
+func (o PrincipalAssociationOutput) ToPrincipalAssociationOutputWithContext(ctx context.Context) PrincipalAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PrincipalAssociationOutput{})
 }

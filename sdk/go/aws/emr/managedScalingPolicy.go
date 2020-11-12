@@ -4,6 +4,7 @@
 package emr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -132,4 +133,43 @@ type ManagedScalingPolicyArgs struct {
 
 func (ManagedScalingPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedScalingPolicyArgs)(nil)).Elem()
+}
+
+type ManagedScalingPolicyInput interface {
+	pulumi.Input
+
+	ToManagedScalingPolicyOutput() ManagedScalingPolicyOutput
+	ToManagedScalingPolicyOutputWithContext(ctx context.Context) ManagedScalingPolicyOutput
+}
+
+func (ManagedScalingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedScalingPolicy)(nil)).Elem()
+}
+
+func (i ManagedScalingPolicy) ToManagedScalingPolicyOutput() ManagedScalingPolicyOutput {
+	return i.ToManagedScalingPolicyOutputWithContext(context.Background())
+}
+
+func (i ManagedScalingPolicy) ToManagedScalingPolicyOutputWithContext(ctx context.Context) ManagedScalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedScalingPolicyOutput)
+}
+
+type ManagedScalingPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedScalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedScalingPolicyOutput)(nil)).Elem()
+}
+
+func (o ManagedScalingPolicyOutput) ToManagedScalingPolicyOutput() ManagedScalingPolicyOutput {
+	return o
+}
+
+func (o ManagedScalingPolicyOutput) ToManagedScalingPolicyOutputWithContext(ctx context.Context) ManagedScalingPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagedScalingPolicyOutput{})
 }

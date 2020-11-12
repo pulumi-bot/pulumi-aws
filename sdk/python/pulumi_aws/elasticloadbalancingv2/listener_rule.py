@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['ListenerRule']
 
-warnings.warn("aws.elasticloadbalancingv2.ListenerRule has been deprecated in favor of aws.lb.ListenerRule", DeprecationWarning)
+warnings.warn("""aws.elasticloadbalancingv2.ListenerRule has been deprecated in favor of aws.lb.ListenerRule""", DeprecationWarning)
 
 
 class ListenerRule(pulumi.CustomResource):
-    warnings.warn("aws.elasticloadbalancingv2.ListenerRule has been deprecated in favor of aws.lb.ListenerRule", DeprecationWarning)
+    warnings.warn("""aws.elasticloadbalancingv2.ListenerRule has been deprecated in favor of aws.lb.ListenerRule""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

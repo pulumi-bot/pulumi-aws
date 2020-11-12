@@ -4,6 +4,7 @@
 package kinesis
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -174,4 +175,43 @@ type VideoStreamArgs struct {
 
 func (VideoStreamArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*videoStreamArgs)(nil)).Elem()
+}
+
+type VideoStreamInput interface {
+	pulumi.Input
+
+	ToVideoStreamOutput() VideoStreamOutput
+	ToVideoStreamOutputWithContext(ctx context.Context) VideoStreamOutput
+}
+
+func (VideoStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoStream)(nil)).Elem()
+}
+
+func (i VideoStream) ToVideoStreamOutput() VideoStreamOutput {
+	return i.ToVideoStreamOutputWithContext(context.Background())
+}
+
+func (i VideoStream) ToVideoStreamOutputWithContext(ctx context.Context) VideoStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoStreamOutput)
+}
+
+type VideoStreamOutput struct {
+	*pulumi.OutputState
+}
+
+func (VideoStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoStreamOutput)(nil)).Elem()
+}
+
+func (o VideoStreamOutput) ToVideoStreamOutput() VideoStreamOutput {
+	return o
+}
+
+func (o VideoStreamOutput) ToVideoStreamOutputWithContext(ctx context.Context) VideoStreamOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VideoStreamOutput{})
 }
