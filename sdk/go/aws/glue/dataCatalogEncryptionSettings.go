@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,4 +118,43 @@ type DataCatalogEncryptionSettingsArgs struct {
 
 func (DataCatalogEncryptionSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataCatalogEncryptionSettingsArgs)(nil)).Elem()
+}
+
+type DataCatalogEncryptionSettingsInput interface {
+	pulumi.Input
+
+	ToDataCatalogEncryptionSettingsOutput() DataCatalogEncryptionSettingsOutput
+	ToDataCatalogEncryptionSettingsOutputWithContext(ctx context.Context) DataCatalogEncryptionSettingsOutput
+}
+
+func (DataCatalogEncryptionSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogEncryptionSettings)(nil)).Elem()
+}
+
+func (i DataCatalogEncryptionSettings) ToDataCatalogEncryptionSettingsOutput() DataCatalogEncryptionSettingsOutput {
+	return i.ToDataCatalogEncryptionSettingsOutputWithContext(context.Background())
+}
+
+func (i DataCatalogEncryptionSettings) ToDataCatalogEncryptionSettingsOutputWithContext(ctx context.Context) DataCatalogEncryptionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogEncryptionSettingsOutput)
+}
+
+type DataCatalogEncryptionSettingsOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataCatalogEncryptionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogEncryptionSettingsOutput)(nil)).Elem()
+}
+
+func (o DataCatalogEncryptionSettingsOutput) ToDataCatalogEncryptionSettingsOutput() DataCatalogEncryptionSettingsOutput {
+	return o
+}
+
+func (o DataCatalogEncryptionSettingsOutput) ToDataCatalogEncryptionSettingsOutputWithContext(ctx context.Context) DataCatalogEncryptionSettingsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataCatalogEncryptionSettingsOutput{})
 }

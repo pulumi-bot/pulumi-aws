@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -140,4 +141,43 @@ type InviteAccepterArgs struct {
 
 func (InviteAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*inviteAccepterArgs)(nil)).Elem()
+}
+
+type InviteAccepterInput interface {
+	pulumi.Input
+
+	ToInviteAccepterOutput() InviteAccepterOutput
+	ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput
+}
+
+func (InviteAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*InviteAccepter)(nil)).Elem()
+}
+
+func (i InviteAccepter) ToInviteAccepterOutput() InviteAccepterOutput {
+	return i.ToInviteAccepterOutputWithContext(context.Background())
+}
+
+func (i InviteAccepter) ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InviteAccepterOutput)
+}
+
+type InviteAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (InviteAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InviteAccepterOutput)(nil)).Elem()
+}
+
+func (o InviteAccepterOutput) ToInviteAccepterOutput() InviteAccepterOutput {
+	return o
+}
+
+func (o InviteAccepterOutput) ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InviteAccepterOutput{})
 }

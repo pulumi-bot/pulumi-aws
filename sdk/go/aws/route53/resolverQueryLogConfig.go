@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -150,4 +151,43 @@ type ResolverQueryLogConfigArgs struct {
 
 func (ResolverQueryLogConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resolverQueryLogConfigArgs)(nil)).Elem()
+}
+
+type ResolverQueryLogConfigInput interface {
+	pulumi.Input
+
+	ToResolverQueryLogConfigOutput() ResolverQueryLogConfigOutput
+	ToResolverQueryLogConfigOutputWithContext(ctx context.Context) ResolverQueryLogConfigOutput
+}
+
+func (ResolverQueryLogConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverQueryLogConfig)(nil)).Elem()
+}
+
+func (i ResolverQueryLogConfig) ToResolverQueryLogConfigOutput() ResolverQueryLogConfigOutput {
+	return i.ToResolverQueryLogConfigOutputWithContext(context.Background())
+}
+
+func (i ResolverQueryLogConfig) ToResolverQueryLogConfigOutputWithContext(ctx context.Context) ResolverQueryLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverQueryLogConfigOutput)
+}
+
+type ResolverQueryLogConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverQueryLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverQueryLogConfigOutput)(nil)).Elem()
+}
+
+func (o ResolverQueryLogConfigOutput) ToResolverQueryLogConfigOutput() ResolverQueryLogConfigOutput {
+	return o
+}
+
+func (o ResolverQueryLogConfigOutput) ToResolverQueryLogConfigOutputWithContext(ctx context.Context) ResolverQueryLogConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResolverQueryLogConfigOutput{})
 }
