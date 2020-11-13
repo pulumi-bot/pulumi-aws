@@ -4,6 +4,7 @@
 package appmesh
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -222,4 +223,43 @@ type VirtualGatewayArgs struct {
 
 func (VirtualGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualGatewayArgs)(nil)).Elem()
+}
+
+type VirtualGatewayInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayOutput() VirtualGatewayOutput
+	ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput
+}
+
+func (VirtualGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGateway)(nil)).Elem()
+}
+
+func (i VirtualGateway) ToVirtualGatewayOutput() VirtualGatewayOutput {
+	return i.ToVirtualGatewayOutputWithContext(context.Background())
+}
+
+func (i VirtualGateway) ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayOutput)
+}
+
+type VirtualGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayOutput)(nil)).Elem()
+}
+
+func (o VirtualGatewayOutput) ToVirtualGatewayOutput() VirtualGatewayOutput {
+	return o
+}
+
+func (o VirtualGatewayOutput) ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualGatewayOutput{})
 }

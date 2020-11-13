@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -196,4 +197,43 @@ type IPSetArgs struct {
 
 func (IPSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipsetArgs)(nil)).Elem()
+}
+
+type IPSetInput interface {
+	pulumi.Input
+
+	ToIPSetOutput() IPSetOutput
+	ToIPSetOutputWithContext(ctx context.Context) IPSetOutput
+}
+
+func (IPSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPSet)(nil)).Elem()
+}
+
+func (i IPSet) ToIPSetOutput() IPSetOutput {
+	return i.ToIPSetOutputWithContext(context.Background())
+}
+
+func (i IPSet) ToIPSetOutputWithContext(ctx context.Context) IPSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IPSetOutput)
+}
+
+type IPSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (IPSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPSetOutput)(nil)).Elem()
+}
+
+func (o IPSetOutput) ToIPSetOutput() IPSetOutput {
+	return o
+}
+
+func (o IPSetOutput) ToIPSetOutputWithContext(ctx context.Context) IPSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IPSetOutput{})
 }

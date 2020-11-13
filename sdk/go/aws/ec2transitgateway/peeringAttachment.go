@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -185,4 +186,43 @@ type PeeringAttachmentArgs struct {
 
 func (PeeringAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeringAttachmentArgs)(nil)).Elem()
+}
+
+type PeeringAttachmentInput interface {
+	pulumi.Input
+
+	ToPeeringAttachmentOutput() PeeringAttachmentOutput
+	ToPeeringAttachmentOutputWithContext(ctx context.Context) PeeringAttachmentOutput
+}
+
+func (PeeringAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeeringAttachment)(nil)).Elem()
+}
+
+func (i PeeringAttachment) ToPeeringAttachmentOutput() PeeringAttachmentOutput {
+	return i.ToPeeringAttachmentOutputWithContext(context.Background())
+}
+
+func (i PeeringAttachment) ToPeeringAttachmentOutputWithContext(ctx context.Context) PeeringAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringAttachmentOutput)
+}
+
+type PeeringAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (PeeringAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeeringAttachmentOutput)(nil)).Elem()
+}
+
+func (o PeeringAttachmentOutput) ToPeeringAttachmentOutput() PeeringAttachmentOutput {
+	return o
+}
+
+func (o PeeringAttachmentOutput) ToPeeringAttachmentOutputWithContext(ctx context.Context) PeeringAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PeeringAttachmentOutput{})
 }

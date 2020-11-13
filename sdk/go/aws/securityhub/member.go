@@ -4,6 +4,7 @@
 package securityhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -141,4 +142,43 @@ type MemberArgs struct {
 
 func (MemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberArgs)(nil)).Elem()
+}
+
+type MemberInput interface {
+	pulumi.Input
+
+	ToMemberOutput() MemberOutput
+	ToMemberOutputWithContext(ctx context.Context) MemberOutput
+}
+
+func (Member) ElementType() reflect.Type {
+	return reflect.TypeOf((*Member)(nil)).Elem()
+}
+
+func (i Member) ToMemberOutput() MemberOutput {
+	return i.ToMemberOutputWithContext(context.Background())
+}
+
+func (i Member) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberOutput)
+}
+
+type MemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberOutput)(nil)).Elem()
+}
+
+func (o MemberOutput) ToMemberOutput() MemberOutput {
+	return o
+}
+
+func (o MemberOutput) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MemberOutput{})
 }

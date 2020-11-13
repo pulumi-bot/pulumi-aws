@@ -4,6 +4,7 @@
 package inspector
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -119,4 +120,43 @@ type AssessmentTargetArgs struct {
 
 func (AssessmentTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*assessmentTargetArgs)(nil)).Elem()
+}
+
+type AssessmentTargetInput interface {
+	pulumi.Input
+
+	ToAssessmentTargetOutput() AssessmentTargetOutput
+	ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput
+}
+
+func (AssessmentTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentTarget)(nil)).Elem()
+}
+
+func (i AssessmentTarget) ToAssessmentTargetOutput() AssessmentTargetOutput {
+	return i.ToAssessmentTargetOutputWithContext(context.Background())
+}
+
+func (i AssessmentTarget) ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTargetOutput)
+}
+
+type AssessmentTargetOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssessmentTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentTargetOutput)(nil)).Elem()
+}
+
+func (o AssessmentTargetOutput) ToAssessmentTargetOutput() AssessmentTargetOutput {
+	return o
+}
+
+func (o AssessmentTargetOutput) ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AssessmentTargetOutput{})
 }

@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -559,4 +560,43 @@ type SpotFleetRequestArgs struct {
 
 func (SpotFleetRequestArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spotFleetRequestArgs)(nil)).Elem()
+}
+
+type SpotFleetRequestInput interface {
+	pulumi.Input
+
+	ToSpotFleetRequestOutput() SpotFleetRequestOutput
+	ToSpotFleetRequestOutputWithContext(ctx context.Context) SpotFleetRequestOutput
+}
+
+func (SpotFleetRequest) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotFleetRequest)(nil)).Elem()
+}
+
+func (i SpotFleetRequest) ToSpotFleetRequestOutput() SpotFleetRequestOutput {
+	return i.ToSpotFleetRequestOutputWithContext(context.Background())
+}
+
+func (i SpotFleetRequest) ToSpotFleetRequestOutputWithContext(ctx context.Context) SpotFleetRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestOutput)
+}
+
+type SpotFleetRequestOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpotFleetRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotFleetRequestOutput)(nil)).Elem()
+}
+
+func (o SpotFleetRequestOutput) ToSpotFleetRequestOutput() SpotFleetRequestOutput {
+	return o
+}
+
+func (o SpotFleetRequestOutput) ToSpotFleetRequestOutputWithContext(ctx context.Context) SpotFleetRequestOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpotFleetRequestOutput{})
 }

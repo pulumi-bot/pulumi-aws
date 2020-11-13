@@ -4,6 +4,7 @@
 package cloudfront
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -493,4 +494,43 @@ type DistributionArgs struct {
 
 func (DistributionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributionArgs)(nil)).Elem()
+}
+
+type DistributionInput interface {
+	pulumi.Input
+
+	ToDistributionOutput() DistributionOutput
+	ToDistributionOutputWithContext(ctx context.Context) DistributionOutput
+}
+
+func (Distribution) ElementType() reflect.Type {
+	return reflect.TypeOf((*Distribution)(nil)).Elem()
+}
+
+func (i Distribution) ToDistributionOutput() DistributionOutput {
+	return i.ToDistributionOutputWithContext(context.Background())
+}
+
+func (i Distribution) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionOutput)
+}
+
+type DistributionOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributionOutput)(nil)).Elem()
+}
+
+func (o DistributionOutput) ToDistributionOutput() DistributionOutput {
+	return o
+}
+
+func (o DistributionOutput) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DistributionOutput{})
 }

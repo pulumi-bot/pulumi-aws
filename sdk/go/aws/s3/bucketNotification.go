@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -256,4 +257,43 @@ type BucketNotificationArgs struct {
 
 func (BucketNotificationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketNotificationArgs)(nil)).Elem()
+}
+
+type BucketNotificationInput interface {
+	pulumi.Input
+
+	ToBucketNotificationOutput() BucketNotificationOutput
+	ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput
+}
+
+func (BucketNotification) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketNotification)(nil)).Elem()
+}
+
+func (i BucketNotification) ToBucketNotificationOutput() BucketNotificationOutput {
+	return i.ToBucketNotificationOutputWithContext(context.Background())
+}
+
+func (i BucketNotification) ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketNotificationOutput)
+}
+
+type BucketNotificationOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketNotificationOutput)(nil)).Elem()
+}
+
+func (o BucketNotificationOutput) ToBucketNotificationOutput() BucketNotificationOutput {
+	return o
+}
+
+func (o BucketNotificationOutput) ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketNotificationOutput{})
 }

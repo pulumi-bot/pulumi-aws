@@ -4,6 +4,7 @@
 package dms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -211,4 +212,43 @@ type ReplicationTaskArgs struct {
 
 func (ReplicationTaskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationTaskArgs)(nil)).Elem()
+}
+
+type ReplicationTaskInput interface {
+	pulumi.Input
+
+	ToReplicationTaskOutput() ReplicationTaskOutput
+	ToReplicationTaskOutputWithContext(ctx context.Context) ReplicationTaskOutput
+}
+
+func (ReplicationTask) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationTask)(nil)).Elem()
+}
+
+func (i ReplicationTask) ToReplicationTaskOutput() ReplicationTaskOutput {
+	return i.ToReplicationTaskOutputWithContext(context.Background())
+}
+
+func (i ReplicationTask) ToReplicationTaskOutputWithContext(ctx context.Context) ReplicationTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationTaskOutput)
+}
+
+type ReplicationTaskOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationTaskOutput)(nil)).Elem()
+}
+
+func (o ReplicationTaskOutput) ToReplicationTaskOutput() ReplicationTaskOutput {
+	return o
+}
+
+func (o ReplicationTaskOutput) ToReplicationTaskOutputWithContext(ctx context.Context) ReplicationTaskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReplicationTaskOutput{})
 }

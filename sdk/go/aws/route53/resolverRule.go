@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -216,4 +217,43 @@ type ResolverRuleArgs struct {
 
 func (ResolverRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resolverRuleArgs)(nil)).Elem()
+}
+
+type ResolverRuleInput interface {
+	pulumi.Input
+
+	ToResolverRuleOutput() ResolverRuleOutput
+	ToResolverRuleOutputWithContext(ctx context.Context) ResolverRuleOutput
+}
+
+func (ResolverRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRule)(nil)).Elem()
+}
+
+func (i ResolverRule) ToResolverRuleOutput() ResolverRuleOutput {
+	return i.ToResolverRuleOutputWithContext(context.Background())
+}
+
+func (i ResolverRule) ToResolverRuleOutputWithContext(ctx context.Context) ResolverRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleOutput)
+}
+
+type ResolverRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRuleOutput)(nil)).Elem()
+}
+
+func (o ResolverRuleOutput) ToResolverRuleOutput() ResolverRuleOutput {
+	return o
+}
+
+func (o ResolverRuleOutput) ToResolverRuleOutputWithContext(ctx context.Context) ResolverRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResolverRuleOutput{})
 }
