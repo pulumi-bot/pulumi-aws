@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,20 +84,21 @@ type NfsFileShare struct {
 // NewNfsFileShare registers a new resource with the given unique name, arguments, and options.
 func NewNfsFileShare(ctx *pulumi.Context,
 	name string, args *NfsFileShareArgs, opts ...pulumi.ResourceOption) (*NfsFileShare, error) {
-	if args == nil || args.ClientLists == nil {
-		return nil, errors.New("missing required argument 'ClientLists'")
-	}
-	if args == nil || args.GatewayArn == nil {
-		return nil, errors.New("missing required argument 'GatewayArn'")
-	}
-	if args == nil || args.LocationArn == nil {
-		return nil, errors.New("missing required argument 'LocationArn'")
-	}
-	if args == nil || args.RoleArn == nil {
-		return nil, errors.New("missing required argument 'RoleArn'")
-	}
 	if args == nil {
-		args = &NfsFileShareArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClientLists == nil {
+		return nil, errors.New("invalid value for required argument 'ClientLists'")
+	}
+	if args.GatewayArn == nil {
+		return nil, errors.New("invalid value for required argument 'GatewayArn'")
+	}
+	if args.LocationArn == nil {
+		return nil, errors.New("invalid value for required argument 'LocationArn'")
+	}
+	if args.RoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'RoleArn'")
 	}
 	var resource NfsFileShare
 	err := ctx.RegisterResource("aws:storagegateway/nfsFileShare:NfsFileShare", name, args, &resource, opts...)
@@ -270,4 +272,43 @@ type NfsFileShareArgs struct {
 
 func (NfsFileShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsFileShareArgs)(nil)).Elem()
+}
+
+type NfsFileShareInput interface {
+	pulumi.Input
+
+	ToNfsFileShareOutput() NfsFileShareOutput
+	ToNfsFileShareOutputWithContext(ctx context.Context) NfsFileShareOutput
+}
+
+func (NfsFileShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsFileShare)(nil)).Elem()
+}
+
+func (i NfsFileShare) ToNfsFileShareOutput() NfsFileShareOutput {
+	return i.ToNfsFileShareOutputWithContext(context.Background())
+}
+
+func (i NfsFileShare) ToNfsFileShareOutputWithContext(ctx context.Context) NfsFileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareOutput)
+}
+
+type NfsFileShareOutput struct {
+	*pulumi.OutputState
+}
+
+func (NfsFileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsFileShareOutput)(nil)).Elem()
+}
+
+func (o NfsFileShareOutput) ToNfsFileShareOutput() NfsFileShareOutput {
+	return o
+}
+
+func (o NfsFileShareOutput) ToNfsFileShareOutputWithContext(ctx context.Context) NfsFileShareOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NfsFileShareOutput{})
 }

@@ -4,6 +4,7 @@
 package elb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,17 +28,18 @@ type LoadBalancerPolicy struct {
 // NewLoadBalancerPolicy registers a new resource with the given unique name, arguments, and options.
 func NewLoadBalancerPolicy(ctx *pulumi.Context,
 	name string, args *LoadBalancerPolicyArgs, opts ...pulumi.ResourceOption) (*LoadBalancerPolicy, error) {
-	if args == nil || args.LoadBalancerName == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerName'")
-	}
-	if args == nil || args.PolicyName == nil {
-		return nil, errors.New("missing required argument 'PolicyName'")
-	}
-	if args == nil || args.PolicyTypeName == nil {
-		return nil, errors.New("missing required argument 'PolicyTypeName'")
-	}
 	if args == nil {
-		args = &LoadBalancerPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LoadBalancerName == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerName'")
+	}
+	if args.PolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyName'")
+	}
+	if args.PolicyTypeName == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyTypeName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -117,4 +119,43 @@ type LoadBalancerPolicyArgs struct {
 
 func (LoadBalancerPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerPolicyArgs)(nil)).Elem()
+}
+
+type LoadBalancerPolicyInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPolicyOutput() LoadBalancerPolicyOutput
+	ToLoadBalancerPolicyOutputWithContext(ctx context.Context) LoadBalancerPolicyOutput
+}
+
+func (LoadBalancerPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPolicy)(nil)).Elem()
+}
+
+func (i LoadBalancerPolicy) ToLoadBalancerPolicyOutput() LoadBalancerPolicyOutput {
+	return i.ToLoadBalancerPolicyOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPolicy) ToLoadBalancerPolicyOutputWithContext(ctx context.Context) LoadBalancerPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPolicyOutput)
+}
+
+type LoadBalancerPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPolicyOutput)(nil)).Elem()
+}
+
+func (o LoadBalancerPolicyOutput) ToLoadBalancerPolicyOutput() LoadBalancerPolicyOutput {
+	return o
+}
+
+func (o LoadBalancerPolicyOutput) ToLoadBalancerPolicyOutputWithContext(ctx context.Context) LoadBalancerPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LoadBalancerPolicyOutput{})
 }

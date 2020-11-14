@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['TargetGroupAttachment']
 
-warnings.warn("aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favor of aws.alb.TargetGroupAttachment", DeprecationWarning)
+warnings.warn("""aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favor of aws.alb.TargetGroupAttachment""", DeprecationWarning)
 
 
 class TargetGroupAttachment(pulumi.CustomResource):
-    warnings.warn("aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favor of aws.alb.TargetGroupAttachment", DeprecationWarning)
+    warnings.warn("""aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favor of aws.alb.TargetGroupAttachment""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

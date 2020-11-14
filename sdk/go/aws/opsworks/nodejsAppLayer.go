@@ -4,6 +4,7 @@
 package opsworks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,11 +84,12 @@ type NodejsAppLayer struct {
 // NewNodejsAppLayer registers a new resource with the given unique name, arguments, and options.
 func NewNodejsAppLayer(ctx *pulumi.Context,
 	name string, args *NodejsAppLayerArgs, opts ...pulumi.ResourceOption) (*NodejsAppLayer, error) {
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &NodejsAppLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource NodejsAppLayer
 	err := ctx.RegisterResource("aws:opsworks/nodejsAppLayer:NodejsAppLayer", name, args, &resource, opts...)
@@ -289,4 +291,43 @@ type NodejsAppLayerArgs struct {
 
 func (NodejsAppLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodejsAppLayerArgs)(nil)).Elem()
+}
+
+type NodejsAppLayerInput interface {
+	pulumi.Input
+
+	ToNodejsAppLayerOutput() NodejsAppLayerOutput
+	ToNodejsAppLayerOutputWithContext(ctx context.Context) NodejsAppLayerOutput
+}
+
+func (NodejsAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayer)(nil)).Elem()
+}
+
+func (i NodejsAppLayer) ToNodejsAppLayerOutput() NodejsAppLayerOutput {
+	return i.ToNodejsAppLayerOutputWithContext(context.Background())
+}
+
+func (i NodejsAppLayer) ToNodejsAppLayerOutputWithContext(ctx context.Context) NodejsAppLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerOutput)
+}
+
+type NodejsAppLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodejsAppLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayerOutput)(nil)).Elem()
+}
+
+func (o NodejsAppLayerOutput) ToNodejsAppLayerOutput() NodejsAppLayerOutput {
+	return o
+}
+
+func (o NodejsAppLayerOutput) ToNodejsAppLayerOutputWithContext(ctx context.Context) NodejsAppLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodejsAppLayerOutput{})
 }

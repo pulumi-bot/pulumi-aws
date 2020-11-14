@@ -4,6 +4,7 @@
 package eks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -143,20 +144,21 @@ type NodeGroup struct {
 // NewNodeGroup registers a new resource with the given unique name, arguments, and options.
 func NewNodeGroup(ctx *pulumi.Context,
 	name string, args *NodeGroupArgs, opts ...pulumi.ResourceOption) (*NodeGroup, error) {
-	if args == nil || args.ClusterName == nil {
-		return nil, errors.New("missing required argument 'ClusterName'")
-	}
-	if args == nil || args.NodeRoleArn == nil {
-		return nil, errors.New("missing required argument 'NodeRoleArn'")
-	}
-	if args == nil || args.ScalingConfig == nil {
-		return nil, errors.New("missing required argument 'ScalingConfig'")
-	}
-	if args == nil || args.SubnetIds == nil {
-		return nil, errors.New("missing required argument 'SubnetIds'")
-	}
 	if args == nil {
-		args = &NodeGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.NodeRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'NodeRoleArn'")
+	}
+	if args.ScalingConfig == nil {
+		return nil, errors.New("invalid value for required argument 'ScalingConfig'")
+	}
+	if args.SubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetIds'")
 	}
 	var resource NodeGroup
 	err := ctx.RegisterResource("aws:eks/nodeGroup:NodeGroup", name, args, &resource, opts...)
@@ -326,4 +328,43 @@ type NodeGroupArgs struct {
 
 func (NodeGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeGroupArgs)(nil)).Elem()
+}
+
+type NodeGroupInput interface {
+	pulumi.Input
+
+	ToNodeGroupOutput() NodeGroupOutput
+	ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput
+}
+
+func (NodeGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroup)(nil)).Elem()
+}
+
+func (i NodeGroup) ToNodeGroupOutput() NodeGroupOutput {
+	return i.ToNodeGroupOutputWithContext(context.Background())
+}
+
+func (i NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupOutput)
+}
+
+type NodeGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupOutput)(nil)).Elem()
+}
+
+func (o NodeGroupOutput) ToNodeGroupOutput() NodeGroupOutput {
+	return o
+}
+
+func (o NodeGroupOutput) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodeGroupOutput{})
 }

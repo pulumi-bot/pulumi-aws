@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,14 +76,15 @@ type InviteAccepter struct {
 // NewInviteAccepter registers a new resource with the given unique name, arguments, and options.
 func NewInviteAccepter(ctx *pulumi.Context,
 	name string, args *InviteAccepterArgs, opts ...pulumi.ResourceOption) (*InviteAccepter, error) {
-	if args == nil || args.DetectorId == nil {
-		return nil, errors.New("missing required argument 'DetectorId'")
-	}
-	if args == nil || args.MasterAccountId == nil {
-		return nil, errors.New("missing required argument 'MasterAccountId'")
-	}
 	if args == nil {
-		args = &InviteAccepterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DetectorId == nil {
+		return nil, errors.New("invalid value for required argument 'DetectorId'")
+	}
+	if args.MasterAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'MasterAccountId'")
 	}
 	var resource InviteAccepter
 	err := ctx.RegisterResource("aws:guardduty/inviteAccepter:InviteAccepter", name, args, &resource, opts...)
@@ -140,4 +142,43 @@ type InviteAccepterArgs struct {
 
 func (InviteAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*inviteAccepterArgs)(nil)).Elem()
+}
+
+type InviteAccepterInput interface {
+	pulumi.Input
+
+	ToInviteAccepterOutput() InviteAccepterOutput
+	ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput
+}
+
+func (InviteAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*InviteAccepter)(nil)).Elem()
+}
+
+func (i InviteAccepter) ToInviteAccepterOutput() InviteAccepterOutput {
+	return i.ToInviteAccepterOutputWithContext(context.Background())
+}
+
+func (i InviteAccepter) ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InviteAccepterOutput)
+}
+
+type InviteAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (InviteAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InviteAccepterOutput)(nil)).Elem()
+}
+
+func (o InviteAccepterOutput) ToInviteAccepterOutput() InviteAccepterOutput {
+	return o
+}
+
+func (o InviteAccepterOutput) ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InviteAccepterOutput{})
 }

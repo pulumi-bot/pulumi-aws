@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,17 +65,18 @@ type VpcAttachment struct {
 // NewVpcAttachment registers a new resource with the given unique name, arguments, and options.
 func NewVpcAttachment(ctx *pulumi.Context,
 	name string, args *VpcAttachmentArgs, opts ...pulumi.ResourceOption) (*VpcAttachment, error) {
-	if args == nil || args.SubnetIds == nil {
-		return nil, errors.New("missing required argument 'SubnetIds'")
-	}
-	if args == nil || args.TransitGatewayId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayId'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &VpcAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetIds'")
+	}
+	if args.TransitGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayId'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource VpcAttachment
 	err := ctx.RegisterResource("aws:ec2transitgateway/vpcAttachment:VpcAttachment", name, args, &resource, opts...)
@@ -184,4 +186,43 @@ type VpcAttachmentArgs struct {
 
 func (VpcAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAttachmentArgs)(nil)).Elem()
+}
+
+type VpcAttachmentInput interface {
+	pulumi.Input
+
+	ToVpcAttachmentOutput() VpcAttachmentOutput
+	ToVpcAttachmentOutputWithContext(ctx context.Context) VpcAttachmentOutput
+}
+
+func (VpcAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAttachment)(nil)).Elem()
+}
+
+func (i VpcAttachment) ToVpcAttachmentOutput() VpcAttachmentOutput {
+	return i.ToVpcAttachmentOutputWithContext(context.Background())
+}
+
+func (i VpcAttachment) ToVpcAttachmentOutputWithContext(ctx context.Context) VpcAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAttachmentOutput)
+}
+
+type VpcAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAttachmentOutput)(nil)).Elem()
+}
+
+func (o VpcAttachmentOutput) ToVpcAttachmentOutput() VpcAttachmentOutput {
+	return o
+}
+
+func (o VpcAttachmentOutput) ToVpcAttachmentOutputWithContext(ctx context.Context) VpcAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcAttachmentOutput{})
 }

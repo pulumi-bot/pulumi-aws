@@ -4,6 +4,7 @@
 package appmesh
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,14 +118,15 @@ type VirtualGateway struct {
 // NewVirtualGateway registers a new resource with the given unique name, arguments, and options.
 func NewVirtualGateway(ctx *pulumi.Context,
 	name string, args *VirtualGatewayArgs, opts ...pulumi.ResourceOption) (*VirtualGateway, error) {
-	if args == nil || args.MeshName == nil {
-		return nil, errors.New("missing required argument 'MeshName'")
-	}
-	if args == nil || args.Spec == nil {
-		return nil, errors.New("missing required argument 'Spec'")
-	}
 	if args == nil {
-		args = &VirtualGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MeshName == nil {
+		return nil, errors.New("invalid value for required argument 'MeshName'")
+	}
+	if args.Spec == nil {
+		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
 	var resource VirtualGateway
 	err := ctx.RegisterResource("aws:appmesh/virtualGateway:VirtualGateway", name, args, &resource, opts...)
@@ -222,4 +224,43 @@ type VirtualGatewayArgs struct {
 
 func (VirtualGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualGatewayArgs)(nil)).Elem()
+}
+
+type VirtualGatewayInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayOutput() VirtualGatewayOutput
+	ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput
+}
+
+func (VirtualGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGateway)(nil)).Elem()
+}
+
+func (i VirtualGateway) ToVirtualGatewayOutput() VirtualGatewayOutput {
+	return i.ToVirtualGatewayOutputWithContext(context.Background())
+}
+
+func (i VirtualGateway) ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayOutput)
+}
+
+type VirtualGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayOutput)(nil)).Elem()
+}
+
+func (o VirtualGatewayOutput) ToVirtualGatewayOutput() VirtualGatewayOutput {
+	return o
+}
+
+func (o VirtualGatewayOutput) ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualGatewayOutput{})
 }
