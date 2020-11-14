@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,20 +44,21 @@ type Proxy struct {
 // NewProxy registers a new resource with the given unique name, arguments, and options.
 func NewProxy(ctx *pulumi.Context,
 	name string, args *ProxyArgs, opts ...pulumi.ResourceOption) (*Proxy, error) {
-	if args == nil || args.Auths == nil {
-		return nil, errors.New("missing required argument 'Auths'")
-	}
-	if args == nil || args.EngineFamily == nil {
-		return nil, errors.New("missing required argument 'EngineFamily'")
-	}
-	if args == nil || args.RoleArn == nil {
-		return nil, errors.New("missing required argument 'RoleArn'")
-	}
-	if args == nil || args.VpcSubnetIds == nil {
-		return nil, errors.New("missing required argument 'VpcSubnetIds'")
-	}
 	if args == nil {
-		args = &ProxyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Auths == nil {
+		return nil, errors.New("invalid value for required argument 'Auths'")
+	}
+	if args.EngineFamily == nil {
+		return nil, errors.New("invalid value for required argument 'EngineFamily'")
+	}
+	if args.RoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'RoleArn'")
+	}
+	if args.VpcSubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'VpcSubnetIds'")
 	}
 	var resource Proxy
 	err := ctx.RegisterResource("aws:rds/proxy:Proxy", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type ProxyArgs struct {
 
 func (ProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*proxyArgs)(nil)).Elem()
+}
+
+type ProxyInput interface {
+	pulumi.Input
+
+	ToProxyOutput() ProxyOutput
+	ToProxyOutputWithContext(ctx context.Context) ProxyOutput
+}
+
+func (Proxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*Proxy)(nil)).Elem()
+}
+
+func (i Proxy) ToProxyOutput() ProxyOutput {
+	return i.ToProxyOutputWithContext(context.Background())
+}
+
+func (i Proxy) ToProxyOutputWithContext(ctx context.Context) ProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyOutput)
+}
+
+type ProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyOutput)(nil)).Elem()
+}
+
+func (o ProxyOutput) ToProxyOutput() ProxyOutput {
+	return o
+}
+
+func (o ProxyOutput) ToProxyOutputWithContext(ctx context.Context) ProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProxyOutput{})
 }

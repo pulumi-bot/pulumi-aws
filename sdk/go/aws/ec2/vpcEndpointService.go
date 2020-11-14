@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -105,14 +106,15 @@ type VpcEndpointService struct {
 // NewVpcEndpointService registers a new resource with the given unique name, arguments, and options.
 func NewVpcEndpointService(ctx *pulumi.Context,
 	name string, args *VpcEndpointServiceArgs, opts ...pulumi.ResourceOption) (*VpcEndpointService, error) {
-	if args == nil || args.AcceptanceRequired == nil {
-		return nil, errors.New("missing required argument 'AcceptanceRequired'")
-	}
-	if args == nil || args.NetworkLoadBalancerArns == nil {
-		return nil, errors.New("missing required argument 'NetworkLoadBalancerArns'")
-	}
 	if args == nil {
-		args = &VpcEndpointServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AcceptanceRequired == nil {
+		return nil, errors.New("invalid value for required argument 'AcceptanceRequired'")
+	}
+	if args.NetworkLoadBalancerArns == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkLoadBalancerArns'")
 	}
 	var resource VpcEndpointService
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointService:VpcEndpointService", name, args, &resource, opts...)
@@ -218,4 +220,43 @@ type VpcEndpointServiceArgs struct {
 
 func (VpcEndpointServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointServiceArgs)(nil)).Elem()
+}
+
+type VpcEndpointServiceInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceOutput() VpcEndpointServiceOutput
+	ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput
+}
+
+func (VpcEndpointService) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointService)(nil)).Elem()
+}
+
+func (i VpcEndpointService) ToVpcEndpointServiceOutput() VpcEndpointServiceOutput {
+	return i.ToVpcEndpointServiceOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointService) ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceOutput)
+}
+
+type VpcEndpointServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointServiceOutput)(nil)).Elem()
+}
+
+func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutput() VpcEndpointServiceOutput {
+	return o
+}
+
+func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcEndpointServiceOutput{})
 }

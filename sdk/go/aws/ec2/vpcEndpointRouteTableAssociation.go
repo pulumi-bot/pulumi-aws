@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,14 +48,15 @@ type VpcEndpointRouteTableAssociation struct {
 // NewVpcEndpointRouteTableAssociation registers a new resource with the given unique name, arguments, and options.
 func NewVpcEndpointRouteTableAssociation(ctx *pulumi.Context,
 	name string, args *VpcEndpointRouteTableAssociationArgs, opts ...pulumi.ResourceOption) (*VpcEndpointRouteTableAssociation, error) {
-	if args == nil || args.RouteTableId == nil {
-		return nil, errors.New("missing required argument 'RouteTableId'")
-	}
-	if args == nil || args.VpcEndpointId == nil {
-		return nil, errors.New("missing required argument 'VpcEndpointId'")
-	}
 	if args == nil {
-		args = &VpcEndpointRouteTableAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTableId'")
+	}
+	if args.VpcEndpointId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcEndpointId'")
 	}
 	var resource VpcEndpointRouteTableAssociation
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation", name, args, &resource, opts...)
@@ -112,4 +114,43 @@ type VpcEndpointRouteTableAssociationArgs struct {
 
 func (VpcEndpointRouteTableAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointRouteTableAssociationArgs)(nil)).Elem()
+}
+
+type VpcEndpointRouteTableAssociationInput interface {
+	pulumi.Input
+
+	ToVpcEndpointRouteTableAssociationOutput() VpcEndpointRouteTableAssociationOutput
+	ToVpcEndpointRouteTableAssociationOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationOutput
+}
+
+func (VpcEndpointRouteTableAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointRouteTableAssociation)(nil)).Elem()
+}
+
+func (i VpcEndpointRouteTableAssociation) ToVpcEndpointRouteTableAssociationOutput() VpcEndpointRouteTableAssociationOutput {
+	return i.ToVpcEndpointRouteTableAssociationOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointRouteTableAssociation) ToVpcEndpointRouteTableAssociationOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointRouteTableAssociationOutput)
+}
+
+type VpcEndpointRouteTableAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointRouteTableAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointRouteTableAssociationOutput)(nil)).Elem()
+}
+
+func (o VpcEndpointRouteTableAssociationOutput) ToVpcEndpointRouteTableAssociationOutput() VpcEndpointRouteTableAssociationOutput {
+	return o
+}
+
+func (o VpcEndpointRouteTableAssociationOutput) ToVpcEndpointRouteTableAssociationOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcEndpointRouteTableAssociationOutput{})
 }

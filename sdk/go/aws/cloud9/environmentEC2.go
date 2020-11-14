@@ -4,6 +4,7 @@
 package cloud9
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,11 +61,12 @@ type EnvironmentEC2 struct {
 // NewEnvironmentEC2 registers a new resource with the given unique name, arguments, and options.
 func NewEnvironmentEC2(ctx *pulumi.Context,
 	name string, args *EnvironmentEC2Args, opts ...pulumi.ResourceOption) (*EnvironmentEC2, error) {
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
 	if args == nil {
-		args = &EnvironmentEC2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
 	var resource EnvironmentEC2
 	err := ctx.RegisterResource("aws:cloud9/environmentEC2:EnvironmentEC2", name, args, &resource, opts...)
@@ -170,4 +172,43 @@ type EnvironmentEC2Args struct {
 
 func (EnvironmentEC2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentEC2Args)(nil)).Elem()
+}
+
+type EnvironmentEC2Input interface {
+	pulumi.Input
+
+	ToEnvironmentEC2Output() EnvironmentEC2Output
+	ToEnvironmentEC2OutputWithContext(ctx context.Context) EnvironmentEC2Output
+}
+
+func (EnvironmentEC2) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentEC2)(nil)).Elem()
+}
+
+func (i EnvironmentEC2) ToEnvironmentEC2Output() EnvironmentEC2Output {
+	return i.ToEnvironmentEC2OutputWithContext(context.Background())
+}
+
+func (i EnvironmentEC2) ToEnvironmentEC2OutputWithContext(ctx context.Context) EnvironmentEC2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentEC2Output)
+}
+
+type EnvironmentEC2Output struct {
+	*pulumi.OutputState
+}
+
+func (EnvironmentEC2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentEC2Output)(nil)).Elem()
+}
+
+func (o EnvironmentEC2Output) ToEnvironmentEC2Output() EnvironmentEC2Output {
+	return o
+}
+
+func (o EnvironmentEC2Output) ToEnvironmentEC2OutputWithContext(ctx context.Context) EnvironmentEC2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnvironmentEC2Output{})
 }

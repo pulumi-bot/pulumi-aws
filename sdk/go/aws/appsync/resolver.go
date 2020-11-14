@@ -4,6 +4,7 @@
 package appsync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,23 +40,24 @@ type Resolver struct {
 // NewResolver registers a new resource with the given unique name, arguments, and options.
 func NewResolver(ctx *pulumi.Context,
 	name string, args *ResolverArgs, opts ...pulumi.ResourceOption) (*Resolver, error) {
-	if args == nil || args.ApiId == nil {
-		return nil, errors.New("missing required argument 'ApiId'")
-	}
-	if args == nil || args.Field == nil {
-		return nil, errors.New("missing required argument 'Field'")
-	}
-	if args == nil || args.RequestTemplate == nil {
-		return nil, errors.New("missing required argument 'RequestTemplate'")
-	}
-	if args == nil || args.ResponseTemplate == nil {
-		return nil, errors.New("missing required argument 'ResponseTemplate'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ResolverArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
+	}
+	if args.Field == nil {
+		return nil, errors.New("invalid value for required argument 'Field'")
+	}
+	if args.RequestTemplate == nil {
+		return nil, errors.New("invalid value for required argument 'RequestTemplate'")
+	}
+	if args.ResponseTemplate == nil {
+		return nil, errors.New("invalid value for required argument 'ResponseTemplate'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Resolver
 	err := ctx.RegisterResource("aws:appsync/resolver:Resolver", name, args, &resource, opts...)
@@ -173,4 +175,43 @@ type ResolverArgs struct {
 
 func (ResolverArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resolverArgs)(nil)).Elem()
+}
+
+type ResolverInput interface {
+	pulumi.Input
+
+	ToResolverOutput() ResolverOutput
+	ToResolverOutputWithContext(ctx context.Context) ResolverOutput
+}
+
+func (Resolver) ElementType() reflect.Type {
+	return reflect.TypeOf((*Resolver)(nil)).Elem()
+}
+
+func (i Resolver) ToResolverOutput() ResolverOutput {
+	return i.ToResolverOutputWithContext(context.Background())
+}
+
+func (i Resolver) ToResolverOutputWithContext(ctx context.Context) ResolverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverOutput)
+}
+
+type ResolverOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverOutput)(nil)).Elem()
+}
+
+func (o ResolverOutput) ToResolverOutput() ResolverOutput {
+	return o
+}
+
+func (o ResolverOutput) ToResolverOutputWithContext(ctx context.Context) ResolverOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResolverOutput{})
 }

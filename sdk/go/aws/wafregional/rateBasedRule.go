@@ -4,6 +4,7 @@
 package wafregional
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,17 +79,18 @@ type RateBasedRule struct {
 // NewRateBasedRule registers a new resource with the given unique name, arguments, and options.
 func NewRateBasedRule(ctx *pulumi.Context,
 	name string, args *RateBasedRuleArgs, opts ...pulumi.ResourceOption) (*RateBasedRule, error) {
-	if args == nil || args.MetricName == nil {
-		return nil, errors.New("missing required argument 'MetricName'")
-	}
-	if args == nil || args.RateKey == nil {
-		return nil, errors.New("missing required argument 'RateKey'")
-	}
-	if args == nil || args.RateLimit == nil {
-		return nil, errors.New("missing required argument 'RateLimit'")
-	}
 	if args == nil {
-		args = &RateBasedRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MetricName == nil {
+		return nil, errors.New("invalid value for required argument 'MetricName'")
+	}
+	if args.RateKey == nil {
+		return nil, errors.New("invalid value for required argument 'RateKey'")
+	}
+	if args.RateLimit == nil {
+		return nil, errors.New("invalid value for required argument 'RateLimit'")
 	}
 	var resource RateBasedRule
 	err := ctx.RegisterResource("aws:wafregional/rateBasedRule:RateBasedRule", name, args, &resource, opts...)
@@ -182,4 +184,43 @@ type RateBasedRuleArgs struct {
 
 func (RateBasedRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rateBasedRuleArgs)(nil)).Elem()
+}
+
+type RateBasedRuleInput interface {
+	pulumi.Input
+
+	ToRateBasedRuleOutput() RateBasedRuleOutput
+	ToRateBasedRuleOutputWithContext(ctx context.Context) RateBasedRuleOutput
+}
+
+func (RateBasedRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRule)(nil)).Elem()
+}
+
+func (i RateBasedRule) ToRateBasedRuleOutput() RateBasedRuleOutput {
+	return i.ToRateBasedRuleOutputWithContext(context.Background())
+}
+
+func (i RateBasedRule) ToRateBasedRuleOutputWithContext(ctx context.Context) RateBasedRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRuleOutput)
+}
+
+type RateBasedRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RateBasedRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRuleOutput)(nil)).Elem()
+}
+
+func (o RateBasedRuleOutput) ToRateBasedRuleOutput() RateBasedRuleOutput {
+	return o
+}
+
+func (o RateBasedRuleOutput) ToRateBasedRuleOutputWithContext(ctx context.Context) RateBasedRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RateBasedRuleOutput{})
 }

@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,17 +94,18 @@ type PeeringAttachment struct {
 // NewPeeringAttachment registers a new resource with the given unique name, arguments, and options.
 func NewPeeringAttachment(ctx *pulumi.Context,
 	name string, args *PeeringAttachmentArgs, opts ...pulumi.ResourceOption) (*PeeringAttachment, error) {
-	if args == nil || args.PeerRegion == nil {
-		return nil, errors.New("missing required argument 'PeerRegion'")
-	}
-	if args == nil || args.PeerTransitGatewayId == nil {
-		return nil, errors.New("missing required argument 'PeerTransitGatewayId'")
-	}
-	if args == nil || args.TransitGatewayId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayId'")
-	}
 	if args == nil {
-		args = &PeeringAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PeerRegion == nil {
+		return nil, errors.New("invalid value for required argument 'PeerRegion'")
+	}
+	if args.PeerTransitGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'PeerTransitGatewayId'")
+	}
+	if args.TransitGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayId'")
 	}
 	var resource PeeringAttachment
 	err := ctx.RegisterResource("aws:ec2transitgateway/peeringAttachment:PeeringAttachment", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type PeeringAttachmentArgs struct {
 
 func (PeeringAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeringAttachmentArgs)(nil)).Elem()
+}
+
+type PeeringAttachmentInput interface {
+	pulumi.Input
+
+	ToPeeringAttachmentOutput() PeeringAttachmentOutput
+	ToPeeringAttachmentOutputWithContext(ctx context.Context) PeeringAttachmentOutput
+}
+
+func (PeeringAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeeringAttachment)(nil)).Elem()
+}
+
+func (i PeeringAttachment) ToPeeringAttachmentOutput() PeeringAttachmentOutput {
+	return i.ToPeeringAttachmentOutputWithContext(context.Background())
+}
+
+func (i PeeringAttachment) ToPeeringAttachmentOutputWithContext(ctx context.Context) PeeringAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringAttachmentOutput)
+}
+
+type PeeringAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (PeeringAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeeringAttachmentOutput)(nil)).Elem()
+}
+
+func (o PeeringAttachmentOutput) ToPeeringAttachmentOutput() PeeringAttachmentOutput {
+	return o
+}
+
+func (o PeeringAttachmentOutput) ToPeeringAttachmentOutputWithContext(ctx context.Context) PeeringAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PeeringAttachmentOutput{})
 }

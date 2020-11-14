@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,14 +61,15 @@ type VpcEndpointServiceAllowedPrinciple struct {
 // NewVpcEndpointServiceAllowedPrinciple registers a new resource with the given unique name, arguments, and options.
 func NewVpcEndpointServiceAllowedPrinciple(ctx *pulumi.Context,
 	name string, args *VpcEndpointServiceAllowedPrincipleArgs, opts ...pulumi.ResourceOption) (*VpcEndpointServiceAllowedPrinciple, error) {
-	if args == nil || args.PrincipalArn == nil {
-		return nil, errors.New("missing required argument 'PrincipalArn'")
-	}
-	if args == nil || args.VpcEndpointServiceId == nil {
-		return nil, errors.New("missing required argument 'VpcEndpointServiceId'")
-	}
 	if args == nil {
-		args = &VpcEndpointServiceAllowedPrincipleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PrincipalArn == nil {
+		return nil, errors.New("invalid value for required argument 'PrincipalArn'")
+	}
+	if args.VpcEndpointServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcEndpointServiceId'")
 	}
 	var resource VpcEndpointServiceAllowedPrinciple
 	err := ctx.RegisterResource("aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple", name, args, &resource, opts...)
@@ -125,4 +127,43 @@ type VpcEndpointServiceAllowedPrincipleArgs struct {
 
 func (VpcEndpointServiceAllowedPrincipleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointServiceAllowedPrincipleArgs)(nil)).Elem()
+}
+
+type VpcEndpointServiceAllowedPrincipleInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceAllowedPrincipleOutput() VpcEndpointServiceAllowedPrincipleOutput
+	ToVpcEndpointServiceAllowedPrincipleOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrincipleOutput
+}
+
+func (VpcEndpointServiceAllowedPrinciple) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointServiceAllowedPrinciple)(nil)).Elem()
+}
+
+func (i VpcEndpointServiceAllowedPrinciple) ToVpcEndpointServiceAllowedPrincipleOutput() VpcEndpointServiceAllowedPrincipleOutput {
+	return i.ToVpcEndpointServiceAllowedPrincipleOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointServiceAllowedPrinciple) ToVpcEndpointServiceAllowedPrincipleOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrincipleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceAllowedPrincipleOutput)
+}
+
+type VpcEndpointServiceAllowedPrincipleOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointServiceAllowedPrincipleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointServiceAllowedPrincipleOutput)(nil)).Elem()
+}
+
+func (o VpcEndpointServiceAllowedPrincipleOutput) ToVpcEndpointServiceAllowedPrincipleOutput() VpcEndpointServiceAllowedPrincipleOutput {
+	return o
+}
+
+func (o VpcEndpointServiceAllowedPrincipleOutput) ToVpcEndpointServiceAllowedPrincipleOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrincipleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcEndpointServiceAllowedPrincipleOutput{})
 }

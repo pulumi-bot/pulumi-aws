@@ -4,6 +4,7 @@
 package ssm
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -144,29 +145,30 @@ type MaintenanceWindowTask struct {
 // NewMaintenanceWindowTask registers a new resource with the given unique name, arguments, and options.
 func NewMaintenanceWindowTask(ctx *pulumi.Context,
 	name string, args *MaintenanceWindowTaskArgs, opts ...pulumi.ResourceOption) (*MaintenanceWindowTask, error) {
-	if args == nil || args.MaxConcurrency == nil {
-		return nil, errors.New("missing required argument 'MaxConcurrency'")
-	}
-	if args == nil || args.MaxErrors == nil {
-		return nil, errors.New("missing required argument 'MaxErrors'")
-	}
-	if args == nil || args.ServiceRoleArn == nil {
-		return nil, errors.New("missing required argument 'ServiceRoleArn'")
-	}
-	if args == nil || args.Targets == nil {
-		return nil, errors.New("missing required argument 'Targets'")
-	}
-	if args == nil || args.TaskArn == nil {
-		return nil, errors.New("missing required argument 'TaskArn'")
-	}
-	if args == nil || args.TaskType == nil {
-		return nil, errors.New("missing required argument 'TaskType'")
-	}
-	if args == nil || args.WindowId == nil {
-		return nil, errors.New("missing required argument 'WindowId'")
-	}
 	if args == nil {
-		args = &MaintenanceWindowTaskArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MaxConcurrency == nil {
+		return nil, errors.New("invalid value for required argument 'MaxConcurrency'")
+	}
+	if args.MaxErrors == nil {
+		return nil, errors.New("invalid value for required argument 'MaxErrors'")
+	}
+	if args.ServiceRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceRoleArn'")
+	}
+	if args.Targets == nil {
+		return nil, errors.New("invalid value for required argument 'Targets'")
+	}
+	if args.TaskArn == nil {
+		return nil, errors.New("invalid value for required argument 'TaskArn'")
+	}
+	if args.TaskType == nil {
+		return nil, errors.New("invalid value for required argument 'TaskType'")
+	}
+	if args.WindowId == nil {
+		return nil, errors.New("invalid value for required argument 'WindowId'")
 	}
 	var resource MaintenanceWindowTask
 	err := ctx.RegisterResource("aws:ssm/maintenanceWindowTask:MaintenanceWindowTask", name, args, &resource, opts...)
@@ -296,4 +298,43 @@ type MaintenanceWindowTaskArgs struct {
 
 func (MaintenanceWindowTaskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*maintenanceWindowTaskArgs)(nil)).Elem()
+}
+
+type MaintenanceWindowTaskInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowTaskOutput() MaintenanceWindowTaskOutput
+	ToMaintenanceWindowTaskOutputWithContext(ctx context.Context) MaintenanceWindowTaskOutput
+}
+
+func (MaintenanceWindowTask) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowTask)(nil)).Elem()
+}
+
+func (i MaintenanceWindowTask) ToMaintenanceWindowTaskOutput() MaintenanceWindowTaskOutput {
+	return i.ToMaintenanceWindowTaskOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowTask) ToMaintenanceWindowTaskOutputWithContext(ctx context.Context) MaintenanceWindowTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowTaskOutput)
+}
+
+type MaintenanceWindowTaskOutput struct {
+	*pulumi.OutputState
+}
+
+func (MaintenanceWindowTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowTaskOutput)(nil)).Elem()
+}
+
+func (o MaintenanceWindowTaskOutput) ToMaintenanceWindowTaskOutput() MaintenanceWindowTaskOutput {
+	return o
+}
+
+func (o MaintenanceWindowTaskOutput) ToMaintenanceWindowTaskOutputWithContext(ctx context.Context) MaintenanceWindowTaskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MaintenanceWindowTaskOutput{})
 }

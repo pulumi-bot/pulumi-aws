@@ -4,6 +4,7 @@
 package shield
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,11 +73,12 @@ type Protection struct {
 // NewProtection registers a new resource with the given unique name, arguments, and options.
 func NewProtection(ctx *pulumi.Context,
 	name string, args *ProtectionArgs, opts ...pulumi.ResourceOption) (*Protection, error) {
-	if args == nil || args.ResourceArn == nil {
-		return nil, errors.New("missing required argument 'ResourceArn'")
-	}
 	if args == nil {
-		args = &ProtectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceArn == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceArn'")
 	}
 	var resource Protection
 	err := ctx.RegisterResource("aws:shield/protection:Protection", name, args, &resource, opts...)
@@ -134,4 +136,43 @@ type ProtectionArgs struct {
 
 func (ProtectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectionArgs)(nil)).Elem()
+}
+
+type ProtectionInput interface {
+	pulumi.Input
+
+	ToProtectionOutput() ProtectionOutput
+	ToProtectionOutputWithContext(ctx context.Context) ProtectionOutput
+}
+
+func (Protection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Protection)(nil)).Elem()
+}
+
+func (i Protection) ToProtectionOutput() ProtectionOutput {
+	return i.ToProtectionOutputWithContext(context.Background())
+}
+
+func (i Protection) ToProtectionOutputWithContext(ctx context.Context) ProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectionOutput)
+}
+
+type ProtectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectionOutput)(nil)).Elem()
+}
+
+func (o ProtectionOutput) ToProtectionOutput() ProtectionOutput {
+	return o
+}
+
+func (o ProtectionOutput) ToProtectionOutputWithContext(ctx context.Context) ProtectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectionOutput{})
 }

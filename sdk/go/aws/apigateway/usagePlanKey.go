@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,17 +74,18 @@ type UsagePlanKey struct {
 // NewUsagePlanKey registers a new resource with the given unique name, arguments, and options.
 func NewUsagePlanKey(ctx *pulumi.Context,
 	name string, args *UsagePlanKeyArgs, opts ...pulumi.ResourceOption) (*UsagePlanKey, error) {
-	if args == nil || args.KeyId == nil {
-		return nil, errors.New("missing required argument 'KeyId'")
-	}
-	if args == nil || args.KeyType == nil {
-		return nil, errors.New("missing required argument 'KeyType'")
-	}
-	if args == nil || args.UsagePlanId == nil {
-		return nil, errors.New("missing required argument 'UsagePlanId'")
-	}
 	if args == nil {
-		args = &UsagePlanKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
+	}
+	if args.KeyType == nil {
+		return nil, errors.New("invalid value for required argument 'KeyType'")
+	}
+	if args.UsagePlanId == nil {
+		return nil, errors.New("invalid value for required argument 'UsagePlanId'")
 	}
 	var resource UsagePlanKey
 	err := ctx.RegisterResource("aws:apigateway/usagePlanKey:UsagePlanKey", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type UsagePlanKeyArgs struct {
 
 func (UsagePlanKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*usagePlanKeyArgs)(nil)).Elem()
+}
+
+type UsagePlanKeyInput interface {
+	pulumi.Input
+
+	ToUsagePlanKeyOutput() UsagePlanKeyOutput
+	ToUsagePlanKeyOutputWithContext(ctx context.Context) UsagePlanKeyOutput
+}
+
+func (UsagePlanKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanKey)(nil)).Elem()
+}
+
+func (i UsagePlanKey) ToUsagePlanKeyOutput() UsagePlanKeyOutput {
+	return i.ToUsagePlanKeyOutputWithContext(context.Background())
+}
+
+func (i UsagePlanKey) ToUsagePlanKeyOutputWithContext(ctx context.Context) UsagePlanKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanKeyOutput)
+}
+
+type UsagePlanKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (UsagePlanKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanKeyOutput)(nil)).Elem()
+}
+
+func (o UsagePlanKeyOutput) ToUsagePlanKeyOutput() UsagePlanKeyOutput {
+	return o
+}
+
+func (o UsagePlanKeyOutput) ToUsagePlanKeyOutputWithContext(ctx context.Context) UsagePlanKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UsagePlanKeyOutput{})
 }

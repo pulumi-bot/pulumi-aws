@@ -4,6 +4,7 @@
 package cur
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,29 +81,30 @@ type ReportDefinition struct {
 // NewReportDefinition registers a new resource with the given unique name, arguments, and options.
 func NewReportDefinition(ctx *pulumi.Context,
 	name string, args *ReportDefinitionArgs, opts ...pulumi.ResourceOption) (*ReportDefinition, error) {
-	if args == nil || args.AdditionalSchemaElements == nil {
-		return nil, errors.New("missing required argument 'AdditionalSchemaElements'")
-	}
-	if args == nil || args.Compression == nil {
-		return nil, errors.New("missing required argument 'Compression'")
-	}
-	if args == nil || args.Format == nil {
-		return nil, errors.New("missing required argument 'Format'")
-	}
-	if args == nil || args.ReportName == nil {
-		return nil, errors.New("missing required argument 'ReportName'")
-	}
-	if args == nil || args.S3Bucket == nil {
-		return nil, errors.New("missing required argument 'S3Bucket'")
-	}
-	if args == nil || args.S3Region == nil {
-		return nil, errors.New("missing required argument 'S3Region'")
-	}
-	if args == nil || args.TimeUnit == nil {
-		return nil, errors.New("missing required argument 'TimeUnit'")
-	}
 	if args == nil {
-		args = &ReportDefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AdditionalSchemaElements == nil {
+		return nil, errors.New("invalid value for required argument 'AdditionalSchemaElements'")
+	}
+	if args.Compression == nil {
+		return nil, errors.New("invalid value for required argument 'Compression'")
+	}
+	if args.Format == nil {
+		return nil, errors.New("invalid value for required argument 'Format'")
+	}
+	if args.ReportName == nil {
+		return nil, errors.New("invalid value for required argument 'ReportName'")
+	}
+	if args.S3Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'S3Bucket'")
+	}
+	if args.S3Region == nil {
+		return nil, errors.New("invalid value for required argument 'S3Region'")
+	}
+	if args.TimeUnit == nil {
+		return nil, errors.New("invalid value for required argument 'TimeUnit'")
 	}
 	var resource ReportDefinition
 	err := ctx.RegisterResource("aws:cur/reportDefinition:ReportDefinition", name, args, &resource, opts...)
@@ -232,4 +234,43 @@ type ReportDefinitionArgs struct {
 
 func (ReportDefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*reportDefinitionArgs)(nil)).Elem()
+}
+
+type ReportDefinitionInput interface {
+	pulumi.Input
+
+	ToReportDefinitionOutput() ReportDefinitionOutput
+	ToReportDefinitionOutputWithContext(ctx context.Context) ReportDefinitionOutput
+}
+
+func (ReportDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportDefinition)(nil)).Elem()
+}
+
+func (i ReportDefinition) ToReportDefinitionOutput() ReportDefinitionOutput {
+	return i.ToReportDefinitionOutputWithContext(context.Background())
+}
+
+func (i ReportDefinition) ToReportDefinitionOutputWithContext(ctx context.Context) ReportDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportDefinitionOutput)
+}
+
+type ReportDefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReportDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportDefinitionOutput)(nil)).Elem()
+}
+
+func (o ReportDefinitionOutput) ToReportDefinitionOutput() ReportDefinitionOutput {
+	return o
+}
+
+func (o ReportDefinitionOutput) ToReportDefinitionOutputWithContext(ctx context.Context) ReportDefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReportDefinitionOutput{})
 }

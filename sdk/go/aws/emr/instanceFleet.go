@@ -4,6 +4,7 @@
 package emr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -32,11 +33,12 @@ type InstanceFleet struct {
 // NewInstanceFleet registers a new resource with the given unique name, arguments, and options.
 func NewInstanceFleet(ctx *pulumi.Context,
 	name string, args *InstanceFleetArgs, opts ...pulumi.ResourceOption) (*InstanceFleet, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &InstanceFleetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource InstanceFleet
 	err := ctx.RegisterResource("aws:emr/instanceFleet:InstanceFleet", name, args, &resource, opts...)
@@ -130,4 +132,43 @@ type InstanceFleetArgs struct {
 
 func (InstanceFleetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceFleetArgs)(nil)).Elem()
+}
+
+type InstanceFleetInput interface {
+	pulumi.Input
+
+	ToInstanceFleetOutput() InstanceFleetOutput
+	ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput
+}
+
+func (InstanceFleet) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFleet)(nil)).Elem()
+}
+
+func (i InstanceFleet) ToInstanceFleetOutput() InstanceFleetOutput {
+	return i.ToInstanceFleetOutputWithContext(context.Background())
+}
+
+func (i InstanceFleet) ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetOutput)
+}
+
+type InstanceFleetOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFleetOutput)(nil)).Elem()
+}
+
+func (o InstanceFleetOutput) ToInstanceFleetOutput() InstanceFleetOutput {
+	return o
+}
+
+func (o InstanceFleetOutput) ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceFleetOutput{})
 }
