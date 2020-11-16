@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['LoadBalancer']
 
-warnings.warn("aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer", DeprecationWarning)
+warnings.warn("""aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer""", DeprecationWarning)
 
 
 class LoadBalancer(pulumi.CustomResource):
-    warnings.warn("aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer", DeprecationWarning)
+    warnings.warn("""aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

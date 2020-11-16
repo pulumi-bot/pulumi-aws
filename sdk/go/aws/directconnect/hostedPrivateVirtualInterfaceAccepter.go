@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -166,4 +167,43 @@ type HostedPrivateVirtualInterfaceAccepterArgs struct {
 
 func (HostedPrivateVirtualInterfaceAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostedPrivateVirtualInterfaceAccepterArgs)(nil)).Elem()
+}
+
+type HostedPrivateVirtualInterfaceAccepterInput interface {
+	pulumi.Input
+
+	ToHostedPrivateVirtualInterfaceAccepterOutput() HostedPrivateVirtualInterfaceAccepterOutput
+	ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceAccepterOutput
+}
+
+func (HostedPrivateVirtualInterfaceAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedPrivateVirtualInterfaceAccepter)(nil)).Elem()
+}
+
+func (i HostedPrivateVirtualInterfaceAccepter) ToHostedPrivateVirtualInterfaceAccepterOutput() HostedPrivateVirtualInterfaceAccepterOutput {
+	return i.ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(context.Background())
+}
+
+func (i HostedPrivateVirtualInterfaceAccepter) ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedPrivateVirtualInterfaceAccepterOutput)
+}
+
+type HostedPrivateVirtualInterfaceAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedPrivateVirtualInterfaceAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedPrivateVirtualInterfaceAccepterOutput)(nil)).Elem()
+}
+
+func (o HostedPrivateVirtualInterfaceAccepterOutput) ToHostedPrivateVirtualInterfaceAccepterOutput() HostedPrivateVirtualInterfaceAccepterOutput {
+	return o
+}
+
+func (o HostedPrivateVirtualInterfaceAccepterOutput) ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostedPrivateVirtualInterfaceAccepterOutput{})
 }

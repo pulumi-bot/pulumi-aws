@@ -4,6 +4,7 @@
 package secretsmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,4 +125,43 @@ type SecretPolicyArgs struct {
 
 func (SecretPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretPolicyArgs)(nil)).Elem()
+}
+
+type SecretPolicyInput interface {
+	pulumi.Input
+
+	ToSecretPolicyOutput() SecretPolicyOutput
+	ToSecretPolicyOutputWithContext(ctx context.Context) SecretPolicyOutput
+}
+
+func (SecretPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPolicy)(nil)).Elem()
+}
+
+func (i SecretPolicy) ToSecretPolicyOutput() SecretPolicyOutput {
+	return i.ToSecretPolicyOutputWithContext(context.Background())
+}
+
+func (i SecretPolicy) ToSecretPolicyOutputWithContext(ctx context.Context) SecretPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPolicyOutput)
+}
+
+type SecretPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPolicyOutput)(nil)).Elem()
+}
+
+func (o SecretPolicyOutput) ToSecretPolicyOutput() SecretPolicyOutput {
+	return o
+}
+
+func (o SecretPolicyOutput) ToSecretPolicyOutputWithContext(ctx context.Context) SecretPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretPolicyOutput{})
 }

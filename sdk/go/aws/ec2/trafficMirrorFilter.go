@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -120,4 +121,43 @@ type TrafficMirrorFilterArgs struct {
 
 func (TrafficMirrorFilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficMirrorFilterArgs)(nil)).Elem()
+}
+
+type TrafficMirrorFilterInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterOutput() TrafficMirrorFilterOutput
+	ToTrafficMirrorFilterOutputWithContext(ctx context.Context) TrafficMirrorFilterOutput
+}
+
+func (TrafficMirrorFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilter)(nil)).Elem()
+}
+
+func (i TrafficMirrorFilter) ToTrafficMirrorFilterOutput() TrafficMirrorFilterOutput {
+	return i.ToTrafficMirrorFilterOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilter) ToTrafficMirrorFilterOutputWithContext(ctx context.Context) TrafficMirrorFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterOutput)
+}
+
+type TrafficMirrorFilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrafficMirrorFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterOutput)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterOutput) ToTrafficMirrorFilterOutput() TrafficMirrorFilterOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterOutput) ToTrafficMirrorFilterOutputWithContext(ctx context.Context) TrafficMirrorFilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrafficMirrorFilterOutput{})
 }

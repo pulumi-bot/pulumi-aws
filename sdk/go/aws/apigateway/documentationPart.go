@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,4 +135,43 @@ type DocumentationPartArgs struct {
 
 func (DocumentationPartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentationPartArgs)(nil)).Elem()
+}
+
+type DocumentationPartInput interface {
+	pulumi.Input
+
+	ToDocumentationPartOutput() DocumentationPartOutput
+	ToDocumentationPartOutputWithContext(ctx context.Context) DocumentationPartOutput
+}
+
+func (DocumentationPart) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPart)(nil)).Elem()
+}
+
+func (i DocumentationPart) ToDocumentationPartOutput() DocumentationPartOutput {
+	return i.ToDocumentationPartOutputWithContext(context.Background())
+}
+
+func (i DocumentationPart) ToDocumentationPartOutputWithContext(ctx context.Context) DocumentationPartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartOutput)
+}
+
+type DocumentationPartOutput struct {
+	*pulumi.OutputState
+}
+
+func (DocumentationPartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPartOutput)(nil)).Elem()
+}
+
+func (o DocumentationPartOutput) ToDocumentationPartOutput() DocumentationPartOutput {
+	return o
+}
+
+func (o DocumentationPartOutput) ToDocumentationPartOutputWithContext(ctx context.Context) DocumentationPartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DocumentationPartOutput{})
 }

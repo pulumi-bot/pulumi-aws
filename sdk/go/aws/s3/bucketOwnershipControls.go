@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,4 +88,43 @@ type BucketOwnershipControlsArgs struct {
 
 func (BucketOwnershipControlsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketOwnershipControlsArgs)(nil)).Elem()
+}
+
+type BucketOwnershipControlsInput interface {
+	pulumi.Input
+
+	ToBucketOwnershipControlsOutput() BucketOwnershipControlsOutput
+	ToBucketOwnershipControlsOutputWithContext(ctx context.Context) BucketOwnershipControlsOutput
+}
+
+func (BucketOwnershipControls) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOwnershipControls)(nil)).Elem()
+}
+
+func (i BucketOwnershipControls) ToBucketOwnershipControlsOutput() BucketOwnershipControlsOutput {
+	return i.ToBucketOwnershipControlsOutputWithContext(context.Background())
+}
+
+func (i BucketOwnershipControls) ToBucketOwnershipControlsOutputWithContext(ctx context.Context) BucketOwnershipControlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsOutput)
+}
+
+type BucketOwnershipControlsOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketOwnershipControlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOwnershipControlsOutput)(nil)).Elem()
+}
+
+func (o BucketOwnershipControlsOutput) ToBucketOwnershipControlsOutput() BucketOwnershipControlsOutput {
+	return o
+}
+
+func (o BucketOwnershipControlsOutput) ToBucketOwnershipControlsOutputWithContext(ctx context.Context) BucketOwnershipControlsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketOwnershipControlsOutput{})
 }

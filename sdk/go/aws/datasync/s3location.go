@@ -4,6 +4,7 @@
 package datasync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,4 +148,43 @@ type S3LocationArgs struct {
 
 func (S3LocationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*s3locationArgs)(nil)).Elem()
+}
+
+type S3LocationInput interface {
+	pulumi.Input
+
+	ToS3LocationOutput() S3LocationOutput
+	ToS3LocationOutputWithContext(ctx context.Context) S3LocationOutput
+}
+
+func (S3Location) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3Location)(nil)).Elem()
+}
+
+func (i S3Location) ToS3LocationOutput() S3LocationOutput {
+	return i.ToS3LocationOutputWithContext(context.Background())
+}
+
+func (i S3Location) ToS3LocationOutputWithContext(ctx context.Context) S3LocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationOutput)
+}
+
+type S3LocationOutput struct {
+	*pulumi.OutputState
+}
+
+func (S3LocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3LocationOutput)(nil)).Elem()
+}
+
+func (o S3LocationOutput) ToS3LocationOutput() S3LocationOutput {
+	return o
+}
+
+func (o S3LocationOutput) ToS3LocationOutputWithContext(ctx context.Context) S3LocationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(S3LocationOutput{})
 }

@@ -4,6 +4,7 @@
 package ssm
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -296,4 +297,43 @@ type MaintenanceWindowTaskArgs struct {
 
 func (MaintenanceWindowTaskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*maintenanceWindowTaskArgs)(nil)).Elem()
+}
+
+type MaintenanceWindowTaskInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowTaskOutput() MaintenanceWindowTaskOutput
+	ToMaintenanceWindowTaskOutputWithContext(ctx context.Context) MaintenanceWindowTaskOutput
+}
+
+func (MaintenanceWindowTask) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowTask)(nil)).Elem()
+}
+
+func (i MaintenanceWindowTask) ToMaintenanceWindowTaskOutput() MaintenanceWindowTaskOutput {
+	return i.ToMaintenanceWindowTaskOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowTask) ToMaintenanceWindowTaskOutputWithContext(ctx context.Context) MaintenanceWindowTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowTaskOutput)
+}
+
+type MaintenanceWindowTaskOutput struct {
+	*pulumi.OutputState
+}
+
+func (MaintenanceWindowTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowTaskOutput)(nil)).Elem()
+}
+
+func (o MaintenanceWindowTaskOutput) ToMaintenanceWindowTaskOutput() MaintenanceWindowTaskOutput {
+	return o
+}
+
+func (o MaintenanceWindowTaskOutput) ToMaintenanceWindowTaskOutputWithContext(ctx context.Context) MaintenanceWindowTaskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MaintenanceWindowTaskOutput{})
 }

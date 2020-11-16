@@ -4,6 +4,7 @@
 package kinesis
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -243,4 +244,43 @@ type AnalyticsApplicationArgs struct {
 
 func (AnalyticsApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsApplicationArgs)(nil)).Elem()
+}
+
+type AnalyticsApplicationInput interface {
+	pulumi.Input
+
+	ToAnalyticsApplicationOutput() AnalyticsApplicationOutput
+	ToAnalyticsApplicationOutputWithContext(ctx context.Context) AnalyticsApplicationOutput
+}
+
+func (AnalyticsApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsApplication)(nil)).Elem()
+}
+
+func (i AnalyticsApplication) ToAnalyticsApplicationOutput() AnalyticsApplicationOutput {
+	return i.ToAnalyticsApplicationOutputWithContext(context.Background())
+}
+
+func (i AnalyticsApplication) ToAnalyticsApplicationOutputWithContext(ctx context.Context) AnalyticsApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutput)
+}
+
+type AnalyticsApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsApplicationOutput)(nil)).Elem()
+}
+
+func (o AnalyticsApplicationOutput) ToAnalyticsApplicationOutput() AnalyticsApplicationOutput {
+	return o
+}
+
+func (o AnalyticsApplicationOutput) ToAnalyticsApplicationOutputWithContext(ctx context.Context) AnalyticsApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsApplicationOutput{})
 }
