@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,4 +129,43 @@ type AggregateAuthorizationArgs struct {
 
 func (AggregateAuthorizationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggregateAuthorizationArgs)(nil)).Elem()
+}
+
+type AggregateAuthorizationInput interface {
+	pulumi.Input
+
+	ToAggregateAuthorizationOutput() AggregateAuthorizationOutput
+	ToAggregateAuthorizationOutputWithContext(ctx context.Context) AggregateAuthorizationOutput
+}
+
+func (AggregateAuthorization) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateAuthorization)(nil)).Elem()
+}
+
+func (i AggregateAuthorization) ToAggregateAuthorizationOutput() AggregateAuthorizationOutput {
+	return i.ToAggregateAuthorizationOutputWithContext(context.Background())
+}
+
+func (i AggregateAuthorization) ToAggregateAuthorizationOutputWithContext(ctx context.Context) AggregateAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateAuthorizationOutput)
+}
+
+type AggregateAuthorizationOutput struct {
+	*pulumi.OutputState
+}
+
+func (AggregateAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateAuthorizationOutput)(nil)).Elem()
+}
+
+func (o AggregateAuthorizationOutput) ToAggregateAuthorizationOutput() AggregateAuthorizationOutput {
+	return o
+}
+
+func (o AggregateAuthorizationOutput) ToAggregateAuthorizationOutputWithContext(ctx context.Context) AggregateAuthorizationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AggregateAuthorizationOutput{})
 }

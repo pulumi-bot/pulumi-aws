@@ -4,6 +4,7 @@
 package emr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -130,4 +131,43 @@ type InstanceFleetArgs struct {
 
 func (InstanceFleetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceFleetArgs)(nil)).Elem()
+}
+
+type InstanceFleetInput interface {
+	pulumi.Input
+
+	ToInstanceFleetOutput() InstanceFleetOutput
+	ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput
+}
+
+func (InstanceFleet) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFleet)(nil)).Elem()
+}
+
+func (i InstanceFleet) ToInstanceFleetOutput() InstanceFleetOutput {
+	return i.ToInstanceFleetOutputWithContext(context.Background())
+}
+
+func (i InstanceFleet) ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetOutput)
+}
+
+type InstanceFleetOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFleetOutput)(nil)).Elem()
+}
+
+func (o InstanceFleetOutput) ToInstanceFleetOutput() InstanceFleetOutput {
+	return o
+}
+
+func (o InstanceFleetOutput) ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceFleetOutput{})
 }

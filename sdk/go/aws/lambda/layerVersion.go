@@ -4,6 +4,7 @@
 package lambda
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -199,4 +200,43 @@ type LayerVersionArgs struct {
 
 func (LayerVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*layerVersionArgs)(nil)).Elem()
+}
+
+type LayerVersionInput interface {
+	pulumi.Input
+
+	ToLayerVersionOutput() LayerVersionOutput
+	ToLayerVersionOutputWithContext(ctx context.Context) LayerVersionOutput
+}
+
+func (LayerVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*LayerVersion)(nil)).Elem()
+}
+
+func (i LayerVersion) ToLayerVersionOutput() LayerVersionOutput {
+	return i.ToLayerVersionOutputWithContext(context.Background())
+}
+
+func (i LayerVersion) ToLayerVersionOutputWithContext(ctx context.Context) LayerVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LayerVersionOutput)
+}
+
+type LayerVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (LayerVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LayerVersionOutput)(nil)).Elem()
+}
+
+func (o LayerVersionOutput) ToLayerVersionOutput() LayerVersionOutput {
+	return o
+}
+
+func (o LayerVersionOutput) ToLayerVersionOutputWithContext(ctx context.Context) LayerVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LayerVersionOutput{})
 }

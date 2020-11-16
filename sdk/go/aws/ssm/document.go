@@ -4,6 +4,7 @@
 package ssm
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -263,4 +264,43 @@ type DocumentArgs struct {
 
 func (DocumentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentArgs)(nil)).Elem()
+}
+
+type DocumentInput interface {
+	pulumi.Input
+
+	ToDocumentOutput() DocumentOutput
+	ToDocumentOutputWithContext(ctx context.Context) DocumentOutput
+}
+
+func (Document) ElementType() reflect.Type {
+	return reflect.TypeOf((*Document)(nil)).Elem()
+}
+
+func (i Document) ToDocumentOutput() DocumentOutput {
+	return i.ToDocumentOutputWithContext(context.Background())
+}
+
+func (i Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentOutput)
+}
+
+type DocumentOutput struct {
+	*pulumi.OutputState
+}
+
+func (DocumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentOutput)(nil)).Elem()
+}
+
+func (o DocumentOutput) ToDocumentOutput() DocumentOutput {
+	return o
+}
+
+func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DocumentOutput{})
 }

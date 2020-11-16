@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -171,4 +172,43 @@ type ClusterParameterGroupArgs struct {
 
 func (ClusterParameterGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterParameterGroupArgs)(nil)).Elem()
+}
+
+type ClusterParameterGroupInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupOutput() ClusterParameterGroupOutput
+	ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput
+}
+
+func (ClusterParameterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroup)(nil)).Elem()
+}
+
+func (i ClusterParameterGroup) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
+	return i.ToClusterParameterGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroup) ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupOutput)
+}
+
+type ClusterParameterGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterParameterGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupOutput)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupOutput) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
+	return o
+}
+
+func (o ClusterParameterGroupOutput) ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterParameterGroupOutput{})
 }

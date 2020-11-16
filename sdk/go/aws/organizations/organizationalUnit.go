@@ -4,6 +4,7 @@
 package organizations
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -120,4 +121,43 @@ type OrganizationalUnitArgs struct {
 
 func (OrganizationalUnitArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationalUnitArgs)(nil)).Elem()
+}
+
+type OrganizationalUnitInput interface {
+	pulumi.Input
+
+	ToOrganizationalUnitOutput() OrganizationalUnitOutput
+	ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput
+}
+
+func (OrganizationalUnit) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationalUnit)(nil)).Elem()
+}
+
+func (i OrganizationalUnit) ToOrganizationalUnitOutput() OrganizationalUnitOutput {
+	return i.ToOrganizationalUnitOutputWithContext(context.Background())
+}
+
+func (i OrganizationalUnit) ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitOutput)
+}
+
+type OrganizationalUnitOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationalUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationalUnitOutput)(nil)).Elem()
+}
+
+func (o OrganizationalUnitOutput) ToOrganizationalUnitOutput() OrganizationalUnitOutput {
+	return o
+}
+
+func (o OrganizationalUnitOutput) ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationalUnitOutput{})
 }
