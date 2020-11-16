@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,4 +115,43 @@ type WorkingStorageArgs struct {
 
 func (WorkingStorageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workingStorageArgs)(nil)).Elem()
+}
+
+type WorkingStorageInput interface {
+	pulumi.Input
+
+	ToWorkingStorageOutput() WorkingStorageOutput
+	ToWorkingStorageOutputWithContext(ctx context.Context) WorkingStorageOutput
+}
+
+func (WorkingStorage) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkingStorage)(nil)).Elem()
+}
+
+func (i WorkingStorage) ToWorkingStorageOutput() WorkingStorageOutput {
+	return i.ToWorkingStorageOutputWithContext(context.Background())
+}
+
+func (i WorkingStorage) ToWorkingStorageOutputWithContext(ctx context.Context) WorkingStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkingStorageOutput)
+}
+
+type WorkingStorageOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkingStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkingStorageOutput)(nil)).Elem()
+}
+
+func (o WorkingStorageOutput) ToWorkingStorageOutput() WorkingStorageOutput {
+	return o
+}
+
+func (o WorkingStorageOutput) ToWorkingStorageOutputWithContext(ctx context.Context) WorkingStorageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkingStorageOutput{})
 }

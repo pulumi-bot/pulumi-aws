@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -162,4 +163,43 @@ type HostedTransitVirtualInterfaceAcceptorArgs struct {
 
 func (HostedTransitVirtualInterfaceAcceptorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostedTransitVirtualInterfaceAcceptorArgs)(nil)).Elem()
+}
+
+type HostedTransitVirtualInterfaceAcceptorInput interface {
+	pulumi.Input
+
+	ToHostedTransitVirtualInterfaceAcceptorOutput() HostedTransitVirtualInterfaceAcceptorOutput
+	ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceAcceptorOutput
+}
+
+func (HostedTransitVirtualInterfaceAcceptor) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedTransitVirtualInterfaceAcceptor)(nil)).Elem()
+}
+
+func (i HostedTransitVirtualInterfaceAcceptor) ToHostedTransitVirtualInterfaceAcceptorOutput() HostedTransitVirtualInterfaceAcceptorOutput {
+	return i.ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(context.Background())
+}
+
+func (i HostedTransitVirtualInterfaceAcceptor) ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceAcceptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedTransitVirtualInterfaceAcceptorOutput)
+}
+
+type HostedTransitVirtualInterfaceAcceptorOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedTransitVirtualInterfaceAcceptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedTransitVirtualInterfaceAcceptorOutput)(nil)).Elem()
+}
+
+func (o HostedTransitVirtualInterfaceAcceptorOutput) ToHostedTransitVirtualInterfaceAcceptorOutput() HostedTransitVirtualInterfaceAcceptorOutput {
+	return o
+}
+
+func (o HostedTransitVirtualInterfaceAcceptorOutput) ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceAcceptorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostedTransitVirtualInterfaceAcceptorOutput{})
 }

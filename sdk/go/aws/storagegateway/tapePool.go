@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type TapePoolArgs struct {
 
 func (TapePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tapePoolArgs)(nil)).Elem()
+}
+
+type TapePoolInput interface {
+	pulumi.Input
+
+	ToTapePoolOutput() TapePoolOutput
+	ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput
+}
+
+func (TapePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*TapePool)(nil)).Elem()
+}
+
+func (i TapePool) ToTapePoolOutput() TapePoolOutput {
+	return i.ToTapePoolOutputWithContext(context.Background())
+}
+
+func (i TapePool) ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TapePoolOutput)
+}
+
+type TapePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (TapePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TapePoolOutput)(nil)).Elem()
+}
+
+func (o TapePoolOutput) ToTapePoolOutput() TapePoolOutput {
+	return o
+}
+
+func (o TapePoolOutput) ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TapePoolOutput{})
 }
