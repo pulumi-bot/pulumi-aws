@@ -4,6 +4,7 @@
 package secretsmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,4 +148,43 @@ type SecretRotationArgs struct {
 
 func (SecretRotationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretRotationArgs)(nil)).Elem()
+}
+
+type SecretRotationInput interface {
+	pulumi.Input
+
+	ToSecretRotationOutput() SecretRotationOutput
+	ToSecretRotationOutputWithContext(ctx context.Context) SecretRotationOutput
+}
+
+func (SecretRotation) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotation)(nil)).Elem()
+}
+
+func (i SecretRotation) ToSecretRotationOutput() SecretRotationOutput {
+	return i.ToSecretRotationOutputWithContext(context.Background())
+}
+
+func (i SecretRotation) ToSecretRotationOutputWithContext(ctx context.Context) SecretRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationOutput)
+}
+
+type SecretRotationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotationOutput)(nil)).Elem()
+}
+
+func (o SecretRotationOutput) ToSecretRotationOutput() SecretRotationOutput {
+	return o
+}
+
+func (o SecretRotationOutput) ToSecretRotationOutputWithContext(ctx context.Context) SecretRotationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretRotationOutput{})
 }

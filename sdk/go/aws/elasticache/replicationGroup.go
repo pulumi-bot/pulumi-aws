@@ -4,6 +4,7 @@
 package elasticache
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -536,4 +537,43 @@ type ReplicationGroupArgs struct {
 
 func (ReplicationGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationGroupArgs)(nil)).Elem()
+}
+
+type ReplicationGroupInput interface {
+	pulumi.Input
+
+	ToReplicationGroupOutput() ReplicationGroupOutput
+	ToReplicationGroupOutputWithContext(ctx context.Context) ReplicationGroupOutput
+}
+
+func (ReplicationGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationGroup)(nil)).Elem()
+}
+
+func (i ReplicationGroup) ToReplicationGroupOutput() ReplicationGroupOutput {
+	return i.ToReplicationGroupOutputWithContext(context.Background())
+}
+
+func (i ReplicationGroup) ToReplicationGroupOutputWithContext(ctx context.Context) ReplicationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupOutput)
+}
+
+type ReplicationGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationGroupOutput)(nil)).Elem()
+}
+
+func (o ReplicationGroupOutput) ToReplicationGroupOutput() ReplicationGroupOutput {
+	return o
+}
+
+func (o ReplicationGroupOutput) ToReplicationGroupOutputWithContext(ctx context.Context) ReplicationGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReplicationGroupOutput{})
 }

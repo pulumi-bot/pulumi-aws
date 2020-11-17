@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -172,4 +173,43 @@ type VpcEndpointServiceArgs struct {
 
 func (VpcEndpointServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointServiceArgs)(nil)).Elem()
+}
+
+type VpcEndpointServiceInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceOutput() VpcEndpointServiceOutput
+	ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput
+}
+
+func (VpcEndpointService) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointService)(nil)).Elem()
+}
+
+func (i VpcEndpointService) ToVpcEndpointServiceOutput() VpcEndpointServiceOutput {
+	return i.ToVpcEndpointServiceOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointService) ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceOutput)
+}
+
+type VpcEndpointServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointServiceOutput)(nil)).Elem()
+}
+
+func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutput() VpcEndpointServiceOutput {
+	return o
+}
+
+func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcEndpointServiceOutput{})
 }

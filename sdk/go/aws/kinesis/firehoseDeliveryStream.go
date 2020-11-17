@@ -4,6 +4,7 @@
 package kinesis
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -478,4 +479,43 @@ type FirehoseDeliveryStreamArgs struct {
 
 func (FirehoseDeliveryStreamArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firehoseDeliveryStreamArgs)(nil)).Elem()
+}
+
+type FirehoseDeliveryStreamInput interface {
+	pulumi.Input
+
+	ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput
+	ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput
+}
+
+func (FirehoseDeliveryStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirehoseDeliveryStream)(nil)).Elem()
+}
+
+func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
+	return i.ToFirehoseDeliveryStreamOutputWithContext(context.Background())
+}
+
+func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamOutput)
+}
+
+type FirehoseDeliveryStreamOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirehoseDeliveryStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirehoseDeliveryStreamOutput)(nil)).Elem()
+}
+
+func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirehoseDeliveryStreamOutput{})
 }

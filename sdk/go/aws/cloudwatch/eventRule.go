@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -217,4 +218,43 @@ type EventRuleArgs struct {
 
 func (EventRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventRuleArgs)(nil)).Elem()
+}
+
+type EventRuleInput interface {
+	pulumi.Input
+
+	ToEventRuleOutput() EventRuleOutput
+	ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput
+}
+
+func (EventRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRule)(nil)).Elem()
+}
+
+func (i EventRule) ToEventRuleOutput() EventRuleOutput {
+	return i.ToEventRuleOutputWithContext(context.Background())
+}
+
+func (i EventRule) ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleOutput)
+}
+
+type EventRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleOutput)(nil)).Elem()
+}
+
+func (o EventRuleOutput) ToEventRuleOutput() EventRuleOutput {
+	return o
+}
+
+func (o EventRuleOutput) ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventRuleOutput{})
 }

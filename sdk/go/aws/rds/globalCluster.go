@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -246,4 +247,43 @@ type GlobalClusterArgs struct {
 
 func (GlobalClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalClusterArgs)(nil)).Elem()
+}
+
+type GlobalClusterInput interface {
+	pulumi.Input
+
+	ToGlobalClusterOutput() GlobalClusterOutput
+	ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput
+}
+
+func (GlobalCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalCluster)(nil)).Elem()
+}
+
+func (i GlobalCluster) ToGlobalClusterOutput() GlobalClusterOutput {
+	return i.ToGlobalClusterOutputWithContext(context.Background())
+}
+
+func (i GlobalCluster) ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClusterOutput)
+}
+
+type GlobalClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClusterOutput)(nil)).Elem()
+}
+
+func (o GlobalClusterOutput) ToGlobalClusterOutput() GlobalClusterOutput {
+	return o
+}
+
+func (o GlobalClusterOutput) ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalClusterOutput{})
 }

@@ -4,6 +4,7 @@
 package datasync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -190,4 +191,43 @@ type LocationFsxWindowsArgs struct {
 
 func (LocationFsxWindowsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationFsxWindowsArgs)(nil)).Elem()
+}
+
+type LocationFsxWindowsInput interface {
+	pulumi.Input
+
+	ToLocationFsxWindowsOutput() LocationFsxWindowsOutput
+	ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput
+}
+
+func (LocationFsxWindows) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationFsxWindows)(nil)).Elem()
+}
+
+func (i LocationFsxWindows) ToLocationFsxWindowsOutput() LocationFsxWindowsOutput {
+	return i.ToLocationFsxWindowsOutputWithContext(context.Background())
+}
+
+func (i LocationFsxWindows) ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationFsxWindowsOutput)
+}
+
+type LocationFsxWindowsOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationFsxWindowsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationFsxWindowsOutput)(nil)).Elem()
+}
+
+func (o LocationFsxWindowsOutput) ToLocationFsxWindowsOutput() LocationFsxWindowsOutput {
+	return o
+}
+
+func (o LocationFsxWindowsOutput) ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocationFsxWindowsOutput{})
 }

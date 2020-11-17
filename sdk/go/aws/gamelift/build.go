@@ -4,6 +4,7 @@
 package gamelift
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -154,4 +155,43 @@ type BuildArgs struct {
 
 func (BuildArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*buildArgs)(nil)).Elem()
+}
+
+type BuildInput interface {
+	pulumi.Input
+
+	ToBuildOutput() BuildOutput
+	ToBuildOutputWithContext(ctx context.Context) BuildOutput
+}
+
+func (Build) ElementType() reflect.Type {
+	return reflect.TypeOf((*Build)(nil)).Elem()
+}
+
+func (i Build) ToBuildOutput() BuildOutput {
+	return i.ToBuildOutputWithContext(context.Background())
+}
+
+func (i Build) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildOutput)
+}
+
+type BuildOutput struct {
+	*pulumi.OutputState
+}
+
+func (BuildOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOutput)(nil)).Elem()
+}
+
+func (o BuildOutput) ToBuildOutput() BuildOutput {
+	return o
+}
+
+func (o BuildOutput) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BuildOutput{})
 }

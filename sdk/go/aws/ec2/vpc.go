@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -284,4 +285,43 @@ type VpcArgs struct {
 
 func (VpcArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcArgs)(nil)).Elem()
+}
+
+type VpcInput interface {
+	pulumi.Input
+
+	ToVpcOutput() VpcOutput
+	ToVpcOutputWithContext(ctx context.Context) VpcOutput
+}
+
+func (Vpc) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vpc)(nil)).Elem()
+}
+
+func (i Vpc) ToVpcOutput() VpcOutput {
+	return i.ToVpcOutputWithContext(context.Background())
+}
+
+func (i Vpc) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcOutput)
+}
+
+type VpcOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcOutput)(nil)).Elem()
+}
+
+func (o VpcOutput) ToVpcOutput() VpcOutput {
+	return o
+}
+
+func (o VpcOutput) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcOutput{})
 }

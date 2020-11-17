@@ -4,6 +4,7 @@
 package servicequotas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -162,4 +163,43 @@ type ServiceQuotaArgs struct {
 
 func (ServiceQuotaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceQuotaArgs)(nil)).Elem()
+}
+
+type ServiceQuotaInput interface {
+	pulumi.Input
+
+	ToServiceQuotaOutput() ServiceQuotaOutput
+	ToServiceQuotaOutputWithContext(ctx context.Context) ServiceQuotaOutput
+}
+
+func (ServiceQuota) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceQuota)(nil)).Elem()
+}
+
+func (i ServiceQuota) ToServiceQuotaOutput() ServiceQuotaOutput {
+	return i.ToServiceQuotaOutputWithContext(context.Background())
+}
+
+func (i ServiceQuota) ToServiceQuotaOutputWithContext(ctx context.Context) ServiceQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceQuotaOutput)
+}
+
+type ServiceQuotaOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceQuotaOutput)(nil)).Elem()
+}
+
+func (o ServiceQuotaOutput) ToServiceQuotaOutput() ServiceQuotaOutput {
+	return o
+}
+
+func (o ServiceQuotaOutput) ToServiceQuotaOutputWithContext(ctx context.Context) ServiceQuotaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceQuotaOutput{})
 }
