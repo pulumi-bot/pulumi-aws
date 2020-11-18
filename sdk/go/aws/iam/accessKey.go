@@ -4,6 +4,7 @@
 package iam
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -111,11 +112,12 @@ type AccessKey struct {
 // NewAccessKey registers a new resource with the given unique name, arguments, and options.
 func NewAccessKey(ctx *pulumi.Context,
 	name string, args *AccessKeyArgs, opts ...pulumi.ResourceOption) (*AccessKey, error) {
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &AccessKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource AccessKey
 	err := ctx.RegisterResource("aws:iam/accessKey:AccessKey", name, args, &resource, opts...)
@@ -223,4 +225,43 @@ type AccessKeyArgs struct {
 
 func (AccessKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessKeyArgs)(nil)).Elem()
+}
+
+type AccessKeyInput interface {
+	pulumi.Input
+
+	ToAccessKeyOutput() AccessKeyOutput
+	ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput
+}
+
+func (AccessKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKey)(nil)).Elem()
+}
+
+func (i AccessKey) ToAccessKeyOutput() AccessKeyOutput {
+	return i.ToAccessKeyOutputWithContext(context.Background())
+}
+
+func (i AccessKey) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyOutput)
+}
+
+type AccessKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyOutput)(nil)).Elem()
+}
+
+func (o AccessKeyOutput) ToAccessKeyOutput() AccessKeyOutput {
+	return o
+}
+
+func (o AccessKeyOutput) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessKeyOutput{})
 }

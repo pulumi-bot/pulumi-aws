@@ -4,6 +4,7 @@
 package cloudfront
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -104,6 +105,7 @@ func NewOriginAccessIdentity(ctx *pulumi.Context,
 	if args == nil {
 		args = &OriginAccessIdentityArgs{}
 	}
+
 	var resource OriginAccessIdentity
 	err := ctx.RegisterResource("aws:cloudfront/originAccessIdentity:OriginAccessIdentity", name, args, &resource, opts...)
 	if err != nil {
@@ -186,4 +188,43 @@ type OriginAccessIdentityArgs struct {
 
 func (OriginAccessIdentityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*originAccessIdentityArgs)(nil)).Elem()
+}
+
+type OriginAccessIdentityInput interface {
+	pulumi.Input
+
+	ToOriginAccessIdentityOutput() OriginAccessIdentityOutput
+	ToOriginAccessIdentityOutputWithContext(ctx context.Context) OriginAccessIdentityOutput
+}
+
+func (OriginAccessIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAccessIdentity)(nil)).Elem()
+}
+
+func (i OriginAccessIdentity) ToOriginAccessIdentityOutput() OriginAccessIdentityOutput {
+	return i.ToOriginAccessIdentityOutputWithContext(context.Background())
+}
+
+func (i OriginAccessIdentity) ToOriginAccessIdentityOutputWithContext(ctx context.Context) OriginAccessIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginAccessIdentityOutput)
+}
+
+type OriginAccessIdentityOutput struct {
+	*pulumi.OutputState
+}
+
+func (OriginAccessIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAccessIdentityOutput)(nil)).Elem()
+}
+
+func (o OriginAccessIdentityOutput) ToOriginAccessIdentityOutput() OriginAccessIdentityOutput {
+	return o
+}
+
+func (o OriginAccessIdentityOutput) ToOriginAccessIdentityOutputWithContext(ctx context.Context) OriginAccessIdentityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OriginAccessIdentityOutput{})
 }

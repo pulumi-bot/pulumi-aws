@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,17 +71,18 @@ type VaultNotifications struct {
 // NewVaultNotifications registers a new resource with the given unique name, arguments, and options.
 func NewVaultNotifications(ctx *pulumi.Context,
 	name string, args *VaultNotificationsArgs, opts ...pulumi.ResourceOption) (*VaultNotifications, error) {
-	if args == nil || args.BackupVaultEvents == nil {
-		return nil, errors.New("missing required argument 'BackupVaultEvents'")
-	}
-	if args == nil || args.BackupVaultName == nil {
-		return nil, errors.New("missing required argument 'BackupVaultName'")
-	}
-	if args == nil || args.SnsTopicArn == nil {
-		return nil, errors.New("missing required argument 'SnsTopicArn'")
-	}
 	if args == nil {
-		args = &VaultNotificationsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackupVaultEvents == nil {
+		return nil, errors.New("invalid value for required argument 'BackupVaultEvents'")
+	}
+	if args.BackupVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'BackupVaultName'")
+	}
+	if args.SnsTopicArn == nil {
+		return nil, errors.New("invalid value for required argument 'SnsTopicArn'")
 	}
 	var resource VaultNotifications
 	err := ctx.RegisterResource("aws:backup/vaultNotifications:VaultNotifications", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type VaultNotificationsArgs struct {
 
 func (VaultNotificationsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vaultNotificationsArgs)(nil)).Elem()
+}
+
+type VaultNotificationsInput interface {
+	pulumi.Input
+
+	ToVaultNotificationsOutput() VaultNotificationsOutput
+	ToVaultNotificationsOutputWithContext(ctx context.Context) VaultNotificationsOutput
+}
+
+func (VaultNotifications) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotifications)(nil)).Elem()
+}
+
+func (i VaultNotifications) ToVaultNotificationsOutput() VaultNotificationsOutput {
+	return i.ToVaultNotificationsOutputWithContext(context.Background())
+}
+
+func (i VaultNotifications) ToVaultNotificationsOutputWithContext(ctx context.Context) VaultNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationsOutput)
+}
+
+type VaultNotificationsOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotificationsOutput)(nil)).Elem()
+}
+
+func (o VaultNotificationsOutput) ToVaultNotificationsOutput() VaultNotificationsOutput {
+	return o
+}
+
+func (o VaultNotificationsOutput) ToVaultNotificationsOutputWithContext(ctx context.Context) VaultNotificationsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VaultNotificationsOutput{})
 }

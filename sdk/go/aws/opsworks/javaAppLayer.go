@@ -4,6 +4,7 @@
 package opsworks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,11 +92,12 @@ type JavaAppLayer struct {
 // NewJavaAppLayer registers a new resource with the given unique name, arguments, and options.
 func NewJavaAppLayer(ctx *pulumi.Context,
 	name string, args *JavaAppLayerArgs, opts ...pulumi.ResourceOption) (*JavaAppLayer, error) {
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &JavaAppLayerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource JavaAppLayer
 	err := ctx.RegisterResource("aws:opsworks/javaAppLayer:JavaAppLayer", name, args, &resource, opts...)
@@ -329,4 +331,43 @@ type JavaAppLayerArgs struct {
 
 func (JavaAppLayerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*javaAppLayerArgs)(nil)).Elem()
+}
+
+type JavaAppLayerInput interface {
+	pulumi.Input
+
+	ToJavaAppLayerOutput() JavaAppLayerOutput
+	ToJavaAppLayerOutputWithContext(ctx context.Context) JavaAppLayerOutput
+}
+
+func (JavaAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayer)(nil)).Elem()
+}
+
+func (i JavaAppLayer) ToJavaAppLayerOutput() JavaAppLayerOutput {
+	return i.ToJavaAppLayerOutputWithContext(context.Background())
+}
+
+func (i JavaAppLayer) ToJavaAppLayerOutputWithContext(ctx context.Context) JavaAppLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerOutput)
+}
+
+type JavaAppLayerOutput struct {
+	*pulumi.OutputState
+}
+
+func (JavaAppLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayerOutput)(nil)).Elem()
+}
+
+func (o JavaAppLayerOutput) ToJavaAppLayerOutput() JavaAppLayerOutput {
+	return o
+}
+
+func (o JavaAppLayerOutput) ToJavaAppLayerOutputWithContext(ctx context.Context) JavaAppLayerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(JavaAppLayerOutput{})
 }

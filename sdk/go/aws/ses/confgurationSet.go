@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -22,6 +23,7 @@ func NewConfgurationSet(ctx *pulumi.Context,
 	if args == nil {
 		args = &ConfgurationSetArgs{}
 	}
+
 	var resource ConfgurationSet
 	err := ctx.RegisterResource("aws:ses/confgurationSet:ConfgurationSet", name, args, &resource, opts...)
 	if err != nil {
@@ -66,4 +68,43 @@ type ConfgurationSetArgs struct {
 
 func (ConfgurationSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*confgurationSetArgs)(nil)).Elem()
+}
+
+type ConfgurationSetInput interface {
+	pulumi.Input
+
+	ToConfgurationSetOutput() ConfgurationSetOutput
+	ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput
+}
+
+func (ConfgurationSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfgurationSet)(nil)).Elem()
+}
+
+func (i ConfgurationSet) ToConfgurationSetOutput() ConfgurationSetOutput {
+	return i.ToConfgurationSetOutputWithContext(context.Background())
+}
+
+func (i ConfgurationSet) ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfgurationSetOutput)
+}
+
+type ConfgurationSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfgurationSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfgurationSetOutput)(nil)).Elem()
+}
+
+func (o ConfgurationSetOutput) ToConfgurationSetOutput() ConfgurationSetOutput {
+	return o
+}
+
+func (o ConfgurationSetOutput) ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConfgurationSetOutput{})
 }

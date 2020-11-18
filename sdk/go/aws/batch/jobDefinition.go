@@ -4,6 +4,7 @@
 package batch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,11 +66,12 @@ type JobDefinition struct {
 // NewJobDefinition registers a new resource with the given unique name, arguments, and options.
 func NewJobDefinition(ctx *pulumi.Context,
 	name string, args *JobDefinitionArgs, opts ...pulumi.ResourceOption) (*JobDefinition, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &JobDefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource JobDefinition
 	err := ctx.RegisterResource("aws:batch/jobDefinition:JobDefinition", name, args, &resource, opts...)
@@ -183,4 +185,43 @@ type JobDefinitionArgs struct {
 
 func (JobDefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobDefinitionArgs)(nil)).Elem()
+}
+
+type JobDefinitionInput interface {
+	pulumi.Input
+
+	ToJobDefinitionOutput() JobDefinitionOutput
+	ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput
+}
+
+func (JobDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinition)(nil)).Elem()
+}
+
+func (i JobDefinition) ToJobDefinitionOutput() JobDefinitionOutput {
+	return i.ToJobDefinitionOutputWithContext(context.Background())
+}
+
+func (i JobDefinition) ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionOutput)
+}
+
+type JobDefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionOutput)(nil)).Elem()
+}
+
+func (o JobDefinitionOutput) ToJobDefinitionOutput() JobDefinitionOutput {
+	return o
+}
+
+func (o JobDefinitionOutput) ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(JobDefinitionOutput{})
 }

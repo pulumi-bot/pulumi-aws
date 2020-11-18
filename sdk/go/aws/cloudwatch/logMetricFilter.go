@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,17 +63,18 @@ type LogMetricFilter struct {
 // NewLogMetricFilter registers a new resource with the given unique name, arguments, and options.
 func NewLogMetricFilter(ctx *pulumi.Context,
 	name string, args *LogMetricFilterArgs, opts ...pulumi.ResourceOption) (*LogMetricFilter, error) {
-	if args == nil || args.LogGroupName == nil {
-		return nil, errors.New("missing required argument 'LogGroupName'")
-	}
-	if args == nil || args.MetricTransformation == nil {
-		return nil, errors.New("missing required argument 'MetricTransformation'")
-	}
-	if args == nil || args.Pattern == nil {
-		return nil, errors.New("missing required argument 'Pattern'")
-	}
 	if args == nil {
-		args = &LogMetricFilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LogGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'LogGroupName'")
+	}
+	if args.MetricTransformation == nil {
+		return nil, errors.New("invalid value for required argument 'MetricTransformation'")
+	}
+	if args.Pattern == nil {
+		return nil, errors.New("invalid value for required argument 'Pattern'")
 	}
 	var resource LogMetricFilter
 	err := ctx.RegisterResource("aws:cloudwatch/logMetricFilter:LogMetricFilter", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type LogMetricFilterArgs struct {
 
 func (LogMetricFilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logMetricFilterArgs)(nil)).Elem()
+}
+
+type LogMetricFilterInput interface {
+	pulumi.Input
+
+	ToLogMetricFilterOutput() LogMetricFilterOutput
+	ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput
+}
+
+func (LogMetricFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogMetricFilter)(nil)).Elem()
+}
+
+func (i LogMetricFilter) ToLogMetricFilterOutput() LogMetricFilterOutput {
+	return i.ToLogMetricFilterOutputWithContext(context.Background())
+}
+
+func (i LogMetricFilter) ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterOutput)
+}
+
+type LogMetricFilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogMetricFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogMetricFilterOutput)(nil)).Elem()
+}
+
+func (o LogMetricFilterOutput) ToLogMetricFilterOutput() LogMetricFilterOutput {
+	return o
+}
+
+func (o LogMetricFilterOutput) ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogMetricFilterOutput{})
 }

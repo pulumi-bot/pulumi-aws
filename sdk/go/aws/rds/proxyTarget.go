@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,14 +40,15 @@ type ProxyTarget struct {
 // NewProxyTarget registers a new resource with the given unique name, arguments, and options.
 func NewProxyTarget(ctx *pulumi.Context,
 	name string, args *ProxyTargetArgs, opts ...pulumi.ResourceOption) (*ProxyTarget, error) {
-	if args == nil || args.DbProxyName == nil {
-		return nil, errors.New("missing required argument 'DbProxyName'")
-	}
-	if args == nil || args.TargetGroupName == nil {
-		return nil, errors.New("missing required argument 'TargetGroupName'")
-	}
 	if args == nil {
-		args = &ProxyTargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbProxyName == nil {
+		return nil, errors.New("invalid value for required argument 'DbProxyName'")
+	}
+	if args.TargetGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'TargetGroupName'")
 	}
 	var resource ProxyTarget
 	err := ctx.RegisterResource("aws:rds/proxyTarget:ProxyTarget", name, args, &resource, opts...)
@@ -144,4 +146,43 @@ type ProxyTargetArgs struct {
 
 func (ProxyTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*proxyTargetArgs)(nil)).Elem()
+}
+
+type ProxyTargetInput interface {
+	pulumi.Input
+
+	ToProxyTargetOutput() ProxyTargetOutput
+	ToProxyTargetOutputWithContext(ctx context.Context) ProxyTargetOutput
+}
+
+func (ProxyTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyTarget)(nil)).Elem()
+}
+
+func (i ProxyTarget) ToProxyTargetOutput() ProxyTargetOutput {
+	return i.ToProxyTargetOutputWithContext(context.Background())
+}
+
+func (i ProxyTarget) ToProxyTargetOutputWithContext(ctx context.Context) ProxyTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyTargetOutput)
+}
+
+type ProxyTargetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyTargetOutput)(nil)).Elem()
+}
+
+func (o ProxyTargetOutput) ToProxyTargetOutput() ProxyTargetOutput {
+	return o
+}
+
+func (o ProxyTargetOutput) ToProxyTargetOutputWithContext(ctx context.Context) ProxyTargetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProxyTargetOutput{})
 }

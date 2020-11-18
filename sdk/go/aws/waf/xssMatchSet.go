@@ -4,6 +4,7 @@
 package waf
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -63,6 +64,7 @@ func NewXssMatchSet(ctx *pulumi.Context,
 	if args == nil {
 		args = &XssMatchSetArgs{}
 	}
+
 	var resource XssMatchSet
 	err := ctx.RegisterResource("aws:waf/xssMatchSet:XssMatchSet", name, args, &resource, opts...)
 	if err != nil {
@@ -123,4 +125,43 @@ type XssMatchSetArgs struct {
 
 func (XssMatchSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*xssMatchSetArgs)(nil)).Elem()
+}
+
+type XssMatchSetInput interface {
+	pulumi.Input
+
+	ToXssMatchSetOutput() XssMatchSetOutput
+	ToXssMatchSetOutputWithContext(ctx context.Context) XssMatchSetOutput
+}
+
+func (XssMatchSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSet)(nil)).Elem()
+}
+
+func (i XssMatchSet) ToXssMatchSetOutput() XssMatchSetOutput {
+	return i.ToXssMatchSetOutputWithContext(context.Background())
+}
+
+func (i XssMatchSet) ToXssMatchSetOutputWithContext(ctx context.Context) XssMatchSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetOutput)
+}
+
+type XssMatchSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (XssMatchSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetOutput)(nil)).Elem()
+}
+
+func (o XssMatchSetOutput) ToXssMatchSetOutput() XssMatchSetOutput {
+	return o
+}
+
+func (o XssMatchSetOutput) ToXssMatchSetOutputWithContext(ctx context.Context) XssMatchSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(XssMatchSetOutput{})
 }

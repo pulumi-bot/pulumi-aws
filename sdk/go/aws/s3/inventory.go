@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -122,20 +123,21 @@ type Inventory struct {
 // NewInventory registers a new resource with the given unique name, arguments, and options.
 func NewInventory(ctx *pulumi.Context,
 	name string, args *InventoryArgs, opts ...pulumi.ResourceOption) (*Inventory, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Destination == nil {
-		return nil, errors.New("missing required argument 'Destination'")
-	}
-	if args == nil || args.IncludedObjectVersions == nil {
-		return nil, errors.New("missing required argument 'IncludedObjectVersions'")
-	}
-	if args == nil || args.Schedule == nil {
-		return nil, errors.New("missing required argument 'Schedule'")
-	}
 	if args == nil {
-		args = &InventoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
+	}
+	if args.IncludedObjectVersions == nil {
+		return nil, errors.New("invalid value for required argument 'IncludedObjectVersions'")
+	}
+	if args.Schedule == nil {
+		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
 	var resource Inventory
 	err := ctx.RegisterResource("aws:s3/inventory:Inventory", name, args, &resource, opts...)
@@ -245,4 +247,43 @@ type InventoryArgs struct {
 
 func (InventoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*inventoryArgs)(nil)).Elem()
+}
+
+type InventoryInput interface {
+	pulumi.Input
+
+	ToInventoryOutput() InventoryOutput
+	ToInventoryOutputWithContext(ctx context.Context) InventoryOutput
+}
+
+func (Inventory) ElementType() reflect.Type {
+	return reflect.TypeOf((*Inventory)(nil)).Elem()
+}
+
+func (i Inventory) ToInventoryOutput() InventoryOutput {
+	return i.ToInventoryOutputWithContext(context.Background())
+}
+
+func (i Inventory) ToInventoryOutputWithContext(ctx context.Context) InventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryOutput)
+}
+
+type InventoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (InventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InventoryOutput)(nil)).Elem()
+}
+
+func (o InventoryOutput) ToInventoryOutput() InventoryOutput {
+	return o
+}
+
+func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) InventoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InventoryOutput{})
 }

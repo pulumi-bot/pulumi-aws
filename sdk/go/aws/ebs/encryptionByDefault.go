@@ -4,6 +4,7 @@
 package ebs
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -48,6 +49,7 @@ func NewEncryptionByDefault(ctx *pulumi.Context,
 	if args == nil {
 		args = &EncryptionByDefaultArgs{}
 	}
+
 	var resource EncryptionByDefault
 	err := ctx.RegisterResource("aws:ebs/encryptionByDefault:EncryptionByDefault", name, args, &resource, opts...)
 	if err != nil {
@@ -96,4 +98,43 @@ type EncryptionByDefaultArgs struct {
 
 func (EncryptionByDefaultArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*encryptionByDefaultArgs)(nil)).Elem()
+}
+
+type EncryptionByDefaultInput interface {
+	pulumi.Input
+
+	ToEncryptionByDefaultOutput() EncryptionByDefaultOutput
+	ToEncryptionByDefaultOutputWithContext(ctx context.Context) EncryptionByDefaultOutput
+}
+
+func (EncryptionByDefault) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionByDefault)(nil)).Elem()
+}
+
+func (i EncryptionByDefault) ToEncryptionByDefaultOutput() EncryptionByDefaultOutput {
+	return i.ToEncryptionByDefaultOutputWithContext(context.Background())
+}
+
+func (i EncryptionByDefault) ToEncryptionByDefaultOutputWithContext(ctx context.Context) EncryptionByDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionByDefaultOutput)
+}
+
+type EncryptionByDefaultOutput struct {
+	*pulumi.OutputState
+}
+
+func (EncryptionByDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionByDefaultOutput)(nil)).Elem()
+}
+
+func (o EncryptionByDefaultOutput) ToEncryptionByDefaultOutput() EncryptionByDefaultOutput {
+	return o
+}
+
+func (o EncryptionByDefaultOutput) ToEncryptionByDefaultOutputWithContext(ctx context.Context) EncryptionByDefaultOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EncryptionByDefaultOutput{})
 }

@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,23 +96,24 @@ type SecurityGroupRule struct {
 // NewSecurityGroupRule registers a new resource with the given unique name, arguments, and options.
 func NewSecurityGroupRule(ctx *pulumi.Context,
 	name string, args *SecurityGroupRuleArgs, opts ...pulumi.ResourceOption) (*SecurityGroupRule, error) {
-	if args == nil || args.FromPort == nil {
-		return nil, errors.New("missing required argument 'FromPort'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
-	}
-	if args == nil || args.ToPort == nil {
-		return nil, errors.New("missing required argument 'ToPort'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SecurityGroupRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FromPort == nil {
+		return nil, errors.New("invalid value for required argument 'FromPort'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.SecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
+	}
+	if args.ToPort == nil {
+		return nil, errors.New("invalid value for required argument 'ToPort'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SecurityGroupRule
 	err := ctx.RegisterResource("aws:ec2/securityGroupRule:SecurityGroupRule", name, args, &resource, opts...)
@@ -257,4 +259,43 @@ type SecurityGroupRuleArgs struct {
 
 func (SecurityGroupRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupRuleArgs)(nil)).Elem()
+}
+
+type SecurityGroupRuleInput interface {
+	pulumi.Input
+
+	ToSecurityGroupRuleOutput() SecurityGroupRuleOutput
+	ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput
+}
+
+func (SecurityGroupRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRule)(nil)).Elem()
+}
+
+func (i SecurityGroupRule) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
+	return i.ToSecurityGroupRuleOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleOutput)
+}
+
+type SecurityGroupRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRuleOutput)(nil)).Elem()
+}
+
+func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
+	return o
+}
+
+func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityGroupRuleOutput{})
 }
