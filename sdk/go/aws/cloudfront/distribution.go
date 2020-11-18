@@ -4,6 +4,7 @@
 package cloudfront
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -121,23 +122,24 @@ type Distribution struct {
 // NewDistribution registers a new resource with the given unique name, arguments, and options.
 func NewDistribution(ctx *pulumi.Context,
 	name string, args *DistributionArgs, opts ...pulumi.ResourceOption) (*Distribution, error) {
-	if args == nil || args.DefaultCacheBehavior == nil {
-		return nil, errors.New("missing required argument 'DefaultCacheBehavior'")
-	}
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.Origins == nil {
-		return nil, errors.New("missing required argument 'Origins'")
-	}
-	if args == nil || args.Restrictions == nil {
-		return nil, errors.New("missing required argument 'Restrictions'")
-	}
-	if args == nil || args.ViewerCertificate == nil {
-		return nil, errors.New("missing required argument 'ViewerCertificate'")
-	}
 	if args == nil {
-		args = &DistributionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DefaultCacheBehavior == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultCacheBehavior'")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.Origins == nil {
+		return nil, errors.New("invalid value for required argument 'Origins'")
+	}
+	if args.Restrictions == nil {
+		return nil, errors.New("invalid value for required argument 'Restrictions'")
+	}
+	if args.ViewerCertificate == nil {
+		return nil, errors.New("invalid value for required argument 'ViewerCertificate'")
 	}
 	var resource Distribution
 	err := ctx.RegisterResource("aws:cloudfront/distribution:Distribution", name, args, &resource, opts...)
@@ -493,4 +495,43 @@ type DistributionArgs struct {
 
 func (DistributionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributionArgs)(nil)).Elem()
+}
+
+type DistributionInput interface {
+	pulumi.Input
+
+	ToDistributionOutput() DistributionOutput
+	ToDistributionOutputWithContext(ctx context.Context) DistributionOutput
+}
+
+func (Distribution) ElementType() reflect.Type {
+	return reflect.TypeOf((*Distribution)(nil)).Elem()
+}
+
+func (i Distribution) ToDistributionOutput() DistributionOutput {
+	return i.ToDistributionOutputWithContext(context.Background())
+}
+
+func (i Distribution) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionOutput)
+}
+
+type DistributionOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributionOutput)(nil)).Elem()
+}
+
+func (o DistributionOutput) ToDistributionOutput() DistributionOutput {
+	return o
+}
+
+func (o DistributionOutput) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DistributionOutput{})
 }

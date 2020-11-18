@@ -4,6 +4,7 @@
 package wafregional
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -67,6 +68,7 @@ func NewRegexMatchSet(ctx *pulumi.Context,
 	if args == nil {
 		args = &RegexMatchSetArgs{}
 	}
+
 	var resource RegexMatchSet
 	err := ctx.RegisterResource("aws:wafregional/regexMatchSet:RegexMatchSet", name, args, &resource, opts...)
 	if err != nil {
@@ -127,4 +129,43 @@ type RegexMatchSetArgs struct {
 
 func (RegexMatchSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regexMatchSetArgs)(nil)).Elem()
+}
+
+type RegexMatchSetInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetOutput() RegexMatchSetOutput
+	ToRegexMatchSetOutputWithContext(ctx context.Context) RegexMatchSetOutput
+}
+
+func (RegexMatchSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSet)(nil)).Elem()
+}
+
+func (i RegexMatchSet) ToRegexMatchSetOutput() RegexMatchSetOutput {
+	return i.ToRegexMatchSetOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSet) ToRegexMatchSetOutputWithContext(ctx context.Context) RegexMatchSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetOutput)
+}
+
+type RegexMatchSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegexMatchSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetOutput)(nil)).Elem()
+}
+
+func (o RegexMatchSetOutput) ToRegexMatchSetOutput() RegexMatchSetOutput {
+	return o
+}
+
+func (o RegexMatchSetOutput) ToRegexMatchSetOutputWithContext(ctx context.Context) RegexMatchSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegexMatchSetOutput{})
 }

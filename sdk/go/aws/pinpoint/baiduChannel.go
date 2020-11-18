@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,17 +59,18 @@ type BaiduChannel struct {
 // NewBaiduChannel registers a new resource with the given unique name, arguments, and options.
 func NewBaiduChannel(ctx *pulumi.Context,
 	name string, args *BaiduChannelArgs, opts ...pulumi.ResourceOption) (*BaiduChannel, error) {
-	if args == nil || args.ApiKey == nil {
-		return nil, errors.New("missing required argument 'ApiKey'")
-	}
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
-	if args == nil || args.SecretKey == nil {
-		return nil, errors.New("missing required argument 'SecretKey'")
-	}
 	if args == nil {
-		args = &BaiduChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiKey == nil {
+		return nil, errors.New("invalid value for required argument 'ApiKey'")
+	}
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
+	if args.SecretKey == nil {
+		return nil, errors.New("invalid value for required argument 'SecretKey'")
 	}
 	var resource BaiduChannel
 	err := ctx.RegisterResource("aws:pinpoint/baiduChannel:BaiduChannel", name, args, &resource, opts...)
@@ -142,4 +144,43 @@ type BaiduChannelArgs struct {
 
 func (BaiduChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*baiduChannelArgs)(nil)).Elem()
+}
+
+type BaiduChannelInput interface {
+	pulumi.Input
+
+	ToBaiduChannelOutput() BaiduChannelOutput
+	ToBaiduChannelOutputWithContext(ctx context.Context) BaiduChannelOutput
+}
+
+func (BaiduChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaiduChannel)(nil)).Elem()
+}
+
+func (i BaiduChannel) ToBaiduChannelOutput() BaiduChannelOutput {
+	return i.ToBaiduChannelOutputWithContext(context.Background())
+}
+
+func (i BaiduChannel) ToBaiduChannelOutputWithContext(ctx context.Context) BaiduChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaiduChannelOutput)
+}
+
+type BaiduChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (BaiduChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaiduChannelOutput)(nil)).Elem()
+}
+
+func (o BaiduChannelOutput) ToBaiduChannelOutput() BaiduChannelOutput {
+	return o
+}
+
+func (o BaiduChannelOutput) ToBaiduChannelOutputWithContext(ctx context.Context) BaiduChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BaiduChannelOutput{})
 }

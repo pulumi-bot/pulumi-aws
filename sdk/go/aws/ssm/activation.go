@@ -4,6 +4,7 @@
 package ssm
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,11 +81,12 @@ type Activation struct {
 // NewActivation registers a new resource with the given unique name, arguments, and options.
 func NewActivation(ctx *pulumi.Context,
 	name string, args *ActivationArgs, opts ...pulumi.ResourceOption) (*Activation, error) {
-	if args == nil || args.IamRole == nil {
-		return nil, errors.New("missing required argument 'IamRole'")
-	}
 	if args == nil {
-		args = &ActivationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IamRole == nil {
+		return nil, errors.New("invalid value for required argument 'IamRole'")
 	}
 	var resource Activation
 	err := ctx.RegisterResource("aws:ssm/activation:Activation", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type ActivationArgs struct {
 
 func (ActivationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activationArgs)(nil)).Elem()
+}
+
+type ActivationInput interface {
+	pulumi.Input
+
+	ToActivationOutput() ActivationOutput
+	ToActivationOutputWithContext(ctx context.Context) ActivationOutput
+}
+
+func (Activation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Activation)(nil)).Elem()
+}
+
+func (i Activation) ToActivationOutput() ActivationOutput {
+	return i.ToActivationOutputWithContext(context.Background())
+}
+
+func (i Activation) ToActivationOutputWithContext(ctx context.Context) ActivationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActivationOutput)
+}
+
+type ActivationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActivationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActivationOutput)(nil)).Elem()
+}
+
+func (o ActivationOutput) ToActivationOutput() ActivationOutput {
+	return o
+}
+
+func (o ActivationOutput) ToActivationOutputWithContext(ctx context.Context) ActivationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActivationOutput{})
 }

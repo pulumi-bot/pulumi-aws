@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,11 +61,12 @@ type ResolverQueryLogConfig struct {
 // NewResolverQueryLogConfig registers a new resource with the given unique name, arguments, and options.
 func NewResolverQueryLogConfig(ctx *pulumi.Context,
 	name string, args *ResolverQueryLogConfigArgs, opts ...pulumi.ResourceOption) (*ResolverQueryLogConfig, error) {
-	if args == nil || args.DestinationArn == nil {
-		return nil, errors.New("missing required argument 'DestinationArn'")
-	}
 	if args == nil {
-		args = &ResolverQueryLogConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationArn == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationArn'")
 	}
 	var resource ResolverQueryLogConfig
 	err := ctx.RegisterResource("aws:route53/resolverQueryLogConfig:ResolverQueryLogConfig", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type ResolverQueryLogConfigArgs struct {
 
 func (ResolverQueryLogConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resolverQueryLogConfigArgs)(nil)).Elem()
+}
+
+type ResolverQueryLogConfigInput interface {
+	pulumi.Input
+
+	ToResolverQueryLogConfigOutput() ResolverQueryLogConfigOutput
+	ToResolverQueryLogConfigOutputWithContext(ctx context.Context) ResolverQueryLogConfigOutput
+}
+
+func (ResolverQueryLogConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverQueryLogConfig)(nil)).Elem()
+}
+
+func (i ResolverQueryLogConfig) ToResolverQueryLogConfigOutput() ResolverQueryLogConfigOutput {
+	return i.ToResolverQueryLogConfigOutputWithContext(context.Background())
+}
+
+func (i ResolverQueryLogConfig) ToResolverQueryLogConfigOutputWithContext(ctx context.Context) ResolverQueryLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverQueryLogConfigOutput)
+}
+
+type ResolverQueryLogConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverQueryLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverQueryLogConfigOutput)(nil)).Elem()
+}
+
+func (o ResolverQueryLogConfigOutput) ToResolverQueryLogConfigOutput() ResolverQueryLogConfigOutput {
+	return o
+}
+
+func (o ResolverQueryLogConfigOutput) ToResolverQueryLogConfigOutputWithContext(ctx context.Context) ResolverQueryLogConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResolverQueryLogConfigOutput{})
 }

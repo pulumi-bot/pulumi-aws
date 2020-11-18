@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,11 +68,12 @@ type DomainIdentity struct {
 // NewDomainIdentity registers a new resource with the given unique name, arguments, and options.
 func NewDomainIdentity(ctx *pulumi.Context,
 	name string, args *DomainIdentityArgs, opts ...pulumi.ResourceOption) (*DomainIdentity, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
 	if args == nil {
-		args = &DomainIdentityArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
 	var resource DomainIdentity
 	err := ctx.RegisterResource("aws:ses/domainIdentity:DomainIdentity", name, args, &resource, opts...)
@@ -141,4 +143,43 @@ type DomainIdentityArgs struct {
 
 func (DomainIdentityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainIdentityArgs)(nil)).Elem()
+}
+
+type DomainIdentityInput interface {
+	pulumi.Input
+
+	ToDomainIdentityOutput() DomainIdentityOutput
+	ToDomainIdentityOutputWithContext(ctx context.Context) DomainIdentityOutput
+}
+
+func (DomainIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIdentity)(nil)).Elem()
+}
+
+func (i DomainIdentity) ToDomainIdentityOutput() DomainIdentityOutput {
+	return i.ToDomainIdentityOutputWithContext(context.Background())
+}
+
+func (i DomainIdentity) ToDomainIdentityOutputWithContext(ctx context.Context) DomainIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityOutput)
+}
+
+type DomainIdentityOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIdentityOutput)(nil)).Elem()
+}
+
+func (o DomainIdentityOutput) ToDomainIdentityOutput() DomainIdentityOutput {
+	return o
+}
+
+func (o DomainIdentityOutput) ToDomainIdentityOutputWithContext(ctx context.Context) DomainIdentityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainIdentityOutput{})
 }

@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -101,11 +102,12 @@ type AnalyticsConfiguration struct {
 // NewAnalyticsConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewAnalyticsConfiguration(ctx *pulumi.Context,
 	name string, args *AnalyticsConfigurationArgs, opts ...pulumi.ResourceOption) (*AnalyticsConfiguration, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
 	if args == nil {
-		args = &AnalyticsConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
 	var resource AnalyticsConfiguration
 	err := ctx.RegisterResource("aws:s3/analyticsConfiguration:AnalyticsConfiguration", name, args, &resource, opts...)
@@ -179,4 +181,43 @@ type AnalyticsConfigurationArgs struct {
 
 func (AnalyticsConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsConfigurationArgs)(nil)).Elem()
+}
+
+type AnalyticsConfigurationInput interface {
+	pulumi.Input
+
+	ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput
+	ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput
+}
+
+func (AnalyticsConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsConfiguration)(nil)).Elem()
+}
+
+func (i AnalyticsConfiguration) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
+	return i.ToAnalyticsConfigurationOutputWithContext(context.Background())
+}
+
+func (i AnalyticsConfiguration) ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationOutput)
+}
+
+type AnalyticsConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsConfigurationOutput)(nil)).Elem()
+}
+
+func (o AnalyticsConfigurationOutput) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
+	return o
+}
+
+func (o AnalyticsConfigurationOutput) ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsConfigurationOutput{})
 }

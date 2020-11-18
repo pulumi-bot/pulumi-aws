@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,14 +62,15 @@ type SnapshotCreateVolumePermission struct {
 // NewSnapshotCreateVolumePermission registers a new resource with the given unique name, arguments, and options.
 func NewSnapshotCreateVolumePermission(ctx *pulumi.Context,
 	name string, args *SnapshotCreateVolumePermissionArgs, opts ...pulumi.ResourceOption) (*SnapshotCreateVolumePermission, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.SnapshotId == nil {
-		return nil, errors.New("missing required argument 'SnapshotId'")
-	}
 	if args == nil {
-		args = &SnapshotCreateVolumePermissionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.SnapshotId == nil {
+		return nil, errors.New("invalid value for required argument 'SnapshotId'")
 	}
 	var resource SnapshotCreateVolumePermission
 	err := ctx.RegisterResource("aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission", name, args, &resource, opts...)
@@ -126,4 +128,43 @@ type SnapshotCreateVolumePermissionArgs struct {
 
 func (SnapshotCreateVolumePermissionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotCreateVolumePermissionArgs)(nil)).Elem()
+}
+
+type SnapshotCreateVolumePermissionInput interface {
+	pulumi.Input
+
+	ToSnapshotCreateVolumePermissionOutput() SnapshotCreateVolumePermissionOutput
+	ToSnapshotCreateVolumePermissionOutputWithContext(ctx context.Context) SnapshotCreateVolumePermissionOutput
+}
+
+func (SnapshotCreateVolumePermission) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotCreateVolumePermission)(nil)).Elem()
+}
+
+func (i SnapshotCreateVolumePermission) ToSnapshotCreateVolumePermissionOutput() SnapshotCreateVolumePermissionOutput {
+	return i.ToSnapshotCreateVolumePermissionOutputWithContext(context.Background())
+}
+
+func (i SnapshotCreateVolumePermission) ToSnapshotCreateVolumePermissionOutputWithContext(ctx context.Context) SnapshotCreateVolumePermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotCreateVolumePermissionOutput)
+}
+
+type SnapshotCreateVolumePermissionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnapshotCreateVolumePermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotCreateVolumePermissionOutput)(nil)).Elem()
+}
+
+func (o SnapshotCreateVolumePermissionOutput) ToSnapshotCreateVolumePermissionOutput() SnapshotCreateVolumePermissionOutput {
+	return o
+}
+
+func (o SnapshotCreateVolumePermissionOutput) ToSnapshotCreateVolumePermissionOutputWithContext(ctx context.Context) SnapshotCreateVolumePermissionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SnapshotCreateVolumePermissionOutput{})
 }
