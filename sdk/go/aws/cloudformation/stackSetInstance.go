@@ -4,6 +4,7 @@
 package cloudformation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,11 +61,12 @@ type StackSetInstance struct {
 // NewStackSetInstance registers a new resource with the given unique name, arguments, and options.
 func NewStackSetInstance(ctx *pulumi.Context,
 	name string, args *StackSetInstanceArgs, opts ...pulumi.ResourceOption) (*StackSetInstance, error) {
-	if args == nil || args.StackSetName == nil {
-		return nil, errors.New("missing required argument 'StackSetName'")
-	}
 	if args == nil {
-		args = &StackSetInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StackSetName == nil {
+		return nil, errors.New("invalid value for required argument 'StackSetName'")
 	}
 	var resource StackSetInstance
 	err := ctx.RegisterResource("aws:cloudformation/stackSetInstance:StackSetInstance", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type StackSetInstanceArgs struct {
 
 func (StackSetInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackSetInstanceArgs)(nil)).Elem()
+}
+
+type StackSetInstanceInput interface {
+	pulumi.Input
+
+	ToStackSetInstanceOutput() StackSetInstanceOutput
+	ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput
+}
+
+func (StackSetInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackSetInstance)(nil)).Elem()
+}
+
+func (i StackSetInstance) ToStackSetInstanceOutput() StackSetInstanceOutput {
+	return i.ToStackSetInstanceOutputWithContext(context.Background())
+}
+
+func (i StackSetInstance) ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackSetInstanceOutput)
+}
+
+type StackSetInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackSetInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackSetInstanceOutput)(nil)).Elem()
+}
+
+func (o StackSetInstanceOutput) ToStackSetInstanceOutput() StackSetInstanceOutput {
+	return o
+}
+
+func (o StackSetInstanceOutput) ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StackSetInstanceOutput{})
 }

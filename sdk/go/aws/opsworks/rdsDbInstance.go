@@ -4,6 +4,7 @@
 package opsworks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,20 +56,21 @@ type RdsDbInstance struct {
 // NewRdsDbInstance registers a new resource with the given unique name, arguments, and options.
 func NewRdsDbInstance(ctx *pulumi.Context,
 	name string, args *RdsDbInstanceArgs, opts ...pulumi.ResourceOption) (*RdsDbInstance, error) {
-	if args == nil || args.DbPassword == nil {
-		return nil, errors.New("missing required argument 'DbPassword'")
-	}
-	if args == nil || args.DbUser == nil {
-		return nil, errors.New("missing required argument 'DbUser'")
-	}
-	if args == nil || args.RdsDbInstanceArn == nil {
-		return nil, errors.New("missing required argument 'RdsDbInstanceArn'")
-	}
-	if args == nil || args.StackId == nil {
-		return nil, errors.New("missing required argument 'StackId'")
-	}
 	if args == nil {
-		args = &RdsDbInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DbPassword == nil {
+		return nil, errors.New("invalid value for required argument 'DbPassword'")
+	}
+	if args.DbUser == nil {
+		return nil, errors.New("invalid value for required argument 'DbUser'")
+	}
+	if args.RdsDbInstanceArn == nil {
+		return nil, errors.New("invalid value for required argument 'RdsDbInstanceArn'")
+	}
+	if args.StackId == nil {
+		return nil, errors.New("invalid value for required argument 'StackId'")
 	}
 	var resource RdsDbInstance
 	err := ctx.RegisterResource("aws:opsworks/rdsDbInstance:RdsDbInstance", name, args, &resource, opts...)
@@ -142,4 +144,43 @@ type RdsDbInstanceArgs struct {
 
 func (RdsDbInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsDbInstanceArgs)(nil)).Elem()
+}
+
+type RdsDbInstanceInput interface {
+	pulumi.Input
+
+	ToRdsDbInstanceOutput() RdsDbInstanceOutput
+	ToRdsDbInstanceOutputWithContext(ctx context.Context) RdsDbInstanceOutput
+}
+
+func (RdsDbInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsDbInstance)(nil)).Elem()
+}
+
+func (i RdsDbInstance) ToRdsDbInstanceOutput() RdsDbInstanceOutput {
+	return i.ToRdsDbInstanceOutputWithContext(context.Background())
+}
+
+func (i RdsDbInstance) ToRdsDbInstanceOutputWithContext(ctx context.Context) RdsDbInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsDbInstanceOutput)
+}
+
+type RdsDbInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (RdsDbInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsDbInstanceOutput)(nil)).Elem()
+}
+
+func (o RdsDbInstanceOutput) ToRdsDbInstanceOutput() RdsDbInstanceOutput {
+	return o
+}
+
+func (o RdsDbInstanceOutput) ToRdsDbInstanceOutputWithContext(ctx context.Context) RdsDbInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RdsDbInstanceOutput{})
 }

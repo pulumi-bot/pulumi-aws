@@ -4,6 +4,7 @@
 package sfn
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -48,6 +49,7 @@ func NewActivity(ctx *pulumi.Context,
 	if args == nil {
 		args = &ActivityArgs{}
 	}
+
 	var resource Activity
 	err := ctx.RegisterResource("aws:sfn/activity:Activity", name, args, &resource, opts...)
 	if err != nil {
@@ -108,4 +110,43 @@ type ActivityArgs struct {
 
 func (ActivityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activityArgs)(nil)).Elem()
+}
+
+type ActivityInput interface {
+	pulumi.Input
+
+	ToActivityOutput() ActivityOutput
+	ToActivityOutputWithContext(ctx context.Context) ActivityOutput
+}
+
+func (Activity) ElementType() reflect.Type {
+	return reflect.TypeOf((*Activity)(nil)).Elem()
+}
+
+func (i Activity) ToActivityOutput() ActivityOutput {
+	return i.ToActivityOutputWithContext(context.Background())
+}
+
+func (i Activity) ToActivityOutputWithContext(ctx context.Context) ActivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActivityOutput)
+}
+
+type ActivityOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActivityOutput)(nil)).Elem()
+}
+
+func (o ActivityOutput) ToActivityOutput() ActivityOutput {
+	return o
+}
+
+func (o ActivityOutput) ToActivityOutputWithContext(ctx context.Context) ActivityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActivityOutput{})
 }

@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,11 +73,12 @@ type DefaultSubnet struct {
 // NewDefaultSubnet registers a new resource with the given unique name, arguments, and options.
 func NewDefaultSubnet(ctx *pulumi.Context,
 	name string, args *DefaultSubnetArgs, opts ...pulumi.ResourceOption) (*DefaultSubnet, error) {
-	if args == nil || args.AvailabilityZone == nil {
-		return nil, errors.New("missing required argument 'AvailabilityZone'")
-	}
 	if args == nil {
-		args = &DefaultSubnetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AvailabilityZone == nil {
+		return nil, errors.New("invalid value for required argument 'AvailabilityZone'")
 	}
 	var resource DefaultSubnet
 	err := ctx.RegisterResource("aws:ec2/defaultSubnet:DefaultSubnet", name, args, &resource, opts...)
@@ -174,4 +176,43 @@ type DefaultSubnetArgs struct {
 
 func (DefaultSubnetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultSubnetArgs)(nil)).Elem()
+}
+
+type DefaultSubnetInput interface {
+	pulumi.Input
+
+	ToDefaultSubnetOutput() DefaultSubnetOutput
+	ToDefaultSubnetOutputWithContext(ctx context.Context) DefaultSubnetOutput
+}
+
+func (DefaultSubnet) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultSubnet)(nil)).Elem()
+}
+
+func (i DefaultSubnet) ToDefaultSubnetOutput() DefaultSubnetOutput {
+	return i.ToDefaultSubnetOutputWithContext(context.Background())
+}
+
+func (i DefaultSubnet) ToDefaultSubnetOutputWithContext(ctx context.Context) DefaultSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSubnetOutput)
+}
+
+type DefaultSubnetOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultSubnetOutput)(nil)).Elem()
+}
+
+func (o DefaultSubnetOutput) ToDefaultSubnetOutput() DefaultSubnetOutput {
+	return o
+}
+
+func (o DefaultSubnetOutput) ToDefaultSubnetOutputWithContext(ctx context.Context) DefaultSubnetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultSubnetOutput{})
 }

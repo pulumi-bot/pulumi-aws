@@ -4,6 +4,7 @@
 package s3control
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,14 +70,15 @@ type BucketPolicy struct {
 // NewBucketPolicy registers a new resource with the given unique name, arguments, and options.
 func NewBucketPolicy(ctx *pulumi.Context,
 	name string, args *BucketPolicyArgs, opts ...pulumi.ResourceOption) (*BucketPolicy, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
 	if args == nil {
-		args = &BucketPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
 	var resource BucketPolicy
 	err := ctx.RegisterResource("aws:s3control/bucketPolicy:BucketPolicy", name, args, &resource, opts...)
@@ -130,4 +132,43 @@ type BucketPolicyArgs struct {
 
 func (BucketPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketPolicyArgs)(nil)).Elem()
+}
+
+type BucketPolicyInput interface {
+	pulumi.Input
+
+	ToBucketPolicyOutput() BucketPolicyOutput
+	ToBucketPolicyOutputWithContext(ctx context.Context) BucketPolicyOutput
+}
+
+func (BucketPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketPolicy)(nil)).Elem()
+}
+
+func (i BucketPolicy) ToBucketPolicyOutput() BucketPolicyOutput {
+	return i.ToBucketPolicyOutputWithContext(context.Background())
+}
+
+func (i BucketPolicy) ToBucketPolicyOutputWithContext(ctx context.Context) BucketPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketPolicyOutput)
+}
+
+type BucketPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketPolicyOutput)(nil)).Elem()
+}
+
+func (o BucketPolicyOutput) ToBucketPolicyOutput() BucketPolicyOutput {
+	return o
+}
+
+func (o BucketPolicyOutput) ToBucketPolicyOutputWithContext(ctx context.Context) BucketPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketPolicyOutput{})
 }

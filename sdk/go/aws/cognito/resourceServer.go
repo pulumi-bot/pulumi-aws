@@ -4,6 +4,7 @@
 package cognito
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,14 +91,15 @@ type ResourceServer struct {
 // NewResourceServer registers a new resource with the given unique name, arguments, and options.
 func NewResourceServer(ctx *pulumi.Context,
 	name string, args *ResourceServerArgs, opts ...pulumi.ResourceOption) (*ResourceServer, error) {
-	if args == nil || args.Identifier == nil {
-		return nil, errors.New("missing required argument 'Identifier'")
-	}
-	if args == nil || args.UserPoolId == nil {
-		return nil, errors.New("missing required argument 'UserPoolId'")
-	}
 	if args == nil {
-		args = &ResourceServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Identifier == nil {
+		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
+	if args.UserPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'UserPoolId'")
 	}
 	var resource ResourceServer
 	err := ctx.RegisterResource("aws:cognito/resourceServer:ResourceServer", name, args, &resource, opts...)
@@ -171,4 +173,43 @@ type ResourceServerArgs struct {
 
 func (ResourceServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceServerArgs)(nil)).Elem()
+}
+
+type ResourceServerInput interface {
+	pulumi.Input
+
+	ToResourceServerOutput() ResourceServerOutput
+	ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput
+}
+
+func (ResourceServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServer)(nil)).Elem()
+}
+
+func (i ResourceServer) ToResourceServerOutput() ResourceServerOutput {
+	return i.ToResourceServerOutputWithContext(context.Background())
+}
+
+func (i ResourceServer) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerOutput)
+}
+
+type ResourceServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerOutput)(nil)).Elem()
+}
+
+func (o ResourceServerOutput) ToResourceServerOutput() ResourceServerOutput {
+	return o
+}
+
+func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceServerOutput{})
 }

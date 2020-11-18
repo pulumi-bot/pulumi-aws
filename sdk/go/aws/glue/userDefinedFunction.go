@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,20 +75,21 @@ type UserDefinedFunction struct {
 // NewUserDefinedFunction registers a new resource with the given unique name, arguments, and options.
 func NewUserDefinedFunction(ctx *pulumi.Context,
 	name string, args *UserDefinedFunctionArgs, opts ...pulumi.ResourceOption) (*UserDefinedFunction, error) {
-	if args == nil || args.ClassName == nil {
-		return nil, errors.New("missing required argument 'ClassName'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.OwnerName == nil {
-		return nil, errors.New("missing required argument 'OwnerName'")
-	}
-	if args == nil || args.OwnerType == nil {
-		return nil, errors.New("missing required argument 'OwnerType'")
-	}
 	if args == nil {
-		args = &UserDefinedFunctionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClassName == nil {
+		return nil, errors.New("invalid value for required argument 'ClassName'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.OwnerName == nil {
+		return nil, errors.New("invalid value for required argument 'OwnerName'")
+	}
+	if args.OwnerType == nil {
+		return nil, errors.New("invalid value for required argument 'OwnerType'")
 	}
 	var resource UserDefinedFunction
 	err := ctx.RegisterResource("aws:glue/userDefinedFunction:UserDefinedFunction", name, args, &resource, opts...)
@@ -189,4 +191,43 @@ type UserDefinedFunctionArgs struct {
 
 func (UserDefinedFunctionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userDefinedFunctionArgs)(nil)).Elem()
+}
+
+type UserDefinedFunctionInput interface {
+	pulumi.Input
+
+	ToUserDefinedFunctionOutput() UserDefinedFunctionOutput
+	ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput
+}
+
+func (UserDefinedFunction) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDefinedFunction)(nil)).Elem()
+}
+
+func (i UserDefinedFunction) ToUserDefinedFunctionOutput() UserDefinedFunctionOutput {
+	return i.ToUserDefinedFunctionOutputWithContext(context.Background())
+}
+
+func (i UserDefinedFunction) ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedFunctionOutput)
+}
+
+type UserDefinedFunctionOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserDefinedFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDefinedFunctionOutput)(nil)).Elem()
+}
+
+func (o UserDefinedFunctionOutput) ToUserDefinedFunctionOutput() UserDefinedFunctionOutput {
+	return o
+}
+
+func (o UserDefinedFunctionOutput) ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserDefinedFunctionOutput{})
 }

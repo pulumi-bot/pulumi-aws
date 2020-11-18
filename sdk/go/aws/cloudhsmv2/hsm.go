@@ -4,6 +4,7 @@
 package cloudhsmv2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,11 +66,12 @@ type Hsm struct {
 // NewHsm registers a new resource with the given unique name, arguments, and options.
 func NewHsm(ctx *pulumi.Context,
 	name string, args *HsmArgs, opts ...pulumi.ResourceOption) (*Hsm, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &HsmArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource Hsm
 	err := ctx.RegisterResource("aws:cloudhsmv2/hsm:Hsm", name, args, &resource, opts...)
@@ -155,4 +157,43 @@ type HsmArgs struct {
 
 func (HsmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hsmArgs)(nil)).Elem()
+}
+
+type HsmInput interface {
+	pulumi.Input
+
+	ToHsmOutput() HsmOutput
+	ToHsmOutputWithContext(ctx context.Context) HsmOutput
+}
+
+func (Hsm) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hsm)(nil)).Elem()
+}
+
+func (i Hsm) ToHsmOutput() HsmOutput {
+	return i.ToHsmOutputWithContext(context.Background())
+}
+
+func (i Hsm) ToHsmOutputWithContext(ctx context.Context) HsmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HsmOutput)
+}
+
+type HsmOutput struct {
+	*pulumi.OutputState
+}
+
+func (HsmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HsmOutput)(nil)).Elem()
+}
+
+func (o HsmOutput) ToHsmOutput() HsmOutput {
+	return o
+}
+
+func (o HsmOutput) ToHsmOutputWithContext(ctx context.Context) HsmOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HsmOutput{})
 }

@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -88,6 +89,7 @@ func NewWorkflow(ctx *pulumi.Context,
 	if args == nil {
 		args = &WorkflowArgs{}
 	}
+
 	var resource Workflow
 	err := ctx.RegisterResource("aws:glue/workflow:Workflow", name, args, &resource, opts...)
 	if err != nil {
@@ -172,4 +174,43 @@ type WorkflowArgs struct {
 
 func (WorkflowArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowArgs)(nil)).Elem()
+}
+
+type WorkflowInput interface {
+	pulumi.Input
+
+	ToWorkflowOutput() WorkflowOutput
+	ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput
+}
+
+func (Workflow) ElementType() reflect.Type {
+	return reflect.TypeOf((*Workflow)(nil)).Elem()
+}
+
+func (i Workflow) ToWorkflowOutput() WorkflowOutput {
+	return i.ToWorkflowOutputWithContext(context.Background())
+}
+
+func (i Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowOutput)
+}
+
+type WorkflowOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkflowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowOutput)(nil)).Elem()
+}
+
+func (o WorkflowOutput) ToWorkflowOutput() WorkflowOutput {
+	return o
+}
+
+func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkflowOutput{})
 }

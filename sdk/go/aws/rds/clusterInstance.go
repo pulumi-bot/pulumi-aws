@@ -4,6 +4,7 @@
 package rds
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,14 +148,15 @@ type ClusterInstance struct {
 // NewClusterInstance registers a new resource with the given unique name, arguments, and options.
 func NewClusterInstance(ctx *pulumi.Context,
 	name string, args *ClusterInstanceArgs, opts ...pulumi.ResourceOption) (*ClusterInstance, error) {
-	if args == nil || args.ClusterIdentifier == nil {
-		return nil, errors.New("missing required argument 'ClusterIdentifier'")
-	}
-	if args == nil || args.InstanceClass == nil {
-		return nil, errors.New("missing required argument 'InstanceClass'")
-	}
 	if args == nil {
-		args = &ClusterInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterIdentifier'")
+	}
+	if args.InstanceClass == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceClass'")
 	}
 	var resource ClusterInstance
 	err := ctx.RegisterResource("aws:rds/clusterInstance:ClusterInstance", name, args, &resource, opts...)
@@ -444,4 +446,43 @@ type ClusterInstanceArgs struct {
 
 func (ClusterInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterInstanceArgs)(nil)).Elem()
+}
+
+type ClusterInstanceInput interface {
+	pulumi.Input
+
+	ToClusterInstanceOutput() ClusterInstanceOutput
+	ToClusterInstanceOutputWithContext(ctx context.Context) ClusterInstanceOutput
+}
+
+func (ClusterInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstance)(nil)).Elem()
+}
+
+func (i ClusterInstance) ToClusterInstanceOutput() ClusterInstanceOutput {
+	return i.ToClusterInstanceOutputWithContext(context.Background())
+}
+
+func (i ClusterInstance) ToClusterInstanceOutputWithContext(ctx context.Context) ClusterInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceOutput)
+}
+
+type ClusterInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceOutput)(nil)).Elem()
+}
+
+func (o ClusterInstanceOutput) ToClusterInstanceOutput() ClusterInstanceOutput {
+	return o
+}
+
+func (o ClusterInstanceOutput) ToClusterInstanceOutputWithContext(ctx context.Context) ClusterInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterInstanceOutput{})
 }

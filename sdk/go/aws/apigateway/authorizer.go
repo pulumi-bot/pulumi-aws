@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,11 +48,12 @@ type Authorizer struct {
 // NewAuthorizer registers a new resource with the given unique name, arguments, and options.
 func NewAuthorizer(ctx *pulumi.Context,
 	name string, args *AuthorizerArgs, opts ...pulumi.ResourceOption) (*Authorizer, error) {
-	if args == nil || args.RestApi == nil {
-		return nil, errors.New("missing required argument 'RestApi'")
-	}
 	if args == nil {
-		args = &AuthorizerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RestApi == nil {
+		return nil, errors.New("invalid value for required argument 'RestApi'")
 	}
 	var resource Authorizer
 	err := ctx.RegisterResource("aws:apigateway/authorizer:Authorizer", name, args, &resource, opts...)
@@ -205,4 +207,43 @@ type AuthorizerArgs struct {
 
 func (AuthorizerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizerArgs)(nil)).Elem()
+}
+
+type AuthorizerInput interface {
+	pulumi.Input
+
+	ToAuthorizerOutput() AuthorizerOutput
+	ToAuthorizerOutputWithContext(ctx context.Context) AuthorizerOutput
+}
+
+func (Authorizer) ElementType() reflect.Type {
+	return reflect.TypeOf((*Authorizer)(nil)).Elem()
+}
+
+func (i Authorizer) ToAuthorizerOutput() AuthorizerOutput {
+	return i.ToAuthorizerOutputWithContext(context.Background())
+}
+
+func (i Authorizer) ToAuthorizerOutputWithContext(ctx context.Context) AuthorizerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizerOutput)
+}
+
+type AuthorizerOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorizerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizerOutput)(nil)).Elem()
+}
+
+func (o AuthorizerOutput) ToAuthorizerOutput() AuthorizerOutput {
+	return o
+}
+
+func (o AuthorizerOutput) ToAuthorizerOutputWithContext(ctx context.Context) AuthorizerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthorizerOutput{})
 }

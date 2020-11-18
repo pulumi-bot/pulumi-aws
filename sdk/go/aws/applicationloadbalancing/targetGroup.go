@@ -4,6 +4,7 @@
 package applicationloadbalancing
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -149,6 +150,7 @@ func NewTargetGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &TargetGroupArgs{}
 	}
+
 	var resource TargetGroup
 	err := ctx.RegisterResource("aws:applicationloadbalancing/targetGroup:TargetGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -329,4 +331,43 @@ type TargetGroupArgs struct {
 
 func (TargetGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetGroupArgs)(nil)).Elem()
+}
+
+type TargetGroupInput interface {
+	pulumi.Input
+
+	ToTargetGroupOutput() TargetGroupOutput
+	ToTargetGroupOutputWithContext(ctx context.Context) TargetGroupOutput
+}
+
+func (TargetGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGroup)(nil)).Elem()
+}
+
+func (i TargetGroup) ToTargetGroupOutput() TargetGroupOutput {
+	return i.ToTargetGroupOutputWithContext(context.Background())
+}
+
+func (i TargetGroup) ToTargetGroupOutputWithContext(ctx context.Context) TargetGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupOutput)
+}
+
+type TargetGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGroupOutput)(nil)).Elem()
+}
+
+func (o TargetGroupOutput) ToTargetGroupOutput() TargetGroupOutput {
+	return o
+}
+
+func (o TargetGroupOutput) ToTargetGroupOutputWithContext(ctx context.Context) TargetGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetGroupOutput{})
 }
