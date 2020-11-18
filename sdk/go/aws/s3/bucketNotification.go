@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -178,11 +179,12 @@ type BucketNotification struct {
 // NewBucketNotification registers a new resource with the given unique name, arguments, and options.
 func NewBucketNotification(ctx *pulumi.Context,
 	name string, args *BucketNotificationArgs, opts ...pulumi.ResourceOption) (*BucketNotification, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
 	if args == nil {
-		args = &BucketNotificationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
 	var resource BucketNotification
 	err := ctx.RegisterResource("aws:s3/bucketNotification:BucketNotification", name, args, &resource, opts...)
@@ -256,4 +258,43 @@ type BucketNotificationArgs struct {
 
 func (BucketNotificationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketNotificationArgs)(nil)).Elem()
+}
+
+type BucketNotificationInput interface {
+	pulumi.Input
+
+	ToBucketNotificationOutput() BucketNotificationOutput
+	ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput
+}
+
+func (BucketNotification) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketNotification)(nil)).Elem()
+}
+
+func (i BucketNotification) ToBucketNotificationOutput() BucketNotificationOutput {
+	return i.ToBucketNotificationOutputWithContext(context.Background())
+}
+
+func (i BucketNotification) ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketNotificationOutput)
+}
+
+type BucketNotificationOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketNotificationOutput)(nil)).Elem()
+}
+
+func (o BucketNotificationOutput) ToBucketNotificationOutput() BucketNotificationOutput {
+	return o
+}
+
+func (o BucketNotificationOutput) ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketNotificationOutput{})
 }

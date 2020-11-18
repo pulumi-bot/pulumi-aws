@@ -4,6 +4,7 @@
 package alb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,14 +65,15 @@ type ListenerCertificate struct {
 // NewListenerCertificate registers a new resource with the given unique name, arguments, and options.
 func NewListenerCertificate(ctx *pulumi.Context,
 	name string, args *ListenerCertificateArgs, opts ...pulumi.ResourceOption) (*ListenerCertificate, error) {
-	if args == nil || args.CertificateArn == nil {
-		return nil, errors.New("missing required argument 'CertificateArn'")
-	}
-	if args == nil || args.ListenerArn == nil {
-		return nil, errors.New("missing required argument 'ListenerArn'")
-	}
 	if args == nil {
-		args = &ListenerCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CertificateArn == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateArn'")
+	}
+	if args.ListenerArn == nil {
+		return nil, errors.New("invalid value for required argument 'ListenerArn'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -135,4 +137,43 @@ type ListenerCertificateArgs struct {
 
 func (ListenerCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerCertificateArgs)(nil)).Elem()
+}
+
+type ListenerCertificateInput interface {
+	pulumi.Input
+
+	ToListenerCertificateOutput() ListenerCertificateOutput
+	ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput
+}
+
+func (ListenerCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCertificate)(nil)).Elem()
+}
+
+func (i ListenerCertificate) ToListenerCertificateOutput() ListenerCertificateOutput {
+	return i.ToListenerCertificateOutputWithContext(context.Background())
+}
+
+func (i ListenerCertificate) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificateOutput)
+}
+
+type ListenerCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCertificateOutput)(nil)).Elem()
+}
+
+func (o ListenerCertificateOutput) ToListenerCertificateOutput() ListenerCertificateOutput {
+	return o
+}
+
+func (o ListenerCertificateOutput) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListenerCertificateOutput{})
 }

@@ -4,6 +4,7 @@
 package datasync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,14 +62,15 @@ type EfsLocation struct {
 // NewEfsLocation registers a new resource with the given unique name, arguments, and options.
 func NewEfsLocation(ctx *pulumi.Context,
 	name string, args *EfsLocationArgs, opts ...pulumi.ResourceOption) (*EfsLocation, error) {
-	if args == nil || args.Ec2Config == nil {
-		return nil, errors.New("missing required argument 'Ec2Config'")
-	}
-	if args == nil || args.EfsFileSystemArn == nil {
-		return nil, errors.New("missing required argument 'EfsFileSystemArn'")
-	}
 	if args == nil {
-		args = &EfsLocationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Ec2Config == nil {
+		return nil, errors.New("invalid value for required argument 'Ec2Config'")
+	}
+	if args.EfsFileSystemArn == nil {
+		return nil, errors.New("invalid value for required argument 'EfsFileSystemArn'")
 	}
 	var resource EfsLocation
 	err := ctx.RegisterResource("aws:datasync/efsLocation:EfsLocation", name, args, &resource, opts...)
@@ -148,4 +150,43 @@ type EfsLocationArgs struct {
 
 func (EfsLocationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*efsLocationArgs)(nil)).Elem()
+}
+
+type EfsLocationInput interface {
+	pulumi.Input
+
+	ToEfsLocationOutput() EfsLocationOutput
+	ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput
+}
+
+func (EfsLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocation)(nil)).Elem()
+}
+
+func (i EfsLocation) ToEfsLocationOutput() EfsLocationOutput {
+	return i.ToEfsLocationOutputWithContext(context.Background())
+}
+
+func (i EfsLocation) ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationOutput)
+}
+
+type EfsLocationOutput struct {
+	*pulumi.OutputState
+}
+
+func (EfsLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocationOutput)(nil)).Elem()
+}
+
+func (o EfsLocationOutput) ToEfsLocationOutput() EfsLocationOutput {
+	return o
+}
+
+func (o EfsLocationOutput) ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EfsLocationOutput{})
 }

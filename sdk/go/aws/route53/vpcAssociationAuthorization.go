@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,14 +89,15 @@ type VpcAssociationAuthorization struct {
 // NewVpcAssociationAuthorization registers a new resource with the given unique name, arguments, and options.
 func NewVpcAssociationAuthorization(ctx *pulumi.Context,
 	name string, args *VpcAssociationAuthorizationArgs, opts ...pulumi.ResourceOption) (*VpcAssociationAuthorization, error) {
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &VpcAssociationAuthorizationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource VpcAssociationAuthorization
 	err := ctx.RegisterResource("aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization", name, args, &resource, opts...)
@@ -161,4 +163,43 @@ type VpcAssociationAuthorizationArgs struct {
 
 func (VpcAssociationAuthorizationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAssociationAuthorizationArgs)(nil)).Elem()
+}
+
+type VpcAssociationAuthorizationInput interface {
+	pulumi.Input
+
+	ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput
+	ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput
+}
+
+func (VpcAssociationAuthorization) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAssociationAuthorization)(nil)).Elem()
+}
+
+func (i VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
+	return i.ToVpcAssociationAuthorizationOutputWithContext(context.Background())
+}
+
+func (i VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAssociationAuthorizationOutput)
+}
+
+type VpcAssociationAuthorizationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAssociationAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAssociationAuthorizationOutput)(nil)).Elem()
+}
+
+func (o VpcAssociationAuthorizationOutput) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
+	return o
+}
+
+func (o VpcAssociationAuthorizationOutput) ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcAssociationAuthorizationOutput{})
 }

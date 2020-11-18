@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -44,11 +45,12 @@ type ActiveReceiptRuleSet struct {
 // NewActiveReceiptRuleSet registers a new resource with the given unique name, arguments, and options.
 func NewActiveReceiptRuleSet(ctx *pulumi.Context,
 	name string, args *ActiveReceiptRuleSetArgs, opts ...pulumi.ResourceOption) (*ActiveReceiptRuleSet, error) {
-	if args == nil || args.RuleSetName == nil {
-		return nil, errors.New("missing required argument 'RuleSetName'")
-	}
 	if args == nil {
-		args = &ActiveReceiptRuleSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RuleSetName == nil {
+		return nil, errors.New("invalid value for required argument 'RuleSetName'")
 	}
 	var resource ActiveReceiptRuleSet
 	err := ctx.RegisterResource("aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet", name, args, &resource, opts...)
@@ -98,4 +100,43 @@ type ActiveReceiptRuleSetArgs struct {
 
 func (ActiveReceiptRuleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activeReceiptRuleSetArgs)(nil)).Elem()
+}
+
+type ActiveReceiptRuleSetInput interface {
+	pulumi.Input
+
+	ToActiveReceiptRuleSetOutput() ActiveReceiptRuleSetOutput
+	ToActiveReceiptRuleSetOutputWithContext(ctx context.Context) ActiveReceiptRuleSetOutput
+}
+
+func (ActiveReceiptRuleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveReceiptRuleSet)(nil)).Elem()
+}
+
+func (i ActiveReceiptRuleSet) ToActiveReceiptRuleSetOutput() ActiveReceiptRuleSetOutput {
+	return i.ToActiveReceiptRuleSetOutputWithContext(context.Background())
+}
+
+func (i ActiveReceiptRuleSet) ToActiveReceiptRuleSetOutputWithContext(ctx context.Context) ActiveReceiptRuleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveReceiptRuleSetOutput)
+}
+
+type ActiveReceiptRuleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveReceiptRuleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveReceiptRuleSetOutput)(nil)).Elem()
+}
+
+func (o ActiveReceiptRuleSetOutput) ToActiveReceiptRuleSetOutput() ActiveReceiptRuleSetOutput {
+	return o
+}
+
+func (o ActiveReceiptRuleSetOutput) ToActiveReceiptRuleSetOutputWithContext(ctx context.Context) ActiveReceiptRuleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActiveReceiptRuleSetOutput{})
 }

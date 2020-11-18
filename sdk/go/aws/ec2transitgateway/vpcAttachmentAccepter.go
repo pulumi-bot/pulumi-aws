@@ -4,6 +4,7 @@
 package ec2transitgateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,11 +74,12 @@ type VpcAttachmentAccepter struct {
 // NewVpcAttachmentAccepter registers a new resource with the given unique name, arguments, and options.
 func NewVpcAttachmentAccepter(ctx *pulumi.Context,
 	name string, args *VpcAttachmentAccepterArgs, opts ...pulumi.ResourceOption) (*VpcAttachmentAccepter, error) {
-	if args == nil || args.TransitGatewayAttachmentId == nil {
-		return nil, errors.New("missing required argument 'TransitGatewayAttachmentId'")
-	}
 	if args == nil {
-		args = &VpcAttachmentAccepterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TransitGatewayAttachmentId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitGatewayAttachmentId'")
 	}
 	var resource VpcAttachmentAccepter
 	err := ctx.RegisterResource("aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter", name, args, &resource, opts...)
@@ -179,4 +181,43 @@ type VpcAttachmentAccepterArgs struct {
 
 func (VpcAttachmentAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAttachmentAccepterArgs)(nil)).Elem()
+}
+
+type VpcAttachmentAccepterInput interface {
+	pulumi.Input
+
+	ToVpcAttachmentAccepterOutput() VpcAttachmentAccepterOutput
+	ToVpcAttachmentAccepterOutputWithContext(ctx context.Context) VpcAttachmentAccepterOutput
+}
+
+func (VpcAttachmentAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAttachmentAccepter)(nil)).Elem()
+}
+
+func (i VpcAttachmentAccepter) ToVpcAttachmentAccepterOutput() VpcAttachmentAccepterOutput {
+	return i.ToVpcAttachmentAccepterOutputWithContext(context.Background())
+}
+
+func (i VpcAttachmentAccepter) ToVpcAttachmentAccepterOutputWithContext(ctx context.Context) VpcAttachmentAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAttachmentAccepterOutput)
+}
+
+type VpcAttachmentAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAttachmentAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAttachmentAccepterOutput)(nil)).Elem()
+}
+
+func (o VpcAttachmentAccepterOutput) ToVpcAttachmentAccepterOutput() VpcAttachmentAccepterOutput {
+	return o
+}
+
+func (o VpcAttachmentAccepterOutput) ToVpcAttachmentAccepterOutputWithContext(ctx context.Context) VpcAttachmentAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcAttachmentAccepterOutput{})
 }

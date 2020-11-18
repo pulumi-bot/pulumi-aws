@@ -4,6 +4,7 @@
 package s3outposts
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,17 +59,18 @@ type Endpoint struct {
 // NewEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewEndpoint(ctx *pulumi.Context,
 	name string, args *EndpointArgs, opts ...pulumi.ResourceOption) (*Endpoint, error) {
-	if args == nil || args.OutpostId == nil {
-		return nil, errors.New("missing required argument 'OutpostId'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &EndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.OutpostId == nil {
+		return nil, errors.New("invalid value for required argument 'OutpostId'")
+	}
+	if args.SecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource Endpoint
 	err := ctx.RegisterResource("aws:s3outposts/endpoint:Endpoint", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type EndpointArgs struct {
 
 func (EndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointArgs)(nil)).Elem()
+}
+
+type EndpointInput interface {
+	pulumi.Input
+
+	ToEndpointOutput() EndpointOutput
+	ToEndpointOutputWithContext(ctx context.Context) EndpointOutput
+}
+
+func (Endpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*Endpoint)(nil)).Elem()
+}
+
+func (i Endpoint) ToEndpointOutput() EndpointOutput {
+	return i.ToEndpointOutputWithContext(context.Background())
+}
+
+func (i Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
+}
+
+type EndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointOutput)(nil)).Elem()
+}
+
+func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
+	return o
+}
+
+func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointOutput{})
 }

@@ -4,6 +4,7 @@
 package redshift
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,14 +66,15 @@ type SnapshotScheduleAssociation struct {
 // NewSnapshotScheduleAssociation registers a new resource with the given unique name, arguments, and options.
 func NewSnapshotScheduleAssociation(ctx *pulumi.Context,
 	name string, args *SnapshotScheduleAssociationArgs, opts ...pulumi.ResourceOption) (*SnapshotScheduleAssociation, error) {
-	if args == nil || args.ClusterIdentifier == nil {
-		return nil, errors.New("missing required argument 'ClusterIdentifier'")
-	}
-	if args == nil || args.ScheduleIdentifier == nil {
-		return nil, errors.New("missing required argument 'ScheduleIdentifier'")
-	}
 	if args == nil {
-		args = &SnapshotScheduleAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterIdentifier'")
+	}
+	if args.ScheduleIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'ScheduleIdentifier'")
 	}
 	var resource SnapshotScheduleAssociation
 	err := ctx.RegisterResource("aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation", name, args, &resource, opts...)
@@ -130,4 +132,43 @@ type SnapshotScheduleAssociationArgs struct {
 
 func (SnapshotScheduleAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotScheduleAssociationArgs)(nil)).Elem()
+}
+
+type SnapshotScheduleAssociationInput interface {
+	pulumi.Input
+
+	ToSnapshotScheduleAssociationOutput() SnapshotScheduleAssociationOutput
+	ToSnapshotScheduleAssociationOutputWithContext(ctx context.Context) SnapshotScheduleAssociationOutput
+}
+
+func (SnapshotScheduleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotScheduleAssociation)(nil)).Elem()
+}
+
+func (i SnapshotScheduleAssociation) ToSnapshotScheduleAssociationOutput() SnapshotScheduleAssociationOutput {
+	return i.ToSnapshotScheduleAssociationOutputWithContext(context.Background())
+}
+
+func (i SnapshotScheduleAssociation) ToSnapshotScheduleAssociationOutputWithContext(ctx context.Context) SnapshotScheduleAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotScheduleAssociationOutput)
+}
+
+type SnapshotScheduleAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnapshotScheduleAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotScheduleAssociationOutput)(nil)).Elem()
+}
+
+func (o SnapshotScheduleAssociationOutput) ToSnapshotScheduleAssociationOutput() SnapshotScheduleAssociationOutput {
+	return o
+}
+
+func (o SnapshotScheduleAssociationOutput) ToSnapshotScheduleAssociationOutputWithContext(ctx context.Context) SnapshotScheduleAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SnapshotScheduleAssociationOutput{})
 }

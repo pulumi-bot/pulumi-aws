@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,14 +62,15 @@ type ConnectionAssociation struct {
 // NewConnectionAssociation registers a new resource with the given unique name, arguments, and options.
 func NewConnectionAssociation(ctx *pulumi.Context,
 	name string, args *ConnectionAssociationArgs, opts ...pulumi.ResourceOption) (*ConnectionAssociation, error) {
-	if args == nil || args.ConnectionId == nil {
-		return nil, errors.New("missing required argument 'ConnectionId'")
-	}
-	if args == nil || args.LagId == nil {
-		return nil, errors.New("missing required argument 'LagId'")
-	}
 	if args == nil {
-		args = &ConnectionAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionId'")
+	}
+	if args.LagId == nil {
+		return nil, errors.New("invalid value for required argument 'LagId'")
 	}
 	var resource ConnectionAssociation
 	err := ctx.RegisterResource("aws:directconnect/connectionAssociation:ConnectionAssociation", name, args, &resource, opts...)
@@ -126,4 +128,43 @@ type ConnectionAssociationArgs struct {
 
 func (ConnectionAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionAssociationArgs)(nil)).Elem()
+}
+
+type ConnectionAssociationInput interface {
+	pulumi.Input
+
+	ToConnectionAssociationOutput() ConnectionAssociationOutput
+	ToConnectionAssociationOutputWithContext(ctx context.Context) ConnectionAssociationOutput
+}
+
+func (ConnectionAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAssociation)(nil)).Elem()
+}
+
+func (i ConnectionAssociation) ToConnectionAssociationOutput() ConnectionAssociationOutput {
+	return i.ToConnectionAssociationOutputWithContext(context.Background())
+}
+
+func (i ConnectionAssociation) ToConnectionAssociationOutputWithContext(ctx context.Context) ConnectionAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAssociationOutput)
+}
+
+type ConnectionAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAssociationOutput)(nil)).Elem()
+}
+
+func (o ConnectionAssociationOutput) ToConnectionAssociationOutput() ConnectionAssociationOutput {
+	return o
+}
+
+func (o ConnectionAssociationOutput) ToConnectionAssociationOutputWithContext(ctx context.Context) ConnectionAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionAssociationOutput{})
 }

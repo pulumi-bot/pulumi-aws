@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +56,15 @@ type GcmChannel struct {
 // NewGcmChannel registers a new resource with the given unique name, arguments, and options.
 func NewGcmChannel(ctx *pulumi.Context,
 	name string, args *GcmChannelArgs, opts ...pulumi.ResourceOption) (*GcmChannel, error) {
-	if args == nil || args.ApiKey == nil {
-		return nil, errors.New("missing required argument 'ApiKey'")
-	}
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
 	if args == nil {
-		args = &GcmChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiKey == nil {
+		return nil, errors.New("invalid value for required argument 'ApiKey'")
+	}
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
 	}
 	var resource GcmChannel
 	err := ctx.RegisterResource("aws:pinpoint/gcmChannel:GcmChannel", name, args, &resource, opts...)
@@ -128,4 +130,43 @@ type GcmChannelArgs struct {
 
 func (GcmChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcmChannelArgs)(nil)).Elem()
+}
+
+type GcmChannelInput interface {
+	pulumi.Input
+
+	ToGcmChannelOutput() GcmChannelOutput
+	ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput
+}
+
+func (GcmChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcmChannel)(nil)).Elem()
+}
+
+func (i GcmChannel) ToGcmChannelOutput() GcmChannelOutput {
+	return i.ToGcmChannelOutputWithContext(context.Background())
+}
+
+func (i GcmChannel) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelOutput)
+}
+
+type GcmChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (GcmChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcmChannelOutput)(nil)).Elem()
+}
+
+func (o GcmChannelOutput) ToGcmChannelOutput() GcmChannelOutput {
+	return o
+}
+
+func (o GcmChannelOutput) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GcmChannelOutput{})
 }

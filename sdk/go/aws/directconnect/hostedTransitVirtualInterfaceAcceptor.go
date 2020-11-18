@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,14 +86,15 @@ type HostedTransitVirtualInterfaceAcceptor struct {
 // NewHostedTransitVirtualInterfaceAcceptor registers a new resource with the given unique name, arguments, and options.
 func NewHostedTransitVirtualInterfaceAcceptor(ctx *pulumi.Context,
 	name string, args *HostedTransitVirtualInterfaceAcceptorArgs, opts ...pulumi.ResourceOption) (*HostedTransitVirtualInterfaceAcceptor, error) {
-	if args == nil || args.DxGatewayId == nil {
-		return nil, errors.New("missing required argument 'DxGatewayId'")
-	}
-	if args == nil || args.VirtualInterfaceId == nil {
-		return nil, errors.New("missing required argument 'VirtualInterfaceId'")
-	}
 	if args == nil {
-		args = &HostedTransitVirtualInterfaceAcceptorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DxGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'DxGatewayId'")
+	}
+	if args.VirtualInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualInterfaceId'")
 	}
 	var resource HostedTransitVirtualInterfaceAcceptor
 	err := ctx.RegisterResource("aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor", name, args, &resource, opts...)
@@ -162,4 +164,43 @@ type HostedTransitVirtualInterfaceAcceptorArgs struct {
 
 func (HostedTransitVirtualInterfaceAcceptorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostedTransitVirtualInterfaceAcceptorArgs)(nil)).Elem()
+}
+
+type HostedTransitVirtualInterfaceAcceptorInput interface {
+	pulumi.Input
+
+	ToHostedTransitVirtualInterfaceAcceptorOutput() HostedTransitVirtualInterfaceAcceptorOutput
+	ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceAcceptorOutput
+}
+
+func (HostedTransitVirtualInterfaceAcceptor) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedTransitVirtualInterfaceAcceptor)(nil)).Elem()
+}
+
+func (i HostedTransitVirtualInterfaceAcceptor) ToHostedTransitVirtualInterfaceAcceptorOutput() HostedTransitVirtualInterfaceAcceptorOutput {
+	return i.ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(context.Background())
+}
+
+func (i HostedTransitVirtualInterfaceAcceptor) ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceAcceptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedTransitVirtualInterfaceAcceptorOutput)
+}
+
+type HostedTransitVirtualInterfaceAcceptorOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedTransitVirtualInterfaceAcceptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedTransitVirtualInterfaceAcceptorOutput)(nil)).Elem()
+}
+
+func (o HostedTransitVirtualInterfaceAcceptorOutput) ToHostedTransitVirtualInterfaceAcceptorOutput() HostedTransitVirtualInterfaceAcceptorOutput {
+	return o
+}
+
+func (o HostedTransitVirtualInterfaceAcceptorOutput) ToHostedTransitVirtualInterfaceAcceptorOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceAcceptorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostedTransitVirtualInterfaceAcceptorOutput{})
 }

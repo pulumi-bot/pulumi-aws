@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -109,6 +110,7 @@ func NewVpcDhcpOptions(ctx *pulumi.Context,
 	if args == nil {
 		args = &VpcDhcpOptionsArgs{}
 	}
+
 	var resource VpcDhcpOptions
 	err := ctx.RegisterResource("aws:ec2/vpcDhcpOptions:VpcDhcpOptions", name, args, &resource, opts...)
 	if err != nil {
@@ -205,4 +207,43 @@ type VpcDhcpOptionsArgs struct {
 
 func (VpcDhcpOptionsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcDhcpOptionsArgs)(nil)).Elem()
+}
+
+type VpcDhcpOptionsInput interface {
+	pulumi.Input
+
+	ToVpcDhcpOptionsOutput() VpcDhcpOptionsOutput
+	ToVpcDhcpOptionsOutputWithContext(ctx context.Context) VpcDhcpOptionsOutput
+}
+
+func (VpcDhcpOptions) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcDhcpOptions)(nil)).Elem()
+}
+
+func (i VpcDhcpOptions) ToVpcDhcpOptionsOutput() VpcDhcpOptionsOutput {
+	return i.ToVpcDhcpOptionsOutputWithContext(context.Background())
+}
+
+func (i VpcDhcpOptions) ToVpcDhcpOptionsOutputWithContext(ctx context.Context) VpcDhcpOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcDhcpOptionsOutput)
+}
+
+type VpcDhcpOptionsOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcDhcpOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcDhcpOptionsOutput)(nil)).Elem()
+}
+
+func (o VpcDhcpOptionsOutput) ToVpcDhcpOptionsOutput() VpcDhcpOptionsOutput {
+	return o
+}
+
+func (o VpcDhcpOptionsOutput) ToVpcDhcpOptionsOutputWithContext(ctx context.Context) VpcDhcpOptionsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpcDhcpOptionsOutput{})
 }

@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,14 +24,15 @@ type PolicyAttachment struct {
 // NewPolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewPolicyAttachment(ctx *pulumi.Context,
 	name string, args *PolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*PolicyAttachment, error) {
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.Target == nil {
-		return nil, errors.New("missing required argument 'Target'")
-	}
 	if args == nil {
-		args = &PolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.Target == nil {
+		return nil, errors.New("invalid value for required argument 'Target'")
 	}
 	var resource PolicyAttachment
 	err := ctx.RegisterResource("aws:iot/policyAttachment:PolicyAttachment", name, args, &resource, opts...)
@@ -88,4 +90,43 @@ type PolicyAttachmentArgs struct {
 
 func (PolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyAttachmentArgs)(nil)).Elem()
+}
+
+type PolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToPolicyAttachmentOutput() PolicyAttachmentOutput
+	ToPolicyAttachmentOutputWithContext(ctx context.Context) PolicyAttachmentOutput
+}
+
+func (PolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAttachment)(nil)).Elem()
+}
+
+func (i PolicyAttachment) ToPolicyAttachmentOutput() PolicyAttachmentOutput {
+	return i.ToPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i PolicyAttachment) ToPolicyAttachmentOutputWithContext(ctx context.Context) PolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAttachmentOutput)
+}
+
+type PolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o PolicyAttachmentOutput) ToPolicyAttachmentOutput() PolicyAttachmentOutput {
+	return o
+}
+
+func (o PolicyAttachmentOutput) ToPolicyAttachmentOutputWithContext(ctx context.Context) PolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyAttachmentOutput{})
 }

@@ -4,6 +4,7 @@
 package route53
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -162,11 +163,12 @@ type HealthCheck struct {
 // NewHealthCheck registers a new resource with the given unique name, arguments, and options.
 func NewHealthCheck(ctx *pulumi.Context,
 	name string, args *HealthCheckArgs, opts ...pulumi.ResourceOption) (*HealthCheck, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &HealthCheckArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource HealthCheck
 	err := ctx.RegisterResource("aws:route53/healthCheck:HealthCheck", name, args, &resource, opts...)
@@ -384,4 +386,43 @@ type HealthCheckArgs struct {
 
 func (HealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthCheckArgs)(nil)).Elem()
+}
+
+type HealthCheckInput interface {
+	pulumi.Input
+
+	ToHealthCheckOutput() HealthCheckOutput
+	ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput
+}
+
+func (HealthCheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheck)(nil)).Elem()
+}
+
+func (i HealthCheck) ToHealthCheckOutput() HealthCheckOutput {
+	return i.ToHealthCheckOutputWithContext(context.Background())
+}
+
+func (i HealthCheck) ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckOutput)
+}
+
+type HealthCheckOutput struct {
+	*pulumi.OutputState
+}
+
+func (HealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckOutput)(nil)).Elem()
+}
+
+func (o HealthCheckOutput) ToHealthCheckOutput() HealthCheckOutput {
+	return o
+}
+
+func (o HealthCheckOutput) ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HealthCheckOutput{})
 }

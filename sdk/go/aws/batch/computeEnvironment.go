@@ -4,6 +4,7 @@
 package batch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -154,14 +155,15 @@ type ComputeEnvironment struct {
 // NewComputeEnvironment registers a new resource with the given unique name, arguments, and options.
 func NewComputeEnvironment(ctx *pulumi.Context,
 	name string, args *ComputeEnvironmentArgs, opts ...pulumi.ResourceOption) (*ComputeEnvironment, error) {
-	if args == nil || args.ServiceRole == nil {
-		return nil, errors.New("missing required argument 'ServiceRole'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ComputeEnvironmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServiceRole == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceRole'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ComputeEnvironment
 	err := ctx.RegisterResource("aws:batch/computeEnvironment:ComputeEnvironment", name, args, &resource, opts...)
@@ -275,4 +277,43 @@ type ComputeEnvironmentArgs struct {
 
 func (ComputeEnvironmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeEnvironmentArgs)(nil)).Elem()
+}
+
+type ComputeEnvironmentInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentOutput() ComputeEnvironmentOutput
+	ToComputeEnvironmentOutputWithContext(ctx context.Context) ComputeEnvironmentOutput
+}
+
+func (ComputeEnvironment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironment)(nil)).Elem()
+}
+
+func (i ComputeEnvironment) ToComputeEnvironmentOutput() ComputeEnvironmentOutput {
+	return i.ToComputeEnvironmentOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironment) ToComputeEnvironmentOutputWithContext(ctx context.Context) ComputeEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentOutput)
+}
+
+type ComputeEnvironmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentOutput)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentOutput) ToComputeEnvironmentOutput() ComputeEnvironmentOutput {
+	return o
+}
+
+func (o ComputeEnvironmentOutput) ToComputeEnvironmentOutputWithContext(ctx context.Context) ComputeEnvironmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ComputeEnvironmentOutput{})
 }

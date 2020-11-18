@@ -4,6 +4,7 @@
 package storagegateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -49,14 +50,15 @@ type UploadBuffer struct {
 // NewUploadBuffer registers a new resource with the given unique name, arguments, and options.
 func NewUploadBuffer(ctx *pulumi.Context,
 	name string, args *UploadBufferArgs, opts ...pulumi.ResourceOption) (*UploadBuffer, error) {
-	if args == nil || args.DiskId == nil {
-		return nil, errors.New("missing required argument 'DiskId'")
-	}
-	if args == nil || args.GatewayArn == nil {
-		return nil, errors.New("missing required argument 'GatewayArn'")
-	}
 	if args == nil {
-		args = &UploadBufferArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DiskId == nil {
+		return nil, errors.New("invalid value for required argument 'DiskId'")
+	}
+	if args.GatewayArn == nil {
+		return nil, errors.New("invalid value for required argument 'GatewayArn'")
 	}
 	var resource UploadBuffer
 	err := ctx.RegisterResource("aws:storagegateway/uploadBuffer:UploadBuffer", name, args, &resource, opts...)
@@ -114,4 +116,43 @@ type UploadBufferArgs struct {
 
 func (UploadBufferArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*uploadBufferArgs)(nil)).Elem()
+}
+
+type UploadBufferInput interface {
+	pulumi.Input
+
+	ToUploadBufferOutput() UploadBufferOutput
+	ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput
+}
+
+func (UploadBuffer) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadBuffer)(nil)).Elem()
+}
+
+func (i UploadBuffer) ToUploadBufferOutput() UploadBufferOutput {
+	return i.ToUploadBufferOutputWithContext(context.Background())
+}
+
+func (i UploadBuffer) ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UploadBufferOutput)
+}
+
+type UploadBufferOutput struct {
+	*pulumi.OutputState
+}
+
+func (UploadBufferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadBufferOutput)(nil)).Elem()
+}
+
+func (o UploadBufferOutput) ToUploadBufferOutput() UploadBufferOutput {
+	return o
+}
+
+func (o UploadBufferOutput) ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UploadBufferOutput{})
 }

@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -68,6 +69,7 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil {
 		args = &AccountArgs{}
 	}
+
 	var resource Account
 	err := ctx.RegisterResource("aws:apigateway/account:Account", name, args, &resource, opts...)
 	if err != nil {
@@ -128,4 +130,43 @@ type AccountArgs struct {
 
 func (AccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountArgs)(nil)).Elem()
+}
+
+type AccountInput interface {
+	pulumi.Input
+
+	ToAccountOutput() AccountOutput
+	ToAccountOutputWithContext(ctx context.Context) AccountOutput
+}
+
+func (Account) ElementType() reflect.Type {
+	return reflect.TypeOf((*Account)(nil)).Elem()
+}
+
+func (i Account) ToAccountOutput() AccountOutput {
+	return i.ToAccountOutputWithContext(context.Background())
+}
+
+func (i Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
+}
+
+type AccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountOutput)(nil)).Elem()
+}
+
+func (o AccountOutput) ToAccountOutput() AccountOutput {
+	return o
+}
+
+func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountOutput{})
 }
