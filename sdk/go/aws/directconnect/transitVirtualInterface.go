@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,23 +84,24 @@ type TransitVirtualInterface struct {
 // NewTransitVirtualInterface registers a new resource with the given unique name, arguments, and options.
 func NewTransitVirtualInterface(ctx *pulumi.Context,
 	name string, args *TransitVirtualInterfaceArgs, opts ...pulumi.ResourceOption) (*TransitVirtualInterface, error) {
-	if args == nil || args.AddressFamily == nil {
-		return nil, errors.New("missing required argument 'AddressFamily'")
-	}
-	if args == nil || args.BgpAsn == nil {
-		return nil, errors.New("missing required argument 'BgpAsn'")
-	}
-	if args == nil || args.ConnectionId == nil {
-		return nil, errors.New("missing required argument 'ConnectionId'")
-	}
-	if args == nil || args.DxGatewayId == nil {
-		return nil, errors.New("missing required argument 'DxGatewayId'")
-	}
-	if args == nil || args.Vlan == nil {
-		return nil, errors.New("missing required argument 'Vlan'")
-	}
 	if args == nil {
-		args = &TransitVirtualInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AddressFamily == nil {
+		return nil, errors.New("invalid value for required argument 'AddressFamily'")
+	}
+	if args.BgpAsn == nil {
+		return nil, errors.New("invalid value for required argument 'BgpAsn'")
+	}
+	if args.ConnectionId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionId'")
+	}
+	if args.DxGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'DxGatewayId'")
+	}
+	if args.Vlan == nil {
+		return nil, errors.New("invalid value for required argument 'Vlan'")
 	}
 	var resource TransitVirtualInterface
 	err := ctx.RegisterResource("aws:directconnect/transitVirtualInterface:TransitVirtualInterface", name, args, &resource, opts...)
@@ -247,4 +249,43 @@ type TransitVirtualInterfaceArgs struct {
 
 func (TransitVirtualInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitVirtualInterfaceArgs)(nil)).Elem()
+}
+
+type TransitVirtualInterfaceInput interface {
+	pulumi.Input
+
+	ToTransitVirtualInterfaceOutput() TransitVirtualInterfaceOutput
+	ToTransitVirtualInterfaceOutputWithContext(ctx context.Context) TransitVirtualInterfaceOutput
+}
+
+func (TransitVirtualInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitVirtualInterface)(nil)).Elem()
+}
+
+func (i TransitVirtualInterface) ToTransitVirtualInterfaceOutput() TransitVirtualInterfaceOutput {
+	return i.ToTransitVirtualInterfaceOutputWithContext(context.Background())
+}
+
+func (i TransitVirtualInterface) ToTransitVirtualInterfaceOutputWithContext(ctx context.Context) TransitVirtualInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitVirtualInterfaceOutput)
+}
+
+type TransitVirtualInterfaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitVirtualInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitVirtualInterfaceOutput)(nil)).Elem()
+}
+
+func (o TransitVirtualInterfaceOutput) ToTransitVirtualInterfaceOutput() TransitVirtualInterfaceOutput {
+	return o
+}
+
+func (o TransitVirtualInterfaceOutput) ToTransitVirtualInterfaceOutputWithContext(ctx context.Context) TransitVirtualInterfaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TransitVirtualInterfaceOutput{})
 }

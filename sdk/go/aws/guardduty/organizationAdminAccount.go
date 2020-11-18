@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,11 +61,12 @@ type OrganizationAdminAccount struct {
 // NewOrganizationAdminAccount registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationAdminAccount(ctx *pulumi.Context,
 	name string, args *OrganizationAdminAccountArgs, opts ...pulumi.ResourceOption) (*OrganizationAdminAccount, error) {
-	if args == nil || args.AdminAccountId == nil {
-		return nil, errors.New("missing required argument 'AdminAccountId'")
-	}
 	if args == nil {
-		args = &OrganizationAdminAccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AdminAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AdminAccountId'")
 	}
 	var resource OrganizationAdminAccount
 	err := ctx.RegisterResource("aws:guardduty/organizationAdminAccount:OrganizationAdminAccount", name, args, &resource, opts...)
@@ -114,4 +116,43 @@ type OrganizationAdminAccountArgs struct {
 
 func (OrganizationAdminAccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationAdminAccountArgs)(nil)).Elem()
+}
+
+type OrganizationAdminAccountInput interface {
+	pulumi.Input
+
+	ToOrganizationAdminAccountOutput() OrganizationAdminAccountOutput
+	ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput
+}
+
+func (OrganizationAdminAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAdminAccount)(nil)).Elem()
+}
+
+func (i OrganizationAdminAccount) ToOrganizationAdminAccountOutput() OrganizationAdminAccountOutput {
+	return i.ToOrganizationAdminAccountOutputWithContext(context.Background())
+}
+
+func (i OrganizationAdminAccount) ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAdminAccountOutput)
+}
+
+type OrganizationAdminAccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationAdminAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAdminAccountOutput)(nil)).Elem()
+}
+
+func (o OrganizationAdminAccountOutput) ToOrganizationAdminAccountOutput() OrganizationAdminAccountOutput {
+	return o
+}
+
+func (o OrganizationAdminAccountOutput) ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationAdminAccountOutput{})
 }

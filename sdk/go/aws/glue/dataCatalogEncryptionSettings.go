@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,11 +56,12 @@ type DataCatalogEncryptionSettings struct {
 // NewDataCatalogEncryptionSettings registers a new resource with the given unique name, arguments, and options.
 func NewDataCatalogEncryptionSettings(ctx *pulumi.Context,
 	name string, args *DataCatalogEncryptionSettingsArgs, opts ...pulumi.ResourceOption) (*DataCatalogEncryptionSettings, error) {
-	if args == nil || args.DataCatalogEncryptionSettings == nil {
-		return nil, errors.New("missing required argument 'DataCatalogEncryptionSettings'")
-	}
 	if args == nil {
-		args = &DataCatalogEncryptionSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataCatalogEncryptionSettings == nil {
+		return nil, errors.New("invalid value for required argument 'DataCatalogEncryptionSettings'")
 	}
 	var resource DataCatalogEncryptionSettings
 	err := ctx.RegisterResource("aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings", name, args, &resource, opts...)
@@ -117,4 +119,43 @@ type DataCatalogEncryptionSettingsArgs struct {
 
 func (DataCatalogEncryptionSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataCatalogEncryptionSettingsArgs)(nil)).Elem()
+}
+
+type DataCatalogEncryptionSettingsInput interface {
+	pulumi.Input
+
+	ToDataCatalogEncryptionSettingsOutput() DataCatalogEncryptionSettingsOutput
+	ToDataCatalogEncryptionSettingsOutputWithContext(ctx context.Context) DataCatalogEncryptionSettingsOutput
+}
+
+func (DataCatalogEncryptionSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogEncryptionSettings)(nil)).Elem()
+}
+
+func (i DataCatalogEncryptionSettings) ToDataCatalogEncryptionSettingsOutput() DataCatalogEncryptionSettingsOutput {
+	return i.ToDataCatalogEncryptionSettingsOutputWithContext(context.Background())
+}
+
+func (i DataCatalogEncryptionSettings) ToDataCatalogEncryptionSettingsOutputWithContext(ctx context.Context) DataCatalogEncryptionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogEncryptionSettingsOutput)
+}
+
+type DataCatalogEncryptionSettingsOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataCatalogEncryptionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogEncryptionSettingsOutput)(nil)).Elem()
+}
+
+func (o DataCatalogEncryptionSettingsOutput) ToDataCatalogEncryptionSettingsOutput() DataCatalogEncryptionSettingsOutput {
+	return o
+}
+
+func (o DataCatalogEncryptionSettingsOutput) ToDataCatalogEncryptionSettingsOutputWithContext(ctx context.Context) DataCatalogEncryptionSettingsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataCatalogEncryptionSettingsOutput{})
 }

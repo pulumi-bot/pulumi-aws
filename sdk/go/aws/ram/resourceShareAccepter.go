@@ -4,6 +4,7 @@
 package ram
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,11 +91,12 @@ type ResourceShareAccepter struct {
 // NewResourceShareAccepter registers a new resource with the given unique name, arguments, and options.
 func NewResourceShareAccepter(ctx *pulumi.Context,
 	name string, args *ResourceShareAccepterArgs, opts ...pulumi.ResourceOption) (*ResourceShareAccepter, error) {
-	if args == nil || args.ShareArn == nil {
-		return nil, errors.New("missing required argument 'ShareArn'")
-	}
 	if args == nil {
-		args = &ResourceShareAccepterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ShareArn == nil {
+		return nil, errors.New("invalid value for required argument 'ShareArn'")
 	}
 	var resource ResourceShareAccepter
 	err := ctx.RegisterResource("aws:ram/resourceShareAccepter:ResourceShareAccepter", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type ResourceShareAccepterArgs struct {
 
 func (ResourceShareAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceShareAccepterArgs)(nil)).Elem()
+}
+
+type ResourceShareAccepterInput interface {
+	pulumi.Input
+
+	ToResourceShareAccepterOutput() ResourceShareAccepterOutput
+	ToResourceShareAccepterOutputWithContext(ctx context.Context) ResourceShareAccepterOutput
+}
+
+func (ResourceShareAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareAccepter)(nil)).Elem()
+}
+
+func (i ResourceShareAccepter) ToResourceShareAccepterOutput() ResourceShareAccepterOutput {
+	return i.ToResourceShareAccepterOutputWithContext(context.Background())
+}
+
+func (i ResourceShareAccepter) ToResourceShareAccepterOutputWithContext(ctx context.Context) ResourceShareAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareAccepterOutput)
+}
+
+type ResourceShareAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceShareAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareAccepterOutput)(nil)).Elem()
+}
+
+func (o ResourceShareAccepterOutput) ToResourceShareAccepterOutput() ResourceShareAccepterOutput {
+	return o
+}
+
+func (o ResourceShareAccepterOutput) ToResourceShareAccepterOutputWithContext(ctx context.Context) ResourceShareAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceShareAccepterOutput{})
 }

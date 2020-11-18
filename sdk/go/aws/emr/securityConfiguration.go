@@ -4,6 +4,7 @@
 package emr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,11 +54,12 @@ type SecurityConfiguration struct {
 // NewSecurityConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewSecurityConfiguration(ctx *pulumi.Context,
 	name string, args *SecurityConfigurationArgs, opts ...pulumi.ResourceOption) (*SecurityConfiguration, error) {
-	if args == nil || args.Configuration == nil {
-		return nil, errors.New("missing required argument 'Configuration'")
-	}
 	if args == nil {
-		args = &SecurityConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Configuration == nil {
+		return nil, errors.New("invalid value for required argument 'Configuration'")
 	}
 	var resource SecurityConfiguration
 	err := ctx.RegisterResource("aws:emr/securityConfiguration:SecurityConfiguration", name, args, &resource, opts...)
@@ -131,4 +133,43 @@ type SecurityConfigurationArgs struct {
 
 func (SecurityConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityConfigurationArgs)(nil)).Elem()
+}
+
+type SecurityConfigurationInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationOutput() SecurityConfigurationOutput
+	ToSecurityConfigurationOutputWithContext(ctx context.Context) SecurityConfigurationOutput
+}
+
+func (SecurityConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfiguration)(nil)).Elem()
+}
+
+func (i SecurityConfiguration) ToSecurityConfigurationOutput() SecurityConfigurationOutput {
+	return i.ToSecurityConfigurationOutputWithContext(context.Background())
+}
+
+func (i SecurityConfiguration) ToSecurityConfigurationOutputWithContext(ctx context.Context) SecurityConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationOutput)
+}
+
+type SecurityConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationOutput)(nil)).Elem()
+}
+
+func (o SecurityConfigurationOutput) ToSecurityConfigurationOutput() SecurityConfigurationOutput {
+	return o
+}
+
+func (o SecurityConfigurationOutput) ToSecurityConfigurationOutputWithContext(ctx context.Context) SecurityConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityConfigurationOutput{})
 }

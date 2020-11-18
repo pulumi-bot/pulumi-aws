@@ -4,6 +4,7 @@
 package lightsail
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,14 +65,15 @@ type StaticIpAttachment struct {
 // NewStaticIpAttachment registers a new resource with the given unique name, arguments, and options.
 func NewStaticIpAttachment(ctx *pulumi.Context,
 	name string, args *StaticIpAttachmentArgs, opts ...pulumi.ResourceOption) (*StaticIpAttachment, error) {
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.StaticIpName == nil {
-		return nil, errors.New("missing required argument 'StaticIpName'")
-	}
 	if args == nil {
-		args = &StaticIpAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.StaticIpName == nil {
+		return nil, errors.New("invalid value for required argument 'StaticIpName'")
 	}
 	var resource StaticIpAttachment
 	err := ctx.RegisterResource("aws:lightsail/staticIpAttachment:StaticIpAttachment", name, args, &resource, opts...)
@@ -133,4 +135,43 @@ type StaticIpAttachmentArgs struct {
 
 func (StaticIpAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*staticIpAttachmentArgs)(nil)).Elem()
+}
+
+type StaticIpAttachmentInput interface {
+	pulumi.Input
+
+	ToStaticIpAttachmentOutput() StaticIpAttachmentOutput
+	ToStaticIpAttachmentOutputWithContext(ctx context.Context) StaticIpAttachmentOutput
+}
+
+func (StaticIpAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticIpAttachment)(nil)).Elem()
+}
+
+func (i StaticIpAttachment) ToStaticIpAttachmentOutput() StaticIpAttachmentOutput {
+	return i.ToStaticIpAttachmentOutputWithContext(context.Background())
+}
+
+func (i StaticIpAttachment) ToStaticIpAttachmentOutputWithContext(ctx context.Context) StaticIpAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticIpAttachmentOutput)
+}
+
+type StaticIpAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (StaticIpAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticIpAttachmentOutput)(nil)).Elem()
+}
+
+func (o StaticIpAttachmentOutput) ToStaticIpAttachmentOutput() StaticIpAttachmentOutput {
+	return o
+}
+
+func (o StaticIpAttachmentOutput) ToStaticIpAttachmentOutputWithContext(ctx context.Context) StaticIpAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StaticIpAttachmentOutput{})
 }

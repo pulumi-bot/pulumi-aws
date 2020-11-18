@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -84,11 +85,12 @@ type HostedPrivateVirtualInterfaceAccepter struct {
 // NewHostedPrivateVirtualInterfaceAccepter registers a new resource with the given unique name, arguments, and options.
 func NewHostedPrivateVirtualInterfaceAccepter(ctx *pulumi.Context,
 	name string, args *HostedPrivateVirtualInterfaceAccepterArgs, opts ...pulumi.ResourceOption) (*HostedPrivateVirtualInterfaceAccepter, error) {
-	if args == nil || args.VirtualInterfaceId == nil {
-		return nil, errors.New("missing required argument 'VirtualInterfaceId'")
-	}
 	if args == nil {
-		args = &HostedPrivateVirtualInterfaceAccepterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VirtualInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualInterfaceId'")
 	}
 	var resource HostedPrivateVirtualInterfaceAccepter
 	err := ctx.RegisterResource("aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter", name, args, &resource, opts...)
@@ -166,4 +168,43 @@ type HostedPrivateVirtualInterfaceAccepterArgs struct {
 
 func (HostedPrivateVirtualInterfaceAccepterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostedPrivateVirtualInterfaceAccepterArgs)(nil)).Elem()
+}
+
+type HostedPrivateVirtualInterfaceAccepterInput interface {
+	pulumi.Input
+
+	ToHostedPrivateVirtualInterfaceAccepterOutput() HostedPrivateVirtualInterfaceAccepterOutput
+	ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceAccepterOutput
+}
+
+func (HostedPrivateVirtualInterfaceAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedPrivateVirtualInterfaceAccepter)(nil)).Elem()
+}
+
+func (i HostedPrivateVirtualInterfaceAccepter) ToHostedPrivateVirtualInterfaceAccepterOutput() HostedPrivateVirtualInterfaceAccepterOutput {
+	return i.ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(context.Background())
+}
+
+func (i HostedPrivateVirtualInterfaceAccepter) ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceAccepterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedPrivateVirtualInterfaceAccepterOutput)
+}
+
+type HostedPrivateVirtualInterfaceAccepterOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedPrivateVirtualInterfaceAccepterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedPrivateVirtualInterfaceAccepterOutput)(nil)).Elem()
+}
+
+func (o HostedPrivateVirtualInterfaceAccepterOutput) ToHostedPrivateVirtualInterfaceAccepterOutput() HostedPrivateVirtualInterfaceAccepterOutput {
+	return o
+}
+
+func (o HostedPrivateVirtualInterfaceAccepterOutput) ToHostedPrivateVirtualInterfaceAccepterOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceAccepterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostedPrivateVirtualInterfaceAccepterOutput{})
 }

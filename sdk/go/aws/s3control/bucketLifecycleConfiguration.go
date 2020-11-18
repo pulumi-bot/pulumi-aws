@@ -4,6 +4,7 @@
 package s3control
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,14 +23,15 @@ type BucketLifecycleConfiguration struct {
 // NewBucketLifecycleConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewBucketLifecycleConfiguration(ctx *pulumi.Context,
 	name string, args *BucketLifecycleConfigurationArgs, opts ...pulumi.ResourceOption) (*BucketLifecycleConfiguration, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &BucketLifecycleConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource BucketLifecycleConfiguration
 	err := ctx.RegisterResource("aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration", name, args, &resource, opts...)
@@ -87,4 +89,43 @@ type BucketLifecycleConfigurationArgs struct {
 
 func (BucketLifecycleConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketLifecycleConfigurationArgs)(nil)).Elem()
+}
+
+type BucketLifecycleConfigurationInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleConfigurationOutput() BucketLifecycleConfigurationOutput
+	ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput
+}
+
+func (BucketLifecycleConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleConfiguration)(nil)).Elem()
+}
+
+func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationOutput() BucketLifecycleConfigurationOutput {
+	return i.ToBucketLifecycleConfigurationOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationOutput)
+}
+
+type BucketLifecycleConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketLifecycleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleConfigurationOutput)(nil)).Elem()
+}
+
+func (o BucketLifecycleConfigurationOutput) ToBucketLifecycleConfigurationOutput() BucketLifecycleConfigurationOutput {
+	return o
+}
+
+func (o BucketLifecycleConfigurationOutput) ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketLifecycleConfigurationOutput{})
 }

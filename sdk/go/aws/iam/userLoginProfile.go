@@ -4,6 +4,7 @@
 package iam
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,14 +66,15 @@ type UserLoginProfile struct {
 // NewUserLoginProfile registers a new resource with the given unique name, arguments, and options.
 func NewUserLoginProfile(ctx *pulumi.Context,
 	name string, args *UserLoginProfileArgs, opts ...pulumi.ResourceOption) (*UserLoginProfile, error) {
-	if args == nil || args.PgpKey == nil {
-		return nil, errors.New("missing required argument 'PgpKey'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &UserLoginProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PgpKey == nil {
+		return nil, errors.New("invalid value for required argument 'PgpKey'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource UserLoginProfile
 	err := ctx.RegisterResource("aws:iam/userLoginProfile:UserLoginProfile", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type UserLoginProfileArgs struct {
 
 func (UserLoginProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userLoginProfileArgs)(nil)).Elem()
+}
+
+type UserLoginProfileInput interface {
+	pulumi.Input
+
+	ToUserLoginProfileOutput() UserLoginProfileOutput
+	ToUserLoginProfileOutputWithContext(ctx context.Context) UserLoginProfileOutput
+}
+
+func (UserLoginProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserLoginProfile)(nil)).Elem()
+}
+
+func (i UserLoginProfile) ToUserLoginProfileOutput() UserLoginProfileOutput {
+	return i.ToUserLoginProfileOutputWithContext(context.Background())
+}
+
+func (i UserLoginProfile) ToUserLoginProfileOutputWithContext(ctx context.Context) UserLoginProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserLoginProfileOutput)
+}
+
+type UserLoginProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserLoginProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserLoginProfileOutput)(nil)).Elem()
+}
+
+func (o UserLoginProfileOutput) ToUserLoginProfileOutput() UserLoginProfileOutput {
+	return o
+}
+
+func (o UserLoginProfileOutput) ToUserLoginProfileOutputWithContext(ctx context.Context) UserLoginProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserLoginProfileOutput{})
 }

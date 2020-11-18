@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,11 +43,12 @@ type ApnsChannel struct {
 // NewApnsChannel registers a new resource with the given unique name, arguments, and options.
 func NewApnsChannel(ctx *pulumi.Context,
 	name string, args *ApnsChannelArgs, opts ...pulumi.ResourceOption) (*ApnsChannel, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
 	if args == nil {
-		args = &ApnsChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
 	}
 	var resource ApnsChannel
 	err := ctx.RegisterResource("aws:pinpoint/apnsChannel:ApnsChannel", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type ApnsChannelArgs struct {
 
 func (ApnsChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apnsChannelArgs)(nil)).Elem()
+}
+
+type ApnsChannelInput interface {
+	pulumi.Input
+
+	ToApnsChannelOutput() ApnsChannelOutput
+	ToApnsChannelOutputWithContext(ctx context.Context) ApnsChannelOutput
+}
+
+func (ApnsChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsChannel)(nil)).Elem()
+}
+
+func (i ApnsChannel) ToApnsChannelOutput() ApnsChannelOutput {
+	return i.ToApnsChannelOutputWithContext(context.Background())
+}
+
+func (i ApnsChannel) ToApnsChannelOutputWithContext(ctx context.Context) ApnsChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApnsChannelOutput)
+}
+
+type ApnsChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApnsChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsChannelOutput)(nil)).Elem()
+}
+
+func (o ApnsChannelOutput) ToApnsChannelOutput() ApnsChannelOutput {
+	return o
+}
+
+func (o ApnsChannelOutput) ToApnsChannelOutputWithContext(ctx context.Context) ApnsChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApnsChannelOutput{})
 }

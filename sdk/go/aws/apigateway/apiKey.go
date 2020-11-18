@@ -4,6 +4,7 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -60,6 +61,7 @@ func NewApiKey(ctx *pulumi.Context,
 	if args == nil {
 		args = &ApiKeyArgs{}
 	}
+
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
@@ -155,4 +157,43 @@ type ApiKeyArgs struct {
 
 func (ApiKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiKeyArgs)(nil)).Elem()
+}
+
+type ApiKeyInput interface {
+	pulumi.Input
+
+	ToApiKeyOutput() ApiKeyOutput
+	ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput
+}
+
+func (ApiKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKey)(nil)).Elem()
+}
+
+func (i ApiKey) ToApiKeyOutput() ApiKeyOutput {
+	return i.ToApiKeyOutputWithContext(context.Background())
+}
+
+func (i ApiKey) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyOutput)
+}
+
+type ApiKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyOutput)(nil)).Elem()
+}
+
+func (o ApiKeyOutput) ToApiKeyOutput() ApiKeyOutput {
+	return o
+}
+
+func (o ApiKeyOutput) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiKeyOutput{})
 }

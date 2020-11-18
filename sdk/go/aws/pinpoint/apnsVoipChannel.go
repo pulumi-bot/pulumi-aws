@@ -4,6 +4,7 @@
 package pinpoint
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,11 +43,12 @@ type ApnsVoipChannel struct {
 // NewApnsVoipChannel registers a new resource with the given unique name, arguments, and options.
 func NewApnsVoipChannel(ctx *pulumi.Context,
 	name string, args *ApnsVoipChannelArgs, opts ...pulumi.ResourceOption) (*ApnsVoipChannel, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
 	if args == nil {
-		args = &ApnsVoipChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
 	}
 	var resource ApnsVoipChannel
 	err := ctx.RegisterResource("aws:pinpoint/apnsVoipChannel:ApnsVoipChannel", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type ApnsVoipChannelArgs struct {
 
 func (ApnsVoipChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apnsVoipChannelArgs)(nil)).Elem()
+}
+
+type ApnsVoipChannelInput interface {
+	pulumi.Input
+
+	ToApnsVoipChannelOutput() ApnsVoipChannelOutput
+	ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput
+}
+
+func (ApnsVoipChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsVoipChannel)(nil)).Elem()
+}
+
+func (i ApnsVoipChannel) ToApnsVoipChannelOutput() ApnsVoipChannelOutput {
+	return i.ToApnsVoipChannelOutputWithContext(context.Background())
+}
+
+func (i ApnsVoipChannel) ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApnsVoipChannelOutput)
+}
+
+type ApnsVoipChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApnsVoipChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsVoipChannelOutput)(nil)).Elem()
+}
+
+func (o ApnsVoipChannelOutput) ToApnsVoipChannelOutput() ApnsVoipChannelOutput {
+	return o
+}
+
+func (o ApnsVoipChannelOutput) ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApnsVoipChannelOutput{})
 }

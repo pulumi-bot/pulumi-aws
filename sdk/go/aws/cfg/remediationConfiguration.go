@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,17 +88,18 @@ type RemediationConfiguration struct {
 // NewRemediationConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewRemediationConfiguration(ctx *pulumi.Context,
 	name string, args *RemediationConfigurationArgs, opts ...pulumi.ResourceOption) (*RemediationConfiguration, error) {
-	if args == nil || args.ConfigRuleName == nil {
-		return nil, errors.New("missing required argument 'ConfigRuleName'")
-	}
-	if args == nil || args.TargetId == nil {
-		return nil, errors.New("missing required argument 'TargetId'")
-	}
-	if args == nil || args.TargetType == nil {
-		return nil, errors.New("missing required argument 'TargetType'")
-	}
 	if args == nil {
-		args = &RemediationConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConfigRuleName == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigRuleName'")
+	}
+	if args.TargetId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetId'")
+	}
+	if args.TargetType == nil {
+		return nil, errors.New("invalid value for required argument 'TargetType'")
 	}
 	var resource RemediationConfiguration
 	err := ctx.RegisterResource("aws:cfg/remediationConfiguration:RemediationConfiguration", name, args, &resource, opts...)
@@ -193,4 +195,43 @@ type RemediationConfigurationArgs struct {
 
 func (RemediationConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*remediationConfigurationArgs)(nil)).Elem()
+}
+
+type RemediationConfigurationInput interface {
+	pulumi.Input
+
+	ToRemediationConfigurationOutput() RemediationConfigurationOutput
+	ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput
+}
+
+func (RemediationConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationConfiguration)(nil)).Elem()
+}
+
+func (i RemediationConfiguration) ToRemediationConfigurationOutput() RemediationConfigurationOutput {
+	return i.ToRemediationConfigurationOutputWithContext(context.Background())
+}
+
+func (i RemediationConfiguration) ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationConfigurationOutput)
+}
+
+type RemediationConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (RemediationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationConfigurationOutput)(nil)).Elem()
+}
+
+func (o RemediationConfigurationOutput) ToRemediationConfigurationOutput() RemediationConfigurationOutput {
+	return o
+}
+
+func (o RemediationConfigurationOutput) ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RemediationConfigurationOutput{})
 }

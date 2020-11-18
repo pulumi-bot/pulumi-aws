@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -93,6 +94,7 @@ func NewEventRule(ctx *pulumi.Context,
 	if args == nil {
 		args = &EventRuleArgs{}
 	}
+
 	var resource EventRule
 	err := ctx.RegisterResource("aws:cloudwatch/eventRule:EventRule", name, args, &resource, opts...)
 	if err != nil {
@@ -217,4 +219,43 @@ type EventRuleArgs struct {
 
 func (EventRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventRuleArgs)(nil)).Elem()
+}
+
+type EventRuleInput interface {
+	pulumi.Input
+
+	ToEventRuleOutput() EventRuleOutput
+	ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput
+}
+
+func (EventRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRule)(nil)).Elem()
+}
+
+func (i EventRule) ToEventRuleOutput() EventRuleOutput {
+	return i.ToEventRuleOutputWithContext(context.Background())
+}
+
+func (i EventRule) ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleOutput)
+}
+
+type EventRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleOutput)(nil)).Elem()
+}
+
+func (o EventRuleOutput) ToEventRuleOutput() EventRuleOutput {
+	return o
+}
+
+func (o EventRuleOutput) ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventRuleOutput{})
 }

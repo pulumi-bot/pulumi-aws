@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,14 +96,15 @@ type OrganizationCustomRule struct {
 // NewOrganizationCustomRule registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationCustomRule(ctx *pulumi.Context,
 	name string, args *OrganizationCustomRuleArgs, opts ...pulumi.ResourceOption) (*OrganizationCustomRule, error) {
-	if args == nil || args.LambdaFunctionArn == nil {
-		return nil, errors.New("missing required argument 'LambdaFunctionArn'")
-	}
-	if args == nil || args.TriggerTypes == nil {
-		return nil, errors.New("missing required argument 'TriggerTypes'")
-	}
 	if args == nil {
-		args = &OrganizationCustomRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LambdaFunctionArn == nil {
+		return nil, errors.New("invalid value for required argument 'LambdaFunctionArn'")
+	}
+	if args.TriggerTypes == nil {
+		return nil, errors.New("invalid value for required argument 'TriggerTypes'")
 	}
 	var resource OrganizationCustomRule
 	err := ctx.RegisterResource("aws:cfg/organizationCustomRule:OrganizationCustomRule", name, args, &resource, opts...)
@@ -236,4 +238,43 @@ type OrganizationCustomRuleArgs struct {
 
 func (OrganizationCustomRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationCustomRuleArgs)(nil)).Elem()
+}
+
+type OrganizationCustomRuleInput interface {
+	pulumi.Input
+
+	ToOrganizationCustomRuleOutput() OrganizationCustomRuleOutput
+	ToOrganizationCustomRuleOutputWithContext(ctx context.Context) OrganizationCustomRuleOutput
+}
+
+func (OrganizationCustomRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationCustomRule)(nil)).Elem()
+}
+
+func (i OrganizationCustomRule) ToOrganizationCustomRuleOutput() OrganizationCustomRuleOutput {
+	return i.ToOrganizationCustomRuleOutputWithContext(context.Background())
+}
+
+func (i OrganizationCustomRule) ToOrganizationCustomRuleOutputWithContext(ctx context.Context) OrganizationCustomRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomRuleOutput)
+}
+
+type OrganizationCustomRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationCustomRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationCustomRuleOutput)(nil)).Elem()
+}
+
+func (o OrganizationCustomRuleOutput) ToOrganizationCustomRuleOutput() OrganizationCustomRuleOutput {
+	return o
+}
+
+func (o OrganizationCustomRuleOutput) ToOrganizationCustomRuleOutputWithContext(ctx context.Context) OrganizationCustomRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationCustomRuleOutput{})
 }

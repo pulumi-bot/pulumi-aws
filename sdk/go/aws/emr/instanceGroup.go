@@ -4,6 +4,7 @@
 package emr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,14 +70,15 @@ type InstanceGroup struct {
 // NewInstanceGroup registers a new resource with the given unique name, arguments, and options.
 func NewInstanceGroup(ctx *pulumi.Context,
 	name string, args *InstanceGroupArgs, opts ...pulumi.ResourceOption) (*InstanceGroup, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
 	if args == nil {
-		args = &InstanceGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.InstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
 	var resource InstanceGroup
 	err := ctx.RegisterResource("aws:emr/instanceGroup:InstanceGroup", name, args, &resource, opts...)
@@ -194,4 +196,43 @@ type InstanceGroupArgs struct {
 
 func (InstanceGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupArgs)(nil)).Elem()
+}
+
+type InstanceGroupInput interface {
+	pulumi.Input
+
+	ToInstanceGroupOutput() InstanceGroupOutput
+	ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput
+}
+
+func (InstanceGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroup)(nil)).Elem()
+}
+
+func (i InstanceGroup) ToInstanceGroupOutput() InstanceGroupOutput {
+	return i.ToInstanceGroupOutputWithContext(context.Background())
+}
+
+func (i InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
+}
+
+type InstanceGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupOutput)(nil)).Elem()
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupOutput() InstanceGroupOutput {
+	return o
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceGroupOutput{})
 }

@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,17 +51,18 @@ type LocalGatewayRoute struct {
 // NewLocalGatewayRoute registers a new resource with the given unique name, arguments, and options.
 func NewLocalGatewayRoute(ctx *pulumi.Context,
 	name string, args *LocalGatewayRouteArgs, opts ...pulumi.ResourceOption) (*LocalGatewayRoute, error) {
-	if args == nil || args.DestinationCidrBlock == nil {
-		return nil, errors.New("missing required argument 'DestinationCidrBlock'")
-	}
-	if args == nil || args.LocalGatewayRouteTableId == nil {
-		return nil, errors.New("missing required argument 'LocalGatewayRouteTableId'")
-	}
-	if args == nil || args.LocalGatewayVirtualInterfaceGroupId == nil {
-		return nil, errors.New("missing required argument 'LocalGatewayVirtualInterfaceGroupId'")
-	}
 	if args == nil {
-		args = &LocalGatewayRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationCidrBlock == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationCidrBlock'")
+	}
+	if args.LocalGatewayRouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'LocalGatewayRouteTableId'")
+	}
+	if args.LocalGatewayVirtualInterfaceGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'LocalGatewayVirtualInterfaceGroupId'")
 	}
 	var resource LocalGatewayRoute
 	err := ctx.RegisterResource("aws:ec2/localGatewayRoute:LocalGatewayRoute", name, args, &resource, opts...)
@@ -126,4 +128,43 @@ type LocalGatewayRouteArgs struct {
 
 func (LocalGatewayRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*localGatewayRouteArgs)(nil)).Elem()
+}
+
+type LocalGatewayRouteInput interface {
+	pulumi.Input
+
+	ToLocalGatewayRouteOutput() LocalGatewayRouteOutput
+	ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput
+}
+
+func (LocalGatewayRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalGatewayRoute)(nil)).Elem()
+}
+
+func (i LocalGatewayRoute) ToLocalGatewayRouteOutput() LocalGatewayRouteOutput {
+	return i.ToLocalGatewayRouteOutputWithContext(context.Background())
+}
+
+func (i LocalGatewayRoute) ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRouteOutput)
+}
+
+type LocalGatewayRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocalGatewayRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalGatewayRouteOutput)(nil)).Elem()
+}
+
+func (o LocalGatewayRouteOutput) ToLocalGatewayRouteOutput() LocalGatewayRouteOutput {
+	return o
+}
+
+func (o LocalGatewayRouteOutput) ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocalGatewayRouteOutput{})
 }

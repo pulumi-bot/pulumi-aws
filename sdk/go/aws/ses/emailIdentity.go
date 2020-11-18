@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,11 +47,12 @@ type EmailIdentity struct {
 // NewEmailIdentity registers a new resource with the given unique name, arguments, and options.
 func NewEmailIdentity(ctx *pulumi.Context,
 	name string, args *EmailIdentityArgs, opts ...pulumi.ResourceOption) (*EmailIdentity, error) {
-	if args == nil || args.Email == nil {
-		return nil, errors.New("missing required argument 'Email'")
-	}
 	if args == nil {
-		args = &EmailIdentityArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Email == nil {
+		return nil, errors.New("invalid value for required argument 'Email'")
 	}
 	var resource EmailIdentity
 	err := ctx.RegisterResource("aws:ses/emailIdentity:EmailIdentity", name, args, &resource, opts...)
@@ -104,4 +106,43 @@ type EmailIdentityArgs struct {
 
 func (EmailIdentityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailIdentityArgs)(nil)).Elem()
+}
+
+type EmailIdentityInput interface {
+	pulumi.Input
+
+	ToEmailIdentityOutput() EmailIdentityOutput
+	ToEmailIdentityOutputWithContext(ctx context.Context) EmailIdentityOutput
+}
+
+func (EmailIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailIdentity)(nil)).Elem()
+}
+
+func (i EmailIdentity) ToEmailIdentityOutput() EmailIdentityOutput {
+	return i.ToEmailIdentityOutputWithContext(context.Background())
+}
+
+func (i EmailIdentity) ToEmailIdentityOutputWithContext(ctx context.Context) EmailIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailIdentityOutput)
+}
+
+type EmailIdentityOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmailIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailIdentityOutput)(nil)).Elem()
+}
+
+func (o EmailIdentityOutput) ToEmailIdentityOutput() EmailIdentityOutput {
+	return o
+}
+
+func (o EmailIdentityOutput) ToEmailIdentityOutputWithContext(ctx context.Context) EmailIdentityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EmailIdentityOutput{})
 }
