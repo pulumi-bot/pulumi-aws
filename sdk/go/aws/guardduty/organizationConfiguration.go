@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,14 +56,15 @@ type OrganizationConfiguration struct {
 // NewOrganizationConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationConfiguration(ctx *pulumi.Context,
 	name string, args *OrganizationConfigurationArgs, opts ...pulumi.ResourceOption) (*OrganizationConfiguration, error) {
-	if args == nil || args.AutoEnable == nil {
-		return nil, errors.New("missing required argument 'AutoEnable'")
-	}
-	if args == nil || args.DetectorId == nil {
-		return nil, errors.New("missing required argument 'DetectorId'")
-	}
 	if args == nil {
-		args = &OrganizationConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutoEnable == nil {
+		return nil, errors.New("invalid value for required argument 'AutoEnable'")
+	}
+	if args.DetectorId == nil {
+		return nil, errors.New("invalid value for required argument 'DetectorId'")
 	}
 	var resource OrganizationConfiguration
 	err := ctx.RegisterResource("aws:guardduty/organizationConfiguration:OrganizationConfiguration", name, args, &resource, opts...)
@@ -120,4 +122,43 @@ type OrganizationConfigurationArgs struct {
 
 func (OrganizationConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationConfigurationArgs)(nil)).Elem()
+}
+
+type OrganizationConfigurationInput interface {
+	pulumi.Input
+
+	ToOrganizationConfigurationOutput() OrganizationConfigurationOutput
+	ToOrganizationConfigurationOutputWithContext(ctx context.Context) OrganizationConfigurationOutput
+}
+
+func (OrganizationConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConfiguration)(nil)).Elem()
+}
+
+func (i OrganizationConfiguration) ToOrganizationConfigurationOutput() OrganizationConfigurationOutput {
+	return i.ToOrganizationConfigurationOutputWithContext(context.Background())
+}
+
+func (i OrganizationConfiguration) ToOrganizationConfigurationOutputWithContext(ctx context.Context) OrganizationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConfigurationOutput)
+}
+
+type OrganizationConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConfigurationOutput)(nil)).Elem()
+}
+
+func (o OrganizationConfigurationOutput) ToOrganizationConfigurationOutput() OrganizationConfigurationOutput {
+	return o
+}
+
+func (o OrganizationConfigurationOutput) ToOrganizationConfigurationOutputWithContext(ctx context.Context) OrganizationConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationConfigurationOutput{})
 }

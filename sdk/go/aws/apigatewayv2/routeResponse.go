@@ -4,6 +4,7 @@
 package apigatewayv2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,17 +59,18 @@ type RouteResponse struct {
 // NewRouteResponse registers a new resource with the given unique name, arguments, and options.
 func NewRouteResponse(ctx *pulumi.Context,
 	name string, args *RouteResponseArgs, opts ...pulumi.ResourceOption) (*RouteResponse, error) {
-	if args == nil || args.ApiId == nil {
-		return nil, errors.New("missing required argument 'ApiId'")
-	}
-	if args == nil || args.RouteId == nil {
-		return nil, errors.New("missing required argument 'RouteId'")
-	}
-	if args == nil || args.RouteResponseKey == nil {
-		return nil, errors.New("missing required argument 'RouteResponseKey'")
-	}
 	if args == nil {
-		args = &RouteResponseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
+	}
+	if args.RouteId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteId'")
+	}
+	if args.RouteResponseKey == nil {
+		return nil, errors.New("invalid value for required argument 'RouteResponseKey'")
 	}
 	var resource RouteResponse
 	err := ctx.RegisterResource("aws:apigatewayv2/routeResponse:RouteResponse", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type RouteResponseArgs struct {
 
 func (RouteResponseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeResponseArgs)(nil)).Elem()
+}
+
+type RouteResponseInput interface {
+	pulumi.Input
+
+	ToRouteResponseOutput() RouteResponseOutput
+	ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput
+}
+
+func (RouteResponse) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteResponse)(nil)).Elem()
+}
+
+func (i RouteResponse) ToRouteResponseOutput() RouteResponseOutput {
+	return i.ToRouteResponseOutputWithContext(context.Background())
+}
+
+func (i RouteResponse) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteResponseOutput)
+}
+
+type RouteResponseOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteResponseOutput)(nil)).Elem()
+}
+
+func (o RouteResponseOutput) ToRouteResponseOutput() RouteResponseOutput {
+	return o
+}
+
+func (o RouteResponseOutput) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteResponseOutput{})
 }

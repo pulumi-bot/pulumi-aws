@@ -4,6 +4,7 @@
 package glue
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -56,6 +57,7 @@ func NewCatalogDatabase(ctx *pulumi.Context,
 	if args == nil {
 		args = &CatalogDatabaseArgs{}
 	}
+
 	var resource CatalogDatabase
 	err := ctx.RegisterResource("aws:glue/catalogDatabase:CatalogDatabase", name, args, &resource, opts...)
 	if err != nil {
@@ -140,4 +142,43 @@ type CatalogDatabaseArgs struct {
 
 func (CatalogDatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogDatabaseArgs)(nil)).Elem()
+}
+
+type CatalogDatabaseInput interface {
+	pulumi.Input
+
+	ToCatalogDatabaseOutput() CatalogDatabaseOutput
+	ToCatalogDatabaseOutputWithContext(ctx context.Context) CatalogDatabaseOutput
+}
+
+func (CatalogDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogDatabase)(nil)).Elem()
+}
+
+func (i CatalogDatabase) ToCatalogDatabaseOutput() CatalogDatabaseOutput {
+	return i.ToCatalogDatabaseOutputWithContext(context.Background())
+}
+
+func (i CatalogDatabase) ToCatalogDatabaseOutputWithContext(ctx context.Context) CatalogDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogDatabaseOutput)
+}
+
+type CatalogDatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogDatabaseOutput)(nil)).Elem()
+}
+
+func (o CatalogDatabaseOutput) ToCatalogDatabaseOutput() CatalogDatabaseOutput {
+	return o
+}
+
+func (o CatalogDatabaseOutput) ToCatalogDatabaseOutputWithContext(ctx context.Context) CatalogDatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CatalogDatabaseOutput{})
 }

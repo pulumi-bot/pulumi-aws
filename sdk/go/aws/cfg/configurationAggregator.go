@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -105,6 +106,7 @@ func NewConfigurationAggregator(ctx *pulumi.Context,
 	if args == nil {
 		args = &ConfigurationAggregatorArgs{}
 	}
+
 	var resource ConfigurationAggregator
 	err := ctx.RegisterResource("aws:cfg/configurationAggregator:ConfigurationAggregator", name, args, &resource, opts...)
 	if err != nil {
@@ -181,4 +183,43 @@ type ConfigurationAggregatorArgs struct {
 
 func (ConfigurationAggregatorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationAggregatorArgs)(nil)).Elem()
+}
+
+type ConfigurationAggregatorInput interface {
+	pulumi.Input
+
+	ToConfigurationAggregatorOutput() ConfigurationAggregatorOutput
+	ToConfigurationAggregatorOutputWithContext(ctx context.Context) ConfigurationAggregatorOutput
+}
+
+func (ConfigurationAggregator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationAggregator)(nil)).Elem()
+}
+
+func (i ConfigurationAggregator) ToConfigurationAggregatorOutput() ConfigurationAggregatorOutput {
+	return i.ToConfigurationAggregatorOutputWithContext(context.Background())
+}
+
+func (i ConfigurationAggregator) ToConfigurationAggregatorOutputWithContext(ctx context.Context) ConfigurationAggregatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorOutput)
+}
+
+type ConfigurationAggregatorOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigurationAggregatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationAggregatorOutput)(nil)).Elem()
+}
+
+func (o ConfigurationAggregatorOutput) ToConfigurationAggregatorOutput() ConfigurationAggregatorOutput {
+	return o
+}
+
+func (o ConfigurationAggregatorOutput) ToConfigurationAggregatorOutputWithContext(ctx context.Context) ConfigurationAggregatorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConfigurationAggregatorOutput{})
 }

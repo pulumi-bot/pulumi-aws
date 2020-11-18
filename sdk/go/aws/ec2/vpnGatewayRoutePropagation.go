@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +52,15 @@ type VpnGatewayRoutePropagation struct {
 // NewVpnGatewayRoutePropagation registers a new resource with the given unique name, arguments, and options.
 func NewVpnGatewayRoutePropagation(ctx *pulumi.Context,
 	name string, args *VpnGatewayRoutePropagationArgs, opts ...pulumi.ResourceOption) (*VpnGatewayRoutePropagation, error) {
-	if args == nil || args.RouteTableId == nil {
-		return nil, errors.New("missing required argument 'RouteTableId'")
-	}
-	if args == nil || args.VpnGatewayId == nil {
-		return nil, errors.New("missing required argument 'VpnGatewayId'")
-	}
 	if args == nil {
-		args = &VpnGatewayRoutePropagationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTableId'")
+	}
+	if args.VpnGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnGatewayId'")
 	}
 	var resource VpnGatewayRoutePropagation
 	err := ctx.RegisterResource("aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation", name, args, &resource, opts...)
@@ -116,4 +118,43 @@ type VpnGatewayRoutePropagationArgs struct {
 
 func (VpnGatewayRoutePropagationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnGatewayRoutePropagationArgs)(nil)).Elem()
+}
+
+type VpnGatewayRoutePropagationInput interface {
+	pulumi.Input
+
+	ToVpnGatewayRoutePropagationOutput() VpnGatewayRoutePropagationOutput
+	ToVpnGatewayRoutePropagationOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationOutput
+}
+
+func (VpnGatewayRoutePropagation) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayRoutePropagation)(nil)).Elem()
+}
+
+func (i VpnGatewayRoutePropagation) ToVpnGatewayRoutePropagationOutput() VpnGatewayRoutePropagationOutput {
+	return i.ToVpnGatewayRoutePropagationOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayRoutePropagation) ToVpnGatewayRoutePropagationOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayRoutePropagationOutput)
+}
+
+type VpnGatewayRoutePropagationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnGatewayRoutePropagationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayRoutePropagationOutput)(nil)).Elem()
+}
+
+func (o VpnGatewayRoutePropagationOutput) ToVpnGatewayRoutePropagationOutput() VpnGatewayRoutePropagationOutput {
+	return o
+}
+
+func (o VpnGatewayRoutePropagationOutput) ToVpnGatewayRoutePropagationOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpnGatewayRoutePropagationOutput{})
 }

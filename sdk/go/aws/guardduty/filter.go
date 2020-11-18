@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,20 +87,21 @@ type Filter struct {
 // NewFilter registers a new resource with the given unique name, arguments, and options.
 func NewFilter(ctx *pulumi.Context,
 	name string, args *FilterArgs, opts ...pulumi.ResourceOption) (*Filter, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.DetectorId == nil {
-		return nil, errors.New("missing required argument 'DetectorId'")
-	}
-	if args == nil || args.FindingCriteria == nil {
-		return nil, errors.New("missing required argument 'FindingCriteria'")
-	}
-	if args == nil || args.Rank == nil {
-		return nil, errors.New("missing required argument 'Rank'")
-	}
 	if args == nil {
-		args = &FilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.DetectorId == nil {
+		return nil, errors.New("invalid value for required argument 'DetectorId'")
+	}
+	if args.FindingCriteria == nil {
+		return nil, errors.New("invalid value for required argument 'FindingCriteria'")
+	}
+	if args.Rank == nil {
+		return nil, errors.New("invalid value for required argument 'Rank'")
 	}
 	var resource Filter
 	err := ctx.RegisterResource("aws:guardduty/filter:Filter", name, args, &resource, opts...)
@@ -201,4 +203,43 @@ type FilterArgs struct {
 
 func (FilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*filterArgs)(nil)).Elem()
+}
+
+type FilterInput interface {
+	pulumi.Input
+
+	ToFilterOutput() FilterOutput
+	ToFilterOutputWithContext(ctx context.Context) FilterOutput
+}
+
+func (Filter) ElementType() reflect.Type {
+	return reflect.TypeOf((*Filter)(nil)).Elem()
+}
+
+func (i Filter) ToFilterOutput() FilterOutput {
+	return i.ToFilterOutputWithContext(context.Background())
+}
+
+func (i Filter) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput)
+}
+
+type FilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (FilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterOutput)(nil)).Elem()
+}
+
+func (o FilterOutput) ToFilterOutput() FilterOutput {
+	return o
+}
+
+func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FilterOutput{})
 }

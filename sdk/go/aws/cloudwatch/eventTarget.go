@@ -4,6 +4,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -303,14 +304,15 @@ type EventTarget struct {
 // NewEventTarget registers a new resource with the given unique name, arguments, and options.
 func NewEventTarget(ctx *pulumi.Context,
 	name string, args *EventTargetArgs, opts ...pulumi.ResourceOption) (*EventTarget, error) {
-	if args == nil || args.Arn == nil {
-		return nil, errors.New("missing required argument 'Arn'")
-	}
-	if args == nil || args.Rule == nil {
-		return nil, errors.New("missing required argument 'Rule'")
-	}
 	if args == nil {
-		args = &EventTargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Arn == nil {
+		return nil, errors.New("invalid value for required argument 'Arn'")
+	}
+	if args.Rule == nil {
+		return nil, errors.New("invalid value for required argument 'Rule'")
 	}
 	var resource EventTarget
 	err := ctx.RegisterResource("aws:cloudwatch/eventTarget:EventTarget", name, args, &resource, opts...)
@@ -460,4 +462,43 @@ type EventTargetArgs struct {
 
 func (EventTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventTargetArgs)(nil)).Elem()
+}
+
+type EventTargetInput interface {
+	pulumi.Input
+
+	ToEventTargetOutput() EventTargetOutput
+	ToEventTargetOutputWithContext(ctx context.Context) EventTargetOutput
+}
+
+func (EventTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventTarget)(nil)).Elem()
+}
+
+func (i EventTarget) ToEventTargetOutput() EventTargetOutput {
+	return i.ToEventTargetOutputWithContext(context.Background())
+}
+
+func (i EventTarget) ToEventTargetOutputWithContext(ctx context.Context) EventTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetOutput)
+}
+
+type EventTargetOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventTargetOutput)(nil)).Elem()
+}
+
+func (o EventTargetOutput) ToEventTargetOutput() EventTargetOutput {
+	return o
+}
+
+func (o EventTargetOutput) ToEventTargetOutputWithContext(ctx context.Context) EventTargetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventTargetOutput{})
 }

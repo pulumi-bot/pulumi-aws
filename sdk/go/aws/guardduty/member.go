@@ -4,6 +4,7 @@
 package guardduty
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,17 +73,18 @@ type Member struct {
 // NewMember registers a new resource with the given unique name, arguments, and options.
 func NewMember(ctx *pulumi.Context,
 	name string, args *MemberArgs, opts ...pulumi.ResourceOption) (*Member, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.DetectorId == nil {
-		return nil, errors.New("missing required argument 'DetectorId'")
-	}
-	if args == nil || args.Email == nil {
-		return nil, errors.New("missing required argument 'Email'")
-	}
 	if args == nil {
-		args = &MemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.DetectorId == nil {
+		return nil, errors.New("invalid value for required argument 'DetectorId'")
+	}
+	if args.Email == nil {
+		return nil, errors.New("invalid value for required argument 'Email'")
 	}
 	var resource Member
 	err := ctx.RegisterResource("aws:guardduty/member:Member", name, args, &resource, opts...)
@@ -176,4 +178,43 @@ type MemberArgs struct {
 
 func (MemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberArgs)(nil)).Elem()
+}
+
+type MemberInput interface {
+	pulumi.Input
+
+	ToMemberOutput() MemberOutput
+	ToMemberOutputWithContext(ctx context.Context) MemberOutput
+}
+
+func (Member) ElementType() reflect.Type {
+	return reflect.TypeOf((*Member)(nil)).Elem()
+}
+
+func (i Member) ToMemberOutput() MemberOutput {
+	return i.ToMemberOutputWithContext(context.Background())
+}
+
+func (i Member) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberOutput)
+}
+
+type MemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberOutput)(nil)).Elem()
+}
+
+func (o MemberOutput) ToMemberOutput() MemberOutput {
+	return o
+}
+
+func (o MemberOutput) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MemberOutput{})
 }

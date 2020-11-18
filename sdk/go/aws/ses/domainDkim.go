@@ -4,6 +4,7 @@
 package ses
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -30,11 +31,12 @@ type DomainDkim struct {
 // NewDomainDkim registers a new resource with the given unique name, arguments, and options.
 func NewDomainDkim(ctx *pulumi.Context,
 	name string, args *DomainDkimArgs, opts ...pulumi.ResourceOption) (*DomainDkim, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
 	if args == nil {
-		args = &DomainDkimArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
 	var resource DomainDkim
 	err := ctx.RegisterResource("aws:ses/domainDkim:DomainDkim", name, args, &resource, opts...)
@@ -98,4 +100,43 @@ type DomainDkimArgs struct {
 
 func (DomainDkimArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainDkimArgs)(nil)).Elem()
+}
+
+type DomainDkimInput interface {
+	pulumi.Input
+
+	ToDomainDkimOutput() DomainDkimOutput
+	ToDomainDkimOutputWithContext(ctx context.Context) DomainDkimOutput
+}
+
+func (DomainDkim) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainDkim)(nil)).Elem()
+}
+
+func (i DomainDkim) ToDomainDkimOutput() DomainDkimOutput {
+	return i.ToDomainDkimOutputWithContext(context.Background())
+}
+
+func (i DomainDkim) ToDomainDkimOutputWithContext(ctx context.Context) DomainDkimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDkimOutput)
+}
+
+type DomainDkimOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainDkimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainDkimOutput)(nil)).Elem()
+}
+
+func (o DomainDkimOutput) ToDomainDkimOutput() DomainDkimOutput {
+	return o
+}
+
+func (o DomainDkimOutput) ToDomainDkimOutputWithContext(ctx context.Context) DomainDkimOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainDkimOutput{})
 }

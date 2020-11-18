@@ -4,6 +4,7 @@
 package neptune
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,11 +61,12 @@ type ParameterGroup struct {
 // NewParameterGroup registers a new resource with the given unique name, arguments, and options.
 func NewParameterGroup(ctx *pulumi.Context,
 	name string, args *ParameterGroupArgs, opts ...pulumi.ResourceOption) (*ParameterGroup, error) {
-	if args == nil || args.Family == nil {
-		return nil, errors.New("missing required argument 'Family'")
-	}
 	if args == nil {
-		args = &ParameterGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Family == nil {
+		return nil, errors.New("invalid value for required argument 'Family'")
 	}
 	var resource ParameterGroup
 	err := ctx.RegisterResource("aws:neptune/parameterGroup:ParameterGroup", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type ParameterGroupArgs struct {
 
 func (ParameterGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*parameterGroupArgs)(nil)).Elem()
+}
+
+type ParameterGroupInput interface {
+	pulumi.Input
+
+	ToParameterGroupOutput() ParameterGroupOutput
+	ToParameterGroupOutputWithContext(ctx context.Context) ParameterGroupOutput
+}
+
+func (ParameterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroup)(nil)).Elem()
+}
+
+func (i ParameterGroup) ToParameterGroupOutput() ParameterGroupOutput {
+	return i.ToParameterGroupOutputWithContext(context.Background())
+}
+
+func (i ParameterGroup) ToParameterGroupOutputWithContext(ctx context.Context) ParameterGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupOutput)
+}
+
+type ParameterGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ParameterGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupOutput)(nil)).Elem()
+}
+
+func (o ParameterGroupOutput) ToParameterGroupOutput() ParameterGroupOutput {
+	return o
+}
+
+func (o ParameterGroupOutput) ToParameterGroupOutputWithContext(ctx context.Context) ParameterGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ParameterGroupOutput{})
 }

@@ -4,6 +4,7 @@
 package cfg
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,11 +62,12 @@ type Recorder struct {
 // NewRecorder registers a new resource with the given unique name, arguments, and options.
 func NewRecorder(ctx *pulumi.Context,
 	name string, args *RecorderArgs, opts ...pulumi.ResourceOption) (*Recorder, error) {
-	if args == nil || args.RoleArn == nil {
-		return nil, errors.New("missing required argument 'RoleArn'")
-	}
 	if args == nil {
-		args = &RecorderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'RoleArn'")
 	}
 	var resource Recorder
 	err := ctx.RegisterResource("aws:cfg/recorder:Recorder", name, args, &resource, opts...)
@@ -139,4 +141,43 @@ type RecorderArgs struct {
 
 func (RecorderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recorderArgs)(nil)).Elem()
+}
+
+type RecorderInput interface {
+	pulumi.Input
+
+	ToRecorderOutput() RecorderOutput
+	ToRecorderOutputWithContext(ctx context.Context) RecorderOutput
+}
+
+func (Recorder) ElementType() reflect.Type {
+	return reflect.TypeOf((*Recorder)(nil)).Elem()
+}
+
+func (i Recorder) ToRecorderOutput() RecorderOutput {
+	return i.ToRecorderOutputWithContext(context.Background())
+}
+
+func (i Recorder) ToRecorderOutputWithContext(ctx context.Context) RecorderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecorderOutput)
+}
+
+type RecorderOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecorderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecorderOutput)(nil)).Elem()
+}
+
+func (o RecorderOutput) ToRecorderOutput() RecorderOutput {
+	return o
+}
+
+func (o RecorderOutput) ToRecorderOutputWithContext(ctx context.Context) RecorderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RecorderOutput{})
 }

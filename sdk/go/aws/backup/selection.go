@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -103,14 +104,15 @@ type Selection struct {
 // NewSelection registers a new resource with the given unique name, arguments, and options.
 func NewSelection(ctx *pulumi.Context,
 	name string, args *SelectionArgs, opts ...pulumi.ResourceOption) (*Selection, error) {
-	if args == nil || args.IamRoleArn == nil {
-		return nil, errors.New("missing required argument 'IamRoleArn'")
-	}
-	if args == nil || args.PlanId == nil {
-		return nil, errors.New("missing required argument 'PlanId'")
-	}
 	if args == nil {
-		args = &SelectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IamRoleArn == nil {
+		return nil, errors.New("invalid value for required argument 'IamRoleArn'")
+	}
+	if args.PlanId == nil {
+		return nil, errors.New("invalid value for required argument 'PlanId'")
 	}
 	var resource Selection
 	err := ctx.RegisterResource("aws:backup/selection:Selection", name, args, &resource, opts...)
@@ -192,4 +194,43 @@ type SelectionArgs struct {
 
 func (SelectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*selectionArgs)(nil)).Elem()
+}
+
+type SelectionInput interface {
+	pulumi.Input
+
+	ToSelectionOutput() SelectionOutput
+	ToSelectionOutputWithContext(ctx context.Context) SelectionOutput
+}
+
+func (Selection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Selection)(nil)).Elem()
+}
+
+func (i Selection) ToSelectionOutput() SelectionOutput {
+	return i.ToSelectionOutputWithContext(context.Background())
+}
+
+func (i Selection) ToSelectionOutputWithContext(ctx context.Context) SelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelectionOutput)
+}
+
+type SelectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelectionOutput)(nil)).Elem()
+}
+
+func (o SelectionOutput) ToSelectionOutput() SelectionOutput {
+	return o
+}
+
+func (o SelectionOutput) ToSelectionOutputWithContext(ctx context.Context) SelectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SelectionOutput{})
 }

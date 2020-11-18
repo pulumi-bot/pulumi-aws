@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -56,17 +57,18 @@ type GatewayAssociationProposal struct {
 // NewGatewayAssociationProposal registers a new resource with the given unique name, arguments, and options.
 func NewGatewayAssociationProposal(ctx *pulumi.Context,
 	name string, args *GatewayAssociationProposalArgs, opts ...pulumi.ResourceOption) (*GatewayAssociationProposal, error) {
-	if args == nil || args.AssociatedGatewayId == nil {
-		return nil, errors.New("missing required argument 'AssociatedGatewayId'")
-	}
-	if args == nil || args.DxGatewayId == nil {
-		return nil, errors.New("missing required argument 'DxGatewayId'")
-	}
-	if args == nil || args.DxGatewayOwnerAccountId == nil {
-		return nil, errors.New("missing required argument 'DxGatewayOwnerAccountId'")
-	}
 	if args == nil {
-		args = &GatewayAssociationProposalArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AssociatedGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'AssociatedGatewayId'")
+	}
+	if args.DxGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'DxGatewayId'")
+	}
+	if args.DxGatewayOwnerAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'DxGatewayOwnerAccountId'")
 	}
 	var resource GatewayAssociationProposal
 	err := ctx.RegisterResource("aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal", name, args, &resource, opts...)
@@ -148,4 +150,43 @@ type GatewayAssociationProposalArgs struct {
 
 func (GatewayAssociationProposalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayAssociationProposalArgs)(nil)).Elem()
+}
+
+type GatewayAssociationProposalInput interface {
+	pulumi.Input
+
+	ToGatewayAssociationProposalOutput() GatewayAssociationProposalOutput
+	ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput
+}
+
+func (GatewayAssociationProposal) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociationProposal)(nil)).Elem()
+}
+
+func (i GatewayAssociationProposal) ToGatewayAssociationProposalOutput() GatewayAssociationProposalOutput {
+	return i.ToGatewayAssociationProposalOutputWithContext(context.Background())
+}
+
+func (i GatewayAssociationProposal) ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAssociationProposalOutput)
+}
+
+type GatewayAssociationProposalOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayAssociationProposalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAssociationProposalOutput)(nil)).Elem()
+}
+
+func (o GatewayAssociationProposalOutput) ToGatewayAssociationProposalOutput() GatewayAssociationProposalOutput {
+	return o
+}
+
+func (o GatewayAssociationProposalOutput) ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayAssociationProposalOutput{})
 }
