@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -209,6 +210,7 @@ func NewEip(ctx *pulumi.Context,
 	if args == nil {
 		args = &EipArgs{}
 	}
+
 	var resource Eip
 	err := ctx.RegisterResource("aws:ec2/eip:Eip", name, args, &resource, opts...)
 	if err != nil {
@@ -349,4 +351,43 @@ type EipArgs struct {
 
 func (EipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipArgs)(nil)).Elem()
+}
+
+type EipInput interface {
+	pulumi.Input
+
+	ToEipOutput() EipOutput
+	ToEipOutputWithContext(ctx context.Context) EipOutput
+}
+
+func (Eip) ElementType() reflect.Type {
+	return reflect.TypeOf((*Eip)(nil)).Elem()
+}
+
+func (i Eip) ToEipOutput() EipOutput {
+	return i.ToEipOutputWithContext(context.Background())
+}
+
+func (i Eip) ToEipOutputWithContext(ctx context.Context) EipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EipOutput)
+}
+
+type EipOutput struct {
+	*pulumi.OutputState
+}
+
+func (EipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EipOutput)(nil)).Elem()
+}
+
+func (o EipOutput) ToEipOutput() EipOutput {
+	return o
+}
+
+func (o EipOutput) ToEipOutputWithContext(ctx context.Context) EipOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EipOutput{})
 }

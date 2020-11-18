@@ -4,6 +4,7 @@
 package directconnect
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,23 +74,24 @@ type HostedPrivateVirtualInterface struct {
 // NewHostedPrivateVirtualInterface registers a new resource with the given unique name, arguments, and options.
 func NewHostedPrivateVirtualInterface(ctx *pulumi.Context,
 	name string, args *HostedPrivateVirtualInterfaceArgs, opts ...pulumi.ResourceOption) (*HostedPrivateVirtualInterface, error) {
-	if args == nil || args.AddressFamily == nil {
-		return nil, errors.New("missing required argument 'AddressFamily'")
-	}
-	if args == nil || args.BgpAsn == nil {
-		return nil, errors.New("missing required argument 'BgpAsn'")
-	}
-	if args == nil || args.ConnectionId == nil {
-		return nil, errors.New("missing required argument 'ConnectionId'")
-	}
-	if args == nil || args.OwnerAccountId == nil {
-		return nil, errors.New("missing required argument 'OwnerAccountId'")
-	}
-	if args == nil || args.Vlan == nil {
-		return nil, errors.New("missing required argument 'Vlan'")
-	}
 	if args == nil {
-		args = &HostedPrivateVirtualInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AddressFamily == nil {
+		return nil, errors.New("invalid value for required argument 'AddressFamily'")
+	}
+	if args.BgpAsn == nil {
+		return nil, errors.New("invalid value for required argument 'BgpAsn'")
+	}
+	if args.ConnectionId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionId'")
+	}
+	if args.OwnerAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'OwnerAccountId'")
+	}
+	if args.Vlan == nil {
+		return nil, errors.New("invalid value for required argument 'Vlan'")
 	}
 	var resource HostedPrivateVirtualInterface
 	err := ctx.RegisterResource("aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface", name, args, &resource, opts...)
@@ -225,4 +227,43 @@ type HostedPrivateVirtualInterfaceArgs struct {
 
 func (HostedPrivateVirtualInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostedPrivateVirtualInterfaceArgs)(nil)).Elem()
+}
+
+type HostedPrivateVirtualInterfaceInput interface {
+	pulumi.Input
+
+	ToHostedPrivateVirtualInterfaceOutput() HostedPrivateVirtualInterfaceOutput
+	ToHostedPrivateVirtualInterfaceOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceOutput
+}
+
+func (HostedPrivateVirtualInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedPrivateVirtualInterface)(nil)).Elem()
+}
+
+func (i HostedPrivateVirtualInterface) ToHostedPrivateVirtualInterfaceOutput() HostedPrivateVirtualInterfaceOutput {
+	return i.ToHostedPrivateVirtualInterfaceOutputWithContext(context.Background())
+}
+
+func (i HostedPrivateVirtualInterface) ToHostedPrivateVirtualInterfaceOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedPrivateVirtualInterfaceOutput)
+}
+
+type HostedPrivateVirtualInterfaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedPrivateVirtualInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedPrivateVirtualInterfaceOutput)(nil)).Elem()
+}
+
+func (o HostedPrivateVirtualInterfaceOutput) ToHostedPrivateVirtualInterfaceOutput() HostedPrivateVirtualInterfaceOutput {
+	return o
+}
+
+func (o HostedPrivateVirtualInterfaceOutput) ToHostedPrivateVirtualInterfaceOutputWithContext(ctx context.Context) HostedPrivateVirtualInterfaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostedPrivateVirtualInterfaceOutput{})
 }

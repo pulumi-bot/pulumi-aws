@@ -4,6 +4,7 @@
 package ec2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,11 +65,12 @@ type KeyPair struct {
 // NewKeyPair registers a new resource with the given unique name, arguments, and options.
 func NewKeyPair(ctx *pulumi.Context,
 	name string, args *KeyPairArgs, opts ...pulumi.ResourceOption) (*KeyPair, error) {
-	if args == nil || args.PublicKey == nil {
-		return nil, errors.New("missing required argument 'PublicKey'")
-	}
 	if args == nil {
-		args = &KeyPairArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PublicKey == nil {
+		return nil, errors.New("invalid value for required argument 'PublicKey'")
 	}
 	var resource KeyPair
 	err := ctx.RegisterResource("aws:ec2/keyPair:KeyPair", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type KeyPairArgs struct {
 
 func (KeyPairArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairArgs)(nil)).Elem()
+}
+
+type KeyPairInput interface {
+	pulumi.Input
+
+	ToKeyPairOutput() KeyPairOutput
+	ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput
+}
+
+func (KeyPair) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPair)(nil)).Elem()
+}
+
+func (i KeyPair) ToKeyPairOutput() KeyPairOutput {
+	return i.ToKeyPairOutputWithContext(context.Background())
+}
+
+func (i KeyPair) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPairOutput)
+}
+
+type KeyPairOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPairOutput)(nil)).Elem()
+}
+
+func (o KeyPairOutput) ToKeyPairOutput() KeyPairOutput {
+	return o
+}
+
+func (o KeyPairOutput) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyPairOutput{})
 }

@@ -4,6 +4,7 @@
 package emr
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,14 +68,15 @@ type ManagedScalingPolicy struct {
 // NewManagedScalingPolicy registers a new resource with the given unique name, arguments, and options.
 func NewManagedScalingPolicy(ctx *pulumi.Context,
 	name string, args *ManagedScalingPolicyArgs, opts ...pulumi.ResourceOption) (*ManagedScalingPolicy, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.ComputeLimits == nil {
-		return nil, errors.New("missing required argument 'ComputeLimits'")
-	}
 	if args == nil {
-		args = &ManagedScalingPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.ComputeLimits == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeLimits'")
 	}
 	var resource ManagedScalingPolicy
 	err := ctx.RegisterResource("aws:emr/managedScalingPolicy:ManagedScalingPolicy", name, args, &resource, opts...)
@@ -132,4 +134,43 @@ type ManagedScalingPolicyArgs struct {
 
 func (ManagedScalingPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedScalingPolicyArgs)(nil)).Elem()
+}
+
+type ManagedScalingPolicyInput interface {
+	pulumi.Input
+
+	ToManagedScalingPolicyOutput() ManagedScalingPolicyOutput
+	ToManagedScalingPolicyOutputWithContext(ctx context.Context) ManagedScalingPolicyOutput
+}
+
+func (ManagedScalingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedScalingPolicy)(nil)).Elem()
+}
+
+func (i ManagedScalingPolicy) ToManagedScalingPolicyOutput() ManagedScalingPolicyOutput {
+	return i.ToManagedScalingPolicyOutputWithContext(context.Background())
+}
+
+func (i ManagedScalingPolicy) ToManagedScalingPolicyOutputWithContext(ctx context.Context) ManagedScalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedScalingPolicyOutput)
+}
+
+type ManagedScalingPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedScalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedScalingPolicyOutput)(nil)).Elem()
+}
+
+func (o ManagedScalingPolicyOutput) ToManagedScalingPolicyOutput() ManagedScalingPolicyOutput {
+	return o
+}
+
+func (o ManagedScalingPolicyOutput) ToManagedScalingPolicyOutputWithContext(ctx context.Context) ManagedScalingPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagedScalingPolicyOutput{})
 }

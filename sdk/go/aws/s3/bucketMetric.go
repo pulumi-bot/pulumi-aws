@@ -4,6 +4,7 @@
 package s3
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,11 +87,12 @@ type BucketMetric struct {
 // NewBucketMetric registers a new resource with the given unique name, arguments, and options.
 func NewBucketMetric(ctx *pulumi.Context,
 	name string, args *BucketMetricArgs, opts ...pulumi.ResourceOption) (*BucketMetric, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
 	if args == nil {
-		args = &BucketMetricArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
 	var resource BucketMetric
 	err := ctx.RegisterResource("aws:s3/bucketMetric:BucketMetric", name, args, &resource, opts...)
@@ -156,4 +158,43 @@ type BucketMetricArgs struct {
 
 func (BucketMetricArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketMetricArgs)(nil)).Elem()
+}
+
+type BucketMetricInput interface {
+	pulumi.Input
+
+	ToBucketMetricOutput() BucketMetricOutput
+	ToBucketMetricOutputWithContext(ctx context.Context) BucketMetricOutput
+}
+
+func (BucketMetric) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketMetric)(nil)).Elem()
+}
+
+func (i BucketMetric) ToBucketMetricOutput() BucketMetricOutput {
+	return i.ToBucketMetricOutputWithContext(context.Background())
+}
+
+func (i BucketMetric) ToBucketMetricOutputWithContext(ctx context.Context) BucketMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricOutput)
+}
+
+type BucketMetricOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketMetricOutput)(nil)).Elem()
+}
+
+func (o BucketMetricOutput) ToBucketMetricOutput() BucketMetricOutput {
+	return o
+}
+
+func (o BucketMetricOutput) ToBucketMetricOutputWithContext(ctx context.Context) BucketMetricOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketMetricOutput{})
 }

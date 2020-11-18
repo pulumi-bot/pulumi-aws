@@ -4,6 +4,7 @@
 package datasync
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,20 +68,21 @@ type LocationFsxWindows struct {
 // NewLocationFsxWindows registers a new resource with the given unique name, arguments, and options.
 func NewLocationFsxWindows(ctx *pulumi.Context,
 	name string, args *LocationFsxWindowsArgs, opts ...pulumi.ResourceOption) (*LocationFsxWindows, error) {
-	if args == nil || args.FsxFilesystemArn == nil {
-		return nil, errors.New("missing required argument 'FsxFilesystemArn'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.SecurityGroupArns == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupArns'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &LocationFsxWindowsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FsxFilesystemArn == nil {
+		return nil, errors.New("invalid value for required argument 'FsxFilesystemArn'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.SecurityGroupArns == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupArns'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource LocationFsxWindows
 	err := ctx.RegisterResource("aws:datasync/locationFsxWindows:LocationFsxWindows", name, args, &resource, opts...)
@@ -190,4 +192,43 @@ type LocationFsxWindowsArgs struct {
 
 func (LocationFsxWindowsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationFsxWindowsArgs)(nil)).Elem()
+}
+
+type LocationFsxWindowsInput interface {
+	pulumi.Input
+
+	ToLocationFsxWindowsOutput() LocationFsxWindowsOutput
+	ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput
+}
+
+func (LocationFsxWindows) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationFsxWindows)(nil)).Elem()
+}
+
+func (i LocationFsxWindows) ToLocationFsxWindowsOutput() LocationFsxWindowsOutput {
+	return i.ToLocationFsxWindowsOutputWithContext(context.Background())
+}
+
+func (i LocationFsxWindows) ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationFsxWindowsOutput)
+}
+
+type LocationFsxWindowsOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationFsxWindowsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationFsxWindowsOutput)(nil)).Elem()
+}
+
+func (o LocationFsxWindowsOutput) ToLocationFsxWindowsOutput() LocationFsxWindowsOutput {
+	return o
+}
+
+func (o LocationFsxWindowsOutput) ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocationFsxWindowsOutput{})
 }
