@@ -68,7 +68,7 @@ class StandardsSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if standards_arn is None:
+            if standards_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'standards_arn'")
             __props__['standards_arn'] = standards_arn
         super(StandardsSubscription, __self__).__init__(

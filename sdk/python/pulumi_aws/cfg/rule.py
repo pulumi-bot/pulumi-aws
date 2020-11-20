@@ -143,7 +143,7 @@ class Rule(pulumi.CustomResource):
             __props__['maximum_execution_frequency'] = maximum_execution_frequency
             __props__['name'] = name
             __props__['scope'] = scope
-            if source is None:
+            if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__['source'] = source
             __props__['tags'] = tags

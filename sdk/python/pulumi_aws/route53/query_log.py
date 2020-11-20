@@ -95,10 +95,10 @@ class QueryLog(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cloudwatch_log_group_arn is None:
+            if cloudwatch_log_group_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'cloudwatch_log_group_arn'")
             __props__['cloudwatch_log_group_arn'] = cloudwatch_log_group_arn
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(QueryLog, __self__).__init__(

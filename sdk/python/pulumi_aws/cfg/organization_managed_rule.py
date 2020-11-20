@@ -93,7 +93,7 @@ class OrganizationManagedRule(pulumi.CustomResource):
             __props__['name'] = name
             __props__['resource_id_scope'] = resource_id_scope
             __props__['resource_types_scopes'] = resource_types_scopes
-            if rule_identifier is None:
+            if rule_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_identifier'")
             __props__['rule_identifier'] = rule_identifier
             __props__['tag_key_scope'] = tag_key_scope

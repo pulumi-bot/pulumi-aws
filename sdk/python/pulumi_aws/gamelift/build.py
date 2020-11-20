@@ -74,10 +74,10 @@ class Build(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if operating_system is None:
+            if operating_system is None and not opts.urn:
                 raise TypeError("Missing required property 'operating_system'")
             __props__['operating_system'] = operating_system
-            if storage_location is None:
+            if storage_location is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_location'")
             __props__['storage_location'] = storage_location
             __props__['tags'] = tags

@@ -227,16 +227,16 @@ class TopicSubscription(pulumi.CustomResource):
 
             __props__['confirmation_timeout_in_minutes'] = confirmation_timeout_in_minutes
             __props__['delivery_policy'] = delivery_policy
-            if endpoint is None:
+            if endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint'")
             __props__['endpoint'] = endpoint
             __props__['endpoint_auto_confirms'] = endpoint_auto_confirms
             __props__['filter_policy'] = filter_policy
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['raw_message_delivery'] = raw_message_delivery
-            if topic is None:
+            if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic
             __props__['arn'] = None

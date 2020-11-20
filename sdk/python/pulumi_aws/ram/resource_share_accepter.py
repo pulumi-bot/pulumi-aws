@@ -77,7 +77,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if share_arn is None:
+            if share_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'share_arn'")
             __props__['share_arn'] = share_arn
             __props__['invitation_arn'] = None

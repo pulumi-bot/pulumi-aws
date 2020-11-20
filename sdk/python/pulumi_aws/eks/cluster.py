@@ -121,12 +121,12 @@ class Cluster(pulumi.CustomResource):
             __props__['enabled_cluster_log_types'] = enabled_cluster_log_types
             __props__['encryption_config'] = encryption_config
             __props__['name'] = name
-            if role_arn is None:
+            if role_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'role_arn'")
             __props__['role_arn'] = role_arn
             __props__['tags'] = tags
             __props__['version'] = version
-            if vpc_config is None:
+            if vpc_config is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_config'")
             __props__['vpc_config'] = vpc_config
             __props__['arn'] = None

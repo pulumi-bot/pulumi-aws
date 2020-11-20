@@ -120,7 +120,7 @@ class GlobalCluster(pulumi.CustomResource):
             __props__['engine'] = engine
             __props__['engine_version'] = engine_version
             __props__['force_destroy'] = force_destroy
-            if global_cluster_identifier is None:
+            if global_cluster_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'global_cluster_identifier'")
             __props__['global_cluster_identifier'] = global_cluster_identifier
             __props__['source_db_cluster_identifier'] = source_db_cluster_identifier

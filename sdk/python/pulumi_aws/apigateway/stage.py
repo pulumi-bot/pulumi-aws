@@ -140,15 +140,15 @@ class Stage(pulumi.CustomResource):
             __props__['cache_cluster_enabled'] = cache_cluster_enabled
             __props__['cache_cluster_size'] = cache_cluster_size
             __props__['client_certificate_id'] = client_certificate_id
-            if deployment is None:
+            if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
             __props__['deployment'] = deployment
             __props__['description'] = description
             __props__['documentation_version'] = documentation_version
-            if rest_api is None:
+            if rest_api is None and not opts.urn:
                 raise TypeError("Missing required property 'rest_api'")
             __props__['rest_api'] = rest_api
-            if stage_name is None:
+            if stage_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stage_name'")
             __props__['stage_name'] = stage_name
             __props__['tags'] = tags

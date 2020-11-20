@@ -92,10 +92,10 @@ class TargetGroupAttachment(pulumi.CustomResource):
 
             __props__['availability_zone'] = availability_zone
             __props__['port'] = port
-            if target_group_arn is None:
+            if target_group_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'target_group_arn'")
             __props__['target_group_arn'] = target_group_arn
-            if target_id is None:
+            if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__['target_id'] = target_id
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:applicationloadbalancing/targetGroupAttachment:TargetGroupAttachment")])

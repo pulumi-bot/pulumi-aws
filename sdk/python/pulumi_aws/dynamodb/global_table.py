@@ -106,7 +106,7 @@ class GlobalTable(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if replicas is None:
+            if replicas is None and not opts.urn:
                 raise TypeError("Missing required property 'replicas'")
             __props__['replicas'] = replicas
             __props__['arn'] = None

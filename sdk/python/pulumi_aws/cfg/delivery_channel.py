@@ -108,7 +108,7 @@ class DeliveryChannel(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if s3_bucket_name is None:
+            if s3_bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 's3_bucket_name'")
             __props__['s3_bucket_name'] = s3_bucket_name
             __props__['s3_key_prefix'] = s3_key_prefix

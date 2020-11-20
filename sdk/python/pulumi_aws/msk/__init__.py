@@ -9,3 +9,22 @@ from .get_cluster import *
 from .get_configuration import *
 from ._inputs import *
 from . import outputs
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "aws:msk/cluster:Cluster":
+            return Cluster(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "aws:msk/configuration:Configuration":
+            return Configuration(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("aws", "msk/cluster", _module_instance)
+pulumi.runtime.register_resource_module("aws", "msk/configuration", _module_instance)

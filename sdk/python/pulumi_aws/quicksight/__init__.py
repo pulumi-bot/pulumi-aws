@@ -5,3 +5,22 @@
 # Export this package's modules as members:
 from .group import *
 from .user import *
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "aws:quicksight/group:Group":
+            return Group(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "aws:quicksight/user:User":
+            return User(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("aws", "quicksight/group", _module_instance)
+pulumi.runtime.register_resource_module("aws", "quicksight/user", _module_instance)

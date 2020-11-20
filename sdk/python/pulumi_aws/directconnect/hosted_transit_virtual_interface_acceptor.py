@@ -88,11 +88,11 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dx_gateway_id is None:
+            if dx_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dx_gateway_id'")
             __props__['dx_gateway_id'] = dx_gateway_id
             __props__['tags'] = tags
-            if virtual_interface_id is None:
+            if virtual_interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_interface_id'")
             __props__['virtual_interface_id'] = virtual_interface_id
             __props__['arn'] = None

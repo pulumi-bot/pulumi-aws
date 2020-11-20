@@ -4,3 +4,19 @@
 
 # Export this package's modules as members:
 from .analyzer import *
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "aws:accessanalyzer/analyzer:Analyzer":
+            return Analyzer(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("aws", "accessanalyzer/analyzer", _module_instance)
