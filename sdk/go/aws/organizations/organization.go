@@ -77,6 +77,7 @@ func NewOrganization(ctx *pulumi.Context,
 	if args == nil {
 		args = &OrganizationArgs{}
 	}
+
 	var resource Organization
 	err := ctx.RegisterResource("aws:organizations/organization:Organization", name, args, &resource, opts...)
 	if err != nil {
