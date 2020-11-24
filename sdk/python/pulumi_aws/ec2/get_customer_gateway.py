@@ -123,10 +123,10 @@ def get_customer_gateway(filters: Optional[Sequence[pulumi.InputType['GetCustome
     import pulumi
     import pulumi_aws as aws
 
-    foo = aws.ec2.get_customer_gateway(filters=[aws.ec2.GetCustomerGatewayFilterArgs(
-        name="tag:Name",
-        values=["foo-prod"],
-    )])
+    foo = aws.ec2.get_customer_gateway(filters=[{
+        "name": "tag:Name",
+        "values": ["foo-prod"],
+    }])
     main = aws.ec2.VpnGateway("main",
         vpc_id=aws_vpc["main"]["id"],
         amazon_side_asn="7224")

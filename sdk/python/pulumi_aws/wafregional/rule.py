@@ -33,17 +33,17 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
+        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[{
+            "type": "IPV4",
+            "value": "192.0.7.0/24",
+        }])
         wafrule = aws.wafregional.Rule("wafrule",
             metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                type="IPMatch",
-                data_id=ipset.id,
-                negated=False,
-            )])
+            predicates=[{
+                "type": "IPMatch",
+                "dataId": ipset.id,
+                "negated": False,
+            }])
         ```
         ## Nested Fields
 

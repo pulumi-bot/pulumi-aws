@@ -184,14 +184,14 @@ def get_vpc_dhcp_options(dhcp_options_id: Optional[str] = None,
     import pulumi_aws as aws
 
     example = aws.ec2.get_vpc_dhcp_options(filters=[
-        aws.ec2.GetVpcDhcpOptionsFilterArgs(
-            name="key",
-            values=["domain-name"],
-        ),
-        aws.ec2.GetVpcDhcpOptionsFilterArgs(
-            name="value",
-            values=["example.com"],
-        ),
+        {
+            "name": "key",
+            "values": ["domain-name"],
+        },
+        {
+            "name": "value",
+            "values": ["example.com"],
+        },
     ])
     ```
 

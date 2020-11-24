@@ -44,13 +44,13 @@ class DevEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example_policy_document = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["glue.amazonaws.com"],
-            )],
-        )])
+        example_policy_document = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "Service",
+                "identifiers": ["glue.amazonaws.com"],
+            }],
+        }])
         example_role = aws.iam.Role("exampleRole", assume_role_policy=example_policy_document.json)
         example_dev_endpoint = aws.glue.DevEndpoint("exampleDevEndpoint", role_arn=example_role.arn)
         example__aws_glue_service_role = aws.iam.RolePolicyAttachment("example-AWSGlueServiceRole",

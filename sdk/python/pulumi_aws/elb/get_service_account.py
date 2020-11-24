@@ -99,16 +99,16 @@ def get_service_account(region: Optional[str] = None,
     \"\"\")
     bar = aws.elb.LoadBalancer("bar",
         availability_zones=["us-west-2a"],
-        access_logs=aws.elb.LoadBalancerAccessLogsArgs(
-            bucket=elb_logs.bucket,
-            interval=5,
-        ),
-        listeners=[aws.elb.LoadBalancerListenerArgs(
-            instance_port=8000,
-            instance_protocol="http",
-            lb_port=80,
-            lb_protocol="http",
-        )])
+        access_logs={
+            "bucket": elb_logs.bucket,
+            "interval": 5,
+        },
+        listeners=[{
+            "instance_port": 8000,
+            "instanceProtocol": "http",
+            "lb_port": 80,
+            "lbProtocol": "http",
+        }])
     ```
 
 

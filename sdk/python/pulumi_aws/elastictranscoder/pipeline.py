@@ -42,14 +42,14 @@ class Pipeline(pulumi.CustomResource):
         bar = aws.elastictranscoder.Pipeline("bar",
             input_bucket=aws_s3_bucket["input_bucket"]["bucket"],
             role=aws_iam_role["test_role"]["arn"],
-            content_config=aws.elastictranscoder.PipelineContentConfigArgs(
-                bucket=aws_s3_bucket["content_bucket"]["bucket"],
-                storage_class="Standard",
-            ),
-            thumbnail_config=aws.elastictranscoder.PipelineThumbnailConfigArgs(
-                bucket=aws_s3_bucket["thumb_bucket"]["bucket"],
-                storage_class="Standard",
-            ))
+            content_config={
+                "bucket": aws_s3_bucket["content_bucket"]["bucket"],
+                "storage_class": "Standard",
+            },
+            thumbnail_config={
+                "bucket": aws_s3_bucket["thumb_bucket"]["bucket"],
+                "storage_class": "Standard",
+            })
         ```
 
         ## Import

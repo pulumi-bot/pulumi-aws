@@ -48,17 +48,17 @@ class TaskDefinition(pulumi.CustomResource):
         service = aws.ecs.TaskDefinition("service",
             family="service",
             container_definitions=(lambda path: open(path).read())("task-definitions/service.json"),
-            proxy_configuration=aws.ecs.TaskDefinitionProxyConfigurationArgs(
-                type="APPMESH",
-                container_name="applicationContainerName",
-                properties={
+            proxy_configuration={
+                "type": "APPMESH",
+                "container_name": "applicationContainerName",
+                "properties": {
                     "AppPorts": "8080",
                     "EgressIgnoredIPs": "169.254.170.2,169.254.169.254",
                     "IgnoredUID": "1337",
                     "ProxyEgressPort": "15001",
                     "ProxyIngressPort": "15000",
                 },
-            ))
+            })
         ```
 
         ## Import

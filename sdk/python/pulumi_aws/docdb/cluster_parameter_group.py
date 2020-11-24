@@ -38,10 +38,10 @@ class ClusterParameterGroup(pulumi.CustomResource):
         example = aws.docdb.ClusterParameterGroup("example",
             description="docdb cluster parameter group",
             family="docdb3.6",
-            parameters=[aws.docdb.ClusterParameterGroupParameterArgs(
-                name="tls",
-                value="enabled",
-            )])
+            parameters=[{
+                "name": "tls",
+                "value": "enabled",
+            }])
         ```
 
         ## Import

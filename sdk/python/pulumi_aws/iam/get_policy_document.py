@@ -119,34 +119,34 @@ def get_policy_document(override_json: Optional[str] = None,
     import pulumi_aws as aws
 
     example_policy_document = aws.iam.get_policy_document(statements=[
-        aws.iam.GetPolicyDocumentStatementArgs(
-            sid="1",
-            actions=[
+        {
+            "sid": "1",
+            "actions": [
                 "s3:ListAllMyBuckets",
                 "s3:GetBucketLocation",
             ],
-            resources=["arn:aws:s3:::*"],
-        ),
-        aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["s3:ListBucket"],
-            resources=[f"arn:aws:s3:::{var['s3_bucket_name']}"],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringLike",
-                variable="s3:prefix",
-                values=[
+            "resources": ["arn:aws:s3:::*"],
+        },
+        {
+            "actions": ["s3:ListBucket"],
+            "resources": [f"arn:aws:s3:::{var['s3_bucket_name']}"],
+            "conditions": [{
+                "test": "StringLike",
+                "variable": "s3:prefix",
+                "values": [
                     "",
                     "home/",
                     "home/&{aws:username}/",
                 ],
-            )],
-        ),
-        aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["s3:*"],
-            resources=[
+            }],
+        },
+        {
+            "actions": ["s3:*"],
+            "resources": [
                 f"arn:aws:s3:::{var['s3_bucket_name']}/home/&{{aws:username}}",
                 f"arn:aws:s3:::{var['s3_bucket_name']}/home/&{{aws:username}}/*",
             ],
-        ),
+        },
     ])
     example_policy = aws.iam.Policy("examplePolicy",
         path="/",
@@ -183,26 +183,26 @@ def get_policy_document(override_json: Optional[str] = None,
     import pulumi
     import pulumi_aws as aws
 
-    event_stream_bucket_role_assume_role_policy = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-        actions=["sts:AssumeRole"],
-        principals=[
-            aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["firehose.amazonaws.com"],
-            ),
-            aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=[var["trusted_role_arn"]],
-            ),
-            aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Federated",
-                identifiers=[
+    event_stream_bucket_role_assume_role_policy = aws.iam.get_policy_document(statements=[{
+        "actions": ["sts:AssumeRole"],
+        "principals": [
+            {
+                "type": "Service",
+                "identifiers": ["firehose.amazonaws.com"],
+            },
+            {
+                "type": "AWS",
+                "identifiers": [var["trusted_role_arn"]],
+            },
+            {
+                "type": "Federated",
+                "identifiers": [
                     f"arn:aws:iam::{var['account_id']}:saml-provider/{var['provider_name']}",
                     "cognito-identity.amazonaws.com",
                 ],
-            ),
+            },
         ],
-    )])
+    }])
     ```
 
     ## Example with Source and Override
@@ -214,44 +214,44 @@ def get_policy_document(override_json: Optional[str] = None,
     import pulumi_aws as aws
 
     source = aws.iam.get_policy_document(statements=[
-        aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["ec2:*"],
-            resources=["*"],
-        ),
-        aws.iam.GetPolicyDocumentStatementArgs(
-            sid="SidToOverwrite",
-            actions=["s3:*"],
-            resources=["*"],
-        ),
+        {
+            "actions": ["ec2:*"],
+            "resources": ["*"],
+        },
+        {
+            "sid": "SidToOverwrite",
+            "actions": ["s3:*"],
+            "resources": ["*"],
+        },
     ])
     source_json_example = aws.iam.get_policy_document(source_json=source.json,
-        statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            sid="SidToOverwrite",
-            actions=["s3:*"],
-            resources=[
+        statements=[{
+            "sid": "SidToOverwrite",
+            "actions": ["s3:*"],
+            "resources": [
                 "arn:aws:s3:::somebucket",
                 "arn:aws:s3:::somebucket/*",
             ],
-        )])
-    override = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-        sid="SidToOverwrite",
-        actions=["s3:*"],
-        resources=["*"],
-    )])
+        }])
+    override = aws.iam.get_policy_document(statements=[{
+        "sid": "SidToOverwrite",
+        "actions": ["s3:*"],
+        "resources": ["*"],
+    }])
     override_json_example = aws.iam.get_policy_document(override_json=override.json,
         statements=[
-            aws.iam.GetPolicyDocumentStatementArgs(
-                actions=["ec2:*"],
-                resources=["*"],
-            ),
-            aws.iam.GetPolicyDocumentStatementArgs(
-                sid="SidToOverwrite",
-                actions=["s3:*"],
-                resources=[
+            {
+                "actions": ["ec2:*"],
+                "resources": ["*"],
+            },
+            {
+                "sid": "SidToOverwrite",
+                "actions": ["s3:*"],
+                "resources": [
                     "arn:aws:s3:::somebucket",
                     "arn:aws:s3:::somebucket/*",
                 ],
-            ),
+            },
         ])
     ```
 
@@ -277,16 +277,16 @@ def get_policy_document(override_json: Optional[str] = None,
     import pulumi
     import pulumi_aws as aws
 
-    source = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-        sid="OverridePlaceholder",
-        actions=["ec2:DescribeAccountAttributes"],
-        resources=["*"],
-    )])
-    override = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-        sid="OverridePlaceholder",
-        actions=["s3:GetObject"],
-        resources=["*"],
-    )])
+    source = aws.iam.get_policy_document(statements=[{
+        "sid": "OverridePlaceholder",
+        "actions": ["ec2:DescribeAccountAttributes"],
+        "resources": ["*"],
+    }])
+    override = aws.iam.get_policy_document(statements=[{
+        "sid": "OverridePlaceholder",
+        "actions": ["s3:GetObject"],
+        "resources": ["*"],
+    }])
     politik = aws.iam.get_policy_document(source_json=source.json,
         override_json=override.json)
     ```

@@ -53,19 +53,19 @@ class SecurityGroup(pulumi.CustomResource):
         allow_tls = aws.ec2.SecurityGroup("allowTls",
             description="Allow TLS inbound traffic",
             vpc_id=aws_vpc["main"]["id"],
-            ingress=[aws.ec2.SecurityGroupIngressArgs(
-                description="TLS from VPC",
-                from_port=443,
-                to_port=443,
-                protocol="tcp",
-                cidr_blocks=[aws_vpc["main"]["cidr_block"]],
-            )],
-            egress=[aws.ec2.SecurityGroupEgressArgs(
-                from_port=0,
-                to_port=0,
-                protocol="-1",
-                cidr_blocks=["0.0.0.0/0"],
-            )],
+            ingress=[{
+                "description": "TLS from VPC",
+                "from_port": 443,
+                "to_port": 443,
+                "protocol": "tcp",
+                "cidr_blocks": [aws_vpc["main"]["cidr_block"]],
+            }],
+            egress=[{
+                "from_port": 0,
+                "to_port": 0,
+                "protocol": "-1",
+                "cidr_blocks": ["0.0.0.0/0"],
+            }],
             tags={
                 "Name": "allow_tls",
             })
@@ -83,12 +83,12 @@ class SecurityGroup(pulumi.CustomResource):
         my_endpoint = aws.ec2.VpcEndpoint("myEndpoint")
         # ... other configuration ...
         # ... other configuration ...
-        example = aws.ec2.SecurityGroup("example", egress=[aws.ec2.SecurityGroupEgressArgs(
-            from_port=0,
-            to_port=0,
-            protocol="-1",
-            prefix_list_ids=[my_endpoint.prefix_list_id],
-        )])
+        example = aws.ec2.SecurityGroup("example", egress=[{
+            "from_port": 0,
+            "to_port": 0,
+            "protocol": "-1",
+            "prefix_list_ids": [my_endpoint.prefix_list_id],
+        }])
         ```
 
         ## Import

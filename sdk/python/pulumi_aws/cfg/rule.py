@@ -56,10 +56,10 @@ class Rule(pulumi.CustomResource):
         }
         \"\"\")
         foo = aws.cfg.Recorder("foo", role_arn=role.arn)
-        rule = aws.cfg.Rule("rule", source=aws.cfg.RuleSourceArgs(
-            owner="AWS",
-            source_identifier="S3_BUCKET_VERSIONING_ENABLED",
-        ),
+        rule = aws.cfg.Rule("rule", source={
+            "owner": "AWS",
+            "sourceIdentifier": "S3_BUCKET_VERSIONING_ENABLED",
+        },
         opts=ResourceOptions(depends_on=[foo]))
         role_policy = aws.iam.RolePolicy("rolePolicy",
             role=role.id,
@@ -93,10 +93,10 @@ class Rule(pulumi.CustomResource):
             function=example_function.arn,
             principal="config.amazonaws.com")
         # ... other configuration ...
-        example_rule = aws.cfg.Rule("exampleRule", source=aws.cfg.RuleSourceArgs(
-            owner="CUSTOM_LAMBDA",
-            source_identifier=example_function.arn,
-        ),
+        example_rule = aws.cfg.Rule("exampleRule", source={
+            "owner": "CUSTOM_LAMBDA",
+            "sourceIdentifier": example_function.arn,
+        },
         opts=ResourceOptions(depends_on=[
                 example_recorder,
                 example_permission,

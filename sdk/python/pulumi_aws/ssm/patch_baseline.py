@@ -55,39 +55,39 @@ class PatchBaseline(pulumi.CustomResource):
 
         production = aws.ssm.PatchBaseline("production",
             approval_rules=[
-                aws.ssm.PatchBaselineApprovalRuleArgs(
-                    approve_after_days=7,
-                    compliance_level="HIGH",
-                    patch_filters=[
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="PRODUCT",
-                            values=["WindowsServer2016"],
-                        ),
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="CLASSIFICATION",
-                            values=[
+                {
+                    "approveAfterDays": 7,
+                    "complianceLevel": "HIGH",
+                    "patchFilters": [
+                        {
+                            "key": "PRODUCT",
+                            "values": ["WindowsServer2016"],
+                        },
+                        {
+                            "key": "CLASSIFICATION",
+                            "values": [
                                 "CriticalUpdates",
                                 "SecurityUpdates",
                                 "Updates",
                             ],
-                        ),
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="MSRC_SEVERITY",
-                            values=[
+                        },
+                        {
+                            "key": "MSRC_SEVERITY",
+                            "values": [
                                 "Critical",
                                 "Important",
                                 "Moderate",
                             ],
-                        ),
+                        },
                     ],
-                ),
-                aws.ssm.PatchBaselineApprovalRuleArgs(
-                    approve_after_days=7,
-                    patch_filters=[aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                        key="PRODUCT",
-                        values=["WindowsServer2012"],
-                    )],
-                ),
+                },
+                {
+                    "approveAfterDays": 7,
+                    "patchFilters": [{
+                        "key": "PRODUCT",
+                        "values": ["WindowsServer2012"],
+                    }],
+                },
             ],
             approved_patches=[
                 "KB123456",
@@ -95,18 +95,18 @@ class PatchBaseline(pulumi.CustomResource):
             ],
             description="Patch Baseline Description",
             global_filters=[
-                aws.ssm.PatchBaselineGlobalFilterArgs(
-                    key="PRODUCT",
-                    values=["WindowsServer2008"],
-                ),
-                aws.ssm.PatchBaselineGlobalFilterArgs(
-                    key="CLASSIFICATION",
-                    values=["ServicePacks"],
-                ),
-                aws.ssm.PatchBaselineGlobalFilterArgs(
-                    key="MSRC_SEVERITY",
-                    values=["Low"],
-                ),
+                {
+                    "key": "PRODUCT",
+                    "values": ["WindowsServer2008"],
+                },
+                {
+                    "key": "CLASSIFICATION",
+                    "values": ["ServicePacks"],
+                },
+                {
+                    "key": "MSRC_SEVERITY",
+                    "values": ["Low"],
+                },
             ],
             rejected_patches=["KB987654"])
         ```
@@ -119,41 +119,41 @@ class PatchBaseline(pulumi.CustomResource):
 
         windows_os_apps = aws.ssm.PatchBaseline("windowsOsApps",
             approval_rules=[
-                aws.ssm.PatchBaselineApprovalRuleArgs(
-                    approve_after_days=7,
-                    patch_filters=[
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="CLASSIFICATION",
-                            values=[
+                {
+                    "approveAfterDays": 7,
+                    "patchFilters": [
+                        {
+                            "key": "CLASSIFICATION",
+                            "values": [
                                 "CriticalUpdates",
                                 "SecurityUpdates",
                             ],
-                        ),
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="MSRC_SEVERITY",
-                            values=[
+                        },
+                        {
+                            "key": "MSRC_SEVERITY",
+                            "values": [
                                 "Critical",
                                 "Important",
                             ],
-                        ),
+                        },
                     ],
-                ),
-                aws.ssm.PatchBaselineApprovalRuleArgs(
-                    approve_after_days=7,
-                    patch_filters=[
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="PATCH_SET",
-                            values=["APPLICATION"],
-                        ),
-                        aws.ssm.PatchBaselineApprovalRulePatchFilterArgs(
-                            key="PRODUCT",
-                            values=[
+                },
+                {
+                    "approveAfterDays": 7,
+                    "patchFilters": [
+                        {
+                            "key": "PATCH_SET",
+                            "values": ["APPLICATION"],
+                        },
+                        {
+                            "key": "PRODUCT",
+                            "values": [
                                 "Office 2013",
                                 "Office 2016",
                             ],
-                        ),
+                        },
                     ],
-                ),
+                },
             ],
             description="Patch both Windows and Microsoft apps",
             operating_system="WINDOWS")

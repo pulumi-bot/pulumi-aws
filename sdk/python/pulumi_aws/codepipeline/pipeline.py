@@ -51,65 +51,65 @@ class Pipeline(pulumi.CustomResource):
         s3kmskey = aws.kms.get_alias(name="alias/myKmsKey")
         codepipeline = aws.codepipeline.Pipeline("codepipeline",
             role_arn=codepipeline_role.arn,
-            artifact_store=aws.codepipeline.PipelineArtifactStoreArgs(
-                location=codepipeline_bucket.bucket,
-                type="S3",
-                encryption_key={
+            artifact_store={
+                "location": codepipeline_bucket.bucket,
+                "type": "S3",
+                "encryption_key": {
                     "id": s3kmskey.arn,
                     "type": "KMS",
                 },
-            ),
+            },
             stages=[
-                aws.codepipeline.PipelineStageArgs(
-                    name="Source",
-                    actions=[aws.codepipeline.PipelineStageActionArgs(
-                        name="Source",
-                        category="Source",
-                        owner="ThirdParty",
-                        provider="GitHub",
-                        version="1",
-                        output_artifacts=["source_output"],
-                        configuration={
+                {
+                    "name": "Source",
+                    "actions": [{
+                        "name": "Source",
+                        "category": "Source",
+                        "owner": "ThirdParty",
+                        "provider": "GitHub",
+                        "version": "1",
+                        "outputArtifacts": ["source_output"],
+                        "configuration": {
                             "Owner": "my-organization",
                             "Repo": "test",
                             "Branch": "master",
                             "OAuthToken": var["github_token"],
                         },
-                    )],
-                ),
-                aws.codepipeline.PipelineStageArgs(
-                    name="Build",
-                    actions=[aws.codepipeline.PipelineStageActionArgs(
-                        name="Build",
-                        category="Build",
-                        owner="AWS",
-                        provider="CodeBuild",
-                        input_artifacts=["source_output"],
-                        output_artifacts=["build_output"],
-                        version="1",
-                        configuration={
+                    }],
+                },
+                {
+                    "name": "Build",
+                    "actions": [{
+                        "name": "Build",
+                        "category": "Build",
+                        "owner": "AWS",
+                        "provider": "CodeBuild",
+                        "inputArtifacts": ["source_output"],
+                        "outputArtifacts": ["build_output"],
+                        "version": "1",
+                        "configuration": {
                             "ProjectName": "test",
                         },
-                    )],
-                ),
-                aws.codepipeline.PipelineStageArgs(
-                    name="Deploy",
-                    actions=[aws.codepipeline.PipelineStageActionArgs(
-                        name="Deploy",
-                        category="Deploy",
-                        owner="AWS",
-                        provider="CloudFormation",
-                        input_artifacts=["build_output"],
-                        version="1",
-                        configuration={
+                    }],
+                },
+                {
+                    "name": "Deploy",
+                    "actions": [{
+                        "name": "Deploy",
+                        "category": "Deploy",
+                        "owner": "AWS",
+                        "provider": "CloudFormation",
+                        "inputArtifacts": ["build_output"],
+                        "version": "1",
+                        "configuration": {
                             "ActionMode": "REPLACE_ON_FAILURE",
                             "Capabilities": "CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM",
                             "OutputFileName": "CreateStackOutput.json",
                             "StackName": "MyStack",
                             "TemplatePath": "build_output::sam-templated.yaml",
                         },
-                    )],
-                ),
+                    }],
+                },
             ])
         codepipeline_policy = aws.iam.RolePolicy("codepipelinePolicy",
             role=codepipeline_role.id,

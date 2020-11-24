@@ -39,15 +39,15 @@ class RuleGroup(pulumi.CustomResource):
 
         example = aws.networkfirewall.RuleGroup("example",
             capacity=100,
-            rule_group=aws.networkfirewall.RuleGroupRuleGroupArgs(
-                rules_source=aws.networkfirewall.RuleGroupRuleGroupRulesSourceArgs(
-                    rules_source_list=aws.networkfirewall.RuleGroupRuleGroupRulesSourceRulesSourceListArgs(
-                        generated_rules_type="DENYLIST",
-                        target_types=["HTTP_HOST"],
-                        targets=["test.example.com"],
-                    ),
-                ),
-            ),
+            rule_group={
+                "rulesSource": {
+                    "rulesSourceList": {
+                        "generatedRulesType": "DENYLIST",
+                        "targetTypes": ["HTTP_HOST"],
+                        "targets": ["test.example.com"],
+                    },
+                },
+            },
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",
@@ -62,9 +62,9 @@ class RuleGroup(pulumi.CustomResource):
 
         example = aws.networkfirewall.RuleGroup("example",
             capacity=100,
-            rule_group=aws.networkfirewall.RuleGroupRuleGroupArgs(
-                rules_source=aws.networkfirewall.RuleGroupRuleGroupRulesSourceArgs(
-                    stateful_rule=[{
+            rule_group={
+                "rulesSource": {
+                    "statefulRule": [{
                         "action": "DROP",
                         "header": {
                             "destination": "124.1.1.24/32",
@@ -78,8 +78,8 @@ class RuleGroup(pulumi.CustomResource):
                             "keyword": "sid:1",
                         }],
                     }],
-                ),
-            ),
+                },
+            },
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",
@@ -110,10 +110,10 @@ class RuleGroup(pulumi.CustomResource):
         example = aws.networkfirewall.RuleGroup("example",
             capacity=100,
             description="Stateless Rate Limiting Rule",
-            rule_group=aws.networkfirewall.RuleGroupRuleGroupArgs(
-                rules_source=aws.networkfirewall.RuleGroupRuleGroupRulesSourceArgs(
-                    stateless_rules_and_custom_actions=aws.networkfirewall.RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsArgs(
-                        custom_action=[{
+            rule_group={
+                "rulesSource": {
+                    "statelessRulesAndCustomActions": {
+                        "customAction": [{
                             "actionDefinition": {
                                 "publishMetricAction": {
                                     "dimension": [{
@@ -123,7 +123,7 @@ class RuleGroup(pulumi.CustomResource):
                             },
                             "actionName": "ExampleMetricsAction",
                         }],
-                        stateless_rule=[{
+                        "statelessRule": [{
                             "priority": 1,
                             "ruleDefinition": {
                                 "actions": [
@@ -156,9 +156,9 @@ class RuleGroup(pulumi.CustomResource):
                                 },
                             },
                         }],
-                    ),
-                ),
-            ),
+                    },
+                },
+            },
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",

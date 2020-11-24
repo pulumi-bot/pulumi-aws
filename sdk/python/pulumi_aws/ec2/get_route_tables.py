@@ -101,10 +101,10 @@ def get_route_tables(filters: Optional[Sequence[pulumi.InputType['GetRouteTables
     import pulumi_aws as aws
 
     rts = aws.ec2.get_route_tables(vpc_id=var["vpc_id"],
-        filters=[aws.ec2.GetRouteTablesFilterArgs(
-            name="tag:kubernetes.io/kops/role",
-            values=["private*"],
-        )])
+        filters=[{
+            "name": "tag:kubernetes.io/kops/role",
+            "values": ["private*"],
+        }])
     route = []
     for range in [{"value": i} for i in range(0, len(rts.ids))]:
         route.append(aws.ec2.Route(f"route-{range['value']}",

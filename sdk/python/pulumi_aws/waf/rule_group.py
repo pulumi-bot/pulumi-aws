@@ -36,13 +36,13 @@ class RuleGroup(pulumi.CustomResource):
         example_rule = aws.waf.Rule("exampleRule", metric_name="example")
         example_rule_group = aws.waf.RuleGroup("exampleRuleGroup",
             metric_name="example",
-            activated_rules=[aws.waf.RuleGroupActivatedRuleArgs(
-                action=aws.waf.RuleGroupActivatedRuleActionArgs(
-                    type="COUNT",
-                ),
-                priority=50,
-                rule_id=example_rule.id,
-            )])
+            activated_rules=[{
+                "action": {
+                    "type": "COUNT",
+                },
+                "priority": 50,
+                "rule_id": example_rule.id,
+            }])
         ```
 
         ## Import

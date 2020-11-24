@@ -44,10 +44,10 @@ class NetworkInterface(pulumi.CustomResource):
             subnet_id=aws_subnet["public_a"]["id"],
             private_ips=["10.0.0.50"],
             security_groups=[aws_security_group["web"]["id"]],
-            attachments=[aws.ec2.NetworkInterfaceAttachmentArgs(
-                instance=aws_instance["test"]["id"],
-                device_index=1,
-            )])
+            attachments=[{
+                "instance": aws_instance["test"]["id"],
+                "device_index": 1,
+            }])
         ```
 
         ## Import

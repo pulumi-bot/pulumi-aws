@@ -77,27 +77,27 @@ class LifecyclePolicy(pulumi.CustomResource):
             description="example DLM lifecycle policy",
             execution_role_arn=dlm_lifecycle_role.arn,
             state="ENABLED",
-            policy_details=aws.dlm.LifecyclePolicyPolicyDetailsArgs(
-                resource_types=["VOLUME"],
-                schedules=[aws.dlm.LifecyclePolicyPolicyDetailsScheduleArgs(
-                    name="2 weeks of daily snapshots",
-                    create_rule=aws.dlm.LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs(
-                        interval=24,
-                        interval_unit="HOURS",
-                        times=["23:45"],
-                    ),
-                    retain_rule=aws.dlm.LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs(
-                        count=14,
-                    ),
-                    tags_to_add={
+            policy_details={
+                "resourceTypes": ["VOLUME"],
+                "schedules": [{
+                    "name": "2 weeks of daily snapshots",
+                    "createRule": {
+                        "interval": 24,
+                        "intervalUnit": "HOURS",
+                        "times": ["23:45"],
+                    },
+                    "retainRule": {
+                        "count": 14,
+                    },
+                    "tagsToAdd": {
                         "SnapshotCreator": "DLM",
                     },
-                    copy_tags=False,
-                )],
-                target_tags={
+                    "copyTags": False,
+                }],
+                "targetTags": {
                     "Snapshot": "true",
                 },
-            ))
+            })
         ```
 
         ## Import

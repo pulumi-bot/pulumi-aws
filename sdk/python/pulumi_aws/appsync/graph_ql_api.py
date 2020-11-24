@@ -49,11 +49,11 @@ class GraphQLApi(pulumi.CustomResource):
 
         example = aws.appsync.GraphQLApi("example",
             authentication_type="AMAZON_COGNITO_USER_POOLS",
-            user_pool_config=aws.appsync.GraphQLApiUserPoolConfigArgs(
-                aws_region=data["aws_region"]["current"]["name"],
-                default_action="DENY",
-                user_pool_id=aws_cognito_user_pool["example"]["id"],
-            ))
+            user_pool_config={
+                "awsRegion": data["aws_region"]["current"]["name"],
+                "default_action": "DENY",
+                "user_pool_id": aws_cognito_user_pool["example"]["id"],
+            })
         ```
         ### AWS IAM Authentication
 
@@ -88,9 +88,9 @@ class GraphQLApi(pulumi.CustomResource):
 
         example = aws.appsync.GraphQLApi("example",
             authentication_type="OPENID_CONNECT",
-            openid_connect_config=aws.appsync.GraphQLApiOpenidConnectConfigArgs(
-                issuer="https://example.com",
-            ))
+            openid_connect_config={
+                "issuer": "https://example.com",
+            })
         ```
         ### With Multiple Authentication Providers
 
@@ -99,9 +99,9 @@ class GraphQLApi(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.appsync.GraphQLApi("example",
-            additional_authentication_providers=[aws.appsync.GraphQLApiAdditionalAuthenticationProviderArgs(
-                authentication_type="AWS_IAM",
-            )],
+            additional_authentication_providers=[{
+                "authentication_type": "AWS_IAM",
+            }],
             authentication_type="API_KEY")
         ```
         ### Enabling Logging
@@ -127,10 +127,10 @@ class GraphQLApi(pulumi.CustomResource):
             policy_arn="arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs",
             role=example_role.name)
         # ... other configuration ...
-        example_graph_ql_api = aws.appsync.GraphQLApi("exampleGraphQLApi", log_config=aws.appsync.GraphQLApiLogConfigArgs(
-            cloudwatch_logs_role_arn=example_role.arn,
-            field_log_level="ERROR",
-        ))
+        example_graph_ql_api = aws.appsync.GraphQLApi("exampleGraphQLApi", log_config={
+            "cloudwatchLogsRoleArn": example_role.arn,
+            "fieldLogLevel": "ERROR",
+        })
         ```
 
         ## Import

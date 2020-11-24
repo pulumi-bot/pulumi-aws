@@ -137,10 +137,10 @@ def get_resolver_endpoint(filters: Optional[Sequence[pulumi.InputType['GetResolv
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.route53.get_resolver_endpoint(filters=[aws.route53.GetResolverEndpointFilterArgs(
-        name="NAME",
-        values=["MyResolverExampleName"],
-    )])
+    example = aws.route53.get_resolver_endpoint(filters=[{
+        "name": "NAME",
+        "values": ["MyResolverExampleName"],
+    }])
     ```
 
 

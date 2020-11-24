@@ -111,86 +111,86 @@ def get_script(dag_edges: Optional[Sequence[pulumi.InputType['GetScriptDagEdgeAr
 
     example = aws.glue.get_script(language="PYTHON",
         dag_edges=[
-            aws.glue.GetScriptDagEdgeArgs(
-                source="datasource0",
-                target="applymapping1",
-            ),
-            aws.glue.GetScriptDagEdgeArgs(
-                source="applymapping1",
-                target="selectfields2",
-            ),
-            aws.glue.GetScriptDagEdgeArgs(
-                source="selectfields2",
-                target="resolvechoice3",
-            ),
-            aws.glue.GetScriptDagEdgeArgs(
-                source="resolvechoice3",
-                target="datasink4",
-            ),
+            {
+                "source": "datasource0",
+                "target": "applymapping1",
+            },
+            {
+                "source": "applymapping1",
+                "target": "selectfields2",
+            },
+            {
+                "source": "selectfields2",
+                "target": "resolvechoice3",
+            },
+            {
+                "source": "resolvechoice3",
+                "target": "datasink4",
+            },
         ],
         dag_nodes=[
-            aws.glue.GetScriptDagNodeArgs(
-                id="datasource0",
-                node_type="DataSource",
-                args=[
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="database",
-                        value=f"\"{aws_glue_catalog_database['source']['name']}\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="table_name",
-                        value=f"\"{aws_glue_catalog_table['source']['name']}\"",
-                    ),
+            {
+                "id": "datasource0",
+                "nodeType": "DataSource",
+                "args": [
+                    {
+                        "name": "database",
+                        "value": f"\"{aws_glue_catalog_database['source']['name']}\"",
+                    },
+                    {
+                        "name": "table_name",
+                        "value": f"\"{aws_glue_catalog_table['source']['name']}\"",
+                    },
                 ],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="applymapping1",
-                node_type="ApplyMapping",
-                args=[aws.glue.GetScriptDagNodeArgArgs(
-                    name="mapping",
-                    value="[(\"column1\", \"string\", \"column1\", \"string\")]",
-                )],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="selectfields2",
-                node_type="SelectFields",
-                args=[aws.glue.GetScriptDagNodeArgArgs(
-                    name="paths",
-                    value="[\"column1\"]",
-                )],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="resolvechoice3",
-                node_type="ResolveChoice",
-                args=[
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="choice",
-                        value="\"MATCH_CATALOG\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="database",
-                        value=f"\"{aws_glue_catalog_database['destination']['name']}\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="table_name",
-                        value=f"\"{aws_glue_catalog_table['destination']['name']}\"",
-                    ),
+            },
+            {
+                "id": "applymapping1",
+                "nodeType": "ApplyMapping",
+                "args": [{
+                    "name": "mapping",
+                    "value": "[(\"column1\", \"string\", \"column1\", \"string\")]",
+                }],
+            },
+            {
+                "id": "selectfields2",
+                "nodeType": "SelectFields",
+                "args": [{
+                    "name": "paths",
+                    "value": "[\"column1\"]",
+                }],
+            },
+            {
+                "id": "resolvechoice3",
+                "nodeType": "ResolveChoice",
+                "args": [
+                    {
+                        "name": "choice",
+                        "value": "\"MATCH_CATALOG\"",
+                    },
+                    {
+                        "name": "database",
+                        "value": f"\"{aws_glue_catalog_database['destination']['name']}\"",
+                    },
+                    {
+                        "name": "table_name",
+                        "value": f"\"{aws_glue_catalog_table['destination']['name']}\"",
+                    },
                 ],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="datasink4",
-                node_type="DataSink",
-                args=[
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="database",
-                        value=f"\"{aws_glue_catalog_database['destination']['name']}\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="table_name",
-                        value=f"\"{aws_glue_catalog_table['destination']['name']}\"",
-                    ),
+            },
+            {
+                "id": "datasink4",
+                "nodeType": "DataSink",
+                "args": [
+                    {
+                        "name": "database",
+                        "value": f"\"{aws_glue_catalog_database['destination']['name']}\"",
+                    },
+                    {
+                        "name": "table_name",
+                        "value": f"\"{aws_glue_catalog_table['destination']['name']}\"",
+                    },
                 ],
-            ),
+            },
         ])
     pulumi.export("pythonScript", example.python_script)
     ```
@@ -202,86 +202,86 @@ def get_script(dag_edges: Optional[Sequence[pulumi.InputType['GetScriptDagEdgeAr
 
     example = aws.glue.get_script(language="SCALA",
         dag_edges=[
-            aws.glue.GetScriptDagEdgeArgs(
-                source="datasource0",
-                target="applymapping1",
-            ),
-            aws.glue.GetScriptDagEdgeArgs(
-                source="applymapping1",
-                target="selectfields2",
-            ),
-            aws.glue.GetScriptDagEdgeArgs(
-                source="selectfields2",
-                target="resolvechoice3",
-            ),
-            aws.glue.GetScriptDagEdgeArgs(
-                source="resolvechoice3",
-                target="datasink4",
-            ),
+            {
+                "source": "datasource0",
+                "target": "applymapping1",
+            },
+            {
+                "source": "applymapping1",
+                "target": "selectfields2",
+            },
+            {
+                "source": "selectfields2",
+                "target": "resolvechoice3",
+            },
+            {
+                "source": "resolvechoice3",
+                "target": "datasink4",
+            },
         ],
         dag_nodes=[
-            aws.glue.GetScriptDagNodeArgs(
-                id="datasource0",
-                node_type="DataSource",
-                args=[
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="database",
-                        value=f"\"{aws_glue_catalog_database['source']['name']}\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="table_name",
-                        value=f"\"{aws_glue_catalog_table['source']['name']}\"",
-                    ),
+            {
+                "id": "datasource0",
+                "nodeType": "DataSource",
+                "args": [
+                    {
+                        "name": "database",
+                        "value": f"\"{aws_glue_catalog_database['source']['name']}\"",
+                    },
+                    {
+                        "name": "table_name",
+                        "value": f"\"{aws_glue_catalog_table['source']['name']}\"",
+                    },
                 ],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="applymapping1",
-                node_type="ApplyMapping",
-                args=[aws.glue.GetScriptDagNodeArgArgs(
-                    name="mappings",
-                    value="[(\"column1\", \"string\", \"column1\", \"string\")]",
-                )],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="selectfields2",
-                node_type="SelectFields",
-                args=[aws.glue.GetScriptDagNodeArgArgs(
-                    name="paths",
-                    value="[\"column1\"]",
-                )],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="resolvechoice3",
-                node_type="ResolveChoice",
-                args=[
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="choice",
-                        value="\"MATCH_CATALOG\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="database",
-                        value=f"\"{aws_glue_catalog_database['destination']['name']}\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="table_name",
-                        value=f"\"{aws_glue_catalog_table['destination']['name']}\"",
-                    ),
+            },
+            {
+                "id": "applymapping1",
+                "nodeType": "ApplyMapping",
+                "args": [{
+                    "name": "mappings",
+                    "value": "[(\"column1\", \"string\", \"column1\", \"string\")]",
+                }],
+            },
+            {
+                "id": "selectfields2",
+                "nodeType": "SelectFields",
+                "args": [{
+                    "name": "paths",
+                    "value": "[\"column1\"]",
+                }],
+            },
+            {
+                "id": "resolvechoice3",
+                "nodeType": "ResolveChoice",
+                "args": [
+                    {
+                        "name": "choice",
+                        "value": "\"MATCH_CATALOG\"",
+                    },
+                    {
+                        "name": "database",
+                        "value": f"\"{aws_glue_catalog_database['destination']['name']}\"",
+                    },
+                    {
+                        "name": "table_name",
+                        "value": f"\"{aws_glue_catalog_table['destination']['name']}\"",
+                    },
                 ],
-            ),
-            aws.glue.GetScriptDagNodeArgs(
-                id="datasink4",
-                node_type="DataSink",
-                args=[
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="database",
-                        value=f"\"{aws_glue_catalog_database['destination']['name']}\"",
-                    ),
-                    aws.glue.GetScriptDagNodeArgArgs(
-                        name="table_name",
-                        value=f"\"{aws_glue_catalog_table['destination']['name']}\"",
-                    ),
+            },
+            {
+                "id": "datasink4",
+                "nodeType": "DataSink",
+                "args": [
+                    {
+                        "name": "database",
+                        "value": f"\"{aws_glue_catalog_database['destination']['name']}\"",
+                    },
+                    {
+                        "name": "table_name",
+                        "value": f"\"{aws_glue_catalog_table['destination']['name']}\"",
+                    },
                 ],
-            ),
+            },
         ])
     pulumi.export("scalaCode", example.scala_code)
     ```

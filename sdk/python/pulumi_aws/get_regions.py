@@ -107,10 +107,10 @@ def get_regions(all_regions: Optional[bool] = None,
     import pulumi_aws as aws
 
     current = aws.get_regions(all_regions=True,
-        filters=[aws.GetRegionsFilterArgs(
-            name="opt-in-status",
-            values=["not-opted-in"],
-        )])
+        filters=[{
+            "name": "opt-in-status",
+            "values": ["not-opted-in"],
+        }])
     ```
 
 

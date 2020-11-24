@@ -48,10 +48,10 @@ class Listener(pulumi.CustomResource):
             protocol="HTTPS",
             ssl_policy="ELBSecurityPolicy-2016-08",
             certificate_arn="arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4",
-            default_actions=[aws.lb.ListenerDefaultActionArgs(
-                type="forward",
-                target_group_arn=front_end_target_group.arn,
-            )])
+            default_actions=[{
+                "type": "forward",
+                "target_group_arn": front_end_target_group.arn,
+            }])
         ```
         ### Redirect Action
 
@@ -65,14 +65,14 @@ class Listener(pulumi.CustomResource):
             load_balancer_arn=front_end_load_balancer.arn,
             port=80,
             protocol="HTTP",
-            default_actions=[aws.lb.ListenerDefaultActionArgs(
-                type="redirect",
-                redirect=aws.lb.ListenerDefaultActionRedirectArgs(
-                    port="443",
-                    protocol="HTTPS",
-                    status_code="HTTP_301",
-                ),
-            )])
+            default_actions=[{
+                "type": "redirect",
+                "redirect": {
+                    "port": "443",
+                    "protocol": "HTTPS",
+                    "status_code": "HTTP_301",
+                },
+            }])
         ```
         ### Fixed-response Action
 
@@ -86,14 +86,14 @@ class Listener(pulumi.CustomResource):
             load_balancer_arn=front_end_load_balancer.arn,
             port=80,
             protocol="HTTP",
-            default_actions=[aws.lb.ListenerDefaultActionArgs(
-                type="fixed-response",
-                fixed_response=aws.lb.ListenerDefaultActionFixedResponseArgs(
-                    content_type="text/plain",
-                    message_body="Fixed response content",
-                    status_code="200",
-                ),
-            )])
+            default_actions=[{
+                "type": "fixed-response",
+                "fixedResponse": {
+                    "content_type": "text/plain",
+                    "messageBody": "Fixed response content",
+                    "status_code": "200",
+                },
+            }])
         ```
         ### Authenticate-cognito Action
 
@@ -116,18 +116,18 @@ class Listener(pulumi.CustomResource):
             port=80,
             protocol="HTTP",
             default_actions=[
-                aws.lb.ListenerDefaultActionArgs(
-                    type="authenticate-cognito",
-                    authenticate_cognito=aws.lb.ListenerDefaultActionAuthenticateCognitoArgs(
-                        user_pool_arn=pool.arn,
-                        user_pool_client_id=client.id,
-                        user_pool_domain=domain.domain,
-                    ),
-                ),
-                aws.lb.ListenerDefaultActionArgs(
-                    type="forward",
-                    target_group_arn=front_end_target_group.arn,
-                ),
+                {
+                    "type": "authenticate-cognito",
+                    "authenticateCognito": {
+                        "userPoolArn": pool.arn,
+                        "userPoolClientId": client.id,
+                        "userPoolDomain": domain.domain,
+                    },
+                },
+                {
+                    "type": "forward",
+                    "target_group_arn": front_end_target_group.arn,
+                },
             ])
         ```
         ### Authenticate-oidc Action
@@ -145,21 +145,21 @@ class Listener(pulumi.CustomResource):
             port=80,
             protocol="HTTP",
             default_actions=[
-                aws.lb.ListenerDefaultActionArgs(
-                    type="authenticate-oidc",
-                    authenticate_oidc=aws.lb.ListenerDefaultActionAuthenticateOidcArgs(
-                        authorization_endpoint="https://example.com/authorization_endpoint",
-                        client_id="client_id",
-                        client_secret="client_secret",
-                        issuer="https://example.com",
-                        token_endpoint="https://example.com/token_endpoint",
-                        user_info_endpoint="https://example.com/user_info_endpoint",
-                    ),
-                ),
-                aws.lb.ListenerDefaultActionArgs(
-                    type="forward",
-                    target_group_arn=front_end_target_group.arn,
-                ),
+                {
+                    "type": "authenticate-oidc",
+                    "authenticateOidc": {
+                        "authorizationEndpoint": "https://example.com/authorization_endpoint",
+                        "client_id": "client_id",
+                        "client_secret": "client_secret",
+                        "issuer": "https://example.com",
+                        "tokenEndpoint": "https://example.com/token_endpoint",
+                        "userInfoEndpoint": "https://example.com/user_info_endpoint",
+                    },
+                },
+                {
+                    "type": "forward",
+                    "target_group_arn": front_end_target_group.arn,
+                },
             ])
         ```
 

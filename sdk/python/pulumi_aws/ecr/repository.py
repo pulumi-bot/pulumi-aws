@@ -35,9 +35,9 @@ class Repository(pulumi.CustomResource):
         import pulumi_aws as aws
 
         foo = aws.ecr.Repository("foo",
-            image_scanning_configuration=aws.ecr.RepositoryImageScanningConfigurationArgs(
-                scan_on_push=True,
-            ),
+            image_scanning_configuration={
+                "scanOnPush": True,
+            },
             image_tag_mutability="MUTABLE")
         ```
 

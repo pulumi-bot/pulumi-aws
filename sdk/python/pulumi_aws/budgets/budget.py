@@ -48,13 +48,13 @@ class Budget(pulumi.CustomResource):
             },
             limit_amount="1200",
             limit_unit="USD",
-            notifications=[aws.budgets.BudgetNotificationArgs(
-                comparison_operator="GREATER_THAN",
-                notification_type="FORECASTED",
-                subscriber_email_addresses=["test@example.com"],
-                threshold=100,
-                threshold_type="PERCENTAGE",
-            )],
+            notifications=[{
+                "comparison_operator": "GREATER_THAN",
+                "notification_type": "FORECASTED",
+                "subscriberEmailAddresses": ["test@example.com"],
+                "threshold": 100,
+                "thresholdType": "PERCENTAGE",
+            }],
             time_period_end="2087-06-15_00:00",
             time_period_start="2017-07-01_00:00",
             time_unit="MONTHLY")
@@ -92,18 +92,18 @@ class Budget(pulumi.CustomResource):
 
         savings_plan_utilization = aws.budgets.Budget("savingsPlanUtilization",
             budget_type="SAVINGS_PLANS_UTILIZATION",
-            cost_types=aws.budgets.BudgetCostTypesArgs(
-                include_credit=False,
-                include_discount=False,
-                include_other_subscription=False,
-                include_recurring=False,
-                include_refund=False,
-                include_subscription=True,
-                include_support=False,
-                include_tax=False,
-                include_upfront=False,
-                use_blended=False,
-            ),
+            cost_types={
+                "includeCredit": False,
+                "includeDiscount": False,
+                "includeOtherSubscription": False,
+                "includeRecurring": False,
+                "includeRefund": False,
+                "includeSubscription": True,
+                "includeSupport": False,
+                "includeTax": False,
+                "includeUpfront": False,
+                "useBlended": False,
+            },
             limit_amount="100.0",
             limit_unit="PERCENTAGE")
         ```
@@ -119,18 +119,18 @@ class Budget(pulumi.CustomResource):
             cost_filters={
                 "Service": "Amazon Relational Database Service",
             },
-            cost_types=aws.budgets.BudgetCostTypesArgs(
-                include_credit=False,
-                include_discount=False,
-                include_other_subscription=False,
-                include_recurring=False,
-                include_refund=False,
-                include_subscription=True,
-                include_support=False,
-                include_tax=False,
-                include_upfront=False,
-                use_blended=False,
-            ),
+            cost_types={
+                "includeCredit": False,
+                "includeDiscount": False,
+                "includeOtherSubscription": False,
+                "includeRecurring": False,
+                "includeRefund": False,
+                "includeSubscription": True,
+                "includeSupport": False,
+                "includeTax": False,
+                "includeUpfront": False,
+                "useBlended": False,
+            },
             limit_amount="100.0",
             limit_unit="PERCENTAGE")
         ```

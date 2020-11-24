@@ -415,10 +415,10 @@ def get_launch_template(filters: Optional[Sequence[pulumi.InputType['GetLaunchTe
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.ec2.get_launch_template(filters=[aws.ec2.GetLaunchTemplateFilterArgs(
-        name="launch-template-name",
-        values=["some-template"],
-    )])
+    test = aws.ec2.get_launch_template(filters=[{
+        "name": "launch-template-name",
+        "values": ["some-template"],
+    }])
     ```
 
 

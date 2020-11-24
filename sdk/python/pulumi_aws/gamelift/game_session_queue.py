@@ -40,13 +40,13 @@ class GameSessionQueue(pulumi.CustomResource):
                 aws_gamelift_fleet["eu_central_1_fleet"]["arn"],
             ],
             player_latency_policies=[
-                aws.gamelift.GameSessionQueuePlayerLatencyPolicyArgs(
-                    maximum_individual_player_latency_milliseconds=100,
-                    policy_duration_seconds=5,
-                ),
-                aws.gamelift.GameSessionQueuePlayerLatencyPolicyArgs(
-                    maximum_individual_player_latency_milliseconds=200,
-                ),
+                {
+                    "maximumIndividualPlayerLatencyMilliseconds": 100,
+                    "policyDurationSeconds": 5,
+                },
+                {
+                    "maximumIndividualPlayerLatencyMilliseconds": 200,
+                },
             ],
             timeout_in_seconds=60)
         ```

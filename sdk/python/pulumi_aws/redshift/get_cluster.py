@@ -414,22 +414,22 @@ def get_cluster(cluster_identifier: Optional[str] = None,
     test_cluster = aws.redshift.get_cluster(cluster_identifier="test-cluster")
     test_stream = aws.kinesis.FirehoseDeliveryStream("testStream",
         destination="redshift",
-        s3_configuration=aws.kinesis.FirehoseDeliveryStreamS3ConfigurationArgs(
-            role_arn=aws_iam_role["firehose_role"]["arn"],
-            bucket_arn=aws_s3_bucket["bucket"]["arn"],
-            buffer_size=10,
-            buffer_interval=400,
-            compression_format="GZIP",
-        ),
-        redshift_configuration=aws.kinesis.FirehoseDeliveryStreamRedshiftConfigurationArgs(
-            role_arn=aws_iam_role["firehose_role"]["arn"],
-            cluster_jdbcurl=f"jdbc:redshift://{test_cluster.endpoint}/{test_cluster.database_name}",
-            username="testuser",
-            password="T3stPass",
-            data_table_name="test-table",
-            copy_options="delimiter '|'",
-            data_table_columns="test-col",
-        ))
+        s3_configuration={
+            "role_arn": aws_iam_role["firehose_role"]["arn"],
+            "bucketArn": aws_s3_bucket["bucket"]["arn"],
+            "bufferSize": 10,
+            "bufferInterval": 400,
+            "compressionFormat": "GZIP",
+        },
+        redshift_configuration={
+            "role_arn": aws_iam_role["firehose_role"]["arn"],
+            "clusterJdbcurl": f"jdbc:redshift://{test_cluster.endpoint}/{test_cluster.database_name}",
+            "username": "testuser",
+            "password": "T3stPass",
+            "dataTableName": "test-table",
+            "copyOptions": "delimiter '|'",
+            "dataTableColumns": "test-col",
+        })
     ```
 
 

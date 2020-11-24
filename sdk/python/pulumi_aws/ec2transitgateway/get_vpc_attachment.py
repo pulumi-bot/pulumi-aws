@@ -163,10 +163,10 @@ def get_vpc_attachment(filters: Optional[Sequence[pulumi.InputType['GetVpcAttach
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.ec2transitgateway.get_vpc_attachment(filters=[aws.ec2transitgateway.GetVpcAttachmentFilterArgs(
-        name="vpc-id",
-        values=["vpc-12345678"],
-    )])
+    example = aws.ec2transitgateway.get_vpc_attachment(filters=[{
+        "name": "vpc-id",
+        "values": ["vpc-12345678"],
+    }])
     ```
     ### By Identifier
 

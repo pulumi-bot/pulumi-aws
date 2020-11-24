@@ -42,9 +42,9 @@ class ZoneAssociation(pulumi.CustomResource):
             cidr_block="10.7.0.0/16",
             enable_dns_hostnames=True,
             enable_dns_support=True)
-        example = aws.route53.Zone("example", vpcs=[aws.route53.ZoneVpcArgs(
-            vpc_id=primary.id,
-        )])
+        example = aws.route53.Zone("example", vpcs=[{
+            "vpc_id": primary.id,
+        }])
         secondary_zone_association = aws.route53.ZoneAssociation("secondaryZoneAssociation",
             zone_id=example.zone_id,
             vpc_id=secondary_vpc.id)

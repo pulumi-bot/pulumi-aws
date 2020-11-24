@@ -41,11 +41,11 @@ class Alias(pulumi.CustomResource):
             description="a sample description",
             function_name=aws_lambda_function["lambda_function_test"]["arn"],
             function_version="1",
-            routing_config=aws.lambda..AliasRoutingConfigArgs(
-                additional_version_weights={
+            routing_config={
+                "additionalVersionWeights": {
                     "2": 0.5,
                 },
-            ))
+            })
         ```
 
         ## Import

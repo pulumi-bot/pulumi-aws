@@ -38,19 +38,19 @@ class Model(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["sagemaker.amazonaws.com"],
-            )],
-        )])
+        assume_role = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "Service",
+                "identifiers": ["sagemaker.amazonaws.com"],
+            }],
+        }])
         example_role = aws.iam.Role("exampleRole", assume_role_policy=assume_role.json)
         example_model = aws.sagemaker.Model("exampleModel",
             execution_role_arn=example_role.arn,
-            primary_container=aws.sagemaker.ModelPrimaryContainerArgs(
-                image="174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
-            ))
+            primary_container={
+                "image": "174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1",
+            })
         ```
 
         ## Import

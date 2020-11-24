@@ -36,13 +36,13 @@ class Directory(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        workspaces = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["workspaces.amazonaws.com"],
-            )],
-        )])
+        workspaces = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "Service",
+                "identifiers": ["workspaces.amazonaws.com"],
+            }],
+        }])
         workspaces_default = aws.iam.Role("workspacesDefault", assume_role_policy=workspaces.json)
         workspaces_default_service_access = aws.iam.RolePolicyAttachment("workspacesDefaultServiceAccess",
             role=workspaces_default.name,
@@ -68,20 +68,20 @@ class Directory(pulumi.CustomResource):
             tags={
                 "Example": "true",
             },
-            self_service_permissions=aws.workspaces.DirectorySelfServicePermissionsArgs(
-                change_compute_type=True,
-                increase_volume_size=True,
-                rebuild_workspace=True,
-                restart_workspace=True,
-                switch_running_mode=True,
-            ),
-            workspace_creation_properties=aws.workspaces.DirectoryWorkspaceCreationPropertiesArgs(
-                custom_security_group_id=aws_security_group["example"]["id"],
-                default_ou="OU=AWS,DC=Workgroup,DC=Example,DC=com",
-                enable_internet_access=True,
-                enable_maintenance_mode=True,
-                user_enabled_as_local_administrator=True,
-            ),
+            self_service_permissions={
+                "changeComputeType": True,
+                "increaseVolumeSize": True,
+                "rebuildWorkspace": True,
+                "restartWorkspace": True,
+                "switchRunningMode": True,
+            },
+            workspace_creation_properties={
+                "customSecurityGroupId": aws_security_group["example"]["id"],
+                "defaultOu": "OU=AWS,DC=Workgroup,DC=Example,DC=com",
+                "enableInternetAccess": True,
+                "enableMaintenanceMode": True,
+                "userEnabledAsLocalAdministrator": True,
+            },
             opts=ResourceOptions(depends_on=[
                     workspaces_default_service_access,
                     workspaces_default_self_service_access,
@@ -98,13 +98,13 @@ class Directory(pulumi.CustomResource):
             name="corp.example.com",
             password="#S1ncerely",
             size="Small",
-            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
-                vpc_id=example_vpc.id,
-                subnet_ids=[
+            vpc_settings={
+                "vpc_id": example_vpc.id,
+                "subnet_ids": [
                     example_a.id,
                     example_b.id,
                 ],
-            ))
+            })
         ```
 
         ## Import

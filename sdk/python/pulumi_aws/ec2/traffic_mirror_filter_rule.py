@@ -62,14 +62,14 @@ class TrafficMirrorFilterRule(pulumi.CustomResource):
             rule_action="accept",
             traffic_direction="ingress",
             protocol=6,
-            destination_port_range=aws.ec2.TrafficMirrorFilterRuleDestinationPortRangeArgs(
-                from_port=22,
-                to_port=53,
-            ),
-            source_port_range=aws.ec2.TrafficMirrorFilterRuleSourcePortRangeArgs(
-                from_port=0,
-                to_port=10,
-            ))
+            destination_port_range={
+                "from_port": 22,
+                "to_port": 53,
+            },
+            source_port_range={
+                "from_port": 0,
+                "to_port": 10,
+            })
         ```
 
         ## Import

@@ -43,10 +43,10 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
             window_id=window.id,
             description="This is a maintenance window target",
             resource_type="INSTANCE",
-            targets=[aws.ssm.MaintenanceWindowTargetTargetArgs(
-                key="tag:Name",
-                values=["acceptance_test"],
-            )])
+            targets=[{
+                "key": "tag:Name",
+                "values": ["acceptance_test"],
+            }])
         ```
 
         ## Resource Group Target Example Usage
@@ -63,10 +63,10 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
             window_id=window.id,
             description="This is a maintenance window target",
             resource_type="RESOURCE_GROUP",
-            targets=[aws.ssm.MaintenanceWindowTargetTargetArgs(
-                key="resource-groups:ResourceTypeFilters",
-                values=["AWS::EC2::Instance"],
-            )])
+            targets=[{
+                "key": "resource-groups:ResourceTypeFilters",
+                "values": ["AWS::EC2::Instance"],
+            }])
         ```
 
         ## Import

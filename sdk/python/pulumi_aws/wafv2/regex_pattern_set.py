@@ -37,12 +37,12 @@ class RegexPatternSet(pulumi.CustomResource):
         example = aws.wafv2.RegexPatternSet("example",
             description="Example regex pattern set",
             regular_expressions=[
-                aws.wafv2.RegexPatternSetRegularExpressionArgs(
-                    regex_string="one",
-                ),
-                aws.wafv2.RegexPatternSetRegularExpressionArgs(
-                    regex_string="two",
-                ),
+                {
+                    "regexString": "one",
+                },
+                {
+                    "regexString": "two",
+                },
             ],
             scope="REGIONAL",
             tags={

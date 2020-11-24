@@ -69,9 +69,9 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        private = aws.route53.Zone("private", vpcs=[aws.route53.ZoneVpcArgs(
-            vpc_id=aws_vpc["example"]["id"],
-        )])
+        private = aws.route53.Zone("private", vpcs=[{
+            "vpc_id": aws_vpc["example"]["id"],
+        }])
         ```
 
         ## Import

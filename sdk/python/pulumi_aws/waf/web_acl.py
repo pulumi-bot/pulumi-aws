@@ -35,31 +35,31 @@ class WebAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[aws.waf.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
+        ipset = aws.waf.IpSet("ipset", ip_set_descriptors=[{
+            "type": "IPV4",
+            "value": "192.0.7.0/24",
+        }])
         wafrule = aws.waf.Rule("wafrule",
             metric_name="tfWAFRule",
-            predicates=[aws.waf.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )],
+            predicates=[{
+                "dataId": ipset.id,
+                "negated": False,
+                "type": "IPMatch",
+            }],
             opts=ResourceOptions(depends_on=[ipset]))
         waf_acl = aws.waf.WebAcl("wafAcl",
             metric_name="tfWebACL",
-            default_action=aws.waf.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.waf.WebAclRuleArgs(
-                action=aws.waf.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=wafrule.id,
-                type="REGULAR",
-            )],
+            default_action={
+                "type": "ALLOW",
+            },
+            rules=[{
+                "action": {
+                    "type": "BLOCK",
+                },
+                "priority": 1,
+                "rule_id": wafrule.id,
+                "type": "REGULAR",
+            }],
             opts=ResourceOptions(depends_on=[
                     ipset,
                     wafrule,
@@ -73,9 +73,9 @@ class WebAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.waf.WebAcl("example", logging_configuration=aws.waf.WebAclLoggingConfigurationArgs(
-            log_destination=aws_kinesis_firehose_delivery_stream["example"]["arn"],
-            redacted_fields={
+        example = aws.waf.WebAcl("example", logging_configuration={
+            "log_destination": aws_kinesis_firehose_delivery_stream["example"]["arn"],
+            "redacted_fields": {
                 "fieldToMatches": [
                     {
                         "type": "URI",
@@ -86,7 +86,7 @@ class WebAcl(pulumi.CustomResource):
                     },
                 ],
             },
-        ))
+        })
         ```
 
         ## Import

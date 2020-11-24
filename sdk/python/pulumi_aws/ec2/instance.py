@@ -67,14 +67,14 @@ class Instance(pulumi.CustomResource):
 
         ubuntu = aws.get_ami(most_recent=True,
             filters=[
-                aws.GetAmiFilterArgs(
-                    name="name",
-                    values=["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"],
-                ),
-                aws.GetAmiFilterArgs(
-                    name="virtualization-type",
-                    values=["hvm"],
-                ),
+                {
+                    "name": "name",
+                    "values": ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"],
+                },
+                {
+                    "name": "virtualization-type",
+                    "values": ["hvm"],
+                },
             ],
             owners=["099720109477"])
         web = aws.ec2.Instance("web",

@@ -58,11 +58,11 @@ class LoadBalancer(pulumi.CustomResource):
             security_groups=[aws_security_group["lb_sg"]["id"]],
             subnets=[__item["id"] for __item in aws_subnet["public"]],
             enable_deletion_protection=True,
-            access_logs=aws.lb.LoadBalancerAccessLogsArgs(
-                bucket=aws_s3_bucket["lb_logs"]["bucket"],
-                prefix="test-lb",
-                enabled=True,
-            ),
+            access_logs={
+                "bucket": aws_s3_bucket["lb_logs"]["bucket"],
+                "prefix": "test-lb",
+                "enabled": True,
+            },
             tags={
                 "Environment": "production",
             })
@@ -91,14 +91,14 @@ class LoadBalancer(pulumi.CustomResource):
         example = aws.lb.LoadBalancer("example",
             load_balancer_type="network",
             subnet_mappings=[
-                aws.lb.LoadBalancerSubnetMappingArgs(
-                    subnet_id=aws_subnet["example1"]["id"],
-                    allocation_id=aws_eip["example1"]["id"],
-                ),
-                aws.lb.LoadBalancerSubnetMappingArgs(
-                    subnet_id=aws_subnet["example2"]["id"],
-                    allocation_id=aws_eip["example2"]["id"],
-                ),
+                {
+                    "subnet_id": aws_subnet["example1"]["id"],
+                    "allocation_id": aws_eip["example1"]["id"],
+                },
+                {
+                    "subnet_id": aws_subnet["example2"]["id"],
+                    "allocation_id": aws_eip["example2"]["id"],
+                },
             ])
         ```
         ### Specifying private IP addresses for an internal-facing load balancer
@@ -110,14 +110,14 @@ class LoadBalancer(pulumi.CustomResource):
         example = aws.lb.LoadBalancer("example",
             load_balancer_type="network",
             subnet_mappings=[
-                aws.lb.LoadBalancerSubnetMappingArgs(
-                    subnet_id=aws_subnet["example1"]["id"],
-                    private_ipv4_address="10.0.1.15",
-                ),
-                aws.lb.LoadBalancerSubnetMappingArgs(
-                    subnet_id=aws_subnet["example2"]["id"],
-                    private_ipv4_address="10.0.2.15",
-                ),
+                {
+                    "subnet_id": aws_subnet["example1"]["id"],
+                    "privateIpv4Address": "10.0.1.15",
+                },
+                {
+                    "subnet_id": aws_subnet["example2"]["id"],
+                    "privateIpv4Address": "10.0.2.15",
+                },
             ])
         ```
 

@@ -64,13 +64,13 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        instance_assume_role_policy = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["ec2.amazonaws.com"],
-            )],
-        )])
+        instance_assume_role_policy = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "Service",
+                "identifiers": ["ec2.amazonaws.com"],
+            }],
+        }])
         instance = aws.iam.Role("instance",
             path="/system/",
             assume_role_policy=instance_assume_role_policy.json)

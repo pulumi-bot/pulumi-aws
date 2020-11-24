@@ -55,14 +55,14 @@ class RouteTable(pulumi.CustomResource):
         route_table = aws.ec2.RouteTable("routeTable",
             vpc_id=aws_vpc["default"]["id"],
             routes=[
-                aws.ec2.RouteTableRouteArgs(
-                    cidr_block="10.0.1.0/24",
-                    gateway_id=aws_internet_gateway["main"]["id"],
-                ),
-                aws.ec2.RouteTableRouteArgs(
-                    ipv6_cidr_block="::/0",
-                    egress_only_gateway_id=aws_egress_only_internet_gateway["foo"]["id"],
-                ),
+                {
+                    "cidr_block": "10.0.1.0/24",
+                    "gateway_id": aws_internet_gateway["main"]["id"],
+                },
+                {
+                    "ipv6_cidr_block": "::/0",
+                    "egress_only_gateway_id": aws_egress_only_internet_gateway["foo"]["id"],
+                },
             ],
             tags={
                 "Name": "main",

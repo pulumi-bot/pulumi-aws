@@ -35,10 +35,10 @@ class Alias(pulumi.CustomResource):
 
         example = aws.gamelift.Alias("example",
             description="Example Description",
-            routing_strategy=aws.gamelift.AliasRoutingStrategyArgs(
-                message="Example Message",
-                type="TERMINAL",
-            ))
+            routing_strategy={
+                "message": "Example Message",
+                "type": "TERMINAL",
+            })
         ```
 
         ## Import

@@ -57,30 +57,30 @@ class SpotFleetRequest(pulumi.CustomResource):
             target_capacity=6,
             valid_until="2019-11-04T20:44:20Z",
             launch_specifications=[
-                aws.ec2.SpotFleetRequestLaunchSpecificationArgs(
-                    instance_type="m4.10xlarge",
-                    ami="ami-1234",
-                    spot_price="2.793",
-                    placement_tenancy="dedicated",
-                    iam_instance_profile_arn=aws_iam_instance_profile["example"]["arn"],
-                ),
-                aws.ec2.SpotFleetRequestLaunchSpecificationArgs(
-                    instance_type="m4.4xlarge",
-                    ami="ami-5678",
-                    key_name="my-key",
-                    spot_price="1.117",
-                    iam_instance_profile_arn=aws_iam_instance_profile["example"]["arn"],
-                    availability_zone="us-west-1a",
-                    subnet_id="subnet-1234",
-                    weighted_capacity="35",
-                    root_block_devices=[{
+                {
+                    "instance_type": "m4.10xlarge",
+                    "ami": "ami-1234",
+                    "spot_price": "2.793",
+                    "placement_tenancy": "dedicated",
+                    "iamInstanceProfileArn": aws_iam_instance_profile["example"]["arn"],
+                },
+                {
+                    "instance_type": "m4.4xlarge",
+                    "ami": "ami-5678",
+                    "key_name": "my-key",
+                    "spot_price": "1.117",
+                    "iamInstanceProfileArn": aws_iam_instance_profile["example"]["arn"],
+                    "availability_zone": "us-west-1a",
+                    "subnet_id": "subnet-1234",
+                    "weightedCapacity": "35",
+                    "root_block_devices": [{
                         "volume_size": "300",
                         "volume_type": "gp2",
                     }],
-                    tags={
+                    "tags": {
                         "Name": "spot-fleet-example",
                     },
-                ),
+                },
             ])
         ```
         ### Using launch templates
@@ -98,12 +98,12 @@ class SpotFleetRequest(pulumi.CustomResource):
             spot_price="0.005",
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z",
-            launch_template_configs=[aws.ec2.SpotFleetRequestLaunchTemplateConfigArgs(
-                launch_template_specification=aws.ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs(
-                    id=foo_launch_template.id,
-                    version=foo_launch_template.latest_version,
-                ),
-            )],
+            launch_template_configs=[{
+                "launchTemplateSpecification": {
+                    "id": foo_launch_template.id,
+                    "version": foo_launch_template.latest_version,
+                },
+            }],
             opts=ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
         ```
 
@@ -118,18 +118,18 @@ class SpotFleetRequest(pulumi.CustomResource):
         foo = aws.ec2.SpotFleetRequest("foo",
             iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
             launch_specifications=[
-                aws.ec2.SpotFleetRequestLaunchSpecificationArgs(
-                    ami="ami-d06a90b0",
-                    availability_zone="us-west-2a",
-                    instance_type="m1.small",
-                    key_name="my-key",
-                ),
-                aws.ec2.SpotFleetRequestLaunchSpecificationArgs(
-                    ami="ami-d06a90b0",
-                    availability_zone="us-west-2a",
-                    instance_type="m5.large",
-                    key_name="my-key",
-                ),
+                {
+                    "ami": "ami-d06a90b0",
+                    "availability_zone": "us-west-2a",
+                    "instance_type": "m1.small",
+                    "key_name": "my-key",
+                },
+                {
+                    "ami": "ami-d06a90b0",
+                    "availability_zone": "us-west-2a",
+                    "instance_type": "m5.large",
+                    "key_name": "my-key",
+                },
             ],
             spot_price="0.005",
             target_capacity=2,
@@ -151,23 +151,23 @@ class SpotFleetRequest(pulumi.CustomResource):
             spot_price="0.005",
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z",
-            launch_template_configs=[aws.ec2.SpotFleetRequestLaunchTemplateConfigArgs(
-                launch_template_specification=aws.ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs(
-                    id=foo_launch_template.id,
-                    version=foo_launch_template.latest_version,
-                ),
-                overrides=[
-                    aws.ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs(
-                        subnet_id=data["aws_subnets"]["example"]["ids"],
-                    ),
-                    aws.ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs(
-                        subnet_id=data["aws_subnets"]["example"]["ids"],
-                    ),
-                    aws.ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs(
-                        subnet_id=data["aws_subnets"]["example"]["ids"],
-                    ),
+            launch_template_configs=[{
+                "launchTemplateSpecification": {
+                    "id": foo_launch_template.id,
+                    "version": foo_launch_template.latest_version,
+                },
+                "overrides": [
+                    {
+                        "subnet_id": data["aws_subnets"]["example"]["ids"],
+                    },
+                    {
+                        "subnet_id": data["aws_subnets"]["example"]["ids"],
+                    },
+                    {
+                        "subnet_id": data["aws_subnets"]["example"]["ids"],
+                    },
                 ],
-            )],
+            }],
             opts=ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
         ```
 

@@ -42,17 +42,17 @@ class QueryLog(pulumi.CustomResource):
         opts=ResourceOptions(provider=aws["us-east-1"]))
         # Example CloudWatch log resource policy to allow Route53 to write logs
         # to any log group under /aws/route53/*
-        route53_query_logging_policy_policy_document = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=[
+        route53_query_logging_policy_policy_document = aws.iam.get_policy_document(statements=[{
+            "actions": [
                 "logs:CreateLogStream",
                 "logs:PutLogEvents",
             ],
-            resources=["arn:aws:logs:*:*:log-group:/aws/route53/*"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["route53.amazonaws.com"],
-                type="Service",
-            )],
-        )])
+            "resources": ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
+            "principals": [{
+                "identifiers": ["route53.amazonaws.com"],
+                "type": "Service",
+            }],
+        }])
         route53_query_logging_policy_log_resource_policy = aws.cloudwatch.LogResourcePolicy("route53-query-logging-policyLogResourcePolicy",
             policy_document=route53_query_logging_policy_policy_document.json,
             policy_name="route53-query-logging-policy",

@@ -39,20 +39,20 @@ class SlotType(pulumi.CustomResource):
             create_version=True,
             description="Types of flowers to order",
             enumeration_values=[
-                aws.lex.SlotTypeEnumerationValueArgs(
-                    synonyms=[
+                {
+                    "synonyms": [
                         "Lirium",
                         "Martagon",
                     ],
-                    value="lilies",
-                ),
-                aws.lex.SlotTypeEnumerationValueArgs(
-                    synonyms=[
+                    "value": "lilies",
+                },
+                {
+                    "synonyms": [
                         "Eduardoregelia",
                         "Podonix",
                     ],
-                    value="tulips",
-                ),
+                    "value": "tulips",
+                },
             ],
             name="FlowerTypes",
             value_selection_strategy="ORIGINAL_VALUE")

@@ -42,10 +42,10 @@ class DataSource(pulumi.CustomResource):
             read_capacity=1,
             write_capacity=1,
             hash_key="UserId",
-            attributes=[aws.dynamodb.TableAttributeArgs(
-                name="UserId",
-                type="S",
-            )])
+            attributes=[{
+                "name": "UserId",
+                "type": "S",
+            }])
         example_role = aws.iam.Role("exampleRole", assume_role_policy=\"\"\"{
           "Version": "2012-10-17",
           "Statement": [
@@ -82,9 +82,9 @@ class DataSource(pulumi.CustomResource):
             name="tf_appsync_example",
             service_role_arn=example_role.arn,
             type="AMAZON_DYNAMODB",
-            dynamodb_config=aws.appsync.DataSourceDynamodbConfigArgs(
-                table_name=example_table.name,
-            ))
+            dynamodb_config={
+                "table_name": example_table.name,
+            })
         ```
 
         ## Import

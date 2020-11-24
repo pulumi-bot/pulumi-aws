@@ -37,11 +37,11 @@ class LogMetricFilter(pulumi.CustomResource):
         yada = aws.cloudwatch.LogMetricFilter("yada",
             pattern="",
             log_group_name=dada.name,
-            metric_transformation=aws.cloudwatch.LogMetricFilterMetricTransformationArgs(
-                name="EventCount",
-                namespace="YourNamespace",
-                value="1",
-            ))
+            metric_transformation={
+                "name": "EventCount",
+                "namespace": "YourNamespace",
+                "value": "1",
+            })
         ```
 
         ## Import

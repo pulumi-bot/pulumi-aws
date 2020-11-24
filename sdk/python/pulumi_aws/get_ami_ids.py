@@ -113,10 +113,10 @@ def get_ami_ids(executable_users: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_aws as aws
 
-    ubuntu = aws.get_ami_ids(filters=[aws.GetAmiIdsFilterArgs(
-            name="name",
-            values=["ubuntu/images/ubuntu-*-*-amd64-server-*"],
-        )],
+    ubuntu = aws.get_ami_ids(filters=[{
+            "name": "name",
+            "values": ["ubuntu/images/ubuntu-*-*-amd64-server-*"],
+        }],
         owners=["099720109477"])
     ```
 

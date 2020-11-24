@@ -80,17 +80,17 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
         \"\"\")
         main_identity_pool_role_attachment = aws.cognito.IdentityPoolRoleAttachment("mainIdentityPoolRoleAttachment",
             identity_pool_id=main_identity_pool.id,
-            role_mappings=[aws.cognito.IdentityPoolRoleAttachmentRoleMappingArgs(
-                identity_provider="graph.facebook.com",
-                ambiguous_role_resolution="AuthenticatedRole",
-                type="Rules",
-                mapping_rules=[aws.cognito.IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs(
-                    claim="isAdmin",
-                    match_type="Equals",
-                    role_arn=authenticated_role.arn,
-                    value="paid",
-                )],
-            )],
+            role_mappings=[{
+                "identity_provider": "graph.facebook.com",
+                "ambiguousRoleResolution": "AuthenticatedRole",
+                "type": "Rules",
+                "mappingRules": [{
+                    "claim": "isAdmin",
+                    "matchType": "Equals",
+                    "role_arn": authenticated_role.arn,
+                    "value": "paid",
+                }],
+            }],
             roles={
                 "authenticated": authenticated_role.arn,
             })

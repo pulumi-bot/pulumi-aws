@@ -40,19 +40,19 @@ class WebAcl(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.wafv2.WebAcl("example",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                allow=aws.wafv2.WebAclDefaultActionAllowArgs(),
-            ),
+            default_action={
+                "allow": {},
+            },
             description="Example of a managed rule.",
-            rules=[aws.wafv2.WebAclRuleArgs(
-                name="rule-1",
-                override_action=aws.wafv2.WebAclRuleOverrideActionArgs(
-                    count=aws.wafv2.WebAclRuleOverrideActionCountArgs(),
-                ),
-                priority=1,
-                statement=aws.wafv2.WebAclRuleStatementArgs(
-                    managed_rule_group_statement=aws.wafv2.WebAclRuleStatementManagedRuleGroupStatementArgs(
-                        excluded_rule=[
+            rules=[{
+                "name": "rule-1",
+                "overrideAction": {
+                    "count": {},
+                },
+                "priority": 1,
+                "statement": {
+                    "managedRuleGroupStatement": {
+                        "excludedRule": [
                             {
                                 "name": "SizeRestrictions_QUERYSTRING",
                             },
@@ -60,26 +60,26 @@ class WebAcl(pulumi.CustomResource):
                                 "name": "NoUserAgent_HEADER",
                             },
                         ],
-                        name="AWSManagedRulesCommonRuleSet",
-                        vendor_name="AWS",
-                    ),
-                ),
-                visibility_config={
+                        "name": "AWSManagedRulesCommonRuleSet",
+                        "vendorName": "AWS",
+                    },
+                },
+                "visibility_config": {
                     "cloudwatchMetricsEnabled": False,
                     "metric_name": "friendly-rule-metric-name",
                     "sampledRequestsEnabled": False,
                 },
-            )],
+            }],
             scope="REGIONAL",
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",
             },
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
+            visibility_config={
+                "cloudwatchMetricsEnabled": False,
+                "metric_name": "friendly-metric-name",
+                "sampledRequestsEnabled": False,
+            })
         ```
         ### Rate Based
 
@@ -88,46 +88,46 @@ class WebAcl(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.wafv2.WebAcl("example",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                block=aws.wafv2.WebAclDefaultActionBlockArgs(),
-            ),
+            default_action={
+                "block": {},
+            },
             description="Example of a rate based statement.",
-            rules=[aws.wafv2.WebAclRuleArgs(
-                action=aws.wafv2.WebAclRuleActionArgs(
-                    count=aws.wafv2.WebAclRuleActionCountArgs(),
-                ),
-                name="rule-1",
-                priority=1,
-                statement=aws.wafv2.WebAclRuleStatementArgs(
-                    rate_based_statement=aws.wafv2.WebAclRuleStatementRateBasedStatementArgs(
-                        aggregate_key_type="IP",
-                        limit=10000,
-                        scope_down_statement=aws.wafv2.WebAclRuleStatementRateBasedStatementScopeDownStatementArgs(
-                            geo_match_statement=aws.wafv2.WebAclRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatementArgs(
-                                country_codes=[
+            rules=[{
+                "action": {
+                    "count": {},
+                },
+                "name": "rule-1",
+                "priority": 1,
+                "statement": {
+                    "rateBasedStatement": {
+                        "aggregateKeyType": "IP",
+                        "limit": 10000,
+                        "scopeDownStatement": {
+                            "geoMatchStatement": {
+                                "countryCodes": [
                                     "US",
                                     "NL",
                                 ],
-                            ),
-                        ),
-                    ),
-                ),
-                visibility_config={
+                            },
+                        },
+                    },
+                },
+                "visibility_config": {
                     "cloudwatchMetricsEnabled": False,
                     "metric_name": "friendly-rule-metric-name",
                     "sampledRequestsEnabled": False,
                 },
-            )],
+            }],
             scope="REGIONAL",
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",
             },
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
+            visibility_config={
+                "cloudwatchMetricsEnabled": False,
+                "metric_name": "friendly-metric-name",
+                "sampledRequestsEnabled": False,
+            })
         ```
         ### Rule Group Reference
 
@@ -139,102 +139,102 @@ class WebAcl(pulumi.CustomResource):
             capacity=10,
             scope="REGIONAL",
             rules=[
-                aws.wafv2.RuleGroupRuleArgs(
-                    name="rule-1",
-                    priority=1,
-                    action=aws.wafv2.RuleGroupRuleActionArgs(
-                        count=aws.wafv2.RuleGroupRuleActionCountArgs(),
-                    ),
-                    statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                        geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                            country_codes=["NL"],
-                        ),
-                    ),
-                    visibility_config={
+                {
+                    "name": "rule-1",
+                    "priority": 1,
+                    "action": {
+                        "count": {},
+                    },
+                    "statement": {
+                        "geoMatchStatement": {
+                            "countryCodes": ["NL"],
+                        },
+                    },
+                    "visibility_config": {
                         "cloudwatchMetricsEnabled": False,
                         "metric_name": "friendly-rule-metric-name",
                         "sampledRequestsEnabled": False,
                     },
-                ),
-                aws.wafv2.RuleGroupRuleArgs(
-                    name="rule-to-exclude-a",
-                    priority=10,
-                    action=aws.wafv2.RuleGroupRuleActionArgs(
-                        allow=aws.wafv2.RuleGroupRuleActionAllowArgs(),
-                    ),
-                    statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                        geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                            country_codes=["US"],
-                        ),
-                    ),
-                    visibility_config={
+                },
+                {
+                    "name": "rule-to-exclude-a",
+                    "priority": 10,
+                    "action": {
+                        "allow": {},
+                    },
+                    "statement": {
+                        "geoMatchStatement": {
+                            "countryCodes": ["US"],
+                        },
+                    },
+                    "visibility_config": {
                         "cloudwatchMetricsEnabled": False,
                         "metric_name": "friendly-rule-metric-name",
                         "sampledRequestsEnabled": False,
                     },
-                ),
-                aws.wafv2.RuleGroupRuleArgs(
-                    name="rule-to-exclude-b",
-                    priority=15,
-                    action=aws.wafv2.RuleGroupRuleActionArgs(
-                        allow=aws.wafv2.RuleGroupRuleActionAllowArgs(),
-                    ),
-                    statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                        geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                            country_codes=["GB"],
-                        ),
-                    ),
-                    visibility_config={
+                },
+                {
+                    "name": "rule-to-exclude-b",
+                    "priority": 15,
+                    "action": {
+                        "allow": {},
+                    },
+                    "statement": {
+                        "geoMatchStatement": {
+                            "countryCodes": ["GB"],
+                        },
+                    },
+                    "visibility_config": {
                         "cloudwatchMetricsEnabled": False,
                         "metric_name": "friendly-rule-metric-name",
                         "sampledRequestsEnabled": False,
                     },
-                ),
+                },
             ],
-            visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
+            visibility_config={
+                "cloudwatchMetricsEnabled": False,
+                "metric_name": "friendly-metric-name",
+                "sampledRequestsEnabled": False,
+            })
         test = aws.wafv2.WebAcl("test",
             scope="REGIONAL",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                block=aws.wafv2.WebAclDefaultActionBlockArgs(),
-            ),
-            rules=[aws.wafv2.WebAclRuleArgs(
-                name="rule-1",
-                priority=1,
-                override_action=aws.wafv2.WebAclRuleOverrideActionArgs(
-                    count=aws.wafv2.WebAclRuleOverrideActionCountArgs(),
-                ),
-                statement=aws.wafv2.WebAclRuleStatementArgs(
-                    rule_group_reference_statement=aws.wafv2.WebAclRuleStatementRuleGroupReferenceStatementArgs(
-                        arn=example.arn,
-                        excluded_rules=[
-                            aws.wafv2.WebAclRuleStatementRuleGroupReferenceStatementExcludedRuleArgs(
-                                name="rule-to-exclude-b",
-                            ),
-                            aws.wafv2.WebAclRuleStatementRuleGroupReferenceStatementExcludedRuleArgs(
-                                name="rule-to-exclude-a",
-                            ),
+            default_action={
+                "block": {},
+            },
+            rules=[{
+                "name": "rule-1",
+                "priority": 1,
+                "overrideAction": {
+                    "count": {},
+                },
+                "statement": {
+                    "ruleGroupReferenceStatement": {
+                        "arn": example.arn,
+                        "excludedRules": [
+                            {
+                                "name": "rule-to-exclude-b",
+                            },
+                            {
+                                "name": "rule-to-exclude-a",
+                            },
                         ],
-                    ),
-                ),
-                visibility_config={
+                    },
+                },
+                "visibility_config": {
                     "cloudwatchMetricsEnabled": False,
                     "metric_name": "friendly-rule-metric-name",
                     "sampledRequestsEnabled": False,
                 },
-            )],
+            }],
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",
             },
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
+            visibility_config={
+                "cloudwatchMetricsEnabled": False,
+                "metric_name": "friendly-metric-name",
+                "sampledRequestsEnabled": False,
+            })
         ```
 
         ## Import

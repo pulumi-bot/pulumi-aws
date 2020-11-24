@@ -32,18 +32,18 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
         lb = aws.elb.LoadBalancer("lb",
             availability_zones=["us-east-1a"],
             listeners=[
-                aws.elb.LoadBalancerListenerArgs(
-                    instance_port=25,
-                    instance_protocol="tcp",
-                    lb_port=25,
-                    lb_protocol="tcp",
-                ),
-                aws.elb.LoadBalancerListenerArgs(
-                    instance_port=587,
-                    instance_protocol="tcp",
-                    lb_port=587,
-                    lb_protocol="tcp",
-                ),
+                {
+                    "instance_port": 25,
+                    "instanceProtocol": "tcp",
+                    "lb_port": 25,
+                    "lbProtocol": "tcp",
+                },
+                {
+                    "instance_port": 587,
+                    "instanceProtocol": "tcp",
+                    "lb_port": 587,
+                    "lbProtocol": "tcp",
+                },
             ])
         smtp = aws.ec2.ProxyProtocolPolicy("smtp",
             load_balancer=lb.name,

@@ -121,10 +121,10 @@ def get_peering_attachment(filters: Optional[Sequence[pulumi.InputType['GetPeeri
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.ec2transitgateway.get_peering_attachment(filters=[aws.ec2transitgateway.GetPeeringAttachmentFilterArgs(
-        name="transit-gateway-attachment-id",
-        values=["tgw-attach-12345678"],
-    )])
+    example = aws.ec2transitgateway.get_peering_attachment(filters=[{
+        "name": "transit-gateway-attachment-id",
+        "values": ["tgw-attach-12345678"],
+    }])
     ```
     ### By Identifier
 

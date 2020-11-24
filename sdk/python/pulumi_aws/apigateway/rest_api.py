@@ -49,9 +49,9 @@ class RestApi(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.apigateway.RestApi("example", endpoint_configuration=aws.apigateway.RestApiEndpointConfigurationArgs(
-            types="REGIONAL",
-        ))
+        example = aws.apigateway.RestApi("example", endpoint_configuration={
+            "types": "REGIONAL",
+        })
         ```
 
         ## Import

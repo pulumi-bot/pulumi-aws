@@ -232,10 +232,10 @@ def get_elastic_ip(filters: Optional[Sequence[pulumi.InputType['GetElasticIpFilt
     import pulumi
     import pulumi_aws as aws
 
-    by_filter = aws.get_elastic_ip(filters=[aws.GetElasticIpFilterArgs(
-        name="tag:Name",
-        values=["exampleNameTagValue"],
-    )])
+    by_filter = aws.get_elastic_ip(filters=[{
+        "name": "tag:Name",
+        "values": ["exampleNameTagValue"],
+    }])
     ```
     ### Search By Public IP (EC2-Classic or VPC)
 

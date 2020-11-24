@@ -91,13 +91,13 @@ class ServerCertificate(pulumi.CustomResource):
         ourapp = aws.elb.LoadBalancer("ourapp",
             availability_zones=["us-west-2a"],
             cross_zone_load_balancing=True,
-            listeners=[aws.elb.LoadBalancerListenerArgs(
-                instance_port=8000,
-                instance_protocol="http",
-                lb_port=443,
-                lb_protocol="https",
-                ssl_certificate_id=test_cert.arn,
-            )])
+            listeners=[{
+                "instance_port": 8000,
+                "instanceProtocol": "http",
+                "lb_port": 443,
+                "lbProtocol": "https",
+                "sslCertificateId": test_cert.arn,
+            }])
         ```
 
         ## Import

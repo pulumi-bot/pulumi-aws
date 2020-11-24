@@ -43,31 +43,31 @@ class AnalyticsApplication(pulumi.CustomResource):
         import pulumi_aws as aws
 
         test_stream = aws.kinesis.Stream("testStream", shard_count=1)
-        test_application = aws.kinesis.AnalyticsApplication("testApplication", inputs=aws.kinesis.AnalyticsApplicationInputsArgs(
-            name_prefix="test_prefix",
-            kinesis_stream=aws.kinesis.AnalyticsApplicationInputsKinesisStreamArgs(
-                resource_arn=test_stream.arn,
-                role_arn=aws_iam_role["test"]["arn"],
-            ),
-            parallelism=aws.kinesis.AnalyticsApplicationInputsParallelismArgs(
-                count=1,
-            ),
-            schema=aws.kinesis.AnalyticsApplicationInputsSchemaArgs(
-                record_columns=[aws.kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs(
-                    mapping="$.test",
-                    name="test",
-                    sql_type="VARCHAR(8)",
-                )],
-                record_encoding="UTF-8",
-                record_format=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatArgs(
-                    mapping_parameters=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs(
-                        json=aws.kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs(
-                            record_row_path="$",
-                        ),
-                    ),
-                ),
-            ),
-        ))
+        test_application = aws.kinesis.AnalyticsApplication("testApplication", inputs={
+            "name_prefix": "test_prefix",
+            "kinesisStream": {
+                "resource_arn": test_stream.arn,
+                "role_arn": aws_iam_role["test"]["arn"],
+            },
+            "parallelism": {
+                "count": 1,
+            },
+            "schema": {
+                "recordColumns": [{
+                    "mapping": "$.test",
+                    "name": "test",
+                    "sqlType": "VARCHAR(8)",
+                }],
+                "recordEncoding": "UTF-8",
+                "recordFormat": {
+                    "mappingParameters": {
+                        "json": {
+                            "recordRowPath": "$",
+                        },
+                    },
+                },
+            },
+        })
         ```
 
         ## Import

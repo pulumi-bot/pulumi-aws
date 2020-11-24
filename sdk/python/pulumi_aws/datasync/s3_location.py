@@ -36,9 +36,9 @@ class S3Location(pulumi.CustomResource):
         example = aws.datasync.S3Location("example",
             s3_bucket_arn=aws_s3_bucket["example"]["arn"],
             subdirectory="/example/prefix",
-            s3_config=aws.datasync.S3LocationS3ConfigArgs(
-                bucket_access_role_arn=aws_iam_role["example"]["arn"],
-            ))
+            s3_config={
+                "bucketAccessRoleArn": aws_iam_role["example"]["arn"],
+            })
         ```
 
         ## Import

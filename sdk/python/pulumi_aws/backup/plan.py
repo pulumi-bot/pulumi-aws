@@ -34,17 +34,17 @@ class Plan(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.backup.Plan("example",
-            rules=[aws.backup.PlanRuleArgs(
-                rule_name="tf_example_backup_rule",
-                target_vault_name=aws_backup_vault["test"]["name"],
-                schedule="cron(0 12 * * ? *)",
-            )],
-            advanced_backup_settings=[aws.backup.PlanAdvancedBackupSettingArgs(
-                backup_options={
+            rules=[{
+                "rule_name": "tf_example_backup_rule",
+                "targetVaultName": aws_backup_vault["test"]["name"],
+                "schedule": "cron(0 12 * * ? *)",
+            }],
+            advanced_backup_settings=[{
+                "backupOptions": {
                     "WindowsVSS": "enabled",
                 },
-                resource_type="EC2",
-            )])
+                "resource_type": "EC2",
+            }])
         ```
 
         ## Import

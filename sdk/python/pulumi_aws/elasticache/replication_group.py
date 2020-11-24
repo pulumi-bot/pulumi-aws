@@ -116,10 +116,10 @@ class ReplicationGroup(pulumi.CustomResource):
 
         baz = aws.elasticache.ReplicationGroup("baz",
             automatic_failover_enabled=True,
-            cluster_mode=aws.elasticache.ReplicationGroupClusterModeArgs(
-                num_node_groups=2,
-                replicas_per_node_group=1,
-            ),
+            cluster_mode={
+                "numNodeGroups": 2,
+                "replicasPerNodeGroup": 1,
+            },
             node_type="cache.t2.small",
             parameter_group_name="default.redis3.2.cluster.on",
             port=6379,

@@ -39,9 +39,9 @@ class FargateProfile(pulumi.CustomResource):
             cluster_name=aws_eks_cluster["example"]["name"],
             pod_execution_role_arn=aws_iam_role["example"]["arn"],
             subnet_ids=[__item["id"] for __item in aws_subnet["example"]],
-            selectors=[aws.eks.FargateProfileSelectorArgs(
-                namespace="example",
-            )])
+            selectors=[{
+                "namespace": "example",
+            }])
         ```
         ### Example IAM Role for EKS Fargate Profile
 

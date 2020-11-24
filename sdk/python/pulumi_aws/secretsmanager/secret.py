@@ -55,9 +55,9 @@ class Secret(pulumi.CustomResource):
 
         rotation_example = aws.secretsmanager.Secret("rotation-example",
             rotation_lambda_arn=aws_lambda_function["example"]["arn"],
-            rotation_rules=aws.secretsmanager.SecretRotationRulesArgs(
-                automatically_after_days=7,
-            ))
+            rotation_rules={
+                "automaticallyAfterDays": 7,
+            })
         ```
 
         ## Import

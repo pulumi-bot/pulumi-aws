@@ -111,14 +111,14 @@ def get_security_groups(filters: Optional[Sequence[pulumi.InputType['GetSecurity
     import pulumi_aws as aws
 
     test = aws.ec2.get_security_groups(filters=[
-        aws.ec2.GetSecurityGroupsFilterArgs(
-            name="group-name",
-            values=["*nodes*"],
-        ),
-        aws.ec2.GetSecurityGroupsFilterArgs(
-            name="vpc-id",
-            values=[var["vpc_id"]],
-        ),
+        {
+            "name": "group-name",
+            "values": ["*nodes*"],
+        },
+        {
+            "name": "vpc-id",
+            "values": [var["vpc_id"]],
+        },
     ])
     ```
 

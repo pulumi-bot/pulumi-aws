@@ -435,18 +435,18 @@ def get_ami(executable_users: Optional[Sequence[str]] = None,
 
     example = aws.get_ami(executable_users=["self"],
         filters=[
-            aws.GetAmiFilterArgs(
-                name="name",
-                values=["myami-*"],
-            ),
-            aws.GetAmiFilterArgs(
-                name="root-device-type",
-                values=["ebs"],
-            ),
-            aws.GetAmiFilterArgs(
-                name="virtualization-type",
-                values=["hvm"],
-            ),
+            {
+                "name": "name",
+                "values": ["myami-*"],
+            },
+            {
+                "name": "root-device-type",
+                "values": ["ebs"],
+            },
+            {
+                "name": "virtualization-type",
+                "values": ["hvm"],
+            },
         ],
         most_recent=True,
         name_regex="^myami-\\d{3}",

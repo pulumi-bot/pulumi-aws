@@ -50,9 +50,9 @@ class ResolverRule(pulumi.CustomResource):
             domain_name="example.com",
             rule_type="FORWARD",
             resolver_endpoint_id=aws_route53_resolver_endpoint["foo"]["id"],
-            target_ips=[aws.route53.ResolverRuleTargetIpArgs(
-                ip="123.45.67.89",
-            )],
+            target_ips=[{
+                "ip": "123.45.67.89",
+            }],
             tags={
                 "Environment": "Prod",
             })

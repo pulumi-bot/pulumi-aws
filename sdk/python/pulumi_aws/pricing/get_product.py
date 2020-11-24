@@ -88,34 +88,34 @@ def get_product(filters: Optional[Sequence[pulumi.InputType['GetProductFilterArg
     import pulumi_aws as aws
 
     example = aws.pricing.get_product(filters=[
-            aws.pricing.GetProductFilterArgs(
-                field="instanceType",
-                value="c5.xlarge",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="operatingSystem",
-                value="Linux",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="location",
-                value="US East (N. Virginia)",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="preInstalledSw",
-                value="NA",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="licenseModel",
-                value="No License required",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="tenancy",
-                value="Shared",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="capacitystatus",
-                value="Used",
-            ),
+            {
+                "field": "instanceType",
+                "value": "c5.xlarge",
+            },
+            {
+                "field": "operatingSystem",
+                "value": "Linux",
+            },
+            {
+                "field": "location",
+                "value": "US East (N. Virginia)",
+            },
+            {
+                "field": "preInstalledSw",
+                "value": "NA",
+            },
+            {
+                "field": "licenseModel",
+                "value": "No License required",
+            },
+            {
+                "field": "tenancy",
+                "value": "Shared",
+            },
+            {
+                "field": "capacitystatus",
+                "value": "Used",
+            },
         ],
         service_code="AmazonEC2")
     ```
@@ -125,14 +125,14 @@ def get_product(filters: Optional[Sequence[pulumi.InputType['GetProductFilterArg
     import pulumi_aws as aws
 
     example = aws.pricing.get_product(filters=[
-            aws.pricing.GetProductFilterArgs(
-                field="instanceType",
-                value="ds1.xlarge",
-            ),
-            aws.pricing.GetProductFilterArgs(
-                field="location",
-                value="US East (N. Virginia)",
-            ),
+            {
+                "field": "instanceType",
+                "value": "ds1.xlarge",
+            },
+            {
+                "field": "location",
+                "value": "US East (N. Virginia)",
+            },
         ],
         service_code="AmazonRedshift")
     ```

@@ -109,10 +109,10 @@ def get_network_interfaces(filters: Optional[Sequence[pulumi.InputType['GetNetwo
     import pulumi
     import pulumi_aws as aws
 
-    example_network_interfaces = aws.ec2.get_network_interfaces(filters=[aws.ec2.GetNetworkInterfacesFilterArgs(
-        name="subnet-id",
-        values=[aws_subnet["test"]["id"]],
-    )])
+    example_network_interfaces = aws.ec2.get_network_interfaces(filters=[{
+        "name": "subnet-id",
+        "values": [aws_subnet["test"]["id"]],
+    }])
     pulumi.export("example", example_network_interfaces.ids)
     ```
 

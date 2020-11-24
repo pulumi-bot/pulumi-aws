@@ -65,12 +65,12 @@ class VpcPeeringConnection(pulumi.CustomResource):
             peer_owner_id=var["peer_owner_id"],
             peer_vpc_id=aws_vpc["bar"]["id"],
             vpc_id=aws_vpc["foo"]["id"],
-            accepter=aws.ec2.VpcPeeringConnectionAccepterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
-            requester=aws.ec2.VpcPeeringConnectionRequesterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ))
+            accepter={
+                "allowRemoteVpcDnsResolution": True,
+            },
+            requester={
+                "allowRemoteVpcDnsResolution": True,
+            })
         ```
 
         Basic usage with tags:

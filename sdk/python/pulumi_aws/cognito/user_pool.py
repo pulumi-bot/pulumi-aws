@@ -63,13 +63,13 @@ class UserPool(pulumi.CustomResource):
         example = aws.cognito.UserPool("example",
             mfa_configuration="ON",
             sms_authentication_message="Your code is {####}",
-            sms_configuration=aws.cognito.UserPoolSmsConfigurationArgs(
-                external_id="example",
-                sns_caller_arn=aws_iam_role["example"]["arn"],
-            ),
-            software_token_mfa_configuration=aws.cognito.UserPoolSoftwareTokenMfaConfigurationArgs(
-                enabled=True,
-            ))
+            sms_configuration={
+                "external_id": "example",
+                "snsCallerArn": aws_iam_role["example"]["arn"],
+            },
+            software_token_mfa_configuration={
+                "enabled": True,
+            })
         ```
 
         ## Import

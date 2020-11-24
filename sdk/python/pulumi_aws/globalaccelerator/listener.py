@@ -36,19 +36,19 @@ class Listener(pulumi.CustomResource):
         example_accelerator = aws.globalaccelerator.Accelerator("exampleAccelerator",
             ip_address_type="IPV4",
             enabled=True,
-            attributes=aws.globalaccelerator.AcceleratorAttributesArgs(
-                flow_logs_enabled=True,
-                flow_logs_s3_bucket="example-bucket",
-                flow_logs_s3_prefix="flow-logs/",
-            ))
+            attributes={
+                "flowLogsEnabled": True,
+                "flowLogsS3Bucket": "example-bucket",
+                "flowLogsS3Prefix": "flow-logs/",
+            })
         example_listener = aws.globalaccelerator.Listener("exampleListener",
             accelerator_arn=example_accelerator.id,
             client_affinity="SOURCE_IP",
             protocol="TCP",
-            port_ranges=[aws.globalaccelerator.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
+            port_ranges=[{
+                "from_port": 80,
+                "to_port": 80,
+            }])
         ```
 
         ## Import

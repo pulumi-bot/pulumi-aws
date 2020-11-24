@@ -31,15 +31,15 @@ class ByteMatchSet(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        byte_set = aws.wafregional.ByteMatchSet("byteSet", byte_match_tuples=[aws.wafregional.ByteMatchSetByteMatchTupleArgs(
-            field_to_match=aws.wafregional.ByteMatchSetByteMatchTupleFieldToMatchArgs(
-                data="referer",
-                type="HEADER",
-            ),
-            positional_constraint="CONTAINS",
-            target_string="badrefer1",
-            text_transformation="NONE",
-        )])
+        byte_set = aws.wafregional.ByteMatchSet("byteSet", byte_match_tuples=[{
+            "fieldToMatch": {
+                "data": "referer",
+                "type": "HEADER",
+            },
+            "positionalConstraint": "CONTAINS",
+            "targetString": "badrefer1",
+            "textTransformation": "NONE",
+        }])
         ```
 
         ## Import

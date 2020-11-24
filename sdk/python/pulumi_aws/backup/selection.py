@@ -67,11 +67,11 @@ class Selection(pulumi.CustomResource):
         example = aws.backup.Selection("example",
             iam_role_arn=aws_iam_role["example"]["arn"],
             plan_id=aws_backup_plan["example"]["id"],
-            selection_tags=[aws.backup.SelectionSelectionTagArgs(
-                type="STRINGEQUALS",
-                key="foo",
-                value="bar",
-            )])
+            selection_tags=[{
+                "type": "STRINGEQUALS",
+                "key": "foo",
+                "value": "bar",
+            }])
         ```
         ### Selecting Backups By Resource
 

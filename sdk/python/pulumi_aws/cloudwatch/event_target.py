@@ -63,14 +63,14 @@ class EventTarget(pulumi.CustomResource):
             rule=console.name,
             arn=test_stream.arn,
             run_command_targets=[
-                aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                    key="tag:Name",
-                    values=["FooBar"],
-                ),
-                aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                    key="InstanceIds",
-                    values=["i-162058cd308bffec2"],
-                ),
+                {
+                    "key": "tag:Name",
+                    "values": ["FooBar"],
+                },
+                {
+                    "key": "InstanceIds",
+                    "values": ["i-162058cd308bffec2"],
+                },
             ])
         ```
         ## Example SSM Document Usage
@@ -79,13 +79,13 @@ class EventTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ssm_lifecycle_trust = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["events.amazonaws.com"],
-            )],
-        )])
+        ssm_lifecycle_trust = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "Service",
+                "identifiers": ["events.amazonaws.com"],
+            }],
+        }])
         stop_instance = aws.ssm.Document("stopInstance",
             document_type="Command",
             content=\"\"\"  {
@@ -107,21 +107,21 @@ class EventTarget(pulumi.CustomResource):
           }
         \"\"\")
         ssm_lifecycle_policy_document = stop_instance.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[
-            aws.iam.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=["ssm:SendCommand"],
-                resources=["arn:aws:ec2:eu-west-1:1234567890:instance/*"],
-                conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                    test="StringEquals",
-                    variable="ec2:ResourceTag/Terminate",
-                    values=["*"],
-                )],
-            ),
-            aws.iam.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=["ssm:SendCommand"],
-                resources=[arn],
-            ),
+            {
+                "effect": "Allow",
+                "actions": ["ssm:SendCommand"],
+                "resources": ["arn:aws:ec2:eu-west-1:1234567890:instance/*"],
+                "conditions": [{
+                    "test": "StringEquals",
+                    "variable": "ec2:ResourceTag/Terminate",
+                    "values": ["*"],
+                }],
+            },
+            {
+                "effect": "Allow",
+                "actions": ["ssm:SendCommand"],
+                "resources": [arn],
+            },
         ]))
         ssm_lifecycle_role = aws.iam.Role("ssmLifecycleRole", assume_role_policy=ssm_lifecycle_trust.json)
         ssm_lifecycle_policy = aws.iam.Policy("ssmLifecyclePolicy", policy=ssm_lifecycle_policy_document.json)
@@ -132,10 +132,10 @@ class EventTarget(pulumi.CustomResource):
             arn=stop_instance.arn,
             rule=stop_instances_event_rule.name,
             role_arn=ssm_lifecycle_role.arn,
-            run_command_targets=[aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                key="tag:Terminate",
-                values=["midnight"],
-            )])
+            run_command_targets=[{
+                "key": "tag:Terminate",
+                "values": ["midnight"],
+            }])
         ```
 
         ## Example RunCommand Usage
@@ -152,10 +152,10 @@ class EventTarget(pulumi.CustomResource):
             input="{\"commands\":[\"halt\"]}",
             rule=stop_instances_event_rule.name,
             role_arn=aws_iam_role["ssm_lifecycle"]["arn"],
-            run_command_targets=[aws.cloudwatch.EventTargetRunCommandTargetArgs(
-                key="tag:Terminate",
-                values=["midnight"],
-            )])
+            run_command_targets=[{
+                "key": "tag:Terminate",
+                "values": ["midnight"],
+            }])
         ```
 
         ## Example Input Transformer Usage - JSON Object
@@ -169,17 +169,17 @@ class EventTarget(pulumi.CustomResource):
         example_event_target = aws.cloudwatch.EventTarget("exampleEventTarget",
             arn=aws_lambda_function["example"]["arn"],
             rule=example_event_rule.id,
-            input_transformer=aws.cloudwatch.EventTargetInputTransformerArgs(
-                input_paths={
+            input_transformer={
+                "inputPaths": {
                     "instance": "$.detail.instance",
                     "status": "$.detail.status",
                 },
-                input_template=\"\"\"{
+                "inputTemplate": \"\"\"{
           "instance_id": <instance>,
           "instance_status": <status>
         }
         \"\"\",
-            ))
+            })
         ```
 
         ## Example Input Transformer Usage - Simple String
@@ -193,13 +193,13 @@ class EventTarget(pulumi.CustomResource):
         example_event_target = aws.cloudwatch.EventTarget("exampleEventTarget",
             arn=aws_lambda_function["example"]["arn"],
             rule=example_event_rule.id,
-            input_transformer=aws.cloudwatch.EventTargetInputTransformerArgs(
-                input_paths={
+            input_transformer={
+                "inputPaths": {
                     "instance": "$.detail.instance",
                     "status": "$.detail.status",
                 },
-                input_template="\"<instance> is in state <status>\"",
-            ))
+                "inputTemplate": "\"<instance> is in state <status>\"",
+            })
         ```
 
         ## Import

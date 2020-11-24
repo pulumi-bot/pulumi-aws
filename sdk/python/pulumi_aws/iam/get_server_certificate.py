@@ -148,13 +148,13 @@ def get_server_certificate(latest: Optional[bool] = None,
 
     my_domain = aws.iam.get_server_certificate(name_prefix="my-domain.org",
         latest=True)
-    elb = aws.elb.LoadBalancer("elb", listeners=[aws.elb.LoadBalancerListenerArgs(
-        instance_port=8000,
-        instance_protocol="https",
-        lb_port=443,
-        lb_protocol="https",
-        ssl_certificate_id=my_domain.arn,
-    )])
+    elb = aws.elb.LoadBalancer("elb", listeners=[{
+        "instance_port": 8000,
+        "instanceProtocol": "https",
+        "lb_port": 443,
+        "lbProtocol": "https",
+        "sslCertificateId": my_domain.arn,
+    }])
     ```
 
 

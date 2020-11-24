@@ -250,14 +250,14 @@ def get_snapshot(filters: Optional[Sequence[pulumi.InputType['GetSnapshotFilterA
     import pulumi_aws as aws
 
     ebs_volume = aws.ebs.get_snapshot(filters=[
-            aws.ebs.GetSnapshotFilterArgs(
-                name="volume-size",
-                values=["40"],
-            ),
-            aws.ebs.GetSnapshotFilterArgs(
-                name="tag:Name",
-                values=["Example"],
-            ),
+            {
+                "name": "volume-size",
+                "values": ["40"],
+            },
+            {
+                "name": "tag:Name",
+                "values": ["Example"],
+            },
         ],
         most_recent=True,
         owners=["self"])

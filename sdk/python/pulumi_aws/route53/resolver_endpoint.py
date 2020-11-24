@@ -41,13 +41,13 @@ class ResolverEndpoint(pulumi.CustomResource):
                 aws_security_group["sg2"]["id"],
             ],
             ip_addresses=[
-                aws.route53.ResolverEndpointIpAddressArgs(
-                    subnet_id=aws_subnet["sn1"]["id"],
-                ),
-                aws.route53.ResolverEndpointIpAddressArgs(
-                    subnet_id=aws_subnet["sn2"]["id"],
-                    ip="10.0.64.4",
-                ),
+                {
+                    "subnet_id": aws_subnet["sn1"]["id"],
+                },
+                {
+                    "subnet_id": aws_subnet["sn2"]["id"],
+                    "ip": "10.0.64.4",
+                },
             ],
             tags={
                 "Environment": "Prod",

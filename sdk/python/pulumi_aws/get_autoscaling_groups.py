@@ -90,14 +90,14 @@ def get_autoscaling_groups(filters: Optional[Sequence[pulumi.InputType['GetAutos
     import pulumi_aws as aws
 
     groups = aws.get_autoscaling_groups(filters=[
-        aws.GetAutoscalingGroupsFilterArgs(
-            name="key",
-            values=["Team"],
-        ),
-        aws.GetAutoscalingGroupsFilterArgs(
-            name="value",
-            values=["Pets"],
-        ),
+        {
+            "name": "key",
+            "values": ["Team"],
+        },
+        {
+            "name": "value",
+            "values": ["Pets"],
+        },
     ])
     slack_notifications = aws.autoscaling.Notification("slackNotifications",
         group_names=groups.names,

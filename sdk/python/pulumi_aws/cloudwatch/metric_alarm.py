@@ -100,38 +100,38 @@ class MetricAlarm(pulumi.CustomResource):
             evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
-                aws.cloudwatch.MetricAlarmMetricQueryArgs(
-                    expression="m2/m1*100",
-                    id="e1",
-                    label="Error Rate",
-                    return_data=True,
-                ),
-                aws.cloudwatch.MetricAlarmMetricQueryArgs(
-                    id="m1",
-                    metric=aws.cloudwatch.MetricAlarmMetricQueryMetricArgs(
-                        dimensions={
+                {
+                    "expression": "m2/m1*100",
+                    "id": "e1",
+                    "label": "Error Rate",
+                    "returnData": True,
+                },
+                {
+                    "id": "m1",
+                    "metric": {
+                        "dimensions": {
                             "LoadBalancer": "app/web",
                         },
-                        metric_name="RequestCount",
-                        namespace="AWS/ApplicationELB",
-                        period=120,
-                        stat="Sum",
-                        unit="Count",
-                    ),
-                ),
-                aws.cloudwatch.MetricAlarmMetricQueryArgs(
-                    id="m2",
-                    metric=aws.cloudwatch.MetricAlarmMetricQueryMetricArgs(
-                        dimensions={
+                        "metric_name": "RequestCount",
+                        "namespace": "AWS/ApplicationELB",
+                        "period": 120,
+                        "stat": "Sum",
+                        "unit": "Count",
+                    },
+                },
+                {
+                    "id": "m2",
+                    "metric": {
+                        "dimensions": {
                             "LoadBalancer": "app/web",
                         },
-                        metric_name="HTTPCode_ELB_5XX_Count",
-                        namespace="AWS/ApplicationELB",
-                        period=120,
-                        stat="Sum",
-                        unit="Count",
-                    ),
-                ),
+                        "metric_name": "HTTPCode_ELB_5XX_Count",
+                        "namespace": "AWS/ApplicationELB",
+                        "period": 120,
+                        "stat": "Sum",
+                        "unit": "Count",
+                    },
+                },
             ],
             threshold=10)
         ```
@@ -146,26 +146,26 @@ class MetricAlarm(pulumi.CustomResource):
             evaluation_periods=2,
             insufficient_data_actions=[],
             metric_queries=[
-                aws.cloudwatch.MetricAlarmMetricQueryArgs(
-                    expression="ANOMALY_DETECTION_BAND(m1)",
-                    id="e1",
-                    label="CPUUtilization (Expected)",
-                    return_data=True,
-                ),
-                aws.cloudwatch.MetricAlarmMetricQueryArgs(
-                    id="m1",
-                    metric=aws.cloudwatch.MetricAlarmMetricQueryMetricArgs(
-                        dimensions={
+                {
+                    "expression": "ANOMALY_DETECTION_BAND(m1)",
+                    "id": "e1",
+                    "label": "CPUUtilization (Expected)",
+                    "returnData": True,
+                },
+                {
+                    "id": "m1",
+                    "metric": {
+                        "dimensions": {
                             "InstanceId": "i-abc123",
                         },
-                        metric_name="CPUUtilization",
-                        namespace="AWS/EC2",
-                        period=120,
-                        stat="Average",
-                        unit="Count",
-                    ),
-                    return_data=True,
-                ),
+                        "metric_name": "CPUUtilization",
+                        "namespace": "AWS/EC2",
+                        "period": 120,
+                        "stat": "Average",
+                        "unit": "Count",
+                    },
+                    "returnData": True,
+                },
             ],
             threshold_metric_id="e1")
         ```

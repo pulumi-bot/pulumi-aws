@@ -41,10 +41,10 @@ class Association(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.ssm.Association("example", targets=[aws.ssm.AssociationTargetArgs(
-            key="InstanceIds",
-            values=[aws_instance["example"]["id"]],
-        )])
+        example = aws.ssm.Association("example", targets=[{
+            "key": "InstanceIds",
+            "values": [aws_instance["example"]["id"]],
+        }])
         ```
 
         ## Import

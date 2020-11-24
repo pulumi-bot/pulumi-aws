@@ -49,10 +49,10 @@ class ScheduledAction(pulumi.CustomResource):
             resource_id=dynamodb_target.resource_id,
             scalable_dimension=dynamodb_target.scalable_dimension,
             schedule="at(2006-01-02T15:04:05)",
-            scalable_target_action=aws.appautoscaling.ScheduledActionScalableTargetActionArgs(
-                min_capacity=1,
-                max_capacity=200,
-            ))
+            scalable_target_action={
+                "min_capacity": 1,
+                "max_capacity": 200,
+            })
         ```
         ### ECS Service Autoscaling
 
@@ -71,10 +71,10 @@ class ScheduledAction(pulumi.CustomResource):
             resource_id=ecs_target.resource_id,
             scalable_dimension=ecs_target.scalable_dimension,
             schedule="at(2006-01-02T15:04:05)",
-            scalable_target_action=aws.appautoscaling.ScheduledActionScalableTargetActionArgs(
-                min_capacity=1,
-                max_capacity=10,
-            ))
+            scalable_target_action={
+                "min_capacity": 1,
+                "max_capacity": 10,
+            })
         ```
 
         :param str resource_name: The name of the resource.

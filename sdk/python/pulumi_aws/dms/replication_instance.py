@@ -42,13 +42,13 @@ class ReplicationInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        dms_assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["dms.amazonaws.com"],
-                type="Service",
-            )],
-        )])
+        dms_assume_role = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "identifiers": ["dms.amazonaws.com"],
+                "type": "Service",
+            }],
+        }])
         dms_access_for_endpoint = aws.iam.Role("dms-access-for-endpoint", assume_role_policy=dms_assume_role.json)
         dms_access_for_endpoint__amazon_dms_redshift_s3_role = aws.iam.RolePolicyAttachment("dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
             policy_arn="arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",

@@ -95,8 +95,8 @@ class TopicSubscription(pulumi.CustomResource):
             }
         sns_topic_policy = aws.iam.get_policy_document(policy_id="__default_policy_ID",
             statements=[
-                aws.iam.GetPolicyDocumentStatementArgs(
-                    actions=[
+                {
+                    "actions": [
                         "SNS:Subscribe",
                         "SNS:SetTopicAttributes",
                         "SNS:RemovePermission",
@@ -107,75 +107,75 @@ class TopicSubscription(pulumi.CustomResource):
                         "SNS:DeleteTopic",
                         "SNS:AddPermission",
                     ],
-                    conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                        test="StringEquals",
-                        variable="AWS:SourceOwner",
-                        values=[sns["account-id"]],
-                    )],
-                    effect="Allow",
-                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                        type="AWS",
-                        identifiers=["*"],
-                    )],
-                    resources=[f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],
-                    sid="__default_statement_ID",
-                ),
-                aws.iam.GetPolicyDocumentStatementArgs(
-                    actions=[
+                    "conditions": [{
+                        "test": "StringEquals",
+                        "variable": "AWS:SourceOwner",
+                        "values": [sns["account-id"]],
+                    }],
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["*"],
+                    }],
+                    "resources": [f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],
+                    "sid": "__default_statement_ID",
+                },
+                {
+                    "actions": [
                         "SNS:Subscribe",
                         "SNS:Receive",
                     ],
-                    conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                        test="StringLike",
-                        variable="SNS:Endpoint",
-                        values=[f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}"],
-                    )],
-                    effect="Allow",
-                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                        type="AWS",
-                        identifiers=["*"],
-                    )],
-                    resources=[f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],
-                    sid="__console_sub_0",
-                ),
+                    "conditions": [{
+                        "test": "StringLike",
+                        "variable": "SNS:Endpoint",
+                        "values": [f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}"],
+                    }],
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["*"],
+                    }],
+                    "resources": [f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],
+                    "sid": "__console_sub_0",
+                },
             ])
         sqs_queue_policy = aws.iam.get_policy_document(policy_id=f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}/SQSDefaultPolicy",
-            statements=[aws.iam.GetPolicyDocumentStatementArgs(
-                sid="example-sns-topic",
-                effect="Allow",
-                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                    type="AWS",
-                    identifiers=["*"],
-                )],
-                actions=["SQS:SendMessage"],
-                resources=[f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}"],
-                conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                    test="ArnEquals",
-                    variable="aws:SourceArn",
-                    values=[f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],
-                )],
-            )])
+            statements=[{
+                "sid": "example-sns-topic",
+                "effect": "Allow",
+                "principals": [{
+                    "type": "AWS",
+                    "identifiers": ["*"],
+                }],
+                "actions": ["SQS:SendMessage"],
+                "resources": [f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}"],
+                "conditions": [{
+                    "test": "ArnEquals",
+                    "variable": "aws:SourceArn",
+                    "values": [f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],
+                }],
+            }])
         # provider to manage SNS topics
         aws_sns = pulumi.providers.Aws("awsSns",
             region=sns["region"],
-            assume_role=aws.config.AssumeRoleArgs(
-                role_arn=f"arn:aws:iam::{sns['account-id']}:role/{sns['role-name']}",
-                session_name=f"sns-{sns['region']}",
-            ))
+            assume_role={
+                "roleArn": f"arn:aws:iam::{sns['account-id']}:role/{sns['role-name']}",
+                "sessionName": f"sns-{sns['region']}",
+            })
         # provider to manage SQS queues
         aws_sqs = pulumi.providers.Aws("awsSqs",
             region=sqs["region"],
-            assume_role=aws.config.AssumeRoleArgs(
-                role_arn=f"arn:aws:iam::{sqs['account-id']}:role/{sqs['role-name']}",
-                session_name=f"sqs-{sqs['region']}",
-            ))
+            assume_role={
+                "roleArn": f"arn:aws:iam::{sqs['account-id']}:role/{sqs['role-name']}",
+                "sessionName": f"sqs-{sqs['region']}",
+            })
         # provider to subscribe SQS to SNS (using the SQS account but the SNS region)
         sns2sqs = pulumi.providers.Aws("sns2sqs",
             region=sns["region"],
-            assume_role=aws.config.AssumeRoleArgs(
-                role_arn=f"arn:aws:iam::{sqs['account-id']}:role/{sqs['role-name']}",
-                session_name=f"sns2sqs-{sns['region']}",
-            ))
+            assume_role={
+                "roleArn": f"arn:aws:iam::{sqs['account-id']}:role/{sqs['role-name']}",
+                "sessionName": f"sns2sqs-{sns['region']}",
+            })
         sns_topic_topic = aws.sns.Topic("sns-topicTopic",
             display_name=sns["display_name"],
             policy=sns_topic_policy.json,

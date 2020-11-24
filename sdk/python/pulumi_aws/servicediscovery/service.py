@@ -44,17 +44,17 @@ class Service(pulumi.CustomResource):
             description="example",
             vpc=example_vpc.id)
         example_service = aws.servicediscovery.Service("exampleService",
-            dns_config=aws.servicediscovery.ServiceDnsConfigArgs(
-                namespace_id=example_private_dns_namespace.id,
-                dns_records=[aws.servicediscovery.ServiceDnsConfigDnsRecordArgs(
-                    ttl=10,
-                    type="A",
-                )],
-                routing_policy="MULTIVALUE",
-            ),
-            health_check_custom_config=aws.servicediscovery.ServiceHealthCheckCustomConfigArgs(
-                failure_threshold=1,
-            ))
+            dns_config={
+                "namespace_id": example_private_dns_namespace.id,
+                "dnsRecords": [{
+                    "ttl": 10,
+                    "type": "A",
+                }],
+                "routingPolicy": "MULTIVALUE",
+            },
+            health_check_custom_config={
+                "failure_threshold": 1,
+            })
         ```
 
         ```python
@@ -63,18 +63,18 @@ class Service(pulumi.CustomResource):
 
         example_public_dns_namespace = aws.servicediscovery.PublicDnsNamespace("examplePublicDnsNamespace", description="example")
         example_service = aws.servicediscovery.Service("exampleService",
-            dns_config=aws.servicediscovery.ServiceDnsConfigArgs(
-                namespace_id=example_public_dns_namespace.id,
-                dns_records=[aws.servicediscovery.ServiceDnsConfigDnsRecordArgs(
-                    ttl=10,
-                    type="A",
-                )],
-            ),
-            health_check_config=aws.servicediscovery.ServiceHealthCheckConfigArgs(
-                failure_threshold=10,
-                resource_path="path",
-                type="HTTP",
-            ))
+            dns_config={
+                "namespace_id": example_public_dns_namespace.id,
+                "dnsRecords": [{
+                    "ttl": 10,
+                    "type": "A",
+                }],
+            },
+            health_check_config={
+                "failure_threshold": 10,
+                "resource_path": "path",
+                "type": "HTTP",
+            })
         ```
 
         ## Import

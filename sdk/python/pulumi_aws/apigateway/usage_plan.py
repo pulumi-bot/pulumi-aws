@@ -48,24 +48,24 @@ class UsagePlan(pulumi.CustomResource):
             description="my description",
             product_code="MYCODE",
             api_stages=[
-                aws.apigateway.UsagePlanApiStageArgs(
-                    api_id=myapi.id,
-                    stage=dev.stage_name,
-                ),
-                aws.apigateway.UsagePlanApiStageArgs(
-                    api_id=myapi.id,
-                    stage=prod.stage_name,
-                ),
+                {
+                    "api_id": myapi.id,
+                    "stage": dev.stage_name,
+                },
+                {
+                    "api_id": myapi.id,
+                    "stage": prod.stage_name,
+                },
             ],
-            quota_settings=aws.apigateway.UsagePlanQuotaSettingsArgs(
-                limit=20,
-                offset=2,
-                period="WEEK",
-            ),
-            throttle_settings=aws.apigateway.UsagePlanThrottleSettingsArgs(
-                burst_limit=5,
-                rate_limit=10,
-            ))
+            quota_settings={
+                "limit": 20,
+                "offset": 2,
+                "period": "WEEK",
+            },
+            throttle_settings={
+                "burstLimit": 5,
+                "rate_limit": 10,
+            })
         ```
 
         ## Import

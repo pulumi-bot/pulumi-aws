@@ -119,10 +119,10 @@ def get_internet_gateway(filters: Optional[Sequence[pulumi.InputType['GetInterne
 
     config = pulumi.Config()
     vpc_id = config.require_object("vpcId")
-    default = aws.ec2.get_internet_gateway(filters=[aws.ec2.GetInternetGatewayFilterArgs(
-        name="attachment.vpc-id",
-        values=[vpc_id],
-    )])
+    default = aws.ec2.get_internet_gateway(filters=[{
+        "name": "attachment.vpc-id",
+        "values": [vpc_id],
+    }])
     ```
 
 

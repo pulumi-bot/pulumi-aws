@@ -35,11 +35,11 @@ class Accelerator(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.globalaccelerator.Accelerator("example",
-            attributes=aws.globalaccelerator.AcceleratorAttributesArgs(
-                flow_logs_enabled=True,
-                flow_logs_s3_bucket="example-bucket",
-                flow_logs_s3_prefix="flow-logs/",
-            ),
+            attributes={
+                "flowLogsEnabled": True,
+                "flowLogsS3Bucket": "example-bucket",
+                "flowLogsS3Prefix": "flow-logs/",
+            },
             enabled=True,
             ip_address_type="IPV4")
         ```

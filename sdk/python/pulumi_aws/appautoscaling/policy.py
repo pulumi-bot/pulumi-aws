@@ -48,12 +48,12 @@ class Policy(pulumi.CustomResource):
             resource_id=dynamodb_table_read_target.resource_id,
             scalable_dimension=dynamodb_table_read_target.scalable_dimension,
             service_namespace=dynamodb_table_read_target.service_namespace,
-            target_tracking_scaling_policy_configuration=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationArgs(
-                predefined_metric_specification=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs(
-                    predefined_metric_type="DynamoDBReadCapacityUtilization",
-                ),
-                target_value=70,
-            ))
+            target_tracking_scaling_policy_configuration={
+                "predefinedMetricSpecification": {
+                    "predefinedMetricType": "DynamoDBReadCapacityUtilization",
+                },
+                "targetValue": 70,
+            })
         ```
         ### ECS Service Autoscaling
 
@@ -72,15 +72,15 @@ class Policy(pulumi.CustomResource):
             resource_id=ecs_target.resource_id,
             scalable_dimension=ecs_target.scalable_dimension,
             service_namespace=ecs_target.service_namespace,
-            step_scaling_policy_configuration=aws.appautoscaling.PolicyStepScalingPolicyConfigurationArgs(
-                adjustment_type="ChangeInCapacity",
-                cooldown=60,
-                metric_aggregation_type="Maximum",
-                step_adjustments=[{
+            step_scaling_policy_configuration={
+                "adjustment_type": "ChangeInCapacity",
+                "cooldown": 60,
+                "metric_aggregation_type": "Maximum",
+                "step_adjustments": [{
                     "metricIntervalUpperBound": 0,
                     "scaling_adjustment": -1,
                 }],
-            ))
+            })
         ```
         ### Preserve desired count when updating an autoscaled ECS Service
 
@@ -110,14 +110,14 @@ class Policy(pulumi.CustomResource):
             scalable_dimension=replicas_target.scalable_dimension,
             resource_id=replicas_target.resource_id,
             policy_type="TargetTrackingScaling",
-            target_tracking_scaling_policy_configuration=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationArgs(
-                predefined_metric_specification=aws.appautoscaling.PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs(
-                    predefined_metric_type="RDSReaderAverageCPUUtilization",
-                ),
-                target_value=75,
-                scale_in_cooldown=300,
-                scale_out_cooldown=300,
-            ))
+            target_tracking_scaling_policy_configuration={
+                "predefinedMetricSpecification": {
+                    "predefinedMetricType": "RDSReaderAverageCPUUtilization",
+                },
+                "targetValue": 75,
+                "scaleInCooldown": 300,
+                "scaleOutCooldown": 300,
+            })
         ```
 
         ## Import

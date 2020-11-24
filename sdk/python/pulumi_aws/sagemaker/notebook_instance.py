@@ -56,9 +56,9 @@ class NotebookInstance(pulumi.CustomResource):
 
         example = aws.sagemaker.CodeRepository("example",
             code_repository_name="my-notebook-instance-code-repo",
-            git_config=aws.sagemaker.CodeRepositoryGitConfigArgs(
-                repository_url="https://github.com/hashicorp/terraform-provider-aws.git",
-            ))
+            git_config={
+                "repository_url": "https://github.com/hashicorp/terraform-provider-aws.git",
+            })
         ni = aws.sagemaker.NotebookInstance("ni",
             role_arn=aws_iam_role["role"]["arn"],
             instance_type="ml.t2.medium",

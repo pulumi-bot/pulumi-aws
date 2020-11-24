@@ -31,29 +31,29 @@ class WebAclAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
+        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[{
+            "type": "IPV4",
+            "value": "192.0.7.0/24",
+        }])
         foo_rule = aws.wafregional.Rule("fooRule",
             metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )])
+            predicates=[{
+                "dataId": ipset.id,
+                "negated": False,
+                "type": "IPMatch",
+            }])
         foo_web_acl = aws.wafregional.WebAcl("fooWebAcl",
             metric_name="foo",
-            default_action=aws.wafregional.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.wafregional.WebAclRuleArgs(
-                action=aws.wafregional.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=foo_rule.id,
-            )])
+            default_action={
+                "type": "ALLOW",
+            },
+            rules=[{
+                "action": {
+                    "type": "BLOCK",
+                },
+                "priority": 1,
+                "rule_id": foo_rule.id,
+            }])
         foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.1.0.0/16")
         available = aws.get_availability_zones()
         foo_subnet = aws.ec2.Subnet("fooSubnet",
@@ -81,29 +81,29 @@ class WebAclAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[aws.wafregional.IpSetIpSetDescriptorArgs(
-            type="IPV4",
-            value="192.0.7.0/24",
-        )])
+        ipset = aws.wafregional.IpSet("ipset", ip_set_descriptors=[{
+            "type": "IPV4",
+            "value": "192.0.7.0/24",
+        }])
         foo_rule = aws.wafregional.Rule("fooRule",
             metric_name="tfWAFRule",
-            predicates=[aws.wafregional.RulePredicateArgs(
-                data_id=ipset.id,
-                negated=False,
-                type="IPMatch",
-            )])
+            predicates=[{
+                "dataId": ipset.id,
+                "negated": False,
+                "type": "IPMatch",
+            }])
         foo_web_acl = aws.wafregional.WebAcl("fooWebAcl",
             metric_name="foo",
-            default_action=aws.wafregional.WebAclDefaultActionArgs(
-                type="ALLOW",
-            ),
-            rules=[aws.wafregional.WebAclRuleArgs(
-                action=aws.wafregional.WebAclRuleActionArgs(
-                    type="BLOCK",
-                ),
-                priority=1,
-                rule_id=foo_rule.id,
-            )])
+            default_action={
+                "type": "ALLOW",
+            },
+            rules=[{
+                "action": {
+                    "type": "BLOCK",
+                },
+                "priority": 1,
+                "rule_id": foo_rule.id,
+            }])
         test_rest_api = aws.apigateway.RestApi("testRestApi")
         test_resource = aws.apigateway.Resource("testResource",
             parent_id=test_rest_api.root_resource_id,

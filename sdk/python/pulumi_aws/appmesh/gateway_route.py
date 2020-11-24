@@ -38,20 +38,20 @@ class GatewayRoute(pulumi.CustomResource):
         example = aws.appmesh.GatewayRoute("example",
             mesh_name="example-service-mesh",
             virtual_gateway_name=aws_appmesh_virtual_gateway["example"]["name"],
-            spec=aws.appmesh.GatewayRouteSpecArgs(
-                http_route=aws.appmesh.GatewayRouteSpecHttpRouteArgs(
-                    action=aws.appmesh.GatewayRouteSpecHttpRouteActionArgs(
-                        target=aws.appmesh.GatewayRouteSpecHttpRouteActionTargetArgs(
-                            virtual_service=aws.appmesh.GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs(
-                                virtual_service_name=aws_appmesh_virtual_service["example"]["name"],
-                            ),
-                        ),
-                    ),
-                    match=aws.appmesh.GatewayRouteSpecHttpRouteMatchArgs(
-                        prefix="/",
-                    ),
-                ),
-            ),
+            spec={
+                "httpRoute": {
+                    "action": {
+                        "target": {
+                            "virtualService": {
+                                "virtualServiceName": aws_appmesh_virtual_service["example"]["name"],
+                            },
+                        },
+                    },
+                    "match": {
+                        "prefix": "/",
+                    },
+                },
+            },
             tags={
                 "Environment": "test",
             })

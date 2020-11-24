@@ -33,12 +33,12 @@ class AppCookieStickinessPolicy(pulumi.CustomResource):
 
         lb = aws.elb.LoadBalancer("lb",
             availability_zones=["us-east-1a"],
-            listeners=[aws.elb.LoadBalancerListenerArgs(
-                instance_port=8000,
-                instance_protocol="http",
-                lb_port=80,
-                lb_protocol="http",
-            )])
+            listeners=[{
+                "instance_port": 8000,
+                "instanceProtocol": "http",
+                "lb_port": 80,
+                "lbProtocol": "http",
+            }])
         foo = aws.elb.AppCookieStickinessPolicy("foo",
             load_balancer=lb.name,
             lb_port=80,

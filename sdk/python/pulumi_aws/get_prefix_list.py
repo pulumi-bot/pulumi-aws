@@ -126,10 +126,10 @@ def get_prefix_list(filters: Optional[Sequence[pulumi.InputType['GetPrefixListFi
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.get_prefix_list(filters=[aws.GetPrefixListFilterArgs(
-        name="prefix-list-id",
-        values=["pl-68a54001"],
-    )])
+    test = aws.get_prefix_list(filters=[{
+        "name": "prefix-list-id",
+        "values": ["pl-68a54001"],
+    }])
     ```
 
 

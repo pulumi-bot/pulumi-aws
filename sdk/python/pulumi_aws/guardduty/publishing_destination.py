@@ -37,44 +37,44 @@ class PublishingDestination(pulumi.CustomResource):
             acl="private",
             force_destroy=True)
         bucket_pol = pulumi.Output.all(gd_bucket.arn, gd_bucket.arn).apply(lambda gdBucketArn, gdBucketArn1: aws.iam.get_policy_document(statements=[
-            aws.iam.GetPolicyDocumentStatementArgs(
-                sid="Allow PutObject",
-                actions=["s3:PutObject"],
-                resources=[f"{gd_bucket_arn}/*"],
-                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                    type="Service",
-                    identifiers=["guardduty.amazonaws.com"],
-                )],
-            ),
-            aws.iam.GetPolicyDocumentStatementArgs(
-                sid="Allow GetBucketLocation",
-                actions=["s3:GetBucketLocation"],
-                resources=[gd_bucket_arn1],
-                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                    type="Service",
-                    identifiers=["guardduty.amazonaws.com"],
-                )],
-            ),
+            {
+                "sid": "Allow PutObject",
+                "actions": ["s3:PutObject"],
+                "resources": [f"{gd_bucket_arn}/*"],
+                "principals": [{
+                    "type": "Service",
+                    "identifiers": ["guardduty.amazonaws.com"],
+                }],
+            },
+            {
+                "sid": "Allow GetBucketLocation",
+                "actions": ["s3:GetBucketLocation"],
+                "resources": [gd_bucket_arn1],
+                "principals": [{
+                    "type": "Service",
+                    "identifiers": ["guardduty.amazonaws.com"],
+                }],
+            },
         ]))
         kms_pol = aws.iam.get_policy_document(statements=[
-            aws.iam.GetPolicyDocumentStatementArgs(
-                sid="Allow GuardDuty to encrypt findings",
-                actions=["kms:GenerateDataKey"],
-                resources=[f"arn:aws:kms:{current_region.name}:{current_caller_identity.account_id}:key/*"],
-                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                    type="Service",
-                    identifiers=["guardduty.amazonaws.com"],
-                )],
-            ),
-            aws.iam.GetPolicyDocumentStatementArgs(
-                sid="Allow all users to modify/delete key (test only)",
-                actions=["kms:*"],
-                resources=[f"arn:aws:kms:{current_region.name}:{current_caller_identity.account_id}:key/*"],
-                principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                    type="AWS",
-                    identifiers=[f"arn:aws:iam::{current_caller_identity.account_id}:root"],
-                )],
-            ),
+            {
+                "sid": "Allow GuardDuty to encrypt findings",
+                "actions": ["kms:GenerateDataKey"],
+                "resources": [f"arn:aws:kms:{current_region.name}:{current_caller_identity.account_id}:key/*"],
+                "principals": [{
+                    "type": "Service",
+                    "identifiers": ["guardduty.amazonaws.com"],
+                }],
+            },
+            {
+                "sid": "Allow all users to modify/delete key (test only)",
+                "actions": ["kms:*"],
+                "resources": [f"arn:aws:kms:{current_region.name}:{current_caller_identity.account_id}:key/*"],
+                "principals": [{
+                    "type": "AWS",
+                    "identifiers": [f"arn:aws:iam::{current_caller_identity.account_id}:root"],
+                }],
+            },
         ])
         test_gd = aws.guardduty.Detector("testGd", enable=True)
         gd_bucket_policy = aws.s3.BucketPolicy("gdBucketPolicy",

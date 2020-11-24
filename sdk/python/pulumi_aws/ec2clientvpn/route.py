@@ -36,13 +36,13 @@ class Route(pulumi.CustomResource):
             description="Example Client VPN endpoint",
             server_certificate_arn=aws_acm_certificate["example"]["arn"],
             client_cidr_block="10.0.0.0/16",
-            authentication_options=[aws.ec2clientvpn.EndpointAuthenticationOptionArgs(
-                type="certificate-authentication",
-                root_certificate_chain_arn=aws_acm_certificate["example"]["arn"],
-            )],
-            connection_log_options=aws.ec2clientvpn.EndpointConnectionLogOptionsArgs(
-                enabled=False,
-            ))
+            authentication_options=[{
+                "type": "certificate-authentication",
+                "rootCertificateChainArn": aws_acm_certificate["example"]["arn"],
+            }],
+            connection_log_options={
+                "enabled": False,
+            })
         example_network_association = aws.ec2clientvpn.NetworkAssociation("exampleNetworkAssociation",
             client_vpn_endpoint_id=example_endpoint.id,
             subnet_id=aws_subnet["example"]["id"])

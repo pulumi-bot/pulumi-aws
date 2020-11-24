@@ -46,13 +46,13 @@ class Domain(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.elasticsearch.Domain("example",
-            cluster_config=aws.elasticsearch.DomainClusterConfigArgs(
-                instance_type="r4.large.elasticsearch",
-            ),
+            cluster_config={
+                "instance_type": "r4.large.elasticsearch",
+            },
             elasticsearch_version="1.5",
-            snapshot_options=aws.elasticsearch.DomainSnapshotOptionsArgs(
-                automated_snapshot_start_hour=23,
-            ),
+            snapshot_options={
+                "automatedSnapshotStartHour": 23,
+            },
             tags={
                 "Domain": "TestDomain",
             })
@@ -115,10 +115,10 @@ class Domain(pulumi.CustomResource):
         }
         \"\"\")
         # .. other configuration ...
-        example_domain = aws.elasticsearch.Domain("exampleDomain", log_publishing_options=[aws.elasticsearch.DomainLogPublishingOptionArgs(
-            cloudwatch_log_group_arn=example_log_group.arn,
-            log_type="INDEX_SLOW_LOGS",
-        )])
+        example_domain = aws.elasticsearch.Domain("exampleDomain", log_publishing_options=[{
+            "cloudwatch_log_group_arn": example_log_group.arn,
+            "logType": "INDEX_SLOW_LOGS",
+        }])
         ```
         ### VPC based ES
 
@@ -143,25 +143,25 @@ class Domain(pulumi.CustomResource):
         es_security_group = aws.ec2.SecurityGroup("esSecurityGroup",
             description="Managed by Pulumi",
             vpc_id=selected_vpc.id,
-            ingress=[aws.ec2.SecurityGroupIngressArgs(
-                from_port=443,
-                to_port=443,
-                protocol="tcp",
-                cidr_blocks=[selected_vpc.cidr_block],
-            )])
+            ingress=[{
+                "from_port": 443,
+                "to_port": 443,
+                "protocol": "tcp",
+                "cidr_blocks": [selected_vpc.cidr_block],
+            }])
         es_service_linked_role = aws.iam.ServiceLinkedRole("esServiceLinkedRole", aws_service_name="es.amazonaws.com")
         es_domain = aws.elasticsearch.Domain("esDomain",
             elasticsearch_version="6.3",
-            cluster_config=aws.elasticsearch.DomainClusterConfigArgs(
-                instance_type="m4.large.elasticsearch",
-            ),
-            vpc_options=aws.elasticsearch.DomainVpcOptionsArgs(
-                subnet_ids=[
+            cluster_config={
+                "instance_type": "m4.large.elasticsearch",
+            },
+            vpc_options={
+                "subnet_ids": [
                     selected_subnet_ids.ids[0],
                     selected_subnet_ids.ids[1],
                 ],
-                security_group_ids=[es_security_group.id],
-            ),
+                "security_group_ids": [es_security_group.id],
+            },
             advanced_options={
                 "rest.action.multi.allow_explicit_index": "true",
             },
@@ -177,9 +177,9 @@ class Domain(pulumi.CustomResource):
         	]
         }}
         \"\"\",
-            snapshot_options=aws.elasticsearch.DomainSnapshotOptionsArgs(
-                automated_snapshot_start_hour=23,
-            ),
+            snapshot_options={
+                "automatedSnapshotStartHour": 23,
+            },
             tags={
                 "Domain": "TestDomain",
             },

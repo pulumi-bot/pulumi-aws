@@ -96,13 +96,13 @@ def get_instance_type_offering(filters: Optional[Sequence[pulumi.InputType['GetI
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.ec2.get_instance_type_offering(filters=[aws.ec2.GetInstanceTypeOfferingFilterArgs(
-            name="instance-type",
-            values=[
+    example = aws.ec2.get_instance_type_offering(filters=[{
+            "name": "instance-type",
+            "values": [
                 "t2.micro",
                 "t3.micro",
             ],
-        )],
+        }],
         preferred_instance_types=[
             "t3.micro",
             "t2.micro",

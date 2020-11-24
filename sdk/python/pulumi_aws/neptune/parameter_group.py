@@ -36,10 +36,10 @@ class ParameterGroup(pulumi.CustomResource):
 
         example = aws.neptune.ParameterGroup("example",
             family="neptune1",
-            parameters=[aws.neptune.ParameterGroupParameterArgs(
-                name="neptune_query_timeout",
-                value="25",
-            )])
+            parameters=[{
+                "name": "neptune_query_timeout",
+                "value": "25",
+            }])
         ```
 
         ## Import

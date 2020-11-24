@@ -31,12 +31,12 @@ class SqlInjectionMatchSet(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        sql_injection_match_set = aws.wafregional.SqlInjectionMatchSet("sqlInjectionMatchSet", sql_injection_match_tuples=[aws.wafregional.SqlInjectionMatchSetSqlInjectionMatchTupleArgs(
-            field_to_match=aws.wafregional.SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs(
-                type="QUERY_STRING",
-            ),
-            text_transformation="URL_DECODE",
-        )])
+        sql_injection_match_set = aws.wafregional.SqlInjectionMatchSet("sqlInjectionMatchSet", sql_injection_match_tuples=[{
+            "fieldToMatch": {
+                "type": "QUERY_STRING",
+            },
+            "textTransformation": "URL_DECODE",
+        }])
         ```
 
         ## Import

@@ -33,14 +33,14 @@ class ParameterGroup(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.dax.ParameterGroup("example", parameters=[
-            aws.dax.ParameterGroupParameterArgs(
-                name="query-ttl-millis",
-                value="100000",
-            ),
-            aws.dax.ParameterGroupParameterArgs(
-                name="record-ttl-millis",
-                value="100000",
-            ),
+            {
+                "name": "query-ttl-millis",
+                "value": "100000",
+            },
+            {
+                "name": "record-ttl-millis",
+                "value": "100000",
+            },
         ])
         ```
 

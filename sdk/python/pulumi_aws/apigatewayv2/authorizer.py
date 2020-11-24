@@ -57,10 +57,10 @@ class Authorizer(pulumi.CustomResource):
             api_id=aws_apigatewayv2_api["example"]["id"],
             authorizer_type="JWT",
             identity_sources=["$request.header.Authorization"],
-            jwt_configuration=aws.apigatewayv2.AuthorizerJwtConfigurationArgs(
-                audiences=["example"],
-                issuer=f"https://{aws_cognito_user_pool['example']['endpoint']}",
-            ))
+            jwt_configuration={
+                "audiences": ["example"],
+                "issuer": f"https://{aws_cognito_user_pool['example']['endpoint']}",
+            })
         ```
 
         ## Import

@@ -55,16 +55,16 @@ class ReportGroup(pulumi.CustomResource):
         example_bucket = aws.s3.Bucket("exampleBucket")
         example_report_group = aws.codebuild.ReportGroup("exampleReportGroup",
             type="TEST",
-            export_config=aws.codebuild.ReportGroupExportConfigArgs(
-                type="S3",
-                s3_destination={
+            export_config={
+                "type": "S3",
+                "s3_destination": {
                     "bucket": example_bucket.id,
                     "encryptionDisabled": False,
                     "encryption_key": example_key.arn,
                     "packaging": "NONE",
                     "path": "/some",
                 },
-            ))
+            })
         ```
 
         ## Import

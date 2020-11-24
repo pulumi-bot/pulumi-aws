@@ -94,12 +94,12 @@ class BucketObject(pulumi.CustomResource):
 
         examplebucket = aws.s3.Bucket("examplebucket",
             acl="private",
-            versioning=aws.s3.BucketVersioningArgs(
-                enabled=True,
-            ),
-            object_lock_configuration=aws.s3.BucketObjectLockConfigurationArgs(
-                object_lock_enabled="Enabled",
-            ))
+            versioning={
+                "enabled": True,
+            },
+            object_lock_configuration={
+                "objectLockEnabled": "Enabled",
+            })
         examplebucket_object = aws.s3.BucketObject("examplebucketObject",
             key="someobject",
             bucket=examplebucket.id,

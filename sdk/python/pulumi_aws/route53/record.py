@@ -63,9 +63,9 @@ class Record(pulumi.CustomResource):
             name="www",
             type="CNAME",
             ttl=5,
-            weighted_routing_policies=[aws.route53.RecordWeightedRoutingPolicyArgs(
-                weight=10,
-            )],
+            weighted_routing_policies=[{
+                "weight": 10,
+            }],
             set_identifier="dev",
             records=["dev.example.com"])
         www_live = aws.route53.Record("www-live",
@@ -73,9 +73,9 @@ class Record(pulumi.CustomResource):
             name="www",
             type="CNAME",
             ttl=5,
-            weighted_routing_policies=[aws.route53.RecordWeightedRoutingPolicyArgs(
-                weight=90,
-            )],
+            weighted_routing_policies=[{
+                "weight": 90,
+            }],
             set_identifier="live",
             records=["live.example.com"])
         ```
@@ -92,21 +92,21 @@ class Record(pulumi.CustomResource):
 
         main = aws.elb.LoadBalancer("main",
             availability_zones=["us-east-1c"],
-            listeners=[aws.elb.LoadBalancerListenerArgs(
-                instance_port=80,
-                instance_protocol="http",
-                lb_port=80,
-                lb_protocol="http",
-            )])
+            listeners=[{
+                "instance_port": 80,
+                "instanceProtocol": "http",
+                "lb_port": 80,
+                "lbProtocol": "http",
+            }])
         www = aws.route53.Record("www",
             zone_id=aws_route53_zone["primary"]["zone_id"],
             name="example.com",
             type="A",
-            aliases=[aws.route53.RecordAliasArgs(
-                name=main.dns_name,
-                zone_id=main.zone_id,
-                evaluate_target_health=True,
-            )])
+            aliases=[{
+                "name": main.dns_name,
+                "zone_id": main.zone_id,
+                "evaluateTargetHealth": True,
+            }])
         ```
         ### NS and SOA Record Management
 

@@ -56,9 +56,9 @@ class Repository(pulumi.CustomResource):
         test = aws.codeartifact.Repository("test",
             repository="example",
             domain=aws_codeartifact_domain["example"]["domain"],
-            upstreams=[aws.codeartifact.RepositoryUpstreamArgs(
-                repository_name=upstream.repository,
-            )])
+            upstreams=[{
+                "repository_name": upstream.repository,
+            }])
         ```
         ### With External Connection
 
@@ -72,9 +72,9 @@ class Repository(pulumi.CustomResource):
         test = aws.codeartifact.Repository("test",
             repository="example",
             domain=aws_codeartifact_domain["example"]["domain"],
-            external_connections=aws.codeartifact.RepositoryExternalConnectionsArgs(
-                external_connection_name="public:npmjs",
-            ))
+            external_connections={
+                "externalConnectionName": "public:npmjs",
+            })
         ```
 
         ## Import

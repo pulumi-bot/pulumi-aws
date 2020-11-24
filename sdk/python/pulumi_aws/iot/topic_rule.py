@@ -69,18 +69,18 @@ class TopicRule(pulumi.CustomResource):
             enabled=True,
             sql="SELECT * FROM 'topic/test'",
             sql_version="2016-03-23",
-            sns=aws.iot.TopicRuleSnsArgs(
-                message_format="RAW",
-                role_arn=role.arn,
-                target_arn=mytopic.arn,
-            ),
-            error_action=aws.iot.TopicRuleErrorActionArgs(
-                sns=aws.iot.TopicRuleErrorActionSnsArgs(
-                    message_format="RAW",
-                    role_arn=role.arn,
-                    target_arn=myerrortopic.arn,
-                ),
-            ))
+            sns={
+                "messageFormat": "RAW",
+                "role_arn": role.arn,
+                "target_arn": mytopic.arn,
+            },
+            error_action={
+                "sns": {
+                    "messageFormat": "RAW",
+                    "role_arn": role.arn,
+                    "target_arn": myerrortopic.arn,
+                },
+            })
         iam_policy_for_lambda = aws.iam.RolePolicy("iamPolicyForLambda",
             role=role.id,
             policy=mytopic.arn.apply(lambda arn: f\"\"\"{{

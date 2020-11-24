@@ -49,9 +49,9 @@ class AccessPoint(pulumi.CustomResource):
         example_vpc = aws.ec2.Vpc("exampleVpc", cidr_block="10.0.0.0/16")
         example_access_point = aws.s3.AccessPoint("exampleAccessPoint",
             bucket=example_bucket.arn,
-            vpc_configuration=aws.s3.AccessPointVpcConfigurationArgs(
-                vpc_id=example_vpc.id,
-            ))
+            vpc_configuration={
+                "vpc_id": example_vpc.id,
+            })
         ```
 
         ## Import

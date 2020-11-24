@@ -60,11 +60,11 @@ class Grant(pulumi.CustomResource):
                 "Decrypt",
                 "GenerateDataKey",
             ],
-            constraints=[aws.kms.GrantConstraintArgs(
-                encryption_context_equals={
+            constraints=[{
+                "encryptionContextEquals": {
                     "Department": "Finance",
                 },
-            )])
+            }])
         ```
 
         ## Import

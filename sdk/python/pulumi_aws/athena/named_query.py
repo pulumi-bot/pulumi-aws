@@ -36,14 +36,14 @@ class NamedQuery(pulumi.CustomResource):
         test_key = aws.kms.Key("testKey",
             deletion_window_in_days=7,
             description="Athena KMS Key")
-        test_workgroup = aws.athena.Workgroup("testWorkgroup", configuration=aws.athena.WorkgroupConfigurationArgs(
-            result_configuration=aws.athena.WorkgroupConfigurationResultConfigurationArgs(
-                encryption_configuration={
+        test_workgroup = aws.athena.Workgroup("testWorkgroup", configuration={
+            "resultConfiguration": {
+                "encryption_configuration": {
                     "encryptionOption": "SSE_KMS",
                     "kms_key_arn": test_key.arn,
                 },
-            ),
-        ))
+            },
+        })
         hoge_database = aws.athena.Database("hogeDatabase",
             name="users",
             bucket=hoge_bucket.id)

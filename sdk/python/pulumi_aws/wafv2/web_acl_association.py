@@ -57,14 +57,14 @@ class WebAclAssociation(pulumi.CustomResource):
             deployment=example_deployment.id)
         example_web_acl = aws.wafv2.WebAcl("exampleWebAcl",
             scope="REGIONAL",
-            default_action=aws.wafv2.WebAclDefaultActionArgs(
-                allow=aws.wafv2.WebAclDefaultActionAllowArgs(),
-            ),
-            visibility_config=aws.wafv2.WebAclVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
+            default_action={
+                "allow": {},
+            },
+            visibility_config={
+                "cloudwatchMetricsEnabled": False,
+                "metric_name": "friendly-metric-name",
+                "sampledRequestsEnabled": False,
+            })
         example_web_acl_association = aws.wafv2.WebAclAssociation("exampleWebAclAssociation",
             resource_arn=example_stage.arn,
             web_acl_arn=example_web_acl.arn)

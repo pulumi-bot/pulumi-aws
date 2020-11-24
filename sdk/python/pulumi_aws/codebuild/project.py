@@ -124,60 +124,60 @@ class Project(pulumi.CustomResource):
             description="test_codebuild_project",
             build_timeout=5,
             service_role=example_role.arn,
-            artifacts=aws.codebuild.ProjectArtifactsArgs(
-                type="NO_ARTIFACTS",
-            ),
-            cache=aws.codebuild.ProjectCacheArgs(
-                type="S3",
-                location=example_bucket.bucket,
-            ),
-            environment=aws.codebuild.ProjectEnvironmentArgs(
-                compute_type="BUILD_GENERAL1_SMALL",
-                image="aws/codebuild/standard:1.0",
-                type="LINUX_CONTAINER",
-                image_pull_credentials_type="CODEBUILD",
-                environment_variables=[
-                    aws.codebuild.ProjectEnvironmentEnvironmentVariableArgs(
-                        name="SOME_KEY1",
-                        value="SOME_VALUE1",
-                    ),
-                    aws.codebuild.ProjectEnvironmentEnvironmentVariableArgs(
-                        name="SOME_KEY2",
-                        value="SOME_VALUE2",
-                        type="PARAMETER_STORE",
-                    ),
+            artifacts={
+                "type": "NO_ARTIFACTS",
+            },
+            cache={
+                "type": "S3",
+                "location": example_bucket.bucket,
+            },
+            environment={
+                "computeType": "BUILD_GENERAL1_SMALL",
+                "image": "aws/codebuild/standard:1.0",
+                "type": "LINUX_CONTAINER",
+                "imagePullCredentialsType": "CODEBUILD",
+                "environmentVariables": [
+                    {
+                        "name": "SOME_KEY1",
+                        "value": "SOME_VALUE1",
+                    },
+                    {
+                        "name": "SOME_KEY2",
+                        "value": "SOME_VALUE2",
+                        "type": "PARAMETER_STORE",
+                    },
                 ],
-            ),
-            logs_config=aws.codebuild.ProjectLogsConfigArgs(
-                cloudwatch_logs=aws.codebuild.ProjectLogsConfigCloudwatchLogsArgs(
-                    group_name="log-group",
-                    stream_name="log-stream",
-                ),
-                s3_logs=aws.codebuild.ProjectLogsConfigS3LogsArgs(
-                    status="ENABLED",
-                    location=example_bucket.id.apply(lambda id: f"{id}/build-log"),
-                ),
-            ),
-            source=aws.codebuild.ProjectSourceArgs(
-                type="GITHUB",
-                location="https://github.com/mitchellh/packer.git",
-                git_clone_depth=1,
-                git_submodules_config=aws.codebuild.ProjectSourceGitSubmodulesConfigArgs(
-                    fetch_submodules=True,
-                ),
-            ),
+            },
+            logs_config={
+                "cloudwatchLogs": {
+                    "group_name": "log-group",
+                    "streamName": "log-stream",
+                },
+                "s3Logs": {
+                    "status": "ENABLED",
+                    "location": example_bucket.id.apply(lambda id: f"{id}/build-log"),
+                },
+            },
+            source={
+                "type": "GITHUB",
+                "location": "https://github.com/mitchellh/packer.git",
+                "gitCloneDepth": 1,
+                "gitSubmodulesConfig": {
+                    "fetchSubmodules": True,
+                },
+            },
             source_version="master",
-            vpc_config=aws.codebuild.ProjectVpcConfigArgs(
-                vpc_id=aws_vpc["example"]["id"],
-                subnets=[
+            vpc_config={
+                "vpc_id": aws_vpc["example"]["id"],
+                "subnets": [
                     aws_subnet["example1"]["id"],
                     aws_subnet["example2"]["id"],
                 ],
-                security_group_ids=[
+                "security_group_ids": [
                     aws_security_group["example1"]["id"],
                     aws_security_group["example2"]["id"],
                 ],
-            ),
+            },
             tags={
                 "Environment": "Test",
             })
@@ -186,31 +186,31 @@ class Project(pulumi.CustomResource):
             build_timeout=5,
             queued_timeout=5,
             service_role=example_role.arn,
-            artifacts=aws.codebuild.ProjectArtifactsArgs(
-                type="NO_ARTIFACTS",
-            ),
-            cache=aws.codebuild.ProjectCacheArgs(
-                type="LOCAL",
-                modes=[
+            artifacts={
+                "type": "NO_ARTIFACTS",
+            },
+            cache={
+                "type": "LOCAL",
+                "modes": [
                     "LOCAL_DOCKER_LAYER_CACHE",
                     "LOCAL_SOURCE_CACHE",
                 ],
-            ),
-            environment=aws.codebuild.ProjectEnvironmentArgs(
-                compute_type="BUILD_GENERAL1_SMALL",
-                image="aws/codebuild/standard:1.0",
-                type="LINUX_CONTAINER",
-                image_pull_credentials_type="CODEBUILD",
-                environment_variables=[aws.codebuild.ProjectEnvironmentEnvironmentVariableArgs(
-                    name="SOME_KEY1",
-                    value="SOME_VALUE1",
-                )],
-            ),
-            source=aws.codebuild.ProjectSourceArgs(
-                type="GITHUB",
-                location="https://github.com/mitchellh/packer.git",
-                git_clone_depth=1,
-            ),
+            },
+            environment={
+                "computeType": "BUILD_GENERAL1_SMALL",
+                "image": "aws/codebuild/standard:1.0",
+                "type": "LINUX_CONTAINER",
+                "imagePullCredentialsType": "CODEBUILD",
+                "environmentVariables": [{
+                    "name": "SOME_KEY1",
+                    "value": "SOME_VALUE1",
+                }],
+            },
+            source={
+                "type": "GITHUB",
+                "location": "https://github.com/mitchellh/packer.git",
+                "gitCloneDepth": 1,
+            },
             tags={
                 "Environment": "Test",
             })

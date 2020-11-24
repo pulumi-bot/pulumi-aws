@@ -45,13 +45,13 @@ class BucketMetric(pulumi.CustomResource):
         example = aws.s3.Bucket("example")
         example_filtered = aws.s3.BucketMetric("example-filtered",
             bucket=example.bucket,
-            filter=aws.s3.BucketMetricFilterArgs(
-                prefix="documents/",
-                tags={
+            filter={
+                "prefix": "documents/",
+                "tags": {
                     "priority": "high",
                     "class": "blue",
                 },
-            ))
+            })
         ```
 
         ## Import

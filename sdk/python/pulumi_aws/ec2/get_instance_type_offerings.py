@@ -87,17 +87,17 @@ def get_instance_type_offerings(filters: Optional[Sequence[pulumi.InputType['Get
     import pulumi_aws as aws
 
     example = aws.ec2.get_instance_type_offerings(filters=[
-            aws.ec2.GetInstanceTypeOfferingsFilterArgs(
-                name="instance-type",
-                values=[
+            {
+                "name": "instance-type",
+                "values": [
                     "t2.micro",
                     "t3.micro",
                 ],
-            ),
-            aws.ec2.GetInstanceTypeOfferingsFilterArgs(
-                name="location",
-                values=["usw2-az4"],
-            ),
+            },
+            {
+                "name": "location",
+                "values": ["usw2-az4"],
+            },
         ],
         location_type="availability-zone-id")
     ```

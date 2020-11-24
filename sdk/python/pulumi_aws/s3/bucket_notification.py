@@ -52,11 +52,11 @@ class BucketNotification(pulumi.CustomResource):
         \"\"\"))
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
-            topics=[aws.s3.BucketNotificationTopicArgs(
-                topic_arn=topic.arn,
-                events=["s3:ObjectCreated:*"],
-                filter_suffix=".log",
-            )])
+            topics=[{
+                "topic_arn": topic.arn,
+                "events": ["s3:ObjectCreated:*"],
+                "filterSuffix": ".log",
+            }])
         ```
         ### Add notification configuration to SQS Queue
 
@@ -82,11 +82,11 @@ class BucketNotification(pulumi.CustomResource):
         \"\"\"))
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
-            queues=[aws.s3.BucketNotificationQueueArgs(
-                queue_arn=queue.arn,
-                events=["s3:ObjectCreated:*"],
-                filter_suffix=".log",
-            )])
+            queues=[{
+                "queueArn": queue.arn,
+                "events": ["s3:ObjectCreated:*"],
+                "filterSuffix": ".log",
+            }])
         ```
         ### Add notification configuration to Lambda Function
 
@@ -120,12 +120,12 @@ class BucketNotification(pulumi.CustomResource):
             source_arn=bucket.arn)
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
-            lambda_functions=[aws.s3.BucketNotificationLambdaFunctionArgs(
-                lambda_function_arn=func.arn,
-                events=["s3:ObjectCreated:*"],
-                filter_prefix="AWSLogs/",
-                filter_suffix=".log",
-            )],
+            lambda_functions=[{
+                "lambda_function_arn": func.arn,
+                "events": ["s3:ObjectCreated:*"],
+                "filterPrefix": "AWSLogs/",
+                "filterSuffix": ".log",
+            }],
             opts=ResourceOptions(depends_on=[allow_bucket]))
         ```
         ### Trigger multiple Lambda functions
@@ -170,18 +170,18 @@ class BucketNotification(pulumi.CustomResource):
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
             lambda_functions=[
-                aws.s3.BucketNotificationLambdaFunctionArgs(
-                    lambda_function_arn=func1.arn,
-                    events=["s3:ObjectCreated:*"],
-                    filter_prefix="AWSLogs/",
-                    filter_suffix=".log",
-                ),
-                aws.s3.BucketNotificationLambdaFunctionArgs(
-                    lambda_function_arn=func2.arn,
-                    events=["s3:ObjectCreated:*"],
-                    filter_prefix="OtherLogs/",
-                    filter_suffix=".log",
-                ),
+                {
+                    "lambda_function_arn": func1.arn,
+                    "events": ["s3:ObjectCreated:*"],
+                    "filterPrefix": "AWSLogs/",
+                    "filterSuffix": ".log",
+                },
+                {
+                    "lambda_function_arn": func2.arn,
+                    "events": ["s3:ObjectCreated:*"],
+                    "filterPrefix": "OtherLogs/",
+                    "filterSuffix": ".log",
+                },
             ],
             opts=ResourceOptions(depends_on=[
                     allow_bucket1,
@@ -213,18 +213,18 @@ class BucketNotification(pulumi.CustomResource):
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
             queues=[
-                aws.s3.BucketNotificationQueueArgs(
-                    id="image-upload-event",
-                    queue_arn=queue.arn,
-                    events=["s3:ObjectCreated:*"],
-                    filter_prefix="images/",
-                ),
-                aws.s3.BucketNotificationQueueArgs(
-                    id="video-upload-event",
-                    queue_arn=queue.arn,
-                    events=["s3:ObjectCreated:*"],
-                    filter_prefix="videos/",
-                ),
+                {
+                    "id": "image-upload-event",
+                    "queueArn": queue.arn,
+                    "events": ["s3:ObjectCreated:*"],
+                    "filterPrefix": "images/",
+                },
+                {
+                    "id": "video-upload-event",
+                    "queueArn": queue.arn,
+                    "events": ["s3:ObjectCreated:*"],
+                    "filterPrefix": "videos/",
+                },
             ])
         ```
 

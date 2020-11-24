@@ -34,10 +34,10 @@ class ConfigurationAggregator(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        account = aws.cfg.ConfigurationAggregator("account", account_aggregation_source=aws.cfg.ConfigurationAggregatorAccountAggregationSourceArgs(
-            account_ids=["123456789012"],
-            regions=["us-west-2"],
-        ))
+        account = aws.cfg.ConfigurationAggregator("account", account_aggregation_source={
+            "accountIds": ["123456789012"],
+            "regions": ["us-west-2"],
+        })
         ```
         ### Organization Based Aggregation
 
@@ -62,10 +62,10 @@ class ConfigurationAggregator(pulumi.CustomResource):
         organization_role_policy_attachment = aws.iam.RolePolicyAttachment("organizationRolePolicyAttachment",
             role=organization_role.name,
             policy_arn="arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations")
-        organization_configuration_aggregator = aws.cfg.ConfigurationAggregator("organizationConfigurationAggregator", organization_aggregation_source=aws.cfg.ConfigurationAggregatorOrganizationAggregationSourceArgs(
-            all_regions=True,
-            role_arn=organization_role.arn,
-        ),
+        organization_configuration_aggregator = aws.cfg.ConfigurationAggregator("organizationConfigurationAggregator", organization_aggregation_source={
+            "allRegions": True,
+            "role_arn": organization_role.arn,
+        },
         opts=ResourceOptions(depends_on=[organization_role_policy_attachment]))
         ```
 

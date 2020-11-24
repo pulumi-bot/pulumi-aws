@@ -37,17 +37,17 @@ class Classifier(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.glue.Classifier("example", csv_classifier=aws.glue.ClassifierCsvClassifierArgs(
-            allow_single_column=False,
-            contains_header="PRESENT",
-            delimiter=",",
-            disable_value_trimming=False,
-            headers=[
+        example = aws.glue.Classifier("example", csv_classifier={
+            "allowSingleColumn": False,
+            "containsHeader": "PRESENT",
+            "delimiter": ",",
+            "disableValueTrimming": False,
+            "headers": [
                 "example1",
                 "example2",
             ],
-            quote_symbol="'",
-        ))
+            "quoteSymbol": "'",
+        })
         ```
         ### Grok Classifier
 
@@ -55,10 +55,10 @@ class Classifier(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.glue.Classifier("example", grok_classifier=aws.glue.ClassifierGrokClassifierArgs(
-            classification="example",
-            grok_pattern="example",
-        ))
+        example = aws.glue.Classifier("example", grok_classifier={
+            "classification": "example",
+            "grokPattern": "example",
+        })
         ```
         ### JSON Classifier
 
@@ -66,9 +66,9 @@ class Classifier(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.glue.Classifier("example", json_classifier=aws.glue.ClassifierJsonClassifierArgs(
-            json_path="example",
-        ))
+        example = aws.glue.Classifier("example", json_classifier={
+            "jsonPath": "example",
+        })
         ```
         ### XML Classifier
 
@@ -76,10 +76,10 @@ class Classifier(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.glue.Classifier("example", xml_classifier=aws.glue.ClassifierXmlClassifierArgs(
-            classification="example",
-            row_tag="example",
-        ))
+        example = aws.glue.Classifier("example", xml_classifier={
+            "classification": "example",
+            "rowTag": "example",
+        })
         ```
 
         ## Import

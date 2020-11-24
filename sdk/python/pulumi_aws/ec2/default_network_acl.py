@@ -64,22 +64,22 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
         default = aws.ec2.DefaultNetworkAcl("default",
             default_network_acl_id=mainvpc.default_network_acl_id,
-            ingress=[aws.ec2.DefaultNetworkAclIngressArgs(
-                protocol="-1",
-                rule_no=100,
-                action="allow",
-                cidr_block=mainvpc.cidr_block,
-                from_port=0,
-                to_port=0,
-            )],
-            egress=[aws.ec2.DefaultNetworkAclEgressArgs(
-                protocol="-1",
-                rule_no=100,
-                action="allow",
-                cidr_block="0.0.0.0/0",
-                from_port=0,
-                to_port=0,
-            )])
+            ingress=[{
+                "protocol": "-1",
+                "ruleNo": 100,
+                "action": "allow",
+                "cidr_block": mainvpc.cidr_block,
+                "from_port": 0,
+                "to_port": 0,
+            }],
+            egress=[{
+                "protocol": "-1",
+                "ruleNo": 100,
+                "action": "allow",
+                "cidr_block": "0.0.0.0/0",
+                "from_port": 0,
+                "to_port": 0,
+            }])
         ```
 
         ## Example config to deny all Egress traffic, allowing Ingress
@@ -94,14 +94,14 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
         default = aws.ec2.DefaultNetworkAcl("default",
             default_network_acl_id=mainvpc.default_network_acl_id,
-            ingress=[aws.ec2.DefaultNetworkAclIngressArgs(
-                protocol="-1",
-                rule_no=100,
-                action="allow",
-                cidr_block=mainvpc.cidr_block,
-                from_port=0,
-                to_port=0,
-            )])
+            ingress=[{
+                "protocol": "-1",
+                "ruleNo": 100,
+                "action": "allow",
+                "cidr_block": mainvpc.cidr_block,
+                "from_port": 0,
+                "to_port": 0,
+            }])
         ```
 
         ## Example config to deny all traffic to any Subnet in the Default Network ACL

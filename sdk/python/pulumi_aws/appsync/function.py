@@ -58,9 +58,9 @@ class Function(pulumi.CustomResource):
             api_id=example_graph_ql_api.id,
             name="example",
             type="HTTP",
-            http_config=aws.appsync.DataSourceHttpConfigArgs(
-                endpoint="http://example.com",
-            ))
+            http_config={
+                "endpoint": "http://example.com",
+            })
         example_function = aws.appsync.Function("exampleFunction",
             api_id=example_graph_ql_api.id,
             data_source=example_data_source.name,

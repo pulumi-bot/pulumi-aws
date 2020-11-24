@@ -39,32 +39,32 @@ class RuleGroup(pulumi.CustomResource):
 
         example = aws.wafv2.RuleGroup("example",
             capacity=2,
-            rules=[aws.wafv2.RuleGroupRuleArgs(
-                action=aws.wafv2.RuleGroupRuleActionArgs(
-                    allow=aws.wafv2.RuleGroupRuleActionAllowArgs(),
-                ),
-                name="rule-1",
-                priority=1,
-                statement=aws.wafv2.RuleGroupRuleStatementArgs(
-                    geo_match_statement=aws.wafv2.RuleGroupRuleStatementGeoMatchStatementArgs(
-                        country_codes=[
+            rules=[{
+                "action": {
+                    "allow": {},
+                },
+                "name": "rule-1",
+                "priority": 1,
+                "statement": {
+                    "geoMatchStatement": {
+                        "countryCodes": [
                             "US",
                             "NL",
                         ],
-                    ),
-                ),
-                visibility_config={
+                    },
+                },
+                "visibility_config": {
                     "cloudwatchMetricsEnabled": False,
                     "metric_name": "friendly-rule-metric-name",
                     "sampledRequestsEnabled": False,
                 },
-            )],
+            }],
             scope="REGIONAL",
-            visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
-                cloudwatch_metrics_enabled=False,
-                metric_name="friendly-metric-name",
-                sampled_requests_enabled=False,
-            ))
+            visibility_config={
+                "cloudwatchMetricsEnabled": False,
+                "metric_name": "friendly-metric-name",
+                "sampledRequestsEnabled": False,
+            })
         ```
 
         ## Import

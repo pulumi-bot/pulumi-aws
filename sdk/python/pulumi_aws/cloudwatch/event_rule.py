@@ -50,15 +50,15 @@ class EventRule(pulumi.CustomResource):
         sns = aws.cloudwatch.EventTarget("sns",
             rule=console.name,
             arn=aws_logins.arn)
-        sns_topic_policy = aws_logins.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["SNS:Publish"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="Service",
-                identifiers=["events.amazonaws.com"],
-            )],
-            resources=[arn],
-        )]))
+        sns_topic_policy = aws_logins.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
+            "effect": "Allow",
+            "actions": ["SNS:Publish"],
+            "principals": [{
+                "type": "Service",
+                "identifiers": ["events.amazonaws.com"],
+            }],
+            "resources": [arn],
+        }]))
         default = aws.sns.TopicPolicy("default",
             arn=aws_logins.arn,
             policy=sns_topic_policy.json)

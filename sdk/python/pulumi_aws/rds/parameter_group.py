@@ -44,14 +44,14 @@ class ParameterGroup(pulumi.CustomResource):
         default = aws.rds.ParameterGroup("default",
             family="mysql5.6",
             parameters=[
-                aws.rds.ParameterGroupParameterArgs(
-                    name="character_set_server",
-                    value="utf8",
-                ),
-                aws.rds.ParameterGroupParameterArgs(
-                    name="character_set_client",
-                    value="utf8",
-                ),
+                {
+                    "name": "character_set_server",
+                    "value": "utf8",
+                },
+                {
+                    "name": "character_set_client",
+                    "value": "utf8",
+                },
             ])
         ```
 

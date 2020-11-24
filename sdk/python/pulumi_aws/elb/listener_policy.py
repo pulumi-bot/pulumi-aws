@@ -33,13 +33,13 @@ class ListenerPolicy(pulumi.CustomResource):
 
         wu_tang = aws.elb.LoadBalancer("wu-tang",
             availability_zones=["us-east-1a"],
-            listeners=[aws.elb.LoadBalancerListenerArgs(
-                instance_port=443,
-                instance_protocol="http",
-                lb_port=443,
-                lb_protocol="https",
-                ssl_certificate_id="arn:aws:iam::000000000000:server-certificate/wu-tang.net",
-            )],
+            listeners=[{
+                "instance_port": 443,
+                "instanceProtocol": "http",
+                "lb_port": 443,
+                "lbProtocol": "https",
+                "sslCertificateId": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+            }],
             tags={
                 "Name": "wu-tang",
             })
@@ -48,14 +48,14 @@ class ListenerPolicy(pulumi.CustomResource):
             policy_name="wu-tang-ssl",
             policy_type_name="SSLNegotiationPolicyType",
             policy_attributes=[
-                aws.elb.LoadBalancerPolicyPolicyAttributeArgs(
-                    name="ECDHE-ECDSA-AES128-GCM-SHA256",
-                    value="true",
-                ),
-                aws.elb.LoadBalancerPolicyPolicyAttributeArgs(
-                    name="Protocol-TLSv1.2",
-                    value="true",
-                ),
+                {
+                    "name": "ECDHE-ECDSA-AES128-GCM-SHA256",
+                    "value": "true",
+                },
+                {
+                    "name": "Protocol-TLSv1.2",
+                    "value": "true",
+                },
             ])
         wu_tang_listener_policies_443 = aws.elb.ListenerPolicy("wu-tang-listener-policies-443",
             load_balancer_name=wu_tang.name,
@@ -72,13 +72,13 @@ class ListenerPolicy(pulumi.CustomResource):
 
         wu_tang = aws.elb.LoadBalancer("wu-tang",
             availability_zones=["us-east-1a"],
-            listeners=[aws.elb.LoadBalancerListenerArgs(
-                instance_port=443,
-                instance_protocol="http",
-                lb_port=443,
-                lb_protocol="https",
-                ssl_certificate_id="arn:aws:iam::000000000000:server-certificate/wu-tang.net",
-            )],
+            listeners=[{
+                "instance_port": 443,
+                "instanceProtocol": "http",
+                "lb_port": 443,
+                "lbProtocol": "https",
+                "sslCertificateId": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+            }],
             tags={
                 "Name": "wu-tang",
             })
@@ -86,10 +86,10 @@ class ListenerPolicy(pulumi.CustomResource):
             load_balancer_name=wu_tang.name,
             policy_name="wu-tang-ssl",
             policy_type_name="SSLNegotiationPolicyType",
-            policy_attributes=[aws.elb.LoadBalancerPolicyPolicyAttributeArgs(
-                name="Reference-Security-Policy",
-                value="ELBSecurityPolicy-TLS-1-1-2017-01",
-            )])
+            policy_attributes=[{
+                "name": "Reference-Security-Policy",
+                "value": "ELBSecurityPolicy-TLS-1-1-2017-01",
+            }])
         wu_tang_listener_policies_443 = aws.elb.ListenerPolicy("wu-tang-listener-policies-443",
             load_balancer_name=wu_tang.name,
             load_balancer_port=443,

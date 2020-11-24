@@ -40,39 +40,39 @@ class Preset(pulumi.CustomResource):
         import pulumi_aws as aws
 
         bar = aws.elastictranscoder.Preset("bar",
-            audio=aws.elastictranscoder.PresetAudioArgs(
-                audio_packing_mode="SingleTrack",
-                bit_rate="96",
-                channels="2",
-                codec="AAC",
-                sample_rate="44100",
-            ),
-            audio_codec_options=aws.elastictranscoder.PresetAudioCodecOptionsArgs(
-                profile="AAC-LC",
-            ),
+            audio={
+                "audioPackingMode": "SingleTrack",
+                "bitRate": "96",
+                "channels": "2",
+                "codec": "AAC",
+                "sampleRate": "44100",
+            },
+            audio_codec_options={
+                "profile": "AAC-LC",
+            },
             container="mp4",
             description="Sample Preset",
-            thumbnails=aws.elastictranscoder.PresetThumbnailsArgs(
-                format="png",
-                interval="120",
-                max_height="auto",
-                max_width="auto",
-                padding_policy="Pad",
-                sizing_policy="Fit",
-            ),
-            video=aws.elastictranscoder.PresetVideoArgs(
-                bit_rate="1600",
-                codec="H.264",
-                display_aspect_ratio="16:9",
-                fixed_gop="false",
-                frame_rate="auto",
-                keyframes_max_dist="240",
-                max_frame_rate="60",
-                max_height="auto",
-                max_width="auto",
-                padding_policy="Pad",
-                sizing_policy="Fit",
-            ),
+            thumbnails={
+                "format": "png",
+                "interval": "120",
+                "maxHeight": "auto",
+                "maxWidth": "auto",
+                "paddingPolicy": "Pad",
+                "sizingPolicy": "Fit",
+            },
+            video={
+                "bitRate": "1600",
+                "codec": "H.264",
+                "displayAspectRatio": "16:9",
+                "fixedGop": "false",
+                "frameRate": "auto",
+                "keyframesMaxDist": "240",
+                "maxFrameRate": "60",
+                "maxHeight": "auto",
+                "maxWidth": "auto",
+                "paddingPolicy": "Pad",
+                "sizingPolicy": "Fit",
+            },
             video_codec_options={
                 "ColorSpaceConversionMode": "None",
                 "InterlacedMode": "Progressive",
@@ -80,18 +80,18 @@ class Preset(pulumi.CustomResource):
                 "MaxReferenceFrames": "3",
                 "Profile": "main",
             },
-            video_watermarks=[aws.elastictranscoder.PresetVideoWatermarkArgs(
-                horizontal_align="Right",
-                horizontal_offset="10px",
-                id="Test",
-                max_height="20%",
-                max_width="20%",
-                opacity="55.5",
-                sizing_policy="ShrinkToFit",
-                target="Content",
-                vertical_align="Bottom",
-                vertical_offset="10px",
-            )])
+            video_watermarks=[{
+                "horizontalAlign": "Right",
+                "horizontalOffset": "10px",
+                "id": "Test",
+                "maxHeight": "20%",
+                "maxWidth": "20%",
+                "opacity": "55.5",
+                "sizingPolicy": "ShrinkToFit",
+                "target": "Content",
+                "verticalAlign": "Bottom",
+                "verticalOffset": "10px",
+            }])
         ```
 
         ## Import

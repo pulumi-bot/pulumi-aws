@@ -129,10 +129,10 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
     test_instances = aws.ec2.get_instances(instance_tags={
             "Role": "HardWorker",
         },
-        filters=[aws.ec2.GetInstancesFilterArgs(
-            name="instance.group-id",
-            values=["sg-12345678"],
-        )],
+        filters=[{
+            "name": "instance.group-id",
+            "values": ["sg-12345678"],
+        }],
         instance_state_names=[
             "running",
             "stopped",

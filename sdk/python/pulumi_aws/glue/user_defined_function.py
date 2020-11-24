@@ -43,10 +43,10 @@ class UserDefinedFunction(pulumi.CustomResource):
             class_name="class",
             owner_name="owner",
             owner_type="GROUP",
-            resource_uris=[aws.glue.UserDefinedFunctionResourceUriArgs(
-                resource_type="ARCHIVE",
-                uri="uri",
-            )])
+            resource_uris=[{
+                "resource_type": "ARCHIVE",
+                "uri": "uri",
+            }])
         ```
 
         ## Import

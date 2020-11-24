@@ -34,14 +34,14 @@ class FirewallPolicy(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.networkfirewall.FirewallPolicy("example",
-            firewall_policy=aws.networkfirewall.FirewallPolicyFirewallPolicyArgs(
-                stateless_default_actions=["aws:pass"],
-                stateless_fragment_default_actions=["aws:drop"],
-                stateless_rule_group_references=[aws.networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs(
-                    priority=1,
-                    resource_arn=aws_networkfirewall_rule_group["example"]["arn"],
-                )],
-            ),
+            firewall_policy={
+                "statelessDefaultActions": ["aws:pass"],
+                "statelessFragmentDefaultActions": ["aws:drop"],
+                "statelessRuleGroupReferences": [{
+                    "priority": 1,
+                    "resource_arn": aws_networkfirewall_rule_group["example"]["arn"],
+                }],
+            },
             tags={
                 "Tag1": "Value1",
                 "Tag2": "Value2",
@@ -53,23 +53,23 @@ class FirewallPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        test = aws.networkfirewall.FirewallPolicy("test", firewall_policy=aws.networkfirewall.FirewallPolicyFirewallPolicyArgs(
-            stateless_custom_actions=[aws.networkfirewall.FirewallPolicyFirewallPolicyStatelessCustomActionArgs(
-                action_definition=aws.networkfirewall.FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionArgs(
-                    publish_metric_action=aws.networkfirewall.FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionArgs(
-                        dimension=[{
+        test = aws.networkfirewall.FirewallPolicy("test", firewall_policy={
+            "statelessCustomActions": [{
+                "actionDefinition": {
+                    "publishMetricAction": {
+                        "dimension": [{
                             "value": "1",
                         }],
-                    ),
-                ),
-                action_name="ExampleCustomAction",
-            )],
-            stateless_default_actions=[
+                    },
+                },
+                "actionName": "ExampleCustomAction",
+            }],
+            "statelessDefaultActions": [
                 "aws:pass",
                 "ExampleCustomAction",
             ],
-            stateless_fragment_default_actions=["aws:drop"],
-        ))
+            "statelessFragmentDefaultActions": ["aws:drop"],
+        })
         ```
 
         ## Import

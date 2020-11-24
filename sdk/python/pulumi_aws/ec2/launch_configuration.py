@@ -50,14 +50,14 @@ class LaunchConfiguration(pulumi.CustomResource):
 
         ubuntu = aws.get_ami(most_recent=True,
             filters=[
-                aws.GetAmiFilterArgs(
-                    name="name",
-                    values=["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
-                ),
-                aws.GetAmiFilterArgs(
-                    name="virtualization-type",
-                    values=["hvm"],
-                ),
+                {
+                    "name": "name",
+                    "values": ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
+                },
+                {
+                    "name": "virtualization-type",
+                    "values": ["hvm"],
+                },
             ],
             owners=["099720109477"])
         as_conf = aws.ec2.LaunchConfiguration("asConf",
@@ -80,14 +80,14 @@ class LaunchConfiguration(pulumi.CustomResource):
 
         ubuntu = aws.get_ami(most_recent=True,
             filters=[
-                aws.GetAmiFilterArgs(
-                    name="name",
-                    values=["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
-                ),
-                aws.GetAmiFilterArgs(
-                    name="virtualization-type",
-                    values=["hvm"],
-                ),
+                {
+                    "name": "name",
+                    "values": ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
+                },
+                {
+                    "name": "virtualization-type",
+                    "values": ["hvm"],
+                },
             ],
             owners=["099720109477"])
         as_conf = aws.ec2.LaunchConfiguration("asConf",
@@ -119,14 +119,14 @@ class LaunchConfiguration(pulumi.CustomResource):
 
         ubuntu = aws.get_ami(most_recent=True,
             filters=[
-                aws.GetAmiFilterArgs(
-                    name="name",
-                    values=["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
-                ),
-                aws.GetAmiFilterArgs(
-                    name="virtualization-type",
-                    values=["hvm"],
-                ),
+                {
+                    "name": "name",
+                    "values": ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
+                },
+                {
+                    "name": "virtualization-type",
+                    "values": ["hvm"],
+                },
             ],
             owners=["099720109477"])
         as_conf = aws.ec2.LaunchConfiguration("asConf",

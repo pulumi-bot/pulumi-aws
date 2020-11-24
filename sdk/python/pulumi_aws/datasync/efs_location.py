@@ -37,10 +37,10 @@ class EfsLocation(pulumi.CustomResource):
 
         example = aws.datasync.EfsLocation("example",
             efs_file_system_arn=aws_efs_mount_target["example"]["file_system_arn"],
-            ec2_config=aws.datasync.EfsLocationEc2ConfigArgs(
-                security_group_arns=[aws_security_group["example"]["arn"]],
-                subnet_arn=aws_subnet["example"]["arn"],
-            ))
+            ec2_config={
+                "security_group_arns": [aws_security_group["example"]["arn"]],
+                "subnetArn": aws_subnet["example"]["arn"],
+            })
         ```
 
         ## Import

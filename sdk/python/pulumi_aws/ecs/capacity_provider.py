@@ -35,21 +35,21 @@ class CapacityProvider(pulumi.CustomResource):
         import pulumi_aws as aws
 
         # ... other configuration, including potentially other tags ...
-        test_group = aws.autoscaling.Group("testGroup", tags=[aws.autoscaling.GroupTagArgs(
-            key="AmazonECSManaged",
-            value="",
-            propagate_at_launch=True,
-        )])
-        test_capacity_provider = aws.ecs.CapacityProvider("testCapacityProvider", auto_scaling_group_provider=aws.ecs.CapacityProviderAutoScalingGroupProviderArgs(
-            auto_scaling_group_arn=test_group.arn,
-            managed_termination_protection="ENABLED",
-            managed_scaling=aws.ecs.CapacityProviderAutoScalingGroupProviderManagedScalingArgs(
-                maximum_scaling_step_size=1000,
-                minimum_scaling_step_size=1,
-                status="ENABLED",
-                target_capacity=10,
-            ),
-        ))
+        test_group = aws.autoscaling.Group("testGroup", tags=[{
+            "key": "AmazonECSManaged",
+            "value": "",
+            "propagateAtLaunch": True,
+        }])
+        test_capacity_provider = aws.ecs.CapacityProvider("testCapacityProvider", auto_scaling_group_provider={
+            "autoScalingGroupArn": test_group.arn,
+            "managedTerminationProtection": "ENABLED",
+            "managedScaling": {
+                "maximumScalingStepSize": 1000,
+                "minimumScalingStepSize": 1,
+                "status": "ENABLED",
+                "target_capacity": 10,
+            },
+        })
         ```
 
         ## Import

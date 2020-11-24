@@ -49,13 +49,13 @@ class PeeringConnectionOptions(pulumi.CustomResource):
             auto_accept=True)
         foo_peering_connection_options = aws.ec2.PeeringConnectionOptions("fooPeeringConnectionOptions",
             vpc_peering_connection_id=foo_vpc_peering_connection.id,
-            accepter=aws.ec2.PeeringConnectionOptionsAccepterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
-            requester=aws.ec2.PeeringConnectionOptionsRequesterArgs(
-                allow_vpc_to_remote_classic_link=True,
-                allow_classic_link_to_remote_vpc=True,
-            ))
+            accepter={
+                "allowRemoteVpcDnsResolution": True,
+            },
+            requester={
+                "allowVpcToRemoteClassicLink": True,
+                "allowClassicLinkToRemoteVpc": True,
+            })
         ```
 
         Basic cross-account usage:
@@ -98,15 +98,15 @@ class PeeringConnectionOptions(pulumi.CustomResource):
             opts=ResourceOptions(provider=aws["accepter"]))
         requester_peering_connection_options = aws.ec2.PeeringConnectionOptions("requesterPeeringConnectionOptions",
             vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
-            requester=aws.ec2.PeeringConnectionOptionsRequesterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
+            requester={
+                "allowRemoteVpcDnsResolution": True,
+            },
             opts=ResourceOptions(provider=aws["requester"]))
         accepter_peering_connection_options = aws.ec2.PeeringConnectionOptions("accepterPeeringConnectionOptions",
             vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
-            accepter=aws.ec2.PeeringConnectionOptionsAccepterArgs(
-                allow_remote_vpc_dns_resolution=True,
-            ),
+            accepter={
+                "allowRemoteVpcDnsResolution": True,
+            },
             opts=ResourceOptions(provider=aws["accepter"]))
         ```
 

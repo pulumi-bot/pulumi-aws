@@ -48,11 +48,11 @@ class NodeGroup(pulumi.CustomResource):
             cluster_name=aws_eks_cluster["example"]["name"],
             node_role_arn=aws_iam_role["example"]["arn"],
             subnet_ids=[__item["id"] for __item in aws_subnet["example"]],
-            scaling_config=aws.eks.NodeGroupScalingConfigArgs(
-                desired_size=1,
-                max_size=1,
-                min_size=1,
-            ),
+            scaling_config={
+                "desiredSize": 1,
+                "max_size": 1,
+                "min_size": 1,
+            },
             opts=ResourceOptions(depends_on=[
                     aws_iam_role_policy_attachment["example-AmazonEKSWorkerNodePolicy"],
                     aws_iam_role_policy_attachment["example-AmazonEKS_CNI_Policy"],
@@ -68,9 +68,9 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_aws as aws
 
         # ... other configurations ...
-        example = aws.eks.NodeGroup("example", scaling_config=aws.eks.NodeGroupScalingConfigArgs(
-            desired_size=2,
-        ))
+        example = aws.eks.NodeGroup("example", scaling_config={
+            "desiredSize": 2,
+        })
         ```
         ### Example IAM Role for EKS Node Group
 

@@ -98,14 +98,14 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.cloudtrail.Trail("example", event_selectors=[aws.cloudtrail.TrailEventSelectorArgs(
-            data_resources=[aws.cloudtrail.TrailEventSelectorDataResourceArgs(
-                type="AWS::Lambda::Function",
-                values=["arn:aws:lambda"],
-            )],
-            include_management_events=True,
-            read_write_type="All",
-        )])
+        example = aws.cloudtrail.Trail("example", event_selectors=[{
+            "dataResources": [{
+                "type": "AWS::Lambda::Function",
+                "values": ["arn:aws:lambda"],
+            }],
+            "includeManagementEvents": True,
+            "readWriteType": "All",
+        }])
         ```
         ### Logging All S3 Bucket Object Events
 
@@ -113,14 +113,14 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.cloudtrail.Trail("example", event_selectors=[aws.cloudtrail.TrailEventSelectorArgs(
-            data_resources=[aws.cloudtrail.TrailEventSelectorDataResourceArgs(
-                type="AWS::S3::Object",
-                values=["arn:aws:s3:::"],
-            )],
-            include_management_events=True,
-            read_write_type="All",
-        )])
+        example = aws.cloudtrail.Trail("example", event_selectors=[{
+            "dataResources": [{
+                "type": "AWS::S3::Object",
+                "values": ["arn:aws:s3:::"],
+            }],
+            "includeManagementEvents": True,
+            "readWriteType": "All",
+        }])
         ```
         ### Logging Individual S3 Bucket Events
 
@@ -129,14 +129,14 @@ class Trail(pulumi.CustomResource):
         import pulumi_aws as aws
 
         important_bucket = aws.s3.get_bucket(bucket="important-bucket")
-        example = aws.cloudtrail.Trail("example", event_selectors=[aws.cloudtrail.TrailEventSelectorArgs(
-            data_resources=[aws.cloudtrail.TrailEventSelectorDataResourceArgs(
-                type="AWS::S3::Object",
-                values=[f"{important_bucket.arn}/"],
-            )],
-            include_management_events=True,
-            read_write_type="All",
-        )])
+        example = aws.cloudtrail.Trail("example", event_selectors=[{
+            "dataResources": [{
+                "type": "AWS::S3::Object",
+                "values": [f"{important_bucket.arn}/"],
+            }],
+            "includeManagementEvents": True,
+            "readWriteType": "All",
+        }])
         ```
         ### Sending Events to CloudWatch Logs
 

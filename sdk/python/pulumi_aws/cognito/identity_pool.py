@@ -42,16 +42,16 @@ class IdentityPool(pulumi.CustomResource):
             identity_pool_name="identity pool",
             allow_unauthenticated_identities=False,
             cognito_identity_providers=[
-                aws.cognito.IdentityPoolCognitoIdentityProviderArgs(
-                    client_id="6lhlkkfbfb4q5kpp90urffae",
-                    provider_name="cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ",
-                    server_side_token_check=False,
-                ),
-                aws.cognito.IdentityPoolCognitoIdentityProviderArgs(
-                    client_id="7kodkvfqfb4qfkp39eurffae",
-                    provider_name="cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu",
-                    server_side_token_check=False,
-                ),
+                {
+                    "client_id": "6lhlkkfbfb4q5kpp90urffae",
+                    "provider_name": "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ",
+                    "serverSideTokenCheck": False,
+                },
+                {
+                    "client_id": "7kodkvfqfb4qfkp39eurffae",
+                    "provider_name": "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu",
+                    "serverSideTokenCheck": False,
+                },
             ],
             supported_login_providers={
                 "graph.facebook.com": "7346241598935552",

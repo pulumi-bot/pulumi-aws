@@ -75,16 +75,16 @@ class Environment(pulumi.CustomResource):
             application=tftest.name,
             solution_stack_name="64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4",
             settings=[
-                aws.elasticbeanstalk.EnvironmentSettingArgs(
-                    namespace="aws:ec2:vpc",
-                    name="VPCId",
-                    value="vpc-xxxxxxxx",
-                ),
-                aws.elasticbeanstalk.EnvironmentSettingArgs(
-                    namespace="aws:ec2:vpc",
-                    name="Subnets",
-                    value="subnet-xxxxxxxx",
-                ),
+                {
+                    "namespace": "aws:ec2:vpc",
+                    "name": "VPCId",
+                    "value": "vpc-xxxxxxxx",
+                },
+                {
+                    "namespace": "aws:ec2:vpc",
+                    "name": "Subnets",
+                    "value": "subnet-xxxxxxxx",
+                },
             ])
         ```
 

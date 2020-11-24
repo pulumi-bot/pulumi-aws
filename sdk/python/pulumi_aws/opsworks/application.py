@@ -55,21 +55,21 @@ class Application(pulumi.CustomResource):
                 "example.com",
                 "sub.example.com",
             ],
-            environments=[aws.opsworks.ApplicationEnvironmentArgs(
-                key="key",
-                value="value",
-                secure=False,
-            )],
-            app_sources=[aws.opsworks.ApplicationAppSourceArgs(
-                type="git",
-                revision="master",
-                url="https://github.com/example.git",
-            )],
+            environments=[{
+                "key": "key",
+                "value": "value",
+                "secure": False,
+            }],
+            app_sources=[{
+                "type": "git",
+                "revision": "master",
+                "url": "https://github.com/example.git",
+            }],
             enable_ssl=True,
-            ssl_configurations=[aws.opsworks.ApplicationSslConfigurationArgs(
-                private_key=(lambda path: open(path).read())("./foobar.key"),
-                certificate=(lambda path: open(path).read())("./foobar.crt"),
-            )],
+            ssl_configurations=[{
+                "private_key": (lambda path: open(path).read())("./foobar.key"),
+                "certificate": (lambda path: open(path).read())("./foobar.crt"),
+            }],
             document_root="public",
             auto_bundle_on_deploy="true",
             rails_env="staging")

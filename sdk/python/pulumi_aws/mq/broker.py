@@ -61,18 +61,18 @@ class Broker(pulumi.CustomResource):
 
         example = aws.mq.Broker("example",
             broker_name="example",
-            configuration=aws.mq.BrokerConfigurationArgs(
-                id=aws_mq_configuration["test"]["id"],
-                revision=aws_mq_configuration["test"]["latest_revision"],
-            ),
+            configuration={
+                "id": aws_mq_configuration["test"]["id"],
+                "revision": aws_mq_configuration["test"]["latest_revision"],
+            },
             engine_type="ActiveMQ",
             engine_version="5.15.0",
             host_instance_type="mq.t2.micro",
             security_groups=[aws_security_group["test"]["id"]],
-            users=[aws.mq.BrokerUserArgs(
-                username="ExampleUser",
-                password="MindTheGap",
-            )])
+            users=[{
+                "username": "ExampleUser",
+                "password": "MindTheGap",
+            }])
         ```
 
         ## Import

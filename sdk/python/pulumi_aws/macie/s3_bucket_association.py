@@ -39,9 +39,9 @@ class S3BucketAssociation(pulumi.CustomResource):
 
         example = aws.macie.S3BucketAssociation("example",
             bucket_name="tf-macie-example",
-            classification_type=aws.macie.S3BucketAssociationClassificationTypeArgs(
-                one_time="FULL",
-            ),
+            classification_type={
+                "oneTime": "FULL",
+            },
             prefix="data")
         ```
 

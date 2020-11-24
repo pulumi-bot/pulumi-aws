@@ -37,14 +37,14 @@ class VirtualGateway(pulumi.CustomResource):
 
         example = aws.appmesh.VirtualGateway("example",
             mesh_name="example-service-mesh",
-            spec=aws.appmesh.VirtualGatewaySpecArgs(
-                listener=aws.appmesh.VirtualGatewaySpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualGatewaySpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-            ),
+            spec={
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                },
+            },
             tags={
                 "Environment": "test",
             })
@@ -57,29 +57,29 @@ class VirtualGateway(pulumi.CustomResource):
 
         example = aws.appmesh.VirtualGateway("example",
             mesh_name="example-service-mesh",
-            spec=aws.appmesh.VirtualGatewaySpecArgs(
-                listener=aws.appmesh.VirtualGatewaySpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualGatewaySpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                    tls=aws.appmesh.VirtualGatewaySpecListenerTlsArgs(
-                        certificate=aws.appmesh.VirtualGatewaySpecListenerTlsCertificateArgs(
-                            acm=aws.appmesh.VirtualGatewaySpecListenerTlsCertificateAcmArgs(
-                                certificate_arn=aws_acm_certificate["example"]["arn"],
-                            ),
-                        ),
-                        mode="STRICT",
-                    ),
-                ),
-                logging=aws.appmesh.VirtualGatewaySpecLoggingArgs(
-                    access_log=aws.appmesh.VirtualGatewaySpecLoggingAccessLogArgs(
-                        file=aws.appmesh.VirtualGatewaySpecLoggingAccessLogFileArgs(
-                            path="/var/log/access.log",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                    "tls": {
+                        "certificate": {
+                            "acm": {
+                                "certificate_arn": aws_acm_certificate["example"]["arn"],
+                            },
+                        },
+                        "mode": "STRICT",
+                    },
+                },
+                "logging": {
+                    "accessLog": {
+                        "file": {
+                            "path": "/var/log/access.log",
+                        },
+                    },
+                },
+            })
         ```
 
         ## Import

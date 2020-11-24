@@ -57,13 +57,13 @@ class Directory(pulumi.CustomResource):
             name="corp.notexample.com",
             password="SuperSecretPassw0rd",
             size="Small",
-            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
-                vpc_id=main.id,
-                subnet_ids=[
+            vpc_settings={
+                "vpc_id": main.id,
+                "subnet_ids": [
                     foo.id,
                     bar_subnet.id,
                 ],
-            ),
+            },
             tags={
                 "Project": "foo",
             })
@@ -88,13 +88,13 @@ class Directory(pulumi.CustomResource):
             password="SuperSecretPassw0rd",
             edition="Standard",
             type="MicrosoftAD",
-            vpc_settings=aws.directoryservice.DirectoryVpcSettingsArgs(
-                vpc_id=main.id,
-                subnet_ids=[
+            vpc_settings={
+                "vpc_id": main.id,
+                "subnet_ids": [
                     foo.id,
                     bar_subnet.id,
                 ],
-            ),
+            },
             tags={
                 "Project": "foo",
             })
@@ -119,15 +119,15 @@ class Directory(pulumi.CustomResource):
             password="SuperSecretPassw0rd",
             size="Small",
             type="ADConnector",
-            connect_settings=aws.directoryservice.DirectoryConnectSettingsArgs(
-                customer_dns_ips=["A.B.C.D"],
-                customer_username="Admin",
-                subnet_ids=[
+            connect_settings={
+                "customerDnsIps": ["A.B.C.D"],
+                "customerUsername": "Admin",
+                "subnet_ids": [
                     foo.id,
                     bar.id,
                 ],
-                vpc_id=main.id,
-            ))
+                "vpc_id": main.id,
+            })
         ```
 
         ## Import

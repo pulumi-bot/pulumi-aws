@@ -33,18 +33,18 @@ class DistributionConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        example = aws.imagebuilder.DistributionConfiguration("example", distributions=[aws.imagebuilder.DistributionConfigurationDistributionArgs(
-            ami_distribution_configuration=aws.imagebuilder.DistributionConfigurationDistributionAmiDistributionConfigurationArgs(
-                ami_tags={
+        example = aws.imagebuilder.DistributionConfiguration("example", distributions=[{
+            "amiDistributionConfiguration": {
+                "amiTags": {
                     "CostCenter": "IT",
                 },
-                launch_permission=aws.imagebuilder.DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs(
-                    user_ids=["123456789012"],
-                ),
-                name="example-{{ imagebuilder:buildDate }}",
-            ),
-            region="us-east-1",
-        )])
+                "launchPermission": {
+                    "userIds": ["123456789012"],
+                },
+                "name": "example-{{ imagebuilder:buildDate }}",
+            },
+            "region": "us-east-1",
+        }])
         ```
 
         ## Import

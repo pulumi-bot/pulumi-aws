@@ -78,26 +78,26 @@ class ComputeEnvironment(pulumi.CustomResource):
         sample_vpc = aws.ec2.Vpc("sampleVpc", cidr_block="10.1.0.0/16")
         sample_security_group = aws.ec2.SecurityGroup("sampleSecurityGroup",
             vpc_id=sample_vpc.id,
-            egress=[aws.ec2.SecurityGroupEgressArgs(
-                from_port=0,
-                to_port=0,
-                protocol="-1",
-                cidr_blocks=["0.0.0.0/0"],
-            )])
+            egress=[{
+                "from_port": 0,
+                "to_port": 0,
+                "protocol": "-1",
+                "cidr_blocks": ["0.0.0.0/0"],
+            }])
         sample_subnet = aws.ec2.Subnet("sampleSubnet",
             vpc_id=sample_vpc.id,
             cidr_block="10.1.1.0/24")
         sample_compute_environment = aws.batch.ComputeEnvironment("sampleComputeEnvironment",
             compute_environment_name="sample",
-            compute_resources=aws.batch.ComputeEnvironmentComputeResourcesArgs(
-                instance_role=ecs_instance_role_instance_profile.arn,
-                instance_types=["c4.large"],
-                max_vcpus=16,
-                min_vcpus=0,
-                security_group_ids=[sample_security_group.id],
-                subnets=[sample_subnet.id],
-                type="EC2",
-            ),
+            compute_resources={
+                "instanceRole": ecs_instance_role_instance_profile.arn,
+                "instance_types": ["c4.large"],
+                "maxVcpus": 16,
+                "minVcpus": 0,
+                "security_group_ids": [sample_security_group.id],
+                "subnets": [sample_subnet.id],
+                "type": "EC2",
+            },
             service_role=aws_batch_service_role_role.arn,
             type="MANAGED",
             opts=ResourceOptions(depends_on=[aws_batch_service_role_role_policy_attachment]))

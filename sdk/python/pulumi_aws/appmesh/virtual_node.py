@@ -48,24 +48,24 @@ class VirtualNode(pulumi.CustomResource):
 
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    dns=aws.appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs(
-                        hostname="serviceb.simpleapp.local",
-                    ),
-                ),
-            ))
+            spec={
+                "backends": [{
+                    "virtualService": {
+                        "virtualServiceName": "servicea.simpleapp.local",
+                    },
+                }],
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                },
+                "serviceDiscovery": {
+                    "dns": {
+                        "hostname": "serviceb.simpleapp.local",
+                    },
+                },
+            })
         ```
         ### AWS Cloud Map Service Discovery
 
@@ -76,28 +76,28 @@ class VirtualNode(pulumi.CustomResource):
         example = aws.servicediscovery.HttpNamespace("example")
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    aws_cloud_map=aws.appmesh.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs(
-                        attributes={
+            spec={
+                "backends": [{
+                    "virtualService": {
+                        "virtualServiceName": "servicea.simpleapp.local",
+                    },
+                }],
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                },
+                "serviceDiscovery": {
+                    "awsCloudMap": {
+                        "attributes": {
                             "stack": "blue",
                         },
-                        service_name="serviceb1",
-                        namespace_name=example.name,
-                    ),
-                ),
-            ))
+                        "service_name": "serviceb1",
+                        "namespaceName": example.name,
+                    },
+                },
+            })
         ```
         ### Listener Health Check
 
@@ -107,18 +107,18 @@ class VirtualNode(pulumi.CustomResource):
 
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                    health_check={
+            spec={
+                "backends": [{
+                    "virtualService": {
+                        "virtualServiceName": "servicea.simpleapp.local",
+                    },
+                }],
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                    "health_check": {
                         "protocol": "http",
                         "path": "/ping",
                         "healthyThreshold": 2,
@@ -126,13 +126,13 @@ class VirtualNode(pulumi.CustomResource):
                         "timeoutMillis": 2000,
                         "intervalMillis": 5000,
                     },
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    dns=aws.appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs(
-                        hostname="serviceb.simpleapp.local",
-                    ),
-                ),
-            ))
+                },
+                "serviceDiscovery": {
+                    "dns": {
+                        "hostname": "serviceb.simpleapp.local",
+                    },
+                },
+            })
         ```
         ### Logging
 
@@ -142,31 +142,31 @@ class VirtualNode(pulumi.CustomResource):
 
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualNodeSpecArgs(
-                backends=[aws.appmesh.VirtualNodeSpecBackendArgs(
-                    virtual_service=aws.appmesh.VirtualNodeSpecBackendVirtualServiceArgs(
-                        virtual_service_name="servicea.simpleapp.local",
-                    ),
-                )],
-                listener=aws.appmesh.VirtualNodeSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualNodeSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-                service_discovery=aws.appmesh.VirtualNodeSpecServiceDiscoveryArgs(
-                    dns=aws.appmesh.VirtualNodeSpecServiceDiscoveryDnsArgs(
-                        hostname="serviceb.simpleapp.local",
-                    ),
-                ),
-                logging=aws.appmesh.VirtualNodeSpecLoggingArgs(
-                    access_log=aws.appmesh.VirtualNodeSpecLoggingAccessLogArgs(
-                        file=aws.appmesh.VirtualNodeSpecLoggingAccessLogFileArgs(
-                            path="/dev/stdout",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "backends": [{
+                    "virtualService": {
+                        "virtualServiceName": "servicea.simpleapp.local",
+                    },
+                }],
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                },
+                "serviceDiscovery": {
+                    "dns": {
+                        "hostname": "serviceb.simpleapp.local",
+                    },
+                },
+                "logging": {
+                    "accessLog": {
+                        "file": {
+                            "path": "/dev/stdout",
+                        },
+                    },
+                },
+            })
         ```
 
         ## Import

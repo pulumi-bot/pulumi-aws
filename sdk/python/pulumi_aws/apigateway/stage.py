@@ -68,10 +68,10 @@ class Stage(pulumi.CustomResource):
             rest_api=test_rest_api.id,
             stage_name=test_stage.stage_name,
             method_path=pulumi.Output.all(test_resource.path_part, test_method.http_method).apply(lambda path_part, http_method: f"{path_part}/{http_method}"),
-            settings=aws.apigateway.MethodSettingsSettingsArgs(
-                metrics_enabled=True,
-                logging_level="INFO",
-            ))
+            settings={
+                "metricsEnabled": True,
+                "loggingLevel": "INFO",
+            })
         ```
         ### Managing the API Logging CloudWatch Log Group
 

@@ -41,15 +41,15 @@ class Trigger(pulumi.CustomResource):
 
         example = aws.glue.Trigger("example",
             type="CONDITIONAL",
-            actions=[aws.glue.TriggerActionArgs(
-                job_name=aws_glue_job["example1"]["name"],
-            )],
-            predicate=aws.glue.TriggerPredicateArgs(
-                conditions=[aws.glue.TriggerPredicateConditionArgs(
-                    job_name=aws_glue_job["example2"]["name"],
-                    state="SUCCEEDED",
-                )],
-            ))
+            actions=[{
+                "jobName": aws_glue_job["example1"]["name"],
+            }],
+            predicate={
+                "conditions": [{
+                    "jobName": aws_glue_job["example2"]["name"],
+                    "state": "SUCCEEDED",
+                }],
+            })
         ```
         ### On-Demand Trigger
 
@@ -59,9 +59,9 @@ class Trigger(pulumi.CustomResource):
 
         example = aws.glue.Trigger("example",
             type="ON_DEMAND",
-            actions=[aws.glue.TriggerActionArgs(
-                job_name=aws_glue_job["example"]["name"],
-            )])
+            actions=[{
+                "jobName": aws_glue_job["example"]["name"],
+            }])
         ```
         ### Scheduled Trigger
 
@@ -72,9 +72,9 @@ class Trigger(pulumi.CustomResource):
         example = aws.glue.Trigger("example",
             schedule="cron(15 12 * * ? *)",
             type="SCHEDULED",
-            actions=[aws.glue.TriggerActionArgs(
-                job_name=aws_glue_job["example"]["name"],
-            )])
+            actions=[{
+                "jobName": aws_glue_job["example"]["name"],
+            }])
         ```
         ### Conditional Trigger with Crawler Action
 
@@ -86,15 +86,15 @@ class Trigger(pulumi.CustomResource):
 
         example = aws.glue.Trigger("example",
             type="CONDITIONAL",
-            actions=[aws.glue.TriggerActionArgs(
-                crawler_name=aws_glue_crawler["example1"]["name"],
-            )],
-            predicate=aws.glue.TriggerPredicateArgs(
-                conditions=[aws.glue.TriggerPredicateConditionArgs(
-                    job_name=aws_glue_job["example2"]["name"],
-                    state="SUCCEEDED",
-                )],
-            ))
+            actions=[{
+                "crawlerName": aws_glue_crawler["example1"]["name"],
+            }],
+            predicate={
+                "conditions": [{
+                    "jobName": aws_glue_job["example2"]["name"],
+                    "state": "SUCCEEDED",
+                }],
+            })
         ```
         ### Conditional Trigger with Crawler Condition
 
@@ -106,15 +106,15 @@ class Trigger(pulumi.CustomResource):
 
         example = aws.glue.Trigger("example",
             type="CONDITIONAL",
-            actions=[aws.glue.TriggerActionArgs(
-                job_name=aws_glue_job["example1"]["name"],
-            )],
-            predicate=aws.glue.TriggerPredicateArgs(
-                conditions=[aws.glue.TriggerPredicateConditionArgs(
-                    crawler_name=aws_glue_crawler["example2"]["name"],
-                    crawl_state="SUCCEEDED",
-                )],
-            ))
+            actions=[{
+                "jobName": aws_glue_job["example1"]["name"],
+            }],
+            predicate={
+                "conditions": [{
+                    "crawlerName": aws_glue_crawler["example2"]["name"],
+                    "crawlState": "SUCCEEDED",
+                }],
+            })
         ```
 
         ## Import

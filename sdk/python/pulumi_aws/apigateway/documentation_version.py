@@ -32,9 +32,9 @@ class DocumentationVersion(pulumi.CustomResource):
 
         example_rest_api = aws.apigateway.RestApi("exampleRestApi")
         example_documentation_part = aws.apigateway.DocumentationPart("exampleDocumentationPart",
-            location=aws.apigateway.DocumentationPartLocationArgs(
-                type="API",
-            ),
+            location={
+                "type": "API",
+            },
             properties="{\"description\":\"Example\"}",
             rest_api_id=example_rest_api.id)
         example_documentation_version = aws.apigateway.DocumentationVersion("exampleDocumentationVersion",

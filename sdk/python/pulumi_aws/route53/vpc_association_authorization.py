@@ -36,9 +36,9 @@ class VpcAssociationAuthorization(pulumi.CustomResource):
             cidr_block="10.6.0.0/16",
             enable_dns_hostnames=True,
             enable_dns_support=True)
-        example_zone = aws.route53.Zone("exampleZone", vpcs=[aws.route53.ZoneVpcArgs(
-            vpc_id=example_vpc.id,
-        )])
+        example_zone = aws.route53.Zone("exampleZone", vpcs=[{
+            "vpc_id": example_vpc.id,
+        }])
         alternate_vpc = aws.ec2.Vpc("alternateVpc",
             cidr_block="10.7.0.0/16",
             enable_dns_hostnames=True,

@@ -102,12 +102,12 @@ class UserPoolClient(pulumi.CustomResource):
         \"\"\"))
         test_user_pool_client = aws.cognito.UserPoolClient("testUserPoolClient",
             user_pool_id=test_user_pool.id,
-            analytics_configuration=aws.cognito.UserPoolClientAnalyticsConfigurationArgs(
-                application_id=test_app.application_id,
-                external_id="some_id",
-                role_arn=test_role.arn,
-                user_data_shared=True,
-            ))
+            analytics_configuration={
+                "application_id": test_app.application_id,
+                "external_id": "some_id",
+                "role_arn": test_role.arn,
+                "userDataShared": True,
+            })
         ```
 
         ## Import

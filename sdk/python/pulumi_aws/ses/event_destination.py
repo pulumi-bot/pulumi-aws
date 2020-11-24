@@ -44,11 +44,11 @@ class EventDestination(pulumi.CustomResource):
                 "bounce",
                 "send",
             ],
-            cloudwatch_destinations=[aws.ses.EventDestinationCloudwatchDestinationArgs(
-                default_value="default",
-                dimension_name="dimension",
-                value_source="emailHeader",
-            )])
+            cloudwatch_destinations=[{
+                "default_value": "default",
+                "dimensionName": "dimension",
+                "valueSource": "emailHeader",
+            }])
         ```
         ### Kinesis Destination
 
@@ -63,10 +63,10 @@ class EventDestination(pulumi.CustomResource):
                 "bounce",
                 "send",
             ],
-            kinesis_destination=aws.ses.EventDestinationKinesisDestinationArgs(
-                stream_arn=aws_kinesis_firehose_delivery_stream["example"]["arn"],
-                role_arn=aws_iam_role["example"]["arn"],
-            ))
+            kinesis_destination={
+                "stream_arn": aws_kinesis_firehose_delivery_stream["example"]["arn"],
+                "role_arn": aws_iam_role["example"]["arn"],
+            })
         ```
         ### SNS Destination
 
@@ -81,9 +81,9 @@ class EventDestination(pulumi.CustomResource):
                 "bounce",
                 "send",
             ],
-            sns_destination=aws.ses.EventDestinationSnsDestinationArgs(
-                topic_arn=aws_sns_topic["example"]["arn"],
-            ))
+            sns_destination={
+                "topic_arn": aws_sns_topic["example"]["arn"],
+            })
         ```
 
         ## Import

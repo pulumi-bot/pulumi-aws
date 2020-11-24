@@ -32,18 +32,18 @@ class XssMatchSet(pulumi.CustomResource):
         import pulumi_aws as aws
 
         xss_match_set = aws.wafregional.XssMatchSet("xssMatchSet", xss_match_tuples=[
-            aws.wafregional.XssMatchSetXssMatchTupleArgs(
-                field_to_match=aws.wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs(
-                    type="URI",
-                ),
-                text_transformation="NONE",
-            ),
-            aws.wafregional.XssMatchSetXssMatchTupleArgs(
-                field_to_match=aws.wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs(
-                    type="QUERY_STRING",
-                ),
-                text_transformation="NONE",
-            ),
+            {
+                "fieldToMatch": {
+                    "type": "URI",
+                },
+                "textTransformation": "NONE",
+            },
+            {
+                "fieldToMatch": {
+                    "type": "QUERY_STRING",
+                },
+                "textTransformation": "NONE",
+            },
         ])
         ```
 

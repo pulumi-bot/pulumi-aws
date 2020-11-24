@@ -62,9 +62,9 @@ class Resolver(pulumi.CustomResource):
             api_id=test_graph_ql_api.id,
             name="tf_example",
             type="HTTP",
-            http_config=aws.appsync.DataSourceHttpConfigArgs(
-                endpoint="http://example.com",
-            ))
+            http_config={
+                "endpoint": "http://example.com",
+            })
         # UNIT type resolver (default)
         test_resolver = aws.appsync.Resolver("testResolver",
             api_id=test_graph_ql_api.id,
@@ -86,13 +86,13 @@ class Resolver(pulumi.CustomResource):
             $utils.appendError($ctx.result.body, $ctx.result.statusCode)
         #end
         \"\"\",
-            caching_config=aws.appsync.ResolverCachingConfigArgs(
-                caching_keys=[
+            caching_config={
+                "cachingKeys": [
                     "$context.identity.sub",
                     "$context.arguments.id",
                 ],
-                ttl=60,
-            ))
+                "ttl": 60,
+            })
         # PIPELINE type resolver
         mutation_pipeline_test = aws.appsync.Resolver("mutationPipelineTest",
             type="Mutation",
@@ -101,13 +101,13 @@ class Resolver(pulumi.CustomResource):
             request_template="{}",
             response_template="$util.toJson($ctx.result)",
             kind="PIPELINE",
-            pipeline_config=aws.appsync.ResolverPipelineConfigArgs(
-                functions=[
+            pipeline_config={
+                "functions": [
                     aws_appsync_function["test1"]["function_id"],
                     aws_appsync_function["test2"]["function_id"],
                     aws_appsync_function["test3"]["function_id"],
                 ],
-            ))
+            })
         ```
 
         ## Import

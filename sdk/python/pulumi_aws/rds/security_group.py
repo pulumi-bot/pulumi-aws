@@ -36,9 +36,9 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        default = aws.rds.SecurityGroup("default", ingress=[aws.rds.SecurityGroupIngressArgs(
-            cidr="10.0.0.0/24",
-        )])
+        default = aws.rds.SecurityGroup("default", ingress=[{
+            "cidr": "10.0.0.0/24",
+        }])
         ```
 
         ## Import

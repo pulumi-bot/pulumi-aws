@@ -37,18 +37,18 @@ class ParameterGroup(pulumi.CustomResource):
         bar = aws.redshift.ParameterGroup("bar",
             family="redshift-1.0",
             parameters=[
-                aws.redshift.ParameterGroupParameterArgs(
-                    name="require_ssl",
-                    value="true",
-                ),
-                aws.redshift.ParameterGroupParameterArgs(
-                    name="query_group",
-                    value="example",
-                ),
-                aws.redshift.ParameterGroupParameterArgs(
-                    name="enable_user_activity_logging",
-                    value="true",
-                ),
+                {
+                    "name": "require_ssl",
+                    "value": "true",
+                },
+                {
+                    "name": "query_group",
+                    "value": "example",
+                },
+                {
+                    "name": "enable_user_activity_logging",
+                    "value": "true",
+                },
             ])
         ```
 

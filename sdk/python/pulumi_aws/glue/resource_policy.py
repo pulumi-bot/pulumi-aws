@@ -31,14 +31,14 @@ class ResourcePolicy(pulumi.CustomResource):
         current_caller_identity = aws.get_caller_identity()
         current_partition = aws.get_partition()
         current_region = aws.get_region()
-        glue_example_policy = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["glue:CreateTable"],
-            resources=[f"arn:{current_partition.partition}:glue:{current_region.name}:{current_caller_identity.account_id}:*"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["*"],
-                type="AWS",
-            )],
-        )])
+        glue_example_policy = aws.iam.get_policy_document(statements=[{
+            "actions": ["glue:CreateTable"],
+            "resources": [f"arn:{current_partition.partition}:glue:{current_region.name}:{current_caller_identity.account_id}:*"],
+            "principals": [{
+                "identifiers": ["*"],
+                "type": "AWS",
+            }],
+        }])
         example = aws.glue.ResourcePolicy("example", policy=glue_example_policy.json)
         ```
 

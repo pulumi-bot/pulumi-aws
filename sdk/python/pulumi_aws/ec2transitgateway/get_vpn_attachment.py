@@ -107,10 +107,10 @@ def get_vpn_attachment(filters: Optional[Sequence[pulumi.InputType['GetVpnAttach
     import pulumi
     import pulumi_aws as aws
 
-    test = aws.ec2transitgateway.get_vpn_attachment(filters=[aws.ec2transitgateway.GetVpnAttachmentFilterArgs(
-        name="resource-id",
-        values=["some-resource"],
-    )])
+    test = aws.ec2transitgateway.get_vpn_attachment(filters=[{
+        "name": "resource-id",
+        "values": ["some-resource"],
+    }])
     ```
 
 

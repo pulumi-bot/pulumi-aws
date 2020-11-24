@@ -53,12 +53,12 @@ class InfrastructureConfiguration(pulumi.CustomResource):
             sns_topic_arn=aws_sns_topic["example"]["arn"],
             subnet_id=aws_subnet["main"]["id"],
             terminate_instance_on_failure=True,
-            logging=aws.imagebuilder.InfrastructureConfigurationLoggingArgs(
-                s3_logs=aws.imagebuilder.InfrastructureConfigurationLoggingS3LogsArgs(
-                    s3_bucket_name=aws_s3_bucket["example"]["bucket"],
-                    s3_key_prefix="logs",
-                ),
-            ),
+            logging={
+                "s3Logs": {
+                    "s3_bucket_name": aws_s3_bucket["example"]["bucket"],
+                    "s3_key_prefix": "logs",
+                },
+            },
             tags={
                 "foo": "bar",
             })

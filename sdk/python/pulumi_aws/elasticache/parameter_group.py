@@ -38,14 +38,14 @@ class ParameterGroup(pulumi.CustomResource):
         default = aws.elasticache.ParameterGroup("default",
             family="redis2.8",
             parameters=[
-                aws.elasticache.ParameterGroupParameterArgs(
-                    name="activerehashing",
-                    value="yes",
-                ),
-                aws.elasticache.ParameterGroupParameterArgs(
-                    name="min-slaves-to-write",
-                    value="2",
-                ),
+                {
+                    "name": "activerehashing",
+                    "value": "yes",
+                },
+                {
+                    "name": "min-slaves-to-write",
+                    "value": "2",
+                },
             ])
         ```
 

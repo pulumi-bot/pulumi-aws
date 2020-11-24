@@ -160,13 +160,13 @@ def get_availability_zones(all_availability_zones: Optional[bool] = None,
     import pulumi_aws as aws
 
     example = aws.get_availability_zones(all_availability_zones=True,
-        filters=[aws.GetAvailabilityZonesFilterArgs(
-            name="opt-in-status",
-            values=[
+        filters=[{
+            "name": "opt-in-status",
+            "values": [
                 "not-opted-in",
                 "opted-in",
             ],
-        )])
+        }])
     ```
 
     Only Availability Zones (no Local Zones):
@@ -175,10 +175,10 @@ def get_availability_zones(all_availability_zones: Optional[bool] = None,
     import pulumi
     import pulumi_aws as aws
 
-    example = aws.get_availability_zones(filters=[aws.GetAvailabilityZonesFilterArgs(
-        name="opt-in-status",
-        values=["opt-in-not-required"],
-    )])
+    example = aws.get_availability_zones(filters=[{
+        "name": "opt-in-status",
+        "values": ["opt-in-not-required"],
+    }])
     ```
 
 

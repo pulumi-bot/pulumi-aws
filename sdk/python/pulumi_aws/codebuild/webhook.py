@@ -41,18 +41,18 @@ class Webhook(pulumi.CustomResource):
 
         example = aws.codebuild.Webhook("example",
             project_name=aws_codebuild_project["example"]["name"],
-            filter_groups=[aws.codebuild.WebhookFilterGroupArgs(
-                filters=[
-                    aws.codebuild.WebhookFilterGroupFilterArgs(
-                        type="EVENT",
-                        pattern="PUSH",
-                    ),
-                    aws.codebuild.WebhookFilterGroupFilterArgs(
-                        type="HEAD_REF",
-                        pattern="master",
-                    ),
+            filter_groups=[{
+                "filters": [
+                    {
+                        "type": "EVENT",
+                        "pattern": "PUSH",
+                    },
+                    {
+                        "type": "HEAD_REF",
+                        "pattern": "master",
+                    },
                 ],
-            )])
+            }])
         ```
         ### GitHub Enterprise
 

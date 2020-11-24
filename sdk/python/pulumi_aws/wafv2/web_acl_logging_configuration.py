@@ -39,11 +39,11 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
         example = aws.wafv2.WebAclLoggingConfiguration("example",
             log_destination_configs=[aws_kinesis_firehose_delivery_stream["example"]["arn"]],
             resource_arn=aws_wafv2_web_acl["example"]["arn"],
-            redacted_fields=[aws.wafv2.WebAclLoggingConfigurationRedactedFieldArgs(
-                single_header=aws.wafv2.WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs(
-                    name="user-agent",
-                ),
-            )])
+            redacted_fields=[{
+                "singleHeader": {
+                    "name": "user-agent",
+                },
+            }])
         ```
 
         ## Import

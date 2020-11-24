@@ -48,14 +48,14 @@ class VirtualRouter(pulumi.CustomResource):
 
         serviceb = aws.appmesh.VirtualRouter("serviceb",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
-            spec=aws.appmesh.VirtualRouterSpecArgs(
-                listener=aws.appmesh.VirtualRouterSpecListenerArgs(
-                    port_mapping=aws.appmesh.VirtualRouterSpecListenerPortMappingArgs(
-                        port=8080,
-                        protocol="http",
-                    ),
-                ),
-            ))
+            spec={
+                "listener": {
+                    "portMapping": {
+                        "port": 8080,
+                        "protocol": "http",
+                    },
+                },
+            })
         ```
 
         ## Import

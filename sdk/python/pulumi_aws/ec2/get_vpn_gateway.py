@@ -122,10 +122,10 @@ def get_vpn_gateway(amazon_side_asn: Optional[str] = None,
     import pulumi
     import pulumi_aws as aws
 
-    selected = aws.ec2.get_vpn_gateway(filters=[aws.ec2.GetVpnGatewayFilterArgs(
-        name="tag:Name",
-        values=["vpn-gw"],
-    )])
+    selected = aws.ec2.get_vpn_gateway(filters=[{
+        "name": "tag:Name",
+        "values": ["vpn-gw"],
+    }])
     pulumi.export("vpnGatewayId", selected.id)
     ```
 

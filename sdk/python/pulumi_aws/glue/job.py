@@ -51,9 +51,9 @@ class Job(pulumi.CustomResource):
 
         example = aws.glue.Job("example",
             role_arn=aws_iam_role["example"]["arn"],
-            command=aws.glue.JobCommandArgs(
-                script_location=f"s3://{aws_s3_bucket['example']['bucket']}/example.py",
-            ))
+            command={
+                "scriptLocation": f"s3://{aws_s3_bucket['example']['bucket']}/example.py",
+            })
         ```
         ### Scala Job
 
@@ -63,9 +63,9 @@ class Job(pulumi.CustomResource):
 
         example = aws.glue.Job("example",
             role_arn=aws_iam_role["example"]["arn"],
-            command=aws.glue.JobCommandArgs(
-                script_location=f"s3://{aws_s3_bucket['example']['bucket']}/example.scala",
-            ),
+            command={
+                "scriptLocation": f"s3://{aws_s3_bucket['example']['bucket']}/example.scala",
+            },
             default_arguments={
                 "--job-language": "scala",
             })
