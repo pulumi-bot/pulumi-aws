@@ -94,12 +94,12 @@ class Webhook(pulumi.CustomResource):
         # Wire the CodePipeline webhook into a GitHub repository.
         bar_repository_webhook = github.RepositoryWebhook("barRepositoryWebhook",
             repository=github_repository["repo"]["name"],
-            configuration={
-                "url": bar_webhook.url,
-                "contentType": "json",
-                "insecureSsl": True,
-                "secret": webhook_secret,
-            },
+            configuration=github.RepositoryWebhookConfigurationArgs(
+                url=bar_webhook.url,
+                content_type="json",
+                insecure_ssl=True,
+                secret=webhook_secret,
+            ),
             events=["push"])
         ```
 
