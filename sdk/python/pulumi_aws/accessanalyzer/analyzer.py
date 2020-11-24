@@ -43,7 +43,7 @@ class Analyzer(pulumi.CustomResource):
         example_analyzer = aws.accessanalyzer.Analyzer("exampleAnalyzer",
             analyzer_name="example",
             type="ORGANIZATION",
-            opts=ResourceOptions(depends_on=[example_organization]))
+            opts=pulumi.ResourceOptions(depends_on=[example_organization]))
         ```
 
         ## Import

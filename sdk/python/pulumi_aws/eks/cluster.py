@@ -79,7 +79,7 @@ class Cluster(pulumi.CustomResource):
             "api",
             "audit",
         ],
-        opts=ResourceOptions(depends_on=[example_log_group]))
+        opts=pulumi.ResourceOptions(depends_on=[example_log_group]))
         # ... other configuration ...
         ```
 

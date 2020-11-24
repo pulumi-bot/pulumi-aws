@@ -53,7 +53,7 @@ class HostedPublicVirtualInterfaceAccepter(pulumi.CustomResource):
             tags={
                 "Side": "Accepter",
             },
-            opts=ResourceOptions(provider=aws["accepter"]))
+            opts=pulumi.ResourceOptions(provider=aws["accepter"]))
         ```
 
         ## Import

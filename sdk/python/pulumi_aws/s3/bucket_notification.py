@@ -126,7 +126,7 @@ class BucketNotification(pulumi.CustomResource):
                 filter_prefix="AWSLogs/",
                 filter_suffix=".log",
             )],
-            opts=ResourceOptions(depends_on=[allow_bucket]))
+            opts=pulumi.ResourceOptions(depends_on=[allow_bucket]))
         ```
         ### Trigger multiple Lambda functions
 
@@ -183,7 +183,7 @@ class BucketNotification(pulumi.CustomResource):
                     filter_suffix=".log",
                 ),
             ],
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     allow_bucket1,
                     allow_bucket2,
                 ]))

@@ -41,7 +41,7 @@ class Build(pulumi.CustomResource):
                 key=aws_s3_bucket_object["test"]["key"],
                 role_arn=aws_iam_role["test"]["arn"],
             ),
-            opts=ResourceOptions(depends_on=[aws_iam_role_policy["test"]]))
+            opts=pulumi.ResourceOptions(depends_on=[aws_iam_role_policy["test"]]))
         ```
 
         ## Import

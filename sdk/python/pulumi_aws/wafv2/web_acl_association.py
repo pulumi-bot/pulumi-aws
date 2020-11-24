@@ -50,7 +50,7 @@ class WebAclAssociation(pulumi.CustomResource):
             http_method=example_method.http_method,
             type="MOCK")
         example_deployment = aws.apigateway.Deployment("exampleDeployment", rest_api=example_rest_api.id,
-        opts=ResourceOptions(depends_on=[example_integration]))
+        opts=pulumi.ResourceOptions(depends_on=[example_integration]))
         example_stage = aws.apigateway.Stage("exampleStage",
             stage_name="test",
             rest_api=example_rest_api.id,

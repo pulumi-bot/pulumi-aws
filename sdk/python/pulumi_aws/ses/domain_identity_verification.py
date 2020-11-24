@@ -42,7 +42,7 @@ class DomainIdentityVerification(pulumi.CustomResource):
             ttl=600,
             records=[example.verification_token])
         example_verification = aws.ses.DomainIdentityVerification("exampleVerification", domain=example.id,
-        opts=ResourceOptions(depends_on=[example_amazonses_verification_record]))
+        opts=pulumi.ResourceOptions(depends_on=[example_amazonses_verification_record]))
         ```
 
         :param str resource_name: The name of the resource.
