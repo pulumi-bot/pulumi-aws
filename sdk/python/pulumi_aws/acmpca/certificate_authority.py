@@ -90,7 +90,7 @@ class CertificateAuthority(pulumi.CustomResource):
                     s3_bucket_name=example_bucket.id,
                 ),
             ),
-            opts=ResourceOptions(depends_on=[example_bucket_policy]))
+            opts=pulumi.ResourceOptions(depends_on=[example_bucket_policy]))
         ```
 
         ## Import

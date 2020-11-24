@@ -35,7 +35,7 @@ class Member(pulumi.CustomResource):
 
         primary = aws.guardduty.Detector("primary", enable=True)
         member_detector = aws.guardduty.Detector("memberDetector", enable=True,
-        opts=ResourceOptions(provider=aws["dev"]))
+        opts=pulumi.ResourceOptions(provider=aws["dev"]))
         member_member = aws.guardduty.Member("memberMember",
             account_id=member_detector.account_id,
             detector_id=primary.id,
