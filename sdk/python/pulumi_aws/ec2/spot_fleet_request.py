@@ -104,7 +104,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     version=foo_launch_template.latest_version,
                 ),
             )],
-            opts=ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
+            opts=pulumi.ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
         ```
 
         > **NOTE:** This provider does not support the functionality where multiple `subnet_id` or `availability_zone` parameters can be specified in the same
@@ -168,7 +168,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     ),
                 ],
             )],
-            opts=ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
+            opts=pulumi.ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
         ```
 
         ## Import
@@ -240,7 +240,7 @@ class SpotFleetRequest(pulumi.CustomResource):
             __props__['allocation_strategy'] = allocation_strategy
             __props__['excess_capacity_termination_policy'] = excess_capacity_termination_policy
             __props__['fleet_type'] = fleet_type
-            if iam_fleet_role is None:
+            if iam_fleet_role is None and not opts.urn:
                 raise TypeError("Missing required property 'iam_fleet_role'")
             __props__['iam_fleet_role'] = iam_fleet_role
             __props__['instance_interruption_behaviour'] = instance_interruption_behaviour
@@ -251,7 +251,7 @@ class SpotFleetRequest(pulumi.CustomResource):
             __props__['replace_unhealthy_instances'] = replace_unhealthy_instances
             __props__['spot_price'] = spot_price
             __props__['tags'] = tags
-            if target_capacity is None:
+            if target_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'target_capacity'")
             __props__['target_capacity'] = target_capacity
             __props__['target_group_arns'] = target_group_arns
