@@ -59,7 +59,7 @@ class Deployment(pulumi.CustomResource):
             variables={
                 "answer": "42",
             },
-            opts=ResourceOptions(depends_on=[my_demo_integration]))
+            opts=pulumi.ResourceOptions(depends_on=[my_demo_integration]))
         ```
 
         :param str resource_name: The name of the resource.

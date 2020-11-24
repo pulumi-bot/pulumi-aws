@@ -39,12 +39,12 @@ class ResourceShareAccepter(pulumi.CustomResource):
             tags={
                 "Name": "tf-test-resource-share",
             },
-            opts=ResourceOptions(provider=aws["alternate"]))
+            opts=pulumi.ResourceOptions(provider=aws["alternate"]))
         receiver = aws.get_caller_identity()
         sender_invite = aws.ram.PrincipalAssociation("senderInvite",
             principal=receiver.account_id,
             resource_share_arn=sender_share.arn,
-            opts=ResourceOptions(provider=aws["alternate"]))
+            opts=pulumi.ResourceOptions(provider=aws["alternate"]))
         receiver_accept = aws.ram.ResourceShareAccepter("receiverAccept", share_arn=sender_invite.resource_share_arn)
         ```
 

@@ -53,7 +53,7 @@ class NodeGroup(pulumi.CustomResource):
                 max_size=1,
                 min_size=1,
             ),
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     aws_iam_role_policy_attachment["example-AmazonEKSWorkerNodePolicy"],
                     aws_iam_role_policy_attachment["example-AmazonEKS_CNI_Policy"],
                     aws_iam_role_policy_attachment["example-AmazonEC2ContainerRegistryReadOnly"],

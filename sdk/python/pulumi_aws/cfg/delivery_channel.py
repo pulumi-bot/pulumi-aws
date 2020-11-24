@@ -53,7 +53,7 @@ class DeliveryChannel(pulumi.CustomResource):
         \"\"\")
         foo_recorder = aws.cfg.Recorder("fooRecorder", role_arn=role.arn)
         foo_delivery_channel = aws.cfg.DeliveryChannel("fooDeliveryChannel", s3_bucket_name=bucket.bucket,
-        opts=ResourceOptions(depends_on=[foo_recorder]))
+        opts=pulumi.ResourceOptions(depends_on=[foo_recorder]))
         role_policy = aws.iam.RolePolicy("rolePolicy",
             role=role.id,
             policy=pulumi.Output.all(bucket.arn, bucket.arn).apply(lambda bucketArn, bucketArn1: f\"\"\"{{

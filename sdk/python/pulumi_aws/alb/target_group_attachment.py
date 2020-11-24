@@ -59,7 +59,7 @@ class TargetGroupAttachment(pulumi.CustomResource):
         test_target_group_attachment = aws.lb.TargetGroupAttachment("testTargetGroupAttachment",
             target_group_arn=test_target_group.arn,
             target_id=test_function.arn,
-            opts=ResourceOptions(depends_on=[with_lb]))
+            opts=pulumi.ResourceOptions(depends_on=[with_lb]))
         ```
 
         ## Import

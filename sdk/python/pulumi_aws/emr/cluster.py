@@ -442,7 +442,7 @@ class Cluster(pulumi.CustomResource):
             tags={
                 "name": "emr_test",
             },
-            opts=ResourceOptions(depends_on=[main_subnet]))
+            opts=pulumi.ResourceOptions(depends_on=[main_subnet]))
         gw = aws.ec2.InternetGateway("gw", vpc_id=main_vpc.id)
         route_table = aws.ec2.RouteTable("routeTable",
             vpc_id=main_vpc.id,

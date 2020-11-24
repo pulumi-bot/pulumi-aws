@@ -103,7 +103,7 @@ class Function(pulumi.CustomResource):
                 subnet_ids=[aws_subnet["subnet_for_lambda"]["id"]],
                 security_group_ids=[aws_security_group["sg_for_lambda"]["id"]],
             ),
-            opts=ResourceOptions(depends_on=[alpha]))
+            opts=pulumi.ResourceOptions(depends_on=[alpha]))
         ```
         ### CloudWatch Logging and Permissions
 
@@ -142,7 +142,7 @@ class Function(pulumi.CustomResource):
         lambda_logs = aws.iam.RolePolicyAttachment("lambdaLogs",
             role=aws_iam_role["iam_for_lambda"]["name"],
             policy_arn=lambda_logging.arn)
-        test_lambda = aws.lambda_.Function("testLambda", opts=ResourceOptions(depends_on=[
+        test_lambda = aws.lambda_.Function("testLambda", opts=pulumi.ResourceOptions(depends_on=[
                 lambda_logs,
                 example,
             ]))

@@ -179,14 +179,14 @@ class TopicSubscription(pulumi.CustomResource):
         sns_topic_topic = aws.sns.Topic("sns-topicTopic",
             display_name=sns["display_name"],
             policy=sns_topic_policy.json,
-            opts=ResourceOptions(provider="aws.sns"))
+            opts=pulumi.ResourceOptions(provider="aws.sns"))
         sqs_queue = aws.sqs.Queue("sqs-queue", policy=sqs_queue_policy.json,
-        opts=ResourceOptions(provider="aws.sqs"))
+        opts=pulumi.ResourceOptions(provider="aws.sqs"))
         sns_topic_topic_subscription = aws.sns.TopicSubscription("sns-topicTopicSubscription",
             topic=sns_topic_topic.arn,
             protocol="sqs",
             endpoint=sqs_queue.arn,
-            opts=ResourceOptions(provider="aws.sns2sqs"))
+            opts=pulumi.ResourceOptions(provider="aws.sns2sqs"))
         ```
 
         ## Import
