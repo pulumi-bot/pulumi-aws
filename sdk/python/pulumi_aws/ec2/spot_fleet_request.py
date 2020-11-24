@@ -104,7 +104,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     version=foo_launch_template.latest_version,
                 ),
             )],
-            opts=ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
+            opts=pulumi.ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
         ```
 
         > **NOTE:** This provider does not support the functionality where multiple `subnet_id` or `availability_zone` parameters can be specified in the same
@@ -168,7 +168,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     ),
                 ],
             )],
-            opts=ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
+            opts=pulumi.ResourceOptions(depends_on=[aws_iam_policy_attachment["test-attach"]]))
         ```
 
         ## Import

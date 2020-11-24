@@ -44,7 +44,7 @@ class Rule(pulumi.CustomResource):
                 negated=False,
                 type="IPMatch",
             )],
-            opts=ResourceOptions(depends_on=[ipset]))
+            opts=pulumi.ResourceOptions(depends_on=[ipset]))
         ```
 
         ## Import

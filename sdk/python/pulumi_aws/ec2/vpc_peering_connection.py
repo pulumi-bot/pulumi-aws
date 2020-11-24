@@ -98,9 +98,9 @@ class VpcPeeringConnection(pulumi.CustomResource):
         import pulumi_aws as aws
 
         foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.1.0.0/16",
-        opts=ResourceOptions(provider=aws["us-west-2"]))
+        opts=pulumi.ResourceOptions(provider=aws["us-west-2"]))
         bar = aws.ec2.Vpc("bar", cidr_block="10.2.0.0/16",
-        opts=ResourceOptions(provider=aws["us-east-1"]))
+        opts=pulumi.ResourceOptions(provider=aws["us-east-1"]))
         foo_vpc_peering_connection = aws.ec2.VpcPeeringConnection("fooVpcPeeringConnection",
             peer_owner_id=var["peer_owner_id"],
             peer_vpc_id=bar.id,

@@ -60,7 +60,7 @@ class Rule(pulumi.CustomResource):
             owner="AWS",
             source_identifier="S3_BUCKET_VERSIONING_ENABLED",
         ),
-        opts=ResourceOptions(depends_on=[foo]))
+        opts=pulumi.ResourceOptions(depends_on=[foo]))
         role_policy = aws.iam.RolePolicy("rolePolicy",
             role=role.id,
             policy=\"\"\"{
@@ -97,7 +97,7 @@ class Rule(pulumi.CustomResource):
             owner="CUSTOM_LAMBDA",
             source_identifier=example_function.arn,
         ),
-        opts=ResourceOptions(depends_on=[
+        opts=pulumi.ResourceOptions(depends_on=[
                 example_recorder,
                 example_permission,
             ]))
