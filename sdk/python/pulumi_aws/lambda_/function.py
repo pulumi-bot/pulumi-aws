@@ -103,7 +103,7 @@ class Function(pulumi.CustomResource):
                 subnet_ids=[aws_subnet["subnet_for_lambda"]["id"]],
                 security_group_ids=[aws_security_group["sg_for_lambda"]["id"]],
             ),
-            opts=ResourceOptions(depends_on=[alpha]))
+            opts=pulumi.ResourceOptions(depends_on=[alpha]))
         ```
         ### CloudWatch Logging and Permissions
 
@@ -142,7 +142,7 @@ class Function(pulumi.CustomResource):
         lambda_logs = aws.iam.RolePolicyAttachment("lambdaLogs",
             role=aws_iam_role["iam_for_lambda"]["name"],
             policy_arn=lambda_logging.arn)
-        test_lambda = aws.lambda_.Function("testLambda", opts=ResourceOptions(depends_on=[
+        test_lambda = aws.lambda_.Function("testLambda", opts=pulumi.ResourceOptions(depends_on=[
                 lambda_logs,
                 example,
             ]))
@@ -214,7 +214,7 @@ class Function(pulumi.CustomResource):
             __props__['description'] = description
             __props__['environment'] = environment
             __props__['file_system_config'] = file_system_config
-            if handler is None:
+            if handler is None and not opts.urn:
                 raise TypeError("Missing required property 'handler'")
             __props__['handler'] = handler
             __props__['kms_key_arn'] = kms_key_arn
@@ -223,10 +223,10 @@ class Function(pulumi.CustomResource):
             __props__['name'] = name
             __props__['publish'] = publish
             __props__['reserved_concurrent_executions'] = reserved_concurrent_executions
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if runtime is None:
+            if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['s3_bucket'] = s3_bucket
