@@ -53,10 +53,10 @@ class ProxyDefaultTargetGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if connection_pool_config is None:
+            if connection_pool_config is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_pool_config'")
             __props__['connection_pool_config'] = connection_pool_config
-            if db_proxy_name is None:
+            if db_proxy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'db_proxy_name'")
             __props__['db_proxy_name'] = db_proxy_name
             __props__['arn'] = None
