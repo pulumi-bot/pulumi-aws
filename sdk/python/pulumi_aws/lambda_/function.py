@@ -100,7 +100,7 @@ class Function(pulumi.CustomResource):
             __props__['description'] = description
             __props__['environment'] = environment
             __props__['file_system_config'] = file_system_config
-            if handler is None:
+            if handler is None and not opts.urn:
                 raise TypeError("Missing required property 'handler'")
             __props__['handler'] = handler
             __props__['kms_key_arn'] = kms_key_arn
@@ -109,10 +109,10 @@ class Function(pulumi.CustomResource):
             __props__['name'] = name
             __props__['publish'] = publish
             __props__['reserved_concurrent_executions'] = reserved_concurrent_executions
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if runtime is None:
+            if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['s3_bucket'] = s3_bucket
