@@ -25,7 +25,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -53,7 +53,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -81,7 +81,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -109,7 +109,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/appautoscaling"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
